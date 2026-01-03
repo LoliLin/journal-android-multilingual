@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="en_US">English (US)</string>
+    <string name="zh_CN">中文（中国）</string>
+    <string name="zh_TW">中文（台灣）</string>
+</resources>

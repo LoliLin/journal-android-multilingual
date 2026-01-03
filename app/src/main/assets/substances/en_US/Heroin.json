@@ -1,0 +1,183 @@
+{
+  "name": "Heroin",
+  "commonNames": [
+    "Heroin",
+    "H",
+    "Smack",
+    "Junk",
+    "Brown"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Heroin",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant",
+    "common"
+  ],
+  "summary": "A powerful opioid derived from Morphine, with 2-4x its potency. Infamous for a high addiction potential and fatal respiratory depression in overdose, C. R. Alder Wright first synthesised this compound in 1874 trying to find a less addictive alternative to Morphine. In recent years, it has often been sold cut with the extremely potent fentanyl, causing a spike in overdose deaths.",
+  "effectsSummary": "Pain-relieving, balancing, calming, anxiety-relieving and euphoric. The euphoric \"flash\" at the beginning is followed by a state of well-being and a feeling of indifference, serenity, light-heartedness and self-satisfaction.",
+  "dosageRemark": "The dose depends on the individual tolerance to heroin. The lethal dose in non-tolerant people is about 60 mg.",
+  "generalRisks": "Slowing of breathing, nausea, vomiting, itching, drop in blood pressure, pulse slowing, pupil constriction and urinary retention may occur.\nOther side effects of regular use of heroin: confusion, disorientation, memory lapses, slurred and garbled speech as well as coordination disorders, extreme constipation, reduction of sexual desire and a potentially life-threatening reduction of the breathing rate to 2 to 4 breaths per minute (due to the attenuation of the coughing and breathing centre).\nHigh doses of heroin can be fatal if medical help is not sought immediately!\nThe drug methadone is a synthetic opioid and is used as a substitute for heroin addiction. For users who are not used to opiates, the consumption of methadone even in small quantities can be life-threatening (severe respiratory depression, danger of suffocation).\nSniffing: damage to nasal septums and mucous membranes. Risk of hepatitis C infection.\nSmoking: damage to bronchial tubes and lungs (lungs become sticky with daily use).\nInjections: Venous inflammation and risk of infectious diseases (hepatitis C, HIV/AIDS, fungi). Organ damage can occur due to the impurities in heroin.",
+  "longtermRisks": "The risk of dependence with psychological and physical symptoms is great. As soon as a tolerance has developed and the body is not supplied with the necessary amount of substance, physical withdrawal symptoms occur 8 to 12 hours after the last heroin intake. Withdrawal symptoms are sweating and chills, running eyes and nose, vomiting, diarrhoea, restlessness, irritability, weakness, anxiety, depressive states, painful cramps, insomnia and, less frequently, hallucinations, psychotic phases and seizures.",
+  "saferUse": [
+    "Always use your own clean and new spraying equipment (needles, filters, spoons).",
+    "Follow the safe sniffing rules when sniffing.",
+    "Avoid mixed use with other substances, otherwise the effect becomes incalculable and the risks increase! Note that the combination with other downers (e.g. benzodiazepines) can lead to respiratory arrest.",
+    "The risk of overdose is particularly high after longer periods of non-use and with extremely \"pure substance\".",
+    "Consume in a quiet environment and not alone."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 35,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 60,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 60,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 1,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 7,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "commonMin": 5,
+        "strongMin": 8,
+        "heavyMin": 15
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 5,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 0,
+          "max": 5,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 15,
+        "strongMin": 25,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 10,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

@@ -18,9 +18,13 @@
 
 package com.isaakhanimann.journal.data.substances.parse
 
+import com.isaakhanimann.journal.data.substances.classes.Category
+import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.SubstanceFile
 
 interface SubstanceParserInterface {
     fun parseSubstanceFile(string: String): SubstanceFile
     fun extractSubstanceString(string: String): String?
+    fun parseCategories(string: String): List<Category>
+    fun parseSubstance(string: String): Substance?
 }

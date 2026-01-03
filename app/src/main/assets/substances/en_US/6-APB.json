@@ -1,0 +1,96 @@
+{
+  "name": "6-APB",
+  "commonNames": [
+    "6-APB",
+    "Benzofury"
+  ],
+  "url": "https://psychonautwiki.org/wiki/6-APB",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "3-4 weeks",
+    "zero": "6-8 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "entactogen",
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A stimulant, empathogen and analog of MDA. Typically more visual than MDMA or MDA, as well as having a much longer onset and duration. Users often report a slightly more psychedelic headspace as well. Commonly sold as an alternative to MDMA and MDA.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI",
+      "SNRIs",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 60,
+        "strongMin": 90,
+        "heavyMin": 120
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 7,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

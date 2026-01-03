@@ -1,0 +1,60 @@
+{
+  "name": "Promethazine",
+  "commonNames": [
+    "Phenergan",
+    "Lergigan"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Promethazine",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "deliriant",
+    "depressant",
+    "common"
+  ],
+  "summary": "A first generation antihistamine,  which also possesses anticholinergic, strong sedative and antipsychotic properties. Once commonly used as a treatment for psychosis, it is now more commonly seen as a component of codeine cough syrups as an anti-nausea agent.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 50,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

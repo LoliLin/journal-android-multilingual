@@ -1,0 +1,78 @@
+{
+  "name": "JWH-018",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/JWH-018",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "cannabinoids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "cannabinoid"
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [],
+    "uncertain": [
+      "2C-T-x",
+      "2C-x",
+      "5-MeO-xxT",
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "DMT",
+      "DOx",
+      "LSD",
+      "Mescaline",
+      "Psilocybin mushrooms",
+      "25x-NBOMe"
+    ]
+  },
+  "roas": [
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 2,
+        "strongMin": 3,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

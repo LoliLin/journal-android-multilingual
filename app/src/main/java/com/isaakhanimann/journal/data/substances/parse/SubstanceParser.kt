@@ -31,11 +31,15 @@ import javax.inject.Singleton
 class SubstanceParser @Inject constructor() : SubstanceParserInterface {
 
     override fun parseSubstanceFile(string: String): SubstanceFile {
-        val wholeFile = JSONObject(string)
-        return SubstanceFile(
-            categories = parseCategories(wholeFile),
-            substances = parseSubstances(wholeFile)
-        )
+        return try {
+            val wholeFile = JSONObject(string)
+            SubstanceFile(
+                categories = parseCategoriesArray(wholeFile.getOptionalJSONArray("categories")),
+                substances = parseSubstancesArray(wholeFile.getOptionalJSONArray("substances"))
+            )
+        } catch (e: Exception) {
+            SubstanceFile(emptyList(), emptyList())
+        }
     }
 
     override fun extractSubstanceString(string: String): String? {
@@ -49,8 +53,31 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         }
     }
 
-    private fun parseCategories(wholeFile: JSONObject): List<Category> {
-        val jsonCategories = wholeFile.getJSONArray("categories")
+    override fun parseCategories(string: String): List<Category> {
+        return try {
+            val trimmed = string.trim()
+            val jsonCategories = if (trimmed.startsWith("[")) {
+                JSONArray(trimmed)
+            } else {
+                JSONObject(trimmed).getOptionalJSONArray("categories")
+            }
+            parseCategoriesArray(jsonCategories)
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    override fun parseSubstance(string: String): Substance? {
+        return try {
+            val jsonSubstance = JSONObject(string)
+            parseSubstance(jsonSubstance)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun parseCategoriesArray(jsonCategories: JSONArray?): List<Category> {
+        if (jsonCategories == null) return emptyList()
         val categories: MutableList<Category> = mutableListOf()
         for (i in 0 until jsonCategories.length()) {
             val jsonCategory = jsonCategories.getOptionalJSONObject(i) ?: continue
@@ -60,8 +87,8 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         return categories
     }
 
-    private fun parseSubstances(wholeFile: JSONObject): List<Substance> {
-        val jsonSubstances = wholeFile.getJSONArray("substances")
+    private fun parseSubstancesArray(jsonSubstances: JSONArray?): List<Substance> {
+        if (jsonSubstances == null) return emptyList()
         val substances: MutableList<Substance> = mutableListOf()
         for (i in 0 until jsonSubstances.length()) {
             val jsonCategory = jsonSubstances.getOptionalJSONObject(i) ?: continue

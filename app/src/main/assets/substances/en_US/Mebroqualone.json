@@ -1,0 +1,72 @@
+{
+  "name": "Mebroqualone",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Mebroqualone",
+  "isApproved": false,
+  "tolerance": {
+    "full": "within a couple of days of repeated administration",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "GABA|gabaergic",
+    "depressants"
+  ],
+  "addictionPotential": "extremely addictive",
+  "toxicities": [
+    "safe at appropriate dosages"
+  ],
+  "categories": [
+    "depressant",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "A short acting analogue of Methaqualone, that is much more potent.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 5,
+        "strongMin": 10,
+        "heavyMin": 15
+      },
+      "duration": {
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 4,
+        "strongMin": 8,
+        "heavyMin": 12
+      },
+      "duration": {
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

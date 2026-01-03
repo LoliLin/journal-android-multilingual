@@ -18,7 +18,6 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routers
 
-import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.BarChart
 import androidx.compose.material.icons.outlined.Book
@@ -26,46 +25,45 @@ import androidx.compose.material.icons.outlined.HealthAndSafety
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.isaakhanimann.journal.R
 
 sealed class TabRouter(
     val route: String,
     val childRoute: String,
-    @StringRes val resourceId: Int,
+    val labelKey: String,
     val icon: ImageVector
 ) {
     object Journal : TabRouter(
         route = "journalTab",
         childRoute = NoArgumentRouter.JournalRouter.route,
-        resourceId = R.string.journal,
+        labelKey = "journal",
         icon = Icons.Outlined.Book
     )
 
     object Statistics : TabRouter(
         route = "statisticsTab",
         childRoute = NoArgumentRouter.StatsRouter.route,
-        resourceId = R.string.stats,
+        labelKey = "stats",
         icon = Icons.Outlined.BarChart
     )
 
     object Substances : TabRouter(
         route = "substancesTab",
         childRoute = NoArgumentRouter.SubstancesRouter.route,
-        resourceId = R.string.substances,
+        labelKey = "substances",
         icon = Icons.Outlined.Medication
     )
 
     object SaferUse : TabRouter(
         route = "saferTab",
         childRoute = NoArgumentRouter.SaferRouter.route,
-        resourceId = R.string.safer,
+        labelKey = "safer",
         icon = Icons.Outlined.HealthAndSafety
     )
 
     object Settings : TabRouter(
         route = "settingsTab",
         childRoute = NoArgumentRouter.SettingsRouter.route,
-        resourceId = R.string.settings,
+        labelKey = "settings",
         icon = Icons.Outlined.Settings
     )
 }

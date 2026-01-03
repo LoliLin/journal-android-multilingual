@@ -1,0 +1,114 @@
+{
+  "name": "4-MeO-PCP",
+  "commonNames": [
+    "4-MeO-PCP",
+    "Methoxydine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4-MeO-PCP",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "An arylcyclohexamine dissociative anaesthetic related to PCP. First discovered in the 1960s by Parke-Davis, it was introduced to the RC market in 2008. Reported to be less potent than PCP. It is not commonly seen, but has seen some increase in popularity with the inavailability of other dissociatives.",
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 75,
+        "strongMin": 150,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 12,
+          "max": 18,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 170,
+        "heavyMin": 250
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 7,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "total": {
+          "min": 12,
+          "max": 20,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

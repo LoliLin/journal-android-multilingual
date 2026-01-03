@@ -1,0 +1,85 @@
+{
+  "name": "AB-FUBINACA",
+  "commonNames": [
+    "Ab-fubi"
+  ],
+  "url": "https://psychonautwiki.org/wiki/AB-FUBINACA",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "cannabinoids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "cannabinoid",
+    "research-chemical",
+    "habit-forming",
+    "tentative",
+    "common"
+  ],
+  "summary": "Arguably the most common synthetic cannabinoid, AB-FUBINACA was originally developed by Pfizer as an analgesic, but has since abandoned for medical use. It has since found a following in the RC community, however it's extremely high potency and inclusion in synthetic blends makes it dangerous, and it has killed in overdose. Exercise caution.",
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [],
+    "uncertain": [
+      "2C-T-x",
+      "2C-x",
+      "5-MeO-xxT",
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "DMT",
+      "DOx",
+      "LSD",
+      "Mescaline",
+      "Psilocybin mushrooms",
+      "25x-NBOMe"
+    ]
+  },
+  "roas": [
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 2,
+        "strongMin": 3,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

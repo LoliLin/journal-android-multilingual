@@ -1,0 +1,39 @@
+{
+  "name": "LAE-32",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/LAE-32",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "psychedelic"
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Substituted amphetamines",
+      "Cocaine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "commonMin": 500,
+        "strongMin": 1500
+      },
+      "duration": {
+        "total": {
+          "min": 4,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

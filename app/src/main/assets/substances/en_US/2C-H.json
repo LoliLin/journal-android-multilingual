@@ -1,0 +1,38 @@
+{
+  "name": "2C-H",
+  "commonNames": [
+    "2C-H",
+    "DMPEA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-H",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3-5 days",
+    "zero": "7-10 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": []
+}

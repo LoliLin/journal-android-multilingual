@@ -1,0 +1,76 @@
+{
+  "name": "DiPT",
+  "commonNames": [
+    "DiPT"
+  ],
+  "url": "https://psychonautwiki.org/wiki/DiPT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A rare tryptamine psychedelic closely related to DMT, with the interesting property of having little visual hallucinations, but strong auditory effects.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 30,
+        "strongMin": 75,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

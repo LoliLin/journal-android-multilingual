@@ -24,15 +24,17 @@ import org.junit.Test
 
 class TestParse {
 
+    private val parser = SubstanceParser()
+
     @Test
     fun noCrash() {
-        val substances = SubstanceParser().parseSubstanceFile(string = "error")
+        val substances = parser.parseSubstanceFile(string = "error")
         assertTrue(substances.substances.isEmpty())
     }
 
     @Test
     fun noCrashExtract() {
-        val result = SubstanceParser().extractSubstanceString(string = "error")
+        val result = parser.extractSubstanceString(string = "error")
         assertTrue(result == null)
     }
 
@@ -53,7 +55,43 @@ class TestParse {
     ]
   }
 }"""
-        val result = SubstanceParser().extractSubstanceString(string = text)
+        val result = parser.extractSubstanceString(string = text)
         assertTrue(result == "[{\"name\":\"Armodafinil\",\"roas\":[{\"name\":\"oral\"}]}]")
+    }
+
+    @Test
+    fun parseSingleSubstance() {
+        val substance = parser.parseSubstance(
+            string = """
+                {
+                  "name": "Armodafinil",
+                  "url": "https://example.com/armodafinil",
+                  "categories": ["stimulant"],
+                  "roas": [
+                    {
+                      "name": "oral"
+                    }
+                  ]
+                }
+            """.trimIndent()
+        )
+        assertTrue(substance?.name == "Armodafinil")
+    }
+
+    @Test
+    fun parseCategoriesArray() {
+        val categories = parser.parseCategories(
+            """
+                [
+                  {
+                    "name": "test",
+                    "description": "desc",
+                    "color": 1234
+                  }
+                ]
+            """.trimIndent()
+        )
+        assertTrue(categories.size == 1)
+        assertTrue(categories.first().name == "test")
     }
 }

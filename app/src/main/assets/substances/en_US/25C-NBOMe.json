@@ -1,0 +1,90 @@
+{
+  "name": "25C-NBOMe",
+  "commonNames": [
+    "25C-NBOMe",
+    "Cimbi-82",
+    "NBOMe-2C-C",
+    "2C-C-NBOMe"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25C-NBOMe",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "fatal at heavy dosages"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "common"
+  ],
+  "summary": "A relatively new and popular research chemical. A short acting psychedelic related to 2C-C with similar effects to LSD, though more visual with less of a 'head-trip.' Frequently mis-sold as LSD. Causes an uncomfortable body load and has caused several deaths even within regular dose ranges.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "Dextromethorphan",
+      "Tramadol"
+    ],
+    "uncertain": [
+      "2C-T-X",
+      "5-MeO-xxt",
+      "Caffeine",
+      "Cannabis",
+      "DOx",
+      "MAOI",
+      "MDMA",
+      "Methoxetamine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 300,
+        "strongMin": 700,
+        "heavyMin": 1000
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

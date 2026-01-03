@@ -1,0 +1,67 @@
+{
+  "name": "Mirtazapine",
+  "commonNames": [
+    "Avanza",
+    "Axit",
+    "Mirtaz",
+    "Mirtazon",
+    "Remeron",
+    "Zispin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Mirtazapine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [],
+  "categories": [
+    "deliriant",
+    "depressant",
+    "antidepressant"
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [],
+    "uncertain": [
+      "Antidepressants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3.5,
+        "commonMin": 130,
+        "strongMin": 190,
+        "heavyMin": 250
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 90,
+          "max": 180,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 14,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

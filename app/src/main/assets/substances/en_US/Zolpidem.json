@@ -1,0 +1,68 @@
+{
+  "name": "Zolpidem",
+  "commonNames": [
+    "Ambien",
+    "Intermezzo",
+    "Edluar",
+    "Zolpimist"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Zolpidem",
+  "isApproved": true,
+  "crossTolerances": [],
+  "addictionPotential": "moderately addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "hallucinogen",
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "Commonly prescribed for insomnia, Ambien (zolpidem) can cause realistic hallucinations similar to those of deliriants, and is very likely to cause amnesia at higher doses. Take care when using this drug, as it tends to lower inhibitions to a level which causes the user to do things they might not normally do when sober.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "name": "Pethidine",
+  "commonNames": [
+    "Pethidine",
+    "Meperidine",
+    "Demerol",
+    "Dolantin",
+    "Dolcontral"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Pethidine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "toxicities": [
+    "high toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant"
+  ],
+  "summary": "A phenylpiperidine opioid first synthesised by Otto Eisleb in 1939, better known by the names meperidine and pethidine. An analgesic, once widely prescribed it has since declined in usage due to the discovery of a toxic metabolite - norpethidine. Also reacts dangerously with many drugs.",
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 200,
+        "heavyMin": 400
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

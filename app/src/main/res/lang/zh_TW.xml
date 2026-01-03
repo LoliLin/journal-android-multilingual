@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Journal</string>
+    <string name="journal">日誌</string>
+    <string name="substances">物質</string>
+    <string name="safer">安全</string>
+    <string name="stats">統計</string>
+    <string name="settings">設定</string>
+    <string name="missing_key">[缺少翻譯]</string>
+    <string name="settings_language_with_value">語言：{language}</string>
+    <string name="settings_language_title">選擇語言</string>
+    <string name="settings_language_system">依系統</string>
+    <string name="common_close">關閉</string>
+    <string name="search_keyboard">鍵盤</string>
+    <string name="search_no_match">沒有找到符合的物質</string>
+    <string name="search_no_match_single_tag">沒有找到含有標籤「{tag}」的物質</string>
+    <string name="search_no_match_multiple_tags">沒有找到含有標籤「{tags}」的物質</string>
+    <string name="common_add">新增</string>
+    <string name="search_add_custom_substance">新增自訂物質</string>
+    <string name="search_custom">自訂</string>
+    <string name="interaction_open_link">開啟連結</string>
+    <string name="interaction_explanations">說明</string>
+    <string name="interaction_warning">警告</string>
+    <string name="category_not_found">找不到分類</string>
+    <string name="category_error">發生錯誤，請返回。</string>
+    <string name="category_open_link">開啟連結</string>
+    <string name="category_more_info">更多資訊</string>
+    <string name="safer_stimulants_title">更安全的興奮劑使用</string>
+    <string name="safer_stimulants_body">先想好你想保持清醒多久，不要壓抑睡眠需求。
+
+每小時喝足量的非酒精飲料（3-5 dl），並在新鮮空氣中休息。
+
+在使用前後健康飲食，不要空腹使用。
+
+有心理疾病、既有心血管病、氣喘、肝腎疾病或糖尿病、甲狀腺亢進以及孕婦特別不建議使用興奮劑。
+
+頻繁使用時補充維生素 C、D 以及礦物質（鐵、鈣和鎂）。
+
+最好不要戴頭部裝備（有過熱風險）。</string>
+</resources>

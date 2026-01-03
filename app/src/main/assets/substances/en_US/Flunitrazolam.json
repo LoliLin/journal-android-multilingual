@@ -1,0 +1,66 @@
+{
+  "name": "Flunitrazolam",
+  "commonNames": [
+    "Flunitrazolam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Flunitrazolam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "A very potent hypnotic Benzodiazepine. Triazolo version of Flunitrazepam.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.1,
+        "commonMin": 0.2,
+        "strongMin": 0.3,
+        "heavyMin": 0.5
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Chlordiazepoxide",
+  "commonNames": [
+    "Librium"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Chlordiazepoxide",
+  "isApproved": false,
+  "crossTolerances": [],
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives",
+      "Stimulants"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 50,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 120,
+          "max": 180,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 24,
+          "max": 60,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 150,
+          "max": 300,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}
