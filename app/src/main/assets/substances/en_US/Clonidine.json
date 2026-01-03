@@ -1,0 +1,63 @@
+{
+  "name": "Clonidine",
+  "commonNames": [
+    "Catapres",
+    "Catapres-TTS",
+    "Kapvay",
+    "Nexiclon XR"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Clonidine",
+  "isApproved": true,
+  "crossTolerances": [],
+  "addictionPotential": "not addictive and has a low potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "depressant",
+    "common"
+  ],
+  "summary": "Is a medication that is used to treat high blood pressure, anxiety, withdrawal (Typically from Alcohol, Opioids, Smoking) and many other uses.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 25,
+        "commonMin": 75,
+        "strongMin": 100,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

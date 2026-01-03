@@ -1,0 +1,41 @@
+{
+  "name": "Prochlorperazine",
+  "commonNames": [
+    "Compazine",
+    "Stemzine",
+    "Buccastem",
+    "Stemetil",
+    "Phenotil"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Prochlorperazine",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "antipsychotic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 5,
+        "strongMin": 20,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 45,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

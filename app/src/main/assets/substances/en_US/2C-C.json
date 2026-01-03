@@ -1,0 +1,74 @@
+{
+  "name": "2C-C",
+  "commonNames": [
+    "2C-C"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-C",
+  "isApproved": true,
+  "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A short-acting psychedelic research chemical of the 2c-x family. Often described as being less stimulating than the other 2c-x, and is a relatively unique psychedelic in this respect.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 30,
+        "strongMin": 50,
+        "heavyMin": 90
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

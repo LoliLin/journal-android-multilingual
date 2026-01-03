@@ -1,0 +1,76 @@
+{
+  "name": "Baclofen",
+  "commonNames": [
+    "Baclofen",
+    "Lioresal"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Baclofen",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "GABA"
+  ],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "summary": "Also known as Lioresal, Baclofen is a GABAb receptor agonist and central nervous system depressant used to treat spasticity, and holds promise as a treatment for alcoholism. It exhibits mild intoxicating effects similar to phenibut or pregabalin.",
+  "interactions": {
+    "dangerous": [
+      "Dissociatives",
+      "Stimulants",
+      "Alcohol",
+      "Benzodiazepines",
+      "Barbiturates",
+      "GHB",
+      "GBL",
+      "Methaqualone",
+      "Opioids",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 50,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 75,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 14,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

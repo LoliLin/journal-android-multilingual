@@ -1,0 +1,83 @@
+{
+  "name": "25I-NBOH",
+  "commonNames": [
+    "25i-NBOH",
+    "Cimbi-27"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25I-NBOH",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "1 week",
+    "zero": "2 weeks"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "potentially fatal at heavy dosages"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A phenethylamine psychedelic and stimulant derivative of 2C-I, this compound is related and has similar effects to 25i-NBOMe. It is significantly more potent than 2C-I but less potent than 25i-NBOMe. Overdoses of NBOH compounds may cause dangerous vasoconstriction. May induce uncomfortable body load.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 500,
+        "strongMin": 900,
+        "heavyMin": 1400
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 12,
+          "units": "days"
+        }
+      }
+    }
+  ]
+}

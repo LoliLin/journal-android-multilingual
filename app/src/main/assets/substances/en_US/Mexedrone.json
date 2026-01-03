@@ -1,0 +1,71 @@
+{
+  "name": "Mexedrone",
+  "commonNames": [
+    "Mexedrone",
+    "4-MMC-MeO"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Mexedrone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant",
+    "entactogen",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "Mexedrone is a stimulant drug of the cathinone class. It alters the reuptake of serotonin, dopamine, and norepinephrine to cause euphoria,  and is similar in effects to mephedrone. It is considered a designer drug and is in a legally grey area globally.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 150,
+        "strongMin": 250,
+        "heavyMin": 350
+      },
+      "duration": {
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

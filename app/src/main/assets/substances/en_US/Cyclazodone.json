@@ -1,0 +1,64 @@
+{
+  "name": "Cyclazodone",
+  "commonNames": [
+    "Cyclazodone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Cyclazodone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 25,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 5,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

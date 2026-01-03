@@ -1,0 +1,55 @@
+{
+  "name": "3-HO-PCE",
+  "commonNames": [
+    "3-HO-PCE",
+    "Hydroxyeticyclidine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-HO-PCE",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "4 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "addictionPotential": "moderately addictive with a moderate potential for adverse side effects such as psychosis",
+  "toxicities": [
+    "toxic dosage is unknown"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "A rare and very potent PCP analogue, eight times more potent than PCP as NMDA receptor antagonist and also a μ-opioid receptor agonist. Similar in structure to methoxetamine.",
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 15,
+        "heavyMin": 25
+      },
+      "duration": {
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

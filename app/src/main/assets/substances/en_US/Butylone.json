@@ -1,0 +1,92 @@
+{
+  "name": "Butylone",
+  "commonNames": [
+    "Butylone",
+    "bk-MBDB",
+    "B1"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Butylone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "psychedelic",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "Empathogen and stimulant of the cathinone class.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 80,
+        "strongMin": 125,
+        "heavyMin": 225
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

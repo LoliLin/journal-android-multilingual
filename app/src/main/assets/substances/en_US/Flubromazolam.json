@@ -1,0 +1,46 @@
+{
+  "name": "Flubromazolam",
+  "commonNames": [
+    "Flubromazolam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Flubromazolam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A very potent benzodiazepine derivative that is related to Triazolam and Pyrazolam. Popular in the research chemical scene, it is a potent sedative, hypnotic and anxiolytic. Potential for amnesia and reduced inhibitions in higher dose. Not to be confused with Flubromazepam, which is much less potent and has a much longer half-life.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 150,
+        "strongMin": 250,
+        "heavyMin": 400
+      },
+      "duration": {
+        "total": {
+          "min": 12,
+          "max": 18,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "4-AcO-DET",
+  "commonNames": [
+    "4-AcO-DET",
+    "4-Acetoxy-DET",
+    "Ethacetin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4-AcO-DET",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "tentative",
+    "research-chemical"
+  ],
+  "summary": "Rare drug that is of the tryptamine family, can be comparable to Psilocybin. Expected to quickly hydrolyzed into the free phenolic 4-HO-DET.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 20,
+        "heavyMin": 35
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

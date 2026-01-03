@@ -1,0 +1,102 @@
+{
+  "name": "2C-T-2",
+  "commonNames": [
+    "2C-T-2",
+    "Rosy"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-T-2",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "no negative health effects attributed to trying this drug"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "An unusual psychedelic with similar effects to 2C-B and a slightly longer duration, but maligned because of some deaths in the 2000s. Also similar to 2c-t-7, but with a shorter duration. Potentially unsafe with stimulants and empathogens.",
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 25
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 7,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2.5,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

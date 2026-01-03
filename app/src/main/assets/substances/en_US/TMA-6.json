@@ -1,0 +1,82 @@
+{
+  "name": "TMA-6",
+  "commonNames": [
+    "TMA-6"
+  ],
+  "url": "https://psychonautwiki.org/wiki/TMA-6",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A rarely seen Psychedelic Amphetamine and Mescaline analogue. First synthesised by Alexander Shulgin, who descrived it as  \"one of the most rewarding and pleasurable of the methoxylated amphetamines.\"",
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 35,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 10,
+          "max": 16,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 18,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

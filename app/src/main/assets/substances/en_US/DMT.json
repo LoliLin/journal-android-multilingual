@@ -1,0 +1,133 @@
+{
+  "name": "DMT",
+  "commonNames": [
+    "DMT",
+    "N,N-DMT",
+    "Dmitry",
+    "The Glory",
+    "The Spirit Molecule"
+  ],
+  "url": "https://psychonautwiki.org/wiki/DMT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "does not appear to occur"
+  },
+  "crossTolerances": [
+    "psychedelics"
+  ],
+  "addictionPotential": "non-addictive with a low abuse potential",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "psychedelic",
+    "common"
+  ],
+  "summary": "A popular and powerful psychedelic, typically used in two ways; either it is vapourised for a short 'breakthrough' experience, or it is taken in combination with an enzyme inhibitor for a long, intense trip (this is also known as ayahuasca or pharmahuasca).",
+  "effectsSummary": "The effect depends very much on the set and the setting. Blood pressure and pulse increase, pupils dilate. Detachment of the body from the mind and ego dissolution are common, near-death experiences also occur relatively often, especially when high doses are consumed. The perception of time changes greatly during intoxication. A few minutes can be perceived as very long and intense. In addition, different feelings such as fear, euphoria, etc. can be experienced within a short period of time. Consumers report immersion in very \"bizarre\" worlds in which connections between being, environment and matter arise. With DMT, this phenomenon is also visually pronounced, i.e., images are linked with oneself, matter and being in one's own society. Physical perception can also be influenced, in that one feels weightless or thinks one is falling.\nWhen swallowed, DMT is only effective in combination with MAO inhibitors. MAO inhibitors (e.g. harmine) are substances and drugs that prevent the enzyme MAO from breaking down the body's own messenger substances such as adrenaline, dopamine, serotonin etc. as well as foreign alkaloids such as caffeine, cocaine, morphine. The psychoactive potion ayahuasca and changa are such a combination. After the consumption of MAO inhibitors, the consumption of certain everyday foods such as cheese is life-threatening.",
+  "dosageRemark": "Ayahuasca is a shamanic herbal potion made from DMT-containing chacruna leaves (Psychotria viridis) and the harmaline-containing ayahuasca liana Banisteriopsis caapi. Harmaline is an MAO inhibitor. MAO inhibitors are substances and drugs that prevent the enzyme MAO from breaking down the body's own messenger substances such as adrenalin, dopamine, serotonin, etc. as well as foreign alkaloids such as caffeine, cocaine, etc.. MAO normally also degrades the active substance DMT even before it can enter the central nervous system via the blood-brain barrier.\nChanga is a mixture for smoking of DMT-containing plants (but usually mostly crystalline DMT) and herbs that act as MAO inhibitors.",
+  "generalRisks": "The risk associated with the use of DMT is mainly psychological and depends on the personality structure of the user. The perceptual changes during a trip can be so intense that especially inexperienced users feel overwhelmed by the flood of impressions. The perception of sudden emotional outbursts can also be perceived as rather disturbing and overwhelming. At high doses, such psychological side effects can be felt for days to weeks. If the rules of the set and setting are not followed, there can be false reactions, loss of orientation, panic, paranoia and horror trips. Physical side effects include nausea, vomiting, increase in heart rate, slightly accelerated breathing, increased blood pressure, pupil dilation, increased salivation, tremors, restlessness, headaches and movement disorders.",
+  "longtermRisks": "Permanent disturbances in self- and reality recognition are possible. The view of the world can be permanently called into question, which can make it difficult to cope with everyday life. Latent (hidden) psychoses can be triggered.",
+  "saferUse": [
+    "Only consume when you feel good. If you are afraid of the strong effects, do not use. Do not use if you are afraid of the substance.",
+    "Do not use DMT alone! Take it in a safe atmosphere and together with experienced people you trust.",
+    "Take DMT while sitting or lying down, as physical perception and ability to move are impaired during intoxication.",
+    "Dose carefully at first. If there is no effect, increase the dose the next time. Do not add more on the same day.",
+    "The consumption of MAO-inhibiting foods such as matured cheese, smoked fish or meat, sauerkraut, tofu, chocolate etc. should be avoided before and after consumption.",
+    "People with high blood pressure should not consume DMT.",
+    "A trip with DMT should remain an exceptional experience. Make sure you take long breaks from using DMT and talk to others about your experience so that it can be processed."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 4,
+        "commonMin": 10,
+        "strongMin": 15,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 10,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 70,
+          "max": 100,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 2,
+          "max": 5,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 20,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 3,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 8,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 1,
+          "max": 6,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 5,
+          "max": 20,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 10,
+          "max": 60,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

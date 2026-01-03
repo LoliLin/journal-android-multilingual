@@ -1,0 +1,26 @@
+{
+  "name": "PMMA",
+  "commonNames": [
+    "PMMA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/PMMA",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [
+    "can be considered extremely toxic when compared to other substances such as Methamphetamine or MDMA",
+    "Ingestion of PMMA has been associated with severe tachycardia (abnormally high heart rate), seizures, hyperthermia, and death"
+  ],
+  "categories": [
+    "entactogen"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "commonMin": 100,
+        "strongMin": 120
+      }
+    }
+  ]
+}

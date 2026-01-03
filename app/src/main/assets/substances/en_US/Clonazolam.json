@@ -1,0 +1,63 @@
+{
+  "name": "Clonazolam",
+  "commonNames": [
+    "Clonazolam",
+    "Clonitrazolam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Clonazolam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "A long lasting benzodiazepine with heavily hypnotic effects. The safety profile is not well established, and there have been reports that people taking it three days in a row have had a seizure. Most comparable to Triazolam, but with a much longer half-life.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 200,
+        "strongMin": 400,
+        "heavyMin": 1
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

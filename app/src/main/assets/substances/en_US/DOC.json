@@ -1,0 +1,120 @@
+{
+  "name": "DOC",
+  "commonNames": [
+    "DOC"
+  ],
+  "url": "https://psychonautwiki.org/wiki/DOC",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "common"
+  ],
+  "summary": "A potent stimulating psychedelic with a long action, a phenethylamine and substituted amphetamine. Sometimes sold as LSD but also enjoyed on its own merits by many. Usually sold on blotters slightly larger than those LSD is found on, but can also be bought in powder form.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.25,
+        "commonMin": 1,
+        "strongMin": 2,
+        "heavyMin": 3.5
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 6
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 8,
+          "units": "hours"
+        },
+        "total": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Kava",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Kava",
+  "isApproved": false,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "summary": "Tropical evergreen shrub with large heart-shaped leaves and woody stems. Its thick roots are mashed or ground and made into a cold and bitter-tasting beverage used similarly to alcohol. It has a long history of ritual and recreational use in Pacific Polynesia and is now a common herbal product, used widely by those in certain societies as part of a 'Kava Culture.'",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": []
+}

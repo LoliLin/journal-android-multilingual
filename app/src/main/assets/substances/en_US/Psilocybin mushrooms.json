@@ -1,0 +1,97 @@
+{
+  "name": "Psilocybin mushrooms",
+  "commonNames": [
+    "Psilocybin",
+    "Psilocybin mushrooms",
+    "Magic Mushrooms",
+    "Shrooms",
+    "4-PO-DMT"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Psilocybin_mushrooms",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "toxicities": [
+    "extremely low toxicity relative to dose"
+  ],
+  "categories": [
+    "psychedelic"
+  ],
+  "effectsSummary": "Low doses have a stimulating and strengthening effect. Medium doses have a mild hallucinogenic effect and stimulate the imagination. High doses have a strong hallucinogenic effect, very psychedelic; the environment is often perceived as dreamlike; visionary immersion in strange worlds, deep insights into oneself and a feeling of strong connection with nature.",
+  "dosageRemark": "Average dosages of dried* mushrooms:\nPointed cone bald: light 0.5-0.8 g, medium to strong 1.0-max. 2 g\nHawaiian: light 0.3-0.5 g, medium to strong 0.5-max. 1 g\nMexican: light 0.5-1.5 g, medium to strong 1.5-max. 5 g\n*for fresh mushrooms approx. ten times this amount.\nx mg psilocybin is stored in each fully developed fruit body. So the number of species is more relevant than the quantity.",
+  "generalRisks": "The pupils dilate, pulse and blood pressure change, increase in body temperature (sweating), breathing difficulties and palpitations may occur. Occasionally, nausea may occur. Balance disorders, an altered sense of space-time, confusion and anxiety are also possible; panic attacks may occur in the case of stimulus overload.\nThe use of psilocybin can trigger latent (hidden) mental disorders.\nWhen picking mushrooms in nature, there is a risk of confusion due to deadly doppelgangers!",
+  "saferUse": [
+    "Consume mushrooms only in good mental and physical condition (set).",
+    "Do not consume mushrooms alone, but with someone you trust.",
+    "Pay attention to the setting. A stress-free environment is important, preferably in nature. Mushrooms are not party drugs!",
+    "Consume mushrooms only after a light meal; it is best to eat very little for 6 to 8 hours to avoid nausea and other unpleasant side effects. Chew mushrooms well!",
+    "Use dried mushrooms if possible; wash raw mushrooms well before eating.",
+    "In delicate moments during the trip: let yourself go, try not to fight the effect of the mushrooms.",
+    "Avoid mixed consumption, never consume mushrooms together with alcohol or medication!",
+    "Avoid roads and other \"dangerous\" places, your orientation may be disturbed.",
+    "In case of panic attacks or horror trips: see General Information under Emergency.",
+    "After the trip, allow yourself plenty of rest and recovery, at least the day after, to be able to process the experience."
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [
+      "Tramadol",
+      "Lithium"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Substituted amphetamines",
+      "Cocaine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2.5,
+        "commonMin": 10,
+        "strongMin": 25,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 2,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2.5,
+          "max": 3.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

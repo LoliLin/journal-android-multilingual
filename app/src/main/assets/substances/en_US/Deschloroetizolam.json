@@ -1,0 +1,68 @@
+{
+  "name": "Deschloroetizolam",
+  "commonNames": [
+    "Deschloroetizolam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Deschloroetizolam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepine",
+    "thienodiazepine"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "A Thienodiazepine which is close to its parent compound, Etizolam, whilst being significantly weaker and longer lasting.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 4,
+        "strongMin": 6,
+        "heavyMin": 12
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 5,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

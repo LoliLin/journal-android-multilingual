@@ -1,0 +1,292 @@
+{
+  "name": "Methamphetamine",
+  "commonNames": [
+    "Methamphetamine",
+    "Meth",
+    "Speed",
+    "Ice",
+    "Glass",
+    "Shard",
+    "Tina",
+    "Crank",
+    "Desoxyn",
+    "Crystal",
+    "Ma",
+    "T",
+    "Tweak",
+    "Shabu",
+    "Yaba"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methamphetamine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "rapidly develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulants"
+  ],
+  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "stimulant",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "A fairly common and very strong CNS stimulant. It is sometimes prescribed in the form of desoxyn for ADHD and severe obesity. In low doses, methamphetamine can elevate mood, increase alertness, concentration, energy and reduces appetite. At higher doses, it can induce mania, psychosis and muscle degeneration among other issues. Tolerant users may report much higher doses than new users.",
+  "effectsSummary": "The body's own performance drug noradrenaline is released, the simultaneous release of dopamine increases self-esteem. Since methamphetamine reaches the brain more quickly than amphetamine and the stimulating effect is stronger, it causes a stronger high and has a higher addiction potential than amphetamine. The body temperature rises, pulse and breathing are accelerated, blood pressure is increased. Hunger and the need for sleep are suppressed. The willingness to take risks is increased, the sensation of pain is suppressed, and euphoria, extreme nervousness, and an increased urge to talk (\"babble flash\") can occur. Methamphetamine has a pleasure-increasing and disinhibiting effect, which is why it is also used as a sex drug.",
+  "generalRisks": "Methamphetamine can sometimes hardly be distinguished from amphetamine, but has a much stronger effect. Short-term side effects are: tense jaw muscles, dry mouth, temperature increase, great loss of fluid, increased heart rate as well as increased blood pressure and trembling all over the body. Irritability and aggressive behaviour can also occur (especially in combination with alcohol).",
+  "longtermRisks": "Methamphetamine is a highly depleting substance with a very high dependence potential with psychological and physical symptoms. Aggression, depression, mental coldness and the desire for more characterise the period of regular use. Constant restlessness, sleep and circulatory disorders, paranoia and even amphetamine psychosis can occur. Weight loss, skin inflammations (\"speed pimples\"), tooth loss, stomach problems and cramps are also possible. In menstruating persons, the menstrual cycle may be disturbed. Snorting damages the nasal mucous membranes and nasal septum, swallowing damages the stomach mucous membranes. Chronic consumption favours brain haemorrhages and strokes with sudden paralysis. It is suspected that the use of methamphetamine (especially mixed use with MDMA) can lead to irreversible changes or damage in the brain!",
+  "saferUse": [
+    "Dose low, methamphetamine is a highly potent substance!",
+    "Take vitamin C and D and minerals (iron, calcium and magnesium) with frequent use.",
+    "Eat enough after consumption to prevent weight loss.",
+    "Drink a lot (soft drinks).",
+    "Follow the safer-sniffing and safer-sex rules.",
+    "Refrain from mixed consumption. Make sure to take breaks from consumption.",
+    "Mentally ill persons, persons with high blood pressure, liver and kidney diseases, diabetics and pregnant women should not use methamphetamine.",
+    "It is better not to wear headgear (danger of overheating!).",
+    "Have your substance analysed in a drug check."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Tramadol",
+      "ΑMT",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "PCP",
+      "25x-NBOMe",
+      "2C-T-x",
+      "5-MeO-xxT",
+      "DOx"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids",
+      "Cocaine",
+      "Cannabis",
+      "Caffeine",
+      "Ketamine",
+      "Methoxetamine",
+      "Psychedelics"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 30,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 3,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 3,
+          "max": 5,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 30,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 30,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 25,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "rectal",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 30,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 3,
+          "max": 5,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 7,
+          "max": 10,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 10,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

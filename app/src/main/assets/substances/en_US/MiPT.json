@@ -1,0 +1,44 @@
+{
+  "name": "MiPT",
+  "commonNames": [
+    "MiPT"
+  ],
+  "url": "https://psychonautwiki.org/wiki/MiPT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "N-Methyl-N-isopropyltryptamine, a tryptamine analogue of DMT, a very uncommon drug with very few reports of human use. Described as 'more psychedelic than hallucinogenic' users report only mild visuals with some stimulation and cognitive effects. One of the more stable tryptamines.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "commonMin": 10,
+        "strongMin": 25,
+        "heavyMin": 75
+      },
+      "duration": {
+        "total": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

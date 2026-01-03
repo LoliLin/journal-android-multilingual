@@ -1,0 +1,79 @@
+{
+  "name": "Prolintane",
+  "commonNames": [
+    "Prolintane"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Prolintane",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "tentative",
+    "habit-forming"
+  ],
+  "summary": "A stimulant drug which is a dopamine reuptake inhibitor, related to MDPV and Pyrovalerone. It was first developed in the 1950s, and has seen some light usage in rave culture, though it remains relatively uncommon. Believed to have a relatively forgiving safety profile.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 45,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

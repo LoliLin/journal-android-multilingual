@@ -1,0 +1,115 @@
+{
+  "name": "3C-E",
+  "commonNames": [
+    "3C-E",
+    "3C-Escaline"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3C-E",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "stimulant"
+  ],
+  "summary": "Three-Carbon Analog of Escaline. Substituted Amphetamine.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 35,
+        "strongMin": 60,
+        "heavyMin": 70
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 40,
+        "strongMin": 60,
+        "heavyMin": 80
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 10,
+          "max": 16,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

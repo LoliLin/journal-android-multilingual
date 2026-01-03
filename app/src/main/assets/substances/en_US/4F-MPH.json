@@ -1,0 +1,107 @@
+{
+  "name": "4F-MPH",
+  "commonNames": [
+    "4F-MPH"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4F-MPH",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 8,
+        "strongMin": 14,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 15,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

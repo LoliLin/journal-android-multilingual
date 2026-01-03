@@ -1,0 +1,68 @@
+{
+  "name": "Methoxphenidine",
+  "commonNames": [
+    "Methoxphenidine",
+    "Methoxyphenidine",
+    "MXP",
+    "2-MXP"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methoxphenidine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "tentative",
+    "habit-forming"
+  ],
+  "summary": "A dissociative from the diarylethylamine class, a more potent analogue of diphenidine. Known to be unpredictable, and can cause blackouts.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Stimulants",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 30,
+        "commonMin": 75,
+        "strongMin": 120,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}
