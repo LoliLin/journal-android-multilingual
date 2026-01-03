@@ -31,6 +31,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -39,6 +40,7 @@ import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.DeleteForever
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
+import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.QuestionAnswer
@@ -51,6 +53,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -74,6 +77,8 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.VERSION_NAME
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -95,7 +100,10 @@ fun SettingsPreview() {
         exportFile = {},
         snackbarHostState = remember { SnackbarHostState() },
         areDosageDotsHidden = false,
-        saveDosageDotsAreHidden = {}
+        saveDosageDotsAreHidden = {},
+        supportedLanguages = mapOf("en_US" to "English (US)", "zh_CN" to "中文（中国）"),
+        selectedLanguageKey = null,
+        saveSelectedLanguage = {}
     )
 }
 
@@ -108,6 +116,9 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
 ) {
+    val context = LocalContext.current
+    val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
+    val supportedLanguages = remember(context) { I18n.getSupportedLanguages(context) }
     SettingsScreen(
         navigateToFAQ = navigateToFAQ,
         navigateToComboSettings = navigateToComboSettings,
@@ -119,7 +130,10 @@ fun SettingsScreen(
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden
+        saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
+        supportedLanguages = supportedLanguages,
+        selectedLanguageKey = selectedLanguageKey,
+        saveSelectedLanguage = viewModel::saveSelectedLanguage
     )
 }
 
@@ -136,7 +150,10 @@ fun SettingsScreen(
     exportFile: (uri: Uri) -> Unit,
     snackbarHostState: SnackbarHostState,
     areDosageDotsHidden: Boolean,
-    saveDosageDotsAreHidden: (Boolean) -> Unit
+    saveDosageDotsAreHidden: (Boolean) -> Unit,
+    supportedLanguages: Map<String, String>,
+    selectedLanguageKey: String?,
+    saveSelectedLanguage: (String?) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -173,6 +190,31 @@ fun SettingsScreen(
                     text = "Interaction settings"
                 ) {
                     navigateToComboSettings()
+                }
+                HorizontalDivider()
+                var isLanguageDialogVisible by remember { mutableStateOf(false) }
+                val languageName =
+                    supportedLanguages[selectedLanguageKey] ?: i18n("settings_language_system")
+                SettingsButton(
+                    imageVector = Icons.Outlined.Language,
+                    text = i18n(
+                        "settings_language_with_value",
+                        mapOf("language" to languageName)
+                    )
+                ) {
+                    isLanguageDialogVisible = true
+                }
+                if (isLanguageDialogVisible) {
+                    LanguageSelectionDialog(
+                        supportedLanguages = supportedLanguages,
+                        selectedLanguageKey = selectedLanguageKey,
+                        onSelectLanguage = {
+                            saveSelectedLanguage(it)
+                            I18n.setPreferredLanguageKey(it)
+                            isLanguageDialogVisible = false
+                        },
+                        onDismiss = { isLanguageDialogVisible = false }
+                    )
                 }
                 HorizontalDivider()
                 Row(
@@ -355,6 +397,57 @@ fun SettingsScreen(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun LanguageSelectionDialog(
+    supportedLanguages: Map<String, String>,
+    selectedLanguageKey: String?,
+    onSelectLanguage: (String?) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_language_title")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                LanguageOptionRow(
+                    label = i18n("settings_language_system"),
+                    isSelected = selectedLanguageKey == null,
+                    onClick = { onSelectLanguage(null) }
+                )
+                sortedLanguages.forEach { (key, label) ->
+                    LanguageOptionRow(
+                        label = label,
+                        isSelected = selectedLanguageKey == key,
+                        onClick = { onSelectLanguage(key) }
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(i18n("common_close"))
+            }
+        }
+    )
+}
+
+@Composable
+private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp)
+            .padding(horizontal = horizontalPadding)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        RadioButton(selected = isSelected, onClick = onClick)
+        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+        Text(label)
     }
 }
 

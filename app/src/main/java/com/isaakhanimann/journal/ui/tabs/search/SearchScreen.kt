@@ -50,6 +50,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -62,11 +63,12 @@ fun SearchScreen(
 ) {
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
+
     Scaffold(
         floatingActionButton = {
             if (!isFocused) {
                 FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
-                    Icon(Icons.Default.Keyboard, contentDescription = "Keyboard")
+                    Icon(Icons.Default.Keyboard, contentDescription = i18n("search_keyboard"))
                 }
             }
         }
@@ -76,111 +78,115 @@ fun SearchScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .focusRequester(focusRequester)
-                    .onFocusChanged { focusState ->
-                        isFocused = focusState.isFocused
-                    },
+                    .onFocusChanged { focusState -> isFocused = focusState.isFocused },
                 searchText = searchViewModel.searchTextFlow.collectAsState().value,
-                onChange = {
-                    searchViewModel.filterSubstances(searchText = it)
-                },
+                onChange = { searchViewModel.filterSubstances(searchText = it) },
                 categories = searchViewModel.chipCategoriesFlow.collectAsState().value,
                 onFilterTapped = searchViewModel::onFilterTapped,
                 isShowingFilter = true
             )
-            val activeFilters =
-                searchViewModel.chipCategoriesFlow.collectAsState().value.filter { it.isActive }
+
+            val activeFilters = searchViewModel.chipCategoriesFlow.collectAsState().value.filter { it.isActive }
             val onFilterTapped = searchViewModel::onFilterTapped
             val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
-            val filteredCustomSubstances =
-                searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
+            val filteredCustomSubstances = searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
             val customColor = searchViewModel.customColor
+
             if (activeFilters.isNotEmpty()) {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(2.dp),
                     modifier = Modifier.padding(vertical = 6.dp)
                 ) {
-                    item {
-                        Spacer(modifier = Modifier.width(4.dp))
-                    }
-                    items(activeFilters.size) {
-                        val categoryChipModel = activeFilters[it]
+                    item { Spacer(modifier = Modifier.width(4.dp)) }
+                    items(activeFilters.size) { index ->
+                        val categoryChipModel = activeFilters[index]
                         CategoryChipDelete(categoryChipModel = categoryChipModel) {
                             onFilterTapped(categoryChipModel.chipName)
                         }
                     }
-                    item {
-                        Spacer(modifier = Modifier.width(4.dp))
-                    }
+                    item { Spacer(modifier = Modifier.width(4.dp)) }
                 }
             }
+
             if (filteredSubstances.isEmpty() && filteredCustomSubstances.isEmpty()) {
-                Column {
-                    val activeCategoryNames =
-                        activeFilters.filter { it.isActive }.map { it.chipName }
-                    if (activeCategoryNames.isEmpty()) {
-                        Text("No matching substance found", modifier = Modifier.padding(10.dp))
-                    } else if (activeCategoryNames.size == 1) {
-                        Text(
-                            "No matching substance with the tag '${activeCategoryNames[0]}' found",
-                            modifier = Modifier.padding(10.dp)
-                        )
-                    } else {
-                        val names = activeCategoryNames.joinToString(separator = "', '")
-                        Text(
-                            "No matching substance with tags '$names' found",
-                            modifier = Modifier.padding(10.dp)
-                        )
-                    }
-                    TextButton(
-                        onClick = navigateToAddCustomSubstanceScreen,
-                        modifier = Modifier.padding(horizontal = horizontalPadding)
-                    ) {
-                        Icon(
-                            Icons.Outlined.Add, contentDescription = "Add"
-                        )
-                        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Add custom substance")
-                    }
-                }
+                EmptySearchState(
+                    activeFilters = activeFilters,
+                    navigateToAddCustomSubstanceScreen = navigateToAddCustomSubstanceScreen
+                )
             } else {
                 LazyColumn {
                     items(filteredCustomSubstances) { customSubstance ->
-                        SubstanceRow(substanceModel = SubstanceModel(
-                            name = customSubstance.name,
-                            commonNames = emptyList(),
-                            categories = listOf(
-                                CategoryModel(
-                                    name = "custom", color = customColor
-                                )
+                        SubstanceRow(
+                            substanceModel = SubstanceModel(
+                                name = customSubstance.name,
+                                commonNames = emptyList(),
+                                categories = listOf(
+                                    CategoryModel(name = i18n("search_custom"), color = customColor)
+                                ),
+                                hasSaferUse = false,
+                                hasInteractions = false
                             ),
-                            hasSaferUse = false,
-                            hasInteractions = false
-                        ), onTap = {
-                            onCustomSubstanceTap(customSubstance.id)
-                        })
-                        HorizontalDivider()
-                    }
-                    items(filteredSubstances) { substance ->
-                        SubstanceRow(substanceModel = substance, onTap = {
-                            onSubstanceTap(substance)
-                        })
+                            onTap = { onCustomSubstanceTap(customSubstance.id) }
+                        )
                         HorizontalDivider()
                     }
 
-                    item {
-                        TextButton(
-                            onClick = navigateToAddCustomSubstanceScreen,
-                            modifier = Modifier.padding(horizontal = horizontalPadding)
-                        ) {
-                            Icon(
-                                Icons.Outlined.Add, contentDescription = "Add"
-                            )
-                            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                            Text(text = "Add custom substance")
-                        }
+                    items(filteredSubstances) { substance ->
+                        SubstanceRow(substanceModel = substance, onTap = { onSubstanceTap(substance) })
+                        HorizontalDivider()
                     }
+
+                    item { AddCustomSubstanceButton(navigateToAddCustomSubstanceScreen) }
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun EmptySearchState(
+    activeFilters: List<CategoryChipModel>,
+    navigateToAddCustomSubstanceScreen: () -> Unit
+) {
+    Column {
+        val activeCategoryNames = activeFilters.filter { it.isActive }.map { it.chipName }
+        when (activeCategoryNames.size) {
+            0 -> Text(i18n("search_no_match"), modifier = Modifier.padding(10.dp))
+            1 -> Text(
+                i18n(
+                    key = "search_no_match_single_tag",
+                    replacements = mapOf("tag" to activeCategoryNames[0])
+                ),
+                modifier = Modifier.padding(10.dp)
+            )
+
+            else -> {
+                val names = activeCategoryNames.joinToString(separator = "', '")
+                Text(
+                    i18n(
+                        key = "search_no_match_multiple_tags",
+                        replacements = mapOf("tags" to names)
+                    ),
+                    modifier = Modifier.padding(10.dp)
+                )
+            }
+        }
+
+        AddCustomSubstanceButton(navigateToAddCustomSubstanceScreen)
+    }
+}
+
+@Composable
+private fun AddCustomSubstanceButton(navigateToAddCustomSubstanceScreen: () -> Unit) {
+    TextButton(
+        onClick = navigateToAddCustomSubstanceScreen,
+        modifier = Modifier.padding(horizontal = horizontalPadding)
+    ) {
+        Icon(
+            Icons.Outlined.Add,
+            contentDescription = i18n("common_add")
+        )
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        Text(text = i18n("search_add_custom_substance"))
     }
 }

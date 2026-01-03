@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.classes.Interactions
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstance
 
@@ -94,10 +95,10 @@ fun InteractionExplanationButton(substanceURL: String, navigateToURL: (url: Stri
     }) {
         Icon(
             Icons.Outlined.Info,
-            contentDescription = "Open link"
+            contentDescription = i18n("interaction_open_link")
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Explanations")
+        Text(i18n("interaction_explanations"))
     }
 }
 
@@ -130,7 +131,7 @@ fun InteractionRowSubstanceScreen(
                 items(interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = i18n("interaction_warning"),
                         tint = Color.Black,
                         modifier = Modifier.size(17.dp)
                     )

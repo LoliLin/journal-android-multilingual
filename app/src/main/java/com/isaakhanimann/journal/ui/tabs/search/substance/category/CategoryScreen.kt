@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.Category
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -66,8 +67,8 @@ fun CategoryPreview() {
 fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
     if (category == null) {
         EmptyScreenDisclaimer(
-            title = "Category not found",
-            description = "An error happened, please navigate back."
+            title = i18n("category_not_found"),
+            description = i18n("category_error")
         )
     } else {
         Scaffold(
@@ -79,10 +80,10 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
                         icon = {
                             Icon(
                                 Icons.Outlined.Newspaper,
-                                contentDescription = "Open link"
+                                contentDescription = i18n("category_open_link")
                             )
                         },
-                        text = { Text("More info") },
+                        text = { Text(i18n("category_more_info")) },
                     )
                 }
             }

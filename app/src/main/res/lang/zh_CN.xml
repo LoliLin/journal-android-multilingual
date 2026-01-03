@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Journal</string>
+    <string name="journal">日志</string>
+    <string name="substances">物质</string>
+    <string name="safer">安全</string>
+    <string name="stats">统计</string>
+    <string name="settings">设置</string>
+    <string name="missing_key">[缺少翻译]</string>
+    <string name="settings_language_with_value">语言：{language}</string>
+    <string name="settings_language_title">选择语言</string>
+    <string name="settings_language_system">跟随系统</string>
+    <string name="common_close">关闭</string>
+    <string name="search_keyboard">键盘</string>
+    <string name="search_no_match">未找到匹配的物质</string>
+    <string name="search_no_match_single_tag">未找到带有标签“{tag}”的物质</string>
+    <string name="search_no_match_multiple_tags">未找到带有标签“{tags}”的物质</string>
+    <string name="common_add">添加</string>
+    <string name="search_add_custom_substance">添加自定义物质</string>
+    <string name="search_custom">自定义</string>
+    <string name="interaction_open_link">打开链接</string>
+    <string name="interaction_explanations">说明</string>
+    <string name="interaction_warning">警告</string>
+    <string name="category_not_found">未找到分类</string>
+    <string name="category_error">发生错误，请返回。</string>
+    <string name="category_open_link">打开链接</string>
+    <string name="category_more_info">更多信息</string>
+    <string name="safer_stimulants_title">更安全的兴奋剂使用</string>
+    <string name="safer_stimulants_body">考虑你想保持清醒的时间。不要压抑睡眠需求。
+
+每小时喝足量的不含酒精饮料（3-5 dl），并在新鲜空气中休息。
+
+在使用前后健康饮食，不要空腹使用。
+
+有心理疾病、心血管疾病、哮喘、肝肾疾病或糖尿病、甲亢以及孕妇尤其不建议使用兴奋剂。
+
+频繁使用时补充维生素C和D以及矿物质（铁、钙和镁）。
+
+最好不要戴头部装备（有过热风险）。</string>
+</resources>
