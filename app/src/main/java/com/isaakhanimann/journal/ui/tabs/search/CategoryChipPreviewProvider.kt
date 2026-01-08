@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 class CategoryChipPreviewProvider : PreviewParameterProvider<CategoryChipModel> {
     override val values: Sequence<CategoryChipModel> = sequenceOf(
         CategoryChipModel(
-            chipName = "common",
+            rawName = "common",
             color = Color.Blue,
             isActive = true,
         )

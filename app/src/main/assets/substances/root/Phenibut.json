@@ -1,0 +1,75 @@
+{
+  "name": "Phenibut",
+  "commonNames": [
+    "Phenibut",
+    "Fenibut",
+    "Phenybut",
+    "PhGABA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Phenibut",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "GABA"
+  ],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "research-chemical",
+    "habit-forming",
+    "nootropic"
+  ],
+  "summary": "A derivative of GABA with the addition of a phenyl ring which allows it to cross the Blood Brain Barrier. Is mostly used as an anti-anxiety and anti-insomnia medication. Tolerance and physical dependency builds very quickly.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "g",
+        "lightMin": 0.25,
+        "commonMin": 1,
+        "strongMin": 2,
+        "heavyMin": 3.5
+      },
+      "duration": {
+        "onset": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 10,
+          "max": 16,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Phenibut"
+}

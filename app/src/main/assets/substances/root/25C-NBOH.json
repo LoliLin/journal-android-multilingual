@@ -1,0 +1,73 @@
+{
+  "name": "25C-NBOH",
+  "commonNames": [
+    "25C-NBOH"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25C-NBOH",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "1 week",
+    "zero": "2 weeks"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "potentially fatal at heavy dosages"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A phenethylamine psychedelic and stimulant derivative of 2C-C, this compound is related and has  similar effects to 25c-NBOMe. It is significantly more potent than 2C-C but less potent than 25c-NBOMe. Overdoses of NBOH compounds may cause dangerous vasoconstriction. May induce uncomfortable body load.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 100,
+        "commonMin": 500,
+        "strongMin": 750,
+        "heavyMin": 1000
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 5,
+          "max": 7,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 6,
+          "units": "days"
+        }
+      }
+    }
+  ],
+  "localizedName": "25C-NBOH"
+}

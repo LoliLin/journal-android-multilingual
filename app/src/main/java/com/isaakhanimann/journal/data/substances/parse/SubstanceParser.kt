@@ -109,6 +109,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
 
     private fun parseSubstance(jsonSubstance: JSONObject): Substance {
         val name = jsonSubstance.getString("name")
+        val localizedName = jsonSubstance.getOptionalString("localizedName")
         val jsonCommonNames = jsonSubstance.getOptionalJSONArray("commonNames")
         val commonNames = parseCommonNames(jsonCommonNames, removeName = name)
         val url = jsonSubstance.getString("url")
@@ -135,6 +136,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         val roas = parseRoas(jsonRoas)
         return Substance(
             name = name,
+            localizedName = localizedName,
             commonNames = commonNames,
             url = url,
             isApproved = isApproved,

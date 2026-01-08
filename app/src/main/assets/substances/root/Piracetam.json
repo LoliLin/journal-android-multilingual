@@ -1,0 +1,48 @@
+{
+  "name": "Piracetam",
+  "commonNames": [
+    "Piracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Piracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "addictionPotential": "not addictive with a low potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "nootropic"
+  ],
+  "summary": "A racetam nootropic claimed by many to have cognitive benefits however this has never been strongly supported in healthy individuals. Prescribed in the UK as a treatment for myoclonus. Potentially an ampakine. One of the first popular 'nootropics.'",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "g",
+        "lightMin": 0.25,
+        "commonMin": 2,
+        "strongMin": 3,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Piracetam"
+}

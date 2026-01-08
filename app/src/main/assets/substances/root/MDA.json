@@ -1,0 +1,111 @@
+{
+  "name": "MDA",
+  "commonNames": [
+    "MDA",
+    "Sass",
+    "Sally",
+    "Tenamfetamine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/MDA",
+  "isApproved": true,
+  "tolerance": {
+    "full": "repeated and heavy usage",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "psychedelic",
+    "entactogen",
+    "stimulant",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "A stimulant and empathogen. Similar to MDMA but typically produces more visuals than MDMA. Known to be more neurotoxic than MDMA, and is a minor metabolite of MDMA. Duration and onset similar to MDMA. The common Marquis reagent test cannot differentiate MDA and MDMA.",
+  "effectsSummary": "MDA is closely related to MDMA. It differs mainly in how well one's own feelings are perceived (entactogenic effect), how strong empathic understanding (empathic effect) and hallucinogenic effects occur.",
+  "dosageRemark": "1.3 mg per kg body weight (1.3 mg x 80 kg = 100 mg)",
+  "generalRisks": "Nausea to nausea, dry mouth, cramping of the jaw muscles, sweating, coordination disorders, sleep disorders and trembling.",
+  "longtermRisks": "MDA is both neurotoxic (damaging to the nerves) and hepatotoxic (damaging to the liver); regular use can lead to schizophrenia-like symptoms.",
+  "saferUse": [
+    "First test a third or half a pill.",
+    "Wait two hours for the effect to take effect before adding more.",
+    "With MDA, topping up is pointless, as it is effective for a long time even in small doses.",
+    "Refrain from mixed consumption.",
+    "Avoid alcohol, drink enough non-alcoholic beverages (0.3-0.5 L per hour).",
+    "Take breaks from dancing at parties and get some fresh air in between.",
+    "Take regular breaks from consumption. The body needs time to recover.",
+    "People taking medication are advised to inform themselves about interactions."
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 60,
+        "strongMin": 100,
+        "heavyMin": 145
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "MDA"
+}

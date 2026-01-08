@@ -39,6 +39,9 @@ class SubstanceViewModel @Inject constructor(
     val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
 
     val substanceWithCategories = substanceRepo.getSubstanceWithCategories(substanceName)!!
+    val interactionNameLookup = substanceRepo.getAllSubstances().associate { substance ->
+        substance.name to substance.displayName
+    }
 
     val customUnitsFlow = experienceRepo.getUnArchivedCustomUnitsFlow(substanceName).stateIn(
         initialValue = emptyList(),

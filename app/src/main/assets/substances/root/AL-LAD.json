@@ -1,0 +1,84 @@
+{
+  "name": "AL-LAD",
+  "commonNames": [
+    "AL-LAD",
+    "Aladdin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/AL-LAD",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "5-7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown",
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "AL-LAD is a hallucinogenic drug, lysergamide and an analogue of LSD. It is reported as having some subtle experiential differences to LSD (such as increased visuals), and also appears to be slightly shorter lasting. AL-LAD doses are similar to those of LSD, depending on purity. Its availability on the Internet since 2013 has lead to strong popularity among the drug community.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 20,
+        "commonMin": 100,
+        "strongMin": 225,
+        "heavyMin": 350
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2.5,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 7,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 18,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "AL-LAD"
+}

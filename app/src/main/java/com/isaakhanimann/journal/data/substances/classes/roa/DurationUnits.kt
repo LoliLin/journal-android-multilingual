@@ -21,21 +21,26 @@ package com.isaakhanimann.journal.data.substances.classes.roa
 enum class DurationUnits(val text: String) {
     SECONDS("seconds") {
         override val inSecondsMultiplier = 1
-        override val shortText = "s"
+        override val shortKey = "duration_seconds_short"
+        override val fallbackShortText = "s"
     },
     MINUTES("minutes") {
         override val inSecondsMultiplier = 60
-        override val shortText = "m"
+        override val shortKey = "duration_minutes_short"
+        override val fallbackShortText = "m"
     },
     HOURS("hours") {
         override val inSecondsMultiplier = 3600
-        override val shortText = "h"
+        override val shortKey = "duration_hours_short"
+        override val fallbackShortText = "h"
     },
     DAYS("days") {
         override val inSecondsMultiplier = 86400
-        override val shortText = "d"
+        override val shortKey = "duration_days_short"
+        override val fallbackShortText = "d"
     };
 
     abstract val inSecondsMultiplier: Int
-    abstract val shortText: String
+    abstract val shortKey: String
+    abstract val fallbackShortText: String
 }

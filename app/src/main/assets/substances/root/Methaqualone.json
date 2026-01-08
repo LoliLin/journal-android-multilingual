@@ -1,0 +1,96 @@
+{
+  "name": "Methaqualone",
+  "commonNames": [
+    "Methaqualone",
+    "Quaaludes",
+    "Ludes",
+    "Mandrax",
+    "Sopor",
+    "Quack",
+    "Vitamin Q",
+    "Soaper"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methaqualone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of repeated administration",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "GABA|gabaergic",
+    "depressants"
+  ],
+  "addictionPotential": "extremely addictive",
+  "toxicities": [
+    "doses of over 300mg can be dangerous for first time users",
+    "safe at appropriate dosages"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "summary": "A pharmaceutical depressant and sedative phased out due to the better safety profile of benzodiazepines, part of the Qualone group of substances. Now very rare, except in South Africa.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 75,
+        "commonMin": 300,
+        "strongMin": 500,
+        "heavyMin": 600
+      },
+      "duration": {
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 100,
+        "strongMin": 200,
+        "heavyMin": 300
+      },
+      "duration": {
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Methaqualone"
+}

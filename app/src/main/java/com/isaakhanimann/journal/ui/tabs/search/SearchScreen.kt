@@ -51,8 +51,10 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
 fun SearchScreen(
@@ -101,7 +103,7 @@ fun SearchScreen(
                     items(activeFilters.size) { index ->
                         val categoryChipModel = activeFilters[index]
                         CategoryChipDelete(categoryChipModel = categoryChipModel) {
-                            onFilterTapped(categoryChipModel.chipName)
+                            onFilterTapped(categoryChipModel.rawName)
                         }
                     }
                     item { Spacer(modifier = Modifier.width(4.dp)) }
@@ -119,9 +121,10 @@ fun SearchScreen(
                         SubstanceRow(
                             substanceModel = SubstanceModel(
                                 name = customSubstance.name,
+                                displayName = customSubstance.name,
                                 commonNames = emptyList(),
                                 categories = listOf(
-                                    CategoryModel(name = i18n("search_custom"), color = customColor)
+                                    CategoryModel(rawName = "custom", color = customColor)
                                 ),
                                 hasSaferUse = false,
                                 hasInteractions = false
@@ -149,7 +152,13 @@ private fun EmptySearchState(
     navigateToAddCustomSubstanceScreen: () -> Unit
 ) {
     Column {
-        val activeCategoryNames = activeFilters.filter { it.isActive }.map { it.chipName }
+        val activeCategoryNames = activeFilters.filter { it.isActive }.map { chip ->
+            if (chip.rawName == "custom") {
+                i18n("search_custom")
+            } else {
+                i18nOrDefault(categoryNameKey(chip.rawName), chip.rawName)
+            }
+        }
         when (activeCategoryNames.size) {
             0 -> Text(i18n("search_no_match"), modifier = Modifier.padding(10.dp))
             1 -> Text(

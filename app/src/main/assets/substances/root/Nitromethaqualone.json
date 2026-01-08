@@ -1,0 +1,26 @@
+{
+  "name": "Nitromethaqualone",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Nitromethaqualone",
+  "isApproved": false,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "psychedelic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg"
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "mg"
+      }
+    }
+  ],
+  "localizedName": "Nitromethaqualone"
+}

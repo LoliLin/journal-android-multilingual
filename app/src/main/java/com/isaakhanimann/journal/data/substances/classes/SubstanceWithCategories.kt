@@ -29,10 +29,11 @@ data class SubstanceWithCategories(
     fun toSubstanceModel(): SubstanceModel {
         return SubstanceModel(
             name = substance.name,
+            displayName = substance.displayName,
             commonNames = substance.commonNames,
             categories = categories.map { category ->
                 CategoryModel(
-                    name = category.name, color = category.color
+                    rawName = category.name, color = category.color
                 )
             },
             hasSaferUse = substance.saferUse.isNotEmpty(),

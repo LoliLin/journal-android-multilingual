@@ -1,0 +1,87 @@
+{
+  "name": "Bromo-DragonFLY",
+  "commonNames": [
+    "Bromo-DragonFLY",
+    "DOB-DragonFLY",
+    "B-DFLY",
+    "Dragonfly"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Bromo-DragonFLY",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "6 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "extreme vasoconstrictive effects",
+    "one can easily overdose if this substance is not measured correctly",
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A psychedelic phenethylamine and benzofuran that is very potent and has a long duration. Was briefly sold as \"2C-B-FLY\" in 2005/6 and has lead to multiple deaths.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 75,
+        "commonMin": 300,
+        "strongMin": 500,
+        "heavyMin": 750
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 7,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        },
+        "total": {
+          "min": 1,
+          "max": 4,
+          "units": "days"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 36,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Bromo-DragonFLY"
+}

@@ -1,0 +1,104 @@
+{
+  "name": "5-MeO-DALT",
+  "commonNames": [
+    "5-MeO-DALT",
+    "Foxtrot"
+  ],
+  "url": "https://psychonautwiki.org/wiki/5-MeO-DALT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A strange drug with an unknown mechanism of action. Some psychedelic effects alongside some effects non-characteristic of psychedelics like appetite enhancement. Reported as having rapid, intense and short acting entheogenic effects.",
+  "interactions": {
+    "dangerous": [
+      "ΑMT",
+      "MAOI",
+      "PCP"
+    ],
+    "unsafe": [
+      "Substituted amphetamines",
+      "Cocaine",
+      "Dextromethorphan",
+      "Tramadol"
+    ],
+    "uncertain": [
+      "2C-T-X",
+      "2C-X",
+      "Cannabis",
+      "DOx",
+      "MDMA",
+      "Mescaline",
+      "25x-NBOMe"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 4,
+        "commonMin": 12,
+        "strongMin": 25,
+        "heavyMin": 35
+      },
+      "duration": {
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 5,
+        "strongMin": 10
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 1,
+          "max": 5,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 15,
+          "max": 20,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        }
+      }
+    }
+  ],
+  "localizedName": "5-MeO-DALT"
+}

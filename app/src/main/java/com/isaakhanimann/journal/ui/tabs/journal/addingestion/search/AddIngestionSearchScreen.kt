@@ -210,6 +210,7 @@ fun AddIngestionSearchScreen(
                 itemsIndexed(filteredCustomSubstances) { index, customSubstance ->
                     SubstanceRowAddIngestion(substanceModel = SubstanceModel(
                         name = customSubstance.name,
+                        displayName = customSubstance.name,
                         commonNames = emptyList(),
                         categories = emptyList(),
                         hasSaferUse = false,

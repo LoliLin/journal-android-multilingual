@@ -1,0 +1,68 @@
+{
+  "name": "Phenobarbital",
+  "commonNames": [
+    "Phenobarbital",
+    "Phenobarbitone",
+    "Luminal",
+    "Phenobarb"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Phenobarbital",
+  "isApproved": true,
+  "crossTolerances": [],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "moderate toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming",
+    "barbiturate"
+  ],
+  "summary": "CNS depressant that is used mostly for insomnia (In older patients) and epliepsy (in younger patients) And it a very strong narcotic, that can be taken most ways. It's used less as \"safer\" alternatives have been made (Benzodiazepines).",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 150,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Phenobarbital"
+}

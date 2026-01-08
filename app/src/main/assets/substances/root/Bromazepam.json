@@ -1,0 +1,87 @@
+{
+  "name": "Bromazepam",
+  "commonNames": [
+    "Bromazepam",
+    "Brozam",
+    "Lectopam",
+    "Lexomil",
+    "Lexotan",
+    "Lexilium",
+    "Lexaurin",
+    "Brazepam",
+    "Rekotnil",
+    "Bromaze",
+    "Somalium",
+    "Lexatin",
+    "Calmepam",
+    "Zepam",
+    "Lexotanil"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Bromazepam",
+  "isApproved": false,
+  "crossTolerances": [],
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "benzodiazepine",
+    "habit-forming",
+    "depressant"
+  ],
+  "summary": "A benzodiazepine drug with a medium-long duration, developed by Roche in the 1960s. Has primarily anxiolytic properties. May cause lowered inhibitions and amnesia in high doses.",
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives",
+      "Stimulants"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 6,
+        "strongMin": 9,
+        "heavyMin": 12
+      },
+      "duration": {
+        "onset": {
+          "min": 14,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 15,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 22,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Bromazepam"
+}

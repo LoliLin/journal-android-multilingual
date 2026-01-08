@@ -1,0 +1,108 @@
+{
+  "name": "Methylone",
+  "commonNames": [
+    "Methylone",
+    "bk-MDMA",
+    "M1",
+    "MDMC"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methylone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "1 - 3 weeks",
+    "zero": "3 - 6 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "psychedelic",
+    "research-chemical",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "βk-MDMA is a cathinone stimulant and empathogen, similar in structure to MDMA, though more stimulating and less empathogenic in comparison. Was very commonly mis-sold as MDMA on the street until it was banned in 2013. The Marquis reagent can differentiate βk-MDMA from MDMA. Less potent than MDMA with a slightly shorter duration.",
+  "effectsSummary": "Compared to MDMA, methylone has a stronger stimulating and less empathogenic effect. The effect is more constant, the \"hangover\" less than with MDMA.",
+  "generalRisks": "Short-term side effects are increased body temperature and heartbeat, dilated pupils and tightening of the jaw. The side effects and the (long-term) risks of methylone have hardly been researched yet.",
+  "saferUse": [
+    "Refrain from re-throwing: This does not intensify or prolong the flash with methylone.",
+    "Be sure to drink enough water during the effect.",
+    "Do not combine methylone with alcohol and other drugs, especially MAO inhibitors.",
+    "Do not use methylone if you have heart or circulatory problems, high blood pressure, diabetes, asthma, epilepsy or mental health problems."
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 75,
+        "commonMin": 150,
+        "strongMin": 225,
+        "heavyMin": 325
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Methylone"
+}

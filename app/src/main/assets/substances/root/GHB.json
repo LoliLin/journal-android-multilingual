@@ -1,0 +1,104 @@
+{
+  "name": "GHB",
+  "commonNames": [
+    "GHB",
+    "G",
+    "Xyrem",
+    "Sodium oxybate"
+  ],
+  "url": "https://psychonautwiki.org/wiki/GHB",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within several days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [],
+  "addictionPotential": "moderately to highly physically and moderately psychologically addictive",
+  "toxicities": [
+    "considered to be a safe and non-toxic substance when used responsibly or medically",
+    "Doses above 10 grams are associated with a risk of death"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "A euphoric depressant which is prescribed as a sleep aid and sometimes to help with Alcohol detox. Also used as a recreational depressant, as a non-toxic alternative to Alcohol. Despite not having Alcohol's toxicity it is risky due to among other things inconsistent concentration in commonly sold solution form, and can be very dangerous if taken with other depressants.",
+  "effectsSummary": "The effect is extremely dose-dependent and varies greatly from individual to individual. It also depends on the purity of the substance. The spectrum of effects ranges from euphoria, relaxation, disinhibition, intensification of perception, urge to talk (babble flash), slight dizziness and drowsiness to deep (coma-like) sleep or unconsciousness.",
+  "generalRisks": "The higher the dose, the more likely nausea, vomiting and dizziness will occur. Headaches, confusion, breathing difficulties, cardiac arrhythmias, impaired balance and memory can occur at very high doses, as can uncontrollable muscle twitching, which is easily mistaken for epilepsy but can also progress into epilepsy.\nThe danger of an unintentional overdose is very high with GHB - even if it is not mixed! Signs of a GHB overdose are severe drowsiness followed by several hours of deep sleep that cannot be disturbed or can only be disturbed with difficulty (sometimes interrupted by short periods of wakefulness = standing man symptom), mild to very severe nausea, nausea, dizziness, headache, muscle atrophy (barely able to stay on one's feet) up to complete immobility, unconsciousness, disappearance of reflexes and breathing difficulties. It is difficult to assess whether users are only in a deep sleep or already in a coma after GHB use - if in doubt, always seek medical help!",
+  "longtermRisks": "Regular use of GHB/GBL can lead to sleep disorders, anxiety and tremors; there is a risk of dependence with psychological and physical symptoms. In the case of chronic high-dose consumption (several doses daily), severe physical withdrawal symptoms such as sweating, muscle cramps or epileptic seizures occur upon discontinuation.",
+  "saferUse": [
+    "If you are offered GHB, ask about the origin of the substance and the dosage.",
+    "Dose carefully! If GHB does not (yet) work, it is best to wait 2 hours and not add more right away. Often, overdosing is caused by adding more. Use an insulin syringe or graduated pipettes so that you can measure your unit of consumption accurately. Make a note of when you took your last dose.",
+    "Refrain from using GHB when you are alone.",
+    "With GHB, refrain from mixed consumption of any kind, especially with alcohol! Dilute the liquid before consumption, e.g. with tea.",
+    "If you have sex on GHB, follow the safe sex rules. Have condoms etc. ready before consumption.",
+    "People with epilepsy, heart or kidney dysfunction should not consume GHB under any circumstances!",
+    "GHB withdrawal should only be carried out under medical supervision.",
+    "Never leave your drink unattended to avoid someone mixing GHB into your drink. If your drink tastes strange, pour it out for your own safety."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Ketamine",
+      "Methoxetamine",
+      "Dextromethorphan",
+      "PCP",
+      "Alcohol",
+      "Opioids",
+      "Tramadol",
+      "Benzodiazepines"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Nitrous",
+      "Substituted amphetamines",
+      "MDMA",
+      "Cocaine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "g",
+        "lightMin": 0.5,
+        "commonMin": 1,
+        "strongMin": 2.5,
+        "heavyMin": 4
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1.5,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "GHB"
+}

@@ -27,14 +27,15 @@ class SubstanceModelPreviewProvider : PreviewParameterProvider<SubstanceModel> {
     override val values: Sequence<SubstanceModel> = sequenceOf(
         SubstanceModel(
             name = "Example Substance",
+            displayName = "Example Substance",
             commonNames = listOf("Hat", "Boot", "Hoodie", "Shirt", "Blouse"),
             categories = listOf(
                 CategoryModel(
-                    name = "common",
+                    rawName = "common",
                     color = Color.Blue
                 ),
                 CategoryModel(
-                    name = "psychedelic",
+                    rawName = "psychedelic",
                     color = Color.Magenta
                 )
             ),

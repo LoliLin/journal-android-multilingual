@@ -24,18 +24,22 @@ enum class InteractionType {
     DANGEROUS {
         override val color = Color(0xffFF7B66)
         override val dangerCount = 3
+        override val labelKey = "interaction_level_dangerous"
     },
     UNSAFE {
         override val color = Color(0xFFFFC466)
         override val dangerCount = 2
+        override val labelKey = "interaction_level_unsafe"
     },
     UNCERTAIN {
         override val color = Color(0xffFFF966)
         override val dangerCount = 1
+        override val labelKey = "interaction_level_uncertain"
     };
 
     abstract val color: Color
     abstract val dangerCount: Int
+    abstract val labelKey: String
 }
 
 data class Interactions(

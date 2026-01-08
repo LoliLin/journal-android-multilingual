@@ -26,6 +26,7 @@ import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.data.substances.parse.SubstanceParserInterface
 import com.isaakhanimann.journal.localization.I18n
 import dagger.hilt.android.qualifiers.ApplicationContext
+import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,7 +39,8 @@ class SubstanceRepository @Inject constructor(
     companion object {
         private const val SUBSTANCES_DIR = "substances"
         private const val CATEGORIES_FILE_NAME = "_categories.json"
-        private const val FALLBACK_LANGUAGE_KEY = "en_US"
+        private const val ROOT_LANGUAGE_KEY = "root"
+        private const val FALLBACK_LANGUAGE_KEY = ROOT_LANGUAGE_KEY
     }
 
     private var substanceFile: SubstanceFile
@@ -49,21 +51,14 @@ class SubstanceRepository @Inject constructor(
     }
 
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
-        val fallbackCategories = loadCategoriesForLanguage(FALLBACK_LANGUAGE_KEY)
-        val localizedCategories = if (languageKey != FALLBACK_LANGUAGE_KEY) {
-            loadCategoriesForLanguage(languageKey)
-        } else {
-            emptyList()
+        val languageKeys = listOf(ROOT_LANGUAGE_KEY, FALLBACK_LANGUAGE_KEY, languageKey).distinct()
+        val categories = languageKeys.fold(emptyList<Category>()) { merged, key ->
+            mergeCategories(merged, loadCategoriesForLanguage(key))
         }
-        val categories = mergeCategories(fallbackCategories, localizedCategories)
-
-        val fallbackSubstances = loadSubstancesForLanguage(FALLBACK_LANGUAGE_KEY)
-        val localizedSubstances = if (languageKey != FALLBACK_LANGUAGE_KEY) {
-            loadSubstancesForLanguage(languageKey)
-        } else {
-            emptyList()
+        val substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
+            mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
         }
-        val substances = mergeSubstances(fallbackSubstances, localizedSubstances)
+        val substances = parseSubstancesFromJsonMap(substancesByFile)
 
         return SubstanceFile(categories = categories, substances = substances)
     }
@@ -77,7 +72,7 @@ class SubstanceRepository @Inject constructor(
         }.getOrElse { emptyList() }
     }
 
-    private fun loadSubstancesForLanguage(languageKey: String): List<Substance> {
+    private fun loadSubstanceJsonForLanguage(languageKey: String): Map<String, JSONObject> {
         val directory = "$SUBSTANCES_DIR/$languageKey"
         val files = runCatching {
             appContext.assets.list(directory)?.toList() ?: emptyList()
@@ -89,10 +84,12 @@ class SubstanceRepository @Inject constructor(
             .mapNotNull { fileName ->
                 runCatching {
                     appContext.assets.open("$directory/$fileName").bufferedReader().use { reader ->
-                        substanceParser.parseSubstance(reader.readText())
+                        val key = fileName.removeSuffix(".json")
+                        key to JSONObject(reader.readText())
                     }
                 }.getOrNull()
             }
+            .toMap()
     }
 
     private fun mergeCategories(fallback: List<Category>, localized: List<Category>): List<Category> {
@@ -102,11 +99,47 @@ class SubstanceRepository @Inject constructor(
         return merged.values.toList()
     }
 
-    private fun mergeSubstances(fallback: List<Substance>, localized: List<Substance>): List<Substance> {
-        val merged = linkedMapOf<String, Substance>()
-        fallback.forEach { merged[it.name] = it }
-        localized.forEach { merged[it.name] = it }
-        return merged.values.toList()
+    private fun mergeSubstanceJsonMaps(
+        fallback: Map<String, JSONObject>,
+        localized: Map<String, JSONObject>
+    ): Map<String, JSONObject> {
+        val merged = linkedMapOf<String, JSONObject>()
+        fallback.forEach { (key, value) -> merged[key] = value }
+        localized.forEach { (key, value) ->
+            val existing = merged[key]
+            merged[key] = if (existing == null) {
+                value
+            } else {
+                mergeJsonObjects(existing, value)
+            }
+        }
+        return merged
+    }
+
+    private fun mergeJsonObjects(base: JSONObject, overlay: JSONObject): JSONObject {
+        val result = JSONObject(base.toString())
+        val keys = overlay.keys()
+        while (keys.hasNext()) {
+            val key = keys.next()
+            val overlayValue = overlay.get(key)
+            val baseValue = result.opt(key)
+            val mergedValue = if (overlayValue is JSONObject && baseValue is JSONObject) {
+                mergeJsonObjects(baseValue, overlayValue)
+            } else {
+                overlayValue
+            }
+            result.put(key, mergedValue)
+        }
+        return result
+    }
+
+    private fun parseSubstancesFromJsonMap(substancesByFile: Map<String, JSONObject>): List<Substance> {
+        return substancesByFile.toSortedMap().mapNotNull { (key, json) ->
+            if (!json.has("name")) {
+                json.put("name", key)
+            }
+            substanceParser.parseSubstance(json.toString())
+        }
     }
 
     override fun getAllSubstances(): List<Substance> {

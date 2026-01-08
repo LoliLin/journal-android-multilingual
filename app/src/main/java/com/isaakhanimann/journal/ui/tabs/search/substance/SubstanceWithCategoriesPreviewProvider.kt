@@ -29,6 +29,7 @@ class SubstanceWithCategoriesPreviewProvider : PreviewParameterProvider<Substanc
         SubstanceWithCategories(
             substance = Substance(
                 name = "Example Substance",
+                localizedName = null,
                 commonNames = listOf("Hat", "Boot", "Hoodie", "Shirt", "Blouse"),
                 url = "https://psychonautwiki.org/wiki/Lsd",
                 isApproved = true,

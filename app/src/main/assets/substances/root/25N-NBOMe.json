@@ -1,0 +1,88 @@
+{
+  "name": "25N-NBOMe",
+  "commonNames": [
+    "25N-NBOMe"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25N-NBOMe",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "potentially fatal at heavy dosages"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A rare, highly potent and yellow psychedelic phenethylamine and derivative of 2C-N. Effects are similar to other NBOMe compounds, with hallucinations, intense body load, stimulation and vasoconstriction. At high doses vasoconstriction can be dangerous, exercise caution.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "Dextromethorphan",
+      "Tramadol"
+    ],
+    "uncertain": [
+      "2C-T-X",
+      "5-MeO-xxt",
+      "Caffeine",
+      "Cannabis",
+      "DOx",
+      "MAOI",
+      "MDMA",
+      "Methoxetamine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 100,
+        "commonMin": 300,
+        "strongMin": 800,
+        "heavyMin": 1300
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 75,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "25N-NBOMe"
+}

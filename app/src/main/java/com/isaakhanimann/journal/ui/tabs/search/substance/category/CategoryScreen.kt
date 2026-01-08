@@ -36,8 +36,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
 fun CategoryScreen(
@@ -72,7 +74,13 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
         )
     } else {
         Scaffold(
-            topBar = { TopAppBar(title = { Text(category.name.replaceFirstChar { it.uppercase() }) }) },
+            topBar = {
+                val displayName = i18nOrDefault(
+                    key = categoryNameKey(category.name),
+                    fallback = category.name.replaceFirstChar { it.uppercase() }
+                )
+                TopAppBar(title = { Text(displayName) })
+            },
             floatingActionButton = {
                 if (category.url != null) {
                     ExtendedFloatingActionButton(

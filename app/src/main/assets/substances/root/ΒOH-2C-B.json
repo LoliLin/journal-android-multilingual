@@ -1,0 +1,23 @@
+{
+  "name": "ΒOH-2C-B",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/%CE%92OH-2C-B",
+  "isApproved": false,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic"
+  ],
+  "roas": [],
+  "localizedName": "ΒOH-2C-B"
+}

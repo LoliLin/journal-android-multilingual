@@ -1,0 +1,97 @@
+{
+  "name": "Armodafinil",
+  "commonNames": [
+    "Armodafinil",
+    "Nuvigil",
+    "Waklert",
+    "Artvigil",
+    "R-Modawake",
+    "Neoresotyl"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Armodafinil",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "benzhydryl",
+    "nootropic"
+  ],
+  "addictionPotential": "mildly addictive with a low potential for abuse",
+  "toxicities": [
+    "The median lethal dose at which 50% of participants die (LD50) from either armodafinil or modafinil for human beings has never been reached"
+  ],
+  "categories": [
+    "eugeroic",
+    "stimulant",
+    "nootropic",
+    "habit-forming"
+  ],
+  "summary": "The more potent of the two modafinil isomers, said to have a longer duration and lesser side effects. Sometimes prescribed for ADHD and daytime sleepiness.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI",
+      "Hormonal birth control"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 100,
+        "strongMin": 200,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 15,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Armodafinil"
+}
