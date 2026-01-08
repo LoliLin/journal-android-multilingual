@@ -15,16 +15,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "entactogen"
   ],
-  "summary": "5-methoxy-di isopropyl tryptamine, also known as 'foxy', a psychedelic tryptamine related to DMT, which distorts visual and audio perception. Reported to have a heavy body load at high doses, it behaves similarly to other drugs of its class.",
   "interactions": {
     "dangerous": [
       "ΑMT",
@@ -75,6 +70,5 @@
         }
       }
     }
-  ],
-  "localizedName": "5-MeO-DiPT"
+  ]
 }

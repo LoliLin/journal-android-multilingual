@@ -15,16 +15,11 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A potent NDRI cathinone-type stimulant with more-ish effects but not thought to be especially enjoyable.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -118,6 +113,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Pentedrone"
+  ]
 }

@@ -14,17 +14,12 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "no negative health effects attributed to trying this drug"
-  ],
   "categories": [
     "psychedelic",
     "entactogen",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A very rare psychedelic phenylethylamine.",
   "roas": [
     {
       "name": "oral",
@@ -63,6 +58,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2C-T"
+  ]
 }

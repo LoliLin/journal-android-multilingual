@@ -13,16 +13,10 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "habit-forming"
   ],
-  "summary": "A benzodiazepine derivative drug with anxiolytic effects but mainly hypnotic effects. It is extremely effective for sleep aid but has mild euphoria compared to other benzos",
   "interactions": {
     "dangerous": [
       "Depressant",
@@ -60,6 +54,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Cinolazepam"
+  ]
 }

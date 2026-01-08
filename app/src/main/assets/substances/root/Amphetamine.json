@@ -17,16 +17,11 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "has high abuse potential and can cause psychological dependence with chronic use",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "habit-forming",
     "common"
   ],
-  "summary": "A very popular CNS stimulant available on prescription and black markets. Recreational in high doses, producing mild euphoria and an abundance of energy. Popular in eastern europe and the US.",
   "effectsSummary": "The release of the endogenous neurotransmitters noradrenalin and dopamine produced by the use of amphetamine can cause a feeling of increased performance, an increase in self-esteem, an increase in body temperature, the suppression of tiredness, hunger and thirst, an increased willingness to take risks and a suppressed feeling of pain, and can lead to euphoria as well as an increased urge to talk (babble flash).",
   "dosageRemark": "Because of the varying purity (the amphetamine content varies from almost 0 % to almost 100 %!), dosing is difficult and the risk of overdose is high. Doses of more than 25 mg of pure amphetamine increase the negative effects. A dose of 50 mg/night should be the maximum, whether snorted or swallowed.",
   "generalRisks": "Tremors, restlessness, nausea, palpitations and cardiac arrhythmias, sleep disturbances, headaches, nervousness, irritability, loss of appetite, aggressive behaviour and, in combination with alcohol, danger of alcohol poisoning. At high doses: hallucinations, circulatory failure, strokes as well as kidney, liver and heart failure and states of deep unconsciousness. An often underestimated danger is the rise in body temperature, which can lead to dehydration of the body. In high doses, acute amphetamine psychosis can occur. Signs of this are hallucinations in the form of colour spots and with features of schizophrenia. The risk of such an acute mental disorder increases with consumption over several days and/or if high doses are taken and food intake and sleep are neglected over a longer period of time. Such an experience usually normalises after sufficient sleep. During and after coming down: extreme need for sleep, exhaustion, strong feeling of hunger,depressive mood, irritability, etc.",
@@ -192,6 +187,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Amphetamine"
+  ]
 }

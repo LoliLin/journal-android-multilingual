@@ -14,15 +14,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "Mescaline analogue first synthesised by Alexander Shulgin, derived from and less potent than allylescaline. A psychedelic phenethylamine which causes stimulation, euphoria and hallucinatory experiences.",
   "roas": [
     {
       "name": "oral",
@@ -66,6 +61,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methallylescaline"
+  ]
 }

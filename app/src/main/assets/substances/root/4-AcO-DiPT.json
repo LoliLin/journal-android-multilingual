@@ -16,15 +16,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "An uncommon psychedelic tryptamine with a short history of human use, also known as Ipracetin. Possibly first synthesised by Alexander Shulgin. Some reports of heavy nausea, with effects comparable to 2c-b and mushrooms.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -80,6 +75,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-AcO-DiPT"
+  ]
 }

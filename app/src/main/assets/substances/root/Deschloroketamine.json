@@ -16,17 +16,12 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "A novel analogue of Ketamine which is much more potent and has a longer duration.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -137,6 +132,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Deschloroketamine"
+  ]
 }

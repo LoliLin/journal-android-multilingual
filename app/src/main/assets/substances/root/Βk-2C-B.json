@@ -15,10 +15,6 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic"
   ],
@@ -45,6 +41,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Βk-2C-B"
+  ]
 }

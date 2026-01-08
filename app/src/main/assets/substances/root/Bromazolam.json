@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/Bromazolam",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -12,7 +11,5 @@
     "tentative",
     "habit-forming"
   ],
-  "summary": "A rather novel Benzodiazepine that is structurally quite close to Alprazolam.",
-  "roas": [],
-  "localizedName": "Bromazolam"
+  "roas": []
 }

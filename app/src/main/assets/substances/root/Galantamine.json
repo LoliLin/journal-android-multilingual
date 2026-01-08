@@ -6,10 +6,6 @@
   "url": "https://psychonautwiki.org/wiki/Galantamine",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
   "categories": [
     "oneirogen",
     "nootropic"
@@ -40,6 +36,5 @@
         "max": 90
       }
     }
-  ],
-  "localizedName": "Galantamine"
+  ]
 }

@@ -14,15 +14,10 @@
     "zero": "7 days"
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A lysergamide very similar to LSD usually distinguishable only by its shorter duration, though some subjective reports have noted it may be slightly more introspective and slightly less confusing.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -78,6 +73,5 @@
         }
       }
     }
-  ],
-  "localizedName": "LSZ"
+  ]
 }

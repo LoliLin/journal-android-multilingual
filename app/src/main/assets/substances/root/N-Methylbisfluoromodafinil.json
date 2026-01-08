@@ -16,10 +16,6 @@
     "modafanil",
     "analog"
   ],
-  "addictionPotential": "mildly addictive with a low potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "nootropic"
   ],
@@ -59,6 +55,5 @@
         }
       }
     }
-  ],
-  "localizedName": "N-Methylbisfluoromodafinil"
+  ]
 }

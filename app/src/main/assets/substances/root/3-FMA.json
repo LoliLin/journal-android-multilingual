@@ -15,17 +15,12 @@
     "serotonin|serotonergic",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "Stimulant drug in the amphetamine family",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -96,6 +91,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3-FMA"
+  ]
 }

@@ -16,8 +16,6 @@
     "zero": "7 days"
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
   "categories": [
     "deliriant",
     "depressant",
@@ -63,6 +61,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Mirtazapine"
+  ]
 }

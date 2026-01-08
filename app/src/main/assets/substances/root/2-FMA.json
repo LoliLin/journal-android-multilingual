@@ -14,16 +14,11 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A long-acting stimulant often compared to lisdexamphetamine. Thought to lack some of amphetamine's neurotoxic metabolites. Very functional, and for this reason it is commonly used for studying.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -136,6 +131,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2-FMA"
+  ]
 }

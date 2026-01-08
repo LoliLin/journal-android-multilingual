@@ -8,15 +8,12 @@
   "url": "https://psychonautwiki.org/wiki/Ibogaine",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
   "categories": [
     "psychedelic",
     "opioid",
     "dissociative",
     "depressant"
   ],
-  "summary": "An alkaloid found in many African plants most famously Iboga, with psychedelic and hallucinogenic properties. May be unpleasant. Traditionally used in tribal environments for coming-of-age rituals, it has recently been used as an alternative treatment for drug addiction although this usage has not been backed by conclusive data in humans. Has killed in overdose.",
   "roas": [
     {
       "name": "oral",
@@ -43,6 +40,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Ibogaine"
+  ]
 }

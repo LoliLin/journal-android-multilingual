@@ -14,16 +14,11 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "An arylcyclohexamine dissociative anaesthetic related to PCP. First discovered in the 1960s by Parke-Davis, it was introduced to the RC market in 2008. Reported to be less potent than PCP. It is not commonly seen, but has seen some increase in popularity with the inavailability of other dissociatives.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -110,6 +105,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-MeO-PCP"
+  ]
 }

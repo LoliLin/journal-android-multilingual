@@ -14,15 +14,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "tentative"
   ],
-  "summary": "The 4-Hydroxy version of EPT. Slightly more potent than the prior.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -68,6 +63,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-HO-EPT"
+  ]
 }

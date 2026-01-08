@@ -14,15 +14,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "Mescaline analogue with a much lower dose, that seems to rely heavily on colours.",
   "roas": [
     {
       "name": "oral",
@@ -46,6 +41,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Allylescaline"
+  ]
 }

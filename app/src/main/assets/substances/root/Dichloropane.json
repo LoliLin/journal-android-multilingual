@@ -15,8 +15,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -102,6 +100,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Dichloropane"
+  ]
 }

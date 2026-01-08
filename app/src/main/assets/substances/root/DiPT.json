@@ -13,15 +13,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A rare tryptamine psychedelic closely related to DMT, with the interesting property of having little visual hallucinations, but strong auditory effects.",
   "roas": [
     {
       "name": "oral",
@@ -72,6 +67,5 @@
         }
       }
     }
-  ],
-  "localizedName": "DiPT"
+  ]
 }

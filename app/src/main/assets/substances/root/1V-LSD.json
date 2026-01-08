@@ -13,10 +13,6 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
-  "toxicities": [
-    "extremely low toxicity relative to dose"
-  ],
   "categories": [
     "psychedelic"
   ],
@@ -75,6 +71,5 @@
         }
       }
     }
-  ],
-  "localizedName": "1V-LSD"
+  ]
 }

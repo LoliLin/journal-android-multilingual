@@ -14,9 +14,6 @@
     "dopamine",
     "stimulant"
   ],
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant"
   ],
@@ -60,6 +57,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Cyclazodone"
+  ]
 }

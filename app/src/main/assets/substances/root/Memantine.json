@@ -14,16 +14,11 @@
   "crossTolerances": [
     "dissociatives"
   ],
-  "addictionPotential": "unknown",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "deliriant",
     "tentative"
   ],
-  "summary": "An NMDA-antagonist that if used recreationally can cause to a very prolonged \"hole\" lasting up to 16+ hours.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -75,6 +70,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Memantine"
+  ]
 }

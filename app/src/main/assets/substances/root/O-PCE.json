@@ -14,17 +14,12 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "Dissociative of the Arylcyclohexylamine class. Structurally related to Deschloroketamine.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -88,6 +83,5 @@
         }
       }
     }
-  ],
-  "localizedName": "O-PCE"
+  ]
 }

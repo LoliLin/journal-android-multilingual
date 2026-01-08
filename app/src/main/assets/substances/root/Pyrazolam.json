@@ -12,18 +12,12 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "RC benzodiazepine discovered by Hoffman-LaRoche in the 1970s. Came to the RC market in the early 2010s. At lower doses it is mainly an anxiolytic compound, yet at higher doses can be quite sedating, hypnotic, amnesic, and can cause loss of inhibitions. Structurally similar to Alprazolam, Bromazepam, and Triazolam. Is 12x as potent as Diazepam.",
   "roas": [
     {
       "name": "oral",
@@ -47,6 +41,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Pyrazolam"
+  ]
 }

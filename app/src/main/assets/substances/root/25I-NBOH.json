@@ -14,16 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A phenethylamine psychedelic and stimulant derivative of 2C-I, this compound is related and has similar effects to 25i-NBOMe. It is significantly more potent than 2C-I but less potent than 25i-NBOMe. Overdoses of NBOH compounds may cause dangerous vasoconstriction. May induce uncomfortable body load.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -79,6 +74,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25I-NBOH"
+  ]
 }

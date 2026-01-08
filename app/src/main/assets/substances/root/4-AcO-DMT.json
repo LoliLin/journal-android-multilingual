@@ -16,16 +16,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "non-addictive with low potential for abuse",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "A prodrug for Psilocin with extremely similar effects as Mushrooms.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -122,6 +117,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-AcO-DMT"
+  ]
 }

@@ -12,15 +12,10 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "entactogen"
   ],
-  "summary": "Stimulant that is in the aminoindane class. Is it quite close to it's bigger brother 2-AI. Yet this has a lower potency, has a longer duration though.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -62,6 +57,5 @@
         }
       }
     }
-  ],
-  "localizedName": "NM-2-AI"
+  ]
 }

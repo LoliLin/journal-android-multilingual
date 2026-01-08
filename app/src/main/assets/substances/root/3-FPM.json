@@ -15,16 +15,11 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A functional stimulant related to phenmetrazine. Effects similar to amphetamine, but longer and more focused. Observed as being relatively benign in low doses, but seems to cause worrying health effects for heavy users. Pain from insufflation is eye-wateringly intense, but short.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -88,6 +83,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3-FPM"
+  ]
 }

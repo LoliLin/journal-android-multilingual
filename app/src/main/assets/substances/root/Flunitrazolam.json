@@ -12,18 +12,12 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "habit-forming",
     "tentative"
   ],
-  "summary": "A very potent hypnotic Benzodiazepine. Triazolo version of Flunitrazepam.",
   "roas": [
     {
       "name": "oral",
@@ -62,6 +56,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Flunitrazolam"
+  ]
 }

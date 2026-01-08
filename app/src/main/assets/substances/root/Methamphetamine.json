@@ -28,14 +28,11 @@
     "dopamine",
     "stimulants"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
-  "toxicities": [],
   "categories": [
     "stimulant",
     "habit-forming",
     "common"
   ],
-  "summary": "A fairly common and very strong CNS stimulant. It is sometimes prescribed in the form of desoxyn for ADHD and severe obesity. In low doses, methamphetamine can elevate mood, increase alertness, concentration, energy and reduces appetite. At higher doses, it can induce mania, psychosis and muscle degeneration among other issues. Tolerant users may report much higher doses than new users.",
   "effectsSummary": "The body's own performance drug noradrenaline is released, the simultaneous release of dopamine increases self-esteem. Since methamphetamine reaches the brain more quickly than amphetamine and the stimulating effect is stronger, it causes a stronger high and has a higher addiction potential than amphetamine. The body temperature rises, pulse and breathing are accelerated, blood pressure is increased. Hunger and the need for sleep are suppressed. The willingness to take risks is increased, the sensation of pain is suppressed, and euphoria, extreme nervousness, and an increased urge to talk (\"babble flash\") can occur. Methamphetamine has a pleasure-increasing and disinhibiting effect, which is why it is also used as a sex drug.",
   "generalRisks": "Methamphetamine can sometimes hardly be distinguished from amphetamine, but has a much stronger effect. Short-term side effects are: tense jaw muscles, dry mouth, temperature increase, great loss of fluid, increased heart rate as well as increased blood pressure and trembling all over the body. Irritability and aggressive behaviour can also occur (especially in combination with alcohol).",
   "longtermRisks": "Methamphetamine is a highly depleting substance with a very high dependence potential with psychological and physical symptoms. Aggression, depression, mental coldness and the desire for more characterise the period of regular use. Constant restlessness, sleep and circulatory disorders, paranoia and even amphetamine psychosis can occur. Weight loss, skin inflammations (\"speed pimples\"), tooth loss, stomach problems and cramps are also possible. In menstruating persons, the menstrual cycle may be disturbed. Snorting damages the nasal mucous membranes and nasal septum, swallowing damages the stomach mucous membranes. Chronic consumption favours brain haemorrhages and strokes with sudden paralysis. It is suspected that the use of methamphetamine (especially mixed use with MDMA) can lead to irreversible changes or damage in the brain!",
@@ -288,6 +285,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methamphetamine"
+  ]
 }

@@ -15,8 +15,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -66,6 +64,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4F-EPH"
+  ]
 }

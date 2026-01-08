@@ -14,16 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "stimulant"
   ],
-  "summary": "Three-Carbon Analog of Escaline. Substituted Amphetamine.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -111,6 +106,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3C-E"
+  ]
 }

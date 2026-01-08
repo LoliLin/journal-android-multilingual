@@ -10,7 +10,6 @@
   "url": "https://psychonautwiki.org/wiki/Prochlorperazine",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "antipsychotic"
   ],
@@ -37,6 +36,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Prochlorperazine"
+  ]
 }

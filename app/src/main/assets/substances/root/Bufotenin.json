@@ -12,10 +12,6 @@
     "zero": "2 hours"
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic"
   ],
@@ -69,6 +65,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Bufotenin"
+  ]
 }

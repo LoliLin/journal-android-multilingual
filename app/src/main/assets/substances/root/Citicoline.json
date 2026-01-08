@@ -6,10 +6,6 @@
   "url": "https://psychonautwiki.org/wiki/Citicoline",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
   "categories": [
     "nootropic"
   ],
@@ -56,6 +52,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Citicoline"
+  ]
 }

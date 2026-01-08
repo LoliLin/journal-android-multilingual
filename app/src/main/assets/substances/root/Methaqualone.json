@@ -21,16 +21,10 @@
     "GABA|gabaergic",
     "depressants"
   ],
-  "addictionPotential": "extremely addictive",
-  "toxicities": [
-    "doses of over 300mg can be dangerous for first time users",
-    "safe at appropriate dosages"
-  ],
   "categories": [
     "depressant",
     "habit-forming"
   ],
-  "summary": "A pharmaceutical depressant and sedative phased out due to the better safety profile of benzodiazepines, part of the Qualone group of substances. Now very rare, except in South Africa.",
   "interactions": {
     "dangerous": [
       "Depressant",
@@ -91,6 +85,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methaqualone"
+  ]
 }

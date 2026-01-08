@@ -14,17 +14,11 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "habit-forming"
   ],
-  "summary": "Temazepam's brand name is Restoril. It is a hypnotic benzodiazepine with effects similar to clonazepam, frequently prescribed as a sleep aid. Some users report mild euphoria alongside the hypnotic effects.",
   "roas": [
     {
       "name": "oral",
@@ -53,6 +47,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Temazepam"
+  ]
 }

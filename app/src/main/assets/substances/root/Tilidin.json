@@ -10,7 +10,6 @@
   "url": "https://psychonautwiki.org/wiki/Tilidin",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [],
   "interactions": {
     "dangerous": [
@@ -76,6 +75,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Tilidin"
+  ]
 }

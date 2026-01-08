@@ -14,17 +14,12 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "A dissociative drug which is less potent and less confusing than MXE but with otherwise similar properties. Reported as causing light stimulant effects at lower doses.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -56,6 +51,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Ephenidine"
+  ]
 }

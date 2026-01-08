@@ -15,13 +15,11 @@
     "dopamine",
     "stimulant"
   ],
-  "toxicities": [],
   "categories": [
     "stimulant",
     "habit-forming",
     "common"
   ],
-  "summary": "A relatively common CNS stimulant sold over the counter in benzedrex inhalers.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -83,6 +81,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Propylhexedrine"
+  ]
 }

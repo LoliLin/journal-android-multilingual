@@ -13,16 +13,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A rare, highly potent and yellow psychedelic phenethylamine and derivative of 2C-N. Effects are similar to other NBOMe compounds, with hallucinations, intense body load, stimulation and vasoconstriction. At high doses vasoconstriction can be dangerous, exercise caution.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -83,6 +78,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25N-NBOMe"
+  ]
 }

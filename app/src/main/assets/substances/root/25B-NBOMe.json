@@ -13,15 +13,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "Psychedelic Phenethylamine, active in the lower microgram range, that is not active orally.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -97,6 +92,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25B-NBOMe"
+  ]
 }

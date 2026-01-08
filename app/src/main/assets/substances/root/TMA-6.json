@@ -13,17 +13,12 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "stimulant",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A rarely seen Psychedelic Amphetamine and Mescaline analogue. First synthesised by Alexander Shulgin, who descrived it as  \"one of the most rewarding and pleasurable of the methoxylated amphetamines.\"",
   "interactions": {
     "dangerous": [
       "SNRIs",
@@ -78,6 +73,5 @@
         }
       }
     }
-  ],
-  "localizedName": "TMA-6"
+  ]
 }

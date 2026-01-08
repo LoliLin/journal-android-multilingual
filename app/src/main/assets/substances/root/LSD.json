@@ -19,15 +19,10 @@
   "crossTolerances": [
     "psychedelics"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
-  "toxicities": [
-    "extremely low toxicity relative to dose"
-  ],
   "categories": [
     "psychedelic",
     "common"
   ],
-  "summary": "LSD is a popular psychedelic with a relatively long history of use and research, and as such is known to be relatively safe despite its extremely high potency. It is the archetypical psychedelic to which all others are compared, and remains in popular usage.",
   "effectsSummary": "The effect is very much dependent on dose, set and setting. As a hallucinogen, LSD intensifies and alienates sensory perceptions and the sense of space-time. Mood and feelings can change abruptly. At higher doses, feelings of detachment from one's own body can occur. Especially in the initial phase of the trip, slight breathing difficulties, palpitations, sweating, altered blood pressure and nausea may occur.",
   "generalRisks": "The risks of LSD use are psychological and depend on the personality structure of the user. The perceptual changes during a trip can be so intense that inexperienced users in particular feel overwhelmed by the flood of impressions. This can lead to erroneous reactions, loss of orientation, panic, paranoia and badtrips/horror trips.\nThere is a risk - even with single use - that latent (hidden) mental disorders can be triggered. LSD does not lead to organ damage or genetic mutations and is not physically addictive.",
   "saferUse": [
@@ -106,6 +101,5 @@
         "max": 71
       }
     }
-  ],
-  "localizedName": "LSD"
+  ]
 }

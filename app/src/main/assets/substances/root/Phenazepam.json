@@ -8,18 +8,12 @@
     "zero": "7-14 days"
   },
   "crossTolerances": [],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A very long acting, potent and subtle benzodiazepine. Infamous for the calamitous experiences it tends to produce in people dosing unknown amounts. Prescribed in certain countries for epilepsy and alcohol withdrawal.",
   "interactions": {
     "dangerous": [
       "Depressant",
@@ -58,6 +52,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Phenazepam"
+  ]
 }

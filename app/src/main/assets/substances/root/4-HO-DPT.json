@@ -14,16 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "A psychedelic hallucinogenic first synthesized by alexander shulgin. At light doses it causes enhanced cognition and appreciation for things like art and music while high doses cause visuals. The drug is known to cause a bodyload.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -111,6 +106,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-HO-DPT"
+  ]
 }

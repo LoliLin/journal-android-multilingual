@@ -14,10 +14,6 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative"
   ],
@@ -84,6 +80,5 @@
         }
       }
     }
-  ],
-  "localizedName": "MXiPr"
+  ]
 }

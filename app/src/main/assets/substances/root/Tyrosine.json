@@ -15,10 +15,6 @@
   "crossTolerances": [
     "dopamine"
   ],
-  "addictionPotential": "mildly habit forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
   "categories": [
     "stimulant"
   ],
@@ -73,6 +69,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Tyrosine"
+  ]
 }

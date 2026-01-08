@@ -11,17 +11,12 @@
   "crossTolerances": [
     "cannabinoids"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "cannabinoid",
     "tentative",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "Synthetic cannabinoid, agonist of the cannabinoid receptors which has a strong sedating aspect. Being a synthetic cannabinoid it has a very fast onset.",
   "interactions": {
     "dangerous": [],
     "unsafe": [],
@@ -68,6 +63,5 @@
         "heavyMin": 8
       }
     }
-  ],
-  "localizedName": "5F-PB-22"
+  ]
 }

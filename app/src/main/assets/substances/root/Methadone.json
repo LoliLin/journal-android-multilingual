@@ -15,18 +15,12 @@
   "crossTolerances": [
     "opioids"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
-  "toxicities": [
-    "moderate toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
-  ],
   "categories": [
     "opioid",
     "habit-forming",
     "depressant",
     "common"
   ],
-  "summary": "A synthetic opioid drug used as an analgesic and is often used in detoxification off of other opioids. As it has a much longer half-life.",
   "interactions": {
     "dangerous": [
       "SNRIs",
@@ -81,6 +75,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methadone"
+  ]
 }

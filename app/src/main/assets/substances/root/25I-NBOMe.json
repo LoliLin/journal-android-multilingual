@@ -15,16 +15,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "A relatively new and popular research chemical with psychedelic properties. Users report an uncomfortable body load with very strong visuals, though with less of a mental aspect than most psychedelics. Commonly mis-sold as LSD, since it is much cheaper to produce. Is considered quite unsafe, and has caused several deaths at 'regular' doses.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -131,6 +126,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25I-NBOMe"
+  ]
 }

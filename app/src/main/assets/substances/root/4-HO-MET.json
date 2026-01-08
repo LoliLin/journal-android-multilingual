@@ -16,16 +16,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "A lesser known psychedelic tryptamine. Functional analogue of Psilocin. Very poorly soluble in water and alcohol.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -103,6 +98,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-HO-MET"
+  ]
 }

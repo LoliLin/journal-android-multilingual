@@ -20,10 +20,6 @@
   "crossTolerances": [
     "dissociatives"
   ],
-  "addictionPotential": "produces dependence with chronic use and has moderate abuse potential",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative"
   ],
@@ -101,6 +97,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Dextromethorphan"
+  ]
 }

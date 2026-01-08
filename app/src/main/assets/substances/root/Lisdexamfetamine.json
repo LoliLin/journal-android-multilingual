@@ -8,7 +8,6 @@
   "url": "https://psychonautwiki.org/wiki/Lisdexamfetamine",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -82,6 +81,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Lisdexamfetamine"
+  ]
 }

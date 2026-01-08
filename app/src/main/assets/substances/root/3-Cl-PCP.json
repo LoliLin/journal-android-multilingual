@@ -11,10 +11,6 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for adverse side effects such as psychosis",
-  "toxicities": [
-    "toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative"
   ],
@@ -26,6 +22,5 @@
     "unsafe": [],
     "uncertain": []
   },
-  "roas": [],
-  "localizedName": "3-Cl-PCP"
+  "roas": []
 }

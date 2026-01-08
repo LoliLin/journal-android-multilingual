@@ -14,14 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A rare psychedelic phenethylamine.",
   "roas": [
     {
       "name": "oral",
@@ -60,6 +57,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2C-T-21"
+  ]
 }

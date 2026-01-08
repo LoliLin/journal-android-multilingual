@@ -11,10 +11,6 @@
   "crossTolerances": [
     "cannabinoids"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "cannabinoid"
   ],
@@ -74,6 +70,5 @@
         }
       }
     }
-  ],
-  "localizedName": "JWH-018"
+  ]
 }

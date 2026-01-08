@@ -9,13 +9,10 @@
   "url": "https://psychonautwiki.org/wiki/Clonidine",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not addictive and has a low potential for abuse",
-  "toxicities": [],
   "categories": [
     "depressant",
     "common"
   ],
-  "summary": "Is a medication that is used to treat high blood pressure, anxiety, withdrawal (Typically from Alcohol, Opioids, Smoking) and many other uses.",
   "interactions": {
     "dangerous": [
       "Depressant",
@@ -59,6 +56,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Clonidine"
+  ]
 }
