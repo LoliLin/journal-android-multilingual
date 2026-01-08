@@ -11,16 +11,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "stimulant",
     "research-chemical"
   ],
-  "summary": "Rather new and uncommon stimulant, psychedelic and amphetamine with properties similar to the 2Cx class of drugs. 3-carbon homologue of proscaline.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -67,6 +62,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3C-P"
+  ]
 }

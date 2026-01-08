@@ -21,10 +21,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "highly addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant"
   ],
@@ -162,6 +158,5 @@
         }
       }
     }
-  ],
-  "localizedName": "A-PVP"
+  ]
 }

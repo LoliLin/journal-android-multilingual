@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/Etomidate",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "depressant"
   ],
@@ -88,6 +87,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Etomidate"
+  ]
 }

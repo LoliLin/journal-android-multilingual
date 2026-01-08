@@ -12,15 +12,11 @@
     "zero": "7 - 14 days"
   },
   "crossTolerances": [],
-  "toxicities": [
-    "low toxicity"
-  ],
   "categories": [
     "depressant",
     "habit-forming",
     "common"
   ],
-  "summary": "Pregabalin (Lyrica) is a GABA derivative that is used to treat neuropathic pain and seizures, as well as anxiety.",
   "interactions": {
     "dangerous": [],
     "unsafe": [],
@@ -118,6 +114,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Pregabalin"
+  ]
 }

@@ -16,17 +16,12 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "IPPH (or incorrectly IPH) is a novel piperidine based methylphenidate analogue and NDRI stimulant, but comes with much less physical side effects.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -120,6 +115,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Isopropylphenidate"
+  ]
 }

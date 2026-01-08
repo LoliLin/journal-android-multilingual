@@ -16,10 +16,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "psychedelic",
@@ -27,7 +23,6 @@
     "habit-forming",
     "entactogen"
   ],
-  "summary": "A euphoric stimulant often sold in place of MDMA since methylone was banned. Slightly less potent and empathogenic than methylone, it is often described as more of a 'straight stimulant.'",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -88,6 +83,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Ethylone"
+  ]
 }

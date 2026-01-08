@@ -6,10 +6,6 @@
   "url": "https://psychonautwiki.org/wiki/Chlordiazepoxide",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant"
   ],
@@ -55,6 +51,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Chlordiazepoxide"
+  ]
 }

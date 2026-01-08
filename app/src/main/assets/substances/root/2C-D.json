@@ -15,15 +15,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A fairly generic psychedelic famed for being usable as \"psychedelic tofu\". Little character of its own but pleasant in combinations.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -79,6 +74,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2C-D"
+  ]
 }

@@ -13,18 +13,12 @@
   "crossTolerances": [
     "opioids"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "high toxicity relative to its dose due to its extreme potency",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
-  ],
   "categories": [
     "opioid",
     "research-chemical",
     "habit-forming",
     "depressant"
   ],
-  "summary": "A µ-opioid receptor agonist that is related to AH-7921. Having a very short duration.",
   "interactions": {
     "dangerous": [
       "Alcohol",
@@ -84,6 +78,5 @@
         }
       }
     }
-  ],
-  "localizedName": "U-47700"
+  ]
 }

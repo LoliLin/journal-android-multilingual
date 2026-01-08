@@ -15,10 +15,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "entactogen",
@@ -26,7 +22,6 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "Mexedrone is a stimulant drug of the cathinone class. It alters the reuptake of serotonin, dopamine, and norepinephrine to cause euphoria,  and is similar in effects to mephedrone. It is considered a designer drug and is in a legally grey area globally.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -67,6 +62,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Mexedrone"
+  ]
 }

@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/1,3-dimethylbutylamine",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -15,6 +14,5 @@
         "units": "mg"
       }
     }
-  ],
-  "localizedName": "1,3-dimethylbutylamine"
+  ]
 }

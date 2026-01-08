@@ -14,10 +14,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -25,7 +21,6 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A triple monoamine reuptake inhibitor. This agonism for 5-HT2B makes it likely that 5-APB would be cardiotoxic with long term use, as seen in other 5-HT2B agonists such as fenfluramine and MDMA.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -91,6 +86,5 @@
         }
       }
     }
-  ],
-  "localizedName": "5-APB"
+  ]
 }

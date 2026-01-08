@@ -16,10 +16,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -27,7 +23,6 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "Empathogen and stimulant of the cathinone class.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -88,6 +83,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Butylone"
+  ]
 }

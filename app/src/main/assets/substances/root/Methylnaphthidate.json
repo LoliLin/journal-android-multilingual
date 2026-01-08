@@ -7,7 +7,6 @@
   "url": "https://psychonautwiki.org/wiki/Methylnaphthidate",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -106,6 +105,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methylnaphthidate"
+  ]
 }

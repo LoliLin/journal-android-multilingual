@@ -13,11 +13,6 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown",
-    "extremely low toxicity"
-  ],
   "categories": [
     "psychedelic"
   ],
@@ -71,6 +66,5 @@
         }
       }
     }
-  ],
-  "localizedName": "1cP-MiPLA"
+  ]
 }

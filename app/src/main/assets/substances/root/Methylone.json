@@ -17,10 +17,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -29,7 +25,6 @@
     "habit-forming",
     "common"
   ],
-  "summary": "βk-MDMA is a cathinone stimulant and empathogen, similar in structure to MDMA, though more stimulating and less empathogenic in comparison. Was very commonly mis-sold as MDMA on the street until it was banned in 2013. The Marquis reagent can differentiate βk-MDMA from MDMA. Less potent than MDMA with a slightly shorter duration.",
   "effectsSummary": "Compared to MDMA, methylone has a stronger stimulating and less empathogenic effect. The effect is more constant, the \"hangover\" less than with MDMA.",
   "generalRisks": "Short-term side effects are increased body temperature and heartbeat, dilated pupils and tightening of the jaw. The side effects and the (long-term) risks of methylone have hardly been researched yet.",
   "saferUse": [
@@ -103,6 +98,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Methylone"
+  ]
 }

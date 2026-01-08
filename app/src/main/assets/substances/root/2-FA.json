@@ -14,16 +14,11 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "Stimulant drug of the amphetamine family. Reported as having effects similar to those of Dextroamphetamine, but with a milder euphoria and a comparatively smoother comedown. Has a shorter duration and less empathogenic effect-profile as compared with 4-FA. Thought to produce less neurotoxic metabolites compared to amphetamine.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -89,6 +84,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2-FA"
+  ]
 }

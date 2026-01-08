@@ -13,8 +13,6 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
-  "toxicities": [],
   "categories": [
     "psychedelic"
   ],
@@ -73,6 +71,5 @@
         }
       }
     }
-  ],
-  "localizedName": "1cP-LSD"
+  ]
 }

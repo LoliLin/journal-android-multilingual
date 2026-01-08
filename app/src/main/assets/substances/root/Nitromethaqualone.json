@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/Nitromethaqualone",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "psychedelic"
   ],
@@ -21,6 +20,5 @@
         "units": "mg"
       }
     }
-  ],
-  "localizedName": "Nitromethaqualone"
+  ]
 }

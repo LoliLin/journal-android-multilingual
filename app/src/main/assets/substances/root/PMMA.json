@@ -6,10 +6,6 @@
   "url": "https://psychonautwiki.org/wiki/PMMA",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [
-    "can be considered extremely toxic when compared to other substances such as Methamphetamine or MDMA",
-    "Ingestion of PMMA has been associated with severe tachycardia (abnormally high heart rate), seizures, hyperthermia, and death"
-  ],
   "categories": [
     "entactogen"
   ],
@@ -22,6 +18,5 @@
         "strongMin": 120
       }
     }
-  ],
-  "localizedName": "PMMA"
+  ]
 }

@@ -8,12 +8,10 @@
   "crossTolerances": [
     "psychedelics"
   ],
-  "toxicities": [],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "Uncommon analogue of 2C-D. Extremely potent psychedelic with stimulating qualities. Could cause dangerous vasoconstriction at high doses. May induce uncomfortable body load.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -69,6 +67,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25D-NBOMe"
+  ]
 }

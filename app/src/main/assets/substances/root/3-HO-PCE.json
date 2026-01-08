@@ -14,17 +14,12 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a moderate potential for adverse side effects such as psychosis",
-  "toxicities": [
-    "toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "A rare and very potent PCP analogue, eight times more potent than PCP as NMDA receptor antagonist and also a μ-opioid receptor agonist. Similar in structure to methoxetamine.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -51,6 +46,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3-HO-PCE"
+  ]
 }

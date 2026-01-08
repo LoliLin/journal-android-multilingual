@@ -14,16 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "A new psychedelic lysergamide which is suspected to be a prodrug of ETH-LAD, which could explain why the doses are very similar. Or it could be active on its own. Scientific studies would need to be written to understand, yet there are none.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -69,6 +64,5 @@
         }
       }
     }
-  ],
-  "localizedName": "1P-ETH-LAD"
+  ]
 }

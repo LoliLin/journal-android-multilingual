@@ -8,10 +8,6 @@
   "url": "https://psychonautwiki.org/wiki/Cannabidiol",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "low abuse potential",
-  "toxicities": [
-    "well-tolerated and shows little to no toxicity"
-  ],
   "categories": [
     "cannabinoid"
   ],
@@ -43,6 +39,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Cannabidiol"
+  ]
 }

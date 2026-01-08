@@ -14,16 +14,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A surprisingly uncommon analogue of DMT with similar effects and reported oral activity without the aid of an MAOI.",
   "roas": [
     {
       "name": "oral",
@@ -52,6 +47,5 @@
         }
       }
     }
-  ],
-  "localizedName": "DET"
+  ]
 }

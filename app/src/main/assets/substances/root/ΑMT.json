@@ -15,10 +15,6 @@
   "crossTolerances": [
     "psychedelics"
   ],
-  "addictionPotential": "moderately habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "entactogen"
@@ -81,6 +77,5 @@
         }
       }
     }
-  ],
-  "localizedName": "ΑMT"
+  ]
 }

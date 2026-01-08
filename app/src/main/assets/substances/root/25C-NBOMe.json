@@ -16,16 +16,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "fatal at heavy dosages"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "A relatively new and popular research chemical. A short acting psychedelic related to 2C-C with similar effects to LSD, though more visual with less of a 'head-trip.' Frequently mis-sold as LSD. Causes an uncomfortable body load and has caused several deaths even within regular dose ranges.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -86,6 +81,5 @@
         }
       }
     }
-  ],
-  "localizedName": "25C-NBOMe"
+  ]
 }

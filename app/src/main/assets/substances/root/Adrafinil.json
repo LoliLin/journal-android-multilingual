@@ -15,15 +15,12 @@
     "benzhydryl",
     "nootropic|nootropics"
   ],
-  "addictionPotential": "not addictive with a low potential for abuse",
-  "toxicities": [],
   "categories": [
     "nootropic",
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A prodrug to modafinil, this compound is often used to increase wakefulness and alertness. Due to hepatic metabolism it has a slower onset than modafinil and may cause liver damage in excess. Some users have reported acne as an adverse effect. Unregulated in the US.",
   "roas": [
     {
       "name": "oral",
@@ -67,6 +64,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Adrafinil"
+  ]
 }

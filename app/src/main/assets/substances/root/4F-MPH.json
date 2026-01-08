@@ -6,7 +6,6 @@
   "url": "https://psychonautwiki.org/wiki/4F-MPH",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -103,6 +102,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4F-MPH"
+  ]
 }

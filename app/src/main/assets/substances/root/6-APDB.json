@@ -14,10 +14,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -25,7 +21,6 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A stimulant and entactogen related to MDMA and an analogue of MDA. Reported as being fairly psychedlic at higher doses. It is a triple monoamine reuptake inhibitor. Potent full agonist of serotonin 2B receptors.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -86,6 +81,5 @@
         }
       }
     }
-  ],
-  "localizedName": "6-APDB"
+  ]
 }

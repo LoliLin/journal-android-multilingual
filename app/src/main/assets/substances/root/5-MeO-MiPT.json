@@ -14,15 +14,12 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
   "categories": [
     "psychedelic",
     "entactogen",
     "research-chemical",
     "common"
   ],
-  "summary": "A potent, stimulating psychedelic tryptamine, sometimes compared to 5-MeO-DiPT.  Has an unusually strong body component and weak visual effects. Often said to be very empathogenic.",
   "interactions": {
     "dangerous": [
       "ΑMT",
@@ -125,6 +122,5 @@
         }
       }
     }
-  ],
-  "localizedName": "5-MeO-MiPT"
+  ]
 }

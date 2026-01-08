@@ -16,17 +16,11 @@
     "racetam",
     "nootropic"
   ],
-  "addictionPotential": "non-addictive with a low potential for abuse",
-  "toxicities": [
-    "safe even when high doses are consumed for a long period of time",
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "stimulant",
     "nootropic",
     "research-chemical"
   ],
-  "summary": "A nootropic and piracetam analogue also known as fonturacetam, this drug has been shown to have potential memory enhancing, anxiolytic, anti-amnesia and anti-depressive effects, however has little recreational value. Around 45x more potent than Piracetam.",
   "roas": [
     {
       "name": "oral",
@@ -50,6 +44,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Phenylpiracetam"
+  ]
 }

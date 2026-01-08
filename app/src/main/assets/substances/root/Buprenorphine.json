@@ -18,16 +18,11 @@
   "crossTolerances": [
     "opioids"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "low toxicity"
-  ],
   "categories": [
     "opioid",
     "habit-forming",
     "depressant"
   ],
-  "summary": "A semi-synthetic opioid analgesic also known as subutex. Often administered as Butrans patches, or in combination with Naloxone as Suboxone, a heroin replacement therapy drug. Will cause withdrawals if you have an opioid tolerance and don't wait long enough (typically around 48 hours) before taking this.",
   "effectsSummary": "Like all opiates, buprenorphine has analgesic and cough-irritant effects. However, its euphoric and sedative properties are less pronounced than those of other opioids, which is why it is also used for substitution treatment. Buprenorphine is a partial agonist. This means that, for safety reasons, only a submaximal effect is elicited. After a certain dose, a saturation effect (ceiling effect) occurs, which prevents a further increase in the effect. This makes the active ingredient so relevant for substitution treatments, as withdrawal symptoms can be alleviated and overdoses avoided.",
   "dosageRemark": "From 16 mg, the saturation effect (ceiling effect) takes effect and no more effect enhancement is felt.\nWhen consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
   "generalRisks": "The side effects are less pronounced than with other opioids. Nevertheless, fatigue, constipation, drowsiness, sweating, nausea, vomiting, insomnia and irritability may occur. Buprenorphine has a lower risk of respiratory depression, which is why it is considered comparatively safe.\nOverdoses with buprenorphine are difficult to treat with the opioid antagonist naloxone due to its high binding to the μ-opioid receptor. Therefore, agents from the group of respiratory stimulants (such as doxapram) are used.",
@@ -128,6 +123,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Buprenorphine"
+  ]
 }

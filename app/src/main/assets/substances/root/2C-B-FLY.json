@@ -13,15 +13,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "Psychedelic phenethylamine that is the dihydrodifuran analog of 2C-B.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -77,6 +72,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2C-B-FLY"
+  ]
 }

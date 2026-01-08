@@ -10,7 +10,6 @@
   "crossTolerances": [
     "opioids"
   ],
-  "toxicities": [],
   "categories": [
     "opioid"
   ],
@@ -32,6 +31,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Desomorphine"
+  ]
 }

@@ -16,14 +16,11 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
   "categories": [
     "psychedelic",
     "research-chemical",
     "entactogen"
   ],
-  "summary": "A relatively uncommon psychedelic phenethylamine and possible MAOI. Long lasting, an possesses an unpredictable dosage curve. Questionable safety in combination with most things.",
   "roas": [
     {
       "name": "insufflated",
@@ -109,6 +106,5 @@
         }
       }
     }
-  ],
-  "localizedName": "2C-T-7"
+  ]
 }

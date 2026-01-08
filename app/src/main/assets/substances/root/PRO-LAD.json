@@ -13,15 +13,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "tentative"
   ],
-  "summary": "A very rare lysergamide that is slightly less potent than LSD, yet with a shorter duration of action.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -57,6 +52,5 @@
         }
       }
     }
-  ],
-  "localizedName": "PRO-LAD"
+  ]
 }

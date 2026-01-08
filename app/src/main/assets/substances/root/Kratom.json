@@ -17,10 +17,6 @@
   "crossTolerances": [
     "opioids"
   ],
-  "addictionPotential": "produces dependence with chronic use and has a high abuse potential",
-  "toxicities": [
-    "low toxicity"
-  ],
   "categories": [
     "stimulant",
     "opioid",
@@ -28,7 +24,6 @@
     "depressant",
     "common"
   ],
-  "summary": "A drug made out of the leaves of Mitragyna Speciosa, which is related to coffee. Stimulating at lower doses, with opioid effects at higher doses. Frequent heavy use can cause physical addiction and withdrawals.",
   "interactions": {
     "dangerous": [
       "Alcohol",
@@ -83,6 +78,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Kratom"
+  ]
 }

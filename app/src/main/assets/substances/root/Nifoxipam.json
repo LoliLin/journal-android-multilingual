@@ -12,11 +12,6 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -24,7 +19,6 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "An uncommon and relatively new RC benzodiazepine, and metabolite of the hypnotic benzodiazepine flunitrazepam. Little information about the pharmacological properties of this drug exists. Likely to be a strong sedative and hypnotic.",
   "roas": [
     {
       "name": "oral",
@@ -48,6 +42,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Nifoxipam"
+  ]
 }

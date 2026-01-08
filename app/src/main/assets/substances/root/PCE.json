@@ -14,14 +14,11 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
-  "toxicities": [],
   "categories": [
     "dissociative",
     "tentative",
     "habit-forming"
   ],
-  "summary": "Eticyclidine (PCE) is a Dissociative anesthetic that has hallucinogenic effects. Slightly more potent than Phencyclidine.",
   "interactions": {
     "dangerous": [
       "Stimulants",
@@ -157,6 +154,5 @@
         }
       }
     }
-  ],
-  "localizedName": "PCE"
+  ]
 }

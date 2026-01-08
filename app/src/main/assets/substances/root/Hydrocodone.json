@@ -14,17 +14,12 @@
   "crossTolerances": [
     "opioids"
   ],
-  "addictionPotential": "moderately addictive",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
   "categories": [
     "opioid",
     "depressant",
     "habit-forming",
     "common"
   ],
-  "summary": "A codeine-derived opioid generally unheard of outside the United States. Generally mild in effects, used as an analgesic and cough-supressant. Sometimes used recreationally.",
   "interactions": {
     "dangerous": [
       "Alcohol",
@@ -69,6 +64,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Hydrocodone"
+  ]
 }

@@ -14,10 +14,6 @@
     "dopamine",
     "stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "entactogen",
     "psychedelic",
@@ -25,7 +21,6 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "An empathogen structurally similar to MDMA. Typically more visual than MDMA. Often reported to be much less stimulating and more relaxing than most other stimulating empathogens. Less psychedelic than 6-APB. Much longer lasting than MDMA.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -91,6 +86,5 @@
         }
       }
     }
-  ],
-  "localizedName": "5-MAPB"
+  ]
 }

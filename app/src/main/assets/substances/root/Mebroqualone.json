@@ -12,17 +12,12 @@
     "GABA|gabaergic",
     "depressants"
   ],
-  "addictionPotential": "extremely addictive",
-  "toxicities": [
-    "safe at appropriate dosages"
-  ],
   "categories": [
     "depressant",
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "summary": "A short acting analogue of Methaqualone, that is much more potent.",
   "interactions": {
     "dangerous": [
       "Depressant",
@@ -68,6 +63,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Mebroqualone"
+  ]
 }

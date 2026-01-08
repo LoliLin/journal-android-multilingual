@@ -14,7 +14,6 @@
   "url": "https://psychonautwiki.org/wiki/5-Hydroxytryptophan",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "nootropic"
   ],
@@ -41,6 +40,5 @@
         "heavyMin": 500
       }
     }
-  ],
-  "localizedName": "5-Hydroxytryptophan"
+  ]
 }

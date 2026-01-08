@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/LAE-32",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "psychedelic"
   ],
@@ -35,6 +34,5 @@
         }
       }
     }
-  ],
-  "localizedName": "LAE-32"
+  ]
 }

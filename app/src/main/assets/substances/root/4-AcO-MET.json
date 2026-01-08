@@ -16,15 +16,10 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A rare psychedelic tryptamine which is thought to be metabolised into 4-HO-MET. Onset and duration, intensity will vary but effect profile is largely the same.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -79,6 +74,5 @@
         }
       }
     }
-  ],
-  "localizedName": "4-AcO-MET"
+  ]
 }

@@ -13,11 +13,6 @@
     "benzodiazepine",
     "thienodiazepine"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -25,7 +20,6 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "A Thienodiazepine which is close to its parent compound, Etizolam, whilst being significantly weaker and longer lasting.",
   "roas": [
     {
       "name": "oral",
@@ -64,6 +58,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Deschloroetizolam"
+  ]
 }

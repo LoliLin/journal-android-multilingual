@@ -17,9 +17,6 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "toxicities": [
-    "extremely low toxicity relative to dose"
-  ],
   "categories": [
     "psychedelic"
   ],
@@ -93,6 +90,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Psilocybin mushrooms"
+  ]
 }

@@ -11,10 +11,6 @@
   "crossTolerances": [
     "dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
   "categories": [
     "dissociative"
   ],
@@ -64,6 +60,5 @@
         }
       }
     }
-  ],
-  "localizedName": "3-MeO-PCMo"
+  ]
 }

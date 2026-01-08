@@ -15,10 +15,6 @@
     "thienzodiazepines",
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely addictive",
-  "toxicities": [
-    "large therapeutic index and margin of safety"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -26,7 +22,6 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "Also known as desmethyletizolam, a thienodiazepine similar in effects and structure to etizolam, but around half as potent and with around a 60% longer half-life. A sedative, and hypnotic, it may cause amnesia and lowered inhibitions in excess.",
   "roas": [
     {
       "name": "oral",
@@ -55,6 +50,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Metizolam"
+  ]
 }

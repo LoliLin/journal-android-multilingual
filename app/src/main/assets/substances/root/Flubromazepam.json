@@ -12,18 +12,12 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A somewhat common benzodiazepine drug known for its extreme duration, with effects for larger doses reaching up to three days. Sedative, hypnotic and anxiolytic, this compound is an analogue of Phenazepam. First discovered in the 1960s, it was never marketed as a licit drug, but has recently become available as an RC. Not to be confused with Flubromazolam.",
   "roas": [
     {
       "name": "oral",
@@ -47,6 +41,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Flubromazepam"
+  ]
 }

@@ -4,7 +4,6 @@
   "url": "https://psychonautwiki.org/wiki/Gaboxadol",
   "isApproved": false,
   "crossTolerances": [],
-  "toxicities": [],
   "categories": [
     "hallucinogen",
     "depressant"
@@ -47,6 +46,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Gaboxadol"
+  ]
 }

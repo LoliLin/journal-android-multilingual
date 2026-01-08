@@ -17,10 +17,6 @@
     "trycyclic antidepressants",
     "opioids"
   ],
-  "addictionPotential": "mildly addictive",
-  "toxicities": [
-    "large therapeutic index and margin of safety"
-  ],
   "categories": [
     "nootropic",
     "opioid",
@@ -28,7 +24,6 @@
     "habit-forming",
     "depressant"
   ],
-  "summary": "A Tricyclic antidepressant, that has quite unique pharmacological properties than others in its class. Such as the possible indirect action on NMDA/AMPA and a full agonist at the μ-opioid receptor. While abuse of this substance is uncommon, it has been shown in a few countries.",
   "roas": [
     {
       "name": "oral",
@@ -67,6 +62,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Tianeptine"
+  ]
 }

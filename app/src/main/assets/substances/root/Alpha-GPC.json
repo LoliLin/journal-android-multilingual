@@ -13,10 +13,6 @@
     "zero": "14 days"
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
   "categories": [
     "nootropic"
   ],
@@ -43,6 +39,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Alpha-GPC"
+  ]
 }

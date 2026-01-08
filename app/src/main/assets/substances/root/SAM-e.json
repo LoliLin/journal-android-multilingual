@@ -8,8 +8,6 @@
   "url": "https://psychonautwiki.org/wiki/SAM-e",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming with a low potential for abuse",
-  "toxicities": [],
   "categories": [
     "nootropic"
   ],
@@ -31,6 +29,5 @@
         }
       }
     }
-  ],
-  "localizedName": "SAM-e"
+  ]
 }

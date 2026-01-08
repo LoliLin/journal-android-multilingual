@@ -10,17 +10,11 @@
   "crossTolerances": [
     "benzodiazepines"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
-  ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "habit-forming"
   ],
-  "summary": "An uncommon and very short acting benzodiazepine. Sedating and hypnotic, and may induce amnesia and lowered inhibitions at high doses.",
   "roas": [
     {
       "name": "oral",
@@ -59,6 +53,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Triazolam"
+  ]
 }

@@ -13,10 +13,6 @@
     "zero": "10 days"
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
   "categories": [
     "nootropic"
   ],
@@ -48,6 +44,5 @@
         }
       }
     }
-  ],
-  "localizedName": "Theanine"
+  ]
 }
