@@ -1,0 +1,102 @@
+{
+  "name": "4-FA",
+  "commonNames": [
+    "4-FA",
+    "4-FMP",
+    "PAL-303",
+    "Flux"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4-FA",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulants"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "research-chemical",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "An empathogen commonly used in place of MDMA, having a similar duration of empathogenic effects. This drug, however, has a longer stimulant \"tail,\" during which effects are more like those of amphetamines. Not to be confused with 4-FMA, which has a similar potency, but is not particularly empathogenic.",
+  "interactions": {
+    "dangerous": [
+      "Tramadol",
+      "ΑMT",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "PCP",
+      "25x-NBOMe",
+      "2C-T-x",
+      "5-MeO-xxT",
+      "DOx"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids",
+      "Cocaine",
+      "Cannabis",
+      "Caffeine",
+      "Ketamine",
+      "Methoxetamine",
+      "Psychedelics"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 40,
+        "commonMin": 100,
+        "strongMin": 130,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 75,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 75,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2.5,
+          "max": 3.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "4-FA"
+}

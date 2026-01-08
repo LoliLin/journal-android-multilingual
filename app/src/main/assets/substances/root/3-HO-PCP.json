@@ -1,0 +1,61 @@
+{
+  "name": "3-HO-PCP",
+  "commonNames": [
+    "3-HO-PCP",
+    "Hydroxyphencyclidine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-HO-PCP",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "4 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for adverse side effects such as psychosis",
+  "toxicities": [
+    "toxic dosage is unknown"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "An arylcyclohexamine dissociative analogue of PCP, this drug is relatively uncommon, and little information is available. It is reported to not only have dissociative activity but also be an opioid. Some trip reports suggest very negative side-effects including intense muscle tension.",
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 4,
+        "strongMin": 6,
+        "heavyMin": 8
+      },
+      "duration": {
+        "comeup": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "3-HO-PCP"
+}

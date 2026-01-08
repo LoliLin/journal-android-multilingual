@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.search
 
 data class SubstanceModel(
     val name: String,
+    val displayName: String,
     val commonNames: List<String>,
     val categories: List<CategoryModel>,
     val hasSaferUse: Boolean,

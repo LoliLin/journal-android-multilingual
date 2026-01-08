@@ -39,6 +39,19 @@ object I18n {
         }
     }
 
+    fun translateOrDefault(
+        context: Context,
+        key: String,
+        fallback: String,
+        replacements: Map<String, String> = emptyMap(),
+    ): String {
+        ensureLoaded(context)
+        val raw = strings[key] ?: fallback
+        return replacements.entries.fold(raw) { acc, entry ->
+            acc.replace("{${entry.key}}", entry.value)
+        }
+    }
+
     fun getSupportedLanguages(context: Context): Map<String, String> {
         return loadStringsFile(context, "lang/supported.xml")
     }
@@ -90,4 +103,14 @@ object I18n {
 fun i18n(key: String, replacements: Map<String, String> = emptyMap()): String {
     val context = LocalContext.current
     return I18n.translate(context, key, replacements)
+}
+
+@Composable
+fun i18nOrDefault(
+    key: String,
+    fallback: String,
+    replacements: Map<String, String> = emptyMap(),
+): String {
+    val context = LocalContext.current
+    return I18n.translateOrDefault(context, key, fallback, replacements)
 }

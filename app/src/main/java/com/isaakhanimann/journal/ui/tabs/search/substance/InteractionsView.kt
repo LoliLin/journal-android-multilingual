@@ -52,33 +52,42 @@ import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstan
 @Preview
 @Composable
 fun InteractionsPreview(@PreviewParameter(InteractionsPreviewProvider::class) interactions: Interactions) {
-    InteractionsView(interactions, navigateToURL = {}, substanceURL = "")
+    InteractionsView(
+        interactions = interactions,
+        navigateToURL = {},
+        substanceURL = "",
+        displayNameForSubstance = { it }
+    )
 }
 
 @Composable
 fun InteractionsView(
     interactions: Interactions,
     substanceURL: String,
-    navigateToURL: (url: String) -> Unit
+    navigateToURL: (url: String) -> Unit,
+    displayNameForSubstance: (name: String) -> String
 ) {
     Column {
         if (interactions.dangerous.isNotEmpty()) {
             interactions.dangerous.forEach {
                 InteractionRowSubstanceScreen(
-                    text = it,
+                    text = displayNameForSubstance(it),
                     interactionType = InteractionType.DANGEROUS
                 )
             }
         }
         if (interactions.unsafe.isNotEmpty()) {
             interactions.unsafe.forEach {
-                InteractionRowSubstanceScreen(text = it, interactionType = InteractionType.UNSAFE)
+                InteractionRowSubstanceScreen(
+                    text = displayNameForSubstance(it),
+                    interactionType = InteractionType.UNSAFE
+                )
             }
         }
         if (interactions.uncertain.isNotEmpty()) {
             interactions.uncertain.forEach {
                 InteractionRowSubstanceScreen(
-                    text = it,
+                    text = displayNameForSubstance(it),
                     interactionType = InteractionType.UNCERTAIN
                 )
             }
@@ -123,6 +132,12 @@ fun InteractionRowSubstanceScreen(
         ) {
             Text(
                 text = text,
+                textAlign = TextAlign.Center,
+                color = Color.Black
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = i18n(interactionType.labelKey),
                 textAlign = TextAlign.Center,
                 color = Color.Black
             )

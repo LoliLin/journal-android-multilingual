@@ -1,0 +1,135 @@
+{
+  "name": "3-MMC",
+  "commonNames": [
+    "3-MMC",
+    "Metaphedrone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-MMC",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "toxicities": [],
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "habit-forming"
+  ],
+  "summary": "A euphoric stimulant similar to mephedrone but said to lack much of the \"magic.\" Never gained the same popularity. Slightly less potent.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 40,
+        "strongMin": 60,
+        "heavyMin": 120
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 2.5,
+          "max": 4.5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 150,
+        "strongMin": 250,
+        "heavyMin": 350
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "3-MMC"
+}

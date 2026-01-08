@@ -1,0 +1,112 @@
+{
+  "name": "Tramadol",
+  "commonNames": [
+    "Tramadol",
+    "Tramal",
+    "Tadol",
+    "Tramacur",
+    "Tramundin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Tramadol",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant",
+    "common"
+  ],
+  "summary": "A synthetic opioid analgesic, tramadol is used to treat moderate pain and can be considered a medium-strength opioid. Tramadol also has the unusual effect of being a serotonin releasing agent and a serotonin reuptake inhibitor, and as a consequence should not be taken in excess due to the risk of serotonin syndrome. Risk of seizures above 300mg doses.",
+  "effectsSummary": "Analgesic, anxiety-relieving, euphoric, mood-lifting, causes a general feeling of contentment.\nThe human body has its own pain-relieving system. The endogenous substance endorphin ensures that pain messages are sent to the human brain in a reduced form by docking to certain receptors in the human body. The active ingredient tramadol has a similar mode of action in that the active ingredient attaches to neurotransmitter docking sites (opioid receptors) and transmits a signal to the brain, which subsequently triggers pain relief. In addition, tramadol inhibits the reuptake of certain nerve messengers (noradrenaline and serotonin), which in turn increases the amount of free messengers in the tissue and supports the analgesic effect.",
+  "dosageRemark": "When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
+  "generalRisks": "Adverse side effects may include: headache, malaise/nausea, vomiting, dry mouth, dizziness, drowsiness, constipation, drowsiness, circulatory problems (palpitations, fainting spells, etc.).\nIn higher doses, seizures, speech disorders, paraesthesias (unpleasant bodily sensations, e.g. parts of the body falling asleep), tremor (muscle tremor), coordination disorders and circulatory collapse may occur. Hallucinations, confusion, delirium, anxiety, sleep disorders and nightmares can also be triggered.",
+  "longtermRisks": "Tramadol has a low dependence potential with moderate use. However, regular and long-term use can lead to psychological and physical dependence. Immediate discontinuation of the drug after prolonged use can lead to negative withdrawal symptoms, which may manifest as dizziness, physical weakness, inner restlessness, tremors, sleep disturbances, headaches, sweating, nausea, hallucinations and depression.\nProlonged use can lead to general mood changes, changes in decision-making behaviour or perceptual and reaction disorders.",
+  "saferUse": [
+    "Opioids are highly effective drugs that should only be used for a limited time and at best under medical supervision.",
+    "Start with a low dose and wait for the effect and tolerance before adding more. Do not exceed the maximum daily dose.",
+    "If you inject opioids, dose even more carefully, as the range between desired effect (rush) and dangerous overdose is even more difficult to assess. Avoid injecting fentanyl; the risk of overdose is particularly high. Always use new (clean and sterile) injection material! Never exchange syringes, filters, water, disinfection swabs to avoid transmission of hepatitis and HIV.",
+    "Do not rely on dosage information from colleagues who regularly use opioids. Due to habituation or dependence, their doses are much higher and can be fatal for new users.",
+    "Take longer breaks (at least several days) between consumption.",
+    "After a period of abstinence, take a much lower dose! The usual dose before the abstinence phase can otherwise quickly have life-threatening consequences.",
+    "The simultaneous consumption of depressant substances such as alcohol, ketamine, GHB/GBL, nitrous oxide, benzodiazepines and/or other opioids is dangerous as there is an increased risk of vomiting and unconsciousness. The risk of suffocation is high!",
+    "Refrain from citrus fruits (especially grapefruit) before or during consumption. The combination can lead to an increase in the effect of the opiate and/or to respiratory depression."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Substituted amphetamines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "MAOI",
+      "Grapefruit",
+      "MDMA",
+      "ΑMT"
+    ],
+    "unsafe": [
+      "2C-T-x"
+    ],
+    "uncertain": [
+      "Benzodiazepines",
+      "Methoxetamine",
+      "Alcohol",
+      "Nitrous"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 250,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "min": 70,
+        "max": 90
+      }
+    }
+  ],
+  "localizedName": "Tramadol"
+}

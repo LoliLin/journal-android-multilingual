@@ -1,0 +1,125 @@
+{
+  "name": "Isopropylphenidate",
+  "commonNames": [
+    "Isopropylphenidate",
+    "IPH",
+    "IPPH"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Isopropylphenidate",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "IPPH (or incorrectly IPH) is a novel piperidine based methylphenidate analogue and NDRI stimulant, but comes with much less physical side effects.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 35
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 1.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 2.5,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 15,
+        "strongMin": 25,
+        "heavyMin": 45
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3.5,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Isopropylphenidate"
+}

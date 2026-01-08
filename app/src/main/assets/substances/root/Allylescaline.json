@@ -1,0 +1,51 @@
+{
+  "name": "Allylescaline",
+  "commonNames": [
+    "Allylescaline",
+    "AL"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Allylescaline",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "Mescaline analogue with a much lower dose, that seems to rely heavily on colours.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 30,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 240,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Allylescaline"
+}

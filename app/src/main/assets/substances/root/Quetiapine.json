@@ -1,0 +1,77 @@
+{
+  "name": "Quetiapine",
+  "commonNames": [
+    "Quetiapine",
+    "Seroquel"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Quetiapine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a week of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity"
+  ],
+  "categories": [
+    "antipsychotic",
+    "depressant"
+  ],
+  "summary": "An atypical antipsychotic medication under the brand name Seroquel. Also used to treat insomnia and mood swings. This drug is very sedating and can stop/slow down psychedelic drug trips. Infrequently abused.",
+  "interactions": {
+    "dangerous": [
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 50,
+        "strongMin": 150,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 6,
+          "max": 7,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 24,
+          "max": 48,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "min": 100,
+        "max": 100
+      }
+    }
+  ],
+  "localizedName": "Quetiapine"
+}

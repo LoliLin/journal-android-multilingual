@@ -1,0 +1,94 @@
+{
+  "name": "Ethylphenidate",
+  "commonNames": [
+    "Ethylphenidate",
+    "EPH"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Ethylphenidate",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopaminergic",
+    "stimulants"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "Potent psychostimulant, similar to Methylphenidate. \u0002Note: Ethylphenidate should \u0016NOT\u0016 be insufflated as it is known to be highly caustic and will cause serious harm to your nasal septum, even with light usage.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 40,
+        "strongMin": 80,
+        "heavyMin": 120
+      },
+      "duration": {
+        "onset": {
+          "min": 40,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "rectal",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 20,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Ethylphenidate"
+}

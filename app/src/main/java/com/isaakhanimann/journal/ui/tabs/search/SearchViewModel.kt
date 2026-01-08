@@ -64,14 +64,14 @@ class SearchViewModel @Inject constructor(
         substanceRepo.getAllCategories().map { category ->
             val isActive = filters.contains(category.name)
             CategoryChipModel(
-                chipName = category.name, color = category.color, isActive = isActive
+                rawName = category.name, color = category.color, isActive = isActive
             )
         }
     }.combine(isShowingCustomSubstancesFlow) { chips, isShowingCustom ->
         val newChips = chips.toMutableList()
         newChips.add(
             0, CategoryChipModel(
-                chipName = customChipName, color = customColor, isActive = isShowingCustom
+                rawName = customChipName, color = customColor, isActive = isShowingCustom
             )
         )
         return@combine newChips
@@ -114,9 +114,9 @@ class SearchViewModel @Inject constructor(
 }
 
 data class CategoryChipModel(
-    val chipName: String, val color: Color, val isActive: Boolean
+    val rawName: String, val color: Color, val isActive: Boolean
 )
 
 data class CategoryModel(
-    val name: String, val color: Color
+    val rawName: String, val color: Color
 )

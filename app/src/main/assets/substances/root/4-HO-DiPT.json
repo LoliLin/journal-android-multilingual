@@ -1,0 +1,78 @@
+{
+  "name": "4-HO-DiPT",
+  "commonNames": [
+    "4-HO-DiPT",
+    "Iprocin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4-HO-DiPT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A psychedelic tryptamine also known as iprocin. A homologue of psilocin, this drug likely has similar effects to psychedelic mushrooms. Said to have a rapid onset and relatively short duration for a drug of its class.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "4-HO-DiPT"
+}

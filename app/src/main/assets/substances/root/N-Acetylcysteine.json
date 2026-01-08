@@ -1,0 +1,38 @@
+{
+  "name": "N-Acetylcysteine",
+  "commonNames": [
+    "N-Acetylcysteine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/N-Acetylcysteine",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 600,
+        "strongMin": 1000,
+        "heavyMin": 1500
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "N-Acetylcysteine"
+}

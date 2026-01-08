@@ -24,6 +24,7 @@ import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstan
 
 data class Substance(
     val name: String,
+    val localizedName: String?,
     val commonNames: List<String>,
     val url: String,
     val isApproved: Boolean,
@@ -72,4 +73,7 @@ data class Substance(
         }
 
     val interactionExplanationURL get() = getInteractionExplanationURLForSubstance(url)
+
+    val displayName: String
+        get() = localizedName ?: name
 }

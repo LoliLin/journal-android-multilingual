@@ -45,6 +45,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
 fun SearchField(
@@ -104,8 +107,16 @@ fun SearchField(
                         onDismissRequest = { isExpanded = false },
                     ) {
                         categories.forEach { categoryChipModel ->
-                            DropdownMenuItem(text = { Text(categoryChipModel.chipName) },
-                                onClick = { onFilterTapped(categoryChipModel.chipName) },
+                            val displayName = if (categoryChipModel.rawName == "custom") {
+                                i18n("search_custom")
+                            } else {
+                                i18nOrDefault(
+                                    categoryNameKey(categoryChipModel.rawName),
+                                    categoryChipModel.rawName
+                                )
+                            }
+                            DropdownMenuItem(text = { Text(displayName) },
+                                onClick = { onFilterTapped(categoryChipModel.rawName) },
                                 leadingIcon = {
                                     if (categoryChipModel.isActive) {
                                         Icon(

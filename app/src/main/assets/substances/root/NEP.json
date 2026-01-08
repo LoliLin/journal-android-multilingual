@@ -1,0 +1,102 @@
+{
+  "name": "NEP",
+  "commonNames": [
+    "N-Ethylpentedrone",
+    "NEP",
+    "Ethyl-Pentedrone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/NEP",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI",
+      "SNRIs",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 20,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "total": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 25,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "total": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "NEP"
+}

@@ -1,0 +1,141 @@
+{
+  "name": "2-FMA",
+  "commonNames": [
+    "2-FMA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2-FMA",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A long-acting stimulant often compared to lisdexamphetamine. Thought to lack some of amphetamine's neurotoxic metabolites. Very functional, and for this reason it is commonly used for studying.",
+  "interactions": {
+    "dangerous": [
+      "Tramadol",
+      "ΑMT",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "PCP",
+      "25x-NBOMe",
+      "2C-T-x",
+      "5-MeO-xxT",
+      "DOx"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids",
+      "Cocaine",
+      "Cannabis",
+      "Caffeine",
+      "Ketamine",
+      "Methoxetamine",
+      "Psychedelics"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 7,
+          "max": 9,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "2-FMA"
+}

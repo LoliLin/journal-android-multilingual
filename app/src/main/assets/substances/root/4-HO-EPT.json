@@ -1,0 +1,73 @@
+{
+  "name": "4-HO-EPT",
+  "commonNames": [
+    "4-HO-EPT",
+    "Eprocin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/4-HO-EPT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic",
+    "tentative"
+  ],
+  "summary": "The 4-Hydroxy version of EPT. Slightly more potent than the prior.",
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 30,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "4-HO-EPT"
+}

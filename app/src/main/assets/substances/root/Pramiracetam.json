@@ -1,0 +1,50 @@
+{
+  "name": "Pramiracetam",
+  "commonNames": [
+    "Pramiracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Pramiracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "addictionPotential": "not addictive with a low potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "summary": "A CNS stimulant that is a nootropic, that belongs to the racetam family of compounds. Much more potent than Piracetam while appearing to work on similar mechanisms.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 500,
+        "strongMin": 800,
+        "heavyMin": 1200
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Pramiracetam"
+}

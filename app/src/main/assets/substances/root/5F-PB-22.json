@@ -1,0 +1,73 @@
+{
+  "name": "5F-PB-22",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/5F-PB-22",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "cannabinoids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "cannabinoid",
+    "tentative",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "Synthetic cannabinoid, agonist of the cannabinoid receptors which has a strong sedating aspect. Being a synthetic cannabinoid it has a very fast onset.",
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [],
+    "uncertain": [
+      "2C-T-x",
+      "2C-x",
+      "5-MeO-xxT",
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "DMT",
+      "DOx",
+      "LSD",
+      "Mescaline",
+      "Psilocybin mushrooms",
+      "25x-NBOMe"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 3,
+        "strongMin": 5,
+        "heavyMin": 8
+      },
+      "duration": {
+        "total": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 3,
+        "strongMin": 5,
+        "heavyMin": 8
+      }
+    }
+  ],
+  "localizedName": "5F-PB-22"
+}

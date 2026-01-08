@@ -55,7 +55,7 @@ fun SubstanceRowAddIngestion(
             .padding(horizontal = horizontalPadding, vertical = 8.dp),
     ) {
         Text(
-            text = substanceModel.name,
+            text = substanceModel.displayName,
             style = MaterialTheme.typography.titleMedium,
         )
         if (substanceModel.commonNames.isNotEmpty()) {

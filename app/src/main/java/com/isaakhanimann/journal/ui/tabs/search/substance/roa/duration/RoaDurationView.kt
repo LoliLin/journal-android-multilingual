@@ -30,6 +30,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.roa.DurationRange
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 
 @Preview(showBackground = true)
@@ -56,10 +58,10 @@ fun RoaDurationView(roaDuration: RoaDuration) {
             val comeup = roaDuration.comeup
             val peak = roaDuration.peak
             val offset = roaDuration.offset
-            TimeSurface(durationRange = onset, name = "onset")
-            TimeSurface(durationRange = comeup, name = "comeup")
-            TimeSurface(durationRange = peak, name = "peak")
-            TimeSurface(durationRange = offset, name = "offset")
+            TimeSurface(durationRange = onset, labelKey = "duration_onset")
+            TimeSurface(durationRange = comeup, labelKey = "duration_comeup")
+            TimeSurface(durationRange = peak, labelKey = "duration_peak")
+            TimeSurface(durationRange = offset, labelKey = "duration_offset")
         }
         if (total != null || afterglow != null) {
             Row(
@@ -67,10 +69,10 @@ fun RoaDurationView(roaDuration: RoaDuration) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if (total != null) {
-                    Text("total: ${total.text}")
+                    Text("${i18n("duration_total")}: ${formatDurationRange(total)}")
                 }
                 if (afterglow != null) {
-                    Text("after effects: ${afterglow.text}")
+                    Text("${i18n("duration_after_effects")}: ${formatDurationRange(afterglow)}")
                 }
             }
         }
@@ -78,7 +80,7 @@ fun RoaDurationView(roaDuration: RoaDuration) {
 }
 
 @Composable
-fun TimeSurface(durationRange: DurationRange?, name: String) {
+fun TimeSurface(durationRange: DurationRange?, labelKey: String) {
     if (durationRange != null) {
         Surface(shape = RoundedCornerShape(5.dp), tonalElevation = 12.dp) {
             Column(
@@ -88,9 +90,23 @@ fun TimeSurface(durationRange: DurationRange?, name: String) {
                     vertical = 2.dp
                 )
             ) {
-                Text(durationRange.text)
-                Text(name)
+                Text(formatDurationRange(durationRange))
+                Text(i18n(labelKey))
             }
         }
     }
+}
+
+@Composable
+private fun formatDurationRange(durationRange: DurationRange): String {
+    val minText = durationRange.min?.toString()?.removeSuffix(".0") ?: ".."
+    val maxText = durationRange.max?.toString()?.removeSuffix(".0") ?: ".."
+    val unitKey = durationRange.units?.shortKey ?: ""
+    val unitFallback = durationRange.units?.fallbackShortText ?: ""
+    val unitText = if (unitKey.isNotEmpty()) {
+        i18nOrDefault(unitKey, unitFallback)
+    } else {
+        ""
+    }
+    return "$minText-$maxText$unitText"
 }

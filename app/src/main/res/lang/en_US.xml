@@ -37,4 +37,43 @@ People with psychological disorders, pre-existing cardiovascular conditions, ast
 Take vitamin C and D and minerals (iron, calcium and magnesium) with frequent use.
 
 It is better not to wear headgear (danger of overheating).</string>
+    <string name="substance_open_article">Open PW article</string>
+    <string name="substance_more_info">More info</string>
+    <string name="substance_info_not_approved">Info is not approved</string>
+    <string name="substance_dosage_title">Dosage</string>
+    <string name="substance_no_dosage_info">No dosage info</string>
+    <string name="substance_bioavailability">Bioavailability: {min}-{max}%</string>
+    <string name="substance_info">Info</string>
+    <string name="substance_volumetric_dosing">Volumetric dosing</string>
+    <string name="substance_dosage_classification">Dosage classification</string>
+    <string name="substance_tolerance_title">Tolerance</string>
+    <string name="substance_toxicity_title">Toxicity</string>
+    <string name="substance_duration_title">Duration</string>
+    <string name="substance_duration_start">Start:</string>
+    <string name="substance_duration_reset">Reset to now</string>
+    <string name="substance_duration_disclaimer">Timeline disclaimer</string>
+    <string name="substance_no_duration_info">No duration info</string>
+    <string name="substance_interactions_title">Interactions</string>
+    <string name="substance_effects_title">Effects</string>
+    <string name="substance_risks_title">Risks</string>
+    <string name="substance_long_term_title">Long-term</string>
+    <string name="substance_safer_use_title">Safer use</string>
+    <string name="substance_addiction_potential_title">Addiction potential</string>
+    <string name="substance_see_also_title">See also</string>
+    <string name="substance_safer_hallucinogen_use">Safer hallucinogen use</string>
+    <string name="substance_safer_stimulant_use">Safer stimulant use</string>
+    <string name="duration_onset">Onset</string>
+    <string name="duration_comeup">Comeup</string>
+    <string name="duration_peak">Peak</string>
+    <string name="duration_offset">Offset</string>
+    <string name="duration_total">Total</string>
+    <string name="duration_after_effects">After effects</string>
+    <string name="duration_seconds_short">s</string>
+    <string name="duration_minutes_short">m</string>
+    <string name="duration_hours_short">h</string>
+    <string name="duration_days_short">d</string>
+    <string name="interaction_level_dangerous">Dangerous</string>
+    <string name="interaction_level_unsafe">Unsafe</string>
+    <string name="interaction_level_uncertain">Uncertain</string>
+    <string name="category_remove_filter">Remove filter</string>
 </resources>

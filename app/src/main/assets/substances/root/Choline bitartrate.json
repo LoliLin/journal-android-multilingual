@@ -1,0 +1,66 @@
+{
+  "name": "Choline bitartrate",
+  "commonNames": [
+    "Choline"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Choline_bitartrate",
+  "isApproved": true,
+  "tolerance": {
+    "full": "after prolonged and repeated usage",
+    "half": "7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 250,
+        "strongMin": 1000,
+        "heavyMin": 2000
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 75,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Choline bitartrate"
+}

@@ -1,0 +1,85 @@
+{
+  "name": "MDAI",
+  "commonNames": [
+    "MDAI"
+  ],
+  "url": "https://psychonautwiki.org/wiki/MDAI",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "entactogens"
+  ],
+  "addictionPotential": "somewhat habit-forming with a low potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "entactogen",
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A selective serotonin releasing agent which is rarely used without a stimulant to obtain desirable effects. Previously believed not to be neuruotoxic, however MDAI has been implicated in several lethal and non-lethal intoxications, and as such may pose more of a risk to health than previously believed.",
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "SNRIs",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 40,
+        "commonMin": 100,
+        "strongMin": 175,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "MDAI"
+}

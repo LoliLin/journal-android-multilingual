@@ -34,6 +34,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Preview
 @Composable
@@ -47,6 +50,11 @@ fun CategoryChipDeletePreview(
 fun CategoryChipDelete(
     categoryChipModel: CategoryChipModel, onClick: () -> Unit
 ) {
+    val displayName = if (categoryChipModel.rawName == "custom") {
+        i18n("search_custom")
+    } else {
+        i18nOrDefault(categoryNameKey(categoryChipModel.rawName), categoryChipModel.rawName)
+    }
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -58,11 +66,11 @@ fun CategoryChipDelete(
     ) {
         Icon(
             imageVector = Icons.Default.Clear,
-            contentDescription = "Remove",
+            contentDescription = i18n("category_remove_filter"),
             Modifier.size(ButtonDefaults.IconSize)
         )
         Spacer(Modifier.width(3.dp))
-        Text(text = categoryChipModel.chipName, Modifier.padding(bottom = 2.dp))
+        Text(text = displayName, Modifier.padding(bottom = 2.dp))
 
     }
 }

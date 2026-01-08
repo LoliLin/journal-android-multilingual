@@ -37,9 +37,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.CategoryModel
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Preview(showBackground = true)
 @Composable
@@ -64,7 +67,7 @@ fun SubstanceRow(
             .padding(horizontal = horizontalPadding, vertical = 3.dp),
     ) {
         Text(
-            text = substanceModel.name,
+            text = substanceModel.displayName,
             style = MaterialTheme.typography.titleMedium,
         )
         if (substanceModel.commonNames.isNotEmpty()) {
@@ -85,6 +88,14 @@ fun SubstanceRow(
 
 @Composable
 fun CategoryChipStatic(categoryModel: CategoryModel) {
+    val displayName = if (categoryModel.rawName == "custom") {
+        i18n("search_custom")
+    } else {
+        i18nOrDefault(
+            key = categoryNameKey(categoryModel.rawName),
+            fallback = categoryModel.rawName
+        )
+    }
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -94,6 +105,6 @@ fun CategoryChipStatic(categoryModel: CategoryModel) {
             .padding(vertical = 2.dp, horizontal = 8.dp)
 
     ) {
-        Text(text = categoryModel.name, style = MaterialTheme.typography.bodySmall)
+        Text(text = displayName, style = MaterialTheme.typography.bodySmall)
     }
 }

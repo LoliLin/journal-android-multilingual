@@ -37,4 +37,43 @@
 频繁使用时补充维生素C和D以及矿物质（铁、钙和镁）。
 
 最好不要戴头部装备（有过热风险）。</string>
+    <string name="substance_open_article">打开百科文章</string>
+    <string name="substance_more_info">更多信息</string>
+    <string name="substance_info_not_approved">信息尚未审核</string>
+    <string name="substance_dosage_title">剂量</string>
+    <string name="substance_no_dosage_info">无剂量信息</string>
+    <string name="substance_bioavailability">生物利用度：{min}-{max}%</string>
+    <string name="substance_info">信息</string>
+    <string name="substance_volumetric_dosing">容量配药</string>
+    <string name="substance_dosage_classification">剂量分级</string>
+    <string name="substance_tolerance_title">耐受</string>
+    <string name="substance_toxicity_title">毒性</string>
+    <string name="substance_duration_title">持续时间</string>
+    <string name="substance_duration_start">开始：</string>
+    <string name="substance_duration_reset">重置为现在</string>
+    <string name="substance_duration_disclaimer">时间线说明</string>
+    <string name="substance_no_duration_info">无持续时间信息</string>
+    <string name="substance_interactions_title">相互作用</string>
+    <string name="substance_effects_title">效果</string>
+    <string name="substance_risks_title">风险</string>
+    <string name="substance_long_term_title">长期</string>
+    <string name="substance_safer_use_title">更安全的使用</string>
+    <string name="substance_addiction_potential_title">成瘾潜力</string>
+    <string name="substance_see_also_title">另请参阅</string>
+    <string name="substance_safer_hallucinogen_use">更安全的致幻剂使用</string>
+    <string name="substance_safer_stimulant_use">更安全的兴奋剂使用</string>
+    <string name="duration_onset">起效</string>
+    <string name="duration_comeup">上升</string>
+    <string name="duration_peak">峰值</string>
+    <string name="duration_offset">消退</string>
+    <string name="duration_total">总时长</string>
+    <string name="duration_after_effects">余效</string>
+    <string name="duration_seconds_short">秒</string>
+    <string name="duration_minutes_short">分</string>
+    <string name="duration_hours_short">时</string>
+    <string name="duration_days_short">天</string>
+    <string name="interaction_level_dangerous">危险</string>
+    <string name="interaction_level_unsafe">不安全</string>
+    <string name="interaction_level_uncertain">不确定</string>
+    <string name="category_remove_filter">移除筛选</string>
 </resources>

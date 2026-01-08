@@ -1,0 +1,45 @@
+{
+  "name": "Proscaline",
+  "commonNames": [
+    "Proscaline"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Proscaline",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "no negative health effects attributed to trying this drug"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "A very uncommon psychedelic stimulant and phenethylamine and analogue on mescaline with similar effects. Roughly 5-7 times more potent than mescaline by weight.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 30,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Proscaline"
+}

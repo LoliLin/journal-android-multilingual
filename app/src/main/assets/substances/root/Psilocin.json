@@ -1,0 +1,77 @@
+{
+  "name": "Psilocin",
+  "commonNames": [
+    "Psilocin",
+    "Psilocine",
+    "Psilocyn",
+    "Psilotsin",
+    "4-HO-DMT",
+    "4-OH-DMT"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Psilocin",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "psychedelic",
+    "tentative",
+    "entactogen",
+    "research-chemical"
+  ],
+  "summary": "Psilocin is a substutued tryptamine alkaloid, that is present in most psychedelic mushrooms. It is relatively unstable in solution due to the -OH group.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 15,
+        "strongMin": 25,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Psilocin"
+}

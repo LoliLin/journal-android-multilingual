@@ -1,0 +1,102 @@
+{
+  "name": "Acetylfentanyl",
+  "commonNames": [
+    "Acetylfentanyl"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Acetylfentanyl",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "toxicities": [
+    "potentially fatal at heavy dosages",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines",
+    "unintentionally spilling a very small amount of acetylfentanyl on one's skin could result in a fatal overdose."
+  ],
+  "categories": [
+    "opioid",
+    "research-chemical",
+    "habit-forming",
+    "depressant"
+  ],
+  "summary": "Acetyl-Fentanyl is an opioid analgesic substance that is an analogue of Fentanyl. It's potency is roughly ~6.67 times that of Morphine. Making it ~15 times less potent than its parent compound Fentanyl.",
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 10,
+        "strongMin": 15,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 7,
+          "max": 10,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 10,
+        "strongMin": 15,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Acetylfentanyl"
+}

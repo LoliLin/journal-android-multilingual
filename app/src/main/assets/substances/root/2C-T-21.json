@@ -1,0 +1,65 @@
+{
+  "name": "2C-T-21",
+  "commonNames": [
+    "2C-T-21",
+    "Aurora"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-T-21",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A rare psychedelic phenethylamine.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 12,
+        "heavyMin": 15
+      },
+      "duration": {
+        "onset": {
+          "min": 90,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 10,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "2C-T-21"
+}

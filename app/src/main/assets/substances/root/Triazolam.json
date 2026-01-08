@@ -1,0 +1,64 @@
+{
+  "name": "Triazolam",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Triazolam",
+  "isApproved": false,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "habit-forming"
+  ],
+  "summary": "An uncommon and very short acting benzodiazepine. Sedating and hypnotic, and may induce amnesia and lowered inhibitions at high doses.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.125,
+        "commonMin": 0.25,
+        "strongMin": 0.5,
+        "heavyMin": 0.75
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "localizedName": "Triazolam"
+}
