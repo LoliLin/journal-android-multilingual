@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -85,7 +86,7 @@ fun CombinationSettingsScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Combinations") })
+            TopAppBar(title = { Text(i18n("settings_combinations_title")) })
         }
     ) { padding ->
         Column(
@@ -102,11 +103,11 @@ fun CombinationSettingsScreen(
                     )
                 ) {
                     Text(
-                        text = "Interaction alerts",
+                        text = i18n("settings_interaction_alerts_title"),
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Get warnings about interactions with following substances, even if you haven't logged them.",
+                        text = i18n("settings_interaction_alerts_description"),
                         style = MaterialTheme.typography.bodySmall
                     )
                     substanceInteractions.forEach { substanceInteraction ->
@@ -126,7 +127,6 @@ fun CombinationSettingsScreen(
         }
     }
 }
-
 
 
 

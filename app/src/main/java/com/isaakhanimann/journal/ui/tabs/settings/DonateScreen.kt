@@ -42,6 +42,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -49,7 +50,7 @@ import androidx.compose.ui.unit.dp
 fun DonateScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Donate") })
+            TopAppBar(title = { Text(i18n("donate_title")) })
         }
     ) { padding ->
         Column(
@@ -63,14 +64,14 @@ fun DonateScreen() {
             val uriHandler = LocalUriHandler.current
             DonateButton(
                 imageVector = Icons.Outlined.Coffee,
-                text = "Buy me a coffee"
+                text = i18n("donate_buy_me_a_coffee")
             ) {
                 uriHandler.openUri("https://www.buymeacoffee.com/isaakhanimann")
             }
             Spacer(modifier = Modifier.height(15.dp))
             DonateButton(
                 imageVector = Icons.Outlined.Payment,
-                text = "Paypal donate"
+                text = i18n("donate_paypal")
             ) {
                 uriHandler.openUri("https://www.paypal.com/donate/?hosted_button_id=A8XKEKXN64VQJ")
             }
