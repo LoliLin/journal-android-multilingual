@@ -24,6 +24,8 @@ import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.SubstanceFile
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.data.substances.parse.SubstanceParserInterface
+import com.isaakhanimann.journal.data.substances.search.DefaultSubstanceSearcher
+import com.isaakhanimann.journal.data.substances.search.SubstanceSearcher
 import com.isaakhanimann.journal.localization.I18n
 import dagger.hilt.android.qualifiers.ApplicationContext
 import org.json.JSONObject
@@ -45,6 +47,8 @@ class SubstanceRepository @Inject constructor(
 
     private var substanceFile: SubstanceFile
     private var loadedLanguageKey: String
+    var searcher: SubstanceSearcher = DefaultSubstanceSearcher()
+        private set
 
     init {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
@@ -57,6 +61,11 @@ class SubstanceRepository @Inject constructor(
         if (languageKey == loadedLanguageKey) return
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
+        updateSearcher(languageKey)
+    }
+
+    fun updateSearcher(languageKey: String) {
+        searcher = DefaultSubstanceSearcher()
     }
 
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
