@@ -10,18 +10,18 @@ import org.xmlpull.v1.XmlPullParser
 object I18n {
     private var strings: Map<String, String> = emptyMap()
     private var loadedLangKey: String? = null
-    private const val FALLBACK_LANG_KEY = "en_US"
+    private const val FALLBACK_LANG_KEY = "en_us"
     private var preferredLangKey: String? = null
 
     fun getCurrentLanguageKey(): String {
         val locale = Locale.getDefault()
-        val language = locale.language
-        val country = locale.country
+        val language = locale.language.toLowerCase(Locale.ROOT)
+        val country = locale.country.toLowerCase(Locale.ROOT)
         return if (country.isNullOrBlank()) language else "${language}_${country}"
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
-        preferredLangKey = languageKey
+        preferredLangKey = languageKey?.toLowerCase(Locale.ROOT)
         loadedLangKey = null
     }
 
@@ -57,7 +57,7 @@ object I18n {
     }
 
     private fun ensureLoaded(context: Context) {
-        val currentKey = preferredLangKey ?: getCurrentLanguageKey()
+        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).toLowerCase(Locale.ROOT)
         if (currentKey == loadedLangKey && strings.isNotEmpty()) return
 
         val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)

@@ -101,7 +101,7 @@ fun SettingsPreview() {
         snackbarHostState = remember { SnackbarHostState() },
         areDosageDotsHidden = false,
         saveDosageDotsAreHidden = {},
-        supportedLanguages = mapOf("en_US" to "English (US)", "zh_CN" to "中文（中国）"),
+        supportedLanguages = mapOf("en_us" to "English (US)", "zh_cn" to "中文（中国）"),
         selectedLanguageKey = null,
         saveSelectedLanguage = {}
     )
