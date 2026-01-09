@@ -23,6 +23,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.RewriteQueriesToDropUnusedColumns
 import androidx.room.Transaction
 import androidx.room.Update
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
@@ -59,6 +60,7 @@ interface ExperienceDao {
                 " ON i.id = sub.id AND i.time = sub.maxTime" +
                 " ORDER BY time DESC"
     )
+    @RewriteQueriesToDropUnusedColumns
     suspend fun getLatestIngestionOfEverySubstanceSinceDate(instant: Instant): List<Ingestion>
 
     @Transaction
