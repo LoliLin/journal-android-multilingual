@@ -69,6 +69,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.SuggestionRow
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.SubstanceRouteSuggestion
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
@@ -224,7 +225,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredCustomUnits.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Custom units")
+                        SectionHeader(title = i18n("custom_units_title"))
                     }
                 }
                 itemsIndexed(filteredCustomUnits) { index, customUnit ->

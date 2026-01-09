@@ -7,6 +7,16 @@
     <string name="stats">统计</string>
     <string name="settings">设置</string>
     <string name="missing_key">[缺少翻译]</string>
+    <string name="settings_section_ui">界面</string>
+    <string name="settings_interaction_settings">相互作用设置</string>
+    <string name="settings_hide_dosage_dots">隐藏剂量点</string>
+    <string name="custom_units_title">自定义单位</string>
+    <string name="custom_unit_singular">自定义单位</string>
+    <string name="custom_units_go_to_archive">前往归档</string>
+    <string name="custom_units_add_action">添加自定义单位</string>
+    <string name="custom_units_empty_title">暂无自定义单位</string>
+    <string name="custom_units_empty_description">添加你的第一个单位。</string>
+    <string name="substance_colors_title">物质颜色</string>
     <string name="settings_language_with_value">语言：{language}</string>
     <string name="settings_language_title">选择语言</string>
     <string name="settings_language_system">跟随系统</string>

@@ -7,6 +7,16 @@
     <string name="stats">Stats</string>
     <string name="settings">Settings</string>
     <string name="missing_key">[missing translation]</string>
+    <string name="settings_section_ui">UI</string>
+    <string name="settings_interaction_settings">Interaction settings</string>
+    <string name="settings_hide_dosage_dots">Hide dosage dots</string>
+    <string name="custom_units_title">Custom units</string>
+    <string name="custom_unit_singular">Custom unit</string>
+    <string name="custom_units_go_to_archive">Go to archive</string>
+    <string name="custom_units_add_action">Add custom unit</string>
+    <string name="custom_units_empty_title">No custom units yet</string>
+    <string name="custom_units_empty_description">Add your first unit.</string>
+    <string name="substance_colors_title">Substance colors</string>
     <string name="settings_language_with_value">Language: {language}</string>
     <string name="settings_language_title">Choose language</string>
     <string name="settings_language_system">From system</string>

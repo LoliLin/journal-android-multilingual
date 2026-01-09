@@ -158,7 +158,7 @@ fun SettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") }
+                title = { Text(i18n("settings")) }
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -170,24 +170,24 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            CardWithTitle(title = "UI", innerPaddingHorizontal = 0.dp) {
+            CardWithTitle(title = i18n("settings_section_ui"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
                     imageVector = Icons.Outlined.Medication,
-                    text = "Custom units"
+                    text = i18n("custom_units_title")
                 ) {
                     navigateToCustomUnits()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.Palette,
-                    text = "Substance colors"
+                    text = i18n("substance_colors_title")
                 ) {
                     navigateToSubstanceColors()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.WarningAmber,
-                    text = "Interaction settings"
+                    text = i18n("settings_interaction_settings")
                 ) {
                     navigateToComboSettings()
                 }
@@ -222,7 +222,7 @@ fun SettingsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Hide dosage dots")
+                    Text(text = i18n("settings_hide_dosage_dots"))
                     Switch(
                         checked = areDosageDotsHidden,
                         onCheckedChange = saveDosageDotsAreHidden)

@@ -7,6 +7,16 @@
     <string name="stats">統計</string>
     <string name="settings">設定</string>
     <string name="missing_key">[缺少翻譯]</string>
+    <string name="settings_section_ui">介面</string>
+    <string name="settings_interaction_settings">相互作用設定</string>
+    <string name="settings_hide_dosage_dots">隱藏劑量點</string>
+    <string name="custom_units_title">自訂單位</string>
+    <string name="custom_unit_singular">自訂單位</string>
+    <string name="custom_units_go_to_archive">前往封存</string>
+    <string name="custom_units_add_action">新增自訂單位</string>
+    <string name="custom_units_empty_title">尚無自訂單位</string>
+    <string name="custom_units_empty_description">新增你的第一個單位。</string>
+    <string name="substance_colors_title">物質顏色</string>
     <string name="settings_language_with_value">語言：{language}</string>
     <string name="settings_language_title">選擇語言</string>
     <string name="settings_language_system">依系統</string>

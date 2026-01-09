@@ -46,6 +46,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -90,10 +91,10 @@ fun CustomUnitsScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Custom units") },
+                title = { Text(i18n("custom_units_title")) },
                 actions = {
                     IconButton(onClick = navigateToCustomUnitArchive) {
-                        Icon(Icons.Default.Inventory, contentDescription = "Go to archive")
+                        Icon(Icons.Default.Inventory, contentDescription = i18n("custom_units_go_to_archive"))
                     }
                 })
         },
@@ -101,10 +102,10 @@ fun CustomUnitsScreenContent(
             ExtendedFloatingActionButton(
                 onClick = navigateToAddCustomUnit,
                 icon = {
-                    Icon(Icons.Default.Add, contentDescription = "Add custom unit")
+                    Icon(Icons.Default.Add, contentDescription = i18n("custom_units_add_action"))
                 },
                 text = {
-                    Text(text = "Custom unit")
+                    Text(text = i18n("custom_unit_singular"))
                 }
             )
         }
@@ -129,8 +130,8 @@ fun CustomUnitsScreenContent(
             }
             if (customUnits.isEmpty()) {
                 EmptyScreenDisclaimer(
-                    title = "No custom units yet",
-                    description = "Add your first unit."
+                    title = i18n("custom_units_empty_title"),
+                    description = i18n("custom_units_empty_description")
                 )
             }
         }
