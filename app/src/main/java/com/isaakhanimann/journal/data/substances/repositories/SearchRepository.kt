@@ -44,38 +44,10 @@ class SearchRepository @Inject constructor(
     }
 
     private fun getSubstancesMatchingSearchText(searchText: String, prefilteredSubstances: List<SubstanceWithCategories>): List<SubstanceWithCategories> {
-        return if (searchText.isEmpty()) {
-            prefilteredSubstances
-        } else {
-            val searchString = searchText.replace(Regex("[- ]"), "")
-            // substances whose primary name begins with the search string
-            val mainPrefixMatches = prefilteredSubstances.filter { substanceWithCategories ->
-                substanceWithCategories.substance.name.replace(Regex("[- ]"), "").startsWith(
-                    prefix = searchString, ignoreCase = true
-                )
-            }
-            // substances with any name beginning with the search string
-            val prefixMatches = prefilteredSubstances.filter { substanceWithCategories ->
-                val allNames =
-                    substanceWithCategories.substance.commonNames + substanceWithCategories.substance.name
-                allNames.any { name ->
-                    name.replace(Regex("[- ]"), "").startsWith(
-                        prefix = searchString, ignoreCase = true
-                    )
-                }
-            }
-            // substances containing the search string in any of their names
-            val matches = prefilteredSubstances.filter { substanceWithCategories ->
-                val allNames =
-                    substanceWithCategories.substance.commonNames + substanceWithCategories.substance.name
-                allNames.any { name ->
-                    name.replace(Regex("[- ]"), "").contains(
-                        other = searchString, ignoreCase = true
-                    )
-                }
-            }
-            return (mainPrefixMatches + prefixMatches + matches).distinctBy { it.substance.name }
-        }
+        val sources = prefilteredSubstances.map { it.substance }
+        val matches = substanceRepo.searcher.search(searchText, sources)
+        val substanceByName = prefilteredSubstances.associateBy { it.substance.name }
+        return matches.mapNotNull { substanceByName[it.name] }
     }
 
     private fun getSubstancesSorted(
