@@ -40,6 +40,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -87,7 +88,7 @@ fun SubstanceColorsScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Substance colors") })
+            TopAppBar(title = { Text(i18n("settings_substance_colors")) })
         },
     ) { padding ->
         LazyColumn(

@@ -69,6 +69,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.SuggestionRow
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.SubstanceRouteSuggestion
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
@@ -187,7 +188,7 @@ fun AddIngestionSearchScreen(
             LazyColumn {
                 if (substanceRouteSuggestions.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Quick logging")
+                        SectionHeader(title = i18n("search_quick_logging"))
                     }
                 }
                 itemsIndexed(substanceRouteSuggestions) { index, substanceRow ->
@@ -204,7 +205,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredCustomSubstances.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Custom substances")
+                        SectionHeader(title = i18n("search_custom_substances"))
                     }
                 }
                 itemsIndexed(filteredCustomSubstances) { index, customSubstance ->
@@ -224,7 +225,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredCustomUnits.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Custom units")
+                        SectionHeader(title = i18n("search_custom_units"))
                     }
                 }
                 itemsIndexed(filteredCustomUnits) { index, customUnit ->
@@ -237,7 +238,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredSubstances.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Substances")
+                        SectionHeader(title = i18n("substances"))
                     }
                 }
                 itemsIndexed(filteredSubstances) { index, substance ->
