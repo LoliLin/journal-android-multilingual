@@ -28,7 +28,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
-import androidx.datastore.preferences.core.remove
 
 @Singleton
 class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
@@ -88,4 +87,3 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
             preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE]
         }
 }
-

@@ -1,11 +1,10 @@
 package com.isaakhanimann.journal.localization
 
 import android.content.Context
-import android.util.Xml
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import java.util.Locale
-import org.xmlpull.v1.XmlPullParser
+import org.json.JSONObject
 
 object I18n {
     private var strings: Map<String, String> = emptyMap()
@@ -53,7 +52,7 @@ object I18n {
     }
 
     fun getSupportedLanguages(context: Context): Map<String, String> {
-        return loadStringsFile(context, "lang/supported.xml")
+        return loadStringsFile(context, "lang/supported.json")
     }
 
     private fun ensureLoaded(context: Context) {
@@ -71,25 +70,20 @@ object I18n {
     }
 
     private fun loadLanguageFile(context: Context, langKey: String): Map<String, String> {
-        val filePath = "lang/$langKey.xml"
+        val filePath = "lang/$langKey.json"
         return loadStringsFile(context, filePath)
     }
 
     private fun loadStringsFile(context: Context, filePath: String): Map<String, String> {
         return try {
             context.assets.open(filePath).use { inputStream ->
-                val parser: XmlPullParser = Xml.newPullParser()
-                parser.setInput(inputStream, "UTF-8")
+                val jsonText = inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+                val jsonObject = JSONObject(jsonText)
                 val map = mutableMapOf<String, String>()
-                var eventType = parser.eventType
-                while (eventType != XmlPullParser.END_DOCUMENT) {
-                    if (eventType == XmlPullParser.START_TAG && parser.name == "string") {
-                        val name = parser.getAttributeValue(null, "name")
-                        if (name != null) {
-                            map[name] = parser.nextText()
-                        }
-                    }
-                    eventType = parser.next()
+                val keys = jsonObject.keys()
+                while (keys.hasNext()) {
+                    val key = keys.next()
+                    map[key] = jsonObject.optString(key, "")
                 }
                 map
             }
