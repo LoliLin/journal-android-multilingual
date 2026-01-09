@@ -44,10 +44,19 @@ class SubstanceRepository @Inject constructor(
     }
 
     private var substanceFile: SubstanceFile
+    private var loadedLanguageKey: String
 
     init {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
         substanceFile = loadSubstanceFile(languageKey)
+        loadedLanguageKey = languageKey
+    }
+
+    private fun ensureLanguageLoaded() {
+        val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
+        if (languageKey == loadedLanguageKey) return
+        substanceFile = loadSubstanceFile(languageKey)
+        loadedLanguageKey = languageKey
     }
 
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
@@ -143,10 +152,12 @@ class SubstanceRepository @Inject constructor(
     }
 
     override fun getAllSubstances(): List<Substance> {
+        ensureLanguageLoaded()
         return substanceFile.substances
     }
 
     override fun getAllSubstancesWithCategories(): List<SubstanceWithCategories> {
+        ensureLanguageLoaded()
         return substanceFile.substances.map { substance ->
             SubstanceWithCategories(
                 substance = substance,
@@ -158,18 +169,22 @@ class SubstanceRepository @Inject constructor(
     }
 
     override fun getAllCategories(): List<Category> {
+        ensureLanguageLoaded()
         return substanceFile.categories
     }
 
     override fun getSubstance(substanceName: String): Substance? {
+        ensureLanguageLoaded()
         return substanceFile.substancesMap[substanceName]
     }
 
     override fun getCategory(categoryName: String): Category? {
+        ensureLanguageLoaded()
         return substanceFile.categories.firstOrNull { it.name == categoryName }
     }
 
     override fun getSubstanceWithCategories(substanceName: String): SubstanceWithCategories? {
+        ensureLanguageLoaded()
         val substance =
             substanceFile.substances.firstOrNull { it.name == substanceName } ?: return null
         return SubstanceWithCategories(
