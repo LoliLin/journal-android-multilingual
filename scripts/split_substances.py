@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 SOURCE = Path("app/src/main/assets/Substances.json")
-TARGET_DIR = Path("app/src/main/assets/substances/en_US")
+TARGET_DIR = Path("app/src/main/assets/substances/en_us")
 CATEGORIES_FILENAME = "_categories.json"
 
 def main():
