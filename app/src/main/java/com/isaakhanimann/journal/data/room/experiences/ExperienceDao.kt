@@ -55,10 +55,10 @@ interface ExperienceDao {
     fun getIngestionsSortedDescendingFlow(): Flow<List<Ingestion>>
 
     @Query(
-        "SELECT i.* FROM ingestion as i" +
-                " INNER JOIN (SELECT substanceName, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
-                " ON i.substanceName = sub.substanceName AND i.time = sub.maxTime" +
-                " ORDER BY i.time DESC"
+        "SELECT * FROM ingestion as i" +
+                " INNER JOIN (SELECT id, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
+                " ON i.id = sub.id AND i.time = sub.maxTime" +
+                " ORDER BY time DESC"
     )
     @RewriteQueriesToDropUnusedColumns
     suspend fun getLatestIngestionOfEverySubstanceSinceDate(instant: Instant): List<Ingestion>
