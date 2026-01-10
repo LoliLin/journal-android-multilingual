@@ -44,11 +44,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -84,7 +83,7 @@ fun SaferUseScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.safer_use_title)) },
+                title = { Text(i18n("safer_use_title")) },
             )
         }
     ) { padding ->
@@ -93,23 +92,23 @@ fun SaferUseScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
-            SectionWithTitle(title = stringResource(R.string.safer_research_title)) {
-                SaferText(text = stringResource(R.string.safer_research_body))
+            SectionWithTitle(title = i18n("safer_research_title")) {
+                SaferText(text = i18n("safer_research_body"))
             }
             val uriHandler = LocalUriHandler.current
-            SectionWithTitle(title = stringResource(R.string.safer_testing_title)) {
-                SaferText(text = stringResource(R.string.safer_testing_body))
+            SectionWithTitle(title = i18n("safer_testing_title")) {
+                SaferText(text = i18n("safer_testing_body"))
                 Button(
                     onClick = navigateToDrugTestingScreen,
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
                         Icons.Outlined.Biotech,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(stringResource(R.string.drug_testing_services))
+                    Text(i18n("safer_drug_testing_services"))
                 }
                 Button(
                     onClick = navigateToReagentTestingScreen,
@@ -117,11 +116,11 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Outlined.Science,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(stringResource(R.string.reagent_testing))
+                    Text(i18n("safer_reagent_testing"))
                 }
                 VerticalSpace()
             }
@@ -167,7 +166,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.OpenInBrowser,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -181,7 +180,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.OpenInBrowser,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -199,7 +198,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -213,7 +212,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -227,7 +226,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -266,7 +265,7 @@ fun SaferUseScreen(
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
-                        contentDescription = stringResource(R.string.open_link),
+                        contentDescription = i18n("common_open_link"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))

@@ -55,13 +55,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
@@ -136,7 +135,7 @@ fun JournalScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.journal)) },
+                title = { Text(i18n("journal")) },
                 actions = {
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
@@ -145,12 +144,12 @@ fun JournalScreen(
                         if (isTimeRelativeToNow) {
                             Icon(
                                 Icons.Filled.Timer,
-                                contentDescription = stringResource(R.string.regular_time)
+                                contentDescription = i18n("journal_regular_time")
                             )
                         } else {
                             Icon(
                                 Icons.Outlined.Timer,
-                                contentDescription = stringResource(R.string.time_relative_to_now)
+                                contentDescription = i18n("journal_time_relative_to_now")
                             )
                         }
                     }
@@ -161,12 +160,12 @@ fun JournalScreen(
                         if (isFavoriteEnabled) {
                             Icon(
                                 Icons.Filled.Star,
-                                contentDescription = stringResource(R.string.is_favorite)
+                                contentDescription = i18n("journal_is_favorite")
                             )
                         } else {
                             Icon(
                                 Icons.Outlined.StarOutline,
-                                contentDescription = stringResource(R.string.is_not_favorite)
+                                contentDescription = i18n("journal_is_not_favorite")
                             )
                         }
                     }
@@ -177,19 +176,19 @@ fun JournalScreen(
                         if (isSearchEnabled) {
                             Icon(
                                 Icons.Outlined.SearchOff,
-                                contentDescription = stringResource(R.string.search_off)
+                                contentDescription = i18n("journal_search_off")
                             )
                         } else {
                             Icon(
                                 Icons.Filled.Search,
-                                contentDescription = stringResource(R.string.search)
+                                contentDescription = i18n("common_search")
                             )
                         }
                     }
                     IconButton(onClick = navigateToCalendar) {
                         Icon(
                             Icons.Default.CalendarMonth,
-                            contentDescription = stringResource(R.string.navigate_to_calendar)
+                            contentDescription = i18n("journal_navigate_to_calendar")
                         )
                     }
                 }
@@ -202,10 +201,10 @@ fun JournalScreen(
                     icon = {
                         Icon(
                             Icons.Filled.Add,
-                            contentDescription = stringResource(R.string.add)
+                            contentDescription = i18n("common_add")
                         )
                     },
-                    text = { Text(stringResource(R.string.ingestion)) },
+                    text = { Text(i18n("journal_ingestion")) },
                 )
             }
         }
@@ -230,7 +229,7 @@ fun JournalScreen(
                             leadingIcon = {
                                 Icon(
                                     Icons.Default.Search,
-                                    contentDescription = stringResource(R.string.search),
+                                    contentDescription = i18n("common_search"),
                                 )
                             },
                             trailingIcon = {
@@ -242,12 +241,12 @@ fun JournalScreen(
                                     ) {
                                         Icon(
                                             Icons.Default.Close,
-                                            contentDescription = stringResource(R.string.close),
+                                            contentDescription = i18n("common_close"),
                                         )
                                     }
                                 }
                             },
-                            label = { Text(text = stringResource(R.string.search_by_title_or_substance)) },
+                            label = { Text(text = i18n("journal_search_by_title_or_substance")) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions(
@@ -260,22 +259,22 @@ fun JournalScreen(
                             if (isFavoriteEnabled) {
                                 Column(modifier = Modifier.padding(horizontalPadding)) {
                                     Text(
-                                        text = stringResource(R.string.no_results),
+                                        text = i18n("journal_no_results"),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = stringResource(R.string.no_favorite_experience_titles_match_search),
+                                        text = i18n("journal_no_favorite_experience_titles_match_search"),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
                             } else {
                                 Column(modifier = Modifier.padding(horizontalPadding)) {
                                     Text(
-                                        text = stringResource(R.string.no_results),
+                                        text = i18n("journal_no_results"),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = stringResource(R.string.no_experience_titles_match_search),
+                                        text = i18n("journal_no_experience_titles_match_search"),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
@@ -304,13 +303,13 @@ fun JournalScreen(
             if (experiences.isEmpty() && !isSearchEnabled) {
                 if (isFavoriteEnabled) {
                     EmptyScreenDisclaimer(
-                        title = stringResource(R.string.no_favorites),
-                        description = stringResource(R.string.no_favorites_description)
+                        title = i18n("journal_no_favorites"),
+                        description = i18n("journal_no_favorites_description")
                     )
                 } else {
                     EmptyScreenDisclaimer(
-                        title = stringResource(R.string.journal_empty_title),
-                        description = stringResource(R.string.journal_empty_description)
+                        title = i18n("journal_empty_title"),
+                        description = i18n("journal_empty_description")
                     )
                 }
             }
