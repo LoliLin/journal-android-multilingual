@@ -55,6 +55,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
 fun ChooseRouteScreen(
@@ -241,7 +243,7 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = route.displayText,
+                text = i18nOrDefault(administrationRouteKey(route), route.displayText),
                 textAlign = TextAlign.Center,
                 style = titleStyle
             )
@@ -271,4 +273,3 @@ fun SaferInjectionLink(navigateToURL: (url: String) -> Unit) {
         Text("Safer injection guide")
     }
 }
-

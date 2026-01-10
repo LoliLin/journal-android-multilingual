@@ -62,6 +62,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.asPlural
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
@@ -269,7 +270,7 @@ fun ChooseDoseCustomUnitScreen(
                         value = doseText,
                         onValueChange = onChangeDoseText,
                         textStyle = textStyle,
-                        label = { Text("Dose", style = textStyle) },
+                        label = { Text(i18n("dose_label"), style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -292,14 +293,14 @@ fun ChooseDoseCustomUnitScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                        Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         OutlinedTextField(
                             value = estimatedDoseDeviationText,
                             onValueChange = onChangeEstimatedDoseDeviationText,
                             textStyle = textStyle,
-                            label = { Text("Estimated standard deviation", style = textStyle) },
+                            label = { Text(i18n("dose_estimated_sd_label"), style = textStyle) },
                             trailingIcon = {
                                 Text(
                                     text = customUnit.unit.asPlural(estimatedDoseDeviation ?: 2.0),
@@ -318,7 +319,7 @@ fun ChooseDoseCustomUnitScreen(
                 }
             }
             TextButton(onClick = useUnknownDoseAndNavigate) {
-                Text(text = "Log unknown dose")
+                Text(text = i18n("dose_log_unknown"))
             }
         }
     }

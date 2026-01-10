@@ -36,10 +36,12 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DotRows
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 
@@ -96,14 +98,18 @@ fun IngestionRow(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
+                val routeName = i18nOrDefault(
+                    administrationRouteKey(ingestion.administrationRoute),
+                    ingestion.administrationRoute.displayText
+                ).lowercase()
                 val text = buildAnnotatedString {
                     append(ingestionWithCompanionAndCustomUnit.doseDescription)
                     withStyle(style = SpanStyle(color = Color.Gray)) {
                         if (customUnit == null) {
-                            append(" " + ingestion.administrationRoute.displayText.lowercase())
+                            append(" $routeName")
                         }
                         ingestionWithCompanionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                            append(" = $it ${ingestion.administrationRoute.displayText.lowercase()}")
+                            append(" = $it $routeName")
                         }
                     }
                 }

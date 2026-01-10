@@ -49,10 +49,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 
 @Composable
@@ -175,14 +177,18 @@ fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit)
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
+        val routeName = i18nOrDefault(
+            administrationRouteKey(ingestionAndCustomUnit.ingestion.administrationRoute),
+            ingestionAndCustomUnit.ingestion.administrationRoute.displayText
+        ).lowercase()
         val text = buildAnnotatedString {
             append(ingestionAndCustomUnit.doseDescription)
             withStyle(style = SpanStyle(color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray )) {
                 if (ingestionAndCustomUnit.customUnit == null) {
-                    append(" " + ingestionAndCustomUnit.ingestion.administrationRoute.displayText.lowercase())
+                    append(" $routeName")
                 }
                 ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                    append(" = $it ${ingestionAndCustomUnit.ingestion.administrationRoute.displayText.lowercase()}")
+                    append(" = $it $routeName")
                 }
             }
         }

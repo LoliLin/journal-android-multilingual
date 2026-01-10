@@ -88,6 +88,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.categoryNameKey
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
@@ -254,7 +255,10 @@ fun SubstanceScreen(
                                 modifier = Modifier.padding(vertical = 5.dp)
                             ) {
                                 Text(
-                                    text = roa.route.displayText,
+                                    text = i18nOrDefault(
+                                        administrationRouteKey(roa.route),
+                                        roa.route.displayText
+                                    ),
                                     style = MaterialTheme.typography.titleMedium
                                 )
                                 if (roa.roaDose == null) {
@@ -437,7 +441,10 @@ fun SubstanceScreen(
                                     RouteColorCircle(roa.route)
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Text(
-                                        text = roa.route.displayText,
+                                        text = i18nOrDefault(
+                                            administrationRouteKey(roa.route),
+                                            roa.route.displayText
+                                        ),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                 }
