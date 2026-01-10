@@ -1,0 +1,76 @@
+<!--
+  ~ Copyright (c) 2022-2023. Isaak Hanimann.
+  ~ This file is part of PsychonautWiki Journal.
+  ~
+  ~ PsychonautWiki Journal is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or (at
+  ~ your option) any later version.
+  ~
+  ~ PsychonautWiki Journal is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
+  -->
+
+<resources>
+    <string name="app_name">日志</string>
+    <string name="journal">日志</string>
+    <string name="substances">物质</string>
+    <string name="safer">安全</string>
+    <string name="stats">统计</string>
+    <string name="settings">设置</string>
+    <string name="statistics_title">统计</string>
+    <string name="statistics_title_for_consumer">%1$s 的统计</string>
+    <string name="consumer">使用者</string>
+    <string name="check">选中</string>
+    <string name="stats_empty_title">暂无内容</string>
+    <string name="stats_empty_description">开始记录你的摄入，查看你的使用概览。</string>
+    <string name="stats_experiences_since">%1$s 起的记录</string>
+    <string name="stats_substance_counted_once">每次记录中每种物质仅计数一次</string>
+    <plurals name="stats_experience_count">
+        <item quantity="one">%d 次记录</item>
+        <item quantity="other">%d 次记录</item>
+    </plurals>
+    <string name="stats_total_dose">总计 %1$s %2$s</string>
+    <string name="stats_total_dose_estimated">总计 约%1$s %2$s</string>
+    <string name="stats_total_dose_estimated_with_sd">总计 %1$s±%2$s %3$s</string>
+    <string name="stats_total_dose_unknown">总剂量未知</string>
+    <string name="stats_no_ingestions_since">%1$s 以来暂无摄入</string>
+    <string name="stats_choose_longer_duration">选择更长的时间范围以查看统计。</string>
+    <string name="search">搜索</string>
+    <string name="search_off">关闭搜索</string>
+    <string name="search_by_title_or_substance">按标题或物质搜索</string>
+    <string name="search_substances">搜索物质</string>
+    <string name="regular_time">常规时间</string>
+    <string name="time_relative_to_now">相对当前时间</string>
+    <string name="is_favorite">已收藏</string>
+    <string name="is_not_favorite">未收藏</string>
+    <string name="navigate_to_calendar">打开日历</string>
+    <string name="add">添加</string>
+    <string name="close">关闭</string>
+    <string name="no_results">无结果</string>
+    <string name="no_favorite_experience_titles_match_search">没有收藏记录的标题匹配你的搜索。</string>
+    <string name="no_experience_titles_match_search">没有记录标题匹配你的搜索。</string>
+    <string name="no_favorites">暂无收藏</string>
+    <string name="no_favorites_description">将记录标为收藏以便快速查找。</string>
+    <string name="keyboard">键盘</string>
+    <string name="filter">筛选</string>
+    <string name="no_matching_substance_found">未找到匹配的物质</string>
+    <string name="add_custom_substance">添加自定义物质</string>
+    <string name="journal_empty_title">暂无记录</string>
+    <string name="journal_empty_description">添加你的第一次摄入。</string>
+    <string name="ingestion">摄入</string>
+    <string name="safer_use_title">安全使用</string>
+    <string name="safer_research_title">1. 调研</string>
+    <string name="safer_research_body">提前研究该物质或组合可能产生的持续时间、主观效果与潜在不良影响。\n阅读此处信息以及 PsychonautWiki 文章，并与其他来源（Tripsit、Erowid、Wikipedia、Bluelight、Reddit 等）交叉验证。不必着急。</string>
+    <string name="safer_testing_title">2. 检测</string>
+    <string name="safer_testing_body">使用匿名且免费的药物检测服务测试你的物质。如果你所在国家没有这些服务，可使用试剂检测套件。不要轻信经销商能提供可靠产品。最好有经过检测的储备，而不是临时依赖来源。</string>
+    <string name="drug_testing_services">药物检测服务</string>
+    <string name="reagent_testing">试剂检测</string>
+    <string name="open_link">打开链接</string>
+    <string name="article">文章</string>
+</resources>

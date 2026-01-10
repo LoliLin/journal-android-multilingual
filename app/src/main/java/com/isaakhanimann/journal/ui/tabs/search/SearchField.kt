@@ -45,8 +45,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.res.stringResource
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
@@ -65,11 +67,11 @@ fun SearchField(
             onChange(value)
         },
         modifier = modifier,
-        placeholder = { Text(text = "Search substances") },
+        placeholder = { Text(text = stringResource(R.string.search_substances)) },
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = stringResource(R.string.search),
             )
         },
         trailingIcon = {
@@ -81,7 +83,7 @@ fun SearchField(
                     }) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = "Close",
+                            contentDescription = stringResource(R.string.close),
                         )
                     }
                 }
@@ -98,7 +100,8 @@ fun SearchField(
                             }
                         }) {
                             Icon(
-                                Icons.Default.FilterList, contentDescription = "Filter"
+                                Icons.Default.FilterList,
+                                contentDescription = stringResource(R.string.filter)
                             )
                         }
                     }
@@ -121,7 +124,7 @@ fun SearchField(
                                     if (categoryChipModel.isActive) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription = "Check",
+                                            contentDescription = stringResource(R.string.check),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }

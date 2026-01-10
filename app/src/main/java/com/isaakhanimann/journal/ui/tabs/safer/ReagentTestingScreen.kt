@@ -40,8 +40,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -60,7 +62,7 @@ fun ReagentTestingScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Reagent testing") })
+            TopAppBar(title = { Text(stringResource(R.string.reagent_testing)) })
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -68,10 +70,10 @@ fun ReagentTestingScreen(
                 icon = {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
+                        contentDescription = stringResource(R.string.open_link)
                     )
                 },
-                text = { Text("Article") },
+                text = { Text(stringResource(R.string.article)) },
             )
         }
     ) { padding ->

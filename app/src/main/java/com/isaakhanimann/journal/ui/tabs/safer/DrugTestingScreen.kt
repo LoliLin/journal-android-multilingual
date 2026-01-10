@@ -45,10 +45,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,7 +59,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun DrugTestingScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Drug testing services") })
+            TopAppBar(title = { Text(stringResource(R.string.drug_testing_services)) })
         }
     ) { padding ->
         Column(
@@ -288,4 +290,3 @@ fun TestingServiceItem(
         )
     }
 }
-
