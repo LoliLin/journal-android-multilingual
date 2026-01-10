@@ -381,7 +381,7 @@ fun SettingsScreen(
             }
             CardWithTitle(title = i18n("settings_app"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(imageVector = Icons.Outlined.Code, text = i18n("settings_source_code")) {
-                    uriHandler.openUri("https://github.com/isaakhanimann/psychonautwiki-journal-android")
+                    uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual")
                 }
                 HorizontalDivider()
                 val context = LocalContext.current
