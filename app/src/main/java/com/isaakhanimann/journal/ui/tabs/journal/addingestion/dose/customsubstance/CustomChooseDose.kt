@@ -184,7 +184,7 @@ fun CustomChooseDose(
                     IconButton(onClick = { isShowingUnknownDoseDialog = true }) {
                         Icon(
                             imageVector = Icons.Default.QuestionMark,
-                            contentDescription = i18n("dose_log_unknown")
+                            contentDescription = i18n("log_unknown_dose")
                         )
                     }
                     AnimatedVisibility(visible = isShowingUnknownDoseDialog) {

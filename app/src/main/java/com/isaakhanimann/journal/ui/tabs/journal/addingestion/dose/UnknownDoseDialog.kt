@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import com.isaakhanimann.journal.localization.i18n
 import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.localization.i18n
 
@@ -43,11 +44,11 @@ fun UnknownDoseDialog(
     AlertDialog(
         onDismissRequest = dismiss,
         title = {
-            Text(text = i18n("dose_unknown_title"), style = MaterialTheme.typography.headlineSmall)
+            Text(text = i18n("unknown_dose_title"), style = MaterialTheme.typography.headlineSmall)
         },
         text = {
             Text(
-                i18n("dose_unknown_body")
+                i18n("unknown_dose_body")
             )
         },
         confirmButton = {
@@ -57,7 +58,7 @@ fun UnknownDoseDialog(
                     useUnknownDoseAndNavigate()
                 }
             ) {
-                Text(i18n("dose_log_unknown"))
+                Text(i18n("log_unknown_dose"))
             }
         },
         dismissButton = {

@@ -58,6 +58,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
@@ -319,7 +320,7 @@ fun ChooseDoseCustomUnitScreen(
                 }
             }
             TextButton(onClick = useUnknownDoseAndNavigate) {
-                Text(text = i18n("dose_log_unknown"))
+                Text(text = i18n("log_unknown_dose"))
             }
         }
     }

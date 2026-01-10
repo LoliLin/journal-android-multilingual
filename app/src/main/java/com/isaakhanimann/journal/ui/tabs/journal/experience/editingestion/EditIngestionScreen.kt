@@ -248,10 +248,10 @@ fun EditIngestionScreen(
                 icon = {
                     Icon(
                         Icons.Filled.Done,
-                        contentDescription = "Done icon"
+                        contentDescription = i18n("common_done")
                     )
                 },
-                text = { Text("Done") }
+                text = { Text(i18n("common_done")) }
             )
         }
     ) { padding ->
@@ -365,11 +365,11 @@ fun EditIngestionScreen(
                     }
                 }
             }
-            CardWithTitle(title = "Notes") {
+            CardWithTitle(title = i18n("common_notes")) {
                 OutlinedTextField(
                     value = note,
                     onValueChange = onNoteChange,
-                    label = { Text(text = "Notes") },
+                    label = { Text(text = i18n("common_notes")) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardActions = KeyboardActions(onDone = {
                         focusManager.clearFocus()
@@ -381,7 +381,7 @@ fun EditIngestionScreen(
                     singleLine = true
                 )
             }
-            CardWithTitle(title = "Time") {
+            CardWithTitle(title = i18n("common_time")) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -460,7 +460,7 @@ fun EditIngestionScreen(
                             onCheckedChange = {
                                 showNewConsumerTextField = !showNewConsumerTextField
                             })
-                        Text("Enter new consumer")
+                        Text(i18n("common_enter_new_consumer"))
                     }
                     AnimatedVisibility(visible = showNewConsumerTextField) {
                         OutlinedTextField(
@@ -479,7 +479,7 @@ fun EditIngestionScreen(
                                 imeAction = ImeAction.Done,
                                 capitalization = KeyboardCapitalization.Words
                             ),
-                            placeholder = { Text("New consumer name") },
+                            placeholder = { Text(i18n("common_new_consumer_name")) },
                             singleLine = true,
                             modifier = Modifier
                                 .fillMaxWidth()
