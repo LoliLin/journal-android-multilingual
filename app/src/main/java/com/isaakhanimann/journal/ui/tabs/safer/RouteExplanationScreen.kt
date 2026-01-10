@@ -43,10 +43,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 
 @Preview
@@ -93,7 +95,8 @@ Determining an optimal route of administration is highly dependent on the substa
                 }
             }
             AdministrationRoute.values().filter { !it.isInjectionMethod }.forEach {
-                SectionWithTitle(title = it.displayText) {
+                val routeTitle = i18nOrDefault(administrationRouteKey(it), it.displayText)
+                SectionWithTitle(title = routeTitle) {
                     Text(
                         text = it.articleText,
                         textAlign = TextAlign.Left,
@@ -117,7 +120,8 @@ Determining an optimal route of administration is highly dependent on the substa
                 }
             }
             AdministrationRoute.values().filter { it.isInjectionMethod }.forEach {
-                SectionWithTitle(title = it.displayText) {
+                val routeTitle = i18nOrDefault(administrationRouteKey(it), it.displayText)
+                SectionWithTitle(title = routeTitle) {
                     Text(
                         text = it.articleText,
                         textAlign = TextAlign.Left,

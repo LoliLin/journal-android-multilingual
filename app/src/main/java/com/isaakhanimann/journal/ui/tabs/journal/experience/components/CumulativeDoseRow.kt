@@ -33,8 +33,10 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
 fun CumulativeDoseRow(
@@ -55,10 +57,14 @@ fun CumulativeDoseRow(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
+                val routeName = i18nOrDefault(
+                    administrationRouteKey(cumulativeRouteAndDose.route),
+                    cumulativeRouteAndDose.route.displayText
+                ).lowercase()
                 val text = buildAnnotatedString {
                     append(cumulativeRouteAndDose.doseDescription)
                     withStyle(style = SpanStyle(color = Color.Gray)) {
-                        append(" " + cumulativeRouteAndDose.route.displayText.lowercase())
+                        append(" $routeName")
                     }
                 }
                 Text(text = text, style = MaterialTheme.typography.titleSmall)

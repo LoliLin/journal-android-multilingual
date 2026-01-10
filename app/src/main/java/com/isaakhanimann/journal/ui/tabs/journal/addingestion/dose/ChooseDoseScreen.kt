@@ -71,9 +71,11 @@ import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
 fun ChooseDoseScreen(
@@ -223,7 +225,20 @@ fun ChooseDoseScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("$substanceName ${administrationRoute.displayText} dose") })
+            val routeName = i18nOrDefault(
+                administrationRouteKey(administrationRoute),
+                administrationRoute.displayText
+            )
+            TopAppBar(
+                title = {
+                    Text(
+                        i18n(
+                            "dose_title_with_route",
+                            mapOf("substance" to substanceName, "route" to routeName)
+                        )
+                    )
+                }
+            )
         },
         floatingActionButton = {
             if (isValidDose) {
@@ -269,11 +284,11 @@ fun ChooseDoseScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Warning,
-                                contentDescription = "Dosage warning"
+                                contentDescription = i18n("dosage_warning")
                             )
                             Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                             Text(
-                                text = "There is no dosage info for this administration route. Research dosages somewhere else.",
+                                text = i18n("dosage_info_missing"),
                             )
                         }
                     }
@@ -305,7 +320,7 @@ fun ChooseDoseScreen(
                         value = doseText,
                         onValueChange = onChangeDoseText,
                         textStyle = textStyle,
-                        label = { Text("Dose", style = textStyle) },
+                        label = { Text(i18n("dose_label"), style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -327,7 +342,7 @@ fun ChooseDoseScreen(
                         OutlinedTextField(
                             value = units,
                             onValueChange = onChangeOfUnits,
-                            label = { Text("Units") },
+                            label = { Text(i18n("dose_units_label")) },
                             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                             singleLine = true,
@@ -356,14 +371,14 @@ fun ChooseDoseScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                        Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         OutlinedTextField(
                             value = estimatedDoseStandardDeviationText,
                             onValueChange = onChangeEstimatedDoseStandardDeviationText,
                             textStyle = textStyle,
-                            label = { Text("Estimated standard deviation", style = textStyle) },
+                            label = { Text(i18n("dose_estimated_sd_label"), style = textStyle) },
                             trailingIcon = {
                                 Text(
                                     text = units,
