@@ -1,0 +1,61 @@
+{
+  "name": "Gabapentin",
+  "commonNames": [
+    "Gabapentin",
+    "Neurontin",
+    "Gabarone",
+    "Gralise"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Gabapentin",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged continuous usage",
+    "zero": "7-14 days"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Opioids",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 200,
+        "commonMin": 900,
+        "strongMin": 1500,
+        "heavyMin": 2400
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 120,
+          "max": 180,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "min": 27,
+        "max": 60
+      }
+    }
+  ]
+}

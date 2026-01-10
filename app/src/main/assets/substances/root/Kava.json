@@ -1,0 +1,22 @@
+{
+  "name": "Kava",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Kava",
+  "isApproved": false,
+  "crossTolerances": [],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": []
+}

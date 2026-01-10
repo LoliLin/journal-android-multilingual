@@ -1,0 +1,130 @@
+{
+  "name": "25I-NBOMe",
+  "commonNames": [
+    "25i-NBOMe",
+    "25i",
+    "Cimbi-5"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25I-NBOMe",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "1 week",
+    "zero": "2 weeks"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "common"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "Dextromethorphan",
+      "Tramadol"
+    ],
+    "uncertain": [
+      "2C-T-X",
+      "5-MeO-xxt",
+      "Caffeine",
+      "Cannabis",
+      "DOx",
+      "MAOI",
+      "MDMA",
+      "Methoxetamine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 500,
+        "strongMin": 700
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 120,
+          "max": 180,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 7,
+          "units": "days"
+        }
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 500,
+        "strongMin": 700,
+        "heavyMin": 1000
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 3,
+          "max": 6,
+          "units": "days"
+        }
+      }
+    }
+  ]
+}

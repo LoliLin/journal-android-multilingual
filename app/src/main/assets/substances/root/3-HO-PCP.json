@@ -1,0 +1,55 @@
+{
+  "name": "3-HO-PCP",
+  "commonNames": [
+    "3-HO-PCP",
+    "Hydroxyphencyclidine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-HO-PCP",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "4 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 4,
+        "strongMin": 6,
+        "heavyMin": 8
+      },
+      "duration": {
+        "comeup": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

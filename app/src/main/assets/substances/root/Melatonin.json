@@ -1,0 +1,47 @@
+{
+  "name": "Melatonin",
+  "commonNames": [
+    "Melatonin"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Melatonin",
+  "isApproved": true,
+  "tolerance": {
+    "full": "after prolonged and repeated usage",
+    "half": "7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "oneirogen",
+    "nootropic",
+    "common"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.25,
+        "commonMin": 1,
+        "strongMin": 3,
+        "heavyMin": 6
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 20,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "min": 15,
+        "max": 15
+      }
+    }
+  ]
+}

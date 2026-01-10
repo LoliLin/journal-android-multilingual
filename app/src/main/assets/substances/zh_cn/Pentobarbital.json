@@ -1,0 +1,9 @@
+{
+  "addictionPotential": "高度生理和心理成瘾。",
+  "toxicities": [
+    "中等毒性。",
+    "与酒精或阿片等抑制剂混用可能致命。"
+  ],
+  "summary": "一种巴比妥类中枢抑制剂。通常不常用，因为相比苯二氮卓类更容易过量（OD），而后者是巴比妥类的替代品。常用于失眠导致镇静。",
+  "localizedName": "Pentobarbital"
+}

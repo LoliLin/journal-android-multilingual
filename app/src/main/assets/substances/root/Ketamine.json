@@ -1,0 +1,158 @@
+{
+  "name": "Ketamine",
+  "commonNames": [
+    "Ketamine",
+    "K",
+    "Ket",
+    "Kitty",
+    "Special K",
+    "Cat Tranquilizer",
+    "Ketaset",
+    "Ketalar",
+    "Ketanest",
+    "Vitamin K",
+    "Purple",
+    "Jet"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Ketamine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "categories": [
+    "dissociative",
+    "habit-forming",
+    "common"
+  ],
+  "effectsSummary": "The effect of ketamine as an intoxicant is strongly dependent on the dosage: In lower doses, it has a disinhibiting and relaxing effect similar to alcohol, while higher doses can induce trance-like states up to out-of-body or near-death experiences (K-Hole). There can be a fragmentary dissolution of the environment and bodily sensation, thoughts can break off, feelings of weightlessness or floating can appear. Sensory perceptions and the sense of space-time change. At higher doses, detachment from one's own body and/or ego dissolution or merging with the environment may occur.\nAfter the trip: drowsiness, memory of the experience is often only partially possible.",
+  "dosageRemark": "The dosage of ketamine depends strongly on the desired effect.",
+  "generalRisks": "Movement and communication may be severely restricted. Partial or complete insensitivity to pain, coordination disorders, sensation of weakness, loss of appetite, nausea, vomiting, uncoordinated muscle movements, dizziness, slurred speech, increased pulse and blood pressure and cardiac arrhythmias. At high doses, muscle stiffness, paralysis and narcosis, at very high doses, epileptic seizures and coma.\nKetamine puts a strain on the cardiovascular system. A ketamine trip can be psychologically very stressful. Many ketamine users report near-death experiences, nightmare hallucinations, tunnel visions, blackouts and short periods of memory loss.\nAfter repeated consumption within a short period of time, the effect diminishes considerably and a tolerance develops.\nKetamine taken intravenously quicker than 1.5 minute can cause breathing depression for up to a minute.",
+  "longtermRisks": "Ketamine can cause dependence with psychological symptoms. Chronic use damages the liver and kidneys and can lead to depressive moods and anxiety. It is suspected that even in small doses, ketamine can trigger dysfunctions in areas of the brain responsible for memory, learning and perception. The more often it is consumed and the larger the individual doses, the more alarming these disturbances become.",
+  "saferUse": [
+    "Ketamine is not a party drug! Do not take ketamine alone and make sure you are in a familiar and comfortable environment. Allow enough time to process the trip in peace afterwards.",
+    "Dose carefully. Small differences in dose can cause significant differences in effect, so dosing is difficult.",
+    "Take regular breaks from consumption.",
+    "You need a place to sit or lie down, because at high doses there is a great risk of collapsing or fainting.",
+    "Because of the insensitivity to pain, you can hurt yourself without noticing it.",
+    "Do not take ketamine on a full stomach.",
+    "Refrain from mixed consumption. When combined with alcohol, benzodiazepines or opiates, there is a risk of respiratory arrest! Mixing with uppers (e.g. cocaine) can lead to circulatory problems, increase in heart rate and shortness of breath.",
+    "People with cardiovascular problems, high blood pressure or glaucoma should absolutely refrain from consuming ketamine!"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Tramadol",
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "Cocaine",
+      "Benzodiazepines",
+      "MAOI",
+      "Trazodone",
+      "Grapefruit"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 30,
+        "strongMin": 75,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 12,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "max": 45
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 100,
+        "strongMin": 300,
+        "heavyMin": 450
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "max": 17
+      }
+    },
+    {
+      "name": "sublingual",
+      "bioavailability": {
+        "min": 20,
+        "max": 29
+      }
+    }
+  ]
+}

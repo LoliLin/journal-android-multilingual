@@ -1,0 +1,85 @@
+{
+  "name": "6-APDB",
+  "commonNames": [
+    "6-APDB"
+  ],
+  "url": "https://psychonautwiki.org/wiki/6-APDB",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "21-30 days",
+    "zero": "2-3 months"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "psychedelic",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI",
+      "SNRIs",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 70,
+        "strongMin": 100,
+        "heavyMin": 130
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

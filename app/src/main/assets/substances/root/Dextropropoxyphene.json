@@ -1,0 +1,78 @@
+{
+  "name": "Dextropropoxyphene",
+  "commonNames": [
+    "Dextropropoxyphene",
+    "Propoxyphene",
+    "Darvon"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Dextropropoxyphene",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 65,
+        "strongMin": 100,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

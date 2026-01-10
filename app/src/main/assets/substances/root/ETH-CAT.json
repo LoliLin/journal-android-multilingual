@@ -1,0 +1,116 @@
+{
+  "name": "ETH-CAT",
+  "commonNames": [
+    "ETH-CAT",
+    "Ethcathinone",
+    "Ethylpropion"
+  ],
+  "url": "https://psychonautwiki.org/wiki/ETH-CAT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "2 - 3 days",
+    "zero": "3-5 days"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "categories": [
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 35,
+        "strongMin": 70,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 60,
+        "commonMin": 150,
+        "strongMin": 225,
+        "heavyMin": 325
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 40,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

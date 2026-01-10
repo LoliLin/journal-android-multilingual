@@ -54,6 +54,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.SubstanceRowAddIngestion
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
@@ -87,7 +88,10 @@ private fun ChooseSubstanceScreen(
         floatingActionButton = {
             if (!isFocused) {
                 FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
-                    Icon(Icons.Default.Keyboard, contentDescription = "Keyboard")
+                    Icon(
+                        Icons.Default.Keyboard,
+                        contentDescription = i18n("search_keyboard")
+                    )
                 }
             }
         }
@@ -108,11 +112,11 @@ private fun ChooseSubstanceScreen(
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
                     },
-                placeholder = { Text(text = "Search substances") },
+                placeholder = { Text(text = i18n("search_substances_placeholder")) },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = i18n("common_search"),
                     )
                 },
                 trailingIcon = {
@@ -123,7 +127,7 @@ private fun ChooseSubstanceScreen(
                             }) {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = "Close",
+                                    contentDescription = i18n("common_close"),
                                 )
                             }
                         }
@@ -148,7 +152,10 @@ private fun ChooseSubstanceScreen(
                 }
                 item {
                     if (filteredSubstances.isEmpty()) {
-                        Text("No matching substance found", modifier = Modifier.padding(10.dp))
+                        Text(
+                            i18n("search_no_match"),
+                            modifier = Modifier.padding(10.dp)
+                        )
                     }
                 }
             }

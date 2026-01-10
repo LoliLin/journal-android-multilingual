@@ -1,0 +1,76 @@
+{
+  "name": "1P-LSD",
+  "commonNames": [
+    "1P-LSD"
+  ],
+  "url": "https://psychonautwiki.org/wiki/1P-LSD",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "5-7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 15,
+        "commonMin": 75,
+        "strongMin": 150,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

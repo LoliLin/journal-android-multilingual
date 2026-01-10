@@ -1,0 +1,62 @@
+{
+  "name": "Zolpidem",
+  "commonNames": [
+    "Ambien",
+    "Intermezzo",
+    "Edluar",
+    "Zolpimist"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Zolpidem",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "hallucinogen",
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 30,
+        "heavyMin": 50
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

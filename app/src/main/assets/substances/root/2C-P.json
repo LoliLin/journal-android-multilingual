@@ -1,0 +1,76 @@
+{
+  "name": "2C-P",
+  "commonNames": [
+    "2C-P"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-P",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 6,
+        "strongMin": 10,
+        "heavyMin": 16
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 10,
+          "max": 20,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 8,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

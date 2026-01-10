@@ -1,0 +1,57 @@
+{
+  "name": "Clonazolam",
+  "commonNames": [
+    "Clonazolam",
+    "Clonitrazolam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Clonazolam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical",
+    "habit-forming",
+    "common"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 200,
+        "strongMin": 400,
+        "heavyMin": 1
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

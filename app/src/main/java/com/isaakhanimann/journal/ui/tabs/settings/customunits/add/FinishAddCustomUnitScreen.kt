@@ -57,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.CurrentDoseClassInfo
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
@@ -293,7 +294,12 @@ fun EditCustomUnitSections(
                     value = doseText,
                     onValueChange = onChangeDoseText,
                     textStyle = textStyle,
-                    label = { Text("Dose per $unit", style = textStyle) },
+                    label = {
+                        Text(
+                            i18n("dose_per_unit", mapOf("unit" to unit)),
+                            style = textStyle
+                        )
+                    },
                     trailingIcon = {
                         Text(
                             text = roaDose?.units ?: "",
@@ -310,11 +316,11 @@ fun EditCustomUnitSections(
                         .fillMaxWidth()
                         .focusRequester(focusRequesterDose)
                 )
-                if (isShowingUnitsField) {
-                    OutlinedTextField(
-                        value = originalUnit,
-                        onValueChange = onChangeOfOriginalUnit,
-                        label = { Text("Units") },
+                    if (isShowingUnitsField) {
+                        OutlinedTextField(
+                            value = originalUnit,
+                            onValueChange = onChangeOfOriginalUnit,
+                            label = { Text(i18n("dose_units_label")) },
                         keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                         singleLine = true,
@@ -343,14 +349,19 @@ fun EditCustomUnitSections(
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                    Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                    Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
                 }
                 AnimatedVisibility(visible = isEstimate) {
                     OutlinedTextField(
                         value = estimatedDoseStandardDeviationText,
                         onValueChange = onChangeEstimatedDoseStandardDeviationText,
                         textStyle = textStyle,
-                        label = { Text("Estimated standard deviation per $unit", style = textStyle) },
+                        label = {
+                            Text(
+                                i18n("dose_estimated_sd_per_unit", mapOf("unit" to unit)),
+                                style = textStyle
+                            )
+                        },
                         trailingIcon = {
                             Text(
                                 text = originalUnit,

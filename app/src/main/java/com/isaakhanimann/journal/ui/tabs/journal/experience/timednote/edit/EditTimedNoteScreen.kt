@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNoteScreenContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,7 +63,7 @@ fun EditTimedNoteScreen(
                     }) {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done icon"
+                            contentDescription = i18n("common_done")
                         )
                     }
                 }

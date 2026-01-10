@@ -1,0 +1,49 @@
+{
+  "name": "Bromantane",
+  "commonNames": [
+    "Bromantane",
+    "Bromantan",
+    "Ladasten"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Bromantane",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "stimulant",
+    "nootropic",
+    "depressant",
+    "research-chemical"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 50,
+        "strongMin": 100,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "max": 42
+      }
+    }
+  ]
+}

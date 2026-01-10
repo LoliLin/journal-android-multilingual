@@ -1,0 +1,45 @@
+{
+  "name": "Βk-2C-B",
+  "commonNames": [
+    "βk-2C-B",
+    "beta-keto 2C-B",
+    "bk-2C-B"
+  ],
+  "url": "https://psychonautwiki.org/wiki/%CE%92k-2C-B",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 80,
+        "strongMin": 100,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 70,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

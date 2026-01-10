@@ -1,0 +1,117 @@
+{
+  "name": "3-MeO-PCE",
+  "commonNames": [
+    "3-MeO-PCE",
+    "Methoxyeticyclidine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-MeO-PCE",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociatives"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 6,
+        "strongMin": 12,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 3,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 45,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 8,
+        "strongMin": 15,
+        "heavyMin": 25
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

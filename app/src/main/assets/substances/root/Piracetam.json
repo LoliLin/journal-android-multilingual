@@ -1,0 +1,44 @@
+{
+  "name": "Piracetam",
+  "commonNames": [
+    "Piracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Piracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "g",
+        "lightMin": 0.25,
+        "commonMin": 2,
+        "strongMin": 3,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

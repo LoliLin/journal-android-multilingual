@@ -1,0 +1,36 @@
+{
+  "name": "Haloperidol",
+  "commonNames": [
+    "Haldol"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Haloperidol",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "antipsychotic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.25,
+        "commonMin": 1,
+        "strongMin": 5,
+        "heavyMin": 10
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 12,
+          "max": 36,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

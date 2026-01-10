@@ -1,0 +1,51 @@
+{
+  "name": "Eszopiclone",
+  "commonNames": [
+    "Lunesta",
+    "Eszop"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Eszopiclone",
+  "isApproved": false,
+  "tolerance": {
+    "full": "within a couple of weeks of daily use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "categories": [
+    "hallucinogen",
+    "depressant",
+    "hypnotic",
+    "habit-forming"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 6
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

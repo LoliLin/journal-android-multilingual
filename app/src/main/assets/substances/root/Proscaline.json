@@ -1,0 +1,39 @@
+{
+  "name": "Proscaline",
+  "commonNames": [
+    "Proscaline"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Proscaline",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 30,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

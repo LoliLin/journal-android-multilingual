@@ -73,7 +73,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
-import com.isaakhanimann.journal.ui.DOSE_DISCLAIMER
 import com.isaakhanimann.journal.ui.FULL_STOMACH_DISCLAIMER
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChasingTheDragonText
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.OptionalDosageUnitDisclaimer
@@ -88,8 +87,12 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.absoluteValue
@@ -114,6 +117,7 @@ fun SubstanceScreen(
         navigateToExplainTimeline = navigateToExplainTimeline,
         navigateToURL = navigateToArticle,
         substanceWithCategories = viewModel.substanceWithCategories,
+        interactionNameLookup = viewModel.interactionNameLookup,
         customUnits = viewModel.customUnitsFlow.collectAsState().value
     )
 }
@@ -133,6 +137,7 @@ fun SubstanceScreenPreview(
             navigateToURL = {},
             navigateToCategoryScreen = {},
             substanceWithCategories = substanceWithCategories,
+            interactionNameLookup = emptyMap(),
             customUnits = listOf(
                 CustomUnit.mdmaSample
             )
@@ -151,12 +156,13 @@ fun SubstanceScreen(
     navigateToURL: (url: String) -> Unit,
     navigateToCategoryScreen: (categoryName: String) -> Unit,
     substanceWithCategories: SubstanceWithCategories,
+    interactionNameLookup: Map<String, String>,
     customUnits: List<CustomUnit>
 ) {
     val substance = substanceWithCategories.substance
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(substance.name) })
+            TopAppBar(title = { Text(substance.displayName) })
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -164,10 +170,10 @@ fun SubstanceScreen(
                 icon = {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open PW article"
+                        contentDescription = i18n("substance_open_article")
                     )
                 },
-                text = { Text("More info") },
+                text = { Text(i18n("substance_more_info")) },
             )
         }
     ) { padding ->
@@ -193,7 +199,7 @@ fun SubstanceScreen(
                     ) {
                         Icon(imageVector = Icons.Default.GppBad, contentDescription = "Verified")
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Info is not approved")
+                        Text(text = i18n("substance_info_not_approved"))
                     }
                 }
             }
@@ -236,7 +242,7 @@ fun SubstanceScreen(
                 return@filter !isEveryDoseNull
             }
             if (substance.dosageRemark != null || roasWithDosesDefined.isNotEmpty()) {
-                SectionWithTitle(title = "Dosage") {
+                SectionWithTitle(title = i18n("substance_dosage_title")) {
                     Column(Modifier.padding(horizontal = horizontalPadding)) {
                         if (substance.dosageRemark != null) {
                             Text(text = substance.dosageRemark)
@@ -248,11 +254,14 @@ fun SubstanceScreen(
                                 modifier = Modifier.padding(vertical = 5.dp)
                             ) {
                                 Text(
-                                    text = roa.route.displayText,
+                                    text = i18nOrDefault(
+                                        administrationRouteKey(roa.route),
+                                        roa.route.displayText
+                                    ),
                                     style = MaterialTheme.typography.titleMedium
                                 )
                                 if (roa.roaDose == null) {
-                                    Text(text = "No dosage info")
+                                    Text(text = i18n("substance_no_dosage_info"))
                                 } else {
                                     RoaDoseView(roaDose = roa.roaDose)
                                 }
@@ -272,7 +281,14 @@ fun SubstanceScreen(
                                 }
                                 val bio = roa.bioavailability
                                 if (bio != null) {
-                                    Text(text = "Bioavailability: ${bio.min?.toReadableString() ?: ".."}-${bio.max?.toReadableString() ?: ".."}%")
+                                    val minText = bio.min?.toReadableString() ?: ".."
+                                    val maxText = bio.max?.toReadableString() ?: ".."
+                                    Text(
+                                        text = i18n(
+                                            "substance_bioavailability",
+                                            mapOf("min" to minText, "max" to maxText)
+                                        )
+                                    )
                                 }
                                 if (roa.route == AdministrationRoute.SMOKED && substance.name != "Cannabis") {
                                     Spacer(modifier = Modifier.height(5.dp))
@@ -285,36 +301,36 @@ fun SubstanceScreen(
                         }
                         VerticalSpace()
                         OptionalDosageUnitDisclaimer(substance.name)
-                        Text(text = DOSE_DISCLAIMER)
+                        Text(text = i18n("dose_disclaimer"))
                         VerticalSpace()
                         if (substance.roas.any { it.roaDose?.shouldUseVolumetricDosing == true }) {
                             HorizontalDivider()
                             TextButton(onClick = navigateToVolumetricDosingScreen) {
                                 Icon(
                                     Icons.Outlined.Info,
-                                    contentDescription = "Info",
+                                    contentDescription = i18n("substance_info"),
                                     modifier = Modifier.size(ButtonDefaults.IconSize)
                                 )
                                 Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                                Text("Volumetric dosing")
+                                Text(i18n("substance_volumetric_dosing"))
                             }
                         }
                         HorizontalDivider()
                         TextButton(onClick = navigateToDosageExplanationScreen) {
                             Icon(
                                 Icons.Outlined.Info,
-                                contentDescription = "Info",
+                                contentDescription = i18n("substance_info"),
                                 modifier = Modifier.size(ButtonDefaults.IconSize)
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                            Text("Dosage classification")
+                            Text(i18n("substance_dosage_classification"))
                         }
 
                     }
                 }
             }
             if (substance.tolerance != null || substance.crossTolerances.isNotEmpty()) {
-                SectionWithTitle(title = "Tolerance") {
+                SectionWithTitle(title = i18n("substance_tolerance_title")) {
                     Column {
                         VerticalSpace()
                         ToleranceSection(
@@ -327,7 +343,7 @@ fun SubstanceScreen(
                 }
             }
             if (substance.toxicities.isNotEmpty()) {
-                SectionWithTitle(title = "Toxicity") {
+                SectionWithTitle(title = i18n("substance_toxicity_title")) {
                     Column {
                         VerticalSpace()
                         if (substance.toxicities.size == 1) {
@@ -352,13 +368,13 @@ fun SubstanceScreen(
                 return@filter !isEveryDurationNull
             }
             if (roasWithDurationsDefined.isNotEmpty()) {
-                SectionWithTitle(title = "Duration") {
+                SectionWithTitle(title = i18n("substance_duration_title")) {
                     Column(Modifier.padding(horizontal = horizontalPadding)) {
                         var ingestionTime by remember { mutableStateOf(LocalDateTime.now()) }
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            Text("Start:")
+                            Text(i18n("substance_duration_start"))
                             Spacer(modifier = Modifier.width(5.dp))
                             TimePickerButton(
                                 localDateTime = ingestionTime,
@@ -375,7 +391,7 @@ fun SubstanceScreen(
                                 IconButton(onClick = { ingestionTime = LocalDateTime.now() }) {
                                     Icon(
                                         imageVector = Icons.Default.Update,
-                                        contentDescription = "Reset to now"
+                                        contentDescription = i18n("substance_duration_reset")
                                     )
                                 }
                             }
@@ -383,7 +399,7 @@ fun SubstanceScreen(
                             IconButton(onClick = navigateToExplainTimeline) {
                                 Icon(
                                     imageVector = Icons.Outlined.Info,
-                                    contentDescription = "Timeline disclaimer"
+                                    contentDescription = i18n("substance_duration_disclaimer")
                                 )
                             }
                         }
@@ -424,13 +440,16 @@ fun SubstanceScreen(
                                     RouteColorCircle(roa.route)
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Text(
-                                        text = roa.route.displayText,
+                                        text = i18nOrDefault(
+                                            administrationRouteKey(roa.route),
+                                            roa.route.displayText
+                                        ),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                 }
                                 val roaDuration = roa.roaDuration
                                 if (roaDuration == null) {
-                                    Text(text = "No duration info")
+                                    Text(text = i18n("substance_no_duration_info"))
                                 } else {
                                     Spacer(modifier = Modifier.height(3.dp))
                                     RoaDurationView(roaDuration = roaDuration)
@@ -453,17 +472,20 @@ fun SubstanceScreen(
             val interactions = substance.interactions
             if (interactions != null) {
                 if (interactions.dangerous.isNotEmpty() || interactions.unsafe.isNotEmpty() || interactions.uncertain.isNotEmpty()) {
-                    SectionWithTitle(title = "Interactions") {
+                    SectionWithTitle(title = i18n("substance_interactions_title")) {
                         InteractionsView(
                             interactions = substance.interactions,
                             substanceURL = substance.url,
-                            navigateToURL = navigateToURL
+                            navigateToURL = navigateToURL,
+                            displayNameForSubstance = { name ->
+                                interactionNameLookup[name] ?: name
+                            }
                         )
                     }
                 }
             }
             if (substance.effectsSummary != null) {
-                SectionWithTitle(title = "Effects") {
+                SectionWithTitle(title = i18n("substance_effects_title")) {
                     Column {
                         Text(
                             text = substance.effectsSummary,
@@ -474,7 +496,7 @@ fun SubstanceScreen(
                 }
             }
             if (substance.generalRisks != null && substance.longtermRisks != null) {
-                SectionWithTitle(title = "Risks") {
+                SectionWithTitle(title = i18n("substance_risks_title")) {
                     Column {
                         Text(
                             text = substance.generalRisks,
@@ -483,7 +505,7 @@ fun SubstanceScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
-                SectionWithTitle(title = "Long-term") {
+                SectionWithTitle(title = i18n("substance_long_term_title")) {
                     Column {
                         Text(
                             text = substance.longtermRisks,
@@ -494,7 +516,7 @@ fun SubstanceScreen(
                 }
             }
             if (substance.saferUse.isNotEmpty()) {
-                SectionWithTitle(title = "Safer use") {
+                SectionWithTitle(title = i18n("substance_safer_use_title")) {
                     Column {
                         BulletPoints(
                             points = substance.saferUse,
@@ -505,7 +527,7 @@ fun SubstanceScreen(
                 }
             }
             if (substance.addictionPotential != null) {
-                SectionWithTitle(title = "Addiction potential") {
+                SectionWithTitle(title = i18n("substance_addiction_potential_title")) {
                     Column {
                         Text(
                             substance.addictionPotential,
@@ -518,12 +540,12 @@ fun SubstanceScreen(
             val firstRoa = substance.roas.firstOrNull()
             val useVolumetric = firstRoa?.roaDose?.shouldUseVolumetricDosing == true
             if (substance.isHallucinogen || substance.isStimulant || useVolumetric) {
-                SectionWithTitle(title = "See also") {
+                SectionWithTitle(title = i18n("substance_see_also_title")) {
                     Column {
                         if (substance.isHallucinogen) {
                             TextButton(onClick = navigateToSaferHallucinogensScreen) {
                                 Text(
-                                    text = "Safer hallucinogen use",
+                                    text = i18n("substance_safer_hallucinogen_use"),
                                     modifier = Modifier.padding(horizontal = horizontalPadding)
                                 )
                             }
@@ -532,7 +554,7 @@ fun SubstanceScreen(
                         if (substance.isStimulant) {
                             TextButton(onClick = navigateToSaferStimulantsScreen) {
                                 Text(
-                                    text = "Safer stimulant use",
+                                    text = i18n("substance_safer_stimulant_use"),
                                     modifier = Modifier.padding(horizontal = horizontalPadding)
                                 )
                             }
@@ -587,6 +609,10 @@ fun CategoryChipFromSubstanceScreen(
     category: Category,
     navigateToCategoryScreen: (categoryName: String) -> Unit
 ) {
+    val displayName = i18nOrDefault(
+        key = categoryNameKey(category.name),
+        fallback = category.name
+    )
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -599,7 +625,7 @@ fun CategoryChipFromSubstanceScreen(
             .padding(vertical = 4.dp, horizontal = 10.dp)
 
     ) {
-        Text(text = category.name)
+        Text(text = displayName)
         Spacer(modifier = Modifier.width(3.dp))
         Icon(
             imageVector = Icons.Default.ChevronRight,

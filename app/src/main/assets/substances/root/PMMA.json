@@ -1,0 +1,22 @@
+{
+  "name": "PMMA",
+  "commonNames": [
+    "PMMA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/PMMA",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "entactogen"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "commonMin": 100,
+        "strongMin": 120
+      }
+    }
+  ]
+}

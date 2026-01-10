@@ -49,6 +49,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,7 +58,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun DrugTestingScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Drug testing services") })
+            TopAppBar(title = { Text(i18n("safer_drug_testing_services")) })
         }
     ) { padding ->
         Column(
@@ -288,4 +289,3 @@ fun TestingServiceItem(
         )
     }
 }
-

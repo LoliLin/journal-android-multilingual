@@ -1,0 +1,71 @@
+{
+  "name": "25D-NBOMe",
+  "commonNames": [
+    "25D-NBOMe"
+  ],
+  "url": "https://psychonautwiki.org/wiki/25D-NBOMe",
+  "isApproved": true,
+  "crossTolerances": [
+    "psychedelics"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Substituted amphetamines",
+      "ΑMT",
+      "Cocaine",
+      "Dextromethorphan",
+      "Tramadol"
+    ],
+    "uncertain": [
+      "2C-T-X",
+      "5-MeO-xxt",
+      "Caffeine",
+      "Cannabis",
+      "DOx",
+      "MAOI",
+      "MDMA",
+      "Methoxetamine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 300,
+        "commonMin": 800,
+        "strongMin": 1000,
+        "heavyMin": 1200
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

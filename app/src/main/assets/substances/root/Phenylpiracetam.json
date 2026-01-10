@@ -1,0 +1,48 @@
+{
+  "name": "Phenylpiracetam",
+  "commonNames": [
+    "Phenylpiracetam",
+    "Phenotropil",
+    "Carphedon"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Phenylpiracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "categories": [
+    "stimulant",
+    "nootropic",
+    "research-chemical"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 100,
+        "strongMin": 200,
+        "heavyMin": 400
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

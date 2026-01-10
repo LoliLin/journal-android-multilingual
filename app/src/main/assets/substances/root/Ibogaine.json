@@ -1,0 +1,44 @@
+{
+  "name": "Ibogaine",
+  "commonNames": [
+    "Ibogaine",
+    "Endabuse",
+    "Iboga"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Ibogaine",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "psychedelic",
+    "opioid",
+    "dissociative",
+    "depressant"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg/kg of body weight",
+        "commonMin": 15,
+        "strongMin": 22
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 180,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 18,
+          "max": 36,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 24,
+          "max": 72,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "ΑMT",
+  "commonNames": [
+    "AMT",
+    "αMT",
+    "Indopan"
+  ],
+  "url": "https://psychonautwiki.org/wiki/%CE%91MT",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "14 days",
+    "zero": "1 month"
+  },
+  "crossTolerances": [
+    "psychedelics"
+  ],
+  "categories": [
+    "psychedelic",
+    "entactogen"
+  ],
+  "interactions": {
+    "dangerous": [
+      "2C-T-x",
+      "2C-x",
+      "5-MeO-xxT",
+      "Substituted amphetamines",
+      "Cocaine",
+      "DOx",
+      "Dextromethorphan",
+      "MAOI",
+      "MDMA",
+      "Mescaline",
+      "Methoxetamine",
+      "25x-NBOMe",
+      "PCP",
+      "SSRIs",
+      "Tramadol"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Alcohol",
+      "Caffeine",
+      "Cannabis"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 180,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 13,
+          "max": 15,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

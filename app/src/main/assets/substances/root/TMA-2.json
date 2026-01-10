@@ -1,0 +1,66 @@
+{
+  "name": "TMA-2",
+  "commonNames": [
+    "TMA-2"
+  ],
+  "url": "https://psychonautwiki.org/wiki/TMA-2",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "tentative"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

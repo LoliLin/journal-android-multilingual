@@ -1,0 +1,117 @@
+{
+  "name": "Alcohol",
+  "commonNames": [
+    "Alcohol",
+    "Booze",
+    "Liquor",
+    "Moonshine",
+    "Sauce",
+    "Juice",
+    "Bevvy"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Alcohol",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "GABA",
+    "depressants"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "effectsSummary": "Stimulation, relaxation, calming down, disinhibition, sociability, euphoria, reduction of the ability to react, overestimation of oneself and urge to talk, but also melancholy or irritability up to aggressiveness.\nAbsinthe (\"The Green Fairy\"), a high-proof spirit (usually 50 - 70 % by volume), contains the plant substance thujone. Together with the main active ingredient alcohol, thujone is said to have stimulating and mind-altering effects. In Europe, as in Switzerland, clear limits apply (max. 35 mg thujone per kg alcohol). Caution with chronic use! A thujone overdose manifests itself in seizures and epilepsy-like symptoms.",
+  "dosageRemark": "Standard drinks such as 3 dl beer, 1 dl wine or 2 cl spirits contain about 12 g alcohol. The effect of alcohol is influenced by the amount consumed, the type of alcohol (sugary and/or carbonated), the period of consumption and individual factors (age, sex, weight). The blood alcohol concentration is measured in parts per thousand (‰). The higher the alcohol concentration in the blood, the stronger the effect of alcohol.",
+  "generalRisks": "Small amounts of alcohol generally have a relaxing and exhilarating effect, a general feeling of well-being spreads, fears are reduced and sociability increases. The consumption of larger amounts can lead to balance and speech disorders, visual disturbances (double vision or tunnel vision), stomach pain, nausea to vomiting, headaches (hangover) due to dehydration, loss of control and blackouts. There is a risk of accidents due to overestimation of one's own abilities and reduced ability to react. High doses can lead to hypothermia or overheating, deep sleep and coma. Very high doses (blood alcohol concentration of 3-4‰) can be life-threatening.\nBinge drinking, i.e. the consumption of a large amount of alcohol in a very short time, causes the blood alcohol content to rise particularly quickly and strongly. This can quickly lead to alcohol poisoning. Consequences can be: comatose state, memory lapses (film tears), deactivation of important reflexes (danger of choking when vomiting, danger of freezing to death when cold) as well as epileptic seizures. There is also an increased risk of thrombosis, high or low blood pressure, respiratory depression and sudden cardiac death.",
+  "longtermRisks": "Since alcohol is a cytotoxin, regular heavy consumption can have consequences such as damage to all bodily organs, deficiency symptoms, disorders of the nervous system, coordination of movement and memory functions, and even alcohol-induced dementia. Alcohol is a co-carcinogen, i.e. it significantly increases the carcinogenic effect of other substances (e.g. nicotine).\nAlcohol can produce a dependence with psychological and physical symptoms. Typical withdrawal symptoms are trembling, sweating, nausea and vomiting up to epileptic seizures. On a psychological level, irritability, anxiety disorders, depressive moods and hallucinations may occur. Tolerance develops with regular consumption.",
+  "saferUse": [
+    "Do not consume alcohol out of boredom or when you feel bad.",
+    "Drink alcohol with pleasure and take your time.",
+    "Do not drink alcohol on an empty stomach.",
+    "Avoid mixed consumption of different alcoholic drinks, drink water with it (e.g. a glass of water after each alcoholic drink).",
+    "Be careful with mixed drinks (e.g. alcopops) or self-mixed drinks! With these sweet drinks you can hardly taste the alcohol, even though a 3-litre bottle contains about two schnapps. The danger of an unintentional overdose is high.",
+    "In general, refrain from consuming alcohol if you consume other psychoactive substances; their effect is altered by the alcohol, or sometimes life-threatening side effects occur (e.g. alcohol and GHB = danger of suffocation!).",
+    "If you drink, you don't drive. Use public transport, take a taxi or walk.",
+    "Alcohol consumption during pregnancy is a risk for the foetus. Severe damage to the child can be the result.",
+    "Follow the safe sex rules even when under the influence of alcohol."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives",
+      "Benzodiazepines",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Opioids",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cocaine",
+      "MAOI",
+      "PCP",
+      "ALDH2 inhibitors",
+      "Hepatotoxic drugs"
+    ],
+    "uncertain": [
+      "Stimulants",
+      "Cannabis",
+      "Substituted amphetamines",
+      "ΑMT",
+      "MDMA",
+      "Nitrous",
+      "SSRIs"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "g",
+        "lightMin": 10,
+        "commonMin": 20,
+        "strongMin": 30,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 45,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1.5,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Bromo-DragonFLY",
+  "commonNames": [
+    "Bromo-DragonFLY",
+    "DOB-DragonFLY",
+    "B-DFLY",
+    "Dragonfly"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Bromo-DragonFLY",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "6 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 75,
+        "commonMin": 300,
+        "strongMin": 500,
+        "heavyMin": 750
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 7,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        },
+        "total": {
+          "min": 1,
+          "max": 4,
+          "units": "days"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 36,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

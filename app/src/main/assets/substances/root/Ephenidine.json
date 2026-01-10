@@ -1,0 +1,55 @@
+{
+  "name": "Ephenidine",
+  "commonNames": [
+    "Ephenidine",
+    "NEDPA"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Ephenidine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 30,
+        "commonMin": 70,
+        "strongMin": 100,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 5,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

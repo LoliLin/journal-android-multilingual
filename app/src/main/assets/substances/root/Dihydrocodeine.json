@@ -1,0 +1,61 @@
+{
+  "name": "Dihydrocodeine",
+  "commonNames": [
+    "Dihydrocodeine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Dihydrocodeine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 100,
+        "strongMin": 150,
+        "heavyMin": 200
+      },
+      "duration": {
+        "total": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

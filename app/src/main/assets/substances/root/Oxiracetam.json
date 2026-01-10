@@ -1,0 +1,45 @@
+{
+  "name": "Oxiracetam",
+  "commonNames": [
+    "Oxiracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Oxiracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "categories": [
+    "stimulant",
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 250,
+        "commonMin": 1200,
+        "strongMin": 1800,
+        "heavyMin": 2400
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 10,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

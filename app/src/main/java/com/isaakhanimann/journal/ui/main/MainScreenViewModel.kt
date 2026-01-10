@@ -24,6 +24,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -37,6 +38,7 @@ val ARE_CONDITIONS_ACCEPTED = booleanPreferencesKey("are_conditions_accepted")
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
     private val dataStore: DataStore<Preferences>,
+    private val userPreferences: UserPreferences,
 ) : ViewModel() {
 
     val isAcceptedFlow: StateFlow<Boolean> = dataStore.data
@@ -47,6 +49,12 @@ class MainScreenViewModel @Inject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
+
+    val selectedLanguageFlow: StateFlow<String?> = userPreferences.selectedLanguageFlow.stateIn(
+        initialValue = null,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
     fun accept() {
         viewModelScope.launch {

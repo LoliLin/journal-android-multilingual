@@ -40,11 +40,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.ColorCircle
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.SubstanceRouteSuggestion
 import com.isaakhanimann.journal.ui.tabs.journal.components.RelativeDateTextNew
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Preview(showBackground = true)
 @Composable
@@ -76,8 +78,12 @@ fun SuggestionRow(
         Row(verticalAlignment = Alignment.CenterVertically) {
             ColorCircle(adaptiveColor = substanceRouteSuggestion.color)
             Spacer(modifier = Modifier.width(8.dp))
+            val routeName = i18nOrDefault(
+                administrationRouteKey(substanceRouteSuggestion.route),
+                substanceRouteSuggestion.route.displayText
+            )
             Text(
-                text = substanceRouteSuggestion.substanceName + " " + substanceRouteSuggestion.route.displayText,
+                text = "${substanceRouteSuggestion.substanceName} $routeName",
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.weight(1f))

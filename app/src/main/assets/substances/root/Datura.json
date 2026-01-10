@@ -1,0 +1,37 @@
+{
+  "name": "Datura",
+  "commonNames": [
+    "Datura",
+    "Jimson Weed"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Datura",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "deliriant",
+    "depressant",
+    "tentative"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

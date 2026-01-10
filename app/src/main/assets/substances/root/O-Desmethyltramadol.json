@@ -1,0 +1,125 @@
+{
+  "name": "O-Desmethyltramadol",
+  "commonNames": [
+    "O-Desmethyltramadol"
+  ],
+  "url": "https://psychonautwiki.org/wiki/O-Desmethyltramadol",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "research-chemical",
+    "habit-forming",
+    "tentative",
+    "depressant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 50,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 50,
+        "heavyMin": 80
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

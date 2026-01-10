@@ -1,0 +1,87 @@
+{
+  "name": "3-FPM",
+  "commonNames": [
+    "3-FPM",
+    "PAL-593"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-FPM",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dopamine",
+    "stimulant"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 35,
+        "heavyMin": 50
+      },
+      "duration": {
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 30,
+        "strongMin": 60,
+        "heavyMin": 90
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

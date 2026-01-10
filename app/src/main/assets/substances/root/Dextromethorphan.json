@@ -1,0 +1,101 @@
+{
+  "name": "Dextromethorphan",
+  "commonNames": [
+    "DXM",
+    "DMO",
+    "DM",
+    "Dex",
+    "Robitussin",
+    "Delsym",
+    "DexAlone",
+    "Duract"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Dextromethorphan",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociatives"
+  ],
+  "categories": [
+    "dissociative"
+  ],
+  "effectsSummary": "In high doses (120 mg or more) it has a hallucinogenic and euphoric effect. Perceptual disturbances up to confusion as well as states of agitation with epileptic episodes may occur. Side effects are reddening of the skin and severe itching. With regular use there is great potential for dependence with psychological and physical symptoms!",
+  "dosageRemark": "DXM in freebase form (as found in Robocough RoboTablets) is around 27-37% more potent than its hydrobromide form due to a higher concentration of DXM by weight. One should take this into account when calculating their dose to avoid a potential overdose.",
+  "generalRisks": "Caution: The simultaneous intake of MAO inhibitors delays the degradation of DXM and can lead to severe respiratory and circulatory disorders!",
+  "saferUse": [],
+  "interactions": {
+    "dangerous": [
+      "ΑMT",
+      "PCP",
+      "MDMA",
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids",
+      "Tramadol",
+      "MAOI",
+      "SSRIs",
+      "Antihistamine"
+    ],
+    "unsafe": [
+      "DOx",
+      "25x-NBOMe",
+      "2C-T-x",
+      "5-MeO-xxT",
+      "Substituted amphetamines",
+      "Cocaine"
+    ],
+    "uncertain": [
+      "Benzodiazepines",
+      "Cannabis"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 75,
+        "commonMin": 200,
+        "strongMin": 400,
+        "heavyMin": 700
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

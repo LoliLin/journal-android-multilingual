@@ -1,0 +1,24 @@
+{
+  "name": "Buspirone",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Buspirone",
+  "isApproved": false,
+  "crossTolerances": [],
+  "categories": [
+    "psychedelic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg"
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "mg"
+      }
+    }
+  ]
+}

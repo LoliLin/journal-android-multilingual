@@ -1,0 +1,80 @@
+{
+  "name": "Tapentadol",
+  "commonNames": [
+    "Tapentadol",
+    "Nucynta",
+    "Palexia",
+    "Yantil",
+    "Yantil SR"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Tapentadol",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 12.5,
+        "commonMin": 50,
+        "strongMin": 75,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

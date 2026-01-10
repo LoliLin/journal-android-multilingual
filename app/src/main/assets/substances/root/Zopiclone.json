@@ -1,0 +1,51 @@
+{
+  "name": "Zopiclone",
+  "commonNames": [
+    "Zimovane",
+    "Imovane"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Zopiclone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of weeks of daily use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "categories": [
+    "hallucinogen",
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 5,
+        "strongMin": 7.5,
+        "heavyMin": 15
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3.5,
+          "max": 9,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

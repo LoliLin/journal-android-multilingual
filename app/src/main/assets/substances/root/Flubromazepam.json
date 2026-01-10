@@ -1,0 +1,45 @@
+{
+  "name": "Flubromazepam",
+  "commonNames": [
+    "Flubromazepam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Flubromazepam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "benzodiazepines"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 5,
+        "strongMin": 8,
+        "heavyMin": 12
+      },
+      "duration": {
+        "onset": {
+          "min": 40,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

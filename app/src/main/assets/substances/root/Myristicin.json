@@ -1,0 +1,72 @@
+{
+  "name": "Myristicin",
+  "commonNames": [
+    "Nutmeg"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Myristicin",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "deliriant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Opioids",
+      "Dextromethorphan",
+      "Diphenhydramine"
+    ],
+    "unsafe": [
+      "Stimulants",
+      "Alcohol",
+      "Serotonin releasers"
+    ],
+    "uncertain": [
+      "Benzodiazepines",
+      "Depressant"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 200,
+        "strongMin": 500,
+        "heavyMin": 800
+      },
+      "duration": {
+        "onset": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 9,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 12,
+          "max": 48,
+          "units": "hours"
+        },
+        "total": {
+          "min": 12,
+          "max": 72,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 24,
+          "max": 72,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

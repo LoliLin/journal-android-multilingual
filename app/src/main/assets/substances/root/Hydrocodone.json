@@ -1,0 +1,68 @@
+{
+  "name": "Hydrocodone",
+  "commonNames": [
+    "Vicodin (with paracetamol)",
+    "Zohydro ER (extended-release)"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Hydrocodone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "with prolonged use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "depressant",
+    "habit-forming",
+    "common"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 10,
+        "strongMin": 25,
+        "heavyMin": 40
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

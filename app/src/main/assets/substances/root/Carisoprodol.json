@@ -1,0 +1,53 @@
+{
+  "name": "Carisoprodol",
+  "commonNames": [
+    "Carisoprodol",
+    "Soma"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Carisoprodol",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 325,
+        "strongMin": 500,
+        "heavyMin": 750
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

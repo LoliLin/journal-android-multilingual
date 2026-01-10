@@ -1,0 +1,33 @@
+{
+  "name": "SAM-e",
+  "commonNames": [
+    "S-Adenosyl Methionine",
+    "SAM-e",
+    "Methylguanidoacetic Acid"
+  ],
+  "url": "https://psychonautwiki.org/wiki/SAM-e",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 200,
+        "commonMin": 800,
+        "strongMin": 1200,
+        "heavyMin": 1600
+      },
+      "duration": {
+        "onset": {
+          "min": 100,
+          "max": 180,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

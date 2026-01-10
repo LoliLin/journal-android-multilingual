@@ -1,0 +1,68 @@
+{
+  "name": "Adrafinil",
+  "commonNames": [
+    "Adrafinil",
+    "Olmifon"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Adrafinil",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "benzhydryl",
+    "nootropic|nootropics"
+  ],
+  "categories": [
+    "nootropic",
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 250,
+        "strongMin": 400,
+        "heavyMin": 600
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4.5,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

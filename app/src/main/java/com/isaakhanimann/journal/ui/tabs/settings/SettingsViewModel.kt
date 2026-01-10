@@ -53,7 +53,19 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val selectedLanguageFlow = userPreferences.selectedLanguageFlow.stateIn(
+        initialValue = null,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val snackbarHostState = SnackbarHostState()
+
+    fun saveSelectedLanguage(languageKey: String?) {
+        viewModelScope.launch {
+            userPreferences.saveSelectedLanguage(languageKey)
+        }
+    }
 
     fun importFile(uri: Uri) {
         viewModelScope.launch {

@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
@@ -45,39 +46,49 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.classes.Interactions
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstance
 
 @Preview
 @Composable
 fun InteractionsPreview(@PreviewParameter(InteractionsPreviewProvider::class) interactions: Interactions) {
-    InteractionsView(interactions, navigateToURL = {}, substanceURL = "")
+    InteractionsView(
+        interactions = interactions,
+        navigateToURL = {},
+        substanceURL = "",
+        displayNameForSubstance = { it }
+    )
 }
 
 @Composable
 fun InteractionsView(
     interactions: Interactions,
     substanceURL: String,
-    navigateToURL: (url: String) -> Unit
+    navigateToURL: (url: String) -> Unit,
+    displayNameForSubstance: (name: String) -> String
 ) {
     Column {
         if (interactions.dangerous.isNotEmpty()) {
             interactions.dangerous.forEach {
                 InteractionRowSubstanceScreen(
-                    text = it,
+                    text = displayNameForSubstance(it),
                     interactionType = InteractionType.DANGEROUS
                 )
             }
         }
         if (interactions.unsafe.isNotEmpty()) {
             interactions.unsafe.forEach {
-                InteractionRowSubstanceScreen(text = it, interactionType = InteractionType.UNSAFE)
+                InteractionRowSubstanceScreen(
+                    text = displayNameForSubstance(it),
+                    interactionType = InteractionType.UNSAFE
+                )
             }
         }
         if (interactions.uncertain.isNotEmpty()) {
             interactions.uncertain.forEach {
                 InteractionRowSubstanceScreen(
-                    text = it,
+                    text = displayNameForSubstance(it),
                     interactionType = InteractionType.UNCERTAIN
                 )
             }
@@ -94,10 +105,10 @@ fun InteractionExplanationButton(substanceURL: String, navigateToURL: (url: Stri
     }) {
         Icon(
             Icons.Outlined.Info,
-            contentDescription = "Open link"
+            contentDescription = i18n("interaction_open_link")
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Explanations")
+        Text(i18n("interaction_explanations"))
     }
 }
 
@@ -125,12 +136,18 @@ fun InteractionRowSubstanceScreen(
                 textAlign = TextAlign.Center,
                 color = Color.Black
             )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                text = i18n(interactionType.labelKey),
+                textAlign = TextAlign.Center,
+                color = Color.Black
+            )
             Spacer(modifier = Modifier.weight(1f))
             LazyRow {
                 items(interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = i18n("interaction_warning"),
                         tint = Color.Black,
                         modifier = Modifier.size(17.dp)
                     )

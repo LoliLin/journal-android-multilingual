@@ -74,6 +74,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.FULL_STOMACH_DISCLAIMER
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
@@ -599,7 +600,7 @@ fun OneExperienceScreen(
                     .padding(vertical = verticalCardPadding)
                     .fillMaxWidth()
                     .clickable { navigateToEditExperienceScreen() }) {
-                    CardTitle(title = "Notes")
+                    CardTitle(title = i18n("common_notes"))
                     Column(
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)

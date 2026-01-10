@@ -1,0 +1,70 @@
+{
+  "name": "Baclofen",
+  "commonNames": [
+    "Baclofen",
+    "Lioresal"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Baclofen",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "GABA"
+  ],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Dissociatives",
+      "Stimulants",
+      "Alcohol",
+      "Benzodiazepines",
+      "Barbiturates",
+      "GHB",
+      "GBL",
+      "Methaqualone",
+      "Opioids",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 20,
+        "strongMin": 50,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 75,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 14,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

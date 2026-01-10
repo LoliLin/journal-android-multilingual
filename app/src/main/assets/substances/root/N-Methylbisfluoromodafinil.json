@@ -1,0 +1,59 @@
+{
+  "name": "N-Methylbisfluoromodafinil",
+  "commonNames": [
+    "N-Methylbisfluoromodafinil",
+    "Dehydroxyfluorafinil",
+    "Modafiendz"
+  ],
+  "url": "https://psychonautwiki.org/wiki/N-Methylbisfluoromodafinil",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "modafanil",
+    "analog"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI"
+    ],
+    "unsafe": [
+      "Dextromethorphan",
+      "MDMA",
+      "Stimulants"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "Methoxetamine",
+      "Dissociatives"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 150,
+        "heavyMin": 200
+      },
+      "duration": {
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

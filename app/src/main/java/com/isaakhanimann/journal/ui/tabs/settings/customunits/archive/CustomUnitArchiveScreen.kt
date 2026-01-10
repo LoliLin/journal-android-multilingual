@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 
@@ -92,7 +93,7 @@ fun CustomUnitArchiveScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Custom unit archive") })
+            TopAppBar(title = { Text(i18n("custom_units_archive_title")) })
         }
     ) { padding ->
         Box(
@@ -115,8 +116,8 @@ fun CustomUnitArchiveScreenContent(
             }
             if (customUnits.isEmpty()) {
                 EmptyScreenDisclaimer(
-                    title = "No archived units yet",
-                    description = "Archived units don't show up when adding ingestions"
+                    title = i18n("custom_units_archive_empty_title"),
+                    description = i18n("custom_units_archive_empty_description")
                 )
             }
         }

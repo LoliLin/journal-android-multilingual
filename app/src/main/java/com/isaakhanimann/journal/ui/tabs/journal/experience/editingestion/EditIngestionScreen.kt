@@ -79,6 +79,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
@@ -247,10 +248,10 @@ fun EditIngestionScreen(
                 icon = {
                     Icon(
                         Icons.Filled.Done,
-                        contentDescription = "Done icon"
+                        contentDescription = i18n("common_done")
                     )
                 },
-                text = { Text("Done") }
+                text = { Text(i18n("common_done")) }
             )
         }
     ) { padding ->
@@ -263,8 +264,8 @@ fun EditIngestionScreen(
             Spacer(modifier = Modifier.height(3.dp))
             val focusManager = LocalFocusManager.current
             val title = customUnit?.let {
-                "Dose ${it.name}"
-            } ?: "Dose"
+                i18n("dose_with_name", mapOf("name" to it.name))
+            } ?: i18n("dose_label")
             CardWithTitle(title = title) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -273,7 +274,7 @@ fun EditIngestionScreen(
                         .fillMaxWidth()
                 ) {
                     Checkbox(checked = isKnown, onCheckedChange = { toggleIsKnown() })
-                    Text("Dose is known")
+                    Text(i18n("dose_known_toggle"))
                 }
                 AnimatedVisibility(visible = isKnown) {
                     Column {
@@ -281,7 +282,7 @@ fun EditIngestionScreen(
                             OutlinedTextField(
                                 value = units,
                                 onValueChange = onUnitsChange,
-                                label = { Text(text = "Units") },
+                                label = { Text(text = i18n("dose_units_label")) },
                                 modifier = Modifier.fillMaxWidth(),
                                 keyboardActions = KeyboardActions(onDone = {
                                     focusManager.clearFocus()
@@ -293,7 +294,7 @@ fun EditIngestionScreen(
                         OutlinedTextField(
                             value = dose,
                             onValueChange = onDoseChange,
-                            label = { Text(text = "Dose") },
+                            label = { Text(text = i18n("dose_label")) },
                             trailingIcon = { Text(text = units) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = {
@@ -307,13 +308,13 @@ fun EditIngestionScreen(
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
                             Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                            Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                            Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
                         }
                         AnimatedVisibility(visible = isEstimate) {
                             OutlinedTextField(
                                 value = estimatedDoseStandardDeviation,
                                 onValueChange = onEstimatedDoseStandardDeviationChange,
-                                label = { Text("Estimated standard deviation") },
+                                label = { Text(i18n("dose_estimated_sd_label")) },
                                 trailingIcon = {
                                     Text(
                                         text = units,
@@ -364,11 +365,11 @@ fun EditIngestionScreen(
                     }
                 }
             }
-            CardWithTitle(title = "Notes") {
+            CardWithTitle(title = i18n("common_notes")) {
                 OutlinedTextField(
                     value = note,
                     onValueChange = onNoteChange,
-                    label = { Text(text = "Notes") },
+                    label = { Text(text = i18n("common_notes")) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardActions = KeyboardActions(onDone = {
                         focusManager.clearFocus()
@@ -380,7 +381,7 @@ fun EditIngestionScreen(
                     singleLine = true
                 )
             }
-            CardWithTitle(title = "Time") {
+            CardWithTitle(title = i18n("common_time")) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -459,7 +460,7 @@ fun EditIngestionScreen(
                             onCheckedChange = {
                                 showNewConsumerTextField = !showNewConsumerTextField
                             })
-                        Text("Enter new consumer")
+                        Text(i18n("common_enter_new_consumer"))
                     }
                     AnimatedVisibility(visible = showNewConsumerTextField) {
                         OutlinedTextField(
@@ -478,7 +479,7 @@ fun EditIngestionScreen(
                                 imeAction = ImeAction.Done,
                                 capitalization = KeyboardCapitalization.Words
                             ),
-                            placeholder = { Text("New consumer name") },
+                            placeholder = { Text(i18n("common_new_consumer_name")) },
                             singleLine = true,
                             modifier = Modifier
                                 .fillMaxWidth()

@@ -1,0 +1,81 @@
+{
+  "name": "ALD-52",
+  "commonNames": [
+    "ALD-52",
+    "1-Acetyl-LSD",
+    "1A-LSD",
+    "1A-LAD",
+    "Orange Sunshine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/ALD-52",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "5-7 days",
+    "zero": "14 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 30,
+        "commonMin": 100,
+        "strongMin": 175,
+        "heavyMin": 325
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 14,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

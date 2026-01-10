@@ -25,16 +25,18 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
@@ -47,6 +49,10 @@ import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 fun MainScreen(
     viewModel: MainScreenViewModel = hiltViewModel()
 ) {
+    val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
+    LaunchedEffect(selectedLanguageKey) {
+        I18n.setPreferredLanguageKey(selectedLanguageKey)
+    }
     if (viewModel.isAcceptedFlow.collectAsState().value) {
         val navController = rememberNavController()
         Scaffold(
@@ -68,7 +74,7 @@ fun MainScreen(
                                 currentDestination?.hierarchy?.any { it.route == tab.route } == true
                             NavigationBarItem(
                                 icon = { Icon(tab.icon, contentDescription = null) },
-                                label = { Text(stringResource(tab.resourceId)) },
+                                label = { Text(i18n(tab.labelKey)) },
                                 selected = isSelected,
                                 onClick = {
                                     if (isSelected) {

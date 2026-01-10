@@ -1,0 +1,79 @@
+{
+  "name": "Methadone",
+  "commonNames": [
+    "Methadone",
+    "Dolophine",
+    "Methadose"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methadone",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant",
+    "common"
+  ],
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "MAOI",
+      "Serotonin releasers",
+      "SSRIs",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 5,
+        "strongMin": 15,
+        "heavyMin": 30
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

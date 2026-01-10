@@ -1,0 +1,52 @@
+{
+  "name": "Aniracetam",
+  "commonNames": [
+    "Aniracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Aniracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "categories": [
+    "nootropic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 350,
+        "commonMin": 1200,
+        "strongMin": 1800,
+        "heavyMin": 2400
+      },
+      "duration": {
+        "onset": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Diclazepam",
+  "commonNames": [
+    "Diclazepam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Diclazepam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within 3-4 days of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [
+    "GABAergic"
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "habit-forming"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 1,
+        "strongMin": 3,
+        "heavyMin": 4
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 45,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

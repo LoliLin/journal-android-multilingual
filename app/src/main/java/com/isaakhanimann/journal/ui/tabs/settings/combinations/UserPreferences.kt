@@ -35,6 +35,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_TIME_DISPLAY_OPTION = stringPreferencesKey("key_time_display_option")
         val KEY_HIDE_ORAL_DISCLAIMER = booleanPreferencesKey("key_hide_oral_disclaimer")
         val KEY_HIDE_DOSAGE_DOTS = booleanPreferencesKey("key_hide_dosage_dots")
+        val KEY_SELECTED_LANGUAGE = stringPreferencesKey("key_selected_language")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -70,5 +71,19 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_HIDE_DOSAGE_DOTS] ?: false
         }
-}
 
+    suspend fun saveSelectedLanguage(value: String?) {
+        dataStore.edit { preferences ->
+            if (value == null) {
+                preferences.remove(PreferencesKeys.KEY_SELECTED_LANGUAGE)
+            } else {
+                preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE] = value
+            }
+        }
+    }
+
+    val selectedLanguageFlow: Flow<String?> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE]
+        }
+}

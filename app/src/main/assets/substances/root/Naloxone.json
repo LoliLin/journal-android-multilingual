@@ -1,0 +1,76 @@
+{
+  "name": "Naloxone",
+  "commonNames": [
+    "Naloxone",
+    "Narcan",
+    "Evzio"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Naloxone",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "opioid"
+  ],
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "commonMin": 1,
+        "strongMin": 4
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 10,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "intramuscular",
+      "dose": {
+        "units": "mg",
+        "commonMin": 0.4,
+        "strongMin": 2
+      },
+      "duration": {
+        "onset": {
+          "min": 0.25,
+          "max": 2,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "commonMin": 0.4,
+        "strongMin": 2
+      },
+      "duration": {
+        "onset": {
+          "min": 0.25,
+          "max": 2,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
+}

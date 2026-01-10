@@ -1,0 +1,61 @@
+{
+  "name": "Phenobarbital",
+  "commonNames": [
+    "Phenobarbital",
+    "Phenobarbitone",
+    "Luminal",
+    "Phenobarb"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Phenobarbital",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "depressant",
+    "habit-forming",
+    "barbiturate"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 25,
+        "commonMin": 100,
+        "strongMin": 150,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 12,
+          "max": 24,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

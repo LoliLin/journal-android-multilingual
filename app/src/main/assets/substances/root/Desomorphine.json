@@ -1,0 +1,35 @@
+{
+  "name": "Desomorphine",
+  "commonNames": [
+    "Desomorphine",
+    "Krokodil",
+    "Krok"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Desomorphine",
+  "isApproved": true,
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 15,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "total": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

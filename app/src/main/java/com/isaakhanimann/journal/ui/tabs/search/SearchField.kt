@@ -45,6 +45,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
 fun SearchField(
@@ -62,11 +65,11 @@ fun SearchField(
             onChange(value)
         },
         modifier = modifier,
-        placeholder = { Text(text = "Search substances") },
+        placeholder = { Text(text = i18n("search_substances_placeholder")) },
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = i18n("common_search"),
             )
         },
         trailingIcon = {
@@ -78,7 +81,7 @@ fun SearchField(
                     }) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = "Close",
+                            contentDescription = i18n("common_close"),
                         )
                     }
                 }
@@ -95,7 +98,8 @@ fun SearchField(
                             }
                         }) {
                             Icon(
-                                Icons.Default.FilterList, contentDescription = "Filter"
+                                Icons.Default.FilterList,
+                                contentDescription = i18n("search_filter")
                             )
                         }
                     }
@@ -104,13 +108,21 @@ fun SearchField(
                         onDismissRequest = { isExpanded = false },
                     ) {
                         categories.forEach { categoryChipModel ->
-                            DropdownMenuItem(text = { Text(categoryChipModel.chipName) },
-                                onClick = { onFilterTapped(categoryChipModel.chipName) },
+                            val displayName = if (categoryChipModel.rawName == "custom") {
+                                i18n("search_custom")
+                            } else {
+                                i18nOrDefault(
+                                    categoryNameKey(categoryChipModel.rawName),
+                                    categoryChipModel.rawName
+                                )
+                            }
+                            DropdownMenuItem(text = { Text(displayName) },
+                                onClick = { onFilterTapped(categoryChipModel.rawName) },
                                 leadingIcon = {
                                     if (categoryChipModel.isActive) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription = "Check",
+                                            contentDescription = i18n("common_check"),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }

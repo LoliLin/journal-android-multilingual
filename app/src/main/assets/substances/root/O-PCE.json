@@ -1,0 +1,87 @@
+{
+  "name": "O-PCE",
+  "commonNames": [
+    "O-PCE",
+    "Eticyclidone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/O-PCE",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "dissociative"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 6,
+        "strongMin": 12,
+        "heavyMin": 20
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 5,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 5,
+        "strongMin": 15,
+        "heavyMin": 25
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

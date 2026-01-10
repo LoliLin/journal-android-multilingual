@@ -31,6 +31,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -39,6 +40,7 @@ import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.DeleteForever
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
+import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.QuestionAnswer
@@ -51,6 +53,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -74,6 +77,8 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.VERSION_NAME
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -95,7 +100,10 @@ fun SettingsPreview() {
         exportFile = {},
         snackbarHostState = remember { SnackbarHostState() },
         areDosageDotsHidden = false,
-        saveDosageDotsAreHidden = {}
+        saveDosageDotsAreHidden = {},
+        supportedLanguages = mapOf("en_us" to "English (US)", "zh_cn" to "中文（中国）"),
+        selectedLanguageKey = null,
+        saveSelectedLanguage = {}
     )
 }
 
@@ -108,6 +116,9 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
 ) {
+    val context = LocalContext.current
+    val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
+    val supportedLanguages = remember(context) { I18n.getSupportedLanguages(context) }
     SettingsScreen(
         navigateToFAQ = navigateToFAQ,
         navigateToComboSettings = navigateToComboSettings,
@@ -119,7 +130,10 @@ fun SettingsScreen(
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden
+        saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
+        supportedLanguages = supportedLanguages,
+        selectedLanguageKey = selectedLanguageKey,
+        saveSelectedLanguage = viewModel::saveSelectedLanguage
     )
 }
 
@@ -136,12 +150,15 @@ fun SettingsScreen(
     exportFile: (uri: Uri) -> Unit,
     snackbarHostState: SnackbarHostState,
     areDosageDotsHidden: Boolean,
-    saveDosageDotsAreHidden: (Boolean) -> Unit
+    saveDosageDotsAreHidden: (Boolean) -> Unit,
+    supportedLanguages: Map<String, String>,
+    selectedLanguageKey: String?,
+    saveSelectedLanguage: (String?) -> Unit,
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") }
+                title = { Text(i18n("settings")) }
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -153,26 +170,51 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            CardWithTitle(title = "UI", innerPaddingHorizontal = 0.dp) {
+            CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
                     imageVector = Icons.Outlined.Medication,
-                    text = "Custom units"
+                    text = i18n("settings_custom_units")
                 ) {
                     navigateToCustomUnits()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.Palette,
-                    text = "Substance colors"
+                    text = i18n("settings_substance_colors")
                 ) {
                     navigateToSubstanceColors()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.WarningAmber,
-                    text = "Interaction settings"
+                    text = i18n("settings_interaction_settings")
                 ) {
                     navigateToComboSettings()
+                }
+                HorizontalDivider()
+                var isLanguageDialogVisible by remember { mutableStateOf(false) }
+                val languageName =
+                    supportedLanguages[selectedLanguageKey] ?: i18n("settings_language_system")
+                SettingsButton(
+                    imageVector = Icons.Outlined.Language,
+                    text = i18n(
+                        "settings_language_with_value",
+                        mapOf("language" to languageName)
+                    )
+                ) {
+                    isLanguageDialogVisible = true
+                }
+                if (isLanguageDialogVisible) {
+                    LanguageSelectionDialog(
+                        supportedLanguages = supportedLanguages,
+                        selectedLanguageKey = selectedLanguageKey,
+                        onSelectLanguage = {
+                            saveSelectedLanguage(it)
+                            I18n.setPreferredLanguageKey(it)
+                            isLanguageDialogVisible = false
+                        },
+                        onDismiss = { isLanguageDialogVisible = false }
+                    )
                 }
                 HorizontalDivider()
                 Row(
@@ -180,15 +222,18 @@ fun SettingsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Hide dosage dots")
+                    Text(text = i18n("settings_hide_dosage_dots"))
                     Switch(
                         checked = areDosageDotsHidden,
                         onCheckedChange = saveDosageDotsAreHidden)
                 }
             }
-            CardWithTitle(title = "App data", innerPaddingHorizontal = 0.dp) {
+            CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {
                 var isShowingExportDialog by remember { mutableStateOf(false) }
-                SettingsButton(imageVector = Icons.Outlined.FileUpload, text = "Export File") {
+                SettingsButton(
+                    imageVector = Icons.Outlined.FileUpload,
+                    text = i18n("settings_export_file")
+                ) {
                     isShowingExportDialog = true
                 }
                 val jsonMIMEType = "application/json"
@@ -206,10 +251,10 @@ fun SettingsScreen(
                     AlertDialog(
                         onDismissRequest = { isShowingExportDialog = false },
                         title = {
-                            Text(text = "Export?")
+                            Text(text = i18n("settings_export_title"))
                         },
                         text = {
-                            Text("This will export all your data from the app into a file so you can send it to someone or import it again on a new phone")
+                            Text(i18n("settings_export_description"))
                         },
                         confirmButton = {
                             TextButton(
@@ -218,21 +263,24 @@ fun SettingsScreen(
                                     launcherExport.launch("Journal ${Instant.now().getStringOfPattern("dd MMM yyyy")}.json")
                                 }
                             ) {
-                                Text("Export")
+                                Text(i18n("common_export"))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingExportDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(i18n("common_cancel"))
                             }
                         }
                     )
                 }
                 HorizontalDivider()
                 var isShowingImportDialog by remember { mutableStateOf(false) }
-                SettingsButton(imageVector = Icons.Outlined.FileDownload, text = "Import file") {
+                SettingsButton(
+                    imageVector = Icons.Outlined.FileDownload,
+                    text = i18n("settings_import_file")
+                ) {
                     isShowingImportDialog = true
                 }
                 val launcherImport =
@@ -245,10 +293,10 @@ fun SettingsScreen(
                     AlertDialog(
                         onDismissRequest = { isShowingImportDialog = false },
                         title = {
-                            Text(text = "Import file?")
+                            Text(text = i18n("settings_import_title"))
                         },
                         text = {
-                            Text("Import a file that was exported before. Note that this will delete the data that you already have in the app.")
+                            Text(i18n("settings_import_description"))
                         },
                         confirmButton = {
                             TextButton(
@@ -257,14 +305,14 @@ fun SettingsScreen(
                                     launcherImport.launch(jsonMIMEType)
                                 }
                             ) {
-                                Text("Import")
+                                Text(i18n("common_import"))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingImportDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(i18n("common_cancel"))
                             }
                         }
                     )
@@ -273,19 +321,20 @@ fun SettingsScreen(
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
                 SettingsButton(
                     imageVector = Icons.Outlined.DeleteForever,
-                    text = "Delete everything"
+                    text = i18n("settings_delete_everything")
                 ) {
                     isShowingDeleteDialog = true
                 }
                 val scope = rememberCoroutineScope()
+                val deletedSnackbarMessage = i18n("settings_deleted_snackbar")
                 AnimatedVisibility(visible = isShowingDeleteDialog) {
                     AlertDialog(
                         onDismissRequest = { isShowingDeleteDialog = false },
                         title = {
-                            Text(text = "Delete everything?")
+                            Text(text = i18n("settings_delete_title"))
                         },
                         text = {
-                            Text("This will delete all your experiences, ingestions and custom substances.")
+                            Text(i18n("settings_delete_description"))
                         },
                         confirmButton = {
                             TextButton(
@@ -294,45 +343,45 @@ fun SettingsScreen(
                                     deleteEverything()
                                     scope.launch {
                                         snackbarHostState.showSnackbar(
-                                            message = "Deleted everything",
+                                            message = deletedSnackbarMessage,
                                             duration = SnackbarDuration.Short
                                         )
                                     }
                                 }
                             ) {
-                                Text("Delete")
+                                Text(i18n("common_delete"))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingDeleteDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(i18n("common_cancel"))
                             }
                         }
                     )
                 }
             }
             val uriHandler = LocalUriHandler.current
-            CardWithTitle(title = "Feedback", innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = "FAQ") {
+            CardWithTitle(title = i18n("settings_feedback"), innerPaddingHorizontal = 0.dp) {
+                SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = i18n("settings_faq")) {
                     navigateToFAQ()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.AutoMirrored.Outlined.ContactSupport,
-                    text = "Question / feedback / bug report"
+                    text = i18n("settings_feedback_button")
                 ) {
                     uriHandler.openUri("https://t.me/+ss8uZhBF6g00MTY8")
                 }
                 HorizontalDivider()
-                SettingsButton(imageVector = Icons.Outlined.VolunteerActivism, text = "Donate") {
+                SettingsButton(imageVector = Icons.Outlined.VolunteerActivism, text = i18n("settings_donate")) {
                     navigateToDonate()
                 }
             }
-            CardWithTitle(title = "App", innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.Code, text = "Source Code") {
-                    uriHandler.openUri("https://github.com/isaakhanimann/psychonautwiki-journal-android")
+            CardWithTitle(title = i18n("settings_app"), innerPaddingHorizontal = 0.dp) {
+                SettingsButton(imageVector = Icons.Outlined.Code, text = i18n("settings_source_code")) {
+                    uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual")
                 }
                 HorizontalDivider()
                 val context = LocalContext.current
@@ -342,12 +391,12 @@ fun SettingsScreen(
                     type = "text/plain"
                 }
                 val shareIntent = Intent.createChooser(sendIntent, null)
-                SettingsButton(imageVector = Icons.Outlined.Share, text = "Share") {
+                SettingsButton(imageVector = Icons.Outlined.Share, text = i18n("settings_share")) {
                     context.startActivity(shareIntent)
                 }
                 HorizontalDivider()
                 Text(
-                    text = "Version $VERSION_NAME",
+                    text = i18n("settings_version_with_value", mapOf("version" to VERSION_NAME)),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
@@ -355,6 +404,57 @@ fun SettingsScreen(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun LanguageSelectionDialog(
+    supportedLanguages: Map<String, String>,
+    selectedLanguageKey: String?,
+    onSelectLanguage: (String?) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_language_title")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                LanguageOptionRow(
+                    label = i18n("settings_language_system"),
+                    isSelected = selectedLanguageKey == null,
+                    onClick = { onSelectLanguage(null) }
+                )
+                sortedLanguages.forEach { (key, label) ->
+                    LanguageOptionRow(
+                        label = label,
+                        isSelected = selectedLanguageKey == key,
+                        onClick = { onSelectLanguage(key) }
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(i18n("common_close"))
+            }
+        }
+    )
+}
+
+@Composable
+private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp)
+            .padding(horizontal = horizontalPadding)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        RadioButton(selected = isSelected, onClick = onClick)
+        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+        Text(label)
     }
 }
 

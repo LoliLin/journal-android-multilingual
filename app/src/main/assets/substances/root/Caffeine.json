@@ -1,0 +1,126 @@
+{
+  "name": "Caffeine",
+  "commonNames": [
+    "Caffeine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Caffeine",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "stimulant",
+    "habit-forming",
+    "nootropic",
+    "common"
+  ],
+  "effectsSummary": "Caffeine makes you awake, speeds up the heartbeat and temporarily increases mental performance. In higher doses (approx. 300 - 600 mg = approx. 8 cups of coffee) it produces euphoria.",
+  "generalRisks": "Caffeine dehydrates the body (dehydration). At very high doses: sweating, fluttering of the heart, urge to urinate, cardiac arrhythmia, strong disturbances of perception, trembling, nervousness and sleep disturbances.",
+  "longtermRisks": "With long-term, regular and high-dose caffeine consumption (also with coffee or energy drinks), there is a risk of dependence with physical symptoms. Possible withdrawal symptoms: headaches, nervousness, fatigue, vomiting and even movement and concentration disorders. The acidity of coffee also promotes the formation of stomach ulcers in the long term. Continuous consumption of caffeine with painkillers can lead to severe kidney damage with life-threatening complications.",
+  "saferUse": [
+    "Do not consume pure caffeine, rather drink coffee or guarana. In addition to caffeine, energy drinks also contain a lot of sugar.",
+    "Pure (synthetic) caffeine in powder form is often mixed with amphetamine and sold as speed."
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [],
+    "uncertain": [
+      "DOx",
+      "25x-NBOMe",
+      "ΑMT",
+      "PCP",
+      "Substituted amphetamines",
+      "MDMA",
+      "Cocaine"
+    ]
+  },
+  "roas": [
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2.5,
+        "commonMin": 25,
+        "strongMin": 40,
+        "heavyMin": 80
+      },
+      "duration": {
+        "onset": {
+          "min": 0.5,
+          "max": 2,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 0.5,
+          "max": 2,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 0.5,
+          "max": 1,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "total": {
+          "min": 1,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 50,
+        "strongMin": 150,
+        "heavyMin": 500
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 10,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 6,
+          "max": 10,
+          "units": "hours"
+        },
+        "total": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

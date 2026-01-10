@@ -1,0 +1,44 @@
+{
+  "name": "Pramiracetam",
+  "commonNames": [
+    "Pramiracetam"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Pramiracetam",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "racetam",
+    "nootropic"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 500,
+        "strongMin": 800,
+        "heavyMin": 1200
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 7,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

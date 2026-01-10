@@ -1,0 +1,76 @@
+{
+  "name": "2C-B-FLY",
+  "commonNames": [
+    "2C-B-FLY"
+  ],
+  "url": "https://psychonautwiki.org/wiki/2C-B-FLY",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 2,
+        "commonMin": 10,
+        "strongMin": 18,
+        "heavyMin": 25
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "total": {
+          "min": 7,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

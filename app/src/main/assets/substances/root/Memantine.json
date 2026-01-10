@@ -1,0 +1,74 @@
+{
+  "name": "Memantine",
+  "commonNames": [
+    "Memantine",
+    "Memaxa",
+    "Ebixa",
+    "Namenda",
+    "Namenda XR",
+    "Namzaric (with donepezil",
+    "both extended-release)"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Memantine",
+  "isApproved": true,
+  "crossTolerances": [
+    "dissociatives"
+  ],
+  "categories": [
+    "dissociative",
+    "deliriant",
+    "tentative"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Stimulants",
+      "Depressant"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 70,
+        "strongMin": 110,
+        "heavyMin": 170
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "comeup": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 12,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 5,
+          "max": 24,
+          "units": "hours"
+        },
+        "total": {
+          "min": 18,
+          "max": 36,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 8,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

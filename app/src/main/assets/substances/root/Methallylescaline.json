@@ -1,0 +1,65 @@
+{
+  "name": "Methallylescaline",
+  "commonNames": [
+    "Methallylescaline",
+    "MAL"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Methallylescaline",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "3 days",
+    "zero": "7 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 25,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

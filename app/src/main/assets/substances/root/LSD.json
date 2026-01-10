@@ -1,0 +1,105 @@
+{
+  "name": "LSD",
+  "commonNames": [
+    "LSD",
+    "LSD-25",
+    "Lucy",
+    "L",
+    "Acid",
+    "Cid",
+    "Tabs",
+    "Blotter"
+  ],
+  "url": "https://psychonautwiki.org/wiki/LSD",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "zero": "5 days"
+  },
+  "crossTolerances": [
+    "psychedelics"
+  ],
+  "categories": [
+    "psychedelic",
+    "common"
+  ],
+  "effectsSummary": "The effect is very much dependent on dose, set and setting. As a hallucinogen, LSD intensifies and alienates sensory perceptions and the sense of space-time. Mood and feelings can change abruptly. At higher doses, feelings of detachment from one's own body can occur. Especially in the initial phase of the trip, slight breathing difficulties, palpitations, sweating, altered blood pressure and nausea may occur.",
+  "generalRisks": "The risks of LSD use are psychological and depend on the personality structure of the user. The perceptual changes during a trip can be so intense that inexperienced users in particular feel overwhelmed by the flood of impressions. This can lead to erroneous reactions, loss of orientation, panic, paranoia and badtrips/horror trips.\nThere is a risk - even with single use - that latent (hidden) mental disorders can be triggered. LSD does not lead to organ damage or genetic mutations and is not physically addictive.",
+  "saferUse": [
+    "Take LSD only if you are well prepared, in an environment where you feel comfortable, and only with experienced friends (favourable setting).",
+    "Only take LSD when you feel good mentally and physically (cheap set).",
+    "You should not be afraid, but have enough respect for the LSD effect.",
+    "Do not consume LSD on a full stomach, but eat something light before or during the high.",
+    "Dose low. Don't throw it if it doesn't work right away!",
+    "Let yourself go during the trip, don't try to fight the LSD effect.",
+    "Dextrose can help against circulatory problems.",
+    "Avoid roads and other \"dangerous\" places, your orientation may be disturbed.",
+    "At least the day after the trip, allow yourself plenty of rest and recovery to be able to process the experience.",
+    "LSD trips should remain exceptional experiences and should in no case be experienced more than once a month.",
+    "People with mental problems or illnesses, people taking neuroleptics and people with circulatory and heart problems should refrain from consuming LSD.",
+    "Blotters: Orally administering (swallowing) substances whose identity is uncertain is a potential way to eliminate most of the effects from dangerous mimics like 25x-NBx (25x-NBOMe like 25I-NBOMe, and 25x-NBOH like 25I-NBOH, etc). 25I-NBOMe is widely rumored to be orally inactive; however, oral efficacy has not been disproven and apparent overdoses have occurred via oral administration. 25I-NBOMe (and other NB's like 25x-NBOMe, 25x-NBOH) have much lower oral bioavailability than sublingual, buccal, and sublabial administration. 25I-NBOMe, to which several deaths have been attributed may commonly be mistaken for LSD by sellers and users."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol",
+      "Deliriant",
+      "Tricyclic antidepressants",
+      "Ritonavir"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 15,
+        "commonMin": 75,
+        "strongMin": 150,
+        "heavyMin": 300
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 12,
+          "max": 48,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "min": 71,
+        "max": 71
+      }
+    }
+  ]
+}

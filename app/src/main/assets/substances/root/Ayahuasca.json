@@ -1,0 +1,54 @@
+{
+  "name": "Ayahuasca",
+  "commonNames": [
+    "Ayahuasca",
+    "Aya",
+    "Caapi",
+    "Cipó",
+    "Hoasca",
+    "Vegetal",
+    "Yagé",
+    "Yajé",
+    "Natem",
+    "Shori"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Ayahuasca",
+  "isApproved": true,
+  "crossTolerances": [],
+  "categories": [
+    "psychedelic",
+    "entactogen"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

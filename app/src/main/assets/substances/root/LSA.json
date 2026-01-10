@@ -1,0 +1,52 @@
+{
+  "name": "LSA",
+  "commonNames": [
+    "LSA",
+    "Ergine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/LSA",
+  "isApproved": true,
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "zero": "7 days"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "psychedelic",
+    "common"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium"
+    ],
+    "unsafe": [
+      "Tramadol"
+    ],
+    "uncertain": [
+      "Cannabis",
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "seeds",
+        "lightMin": 20,
+        "commonMin": 100,
+        "strongMin": 250,
+        "heavyMin": 400
+      }
+    },
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "seeds",
+        "lightMin": 1,
+        "commonMin": 5,
+        "strongMin": 7,
+        "heavyMin": 12
+      }
+    }
+  ]
+}

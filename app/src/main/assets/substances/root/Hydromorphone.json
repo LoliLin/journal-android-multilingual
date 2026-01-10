@@ -1,0 +1,85 @@
+{
+  "name": "Hydromorphone",
+  "commonNames": [
+    "Dilaudid",
+    "Jurnista",
+    "Palladone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Hydromorphone",
+  "isApproved": true,
+  "crossTolerances": [
+    "opioids"
+  ],
+  "categories": [
+    "opioid",
+    "habit-forming",
+    "depressant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Benzodiazepines",
+      "Cocaine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Substituted amphetamines",
+      "MAOI",
+      "Nitrous",
+      "PCP"
+    ]
+  },
+  "roas": [
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 6
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 90,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 8
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

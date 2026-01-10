@@ -1,0 +1,73 @@
+{
+  "name": "1,4-Butanediol",
+  "commonNames": [
+    "1,4-Butanediol",
+    "1,4-B",
+    "BD",
+    "BDO",
+    "One Comma Four",
+    "One Four Bee",
+    "Butylene Glycol",
+    "One Four B-D-O"
+  ],
+  "url": "https://psychonautwiki.org/wiki/1,4-Butanediol",
+  "isApproved": true,
+  "tolerance": {
+    "full": "within several weeks of continuous use",
+    "zero": "7 - 14 days"
+  },
+  "crossTolerances": [],
+  "categories": [
+    "depressant",
+    "habit-forming"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Depressant",
+      "Dissociatives"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mL",
+        "lightMin": 0.5,
+        "commonMin": 1,
+        "strongMin": 2.5,
+        "heavyMin": 4
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}
