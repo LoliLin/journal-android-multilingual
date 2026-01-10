@@ -68,9 +68,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 
 @Composable
@@ -322,8 +324,12 @@ fun StatsScreen(
                                                 Text(text = i18n("stats_total_dose_unknown"))
                                             }
                                             subStat.routeCounts.forEach {
+                                                val routeName = i18nOrDefault(
+                                                    administrationRouteKey(it.administrationRoute),
+                                                    it.administrationRoute.displayText
+                                                ).lowercase()
                                                 Text(
-                                                    text = "${it.administrationRoute.displayText.lowercase()} ${it.count}x ",
+                                                    text = "$routeName ${it.count}x ",
                                                 )
                                             }
                                         }

@@ -79,6 +79,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
@@ -263,8 +264,8 @@ fun EditIngestionScreen(
             Spacer(modifier = Modifier.height(3.dp))
             val focusManager = LocalFocusManager.current
             val title = customUnit?.let {
-                "Dose ${it.name}"
-            } ?: "Dose"
+                i18n("dose_with_name", mapOf("name" to it.name))
+            } ?: i18n("dose_label")
             CardWithTitle(title = title) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -273,7 +274,7 @@ fun EditIngestionScreen(
                         .fillMaxWidth()
                 ) {
                     Checkbox(checked = isKnown, onCheckedChange = { toggleIsKnown() })
-                    Text("Dose is known")
+                    Text(i18n("dose_known_toggle"))
                 }
                 AnimatedVisibility(visible = isKnown) {
                     Column {
@@ -281,7 +282,7 @@ fun EditIngestionScreen(
                             OutlinedTextField(
                                 value = units,
                                 onValueChange = onUnitsChange,
-                                label = { Text(text = "Units") },
+                                label = { Text(text = i18n("dose_units_label")) },
                                 modifier = Modifier.fillMaxWidth(),
                                 keyboardActions = KeyboardActions(onDone = {
                                     focusManager.clearFocus()
@@ -293,7 +294,7 @@ fun EditIngestionScreen(
                         OutlinedTextField(
                             value = dose,
                             onValueChange = onDoseChange,
-                            label = { Text(text = "Dose") },
+                            label = { Text(text = i18n("dose_label")) },
                             trailingIcon = { Text(text = units) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = {
@@ -307,13 +308,13 @@ fun EditIngestionScreen(
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
                             Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                            Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                            Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
                         }
                         AnimatedVisibility(visible = isEstimate) {
                             OutlinedTextField(
                                 value = estimatedDoseStandardDeviation,
                                 onValueChange = onEstimatedDoseStandardDeviationChange,
-                                label = { Text("Estimated standard deviation") },
+                                label = { Text(i18n("dose_estimated_sd_label")) },
                                 trailingIcon = {
                                     Text(
                                         text = units,
