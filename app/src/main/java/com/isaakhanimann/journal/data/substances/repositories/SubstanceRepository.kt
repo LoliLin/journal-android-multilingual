@@ -25,6 +25,7 @@ import com.isaakhanimann.journal.data.substances.classes.SubstanceFile
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.data.substances.parse.SubstanceParserInterface
 import com.isaakhanimann.journal.data.substances.search.DefaultSubstanceSearcher
+import com.isaakhanimann.journal.data.substances.search.PinyinSubstanceSearcher
 import com.isaakhanimann.journal.data.substances.search.SubstanceSearcher
 import com.isaakhanimann.journal.localization.I18n
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -43,6 +44,7 @@ class SubstanceRepository @Inject constructor(
         private const val CATEGORIES_FILE_NAME = "_categories.json"
         private const val ROOT_LANGUAGE_KEY = "root"
         private const val FALLBACK_LANGUAGE_KEY = ROOT_LANGUAGE_KEY
+        private const val ZH_CN_LANGUAGE_KEY = "zh_cn"
     }
 
     private var substanceFile: SubstanceFile
@@ -54,6 +56,7 @@ class SubstanceRepository @Inject constructor(
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
+        updateSearcher(languageKey)
     }
 
     private fun ensureLanguageLoaded() {
@@ -65,7 +68,10 @@ class SubstanceRepository @Inject constructor(
     }
 
     fun updateSearcher(languageKey: String) {
-        searcher = DefaultSubstanceSearcher()
+        searcher = when (languageKey.lowercase()) {
+            ZH_CN_LANGUAGE_KEY -> PinyinSubstanceSearcher()
+            else -> DefaultSubstanceSearcher()
+        }
     }
 
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
