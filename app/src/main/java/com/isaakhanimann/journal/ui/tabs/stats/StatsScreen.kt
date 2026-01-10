@@ -67,6 +67,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.ui.YOU
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -116,12 +117,26 @@ fun StatsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (statsModel.consumerName == null) "Statistics" else "Statistics for ${statsModel.consumerName}") },
+                title = {
+                    Text(
+                        if (statsModel.consumerName == null) {
+                            i18n("stats_title")
+                        } else {
+                            i18n(
+                                "stats_title_for_consumer",
+                                replacements = mapOf("consumer" to statsModel.consumerName)
+                            )
+                        }
+                    )
+                },
                 actions = {
                     if (consumerNamesSorted.isNotEmpty()) {
                         var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
                         IconButton(onClick = { isConsumerSelectionExpanded = true }) {
-                            Icon(Icons.Outlined.Person, contentDescription = "Consumer")
+                            Icon(
+                                Icons.Outlined.Person,
+                                contentDescription = i18n("stats_consumer")
+                            )
                         }
                         DropdownMenu(
                             expanded = isConsumerSelectionExpanded,
@@ -137,7 +152,7 @@ fun StatsScreen(
                                     if (statsModel.consumerName == null) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription = "Check",
+                                            contentDescription = i18n("common_check"),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }
@@ -154,7 +169,7 @@ fun StatsScreen(
                                         if (statsModel.consumerName == consumerName) {
                                             Icon(
                                                 Icons.Filled.Check,
-                                                contentDescription = "Check",
+                                                contentDescription = i18n("common_check"),
                                                 modifier = Modifier.size(ButtonDefaults.IconSize)
                                             )
                                         }
@@ -169,8 +184,8 @@ fun StatsScreen(
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
             EmptyScreenDisclaimer(
-                title = "Nothing to show yet",
-                description = "Start logging your ingestions to see an overview of your consumption pattern."
+                title = i18n("stats_empty_title"),
+                description = i18n("stats_empty_description")
             )
         } else {
             Column(modifier = Modifier.padding(padding)) {
@@ -190,12 +205,15 @@ fun StatsScreen(
                     val isDarkTheme = isSystemInDarkTheme()
                     Column {
                         Text(
-                            text = "Experiences since ${statsModel.startDateText}",
+                            text = i18n(
+                                "stats_experiences_since",
+                                replacements = mapOf("date" to statsModel.startDateText)
+                            ),
                             style = MaterialTheme.typography.titleMedium,
                             modifier = Modifier.padding(start = 10.dp, top = 5.dp)
                         )
                         Text(
-                            text = "Substance counted once per experience",
+                            text = i18n("stats_substance_counted_once"),
                             style = MaterialTheme.typography.bodySmall,
                             modifier = Modifier.padding(
                                 start = 10.dp,
@@ -241,10 +259,24 @@ fun StatsScreen(
                                                 text = subStat.substanceName,
                                                 style = MaterialTheme.typography.titleMedium
                                             )
-                                            val addOn =
-                                                if (subStat.experienceCount == 1) " experience" else " experiences"
+                                            val experienceCountText =
+                                                if (subStat.experienceCount == 1) {
+                                                    i18n(
+                                                        "stats_experience_count_one",
+                                                        replacements = mapOf(
+                                                            "count" to subStat.experienceCount.toString()
+                                                        )
+                                                    )
+                                                } else {
+                                                    i18n(
+                                                        "stats_experience_count_other",
+                                                        replacements = mapOf(
+                                                            "count" to subStat.experienceCount.toString()
+                                                        )
+                                                    )
+                                                }
                                             Text(
-                                                text = subStat.experienceCount.toString() + addOn,
+                                                text = experienceCountText,
                                             )
                                         }
                                         Spacer(modifier = Modifier.weight(1f))
@@ -253,16 +285,41 @@ fun StatsScreen(
                                             if (cumulativeDose != null) {
                                                 if (cumulativeDose.isEstimate) {
                                                     if (cumulativeDose.estimatedDoseStandardDeviation != null) {
-                                                        Text(text = "total ${cumulativeDose.dose.toReadableString()}±${cumulativeDose.estimatedDoseStandardDeviation.toReadableString()} ${cumulativeDose.units}")
+                                                        Text(
+                                                            text = i18n(
+                                                                "stats_total_dose_estimated_with_sd",
+                                                                replacements = mapOf(
+                                                                    "dose" to cumulativeDose.dose.toReadableString(),
+                                                                    "sd" to cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
+                                                                    "units" to cumulativeDose.units
+                                                                )
+                                                            )
+                                                        )
                                                     } else {
-                                                        Text(text = "total ~${cumulativeDose.dose.toReadableString()} ${cumulativeDose.units}")
+                                                        Text(
+                                                            text = i18n(
+                                                                "stats_total_dose_estimated",
+                                                                replacements = mapOf(
+                                                                    "dose" to cumulativeDose.dose.toReadableString(),
+                                                                    "units" to cumulativeDose.units
+                                                                )
+                                                            )
+                                                        )
                                                     }
                                                 } else {
-                                                    Text(text = "total ${cumulativeDose.dose.toReadableString()} ${cumulativeDose.units}")
+                                                    Text(
+                                                        text = i18n(
+                                                            "stats_total_dose",
+                                                            replacements = mapOf(
+                                                                "dose" to cumulativeDose.dose.toReadableString(),
+                                                                "units" to cumulativeDose.units
+                                                            )
+                                                        )
+                                                    )
 
                                                 }
                                             } else {
-                                                Text(text = "total dose unknown")
+                                                Text(text = i18n("stats_total_dose_unknown"))
                                             }
                                             subStat.routeCounts.forEach {
                                                 Text(
@@ -279,8 +336,13 @@ fun StatsScreen(
                     }
                 } else {
                     EmptyScreenDisclaimer(
-                        title = "No ingestions since ${statsModel.selectedOption.longDisplayText}",
-                        description = "Choose a longer duration range to see statistics."
+                        title = i18n(
+                            "stats_no_ingestions_since",
+                            replacements = mapOf(
+                                "period" to statsModel.selectedOption.longDisplayText
+                            )
+                        ),
+                        description = i18n("stats_choose_longer_duration")
                     )
                 }
             }

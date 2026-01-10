@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -60,7 +61,7 @@ fun ReagentTestingScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Reagent testing") })
+            TopAppBar(title = { Text(i18n("safer_reagent_testing")) })
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -68,10 +69,10 @@ fun ReagentTestingScreen(
                 icon = {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
+                        contentDescription = i18n("common_open_link")
                     )
                 },
-                text = { Text("Article") },
+                text = { Text(i18n("common_article")) },
             )
         }
     ) { padding ->

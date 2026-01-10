@@ -60,6 +60,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
@@ -134,16 +135,22 @@ fun JournalScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Journal") },
+                title = { Text(i18n("journal")) },
                 actions = {
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
                         onCheckedChange = onChangeIsRelative
                     ) {
                         if (isTimeRelativeToNow) {
-                            Icon(Icons.Filled.Timer, contentDescription = "Regular time")
+                            Icon(
+                                Icons.Filled.Timer,
+                                contentDescription = i18n("journal_regular_time")
+                            )
                         } else {
-                            Icon(Icons.Outlined.Timer, contentDescription = "Time relative to now")
+                            Icon(
+                                Icons.Outlined.Timer,
+                                contentDescription = i18n("journal_time_relative_to_now")
+                            )
                         }
                     }
                     IconToggleButton(
@@ -151,9 +158,15 @@ fun JournalScreen(
                         onCheckedChange = onChangeIsFavorite
                     ) {
                         if (isFavoriteEnabled) {
-                            Icon(Icons.Filled.Star, contentDescription = "Is favorite")
+                            Icon(
+                                Icons.Filled.Star,
+                                contentDescription = i18n("journal_is_favorite")
+                            )
                         } else {
-                            Icon(Icons.Outlined.StarOutline, contentDescription = "Is not favorite")
+                            Icon(
+                                Icons.Outlined.StarOutline,
+                                contentDescription = i18n("journal_is_not_favorite")
+                            )
                         }
                     }
                     IconToggleButton(
@@ -161,13 +174,22 @@ fun JournalScreen(
                         onCheckedChange = onChangeIsSearchEnabled
                     ) {
                         if (isSearchEnabled) {
-                            Icon(Icons.Outlined.SearchOff, contentDescription = "Search off")
+                            Icon(
+                                Icons.Outlined.SearchOff,
+                                contentDescription = i18n("journal_search_off")
+                            )
                         } else {
-                            Icon(Icons.Filled.Search, contentDescription = "Search")
+                            Icon(
+                                Icons.Filled.Search,
+                                contentDescription = i18n("common_search")
+                            )
                         }
                     }
                     IconButton(onClick = navigateToCalendar) {
-                        Icon(Icons.Default.CalendarMonth, contentDescription = "Navigate to calendar")
+                        Icon(
+                            Icons.Default.CalendarMonth,
+                            contentDescription = i18n("journal_navigate_to_calendar")
+                        )
                     }
                 }
             )
@@ -179,10 +201,10 @@ fun JournalScreen(
                     icon = {
                         Icon(
                             Icons.Filled.Add,
-                            contentDescription = "Add"
+                            contentDescription = i18n("common_add")
                         )
                     },
-                    text = { Text("Ingestion") },
+                    text = { Text(i18n("journal_ingestion")) },
                 )
             }
         }
@@ -207,7 +229,7 @@ fun JournalScreen(
                             leadingIcon = {
                                 Icon(
                                     Icons.Default.Search,
-                                    contentDescription = "Search",
+                                    contentDescription = i18n("common_search"),
                                 )
                             },
                             trailingIcon = {
@@ -219,12 +241,12 @@ fun JournalScreen(
                                     ) {
                                         Icon(
                                             Icons.Default.Close,
-                                            contentDescription = "Close",
+                                            contentDescription = i18n("common_close"),
                                         )
                                     }
                                 }
                             },
-                            label = { Text(text = "Search by title or substance") },
+                            label = { Text(text = i18n("journal_search_by_title_or_substance")) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions(
@@ -237,22 +259,22 @@ fun JournalScreen(
                             if (isFavoriteEnabled) {
                                 Column(modifier = Modifier.padding(horizontalPadding)) {
                                     Text(
-                                        text = "No results",
+                                        text = i18n("journal_no_results"),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = "No favorite experience titles match your search.",
+                                        text = i18n("journal_no_favorite_experience_titles_match_search"),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
                             } else {
                                 Column(modifier = Modifier.padding(horizontalPadding)) {
                                     Text(
-                                        text = "No results",
+                                        text = i18n("journal_no_results"),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = "No experience titles match your search.",
+                                        text = i18n("journal_no_experience_titles_match_search"),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
@@ -281,13 +303,13 @@ fun JournalScreen(
             if (experiences.isEmpty() && !isSearchEnabled) {
                 if (isFavoriteEnabled) {
                     EmptyScreenDisclaimer(
-                        title = "No favorites",
-                        description = "Mark experiences as favorites to find them quickly."
+                        title = i18n("journal_no_favorites"),
+                        description = i18n("journal_no_favorites_description")
                     )
                 } else {
                     EmptyScreenDisclaimer(
-                        title = "No experiences yet",
-                        description = "Add your first ingestion."
+                        title = i18n("journal_empty_title"),
+                        description = i18n("journal_empty_description")
                     )
                 }
             }
