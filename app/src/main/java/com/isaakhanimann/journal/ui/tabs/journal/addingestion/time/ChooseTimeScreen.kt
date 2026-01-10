@@ -70,6 +70,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
@@ -207,7 +208,7 @@ fun ChooseTimeScreen(
                     .padding(horizontal = horizontalPadding)
             ) {
                 Spacer(modifier = Modifier.height(3.dp))
-                CardWithTitle(title = "Time") {
+                CardWithTitle(title = i18n("common_time")) {
                     DatePickerButton(
                         localDateTime = localDateTime,
                         onChange = onChangeDateOrTime,
@@ -221,7 +222,7 @@ fun ChooseTimeScreen(
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
-                CardWithTitle(title = "Experience", modifier = Modifier.fillMaxWidth()) {
+                CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {
                     val isCloseToExperience = experienceTitleToAddTo != null
                     AnimatedVisibility(visible = isCloseToExperience) {
                         Row(
@@ -236,7 +237,7 @@ fun ChooseTimeScreen(
                             value = enteredTitle,
                             onValueChange = onChangeOfEnteredTitle,
                             singleLine = true,
-                            label = { Text(text = "New experience title") },
+                            label = { Text(text = i18n("common_new_experience_title")) },
                             isError = !isEnteredTitleOk,
                             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions.Default.copy(
@@ -313,7 +314,7 @@ fun ChooseTimeScreen(
                                 onCheckedChange = {
                                     showNewConsumerTextField = !showNewConsumerTextField
                                 })
-                            Text("Enter new consumer")
+                        Text(i18n("common_enter_new_consumer"))
                         }
                         AnimatedVisibility(visible = showNewConsumerTextField) {
                             OutlinedTextField(
@@ -332,7 +333,7 @@ fun ChooseTimeScreen(
                                     imeAction = ImeAction.Done,
                                     capitalization = KeyboardCapitalization.Words
                                 ),
-                                placeholder = { Text("New consumer name") },
+                                placeholder = { Text(i18n("common_new_consumer_name")) },
                                 singleLine = true,
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -340,7 +341,7 @@ fun ChooseTimeScreen(
                         }
                     }
                 }
-                CardWithTitle(title = "Notes") {
+                CardWithTitle(title = i18n("common_notes")) {
                     NoteSection(
                         previousNotes,
                         note,
@@ -378,7 +379,7 @@ fun NoteSection(
         OutlinedTextField(
             value = note,
             onValueChange = onNoteChange,
-            label = { Text(text = "Notes") },
+            label = { Text(text = i18n("common_notes")) },
             keyboardActions = KeyboardActions(onDone = {
                 focusManager.clearFocus()
                 isShowingSuggestions = false

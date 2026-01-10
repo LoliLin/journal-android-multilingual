@@ -70,7 +70,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
-import com.isaakhanimann.journal.ui.DOSE_DISCLAIMER
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -278,7 +278,7 @@ fun ChooseDoseScreen(
                         }
                     }
                     OptionalDosageUnitDisclaimer(substanceName)
-                    Text(text = DOSE_DISCLAIMER, style = MaterialTheme.typography.bodySmall)
+                    Text(text = i18n("dose_disclaimer"), style = MaterialTheme.typography.bodySmall)
                 }
             }
             ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
@@ -405,7 +405,7 @@ fun ChooseDoseScreen(
             }
             var isShowingUnknownDoseDialog by remember { mutableStateOf(false) }
             TextButton(onClick = { isShowingUnknownDoseDialog = true }) {
-                Text(text = "Log unknown dose")
+                Text(text = i18n("log_unknown_dose"))
             }
             AnimatedVisibility(visible = isShowingUnknownDoseDialog) {
                 UnknownDoseDialog(

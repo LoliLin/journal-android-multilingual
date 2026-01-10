@@ -43,6 +43,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 
 
 @Composable
@@ -101,7 +102,7 @@ fun EditExperienceScreen(
                         IconButton(onClick = onDoneTap) {
                             Icon(
                                 Icons.Filled.Done,
-                                contentDescription = "Done icon"
+                                contentDescription = i18n("common_done")
                             )
                         }
                     }
@@ -146,7 +147,7 @@ fun EditExperienceScreen(
             OutlinedTextField(
                 value = text,
                 onValueChange = onTextChange,
-                label = { Text(text = "Notes") },
+                label = { Text(text = i18n("common_notes")) },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Default,
                     capitalization = KeyboardCapitalization.Sentences

@@ -62,6 +62,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.PurityCalculation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.UnknownDoseDialog
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -169,7 +170,7 @@ fun CustomChooseDose(
                     IconButton(onClick = { isShowingUnknownDoseDialog = true }) {
                         Icon(
                             imageVector = Icons.Default.QuestionMark,
-                            contentDescription = "Log unknown dose"
+                            contentDescription = i18n("log_unknown_dose")
                         )
                     }
                     AnimatedVisibility(visible = isShowingUnknownDoseDialog) {

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.TimePickerSection
@@ -54,7 +55,7 @@ fun TimedNoteScreenContentPreview() {
                     IconButton(onClick = { }) {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done Icon"
+                            contentDescription = i18n("common_done")
                         )
                     }
                 }

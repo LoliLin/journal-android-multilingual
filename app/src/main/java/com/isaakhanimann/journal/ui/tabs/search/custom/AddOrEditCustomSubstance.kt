@@ -60,6 +60,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
 
@@ -204,10 +205,10 @@ fun AddOrEditCustomSubstance(
                     icon = {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done"
+                            contentDescription = i18n("common_done")
                         )
                     },
-                    text = { Text("Done") },
+                    text = { Text(i18n("common_done")) },
                 )
             }
         }
