@@ -326,6 +326,7 @@ fun SettingsScreen(
                     isShowingDeleteDialog = true
                 }
                 val scope = rememberCoroutineScope()
+                val deletedSnackbarMessage = i18n("settings_deleted_snackbar")
                 AnimatedVisibility(visible = isShowingDeleteDialog) {
                     AlertDialog(
                         onDismissRequest = { isShowingDeleteDialog = false },
@@ -342,7 +343,7 @@ fun SettingsScreen(
                                     deleteEverything()
                                     scope.launch {
                                         snackbarHostState.showSnackbar(
-                                            message = i18n("settings_deleted_snackbar"),
+                                            message = deletedSnackbarMessage,
                                             duration = SnackbarDuration.Short
                                         )
                                     }
