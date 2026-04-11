@@ -21,8 +21,8 @@ package com.isaakhanimann.journal.data.substances.search
 import com.isaakhanimann.journal.data.substances.classes.Substance
 import java.lang.reflect.Modifier
 import me.towdium.pinin.PinIn
-import me.towdium.pinin.searcher.TreeSearcher
-import me.towdium.pinin.searcher.Searcher.Logic.CONTAIN
+import me.towdium.pinin.searchers.TreeSearcher
+import me.towdium.pinin.searchers.Searcher.Logic.CONTAIN
 
 class PinyinSubstanceSearcher() : SubstanceSearcher {
 
