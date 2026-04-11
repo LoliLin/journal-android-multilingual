@@ -1,6 +1,13 @@
 {
   "app_name": "Journal",
   "journal": "日志",
+  "psychonaut_wiki_eye": "PsychonautWiki 👀",
+  "screen_accept_acknowledge": "我承认，我对自己行为承担全部责任，尤其是在决定使用药物时。",
+  "screen_accept_risk": "我将使用此应用来降低我自己或他人使用物质的风险。",
+  "screen_accept_inaccurate": "我承认，此应用中的数据可能不准确或不完整。",
+  "screen_accept_professional": "在尝试自我药疗之前，我会寻求专业帮助。",
+  "screen_accept_stay": "记录的数据将始终保存在此设备上",
+  "continue": "继续",
   "substances": "物质",
   "safer": "安全",
   "stats": "统计",

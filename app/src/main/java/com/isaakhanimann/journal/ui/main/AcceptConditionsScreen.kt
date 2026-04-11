@@ -44,6 +44,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.localization.i18n
 
 @Preview
 @Composable
@@ -72,7 +73,7 @@ fun AcceptConditionsScreen(
             if (allIsChecked) painterResource(R.drawable.eye_open) else painterResource(R.drawable.eye_closed)
         Image(
             painter = painter,
-            contentDescription = "PsychonautWiki eye",
+            contentDescription = i18n("psychonaut_wiki_eye"),
             modifier = Modifier
                 .clip(RoundedCornerShape(30.dp))
                 .clickable {
@@ -96,7 +97,7 @@ fun AcceptConditionsScreen(
                     checked = checkedState0,
                     onCheckedChange = { checkedState0 = it }
                 )
-                Text(text = "I acknowledge that I am the only one responsible for my actions, especially when deciding to use drugs.")
+                Text(text = i18n("screen_accept_acknowledge"))
             }
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.clickable {
@@ -106,7 +107,7 @@ fun AcceptConditionsScreen(
                     checked = checkedState1,
                     onCheckedChange = { checkedState1 = it }
                 )
-                Text(text = "I'm going to use this app for mitigating the risks of my or somebody else’s substance use.")
+                Text(text = i18n("screen_accept_risk"))
             }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -118,7 +119,7 @@ fun AcceptConditionsScreen(
                     checked = checkedState2,
                     onCheckedChange = { checkedState2 = it }
                 )
-                Text(text = "I acknowledge that the data in this app might be inaccurate or incomplete.")
+                Text(text = i18n("screen_accept_inaccurate"))
             }
             Row(verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.clickable {
@@ -128,16 +129,16 @@ fun AcceptConditionsScreen(
                     checked = checkedState3,
                     onCheckedChange = { checkedState3 = it }
                 )
-                Text(text = "I’m going to seek professional help before attempting to self-medicate.")
+                Text(text = i18n("screen_accept_professional"))
             }
         }
         Text(
-            text = "Journaling data always stays on this device",
+            text = i18n("screen_accept_stay"),
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 15.dp)
         )
         Button(onClick = onTapAccept, enabled = allIsChecked) {
-            Text(text = "Continue")
+            Text(text = i18n("continue"))
         }
     }
 }
