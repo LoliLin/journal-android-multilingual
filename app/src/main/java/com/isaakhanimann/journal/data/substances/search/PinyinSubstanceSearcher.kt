@@ -40,7 +40,7 @@ class PinyinSubstanceSearcher() : SubstanceSearcher {
         if (query.isBlank()) return substances
         
 
-        val trimmedQuery = query.trim().lowercase()
+        val trimmedQuery = query.trim().replace(Regex("[- ]"), "").lowercase()
 
 
         return substances.filter { substance ->
