@@ -45,9 +45,8 @@ class PinyinSubstanceSearcher() : SubstanceSearcher {
 
         return substances.filter { substance ->
             val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            val nameMatch = pinIn.contains(allNames, trimmedQuery)
-            
-            nameMatch || substance.commonNames.any { commonName ->
+
+            allNames.any { commonName ->
                 pinIn.contains(commonName, trimmedQuery)
             }
         }
