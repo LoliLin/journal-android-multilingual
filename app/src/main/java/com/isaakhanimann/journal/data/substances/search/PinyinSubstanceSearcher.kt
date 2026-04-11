@@ -20,73 +20,35 @@ package com.isaakhanimann.journal.data.substances.search
 
 import com.isaakhanimann.journal.data.substances.classes.Substance
 import java.lang.reflect.Modifier
+import me.towdium.pinin.PinIn
+import me.towdium.pinin.searcher.TreeSearcher
+import me.towdium.pinin.searcher.Searcher.Logic.CONTAIN
 
-class PinyinSubstanceSearcher(
-    private val pinyinConverter: PinyinConverter = PinyinConverter(),
-) : SubstanceSearcher {
+class PinyinSubstanceSearcher() : SubstanceSearcher {
 
-    private val fallbackSearcher = DefaultSubstanceSearcher()
+    private val pinIn = PinIn().apply {
+        config().fSh2S(false)
+            .fCh2C(false)
+            .fZh2Z(false)
+            .commit()
+    }
 
-    override fun search(word: String, sources: List<Substance>): List<Substance> {
-        val baseMatches = fallbackSearcher.search(word, sources)
-        if (word.isBlank()) {
-            return baseMatches
-        }
-        val normalizedSearch = normalize(word)
-        val pinyinSearch = normalize(pinyinConverter.toPinyin(word))
-        val pinyinMatches = sources.filter { substance ->
-            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            allNames.any { name ->
-                val normalizedName = normalize(name)
-                val pinyinName = normalize(pinyinConverter.toPinyin(name))
-                normalizedName.contains(normalizedSearch, ignoreCase = true) ||
-                    (pinyinSearch.isNotBlank() && pinyinName.contains(pinyinSearch, ignoreCase = true))
+    override fun search(
+        query: String,
+        substances: List<Substance>
+    ): List<Substance> {
+        if (query.isBlank()) return substances
+
+        val trimmedQuery = query.trim().lowercase()
+
+
+        return substances.filter { substance ->
+
+            val nameMatch = pinIn.contains(substance.name, trimmedQuery)
+            
+            nameMatch || substance.commonNames.any { commonName ->
+                pinIn.contains(commonName, trimmedQuery)
             }
         }
-        return (baseMatches + pinyinMatches).distinctBy { it.name }
-    }
-
-    private fun normalize(value: String): String {
-        return value.replace(Regex("[- ]"), "")
-    }
-}
-
-class PinyinConverter {
-    private val converter = buildConverter()
-
-    fun toPinyin(value: String): String {
-        return converter?.invoke(value) ?: value
-    }
-
-    private fun buildConverter(): ((String) -> String)? {
-        val methodNames = listOf("toPinyin", "pinyin", "convert", "parse")
-        val classNames = listOf(
-            "me.towdium.pinyin.PinIn",
-            "me.towdium.pinyin.Pinyin",
-            "me.towdium.pinin.PinIn",
-            "com.github.towdium.pinyin.PinIn",
-            "com.github.towdium.pinyin.Pinyin",
-        )
-        for (className in classNames) {
-            val clazz = runCatching { Class.forName(className) }.getOrNull() ?: continue
-            for (methodName in methodNames) {
-                val method = clazz.methods.firstOrNull { candidate ->
-                    candidate.name == methodName &&
-                        candidate.parameterCount == 1 &&
-                        (candidate.parameterTypes[0].isAssignableFrom(String::class.java) ||
-                            candidate.parameterTypes[0].isAssignableFrom(CharSequence::class.java))
-                } ?: continue
-                val instance = if (Modifier.isStatic(method.modifiers)) {
-                    null
-                } else {
-                    runCatching { clazz.getField("INSTANCE").get(null) }.getOrNull()
-                        ?: runCatching { clazz.getDeclaredConstructor().newInstance() }.getOrNull()
-                }
-                return { input ->
-                    runCatching { method.invoke(instance, input)?.toString() ?: input }.getOrDefault(input)
-                }
-            }
-        }
-        return null
     }
 }
