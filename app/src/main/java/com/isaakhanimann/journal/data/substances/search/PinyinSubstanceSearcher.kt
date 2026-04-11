@@ -38,13 +38,14 @@ class PinyinSubstanceSearcher() : SubstanceSearcher {
         substances: List<Substance>
     ): List<Substance> {
         if (query.isBlank()) return substances
+        
 
         val trimmedQuery = query.trim().lowercase()
 
 
         return substances.filter { substance ->
-
-            val nameMatch = pinIn.contains(substance.name, trimmedQuery)
+            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
+            val nameMatch = pinIn.contains(allNames, trimmedQuery)
             
             nameMatch || substance.commonNames.any { commonName ->
                 pinIn.contains(commonName, trimmedQuery)
