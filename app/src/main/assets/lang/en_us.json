@@ -1,6 +1,13 @@
 {
   "app_name": "Journal",
   "journal": "Journal",
+  "psychonaut_wiki_eye" : "PsychonautWiki eye",
+  "screen_accept_acknowledge": "I acknowledge that I am the only one responsible for my actions, especially when deciding to use drugs.",
+  "screen_accept_risk": "I'm going to use this app for mitigating the risks of my or somebody else’s substance use.",
+  "screen_accept_inaccurate": "I acknowledge that the data in this app might be inaccurate or incomplete.",
+  "screen_accept_professional": "I’m going to seek professional help before attempting to self-medicate.",
+  "screen_accept_stay": "Journaling data always stays on this device",
+  "continue": "Continue",
   "substances": "Drugs",
   "safer": "Safer",
   "stats": "Stats",

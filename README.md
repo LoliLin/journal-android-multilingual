@@ -2,9 +2,9 @@ Copyright (C) 2022 Isaak Hanimann.
 
 See the end of the file for license conditions.
 
-# PsychonautWiki Journal 中文版
-> 目前该版本未必完善，我们正在尽量汉化所知道的部分...
-这是PsychonautWiki Journal的中文仓库，你可以提交一个翻译问题并期待解决...仅为中文分叉，不做其他更改。
+WIP
+检索 text = " 以获得硬编码部分
+参见 docs 获得翻译细节
 
 ## License
 ```
