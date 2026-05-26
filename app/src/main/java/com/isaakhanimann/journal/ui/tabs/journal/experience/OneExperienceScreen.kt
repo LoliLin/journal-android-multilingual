@@ -254,7 +254,7 @@ fun OneExperienceScreen(
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete experience?")
+                                Text(text = i18n("delete_experience_question"))
                             },
                             text = {
                                 Text("This will also delete all its ingestions.")
@@ -437,7 +437,7 @@ fun OneExperienceScreen(
                     ) {
                         CardTitle(title = "Effect timeline")
                         TextButton(onClick = navigateToExplainTimeline) {
-                            Text(text = "Limitations")
+                            Text(text = i18n("limitations"))
                         }
                     }
                     Column(
@@ -670,7 +670,7 @@ fun OneExperienceScreen(
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
-                        text = "Explanations",
+                        text = i18n("interaction_explanations"),
                         style = MaterialTheme.typography.labelMedium,
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     )

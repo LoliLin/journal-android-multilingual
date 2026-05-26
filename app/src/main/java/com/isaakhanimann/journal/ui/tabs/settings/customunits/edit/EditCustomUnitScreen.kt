@@ -149,7 +149,7 @@ private fun EditCustomUnitScreenContent(
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete custom unit?")
+                                Text(text = i18n("delete_custom_unit_question"))
                             },
                             text = {
                                 Text("This will affect all ingestions that are using it. Consider archiving it instead.")
@@ -203,6 +203,9 @@ private fun EditCustomUnitScreenContent(
             onChangeOfNote = onChangeOfNote,
             isArchived = isArchived,
             onChangeOfIsArchived = onChangeOfIsArchived
+        )
+    }
+}nChangeOfIsArchived
         )
     }
 }

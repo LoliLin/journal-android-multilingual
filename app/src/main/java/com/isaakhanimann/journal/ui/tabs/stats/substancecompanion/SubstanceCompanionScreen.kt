@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
@@ -133,7 +134,7 @@ fun SubstanceCompanionScreen(
                         )
                     }
                 }
-                Text(text = "Now")
+                Text(text = i18n("time_now_label"))
             }
             items(ingestionBursts) { burst ->
                 TimeArrowUp(timeText = burst.timeUntil)

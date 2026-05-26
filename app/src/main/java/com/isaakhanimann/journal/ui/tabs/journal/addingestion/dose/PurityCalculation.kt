@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardType
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -51,7 +52,7 @@ fun PurityCalculation(
             isError = !isValidPurity,
             trailingIcon = {
                 Text(
-                    text = "%",
+                    text = i18n("unit_percent"),
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 )
             },
@@ -64,7 +65,7 @@ fun PurityCalculation(
         )
         if (!isValidPurity) {
             Text(
-                text = "Purity must be between 1 and 100%",
+                text = i18n("purity_error"),
                 color = MaterialTheme.colorScheme.error,
             )
         }
@@ -74,7 +75,7 @@ fun PurityCalculation(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Converted amount")
+                Text(text = i18n("converted_amount"))
                 Text(text = convertedDoseAndUnitText)
             }
         }

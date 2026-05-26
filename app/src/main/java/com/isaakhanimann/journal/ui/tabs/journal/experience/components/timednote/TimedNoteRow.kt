@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import java.time.Instant
@@ -94,7 +95,7 @@ fun TimedNoteRow(
                     style = MaterialTheme.typography.titleMedium
                 )
                 if (!timedNote.isPartOfTimeline) {
-                    Text(text = "(Not in timeline)", style = MaterialTheme.typography.bodySmall)
+                    Text(text = i18n("not_in_timeline"), style = MaterialTheme.typography.bodySmall)
                 }
             }
             Text(text = timedNote.note, style = MaterialTheme.typography.bodyLarge)

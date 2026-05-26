@@ -233,7 +233,7 @@ fun EditCustomUnitSections(
                     onValueChange = onChangeOfName,
                     textStyle = textStyle,
                     singleLine = true,
-                    label = { Text(text = "Name to identify") },
+                    label = { Text(text = i18n("name_to_identify")) },
                     keyboardActions = KeyboardActions(onNext = { focusRequesterUnit.requestFocus() }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
@@ -249,8 +249,8 @@ fun EditCustomUnitSections(
                     onValueChange = onChangeOfUnits,
                     textStyle = textStyle,
                     singleLine = true,
-                    label = { Text(text = "Unit in singular form") },
-                    placeholder = { Text(text = "e.g. pill, spray, spoon") },
+                    label = { Text(text = i18n("unit_singular_form")) },
+                    placeholder = { Text(text = i18n("unit_placeholder_example")) },
                     keyboardActions = KeyboardActions(onNext = { focusRequesterNote.requestFocus() }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
@@ -263,7 +263,7 @@ fun EditCustomUnitSections(
                 OutlinedTextField(
                     value = note,
                     onValueChange = onChangeOfNote,
-                    label = { Text(text = "Note") },
+                    label = { Text(text = i18n("note_label")) },
                     keyboardActions = KeyboardActions(onNext = { focusRequesterDose.requestFocus() }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
@@ -331,16 +331,16 @@ fun EditCustomUnitSections(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         OutlinedButton(onClick = { onChangeOfOriginalUnit("µg") }) {
-                            Text(text = "µg")
+                            Text(text = i18n("unit_mcg"))
                         }
                         OutlinedButton(onClick = { onChangeOfOriginalUnit("mg") }) {
-                            Text(text = "mg")
+                            Text(text = i18n("unit_mg"))
                         }
                         OutlinedButton(onClick = { onChangeOfOriginalUnit("g") }) {
-                            Text(text = "g")
+                            Text(text = i18n("unit_g"))
                         }
                         OutlinedButton(onClick = { onChangeOfOriginalUnit("mL") }) {
-                            Text(text = "mL")
+                            Text(text = i18n("unit_ml"))
                         }
                     }
                 }
@@ -394,6 +394,10 @@ fun EditCustomUnitSections(
                     Text("Archive", style = MaterialTheme.typography.titleMedium)
                 }
                 Text("Archived custom units don't show up when adding ingestions")
+            }
+        }
+    }
+}
             }
         }
     }

@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.data.room.experiences.entities
 
+import android.content.Context
+import com.isaakhanimann.journal.localization.I18n
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
@@ -31,29 +33,34 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable(with = StomachFullnessSerializer::class)
 enum class StomachFullness {
     EMPTY {
-        override val text = "Empty"
         override val serialized = "EMPTY"
         override val onsetDelayForOralInHours: Double = 0.0
     },
     HALF_FULL {
-        override val text = "Half full"
         override val serialized = "HALFFULL"
         override val onsetDelayForOralInHours = 1.5
     },
     FULL {
-        override val text = "Full"
         override val serialized = "FULL"
         override val onsetDelayForOralInHours: Double = 3.0
     },
     VERY_FULL {
-        override val text = "Very full"
         override val serialized = "VERYFULL"
         override val onsetDelayForOralInHours: Double = 4.0
     };
 
-    abstract val text: String
     abstract val serialized: String
     abstract val onsetDelayForOralInHours: Double
+
+    fun getTranslatedText(context: Context): String {
+        val key = when (this) {
+            EMPTY -> "stomach_empty"
+            HALF_FULL -> "stomach_half_full"
+            FULL -> "stomach_full"
+            VERY_FULL -> "stomach_very_full"
+        }
+        return I18n.translate(context, key)
+    }
 }
 
 @OptIn(ExperimentalSerializationApi::class)

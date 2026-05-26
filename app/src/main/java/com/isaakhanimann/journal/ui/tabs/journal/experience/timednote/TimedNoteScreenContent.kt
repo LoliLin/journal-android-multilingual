@@ -114,7 +114,7 @@ fun TimedNoteScreenContent(
         OutlinedTextField(
             value = note,
             onValueChange = onNoteChange,
-            label = { Text(text = "Note") },
+            label = { Text(text = i18n("note_label")) },
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done,
                 capitalization = KeyboardCapitalization.Sentences

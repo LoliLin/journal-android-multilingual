@@ -55,6 +55,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
@@ -203,7 +204,7 @@ fun InjectionDialog(
             ) {
                 Icon(imageVector = Icons.Default.Warning, contentDescription = "Warning")
                 Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                Text(text = "Safer injection", style = MaterialTheme.typography.headlineSmall)
+                Text(text = i18n("safer_injection"), style = MaterialTheme.typography.headlineSmall)
             }
         },
         text = {

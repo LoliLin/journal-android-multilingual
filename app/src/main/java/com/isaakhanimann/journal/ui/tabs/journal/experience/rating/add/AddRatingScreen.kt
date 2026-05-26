@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingPickerSection
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingsExplanationSection
@@ -129,7 +130,7 @@ fun AddRatingScreen(
                             onCheckedChange = { onChangeIsOverallRating(it) }
                         )
                         Text(
-                            text = "Overall rating",
+                            text = i18n("overall_rating"),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }

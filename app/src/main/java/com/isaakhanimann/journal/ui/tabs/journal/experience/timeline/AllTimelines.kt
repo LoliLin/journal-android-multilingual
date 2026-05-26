@@ -45,6 +45,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables.AxisDrawable
 import kotlinx.coroutines.delay
@@ -107,7 +108,7 @@ fun AllTimelines(
     modifier: Modifier = Modifier,
 ) {
     if (dataForEffectLines.isEmpty()) {
-        Text(text = "Insufficient data for timeline")
+        Text(text = i18n("insufficient_timeline_data"))
     } else {
         val model: AllTimelinesModel = remember(dataForEffectLines, dataForRatings) {
             AllTimelinesModel(

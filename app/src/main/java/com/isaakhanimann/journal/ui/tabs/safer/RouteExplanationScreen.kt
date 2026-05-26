@@ -43,6 +43,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
@@ -63,7 +64,7 @@ fun RouteExplanationPreview() {
 fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Routes of administration") })
+            TopAppBar(title = { Text(i18n("routes_title")) })
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -87,9 +88,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
             ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 3.dp)) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     SectionText(
-                        text = """A route of administration is the method in which a psychoactive substance is delivered into the body.
-The route through which a substance is administered can greatly impact its potency, duration, and subjective effects. For example, many substances are more effective when consumed using particular routes of administration, while some substances are completely inactive with certain routes.
-Determining an optimal route of administration is highly dependent on the substance consumed, its desired duration and potency and side effects, and one's personal comfort level."""
+                        text = i18n("routes_intro")
                     )
                     VerticalSpace()
                 }
@@ -114,7 +113,7 @@ Determining an optimal route of administration is highly dependent on the substa
                                 contentDescription = "Open PW article",
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                            Text("Safer plugging")
+                            Text(i18n("safer_plugging"))
                         }
                     }
                 }

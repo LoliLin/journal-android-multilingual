@@ -353,16 +353,16 @@ fun ChooseDoseScreen(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             OutlinedButton(onClick = { onChangeOfUnits("µg") }) {
-                                Text(text = "µg")
+                                Text(text = i18n("unit_mcg"))
                             }
                             OutlinedButton(onClick = { onChangeOfUnits("mg") }) {
-                                Text(text = "mg")
+                                Text(text = i18n("unit_mg"))
                             }
                             OutlinedButton(onClick = { onChangeOfUnits("g") }) {
-                                Text(text = "g")
+                                Text(text = i18n("unit_g"))
                             }
                             OutlinedButton(onClick = { onChangeOfUnits("mL") }) {
-                                Text(text = "mL")
+                                Text(text = i18n("unit_ml"))
                             }
                         }
                     }
@@ -436,7 +436,7 @@ fun ChooseDoseScreen(
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(text = "Safer sniffing")
+                    Text(text = i18n("safer_sniffing_short"))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {
@@ -456,7 +456,7 @@ fun ChooseDoseScreen(
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(text = "Volumetric liquid dosing")
+                    Text(text = i18n("dose_guide_volumetric_title"))
                 }
             }
             if (administrationRoute == AdministrationRoute.SMOKED && substanceName != "Cannabis") {

@@ -229,7 +229,7 @@ fun ChooseTimeScreen(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.clickable { check(isChecked.not()) }) {
                             Checkbox(checked = isChecked, onCheckedChange = check)
-                            Text(text = "Add to $experienceTitleToAddTo")
+                            Text(text = i18n("add_to_experience", mapOf("title" to experienceTitleToAddTo)))
                         }
                     }
                     AnimatedVisibility(visible = !isCloseToExperience || !isChecked) {
@@ -268,7 +268,7 @@ fun ChooseTimeScreen(
                         if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
                             var areConsumerNamesExpanded by remember { mutableStateOf(false) }
                             TextButton(onClick = { areConsumerNamesExpanded = true }) {
-                                Text(text = "Choose other consumer")
+                                Text(text = i18n("choose_other_consumer"))
                             }
                             DropdownMenu(
                                 expanded = areConsumerNamesExpanded,
@@ -427,5 +427,8 @@ fun NoteSection(
                 }
             }
         }
+    }
+}
+    }
     }
 }
