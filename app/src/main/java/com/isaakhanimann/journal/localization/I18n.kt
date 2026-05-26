@@ -2,29 +2,36 @@ package com.isaakhanimann.journal.localization
 
 import android.content.Context
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.LocalContext
 import java.util.Locale
 import org.json.JSONObject
 
 object I18n {
-    private var strings: Map<String, String> = emptyMap()
-    private var loadedLangKey: String? = null
     private const val FALLBACK_LANG_KEY = "en_us"
-    private var preferredLangKey: String? = null
+
+    private val _preferredLangKey = mutableStateOf<String?>(null)
+    val preferredLangKey: State<String?> get() = _preferredLangKey
+
+    @Volatile
+    private var cachedStrings: Map<String, String> = emptyMap()
+    private var loadedLangKey: String? = null
 
     fun getCurrentLanguageKey(): String {
         val locale = Locale.getDefault()
-        val language = locale.language.toLowerCase(Locale.ROOT)
-        val country = locale.country.toLowerCase(Locale.ROOT)
-        return if (country.isNullOrBlank()) language else "${language}_${country}"
+        val language = locale.language.lowercase()
+        val country = locale.country.lowercase()
+        return if (country.isBlank()) language else "${language}_${country}"
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
-        preferredLangKey = languageKey?.toLowerCase(Locale.ROOT)
-        loadedLangKey = null
+        _preferredLangKey.value = languageKey?.lowercase()
+        synchronized(this) {
+            loadedLangKey = null
+        }
     }
-
-    fun getPreferredLanguageKey(): String? = preferredLangKey
 
     fun translate(
         context: Context,
@@ -32,10 +39,8 @@ object I18n {
         replacements: Map<String, String> = emptyMap(),
     ): String {
         ensureLoaded(context)
-        val raw = strings[key] ?: strings["missing_key"] ?: key
-        return replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{${entry.key}}", entry.value)
-        }
+        val raw = cachedStrings[key] ?: cachedStrings["missing_key"] ?: key
+        return raw.applyReplacements(replacements)
     }
 
     fun translateOrDefault(
@@ -45,19 +50,17 @@ object I18n {
         replacements: Map<String, String> = emptyMap(),
     ): String {
         ensureLoaded(context)
-        val raw = strings[key] ?: fallback
-        return replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{${entry.key}}", entry.value)
-        }
+        val raw = cachedStrings[key] ?: fallback
+        return raw.applyReplacements(replacements)
     }
 
-    fun getSupportedLanguages(context: Context): Map<String, String> {
-        return loadStringsFile(context, "lang/supported.json")
-    }
+    fun getSupportedLanguages(context: Context): Map<String, String> =
+        loadStringsFile(context, "lang/supported.json")
 
+    @Synchronized
     private fun ensureLoaded(context: Context) {
-        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).toLowerCase(Locale.ROOT)
-        if (currentKey == loadedLangKey && strings.isNotEmpty()) return
+        val currentKey = (_preferredLangKey.value ?: getCurrentLanguageKey()).lowercase()
+        if (currentKey == loadedLangKey && cachedStrings.isNotEmpty()) return
 
         val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)
         val localizedStrings = if (currentKey != FALLBACK_LANG_KEY) {
@@ -65,14 +68,55 @@ object I18n {
         } else {
             emptyMap()
         }
-        strings = fallbackStrings + localizedStrings
+        
+        cachedStrings = fallbackStrings + localizedStrings
         loadedLangKey = currentKey
     }
 
-    private fun loadLanguageFile(context: Context, langKey: String): Map<String, String> {
-        val filePath = "lang/$langKey.json"
-        return loadStringsFile(context, filePath)
+    private fun loadLanguageFile(context: Context, langKey: String): Map<String, String> =
+        loadStringsFile(context, "lang/$langKey.json")
+
+    private fun loadStringsFile(context: Context, filePath: String): Map<String, String> {
+        return runCatching {
+            context.assets.open(filePath).use { inputStream ->
+                val jsonText = inputStream.bufferedReader().readText()
+                val jsonObject = JSONObject(jsonText)
+                val map = mutableMapOf<String, String>()
+                jsonObject.keys().forEach { key ->
+                    map[key] = jsonObject.optString(key, "")
+                }
+                map
+            }
+        }.getOrDefault(emptyMap())
     }
+
+    private fun String.applyReplacements(replacements: Map<String, String>): String {
+        if (replacements.isEmpty()) return this
+        return replacements.entries.fold(this) { acc, (key, value) ->
+            acc.replace("{$key}", value)
+        }
+    }
+}
+
+@Composable
+@ReadOnlyComposable
+fun i18n(key: String, replacements: Map<String, String> = emptyMap()): String {
+    val context = LocalContext.current
+    I18n.preferredLangKey.value
+    return I18n.translate(context, key, replacements)
+}
+
+@Composable
+@ReadOnlyComposable
+fun i18nOrDefault(
+    key: String,
+    fallback: String,
+    replacements: Map<String, String> = emptyMap(),
+): String {
+    val context = LocalContext.current
+    I18n.preferredLangKey.value
+    return I18n.translateOrDefault(context, key, fallback, replacements)
+}
 
     private fun loadStringsFile(context: Context, filePath: String): Map<String, String> {
         return try {
