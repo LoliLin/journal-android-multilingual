@@ -224,8 +224,9 @@ fun OneExperienceScreen(
                         onDismissRequest = { areTimeOptionsExpanded = false }
                     ) {
                         SavedTimeDisplayOption.values().forEach { option ->
+                            val context = LocalContext.current
                             DropdownMenuItem(
-                                text = { Text(option.text) },
+                                text = { Text(option.getTranslatedText(context)) },
                                 onClick = {
                                     onChangeTimeDisplayOption(option)
                                     areTimeOptionsExpanded = false

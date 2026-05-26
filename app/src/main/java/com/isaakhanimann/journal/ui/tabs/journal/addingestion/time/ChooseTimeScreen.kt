@@ -229,7 +229,7 @@ fun ChooseTimeScreen(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.clickable { check(isChecked.not()) }) {
                             Checkbox(checked = isChecked, onCheckedChange = check)
-                            Text(text = i18n("add_to_experience", mapOf("title" to experienceTitleToAddTo)))
+                            Text(text = i18n("add_to_experience", mapOf("title" to (experienceTitleToAddTo ?: ""))))
                         }
                     }
                     AnimatedVisibility(visible = !isCloseToExperience || !isChecked) {
