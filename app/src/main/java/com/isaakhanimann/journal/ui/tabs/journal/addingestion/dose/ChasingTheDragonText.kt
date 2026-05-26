@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.localization.i18n
 
 @Preview
 @Composable
@@ -35,11 +36,8 @@ fun ChasingTheDragonText(
     Column(
         modifier = modifier
     ) {
-        Text(text = "Chasing the dragon (foiling)", style = titleStyle)
-        Text(text = """
-            This is likely the least clinically delivered route of administration. An overdose caused by chasing the dragon is hard to predict because this technique doesn't deliver a standardized dosage. It's virtually impossible even for skilled users to know how much of the substance that has been evaporated, burned, and inhaled.
-            These combined factors may create a false sense of security when a given dose seems safe to repeat, but may cause an overdose when all the factors are randomly excluded.
-                    """.trimIndent())
+        Text(text = i18n("chasing_the_dragon"), style = titleStyle)
+        Text(text = i18n("chasing_the_dragon_body"))
     }
 }
 

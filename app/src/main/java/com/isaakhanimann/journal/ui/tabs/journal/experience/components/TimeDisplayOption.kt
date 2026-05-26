@@ -18,21 +18,27 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.components
 
+import android.content.Context
+import com.isaakhanimann.journal.localization.I18n
+
 enum class SavedTimeDisplayOption {
     AUTO {
-        override val text = "Auto"
-    }, RELATIVE_TO_NOW {
-        override val text = "Time relative to now"
-    }, RELATIVE_TO_START {
-        override val text = "Time relative to start"
-    }, REGULAR {
-        override val text = "Regular time"
+        override fun getTranslatedText(context: Context): String = I18n.translate(context, "time_display_auto")
+    },
+    RELATIVE_TO_NOW {
+        override fun getTranslatedText(context: Context): String = I18n.translate(context, "journal_time_relative_to_now")
+    },
+    RELATIVE_TO_START {
+        override fun getTranslatedText(context: Context): String = I18n.translate(context, "time_display_relative_start")
+    },
+    REGULAR {
+        override fun getTranslatedText(context: Context): String = I18n.translate(context, "journal_regular_time")
     };
 
-    abstract val text: String
+    abstract fun getTranslatedText(context: Context): String
 }
 
 
 enum class TimeDisplayOption {
-    RELATIVE_TO_NOW , RELATIVE_TO_START, REGULAR;
+    RELATIVE_TO_NOW, RELATIVE_TO_START, REGULAR;
 }

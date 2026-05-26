@@ -69,6 +69,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -224,8 +225,9 @@ fun OneExperienceScreen(
                         onDismissRequest = { areTimeOptionsExpanded = false }
                     ) {
                         SavedTimeDisplayOption.values().forEach { option ->
+                            val context = LocalContext.current
                             DropdownMenuItem(
-                                text = { Text(option.text) },
+                                text = { Text(option.getTranslatedText(context)) },
                                 onClick = {
                                     onChangeTimeDisplayOption(option)
                                     areTimeOptionsExpanded = false
@@ -254,7 +256,7 @@ fun OneExperienceScreen(
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete experience?")
+                                Text(text = i18n("delete_experience_question"))
                             },
                             text = {
                                 Text("This will also delete all its ingestions.")
@@ -437,7 +439,7 @@ fun OneExperienceScreen(
                     ) {
                         CardTitle(title = "Effect timeline")
                         TextButton(onClick = navigateToExplainTimeline) {
-                            Text(text = "Limitations")
+                            Text(text = i18n("limitations"))
                         }
                     }
                     Column(
@@ -670,7 +672,7 @@ fun OneExperienceScreen(
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
-                        text = "Explanations",
+                        text = i18n("interaction_explanations"),
                         style = MaterialTheme.typography.labelMedium,
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     )

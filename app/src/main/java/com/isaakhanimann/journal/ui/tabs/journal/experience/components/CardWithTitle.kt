@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 
@@ -61,6 +62,6 @@ fun CardWithTitle(
 @Composable
 fun CardWithTitlePreview() {
     CardWithTitle(title = "Your card") {
-        Text(text = "Content", modifier = Modifier.fillMaxWidth())
+        Text(text = i18n("content_label"), modifier = Modifier.fillMaxWidth())
     }
 }

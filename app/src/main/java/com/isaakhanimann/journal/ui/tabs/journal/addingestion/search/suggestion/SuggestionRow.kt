@@ -40,6 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.ColorCircle
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.SubstanceRouteSuggestion
@@ -130,13 +131,13 @@ fun SuggestionRow(
                                         } ${doseAndUnit.unit}"
                                     )
                                 } else {
-                                    Text(text = "~$description")
+                                    Text(text = i18n("dose_estimated_label_short", mapOf("description" to description)))
                                 }
                             } else {
                                 Text(text = description)
                             }
                         } else {
-                            Text(text = "Unknown")
+                            Text(text = i18n("dose_unknown_short"))
                         }
                     },
                 )
@@ -193,7 +194,7 @@ fun SuggestionRow(
                 }, label = {
                     Column(modifier = Modifier.padding(vertical = 5.dp)) {
                         Text(text = customUnit.name, style = MaterialTheme.typography.labelSmall)
-                        Text(text = "Enter " + customUnit.unit)
+                        Text(text = i18n("enter_value_with_unit", mapOf("unit" to customUnit.unit)))
                     }
                 }, icon = {
                     Icon(

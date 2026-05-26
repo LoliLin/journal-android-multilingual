@@ -20,18 +20,19 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import com.isaakhanimann.journal.localization.i18n
 
 @Composable
 fun OptionalDosageUnitDisclaimer(substanceName: String) {
     when (substanceName) {
         "Cannabis" -> {
-            Text(text = "The dosages are given in mg of THC.")
+            Text(text = i18n("dose_thc_disclaimer"))
         }
         "Alcohol" -> {
-            Text(text = "The dosages are given in mg of pure Ethanol.")
+            Text(text = i18n("dose_ethanol_disclaimer"))
         }
         "Psilocybin mushrooms" -> {
-            Text(text = "The dosages are given in mg of Psilocybin.")
+            Text(text = i18n("dose_psilocybin_disclaimer"))
         }
     }
 }

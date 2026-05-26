@@ -299,7 +299,7 @@ fun CustomChooseDose(
             }
             if (administrationRoute == AdministrationRoute.INSUFFLATED) {
                 TextButton(onClick = navigateToSaferSniffingScreen) {
-                    Text(text = "Safer sniffing")
+                    Text(text = i18n("safer_sniffing_short"))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {

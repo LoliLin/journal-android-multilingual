@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
@@ -62,7 +63,7 @@ fun RatingRow(
         val ratingTime = rating.time
         if (ratingTime == null) {
             Text(
-                text = "Overall rating",
+                text = i18n("overall_rating"),
                 style = MaterialTheme.typography.bodyLarge
             )
         } else {

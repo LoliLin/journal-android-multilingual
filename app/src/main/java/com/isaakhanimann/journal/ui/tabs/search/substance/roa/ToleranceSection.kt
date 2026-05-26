@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
+import com.isaakhanimann.journal.localization.i18n
 
 @Preview(showBackground = true)
 @Composable
@@ -61,7 +62,7 @@ fun ToleranceSection(
                 ) {
                     if (tolerance.full != null) {
                         Text(
-                            text = "full:",
+                            text = i18n("tolerance_full_label"),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.full)
@@ -72,7 +73,7 @@ fun ToleranceSection(
                 ) {
                     if (tolerance.half != null) {
                         Text(
-                            text = "half:",
+                            text = i18n("tolerance_half_label"),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.half)
@@ -83,18 +84,18 @@ fun ToleranceSection(
                 ) {
                     if (tolerance.zero != null) {
                         Text(
-                            text = "zero:",
+                            text = i18n("tolerance_zero_label"),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.zero)
                     }
                 }
-                Text(text = "* zero is the time until tolerance is like the first time.", style = MaterialTheme.typography.bodySmall)
+                Text(text = i18n("tolerance_zero_explanation"), style = MaterialTheme.typography.bodySmall)
             }
             if (crossTolerances.isNotEmpty()) {
                 val names = crossTolerances.map { it }.distinct()
                     .joinToString(separator = ", ")
-                Text(text = "Cross tolerance with $names.")
+                Text(text = i18n("tolerance_cross_with", mapOf("names" to names)))
             }
         }
 

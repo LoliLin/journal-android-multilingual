@@ -49,6 +49,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.localization.i18n
 
 @Preview
 @Composable
@@ -126,14 +127,14 @@ fun ColorDialog(
     AlertDialog(
         onDismissRequest = dismiss,
         title = {
-            Text(text = "Pick a color", style = MaterialTheme.typography.titleLarge)
+            Text(text = i18n("pick_a_color"), style = MaterialTheme.typography.titleLarge)
         },
         text = {
             Column {
                 if (otherColors.isEmpty()) {
-                    Text(text = "No unused colors")
+                    Text(text = i18n("no_unused_colors"))
                 } else {
-                    Text(text = "Not yet used")
+                    Text(text = i18n("not_yet_used"))
                     Spacer(modifier = Modifier.height(2.dp))
                     CircleColorButtons(colors = otherColors) {
                         onChangeOfColor(it)
@@ -142,7 +143,7 @@ fun ColorDialog(
                 }
                 if (alreadyUsedColors.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(5.dp))
-                    Text(text = "Already used")
+                    Text(text = i18n("already_used"))
                     Spacer(modifier = Modifier.height(2.dp))
                     CircleColorButtons(colors = alreadyUsedColors) {
                         onChangeOfColor(it)

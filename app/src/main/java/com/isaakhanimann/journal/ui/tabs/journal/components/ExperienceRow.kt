@@ -49,6 +49,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 
@@ -95,7 +96,7 @@ fun ExperienceRow(
                     Text(text = substanceNames)
                 } else {
                     Text(
-                        text = "No substance yet",
+                        text = i18n("no_substance_yet"),
                     )
                 }
                 val rating = experienceWithIngestionsCompanionsAndRatings.rating?.sign
@@ -108,7 +109,7 @@ fun ExperienceRow(
                     .joinToString(separator = ", ")
             }
             if (consumerNames.isNotEmpty()) {
-                Text(text = "With: $consumerNames", style = MaterialTheme.typography.labelSmall)
+                Text(text = i18n("with_consumers", mapOf("names" to consumerNames)), style = MaterialTheme.typography.labelSmall)
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

@@ -57,6 +57,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import com.isaakhanimann.journal.localization.i18n
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -174,7 +175,7 @@ fun AddOrEditCustomSubstance(
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete substance?")
+                                Text(text = i18n("delete_substance_question"))
                             },
                             confirmButton = {
                                 TextButton(
@@ -247,16 +248,16 @@ fun AddOrEditCustomSubstance(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 OutlinedButton(onClick = { onUnitsChange("µg") }) {
-                    Text(text = "µg")
+                    Text(text = i18n("unit_mcg"))
                 }
                 OutlinedButton(onClick = { onUnitsChange("mg") }) {
-                    Text(text = "mg")
+                    Text(text = i18n("unit_mg"))
                 }
                 OutlinedButton(onClick = { onUnitsChange("g") }) {
-                    Text(text = "g")
+                    Text(text = i18n("unit_g"))
                 }
                 OutlinedButton(onClick = { onUnitsChange("mL") }) {
-                    Text(text = "mL")
+                    Text(text = i18n("unit_ml"))
                 }
             }
             OutlinedTextField(

@@ -36,6 +36,7 @@ import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 
 @Composable
 fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
@@ -173,7 +174,7 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                 style = style,
             )
             Text(
-                text = "Now",
+                text = i18n("time_now_label"),
                 style = style,
             )
         }

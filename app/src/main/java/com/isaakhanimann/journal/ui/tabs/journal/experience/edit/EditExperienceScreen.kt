@@ -74,7 +74,7 @@ fun EditExperienceScreenPreview() {
         onChangeOfEnteredTitle = { },
         isEnteredTitleOk = true,
         onDoneTap = {},
-        text = "Here are some sample notes",
+        text = i18n("sample_notes"),
         onTextChange = {},
         location = "Zurich",
         onLocationChange = {}
@@ -123,7 +123,7 @@ fun EditExperienceScreen(
                 value = enteredTitle,
                 onValueChange = onChangeOfEnteredTitle,
                 singleLine = true,
-                label = { Text(text = "Title") },
+                label = { Text(text = i18n("title_label")) },
                 isError = !isEnteredTitleOk,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -136,7 +136,7 @@ fun EditExperienceScreen(
                 value = location,
                 onValueChange = onLocationChange,
                 singleLine = true,
-                label = { Text(text = "Location") },
+                label = { Text(text = i18n("location_label")) },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done,

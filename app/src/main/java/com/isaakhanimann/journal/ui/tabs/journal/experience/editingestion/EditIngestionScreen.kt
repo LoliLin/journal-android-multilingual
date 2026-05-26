@@ -209,7 +209,7 @@ fun EditIngestionScreen(
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete ingestion?")
+                                Text(text = i18n("delete_ingestion_question"))
                             },
                             confirmButton = {
                                 TextButton(
@@ -440,14 +440,14 @@ fun EditIngestionScreen(
                     )
                 ) {
                     Text(
-                        text = "Consumed by: ${consumerName.ifBlank { YOU }}",
+                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { YOU })),
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
                         TextButton(onClick = {
                             isPresentingBottomSheet = !isPresentingBottomSheet
                         }) {
-                            Text(text = "Choose other consumer")
+                            Text(text = i18n("choose_other_consumer"))
                         }
                     }
                     var showNewConsumerTextField by remember { mutableStateOf(false) }
