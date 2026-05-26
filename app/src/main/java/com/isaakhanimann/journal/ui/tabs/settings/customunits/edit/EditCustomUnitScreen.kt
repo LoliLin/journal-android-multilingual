@@ -205,7 +205,4 @@ private fun EditCustomUnitScreenContent(
             onChangeOfIsArchived = onChangeOfIsArchived
         )
     }
-}nChangeOfIsArchived
-        )
-    }
 }

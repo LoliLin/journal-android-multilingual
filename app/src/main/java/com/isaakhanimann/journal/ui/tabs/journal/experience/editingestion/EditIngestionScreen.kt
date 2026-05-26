@@ -538,6 +538,3 @@ fun EditIngestionScreen(
         }
     }
 }
-    }
-    }
-}

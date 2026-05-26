@@ -398,7 +398,3 @@ fun EditCustomUnitSections(
         }
     }
 }
-            }
-        }
-    }
-}

@@ -429,6 +429,3 @@ fun NoteSection(
         }
     }
 }
-    }
-    }
-}
