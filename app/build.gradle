@@ -15,8 +15,8 @@ android {
         applicationId "in.kawaiis.journal"
         minSdk 26
         targetSdk 34
-        versionCode 29
-        versionName "8.5"
+        versionCode 30
+        versionName "27.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -31,11 +31,12 @@ android {
 
     signingConfigs {
         release {
-            if (System.getenv("KEYSTORE_BASE64") != null) {
+            def b64 = System.getenv("KEYSTORE_BASE64")
+            if (b64 != null && !b64.isBlank()) {
+                b64 = b64.trim().replaceAll("\\s", "")
                 def keystoreFile = file("${project.buildDir}/release.keystore.jks")
                 keystoreFile.parentFile.mkdirs()
-                def decoded = java.util.Base64.getDecoder().decode(System.getenv("KEYSTORE_BASE64"))
-                keystoreFile.bytes = decoded
+                keystoreFile.bytes = java.util.Base64.getDecoder().decode(b64)
                 storeFile = keystoreFile
                 storePassword = System.getenv("KEYSTORE_PASSWORD")
                 keyAlias = System.getenv("KEY_ALIAS")
@@ -45,9 +46,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
         release {
             signingConfig signingConfigs.release
             minifyEnabled false
