@@ -5,5 +5,18 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种极为常见的苯二氮卓，更知名为 Xanax，常用于治疗焦虑和惊恐障碍。阿普唑仑作用短，主要抗焦虑，也具催眠属性。高剂量常见失忆与抑制下降。不要与其他抑制剂合用。",
-  "localizedName": "阿普唑仑"
+  "localizedName": "阿普唑仑",
+  "effectsSummary": "Anxiety relief, sedation, muscle relaxation, amnesia, drowsiness, ataxia.",
+  "generalRisks": "[TBT] There is little information available on risks, toxicity, side effects and long-term consequences. Therefore, the general information on benzodiazepines applies:\nWhen mixing with other downers (alcohol, GHB/GBL, heroin) there is a risk of respiratory paralysis!\nTaking benzodiazepines can cause numerous undesirable side effects. In addition, regular and long-term use carries a very high risk of physical and psychological dependence. Benzodiazepines should only be taken as prescribed by a doctor and only for a short period of time (max. 4-6 weeks). Longer-term use should be discussed with the treating specialist. The dosages and duration of action of the individual benzodiazepines differ considerably.\nSide effects of benzodiazepines may be as follows: Prolonged fatigue, gastrointestinal problems, impaired reactions, hypersensitivity reactions, headaches, dizziness, motor difficulties, visual disturbances, slowed breathing, muscle weakness, confusion, sexual dysfunction, aggression, outbursts of anger, restlessness, random movements, allergies, skin problems/rashes and speech and movement disorders. Some benzodiazepines can cause seizures in epileptics.",
+  "longtermRisks": "[TBT] Regular and long-term use can lead to psychological and physical dependence (very high dependence potential). Immediate discontinuation of the drug after prolonged use can lead to negative withdrawal symptoms (including dizziness, physical weakness, inner restlessness, tremors, sleep disturbances, headaches, sweating, nausea, hallucinations and depression).\nIn addition, seizures and memory disorders/loss and listlessness (hangover effects) can occur. In case of possible dependence, withdrawal should be discussed with a doctor beforehand and the withdrawal should be medically accompanied. It is extremely important that the dose is reduced gradually.",
+  "saferUse": [
+    "[TBT] If medicines are obtained on the black market or on the internet and not from a pharmacy/medical facility, the contents are unclear. Have the medicine tested for the exact ingredients in a drug check!",
+    "[TBT] Do not rely on dosage information from colleagues who regularly use benzodiazepines. Due to habituation or dependence, their doses can be much higher and fatal for new users.",
+    "[TBT] Blisters of counterfeits may look identical to the original packaging.",
+    "[TBT] The simultaneous consumption of depressant substances such as alcohol, ketamine, GHB/GBL, nitrous oxide, opioids and/or other benzodiazepines is dangerous as there is an increased risk of vomiting and unconsciousness. The risk of suffocation is high!"
+  ],
+  "tolerance": {
+    "full": "[TBT] within a couple of days of continuous use",
+    "zero": "[TBT] 7-14 days"
+  }
 }

@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "N-甲基-N-异丙基色胺是 DMT 的色胺类似物，极为罕见，人体使用报告很少。被描述为“更偏迷幻而非纯致幻”，用户报告仅有轻微视觉、伴一些刺激和认知效应。是较稳定的色胺之一。",
-  "localizedName": "MiPT"
+  "localizedName": "MiPT",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

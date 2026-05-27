@@ -5,5 +5,9 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种苯二氮卓类药物，为地西泮的类似物，由 Leo Sternbach 于 1960 年在 Hoffman-LaRoche 首次合成。近年来作为灰色市场 RC 苯二氮卓而知名，尤其在依替唑仑供应下降后。具镇静与催眠作用，半衰期中等到较长，与地西泮类似但效力约高 10 倍。",
-  "localizedName": "Diclazepam"
+  "localizedName": "Diclazepam",
+  "tolerance": {
+    "full": "[TBT] within 3-4 days of continuous use",
+    "zero": "7 - 14 天"
+  }
 }

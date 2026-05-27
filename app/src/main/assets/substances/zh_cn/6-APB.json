@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种兴奋剂与共情剂，为 MDA 的类似物。通常比 MDMA 或 MDA 更偏视觉，并且起效更慢、持续更久。用户常报告更偏迷幻的精神状态。常作为 MDMA 和 MDA 的替代品出售。",
-  "localizedName": "6-APB"
+  "localizedName": "6-APB",
+  "tolerance": {
+    "full": "[TBT] with prolonged and repeated use",
+    "half": "[TBT] 3-4 weeks",
+    "zero": "[TBT] 6-8 weeks"
+  }
 }

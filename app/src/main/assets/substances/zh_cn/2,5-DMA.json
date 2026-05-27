@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "2,5-DMA"
+  "localizedName": "2,5-DMA",
+  "tolerance": {
+    "full": "[TBT] after ingestion over the couse of multiple days",
+    "half": "[TBT] 3-5 days",
+    "zero": "[TBT] 7-10 days"
+  }
 }

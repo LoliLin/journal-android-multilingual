@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种剂量更低的麦司卡林类似物，似乎高度依赖色彩体验。",
-  "localizedName": "Allylescaline"
+  "localizedName": "Allylescaline",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

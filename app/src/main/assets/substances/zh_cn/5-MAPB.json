@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种结构与 MDMA 相似的共情剂。通常比 MDMA 更具视觉效果，常被描述为比多数刺激性共情剂更放松、刺激性更低。比 6-APB 更不迷幻，但持续时间比 MDMA 更长。",
-  "localizedName": "5-MAPB"
+  "localizedName": "5-MAPB",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

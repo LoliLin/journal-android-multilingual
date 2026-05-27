@@ -4,5 +4,10 @@
     "极低毒性。"
   ],
   "summary": "裸盖菇素是一种取代色胺生物碱，存在于多数迷幻蘑菇中。因 -OH 基团，在溶液中相对不稳定。",
-  "localizedName": "裸盖菇素"
+  "localizedName": "裸盖菇素",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

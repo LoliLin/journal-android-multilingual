@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种相当通用的迷幻剂，因可作为“迷幻豆腐”搭配使用而闻名。自身特色不强，但组合时令人愉快。",
-  "localizedName": "2C-D"
+  "localizedName": "2C-D",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

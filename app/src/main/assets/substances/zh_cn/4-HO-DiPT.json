@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种迷幻色胺，也称 iprocin。为裸盖菇素的同系物，可能与迷幻蘑菇效应相似。据称起效快且持续较短。",
-  "localizedName": "4-HO-DiPT"
+  "localizedName": "4-HO-DiPT",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

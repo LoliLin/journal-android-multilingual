@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种拉西坦类促智药，最初用于阿尔茨海默病，目前研究用于重度抑郁和广泛性焦虑障碍。可能调节 AMPA 受体。娱乐价值有限。",
-  "localizedName": "Coluracetam"
+  "localizedName": "Coluracetam",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

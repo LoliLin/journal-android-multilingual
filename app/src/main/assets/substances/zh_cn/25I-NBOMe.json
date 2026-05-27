@@ -4,5 +4,10 @@
     "高剂量可能致命。"
   ],
   "summary": "一种较新且流行的研究化学品，具有迷幻特性。用户报告强烈视觉并伴不适的身体负荷，但心理层面较弱。常被误当作 LSD 贩售，因为生产成本更低。被认为相当不安全，在“常规”剂量下也导致过数起死亡。",
-  "localizedName": "25I-NBOMe"
+  "localizedName": "25I-NBOMe",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 1 week",
+    "zero": "2 周"
+  }
 }

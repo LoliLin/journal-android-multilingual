@@ -2,5 +2,10 @@
   "addictionPotential": "不易形成习惯。",
   "toxicities": [],
   "summary": "一种相对少见的苯乙胺类迷幻剂，可能也是 MAOI。作用持久且剂量曲线不可预测，与大多数物质合用安全性可疑。",
-  "localizedName": "2C-T-7"
+  "localizedName": "2C-T-7",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

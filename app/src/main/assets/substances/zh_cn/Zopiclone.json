@@ -5,5 +5,9 @@
     "与苯二氮卓、酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种非苯二氮卓类镇静助眠药（Z 药），清醒时服用可产生致幻效应。常导致口中金属味持续约 12 小时。有报告称部分使用者会断片、过度补服并进行危险行为如驾车。",
-  "localizedName": "佐匹克隆"
+  "localizedName": "佐匹克隆",
+  "tolerance": {
+    "full": "[TBT] within a couple of weeks of daily use",
+    "zero": "7 - 14 天"
+  }
 }

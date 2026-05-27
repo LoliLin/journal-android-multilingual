@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种较少为人知的迷幻色胺。为裸盖菇素（Psilocin）的功能类似物。水和酒精中溶解度很差。",
-  "localizedName": "4-HO-MET"
+  "localizedName": "4-HO-MET",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

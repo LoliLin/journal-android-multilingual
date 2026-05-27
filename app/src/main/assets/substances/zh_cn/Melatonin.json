@@ -4,5 +4,10 @@
     "极低毒性。"
   ],
   "summary": "体内自然产生的激素，基于昼夜节律在特定时间促进睡眠。也常作为治疗失眠和改善睡眠周期的药物。可用于药物体验末期促进入睡，但不特别催眠。",
-  "localizedName": "褪黑素"
+  "localizedName": "褪黑素",
+  "tolerance": {
+    "full": "[TBT] after prolonged and repeated usage",
+    "half": "[TBT] 7 days",
+    "zero": "[TBT] 14 days"
+  }
 }

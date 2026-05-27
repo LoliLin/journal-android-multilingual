@@ -3,5 +3,10 @@
   "toxicities": [
     "确切毒性剂量未知。"
   ],
-  "localizedName": "Omberacetam"
+  "localizedName": "Omberacetam",
+  "tolerance": {
+    "full": "[TBT] develops over several weeks of prolonged and repeated use",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

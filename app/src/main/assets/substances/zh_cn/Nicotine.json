@@ -4,5 +4,19 @@
     "估计人体口服 LD50 为 6.5-13 mg/kg。"
   ],
   "summary": "一种存在于烟草、茄子与番茄中的化学物质，被认为是最具成瘾性的药物之一。属温和兴奋剂，有减压效果。常以香烟形式使用，长期使用有较高致癌或心脏问题风险。越来越多地以“电子烟”方式使用，被认为比吸烟更安全。",
-  "localizedName": "尼古丁"
+  "localizedName": "尼古丁",
+  "effectsSummary": "Stimulating, increases alertness and concentration, reduces appetite, relaxing effect, mild euphoria.",
+  "dosageRemark": "[TBT] Individual and dependent on the form of consumption. The lethal dose of nicotine for adults is about 60 mg; for children and adolescents it is significantly lower.",
+  "generalRisks": "Highly addictive. Increases heart rate and blood pressure. Long-term use causes cardiovascular disease, lung cancer (when smoked), and reproductive issues.",
+  "longtermRisks": "Long-term use dramatically increases risk of lung cancer (smoked), COPD, cardiovascular disease, stroke, and premature aging.",
+  "saferUse": [
+    "Use nicotine replacement therapy for cessation.",
+    "Avoid smoking - consider vaping or patches.",
+    "Be aware of the addictive potential."
+  ],
+  "tolerance": {
+    "full": "[TBT] rapidly develops with prolonged and repeated use",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

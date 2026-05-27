@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种罕见的色胺类迷幻剂，与 DMT 近缘，特点是视觉幻觉较少但听觉效应强。",
-  "localizedName": "DiPT"
+  "localizedName": "DiPT",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

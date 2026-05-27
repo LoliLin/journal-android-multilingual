@@ -4,5 +4,24 @@
     "低毒性。"
   ],
   "summary": "一种半合成阿片镇痛药，也称 Subutex。常以 Butrans 贴片或与纳洛酮组合成 Suboxone 用于海洛因替代治疗。若有阿片耐受且未等待足够时间（通常约 48 小时）服用，会引发戒断。",
-  "localizedName": "丁丙诺啡"
+  "localizedName": "丁丙诺啡",
+  "effectsSummary": "[TBT] Like all opiates, buprenorphine has analgesic and cough-irritant effects. However, its euphoric and sedative properties are less pronounced than those of other opioids, which is why it is also used for substitution treatment. Buprenorphine is a partial agonist. This means that, for safety reasons, only a submaximal effect is elicited. After a certain dose, a saturation effect (ceiling effect) occurs, which prevents a further increase in the effect. This makes the active ingredient so relevant for substitution treatments, as withdrawal symptoms can be alleviated and overdoses avoided.",
+  "dosageRemark": "[TBT] From 16 mg, the saturation effect (ceiling effect) takes effect and no more effect enhancement is felt.\nWhen consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
+  "generalRisks": "[TBT] The side effects are less pronounced than with other opioids. Nevertheless, fatigue, constipation, drowsiness, sweating, nausea, vomiting, insomnia and irritability may occur. Buprenorphine has a lower risk of respiratory depression, which is why it is considered comparatively safe.\nOverdoses with buprenorphine are difficult to treat with the opioid antagonist naloxone due to its high binding to the μ-opioid receptor. Therefore, agents from the group of respiratory stimulants (such as doxapram) are used.",
+  "longtermRisks": "[TBT] Unlike other opioids, the active ingredient floods on slowly, which is why the risk of dependence is considered lower.",
+  "saferUse": [
+    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
+    "从小剂量开始，等待效果后再决定是否加量。",
+    "如果注射阿片类药物，更需谨慎剂量。",
+    "不要依赖他人的剂量信息。",
+    "使用之间保持较长间隔（至少数天）。",
+    "戒断一段时间后，剂量要比之前大幅降低。",
+    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
+    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

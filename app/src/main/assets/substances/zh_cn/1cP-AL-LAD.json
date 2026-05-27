@@ -4,5 +4,10 @@
     "毒性剂量未知。",
     "极低毒性。"
   ],
-  "localizedName": "1cP-AL-LAD"
+  "localizedName": "1cP-AL-LAD",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 5-7 days",
+    "zero": "[TBT] 14 days"
+  }
 }

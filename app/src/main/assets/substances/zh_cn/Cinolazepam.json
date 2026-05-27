@@ -5,5 +5,9 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种苯二氮卓衍生物，具抗焦虑但以催眠为主。对助眠非常有效，但相比其他苯二氮卓类只有轻微欣快。",
-  "localizedName": "西诺拉西泮"
+  "localizedName": "西诺拉西泮",
+  "tolerance": {
+    "full": "[TBT] within a couple of days of continuous use",
+    "zero": "7 - 14 天"
+  }
 }

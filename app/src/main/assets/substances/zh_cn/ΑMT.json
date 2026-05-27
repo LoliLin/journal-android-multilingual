@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "ΑMT"
+  "localizedName": "ΑMT",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 14 days",
+    "zero": "[TBT] 1 month"
+  }
 }

@@ -1,0 +1,17 @@
+{
+  "effectsSummary": "欣快、共情、情感开放、精力增强、感官感知增强、咬紧牙关、心率加快。",
+  "dosageRemark": "不要重复使用超过一次。至少间隔 3 个月再使用。保持水分但不要过量饮水。",
+  "generalRisks": "高热（过热）、脱水或水中毒、血清素综合征、咬紧牙关、磨牙、肝毒性、使用后抑郁。",
+  "longtermRisks": "定期使用导致血清素系统损伤、认知缺陷、抑郁、焦虑和耐受累积。",
+  "saferUse": [
+    "保持水分但不要过量饮水（每小时最多 500ml）。",
+    "跳舞期间休息以降温。",
+    "不要重复使用超过一次。",
+    "每次使用至少间隔 3 个月。"
+  ],
+  "tolerance": {
+    "full": "[TBT] with prolonged and repeated use",
+    "half": "[TBT] 1 month",
+    "zero": "[TBT] 2.5 months"
+  }
+}

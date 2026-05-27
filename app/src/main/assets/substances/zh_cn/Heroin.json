@@ -2,5 +2,20 @@
   "addictionPotential": "极易成瘾且具有高滥用潜力。",
   "toxicities": [],
   "summary": "一种源自吗啡的强力阿片，效力为其 2-4 倍。以高成瘾性和过量致命性呼吸抑制而臭名昭著，1874 年 C. R. Alder Wright 为寻找较不成瘾的吗啡替代品而首次合成。近年常被掺入极强的芬太尼，导致过量死亡激增。",
-  "localizedName": "海洛因"
+  "localizedName": "海洛因",
+  "effectsSummary": "Intense euphoria, warmth, relaxation, pain relief, drowsiness, itching, nausea, respiratory depression.",
+  "dosageRemark": "The purity of street heroin varies greatly. Start with a very small test dose to gauge strength.",
+  "generalRisks": "High risk of respiratory depression and death from overdose. Severe addiction potential. Withdrawal is extremely unpleasant.",
+  "longtermRisks": "Severe physical and psychological dependence. Chronic use leads to collapsed veins, infections, respiratory issues, and high mortality.",
+  "saferUse": [
+    "Test a small amount first to gauge potency.",
+    "Never use alone.",
+    "Have naloxone available.",
+    "Avoid mixing with other depressants."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

@@ -3,5 +3,10 @@
   "toxicities": [
     "相对于剂量而言毒性极低。"
   ],
-  "localizedName": "1V-LSD"
+  "localizedName": "1V-LSD",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 5-7 days",
+    "zero": "[TBT] 14 days"
+  }
 }

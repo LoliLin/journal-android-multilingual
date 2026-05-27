@@ -1,0 +1,16 @@
+{
+  "effectsSummary": "兴奋、增加警觉性和专注力、降低食欲、放松效果、轻度欣快。",
+  "dosageRemark": "[TBT] Individual and dependent on the form of consumption. The lethal dose of nicotine for adults is about 60 mg; for children and adolescents it is significantly lower.",
+  "generalRisks": "高度成瘾。增加心率和血压。长期使用导致心血管疾病、肺癌（吸烟时）和生殖问题。",
+  "longtermRisks": "长期使用大幅增加肺癌（吸烟）、慢性阻塞性肺疾病、心血管疾病、中风和早衰风险。",
+  "saferUse": [
+    "使用尼古丁替代疗法戒烟。",
+    "避免吸烟 - 考虑雾化或贴片。",
+    "认识到其成瘾潜力。"
+  ],
+  "tolerance": {
+    "full": "[TBT] rapidly develops with prolonged and repeated use",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 週"
+  }
+}

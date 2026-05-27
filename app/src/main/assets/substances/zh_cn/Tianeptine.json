@@ -4,5 +4,10 @@
     "治疗指数大，安全范围宽。"
   ],
   "summary": "一种三环类抗抑郁药，其药理特性较为独特，例如可能间接作用于 NMDA/AMPA，并作为 μ-阿片受体完全激动剂。滥用较少见，但在少数国家已有使用。",
-  "localizedName": "Tianeptine"
+  "localizedName": "Tianeptine",
+  "tolerance": {
+    "full": "[TBT] with prolonged use",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

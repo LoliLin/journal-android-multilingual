@@ -1,5 +1,10 @@
 {
   "addictionPotential": "无成瘾性且滥用潜力低。",
   "toxicities": [],
-  "localizedName": "1cP-LSD"
+  "localizedName": "1cP-LSD",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 5-7 days",
+    "zero": "[TBT] 14 days"
+  }
 }

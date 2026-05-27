@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种强效、作用持久的兴奋性迷幻剂，为苯乙胺和取代安非他明类。有时被当作 LSD 贩售，也有不少人因其自身特性而使用。通常卖成比 LSD 略大的吸墨纸，但也可粉末购买。",
-  "localizedName": "DOC"
+  "localizedName": "DOC",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

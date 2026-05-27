@@ -2,5 +2,10 @@
   "addictionPotential": "不易形成习惯。",
   "toxicities": [],
   "summary": "一种强效、刺激性的迷幻色胺，有时与 5-MeO-DiPT 相比。具有异常强烈的身体感与较弱视觉效果。常被认为很具共情性。",
-  "localizedName": "5-MeO-MiPT"
+  "localizedName": "5-MeO-MiPT",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

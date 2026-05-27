@@ -3,5 +3,10 @@
   "toxicities": [
     "确切毒性剂量未知。"
   ],
-  "localizedName": "ETH-CAT"
+  "localizedName": "ETH-CAT",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "[TBT] 2 - 3 days",
+    "zero": "[TBT] 3-5 days"
+  }
 }

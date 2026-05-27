@@ -4,5 +4,9 @@
     "确切毒性剂量未知。"
   ],
   "summary": "1,4-BD 是一种无色透明的液体，具有致醉作用。它是 GHB 的前药，作用相似但据称较弱。与 GHB 相比也可能带来更高健康风险，例如肝损伤和神经毒性。",
-  "localizedName": "1,4-Butanediol"
+  "localizedName": "1,4-Butanediol",
+  "tolerance": {
+    "full": "[TBT] within several weeks of continuous use",
+    "zero": "7 - 14 天"
+  }
 }

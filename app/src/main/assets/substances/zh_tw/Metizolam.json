@@ -1,0 +1,7 @@
+{
+  "tolerance": {
+    "full": "[TBT] within a couple of days of repeated administration",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 週"
+  }
+}

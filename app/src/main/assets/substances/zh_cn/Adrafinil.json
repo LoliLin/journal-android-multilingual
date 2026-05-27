@@ -2,5 +2,10 @@
   "addictionPotential": "不成瘾且滥用潜力低。",
   "toxicities": [],
   "summary": "莫达非尼的前药，常用于提高清醒度与警觉性。因肝代谢起效较慢，过量可能损伤肝脏。有用户报告痤疮为不良反应。在美国不受监管。",
-  "localizedName": "Adrafinil"
+  "localizedName": "Adrafinil",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

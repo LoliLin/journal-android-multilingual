@@ -5,5 +5,21 @@
     "与酒精或苯二氮卓等抑制剂混用可能致命。"
   ],
   "summary": "可待因是一种较弱的阿片，用于治疗轻中度疼痛和止咳。在许多国家可与对乙酰氨基酚配方非处方购买，且可轻易提取近纯可待因。因此被广泛作为娱乐性阿片使用。在体内约有 5% 按质量代谢为吗啡。",
-  "localizedName": "可待因"
+  "localizedName": "可待因",
+  "effectsSummary": "可待因在体内转化为吗啡。服用具有镇痛、止咳、止泻和镇静作用。",
+  "dosageRemark": "高剂量时效果增加罕见，因为身体只能吸收有限量的可待因。",
+  "generalRisks": "口干、头痛、恶心、呕吐、食欲不振、瘙痒、便秘、头晕、嗜睡。高剂量时呼吸抑制。",
+  "longtermRisks": "男性可能出现性欲降低（性欲减退）。女性可能出现月经紊乱。",
+  "saferUse": [
+    "[TBT] Do not use codeine with other depressant substances such as alcohol, cannabis, sleeping pills, MAO inhibitors (such as antidepressants) or GHB/GBL.",
+    "[TBT] Dose low and don't top up straight away - it may be that you don't get a high.",
+    "[TBT] With Sizzurp: The mixture with carbonic acid and sugar makes the codeine more difficult to dose. In addition, the effect is much faster and more intense.",
+    "[TBT] When codeine is injected or snorted, severe side effects and unintentional overdose can result.",
+    "[TBT] Codeine is a medicinal product and should therefore only be taken with medical supervision."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

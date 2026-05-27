@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种罕见且非常强效的 PCP 类似物，作为 NMDA 受体拮抗剂效力约为 PCP 的 8 倍，同时也是 μ-阿片受体激动剂。结构上类似甲氧甲胺。",
-  "localizedName": "3-HO-PCE"
+  "localizedName": "3-HO-PCE",
+  "tolerance": {
+    "full": "[TBT] with prolonged and repeated use",
+    "half": "4 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

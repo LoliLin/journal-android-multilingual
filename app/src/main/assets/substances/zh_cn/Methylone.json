@@ -4,5 +4,18 @@
     "确切毒性剂量未知。"
   ],
   "summary": "βk-MDMA 是卡西酮类兴奋剂与共情剂，结构与 MDMA 相似，但更具刺激性且共情性较弱。在 2013 年被禁之前常在街头被误售为 MDMA。Marquis 试剂可区分 βk-MDMA 与 MDMA。效力低于 MDMA，持续时间略短。",
-  "localizedName": "Methylone"
+  "localizedName": "Methylone",
+  "effectsSummary": "[TBT] Compared to MDMA, methylone has a stronger stimulating and less empathogenic effect. The effect is more constant, the \"hangover\" less than with MDMA.",
+  "generalRisks": "[TBT] Short-term side effects are increased body temperature and heartbeat, dilated pupils and tightening of the jaw. The side effects and the (long-term) risks of methylone have hardly been researched yet.",
+  "saferUse": [
+    "[TBT] Refrain from re-throwing: This does not intensify or prolong the flash with methylone.",
+    "[TBT] Be sure to drink enough water during the effect.",
+    "[TBT] Do not combine methylone with alcohol and other drugs, especially MAO inhibitors.",
+    "[TBT] Do not use methylone if you have heart or circulatory problems, high blood pressure, diabetes, asthma, epilepsy or mental health problems."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "[TBT] 1 - 3 weeks",
+    "zero": "[TBT] 3 - 6 weeks"
+  }
 }

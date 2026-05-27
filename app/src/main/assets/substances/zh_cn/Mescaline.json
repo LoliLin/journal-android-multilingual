@@ -4,5 +4,31 @@
     "毒性剂量未知。"
   ],
   "summary": "一种苯乙胺家族的迷幻剂，存在于迷幻仙人掌中，长期被美国西南部和墨西哥原住民使用，包括佩奥特和圣佩德罗等。可作为仙人掌浆、提取物或实验室合成物获得。",
-  "localizedName": "麦司卡林"
+  "localizedName": "麦司卡林",
+  "effectsSummary": "[TBT] Before the effect sets in, nausea and/or vomiting can often occur. Hot and cold flushes as well as sweating and dizziness may also occur. These side effects usually subside after a while. The trip begins with hyperactivity and inner restlessness, followed by altered, sharpened perception and intensified colour vision. In a second phase, a more meditative concentration occurs. Users report visions and a euphoria of religious depth, the feeling of a visionary experience and the change of ego sensation as well as feelings of ego dissolution.",
+  "dosageRemark": "[TBT] The mescaline content can vary greatly from plant to plant.",
+  "generalRisks": "[TBT] The pharmacological effect of mescaline and the bitter taste usually lead to nausea and vomiting in the initial phase of the trip. Mescaline is toxic in high doses (from approx. 2 g) and can lead to liver damage and respiratory paralysis. Other side effects may include an increase in pulse and blood pressure, initially dry mouth, then increased salivation, pupil enlargement, increase in body temperature and a reduced feeling of hunger during the period of effect. During vomiting, users may choke on the vomit (danger of choking!).",
+  "longtermRisks": "[TBT] The use of mescaline can trigger latent (hidden) mental disorders even with single use.",
+  "saferUse": [
+    "[TBT] Mescaline is not suitable as a party drug and should only be used by experienced users.",
+    "[TBT] Use mescaline only if you are well prepared and in an environment where you feel comfortable. Use mescaline only in the presence of friends who are experienced users (good setting) and/or a sober person (tripsitter).",
+    "[TBT] Only use mescaline when you feel good mentally and physically (good set).",
+    "[TBT] You should have respect but not fear for the mescaline effect.",
+    "[TBT] Mescaline should be taken on an empty stomach. Fasting before the trip may help to reduce the likelihood of nausea and vomiting.",
+    "[TBT] For nausea, it helps if you take mescaline in small doses at a time.",
+    "[TBT] Don't add to it if it doesn't work right away.",
+    "[TBT] Let yourself go during the trip, don't try to fight the effects of mescaline. A trip sitter can help you with this.",
+    "[TBT] Dextrose can help against circulatory problems.",
+    "[TBT] Avoid roads and other \"dangerous\" places. Your orientation may be disturbed.",
+    "[TBT] Drink enough water during the trip.",
+    "[TBT] Mixed use of this potent substance should be avoided at all costs, as the effect can then no longer be assessed.",
+    "[TBT] Plan enough time for recovery after the trip (at least 1 day)!",
+    "[TBT] Mescaline trips should remain exceptional experiences and should in no case be experienced more than once a month.",
+    "[TBT] People with mental problems or illnesses, people taking neuroleptics and people with circulatory and heart problems should refrain from using mescaline."
+  ],
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

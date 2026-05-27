@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "安非他明家族的兴奋剂",
-  "localizedName": "3-FMA"
+  "localizedName": "3-FMA",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "[TBT] 1 - 10 days"
+  }
 }

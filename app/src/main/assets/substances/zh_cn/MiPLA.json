@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "MiPLA"
+  "localizedName": "MiPLA",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 5-7 days",
+    "zero": "[TBT] 14 days"
+  }
 }

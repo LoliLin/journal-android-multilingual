@@ -4,5 +4,10 @@
     "适当剂量下安全。"
   ],
   "summary": "一种短效的甲喹酮类似物，效力更强。",
-  "localizedName": "Mebroqualone"
+  "localizedName": "Mebroqualone",
+  "tolerance": {
+    "full": "[TBT] within a couple of days of repeated administration",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

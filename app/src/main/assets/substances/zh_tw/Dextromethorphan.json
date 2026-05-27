@@ -1,0 +1,10 @@
+{
+  "effectsSummary": "[TBT] In high doses (120 mg or more) it has a hallucinogenic and euphoric effect. Perceptual disturbances up to confusion as well as states of agitation with epileptic episodes may occur. Side effects are reddening of the skin and severe itching. With regular use there is great potential for dependence with psychological and physical symptoms!",
+  "dosageRemark": "[TBT] DXM in freebase form (as found in Robocough RoboTablets) is around 27-37% more potent than its hydrobromide form due to a higher concentration of DXM by weight. One should take this into account when calculating their dose to avoid a potential overdose.",
+  "generalRisks": "[TBT] Caution: The simultaneous intake of MAO inhibitors delays the degradation of DXM and can lead to severe respiratory and circulatory disorders!",
+  "tolerance": {
+    "full": "長期重複使用後產生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 週"
+  }
+}

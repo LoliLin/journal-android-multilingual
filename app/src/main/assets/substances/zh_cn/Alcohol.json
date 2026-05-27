@@ -4,5 +4,19 @@
     "当血液酒精浓度达到 0.4% 时可能因乙醇摄入致死。"
   ],
   "summary": "酒精是一种通过 GABAₐ 受体起效的中枢抑制剂，是人类最常见的强精神活性物质之一。使用历史悠久，致醉效应已被充分研究与记录。在世界大多数地区仍属合法。",
-  "localizedName": "酒精"
+  "localizedName": "酒精",
+  "effectsSummary": "Relaxation, disinhibition, sociability, euphoria, impaired judgment and coordination, slurred speech, memory impairment.",
+  "dosageRemark": "Dosage varies greatly depending on individual tolerance, body weight, and experience. Always pace yourself.",
+  "generalRisks": "Risk of alcohol poisoning, especially with high-proof spirits. Impaired judgment leads to risky behavior. Long-term use causes liver damage, brain damage, addiction.",
+  "longtermRisks": "Long-term alcohol use leads to liver cirrhosis, brain damage, dementia, heart disease, pancreatitis, and severe addiction.",
+  "saferUse": [
+    "Drink water between alcoholic beverages.",
+    "Do not drink on an empty stomach.",
+    "Avoid mixing alcohol with other drugs, especially depressants."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

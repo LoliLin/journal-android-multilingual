@@ -1,0 +1,7 @@
+{
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3-5 days",
+    "zero": "[TBT] 7-10 days"
+  }
+}

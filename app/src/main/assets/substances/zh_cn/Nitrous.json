@@ -3,5 +3,18 @@
   "toxicities": [
     "确切毒性剂量未知。"
   ],
-  "localizedName": "一氧化二氮"
+  "localizedName": "一氧化二氮",
+  "effectsSummary": "Euphoria, laughter, dissociation, dizziness, altered perception of sound, time distortion, short duration.",
+  "dosageRemark": "Effects come on very quickly and last only 1-5 minutes. Frequent use can lead to vitamin B12 deficiency.",
+  "longtermRisks": "Frequent use causes vitamin B12 deficiency leading to neurological damage, numbness, weakness, and pernicious anemia.",
+  "saferUse": [
+    "Take breaks between balloons to allow oxygen intake.",
+    "Supplement with B12 if using regularly.",
+    "Never inhale directly from a pressurized tank."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

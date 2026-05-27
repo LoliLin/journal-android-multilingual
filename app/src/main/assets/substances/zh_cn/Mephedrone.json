@@ -3,5 +3,22 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种短效欣快性兴奋剂，作为 MDMA 类似物开发，在被禁前在研究化学品圈极为流行。街头市场常见，但线上较少。强烈的强迫性补服冲动。",
-  "localizedName": "甲卡西酮"
+  "localizedName": "甲卡西酮",
+  "effectsSummary": "[TBT] The effect is similar to that of methcathinone, cocaine and MDMA. Mephedrone causes euphoria and stimulation, increased urge to talk, increased performance and altered sensory perceptions. The need for food and sleep is suppressed.",
+  "generalRisks": "[TBT] Various adverse effects may occur when consuming mephedrone: Dry mouth, mydriasis (dilated pupils), jaw grinding, increased heartbeat, increase in body temperature, anxiety or paranoia. There is a risk of dehydration due to decreased thirst and lack of fluid intake. High doses of mephedrone lead to psychotic reactions and can increase schizophrenia. There is a risk of dependence with symptoms such as restlessness, tremors, insomnia and hyperactivity.\nMephedrone is a research chemical. To date, nothing is known about the exact mechanisms of action, toxicity and possible long-term effects. The current state of knowledge is based almost exclusively on reports from users. Due to the strong craving (irresistible and uncontrollable desire to consume), especially when consumed nasally/smoked, there is a danger that one will take more too quickly and the side effects will predominate.",
+  "saferUse": [
+    "[TBT] There is very little knowledge about legal highs, research chemicals, etc. When you use them, you are exposing yourself to unknown risks. Have the substance analysed in a drug check. If this is not possible and you still want to use the substance, try small amounts to reach the desired dose.",
+    "[TBT] Do not buy a product with a fancy name without a declaration of the ingredient. Legal does not mean harmless.",
+    "[TBT] During consumption, inform your friends about what and how much you have consumed.",
+    "[TBT] Drink enough non-alcoholic beverages and get some fresh air in between.",
+    "[TBT] Accept it when the effect runs out, don't add to it right away.",
+    "[TBT] Refrain from mixed consumption, as interactions are dangerous and unexplored.",
+    "[TBT] Take regular breaks from consumption.",
+    "[TBT] People with high blood pressure, heart problems, hyperthyroidism, liver and kidney disease or circulatory problems should not take Research Chemicals."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

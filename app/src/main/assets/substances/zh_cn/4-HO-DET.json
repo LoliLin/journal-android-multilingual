@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种罕见化合物，由 Albert Hoffman 首次制得，也称 ethocin。结构与 4-HO-MET（metocin）和 psilocin（4-HO-DMT）相关，具有类似的迷幻效应，但人体使用记录很少。可能与蘑菇类似，可能具有刺激性。",
-  "localizedName": "4-HO-DET"
+  "localizedName": "4-HO-DET",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

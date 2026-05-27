@@ -1,0 +1,18 @@
+{
+  "effectsSummary": "可待因在體內轉化為嗎啡。服用具有鎮痛、止咳、止瀉和鎮靜作用。",
+  "dosageRemark": "高劑量時效果增加罕見，因為身體只能吸收有限量的可待因。",
+  "generalRisks": "口乾、頭痛、噁心、嘔吐、食慾不振、搔癢、便秘、頭暈、嗜睡。高劑量時呼吸抑制。",
+  "longtermRisks": "男性可能出現性欲降低（性慾減退）。女性可能出現月經紊亂。",
+  "saferUse": [
+    "[TBT] Do not use codeine with other depressant substances such as alcohol, cannabis, sleeping pills, MAO inhibitors (such as antidepressants) or GHB/GBL.",
+    "[TBT] Dose low and don't top up straight away - it may be that you don't get a high.",
+    "[TBT] With Sizzurp: The mixture with carbonic acid and sugar makes the codeine more difficult to dose. In addition, the effect is much faster and more intense.",
+    "[TBT] When codeine is injected or snorted, severe side effects and unintentional overdose can result.",
+    "[TBT] Codeine is a medicinal product and should therefore only be taken with medical supervision."
+  ],
+  "tolerance": {
+    "full": "長期重複使用後產生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 週"
+  }
+}

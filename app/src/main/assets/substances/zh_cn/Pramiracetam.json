@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种中枢兴奋剂兼促智药，属于拉西坦类化合物。效力远强于吡拉西坦，但似乎作用机制类似。",
-  "localizedName": "Pramiracetam"
+  "localizedName": "Pramiracetam",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

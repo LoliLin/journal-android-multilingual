@@ -2,5 +2,10 @@
   "addictionPotential": "不易形成习惯。",
   "toxicities": [],
   "summary": "一种罕见的苯乙胺类迷幻剂。",
-  "localizedName": "2C-T-21"
+  "localizedName": "2C-T-21",
+  "tolerance": {
+    "full": "[TBT] almost immediately after ingestion",
+    "half": "[TBT] 3 days",
+    "zero": "[TBT] 7 days"
+  }
 }

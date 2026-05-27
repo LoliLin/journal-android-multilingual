@@ -5,5 +5,9 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "替马西泮的商品名为 Restoril。它是催眠性苯二氮卓，效应类似氯硝西泮，常用于助眠。一些用户报告在催眠效应的同时有轻度欣快。",
-  "localizedName": "Temazepam"
+  "localizedName": "Temazepam",
+  "tolerance": {
+    "full": "[TBT] within a couple of days of continuous use",
+    "zero": "[TBT] 7-14 days"
+  }
 }
