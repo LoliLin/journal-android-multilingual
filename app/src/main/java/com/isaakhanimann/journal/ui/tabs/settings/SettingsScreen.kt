@@ -372,7 +372,7 @@ fun SettingsScreen(
                     imageVector = Icons.AutoMirrored.Outlined.ContactSupport,
                     text = i18n("settings_feedback_button")
                 ) {
-                    uriHandler.openUri("https://t.me/+ss8uZhBF6g00MTY8")
+                    uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual/issues")
                 }
                 HorizontalDivider()
                 SettingsButton(imageVector = Icons.Outlined.VolunteerActivism, text = i18n("settings_donate")) {
@@ -458,7 +458,7 @@ private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () ->
     }
 }
 
-const val SHARE_APP_URL = "https://psychonautwiki.org/wiki/PsychonautWiki_Journal"
+const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 
 
 @Composable
