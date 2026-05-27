@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种与 LSD 非常相似的利色胺，通常仅因持续时间更短而可区分，尽管部分主观报告称其更内省且稍少混乱。",
-  "localizedName": "LSZ"
+  "localizedName": "LSZ",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

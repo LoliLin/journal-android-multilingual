@@ -3,5 +3,9 @@
   "toxicities": [
     "接近或超过 2 克的剂量可能致命。"
   ],
-  "localizedName": "Diphenhydramine"
+  "localizedName": "Diphenhydramine",
+  "tolerance": {
+    "full": "重复使用",
+    "zero": "1 - 2 周"
+  }
 }

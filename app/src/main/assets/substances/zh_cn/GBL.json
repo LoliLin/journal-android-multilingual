@@ -2,5 +2,24 @@
   "addictionPotential": "高度生理成瘾，心理成瘾中等至高度。",
   "toxicities": [],
   "summary": "一种 GHB 前药，吸收快，起效更快且持续更短。用法类似 GHB，作为较低毒性的酒精替代品。应慢慢服用而非“吞一口”，可显著提高安全性并降低过量风险。",
-  "localizedName": "GBL"
+  "localizedName": "GBL",
+  "effectsSummary": "GBL is a prodrug of GHB with similar effects: euphoria, disinhibition, increased libido, sedation. Faster onset and more potent than GHB.",
+  "dosageRemark": "GBL is approximately twice as potent as GHB. The difference between a recreational dose and overdose is very small.",
+  "generalRisks": "Very narrow safety margin. Overdose causes vomiting, unconsciousness, respiratory depression, death. Mixing with alcohol is extremely dangerous.",
+  "longtermRisks": "Dependence develops quickly. Withdrawal can be severe and life-threatening, requiring medical detox.",
+  "saferUse": [
+    "用注射器精确测量剂量。",
+    "切勿与酒精或其他抑制剂同用。",
+    "第一次剂量后至少 3-4 小时内不要重复使用。",
+    "不要单独使用。",
+    "从小剂量开始。",
+    "注意：GBL 起效非常快。",
+    "GBL 比 GHB 的效力强约两倍，注意剂量换算。",
+    "避免与酒精或任何其他抑制剂同用。",
+    "不要每天使用以避免依赖。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7 - 14 天"
+  }
 }

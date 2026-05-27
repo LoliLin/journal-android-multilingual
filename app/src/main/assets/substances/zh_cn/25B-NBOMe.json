@@ -4,5 +4,10 @@
     "高剂量可能致命。"
   ],
   "summary": "一种迷幻性苯乙胺，活性在低微克级，口服无效。",
-  "localizedName": "25B-NBOMe"
+  "localizedName": "25B-NBOMe",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "1 周",
+    "zero": "2 周"
+  }
 }

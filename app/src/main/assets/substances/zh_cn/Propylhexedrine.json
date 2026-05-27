@@ -1,5 +1,10 @@
 {
   "toxicities": [],
   "summary": "一种相对常见的中枢兴奋剂，以 Benzedrex 吸入器形式作为非处方药销售。",
-  "localizedName": "Propylhexedrine"
+  "localizedName": "Propylhexedrine",
+  "tolerance": {
+    "full": "长期重复使用后迅速发展",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

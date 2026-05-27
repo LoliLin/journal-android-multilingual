@@ -4,5 +4,23 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种相当罕见的共情剂，与 MDMA 关系密切，但效力更弱。",
-  "localizedName": "MDEA"
+  "localizedName": "MDEA",
+  "effectsSummary": "MDEA is an entactogen similar to MDMA but milder. Increased empathy, mild euphoria, enhanced sensory perception. Less stimulating than MDMA.",
+  "dosageRemark": "MDEA is less potent than MDMA. Effects are milder but also less stimulating.",
+  "generalRisks": "Hyperthermia, serotonin syndrome. Jaw clenching, increased heart rate. Similar risks to MDMA but generally milder.",
+  "longtermRisks": "Regular use may cause neurotoxicity and serotonin system damage.",
+  "saferUse": [
+    "保持水分。",
+    "注意体温，避免过热。",
+    "不要频繁使用。",
+    "从低剂量开始。",
+    "使用后补充 5-HTP。",
+    "避免与其他血清素药物同用。",
+    "注意体温变化。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用",
+    "half": "1-1.5 个月",
+    "zero": "2-3 个月"
+  }
 }

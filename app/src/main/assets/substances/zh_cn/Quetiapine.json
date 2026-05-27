@@ -4,5 +4,9 @@
     "低毒性。"
   ],
   "summary": "一种非典型抗精神病药，商品名 Seroquel。也用于治疗失眠和情绪波动。该药很强镇静，可停止/减弱迷幻药程。滥用不常见。",
-  "localizedName": "Quetiapine"
+  "localizedName": "Quetiapine",
+  "tolerance": {
+    "full": "持续使用一周内",
+    "zero": "7 - 14 天"
+  }
 }

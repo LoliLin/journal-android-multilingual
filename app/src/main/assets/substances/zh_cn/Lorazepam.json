@@ -5,5 +5,18 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种中等作用时长的苯二氮卓，常称 Ativan，常作为 Xanax 的替代处方。具镇静、催眠和抗焦虑作用。过量可能导致失忆和抑制降低。不要与其他抑制剂合用。",
-  "localizedName": "劳拉西泮"
+  "localizedName": "劳拉西泮",
+  "effectsSummary": "Lorazepam has anxiolytic, sedative and anticonvulsant effects. It is also used for acute anxiety and panic attacks.",
+  "generalRisks": "Drowsiness, dizziness, weakness, unsteadiness. Risk of dependence. Dangerous with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7 - 14 天"
+  }
 }

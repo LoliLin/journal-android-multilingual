@@ -4,5 +4,31 @@
     "毒性剂量未知。"
   ],
   "summary": "一种苯乙胺家族的迷幻剂，存在于迷幻仙人掌中，长期被美国西南部和墨西哥原住民使用，包括佩奥特和圣佩德罗等。可作为仙人掌浆、提取物或实验室合成物获得。",
-  "localizedName": "麦司卡林"
+  "localizedName": "麦司卡林",
+  "effectsSummary": "Mescaline mainly has a psychedelic effect. It enhances perception, promotes visual hallucinations such as geometric patterns and color intensification, changes time perception and can produce spiritual experiences.",
+  "dosageRemark": "Mescaline is significantly less potent than LSD or psilocybin. Typical doses are in the 200-400mg range.",
+  "generalRisks": "Nausea and vomiting are common, especially during the come-up phase. Increased blood pressure and heart rate. Psychological distress possible at high doses.",
+  "longtermRisks": "No research results on long-term risks. HPPD is rare but possible. The main risk is psychological distress during the experience.",
+  "saferUse": [
+    "只在良好的身心状态下使用。",
+    "选择安全舒适的环境。建议有经验丰富的陪护人。",
+    "从低剂量（200mg）开始。",
+    "避免与其他药物混合使用。",
+    "提前了解可能的身体副作用（特别是恶心）。",
+    "注意：麦斯卡林在空腹时效果更好。",
+    "提前了解历史和文化背景可以增强体验。",
+    "不要驾驶或操作机械。",
+    "如果感到不适，改变环境或音乐可能有帮助。",
+    "体验后给自己时间休息和消化。",
+    "注意：麦斯卡林可能引起强烈的恶心和呕吐，这被认为是体验的一部分。",
+    "提前准备一个舒适的环境，包括毛毯、水和轻音乐。",
+    "不建议在公共场合或派对中使用。",
+    "如果感到不知所措，记住这是暂时的。",
+    "体验后需要时间整合，建议写日记记录。"
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

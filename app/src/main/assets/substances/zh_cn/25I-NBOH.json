@@ -4,5 +4,10 @@
     "高剂量可能致命。"
   ],
   "summary": "一种 2C-I 的苯乙胺类迷幻/兴奋衍生物，与 25i-NBOMe 相关且作用相似。效力显著高于 2C-I 但低于 25i-NBOMe。NBOH 化合物过量可能导致危险的血管收缩，可能引起不适的身体负荷。",
-  "localizedName": "25I-NBOH"
+  "localizedName": "25I-NBOH",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "1 周",
+    "zero": "2 周"
+  }
 }

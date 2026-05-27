@@ -5,5 +5,10 @@
     "与酒精或苯二氮卓等抑制剂混用可能致命。"
   ],
   "summary": "一种弱效半合成阿片镇痛及镇咳药。常与阿司匹林或对乙酰氨基酚配成糖浆出售。不要与效力稍弱的可待因混淆。",
-  "localizedName": "Dihydrocodeine"
+  "localizedName": "Dihydrocodeine",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

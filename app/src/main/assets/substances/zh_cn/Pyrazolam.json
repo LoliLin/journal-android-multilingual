@@ -5,5 +5,9 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "Hoffman-LaRoche 于 1970 年代发现的 RC 苯二氮卓。2010 年代初进入 RC 市场。低剂量主要抗焦虑，高剂量可显著镇静、催眠、致遗忘，并导致抑制降低。结构与阿普唑仑、溴西泮、三唑仑相似。效力约为地西泮的 12 倍。",
-  "localizedName": "Pyrazolam"
+  "localizedName": "Pyrazolam",
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7 - 14 天"
+  }
 }

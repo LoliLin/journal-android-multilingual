@@ -4,5 +4,14 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种中等时效的处方苯二氮卓。具有镇静和催眠作用，高剂量可能导致抑制解除与失忆。",
-  "localizedName": "奥沙西泮"
+  "localizedName": "奥沙西泮",
+  "effectsSummary": "Oxazepam has anxiolytic, sedative and relaxing effects. It is a mild to moderately potent benzodiazepine.",
+  "generalRisks": "Drowsiness, dizziness, impaired coordination. Lower abuse potential compared to other benzodiazepines. Still dangerous with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ]
 }

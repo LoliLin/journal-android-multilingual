@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种与 PCP 相关的芳基环己胺类解离性麻醉剂。1960 年代由 Parke-Davis 首次发现，2008 年进入 RC 市场。据称效力低于 PCP。并不常见，但因其他解离剂难以获得而略有流行。",
-  "localizedName": "4-MeO-PCP"
+  "localizedName": "4-MeO-PCP",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

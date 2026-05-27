@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "Escaline 的三碳类似物。取代安非他明。",
-  "localizedName": "3C-E"
+  "localizedName": "3C-E",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

@@ -4,5 +4,24 @@
     "毒性剂量未知。"
   ],
   "summary": "一种强效、长效的迷幻兴奋剂。历史上很少被刻意使用，但偶尔被当作 LSD 出售。然而近年来在研究化学品社区中找到了自己的位置。",
-  "localizedName": "DOI"
+  "localizedName": "DOI",
+  "effectsSummary": "DOI is a potent psychedelic with effects similar to DOB but slightly shorter duration. Visual hallucinations, altered perception, ego dissolution.",
+  "generalRisks": "Dangerous increase in blood pressure. Risk of panic attacks and psychological distress. Overheating risk.",
+  "longtermRisks": "No research results on long-term risks. HPPD possible.",
+  "saferUse": [
+    "只使用毫克秤精确测量剂量。",
+    "安排陪护人在场。",
+    "确保有充足的时间。",
+    "从低剂量开始。",
+    "避免混合使用。",
+    "注意：DOI 持续时间长，请规划好时间安排。",
+    "高剂量时安排陪护人。",
+    "避免过热和脱水。",
+    "在安全、熟悉的环境中使用。"
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "10-14 天"
+  }
 }

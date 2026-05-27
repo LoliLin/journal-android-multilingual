@@ -2,5 +2,10 @@
   "addictionPotential": "不成瘾且滥用潜力低。",
   "toxicities": [],
   "summary": "一种拉西坦类促智药，被许多人宣称具有认知益处，但在健康人中从未得到强有力支持。英国处方用于治疗肌阵挛。可能具有 AMPA 增效剂特性。是最早流行的“促智药”之一。",
-  "localizedName": "Piracetam"
+  "localizedName": "Piracetam",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

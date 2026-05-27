@@ -5,5 +5,23 @@
     "与酒精或苯二氮卓等抑制剂混用可能致命。"
   ],
   "summary": "一种 1917 年开发的半合成阿片镇痛药，主要用于镇痛。已在一些地区成为非常流行的娱乐性药物，成瘾潜力高。据报道比其他阿片略更“刺激”。",
-  "localizedName": "羟考酮"
+  "localizedName": "羟考酮",
+  "effectsSummary": "Oxycodone has analgesic, depressant, antianxiety, cough suppressant, euphoric and sedative effects.",
+  "generalRisks": "Very common side effects, as with all opioids, are constipation, nausea, drowsiness and respiratory depression.",
+  "longtermRisks": "The consumption of oxycodone leads to physical and psychological dependence. Addiction is the greatest risk.",
+  "saferUse": [
+    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
+    "从小剂量开始，等待效果后再决定是否加量。",
+    "如果注射阿片类药物，更需谨慎剂量。",
+    "不要依赖他人的剂量信息。",
+    "使用之间保持较长间隔（至少数天）。",
+    "戒断一段时间后，剂量要比之前大幅降低。",
+    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
+    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

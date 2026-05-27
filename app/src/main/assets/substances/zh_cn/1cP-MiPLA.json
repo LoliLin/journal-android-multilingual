@@ -4,5 +4,10 @@
     "毒性剂量未知。",
     "极低毒性。"
   ],
-  "localizedName": "1cP-MiPLA"
+  "localizedName": "1cP-MiPLA",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
+  }
 }

@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "3-MeO-PCP 的一种环结构替换变体。效力略强于 3-MeO-PCP。",
-  "localizedName": "3-MeO-PCE"
+  "localizedName": "3-MeO-PCE",
+  "tolerance": {
+    "full": "长期重复使用",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "色胺类迷幻剂，为裸盖菇素的高同系物，且为 N-甲基-N-丙基色胺的 4-羟基类似物。",
-  "localizedName": "4-HO-MPT"
+  "localizedName": "4-HO-MPT",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

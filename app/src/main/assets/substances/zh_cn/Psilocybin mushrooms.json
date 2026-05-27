@@ -2,5 +2,25 @@
   "toxicities": [
     "相对于剂量而言毒性极低。"
   ],
-  "localizedName": "裸盖菇素蘑菇"
+  "localizedName": "裸盖菇素蘑菇",
+  "effectsSummary": "Low doses have a stimulating and strengthening effect. Medium doses: visual hallucinations, distortion of objects in space, altered emotional state. High doses: ego dissolution, strong visual hallucinations.",
+  "dosageRemark": "Average dosages of dried* mushrooms:\nPointed cone bald: light 0.1-0.5g, common 0.5-1.5g, strong 1.5-3g, heavy 3g+\nMexican: light 0.3-0.8g, common 0.8-2g, strong 2-3.5g, heavy 3.5g+",
+  "generalRisks": "The pupils dilate, pulse and blood pressure change, increase in body temperature, nausea, dizziness, and rarely, panic attacks.",
+  "saferUse": [
+    "Consume mushrooms only in good mental and physical condition.",
+    "Do not consume mushrooms alone, but with people you trust.",
+    "Pay attention to the setting. A stress-free environment is important.",
+    "Consume mushrooms only after a light meal, not on an empty stomach and not with a full stomach.",
+    "Use dried mushrooms if possible; wash raw mushrooms thoroughly.",
+    "In delicate moments during the trip: let go and do not fight the effects.",
+    "Avoid mixed consumption, never consume mushrooms together with other drugs.",
+    "Avoid roads and other \"dangerous\" places while under the influence.",
+    "In case of panic attacks or horror trips: stay calm, remind yourself it will pass.",
+    "After the trip, allow yourself plenty of time to rest and process."
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

@@ -2,5 +2,10 @@
   "addictionPotential": "长期使用会产生依赖但滥用潜力低。",
   "toxicities": [],
   "summary": "一种小分子生物碱，可视为结构改造的咖啡因，具有类似刺激作用，同时也共享咖啡因的抗炎与镇痛效应。",
-  "localizedName": "Theacrine"
+  "localizedName": "Theacrine",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

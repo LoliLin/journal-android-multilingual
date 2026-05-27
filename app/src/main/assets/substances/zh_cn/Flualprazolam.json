@@ -1,5 +1,14 @@
 {
   "toxicities": [],
   "summary": "含氟阿普唑仑，可能半衰期更长、效力更高于母体化合物。",
-  "localizedName": "Flualprazolam"
+  "localizedName": "Flualprazolam",
+  "effectsSummary": "Flualprazolam is a potent benzodiazepine with anxiolytic, sedative and sleep-inducing effects.",
+  "generalRisks": "Sedation, impaired coordination and memory. High potency means greater risk of overdose. Dangerous with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ]
 }

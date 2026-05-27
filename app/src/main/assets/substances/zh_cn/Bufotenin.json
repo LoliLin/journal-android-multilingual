@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "Bufotenin"
+  "localizedName": "Bufotenin",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "1 小时",
+    "zero": "2 小时"
+  }
 }

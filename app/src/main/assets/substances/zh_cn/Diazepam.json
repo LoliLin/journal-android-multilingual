@@ -5,5 +5,18 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种非常常见且广泛处方的苯二氮卓，具有催眠和镇静作用，是其他苯二氮卓的衡量基准。过量可导致失忆和抑制解除。与其他苯二氮卓相比半衰期较长。",
-  "localizedName": "地西泮"
+  "localizedName": "地西泮",
+  "effectsSummary": "Diazepam has a calming, relaxing, antispasmodic, anti-anxiety and sleep-inducing effect. Taking benzodiazepines increases the effectiveness of the neurotransmitter GABA.",
+  "generalRisks": "There is little information available on risks, toxicity, side effects and long-term consequences. When mixing with other downers (alcohol, opioids, etc.) there is a risk of respiratory depression.",
+  "longtermRisks": "Regular and long-term use can lead to psychological and physical dependence. Immediate discontinuation after prolonged use can lead to negative withdrawal symptoms including anxiety, insomnia, and seizures.",
+  "saferUse": [
+    "如果在黑市或网上购买药物而非从药房/医疗机构获取，实际成分可能与标识不同。",
+    "不要依赖定期使用苯二氮䓬类药物的同事提供的剂量信息。",
+    "伪造品的包装可能与原装完全相同。",
+    "同时使用酒精、氯胺酮、GHB/GBL、笑气、阿片类和/或其他抑制剂会显著增加呼吸抑制风险。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7-14 天"
+  }
 }

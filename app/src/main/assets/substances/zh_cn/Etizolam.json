@@ -5,5 +5,19 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种噻吡二氮卓类抗焦虑药。作用类似苯二氮卓。缓解焦虑、镇静并带轻度欣快。高剂量可导致记忆缺失。用户常强迫性反复补服导致断片。可见于压片药、地下药片工坊或粉末形式。",
-  "localizedName": "Etizolam"
+  "localizedName": "Etizolam",
+  "effectsSummary": "Etizolam has anxiolytic, sedative, muscle relaxant and sleep-inducing effects. It is a thienodiazepine, structurally similar to benzodiazepines.",
+  "dosageRemark": "Etizolam is potent. Effects can last 4-6 hours. Tolerance develops quickly.",
+  "generalRisks": "Drowsiness, dizziness, impaired coordination, memory impairment. Risk of dependence with regular use. Dangerous when mixed with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal symptoms include anxiety, insomnia, and seizures.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7 - 14 天"
+  }
 }

@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种三重单胺再摄取抑制剂。其 5-HT2B 激动作用意味着长期使用可能具心脏毒性，与芬氟拉明和 MDMA 等 5-HT2B 激动剂相似。",
-  "localizedName": "5-APB"
+  "localizedName": "5-APB",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }
