@@ -14,13 +14,13 @@ object I18n {
 
     fun getCurrentLanguageKey(): String {
         val locale = Locale.getDefault()
-        val language = locale.language.toLowerCase(Locale.ROOT)
-        val country = locale.country.toLowerCase(Locale.ROOT)
+        val language = locale.language.lowercase()
+        val country = locale.country.lowercase()
         return if (country.isNullOrBlank()) language else "${language}_${country}"
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
-        preferredLangKey = languageKey?.toLowerCase(Locale.ROOT)
+        preferredLangKey = languageKey?.lowercase()
         loadedLangKey = null
     }
 
@@ -56,7 +56,7 @@ object I18n {
     }
 
     private fun ensureLoaded(context: Context) {
-        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).toLowerCase(Locale.ROOT)
+        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
         if (currentKey == loadedLangKey && strings.isNotEmpty()) return
 
         val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)
