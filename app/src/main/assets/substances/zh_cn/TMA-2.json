@@ -6,8 +6,8 @@
   "summary": "Trimethoxyamphetamine-2，一种迷幻安非他明和兴奋剂，由 Alexander Shulgin 首次合成。作用与其他迷幻安非他明相似，人体使用历史很短。",
   "localizedName": "TMA-2",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

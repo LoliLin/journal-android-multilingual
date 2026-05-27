@@ -14,14 +14,14 @@
     "确保有充足的时间。",
     "从低剂量开始。",
     "避免混合使用。",
-    "[TBT] Mixed use of these potent substances should be avoided at all costs.",
-    "[TBT] As amphetamine derivatives, DOI can be particularly draining because of their long duration of action. Light vitamin-rich food, fruits, vegetable juices, vitamins and minerals promote a soft landing after the trip has subsided and can weaken a hangover.",
-    "[TBT] Plan enough time for recovery after the trip (at least 1 day)!",
-    "[TBT] A trip with DOI should remain an exceptional experience. Make sure to take long breaks from consumption so that the experience can be processed."
+    "注意：DOI 持续时间长，请规划好时间安排。",
+    "高剂量时安排陪护人。",
+    "避免过热和脱水。",
+    "在安全、熟悉的环境中使用。"
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 5-7 days",
-    "zero": "[TBT] 10-14 days"
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "10-14 天"
   }
 }

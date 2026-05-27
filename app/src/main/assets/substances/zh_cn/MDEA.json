@@ -14,13 +14,13 @@
     "注意体温，避免过热。",
     "不要频繁使用。",
     "从低剂量开始。",
-    "[TBT] Take breaks from dancing at parties and get some fresh air in between.",
-    "[TBT] Take regular breaks from consumption. The body needs time to recover.",
-    "[TBT] People taking medication are advised to inform themselves about interactions."
+    "使用后补充 5-HTP。",
+    "避免与其他血清素药物同用。",
+    "注意体温变化。"
   ],
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
-    "half": "[TBT] 1-1.5 months",
-    "zero": "[TBT] 2-3 months"
+    "full": "长期重复使用",
+    "half": "1-1.5 个月",
+    "zero": "2-3 个月"
   }
 }

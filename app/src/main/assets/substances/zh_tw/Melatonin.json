@@ -1,7 +1,7 @@
 {
   "tolerance": {
-    "full": "[TBT] after prolonged and repeated usage",
-    "half": "[TBT] 7 days",
-    "zero": "[TBT] 14 days"
+    "full": "長期重複使用後",
+    "half": "7 天",
+    "zero": "14 天"
   }
 }

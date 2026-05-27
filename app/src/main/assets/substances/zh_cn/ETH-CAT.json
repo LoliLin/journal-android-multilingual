@@ -6,7 +6,7 @@
   "localizedName": "ETH-CAT",
   "tolerance": {
     "full": "长期重复使用后产生",
-    "half": "[TBT] 2 - 3 days",
-    "zero": "[TBT] 3-5 days"
+    "half": "2 - 3 天",
+    "zero": "3-5 天"
   }
 }

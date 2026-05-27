@@ -1,14 +1,14 @@
 {
   "effectsSummary": "强烈的视觉和听觉幻觉、自我消解、出体体验、突破进入替代现实。起效极快，持续时间短。",
-  "dosageRemark": "[TBT] Ayahuasca is a shamanic herbal potion made from DMT-containing chacruna leaves (Psychotria viridis) and the harmaline-containing ayahuasca liana Banisteriopsis caapi. Harmaline is an MAO inhibitor. MAO inhibitors are substances and drugs that prevent the enzyme MAO from breaking down the body's own messenger substances such as adrenalin, dopamine, serotonin, etc. as well as foreign alkaloids such as caffeine, cocaine, etc.. MAO normally also degrades the active substance DMT even before it can enter the central nervous system via the blood-brain barrier.\nChanga is a mixture for smoking of DMT-containing plants (but usually mostly crystalline DMT) and herbs that act as MAO inhibitors.",
+  "dosageRemark": "DMT 口服无效，除非与 MAOI 合用。雾化/注射起效极快。",
   "generalRisks": "极端的心理反应、恐慌、恐惧。血压暂时升高。HPPD 风险。",
-  "longtermRisks": "[TBT] Permanent disturbances in self- and reality recognition are possible. The view of the world can be permanently called into question, which can make it difficult to cope with everyday life. Latent (hidden) psychoses can be triggered.",
+  "longtermRisks": "尚无长期风险研究结果。HPPD 罕见。主要风险是体验过程中的心理困扰。",
   "saferUse": [
     "始终有陪护人在场。",
     "从小剂量开始。",
     "选择安全舒适的环境。"
   ],
   "tolerance": {
-    "full": "[TBT] does not appear to occur"
+    "full": "似乎不會產生"
   }
 }

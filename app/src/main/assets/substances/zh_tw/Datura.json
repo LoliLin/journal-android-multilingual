@@ -1,6 +1,6 @@
 {
   "tolerance": {
-    "full": "[TBT] with repeated use",
+    "full": "重複使用",
     "half": "3 - 7 天",
     "zero": "1 - 2 週"
   }

@@ -7,8 +7,8 @@
   "summary": "AL-LAD 是一种致幻药、利色胺类，为 LSD 的类似物。据称与 LSD 有细微体验差异（如视觉增强），持续时间也略短。剂量与 LSD 相近，取决于纯度。自 2013 年在互联网出现以来在群体中广受欢迎。",
   "localizedName": "AL-LAD",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 5-7 days",
-    "zero": "[TBT] 14 days"
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
   }
 }

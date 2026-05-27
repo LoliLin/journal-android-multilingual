@@ -5,8 +5,8 @@
   ],
   "localizedName": "Alpha-GPC",
   "tolerance": {
-    "full": "[TBT] after prolonged and repeated usage",
-    "half": "[TBT] 7 days",
-    "zero": "[TBT] 14 days"
+    "full": "长期重复使用后",
+    "half": "7 天",
+    "zero": "14 天"
   }
 }

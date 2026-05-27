@@ -7,7 +7,7 @@
   "summary": "一种较为常见的苯二氮卓类药物，以超长持续时间著称，大剂量效果可持续至 3 天。具镇静、催眠和抗焦虑作用，是氟硝西泮的类似物。1960 年代首次发现，从未作为合法药物上市，但近年以 RC 形式出现。不要与 Flubromazolam 混淆。",
   "localizedName": "Flubromazepam",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

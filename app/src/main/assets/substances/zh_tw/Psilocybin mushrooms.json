@@ -15,8 +15,8 @@
     "体验后给自己充分的时间休息和消化。"
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "攝入後幾乎立即產生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

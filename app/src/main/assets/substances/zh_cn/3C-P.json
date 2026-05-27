@@ -6,8 +6,8 @@
   "summary": "较新且不常见的兴奋剂/迷幻剂/安非他明，性质类似 2Cx 类药物，为 proscaline 的三碳同系物。",
   "localizedName": "3C-P",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

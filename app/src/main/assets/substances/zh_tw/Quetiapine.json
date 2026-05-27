@@ -1,6 +1,6 @@
 {
   "tolerance": {
-    "full": "[TBT] within a week of continuous use",
+    "full": "持續使用一週內",
     "zero": "7 - 14 天"
   }
 }

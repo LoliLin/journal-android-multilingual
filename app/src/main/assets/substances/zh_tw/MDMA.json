@@ -10,8 +10,8 @@
     "每次使用至少间隔 3 个月。"
   ],
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
-    "half": "[TBT] 1 month",
-    "zero": "[TBT] 2.5 months"
+    "full": "長期重複使用",
+    "half": "1 個月",
+    "zero": "2.5 個月"
   }
 }

@@ -7,7 +7,7 @@
   "summary": "一种不常见且非常短效的苯二氮卓。具镇静和催眠作用，高剂量可导致失忆与抑制降低。",
   "localizedName": "Triazolam",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

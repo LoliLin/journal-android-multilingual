@@ -6,8 +6,8 @@
   "summary": "一种非常规迷幻剂，效应与 2C-B 相似且持续略长，但因 2000 年代的死亡事件而名声不佳。也与 2C-T-7 类似，但持续更短。与兴奋剂和共情剂合用可能不安全。",
   "localizedName": "2C-T-2",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

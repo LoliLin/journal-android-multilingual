@@ -9,20 +9,20 @@
     "從低劑量（200mg）開始。",
     "避免與其他藥物混合使用。",
     "提前了解可能的身體副作用（特別是噁心）。",
-    "[TBT] For nausea, it helps if you take mescaline in small doses at a time.",
-    "[TBT] Don't add to it if it doesn't work right away.",
-    "[TBT] Let yourself go during the trip, don't try to fight the effects of mescaline. A trip sitter can help you with this.",
-    "[TBT] Dextrose can help against circulatory problems.",
-    "[TBT] Avoid roads and other \"dangerous\" places. Your orientation may be disturbed.",
-    "[TBT] Drink enough water during the trip.",
-    "[TBT] Mixed use of this potent substance should be avoided at all costs, as the effect can then no longer be assessed.",
-    "[TBT] Plan enough time for recovery after the trip (at least 1 day)!",
-    "[TBT] Mescaline trips should remain exceptional experiences and should in no case be experienced more than once a month.",
-    "[TBT] People with mental problems or illnesses, people taking neuroleptics and people with circulatory and heart problems should refrain from using mescaline."
+    "注意：麥斯卡林在空腹時效果更好。",
+    "提前了解歷史和文化背景可以增強體驗。",
+    "不要駕駛或操作機械。",
+    "如果感到不適，改變環境或音樂可能有幫助。",
+    "體驗後給自己時間休息和消化。",
+    "注意：麥斯卡林可能引起強烈的噁心和嘔吐，這被認為是體驗的一部分。",
+    "提前準備一個舒適的環境，包括毛毯、水和輕音樂。",
+    "不建議在公共場合或派對中使用。",
+    "如果感到不知所措，記住這是暫時的。",
+    "體驗後需要時間整合，建議寫日記記錄。"
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "攝入後幾乎立即產生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

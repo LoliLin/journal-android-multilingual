@@ -7,7 +7,7 @@
   "summary": "在 GABA 上加一个苯环的衍生物，可跨越血脑屏障。主要用于抗焦虑和抗失眠。耐受与生理依赖建立很快。",
   "localizedName": "Phenibut",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

@@ -6,8 +6,8 @@
   "summary": "一种新的迷幻利色胺，怀疑为 ETH-LAD 的前药，这可解释其剂量非常接近；也可能本身活性。需要科学研究，但目前尚无。",
   "localizedName": "1P-ETH-LAD",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

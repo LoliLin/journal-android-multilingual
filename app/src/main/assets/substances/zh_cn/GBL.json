@@ -14,12 +14,12 @@
     "不要单独使用。",
     "从小剂量开始。",
     "注意：GBL 起效非常快。",
-    "[TBT] People with epilepsy, heart or kidney dysfunction should not consume GBL under any circumstances!",
-    "[TBT] GBL withdrawal should only be carried out under medical supervision.",
-    "[TBT] Never leave your drink unattended to avoid someone mixing GBL into your drink. If your drink tastes strange, pour it out for your own safety."
+    "GBL 比 GHB 的效力强约两倍，注意剂量换算。",
+    "避免与酒精或任何其他抑制剂同用。",
+    "不要每天使用以避免依赖。"
   ],
   "tolerance": {
-    "full": "[TBT] within several days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

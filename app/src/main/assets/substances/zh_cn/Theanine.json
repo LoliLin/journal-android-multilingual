@@ -5,8 +5,8 @@
   ],
   "localizedName": "Theanine",
   "tolerance": {
-    "full": "[TBT] after prolonged and repeated usage",
-    "half": "[TBT] 5 days",
-    "zero": "[TBT] 10 days"
+    "full": "长期重复使用后",
+    "half": "5 天",
+    "zero": "10 天"
   }
 }

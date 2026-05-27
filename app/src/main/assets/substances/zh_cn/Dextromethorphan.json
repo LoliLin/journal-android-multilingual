@@ -4,9 +4,9 @@
     "确切毒性剂量未知。"
   ],
   "localizedName": "Dextromethorphan",
-  "effectsSummary": "[TBT] In high doses (120 mg or more) it has a hallucinogenic and euphoric effect. Perceptual disturbances up to confusion as well as states of agitation with epileptic episodes may occur. Side effects are reddening of the skin and severe itching. With regular use there is great potential for dependence with psychological and physical symptoms!",
-  "dosageRemark": "[TBT] DXM in freebase form (as found in Robocough RoboTablets) is around 27-37% more potent than its hydrobromide form due to a higher concentration of DXM by weight. One should take this into account when calculating their dose to avoid a potential overdose.",
-  "generalRisks": "[TBT] Caution: The simultaneous intake of MAO inhibitors delays the degradation of DXM and can lead to severe respiratory and circulatory disorders!",
+  "effectsSummary": "DXM has dissociative, anesthetic, and mild psychedelic effects. Effects vary greatly by dose. Low doses: stimulation, euphoria. High doses: dissociation, hallucinations.",
+  "dosageRemark": "DXM has multiple plateaus with distinct effects. Do not mix with other serotonergic drugs due to risk of serotonin syndrome.",
+  "generalRisks": "Nausea, vomiting, dizziness, increased heart rate and blood pressure. At high doses: confusion, loss of coordination, risk of serotonin syndrome.",
   "tolerance": {
     "full": "长期重复使用后产生",
     "half": "3 - 7 天",

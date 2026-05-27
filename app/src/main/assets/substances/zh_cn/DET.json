@@ -6,8 +6,8 @@
   "summary": "一种意外罕见的 DMT 类似物，效应相似且据称无需 MAOI 即可口服起效。",
   "localizedName": "DET",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

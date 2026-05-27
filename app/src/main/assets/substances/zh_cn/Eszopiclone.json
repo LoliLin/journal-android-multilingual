@@ -7,7 +7,7 @@
   "summary": "佐匹克隆的 d-异构体，是一种强效 Z 类催眠药，常用于治疗失眠。高剂量可导致失忆、谵妄和抑制降低。不可与任何抑制剂合用。娱乐价值有限。",
   "localizedName": "Eszopiclone",
   "tolerance": {
-    "full": "[TBT] within a couple of weeks of daily use",
+    "full": "每日使用数周内",
     "zero": "7 - 14 天"
   }
 }

@@ -1,7 +1,7 @@
 {
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 1 hour",
-    "zero": "[TBT] 2 hours"
+    "full": "攝入後幾乎立即產生",
+    "half": "1 小時",
+    "zero": "2 小時"
   }
 }

@@ -8,7 +8,7 @@
     "首次剂量后 3-4 小时内不要重复使用。"
   ],
   "tolerance": {
-    "full": "[TBT] within several days of continuous use",
+    "full": "持續使用數日內",
     "zero": "7 - 14 天"
   }
 }

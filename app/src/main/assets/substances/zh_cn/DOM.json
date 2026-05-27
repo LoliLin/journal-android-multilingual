@@ -14,14 +14,14 @@
     "确保有 24 小时空闲时间。",
     "从低剂量开始。",
     "避免混合使用。",
-    "[TBT] Mixed use of these potent substances should be avoided at all costs.",
-    "[TBT] As amphetamine derivatives, DOM can be particularly draining because of their long duration of action. Light vitamin-rich food, fruits, vegetable juices, vitamins and minerals promote a soft landing after the trip has subsided and can weaken a hangover.",
-    "[TBT] Plan enough time for recovery after the trip (at least 1 day)!",
-    "[TBT] A trip with DOM should remain an exceptional experience. Make sure to take long breaks from consumption so that the experience can be processed."
+    "注意：DOM 持续时间长（可达 24h），请规划好时间。",
+    "高剂量时安排陪护人。",
+    "避免过热和脱水。",
+    "在安全的环境中从低剂量开始。"
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

@@ -6,7 +6,7 @@
   "summary": "一种短效的甲喹酮类似物，效力更强。",
   "localizedName": "Mebroqualone",
   "tolerance": {
-    "full": "[TBT] within a couple of days of repeated administration",
+    "full": "重复使用数日内",
     "half": "3 - 7 天",
     "zero": "1 - 2 周"
   }

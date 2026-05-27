@@ -8,14 +8,14 @@
     "確保有充足的時間（至少 24 小時）。",
     "避免與其他藥物混合使用。",
     "從低劑量開始，逐步增加。",
-    "[TBT] Mixed use of these potent substances should be avoided at all costs.",
-    "[TBT] As amphetamine derivatives, DOB can be particularly draining because of their long duration of action. Light vitamin-rich food, fruits, vegetable juices, vitamins and minerals promote a soft landing after the trip has subsided and can weaken a hangover.",
-    "[TBT] Plan enough time for recovery after the trip (at least 1 day)!",
-    "[TBT] A trip with DOB should remain an exceptional experience. Make sure to take long breaks from consumption so that the experience can be processed."
+    "注意：DOB 持續時間極長（18-24h+），請規劃好時間。",
+    "高劑量時安排陪護人。",
+    "避免過熱和脫水。",
+    "DOB 在高溫下可能分解，注意儲存。"
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 4-7 days",
-    "zero": "[TBT] 7-10 days"
+    "full": "攝入後幾乎立即產生",
+    "half": "4-7 天",
+    "zero": "7-10 天"
   }
 }

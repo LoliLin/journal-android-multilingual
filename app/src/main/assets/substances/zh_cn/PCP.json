@@ -4,7 +4,7 @@
   "summary": "一种强效解离剂。PCP 主要为 NMDA 受体拮抗剂，也称“wet”或“天使粉”。以服用者出现怪异甚至暴力行为的故事闻名，但这可能多发生在过量情况下。",
   "localizedName": "PCP",
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
+    "full": "长期重复使用",
     "half": "3 - 7 天",
     "zero": "1 - 2 周"
   }

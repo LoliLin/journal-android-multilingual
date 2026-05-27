@@ -7,7 +7,7 @@
   "summary": "也称 Lioresal，巴克洛芬是 GABA_B 受体激动剂和中枢抑制剂，用于治疗痉挛，并被认为有治疗酒精依赖的潜力。其轻度致醉效应类似苯丁酸或普瑞巴林。",
   "localizedName": "Baclofen",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

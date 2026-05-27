@@ -17,7 +17,7 @@
     "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
   ],
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

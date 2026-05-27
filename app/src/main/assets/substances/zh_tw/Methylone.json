@@ -9,7 +9,7 @@
   ],
   "tolerance": {
     "full": "長期重複使用後產生",
-    "half": "[TBT] 1 - 3 weeks",
-    "zero": "[TBT] 3 - 6 weeks"
+    "half": "1 - 3 週",
+    "zero": "3 - 6 週"
   }
 }

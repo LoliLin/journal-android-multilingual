@@ -1,6 +1,6 @@
 {
   "tolerance": {
-    "full": "[TBT] with prolonged continuous usage",
-    "zero": "[TBT] 7-14 days"
+    "full": "長期持續使用",
+    "zero": "7-14 天"
   }
 }

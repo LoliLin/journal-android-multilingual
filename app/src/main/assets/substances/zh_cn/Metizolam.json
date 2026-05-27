@@ -6,7 +6,7 @@
   "summary": "也称去甲依替唑仑，是一种噻吡二氮卓，作用和结构与依替唑仑相似，但效力约半且半衰期长约 60%。具镇静和催眠作用，过量可导致失忆与抑制解除。",
   "localizedName": "Metizolam",
   "tolerance": {
-    "full": "[TBT] within a couple of days of repeated administration",
+    "full": "重复使用数日内",
     "half": "3 - 7 天",
     "zero": "1 - 2 周"
   }

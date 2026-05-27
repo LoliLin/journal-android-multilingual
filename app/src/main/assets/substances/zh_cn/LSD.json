@@ -14,7 +14,7 @@
     "Do not drive for at least 12 hours."
   ],
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "zero": "[TBT] 5 days"
+    "full": "摄入后几乎立即产生",
+    "zero": "5 天"
   }
 }

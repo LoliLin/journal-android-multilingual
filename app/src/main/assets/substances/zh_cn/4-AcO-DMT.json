@@ -6,7 +6,7 @@
   "summary": "一种裸盖菇素（Psilocin）的前药，效果与蘑菇非常相似。",
   "localizedName": "4-AcO-DMT",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "zero": "7 天"
   }
 }

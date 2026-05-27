@@ -9,7 +9,7 @@
     "同時使用酒精、氯胺酮、GHB/GBL、笑氣、阿片類和/或其他抑制劑會顯著增加呼吸抑制風險。"
   ],
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
-    "zero": "[TBT] 7-14 days"
+    "full": "持續使用數日內",
+    "zero": "7-14 天"
   }
 }

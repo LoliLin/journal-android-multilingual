@@ -5,8 +5,8 @@
   ],
   "localizedName": "Tyrosine",
   "tolerance": {
-    "full": "[TBT] after repeated and frequent usage",
-    "half": "[TBT] 7 days",
-    "zero": "[TBT] 14 days"
+    "full": "反复频繁使用后",
+    "half": "7 天",
+    "zero": "14 天"
   }
 }

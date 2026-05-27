@@ -15,6 +15,6 @@
   "tolerance": {
     "full": "长期重复使用后产生",
     "half": "1 - 2 周",
-    "zero": "[TBT] 2 - 3 weeks"
+    "zero": "2 - 3 周"
   }
 }

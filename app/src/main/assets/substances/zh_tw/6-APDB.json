@@ -1,7 +1,7 @@
 {
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
-    "half": "[TBT] 21-30 days",
-    "zero": "[TBT] 2-3 months"
+    "full": "長期重複使用",
+    "half": "21-30 天",
+    "zero": "2-3 個月"
   }
 }

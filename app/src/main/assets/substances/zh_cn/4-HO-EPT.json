@@ -6,8 +6,8 @@
   "summary": "EPT 的 4-羟基版本，效力略高于前者。",
   "localizedName": "4-HO-EPT",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

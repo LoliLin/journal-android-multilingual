@@ -15,7 +15,7 @@
     "Never redose within 3-4 hours of initial dose."
   ],
   "tolerance": {
-    "full": "[TBT] within several days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

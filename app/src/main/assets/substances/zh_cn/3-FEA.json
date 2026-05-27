@@ -7,7 +7,7 @@
   "localizedName": "3-FEA",
   "tolerance": {
     "full": "长期重复使用后产生",
-    "half": "[TBT] 2 - 3 days",
-    "zero": "[TBT] 3-7 days"
+    "half": "2 - 3 天",
+    "zero": "3-7 天"
   }
 }

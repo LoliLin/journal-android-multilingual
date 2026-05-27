@@ -7,7 +7,7 @@
   "summary": "一种超长效、效力强且作用隐蔽的苯二氮卓。因剂量不明而导致灾难性体验而臭名昭著。某些国家用于癫痫和酒精戒断。",
   "localizedName": "Phenazepam",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
-    "zero": "[TBT] 7-14 days"
+    "full": "持续使用数日内",
+    "zero": "7-14 天"
   }
 }

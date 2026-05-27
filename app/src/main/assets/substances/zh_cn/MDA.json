@@ -12,14 +12,14 @@
     "定期休息降温。",
     "不要频繁使用（建议间隔 3 个月以上）。",
     "从低剂量开始。",
-    "[TBT] Avoid alcohol, drink enough non-alcoholic beverages (0.3-0.5 L per hour).",
-    "[TBT] Take breaks from dancing at parties and get some fresh air in between.",
-    "[TBT] Take regular breaks from consumption. The body needs time to recover.",
-    "[TBT] People taking medication are advised to inform themselves about interactions."
+    "注意：MDA 比 MDMA 的神经毒性更强，使用频率应更低。",
+    "使用后补充 5-HTP 以帮助血清素恢复。",
+    "避免与其他血清素药物同用。",
+    "注意口腔卫生，嚼口香糖可以减轻磨牙。"
   ],
   "tolerance": {
-    "full": "[TBT] repeated and heavy usage",
-    "half": "[TBT] 3 days",
-    "zero": "[TBT] 7 days"
+    "full": "反复大量使用",
+    "half": "3 天",
+    "zero": "7 天"
   }
 }

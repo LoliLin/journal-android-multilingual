@@ -7,7 +7,7 @@
   "summary": "一种长效苯二氮卓，具有强烈催眠作用。安全性资料不完善，有报告称连续三天服用后出现癫痫发作。与三唑仑最为相似，但半衰期更长。",
   "localizedName": "Clonazolam",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

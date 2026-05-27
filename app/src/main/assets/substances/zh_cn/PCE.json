@@ -4,7 +4,7 @@
   "summary": "Eticyclidine（PCE）是一种解离性麻醉剂，具有致幻效应。效力略高于苯环己哌啶（PCP）。",
   "localizedName": "PCE",
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
+    "full": "长期重复使用",
     "half": "3 - 7 天",
     "zero": "1 - 2 周"
   }

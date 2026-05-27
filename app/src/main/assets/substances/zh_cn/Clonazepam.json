@@ -7,7 +7,7 @@
   "summary": "一种中等时长的常用处方苯二氮卓，常用于治疗惊恐发作，因其舌下起效较快。主要抗焦虑，也具其他苯二氮卓特性。",
   "localizedName": "氯硝西泮",
   "tolerance": {
-    "full": "[TBT] within a couple of days of continuous use",
+    "full": "持续使用数日内",
     "zero": "7 - 14 天"
   }
 }

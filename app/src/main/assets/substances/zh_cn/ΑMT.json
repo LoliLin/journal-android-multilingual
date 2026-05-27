@@ -5,8 +5,8 @@
   ],
   "localizedName": "ΑMT",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 14 days",
-    "zero": "[TBT] 1 month"
+    "full": "摄入后几乎立即产生",
+    "half": "14 天",
+    "zero": "1 个月"
   }
 }

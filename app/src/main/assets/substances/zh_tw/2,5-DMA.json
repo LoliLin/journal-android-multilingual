@@ -1,7 +1,7 @@
 {
   "tolerance": {
-    "full": "[TBT] after ingestion over the couse of multiple days",
-    "half": "[TBT] 3-5 days",
-    "zero": "[TBT] 7-10 days"
+    "full": "攝入數天後",
+    "half": "3-5 天",
+    "zero": "7-10 天"
   }
 }

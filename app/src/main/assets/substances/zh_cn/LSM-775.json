@@ -6,8 +6,8 @@
   "summary": "利色胺类迷幻剂，按重量效力较低，与其“大哥”LSD 相比带来更温和、梦幻甚至略带镇静的体验。",
   "localizedName": "LSM-775",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 5-7 days",
-    "zero": "[TBT] 14 days"
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
   }
 }

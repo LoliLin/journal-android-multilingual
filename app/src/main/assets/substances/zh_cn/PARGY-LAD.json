@@ -5,8 +5,8 @@
   ],
   "localizedName": "PARGY-LAD",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 5-7 days",
-    "zero": "[TBT] 14 days"
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
   }
 }

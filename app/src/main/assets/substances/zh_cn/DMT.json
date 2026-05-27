@@ -6,15 +6,15 @@
   "summary": "一种流行且强力的迷幻剂，通常有两种使用方式：蒸发吸入以获得短暂的“突破”体验，或与酶抑制剂合用以获得长时间强烈旅行（也称 ayahuasca 或 pharmahuasca）。",
   "localizedName": "DMT",
   "effectsSummary": "Intense visual and auditory hallucinations, ego dissolution, out-of-body experiences, breakthrough into alternative realities. Onset is extremely rapid and duration is short.",
-  "dosageRemark": "[TBT] Ayahuasca is a shamanic herbal potion made from DMT-containing chacruna leaves (Psychotria viridis) and the harmaline-containing ayahuasca liana Banisteriopsis caapi. Harmaline is an MAO inhibitor. MAO inhibitors are substances and drugs that prevent the enzyme MAO from breaking down the body's own messenger substances such as adrenalin, dopamine, serotonin, etc. as well as foreign alkaloids such as caffeine, cocaine, etc.. MAO normally also degrades the active substance DMT even before it can enter the central nervous system via the blood-brain barrier.\nChanga is a mixture for smoking of DMT-containing plants (but usually mostly crystalline DMT) and herbs that act as MAO inhibitors.",
+  "dosageRemark": "DMT is not active orally unless combined with an MAOI. Vaporization/injection provides rapid onset.",
   "generalRisks": "Extreme psychological reactions, panic, fear. Temporary increase in blood pressure. Risk of HPPD.",
-  "longtermRisks": "[TBT] Permanent disturbances in self- and reality recognition are possible. The view of the world can be permanently called into question, which can make it difficult to cope with everyday life. Latent (hidden) psychoses can be triggered.",
+  "longtermRisks": "No research results on long-term risks. HPPD is rare. Main risk is psychological distress during the experience.",
   "saferUse": [
     "Always have a trip sitter present.",
     "Start with low doses.",
     "Have a safe and comfortable setting."
   ],
   "tolerance": {
-    "full": "[TBT] does not appear to occur"
+    "full": "似乎不会产生"
   }
 }

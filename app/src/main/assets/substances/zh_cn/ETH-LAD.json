@@ -6,8 +6,8 @@
   "summary": "一种迷幻药，略强于 LSD 的类似物，由 Alexander Shulgin 首次合成，常被描述为比 LSD 更不“粗糙”。比相关的 AL-LAD 更少见，但自 2015 年在网络研究化学品圈发布后有一定流行。",
   "localizedName": "ETH-LAD",
   "tolerance": {
-    "full": "[TBT] almost immediately after ingestion",
-    "half": "[TBT] 5-7 days",
-    "zero": "[TBT] 14 days"
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
   }
 }

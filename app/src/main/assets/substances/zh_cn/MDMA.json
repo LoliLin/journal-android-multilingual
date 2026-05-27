@@ -16,8 +16,8 @@
     "Wait at least 3 months between sessions."
   ],
   "tolerance": {
-    "full": "[TBT] with prolonged and repeated use",
-    "half": "[TBT] 1 month",
-    "zero": "[TBT] 2.5 months"
+    "full": "长期重复使用",
+    "half": "1 个月",
+    "zero": "2.5 个月"
   }
 }
