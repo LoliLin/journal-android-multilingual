@@ -87,7 +87,8 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
-import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.localization.i18n
@@ -608,7 +609,8 @@ fun CategoryChipFromSubstanceScreen(
     category: Category,
     navigateToCategoryScreen: (categoryName: String) -> Unit
 ) {
-    val displayName = category.getLocalizedName()
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val displayName = category.getLocalizedName(context)
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,

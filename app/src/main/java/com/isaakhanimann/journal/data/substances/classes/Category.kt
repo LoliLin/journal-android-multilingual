@@ -18,8 +18,9 @@
 
 package com.isaakhanimann.journal.data.substances.classes
 
+import android.content.Context
 import androidx.compose.ui.graphics.Color
-import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.localization.I18n
 
 data class Category(
     val name: String,
@@ -27,11 +28,11 @@ data class Category(
     val url: String?,
     val color: Color
 ) {
-    fun getLocalizedName(): String {
-        return i18nOrDefault("categories.$name", name)
+    fun getLocalizedName(context: Context): String {
+        return I18n.translateOrDefault(context, "categories.$name", name)
     }
 
-    fun getLocalizedDescription(): String {
-        return i18nOrDefault("categories.$name.desc", description)
+    fun getLocalizedDescription(context: Context): String {
+        return I18n.translateOrDefault(context, "categories.$name.desc", description)
     }
 }

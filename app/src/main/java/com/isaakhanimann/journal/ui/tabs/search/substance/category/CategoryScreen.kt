@@ -74,7 +74,8 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
     } else {
         Scaffold(
             topBar = {
-                val displayName = category.getLocalizedName()
+                val context = androidx.compose.ui.platform.LocalContext.current
+                val displayName = category.getLocalizedName(context)
                 TopAppBar(title = { Text(displayName) })
             },
             floatingActionButton = {
@@ -93,7 +94,7 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
             }
         ) { padding ->
             Text(
-                text = category.getLocalizedDescription(),
+                text = category.getLocalizedDescription(androidx.compose.ui.platform.LocalContext.current),
                 textAlign = TextAlign.Left,
                 modifier = Modifier
                     .padding(padding)
