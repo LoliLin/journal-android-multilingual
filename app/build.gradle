@@ -29,8 +29,27 @@ android {
         }
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            if (System.getenv("KEYSTORE_BASE64") != null) {
+                def keystoreFile = file("${project.buildDir}/release.keystore.jks")
+                keystoreFile.parentFile.mkdirs()
+                def decoded = System.getenv("KEYSTORE_BASE64").bytes.decodeBase64()
+                keystoreFile.bytes = decoded
+                storeFile = keystoreFile
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("KEY_ALIAS")
+                keyPassword = System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
