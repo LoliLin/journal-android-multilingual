@@ -2,13 +2,13 @@
   "toxicities": [],
   "summary": "麻黄碱是一种拟交感胺，常用作兴奋剂、集中注意力、减充血、抑制食欲，并用于治疗麻醉相关低血压。为甲基苯丙胺的类似物，常用于甲基苯丙胺生产。",
   "localizedName": "麻黄碱",
-  "effectsSummary": "[TBT] Stimulates circulation, increases drive and performance, and suppresses appetite.",
-  "generalRisks": "[TBT] Even at low doses: Palpitations, restlessness, sleep problems, urinary urgency or retention and dry mouth. Also possible are feelings of anxiety, increased blood pressure (vasoconstriction), loss of appetite, dizziness, cardiac arrhythmias and even heart attacks.\nIn case of overdose: confusion and paranoia. The tannins of ephedra herb can cause stomach complaints in larger quantities.",
-  "longtermRisks": "[TBT] Continuous use: Impaired memory and concentration, irritability, nervousness, aggressive behaviour, cardiac arrhythmia, chronic high blood pressure, bad teeth, liver/kidney damage and psychological disorders. Regular ephedrine use can lead to the development of tolerance and dependence, especially with psychological symptoms.",
+  "effectsSummary": "Ephedrine has a stimulating effect. It increases alertness, energy, and focus. It also acts as a bronchodilator and decongestant.",
+  "generalRisks": "Increased heart rate and blood pressure, anxiety, insomnia, palpitations. Risk of heart problems in susceptible individuals.",
+  "longtermRisks": "Regular use may lead to cardiovascular strain and psychological dependence.",
   "saferUse": [
-    "[TBT] Take a low dose of ephedrine, as the active ingredient content can vary greatly, especially in herbs!",
-    "[TBT] Drink enough water (3 - 5 dl per hour) and no alcohol!",
-    "[TBT] People with circulatory problems/diseases, thyroid disorders and liver or kidney damage should not consume ephedrine!",
-    "[TBT] Ephedrine is not an effective means of losing weight without medical supervision."
+    "从低剂量开始。",
+    "如果有心脏问题避免使用。",
+    "避免与其他兴奋剂同用。",
+    "不要在晚间使用以避免失眠。"
   ]
 }

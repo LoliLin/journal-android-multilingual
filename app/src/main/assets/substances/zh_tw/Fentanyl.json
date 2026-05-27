@@ -1,8 +1,8 @@
 {
-  "effectsSummary": "[TBT] Fentanyl has a strong analgesic and sedative effect and is effective in the smallest doses. However, its euphoric effect is less pronounced than that of other opioids. It is used in emergency medicine for surgical procedures and anesthesia, and for breakthrough pain in cancer patients. For chronic pain, fentanyl patches are used, which release the active ingredient slowly. Due to its opioid properties, fentanyl rapidly leads to dependence when taken over a long period of time and should not be discontinued abruptly and only under medical supervision.",
-  "dosageRemark": "[TBT] Fentanyl is extremely potent and therefore very difficult to dose. Therefore, overdoses can easily occur. When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
-  "generalRisks": "[TBT] The side effects are strongly dose-dependent. As the dose increases, the side effects also become more pronounced. At the beginning there is often drowsiness, dizziness, dizziness, pupil constriction, slowed heartbeat, drop in blood pressure, nausea and vomiting.\nExcessive sweating, rashes, itching, central dullness, confusion, visual disturbances, cardiac arrhythmias, respiratory reflex depression and urinary retention may also occur.\nOverdoses with fentanyl are life-threatening because the substance, like all opioids, slows down breathing, even to the point of respiratory arrest and coma.",
-  "longtermRisks": "[TBT] Regular, abusive use of fentanyl can lead to dependence with severe withdrawal symptoms such as seizures, sleep disorders and depression. Withdrawal, as with all opioids, should not be abrupt and should only take place under medical supervision.",
+  "effectsSummary": "芬太尼具有强效镇痛、镇静和抑制、镇咳、欣快和抗焦虑作用。",
+  "dosageRemark": "芬太尼效力极强。致死剂量非常小。仅使用精确测量设备。",
+  "generalRisks": "极度呼吸抑制风险。芬太尼的效力约为吗啡的 50-100 倍。过量风险极高。",
+  "longtermRisks": "定期使用芬太尼导致生理和心理依赖。成瘾是最大风险。",
   "saferUse": [
     "阿片類藥物是高效藥物，僅應用於急性疼痛。使用前了解相關風險。",
     "從小劑量開始，等待效果後再決定是否加量。",

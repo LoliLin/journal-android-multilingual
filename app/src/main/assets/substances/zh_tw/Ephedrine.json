@@ -1,11 +1,11 @@
 {
-  "effectsSummary": "[TBT] Stimulates circulation, increases drive and performance, and suppresses appetite.",
-  "generalRisks": "[TBT] Even at low doses: Palpitations, restlessness, sleep problems, urinary urgency or retention and dry mouth. Also possible are feelings of anxiety, increased blood pressure (vasoconstriction), loss of appetite, dizziness, cardiac arrhythmias and even heart attacks.\nIn case of overdose: confusion and paranoia. The tannins of ephedra herb can cause stomach complaints in larger quantities.",
-  "longtermRisks": "[TBT] Continuous use: Impaired memory and concentration, irritability, nervousness, aggressive behaviour, cardiac arrhythmia, chronic high blood pressure, bad teeth, liver/kidney damage and psychological disorders. Regular ephedrine use can lead to the development of tolerance and dependence, especially with psychological symptoms.",
+  "effectsSummary": "麻黄碱具有兴奋作用。增加警觉性、精力和专注力。还用作支气管扩张剂和减充血剂。",
+  "generalRisks": "心率和血压升高、焦虑、失眠、心悸。易感人群有心脏问题风险。",
+  "longtermRisks": "定期使用可能导致心血管负担和心理依赖。",
   "saferUse": [
-    "[TBT] Take a low dose of ephedrine, as the active ingredient content can vary greatly, especially in herbs!",
-    "[TBT] Drink enough water (3 - 5 dl per hour) and no alcohol!",
-    "[TBT] People with circulatory problems/diseases, thyroid disorders and liver or kidney damage should not consume ephedrine!",
-    "[TBT] Ephedrine is not an effective means of losing weight without medical supervision."
+    "從低劑量開始。",
+    "如果有心臟問題避免使用。",
+    "避免與其他興奮劑同用。",
+    "不要在晚間使用以避免失眠。"
   ]
 }
