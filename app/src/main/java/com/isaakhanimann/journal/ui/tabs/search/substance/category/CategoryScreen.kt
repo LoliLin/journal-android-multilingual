@@ -39,7 +39,6 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
 @Composable
 fun CategoryScreen(
@@ -75,10 +74,7 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
     } else {
         Scaffold(
             topBar = {
-                val displayName = i18nOrDefault(
-                    key = categoryNameKey(category.name),
-                    fallback = category.name.replaceFirstChar { it.uppercase() }
-                )
+                val displayName = category.getLocalizedName()
                 TopAppBar(title = { Text(displayName) })
             },
             floatingActionButton = {
@@ -97,7 +93,7 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
             }
         ) { padding ->
             Text(
-                text = category.description,
+                text = category.getLocalizedDescription(),
                 textAlign = TextAlign.Left,
                 modifier = Modifier
                     .padding(padding)

@@ -19,10 +19,19 @@
 package com.isaakhanimann.journal.data.substances.classes
 
 import androidx.compose.ui.graphics.Color
+import com.isaakhanimann.journal.localization.i18nOrDefault
 
 data class Category(
     val name: String,
     val description: String,
     val url: String?,
     val color: Color
-)
+) {
+    fun getLocalizedName(): String {
+        return i18nOrDefault("categories.$name", name)
+    }
+
+    fun getLocalizedDescription(): String {
+        return i18nOrDefault("categories.$name.desc", description)
+    }
+}

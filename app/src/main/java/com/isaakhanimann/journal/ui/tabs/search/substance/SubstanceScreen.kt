@@ -87,8 +87,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
-import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-import com.isaakhanimann.journal.ui.utils.categoryNameKey
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.localization.i18n
@@ -609,10 +608,7 @@ fun CategoryChipFromSubstanceScreen(
     category: Category,
     navigateToCategoryScreen: (categoryName: String) -> Unit
 ) {
-    val displayName = i18nOrDefault(
-        key = categoryNameKey(category.name),
-        fallback = category.name
-    )
+    val displayName = category.getLocalizedName()
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
