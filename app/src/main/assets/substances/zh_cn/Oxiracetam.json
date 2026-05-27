@@ -5,5 +5,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "奥拉西坦是一种拉西坦类促智药，仅与吡拉西坦的差异在于一个羟基。用于提高认知功能，通常每日服用两到三次。通常与胆碱合用，否则可能引发头痛。",
-  "localizedName": "Oxiracetam"
+  "localizedName": "Oxiracetam",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

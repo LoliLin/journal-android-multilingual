@@ -1,5 +1,14 @@
 {
   "toxicities": [],
   "summary": "一种常见的苯二氮卓类催眠、镇静和抗焦虑药。高剂量可能导致失忆和抑制解除。其特别之处是水溶性，常用于镇静的术前用药，使其比其他苯二氮卓更适合静脉给药。",
-  "localizedName": "Midazolam"
+  "localizedName": "Midazolam",
+  "effectsSummary": "Midazolam is a potent short-acting benzodiazepine with sedative, anxiolytic, amnestic and sleep-inducing effects.",
+  "generalRisks": "Respiratory depression, especially at high doses or when mixed with other depressants. Impaired coordination and memory.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ]
 }

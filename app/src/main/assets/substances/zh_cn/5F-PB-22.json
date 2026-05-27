@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "合成大麻素，作用于大麻素受体，具有明显镇静成分。作为合成大麻素起效非常快。",
-  "localizedName": "5F-PB-22"
+  "localizedName": "5F-PB-22",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

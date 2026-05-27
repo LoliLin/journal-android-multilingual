@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "麦司卡林类似物，由 Alexander Shulgin 首次合成，来源于且效力低于 allylescaline。为苯乙胺类迷幻剂，可引起刺激、欣快和幻觉体验。",
-  "localizedName": "Methallylescaline"
+  "localizedName": "Methallylescaline",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

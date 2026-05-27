@@ -1,4 +1,12 @@
 {
   "toxicities": [],
-  "localizedName": "Poppers"
+  "localizedName": "Poppers",
+  "effectsSummary": "Muscle relaxation, drop in blood pressure, increase in heart rate, euphoria, dizziness, warmth, increased libido.",
+  "generalRisks": "Headache, dizziness, palpitations, loss of consciousness, fainting, fall in blood pressure, methemoglobinemia.",
+  "longtermRisks": "With regular use, permanent impairment of attention and memory, vision damage, and methemoglobinemia.",
+  "saferUse": [
+    "Do not consume poppers alone.",
+    "Do not mix poppers with alcohol or other drugs.",
+    "Avoid getting poppers on skin as it can cause burns."
+  ]
 }

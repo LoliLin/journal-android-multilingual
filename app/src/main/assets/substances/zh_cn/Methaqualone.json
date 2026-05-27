@@ -5,5 +5,10 @@
     "适当剂量下安全。"
   ],
   "summary": "一种药用抑制剂和镇静剂，因苯二氮卓更安全而被淘汰，属于 Quaalone 系物质。如今非常罕见，除南非外。",
-  "localizedName": "Methaqualone"
+  "localizedName": "Methaqualone",
+  "tolerance": {
+    "full": "重复使用数日内",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

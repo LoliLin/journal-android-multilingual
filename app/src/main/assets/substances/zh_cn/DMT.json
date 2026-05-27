@@ -4,5 +4,17 @@
     "极低毒性。"
   ],
   "summary": "一种流行且强力的迷幻剂，通常有两种使用方式：蒸发吸入以获得短暂的“突破”体验，或与酶抑制剂合用以获得长时间强烈旅行（也称 ayahuasca 或 pharmahuasca）。",
-  "localizedName": "DMT"
+  "localizedName": "DMT",
+  "effectsSummary": "Intense visual and auditory hallucinations, ego dissolution, out-of-body experiences, breakthrough into alternative realities. Onset is extremely rapid and duration is short.",
+  "dosageRemark": "DMT is not active orally unless combined with an MAOI. Vaporization/injection provides rapid onset.",
+  "generalRisks": "Extreme psychological reactions, panic, fear. Temporary increase in blood pressure. Risk of HPPD.",
+  "longtermRisks": "No research results on long-term risks. HPPD is rare. Main risk is psychological distress during the experience.",
+  "saferUse": [
+    "Always have a trip sitter present.",
+    "Start with low doses.",
+    "Have a safe and comfortable setting."
+  ],
+  "tolerance": {
+    "full": "似乎不会产生"
+  }
 }

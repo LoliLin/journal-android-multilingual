@@ -4,5 +4,20 @@
     "确切毒性剂量未知。"
   ],
   "summary": "全球最受欢迎的共情剂，具有强烈的亲社会效果。过量与认知下降密切相关。常在派对使用，通常以粉末或药丸出售，也可能掺杂其他相似化学物质。",
-  "localizedName": "MDMA"
+  "localizedName": "MDMA",
+  "effectsSummary": "Euphoria, empathy, emotional openness, increased energy, enhanced sensory perception, jaw clenching, increased heart rate.",
+  "dosageRemark": "Do not redose more than once. Wait at least 3 months between uses. Stay hydrated but do not overdrink.",
+  "generalRisks": "Hyperthermia (overheating), dehydration or overhydration, serotonin syndrome, jaw clenching, teeth grinding, liver toxicity, depression after use.",
+  "longtermRisks": "Regular use leads to serotonin system damage, cognitive deficits, depression, anxiety, and tolerance buildup.",
+  "saferUse": [
+    "Stay hydrated but do not overdrink (max 500ml per hour).",
+    "Take breaks from dancing to cool down.",
+    "Do not redose more than once.",
+    "Wait at least 3 months between sessions."
+  ],
+  "tolerance": {
+    "full": "长期重复使用",
+    "half": "1 个月",
+    "zero": "2.5 个月"
+  }
 }

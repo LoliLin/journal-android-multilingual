@@ -4,5 +4,17 @@
     "毒性剂量未知。"
   ],
   "summary": "一种强效迷幻色胺，存在于多种植物和部分蟾蜍毒液中，南美原住民使用历史可追溯数千年。与 DMT 及相关色胺性质相似。效力很强，与 MAOI 合用可口服有效。",
-  "localizedName": "5-MeO-DMT"
+  "localizedName": "5-MeO-DMT",
+  "effectsSummary": "5-MeO-DMT is an extremely potent psychedelic. Even low doses can produce strong visual and auditory hallucinations, altered perception of time and ego dissolution.",
+  "dosageRemark": "5-MeO-DMT is extremely potent. Respiratory and physical risks at high doses. Start very low and work up gradually.",
+  "generalRisks": "Extreme increase in blood pressure and heart rate. Risk of panic attacks and psychological distress.",
+  "longtermRisks": "No research results on long-term risks. HPPD possible. Psychological integration may be needed after intense experiences.",
+  "saferUse": [
+    "5-MeO-DMT can be psychologically overwhelming. A trip sitter is essential."
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "1 小时",
+    "zero": "2 小时"
+  }
 }

@@ -4,5 +4,20 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种非常流行的中枢兴奋剂，可处方也可在黑市获得。高剂量具娱乐性，产生轻度欣快与大量精力。在东欧和美国很受欢迎。",
-  "localizedName": "安非他明"
+  "localizedName": "安非他明",
+  "effectsSummary": "Stimulating, euphoric, increases alertness, reduces appetite, elevates mood, increases focus and energy.",
+  "dosageRemark": "Start low and go slow. The difference between a moderate and heavy dose can be small.",
+  "generalRisks": "Increased heart rate and blood pressure, risk of heart attack and stroke, sleep deprivation, anxiety, paranoia, psychosis with prolonged use.",
+  "longtermRisks": "Chronic use leads to cognitive impairment, psychosis, cardiovascular damage, severe dental problems, malnutrition, and addiction.",
+  "saferUse": [
+    "Start with a low dose.",
+    "Stay hydrated and eat regular meals.",
+    "Take breaks to avoid sleep deprivation.",
+    "Do not redose too frequently."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

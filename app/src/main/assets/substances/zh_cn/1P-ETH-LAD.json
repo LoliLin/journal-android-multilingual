@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种新的迷幻利色胺，怀疑为 ETH-LAD 的前药，这可解释其剂量非常接近；也可能本身活性。需要科学研究，但目前尚无。",
-  "localizedName": "1P-ETH-LAD"
+  "localizedName": "1P-ETH-LAD",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

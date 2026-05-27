@@ -2,5 +2,11 @@
   "addictionPotential": "中度成瘾且滥用潜力高。",
   "toxicities": [],
   "summary": "一种常用于治疗 ADHD、嗜睡症和肥胖的精神兴奋剂，在欧盟尤常作为 Adderall 的替代。哌甲酯也是 5HT1A 受体激动剂。有时用于可卡因及其他兴奋剂戒断的超适应症处方。",
-  "localizedName": "哌甲酯"
+  "localizedName": "哌甲酯",
+  "effectsSummary": "Methylphenidate has a stimulating effect. It increases alertness, concentration and cognitive performance. Used medically for ADHD.",
+  "generalRisks": "Increased heart rate and blood pressure, anxiety, insomnia, decreased appetite, weight loss. Risk of dependence with recreational use.",
+  "longtermRisks": "Regular high-dose use may lead to cardiovascular strain, sleep disruption, and psychological dependence.",
+  "saferUse": [
+    "从低剂量开始。"
+  ]
 }

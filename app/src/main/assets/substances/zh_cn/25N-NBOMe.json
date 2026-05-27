@@ -4,5 +4,10 @@
     "高剂量可能致命。"
   ],
   "summary": "一种罕见、效力极强且呈黄色的苯乙胺类迷幻剂，为 2C-N 衍生物。作用类似其他 NBOMe 化合物，具有幻觉、强烈身体负荷、刺激和血管收缩。高剂量下血管收缩可能危险，请谨慎。",
-  "localizedName": "25N-NBOMe"
+  "localizedName": "25N-NBOMe",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

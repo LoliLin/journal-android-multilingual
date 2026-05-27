@@ -3,5 +3,13 @@
   "toxicities": [
     "确切毒性剂量未知。"
   ],
-  "localizedName": "Dextromethorphan"
+  "localizedName": "Dextromethorphan",
+  "effectsSummary": "DXM has dissociative, anesthetic, and mild psychedelic effects. Effects vary greatly by dose. Low doses: stimulation, euphoria. High doses: dissociation, hallucinations.",
+  "dosageRemark": "DXM has multiple plateaus with distinct effects. Do not mix with other serotonergic drugs due to risk of serotonin syndrome.",
+  "generalRisks": "Nausea, vomiting, dizziness, increased heart rate and blood pressure. At high doses: confusion, loss of coordination, risk of serotonin syndrome.",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

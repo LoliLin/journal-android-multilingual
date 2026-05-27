@@ -3,10 +3,7 @@ package com.isaakhanimann.journal.ui.utils
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 
 fun categoryNameKey(name: String): String {
-    val normalized = name.lowercase()
-        .replace(Regex("[^a-z0-9]+"), "_")
-        .trim('_')
-    return "category_$normalized"
+    return "categories.$name"
 }
 
 fun administrationRouteKey(route: AdministrationRoute): String {

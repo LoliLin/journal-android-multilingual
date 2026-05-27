@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种二芳乙胺类解离剂，是二苯乙啶更强的类似物。已知不可预测，可能导致断片。",
-  "localizedName": "Methoxphenidine"
+  "localizedName": "Methoxphenidine",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

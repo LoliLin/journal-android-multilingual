@@ -1,5 +1,19 @@
 {
   "toxicities": [],
   "summary": "典型阿片类药物，一种具有欣快特性的强效镇痛剂，存在于罂粟（鸦片罂粟）种子和蜡质中。1805 年由 Friedrich Sertürner 首次分离，并因诱眠特性而得名。不要与其他抑制剂合用，过量可能导致危险的呼吸抑制。",
-  "localizedName": "吗啡"
+  "localizedName": "吗啡",
+  "effectsSummary": "Analgesic, anxiety-relieving, euphoric, mood-lifting, causes drowsiness, muscle relaxation, lowers blood pressure, constipation.",
+  "dosageRemark": "Morphine has a high potential for dependence. Use only as directed for medical purposes.",
+  "generalRisks": "Very common side effects, as with all opioids, are constipation, nausea, drowsiness and respiratory depression.",
+  "longtermRisks": "The consumption of morphine leads to physical and psychological dependence. Addiction is the greatest risk.",
+  "saferUse": [
+    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
+    "从小剂量开始，等待效果后再决定是否加量。",
+    "如果注射阿片类药物，更需谨慎剂量。",
+    "不要依赖他人的剂量信息。",
+    "使用之间保持较长间隔（至少数天）。",
+    "戒断一段时间后，剂量要比之前大幅降低。",
+    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
+    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
+  ]
 }

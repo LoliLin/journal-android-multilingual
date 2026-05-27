@@ -5,5 +5,24 @@
     "与酒精或苯二氮卓等抑制剂混用可能致命。"
   ],
   "summary": "一种合成阿片镇痛药，曲马多用于中度疼痛，可视为中等强度阿片。曲马多也具有血清素释放与再摄取抑制作用，因此不应过量使用以避免血清素综合征。300mg 以上剂量有癫痫风险。",
-  "localizedName": "曲马多"
+  "localizedName": "曲马多",
+  "effectsSummary": "Analgesic, anxiety-relieving, euphoric, mood-lifting, causes a general feeling of well-being, drowsiness.",
+  "dosageRemark": "When consuming for the first time, low doses should be used, as the risk of respiratory depression and seizures is particularly high.",
+  "generalRisks": "Adverse side effects may include: headache, malaise/nausea, vomiting, dry mouth, dizziness, sedation, constipation, risk of seizures.",
+  "longtermRisks": "Tramadol has a low dependence potential with moderate use. However, regular and high-dose consumption can lead to physical and psychological dependence.",
+  "saferUse": [
+    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
+    "从小剂量开始，等待效果后再决定是否加量。",
+    "如果注射阿片类药物，更需谨慎剂量。",
+    "不要依赖他人的剂量信息。",
+    "使用之间保持较长间隔（至少数天）。",
+    "戒断一段时间后，剂量要比之前大幅降低。",
+    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
+    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

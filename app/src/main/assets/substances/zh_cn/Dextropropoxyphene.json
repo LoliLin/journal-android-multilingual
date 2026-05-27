@@ -6,5 +6,10 @@
     "已知可导致潜在致命的心律失常。"
   ],
   "summary": "一种阿片镇痛药，为左丙氧芬的光学异构体。用于轻度疼痛并常因镇咳作用而使用。因肾、肝、心及呼吸系统健康问题在欧美退市。效力略强于曲马多。",
-  "localizedName": "Dextropropoxyphene"
+  "localizedName": "Dextropropoxyphene",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

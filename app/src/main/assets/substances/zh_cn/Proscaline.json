@@ -4,5 +4,10 @@
     "尝试该药物未被归因于负面健康影响。"
   ],
   "summary": "一种非常少见的迷幻兴奋剂与苯乙胺类、麦司卡林类似物，效应相近。按重量约为麦司卡林的 5-7 倍强。",
-  "localizedName": "Proscaline"
+  "localizedName": "Proscaline",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "与 2-FMA 密切相关的兴奋剂，推测效力略低于前者。毒理等几乎完全未知，请谨慎。",
-  "localizedName": "2-FEA"
+  "localizedName": "2-FEA",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }
