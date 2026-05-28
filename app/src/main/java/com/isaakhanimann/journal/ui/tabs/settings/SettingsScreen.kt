@@ -419,7 +419,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 Text(
-                    text = i18n("settings_version_with_value", mapOf("version" to context.getStringifiedVersion())),
+                    text = i18n("settings_version_with_value", mapOf("version" to context.appVersionName)),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
@@ -427,6 +427,23 @@ fun SettingsScreen(
                 )
             }
         }
+    }
+}
+
+val Context.appVersionName: String
+    get() = try {
+        val packageInfo = getPackageInfoCompat()
+        packageInfo.versionName ?: "Unknown"
+    } catch (e: PackageManager.NameNotFoundException) {
+        e.printStackTrace()
+        "Unknown"
+    }
+private fun Context.getPackageInfoCompat(): PackageInfo {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        packageManager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
+    } else {
+        @Suppress("DEPRECATION")
+        packageManager.getPackageInfo(packageName, 0)
     }
 }
 
