@@ -49,8 +49,8 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 
 @HiltViewModel
 class StatsViewModel @Inject constructor(
-    experienceRepo: ExperienceRepository
-    substanceRepository: SubstanceRepository
+    experienceRepo: ExperienceRepository,
+    val substanceRepo: SubstanceRepository
 ) : ViewModel() {
 
     private val _optionFlow = MutableStateFlow(TimePickerOption.WEEKS_26)
@@ -166,7 +166,7 @@ class StatsViewModel @Inject constructor(
             val experienceCounts = experienceNamesMap[name]?.size ?: 0
             StatItem(
                 substanceName = name,
-                substanceRepo = substanceRepository
+                substanceRepo = substanceRepo,
                 color = oneCompanion.color,
                 experienceCount = experienceCounts,
                 ingestionCount = groupedIngestions.size,

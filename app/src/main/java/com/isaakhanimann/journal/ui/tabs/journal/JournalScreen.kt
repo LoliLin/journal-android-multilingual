@@ -88,7 +88,7 @@ fun JournalScreen(
         onChangeSearchText = viewModel::search,
         isSearchEnabled = viewModel.isSearchEnabled.value,
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
-        experiences = experiences
+        experiences = experiences,
         substanceRepository = viewModel.substanceRepository
     )
 }
