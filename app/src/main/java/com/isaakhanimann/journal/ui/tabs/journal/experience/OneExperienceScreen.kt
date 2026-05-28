@@ -414,11 +414,16 @@ fun OneExperienceScreen(
                             }
                         )
                         DropdownMenuItem(
-                            text = { Text(i18n("add_shulgin_rating")) },
-                            onClick = {
-                                navigateToAddRatingScreen()
-                                areAddOptionsExpanded = false
-                            },
+                            text = { Text(i18n("add_shulgin_rating")) },
+
+                            onClick = {
+
+                                navigateToAddRatingScreen()
+
+                                areAddOptionsExpanded = false
+
+                            },
+
                             leadingIcon = {
                                 Icon(
                                     Icons.Outlined.ExposurePlus2,
@@ -505,7 +510,7 @@ fun OneExperienceScreen(
                         if (hasOralIngestion && !isOralDisclaimerHidden) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
-                                    text = FULL_STOMACH_DISCLAIMER,
+                                    text = i18n("FULL_STOMACH_DISCLAIMER"),
                                     style = MaterialTheme.typography.bodySmall,
                                     modifier = Modifier.weight(1f)
                                 )

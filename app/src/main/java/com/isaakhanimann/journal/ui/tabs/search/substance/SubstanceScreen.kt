@@ -455,7 +455,7 @@ fun SubstanceScreen(
                                     RoaDurationView(roaDuration = roaDuration)
                                     if (roa.route == AdministrationRoute.ORAL) {
                                         Text(
-                                            text = FULL_STOMACH_DISCLAIMER,
+                                            text = i18n("FULL_STOMACH_DISCLAIMER"),
                                             style = MaterialTheme.typography.bodySmall
                                         )
                                     }
