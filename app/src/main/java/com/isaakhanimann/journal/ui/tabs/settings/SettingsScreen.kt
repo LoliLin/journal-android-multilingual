@@ -182,7 +182,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 SettingsButton(
-                    imageVector = Icons.Outlined.Brush,
+                    imageVector = Icons.Outlined.Star,
                     text = i18n("settings_substance_colors")
                 ) {
                     navigateToSubstanceColors()
@@ -239,7 +239,7 @@ fun SettingsScreen(
 
                 SettingsButton(
 
-                    imageVector = Icons.Outlined.Brush,
+                    imageVector = Icons.Outlined.Star,
 
                     text = i18n("settings_icon_title")
 
