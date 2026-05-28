@@ -12,6 +12,7 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,12 +36,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,27 +55,60 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.R
+import kotlinx.coroutines.launch
+
+data class IconOption(
+    val key: String,
+    val label: String,
+    val backgroundColor: Color,
+    val iconRes: Int,
+    val aliasName: String
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IconPickerScreen(navigateBack: () -> Unit) {
     val context = LocalContext.current
     val pm = context.packageManager
-    val classicAlias = ComponentName(context, "${context.packageName}.MainActivity_Classic")
-    val springwindAlias = ComponentName(context, "${context.packageName}.MainActivity_SpringWind")
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
-    var selectedIcon by remember { mutableStateOf(getCurrentIcon(pm, springwindAlias)) }
+    val iconOptions = remember {
+        listOf(
+            IconOption(
+                key = "classic",
+                label = i18n("settings_icon_classic"),
+                backgroundColor = Color(0xFF2196F3),
+                iconRes = R.mipmap.ic_launcher,
+                aliasName = ".MainActivity_Classic"
+            ),
+            IconOption(
+                key = "springwind",
+                label = i18n("settings_icon_springwind"),
+                backgroundColor = Color(0xFFFF8C94),
+                iconRes = R.drawable.ic_springwind_foreground,
+                aliasName = ".MainActivity_SpringWind"
+            )
+        )
+    }
+
+    val aliases = remember {
+        iconOptions.associate { it.key to ComponentName(context, "${context.packageName}${it.aliasName}") }
+    }
+
+    var selectedKey by remember {
+        mutableStateOf(getCurrentIconKey(pm, aliases))
+    }
+    var isSwitching by remember { mutableStateOf(false) }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = { Text(i18n("settings_icon_title")) },
                 navigationIcon = {
                     IconButton(onClick = navigateBack) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back"
-                        )
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                     }
                 }
             )
@@ -85,30 +122,32 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            IconOption(
-                label = i18n("settings_icon_springwind"),
-                isSelected = selectedIcon == "springwind",
-                backgroundColor = Color(0xFFFF8C94),
-                iconRes = R.drawable.ic_springwind_foreground,
-                onClick = {
-                    switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = true)
-                    selectedIcon = "springwind"
-                }
-            )
-
-            IconOption(
-                label = i18n("settings_icon_classic"),
-                isSelected = selectedIcon == "classic",
-                backgroundColor = Color(0xFF2196F3),
-                iconRes = R.drawable.ic_springwind_foreground,
-                onClick = {
-                    switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = false)
-                    selectedIcon = "classic"
-                }
-            )
+            iconOptions.forEach { option ->
+                IconOptionCard(
+                    option = option,
+                    isSelected = selectedKey == option.key,
+                    onClick = {
+                        if (!isSwitching && selectedKey != option.key) {
+                            isSwitching = true
+                            val success = switchIcon(pm, aliases, enableKey = option.key)
+                            if (success) {
+                                selectedKey = option.key
+                                scope.launch {
+                                    snackbarHostState.showSnackbar("图标已切换")
+                                }
+                            } else {
+                                scope.launch {
+                                    snackbarHostState.showSnackbar("图标切换失败")
+                                }
+                            }
+                            isSwitching = false
+                        }
+                    }
+                )
+            }
 
             Text(
-                text = "当前图标: ${if (selectedIcon == "springwind") "SpringWind" else "Classic"}",
+                text = "当前: $selectedKey",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -116,21 +155,51 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     }
 }
 
-private fun getCurrentIcon(pm: PackageManager, springwindAlias: ComponentName): String {
+private fun getCurrentIconKey(
+    pm: PackageManager,
+    aliases: Map<String, ComponentName>
+): String {
+    aliases.forEach { (key, component) ->
+        try {
+            val state = pm.getComponentEnabledSetting(component)
+            if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
+                return key
+            }
+        } catch (_: Exception) { }
+    }
+    return aliases.keys.first()
+}
+
+private fun switchIcon(
+    pm: PackageManager,
+    aliases: Map<String, ComponentName>,
+    enableKey: String
+): Boolean {
     return try {
-        val state = pm.getComponentEnabledSetting(springwindAlias)
-        if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) "springwind" else "classic"
+        aliases.values.forEach { component ->
+            pm.setComponentEnabledSetting(
+                component,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                0
+            )
+        }
+        val target = aliases[enableKey] ?: return false
+        pm.setComponentEnabledSetting(
+            target,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            0
+        )
+        true
     } catch (e: Exception) {
-        "classic"
+        e.printStackTrace()
+        false
     }
 }
 
 @Composable
-private fun IconOption(
-    label: String,
+private fun IconOptionCard(
+    option: IconOption,
     isSelected: Boolean,
-    backgroundColor: Color,
-    iconRes: Int,
     onClick: () -> Unit
 ) {
     Card(
@@ -145,7 +214,7 @@ private fun IconOption(
                 MaterialTheme.colorScheme.surfaceVariant
         ),
         border = if (isSelected)
-            CardDefaults.outlinedCardBorder().copy(width = 2.dp)
+            BorderStroke(2.dp, MaterialTheme.colorScheme.outline)
         else
             null
     ) {
@@ -161,42 +230,18 @@ private fun IconOption(
                 modifier = Modifier
                     .size(80.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(backgroundColor)
+                    .background(option.backgroundColor)
             ) {
                 Image(
-                    painter = painterResource(id = iconRes),
-                    contentDescription = label,
+                    painter = painterResource(id = option.iconRes),
+                    contentDescription = option.label,
                     modifier = Modifier.size(72.dp)
                 )
             }
             Text(
-                text = label,
+                text = option.label,
                 style = MaterialTheme.typography.titleMedium
             )
         }
-    }
-}
-
-private fun switchIcon(
-    pm: PackageManager,
-    classicAlias: ComponentName,
-    springwindAlias: ComponentName,
-    enableSpringWind: Boolean
-) {
-    try {
-        val enable = if (enableSpringWind) springwindAlias else classicAlias
-        val disable = if (enableSpringWind) classicAlias else springwindAlias
-        pm.setComponentEnabledSetting(
-            enable,
-            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            PackageManager.DONT_KILL_APP
-        )
-        pm.setComponentEnabledSetting(
-            disable,
-            PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-            PackageManager.DONT_KILL_APP
-        )
-    } catch (e: Exception) {
-        e.printStackTrace()
     }
 }
