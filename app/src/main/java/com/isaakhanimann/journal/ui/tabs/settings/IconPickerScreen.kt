@@ -12,16 +12,15 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.ComponentName
 import android.content.pm.PackageManager
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -61,8 +60,7 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     val classicAlias = ComponentName(context, "${context.packageName}.MainActivity_Classic")
     val springwindAlias = ComponentName(context, "${context.packageName}.MainActivity_SpringWind")
 
-    val isSpringWindEnabled = pm.getComponentEnabledSetting(springwindAlias) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-    var selectedIcon by remember { mutableStateOf(if (isSpringWindEnabled) "springwind" else "classic") }
+    var selectedIcon by remember { mutableStateOf(getCurrentIcon(pm, springwindAlias)) }
 
     Scaffold(
         topBar = {
@@ -90,27 +88,23 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
             IconOption(
                 label = i18n("settings_icon_springwind"),
                 isSelected = selectedIcon == "springwind",
-                color = Color(0xFFFF8C94),
-                monogram = "S",
+                backgroundColor = Color(0xFFFF8C94),
+                iconRes = R.drawable.ic_springwind_foreground,
                 onClick = {
                     switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = true)
                     selectedIcon = "springwind"
-                },
-                selectedIconRes = R.drawable.ic_springwind_foreground,
-                unselectedIconRes = R.drawable.ic_springwind_foreground
+                }
             )
 
             IconOption(
                 label = i18n("settings_icon_classic"),
                 isSelected = selectedIcon == "classic",
-                color = Color(0xFF2196F3),
-                monogram = "S",
+                backgroundColor = Color(0xFF2196F3),
+                iconRes = R.drawable.ic_springwind_foreground,
                 onClick = {
                     switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = false)
                     selectedIcon = "classic"
-                },
-                selectedIconRes = R.mipmap.ic_launcher,
-                unselectedIconRes = R.mipmap.ic_launcher
+                }
             )
 
             Text(
@@ -122,15 +116,22 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     }
 }
 
+private fun getCurrentIcon(pm: PackageManager, springwindAlias: ComponentName): String {
+    return try {
+        val state = pm.getComponentEnabledSetting(springwindAlias)
+        if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) "springwind" else "classic"
+    } catch (e: Exception) {
+        "classic"
+    }
+}
+
 @Composable
 private fun IconOption(
     label: String,
     isSelected: Boolean,
-    color: Color,
-    monogram: String,
-    onClick: () -> Unit,
-    selectedIconRes: Int,
-    unselectedIconRes: Int
+    backgroundColor: Color,
+    iconRes: Int,
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -160,12 +161,12 @@ private fun IconOption(
                 modifier = Modifier
                     .size(80.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(color)
+                    .background(backgroundColor)
             ) {
-                Icon(
-                    painter = painterResource(id = if (isSelected) selectedIconRes else unselectedIconRes),
+                Image(
+                    painter = painterResource(id = iconRes),
                     contentDescription = label,
-                    modifier = Modifier.size(64.dp)
+                    modifier = Modifier.size(72.dp)
                 )
             }
             Text(
