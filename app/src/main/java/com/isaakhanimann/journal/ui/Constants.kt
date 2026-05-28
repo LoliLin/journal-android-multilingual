@@ -21,3 +21,5 @@ package com.isaakhanimann.journal.ui
 const val VOLUMETRIC_DOSE_ARTICLE_URL = "https://psychonautwiki.org/wiki/Volumetric_liquid_dosing"
 
 const val YOU = "You"
+
+const val VERSION_NAME = "9.1"

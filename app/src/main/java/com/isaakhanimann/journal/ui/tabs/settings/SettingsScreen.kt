@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
+import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -47,6 +48,7 @@ import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -182,7 +184,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 SettingsButton(
-                    imageVector = Icons.Outlined.Star,
+                    imageVector = Icons.Outlined.StarBorder,
                     text = i18n("settings_substance_colors")
                 ) {
                     navigateToSubstanceColors()
@@ -239,7 +241,7 @@ fun SettingsScreen(
 
                 SettingsButton(
 
-                    imageVector = Icons.Outlined.Star,
+                    imageVector = Icons.Outlined.StarBorder,
 
                     text = i18n("settings_icon_title")
 
@@ -419,7 +421,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 Text(
-                    text = i18n("settings_version_with_value", mapOf("version" to context.appVersionName)),
+                    text = i18n("settings_version_with_value", mapOf("version" to com.isaakhanimann.journal.ui.VERSION_NAME)),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
@@ -427,23 +429,6 @@ fun SettingsScreen(
                 )
             }
         }
-    }
-}
-
-val Context.appVersionName: String
-    get() = try {
-        val packageInfo = getPackageInfoCompat()
-        packageInfo.versionName ?: "Unknown"
-    } catch (e: PackageManager.NameNotFoundException) {
-        e.printStackTrace()
-        "Unknown"
-    }
-private fun Context.getPackageInfoCompat(): PackageInfo {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        packageManager.getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
-    } else {
-        @Suppress("DEPRECATION")
-        packageManager.getPackageInfo(packageName, 0)
     }
 }
 
