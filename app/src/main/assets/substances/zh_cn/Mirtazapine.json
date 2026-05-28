@@ -1,5 +1,10 @@
 {
   "addictionPotential": "不易形成习惯。",
   "toxicities": [],
-  "localizedName": "Mirtazapine"
+  "localizedName": "Mirtazapine",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

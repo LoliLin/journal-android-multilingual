@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种与 ephenidine 相关的解离性麻醉剂，性质类似 PCP 和氯胺酮。作为娱乐性 RC 有一定流行。剂量反应曲线据报道很陡，需谨慎。",
-  "localizedName": "Diphenidine"
+  "localizedName": "Diphenidine",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

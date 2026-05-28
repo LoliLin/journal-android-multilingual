@@ -5,5 +5,18 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "被称为 Rohypnol 或“roofies”，这类臭名昭著的药物与多数苯二氮卓相似，具有强镇静和催眠作用。虽被称为“约会强暴药”，但实际涉案数量不多。与其他抑制剂合用有呼吸抑制危险。过量可导致失忆和抑制降低。",
-  "localizedName": "Flunitrazepam"
+  "localizedName": "Flunitrazepam",
+  "effectsSummary": "Flunitrazepam is a potent benzodiazepine with anxiolytic, sedative, muscle relaxant, amnestic, and sleep-inducing effects.",
+  "generalRisks": "Drowsiness, dizziness, impaired coordination, memory impairment (particularly anterograde amnesia). High dependence risk. Dangerous with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7 - 14 天"
+  }
 }

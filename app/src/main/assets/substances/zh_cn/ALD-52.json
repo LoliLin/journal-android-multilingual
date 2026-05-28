@@ -5,5 +5,10 @@
     "极低毒性。"
   ],
   "summary": "ALD-52（或 N-乙酰-LSD）是较少见的 LSD 类似物，由 Albert Hoffman 首次合成。因“Orange Sunshine”审判而闻名。作为迷幻利色胺，其性质与 LSD 类似，并被认为是 LSD 的前药。",
-  "localizedName": "ALD-52"
+  "localizedName": "ALD-52",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
+  }
 }

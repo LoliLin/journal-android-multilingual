@@ -3,5 +3,10 @@
   "toxicities": [
     "相对于剂量而言毒性极低。"
   ],
-  "localizedName": "1V-LSD"
+  "localizedName": "1V-LSD",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
+  }
 }

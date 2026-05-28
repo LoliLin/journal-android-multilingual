@@ -2,5 +2,19 @@
   "addictionPotential": "中度形成习惯。",
   "toxicities": [],
   "summary": "一种常见且广泛使用的精神活性植物，在世界部分地区开始取得医疗甚至娱乐用途的合法地位。通常吸食或食用，主要作用为放松与对食物的偏好——俗称“嗨（stoned）”。",
-  "localizedName": "大麻"
+  "localizedName": "大麻",
+  "effectsSummary": "Euphoria, relaxation, altered perception of time and space, increased appetite, dry mouth, red eyes, impaired short-term memory.",
+  "dosageRemark": "Effects vary greatly between strains and individuals. Start with a small amount, especially with edibles.",
+  "generalRisks": "Impaired short-term memory and concentration, anxiety and paranoia (especially at high doses), respiratory issues when smoked, dependency risk with heavy use.",
+  "longtermRisks": "Long-term heavy use, especially when started in adolescence, can lead to cognitive impairment, reduced motivation, respiratory issues, and dependency.",
+  "saferUse": [
+    "Start with a low dose, especially with edibles.",
+    "Avoid smoking in favor of vaping or edibles.",
+    "Do not drive under the influence."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "1 - 2 周",
+    "zero": "2 - 3 周"
+  }
 }

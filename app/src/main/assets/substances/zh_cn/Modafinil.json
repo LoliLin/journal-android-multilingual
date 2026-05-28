@@ -4,5 +4,23 @@
     "人类对莫达非尼的半数致死剂量（LD50）尚未达到。"
   ],
   "summary": "一种促进清醒的长效兴奋剂，通常仅用于功能性目的，因为缺乏明显欣快成分。也用于治疗日间嗜睡障碍。",
-  "localizedName": "Modafinil"
+  "localizedName": "Modafinil",
+  "effectsSummary": "Modafinil promotes wakefulness and alertness. Increases focus, concentration, and cognitive performance. Mild euphoria in some users. Low abuse potential.",
+  "dosageRemark": "Effects last 10-12 hours. Take early in the day to avoid sleep disruption.",
+  "generalRisks": "Headache, anxiety, insomnia, increased heart rate, nervousness. Rare but serious: Stevens-Johnson syndrome.",
+  "longtermRisks": "Unknown with moderate use. Long-term high-dose use may lead to sleep disruption and psychological dependence.",
+  "saferUse": [
+    "在当天早些服用以避免失眠。",
+    "从小剂量开始（50-100mg）。",
+    "避免每日使用以预防耐受。",
+    "保持水分。",
+    "注意可能的头痛副作用，保持水分。",
+    "监测情绪变化，如出现焦虑或心悸应停止使用。",
+    "不建议每日使用以避免耐受累积。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

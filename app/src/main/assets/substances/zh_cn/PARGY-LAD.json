@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "PARGY-LAD"
+  "localizedName": "PARGY-LAD",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "5-7 天",
+    "zero": "14 天"
+  }
 }

@@ -4,5 +4,24 @@
     "毒性剂量未知。"
   ],
   "summary": "DOB 是相对少见的合成迷幻剂，以极低剂量和长持续时间著称。历史上很少被刻意服用，但曾被当作 LSD 贩售，如今在研究化学品圈也有一定地位。",
-  "localizedName": "DOB"
+  "localizedName": "DOB",
+  "effectsSummary": "DOB is a potent and long-lasting psychedelic. Visual hallucinations, altered perception of time, ego dissolution. Onset can take up to 2-3 hours.",
+  "generalRisks": "Dangerous increase in blood pressure. Risk of panic attacks and psychological distress. Overheating risk. Extremely long duration (up to 24h+).",
+  "longtermRisks": "No research results on long-term risks. HPPD possible. The main risk is psychological distress during the experience.",
+  "saferUse": [
+    "只使用毫克秤精确测量剂量。",
+    "安排清醒的陪护人在场。",
+    "确保有充足的时间（至少 24 小时）。",
+    "避免与其他药物混合使用。",
+    "从低剂量开始，逐步增加。",
+    "注意：DOB 持续时间极长（18-24h+），请规划好时间。",
+    "高剂量时安排陪护人。",
+    "避免过热和脱水。",
+    "DOB 在高温下可能分解，注意储存。"
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "4-7 天",
+    "zero": "7-10 天"
+  }
 }

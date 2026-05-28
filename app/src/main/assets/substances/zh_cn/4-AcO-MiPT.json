@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种效力较强的色胺，据称具有“蘑菇样”视觉，但几乎无身体负荷。非常吸湿。剂量上看似较安全。与 2C-B 类似。",
-  "localizedName": "4-AcO-MiPT"
+  "localizedName": "4-AcO-MiPT",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

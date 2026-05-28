@@ -602,16 +602,13 @@ fun VerticalSpace() {
     Spacer(modifier = Modifier.height(5.dp))
 }
 
-
 @Composable
 fun CategoryChipFromSubstanceScreen(
     category: Category,
     navigateToCategoryScreen: (categoryName: String) -> Unit
 ) {
-    val displayName = i18nOrDefault(
-        key = categoryNameKey(category.name),
-        fallback = category.name
-    )
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val displayName = category.getLocalizedName(context)
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -622,7 +619,6 @@ fun CategoryChipFromSubstanceScreen(
             }
             .background(color = category.color.copy(alpha = 0.2f))
             .padding(vertical = 4.dp, horizontal = 10.dp)
-
     ) {
         Text(text = displayName)
         Spacer(modifier = Modifier.width(3.dp))

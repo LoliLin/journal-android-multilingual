@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "2,5-DMA"
+  "localizedName": "2,5-DMA",
+  "tolerance": {
+    "full": "摄入数天后",
+    "half": "3-5 天",
+    "zero": "7-10 天"
+  }
 }

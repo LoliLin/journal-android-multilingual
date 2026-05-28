@@ -2,5 +2,19 @@
   "addictionPotential": "滥用潜力中等至高，长期使用可产生心理依赖。",
   "toxicities": [],
   "summary": "一种短效解离性麻醉剂和致幻剂，常用于急诊医学。是解离剂的代表性药物，在亚麻醉剂量下被广泛娱乐使用。小剂量类似酒精，较高剂量会使人失去行动能力并引发迷幻体验：所谓“K 洞”。",
-  "localizedName": "氯胺酮"
+  "localizedName": "氯胺酮",
+  "effectsSummary": "At low doses: mild euphoria, dissociation, altered perception. At high doses: intense dissociative experience, out-of-body experiences, K-hole, loss of motor control.",
+  "dosageRemark": "Low doses are social and functional. Higher doses quickly lead to dissociation and immobility.",
+  "generalRisks": "Risk of accidents due to immobility and dissociation. Bladder and urinary tract damage with frequent use. Cognitive impairment.",
+  "longtermRisks": "Frequent use can cause severe bladder damage (ketamine bladder syndrome), cognitive impairment, and memory loss.",
+  "saferUse": [
+    "Lie down in a safe place if dissociating.",
+    "Have a sober sitter present for higher doses.",
+    "Avoid frequent use to protect bladder."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

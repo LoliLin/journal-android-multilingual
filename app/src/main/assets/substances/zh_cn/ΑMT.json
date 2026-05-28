@@ -3,5 +3,10 @@
   "toxicities": [
     "毒性剂量未知。"
   ],
-  "localizedName": "ΑMT"
+  "localizedName": "ΑMT",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "14 天",
+    "zero": "1 个月"
+  }
 }

@@ -4,5 +4,18 @@
     "有人仅因 30 mg 涂抹于黏膜而死亡，而成瘾者每日可耐受高达 5 克。"
   ],
   "summary": "一种非常流行的短效中枢兴奋剂，通过阻断多巴胺、血清素和去甲肾上腺素再摄取起效。可提高欣快、信心、性欲、专注、体温和心率。可卡因会导致严重血管收缩，并已知具心脏毒性且有强烈的强迫性补服与成瘾风险。",
-  "localizedName": "可卡因"
+  "localizedName": "可卡因",
+  "effectsSummary": "Euphoria, increased energy, mental alertness, decreased appetite, increased heart rate and blood pressure, vasoconstriction.",
+  "generalRisks": "High risk of heart attack, stroke, and seizure. Nasal septum damage from snorting. Paranoia and psychosis with frequent use.",
+  "longtermRisks": "Chronic use causes cardiovascular damage, nasal septum perforation, cognitive decline, paranoia, psychosis, and severe addiction.",
+  "saferUse": [
+    "Do not use cocaine with alcohol (forms cocaethylene, which is more toxic).",
+    "Stay hydrated.",
+    "Take breaks between uses to avoid binging."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

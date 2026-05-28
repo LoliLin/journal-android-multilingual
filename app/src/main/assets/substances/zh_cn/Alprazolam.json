@@ -5,5 +5,18 @@
     "与酒精或阿片等抑制剂混用可能致命。"
   ],
   "summary": "一种极为常见的苯二氮卓，更知名为 Xanax，常用于治疗焦虑和惊恐障碍。阿普唑仑作用短，主要抗焦虑，也具催眠属性。高剂量常见失忆与抑制下降。不要与其他抑制剂合用。",
-  "localizedName": "阿普唑仑"
+  "localizedName": "阿普唑仑",
+  "effectsSummary": "Anxiety relief, sedation, muscle relaxation, amnesia, drowsiness, ataxia.",
+  "generalRisks": "Drowsiness, dizziness, impaired coordination, memory impairment. Risk of dependence. Dangerous with other depressants.",
+  "longtermRisks": "Regular use leads to dependence. Withdrawal can be severe including anxiety, insomnia, and seizures.",
+  "saferUse": [
+    "如果在线购买，实际成分可能与标识不同。",
+    "不要依赖他人的剂量信息。",
+    "苯二氮䓬类药物的伪造品非常常见。",
+    "同时使用酒精、阿片类或其他抑制剂会显著增加风险。"
+  ],
+  "tolerance": {
+    "full": "持续使用数日内",
+    "zero": "7-14 天"
+  }
 }

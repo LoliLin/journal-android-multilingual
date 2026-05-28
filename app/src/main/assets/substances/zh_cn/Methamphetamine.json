@@ -2,5 +2,18 @@
   "addictionPotential": "极易成瘾且具有高滥用潜力。",
   "toxicities": [],
   "summary": "一种相当常见且非常强的中枢兴奋剂。有时以 desoxyn 形式用于治疗 ADHD 与重度肥胖。低剂量可提升情绪、警觉、注意力与能量并降低食欲；高剂量可导致躁狂、精神病与肌肉退化等问题。耐受者往往报告比新手高得多的剂量。",
-  "localizedName": "甲基苯丙胺"
+  "localizedName": "甲基苯丙胺",
+  "effectsSummary": "Intense euphoria, increased energy and focus, decreased appetite, increased libido, agitation, paranoia, insomnia.",
+  "generalRisks": "Severe dental problems (meth mouth), extreme weight loss, skin sores, paranoia, psychosis, high addiction potential, stroke risk.",
+  "longtermRisks": "Chronic use causes severe cognitive impairment, psychiatric disorders including psychosis, cardiovascular disease, severe dental decay, and malnutrition.",
+  "saferUse": [
+    "Start with a very low dose.",
+    "Stay hydrated and eat regularly.",
+    "Avoid daily use to prevent addiction."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后迅速发展",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

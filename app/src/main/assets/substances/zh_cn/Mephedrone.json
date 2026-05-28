@@ -3,5 +3,22 @@
     "确切毒性剂量未知。"
   ],
   "summary": "一种短效欣快性兴奋剂，作为 MDMA 类似物开发，在被禁前在研究化学品圈极为流行。街头市场常见，但线上较少。强烈的强迫性补服冲动。",
-  "localizedName": "甲卡西酮"
+  "localizedName": "甲卡西酮",
+  "effectsSummary": "Mephedrone has stimulating and empathogenic effects. Euphoria, increased sociability, enhanced sensory perception, increased libido, jaw clenching.",
+  "generalRisks": "Increased heart rate and blood pressure, sweating, jaw clenching, insomnia. Potential for serotonin syndrome. Nasal irritation when snorted.",
+  "saferUse": [
+    "保持水分并定期休息。",
+    "不要频繁重复使用。",
+    "从低剂量开始。",
+    "注意体温变化。",
+    "使用后可能会有情绪低落期。",
+    "不要频繁重复使用。",
+    "避免与其他兴奋剂同用。",
+    "注意心血管负担。"
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

@@ -29,11 +29,21 @@ jobs:
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
 
-      - name: Build debug APK
+      - name: Build release APK (main repo)
+        if: github.repository == 'LoliLin/journal-android-multilingual'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Build debug APK (forks)
+        if: github.repository != 'LoliLin/journal-android-multilingual'
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: app-${{ github.repository != 'LoliLin/journal-android-multilingual' && 'debug' || 'release' }}
+          path: app/build/outputs/apk/${{ github.repository != 'LoliLin/journal-android-multilingual' && 'debug' || 'release' }}/app-*.apk

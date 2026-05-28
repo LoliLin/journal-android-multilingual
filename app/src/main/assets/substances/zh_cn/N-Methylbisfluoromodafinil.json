@@ -3,5 +3,10 @@
   "toxicities": [
     "确切毒性剂量未知。"
   ],
-  "localizedName": "N-Methylbisfluoromodafinil"
+  "localizedName": "N-Methylbisfluoromodafinil",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

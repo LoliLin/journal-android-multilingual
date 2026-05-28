@@ -4,5 +4,10 @@
     "毒性剂量未知。"
   ],
   "summary": "一种罕见的色胺类药物，可与裸盖菇素相当。预计会快速水解为游离的酚性 4-HO-DET。",
-  "localizedName": "4-AcO-DET"
+  "localizedName": "4-AcO-DET",
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "half": "3 天",
+    "zero": "7 天"
+  }
 }

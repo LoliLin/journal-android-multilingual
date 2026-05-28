@@ -6,5 +6,10 @@
     "不慎将极少量乙酰芬太尼溅到皮肤上就可能导致致命过量。"
   ],
   "summary": "乙酰芬太尼是一种芬太尼类似的阿片镇痛物质。其效力约为吗啡的 6.67 倍，即约为芬太尼的 1/15。",
-  "localizedName": "Acetylfentanyl"
+  "localizedName": "Acetylfentanyl",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

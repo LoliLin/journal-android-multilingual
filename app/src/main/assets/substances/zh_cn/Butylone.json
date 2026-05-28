@@ -4,5 +4,10 @@
     "确切毒性剂量未知。"
   ],
   "summary": "卡西酮类的共情剂与兴奋剂。",
-  "localizedName": "Butylone"
+  "localizedName": "Butylone",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

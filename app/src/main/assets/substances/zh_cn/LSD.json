@@ -4,5 +4,17 @@
     "相对于剂量而言毒性极低。"
   ],
   "summary": "LSD 是一种流行的迷幻剂，使用与研究历史较长，因此尽管效力极高，仍被认为相对安全。它是所有迷幻剂对比的原型，至今仍被广泛使用。",
-  "localizedName": "LSD"
+  "localizedName": "LSD",
+  "effectsSummary": "Profound alterations in perception, mood, and thought. Visual hallucinations, synesthesia, ego dissolution, time distortion, spiritual experiences.",
+  "generalRisks": "Psychological distress, panic attacks, paranoia, psychosis in predisposed individuals. HPPD (flashbacks). Accidents due to impaired judgment.",
+  "saferUse": [
+    "Start with a low dose (under 100 µg) for your first time.",
+    "Have a trusted trip sitter.",
+    "Choose a safe, comfortable setting.",
+    "Do not drive for at least 12 hours."
+  ],
+  "tolerance": {
+    "full": "摄入后几乎立即产生",
+    "zero": "5 天"
+  }
 }

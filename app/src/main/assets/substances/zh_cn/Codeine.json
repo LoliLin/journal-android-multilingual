@@ -5,5 +5,21 @@
     "与酒精或苯二氮卓等抑制剂混用可能致命。"
   ],
   "summary": "可待因是一种较弱的阿片，用于治疗轻中度疼痛和止咳。在许多国家可与对乙酰氨基酚配方非处方购买，且可轻易提取近纯可待因。因此被广泛作为娱乐性阿片使用。在体内约有 5% 按质量代谢为吗啡。",
-  "localizedName": "可待因"
+  "localizedName": "可待因",
+  "effectsSummary": "可待因在体内转化为吗啡。服用具有镇痛、止咳、止泻和镇静作用。",
+  "dosageRemark": "高剂量时效果增加罕见，因为身体只能吸收有限量的可待因。",
+  "generalRisks": "口干、头痛、恶心、呕吐、食欲不振、瘙痒、便秘、头晕、嗜睡。高剂量时呼吸抑制。",
+  "longtermRisks": "男性可能出现性欲降低（性欲减退）。女性可能出现月经紊乱。",
+  "saferUse": [
+    "不要将可待因与其他抑制剂（如酒精、大麻、镇静剂）同用。",
+    "低剂量使用，不要立即加量——可能不会有明显快感。",
+    "与 Sizzurp 混合：碳酸和糖使可待因更易被吸收。",
+    "If you inject opioids, dose even more carefully.",
+    "Do not rely on dosage information from colleagues."
+  ],
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }

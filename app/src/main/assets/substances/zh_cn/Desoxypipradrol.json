@@ -1,5 +1,10 @@
 {
   "addictionPotential": "中度成瘾且滥用潜力高。",
   "toxicities": [],
-  "localizedName": "Desoxypipradrol"
+  "localizedName": "Desoxypipradrol",
+  "tolerance": {
+    "full": "长期重复使用后产生",
+    "half": "3 - 7 天",
+    "zero": "1 - 2 周"
+  }
 }
