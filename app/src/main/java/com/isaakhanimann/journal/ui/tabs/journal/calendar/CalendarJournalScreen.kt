@@ -70,6 +70,7 @@ import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
+import com.isaakhanimann.journal.ui.utils.getLocalizedPatternString
 
 @Preview
 @Composable
@@ -155,7 +156,7 @@ fun CalendarJournalScreen(
             contentPadding = PaddingValues(horizontalPadding),
             monthHeader = {
                 Text(
-                    text = "${it.yearMonth.month} ${it.yearMonth.year}",
+                    text = getLocalizedPatternString(it.yearMonth),
                     style = MaterialTheme.typography.titleLarge
                 )
             }

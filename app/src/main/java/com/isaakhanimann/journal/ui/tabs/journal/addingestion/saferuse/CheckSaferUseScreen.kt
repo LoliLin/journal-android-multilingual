@@ -35,6 +35,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
 import com.isaakhanimann.journal.ui.tabs.search.substance.BulletPoints
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.localization.i18n
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,7 +46,7 @@ fun CheckSaferUseScreen(
     viewModel: SaferUseViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("${viewModel.substanceName} safer use") }) },
+        topBar = { TopAppBar(title = { Text("${viewModel.substance.displayName}" + i18n("safer_use_title")) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }

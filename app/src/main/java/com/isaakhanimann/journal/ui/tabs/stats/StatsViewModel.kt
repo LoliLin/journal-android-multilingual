@@ -45,10 +45,12 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @HiltViewModel
 class StatsViewModel @Inject constructor(
     experienceRepo: ExperienceRepository
+    substanceRepository: SubstanceRepository
 ) : ViewModel() {
 
     private val _optionFlow = MutableStateFlow(TimePickerOption.WEEKS_26)
@@ -164,6 +166,7 @@ class StatsViewModel @Inject constructor(
             val experienceCounts = experienceNamesMap[name]?.size ?: 0
             StatItem(
                 substanceName = name,
+                substanceRepo = substanceRepository
                 color = oneCompanion.color,
                 experienceCount = experienceCounts,
                 ingestionCount = groupedIngestions.size,
@@ -251,6 +254,7 @@ data class ColorCount(
 
 data class StatItem(
     val substanceName: String,
+    val substanceRepo: SubstanceRepository,
     val color: AdaptiveColor,
     val experienceCount: Int,
     val ingestionCount: Int,

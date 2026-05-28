@@ -30,12 +30,14 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 
 @HiltViewModel
 class JournalViewModel @Inject constructor(
     experienceRepo: ExperienceRepository,
-    searchRepository: SearchRepository
+    searchRepository: SearchRepository,
+    substanceRepository: SubstanceRepository
 ) : ViewModel() {
 
 

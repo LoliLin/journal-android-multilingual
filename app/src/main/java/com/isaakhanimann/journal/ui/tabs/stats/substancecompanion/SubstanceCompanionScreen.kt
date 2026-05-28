@@ -111,9 +111,9 @@ fun SubstanceCompanionScreen(
     Scaffold(
         topBar = {
             val title = if (consumerName == null) {
-                substanceCompanion.substanceName
+                viewModel.substanceRepo.getDisplayName(substanceCompanion.substanceName)
             } else {
-                "${substanceCompanion.substanceName} ($consumerName)"
+                "${viewModel.substanceRepo.getDisplayName(substanceCompanion.substanceName)} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }
@@ -127,7 +127,7 @@ fun SubstanceCompanionScreen(
         ) {
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
-                    CardWithTitle(title = "Tolerance", modifier = Modifier.fillMaxWidth()) {
+                    CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
                         ToleranceSection(
                             tolerance = tolerance,
                             crossTolerances = crossTolerances
