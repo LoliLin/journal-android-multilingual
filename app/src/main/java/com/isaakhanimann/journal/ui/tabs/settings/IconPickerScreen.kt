@@ -91,7 +91,7 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
         )
 
     val aliases = remember {
-        iconOptions.associate { it.key to ComponentName(context, "${context.packageName}${it.aliasName}") }
+        iconOptions.associate { it.key to ComponentName(context, "com.isaakhanimann.journal${it.aliasName}") }
     }
 
     var selectedKey by remember {
