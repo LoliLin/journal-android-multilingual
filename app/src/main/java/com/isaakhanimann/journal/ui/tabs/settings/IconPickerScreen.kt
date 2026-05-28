@@ -73,8 +73,7 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val iconOptions = remember {
-        listOf(
+    val iconOptions = listOf(
             IconOption(
                 key = "classic",
                 label = i18n("settings_icon_classic"),
@@ -90,7 +89,6 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 aliasName = ".MainActivity_SpringWind"
             )
         )
-    }
 
     val aliases = remember {
         iconOptions.associate { it.key to ComponentName(context, "${context.packageName}${it.aliasName}") }
