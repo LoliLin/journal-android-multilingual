@@ -455,5 +455,18 @@
   "categories.oneirogen.desc": "致梦剂描述了一系列广泛的精神活性植物和化学物质，从普通的梦境增强剂到强烈的离解剂或谵妄剂药物。",
   "categories.antipsychotic.desc": "抗精神病药（又称神经阻滞剂或强安定剂）是一类主要用于管理精神病（包括妄想、幻觉或思维紊乱）的精神科药物，特别是在精神分裂症和双相情感障碍中。",
   "categories.antidepressant.desc": "抗抑郁药是一类用于治疗精神疾病的精神活性物质，最常见的是重度抑郁症和某些形式的焦虑症。",
-  "categories.hypnotic.desc": "催眠药是一类促进和诱导睡眠的药物。它们与促醒剂相反。通常以处方药形式用于治疗失眠。"
+  "categories.hypnotic.desc": "催眠药是一类促进和诱导睡眠的药物。它们与促醒剂相反。通常以处方药形式用于治疗失眠。",
+  "shulgin_minus_short": "无效果",
+  "shulgin_minus_long": "在定量效力量表（-, ±, +, ++, +++）上，未观察到任何效果。",
+  "shulgin_plusMinus_short": "可能是假阳性",
+  "shulgin_plusMinus_long": "指示阈值作用的药物有效水平...",
+  "shulgin_plus_short": "确实活跃，性质尚不明确",
+  "shulgin_plus_long": "药物确实活跃...",
+  "shulgin_twoPlus_short": "性质明确，效果可抑制",
+  "shulgin_twoPlus_long": "药物作用的时间顺序和性质都明确无疑...",
+  "shulgin_threePlus_short": "完全沉浸，无法忽略",
+  "shulgin_threePlus_long": "不仅药物作用的时间顺序和性质相当清晰...",
+  "shulgin_fourPlus_short": "罕见而珍贵的超验状态",
+  "shulgin_fourPlus_long": "一种罕见而珍贵的超验状态...",
+  "ratings_explanation_title": "详细说明"
 }
