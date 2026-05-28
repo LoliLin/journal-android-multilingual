@@ -45,11 +45,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -93,7 +95,9 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 onClick = {
                     switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = true)
                     selectedIcon = "springwind"
-                }
+                },
+                selectedIconRes = R.drawable.ic_springwind_foreground,
+                unselectedIconRes = R.drawable.ic_springwind_foreground
             )
 
             IconOption(
@@ -104,7 +108,9 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 onClick = {
                     switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = false)
                     selectedIcon = "classic"
-                }
+                },
+                selectedIconRes = R.mipmap.ic_launcher,
+                unselectedIconRes = R.mipmap.ic_launcher
             )
 
             Text(
@@ -122,7 +128,9 @@ private fun IconOption(
     isSelected: Boolean,
     color: Color,
     monogram: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    selectedIconRes: Int,
+    unselectedIconRes: Int
 ) {
     Card(
         modifier = Modifier
@@ -154,10 +162,10 @@ private fun IconOption(
                     .clip(RoundedCornerShape(16.dp))
                     .background(color)
             ) {
-                Text(
-                    text = monogram,
-                    color = Color.White,
-                    style = MaterialTheme.typography.headlineLarge
+                Icon(
+                    painter = painterResource(id = if (isSelected) selectedIconRes else unselectedIconRes),
+                    contentDescription = label,
+                    modifier = Modifier.size(64.dp)
                 )
             }
             Text(
@@ -174,16 +182,20 @@ private fun switchIcon(
     springwindAlias: ComponentName,
     enableSpringWind: Boolean
 ) {
-    val enable = if (enableSpringWind) springwindAlias else classicAlias
-    val disable = if (enableSpringWind) classicAlias else springwindAlias
-    pm.setComponentEnabledSetting(
-        enable,
-        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-        PackageManager.DONT_KILL_APP
-    )
-    pm.setComponentEnabledSetting(
-        disable,
-        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-        PackageManager.DONT_KILL_APP
-    )
+    try {
+        val enable = if (enableSpringWind) springwindAlias else classicAlias
+        val disable = if (enableSpringWind) classicAlias else springwindAlias
+        pm.setComponentEnabledSetting(
+            enable,
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
+        pm.setComponentEnabledSetting(
+            disable,
+            PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+            PackageManager.DONT_KILL_APP
+        )
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
 }
