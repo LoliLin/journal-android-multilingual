@@ -202,7 +202,7 @@ fun EditIngestionScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit ingestion") },
+                title = { Text(i18n("edit_ingestion")) },
                 actions = {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
@@ -236,7 +236,7 @@ fun EditIngestionScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete ingestion",
+                            contentDescription = i18n("delete_ingestion"),
                         )
                     }
                 }

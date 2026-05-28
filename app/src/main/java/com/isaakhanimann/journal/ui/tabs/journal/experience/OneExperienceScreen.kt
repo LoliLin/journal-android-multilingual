@@ -445,7 +445,7 @@ fun OneExperienceScreen(
                             contentDescription = "Add"
                         )
                     },
-                    text = { Text("Ingestion") }
+                    text = { Text(i18n("journal_ingestion")) }
                 )
             }
         }

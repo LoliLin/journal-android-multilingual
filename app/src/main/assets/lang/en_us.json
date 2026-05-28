@@ -411,5 +411,7 @@
   "FULL_STOMACH_DISCLAIMER": "A full stomach delays the onset of oral ingestions by approx. 3 hours.",
   "settings_icon_title": "App icon",
   "settings_icon_classic": "Classic",
-  "settings_icon_springwind": "SpringWind"
+  "settings_icon_springwind": "SpringWind",
+  "edit_ingestion": "Edit ingestion",
+  "delete_ingestion": "Delete ingestion"
 }

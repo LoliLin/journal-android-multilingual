@@ -411,5 +411,7 @@
   "FULL_STOMACH_DISCLAIMER": "饱腹状态会显著延缓口服起效时间（约延迟 3 小时）。",
   "settings_icon_title": "应用图标",
   "settings_icon_classic": "经典",
-  "settings_icon_springwind": "SpringWind"
+  "settings_icon_springwind": "SpringWind",
+  "edit_ingestion": "编辑摄入",
+  "delete_ingestion": "删除摄入"
 }
