@@ -55,8 +55,13 @@ fun CurrentDoseClassInfoPreview(@PreviewParameter(RoaDosePreviewProvider::class)
 
 @Composable
 fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
+
     val doseColor = currentDoseClass.getComposeColor(isSystemInDarkTheme())
+
     var isShowingDoseClassDialog by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+
     TextButton(
         onClick = {
             isShowingDoseClassDialog = true
@@ -67,8 +72,7 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
             contentDescription = "Info",
             tint = doseColor
         )
-        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        val context = LocalContext.current
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         val text = when (currentDoseClass) {
             DoseClass.THRESHOLD -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()} ${roaDose.units}"
             DoseClass.LIGHT -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()}-${roaDose.commonMin?.toReadableString()} ${roaDose.units}"

@@ -71,10 +71,16 @@ fun SubstanceCompanionScreen(
     } else {
         SubstanceCompanionScreen(
             substanceCompanion = companion,
+
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
+
             tolerance = viewModel.tolerance,
+
             crossTolerances = viewModel.crossTolerances,
-            consumerName = viewModel.consumerName
+
+            consumerName = viewModel.consumerName,
+
+            substanceRepo = viewModel.substanceRepo
         )
     }
 }
@@ -102,18 +108,30 @@ fun SubstanceCompanionPreview(@PreviewParameter(SubstanceCompanionScreenPreviewP
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SubstanceCompanionScreen(
+
     substanceCompanion: SubstanceCompanion,
+
     ingestionBursts: List<IngestionsBurst>,
+
     tolerance: Tolerance?,
+
     crossTolerances: List<String>,
-    consumerName: String? = null
+
+    consumerName: String? = null,
+
+    substanceRepo: SubstanceRepository
+
 ) {
+
     Scaffold(
+
         topBar = {
+
             val title = if (consumerName == null) {
-                viewModel.substanceRepo.getDisplayName(substanceCompanion.substanceName)
+
+                (substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)
             } else {
-                "${viewModel.substanceRepo.getDisplayName(substanceCompanion.substanceName)} ($consumerName)"
+                "${(substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }

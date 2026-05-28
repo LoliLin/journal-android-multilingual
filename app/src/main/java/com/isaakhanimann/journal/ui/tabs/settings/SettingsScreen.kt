@@ -79,7 +79,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.BuildConfig
+
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
@@ -396,7 +396,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 Text(
-                    text = i18n("settings_version_with_value", mapOf("version" to BuildConfig.VERSION_NAME)),
+                    text = i18n("settings_version_with_value", mapOf("version" to context.getStringifiedVersion())),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)

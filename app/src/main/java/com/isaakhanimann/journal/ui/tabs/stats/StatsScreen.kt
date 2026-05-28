@@ -258,7 +258,7 @@ fun StatsScreen(
                                         ) {}
                                         Column {
                                             Text(
-                                                text = subStat.substanceRepo.getDisplayName(subStat.substanceName),
+                                                text = (subStat.substanceRepo?.getDisplayName(subStat.substanceName) ?: subStat.substanceName),
                                                 style = MaterialTheme.typography.titleMedium
                                             )
                                             val experienceCountText =

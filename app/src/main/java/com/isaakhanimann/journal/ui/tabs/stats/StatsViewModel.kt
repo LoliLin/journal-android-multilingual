@@ -254,7 +254,7 @@ data class ColorCount(
 
 data class StatItem(
     val substanceName: String,
-    val substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository? = null,
     val color: AdaptiveColor,
     val experienceCount: Int,
     val ingestionCount: Int,

@@ -34,10 +34,10 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 
 
 @HiltViewModel
-class JournalViewModel @Inject constructor(
-    experienceRepo: ExperienceRepository,
-    searchRepository: SearchRepository,
-    substanceRepository: SubstanceRepository
+class JournalViewModel @Inject constructor(
+    experienceRepo: ExperienceRepository,
+    searchRepository: SearchRepository,
+    val substanceRepository: SubstanceRepository
 ) : ViewModel() {
 
 

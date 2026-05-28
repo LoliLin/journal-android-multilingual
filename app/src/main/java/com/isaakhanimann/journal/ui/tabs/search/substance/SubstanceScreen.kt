@@ -73,7 +73,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
-import com.isaakhanimann.journal.ui.FULL_STOMACH_DISCLAIMER
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChasingTheDragonText
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.OptionalDosageUnitDisclaimer
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.CustomUnitRoaDoseView
