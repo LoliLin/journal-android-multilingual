@@ -43,7 +43,7 @@ fun AddTimedNoteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add timed note") },
+                title = { Text(i18n("add_timed_note")) },
                 actions = {
                     IconButton(onClick = {
                         viewModel.onDoneTap()

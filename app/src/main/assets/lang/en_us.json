@@ -398,5 +398,14 @@
   "interaction_unsafe_alert": "Unsafe interaction",
   "interaction_uncertain_alert": "Uncertain interaction",
   "interaction_alert_title": "Interaction",
-  "common_next": "Next"
+  "common_next": "Next",
+  "add_timed_note": "Add timed note",
+  "timed_notes": "Timed notes",
+  "add_shulgin_rating": "Add Shulgin rating",
+  "edit_shulgin_rating": "Edit Shulgin rating",
+  "shulgin_rating": "Shulgin rating",
+  "shulgin_ratings": "Shulgin ratings",
+  "edit_title_notes_location": "Edit title/notes/location",
+  "mark_favorite": "Mark favorite",
+  "unmark_favorite": "Unmark favorite"
 }

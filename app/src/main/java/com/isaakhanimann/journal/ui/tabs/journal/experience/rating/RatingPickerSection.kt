@@ -35,6 +35,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 
 @Composable
@@ -51,7 +52,7 @@ fun RatingPickerSection(
     selectedRating: ShulginRatingOption,
     onRatingChange: (ShulginRatingOption) -> Unit
 ) {
-    CardWithTitle(title = "Shulgin rating") {
+    CardWithTitle(title = i18n("shulgin_rating")) {
         val ratings = ShulginRatingOption.values()
         // Modifier.selectableGroup() is essential to ensure correct accessibility behavior
         Column(Modifier.selectableGroup()) {

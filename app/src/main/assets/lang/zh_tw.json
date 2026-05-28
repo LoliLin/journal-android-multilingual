@@ -398,5 +398,14 @@
   "interaction_unsafe_alert": "不安全相互作用",
   "interaction_uncertain_alert": "不確定相互作用",
   "interaction_alert_title": "相互作用",
-  "common_next": "下一步"
+  "common_next": "下一步",
+  "add_timed_note": "添加定時備註",
+  "timed_notes": "定時備註",
+  "add_shulgin_rating": "添加 Shulgin 評分",
+  "edit_shulgin_rating": "編輯 Shulgin 評分",
+  "shulgin_rating": "Shulgin 評分",
+  "shulgin_ratings": "Shulgin 評分",
+  "edit_title_notes_location": "編輯標題/備註/地點",
+  "mark_favorite": "標記收藏",
+  "unmark_favorite": "取消收藏"
 }

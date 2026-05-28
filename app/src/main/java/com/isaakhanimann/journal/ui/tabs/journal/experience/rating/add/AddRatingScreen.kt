@@ -101,7 +101,7 @@ fun AddRatingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add Shulgin rating") },
+                title = { Text(i18n("add_shulgin_rating")) },
             )
         },
         floatingActionButton = {
