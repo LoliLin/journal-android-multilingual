@@ -115,6 +115,7 @@ fun SettingsScreen(
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
+    navigateToIconPicker: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
@@ -125,6 +126,7 @@ fun SettingsScreen(
         navigateToSubstanceColors = navigateToSubstanceColors,
         navigateToCustomUnits = navigateToCustomUnits,
         navigateToDonate = navigateToDonate,
+        navigateToIconPicker = navigateToIconPicker,
         deleteEverything = viewModel::deleteEverything,
         importFile = viewModel::importFile,
         exportFile = viewModel::exportFile,
@@ -145,6 +147,7 @@ fun SettingsScreen(
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
+    navigateToIconPicker: () -> Unit = {},
     deleteEverything: () -> Unit,
     importFile: (uri: Uri) -> Unit,
     exportFile: (uri: Uri) -> Unit,
@@ -179,7 +182,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 SettingsButton(
-                    imageVector = Icons.Outlined.Palette,
+                    imageVector = Icons.Outlined.Image,
                     text = i18n("settings_substance_colors")
                 ) {
                     navigateToSubstanceColors()
@@ -223,11 +226,31 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = i18n("settings_hide_dosage_dots"))
+
                     Switch(
+
                         checked = areDosageDotsHidden,
+
                         onCheckedChange = saveDosageDotsAreHidden)
+
                 }
+
+                HorizontalDivider()
+
+                SettingsButton(
+
+                    imageVector = Icons.Outlined.Image,
+
+                    text = i18n("settings_icon_title")
+
+                ) {
+
+                    navigateToIconPicker()
+
+                }
+
             }
+
             CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {
                 var isShowingExportDialog by remember { mutableStateOf(false) }
                 SettingsButton(

@@ -408,5 +408,8 @@
   "edit_title_notes_location": "Edit title/notes/location",
   "mark_favorite": "Mark favorite",
   "unmark_favorite": "Unmark favorite",
-  "FULL_STOMACH_DISCLAIMER": "A full stomach delays the onset of oral ingestions by approx. 3 hours."
+  "FULL_STOMACH_DISCLAIMER": "A full stomach delays the onset of oral ingestions by approx. 3 hours.",
+  "settings_icon_title": "App icon",
+  "settings_icon_classic": "Classic",
+  "settings_icon_modern": "Modern"
 }

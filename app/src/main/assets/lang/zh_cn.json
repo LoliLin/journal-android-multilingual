@@ -408,5 +408,8 @@
   "edit_title_notes_location": "编辑标题/备注/地点",
   "mark_favorite": "标记收藏",
   "unmark_favorite": "取消收藏",
-  "FULL_STOMACH_DISCLAIMER": "饱腹状态会显著延缓口服起效时间（约延迟 3 小时）。"
+  "FULL_STOMACH_DISCLAIMER": "饱腹状态会显著延缓口服起效时间（约延迟 3 小时）。",
+  "settings_icon_title": "应用图标",
+  "settings_icon_classic": "经典",
+  "settings_icon_modern": "摩登"
 }
