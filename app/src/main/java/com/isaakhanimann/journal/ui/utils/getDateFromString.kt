@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.utils
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
 fun getInstant(year: Int, month: Int, day: Int, hourOfDay: Int, minute: Int): Instant? {
@@ -45,4 +46,10 @@ fun Instant.getLocalDateTime(): LocalDateTime {
 
 fun LocalDateTime.getInstant(): Instant {
     return this.atZone(ZoneId.systemDefault()).toInstant()
+}
+
+fun getLocalizedPatternString(yearMonth: java.time.YearMonth): String {
+    val locale = java.util.Locale.getDefault()
+    val bestPattern = android.text.format.DateFormat.getBestDateTimePattern(locale, "MMMyyyy")
+    return yearMonth.format(java.time.format.DateTimeFormatter.ofPattern(bestPattern, locale))
 }

@@ -52,13 +52,15 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @Preview(showBackground = true)
 @Composable
 fun ExperienceRow(
     @PreviewParameter(ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider::class) experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings,
     navigateToExperienceScreen: () -> Unit = {},
-    isTimeRelativeToNow: Boolean = true
+    isTimeRelativeToNow: Boolean = true,
+    substanceRepository: SubstanceRepository
 ) {
     Row(
         modifier = Modifier
@@ -89,7 +91,7 @@ fun ExperienceRow(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 val substanceNames = remember(ingestions) {
-                    ingestions.map { it.ingestion.substanceName }.distinct()
+                    ingestions.map { substanceRepository.getDisplayName(it.ingestion.substanceName) }.distinct()
                         .joinToString(separator = ", ")
                 }
                 if (substanceNames.isNotEmpty()) {

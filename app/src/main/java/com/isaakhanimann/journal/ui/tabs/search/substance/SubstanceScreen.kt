@@ -73,7 +73,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
-import com.isaakhanimann.journal.ui.FULL_STOMACH_DISCLAIMER
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChasingTheDragonText
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.OptionalDosageUnitDisclaimer
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.CustomUnitRoaDoseView
@@ -88,7 +87,7 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-
+import com.isaakhanimann.journal.ui.utils.categoryNameKey
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.localization.i18n
@@ -455,7 +454,7 @@ fun SubstanceScreen(
                                     RoaDurationView(roaDuration = roaDuration)
                                     if (roa.route == AdministrationRoute.ORAL) {
                                         Text(
-                                            text = FULL_STOMACH_DISCLAIMER,
+                                            text = i18n("FULL_STOMACH_DISCLAIMER"),
                                             style = MaterialTheme.typography.bodySmall
                                         )
                                     }
@@ -603,14 +602,13 @@ fun VerticalSpace() {
     Spacer(modifier = Modifier.height(5.dp))
 }
 
-
 @Composable
 fun CategoryChipFromSubstanceScreen(
     category: Category,
     navigateToCategoryScreen: (categoryName: String) -> Unit
 ) {
-    val context = androidx.compose.ui.platform.LocalContext.current
-    val displayName = category.getLocalizedName(context)
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val displayName = category.getLocalizedName(context)
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -621,7 +619,6 @@ fun CategoryChipFromSubstanceScreen(
             }
             .background(color = category.color.copy(alpha = 0.2f))
             .padding(vertical = 4.dp, horizontal = 10.dp)
-
     ) {
         Text(text = displayName)
         Spacer(modifier = Modifier.width(3.dp))

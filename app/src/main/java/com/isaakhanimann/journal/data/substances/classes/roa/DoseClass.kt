@@ -18,7 +18,9 @@
 
 package com.isaakhanimann.journal.data.substances.classes.roa
 
+import android.content.Context
 import androidx.compose.ui.graphics.Color
+import com.isaakhanimann.journal.localization.I18n
 
 enum class DoseClass {
     THRESHOLD {
@@ -96,4 +98,15 @@ enum class DoseClass {
 
     abstract val description: String
     abstract fun getComposeColor(isDarkTheme: Boolean): Color
+
+    fun getLocalizedName(context: Context): String {
+        val key = "dose_class_${name.lowercase()}"
+        val fallback = name.lowercase().replaceFirstChar { it.uppercase() }
+        return I18n.translateOrDefault(context, key, fallback)
+    }
+
+    fun getLocalizedDescription(context: Context): String {
+        val key = "dose_class_${name.lowercase()}_desc"
+        return I18n.translateOrDefault(context, key, description)
+    }
 }

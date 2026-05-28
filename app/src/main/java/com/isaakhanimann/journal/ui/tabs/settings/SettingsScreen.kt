@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
+import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -47,6 +48,7 @@ import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -79,7 +81,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.VERSION_NAME
+
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
@@ -115,6 +117,7 @@ fun SettingsScreen(
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
+    navigateToIconPicker: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
@@ -125,6 +128,7 @@ fun SettingsScreen(
         navigateToSubstanceColors = navigateToSubstanceColors,
         navigateToCustomUnits = navigateToCustomUnits,
         navigateToDonate = navigateToDonate,
+        navigateToIconPicker = navigateToIconPicker,
         deleteEverything = viewModel::deleteEverything,
         importFile = viewModel::importFile,
         exportFile = viewModel::exportFile,
@@ -145,6 +149,7 @@ fun SettingsScreen(
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
+    navigateToIconPicker: () -> Unit = {},
     deleteEverything: () -> Unit,
     importFile: (uri: Uri) -> Unit,
     exportFile: (uri: Uri) -> Unit,
@@ -179,7 +184,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 SettingsButton(
-                    imageVector = Icons.Outlined.Palette,
+                    imageVector = Icons.Outlined.StarBorder,
                     text = i18n("settings_substance_colors")
                 ) {
                     navigateToSubstanceColors()
@@ -223,11 +228,31 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = i18n("settings_hide_dosage_dots"))
+
                     Switch(
+
                         checked = areDosageDotsHidden,
+
                         onCheckedChange = saveDosageDotsAreHidden)
+
                 }
+
+                HorizontalDivider()
+
+                SettingsButton(
+
+                    imageVector = Icons.Outlined.StarBorder,
+
+                    text = i18n("settings_icon_title")
+
+                ) {
+
+                    navigateToIconPicker()
+
+                }
+
             }
+
             CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {
                 var isShowingExportDialog by remember { mutableStateOf(false) }
                 SettingsButton(
@@ -396,7 +421,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 Text(
-                    text = i18n("settings_version_with_value", mapOf("version" to VERSION_NAME)),
+                    text = i18n("settings_version_with_value", mapOf("version" to com.isaakhanimann.journal.ui.VERSION_NAME)),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)

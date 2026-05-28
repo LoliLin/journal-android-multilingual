@@ -85,7 +85,7 @@ fun SaferHallucinogensScreen() {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
 
                     SectionText(
-                        text = i18n("hallucinogens_set_mind_body")
+                        text = i18n("hallucinogens_set_mind_body").trimIndent()
                     )
                     VerticalSpace()
                 }
@@ -93,7 +93,7 @@ fun SaferHallucinogensScreen() {
             SectionWithTitle(title = i18n("hallucinogens_bodily_title")) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     SectionText(
-                        text = i18n("hallucinogens_bodily_body")
+                        text = i18n("hallucinogens_bodily_body").trimIndent()
                     )
                     VerticalSpace()
                 }
@@ -101,7 +101,7 @@ fun SaferHallucinogensScreen() {
             SectionWithTitle(title = i18n("hallucinogens_tripsitter_title")) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     SectionText(
-                        text = i18n("hallucinogens_tripsitter_body")
+                        text = i18n("hallucinogens_tripsitter_body").trimIndent()
                     )
                     VerticalSpace()
                 }
@@ -122,16 +122,16 @@ fun SaferHallucinogensScreen() {
                     )
                     VerticalSpace()
                 }
-            }
-        }
-        SectionWithTitle(title = i18n("hallucinogens_aborting_title")) {
-            Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
-                SectionText(
-                    text = i18n("hallucinogens_aborting_body")
-                )
-                VerticalSpace()
-            }
-        }
-        Spacer(modifier = Modifier.height(10.dp))
-    }
+            }
+            SectionWithTitle(title = i18n("hallucinogens_aborting_title")) {
+                Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
+                    SectionText(
+                        text = i18n("hallucinogens_aborting_body").trimIndent()
+                    )
+                    VerticalSpace()
+                }
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+    }
 }

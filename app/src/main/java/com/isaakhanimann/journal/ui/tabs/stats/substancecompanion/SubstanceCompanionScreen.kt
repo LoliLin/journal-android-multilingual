@@ -57,6 +57,7 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -71,49 +72,49 @@ fun SubstanceCompanionScreen(
     } else {
         SubstanceCompanionScreen(
             substanceCompanion = companion,
+
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
+
             tolerance = viewModel.tolerance,
+
             crossTolerances = viewModel.crossTolerances,
-            consumerName = viewModel.consumerName
+
+            consumerName = viewModel.consumerName,
+
+            substanceRepo = viewModel.substanceRepo
         )
     }
 }
 
-@Preview
-@Composable
-fun SubstanceCompanionPreview(@PreviewParameter(SubstanceCompanionScreenPreviewProvider::class) pair: Pair<SubstanceCompanion, List<IngestionsBurst>>) {
-    JournalTheme {
-        SubstanceCompanionScreen(
-            substanceCompanion = pair.first,
-            ingestionBursts = pair.second,
-            tolerance = Tolerance(
-                full = "with prolonged use",
-                half = "two weeks",
-                zero = "1 month"
-            ),
-            crossTolerances = listOf(
-                "dopamine",
-                "stimulant"
-            ),
-        )
-    }
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SubstanceCompanionScreen(
+
     substanceCompanion: SubstanceCompanion,
+
     ingestionBursts: List<IngestionsBurst>,
+
     tolerance: Tolerance?,
+
     crossTolerances: List<String>,
-    consumerName: String? = null
+
+    consumerName: String? = null,
+
+    substanceRepo: SubstanceRepository
+
 ) {
+
     Scaffold(
+
         topBar = {
+
             val title = if (consumerName == null) {
-                substanceCompanion.substanceName
+
+                (substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)
             } else {
-                "${substanceCompanion.substanceName} ($consumerName)"
+                "${(substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }
@@ -127,7 +128,7 @@ fun SubstanceCompanionScreen(
         ) {
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
-                    CardWithTitle(title = "Tolerance", modifier = Modifier.fillMaxWidth()) {
+                    CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
                         ToleranceSection(
                             tolerance = tolerance,
                             crossTolerances = crossTolerances

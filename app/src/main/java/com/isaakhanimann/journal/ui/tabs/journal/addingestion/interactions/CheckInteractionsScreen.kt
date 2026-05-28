@@ -147,7 +147,7 @@ fun CheckInteractionsScreen(
     navigateToURL: (url: String) -> Unit
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName interactions") }) },
+        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to substanceName))) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -213,12 +213,12 @@ fun CheckInteractionsScreen(
             AnimatedVisibility(visible = isShowingAlert) {
                 AlertDialog(
                     onDismissRequest = dismissAlert,
-                    title = {
-                        val title = when (alertInteractionType) {
-                            InteractionType.DANGEROUS -> "Dangerous interaction!"
-                            InteractionType.UNSAFE -> "Unsafe interaction"
-                            InteractionType.UNCERTAIN -> "Uncertain interaction"
-                            else -> "Interaction"
+                    title = {
+                        val title = when (alertInteractionType) {
+                            InteractionType.DANGEROUS -> i18n("interaction_dangerous_alert")
+                            InteractionType.UNSAFE -> i18n("interaction_unsafe_alert")
+                            InteractionType.UNCERTAIN -> i18n("interaction_uncertain_alert")
+                            else -> i18n("interaction_alert_title")
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
@@ -241,7 +241,7 @@ fun CheckInteractionsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 onClick = dismissAlert
                             ) {
-                                Text("Dismiss")
+                                Text(i18n("common_close"))
                             }
                         }
                     }

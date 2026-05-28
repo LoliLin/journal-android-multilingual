@@ -50,7 +50,7 @@ fun TimedNoteScreenContentPreview() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add timed note") },
+                title = { Text(i18n("add_timed_note")) },
                 actions = {
                     IconButton(onClick = { }) {
                         Icon(

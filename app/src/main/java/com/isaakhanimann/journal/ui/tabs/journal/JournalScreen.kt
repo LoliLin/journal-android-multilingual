@@ -66,6 +66,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @Composable
 fun JournalScreen(
@@ -87,34 +88,11 @@ fun JournalScreen(
         onChangeSearchText = viewModel::search,
         isSearchEnabled = viewModel.isSearchEnabled.value,
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
-        experiences = experiences
+        experiences = experiences,
+        substanceRepository = viewModel.substanceRepository
     )
 }
 
-@Preview
-@Composable
-fun ExperiencesScreenPreview(
-    @PreviewParameter(
-        JournalScreenPreviewProvider::class,
-    ) experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-) {
-    JournalTheme {
-        JournalScreen(
-            navigateToExperiencePopNothing = {},
-            navigateToAddIngestion = {},
-            navigateToCalendar = {},
-            isFavoriteEnabled = false,
-            onChangeIsFavorite = {},
-            isTimeRelativeToNow = true,
-            onChangeIsRelative = {},
-            searchText = "",
-            onChangeSearchText = {},
-            isSearchEnabled = true,
-            onChangeIsSearchEnabled = {},
-            experiences = experiences
-        )
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -131,6 +109,7 @@ fun JournalScreen(
     isSearchEnabled: Boolean,
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
+    substanceRepository: SubstanceRepository
 ) {
     Scaffold(
         topBar = {
@@ -294,7 +273,8 @@ fun JournalScreen(
                             navigateToExperienceScreen = {
                                 navigateToExperiencePopNothing(experienceWithIngestions.experience.id)
                             },
-                            isTimeRelativeToNow = isTimeRelativeToNow
+                            isTimeRelativeToNow = isTimeRelativeToNow,
+                            substanceRepository = substanceRepository
                         )
                         HorizontalDivider()
                     }

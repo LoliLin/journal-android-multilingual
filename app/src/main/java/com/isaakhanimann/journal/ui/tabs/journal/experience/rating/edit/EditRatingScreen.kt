@@ -42,6 +42,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOpt
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingPickerSection
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingsExplanationSection
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.TimePickerSection
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import java.time.LocalDateTime
@@ -96,7 +97,7 @@ fun EditRatingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit Shulgin rating") },
+                title = { Text(i18n("edit_shulgin_rating")) },
                 actions = {
                     IconButton(
                         onClick = { onDelete() },

@@ -74,6 +74,10 @@ class SubstanceRepository @Inject constructor(
         }
     }
 
+    fun getDisplayName(substanceName: String): String {
+        return getSubstance(substanceName)?.displayName ?: substanceName
+    }
+
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
         val languageKeys = listOf(ROOT_LANGUAGE_KEY, FALLBACK_LANGUAGE_KEY, languageKey).distinct()
         val categories = languageKeys.fold(emptyList<Category>()) { merged, key ->
