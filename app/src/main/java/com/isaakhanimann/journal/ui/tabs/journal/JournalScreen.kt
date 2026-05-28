@@ -93,30 +93,6 @@ fun JournalScreen(
     )
 }
 
-@Preview
-@Composable
-fun ExperiencesScreenPreview(
-    @PreviewParameter(
-        JournalScreenPreviewProvider::class,
-    ) experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-) {
-    JournalTheme {
-        JournalScreen(
-            navigateToExperiencePopNothing = {},
-            navigateToAddIngestion = {},
-            navigateToCalendar = {},
-            isFavoriteEnabled = false,
-            onChangeIsFavorite = {},
-            isTimeRelativeToNow = true,
-            onChangeIsRelative = {},
-            searchText = "",
-            onChangeSearchText = {},
-            isSearchEnabled = true,
-            onChangeIsSearchEnabled = {},
-            experiences = experiences
-        )
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -133,7 +109,7 @@ fun JournalScreen(
     isSearchEnabled: Boolean,
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-    substanceRepository: SubstanceRepository,
+    substanceRepository: SubstanceRepository
 ) {
     Scaffold(
         topBar = {
