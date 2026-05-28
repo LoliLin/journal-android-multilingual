@@ -397,5 +397,6 @@
   "interaction_dangerous_alert": "危险相互作用！",
   "interaction_unsafe_alert": "不安全相互作用",
   "interaction_uncertain_alert": "不确定相互作用",
-  "interaction_alert_title": "相互作用"
+  "interaction_alert_title": "相互作用",
+  "common_next": "下一步"
 }

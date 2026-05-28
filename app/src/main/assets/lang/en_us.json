@@ -397,5 +397,6 @@
   "interaction_dangerous_alert": "Dangerous interaction!",
   "interaction_unsafe_alert": "Unsafe interaction",
   "interaction_uncertain_alert": "Uncertain interaction",
-  "interaction_alert_title": "Interaction"
+  "interaction_alert_title": "Interaction",
+  "common_next": "Next"
 }
