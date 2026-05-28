@@ -38,11 +38,14 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun DoseExplanationScreen() {
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("substance_dosage_classification")) })
@@ -64,9 +67,9 @@ fun DoseExplanationScreen() {
                 )
             }
             DoseClass.values().forEach {
-                SectionWithTitle(title = it.name) {
+                SectionWithTitle(title = it.getLocalizedName(context)) {
                     Text(
-                        text = it.description,
+                        text = it.getLocalizedDescription(context),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = 10.dp)
