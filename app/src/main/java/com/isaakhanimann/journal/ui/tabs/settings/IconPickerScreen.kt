@@ -55,10 +55,10 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     val context = LocalContext.current
     val pm = context.packageManager
     val classicAlias = ComponentName(context, "${context.packageName}.MainActivity_Classic")
-    val modernAlias = ComponentName(context, "${context.packageName}.MainActivity_Modern")
+    val springwindAlias = ComponentName(context, "${context.packageName}.MainActivity_SpringWind")
 
-    val isModernEnabled = pm.getComponentEnabledSetting(modernAlias) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-    var selectedIcon by remember { mutableStateOf(if (isModernEnabled) "modern" else "classic") }
+    val isSpringWindEnabled = pm.getComponentEnabledSetting(springwindAlias) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+    var selectedIcon by remember { mutableStateOf(if (isSpringWindEnabled) "springwind" else "classic") }
 
     Scaffold(
         topBar = {
@@ -84,13 +84,13 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             IconOption(
-                label = i18n("settings_icon_modern"),
-                isSelected = selectedIcon == "modern",
-                color = Color(0xFF7C3AED),
-                monogram = "J",
+                label = i18n("settings_icon_springwind"),
+                isSelected = selectedIcon == "springwind",
+                color = Color(0xFFFF8C94),
+                monogram = "S",
                 onClick = {
-                    switchIcon(pm, classicAlias, modernAlias, enableModern = true)
-                    selectedIcon = "modern"
+                    switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = true)
+                    selectedIcon = "springwind"
                 }
             )
 
@@ -98,15 +98,15 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 label = i18n("settings_icon_classic"),
                 isSelected = selectedIcon == "classic",
                 color = Color(0xFF2196F3),
-                monogram = "J",
+                monogram = "S",
                 onClick = {
-                    switchIcon(pm, classicAlias, modernAlias, enableModern = false)
+                    switchIcon(pm, classicAlias, springwindAlias, enableSpringWind = false)
                     selectedIcon = "classic"
                 }
             )
 
             Text(
-                text = "当前图标: ${if (selectedIcon == "modern") "Modern" else "Classic"}",
+                text = "当前图标: ${if (selectedIcon == "springwind") "SpringWind" else "Classic"}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -169,11 +169,11 @@ private fun IconOption(
 private fun switchIcon(
     pm: PackageManager,
     classicAlias: ComponentName,
-    modernAlias: ComponentName,
-    enableModern: Boolean
+    springwindAlias: ComponentName,
+    enableSpringWind: Boolean
 ) {
-    val enable = if (enableModern) modernAlias else classicAlias
-    val disable = if (enableModern) classicAlias else modernAlias
+    val enable = if (enableSpringWind) springwindAlias else classicAlias
+    val disable = if (enableSpringWind) classicAlias else springwindAlias
     pm.setComponentEnabledSetting(
         enable,
         PackageManager.COMPONENT_ENABLED_STATE_ENABLED,

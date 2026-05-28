@@ -39,7 +39,7 @@
 
         <activity-alias
             android:name=".MainActivity_Classic"
-            android:enabled="false"
+            android:enabled="true"
             android:exported="true"
             android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher_round"
@@ -52,11 +52,11 @@
         </activity-alias>
 
         <activity-alias
-            android:name=".MainActivity_Modern"
-            android:enabled="true"
+            android:name=".MainActivity_SpringWind"
+            android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_modern"
-            android:roundIcon="@mipmap/ic_launcher_modern"
+            android:icon="@mipmap/ic_launcher_springwind"
+            android:roundIcon="@mipmap/ic_launcher_springwind"
             android:targetActivity=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
