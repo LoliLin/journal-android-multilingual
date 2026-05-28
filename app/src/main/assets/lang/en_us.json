@@ -455,5 +455,18 @@
   "categories.oneirogen.desc": "Oneirogen describes a wide array of psychoactive plants and chemicals ranging from normal dream enhancers to intense dissociative or deliriant drugs.",
   "categories.antipsychotic.desc": "Antipsychotics (also known as neuroleptics or major tranquilizers) are a class of psychiatric medication primarily used to manage psychosis (including delusions, hallucinations, or disordered thought), particularly in schizophrenia and bipolar disorder.",
   "categories.antidepressant.desc": "Antidepressants are a class of psychoactive substances that are prescribed to treat psychiatric disorders, most commonly major depressive disorder and some forms of anxiety disorders.",
-  "categories.hypnotic.desc": "Hypnotics, or soporifics, are a class of drugs which promote and induce sleep. They are the opposite of eugeroics which promote wakefulness. They are commonly distributed in the form of pharmaceutical drugs prescribed to treat insomnia."
+  "categories.hypnotic.desc": "Hypnotics, or soporifics, are a class of drugs which promote and induce sleep. They are the opposite of eugeroics which promote wakefulness. They are commonly distributed in the form of pharmaceutical drugs prescribed to treat insomnia.",
+  "shulgin_minus_short": "no effects",
+  "shulgin_minus_long": "On the quantitative potency scale (-, ±, +, ++, +++), there were no effects observed.",
+  "shulgin_plusMinus_short": "maybe false positive",
+  "shulgin_plusMinus_long": "The level of effectiveness...",
+  "shulgin_plus_short": "certainly active, nature not yet apparent",
+  "shulgin_plus_long": "The drug is quite certainly active...",
+  "shulgin_twoPlus_short": "nature apparent, effects may be repressible",
+  "shulgin_twoPlus_long": "Both the chronology...",
+  "shulgin_threePlus_short": "totally engaged, ignoring no longer an option",
+  "shulgin_threePlus_long": "Not only are the chronology...",
+  "shulgin_fourPlus_short": "rare and precious transcendental state",
+  "shulgin_fourPlus_long": "A rare and precious transcendental state...",
+  "ratings_explanation_title": "Longer explanations"
 }

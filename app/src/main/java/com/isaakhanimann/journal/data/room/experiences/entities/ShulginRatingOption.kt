@@ -18,6 +18,9 @@
 
 package com.isaakhanimann.journal.data.room.experiences.entities
 
+import android.content.Context
+import com.isaakhanimann.journal.localization.I18n
+
 // the order matters because the ordinal value increases by one for each subsequent case
 enum class ShulginRatingOption {
     MINUS {
@@ -69,4 +72,12 @@ enum class ShulginRatingOption {
     abstract val shortDescription: String
     abstract val longDescription: String
     abstract val verticalSign: String
+
+    fun getShortDescription(context: Context): String {
+        return I18n.translateOrDefault(context, "shulgin_${rawValue}_short", shortDescription)
+    }
+
+    fun getLongDescription(context: Context): String {
+        return I18n.translateOrDefault(context, "shulgin_${rawValue}_long", longDescription)
+    }
 }

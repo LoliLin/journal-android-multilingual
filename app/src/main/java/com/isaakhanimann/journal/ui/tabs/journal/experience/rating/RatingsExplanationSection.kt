@@ -27,12 +27,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 
 @Preview
 @Composable
 fun RatingsExplanationSection() {
-    CardWithTitle(title = "Longer explanations") {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    CardWithTitle(title = i18n("ratings_explanation_title")) {
         val ratings = ShulginRatingOption.values()
         ratings.forEach { oneRating ->
             Column(modifier = Modifier.padding(vertical = 5.dp)) {
@@ -41,7 +43,7 @@ fun RatingsExplanationSection() {
                     style = MaterialTheme.typography.titleLarge
                 )
                 Text(
-                    text = oneRating.longDescription,
+                    text = oneRating.getLongDescription(context),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
