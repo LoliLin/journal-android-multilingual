@@ -57,6 +57,7 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -85,25 +86,7 @@ fun SubstanceCompanionScreen(
     }
 }
 
-@Preview
-@Composable
-fun SubstanceCompanionPreview(@PreviewParameter(SubstanceCompanionScreenPreviewProvider::class) pair: Pair<SubstanceCompanion, List<IngestionsBurst>>) {
-    JournalTheme {
-        SubstanceCompanionScreen(
-            substanceCompanion = pair.first,
-            ingestionBursts = pair.second,
-            tolerance = Tolerance(
-                full = "with prolonged use",
-                half = "two weeks",
-                zero = "1 month"
-            ),
-            crossTolerances = listOf(
-                "dopamine",
-                "stimulant"
-            ),
-        )
-    }
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

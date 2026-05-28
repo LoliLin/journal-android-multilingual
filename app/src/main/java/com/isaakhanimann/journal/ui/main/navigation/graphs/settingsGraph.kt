@@ -61,7 +61,7 @@ navigateToIconPicker = navController::navigateToIconPicker
         }
         composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
         composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
-        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) { IconPickerScreen(navigateBack = navController::navigateBack) }
+        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) { IconPickerScreen(navigateBack = navController::popBackStack) }
         composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) { CombinationSettingsScreen() }
         composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) { SubstanceColorsScreen() }
         composableWithTransitions(NoArgumentRouter.CustomUnitArchiveRouter.route) {
