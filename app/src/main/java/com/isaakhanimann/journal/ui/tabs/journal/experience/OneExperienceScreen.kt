@@ -482,7 +482,7 @@ fun OneExperienceScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitle(title = "Effect timeline")
+                        CardTitle(title = i18n("effect_timeline"))
                         TextButton(onClick = navigateToExplainTimeline) {
                             Text(text = i18n("limitations"))
                         }
@@ -546,6 +546,7 @@ fun OneExperienceScreen(
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding)
+                            substanceRepo = viewModel.substanceRepo
                         )
                         if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
                             HorizontalDivider()
@@ -695,6 +696,7 @@ fun OneExperienceScreen(
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding)
+                            substanceRepo = viewModel.substanceRepo
                         )
                         if (index < consumerWithIngestions.ingestionElements.size - 1) {
                             HorizontalDivider()

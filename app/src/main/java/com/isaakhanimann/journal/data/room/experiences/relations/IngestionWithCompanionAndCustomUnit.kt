@@ -75,5 +75,5 @@ data class IngestionWithCompanionAndCustomUnit(
                 description
             }
         }
-    } ?: "Unknown dose"
+    } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
 }

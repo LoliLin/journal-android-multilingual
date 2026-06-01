@@ -193,10 +193,10 @@ fun ChooseDoseCustomUnitScreen(
                     icon = {
                         Icon(
                             Icons.AutoMirrored.Filled.NavigateNext,
-                            contentDescription = "Next"
+                            contentDescription = i18n("common_next")
                         )
                     },
-                    text = { Text("Next") },
+                    text = { Text(i18n("common_next")) },
                 )
             }
         }

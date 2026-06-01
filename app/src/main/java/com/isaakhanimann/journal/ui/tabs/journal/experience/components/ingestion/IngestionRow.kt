@@ -42,21 +42,9 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDispl
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-
-@Preview(showBackground = true)
-@Composable
-fun IngestionRowPreview(@PreviewParameter(IngestionRowPreviewProvider::class) ingestionElement: IngestionElement) {
-    IngestionRow(
-        ingestionElement = ingestionElement,
-        timeDisplayOption = TimeDisplayOption.REGULAR,
-        startTime = Instant.now().minus(3, ChronoUnit.HOURS),
-        areDosageDotsHidden = false,
-        modifier = Modifier.fillMaxWidth()
-    )
-}
-
 
 @Composable
 fun IngestionRow(
@@ -65,6 +53,7 @@ fun IngestionRow(
     startTime: Instant,
     areDosageDotsHidden: Boolean,
     modifier: Modifier = Modifier,
+    substanceRepo: SubstanceRepository,
 ) {
     val ingestionWithCompanionAndCustomUnit = ingestionElement.ingestionWithCompanionAndCustomUnit
     val ingestion = ingestionWithCompanionAndCustomUnit.ingestion
@@ -84,7 +73,7 @@ fun IngestionRow(
                 val customUnitName = if (customUnit != null) ", ${customUnit.name}" else ""
                 Text(
                     modifier = Modifier.weight(1f),
-                    text = ingestion.substanceName + customUnitName,
+                    text = substanceRepo.getDisplayName(ingestion.substanceName) + customUnitName,
                     style = MaterialTheme.typography.titleMedium
                 )
                 TimeText(

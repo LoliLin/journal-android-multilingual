@@ -468,5 +468,7 @@
   "shulgin_threePlus_long": "不仅药物作用的时间顺序和性质相当清晰...",
   "shulgin_fourPlus_short": "罕见而珍贵的超验状态",
   "shulgin_fourPlus_long": "一种罕见而珍贵的超验状态...",
-  "ratings_explanation_title": "详细说明"
+  "ratings_explanation_title": "详细说明",
+  "dose_unknown": "未知剂量",
+  "effect_timeline": "效果曲线"
 }

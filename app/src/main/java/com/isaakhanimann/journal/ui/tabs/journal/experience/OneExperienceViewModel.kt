@@ -58,7 +58,7 @@ import javax.inject.Inject
 @HiltViewModel
 class OneExperienceViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
-    private val substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository,
     private val interactionChecker: InteractionChecker,
     private val userPreferences: UserPreferences,
     combinationSettingsStorage: CombinationSettingsStorage,
