@@ -81,6 +81,6 @@ data class IngestionWithCompanionAndCustomUnit(
                 description
             }
         }
-    } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
-    }
+    } ?: com.isaakhanimann.journal.localization.i18n("dose_unknown")
+ 
 }
