@@ -468,5 +468,16 @@
   "shulgin_threePlus_long": "不僅藥物作用的時間順序和性質相當清晰...",
   "shulgin_fourPlus_short": "罕見而珍貴的超驗狀態",
   "shulgin_fourPlus_long": "一種罕見而珍貴的超驗狀態...",
-  "ratings_explanation_title": "詳細說明"
+  "ratings_explanation_title": "詳細說明",
+  "route_oral_desc": "口服吞嚥",
+  "route_sublingual_desc": "舌下含服",
+  "route_buccal_desc": "頰部含服",
+  "route_insufflated_desc": "鼻吸",
+  "route_rectal_desc": "直腸給藥",
+  "route_transdermal_desc": "經皮吸收",
+  "route_subcutaneous_desc": "皮下注射",
+  "route_intramuscular_desc": "肌肉注射",
+  "route_intravenous_desc": "靜脈注射",
+  "route_smoked_desc": "加熱吸入",
+  "route_inhaled_desc": "直接吸入"
 }
