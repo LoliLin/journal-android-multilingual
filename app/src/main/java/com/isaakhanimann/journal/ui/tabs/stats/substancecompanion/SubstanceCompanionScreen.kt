@@ -184,7 +184,7 @@ fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit)
             ingestionAndCustomUnit.ingestion.administrationRoute.displayText
         ).lowercase()
         val text = buildAnnotatedString {
-            append(ingestionAndCustomUnit.doseDescription)
+            append(ingestionAndCustomUnit.getDoseDescription())
             withStyle(style = SpanStyle(color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray )) {
                 if (ingestionAndCustomUnit.customUnit == null) {
                     append(" $routeName")

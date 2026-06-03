@@ -129,10 +129,15 @@ data class IngestionsBurst(
                     )
                 }
             }
-        val doseDescription: String
-            get() = customUnitDose?.doseDescription ?: ingestionDoseDescription
 
-        private val ingestionDoseDescription get() = ingestion.dose?.let { dose ->
+        @Composable
+        fun getDoseDescription(): String {
+            return customUnitDose?.doseDescription ?: getIngestionDoseDescription()
+        }
+
+        @Composable
+        private fun getIngestionDoseDescription(): String {
+        return ingestion.dose?.let { dose -> //135
             ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviation ->
                 "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${ingestion.units}"
             } ?: run {

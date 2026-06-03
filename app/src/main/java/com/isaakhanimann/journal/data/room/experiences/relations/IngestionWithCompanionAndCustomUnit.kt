@@ -62,11 +62,17 @@ data class IngestionWithCompanionAndCustomUnit(
                 )
             }
         }
-    val doseDescription: String get() = customUnitDose?.doseDescription ?: ingestionDoseDescription
 
-    private val ingestionDoseDescription get() = ingestion.dose?.let { dose ->
-        ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
-            "${dose.toReadableString()}±${estimatedDoseDeviation.toReadableString()} ${ingestion.units}"
+    @Composable
+    fun getDoseDescription(): String {
+        return customUnitDose?.doseDescription ?: ingestionDoseDescription
+    }
+
+    @Composable
+    private fun getIngestionDoseDescription(): String {
+        return ingestion.dose?.let { dose ->
+            ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
+        "${dose.toReadableString()}±${estimatedDoseDeviation.toReadableString()} ${ingestion.units}"
         } ?: run {
             val description = "${dose.toReadableString()} ${ingestion.units}"
             if (isEstimate) {
@@ -76,4 +82,5 @@ data class IngestionWithCompanionAndCustomUnit(
             }
         }
     } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
+    }
 }
