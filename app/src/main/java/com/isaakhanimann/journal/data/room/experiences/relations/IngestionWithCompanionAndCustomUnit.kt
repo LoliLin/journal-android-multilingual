@@ -82,5 +82,6 @@ data class IngestionWithCompanionAndCustomUnit(
             }
         }
     } ?: com.isaakhanimann.journal.localization.i18n("dose_unknown")
+    }
  
 }
