@@ -128,7 +128,7 @@ fun TimedNoteScreenContent(
                 .focusRequester(focusRequester)
         )
         Spacer(modifier = Modifier.height(5.dp))
-        CardWithTitle(title = "Show on timeline") {
+        CardWithTitle(title = i18n("show_on_timeline")) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,

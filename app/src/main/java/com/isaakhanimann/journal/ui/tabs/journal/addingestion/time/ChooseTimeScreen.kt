@@ -179,7 +179,12 @@ fun ChooseTimeScreen(
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName ${i18n(\"journal_ingestion\")}") }) },
+        topBar = { TopAppBar(title = { Text( i18n(
+            "substances_ingestion",
+            replacements = mapOf(
+                "substance" to "$substanceName"
+            )
+        ) ) }) },
         floatingActionButton = {
             AnimatedVisibility(
                 visible = !isLoadingColor,

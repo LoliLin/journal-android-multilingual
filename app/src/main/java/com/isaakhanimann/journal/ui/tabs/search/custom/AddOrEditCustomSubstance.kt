@@ -90,7 +90,7 @@ fun AddCustomSubstance(
             navigateBack()
         },
         isDoneEnabled = viewModel.isValid,
-        title = "Add custom substance",
+        title = i18n("search_add_custom_substance"),
         isShowingDelete = false,
         deleteAndNavigate = {}
     )
@@ -113,7 +113,7 @@ fun EditCustomSubstance(
             navigateBack()
         },
         isDoneEnabled = viewModel.isValid,
-        title = "Edit custom substance",
+        title = i18n("edit_custom_substance"),
         isShowingDelete = true,
         deleteAndNavigate = {
             viewModel.deleteCustomSubstance()
@@ -135,7 +135,7 @@ fun AddCustomSubstancePreview() {
         onDescriptionChange = {},
         onDoneTap = {},
         isDoneEnabled = true,
-        title = "Add custom substance",
+        title = i18n("search_add_custom_substance"),
         isShowingDelete = false,
         deleteAndNavigate = {}
     )

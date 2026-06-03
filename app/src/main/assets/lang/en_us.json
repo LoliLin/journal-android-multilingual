@@ -500,5 +500,10 @@
   "safer_injection_guide.t1": "Using and sharing injection equipment is an extremely high-risk activity and is never truly safe to do in a non-medical context.",
   "safer_injection_guide.t2": "Read the safer injection guide:",
   "safer_injection_guide.t3": "This guide is provided for educational and harm reduction purposes only and we strongly discourage users from engaging in this activity.",
-  "purity": "Purity"
+  "purity": "Purity",
+  "substances_route": "{substance} route",
+  "substances_ingestion": "{substance} ingestion",
+  "edit_custom_substance": "Edit custom substance",
+  "show_on_timeline": "Show on timeline",
+  "your_cumulative_doses": "Your cumulative doses"
 }

@@ -523,7 +523,7 @@ fun OneExperienceScreen(
             val cumulativeDoses = oneExperienceScreenModel.cumulativeDoses
             if (cumulativeDoses.isNotEmpty()) {
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
-                    CardTitle(title = "Your cumulative doses")
+                    CardTitle(title = i18n("your_cumulative_doses"))
                     if (cumulativeDoses.isNotEmpty()) {
                         HorizontalDivider()
                     }
@@ -676,7 +676,7 @@ fun OneExperienceScreen(
                     modifier = Modifier
                         .padding(vertical = verticalCardPadding)
                 ) {
-                    CardTitle(title = "Interactions")
+                    CardTitle(title = i18n("substance_interactions_title"))
                     interactions.forEachIndexed { index, interaction ->
                         InteractionRow(interaction = interaction)
                         if (index < interactions.size - 1) {
