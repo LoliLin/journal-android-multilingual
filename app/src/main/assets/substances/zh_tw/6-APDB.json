@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用",
-    "half": "21-30 天",
-    "zero": "2-3 個月"
-  }
+    "full": "長期且重複使用",
+    "half": "21-30天",
+    "zero": "2-3個月",
+    "halfToleranceInHours": 612,
+    "zeroToleranceInHours": 1800
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "summary": "一種與MDMA相關的興奮劑與情感促進劑，也是MDA的類似物。據報導，較高劑量時具有相當的迷幻效果。它是一種三重單胺再攝取抑制劑，並為血清素2B受體的強效完全激動劑。",
+  "localizedName": "6-APDB"
 }

@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "2 - 3 天",
-    "zero": "3-5 天"
-  }
+    "zero": "3到5天",
+    "halfToleranceInHours": 60,
+    "zeroToleranceInHours": 96
+  },
+  "addictionPotential": "輕度成癮，且濫用潛力相對較低",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "localizedName": "ETH-CAT"
 }

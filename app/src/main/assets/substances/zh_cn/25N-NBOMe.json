@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "高剂量可能致命。"
-  ],
-  "summary": "一种罕见、效力极强且呈黄色的苯乙胺类迷幻剂，为 2C-N 衍生物。作用类似其他 NBOMe 化合物，具有幻觉、强烈身体负荷、刺激和血管收缩。高剂量下血管收缩可能危险，请谨慎。",
-  "localizedName": "25N-NBOMe",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "大剂量使用时可能致命"
+  ],
+  "summary": "一种罕见、高效且呈黄色的致幻性苯乙胺类物质，是2C-N的衍生物。其效果与其他NBOMe化合物相似，会产生幻觉、强烈的身体负荷、刺激感和血管收缩。高剂量下血管收缩可能具有危险性，需谨慎使用。",
+  "localizedName": "25N-NBOMe"
 }

@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "extremely addictive with a high potential for abuse",
   "toxicities": [
     "potentially fatal at heavy dosages",
@@ -6,5 +13,19 @@
     "unintentionally transporting the substance from the skin by touching the mouth, nose or eyes is dangerous"
   ],
   "summary": "Fentanyl is a synthetic opiate analgesic with a rapid onset and short duration of action. It is a strong agonist at the μ-opioid receptors and is historically used to treat breakthrough pain. Fentanyl is approximately 100 times more potent than Morphine, and is commonly used as a patch. Sometimes used as an adulterant for heroin, which has led to many overdose deaths.",
+  "effectsSummary": "Fentanyl has a strong analgesic and sedative effect and is effective in the smallest doses. However, its euphoric effect is less pronounced than that of other opioids. It is used in emergency medicine for surgical procedures and anesthesia, and for breakthrough pain in cancer patients. For chronic pain, fentanyl patches are used, which release the active ingredient slowly. Due to its opioid properties, fentanyl rapidly leads to dependence when taken over a long period of time and should not be discontinued abruptly and only under medical supervision.",
+  "dosageRemark": "Fentanyl is extremely potent and therefore very difficult to dose. Therefore, overdoses can easily occur. When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
+  "generalRisks": "The side effects are strongly dose-dependent. As the dose increases, the side effects also become more pronounced. At the beginning there is often drowsiness, dizziness, dizziness, pupil constriction, slowed heartbeat, drop in blood pressure, nausea and vomiting.\nExcessive sweating, rashes, itching, central dullness, confusion, visual disturbances, cardiac arrhythmias, respiratory reflex depression and urinary retention may also occur.\nOverdoses with fentanyl are life-threatening because the substance, like all opioids, slows down breathing, even to the point of respiratory arrest and coma.",
+  "longtermRisks": "Regular, abusive use of fentanyl can lead to dependence with severe withdrawal symptoms such as seizures, sleep disorders and depression. Withdrawal, as with all opioids, should not be abrupt and should only take place under medical supervision.",
+  "saferUse": [
+    "Opioids are highly effective drugs that should only be used for a limited time and at best under medical supervision.",
+    "Start with a low dose and wait for the effect and tolerance before adding more. Do not exceed the maximum daily dose.",
+    "If you inject opioids, dose even more carefully, as the range between desired effect (rush) and dangerous overdose is even more difficult to assess. Avoid injecting fentanyl; the risk of overdose is particularly high. Always use new (clean and sterile) injection material! Never exchange syringes, filters, water, disinfection swabs to avoid transmission of hepatitis and HIV.",
+    "Do not rely on dosage information from colleagues who regularly use opioids. Due to habituation or dependence, their doses are much higher and can be fatal for new users.",
+    "Take longer breaks (at least several days) between consumption.",
+    "After a period of abstinence, take a much lower dose! The usual dose before the abstinence phase can otherwise quickly have life-threatening consequences.",
+    "The simultaneous consumption of depressant substances such as alcohol, ketamine, GHB/GBL, nitrous oxide, benzodiazepines and/or other opioids is dangerous as there is an increased risk of vomiting and unconsciousness. The risk of suffocation is high!",
+    "Refrain from citrus fruits (especially grapefruit) before or during consumption. The combination can lead to an increase in the effect of the opiate and/or to respiratory depression."
+  ],
   "localizedName": "Fentanyl"
 }

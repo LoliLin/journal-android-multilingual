@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "IPPH（或误称 IPH）是一种新型吡啶基哌甲酯类似物和 NDRI 兴奋剂，但身体副作用小得多。",
-  "localizedName": "Isopropylphenidate",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "IPPH（或错误拼写的IPH）是一种新型哌啶类哌甲酯类似物和NDRI兴奋剂，但身体副作用显著减少。",
+  "localizedName": "异丙基哌甲酯"
 }

@@ -1,20 +1,28 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种强效迷幻色胺，存在于多种植物和部分蟾蜍毒液中，南美原住民使用历史可追溯数千年。与 DMT 及相关色胺性质相似。效力很强，与 MAOI 合用可口服有效。",
-  "localizedName": "5-MeO-DMT",
-  "effectsSummary": "5-MeO-DMT is an extremely potent psychedelic. Even low doses can produce strong visual and auditory hallucinations, altered perception of time and ego dissolution.",
-  "dosageRemark": "5-MeO-DMT is extremely potent. Respiratory and physical risks at high doses. Start very low and work up gradually.",
-  "generalRisks": "Extreme increase in blood pressure and heart rate. Risk of panic attacks and psychological distress.",
-  "longtermRisks": "No research results on long-term risks. HPPD possible. Psychological integration may be needed after intense experiences.",
-  "saferUse": [
-    "5-MeO-DMT can be psychologically overwhelming. A trip sitter is essential."
-  ],
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "1 小时",
-    "zero": "2 小时"
-  }
+    "full": "摄入后几乎立即",
+    "half": "1小时",
+    "zero": "2小时",
+    "halfToleranceInHours": 1,
+    "zeroToleranceInHours": 2
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种存在于多种植物和某些蟾蜍毒液中的强效致幻色胺，南美原住民对其的使用历史可追溯数千年。其特性与DMT及相关色胺类似，效力极强。与单胺氧化酶抑制剂（MAOI）联用时具有口服活性。",
+  "effectsSummary": "效果很大程度上取决于环境与心境。血压和脉搏升高，瞳孔放大。身心分离与自我消解是常见现象，濒死体验也相对频繁发生，尤其是在高剂量摄入时。中毒状态下时间感知会发生巨大变化，几分钟可能被感知为漫长而强烈的体验。此外，恐惧、欣快等不同情绪可能在短时间内交替出现。使用者报告称会沉浸于非常\"怪异\"的世界，其中存在、环境与物质之间的联系会浮现。身体感知也会受到影响，可能感到失重或认为自己正在坠落。\n\n相较于DMT，5-MeO-DMT的潜在效果更强，但视觉效应较弱。",
+  "dosageRemark": "MeO-DMT必须非常谨慎地剂量使用，因为即使多出几毫克也可能引发非常强烈且令人不适的效果，进而导致持续数周的心理和精神问题。",
+  "generalRisks": "使用5-MeO-DMT的风险主要在于心理层面，且取决于使用者的人格结构。迷幻体验中的感知变化可能极为强烈，尤其是缺乏经验的用户容易因感官信息的洪流而感到不知所措。突如其来的情绪爆发也可能被视为相当令人不安和难以承受。高剂量下，此类心理副作用可能持续数天至数周。若未遵循\"情境与状态\"原则，可能出现异常反应、方向感丧失、恐慌、偏执及恐怖体验。生理副作用包括恶心、呕吐、心率加快、呼吸轻微加速、血压升高、瞳孔放大、唾液分泌增多、震颤、烦躁不安、头痛及运动障碍。",
+  "longtermRisks": "自我认知和现实认知可能出现永久性紊乱。世界观可能被永久性地质疑，这可能导致难以应对日常生活。潜在的（隐藏的）精神病可能被诱发。",
+  "saferUse": [
+    "仅在感觉良好时服用。若担心药效过强，请勿使用。若对药物本身感到恐惧，请勿使用。",
+    "切勿单独使用5-MeO-DMT！请在安全的环境中，与值得信赖且经验丰富的人一同服用。",
+    "服用5-MeO-DMT时应保持坐姿或躺姿，因为中毒期间身体感知和移动能力会受损。",
+    "初次用药需谨慎。若无效果，下次再增加剂量。切勿在同一天内追加用药。",
+    "服用前后应避免食用含单胺氧化酶抑制剂的食物，如熟成奶酪、熏鱼或熏肉、酸菜、豆腐、巧克力等。",
+    "高血压患者不应服用5-甲氧基二甲基色胺。",
+    "使用5-MeO-DMT的旅程应保持为一种非凡的体验。请确保在使用5-MeO-DMT后长时间休息，并与他人交流你的体验，以便能够消化处理。"
+  ],
+  "localizedName": "5-甲氧基二甲基色胺"
 }

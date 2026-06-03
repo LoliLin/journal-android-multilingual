@@ -1,6 +1,26 @@
 {
+  "tolerance": {
+    "full": "within several days of continuous use",
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "highly physically and moderately to highly psychologically addictive",
   "toxicities": [],
   "summary": "A pro-drug to GHB whose rapid absorption leads it to have a faster onset and shorter duration. Used in a similar manner to GHB, as a less-toxic alternative to alcohol. Consume slowly instead of as a \"shot\" to hugely improve safety and reduce overdose risk.",
+  "effectsSummary": "The effect is extremely dose-dependent and varies greatly from individual to individual. It also depends on the purity of the substance. The spectrum of effects ranges from euphoria, relaxation, disinhibition, intensification of perception, urge to talk (babble flash), slight dizziness and drowsiness to deep (coma-like) sleep or unconsciousness.",
+  "dosageRemark": "The dosage depends on the degree of dilution and is even more delicate with GBL than with GHB, as not every body converts GBL into GHB at the same rate and in the same amount. GBL is a strong acid that can corrode the mucous membranes and must be heavily diluted with a non-alcoholic drink before drinking! In case of doubt: less is more!",
+  "generalRisks": "The higher the dose, the more likely nausea, vomiting and dizziness will occur. Headaches, confusion, breathing difficulties, cardiac arrhythmias, impaired balance and memory can occur at very high doses, as can uncontrollable muscle twitching, which is easily mistaken for epilepsy but can also progress into epilepsy.\nThe danger of an unintentional overdose is very high with GBL - even if it is not mixed! Signs of a GBL overdose are severe drowsiness followed by several hours of deep sleep that cannot be disturbed or can only be disturbed with difficulty (sometimes interrupted by short periods of wakefulness = standing man symptom), mild to very severe nausea, nausea, dizziness, headache, muscle atrophy (barely able to stay on one's feet) up to complete immobility, unconsciousness, disappearance of reflexes and breathing difficulties. It is difficult to assess whether users are only in a deep sleep or already in a coma after GBL use - if in doubt, always seek medical help!",
+  "longtermRisks": "Regular use of GBL can lead to sleep disorders, anxiety and tremors; there is a risk of dependence with psychological and physical symptoms. In the case of chronic high-dose consumption (several doses daily), severe physical withdrawal symptoms such as sweating, muscle cramps or epileptic seizures occur upon discontinuation.",
+  "saferUse": [
+    "If you are offered GBL, ask about the origin of the substance and the dosage.",
+    "GBL should be dosed lower than GHB! To produce the same effect, you need about half as much GBL as GHB.",
+    "Dose carefully! If GBL does not (yet) work, it is best to wait 2 hours and not add more right away. Often, overdosing is caused by adding more. Use an insulin syringe or graduated pipettes so that you can measure your unit of consumption accurately. Make a note of when you took your last dose.",
+    "Refrain from using GBL when you are alone.",
+    "With GBL, refrain from mixed consumption of any kind, especially with alcohol! Dilute the liquid before consumption, e.g. with tea.",
+    "If you have sex on GBL, follow the safe sex rules. Have condoms etc. ready before consumption.",
+    "People with epilepsy, heart or kidney dysfunction should not consume GBL under any circumstances!",
+    "GBL withdrawal should only be carried out under medical supervision.",
+    "Never leave your drink unattended to avoid someone mixing GBL into your drink. If your drink tastes strange, pour it out for your own safety."
+  ],
   "localizedName": "GBL"
 }

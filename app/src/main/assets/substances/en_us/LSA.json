@@ -1,4 +1,9 @@
 {
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "zero": "7 days",
+    "zeroToleranceInHours": 168
+  },
   "addictionPotential": "non-addictive with a low abuse potential",
   "toxicities": [
     "toxic dose is unknown"

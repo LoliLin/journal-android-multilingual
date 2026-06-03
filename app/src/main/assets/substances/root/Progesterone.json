@@ -1,0 +1,62 @@
+{
+  "name": "Progesterone",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Progesterone",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "depressant"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 200,
+        "strongMin": 400,
+        "heavyMin": 600
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "rectal",
+      "dose": {
+        "units": "mg",
+        "lightMin": 100,
+        "commonMin": 200,
+        "strongMin": 400,
+        "heavyMin": 600
+      },
+      "duration": {
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

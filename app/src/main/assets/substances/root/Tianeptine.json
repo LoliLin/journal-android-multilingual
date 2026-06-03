@@ -11,11 +11,17 @@
   "tolerance": {
     "full": "with prolonged use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "trycyclic antidepressants",
     "opioids"
+  ],
+  "addictionPotential": "mildly addictive",
+  "toxicities": [
+    "large therapeutic index and margin of safety"
   ],
   "categories": [
     "nootropic",
@@ -24,6 +30,7 @@
     "habit-forming",
     "depressant"
   ],
+  "summary": "A Tricyclic antidepressant, that has quite unique pharmacological properties than others in its class. Such as the possible indirect action on NMDA/AMPA and a full agonist at the μ-opioid receptor. While abuse of this substance is uncommon, it has been shown in a few countries.",
   "roas": [
     {
       "name": "oral",

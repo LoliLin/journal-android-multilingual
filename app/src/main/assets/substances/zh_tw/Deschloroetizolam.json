@@ -1,6 +1,14 @@
 {
   "tolerance": {
-    "full": "持續使用數日內",
-    "zero": "7 - 14 天"
-  }
+    "full": "連續使用幾天後",
+    "zero": "7 - 14 天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "極度生理與心理成癮性",
+  "toxicities": [
+    "低毒性",
+    "與抑制劑如酒精或鴉片類藥物混合使用時可能致命"
+  ],
+  "summary": "一種硫代二氮雜卓類藥物，與其母體化合物依替唑侖結構相近，但藥效顯著較弱且持續時間更長。",
+  "localizedName": "去氯依替唑侖"
 }

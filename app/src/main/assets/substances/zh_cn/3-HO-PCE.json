@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且不良副作用（如精神病）风险中等。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种罕见且非常强效的 PCP 类似物，作为 NMDA 受体拮抗剂效力约为 PCP 的 8 倍，同时也是 μ-阿片受体激动剂。结构上类似甲氧甲胺。",
-  "localizedName": "3-HO-PCE",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "4 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "4 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 132,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性，具有中等潜在不良副作用，如精神病",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种罕见且效力极强的PCP类似物，作为NMDA受体拮抗剂的效力是PCP的八倍，同时也是μ-阿片受体激动剂。其结构与甲氧基氯胺酮相似。",
+  "localizedName": "3-羟基-PCE"
 }

@@ -9,14 +9,21 @@
   "tolerance": {
     "full": "with repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
+  "addictionPotential": "mildly addictive with a high potential for adverse side effects such as psychosis",
+  "toxicities": [
+    "toxic dosage is unknown"
+  ],
   "categories": [
     "deliriant",
     "depressant",
     "tentative"
   ],
+  "summary": "A family of plants containing various Tropane alkaloids. Produces long-lasting deliriant effects including very realistic and often unpleasant hallucinations along with short-term amnesia. Datura plants are toxic to humans, and potency varies greatly from plant-to-plant, making the drug extremely difficult to dose safely. Not typically regarded as recreational.",
   "roas": [
     {
       "name": "oral",

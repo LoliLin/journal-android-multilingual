@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [
+    "因其極高的效力，相對於其劑量具有高度毒性",
+    "與抑制劑（如酒精或苯二氮平類藥物）混合使用時可能致命"
+  ],
+  "summary": "一種與AH-7921相關的µ-類鴉片受體激動劑，作用時間極短。",
+  "localizedName": "U-47700"
 }

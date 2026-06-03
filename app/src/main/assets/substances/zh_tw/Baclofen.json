@@ -1,6 +1,14 @@
 {
   "tolerance": {
-    "full": "持續使用數日內",
-    "zero": "7 - 14 天"
-  }
+    "full": "連續使用幾天後",
+    "zero": "7 - 14 天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理及心理成癮性",
+  "toxicities": [
+    "低毒性",
+    "與抑制劑如酒精、苯二氮平類藥物或鴉片類藥物混合使用時，可能具有致命危險。"
+  ],
+  "summary": "巴氯芬（亦稱為Lioresal）是一種GABAb受體促效劑及中樞神經抑制劑，用於治療痙攣，並有潛力作為酒精成癮的治療藥物。其具有類似苯丁酸或普瑞巴林的輕度迷醉效果。",
+  "localizedName": "巴氯芬"
 }

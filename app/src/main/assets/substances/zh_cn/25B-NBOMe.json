@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "高剂量可能致命。"
-  ],
-  "summary": "一种迷幻性苯乙胺，活性在低微克级，口服无效。",
-  "localizedName": "25B-NBOMe",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "1 周",
-    "zero": "2 周"
-  }
+    "full": "摄入后几乎立即",
+    "half": "1周",
+    "zero": "2周",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "大剂量使用时可能致命"
+  ],
+  "summary": "致幻性苯乙胺类物质，在微克级低剂量下具有活性，但口服无效。",
+  "localizedName": "25B-NBOMe"
 }

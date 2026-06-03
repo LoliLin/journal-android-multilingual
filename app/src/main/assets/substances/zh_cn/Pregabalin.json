@@ -1,11 +1,12 @@
 {
-  "toxicities": [
-    "低毒性。"
-  ],
-  "summary": "普瑞巴林（Lyrica）是 GABA 衍生物，用于治疗神经性疼痛和癫痫，也可用于焦虑。",
-  "localizedName": "普瑞巴林",
   "tolerance": {
-    "full": "持续使用数月后产生",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几个月后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "toxicities": [
+    "低毒性"
+  ],
+  "summary": "普瑞巴林（乐瑞卡）是一种γ-氨基丁酸衍生物，用于治疗神经病理性疼痛、癫痫发作以及焦虑症。",
+  "localizedName": "普瑞巴林"
 }

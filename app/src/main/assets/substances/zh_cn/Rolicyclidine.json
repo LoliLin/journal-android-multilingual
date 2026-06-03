@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "高度成瘾且有较高不良副作用风险，如精神病。",
-  "toxicities": [],
-  "summary": "Rolicyclidine，也称 PCPy，是一种与 PCP 效果相似的解离剂。虽然这种解离性麻醉剂具有致幻与镇静效应，但据称刺激性远低于 PCP，因此更像阿片或其他中枢抑制剂。",
-  "localizedName": "Rolicyclidine",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
+  "toxicities": [],
+  "summary": "罗利环利定（亦称PCPy）是一种具有类似PCP作用效果的分离性药物。虽然这种分离性麻醉剂具有致幻和镇静作用，但据称其刺激性远低于PCP。从这个意义上说，它更类似于阿片类药物或其他中枢神经系统抑制剂。",
+  "localizedName": "罗利环利定"
 }

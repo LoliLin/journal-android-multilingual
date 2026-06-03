@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "localizedName": "Bufotenin",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "1 小时",
-    "zero": "2 小时"
-  }
+    "full": "摄入后几乎立即",
+    "half": "1小时",
+    "zero": "2小时",
+    "halfToleranceInHours": 1,
+    "zeroToleranceInHours": 2
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "localizedName": "蟾毒色胺"
 }

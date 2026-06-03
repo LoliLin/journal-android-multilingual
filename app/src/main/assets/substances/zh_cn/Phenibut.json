@@ -1,13 +1,14 @@
 {
-  "addictionPotential": "中度生理和心理成瘾。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精、苯二氮卓或阿片等抑制剂混用可能致命。"
-  ],
-  "summary": "在 GABA 上加一个苯环的衍生物，可跨越血脑屏障。主要用于抗焦虑和抗失眠。耐受与生理依赖建立很快。",
-  "localizedName": "Phenibut",
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理和心理成瘾性",
+  "toxicities": [
+    "低毒性",
+    "与酒精、苯二氮卓类药物或阿片类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "GABA的一种衍生物，添加了苯环结构使其能够穿越血脑屏障。主要用作抗焦虑和抗失眠药物。耐受性和生理依赖性会迅速形成。",
+  "localizedName": "苯基丁酸"
 }

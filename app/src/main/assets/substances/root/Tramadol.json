@@ -12,10 +12,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -23,6 +30,7 @@
     "depressant",
     "common"
   ],
+  "summary": "A synthetic opioid analgesic, tramadol is used to treat moderate pain and can be considered a medium-strength opioid. Tramadol also has the unusual effect of being a serotonin releasing agent and a serotonin reuptake inhibitor, and as a consequence should not be taken in excess due to the risk of serotonin syndrome. Risk of seizures above 300mg doses.",
   "effectsSummary": "Analgesic, anxiety-relieving, euphoric, mood-lifting, causes a general feeling of contentment.\nThe human body has its own pain-relieving system. The endogenous substance endorphin ensures that pain messages are sent to the human brain in a reduced form by docking to certain receptors in the human body. The active ingredient tramadol has a similar mode of action in that the active ingredient attaches to neurotransmitter docking sites (opioid receptors) and transmits a signal to the brain, which subsequently triggers pain relief. In addition, tramadol inhibits the reuptake of certain nerve messengers (noradrenaline and serotonin), which in turn increases the amount of free messengers in the tissue and supports the analgesic effect.",
   "dosageRemark": "When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
   "generalRisks": "Adverse side effects may include: headache, malaise/nausea, vomiting, dry mouth, dizziness, drowsiness, constipation, drowsiness, circulatory problems (palpitations, fainting spells, etc.).\nIn higher doses, seizures, speech disorders, paraesthesias (unpleasant bodily sensations, e.g. parts of the body falling asleep), tremor (muscle tremor), coordination disorders and circulatory collapse may occur. Hallucinations, confusion, delirium, anxiety, sleep disorders and nightmares can also be triggered.",
@@ -39,24 +47,24 @@
   ],
   "interactions": {
     "dangerous": [
-      "Substituted amphetamines",
       "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
-      "MAOI",
+      "MAOIs",
       "Grapefruit",
       "MDMA",
-      "ΑMT"
+      "aMT"
     ],
     "unsafe": [
       "2C-T-x"
     ],
     "uncertain": [
       "Benzodiazepines",
-      "Methoxetamine",
+      "MXE",
       "Alcohol",
-      "Nitrous"
+      "Nitrous",
+      "Amphetamines"
     ]
   },
   "roas": [

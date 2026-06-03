@@ -10,10 +10,16 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of days of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": [
     "depressant",
@@ -21,9 +27,10 @@
     "habit-forming",
     "common"
   ],
+  "summary": "A medium-length common prescription benzodiazepine, often used to treat panic attacks because of its relatively fast sublingual onset. Primarily anxiolytic, but also possessing of other benzo traits.",
   "interactions": {
     "dangerous": [
-      "Depressant",
+      "Depressants",
       "Dissociatives"
     ],
     "unsafe": [],
@@ -46,6 +53,16 @@
           "min": 20,
           "max": 60,
           "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 6,
+          "units": "hours"
         },
         "total": {
           "min": 8,

@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "長期重複使用後",
+    "full": "經過長時間且重複的使用後",
     "half": "7 天",
-    "zero": "14 天"
-  }
+    "zero": "14 天",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "極低毒性"
+  ],
+  "localizedName": "重酒石酸膽鹼"
 }

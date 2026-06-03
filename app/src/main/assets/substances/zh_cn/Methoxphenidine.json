@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种二芳乙胺类解离剂，是二苯乙啶更强的类似物。已知不可预测，可能导致断片。",
-  "localizedName": "Methoxphenidine",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "二芳基乙胺类解离剂，是二苯乙啶的更强效类似物。已知其作用不可预测，并可能导致意识丧失。",
+  "localizedName": "甲氧苯啶"
 }

@@ -8,11 +8,16 @@
   "url": "https://psychonautwiki.org/wiki/2C-B",
   "isApproved": true,
   "crossTolerances": [],
+  "addictionPotential": "non-addictive with a low potential for abuse",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "categories": [
     "psychedelic",
     "entactogen",
     "common"
   ],
+  "summary": "A popular psychedelic in the phenethylamine family. Provides empathic experiences at lower doses and strong visual and psychedelic experiences at higher doses. Commonly used as a party drug as it is more clear-headed than most psychedelics. 2C-B has been in use since the early 1990s",
   "effectsSummary": "Perceptions and feelings become more intense. From 10-15 mg (snorted already from 7 mg), the effect usually takes on a hallucinogenic character. The boundaries between inside and outside can dissolve. Often moving coloured patterns and luminous fields around objects and persons are perceived. However, the intoxication is felt to be less profound than with LSD.",
   "dosageRemark": "2C-B is effective even in small doses; a gradual approach to the individual dose is recommended. Over the 12 to 24 milligram range, every 2 milligrams can make a profound increase or change of response. Doses above 35 mg can be experienced as unpleasantly strong even by experienced users.",
   "generalRisks": "The pupils dilate, blood pressure rises and nausea, sweating and dizziness may occur. Some users report stomach and intestinal problems, and mild allergic reactions (such as coughing due to increased mucus production) may occur. Disorientation, confusion and feelings of anxiety, even fear of death, are risks on a psychological level.",
@@ -34,7 +39,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },
@@ -50,13 +55,65 @@
       },
       "duration": {
         "onset": {
-          "min": 0,
-          "max": 20,
+          "min": 1,
+          "max": 5,
           "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
         },
         "total": {
           "min": 4,
-          "max": 7,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 2.5,
+        "strongMin": 5,
+        "heavyMin": 10
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 2,
+          "max": 3,
           "units": "hours"
         }
       }

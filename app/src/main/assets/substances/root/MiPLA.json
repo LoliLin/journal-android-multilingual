@@ -9,10 +9,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "5-7 days",
-    "zero": "14 days"
+    "zero": "14 days",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "low potential for abuse and dependence",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic"
@@ -25,7 +31,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

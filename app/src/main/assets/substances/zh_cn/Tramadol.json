@@ -1,28 +1,30 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精或苯二氮卓等抑制剂混用可能致命。"
-  ],
-  "summary": "一种合成阿片镇痛药，曲马多用于中度疼痛，可视为中等强度阿片。曲马多也具有血清素释放与再摄取抑制作用，因此不应过量使用以避免血清素综合征。300mg 以上剂量有癫痫风险。",
-  "localizedName": "曲马多",
-  "effectsSummary": "Analgesic, anxiety-relieving, euphoric, mood-lifting, causes a general feeling of well-being, drowsiness.",
-  "dosageRemark": "When consuming for the first time, low doses should be used, as the risk of respiratory depression and seizures is particularly high.",
-  "generalRisks": "Adverse side effects may include: headache, malaise/nausea, vomiting, dry mouth, dizziness, sedation, constipation, risk of seizures.",
-  "longtermRisks": "Tramadol has a low dependence potential with moderate use. However, regular and high-dose consumption can lead to physical and psychological dependence.",
-  "saferUse": [
-    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
-    "从小剂量开始，等待效果后再决定是否加量。",
-    "如果注射阿片类药物，更需谨慎剂量。",
-    "不要依赖他人的剂量信息。",
-    "使用之间保持较长间隔（至少数天）。",
-    "戒断一段时间后，剂量要比之前大幅降低。",
-    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
-    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "低毒性",
+    "与酒精或苯二氮卓类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "曲马多是一种合成阿片类镇痛药，用于治疗中度疼痛，可视为中等强度的阿片类药物。曲马多还具有独特的作用，既是5-羟色胺释放剂，又是5-羟色胺再摄取抑制剂，因此不应过量服用，以免引发5-羟色胺综合征的风险。剂量超过300毫克时存在癫痫发作风险。",
+  "effectsSummary": "镇痛、缓解焦虑、产生欣快感、提升情绪，带来普遍的满足感。  \n人体拥有自身的镇痛系统。内源性物质内啡肽通过与人体特定受体结合，确保疼痛信号以减弱的形式传递至大脑。活性成分曲马多具有类似的作用机制：该活性成分附着于神经递质结合位点（阿片受体），向大脑传递信号，进而触发镇痛效果。此外，曲马多还能抑制某些神经信使（去甲肾上腺素和血清素）的再摄取，从而增加组织中游离信使的数量，并增强镇痛作用。",
+  "dosageRemark": "首次使用时，应使用低剂量，因为呼吸停止的风险会增加。",
+  "generalRisks": "不良反应可能包括：头痛、不适/恶心、呕吐、口干、头晕、嗜睡、便秘、嗜睡、循环系统问题（心悸、昏厥等）。\n高剂量时可能出现癫痫发作、言语障碍、感觉异常（身体不适感，如身体部位麻木）、震颤（肌肉震颤）、协调障碍及循环衰竭。也可能引发幻觉、意识混乱、谵妄、焦虑、睡眠障碍和噩梦。",
+  "longtermRisks": "曲马多在适度使用时依赖性较低。然而，长期规律使用可能导致心理和生理依赖。长期用药后突然停药可能引发戒断症状，表现为头晕、身体乏力、内心不安、震颤、睡眠障碍、头痛、出汗、恶心、幻觉及抑郁。长期使用还可能导致整体情绪变化、决策行为改变或感知反应障碍。",
+  "saferUse": [
+    "阿片类药物是高效的药物，应仅在有限时间内使用，且最好在医疗监督下进行。",
+    "从低剂量开始，等待药效显现并确认耐受性后再增加剂量。每日最大剂量不可超过规定上限。",
+    "若注射阿片类药物，请更加谨慎地控制剂量，因为预期效果（快感）与危险过量之间的界限更难以判断。避免注射芬太尼，其过量风险尤其高。务必使用全新（清洁无菌）的注射器具！切勿共用针具、过滤器、水、消毒棉签，以防传播肝炎和HIV病毒。",
+    "不要依赖经常使用阿片类药物的同事提供的剂量信息。由于习惯或依赖，他们的剂量要高得多，对初次使用者可能是致命的。",
+    "在摄入之间延长休息时间（至少数天）。",
+    "在戒断一段时间后，请服用更低的剂量！否则，戒断阶段前的常规剂量可能会迅速引发危及生命的后果。",
+    "同时摄入酒精、氯胺酮、GHB/GBL、一氧化二氮、苯二氮卓类药物和/或其他阿片类物质等抑制剂是危险的，因为这会增加呕吐和意识丧失的风险。窒息风险极高！",
+    "服用前或服用期间避免食用柑橘类水果（尤其是葡萄柚）。两者结合可能导致阿片类药物效果增强和/或呼吸抑制。"
+  ],
+  "localizedName": "曲马多"
 }

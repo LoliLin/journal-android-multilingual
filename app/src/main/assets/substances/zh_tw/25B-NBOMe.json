@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "1 週",
-    "zero": "2 週"
-  }
+    "zero": "2 週",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "高劑量下可能致命"
+  ],
+  "summary": "迷幻苯乙胺，在低微克範圍內具有活性，但口服無效。",
+  "localizedName": "25B-NBOMe"
 }

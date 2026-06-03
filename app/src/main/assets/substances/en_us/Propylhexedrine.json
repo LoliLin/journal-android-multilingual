@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "rapidly develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
   "toxicities": [],
   "summary": "A relatively common CNS stimulant sold over the counter in benzedrex inhalers.",
   "localizedName": "Propylhexedrine"

@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "相对于剂量而言毒性极低。"
-  ],
-  "summary": "一种 LSD 类似物，似乎效力略强且持续时间更短。其效果据报道与 LSD 极其相似，迄今看来同样安全。2014 年末发布，因其隐含合法性、与 LSD 相似以及互联网广泛可得而迅速流行。",
-  "localizedName": "1P-LSD",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [
+    "相对于剂量而言毒性极低"
+  ],
+  "summary": "一种LSD类似物，其效力略强但持续时间较短。据报告其效果与LSD极为相似，且目前看来同样安全。该物质于2014年末问世，因其隐含的合法性、与LSD的相似性以及互联网上的广泛可及性，迅速成为一种广受欢迎的研究用化学品。",
+  "localizedName": "1P-LSD"
 }

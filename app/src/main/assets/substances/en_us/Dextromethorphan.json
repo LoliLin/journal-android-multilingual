@@ -1,7 +1,19 @@
 {
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "produces dependence with chronic use and has moderate abuse potential",
   "toxicities": [
     "exact toxic dosage is unknown"
   ],
+  "summary": "Commonly found in certain over the counter cough medicines. Has dissociative effects similar to ketamine or MXE, though also shares properties with opioids and alcohol. Make sure DXM is the only active ingredient in the preparation.",
+  "effectsSummary": "In high doses (120 mg or more) it has a hallucinogenic and euphoric effect. Perceptual disturbances up to confusion as well as states of agitation with epileptic episodes may occur. Side effects are reddening of the skin and severe itching. With regular use there is great potential for dependence with psychological and physical symptoms!",
+  "dosageRemark": "DXM in freebase form (as found in Robocough RoboTablets) is around 27-37% more potent than its hydrobromide form due to a higher concentration of DXM by weight. One should take this into account when calculating their dose to avoid a potential overdose.",
+  "generalRisks": "Caution: The simultaneous intake of MAO inhibitors delays the degradation of DXM and can lead to severe respiratory and circulatory disorders!",
+  "saferUse": [],
   "localizedName": "Dextromethorphan"
 }

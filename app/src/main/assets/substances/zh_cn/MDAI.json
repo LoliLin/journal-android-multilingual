@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "略有成瘾性但滥用潜力低。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种选择性血清素释放剂，通常需与兴奋剂合用以获得理想效果。曾被认为无神经毒性，但 MDAI 已牵涉多起致命和非致命中毒事件，因此健康风险可能高于此前认知。",
-  "localizedName": "MDAI",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "具有一定的成瘾性，但滥用潜力较低",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种选择性血清素释放剂，极少在不与兴奋剂联用的情况下使用以达到理想效果。此前被认为不具有神经毒性，然而MDAI已被证实与多起致命及非致命中毒事件相关，因此其对健康的潜在风险可能高于先前的认知。",
+  "localizedName": "MDAI"
 }

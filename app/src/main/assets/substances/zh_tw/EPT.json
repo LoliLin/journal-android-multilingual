@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "不產生依賴性且濫用潛力低",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "乙基丙基色胺是一種新型色胺，是DMT的結構同系物。",
+  "localizedName": "EPT"
 }

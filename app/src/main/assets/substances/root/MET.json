@@ -7,11 +7,16 @@
   "url": "https://psychonautwiki.org/wiki/MET",
   "isApproved": true,
   "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
+  "summary": "A rare psychedelic tryptamine, related to DMT and DET. Little information exists about the effects or pharmacology of this drug.",
   "roas": [
     {
       "name": "insufflated",
@@ -98,7 +103,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 10,

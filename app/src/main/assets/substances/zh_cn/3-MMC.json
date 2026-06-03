@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "极易成瘾且具有高滥用潜力。",
-  "toxicities": [],
-  "summary": "一种类似甲卡西酮的欣快性兴奋剂，但据称缺乏“魔力”。从未获得同等流行度。效力略低。",
-  "localizedName": "3-MMC",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极易上瘾，具有很高的滥用潜力",
+  "toxicities": [],
+  "summary": "一种类似甲氧麻黄酮的欣快感兴奋剂，但据称缺乏其\"魔力\"。从未获得同等流行度。效力稍弱。",
+  "localizedName": "3-MMC"
 }

@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [],
-  "summary": "一种罕见的甲卡西酮类似物，也称 MACP，为卡西酮兴奋剂，效果类似戊卡西酮。",
-  "localizedName": "Hexedrone",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [],
+  "summary": "一种罕见的甲氧麻黄酮类似物，也称为MACP，是一种卡西酮类兴奋剂，其效果与戊基卡西酮相似。",
+  "localizedName": "六氢去氧麻黄酮"
 }

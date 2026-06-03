@@ -1,8 +1,8 @@
 {
-  "addictionPotential": "不易形成习惯。",
+  "addictionPotential": "无成瘾性",
   "toxicities": [
-    "毒性剂量未知。"
+    "毒性剂量未知"
   ],
-  "summary": "一种罕见的迷幻色胺，与 DMT 和 DET 相关。关于其作用或药理的信息极少。",
-  "localizedName": "MET"
+  "summary": "一种罕见的致幻色胺，与DMT和DET相关。关于该药物的效果或药理作用，目前所知甚少。",
+  "localizedName": "MET（代谢当量）"
 }

@@ -1,13 +1,14 @@
 {
-  "addictionPotential": "中度生理和心理成瘾。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精、苯二氮卓或阿片等抑制剂混用可能致命。"
-  ],
-  "summary": "也称 Lioresal，巴克洛芬是 GABA_B 受体激动剂和中枢抑制剂，用于治疗痉挛，并被认为有治疗酒精依赖的潜力。其轻度致醉效应类似苯丁酸或普瑞巴林。",
-  "localizedName": "Baclofen",
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理和心理成瘾性",
+  "toxicities": [
+    "低毒性",
+    "与酒精、苯二氮卓类药物或阿片类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "巴氯芬，又称力奥来素，是一种GABAb受体激动剂和中枢神经系统抑制剂，用于治疗痉挛，并有潜力用于治疗酒精依赖。它表现出类似于芬尼布特或普瑞巴林的轻微致醉效果。",
+  "localizedName": "巴氯芬"
 }

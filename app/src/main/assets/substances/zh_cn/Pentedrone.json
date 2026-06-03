@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种强力 NDRI 型卡西酮兴奋剂，有“再来一点”的效应但并不特别令人愉悦。",
-  "localizedName": "Pentedrone",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种强效的NDRI卡西酮类兴奋剂，具有令人欲罢不能的效果，但被认为并非特别令人愉悦。",
+  "localizedName": "喷他酮"
 }

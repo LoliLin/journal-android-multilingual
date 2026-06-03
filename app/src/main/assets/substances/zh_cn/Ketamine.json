@@ -1,20 +1,23 @@
 {
-  "addictionPotential": "滥用潜力中等至高，长期使用可产生心理依赖。",
-  "toxicities": [],
-  "summary": "一种短效解离性麻醉剂和致幻剂，常用于急诊医学。是解离剂的代表性药物，在亚麻醉剂量下被广泛娱乐使用。小剂量类似酒精，较高剂量会使人失去行动能力并引发迷幻体验：所谓“K 洞”。",
-  "localizedName": "氯胺酮",
-  "effectsSummary": "At low doses: mild euphoria, dissociation, altered perception. At high doses: intense dissociative experience, out-of-body experiences, K-hole, loss of motor control.",
-  "dosageRemark": "Low doses are social and functional. Higher doses quickly lead to dissociation and immobility.",
-  "generalRisks": "Risk of accidents due to immobility and dissociation. Bladder and urinary tract damage with frequent use. Cognitive impairment.",
-  "longtermRisks": "Frequent use can cause severe bladder damage (ketamine bladder syndrome), cognitive impairment, and memory loss.",
-  "saferUse": [
-    "Lie down in a safe place if dissociating.",
-    "Have a sober sitter present for higher doses.",
-    "Avoid frequent use to protect bladder."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成"
+  },
+  "addictionPotential": "中等至较高的滥用潜力，长期使用会产生心理依赖",
+  "toxicities": [],
+  "summary": "一种短效的解离性麻醉剂和致幻剂，常用于急诊医学。它是典型的解离性药物，在亚麻醉剂量下被广泛用于娱乐用途。小剂量效果类似于酒精，而较大剂量则会导致身体无法动弹，并引发迷幻体验，即所谓的“K-Hole”。",
+  "effectsSummary": "氯胺酮作为致幻剂的效果强烈依赖于剂量：低剂量时，其具有类似酒精的抑制解除和放松作用；而高剂量则可诱发类似出神的状态，甚至产生灵魂出窍或濒死体验（K-Hole）。可能出现环境与身体感知的碎片化瓦解，思维中断，失重或漂浮感。感官知觉及时空感发生改变。高剂量下，可能产生与自身身体的分离、自我消解或与环境融合的现象。\n药效过后：嗜睡，对经历的回忆往往只能部分保留。",
+  "dosageRemark": "氯胺酮的剂量在很大程度上取决于预期效果。",
+  "generalRisks": "活动与交流可能受到严重限制。对疼痛部分或完全失去感知、协调障碍、虚弱感、食欲减退、恶心、呕吐、肌肉运动失调、头晕、言语含糊、脉搏与血压升高及心律不齐。高剂量时可出现肌肉僵硬、瘫痪及麻醉状态，极高剂量则可能引发癫痫发作与昏迷。  \n氯胺酮会对心血管系统造成负担。使用氯胺酮后的迷幻体验可能带来极大的心理压力。许多使用者报告出现濒死体验、噩梦般的幻觉、隧道视觉、意识丧失及短期记忆缺失。  \n短期内反复使用后，药效会显著减弱，并产生耐受性。  \n若静脉注射氯胺酮时间短于1.5分钟，可能导致长达一分钟的呼吸抑制。",
+  "longtermRisks": "氯胺酮可导致心理依赖症状。长期使用会损害肝脏和肾脏，并可能引发抑郁情绪和焦虑。即使小剂量使用，氯胺酮也可能引发负责记忆、学习和感知的大脑区域功能障碍。使用频率越高、单次剂量越大，这些紊乱症状就越令人担忧。",
+  "saferUse": [
+    "氯胺酮不是派对药物！切勿单独服用氯胺酮，并确保身处熟悉且舒适的环境。事后要留出充足时间，在平静中消化这段体验。",
+    "谨慎给药。剂量上的微小差异可能导致效果的显著不同，因此给药剂量难以把握。",
+    "定期暂停消费。",
+    "你需要一个可以坐下或躺下的地方，因为在高剂量下，很有可能会晕倒或昏厥。",
+    "由于对疼痛不敏感，你可能会在不知不觉中伤害自己。",
+    "不要在饱腹时服用氯胺酮。",
+    "避免混合使用。与酒精、苯二氮卓类药物或阿片类药物合用时，存在呼吸停止的风险！与兴奋剂（如可卡因）混合使用可能导致循环系统问题、心率加快和呼吸急促。",
+    "患有心血管疾病、高血压或青光眼的人绝对应避免使用氯胺酮！"
+  ],
+  "localizedName": "氯胺酮"
 }

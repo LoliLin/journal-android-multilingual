@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾。",
-  "toxicities": [
-    "高剂量可能致命。"
-  ],
-  "summary": "一种可待因衍生的阿片类药物，在美国以外较少听闻。作用通常温和，用作镇痛与止咳。偶有娱乐性使用。",
-  "localizedName": "氢可酮",
   "tolerance": {
     "full": "长期使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾",
+  "toxicities": [
+    "大剂量使用时可能致命"
+  ],
+  "summary": "一种可待因衍生的阿片类药物，在美国以外通常鲜为人知。其作用通常较为温和，用作镇痛药和止咳药。有时会被娱乐性使用。",
+  "localizedName": "氢可酮"
 }

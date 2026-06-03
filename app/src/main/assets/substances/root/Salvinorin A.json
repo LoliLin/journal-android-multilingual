@@ -8,10 +8,14 @@
     "Seer's Sage",
     "Sally"
   ],
-  "url": "https://psychonautwiki.org/wiki/Salvinorin_A",
+  "url": "https://psychonautwiki.org/wiki/Salvinorin%20A",
   "isApproved": true,
   "crossTolerances": [
     "hallucinogen"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "hallucinogen",
@@ -20,9 +24,10 @@
     "depressant",
     "common"
   ],
+  "summary": "A plant which, when smoked, causes short but very intense psychedelic experiences. It is considered physically safe, though users of high dosages often experience bizarre other-worldly scenarios which may be confusing or terrifying.",
   "roas": [
     {
-      "name": "smoked",
+      "name": "inhaled",
       "duration": {
         "onset": {
           "min": 15,

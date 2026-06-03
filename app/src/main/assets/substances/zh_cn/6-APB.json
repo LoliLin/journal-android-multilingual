@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种兴奋剂与共情剂，为 MDA 的类似物。通常比 MDMA 或 MDA 更偏视觉，并且起效更慢、持续更久。用户常报告更偏迷幻的精神状态。常作为 MDMA 和 MDA 的替代品出售。",
-  "localizedName": "6-APB",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3-4 周",
-    "zero": "6-8 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3-4周",
+    "zero": "6-8周",
+    "halfToleranceInHours": 588,
+    "zeroToleranceInHours": 1176
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种兴奋剂、共情剂，是MDA的类似物。通常比MDMA或MDA更具视觉效应，起效时间和持续时间也更长。使用者常报告其带来的精神空间也更具迷幻感。常作为MDMA和MDA的替代品出售。",
+  "localizedName": "6-APB"
 }

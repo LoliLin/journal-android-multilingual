@@ -9,10 +9,16 @@
   "tolerance": {
     "full": "with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dissociatives"
+  ],
+  "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
+  "toxicities": [
+    "toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -20,10 +26,11 @@
     "habit-forming",
     "tentative"
   ],
+  "summary": "3-MeO-PCP with a change of a ring replacement. Slightly more potent than 3-MeO-PCP.",
   "interactions": {
     "dangerous": [
       "Stimulants",
-      "Depressant"
+      "Depressants"
     ],
     "unsafe": [],
     "uncertain": []

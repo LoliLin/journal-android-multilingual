@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "長期使用會產生依賴性，且濫用潛力較低。",
+  "toxicities": [],
+  "summary": "小生物鹼，可視為咖啡因的結構修飾版本，具有類似的興奮作用。它與咖啡因同樣具有抗發炎與鎮痛效果。",
+  "localizedName": "茶氨酸"
 }

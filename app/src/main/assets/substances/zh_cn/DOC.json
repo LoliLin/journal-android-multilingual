@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种强效、作用持久的兴奋性迷幻剂，为苯乙胺和取代安非他明类。有时被当作 LSD 贩售，也有不少人因其自身特性而使用。通常卖成比 LSD 略大的吸墨纸，但也可粉末购买。",
-  "localizedName": "DOC",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种强效致幻剂，作用持久，属于苯乙胺和取代安非他命类物质。有时被当作LSD出售，但也因其自身特性受到许多人喜爱。通常以比LSD稍大的吸墨纸形式出售，但也可购买粉末形态。",
+  "localizedName": "文档"
 }

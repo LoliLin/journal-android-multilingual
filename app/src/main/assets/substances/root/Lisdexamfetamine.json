@@ -8,17 +8,18 @@
   "url": "https://psychonautwiki.org/wiki/Lisdexamfetamine",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "stimulant"
   ],
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -31,7 +32,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

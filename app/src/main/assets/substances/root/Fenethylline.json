@@ -1,0 +1,65 @@
+{
+  "name": "Fenethylline",
+  "commonNames": [
+    "Fenethylline",
+    "Captagon"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Fenethylline",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [],
+  "categories": [
+    "stimulant"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Tramadol",
+      "aMT",
+      "MAOIs"
+    ],
+    "unsafe": [
+      "DXM",
+      "PCP",
+      "25x-NBOMe",
+      "2C-T-x",
+      "5-MeO-xxT",
+      "DOx"
+    ],
+    "uncertain": [
+      "Alcohol",
+      "GHB",
+      "GBL",
+      "Opioids",
+      "Cocaine",
+      "THC",
+      "Caffeine",
+      "Ketamine",
+      "Methoxetamine",
+      "Psychedelics"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 40,
+        "strongMin": 100,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 90,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

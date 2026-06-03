@@ -8,12 +8,18 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "2 - 3 days",
-    "zero": "3-7 days"
+    "zero": "3-7 days",
+    "halfToleranceInHours": 60,
+    "zeroToleranceInHours": 120
   },
   "crossTolerances": [
     "dopamine",
     "serotonin|serotonergic",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -22,14 +28,15 @@
     "habit-forming",
     "tentative"
   ],
+  "summary": "A novel fluorinated amphetamine with serotonergic properties. Effects are similar to 4-FA, in that it provides slight dopamine and norepinephrine release or reuptake inhibition, as well as serotonin release and reuptake inhibition. Effects on the serotonin side are more pronounced than dopamine and norepinephrine, the latter two being almost negligibly.",
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -42,7 +49,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

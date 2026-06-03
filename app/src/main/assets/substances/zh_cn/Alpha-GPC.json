@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "极低毒性。"
-  ],
-  "localizedName": "Alpha-GPC",
   "tolerance": {
-    "full": "长期重复使用后",
-    "half": "7 天",
-    "zero": "14 天"
-  }
+    "full": "长期反复使用后",
+    "half": "7天",
+    "zero": "14天",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "极低毒性"
+  ],
+  "localizedName": "阿尔法-甘油磷酸胆碱"
 }

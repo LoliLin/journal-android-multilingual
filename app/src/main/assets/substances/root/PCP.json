@@ -17,29 +17,34 @@
   "tolerance": {
     "full": "with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dissociative|dissociatives"
   ],
+  "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
+  "toxicities": [],
   "categories": [
     "dissociative",
     "habit-forming"
   ],
+  "summary": "A strong dissociative drug.  PCP works primarily as an NMDA receptor antagonist. Also referred to as \"wet\" or \"angel dust\". Best known for stories of the strange and sometimes violent behaviour of those under its influence, though it is likely these are only in overdose cases.",
   "interactions": {
     "dangerous": [
       "2C-T-x",
       "ΑMT",
       "5-MeO-xxT",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
       "DOx",
-      "Substituted amphetamines",
+      "Amphetamines",
       "MDMA",
       "Cocaine",
       "Alcohol",
@@ -47,7 +52,7 @@
       "SSRIs"
     ],
     "uncertain": [
-      "Methoxetamine",
+      "MXE",
       "Caffeine",
       "Opioids"
     ]
@@ -138,7 +143,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 1,

@@ -10,6 +10,7 @@
   "crossTolerances": [
     "opioids"
   ],
+  "toxicities": [],
   "categories": [
     "opioid"
   ],

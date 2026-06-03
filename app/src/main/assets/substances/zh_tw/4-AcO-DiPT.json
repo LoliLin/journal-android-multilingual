@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種不常見的迷幻色胺，人類使用歷史短暫，亦稱為Ipracetin。可能由亞歷山大·舒爾金首次合成。有報告指出會引發嚴重噁心，其效果可與2c-b和蘑菇相提並論。",
+  "localizedName": "4-AcO-DiPT"
 }

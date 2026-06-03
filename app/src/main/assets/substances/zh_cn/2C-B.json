@@ -1,15 +1,21 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
+  "addictionPotential": "非成瘾性，滥用可能性低",
   "toxicities": [
-    "毒性剂量未知。"
+    "毒性剂量未知"
   ],
-  "summary": "一种苯乙胺家族中流行的迷幻剂。低剂量带来共情体验，高剂量产生强烈视觉与迷幻体验。作为派对药物常见，因为比多数迷幻剂更清醒。2C-B 自 1990 年代初开始使用。",
-  "localizedName": "2C-B",
-  "effectsSummary": "Perceptions and feelings become more intense. From 10-15 mg (snorted already from 5 mg) there may be visual hallucinations such as bright colors, geometric patterns, image distortions. At 20-25 mg the hallucinations become more intense and ego dissolution may be experienced. Doses above 25 mg often lead to a complete loss of self.",
-  "dosageRemark": "2C-B is effective even in small doses; a gradual approach to the individual dose is recommended.",
-  "generalRisks": "The pupils dilate, blood pressure rises and nausea, sweating and dizziness may occur. The body temperature rises; overheating must be avoided.",
-  "longtermRisks": "There are no research results on long-term risks so far.",
+  "summary": "苯乙胺类中一种流行的致幻剂。低剂量时产生共情体验，高剂量时引发强烈的视觉与致幻效应。因其相较多数致幻剂能保持更清晰的头脑，常被用作派对药物。2C-B自20世纪90年代初开始被使用。",
+  "effectsSummary": "感知和感受变得更加剧烈。从10-15毫克（鼻吸剂量从7毫克起），效果通常带有致幻特性。内外界限可能消融。常能观察到物体和人物周围移动的彩色图案及发光区域。不过，这种迷醉感被认为不如LSD那般深刻。",
+  "dosageRemark": "2C-B即使在小剂量下也有效；建议逐步确定个人剂量。在12至24毫克的范围内，每增加2毫克都可能导致反应显著增强或改变。即使对于有经验的用户，超过35毫克的剂量也可能带来令人不适的强烈体验。",
+  "generalRisks": "瞳孔放大，血压升高，可能出现恶心、出汗和头晕。部分使用者反映出现肠胃问题，以及轻微过敏反应（如因黏液分泌增多引发的咳嗽）。在心理层面，可能出现定向障碍、意识混乱、焦虑感，甚至对死亡的恐惧等风险。",
+  "longtermRisks": "目前尚无关于长期风险的研究结果。",
   "saferUse": [
-    "2C-B seems very setting-dependent and is only suitable for parties to a limited extent."
-  ]
+    "2C-B似乎非常依赖于环境，仅在一定程度上适合派对场合。",
+    "注意环境与心态：仅在感到舒适和安全的地方使用2C-B。若对药物心存恐惧，请勿使用。",
+    "切勿单独服用2C-B，仅在你身心状态良好且充分休息时使用。",
+    "不要添加更多，小心剂量。",
+    "旅途中要喝足够的水。",
+    "在吸食时请遵循更安全的吸食规则。注意，2C-B在鼻腔中会引起剧烈灼痛！",
+    "患有心血管疾病和糖尿病的人群在服用2C-B时风险会增加。"
+  ],
+  "localizedName": "2C-B"
 }

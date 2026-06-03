@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "after ingestion over the couse of multiple days",
+    "half": "3-5 days",
+    "zero": "7-10 days",
+    "halfToleranceInHours": 96,
+    "zeroToleranceInHours": 204
+  },
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "toxic dose is unknown"

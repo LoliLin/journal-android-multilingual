@@ -1,0 +1,25 @@
+{
+  "name": "Meclofenoxate",
+  "commonNames": [],
+  "url": "https://psychonautwiki.org/wiki/Meclofenoxate",
+  "isApproved": true,
+  "crossTolerances": [],
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 400,
+        "strongMin": 800,
+        "heavyMin": 600
+      }
+    }
+  ]
+}

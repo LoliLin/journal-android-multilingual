@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "轻度成瘾。",
-  "toxicities": [
-    "治疗指数大，安全范围宽。"
-  ],
-  "summary": "一种三环类抗抑郁药，其药理特性较为独特，例如可能间接作用于 NMDA/AMPA，并作为 μ-阿片受体完全激动剂。滥用较少见，但在少数国家已有使用。",
-  "localizedName": "Tianeptine",
   "tolerance": {
     "full": "长期使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "轻度上瘾",
+  "toxicities": [
+    "较大的治疗指数和安全范围"
+  ],
+  "summary": "一种三环类抗抑郁药，其药理特性与同类药物相比相当独特。例如，它可能对NMDA/AMPA受体产生间接作用，并且是μ-阿片受体的完全激动剂。尽管这种物质的滥用并不常见，但在少数国家已有相关报道。",
+  "localizedName": "替安乃近"
 }

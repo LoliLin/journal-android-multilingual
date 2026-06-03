@@ -13,19 +13,26 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzhydryl",
     "nootropic|nootropics"
   ],
+  "addictionPotential": "not addictive with a low potential for abuse",
+  "toxicities": [
+    "The median lethal dose at which 50% of participants die (LD50) from modafinil for human beings has never been reached"
+  ],
   "categories": [
-    "eugeroic",
     "stimulant",
+    "eugeroic",
     "habit-forming",
     "nootropic",
     "common"
   ],
+  "summary": "A wakefulness promoting, long acting stimulant which is typically only used functionally, because there is no real euphoric component to its effects. Also prescribed for daytime sleeping disorders.",
   "effectsSummary": "The mechanism of action of modafinil is not yet fully understood. It is assumed that modafinil binds to the dopamine transporter and inhibits dopamine reuptake. Unlike other stimulants such as amphetamine or methylphenidate (Ritalin®, Concerta®), which in equivalent wakefulness-promoting doses increase neuronal activity throughout the brain, modafinil acts primarily on the brain regions responsible for controlling waking, sleep, wakefulness and vigilance (sustained attention).\nModafinil thus promotes alertness (physical and mental), increases attention and motor activity. Due to its stimulating, wakefulness-promoting properties, modafinil is consumed by healthy people as a so-called \"smart drug\" or \"cognitive enhancer\".According to user reports, modafinil has a much more subtle effect than other stimulants and does not trigger comparable states of intoxication. Modafinil causes less physical restlessness and the sleep-wake rhythm is less disturbed.\nA mood-lifting and euphoric effect is controversial. According to a publication of the American Food and Drug Administration (FDA), modafinil causes psychoactive and euphoric effects, whereas various studies point to the lack of a euphoric effect.",
   "dosageRemark": "The recommended daily dose when prescribed by a doctor is 200 mg at the beginning. If there is an insufficient response to this dose, a maximum daily dose of 400 mg may be administered/taken.\nThe long-term effect of modafinil when taken regularly and over a longer period of time has not yet been studied. If taken over a longer period of time, regular monitoring by a medical specialist is therefore recommended.",
   "generalRisks": "In 2011, the European Medicines Agency (EMA) recommended limiting the marketing authorisation for modafinil to the treatment of adults with excessive sleepiness associated with narcolepsy. Due to the possible risks and side effects, modafinil has since not been approved for other indications, for the treatment of children and adolescents, and during pregnancy and breastfeeding.\nThe following side effects may occur: Headache, nervousness, palpitations, abdominal pain and/or dry mouth. In addition, modafinil can impair the effectiveness of oral contraceptives! Therefore, the use of additional contraceptive methods is recommended during intake. Further risks are cardiovascular diseases such as cardiac arrhythmias, diseases of the heart muscles, cardiac insufficiency and/or high blood pressure. Furthermore, the consumption of modafinil can have an effect on the psyche and trigger hostility, aggression ,psychoses/psychotic disorders, depression, insomnia, up to delusions and/or anxiety.\nSymptoms of overdose with modafinil alone or in combination with other medicines: Insomnia; central nervous symptoms (restlessness, disorientation, confusion, agitation, hallucinations); nausea, diarrhoea; palpitations, high blood pressure, chest pain, slow heartbeat.",
@@ -44,18 +51,18 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "Hormonal Birth Control",
       "CYP2C19-substrates"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

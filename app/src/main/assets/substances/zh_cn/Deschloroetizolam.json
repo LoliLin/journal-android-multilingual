@@ -1,13 +1,14 @@
 {
-  "addictionPotential": "高度生理和心理成瘾。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精或阿片等抑制剂混用可能致命。"
-  ],
-  "summary": "一种噻吡二氮卓，接近其母体化合物依替唑仑，但效力明显更弱且持续更久。",
-  "localizedName": "Deschloroetizolam",
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极度生理和心理上瘾",
+  "toxicities": [
+    "低毒性",
+    "与酒精或阿片类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "一种噻吩并二氮杂卓类药物，与其母体化合物依替唑仑结构相近，但药效显著较弱且作用时间更长。",
+  "localizedName": "去氯依替唑仑"
 }

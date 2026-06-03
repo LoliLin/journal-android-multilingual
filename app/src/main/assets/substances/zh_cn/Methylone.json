@@ -1,21 +1,23 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "βk-MDMA 是卡西酮类兴奋剂与共情剂，结构与 MDMA 相似，但更具刺激性且共情性较弱。在 2013 年被禁之前常在街头被误售为 MDMA。Marquis 试剂可区分 βk-MDMA 与 MDMA。效力低于 MDMA，持续时间略短。",
-  "localizedName": "Methylone",
-  "effectsSummary": "Methylone is a stimulant and entactogen with effects similar to MDMA but shorter duration. Euphoria, increased empathy, enhanced sensory perception.",
-  "generalRisks": "Increased heart rate, sweating, jaw clenching. Potential for serotonin syndrome. Overheating risk.",
-  "saferUse": [
-    "保持水分并注意体温。",
-    "不要频繁使用。",
-    "从低剂量开始。",
-    "避免与其他药物混合使用。"
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
+    "full": "长期反复使用后形成",
     "half": "1 - 3 周",
-    "zero": "3 - 6 周"
-  }
+    "zero": "3 - 6周",
+    "halfToleranceInHours": 336,
+    "zeroToleranceInHours": 756
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "βk-MDMA是一种卡西酮类兴奋剂和共情剂，其结构与MDMA相似，但相比之下刺激性更强、共情作用较弱。在2013年被禁止之前，它常在街头被误当作MDMA出售。马奎斯试剂可以区分βk-MDMA与MDMA。其效力低于MDMA，作用持续时间也稍短。",
+  "effectsSummary": "与MDMA相比，亚甲基二氧吡咯戊酮具有更强的刺激作用和较弱的共情效应。其效果更为稳定，且\"宿醉感\"比MDMA更轻微。",
+  "generalRisks": "短期副作用包括体温和心跳加快、瞳孔扩大以及下颌紧绷。亚甲二氧基甲基卡西酮的副作用及（长期）风险尚未得到充分研究。",
+  "saferUse": [
+    "避免再次抛掷：这不会增强或延长甲氧麻黄酮的闪光效果。",
+    "在药效期间务必饮用足够的水。",
+    "不要将甲氧麻黄酮与酒精和其他药物混合使用，尤其是单胺氧化酶抑制剂。",
+    "如果您有心脏或循环系统问题、高血压、糖尿病、哮喘、癫痫或心理健康问题，请勿使用甲氧麻黄酮。"
+  ],
+  "localizedName": "亚甲二氧基甲基卡西酮"
 }

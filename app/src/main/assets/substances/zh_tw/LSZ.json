@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種與LSD非常相似的麥角醯胺，通常僅能透過其較短的持續時間來區分，儘管一些主觀報告指出它可能稍微更具內省性，且稍微不那麼令人困惑。",
+  "localizedName": "LSZ"
 }

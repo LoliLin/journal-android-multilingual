@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种与 PCP 相关的芳基环己胺类解离性麻醉剂。1960 年代由 Parke-Davis 首次发现，2008 年进入 RC 市场。据称效力低于 PCP。并不常见，但因其他解离剂难以获得而略有流行。",
-  "localizedName": "4-MeO-PCP",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种与PCP相关的芳基环己胺类解离性麻醉剂。最初于20世纪60年代由帕克-戴维斯公司发现，2008年进入研究化学品市场。据报道其效力低于PCP。虽然不常见，但随着其他解离性药物的短缺，其受欢迎程度有所上升。",
+  "localizedName": "4-甲氧基苯环利定"
 }

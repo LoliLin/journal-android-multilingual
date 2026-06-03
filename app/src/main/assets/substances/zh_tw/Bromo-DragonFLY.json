@@ -1,7 +1,17 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "6 天",
-    "zero": "14 天"
-  }
+    "zero": "14 天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "極端的血管收縮作用",
+    "若未正確測量此物質，很容易導致用藥過量。",
+    "毒性劑量未知"
+  ],
+  "summary": "一種強效且持續時間長的迷幻苯乙胺和苯並呋喃。曾在2005/2006年間短暫以「2C-B-FLY」之名販售，並導致多起死亡案例。",
+  "localizedName": "溴-龍蠅"
 }

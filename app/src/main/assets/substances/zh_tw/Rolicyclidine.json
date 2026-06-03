@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "長期重複使用",
+    "full": "長期且重複使用",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾性，且具有引發精神異常等不良副作用的極高風險。",
+  "toxicities": [],
+  "summary": "Rolicyclidine，也稱為PCPy，是一種具有類似PCP效果的解離劑。雖然這種解離性麻醉劑具有致幻和鎮靜作用，但據說其刺激性遠低於PCP。從這個意義上來說，它更類似於鴉片類藥物或其他中樞神經抑制劑。",
+  "localizedName": "羅利環利定"
 }

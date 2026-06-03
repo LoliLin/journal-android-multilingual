@@ -8,19 +8,26 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "racetam",
     "nootropic"
   ],
+  "addictionPotential": "not addictive with a low potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "categories": [
     "nootropic",
     "research-chemical"
   ],
+  "summary": "A nootropic drug of the racetam class, originally developed to treat Alzheimer's disease, it is currently being investigated as a treatment for major depressive disorder and generalised anxiety disorder. May be a modulator of the AMPA receptor. Limited recreational value.",
   "interactions": {
     "dangerous": [
-      "Depressant",
+      "Depressants",
       "Dissociatives"
     ],
     "unsafe": [],

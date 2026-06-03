@@ -1,25 +1,26 @@
 {
-  "addictionPotential": "高度生理成瘾，心理成瘾中等至高度。",
-  "toxicities": [],
-  "summary": "一种 GHB 前药，吸收快，起效更快且持续更短。用法类似 GHB，作为较低毒性的酒精替代品。应慢慢服用而非“吞一口”，可显著提高安全性并降低过量风险。",
-  "localizedName": "GBL",
-  "effectsSummary": "GBL is a prodrug of GHB with similar effects: euphoria, disinhibition, increased libido, sedation. Faster onset and more potent than GHB.",
-  "dosageRemark": "GBL is approximately twice as potent as GHB. The difference between a recreational dose and overdose is very small.",
-  "generalRisks": "Very narrow safety margin. Overdose causes vomiting, unconsciousness, respiratory depression, death. Mixing with alcohol is extremely dangerous.",
-  "longtermRisks": "Dependence develops quickly. Withdrawal can be severe and life-threatening, requiring medical detox.",
-  "saferUse": [
-    "用注射器精确测量剂量。",
-    "切勿与酒精或其他抑制剂同用。",
-    "第一次剂量后至少 3-4 小时内不要重复使用。",
-    "不要单独使用。",
-    "从小剂量开始。",
-    "注意：GBL 起效非常快。",
-    "GBL 比 GHB 的效力强约两倍，注意剂量换算。",
-    "避免与酒精或任何其他抑制剂同用。",
-    "不要每天使用以避免依赖。"
-  ],
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度生理成瘾性及中度至高度心理成瘾性",
+  "toxicities": [],
+  "summary": "一种γ-羟基丁酸（GHB）的前体药物，因其快速吸收特性而具有更快的起效时间和更短的持续时间。其使用方式与GHB类似，作为酒精的低毒性替代品。建议缓慢摄入而非\"一口闷\"，以大幅提升安全性并降低过量风险。",
+  "effectsSummary": "该效应具有极强的剂量依赖性，且个体差异显著。同时，其作用强度还取决于物质的纯度。效应谱系涵盖从欣快感、放松、去抑制、感知增强、言语冲动（喋喋不休）、轻微眩晕与嗜睡，直至深度（类昏迷）睡眠或意识丧失。",
+  "dosageRemark": "剂量取决于稀释程度，且GBL比GHB更为微妙，因为不同人体将GBL转化为GHB的速率和数量并不相同。GBL是一种强酸，会腐蚀黏膜，饮用前必须用非酒精饮料大量稀释！如有疑问：少即是多！",
+  "generalRisks": "剂量越高，恶心、呕吐和头晕的发生概率就越大。极高剂量下可能出现头痛、意识混乱、呼吸困难、心律失常、平衡与记忆受损，以及无法控制的肌肉抽搐——这种抽搐极易被误认为癫痫，但也可能进一步发展为癫痫。\n\n使用GBL时意外过量的风险极高——即便未与其他物质混合！GBL过量的症状包括：严重嗜睡，随后进入数小时无法唤醒或极难唤醒的深度睡眠（期间可能短暂清醒，即\"站立者症状\"）；轻度至重度恶心、呕吐、头晕、头痛、肌肉无力（几乎无法站立）直至完全无法活动、意识丧失、反射消失及呼吸困难。使用者究竟是处于深度睡眠还是已陷入昏迷，往往难以判断——如有疑虑，务必立即就医！",
+  "longtermRisks": "长期使用GBL可能导致睡眠障碍、焦虑和震颤；存在产生心理和生理依赖症状的风险。若长期高剂量服用（每日多次），停药时会出现严重的生理戒断症状，如出汗、肌肉痉挛或癫痫发作。",
+  "saferUse": [
+    "如果有人向你提供GBL，请询问该物质的来源和剂量。",
+    "GBL的剂量应低于GHB！要达到相同的效果，所需的GBL剂量约为GHB的一半。",
+    "小心剂量！如果GBL尚未（或未完全）起效，最好等待2小时，切勿立即追加剂量。过量使用往往源于重复加量。请使用胰岛素注射器或刻度滴管，以便精确测量单次用量。记录上次服药时间。",
+    "避免在独处时使用GBL。",
+    "使用GBL时，请避免任何形式的混合饮用，尤其是与酒精同服！饮用前请稀释液体，例如用茶水稀释。",
+    "使用GBL时进行性行为，请遵守安全性行为规范。在服用前准备好安全套等防护用品。",
+    "癫痫、心脏或肾功能不全者在任何情况下均不得摄入GBL！",
+    "GBL戒断应在医疗监督下进行。",
+    "切勿让饮品离开视线，以防他人将GBL混入其中。若饮品味道异常，请立即倒掉以确保自身安全。"
+  ],
+  "localizedName": "GBL"
 }

@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "高度成瘾且有较高不良副作用风险，如精神病。",
-  "toxicities": [],
-  "summary": "一种强效解离剂。PCP 主要为 NMDA 受体拮抗剂，也称“wet”或“天使粉”。以服用者出现怪异甚至暴力行为的故事闻名，但这可能多发生在过量情况下。",
-  "localizedName": "PCP",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
+  "toxicities": [],
+  "summary": "一种强效的分离性药物。PCP主要作为NMDA受体拮抗剂发挥作用。也被称为\"湿\"或\"天使尘\"。虽然关于其影响下的人出现怪异甚至暴力行为的传闻最为人所知，但这些情况很可能只发生在过量服用时。",
+  "localizedName": "PCP"
 }

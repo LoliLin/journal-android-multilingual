@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "尝试该药物未被归因于负面健康影响。"
-  ],
-  "summary": "一种非常少见的迷幻兴奋剂与苯乙胺类、麦司卡林类似物，效应相近。按重量约为麦司卡林的 5-7 倍强。",
-  "localizedName": "Proscaline",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "尝试这种药物不会对健康产生负面影响"
+  ],
+  "summary": "一种非常罕见的致幻兴奋剂，属于苯乙胺类化合物，与麦斯卡林结构类似且效果相近。按重量计算，其效力约为麦斯卡林的5至7倍。",
+  "localizedName": "丙斯卡林"
 }

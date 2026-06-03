@@ -1,0 +1,15 @@
+{
+  "tolerance": {
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [
+    "相对于剂量而言毒性极低"
+  ],
+  "summary": "1B-LSD（1-丁酰基麦角酸二乙酰胺）是一种LSD类似物，其效力与1P-LSD相当（略强于LSD），作用持续时间略短于LSD，同样被认为与1P-LSD相近。该物质于2018年底推出，并被积极推广作为1P-LSD的替代品。目前1B-LSD的安全性尚未得到明确验证。",
+  "localizedName": "1B-LSD"
+}

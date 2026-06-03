@@ -10,13 +10,18 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
+  "addictionPotential": "produces dependence with chronic use and has a low abuse potential",
+  "toxicities": [],
   "categories": [
     "stimulant",
     "nootropic"
   ],
+  "summary": "Small alkaloid which can be seen as a structurally modified version of caffeine, with similar stimulating effects. It also shares anti-inflammatory and analgesic effects with caffeine.",
   "roas": [
     {
       "name": "insufflated",

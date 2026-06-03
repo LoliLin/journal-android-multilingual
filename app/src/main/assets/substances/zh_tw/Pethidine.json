@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "極具成癮性且具有高度濫用潛力",
+  "toxicities": [
+    "高毒性",
+    "與抑制劑（如酒精或苯二氮平類藥物）混合使用時可能致命"
+  ],
+  "summary": "一種苯基哌啶類鴉片類藥物，由奧托·艾斯勒布於1939年首次合成，更廣為人知的名稱為美佩里啶（meperidine）和佩替啶（pethidine）。作為一種鎮痛劑，曾廣泛被處方使用，但由於發現其有毒代謝物——去甲佩替啶（norpethidine），使用量已逐漸減少。此外，它與多種藥物會產生危險的交互作用。",
+  "localizedName": "配西汀"
 }

@@ -1,12 +1,17 @@
 {
   "toxicities": [],
-  "localizedName": "Poppers",
-  "effectsSummary": "Muscle relaxation, drop in blood pressure, increase in heart rate, euphoria, dizziness, warmth, increased libido.",
-  "generalRisks": "Headache, dizziness, palpitations, loss of consciousness, fainting, fall in blood pressure, methemoglobinemia.",
-  "longtermRisks": "With regular use, permanent impairment of attention and memory, vision damage, and methemoglobinemia.",
+  "effectsSummary": "肌肉松弛、血压下降、心率加快、温热或发热感、短期痛觉迟钝、欣快感以及性高潮增强。",
+  "generalRisks": "头痛、头晕、心悸、意识丧失、昏厥以及因血压严重下降导致的循环衰竭。",
+  "longtermRisks": "长期使用会导致注意力和记忆力的永久性损伤，反应时间减慢，心律失常，肝肾功能障碍，以及神经和大脑损伤。",
   "saferUse": [
-    "Do not consume poppers alone.",
-    "Do not mix poppers with alcohol or other drugs.",
-    "Avoid getting poppers on skin as it can cause burns."
-  ]
+    "请勿单独使用吸入剂。",
+    "不要立即添加更多（有循环衰竭的危险！）。",
+    "避免混合摄入任何物质，尤其是与酒精同服。",
+    "遵守安全性行为规则。切勿将亚硝酸酯类兴奋剂与万艾可同时使用（存在心力衰竭风险，危及生命！）。",
+    "患有呼吸系统疾病和心血管疾病的人、癫痫患者以及孕妇不应使用吸入剂。",
+    "切勿吞服！饮用波普尔可能导致严重过量，进而引发致命性缺氧（高铁血红蛋白血症）——请立即联系毒物控制中心！",
+    "亚硝酸酯类物质接触眼睛和黏膜会产生刺激。请立即用大量清水冲洗并就医！",
+    "警告：眼睛损伤！避免使用含有活性成分（异）亚硝酸丙酯的吸入剂，该成分被怀疑会导致部分不可逆的视觉障碍。活性成分亚硝酸戊酯似乎不会造成此类损伤。目前部分网店已列出成分信息。"
+  ],
+  "localizedName": "波普斯"
 }

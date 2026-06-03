@@ -1,19 +1,27 @@
 {
-  "addictionPotential": "极易成瘾且具有高滥用潜力。",
-  "toxicities": [],
-  "summary": "一种相当常见且非常强的中枢兴奋剂。有时以 desoxyn 形式用于治疗 ADHD 与重度肥胖。低剂量可提升情绪、警觉、注意力与能量并降低食欲；高剂量可导致躁狂、精神病与肌肉退化等问题。耐受者往往报告比新手高得多的剂量。",
-  "localizedName": "甲基苯丙胺",
-  "effectsSummary": "Intense euphoria, increased energy and focus, decreased appetite, increased libido, agitation, paranoia, insomnia.",
-  "generalRisks": "Severe dental problems (meth mouth), extreme weight loss, skin sores, paranoia, psychosis, high addiction potential, stroke risk.",
-  "longtermRisks": "Chronic use causes severe cognitive impairment, psychiatric disorders including psychosis, cardiovascular disease, severe dental decay, and malnutrition.",
-  "saferUse": [
-    "Start with a very low dose.",
-    "Stay hydrated and eat regularly.",
-    "Avoid daily use to prevent addiction."
-  ],
   "tolerance": {
-    "full": "长期重复使用后迅速发展",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后会迅速产生依赖性",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极易上瘾，具有很高的滥用潜力",
+  "toxicities": [],
+  "summary": "一种相当常见且作用极强的中枢神经系统兴奋剂。有时会以地索芬的形式被用于治疗注意力缺陷多动症和严重肥胖症。低剂量下，甲基苯丙胺能提升情绪、增强警觉性、提高注意力、增加精力并抑制食欲。高剂量时，则可能引发躁狂、精神错乱、肌肉退化等问题。耐受性使用者报告的剂量可能远高于新使用者。",
+  "effectsSummary": "人体自身的“性能药物”去甲肾上腺素被释放，同时多巴胺的释放会提升自尊心。由于甲基苯丙胺比苯丙胺更快到达大脑，且刺激作用更强，因此它产生的快感更强烈，成瘾性也高于苯丙胺。体温升高，脉搏和呼吸加快，血压上升。饥饿感和睡眠需求被抑制。冒险意愿增强，痛觉被抑制，可能出现欣快感、极度紧张以及强烈的说话冲动（“喋喋闪光”）。甲基苯丙胺具有提升快感和解除抑制的作用，因此也被用作性药。",
+  "generalRisks": "甲基苯丙胺有时很难与苯丙胺区分，但其效果要强烈得多。短期副作用包括：下颌肌肉紧张、口干、体温升高、大量体液流失、心率加快、血压升高以及全身颤抖。还可能出现易怒和攻击性行为（尤其是与酒精混合使用时）。",
+  "longtermRisks": "甲基苯丙胺是一种高度消耗性物质，具有极强的依赖性潜力，会引发心理和生理症状。规律使用期间的特征表现为攻击性、抑郁、情感冷漠以及对药物的持续渴求。可能出现持续性烦躁不安、睡眠与循环系统紊乱、妄想症甚至苯丙胺精神病。体重下降、皮肤炎症（俗称\"冰毒痘\"）、牙齿脱落、胃部问题及痉挛也时有发生。女性使用者可能出现月经周期紊乱。鼻吸方式会损伤鼻黏膜和鼻中隔，口服则会损害胃黏膜。长期使用易诱发脑出血和突发性瘫痪的中风。有证据表明，甲基苯丙胺的使用（尤其是与MDMA混合使用）可能导致大脑出现不可逆的改变或损伤！",
+  "saferUse": [
+    "剂量低时，甲基苯丙胺是一种效力极强的物质！",
+    "经常服用维生素C和D以及矿物质（铁、钙和镁）。",
+    "消费后要吃饱，以防体重减轻。",
+    "大量饮用（软饮料）。",
+    "遵循更安全的吸食和性行为规则。",
+    "避免混合使用。确保在服用期间适当休息。",
+    "精神病患者、高血压患者、肝肾疾病患者、糖尿病患者及孕妇不应使用甲基苯丙胺。",
+    "最好不要戴头饰（有过热风险！）。",
+    "请将你的物质送到药物检测点进行分析。"
+  ],
+  "localizedName": "甲基苯丙胺"
 }

@@ -10,40 +10,48 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "high toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines",
+    "known to cause potentially fatal heart arrhythmias"
   ],
   "categories": [
     "opioid",
     "depressant",
     "habit-forming"
   ],
+  "summary": "An opioid analgesic that is an optical isomer of levopropoxyphene. Used to treat mild pain and often used for its antitussive properties. It has been taken off the market in Europe and US due to concerns of health issues relating to the Kidney, Liver, Heart and Respiratory Disorders. Just a bit stronger than Tramadol.",
   "interactions": {
     "dangerous": [
       "SNRIs",
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit",
-      "MAOI",
+      "MAOIs",
       "Serotonin releasers",
       "SSRIs",
-      "5-Hydroxytryptophan"
+      "5-HTP"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [

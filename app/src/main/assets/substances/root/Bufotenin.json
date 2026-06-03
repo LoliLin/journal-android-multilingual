@@ -9,9 +9,15 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "1 hour",
-    "zero": "2 hours"
+    "zero": "2 hours",
+    "halfToleranceInHours": 1,
+    "zeroToleranceInHours": 2
   },
   "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "categories": [
     "psychedelic"
   ],
@@ -23,13 +29,13 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },
   "roas": [
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 2,
@@ -40,7 +46,12 @@
       "duration": {
         "onset": {
           "min": 15,
-          "max": 60,
+          "max": 30,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
           "units": "seconds"
         },
         "peak": {

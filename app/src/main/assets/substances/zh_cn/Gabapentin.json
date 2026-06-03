@@ -1,11 +1,12 @@
 {
-  "toxicities": [
-    "低毒性。"
-  ],
-  "summary": "一种 GABA 类似物，也称 Neurontin，最初用于治疗癫痫。常用于神经病理性疼痛，同时具有显著的抗焦虑作用。",
-  "localizedName": "加巴喷丁",
   "tolerance": {
-    "full": "长期持续使用",
-    "zero": "7-14 天"
-  }
+    "full": "长期连续使用",
+    "zero": "7-14天",
+    "zeroToleranceInHours": 252
+  },
+  "toxicities": [
+    "低毒性"
+  ],
+  "summary": "一种GABA类似物，也称为加巴喷丁，最初用于治疗癫痫。常用于治疗神经性疼痛，同时具有显著的抗焦虑作用，因此也被用于治疗焦虑症。",
+  "localizedName": "加巴喷丁"
 }

@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "5-甲氧基二异丙基色胺，也称“foxy”，是一种与 DMT 相关的迷幻色胺，会扭曲视觉和听觉感知。据报道在高剂量下有明显的身体负荷，其作用与同类药物相似。",
-  "localizedName": "5-MeO-DiPT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "5-甲氧基二异丙基色胺，又称“狐狸”，是一种与DMT相关的致幻色胺，会扭曲视觉和听觉感知。据报道，高剂量使用时身体负担较重，其作用方式与其他同类药物相似。",
+  "localizedName": "5-甲氧基二异丙基色胺"
 }

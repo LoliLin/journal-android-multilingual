@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种具有一定共情特性的兴奋剂，为甲基苯丙胺类似物，效应相近。据称效力不如 2-FMA 及相关化合物。其药理效应知之甚少。不要与 4-FA 混淆，尽管效力相近，但作用谱不同。",
-  "localizedName": "4-FMA",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种具有部分致幻作用的兴奋剂，是甲基苯丙胺的类似物，效果相似。据报道其效力低于2-FMA及相关化合物。目前对该化合物的药理作用知之甚少。请勿与4-FA混淆，后者尽管效力相似，但作用特征不同。",
+  "localizedName": "4-FMA"
 }

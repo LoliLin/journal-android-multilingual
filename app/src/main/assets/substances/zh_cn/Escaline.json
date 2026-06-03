@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "该不常见药物于 50 年代合成，90 年代由 David Nichols 重新研究。为麦司卡林的类似物，效力约为其 6 倍，因此是强效苯乙胺类迷幻剂。主观效应可能包括刺激与幻觉。",
-  "localizedName": "Escaline",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "这种不常见的药物最初于50年代合成，在90年代由大卫·尼科尔斯重新研究。它是麦斯卡林的类似物，效力约为其六倍，因此是一种强效的致幻性苯乙胺。主观效果可能包括兴奋和幻觉。",
+  "localizedName": "埃斯卡林"
 }

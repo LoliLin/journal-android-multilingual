@@ -1,22 +1,23 @@
 {
-  "addictionPotential": "高度生理和心理成瘾。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精或阿片等抑制剂混用可能致命。"
-  ],
-  "summary": "一种非常常见且广泛处方的苯二氮卓，具有催眠和镇静作用，是其他苯二氮卓的衡量基准。过量可导致失忆和抑制解除。与其他苯二氮卓相比半衰期较长。",
-  "localizedName": "地西泮",
-  "effectsSummary": "Diazepam has a calming, relaxing, antispasmodic, anti-anxiety and sleep-inducing effect. Taking benzodiazepines increases the effectiveness of the neurotransmitter GABA.",
-  "generalRisks": "There is little information available on risks, toxicity, side effects and long-term consequences. When mixing with other downers (alcohol, opioids, etc.) there is a risk of respiratory depression.",
-  "longtermRisks": "Regular and long-term use can lead to psychological and physical dependence. Immediate discontinuation after prolonged use can lead to negative withdrawal symptoms including anxiety, insomnia, and seizures.",
-  "saferUse": [
-    "如果在黑市或网上购买药物而非从药房/医疗机构获取，实际成分可能与标识不同。",
-    "不要依赖定期使用苯二氮䓬类药物的同事提供的剂量信息。",
-    "伪造品的包装可能与原装完全相同。",
-    "同时使用酒精、氯胺酮、GHB/GBL、笑气、阿片类和/或其他抑制剂会显著增加呼吸抑制风险。"
-  ],
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7-14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7-14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极度生理和心理上瘾",
+  "toxicities": [
+    "低毒性",
+    "与酒精或阿片类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "一种非常常见且广泛处方的苯二氮䓬类药物，具有催眠和镇静特性。它是其他苯二氮䓬类药物的比较基准。过量使用可能导致失忆和抑制力下降。与其他苯二氮䓬类药物相比，其半衰期相对较长。",
+  "effectsSummary": "地西泮具有镇静、放松、解痉、抗焦虑和诱导睡眠的作用。\n\n服用苯二氮卓类药物可增强神经递质γ-氨基丁酸（GABA）在GABA-A受体上的作用效率。这会在体内引发镇静（安定）、催眠、抗焦虑（缓解焦虑）、抗惊厥（抑制抽搐）和肌肉松弛等效果。苯二氮卓类药物对中枢神经系统具有抑制作用。大脑细胞（神经元）之间的信息流动因此被减弱/干扰，从而抑制了感知与情绪反应。\n\n苯二氮卓类药物中不同活性成分在体内的分解过程具有年龄依赖性，因此因人而异。",
+  "generalRisks": "关于风险、毒性、副作用及长期影响的信息十分有限。因此，苯二氮䓬类药物的通用信息如下：\n与其他镇静剂（酒精、GHB/GBL、海洛因）混合使用时，存在呼吸麻痹的风险！\n服用苯二氮䓬类药物可能引发多种不良副作用。此外，长期规律使用会导致极高的生理和心理依赖风险。此类药物仅应在医生处方下短期服用（最长4-6周）。如需长期使用，应与主治医生充分沟通。不同苯二氮䓬类药物的剂量和药效持续时间差异显著。\n苯二氮䓬类药物的副作用可能包括：持续疲劳、胃肠道问题、反应能力受损、过敏反应、头痛、头晕、运动障碍、视力模糊、呼吸减缓、肌肉无力、意识混乱、性功能障碍、攻击行为、暴怒、烦躁不安、无意识动作、过敏、皮肤问题/皮疹以及语言和运动障碍。部分苯二氮䓬类药物可能诱发癫痫患者的癫痫发作。",
+  "longtermRisks": "长期规律使用可导致心理和生理依赖（依赖性极高）。长期用药后突然停药可能引发戒断症状（包括头晕、身体虚弱、内心不安、震颤、睡眠障碍、头痛、出汗、恶心、幻觉及抑郁）。此外，可能出现癫痫发作、记忆障碍/丧失及精神萎靡（宿醉效应）。若存在依赖风险，应事先与医生商讨戒断方案，并在医疗监护下进行戒断。逐步减少剂量至关重要。",
+  "saferUse": [
+    "如果药品是通过黑市或互联网获取，而非来自药房或医疗机构，其成分则不明。请通过药物检测来查明药品的确切成分！",
+    "不要依赖经常使用苯二氮䓬类药物的同事提供的剂量信息。由于习惯或依赖，他们的剂量可能远高于常人，对初次使用者而言可能是致命的。",
+    "假冒品的泡罩包装可能与原装包装看起来一模一样。",
+    "同时摄入酒精、氯胺酮、GHB/GBL、一氧化二氮、阿片类药物和/或其他苯二氮卓类等抑制性物质是危险的，因为这会增加呕吐和意识丧失的风险。窒息风险极高！"
+  ],
+  "localizedName": "地西泮"
 }

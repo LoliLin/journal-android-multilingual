@@ -10,10 +10,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "14 days",
-    "zero": "1 month"
+    "zero": "1 month",
+    "halfToleranceInHours": 336,
+    "zeroToleranceInHours": 720
   },
   "crossTolerances": [
     "psychedelics"
+  ],
+  "addictionPotential": "moderately habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -24,14 +30,14 @@
       "2C-T-x",
       "2C-x",
       "5-MeO-xxT",
-      "Substituted amphetamines",
+      "Amphetamines",
       "Cocaine",
       "DOx",
-      "Dextromethorphan",
-      "MAOI",
+      "DXM",
+      "MAOIs",
       "MDMA",
       "Mescaline",
-      "Methoxetamine",
+      "MXE",
       "25x-NBOMe",
       "PCP",
       "SSRIs",
@@ -41,7 +47,7 @@
     "uncertain": [
       "Alcohol",
       "Caffeine",
-      "Cannabis"
+      "THC"
     ]
   },
   "roas": [

@@ -9,37 +9,42 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
   ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [],
   "categories": [
     "psychedelic",
     "entactogen",
     "research-chemical",
     "common"
   ],
+  "summary": "A potent, stimulating psychedelic tryptamine, sometimes compared to 5-MeO-DiPT.  Has an unusually strong body component and weak visual effects. Often said to be very empathogenic.",
   "interactions": {
     "dangerous": [
-      "ΑMT",
-      "MAOI",
+      "aMT",
+      "MAOIs",
       "PCP"
     ],
     "unsafe": [
-      "Substituted amphetamines",
+      "Amphetamines",
       "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "Tramadol"
     ],
     "uncertain": [
-      "2C-T-X",
-      "2C-X",
-      "Cannabis",
+      "2C-T-x",
+      "2C-x",
+      "THC",
       "DOx",
       "MDMA",
       "Mescaline",
-      "25x-NBOMe"
+      "NBOMe"
     ]
   },
   "roas": [
@@ -86,7 +91,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 5,

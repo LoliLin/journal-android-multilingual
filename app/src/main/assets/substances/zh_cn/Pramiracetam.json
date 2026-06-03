@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不成瘾且滥用潜力低。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种中枢兴奋剂兼促智药，属于拉西坦类化合物。效力远强于吡拉西坦，但似乎作用机制类似。",
-  "localizedName": "Pramiracetam",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "无成瘾性，滥用可能性低",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种中枢神经系统兴奋剂，属于拉西坦类化合物，具有促智作用。其效力远强于吡拉西坦，但作用机制似乎相似。",
+  "localizedName": "吡拉西坦"
 }

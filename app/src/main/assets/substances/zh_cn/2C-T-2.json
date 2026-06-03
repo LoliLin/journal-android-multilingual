@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "尝试该药物未被归因于负面健康影响。"
-  ],
-  "summary": "一种非常规迷幻剂，效应与 2C-B 相似且持续略长，但因 2000 年代的死亡事件而名声不佳。也与 2C-T-7 类似，但持续更短。与兴奋剂和共情剂合用可能不安全。",
-  "localizedName": "2C-T-2",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "尝试这种药物不会对健康产生负面影响"
+  ],
+  "summary": "一种不寻常的致幻剂，效果与2C-B相似，持续时间稍长，但因2000年代的一些死亡案例而备受诟病。与2c-t-7类似，但持续时间较短。与兴奋剂和共情剂同时使用可能存在安全隐患。",
+  "localizedName": "2C-T-2"
 }

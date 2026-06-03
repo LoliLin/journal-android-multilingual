@@ -1,27 +1,29 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "DOB 是相对少见的合成迷幻剂，以极低剂量和长持续时间著称。历史上很少被刻意服用，但曾被当作 LSD 贩售，如今在研究化学品圈也有一定地位。",
-  "localizedName": "DOB",
-  "effectsSummary": "DOB is a potent and long-lasting psychedelic. Visual hallucinations, altered perception of time, ego dissolution. Onset can take up to 2-3 hours.",
-  "generalRisks": "Dangerous increase in blood pressure. Risk of panic attacks and psychological distress. Overheating risk. Extremely long duration (up to 24h+).",
-  "longtermRisks": "No research results on long-term risks. HPPD possible. The main risk is psychological distress during the experience.",
-  "saferUse": [
-    "只使用毫克秤精确测量剂量。",
-    "安排清醒的陪护人在场。",
-    "确保有充足的时间（至少 24 小时）。",
-    "避免与其他药物混合使用。",
-    "从低剂量开始，逐步增加。",
-    "注意：DOB 持续时间极长（18-24h+），请规划好时间。",
-    "高剂量时安排陪护人。",
-    "避免过热和脱水。",
-    "DOB 在高温下可能分解，注意储存。"
-  ],
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "4-7 天",
-    "zero": "7-10 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "4-7天",
+    "zero": "7-10天",
+    "halfToleranceInHours": 132,
+    "zeroToleranceInHours": 204
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "DOB是一种相对罕见的合成迷幻剂。它以极低的剂量和持久的药效而闻名。历史上，它很少被刻意服用，而是被用作LSD的替代品，但近年来，它在研究化学品领域找到了自己的位置。",
+  "effectsSummary": "起初，安非他命的典型效应显现，如警觉性提高、脉搏加快、轻微欣快感、自信心增强和交谈欲望增加。随后，效果发生变化：常感到强烈的活动冲动，感官知觉、情感和共情能力增强，对色彩的感知更为鲜明。使用DOB和DOI时，会看到彩色、重叠、脉动的图案。而DOM的这种效应则较弱。",
+  "generalRisks": "由于DOB起效较晚，重复服用导致过量的风险尤其大。其作用持续时间长会造成心理负担。思维混乱或焦虑是常见现象，尤其是在高剂量使用时。部分使用者报告膀胱有灼烧或压迫感。高剂量时可能出现暂时性瘫痪、无法交流或痛觉迟钝（注意：存在受伤和意外风险）。还可能出现磨牙及心血管系统负担加重的情况。",
+  "longtermRisks": "由于作用持久且强烈，使用——尤其是频繁使用——存在丧失现实感的风险，这种症状可能表现为精神分裂症特征和焦虑状态。服用DOB可能诱发潜在（隐性）的精神病。",
+  "saferUse": [
+    "DOB不适合作为派对药物，仅限有经验的用户使用。",
+    "由于药效持续时间较长，请提前规划行程。",
+    "切勿单独服用DOB，且仅当您身心状态极佳、充分休息时方可使用！",
+    "注意环境与心境：仅在感到安全的地方服用DOB，并避免外界不必要的干扰！充分做好旅程准备，从内心适应药效的持久性。",
+    "旅途中要喝足够的水。",
+    "应不惜一切代价避免混合使用这些强效物质。",
+    "作为安非他明衍生物，DOB因其作用时间持久而特别消耗体力。清淡的富含维生素的食物、水果、蔬菜汁、维生素和矿物质有助于在药效消退后平稳恢复，并能减轻宿醉感。",
+    "旅行后安排足够的恢复时间（至少1天）！",
+    "使用DOB的旅程应保持为一种非凡的体验。请确保在服用后间隔较长时间，以便充分消化此次体验。"
+  ],
+  "localizedName": "出生日期"
 }

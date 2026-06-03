@@ -3,17 +3,24 @@
   "commonNames": [
     "Etizolam",
     "Etilaam",
-    "Etizest"
+    "Etizest",
+    "Depas"
   ],
   "url": "https://psychonautwiki.org/wiki/Etizolam",
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of days of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzodiazepine",
     "thienodiazepine"
+  ],
+  "addictionPotential": "highly addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": [
     "depressant",
@@ -21,6 +28,7 @@
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "A thienodiazepine anxiolytic. Similar in action to benzodiazepine drugs. Relieves anxiety, causes sedation and mild euphoria. High doses can lead to losing memory of what happened while on the drug. Users often compulsively re-dose frequently leading to accidental blackouts. Can be found in pressed pharmaceutical pills from various countries, clandestine pill presses, or as a powder",
   "effectsSummary": "Etizolam is a research chemical with anti-anxiety, anticonvulsant, sedative and sleep-inducing properties.\nAs it is a little-researched substance, only vague information is available regarding its effect.\nTaking benzodiazepines increases the effectiveness of the neurotransmitter gamma-aminobutyric acid (GABA) at the GABA-A receptor. This triggers sedative (calming), hypnotic, anxiolytic (anxiety-relieving), anticonvulsant (anticonvulsant) and muscle-relaxing effects in the body. Benzodiazepines have a depressant effect on the central nervous system. The flow of information in the brain between the brain cells (neurons) is thereby reduced / disturbed and feelings and perceptions are dampened.\nThe breakdown of the individual active ingredients of benzodiazepines in the body is age-dependent and therefore varies from person to person.",
   "dosageRemark": "0.75 mg etizolam corresponds to 10 mg diazepam",
   "generalRisks": "There is little information available on risks, toxicity, side effects and long-term consequences. Therefore, the general information on benzodiazepines applies:\nWhen mixing with other downers (alcohol, GHB/GBL, heroin) there is a risk of respiratory paralysis!\nTaking benzodiazepines can cause numerous undesirable side effects. In addition, regular and long-term use carries a very high risk of physical and psychological dependence. Benzodiazepines should only be taken as prescribed by a doctor and only for a short period of time (max. 4-6 weeks). Longer-term use should be discussed with the treating specialist. The dosages and duration of action of the individual benzodiazepines differ considerably.\nSide effects of benzodiazepines may be as follows: Prolonged fatigue, gastrointestinal problems, impaired reactions, hypersensitivity reactions, headaches, dizziness, motor difficulties, visual disturbances, slowed breathing, muscle weakness, confusion, sexual dysfunction, aggression, outbursts of anger, restlessness, random movements, allergies, skin problems/rashes and speech and movement disorders. Some benzodiazepines can cause seizures in epileptics.",

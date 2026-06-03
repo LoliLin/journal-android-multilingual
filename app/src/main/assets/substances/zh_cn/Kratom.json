@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "长期使用会产生依赖且滥用潜力高。",
-  "toxicities": [
-    "低毒性。"
-  ],
-  "summary": "由卡痛（Mitragyna speciosa）叶制成的药物，与咖啡同科。低剂量为兴奋剂，高剂量呈阿片样作用。频繁重度使用可导致生理成瘾与戒断。",
-  "localizedName": "卡痛",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "长期使用会产生依赖性，且具有较高的滥用潜力。",
+  "toxicities": [
+    "低毒性"
+  ],
+  "summary": "一种由帽柱木叶制成的药物，这种植物与咖啡有亲缘关系。低剂量时具有兴奋作用，高剂量时则产生阿片类效果。频繁大量使用会导致身体成瘾和戒断症状。",
+  "localizedName": "卡痛"
 }

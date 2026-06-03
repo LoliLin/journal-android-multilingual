@@ -1,14 +1,16 @@
 {
-  "addictionPotential": "极易成瘾。",
-  "toxicities": [
-    "首次使用者剂量超过 300mg 可能危险。",
-    "适当剂量下安全。"
-  ],
-  "summary": "一种药用抑制剂和镇静剂，因苯二氮卓更安全而被淘汰，属于 Quaalone 系物质。如今非常罕见，除南非外。",
-  "localizedName": "Methaqualone",
   "tolerance": {
-    "full": "重复使用数日内",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "在重复给药后的几天内",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极易上瘾",
+  "toxicities": [
+    "超过300毫克的剂量对初次使用者来说可能是危险的。",
+    "在适当剂量下是安全的"
+  ],
+  "summary": "一种属于喹唑酮类物质的药物性抑制剂和镇静剂，因苯二氮䓬类药物具有更好的安全性而被逐步淘汰。如今除南非外已非常罕见。",
+  "localizedName": "甲喹酮"
 }

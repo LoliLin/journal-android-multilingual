@@ -1,13 +1,14 @@
 {
-  "addictionPotential": "中度生理和心理成瘾。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精、苯二氮卓或阿片等抑制剂混用可能致命。",
-    "确切毒性剂量未知。"
-  ],
-  "localizedName": "F-Phenibut",
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理和心理成瘾性",
+  "toxicities": [
+    "低毒性",
+    "与酒精、苯二氮卓类药物或阿片类等抑制剂混合使用时可能致命",
+    "确切的中毒剂量未知"
+  ],
+  "localizedName": "F-苯基丁酸"
 }

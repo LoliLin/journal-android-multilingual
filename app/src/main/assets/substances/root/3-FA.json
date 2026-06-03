@@ -9,11 +9,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 10 days"
+    "zero": "1 - 10 days",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 132
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
@@ -21,14 +27,15 @@
     "habit-forming",
     "tentative"
   ],
+  "summary": "A stimulant that is close to equipotent with methamphetamine and acts as a monoamine releasing agent , but has more selectivity for dopamine/noradrenaline over serotonin.",
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -41,7 +48,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

@@ -8,15 +8,22 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "5-7 days",
-    "zero": "14 days"
+    "zero": "14 days",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
+  "summary": "A psychedelic drug and slightly more potent analogue of LSD, first synthesised by Alexander Shulgin - sometimes described as being less 'abrasive' than LSD. Less common than the associated AL-LAD, though has seen some popularity since its release on the Internet research chemical scene in 2015.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -25,7 +32,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

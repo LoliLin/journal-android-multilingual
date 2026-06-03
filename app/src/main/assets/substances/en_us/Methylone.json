@@ -1,8 +1,23 @@
 {
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "1 - 3 weeks",
+    "zero": "3 - 6 weeks",
+    "halfToleranceInHours": 336,
+    "zeroToleranceInHours": 756
+  },
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
     "exact toxic dosage is unknown"
   ],
   "summary": "βk-MDMA is a cathinone stimulant and empathogen, similar in structure to MDMA, though more stimulating and less empathogenic in comparison. Was very commonly mis-sold as MDMA on the street until it was banned in 2013. The Marquis reagent can differentiate βk-MDMA from MDMA. Less potent than MDMA with a slightly shorter duration.",
+  "effectsSummary": "Compared to MDMA, methylone has a stronger stimulating and less empathogenic effect. The effect is more constant, the \"hangover\" less than with MDMA.",
+  "generalRisks": "Short-term side effects are increased body temperature and heartbeat, dilated pupils and tightening of the jaw. The side effects and the (long-term) risks of methylone have hardly been researched yet.",
+  "saferUse": [
+    "Refrain from re-throwing: This does not intensify or prolong the flash with methylone.",
+    "Be sure to drink enough water during the effect.",
+    "Do not combine methylone with alcohol and other drugs, especially MAO inhibitors.",
+    "Do not use methylone if you have heart or circulatory problems, high blood pressure, diabetes, asthma, epilepsy or mental health problems."
+  ],
   "localizedName": "Methylone"
 }

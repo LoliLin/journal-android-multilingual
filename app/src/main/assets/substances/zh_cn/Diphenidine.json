@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种与 ephenidine 相关的解离性麻醉剂，性质类似 PCP 和氯胺酮。作为娱乐性 RC 有一定流行。剂量反应曲线据报道很陡，需谨慎。",
-  "localizedName": "Diphenidine",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种与依芬尼定相关的解离性麻醉剂，具有与PCP和氯胺酮相似的特性。作为一种娱乐性研究化学品，它已获得一定流行度。据报道其剂量曲线特别陡峭，因此需谨慎使用。",
+  "localizedName": "二苯乙啶"
 }

@@ -9,10 +9,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "no negative health effects attributed to trying this drug"
   ],
   "categories": [
     "psychedelic",
@@ -20,6 +26,7 @@
     "research-chemical",
     "tentative"
   ],
+  "summary": "A very rare psychedelic phenylethylamine.",
   "roas": [
     {
       "name": "oral",

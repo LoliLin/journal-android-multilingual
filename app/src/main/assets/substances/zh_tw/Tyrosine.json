@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "反覆頻繁使用後",
+    "full": "經過反覆且頻繁的使用後",
     "half": "7 天",
-    "zero": "14 天"
-  }
+    "zero": "14 天",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "輕微成癮性",
+  "toxicities": [
+    "極低毒性"
+  ],
+  "localizedName": "酪氨酸"
 }

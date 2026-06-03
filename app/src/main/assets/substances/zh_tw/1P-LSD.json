@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "幾乎在攝取之後立即",
+    "half": "5-7天",
+    "zero": "14 天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "非成癮性且濫用潛力低",
+  "toxicities": [
+    "相對於劑量而言毒性極低"
+  ],
+  "summary": "一種LSD類似物，其效力似乎略強但作用時間較短。據報導其效果與LSD極為相似，且目前看來同樣安全。自2014年底問世後，由於其隱含的合法性、與LSD的相似性以及在網路上廣泛可得，迅速成為一種極受歡迎的研究用化學物質。",
+  "localizedName": "1P-LSD"
 }

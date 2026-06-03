@@ -14,6 +14,7 @@
   "url": "https://psychonautwiki.org/wiki/5-Hydroxytryptophan",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "nootropic"
   ],
@@ -22,7 +23,7 @@
       "SSRIs",
       "SNRIs",
       "Serotonin releasers",
-      "MAOI",
+      "MAOIs",
       "Tricyclic antidepressants",
       "Tramadol"
     ],

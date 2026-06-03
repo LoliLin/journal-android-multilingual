@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种与芬美曲嗪相关的功能性兴奋剂。作用类似安非他明，但更持久、更专注。低剂量相对温和，但重度使用者似乎会出现令人担忧的健康影响。鼻吸疼痛极为强烈但短暂。",
-  "localizedName": "3-FPM",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种与芬美曲嗪相关的功能性兴奋剂。效果类似安非他命，但持续时间更长且更集中。低剂量使用时相对温和，但对重度使用者似乎会引发令人担忧的健康影响。鼻腔吸入时的疼痛感强烈到令人流泪，但持续时间短暂。",
+  "localizedName": "3-FPM"
 }

@@ -1,6 +1,14 @@
 {
   "tolerance": {
-    "full": "持續使用數日內",
-    "zero": "7 - 14 天"
-  }
+    "full": "連續使用幾天後",
+    "zero": "7 - 14 天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理及心理成癮性",
+  "toxicities": [
+    "低毒性",
+    "與抑制劑如酒精、苯二氮平類藥物或鴉片類藥物混合使用時，可能具有致命危險。"
+  ],
+  "summary": "GABA的衍生物，添加了一個苯環使其能夠穿越血腦屏障。主要用作抗焦慮和抗失眠藥物。耐受性和生理依賴性會很快形成。",
+  "localizedName": "苯基丁酸"
 }

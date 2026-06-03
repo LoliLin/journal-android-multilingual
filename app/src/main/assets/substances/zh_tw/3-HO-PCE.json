@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用",
-    "half": "4 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "full": "長期且重複使用",
+    "half": "4 至 7 天",
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 132,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性，且具有中等潛在不良副作用（如精神病）的風險。",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種罕見且效力極強的PCP類似物，作為NMDA受體拮抗劑的效力是PCP的八倍，同時也是μ-類鴉片受體激動劑。其結構與美托西他命相似。",
+  "localizedName": "3-HO-PCE"
 }

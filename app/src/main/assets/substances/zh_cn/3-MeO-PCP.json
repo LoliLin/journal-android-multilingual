@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "长期使用会产生依赖且滥用潜力高。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种强效解离剂，常与 MXE 比较，持续更长、镇静性更低，整体体验不同。用户报告效应类似 PCP。约为 4-MeO-PCP 的十倍强度。",
-  "localizedName": "3-MeO-PCP",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "长期使用会产生依赖性，且具有较高的滥用潜力。",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种强效解离剂，常与MXE相提并论，但作用时间更长，镇静效果弱得多，且整体体验不同。使用者报告其效果类似于PCP。药效约为4-MeO-PCP的十倍。",
+  "localizedName": "3-甲氧基苯环利定"
 }

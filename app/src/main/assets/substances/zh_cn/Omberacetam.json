@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "localizedName": "Omberacetam",
   "tolerance": {
-    "full": "长期重复使用数周后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "在持续数周的长期反复使用后逐渐形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成瘾性，滥用可能性低",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "localizedName": "奥拉西坦"
 }

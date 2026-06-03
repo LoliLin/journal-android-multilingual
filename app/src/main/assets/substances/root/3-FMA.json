@@ -8,12 +8,18 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 10 days"
+    "zero": "1 - 10 days",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 132
   },
   "crossTolerances": [
     "dopamine",
     "serotonin|serotonergic",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -21,6 +27,7 @@
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "Stimulant drug in the amphetamine family",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -41,7 +48,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

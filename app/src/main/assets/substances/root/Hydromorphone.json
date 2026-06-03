@@ -10,49 +10,112 @@
   "crossTolerances": [
     "opioids"
   ],
+  "toxicities": [],
   "categories": [
     "opioid",
     "habit-forming",
     "depressant"
   ],
+  "summary": "An opioid that is roughly 5x the potency of IV Morphine. Only comes in IR tablets in the US, and is given mostly as XR in other countries. It is frequently used in hospitals for short immediate pain relief during procedures, requiring the patient to be awake. Also frequently used as a recreational opiate.",
   "interactions": {
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [
     {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 8
+      },
+      "duration": {
+        "onset": {
+          "min": 1,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    },
+    {
       "name": "intravenous",
       "dose": {
         "units": "mg",
-        "lightMin": 0.5,
+        "lightMin": 1,
         "commonMin": 2,
         "strongMin": 4,
         "heavyMin": 6
       },
       "duration": {
         "onset": {
+          "min": 4,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
           "min": 10,
-          "max": 90,
-          "units": "seconds"
+          "max": 20,
+          "units": "minutes"
         },
         "peak": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "total": {
+          "min": 3,
+          "max": 4,
+          "units": "hours"
+        },
+        "afterglow": {
           "min": 1,
           "max": 2,
           "units": "hours"
@@ -70,13 +133,33 @@
       },
       "duration": {
         "onset": {
-          "min": 20,
-          "max": 45,
+          "min": 5,
+          "max": 15,
           "units": "minutes"
         },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
         "peak": {
-          "min": 3,
-          "max": 4,
+          "min": 15,
+          "max": 20,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
           "units": "hours"
         }
       }

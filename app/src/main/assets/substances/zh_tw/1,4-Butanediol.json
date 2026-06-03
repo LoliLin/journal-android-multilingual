@@ -1,6 +1,13 @@
 {
   "tolerance": {
-    "full": "持續使用數週內",
-    "zero": "7 - 14 天"
-  }
+    "full": "連續使用數週內",
+    "zero": "7 - 14 天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度生理及心理成癮性",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "summary": "1,4-BD 是一種具有醉人效果的透明液體。它是 GHB 的前驅藥物，效果相似但據報導較差。它也可能比 GHB 帶來更多健康風險，例如肝毒性。",
+  "localizedName": "1,4-丁二醇"
 }

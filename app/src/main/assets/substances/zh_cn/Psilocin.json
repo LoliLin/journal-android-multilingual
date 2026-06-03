@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "极低毒性。"
-  ],
-  "summary": "裸盖菇素是一种取代色胺生物碱，存在于多数迷幻蘑菇中。因 -OH 基团，在溶液中相对不稳定。",
-  "localizedName": "裸盖菇素",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "极低毒性"
+  ],
+  "summary": "裸盖菇素是一种取代色胺生物碱，存在于大多数致幻蘑菇中。由于其分子结构中含有羟基（-OH），在溶液中相对不稳定。",
+  "localizedName": "裸盖菇素"
 }

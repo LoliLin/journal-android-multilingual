@@ -7,6 +7,7 @@
   "url": "https://psychonautwiki.org/wiki/Methylnaphthidate",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -15,18 +16,18 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "MDMA",
       "Cocaine"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

@@ -1,22 +1,30 @@
 {
-  "addictionPotential": "极易成瘾且具有高滥用潜力。",
-  "toxicities": [
-    "估计人体口服 LD50 为 6.5-13 mg/kg。"
-  ],
-  "summary": "一种存在于烟草、茄子与番茄中的化学物质，被认为是最具成瘾性的药物之一。属温和兴奋剂，有减压效果。常以香烟形式使用，长期使用有较高致癌或心脏问题风险。越来越多地以“电子烟”方式使用，被认为比吸烟更安全。",
-  "localizedName": "尼古丁",
-  "effectsSummary": "Stimulating, increases alertness and concentration, reduces appetite, relaxing effect, mild euphoria.",
-  "dosageRemark": "Effects are mild and short-lasting (5-30 minutes). Tolerance develops quickly to many effects.",
-  "generalRisks": "Highly addictive. Increases heart rate and blood pressure. Long-term use causes cardiovascular disease, lung cancer (when smoked), and reproductive issues.",
-  "longtermRisks": "Long-term use dramatically increases risk of lung cancer (smoked), COPD, cardiovascular disease, stroke, and premature aging.",
-  "saferUse": [
-    "Use nicotine replacement therapy for cessation.",
-    "Avoid smoking - consider vaping or patches.",
-    "Be aware of the addictive potential."
-  ],
   "tolerance": {
-    "full": "长期重复使用后迅速发展",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后会迅速产生依赖性",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极易上瘾，具有很高的滥用潜力",
+  "toxicities": [
+    "人类口服LD50估计值为6.5-13毫克/千克"
+  ],
+  "summary": "烟草、茄子和西红柿中含有的一种化学物质，被认为是现存最易上瘾的药物之一。它是一种温和的兴奋剂，具有缓解压力的效果。常以香烟形式被广泛使用，长期吸食会显著增加患癌或引发心脏问题的风险。如今越来越多人将其制成电子烟液吸食，声称是比传统吸烟更安全的替代方式。",
+  "effectsSummary": "尼古丁会促进肾上腺素以及神经递质多巴胺和血清素的释放。因此，低剂量的尼古丁具有兴奋作用。尼古丁会短暂且可逆地加速心跳，并导致血管收缩。其中枢短期效应主要包括提高精神运动能力、注意力和记忆力。高剂量的尼古丁具有镇静和肌肉松弛作用；它能减轻饥饿感、焦虑和攻击性。尼古丁是导致烟草制品成瘾的原因。",
+  "dosageRemark": "个体且取决于消费形式。尼古丁对成年人的致死剂量约为60毫克；对儿童和青少年则显著更低。",
+  "generalRisks": "血液中氧气含量减少，嗅觉和味觉受损。长期摄入会导致：血压和心率升高，肾上腺素释放增加，胃肠道活动增强。多数情况下，首次或再次摄入时会出现：血压下降、体温降低、恶心和/或反胃、头痛和头晕。",
+  "longtermRisks": "烟草烟雾中的伴随物质（而非尼古丁）是导致吸烟已知健康后果的原因，例如增加心脏和肺部疾病（哮喘、慢性支气管炎、心脏病发作、中风、血栓、肺癌）的风险，以及损害胃黏膜（胃溃疡风险）。尼古丁被怀疑具有促癌作用。尼古丁是依赖性最强的药物之一，可引发心理和生理症状。戒断症状可能包括抑郁、焦虑、烦躁、失眠，以及（长期戒断后的）体重增加。大量吸烟时服用药物（如避孕药）会损害血液循环（血栓风险！）。患有心血管疾病、肺部和呼吸系统疾病（哮喘、慢性支气管炎）的人不应使用烟草。",
+  "saferUse": [
+    "烟草是一种合法、易得且被社会接受的药物。然而，这并不意味着这种精神活性物质风险低且对健康无害！",
+    "使用电子烟或雾化器，可以降低吸烟风险。",
+    "尼古丁很容易通过身体的所有黏膜被吸收。因此，存在一些风险较低的产品，如鼻烟、咀嚼烟草或尼古丁口香糖。",
+    "如果你要自杀，请确保使用良好的过滤方法。",
+    "对于有心血管问题、心脏病发作风险、肺部及呼吸系统问题（如哮喘、支气管炎）的人群，建议不要吸烟或仅少量吸烟。",
+    "使用激素类避孕药的女性若同时吸烟，会增加循环系统疾病、血栓、静脉曲张的风险，进而可能导致心脏病发作、中风或肺栓塞（肺部血管阻塞）。30岁以上的女性尤其面临高风险。",
+    "怀孕期间通常不建议吸烟，因为烟草烟雾中的毒素会通过胎盘进入胎儿的血液。",
+    "请务必完全熄灭香烟。存在火灾风险！",
+    "请勿食用烟草。若意外吞食烟草或溶于水的烟草（尤其是儿童），应立即拨打急救电话。有生命危险！"
+  ],
+  "localizedName": "尼古丁"
 }

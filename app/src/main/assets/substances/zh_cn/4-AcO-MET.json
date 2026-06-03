@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种罕见的迷幻色胺，预计代谢为 4-HO-MET。起效、持续和强度会变化，但总体效应谱相似。",
-  "localizedName": "4-AcO-MET",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种罕见的迷幻色胺，被认为在体内代谢为4-HO-MET。起效时间、持续时间及强度会有所不同，但效果特征基本一致。",
+  "localizedName": "4-乙酰氧基-N-乙基色胺"
 }

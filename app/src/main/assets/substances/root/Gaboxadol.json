@@ -2,8 +2,9 @@
   "name": "Gaboxadol",
   "commonNames": [],
   "url": "https://psychonautwiki.org/wiki/Gaboxadol",
-  "isApproved": false,
+  "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "hallucinogen",
     "depressant"

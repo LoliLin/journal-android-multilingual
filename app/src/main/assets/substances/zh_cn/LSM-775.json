@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "利色胺类迷幻剂，按重量效力较低，与其“大哥”LSD 相比带来更温和、梦幻甚至略带镇静的体验。",
-  "localizedName": "LSM-775",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "麦角酰胺类迷幻剂，单位重量效力较弱，与它的\"老大哥\"LSD相比，能产生一种相当温和、梦幻甚至带有镇静效果的迷幻体验。",
+  "localizedName": "LSM-775"
 }

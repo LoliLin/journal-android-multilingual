@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成癮性且濫用可能性低",
+  "toxicities": [],
+  "summary": "一種調節AMPA受體的抗焦慮益智藥。效果遠比拉西坦類藥物強。可能對記憶與認知有正面影響。娛樂價值極低。在歐洲作為處方藥販售，但未獲美國FDA核准。",
+  "localizedName": "阿尼拉西坦"
 }

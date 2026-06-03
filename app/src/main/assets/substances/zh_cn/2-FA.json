@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "安非他明家族的兴奋剂。据称效应类似右旋安非他明，但欣快较弱、反弹更平缓。持续时间更短，共情性较 4-FA 更低。被认为产生的神经毒性代谢物少于安非他明。",
-  "localizedName": "2-FA",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 10 天"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 10天",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 132
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "安非他命类兴奋剂药物。据报告其效果与右旋安非他命相似，但欣快感较温和，且药效消退过程相对更平稳。与4-FA相比，其作用时间更短，且致情作用较弱。相较于安非他命，被认为产生的神经毒性代谢物较少。",
+  "localizedName": "2-氟苯丙胺"
 }

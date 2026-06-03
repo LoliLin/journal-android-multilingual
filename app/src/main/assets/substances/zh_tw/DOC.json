@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種作用時間長、效力強烈的迷幻興奮劑，屬於苯乙胺類及取代安非他命類藥物。有時被當作LSD販售，但也有許多人因其本身特性而喜愛使用。通常以比LSD稍大的吸墨紙形式販售，但也能以粉末形式購得。",
+  "localizedName": "DOC"
 }
