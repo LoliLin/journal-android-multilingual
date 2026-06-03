@@ -57,6 +57,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.utils.administrationRouteDescriptionKey
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
@@ -250,7 +251,7 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
             )
             if (screenHeightPx > 500) {
                 Text(
-                    text = route.description,
+                    text = i18nOrDefault(administrationRouteDescriptionKey(route), route.description),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodySmall
                 )
