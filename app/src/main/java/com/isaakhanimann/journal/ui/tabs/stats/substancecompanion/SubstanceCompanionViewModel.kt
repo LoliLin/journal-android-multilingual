@@ -150,4 +150,6 @@ data class IngestionsBurst(
             }
         } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
     }
+    }       
 }
+    
