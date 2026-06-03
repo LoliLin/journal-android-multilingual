@@ -69,7 +69,7 @@ data class IngestionWithCompanionAndCustomUnit(
         return customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
     }
 
-    @Composable
+
     private fun getIngestionDoseDescription(context:Context): String {
         return ingestion.dose?.let { dose ->
             ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
