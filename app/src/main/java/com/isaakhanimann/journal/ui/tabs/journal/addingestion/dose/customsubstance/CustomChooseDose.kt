@@ -305,10 +305,10 @@ fun CustomChooseDose(
                 TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
+                        contentDescription = i18n("common_open_link")
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Safer plugging")
+                    Text(i18n("safer_plugging"))
                 }
             }
         }

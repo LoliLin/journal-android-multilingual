@@ -65,7 +65,7 @@ fun UnknownDoseDialog(
             TextButton(
                 onClick = dismiss
             ) {
-                Text("Cancel")
+                Text(i18n("common_cancel"))
             }
         }
     )

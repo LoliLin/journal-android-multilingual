@@ -83,7 +83,7 @@ fun ExperienceRow(
                     style = MaterialTheme.typography.titleMedium,
                 )
                 if (experience.isFavorite) {
-                    Icon(imageVector = Icons.Filled.Star, contentDescription = "Is favorite")
+                    Icon(imageVector = Icons.Filled.Star, contentDescription = i18n("journal_is_favorite"))
                 }
             }
             Row(

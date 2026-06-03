@@ -196,7 +196,7 @@ fun SubstanceScreen(
                             horizontal = horizontalPadding
                         )
                     ) {
-                        Icon(imageVector = Icons.Default.GppBad, contentDescription = "Verified")
+                        Icon(imageVector = Icons.Default.GppBad, contentDescription = i18n("verified"))
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                         Text(text = i18n("substance_info_not_approved"))
                     }
@@ -624,7 +624,7 @@ fun CategoryChipFromSubstanceScreen(
         Spacer(modifier = Modifier.width(3.dp))
         Icon(
             imageVector = Icons.Default.ChevronRight,
-            contentDescription = "Go to",
+            contentDescription = i18n("go_to"),
             modifier = Modifier.size(20.dp)
         )
     }

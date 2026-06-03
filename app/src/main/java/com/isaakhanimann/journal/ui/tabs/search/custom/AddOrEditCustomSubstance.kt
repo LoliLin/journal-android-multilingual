@@ -168,7 +168,7 @@ fun AddOrEditCustomSubstance(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete substance",
+                            contentDescription = i18n("delete_substance"),
                         )
                     }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
@@ -184,14 +184,14 @@ fun AddOrEditCustomSubstance(
                                         deleteAndNavigate()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(i18n("common_delete"))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(i18n("common_cancel"))
                                 }
                             }
                         )
@@ -225,7 +225,7 @@ fun AddOrEditCustomSubstance(
             OutlinedTextField(
                 value = name,
                 onValueChange = onNameChange,
-                label = { Text("Name") },
+                label = { Text(i18n("name")) },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
@@ -237,7 +237,7 @@ fun AddOrEditCustomSubstance(
             OutlinedTextField(
                 value = units,
                 onValueChange = onUnitsChange,
-                label = { Text("Units") },
+                label = { Text(i18n("dose_units_label")) },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 singleLine = true,
@@ -263,7 +263,7 @@ fun AddOrEditCustomSubstance(
             OutlinedTextField(
                 value = description,
                 onValueChange = onDescriptionChange,
-                label = { Text("Description") },
+                label = { Text(i18n("description")) },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,

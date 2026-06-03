@@ -62,7 +62,7 @@ fun VolumetricDosingScreen(navigateToVolumetricLiquidDosingArticle: () -> Unit) 
                 icon = {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open PW article"
+                        contentDescription = i18n("substance_open_article")
                     )
                 },
                 text = { Text(i18n("category_more_info")) },

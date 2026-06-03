@@ -143,7 +143,7 @@ private fun EditCustomUnitScreenContent(
                     IconButton(onClick = { isShowingDeleteDialog = true }) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete custom unit"
+                            contentDescription = i18n("delete_custom_unit")
                         )
                     }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
@@ -153,7 +153,7 @@ private fun EditCustomUnitScreenContent(
                                 Text(text = i18n("delete_custom_unit_question"))
                             },
                             text = {
-                                Text("This will affect all ingestions that are using it. Consider archiving it instead.")
+                                Text(i18n("archive.custom.units.desc.affect"))
                             },
                             confirmButton = {
                                 TextButton(
@@ -162,14 +162,14 @@ private fun EditCustomUnitScreenContent(
                                         onDelete()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(i18n("common_delete"))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(i18n("common_cancel"))
                                 }
                             }
                         )

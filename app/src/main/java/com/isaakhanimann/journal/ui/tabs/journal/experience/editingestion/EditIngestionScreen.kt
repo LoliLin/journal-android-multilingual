@@ -219,14 +219,14 @@ fun EditIngestionScreen(
                                         navigateBack()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(i18n("common_delete"))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(i18n("common_cancel"))
                                 }
                             }
                         )
@@ -469,7 +469,7 @@ fun EditIngestionScreen(
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.Person,
-                                    contentDescription = "Consumer"
+                                    contentDescription = i18n("stats_consumer")
                                 )
                             },
                             keyboardActions = KeyboardActions(onDone = {
@@ -502,7 +502,7 @@ fun EditIngestionScreen(
                         leadingContent = {
                             Icon(
                                 Icons.Default.Person,
-                                contentDescription = "Consumer"
+                                contentDescription = i18n("stats_consumer")
                             )
                         },
                         modifier = Modifier.clickable {
@@ -521,7 +521,7 @@ fun EditIngestionScreen(
                         leadingContent = {
                             Icon(
                                 Icons.Default.Person,
-                                contentDescription = "Consumer"
+                                contentDescription = i18n("stats_consumer")
                             )
                         },
                         modifier = Modifier.clickable {

@@ -50,7 +50,7 @@ fun CustomChooseRouteScreenPreview() {
 fun CustomChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Route") })
+            TopAppBar(title = { Text(i18n("route")) })
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {

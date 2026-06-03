@@ -62,7 +62,7 @@ fun InteractionRow(interaction: Interaction) {
                 items(interaction.interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = i18n("interaction_warning"),
                         tint = Color.Black,
                     )
                 }

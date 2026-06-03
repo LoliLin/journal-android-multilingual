@@ -213,17 +213,23 @@ fun CheckInteractionsScreen(
             AnimatedVisibility(visible = isShowingAlert) {
                 AlertDialog(
                     onDismissRequest = dismissAlert,
-                    title = {
-                        val title = when (alertInteractionType) {
-                            InteractionType.DANGEROUS -> i18n("interaction_dangerous_alert")
-                            InteractionType.UNSAFE -> i18n("interaction_unsafe_alert")
-                            InteractionType.UNCERTAIN -> i18n("interaction_uncertain_alert")
-                            else -> i18n("interaction_alert_title")
+                    title = {
+
+                        val title = when (alertInteractionType) {
+
+                            InteractionType.DANGEROUS -> i18n("interaction_dangerous_alert")
+
+                            InteractionType.UNSAFE -> i18n("interaction_unsafe_alert")
+
+                            InteractionType.UNCERTAIN -> i18n("interaction_uncertain_alert")
+
+                            else -> i18n("interaction_alert_title")
+
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 imageVector = Icons.Default.Warning,
-                                contentDescription = "Warning",
+                                contentDescription = i18n("interaction_warning"),
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(text = title, style = MaterialTheme.typography.titleLarge)
@@ -281,7 +287,7 @@ fun InteractionRow(
                 items(interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = i18n("interaction_warning"),
                         tint = Color.Black,
                     )
                 }
