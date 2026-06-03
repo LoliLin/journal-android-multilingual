@@ -44,11 +44,7 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n(
-                    "substances_route",
-                    replacements = mapOf(
-                        "substance" to "${viewModel.substanceName}"
-                )) },
+                title = { Text(i18n("substances_route", replacements = mapOf("substance" to "${viewModel.substanceName}"))) },
                 navigationIcon = {
                     if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { viewModel.showOtherRoutes = false }) {
