@@ -72,10 +72,10 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                 icon = {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open PW article"
+                        contentDescription = i18n("substance_open_article")
                     )
                 },
-                text = { Text("Article") },
+                text = { Text(i18n("common_article")) },
             )
         }
     ) { padding ->
@@ -110,7 +110,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                         ) {
                             Icon(
                                 Icons.Outlined.Newspaper,
-                                contentDescription = "Open PW article",
+                                contentDescription = i18n("substance_open_article"),
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(i18n("safer_plugging"))

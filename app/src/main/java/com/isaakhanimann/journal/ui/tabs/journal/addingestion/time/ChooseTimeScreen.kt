@@ -179,7 +179,7 @@ fun ChooseTimeScreen(
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName ingestion") }) },
+        topBar = { TopAppBar(title = { Text("$substanceName ${i18n(\"journal_ingestion\")}") }) },
         floatingActionButton = {
             AnimatedVisibility(
                 visible = !isLoadingColor,
@@ -283,7 +283,7 @@ fun ChooseTimeScreen(
                                     leadingIcon = {
                                         Icon(
                                             Icons.Default.Person,
-                                            contentDescription = "Consumer"
+                                            contentDescription = i18n("stats_consumer")
                                         )
                                     }
                                 )
@@ -297,7 +297,7 @@ fun ChooseTimeScreen(
                                         leadingIcon = {
                                             Icon(
                                                 Icons.Default.Person,
-                                                contentDescription = "Consumer"
+                                                contentDescription = i18n("stats_consumer")
                                             )
                                         }
                                     )
@@ -323,7 +323,7 @@ fun ChooseTimeScreen(
                                 leadingIcon = {
                                     Icon(
                                         imageVector = Icons.Default.Person,
-                                        contentDescription = "Consumer"
+                                        contentDescription = i18n("stats_consumer")
                                     )
                                 },
                                 keyboardActions = KeyboardActions(onDone = {
@@ -413,7 +413,7 @@ fun NoteSection(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 Icons.Filled.ContentCopy,
-                                contentDescription = "Copy",
+                                contentDescription = i18n("copy"),
                                 Modifier.size(15.dp)
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))

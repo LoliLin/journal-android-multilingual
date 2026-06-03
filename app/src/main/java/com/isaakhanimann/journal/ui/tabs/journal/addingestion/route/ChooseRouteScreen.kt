@@ -141,7 +141,7 @@ fun ChooseRouteScreen(
                         IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back"
+                                contentDescription = i18n("back")
                             )
                         }
                     }
@@ -150,7 +150,7 @@ fun ChooseRouteScreen(
                     IconButton(onClick = navigateToRouteExplanationScreen) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
-                            contentDescription = "Administration routes info"
+                            contentDescription = i18n("administration_routes_info")
                         )
                     }
                 }
@@ -202,17 +202,17 @@ fun InjectionDialog(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.Default.Warning, contentDescription = "Warning")
+                Icon(imageVector = Icons.Default.Warning, contentDescription = i18n("interaction_warning"))
                 Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                 Text(text = i18n("safer_injection"), style = MaterialTheme.typography.headlineSmall)
             }
         },
         text = {
             Column {
-                Text("Using and sharing injection equipment is an extremely high-risk activity and is never truly safe to do in a non-medical context.")
-                Text("Read the safer injection guide:")
+                Text(i18n("safer_injection_guide.t1"))
+                Text(i18n("safer_injection_guide.t2"))
                 SaferInjectionLink(navigateToURL)
-                Text("This guide is provided for educational and harm reduction purposes only and we strongly discourage users from engaging in this activity.")
+                Text(i18n("safer_injection_guide.t3"))
 
             }
 
@@ -224,14 +224,14 @@ fun InjectionDialog(
                     navigateToNext()
                 }
             ) {
-                Text("Continue")
+                Text(i18n("continue"))
             }
         },
         dismissButton = {
             TextButton(
                 onClick = dismiss
             ) {
-                Text("Cancel")
+                Text(i18n("common_cancel"))
             }
         }
     )
@@ -267,10 +267,10 @@ fun SaferInjectionLink(navigateToURL: (url: String) -> Unit) {
     }) {
         Icon(
             Icons.Outlined.Newspaper,
-            contentDescription = "Open link",
+            contentDescription = i18n("interaction_open_link"),
             modifier = Modifier.size(ButtonDefaults.IconSize),
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Safer injection guide")
+        Text(i18n("safer_injection_guide"))
     }
 }

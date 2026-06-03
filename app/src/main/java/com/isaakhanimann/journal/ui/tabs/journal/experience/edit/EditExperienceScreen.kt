@@ -96,7 +96,7 @@ fun EditExperienceScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit experience") },
+                title = { Text(i18n("edit_experience")) },
                 actions = {
                     if (isEnteredTitleOk) {
                         IconButton(onClick = onDoneTap) {

@@ -432,7 +432,7 @@ fun ChooseDoseScreen(
                 TextButton(onClick = navigateToSaferSniffingScreen) {
                     Icon(
                         Icons.Outlined.Info,
-                        contentDescription = "Info",
+                        contentDescription = i18n("substance_info"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
@@ -442,17 +442,17 @@ fun ChooseDoseScreen(
                 TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {
                     Icon(
                         Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
+                        contentDescription = i18n("common_open_link")
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Safer plugging")
+                    Text(i18n("safer_plugging"))
                 }
             }
             if (roaDose?.shouldUseVolumetricDosing == true) {
                 TextButton(onClick = navigateToVolumetricDosingScreen) {
                     Icon(
                         Icons.Outlined.Info,
-                        contentDescription = "Info",
+                        contentDescription = i18n("substance_info"),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))

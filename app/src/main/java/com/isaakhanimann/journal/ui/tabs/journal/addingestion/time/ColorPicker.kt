@@ -88,7 +88,7 @@ fun ColorPicker(
     ) {
         Icon(
             imageVector = Icons.Default.Edit,
-            contentDescription = "Edit color",
+            contentDescription = i18n("edit_color"),
             modifier = Modifier.padding(20.dp),
         )
     }
@@ -157,7 +157,7 @@ fun ColorDialog(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = dismiss
             ) {
-                Text("Cancel", textAlign = TextAlign.Center)
+                Text(i18n("common_cancel"), textAlign = TextAlign.Center)
             }
         },
     )

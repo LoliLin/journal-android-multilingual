@@ -391,9 +391,9 @@ fun EditCustomUnitSections(
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     Switch(checked = isArchived, onCheckedChange = onChangeOfIsArchived)
-                    Text("Archive", style = MaterialTheme.typography.titleMedium)
+                    Text(i18n("archive"), style = MaterialTheme.typography.titleMedium)
                 }
-                Text("Archived custom units don't show up when adding ingestions")
+                Text(i18n("archive.custom.units.desc"))
             }
         }
     }

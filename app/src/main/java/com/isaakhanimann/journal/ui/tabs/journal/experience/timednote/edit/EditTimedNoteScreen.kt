@@ -44,7 +44,7 @@ fun EditTimedNoteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit timed note") },
+                title = { Text(i18n("edit_timed_note")) },
                 actions = {
                     IconButton(
                         onClick = {
@@ -54,7 +54,7 @@ fun EditTimedNoteScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete note",
+                            contentDescription = i18n("delete_note"),
                         )
                     }
                     IconButton(onClick = {

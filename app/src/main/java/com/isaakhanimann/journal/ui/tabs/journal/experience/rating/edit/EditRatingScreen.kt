@@ -104,7 +104,7 @@ fun EditRatingScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete rating",
+                            contentDescription = i18n("delete_rating"),
                         )
                     }
                 }

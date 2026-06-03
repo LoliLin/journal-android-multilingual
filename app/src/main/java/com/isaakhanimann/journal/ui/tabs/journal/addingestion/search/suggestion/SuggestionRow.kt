@@ -161,7 +161,7 @@ fun SuggestionRow(
                 }, icon = {
                         Icon(
                             imageVector = Icons.Default.Keyboard,
-                            contentDescription = "Keyboard"
+                            contentDescription = i18n("search_keyboard")
                         )
                     })
             }
@@ -199,7 +199,7 @@ fun SuggestionRow(
                 }, icon = {
                     Icon(
                         imageVector = Icons.Default.Keyboard,
-                        contentDescription = "Keyboard"
+                        contentDescription = i18n("search_keyboard")
                     )
                 })
             }

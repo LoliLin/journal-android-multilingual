@@ -65,7 +65,7 @@ fun TimePickerButton(
         OutlinedButton(onClick = timePickerDialog::show, modifier = modifier) {
             Icon(
                 Icons.Outlined.Schedule,
-                contentDescription = "Open time picker"
+                contentDescription = i18n("open_time_picker")
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Text(timeString)
@@ -74,7 +74,7 @@ fun TimePickerButton(
         TextButton(onClick = timePickerDialog::show, modifier = modifier) {
             Icon(
                 Icons.Outlined.Schedule,
-                contentDescription = "Open time picker"
+                contentDescription = i18n("open_time_picker")
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Text(timeString)

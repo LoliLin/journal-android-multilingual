@@ -273,7 +273,7 @@ fun TestingServiceItem(
     ) {
         Icon(
             imageVector = Icons.Outlined.Biotech,
-            contentDescription = "Open Link"
+            contentDescription = i18n("interaction_open_link")
         )
         Text(
             text = name,

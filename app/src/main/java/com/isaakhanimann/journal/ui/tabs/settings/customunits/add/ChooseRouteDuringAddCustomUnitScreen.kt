@@ -44,13 +44,13 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("${viewModel.substanceName} route") },
+                title = { Text("${viewModel.substanceName} ${i18n(\"route\")}") },
                 navigationIcon = {
                     if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { viewModel.showOtherRoutes = false }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back"
+                                contentDescription = i18n("back")
                             )
                         }
                     }

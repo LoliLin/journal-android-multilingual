@@ -152,40 +152,6 @@ fun OneExperienceScreen(
     )
 }
 
-@Preview
-@Composable
-fun ExperienceScreenPreview(
-    @PreviewParameter(
-        OneExperienceScreenPreviewProvider::class,
-        limit = 1
-    ) oneExperienceScreenModel: OneExperienceScreenModel
-) {
-    JournalTheme {
-        OneExperienceScreen(
-            oneExperienceScreenModel = oneExperienceScreenModel,
-            isOralDisclaimerHidden = false,
-            onChangeIsOralDisclaimerHidden = {},
-            addIngestion = {},
-            deleteExperience = {},
-            navigateToEditExperienceScreen = {},
-            navigateToExplainTimeline = {},
-            navigateToIngestionScreen = {},
-            navigateToAddRatingScreen = {},
-            navigateToAddTimedNoteScreen = {},
-            navigateBack = {},
-            saveIsFavorite = {},
-            navigateToURL = {},
-            navigateToEditRatingScreen = {},
-            navigateToEditTimedNoteScreen = {},
-            savedTimeDisplayOption = SavedTimeDisplayOption.RELATIVE_TO_START,
-            timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
-            onChangeTimeDisplayOption = {},
-            navigateToTimelineScreen = {},
-            areDosageDotsHidden = false
-        )
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun OneExperienceScreen(
@@ -217,7 +183,7 @@ fun OneExperienceScreen(
                 actions = {
                     var areTimeOptionsExpanded by remember { mutableStateOf(false) }
                     IconButton(onClick = { areTimeOptionsExpanded = true }) {
-                        Icon(Icons.Outlined.Timer, contentDescription = "Time display option")
+                        Icon(Icons.Outlined.Timer, contentDescription = i18n("time_display_option"))
                     }
                     DropdownMenu(
                         expanded = areTimeOptionsExpanded,
@@ -235,7 +201,7 @@ fun OneExperienceScreen(
                                     if (option == savedTimeDisplayOption) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription = "Check",
+                                            contentDescription =i18n("common_check"),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }
@@ -247,7 +213,7 @@ fun OneExperienceScreen(
                     IconButton(onClick = { areEditOptionsExpanded = true }) {
                         Icon(
                             Icons.Default.Edit,
-                            contentDescription = "Edit options",
+                            contentDescription = i18n("edit_options"),
                         )
                     }
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
@@ -258,7 +224,7 @@ fun OneExperienceScreen(
                                 Text(text = i18n("delete_experience_question"))
                             },
                             text = {
-                                Text("This will also delete all its ingestions.")
+                                Text(i18n("delete_experience_ensure"))
                             },
                             confirmButton = {
                                 TextButton(
@@ -268,14 +234,14 @@ fun OneExperienceScreen(
                                         navigateBack()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(i18n("common_delete"))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(i18n("common_cancel"))
                                 }
                             }
                         )
@@ -383,7 +349,7 @@ fun OneExperienceScreen(
                     IconButton(onClick = { areAddOptionsExpanded = true }) {
                         Icon(
                             Icons.Outlined.Add,
-                            contentDescription = "Add options",
+                            contentDescription = i18n("add_options"),
                         )
                     }
                     DropdownMenu(
@@ -426,7 +392,7 @@ fun OneExperienceScreen(
                             leadingIcon = {
                                 Icon(
                                     Icons.Outlined.ExposurePlus2,
-                                    contentDescription = "Add Shulgin rating",
+                                    contentDescription = i18n("add_shulgin_rating"),
                                     modifier = Modifier.size(ButtonDefaults.IconSize)
                                 )
                             }
@@ -442,7 +408,7 @@ fun OneExperienceScreen(
                     icon = {
                         Icon(
                             Icons.Filled.Add,
-                            contentDescription = "Add"
+                            contentDescription = i18n("common_add")
                         )
                     },
                     text = { Text(i18n("journal_ingestion")) }
@@ -516,7 +482,7 @@ fun OneExperienceScreen(
                                 IconButton(onClick = { onChangeIsOralDisclaimerHidden(true) }) {
                                     Icon(
                                         imageVector = Icons.Default.Close,
-                                        contentDescription = "Close disclaimer"
+                                        contentDescription = i18n("close_disclaimer")
                                     )
                                 }
                             }
@@ -545,7 +511,7 @@ fun OneExperienceScreen(
                                     navigateToIngestionScreen(ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id)
                                 }
                                 .fillMaxWidth()
-                                .padding(vertical = 5.dp, horizontal = horizontalPadding)
+                                .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             substanceRepo = viewModel.substanceRepo
                         )
                         if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
@@ -695,7 +661,7 @@ fun OneExperienceScreen(
                                     navigateToIngestionScreen(ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id)
                                 }
                                 .fillMaxWidth()
-                                .padding(vertical = 5.dp, horizontal = horizontalPadding)
+                                .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             substanceRepo = viewModel.substanceRepo
                         )
                         if (index < consumerWithIngestions.ingestionElements.size - 1) {
@@ -730,7 +696,7 @@ fun OneExperienceScreen(
                         oneExperienceScreenModel.interactionExplanations.forEach {
                             SuggestionChip(
                                 onClick = {
-                                    navigateToURL(it.url)
+                                    navigateToURL(it.url) //699
                                 },
                                 label = { Text(it.name) }
                             )

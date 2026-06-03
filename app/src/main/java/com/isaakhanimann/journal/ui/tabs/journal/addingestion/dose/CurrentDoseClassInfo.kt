@@ -69,10 +69,11 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
     ) {
         Icon(
             Icons.Outlined.Info,
-            contentDescription = "Info",
+            contentDescription = i18n("substance_info"),
             tint = doseColor
         )
-        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
         val text = when (currentDoseClass) {
             DoseClass.THRESHOLD -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()} ${roaDose.units}"
             DoseClass.LIGHT -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()}-${roaDose.commonMin?.toReadableString()} ${roaDose.units}"

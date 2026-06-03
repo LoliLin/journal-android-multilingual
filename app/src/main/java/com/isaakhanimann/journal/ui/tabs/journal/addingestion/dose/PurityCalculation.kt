@@ -48,7 +48,7 @@ fun PurityCalculation(
         OutlinedTextField(
             value = purityText,
             onValueChange = onPurityChange,
-            label = { Text("Purity") },
+            label = { Text(i18n("purity")) },
             isError = !isValidPurity,
             trailingIcon = {
                 Text(
