@@ -130,6 +130,7 @@ fun OneExperienceScreen(
     )
     OneExperienceScreen(
         oneExperienceScreenModel = oneExperienceScreenModel,
+        viewModel = viewModel,
         isOralDisclaimerHidden = viewModel.isOralTimelineDisclaimerHidden.collectAsState().value,
         onChangeIsOralDisclaimerHidden = viewModel::saveOralDisclaimerIsHidden,
         addIngestion = navigateToAddIngestionSearch,
@@ -156,6 +157,7 @@ fun OneExperienceScreen(
 @Composable
 fun OneExperienceScreen(
     oneExperienceScreenModel: OneExperienceScreenModel,
+    viewModel: OneExperienceViewModel,
     isOralDisclaimerHidden: Boolean,
     onChangeIsOralDisclaimerHidden: (Boolean) -> Unit,
     addIngestion: () -> Unit,
