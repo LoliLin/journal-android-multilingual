@@ -481,7 +481,7 @@
   "route_intramuscular_desc": "Injected into muscle tissue",
   "route_intravenous_desc": "Injected into vein",
   "route_smoked_desc": "Inhaling with heat source",
-  "route_inhaled_desc": "Inhaling without heat source"
+  "route_inhaled_desc": "Inhaling without heat source",
   "delete_experience_ensure": "This will also delete all its ingestions.",
   "back": "Back",
   "go_to": "Go to",
