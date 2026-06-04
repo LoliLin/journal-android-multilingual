@@ -1,4 +1,9 @@
 {
+  "tolerance": {
+    "full": "within a couple of days of continuous use",
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "extremely physically and psychologically addictive",
   "toxicities": [
     "low toxicity",

@@ -1,23 +1,31 @@
 {
-  "addictionPotential": "滥用潜力高，长期使用可导致心理依赖。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种非常流行的中枢兴奋剂，可处方也可在黑市获得。高剂量具娱乐性，产生轻度欣快与大量精力。在东欧和美国很受欢迎。",
-  "localizedName": "安非他明",
-  "effectsSummary": "Stimulating, euphoric, increases alertness, reduces appetite, elevates mood, increases focus and energy.",
-  "dosageRemark": "Start low and go slow. The difference between a moderate and heavy dose can be small.",
-  "generalRisks": "Increased heart rate and blood pressure, risk of heart attack and stroke, sleep deprivation, anxiety, paranoia, psychosis with prolonged use.",
-  "longtermRisks": "Chronic use leads to cognitive impairment, psychosis, cardiovascular damage, severe dental problems, malnutrition, and addiction.",
-  "saferUse": [
-    "Start with a low dose.",
-    "Stay hydrated and eat regular meals.",
-    "Take breaks to avoid sleep deprivation.",
-    "Do not redose too frequently."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "具有高度滥用潜力，长期使用可导致心理依赖",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种非常受欢迎的中枢神经系统兴奋剂，可通过处方和黑市获取。高剂量下用于娱乐用途，会产生轻微的欣快感和充沛的精力。在东欧和美国尤为流行。",
+  "effectsSummary": "使用安非他命所释放的内源性神经递质去甲肾上腺素和多巴胺，可引发表现力增强感、自尊心提升、体温升高、抑制疲劳、饥饿与口渴感、风险承担意愿增强、痛觉抑制，并可能导致欣快感及言语冲动增加（喋喋不休）。",
+  "dosageRemark": "由于纯度差异极大（安非他命含量从接近0%到接近100%不等），剂量难以控制，过量风险很高。超过25毫克纯安非他命的剂量会增加副作用。无论鼻吸还是口服，每夜50毫克应为最大剂量。",
+  "generalRisks": "震颤、烦躁不安、恶心、心悸及心律不齐、睡眠障碍、头痛、紧张、易怒、食欲减退、攻击行为，与酒精同服时存在酒精中毒风险。高剂量下：幻觉、循环衰竭、中风，以及肾、肝、心脏衰竭和深度昏迷状态。常被低估的危险是体温升高，可能导致身体脱水。高剂量下可能引发急性苯丙胺精神病，表现为彩色斑点的幻觉并伴有精神分裂症特征。连续数日服用、/或长期高剂量服用且忽视进食和睡眠时，此类急性精神障碍的风险会增加。充足睡眠后此类症状通常会恢复正常。药效消退期间及之后：极度嗜睡、疲惫、强烈饥饿感、抑郁情绪、易怒等。",
+  "longtermRisks": "使用苯丙胺存在成瘾风险，并伴有心理症状，尤其当其在日常生活中（如工作中）发挥（提升表现）功能，或用于对抗身心疲惫时。频繁使用苯丙胺常导致身体缺乏症状（如缺钙可能引发骨骼和牙齿问题），以及心理问题如情绪低落或精神萎靡。长期大剂量使用可能导致持续烦躁不安（但也会伴随持久疲劳）、睡眠与循环系统紊乱、焦虑障碍，甚至发展为伴有偏执妄想的持续性苯丙胺精神病。此外，还可能引发高血压、心律不齐、体重减轻、皮肤炎症（\"速效粉刺\"）、胃部问题、肝肾损伤及痉挛。鼻吸会损伤鼻黏膜和鼻中隔，吞服则损害胃黏膜。长期滥用还会增加脑出血和中风风险，导致突发性瘫痪。",
+  "saferUse": [
+    "剂量要低。服用前想清楚你希望保持清醒多久！不要压抑你的睡眠需求。",
+    "安非他命最低风险的使用方式是口服。",
+    "消费后要吃饱，以防体重减轻。",
+    "饮用足够的（非酒精饮料）。",
+    "经常使用时，额外补充维生素C、维生素D及矿物质（铁、钙和镁）。",
+    "嗅闻时请遵循安全嗅闻规则。",
+    "避免混合消费！确保在消费过程中适当休息。",
+    "精神病患者、高血压患者、肝肾疾病患者、糖尿病患者及孕妇应避免使用安非他命。",
+    "最好不要戴头饰（有过热风险！）。",
+    "安非他明膏体在食用前应始终充分干燥。"
+  ],
+  "localizedName": "安非他命"
 }

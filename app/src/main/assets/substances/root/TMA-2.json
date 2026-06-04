@@ -8,10 +8,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -19,6 +25,7 @@
     "research-chemical",
     "tentative"
   ],
+  "summary": "Trimethoxyamphetamine-2, a psychedelic amphetamine and stimulant first synthesised by Alexander Shulgin. An uncommon compound of similar activity to other psychedelic amphetamines. Short history of human use.",
   "roas": [
     {
       "name": "oral",

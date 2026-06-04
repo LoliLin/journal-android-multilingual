@@ -1,10 +1,12 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [],
-  "localizedName": "1cP-LSD",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [],
+  "localizedName": "1cP-LSD"
 }

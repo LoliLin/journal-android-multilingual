@@ -6,16 +6,23 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "stimulant",
     "research-chemical"
   ],
+  "summary": "Rather new and uncommon stimulant, psychedelic and amphetamine with properties similar to the 2Cx class of drugs. 3-carbon homologue of proscaline.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -24,7 +31,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

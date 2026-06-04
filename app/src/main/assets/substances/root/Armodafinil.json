@@ -13,34 +13,41 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzhydryl",
     "nootropic"
   ],
+  "addictionPotential": "mildly addictive with a low potential for abuse",
+  "toxicities": [
+    "The median lethal dose at which 50% of participants die (LD50) from either armodafinil or modafinil for human beings has never been reached"
+  ],
   "categories": [
-    "eugeroic",
     "stimulant",
+    "eugeroic",
     "nootropic",
     "habit-forming"
   ],
+  "summary": "The more potent of the two modafinil isomers, said to have a longer duration and lesser side effects. Sometimes prescribed for ADHD and daytime sleepiness.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "Hormonal birth control"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

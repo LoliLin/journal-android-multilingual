@@ -1,15 +1,19 @@
 {
-  "addictionPotential": "长期使用会产生依赖且滥用潜力中等。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "localizedName": "Dextromethorphan",
-  "effectsSummary": "DXM has dissociative, anesthetic, and mild psychedelic effects. Effects vary greatly by dose. Low doses: stimulation, euphoria. High doses: dissociation, hallucinations.",
-  "dosageRemark": "DXM has multiple plateaus with distinct effects. Do not mix with other serotonergic drugs due to risk of serotonin syndrome.",
-  "generalRisks": "Nausea, vomiting, dizziness, increased heart rate and blood pressure. At high doses: confusion, loss of coordination, risk of serotonin syndrome.",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "长期使用会产生依赖性，并具有中等程度的滥用可能性。",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "常见于某些非处方止咳药中。具有类似氯胺酮或MXE的解离作用，但也与阿片类药物和酒精有相似特性。请确保制剂中仅含右美沙芬这一种活性成分。",
+  "effectsSummary": "高剂量（120毫克或以上）使用时会产生致幻和欣快效应。可能出现感知紊乱甚至意识模糊，以及伴有癫痫发作的躁动状态。副作用包括皮肤发红和剧烈瘙痒。长期使用极易产生依赖，并伴随心理和生理症状！",
+  "dosageRemark": "游离碱形式的DXM（如Robocough RoboTablets中所含）因其单位重量中DXM浓度更高，效力比氢溴酸盐形式高出约27-37%。在计算剂量时应考虑这一因素，以避免潜在的用药过量风险。",
+  "generalRisks": "警告：同时摄入MAO抑制剂会延迟DXM的降解，可能导致严重的呼吸和循环系统障碍！",
+  "saferUse": [],
+  "localizedName": "右美沙芬"
 }

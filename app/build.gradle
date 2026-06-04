@@ -15,9 +15,9 @@ android {
         applicationId "in.kawaiis.journal"
         minSdk 26
         targetSdk 34
-        versionCode 30
+        versionCode 9020
 
-        versionName "9.0"
+        versionName "9.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

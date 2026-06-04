@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "summary": "一種與PCP相關的芳基環己胺解離性麻醉劑。最早於1960年代由帕克-戴維斯（Parke-Davis）發現，並於2008年引入研究化學品市場。據報導其效力低於PCP。此物質並不常見，但隨著其他解離性藥物的短缺，其受歡迎程度有所上升。",
+  "localizedName": "4-MeO-PCP"
 }

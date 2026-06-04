@@ -10,20 +10,26 @@
     "Butylene Glycol",
     "One Four B-D-O"
   ],
-  "url": "https://psychonautwiki.org/wiki/1,4-Butanediol",
+  "url": "https://psychonautwiki.org/wiki/1%2C4-Butanediol",
   "isApproved": true,
   "tolerance": {
     "full": "within several weeks of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "categories": [
     "depressant",
     "habit-forming"
   ],
+  "summary": "1,4-BD is a clear liquid with intoxicating effects. It is a pro-drug for GHB, and has similar though reportedly inferior effects. It also carries the potential for more health risks than GHB, such as liver toxicity.",
   "interactions": {
     "dangerous": [
-      "Depressant",
+      "Depressants",
       "Dissociatives"
     ],
     "unsafe": [],

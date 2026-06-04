@@ -8,6 +8,8 @@
   "url": "https://psychonautwiki.org/wiki/Naloxone",
   "isApproved": true,
   "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [],
   "categories": [
     "opioid"
   ],
@@ -69,6 +71,48 @@
           "min": 30,
           "max": 60,
           "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 4,
+        "commonMin": 8,
+        "strongMin": 16,
+        "heavyMin": 28
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
         }
       }
     }

@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "with prolonged and repeated use",
+    "half": "21-30 days",
+    "zero": "2-3 months",
+    "halfToleranceInHours": 612,
+    "zeroToleranceInHours": 1800
+  },
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
     "exact toxic dosage is unknown"

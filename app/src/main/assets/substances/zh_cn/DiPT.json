@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种罕见的色胺类迷幻剂，与 DMT 近缘，特点是视觉幻觉较少但听觉效应强。",
-  "localizedName": "DiPT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种罕见的色胺类迷幻剂，与DMT密切相关，具有一个有趣的特点：几乎不产生视觉幻觉，但听觉效果强烈。",
+  "localizedName": "二异丙基色胺"
 }

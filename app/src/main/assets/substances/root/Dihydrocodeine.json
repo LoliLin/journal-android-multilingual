@@ -8,35 +8,42 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
     "habit-forming",
     "depressant"
   ],
+  "summary": "A weak semi-synthetic opioid analgesic and antitussive (anti-cough) drug. Often sold as a syrup in combination with aspirin or paracetamol. Not to be confused with the slightly less potent codeine.",
   "interactions": {
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [

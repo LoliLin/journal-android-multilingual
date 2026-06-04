@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "localizedName": "2,5-DMA",
   "tolerance": {
-    "full": "摄入数天后",
-    "half": "3-5 天",
-    "zero": "7-10 天"
-  }
+    "full": "连续多日摄入后",
+    "half": "3-5天",
+    "zero": "7-10天",
+    "halfToleranceInHours": 96,
+    "zeroToleranceInHours": 204
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "localizedName": "2,5-二甲氧基苯丙胺"
 }

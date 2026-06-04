@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "滥用和依赖潜力低。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "localizedName": "MiPLA",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "滥用和依赖的可能性较低",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "localizedName": "MiPLA"
 }

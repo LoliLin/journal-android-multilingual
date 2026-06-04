@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "中度形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "localizedName": "ΑMT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "14 天",
-    "zero": "1 个月"
-  }
+    "full": "摄入后几乎立即",
+    "half": "14天",
+    "zero": "1个月",
+    "halfToleranceInHours": 336,
+    "zeroToleranceInHours": 720
+  },
+  "addictionPotential": "中度成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "localizedName": "ΑMT"
 }

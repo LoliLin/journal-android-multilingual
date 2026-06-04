@@ -1,27 +1,29 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "低毒性。"
-  ],
-  "summary": "一种半合成阿片镇痛药，也称 Subutex。常以 Butrans 贴片或与纳洛酮组合成 Suboxone 用于海洛因替代治疗。若有阿片耐受且未等待足够时间（通常约 48 小时）服用，会引发戒断。",
-  "localizedName": "丁丙诺啡",
-  "effectsSummary": "Buprenorphine has pain-relieving, mood-lifting, calming and euphoric effects. As a partial opioid agonist, it has a ceiling effect and lower overdose risk than full agonists.",
-  "dosageRemark": "The risk of abuse of buprenorphine is lower than with full opioid agonists. However, it can still cause dependence.",
-  "generalRisks": "Nausea, vomiting, constipation, dizziness, drowsiness, headache. Lower respiratory depression risk than full opioids, but still present.",
-  "longtermRisks": "Buprenorphine has a low dependence potential compared to full opioid agonists, but long-term use can still lead to physical dependence.",
-  "saferUse": [
-    "阿片类药物是高效药物，仅应用于急性疼痛。使用前了解相关风险。",
-    "从小剂量开始，等待效果后再决定是否加量。",
-    "如果注射阿片类药物，更需谨慎剂量。",
-    "不要依赖他人的剂量信息。",
-    "使用之间保持较长间隔（至少数天）。",
-    "戒断一段时间后，剂量要比之前大幅降低。",
-    "同时使用抑制剂如酒精或苯二氮䓬类药物会增加呼吸抑制风险。",
-    "避免柑橘类水果（尤其是葡萄柚），它们可能影响阿片类药物的代谢。"
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "低毒性"
+  ],
+  "summary": "一种半合成阿片类镇痛药，也称为丁丙诺啡。常以布托啡诺贴剂形式给药，或与纳洛酮联合制成舒倍生，作为海洛因替代疗法药物。若使用者对阿片类药物有耐受性且未等待足够时间（通常约48小时）便服用此药，将引发戒断症状。",
+  "effectsSummary": "与所有阿片类药物一样，丁丙诺啡具有镇痛和镇咳作用。但其致欣快感和镇静作用不如其他阿片类药物明显，因此也被用于替代治疗。丁丙诺啡是一种部分激动剂，这意味着出于安全考虑，它仅能产生次最大效应。达到一定剂量后会出现饱和效应（天花板效应），从而阻止药效进一步增强。这种特性使该活性成分在替代治疗中具有重要价值——既能缓解戒断症状，又可避免药物过量风险。",
+  "dosageRemark": "从16毫克开始，饱和效应（天花板效应）生效，不再感受到效果增强。  \n首次服用时，应使用低剂量，因为呼吸停止的风险会增加。",
+  "generalRisks": "副作用较其他阿片类药物轻微，但仍可能出现疲劳、便秘、嗜睡、出汗、恶心、呕吐、失眠及易怒等症状。丁丙诺啡引发呼吸抑制的风险较低，因此被认为相对安全。由于丁丙诺啡与μ-阿片受体结合力强，阿片受体拮抗剂纳洛酮难以治疗其过量使用，故需使用呼吸兴奋剂类药物（如多沙普仑）进行治疗。",
+  "longtermRisks": "与其他阿片类药物不同，其活性成分缓慢涌入体内，因此成瘾风险被认为较低。",
+  "saferUse": [
+    "阿片类药物是高效的药物，应仅在有限时间内使用，且最好在医疗监督下进行。",
+    "从低剂量开始，等待药效显现并确认耐受性后再增加剂量。每日最大剂量不可超过规定上限。",
+    "若注射阿片类药物，请更加谨慎地控制剂量，因为预期效果（快感）与危险过量之间的界限更难以判断。避免注射芬太尼，其过量风险尤其高。务必使用全新（清洁无菌）的注射器具！切勿共用针具、过滤器、水、消毒棉签，以防传播肝炎和HIV病毒。",
+    "不要依赖经常使用阿片类药物的同事提供的剂量信息。由于习惯或依赖，他们的剂量要高得多，对初次使用者可能是致命的。",
+    "在摄入之间延长休息时间（至少数天）。",
+    "在戒断一段时间后，请服用更低的剂量！否则，戒断阶段前的常规剂量可能会迅速引发危及生命的后果。",
+    "同时摄入酒精、氯胺酮、GHB/GBL、一氧化二氮、苯二氮卓类药物和/或其他阿片类物质等抑制剂是危险的，因为这会增加呕吐和意识丧失的风险。窒息风险极高！",
+    "服用前或服用期间避免食用柑橘类水果（尤其是葡萄柚）。两者结合可能导致阿片类药物效果增强和/或呼吸抑制。"
+  ],
+  "localizedName": "丁丙诺啡"
 }

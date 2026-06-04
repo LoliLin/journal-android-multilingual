@@ -8,11 +8,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -21,25 +27,26 @@
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "An empathogen structurally similar to MDMA. Typically more visual than MDMA. Often reported to be much less stimulating and more relaxing than most other stimulating empathogens. Less psychedelic than 6-APB. Much longer lasting than MDMA.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "SNRIs",
       "Serotonin releasers",
       "SSRIs",
-      "5-Hydroxytryptophan"
+      "5-HTP"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

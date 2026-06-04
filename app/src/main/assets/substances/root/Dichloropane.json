@@ -9,18 +9,22 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "2 - 4 days",
-    "zero": "1 - 1.5 weeks"
+    "zero": "1 - 1.5 weeks",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 210
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
   ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [],
   "categories": [
     "stimulant"
   ],
   "interactions": {
     "dangerous": [
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [],
     "uncertain": []
@@ -64,7 +68,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 2.5,

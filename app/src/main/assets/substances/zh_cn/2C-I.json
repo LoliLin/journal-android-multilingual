@@ -1,20 +1,28 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种与 2C-B 类似的迷幻剂。用户常报告非常鲜艳明亮的睁眼视觉，以及相比 2C-B 和其他 2C 系更温和的闭眼视觉。也可能更刺激，并伴轻微身体负荷。高剂量下安全性较 2C-B 更差。",
-  "localizedName": "2C-I",
-  "effectsSummary": "Perceptions and feelings become more intense. From 10-15 mg (snorted already from 5 mg) there may be visual hallucinations such as bright colors, geometric patterns, image distortions. At 20-25 mg the hallucinations become more intense and ego dissolution may be experienced. Doses above 25 mg often lead to a complete loss of self.",
-  "dosageRemark": "2C-I is effective even in small doses; a gradual approach to the individual dose is recommended.",
-  "generalRisks": "The pupils dilate, blood pressure rises and nausea, sweating and dizziness may occur. The body temperature rises; overheating must be avoided.",
-  "longtermRisks": "There are no research results on long-term risks so far.",
-  "saferUse": [
-    "2C-I seems very setting-dependent and is only suitable for parties to a limited extent."
-  ],
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3-5 天",
-    "zero": "7-10 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3-5天",
+    "zero": "7-10天",
+    "halfToleranceInHours": 96,
+    "zeroToleranceInHours": 204
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种与更为人所知的2C-B类似的迷幻药物。使用者常报告称，与2C-B及2C家族其他药物相比，该药物能带来非常生动鲜明的睁眼视觉效应，而闭眼视觉效应则相对温和。同时，其刺激性可能强于2C-B，部分使用者还会感到轻微的躯体负担。高剂量使用时，安全性低于2C-B。",
+  "effectsSummary": "感知和感受变得更加剧烈。从10-15毫克（鼻吸剂量从7毫克起），效果通常带有致幻特性。内外界限可能消融。常能观察到物体和人物周围移动的彩色图案及发光区域。不过，这种迷醉感被认为不如LSD那般深刻。",
+  "dosageRemark": "2C-I即使在小剂量下也有效；即使相差2毫克，也会对体验到的效果产生显著影响；建议逐步确定个人剂量。即使对于有经验的用户，超过35毫克的剂量也可能被体验为强烈不适。",
+  "generalRisks": "瞳孔放大，血压升高，可能出现恶心、出汗和头晕。部分使用者反映出现肠胃问题，以及轻微过敏反应（如因黏液分泌增多引发的咳嗽）。在心理层面，可能出现定向障碍、意识混乱、焦虑感，甚至对死亡的恐惧等风险。",
+  "longtermRisks": "目前尚无关于长期风险的研究结果。",
+  "saferUse": [
+    "2C-I似乎非常依赖于环境，且仅在一定程度上适合派对场合。",
+    "注意环境与心态：仅在感到舒适和安全的地方使用2C-I。若对药物感到恐惧，请勿使用。",
+    "切勿单独服用2C-I，仅在你身心状态良好且充分休息时使用。",
+    "不要添加更多，小心剂量。",
+    "旅途中要喝足够的水。",
+    "嗅闻时请遵循安全嗅闻规则。",
+    "心血管疾病患者和糖尿病患者在服用2C-I时风险增加。"
+  ],
+  "localizedName": "2C-I"
 }

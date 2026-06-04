@@ -2,17 +2,24 @@
   "name": "Hydrocodone",
   "commonNames": [
     "Vicodin (with paracetamol)",
-    "Zohydro ER (extended-release)"
+    "Zohydro ER (extended-release)",
+    "Norco"
   ],
   "url": "https://psychonautwiki.org/wiki/Hydrocodone",
   "isApproved": true,
   "tolerance": {
     "full": "with prolonged use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive",
+  "toxicities": [
+    "potentially fatal at heavy dosages"
   ],
   "categories": [
     "opioid",
@@ -20,25 +27,25 @@
     "habit-forming",
     "common"
   ],
+  "summary": "A codeine-derived opioid generally unheard of outside the United States. Generally mild in effects, used as an analgesic and cough-supressant. Sometimes used recreationally.",
   "interactions": {
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [

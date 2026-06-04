@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "重複使用",
+    "full": "重複使用後",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "輕度成癮，且具有高度可能引發如精神病等不良副作用",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一類含有各種托烷生物鹼的植物。會產生持久的譫妄效應，包括極度真實且常令人不悅的幻覺，以及短期失憶。曼陀羅植物對人體具有毒性，且不同植株間的效力差異極大，使得該藥物極難安全劑量使用。通常不被視為娛樂性藥物。",
+  "localizedName": "曼陀羅"
 }

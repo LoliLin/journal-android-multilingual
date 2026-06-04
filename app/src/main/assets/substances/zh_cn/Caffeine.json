@@ -1,21 +1,22 @@
 {
-  "addictionPotential": "长期使用会产生依赖但滥用潜力低。",
-  "toxicities": [
-    "咖啡因的人体 LD50 取决于个体敏感性，估计约为每公斤体重 150-200 毫克，相当于一般成年人约 80-100 杯咖啡。"
-  ],
-  "summary": "咖啡因是一种中枢兴奋剂，也是全球使用最广泛的精神活性物质。其在大多数地区合法且不受监管，存在于许多常见商品中。安全性良好，但长期大量使用可导致生理依赖并促发某些健康问题。",
-  "localizedName": "咖啡因",
-  "effectsSummary": "Increased alertness, energy, focus; reduced fatigue; mild diuretic effect; can cause jitters and anxiety at high doses.",
-  "generalRisks": "Anxiety, restlessness, insomnia, heart palpitations, digestive issues. Withdrawal causes headaches and fatigue.",
-  "longtermRisks": "Long-term high consumption may lead to chronic insomnia, anxiety disorders, digestive issues, and dependence.",
-  "saferUse": [
-    "Moderate consumption is generally safe.",
-    "Avoid caffeine late in the day to prevent sleep disruption.",
-    "Do not combine with other stimulants in high doses."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "长期规律性使用后会产生依赖，突然停用会导致渴求感和戒断反应，但滥用潜力较低。",
+  "toxicities": [
+    "咖啡因对人的半数致死剂量取决于个体敏感性，但估计约为每千克体重150至200毫克，或相当于普通成年人饮用约80至100杯咖啡。"
+  ],
+  "summary": "咖啡因是一种中枢神经系统兴奋剂，也是全球使用最广泛的精神活性物质。它在世界大部分地区合法且不受管制，存在于许多常见市售产品中。其安全性良好，但长期大量使用可能导致身体依赖，并引发某些健康问题。",
+  "effectsSummary": "咖啡因能让人保持清醒，加速心跳，并暂时提升大脑表现。较高剂量（约300-600毫克，相当于约8杯咖啡）时，会产生欣快感。",
+  "generalRisks": "咖啡因会导致身体脱水（脱水）。在极高剂量下：出汗、心悸、尿意频繁、心律失常、感知严重紊乱、颤抖、紧张和睡眠障碍。",
+  "longtermRisks": "长期、规律且高剂量的咖啡因摄入（包括咖啡或能量饮料），存在产生身体依赖性症状的风险。可能的戒断症状包括：头痛、神经紧张、疲劳、呕吐，甚至出现运动障碍和注意力不集中。咖啡的酸性也会长期促进胃溃疡的形成。持续将咖啡因与止痛药一同摄入，可能导致严重肾损伤，并引发危及生命的并发症。",
+  "saferUse": [
+    "不要摄入纯咖啡因，而是喝咖啡或瓜拉纳。除了咖啡因，能量饮料还含有大量糖分。",
+    "纯（合成）咖啡因粉末常与安非他明混合，作为\"快克\"出售。"
+  ],
+  "localizedName": "咖啡因"
 }

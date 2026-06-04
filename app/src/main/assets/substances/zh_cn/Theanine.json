@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "极低毒性。"
-  ],
-  "localizedName": "Theanine",
   "tolerance": {
-    "full": "长期重复使用后",
-    "half": "5 天",
-    "zero": "10 天"
-  }
+    "full": "长期反复使用后",
+    "half": "5天",
+    "zero": "10天",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 240
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "极低毒性"
+  ],
+  "localizedName": "茶氨酸"
 }

@@ -8,16 +8,22 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a week of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity"
+  ],
   "categories": [
     "antipsychotic",
     "depressant"
   ],
+  "summary": "An atypical antipsychotic medication under the brand name Seroquel. Also used to treat insomnia and mood swings. This drug is very sedating and can stop/slow down psychedelic drug trips. Infrequently abused.",
   "interactions": {
     "dangerous": [
-      "Depressant"
+      "Depressants"
     ],
     "unsafe": [],
     "uncertain": [
@@ -52,8 +58,8 @@
           "units": "hours"
         },
         "total": {
-          "min": 4,
-          "max": 8,
+          "min": 8,
+          "max": 24,
           "units": "hours"
         },
         "afterglow": {

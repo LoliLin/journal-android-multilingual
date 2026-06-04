@@ -1,22 +1,30 @@
 {
-  "addictionPotential": "极易成瘾且具有高滥用潜力。",
-  "toxicities": [
-    "当血液酒精浓度达到 0.4% 时可能因乙醇摄入致死。"
-  ],
-  "summary": "酒精是一种通过 GABAₐ 受体起效的中枢抑制剂，是人类最常见的强精神活性物质之一。使用历史悠久，致醉效应已被充分研究与记录。在世界大多数地区仍属合法。",
-  "localizedName": "酒精",
-  "effectsSummary": "Relaxation, disinhibition, sociability, euphoria, impaired judgment and coordination, slurred speech, memory impairment.",
-  "dosageRemark": "Dosage varies greatly depending on individual tolerance, body weight, and experience. Always pace yourself.",
-  "generalRisks": "Risk of alcohol poisoning, especially with high-proof spirits. Impaired judgment leads to risky behavior. Long-term use causes liver damage, brain damage, addiction.",
-  "longtermRisks": "Long-term alcohol use leads to liver cirrhosis, brain damage, dementia, heart disease, pancreatitis, and severe addiction.",
-  "saferUse": [
-    "Drink water between alcoholic beverages.",
-    "Do not drink on an empty stomach.",
-    "Avoid mixing alcohol with other drugs, especially depressants."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "极易上瘾，具有很高的滥用潜力",
+  "toxicities": [
+    "当血液酒精浓度达到0.4%时，饮用乙醇可能导致死亡。"
+  ],
+  "summary": "酒精是一种通过GABAₐ受体起作用的CNS抑制剂，是人类最常用的强效精神活性物质之一。其使用历史悠久，醉人效果已被充分研究和记录。在世界上大部分地区，它仍然是合法的。",
+  "effectsSummary": "刺激、放松、镇静、解除抑制、社交性、欣快感、反应能力下降、自我高估与倾诉欲增强，但也可能引发忧郁、易怒甚至攻击性。  \n苦艾酒（\"绿色精灵\"）是一种高度烈酒（通常酒精含量为50%-70%），含有植物成分侧柏酮。据称侧柏酮与主要活性成分酒精共同作用，会产生刺激和改变心智的效果。在欧洲（包括瑞士），有明确的限量标准（每公斤酒精中侧柏酮含量不得超过35毫克）。长期使用需谨慎！侧柏酮过量会表现为痉挛及类似癫痫的症状。",
+  "dosageRemark": "标准饮品如3分升啤酒、1分升葡萄酒或2分升烈酒约含12克酒精。酒精的作用受摄入量、酒精类型（含糖和/或碳酸饮料）、饮用时间及个体因素（年龄、性别、体重）影响。血液酒精浓度以千分比（‰）计量。血液中酒精浓度越高，酒精作用越强。",
+  "generalRisks": "少量酒精通常会产生放松和兴奋的效果，带来普遍的幸福感，减少恐惧并增强社交能力。大量饮酒可能导致平衡和语言障碍、视觉紊乱（复视或管状视野）、胃痛、恶心至呕吐、因脱水引起的头痛（宿醉）、失控和记忆中断。由于高估自身能力和反应能力下降，存在发生事故的风险。高剂量可能导致体温过低或过高、深度睡眠和昏迷。极高剂量（血液酒精浓度达3-4‰）可能危及生命。\n\n狂饮，即在极短时间内摄入大量酒精，会导致血液酒精含量迅速且剧烈上升，可能快速引发酒精中毒。后果可能包括：昏迷状态、记忆缺失（片段性失忆）、重要反射功能丧失（呕吐时窒息风险、寒冷时冻死风险）以及癫痫发作。此外，血栓形成、高血压或低血压、呼吸抑制和心源性猝死的风险也会增加。",
+  "longtermRisks": "由于酒精是一种细胞毒素，长期大量饮用会对身体各器官造成损害，引发营养缺乏症状，导致神经系统、运动协调能力和记忆功能紊乱，甚至诱发酒精性痴呆。酒精是辅助致癌物，即它会显著增强其他物质（如尼古丁）的致癌作用。  \n酒精可导致心理和生理双重依赖。典型的戒断症状包括震颤、出汗、恶心呕吐，严重时甚至出现癫痫发作。在心理层面，可能出现易怒、焦虑障碍、抑郁情绪和幻觉。长期饮酒还会产生耐受性。",
+  "saferUse": [
+    "不要因为无聊或心情不好而饮酒。",
+    "饮酒尽兴，且从容。",
+    "请勿空腹饮酒。",
+    "避免混合饮用不同种类的酒精饮料，饮酒时搭配喝水（例如每喝完一杯酒精饮料后喝一杯水）。",
+    "注意混合饮品（如酒精汽水）或自调饮品！这些甜味饮料几乎尝不出酒精味，但一瓶三升装的饮品中约含两杯烈酒的酒精量。无意中过量饮用的风险很高。",
+    "一般来说，若服用其他精神活性物质，应避免饮酒；酒精会改变其药效，有时甚至引发危及生命的副作用（例如酒精与GHB同服=窒息危险！）。",
+    "喝酒不开车。请使用公共交通、打车或步行。",
+    "孕期饮酒对胎儿有风险，可能导致孩子遭受严重伤害。",
+    "即使在酒精影响下，也要遵守安全性行为规则。"
+  ],
+  "localizedName": "酒精"
 }

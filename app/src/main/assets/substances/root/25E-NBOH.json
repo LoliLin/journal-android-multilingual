@@ -1,11 +1,57 @@
 {
   "name": "25E-NBOH",
-  "commonNames": [],
+  "commonNames": [
+    "25E-NBOH"
+  ],
   "url": "https://psychonautwiki.org/wiki/25E-NBOH",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "psychedelic"
   ],
-  "roas": []
+  "roas": [
+    {
+      "name": "sublingual",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 600,
+        "strongMin": 1000,
+        "heavyMin": 1200
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 2.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 5,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 5,
+          "max": 10,
+          "units": "days"
+        }
+      }
+    }
+  ]
 }

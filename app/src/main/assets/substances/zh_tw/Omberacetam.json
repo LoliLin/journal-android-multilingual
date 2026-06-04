@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "長期重複使用數週後產生",
+    "full": "在持續且重複使用數週後發展而成",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成癮性且濫用可能性低",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "localizedName": "N-1-苯基乙酰基-L-脯氨酰甘氨酸乙酯（Noopept）"
 }

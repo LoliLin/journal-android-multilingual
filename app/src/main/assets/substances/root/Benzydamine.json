@@ -7,20 +7,24 @@
   "url": "https://psychonautwiki.org/wiki/Benzydamine",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "categories": [
     "deliriant",
     "stimulant",
     "tentative"
   ],
+  "summary": "NSAID with local anesthetic and analgesic properties, similar to ibuprofen or naproxen. Sometimes abused in overdose with reported delirant and stimulant effects.",
   "roas": [
     {
       "name": "oral",
       "dose": {
-        "units": "g",
-        "lightMin": 0.25,
-        "commonMin": 1,
-        "strongMin": 1.5,
-        "heavyMin": 2
+        "units": "mg",
+        "lightMin": 150,
+        "commonMin": 500,
+        "strongMin": 1000,
+        "heavyMin": 2000
       },
       "duration": {
         "onset": {
@@ -41,6 +45,11 @@
         "total": {
           "min": 5,
           "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 24,
+          "max": 72,
           "units": "hours"
         }
       }

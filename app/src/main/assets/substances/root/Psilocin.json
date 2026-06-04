@@ -13,10 +13,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "extremely low toxicity"
   ],
   "categories": [
     "psychedelic",
@@ -24,6 +30,7 @@
     "entactogen",
     "research-chemical"
   ],
+  "summary": "Psilocin is a substutued tryptamine alkaloid, that is present in most psychedelic mushrooms. It is relatively unstable in solution due to the -OH group.",
   "roas": [
     {
       "name": "oral",

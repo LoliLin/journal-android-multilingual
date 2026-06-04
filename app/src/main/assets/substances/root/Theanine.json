@@ -10,9 +10,15 @@
   "tolerance": {
     "full": "after prolonged and repeated usage",
     "half": "5 days",
-    "zero": "10 days"
+    "zero": "10 days",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 240
   },
   "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
   "categories": [
     "nootropic"
   ],

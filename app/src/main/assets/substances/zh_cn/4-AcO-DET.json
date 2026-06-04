@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种罕见的色胺类药物，可与裸盖菇素相当。预计会快速水解为游离的酚性 4-HO-DET。",
-  "localizedName": "4-AcO-DET",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种罕见的色胺类药物，可与裸盖菇素相媲美。预计会迅速水解为游离酚类化合物4-HO-DET。",
+  "localizedName": "4-乙酰氧基-N,N-二乙基色胺"
 }

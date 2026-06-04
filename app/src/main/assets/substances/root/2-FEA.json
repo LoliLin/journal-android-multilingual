@@ -8,11 +8,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -20,24 +26,25 @@
     "tentative",
     "research-chemical"
   ],
+  "summary": "Stimulant closely related to 2-FMA. Presumably slightly less potent than the prior. Toxicology and the likes are pretty much completely unknown. Tread with caution.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "Stimulants",
       "MDMA",
       "Cocaine"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

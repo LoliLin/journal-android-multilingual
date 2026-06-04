@@ -4,15 +4,21 @@
     "2,5-DMA",
     "DOH"
   ],
-  "url": "https://psychonautwiki.org/wiki/2,5-DMA",
+  "url": "https://psychonautwiki.org/wiki/2%2C5-DMA",
   "isApproved": true,
   "tolerance": {
     "full": "after ingestion over the couse of multiple days",
     "half": "3-5 days",
-    "zero": "7-10 days"
+    "zero": "7-10 days",
+    "halfToleranceInHours": 96,
+    "zeroToleranceInHours": 204
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -26,9 +32,27 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },
-  "roas": []
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 40,
+        "strongMin": 80,
+        "heavyMin": 200
+      },
+      "duration": {
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

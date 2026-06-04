@@ -10,35 +10,42 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "very addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
     "habit-forming",
     "depressant"
   ],
+  "summary": "A medium-strength opioid analgesic and analogue of morphine. Considered less potent than morphine but more potent than codeine, and has been used in Germany for this reason. Said to have a 'ceiling' effect where no more euphoria occurs with increased dosage. Under investigation as a maintainance drug in opioid dependence therapy.",
   "interactions": {
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [

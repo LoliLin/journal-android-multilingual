@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用",
-    "half": "4 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "full": "長期且重複使用",
+    "half": "4 至 7 天",
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 132,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性，且具有高度可能引發如精神病等不良副作用。",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種芳基環己胺類的PCP解離性類似物，此藥物相對罕見，相關資訊極為有限。據報導，它不僅具有解離活性，還具有類鴉片作用。部分用藥經驗報告指出其副作用極為負面，包括劇烈肌肉緊繃。",
+  "localizedName": "3-HO-PCP"
 }

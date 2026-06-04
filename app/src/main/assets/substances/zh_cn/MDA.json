@@ -1,25 +1,27 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [],
-  "summary": "一种兴奋剂与共情剂。与 MDMA 相似但通常更具视觉效果。已知比 MDMA 更具神经毒性，并是 MDMA 的次要代谢物。持续时间与起效类似 MDMA。常用 Marquis 试剂无法区分 MDA 与 MDMA。",
-  "localizedName": "MDA",
-  "effectsSummary": "MDA is an entactogen with stimulating and mild psychedelic effects. Increased empathy, euphoria, enhanced sensory perception, mild visual distortions.",
-  "dosageRemark": "MDA is more neurotoxic than MDMA. Use less frequently and at lower doses.",
-  "generalRisks": "Neurotoxic risk is higher than with MDMA. Hyperthermia, serotonin syndrome. Jaw clenching, teeth grinding. Increased heart rate and blood pressure.",
-  "longtermRisks": "Regular use may cause neurotoxicity and serotonin system damage. Potential for cognitive deficits and depression.",
-  "saferUse": [
-    "保持水分但不要过量饮水。",
-    "定期休息降温。",
-    "不要频繁使用（建议间隔 3 个月以上）。",
-    "从低剂量开始。",
-    "注意：MDA 比 MDMA 的神经毒性更强，使用频率应更低。",
-    "使用后补充 5-HTP 以帮助血清素恢复。",
-    "避免与其他血清素药物同用。",
-    "注意口腔卫生，嚼口香糖可以减轻磨牙。"
-  ],
   "tolerance": {
-    "full": "反复大量使用",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "反复且大量使用",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [],
+  "summary": "一种兴奋剂和共情剂。与MDMA类似，但通常比MDMA产生更多视觉效果。已知其神经毒性高于MDMA，且是MDMA的一种次要代谢产物。作用时长和起效时间与MDMA相似。常见的马奎斯试剂测试无法区分MDA和MDMA。",
+  "effectsSummary": "MDA与MDMA密切相关。其主要区别在于对自身感受的感知程度（内省效应）、共情理解能力（共情效应）以及致幻作用的强弱。",
+  "dosageRemark": "每公斤体重1.3毫克（1.3毫克 × 80公斤 = 100毫克）",
+  "generalRisks": "恶心、口干、下颌肌肉痉挛、出汗、协调障碍、睡眠障碍和颤抖。",
+  "longtermRisks": "MDA具有神经毒性（损害神经）和肝毒性（损害肝脏）；长期使用可导致类似精神分裂症的症状。",
+  "saferUse": [
+    "先测试三分之一或半片药。",
+    "等待两小时让药效发挥作用后再增加剂量。",
+    "使用MDA时，补充剂量毫无意义，因为即使小剂量也能长时间生效。",
+    "避免混合食用。",
+    "避免饮酒，饮用足量的非酒精饮料（每小时0.3-0.5升）。",
+    "在派对跳舞间隙休息一下，呼吸些新鲜空气。",
+    "定期暂停消费。身体需要时间恢复。",
+    "服用药物的人建议了解药物相互作用。"
+  ],
+  "localizedName": "MDA"
 }

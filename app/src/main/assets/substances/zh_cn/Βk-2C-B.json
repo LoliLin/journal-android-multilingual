@@ -1,12 +1,14 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "localizedName": "Βk-2C-B",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "localizedName": "Βk-2C-B"
 }

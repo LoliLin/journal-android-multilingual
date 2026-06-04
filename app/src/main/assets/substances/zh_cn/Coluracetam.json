@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不成瘾且滥用潜力低。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种拉西坦类促智药，最初用于阿尔茨海默病，目前研究用于重度抑郁和广泛性焦虑障碍。可能调节 AMPA 受体。娱乐价值有限。",
-  "localizedName": "Coluracetam",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "无成瘾性，滥用可能性低",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种属于拉西坦类别的益智药物，最初用于治疗阿尔茨海默病，目前正被研究用于治疗重度抑郁症和广泛性焦虑障碍。可能作为AMPA受体的调节剂。娱乐用途价值有限。",
+  "localizedName": "考拉西坦"
 }

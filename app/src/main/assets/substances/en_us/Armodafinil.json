@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "mildly addictive with a low potential for abuse",
   "toxicities": [
     "The median lethal dose at which 50% of participants die (LD50) from either armodafinil or modafinil for human beings has never been reached"

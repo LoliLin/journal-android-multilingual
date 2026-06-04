@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "summary": "與2-FMA密切相關的興奮劑。推測效力略低於前者。毒理學等相關資訊幾乎完全未知。請謹慎使用。",
+  "localizedName": "2-FEA"
 }

@@ -6,20 +6,25 @@
   "url": "https://psychonautwiki.org/wiki/PMA",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [
+    "can be considered extremely toxic when compared to other substances such as Methamphetamine or MDMA",
+    "Ingestion of PMA has been associated with severe tachycardia (abnormally high heart rate), seizures, hyperthermia, and death"
+  ],
   "categories": [
     "entactogen",
     "hallucinogen",
     "stimulant",
     "tentative"
   ],
+  "summary": "An empathogen with a slow onset and very strong serotonin release. This, combined with its lack of dopamine release, often leads users to dose more for the pleasurable effects which never come, leading to hospitalisations and deaths. Sometimes mis-sold as MDMA.",
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -32,7 +37,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

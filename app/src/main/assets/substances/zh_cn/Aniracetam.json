@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [],
-  "summary": "一种调节 AMPA 受体的抗焦虑促智药，效力显著高于拉西坦。可能对记忆和认知有积极作用，娱乐价值不高。欧洲作为处方药销售，但美国 FDA 未批准。",
-  "localizedName": "Aniracetam",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成瘾性，滥用可能性低",
+  "toxicities": [],
+  "summary": "一种抗焦虑的益智药，通过调节AMPA受体发挥作用。其药效显著强于拉西坦类药物。可能对记忆和认知功能产生积极影响。娱乐性价值较低。在欧洲作为处方药销售，但未获得美国FDA批准。",
+  "localizedName": "茴拉西坦"
 }

@@ -7,10 +7,16 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of days of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": [
     "depressant",
@@ -18,6 +24,7 @@
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "A somewhat common benzodiazepine drug known for its extreme duration, with effects for larger doses reaching up to three days. Sedative, hypnotic and anxiolytic, this compound is an analogue of Phenazepam. First discovered in the 1960s, it was never marketed as a licit drug, but has recently become available as an RC. Not to be confused with Flubromazolam.",
   "roas": [
     {
       "name": "oral",

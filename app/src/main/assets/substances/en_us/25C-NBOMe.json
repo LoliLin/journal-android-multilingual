@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "7 days",
+    "zero": "14 days",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "fatal at heavy dosages"

@@ -1,12 +1,12 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
   "toxicities": [],
-  "summary": "一种常用于治疗 ADHD、嗜睡症和肥胖的精神兴奋剂，在欧盟尤常作为 Adderall 的替代。哌甲酯也是 5HT1A 受体激动剂。有时用于可卡因及其他兴奋剂戒断的超适应症处方。",
-  "localizedName": "哌甲酯",
-  "effectsSummary": "Methylphenidate has a stimulating effect. It increases alertness, concentration and cognitive performance. Used medically for ADHD.",
-  "generalRisks": "Increased heart rate and blood pressure, anxiety, insomnia, decreased appetite, weight loss. Risk of dependence with recreational use.",
-  "longtermRisks": "Regular high-dose use may lead to cardiovascular strain, sleep disruption, and psychological dependence.",
+  "summary": "一种常用于治疗注意力缺陷多动症（ADHD）、发作性睡病和肥胖症的精神兴奋剂，尤其在欧盟地区常替代阿德拉（Adderall）使用。哌甲酯同时也是5HT1A受体激动剂。有时会被超说明书用于缓解可卡因及其他兴奋剂的戒断症状。",
+  "effectsSummary": "服用哌甲酯会增加大脑中神经递质多巴胺、去甲肾上腺素和血清素的浓度。当用于治疗注意力缺陷多动障碍（ADHD）时，该药物应起到过滤外界刺激的作用，并缓解注意力分散、注意力缺陷、组织混乱和冲动等症状。\n\n然而，由于其具有兴奋、提神和增强驱动力的特性，哌甲酯也被用作派对药物或用于提升表现。由于多巴胺释放增加，其产生的效果与使用可卡因类似。",
+  "generalRisks": "若遵医嘱或按说明使用，仍常出现睡眠障碍和易怒症状。已知副作用还包括进食障碍、胃部不适、恶心及呕吐。滥用及高剂量使用可导致癫痫发作、心律失常、头痛及意识混乱。药物耐受性发展较快，因此需不断加大用药剂量。过量服用利他林可能引发幻觉。",
+  "longtermRisks": "假设在治疗性使用利他林时不会产生依赖性。若长期滥用较高剂量，则可能产生心理依赖。突然停药时，可能出现嗜睡、冷漠、抑郁和偏执等戒断症状。",
   "saferUse": [
-    "从低剂量开始。"
-  ]
+    "如有可能，请勿通过静脉注射方式使用哌甲酯。由于药片中含有的物质，可能导致栓塞（肺部或脑部血管堵塞）。"
+  ],
+  "localizedName": "哌甲酯"
 }

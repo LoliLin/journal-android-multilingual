@@ -9,11 +9,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
@@ -22,25 +28,26 @@
     "habit-forming",
     "tentative"
   ],
+  "summary": "Mexedrone is a stimulant drug of the cathinone class. It alters the reuptake of serotonin, dopamine, and norepinephrine to cause euphoria,  and is similar in effects to mephedrone. It is considered a designer drug and is in a legally grey area globally.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
       "SNRIs",
-      "MAOI",
+      "MAOIs",
       "Serotonin releasers",
       "SSRIs",
-      "5-Hydroxytryptophan"
+      "5-HTP"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

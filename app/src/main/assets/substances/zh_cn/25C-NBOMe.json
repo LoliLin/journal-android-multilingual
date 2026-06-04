@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "高剂量可致命。"
-  ],
-  "summary": "一种较新且流行的研究化学品。与 2C-C 相关的短效迷幻剂，效应类似 LSD，但更偏视觉、较少“头脑旅行”。常被误当作 LSD。会引起不适的身体负荷，且在常规剂量范围内也导致多起死亡。",
-  "localizedName": "25C-NBOMe",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "7天",
+    "zero": "14天",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "大剂量服用可致命"
+  ],
+  "summary": "一种相对较新且流行的研究化学品。一种与2C-C相关的短效致幻剂，效果类似LSD，但视觉体验更强，思维影响较弱。常被误当作LSD出售。会引起身体不适，即使在常规剂量范围内也曾导致多起死亡案例。",
+  "localizedName": "25C-NBOMe"
 }

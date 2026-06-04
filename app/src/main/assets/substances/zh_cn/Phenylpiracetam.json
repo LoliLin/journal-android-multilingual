@@ -1,14 +1,16 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "即使长期高剂量使用也被认为安全。",
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种促智药和吡拉西坦类似物，也称 fonturacetam。已显示可能具有增强记忆、抗焦虑、抗遗忘和抗抑郁效应，但娱乐价值不高。效力约为吡拉西坦的 45 倍。",
-  "localizedName": "Phenylpiracetam",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成瘾性，滥用可能性低",
+  "toxicities": [
+    "即使长期大量摄入也是安全的",
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种益智药和吡拉西坦类似物，也被称为fonturacetam，该药物已被证明具有潜在的增强记忆、抗焦虑、抗遗忘和抗抑郁作用，但几乎没有娱乐价值。其效力约为吡拉西坦的45倍。",
+  "localizedName": "苯基吡拉西坦"
 }

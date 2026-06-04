@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "極低毒性"
+  ],
+  "summary": "脱磷酸裸蓋菇素 是一種取代色胺生物鹼，存在於大多數迷幻蘑菇中。由於其 -OH 基團，在溶液中相對不穩定。",
+  "localizedName": "脱磷酸裸蓋菇素"
 }

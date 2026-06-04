@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且有较高不良副作用（如精神病）风险。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种芳基环己胺类解离剂，为 PCP 类似物，相对少见且资料有限。据称不仅具解离活性，也具阿片作用。一些体验报告提示强烈肌肉紧张等负面副作用。",
-  "localizedName": "3-HO-PCP",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "4 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "4 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 132,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中等成瘾性，且具有较高的导致精神病等不良副作用的风险",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种芳基环己胺类PCP解离性类似物，该药物相对罕见，且相关信息极为有限。据报道，它不仅具有解离活性，还兼具阿片类药物特性。部分体验报告指出其存在严重副作用，包括剧烈的肌肉紧张。",
+  "localizedName": "3-羟基苯环利定"
 }

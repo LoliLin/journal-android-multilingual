@@ -8,10 +8,15 @@
   "url": "https://psychonautwiki.org/wiki/DPT",
   "isApproved": true,
   "crossTolerances": [],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
+  "summary": "N,N-Dipropyltryptamine, a psychedelic tryptamine compound and lesser-known analogue of DMT, with similar psychedelic effects. Like DMT it is a partial serotonin receptor agonist.",
   "roas": [
     {
       "name": "insufflated",
@@ -73,7 +78,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 10,

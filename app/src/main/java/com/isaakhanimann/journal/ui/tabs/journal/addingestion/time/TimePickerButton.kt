@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.isaakhanimann.journal.R
 import java.time.LocalDateTime
+import com.isaakhanimann.journal.localization.i18n
 
 @Composable
 fun TimePickerButton(

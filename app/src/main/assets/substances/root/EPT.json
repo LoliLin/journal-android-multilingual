@@ -8,16 +8,23 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "does not produce dependence and has low abuse potential",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
+  "summary": "Ethylpropyltryptamine a novel tryptamine, that is the structural homologue of DMT.",
   "roas": [
     {
       "name": "insufflated",

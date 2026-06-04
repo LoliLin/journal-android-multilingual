@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "長期重複使用",
+    "full": "長期且重複使用",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾性，且具有引發精神異常等不良副作用的極高風險。",
+  "toxicities": [],
+  "summary": "乙環利定（PCE）是一種具有致幻作用的解離性麻醉劑，其效力略高於苯環利定。",
+  "localizedName": "PCE"
 }

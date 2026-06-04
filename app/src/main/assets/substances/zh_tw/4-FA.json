@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [],
+  "summary": "一種常用於替代MDMA的共情劑，具有相似的共情作用持續時間。然而，此藥物的興奮劑「尾效」較長，在此期間其效果更類似於安非他命。請勿與4-FMA混淆，後者雖有相似效力，但並不特別具有共情作用。",
+  "localizedName": "4-FA"
 }

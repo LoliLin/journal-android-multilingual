@@ -1,11 +1,13 @@
 {
   "name": "4F-MPH",
   "commonNames": [
-    "4F-MPH"
+    "4F-MPH",
+    "4-FMPH"
   ],
   "url": "https://psychonautwiki.org/wiki/4F-MPH",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -14,16 +16,16 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

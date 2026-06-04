@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "within a couple of days of repeated administration",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
   "addictionPotential": "extremely addictive",
   "toxicities": [
     "doses of over 300mg can be dangerous for first time users",

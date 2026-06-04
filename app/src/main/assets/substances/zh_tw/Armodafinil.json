@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "輕微成癮性，濫用潛力低",
+  "toxicities": [
+    "人類從未達到阿莫達非尼或莫達非尼的半數致死劑量（LD50），即導致50%受試者死亡的劑量中位數。"
+  ],
+  "summary": "兩種莫達非尼異構體中較強效的一種，據稱作用時間更長且副作用較少。有時用於治療注意力不足過動症（ADHD）及日間嗜睡症。",
+  "localizedName": "阿莫達非尼"
 }

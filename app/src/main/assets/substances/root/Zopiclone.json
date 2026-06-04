@@ -8,10 +8,16 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of weeks of daily use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like benzodiazepines, alcohol or opioids"
   ],
   "categories": [
     "hallucinogen",
@@ -19,6 +25,7 @@
     "habit-forming",
     "common"
   ],
+  "summary": "A nonbenzodiazepine sedative sleep aid (Z-drug), which can have hallucinogenic effects if taken while awake. Often causes users to have a metallic taste in the mouth for ~12h. Has been reported in some cases to cause certain users to black out, redose excessively and undertake dangerous activities such as driving.",
   "roas": [
     {
       "name": "oral",

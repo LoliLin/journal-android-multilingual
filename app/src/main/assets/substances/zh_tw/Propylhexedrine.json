@@ -1,7 +1,12 @@
 {
   "tolerance": {
-    "full": "長期重複使用後迅速發展",
+    "full": "長期重複使用時會迅速發展",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "toxicities": [],
+  "summary": "一種相對常見的中樞神經興奮劑，在苯丙胺吸入器中作為非處方藥銷售。",
+  "localizedName": "丙己君"
 }

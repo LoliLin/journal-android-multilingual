@@ -1,21 +1,23 @@
 {
-  "addictionPotential": "极易成瘾且具有高滥用潜力。",
-  "toxicities": [],
-  "summary": "一种源自吗啡的强力阿片，效力为其 2-4 倍。以高成瘾性和过量致命性呼吸抑制而臭名昭著，1874 年 C. R. Alder Wright 为寻找较不成瘾的吗啡替代品而首次合成。近年常被掺入极强的芬太尼，导致过量死亡激增。",
-  "localizedName": "海洛因",
-  "effectsSummary": "Intense euphoria, warmth, relaxation, pain relief, drowsiness, itching, nausea, respiratory depression.",
-  "dosageRemark": "The purity of street heroin varies greatly. Start with a very small test dose to gauge strength.",
-  "generalRisks": "High risk of respiratory depression and death from overdose. Severe addiction potential. Withdrawal is extremely unpleasant.",
-  "longtermRisks": "Severe physical and psychological dependence. Chronic use leads to collapsed veins, infections, respiratory issues, and high mortality.",
-  "saferUse": [
-    "Test a small amount first to gauge potency.",
-    "Never use alone.",
-    "Have naloxone available.",
-    "Avoid mixing with other depressants."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "toxicities": [],
+  "summary": "一种源自吗啡的强效阿片类药物，效力是吗啡的2-4倍。因其极高的成瘾性和过量使用导致致命性呼吸抑制而臭名昭著。C. R. 阿尔德·赖特于1874年首次合成该化合物，试图寻找一种比吗啡成瘾性更低的替代品。近年来，该药物常被掺入毒性极强的芬太尼出售，导致过量致死案例激增。",
+  "effectsSummary": "镇痛、平衡、镇静、抗焦虑及欣快。初始的欣快“闪感”之后，随之而来的是安宁状态，以及漠然、平静、轻松与自我满足之感。",
+  "dosageRemark": "剂量取决于个体对海洛因的耐受性。无耐受性人群的致死剂量约为60毫克。",
+  "generalRisks": "可能出现呼吸减慢、恶心、呕吐、瘙痒、血压下降、脉搏减缓、瞳孔缩小和尿潴留等症状。\n长期使用海洛因的其他副作用包括：意识混乱、定向障碍、记忆减退、言语含糊不清及协调障碍、严重便秘、性欲减退，以及可能危及生命的呼吸频率降至每分钟2-4次（因咳嗽中枢和呼吸中枢受到抑制）。\n若未立即就医，高剂量海洛因可致命！\n美沙酮是一种合成阿片类药物，用于替代治疗海洛因成瘾。对于未耐受阿片类药物的使用者，即使少量服用美沙酮也可能危及生命（严重呼吸抑制、窒息风险）。\n鼻吸：损伤鼻中隔和黏膜，存在丙型肝炎感染风险。\n吸烟：损伤支气管和肺部（长期使用会导致肺部黏液化）。\n注射：静脉炎症及感染性疾病风险（丙型肝炎、HIV/AIDS、真菌感染）。海洛因中的杂质可能引发器官损伤。",
+  "longtermRisks": "产生心理和生理依赖的风险很大。一旦产生耐受性且身体未获得所需剂量的物质，在最后一次摄入海洛因后8至12小时就会出现生理戒断症状。戒断症状包括出汗、发冷、流泪、流鼻涕、呕吐、腹泻、烦躁不安、易怒、虚弱、焦虑、抑郁状态、疼痛性痉挛、失眠，以及较少见的幻觉、精神病性发作和癫痫。",
+  "saferUse": [
+    "始终使用自己清洁且全新的喷涂设备（针头、过滤器、勺子）。",
+    "嗅闻时请遵循安全嗅闻规则。",
+    "避免与其他物质混合使用，否则效果将变得不可预测且风险增加！请注意，与其他抑制剂（如苯二氮䓬类药物）合用可能导致呼吸停止。",
+    "在长时间未使用后，以及使用极高纯度的物质时，过量的风险尤其高。",
+    "在安静的环境中服用，且不要独自一人服用。"
+  ],
+  "localizedName": "海洛因"
 }

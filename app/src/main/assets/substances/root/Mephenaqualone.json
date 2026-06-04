@@ -1,0 +1,64 @@
+{
+  "name": "Mephenaqualone",
+  "commonNames": [
+    "Mephenaqualone"
+  ],
+  "url": "https://psychonautwiki.org/wiki/Mephenaqualone",
+  "isApproved": false,
+  "tolerance": {
+    "full": "within a few days of repeated administration"
+  },
+  "crossTolerances": [
+    "GABA|gabaergic",
+    "depressants"
+  ],
+  "addictionPotential": "highly addictive",
+  "toxicities": [],
+  "categories": [
+    "depressant"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 1.5,
+        "strongMin": 2.5,
+        "heavyMin": 4
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 40,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 10,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 10,
+          "max": 15,
+          "units": "hours"
+        },
+        "total": {
+          "min": 15,
+          "max": 20,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

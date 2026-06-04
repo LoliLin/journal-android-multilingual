@@ -10,11 +10,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant"
@@ -24,20 +30,20 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "SNRIs",
       "Serotonin releasers",
       "SSRIs",
-      "5-Hydroxytryptophan"
+      "5-HTP"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },
@@ -52,8 +58,33 @@
         "heavyMin": 60
       },
       "duration": {
+        "onset": {
+          "min": 1,
+          "max": 8,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
         "total": {
-          "min": 2,
+          "min": 1,
+          "max": 3,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
           "max": 4,
           "units": "hours"
         }
@@ -77,7 +108,7 @@
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 5,

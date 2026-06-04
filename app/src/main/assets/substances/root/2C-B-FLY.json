@@ -8,15 +8,22 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
+  "summary": "Psychedelic phenethylamine that is the dihydrodifuran analog of 2C-B.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -25,7 +32,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

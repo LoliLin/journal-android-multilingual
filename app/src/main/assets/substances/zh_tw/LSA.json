@@ -1,6 +1,13 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
-    "zero": "7 天"
-  }
+    "full": "幾乎在攝取之後立即",
+    "zero": "7 天",
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "非成癮性且濫用潛力低",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種存在於牽牛花與夏威夷嬰兒木玫瑰種子中的化學物質，這些種子通常可合法取得。其對心理的影響類似於LSD，但幾乎沒有視覺效果。它以極易引發噁心感聞名，且在高劑量下會導致嚴重的時間感知扭曲。",
+  "localizedName": "LSA"
 }

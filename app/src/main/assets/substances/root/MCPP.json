@@ -6,31 +6,33 @@
   "url": "https://psychonautwiki.org/wiki/MCPP",
   "isApproved": true,
   "crossTolerances": [],
+  "toxicities": [],
   "categories": [
     "stimulant",
     "research-chemical",
     "tentative"
   ],
+  "summary": "A phenylpiperazine stimulant first developed in the 1970s before being sold in the RC market, often mislabelled as MDMA. Said to have very unpleasant effects such as anxiogenesis and headaches.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI",
+      "MAOIs",
       "SNRIs",
       "Cocaine",
       "Serotonin releasers",
       "SSRIs",
-      "5-Hydroxytryptophan"
+      "5-HTP"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

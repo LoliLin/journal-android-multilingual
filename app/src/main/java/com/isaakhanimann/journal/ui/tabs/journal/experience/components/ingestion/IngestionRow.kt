@@ -92,7 +92,7 @@ fun IngestionRow(
                     ingestion.administrationRoute.displayText
                 ).lowercase()
                 val text = buildAnnotatedString {
-                    append(ingestionWithCompanionAndCustomUnit.doseDescription)
+                    append(ingestionWithCompanionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
                     withStyle(style = SpanStyle(color = Color.Gray)) {
                         if (customUnit == null) {
                             append(" $routeName")

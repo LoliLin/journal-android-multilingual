@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "after prolonged and repeated usage",
+    "half": "5 days",
+    "zero": "10 days",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 240
+  },
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "extremely low toxicity"

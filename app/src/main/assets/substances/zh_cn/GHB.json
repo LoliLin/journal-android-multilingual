@@ -1,21 +1,27 @@
 {
-  "addictionPotential": "生理成瘾中等至高，心理成瘾中等。",
-  "toxicities": [
-    "在负责任或医疗使用下被认为安全且无毒。",
-    "剂量超过 10 克与死亡风险相关。"
-  ],
-  "summary": "一种产生欣快的抑制剂，作为助眠药并有时用于酒精戒断。也用于娱乐性抑制剂，作为较低毒性的酒精替代品。尽管毒性不如酒精，但因市售溶液浓度不一致等原因仍有风险，与其他抑制剂合用可能非常危险。",
-  "localizedName": "GHB",
-  "effectsSummary": "Euphoria, sociability, disinhibition, sedation, drowsiness, increased libido. Overdose can cause unconsciousness and respiratory depression.",
-  "generalRisks": "Very narrow safety margin. Overdose causes vomiting, unconsciousness, respiratory depression. Mixing with alcohol or other depressants is extremely dangerous.",
-  "longtermRisks": "Dependence develops quickly with frequent use. Withdrawal can be severe and includes anxiety, insomnia, and psychosis.",
-  "saferUse": [
-    "Measure doses accurately with a syringe - never estimate.",
-    "Do not mix with alcohol or other depressants.",
-    "Never redose within 3-4 hours of initial dose."
-  ],
   "tolerance": {
-    "full": "持续使用数日内",
-    "zero": "7 - 14 天"
-  }
+    "full": "连续使用几天后",
+    "zero": "7 - 14天",
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度至高度生理成瘾性及中度心理成瘾性",
+  "toxicities": [
+    "被认为是一种在负责任使用或医疗用途下安全无毒的物質。",
+    "超过10克的剂量与死亡风险相关。"
+  ],
+  "summary": "一种欣快型镇静剂，常被用作助眠药物，有时也用于酒精戒断治疗。它也被用作娱乐性镇静剂，作为酒精的无毒替代品。尽管没有酒精的毒性，但由于市售溶液浓度不稳定等因素存在风险，若与其他镇静剂同服则可能非常危险。",
+  "effectsSummary": "该效应具有极强的剂量依赖性，且个体差异显著。同时，其作用强度还取决于物质的纯度。效应谱系涵盖从欣快感、放松、去抑制、感知增强、言语冲动（喋喋不休）、轻微眩晕与嗜睡，直至深度（类昏迷）睡眠或意识丧失。",
+  "generalRisks": "剂量越高，恶心、呕吐和头晕的可能性就越大。极高剂量下可能出现头痛、意识混乱、呼吸困难、心律失常、平衡与记忆受损，以及无法控制的肌肉抽搐——这容易被误认为癫痫，但也可能发展为癫痫。\n\n使用GHB时意外过量的风险极高——即使未与其他物质混合！GHB过量的症状包括：严重嗜睡后进入持续数小时的深度睡眠（难以或仅能被勉强唤醒，有时会短暂清醒，即\"站立人症状\"）、轻度至重度恶心、呕吐、头晕、头痛、肌肉无力（几乎无法站立）直至完全无法动弹、意识丧失、反射消失及呼吸困难。使用者究竟是处于深度睡眠还是已陷入昏迷难以判断——如有疑问，务必立即就医！",
+  "longtermRisks": "长期使用GHB/GBL会导致睡眠障碍、焦虑和震颤；存在产生心理和生理依赖症状的风险。若长期高剂量服用（每日多次），停药时会出现严重的生理戒断症状，如出汗、肌肉痉挛或癫痫发作。",
+  "saferUse": [
+    "如果有人向你提供GHB，请询问该物质的来源和剂量。",
+    "小心剂量！如果GHB尚未（或尚未完全）起效，最好等待2小时，切勿立即追加剂量。过量服用通常是由于追加剂量所致。请使用胰岛素注射器或带刻度的滴管，以便精确测量单次用量。记录上次服药的时间。",
+    "避免在独处时使用GHB。",
+    "使用GHB时，切勿与任何物质混合摄入，尤其是酒精！饮用前请稀释液体，例如用茶水稀释。",
+    "如果你在服用GHB后发生性行为，请遵守安全性行为规则。在服用前准备好安全套等物品。",
+    "癫痫、心脏或肾功能不全者在任何情况下都不得服用GHB！",
+    "GHB戒断只应在医疗监督下进行。",
+    "切勿让饮品离开视线，以防他人将GHB混入其中。若饮品味道异常，为安全起见请立即倒掉。"
+  ],
+  "localizedName": "GHB"
 }

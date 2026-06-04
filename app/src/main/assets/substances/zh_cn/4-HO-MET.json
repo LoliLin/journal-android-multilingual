@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种较少为人知的迷幻色胺。为裸盖菇素（Psilocin）的功能类似物。水和酒精中溶解度很差。",
-  "localizedName": "4-HO-MET",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种较为鲜为人知的致幻色胺。是裸盖菇素的功能类似物。在水和酒精中溶解度极差。",
+  "localizedName": "4-羟基-N-甲基-N-乙基色胺"
 }

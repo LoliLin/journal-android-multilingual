@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种三重单胺再摄取抑制剂。其 5-HT2B 激动作用意味着长期使用可能具心脏毒性，与芬氟拉明和 MDMA 等 5-HT2B 激动剂相似。",
-  "localizedName": "5-APB",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种三重单胺再摄取抑制剂。其对5-HT2B受体的激动作用使得5-APB长期使用可能具有心脏毒性，这与芬氟拉明和MDMA等其他5-HT2B激动剂的情况类似。",
+  "localizedName": "5-APB"
 }

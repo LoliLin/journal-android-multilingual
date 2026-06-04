@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "攝入數天後",
-    "half": "3-5 天",
-    "zero": "7-10 天"
-  }
+    "full": "在連續多日攝入後",
+    "half": "3到5天",
+    "zero": "7-10天",
+    "halfToleranceInHours": 96,
+    "zeroToleranceInHours": 204
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "localizedName": "2,5-二甲氧基安非他命"
 }

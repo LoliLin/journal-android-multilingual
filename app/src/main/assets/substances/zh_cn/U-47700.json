@@ -1,14 +1,16 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "由于效力极强，相对于剂量的毒性很高。",
-    "与酒精或苯二氮卓等抑制剂混用可能致命。"
-  ],
-  "summary": "一种 μ-阿片受体激动剂，与 AH-7921 相关，持续时间很短。",
-  "localizedName": "U-47700",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "由于其极强的效力，相对于其剂量具有高毒性",
+    "与酒精或苯二氮卓类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "一种与AH-7921相关的μ-阿片受体激动剂。作用时间非常短。",
+  "localizedName": "U-47700"
 }

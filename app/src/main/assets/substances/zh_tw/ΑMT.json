@@ -1,7 +1,14 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "14 天",
-    "zero": "1 個月"
-  }
+    "zero": "1 個月",
+    "halfToleranceInHours": 336,
+    "zeroToleranceInHours": 720
+  },
+  "addictionPotential": "中度成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "localizedName": "ΑMT"
 }

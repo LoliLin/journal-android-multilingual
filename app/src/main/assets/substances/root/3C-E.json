@@ -9,16 +9,23 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "stimulant"
   ],
+  "summary": "Three-Carbon Analog of Escaline. Substituted Amphetamine.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -27,7 +34,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

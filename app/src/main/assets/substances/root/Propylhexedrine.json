@@ -9,32 +9,36 @@
   "tolerance": {
     "full": "rapidly develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
   ],
+  "toxicities": [],
   "categories": [
     "stimulant",
     "habit-forming",
     "common"
   ],
+  "summary": "A relatively common CNS stimulant sold over the counter in benzedrex inhalers.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },
@@ -44,9 +48,9 @@
       "dose": {
         "units": "mg",
         "lightMin": 10,
-        "commonMin": 62.5,
-        "strongMin": 125,
-        "heavyMin": 187.5
+        "commonMin": 60,
+        "strongMin": 120,
+        "heavyMin": 180
       },
       "duration": {
         "onset": {

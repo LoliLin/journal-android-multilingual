@@ -8,10 +8,16 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -19,6 +25,7 @@
     "research-chemical",
     "common"
   ],
+  "summary": "A potent stimulating psychedelic with a long action, a phenethylamine and substituted amphetamine. Sometimes sold as LSD but also enjoyed on its own merits by many. Usually sold on blotters slightly larger than those LSD is found on, but can also be bought in powder form.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -27,7 +34,7 @@
       "Tramadol"
     ],
     "uncertain": [
-      "Cannabis",
+      "THC",
       "Stimulants"
     ]
   },

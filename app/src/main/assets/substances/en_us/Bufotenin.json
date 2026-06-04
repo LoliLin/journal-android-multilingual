@@ -1,4 +1,11 @@
 {
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "1 hour",
+    "zero": "2 hours",
+    "halfToleranceInHours": 1,
+    "zeroToleranceInHours": 2
+  },
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "toxic dose is unknown"

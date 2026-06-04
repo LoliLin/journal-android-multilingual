@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "低濫用與依賴潛力",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種合成苯乙胺，其效果有時被比作2C-E，但持續時間更長，且身體負擔更為明顯。它是2C-X系列中效力最強的化合物之一。",
+  "localizedName": "2C-P"
 }

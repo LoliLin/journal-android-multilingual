@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -129,20 +130,27 @@ data class IngestionsBurst(
                     )
                 }
             }
-        val doseDescription: String
-            get() = customUnitDose?.doseDescription ?: ingestionDoseDescription
 
-        private val ingestionDoseDescription get() = ingestion.dose?.let { dose ->
-            ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviation ->
+        
+        fun getDoseDescription(context:Context): String {
+            return customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
+        }
+
+        
+        private fun getIngestionDoseDescription(context:Context): String {
+            return ingestion.dose?.let { dose -> 
+                ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviation ->
                 "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${ingestion.units}"
-            } ?: run {
-                val description = "${dose.toReadableString()} ${ingestion.units}"
+                } ?: run {
+                    val description = "${dose.toReadableString()} ${ingestion.units}"
                 if (ingestion.isDoseAnEstimate) {
-                    "~$description"
-                } else {
+                        "~$description"
+                    } else {
                     description
+                    }
                 }
-            }
-        } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
-    }
+            } ?: com.isaakhanimann.journal.localization.I18n.translate(context, "dose_unknown")
+        }
+    }       
 }
+    

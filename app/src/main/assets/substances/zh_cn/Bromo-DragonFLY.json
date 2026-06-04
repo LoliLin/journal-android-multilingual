@@ -1,15 +1,17 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "极强的血管收缩效应。",
-    "若未正确测量，该物质易导致过量。",
-    "毒性剂量未知。"
-  ],
-  "summary": "一种苯乙胺类迷幻剂与苯并呋喃化合物，效力很强且持续时间长。曾在 2005/6 年短暂以“2C-B-FLY”出售，并导致多起死亡。",
-  "localizedName": "Bromo-DragonFLY",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "6 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "6天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "极度血管收缩效应",
+    "如果这种物质没有正确计量，很容易导致过量服用。",
+    "毒性剂量未知"
+  ],
+  "summary": "一种强效且持续时间长的致幻性苯乙胺和苯并呋喃类物质。曾在2005/2006年间短暂以\"2C-B-FLY\"名义销售，并已导致多起死亡事件。",
+  "localizedName": "溴代龙蝇"
 }

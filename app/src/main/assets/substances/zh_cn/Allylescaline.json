@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种剂量更低的麦司卡林类似物，似乎高度依赖色彩体验。",
-  "localizedName": "Allylescaline",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "麦斯卡林的类似物，剂量低得多，似乎主要依赖于色彩效果。",
+  "localizedName": "烯丙基乙斯卡林"
 }

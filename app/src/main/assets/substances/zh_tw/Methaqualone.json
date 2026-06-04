@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "重複使用數日內",
+    "full": "在重複給藥後的幾天內",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "極度成癮",
+  "toxicities": [
+    "首次使用超過300毫克的劑量可能會有危險。",
+    "在適當劑量下是安全的"
+  ],
+  "summary": "一種因苯二氮平類藥物安全性更佳而被逐步淘汰的藥物性鎮靜劑與抑制劑，屬於夸龍類物質。現今除南非外已非常罕見。",
+  "localizedName": "甲喹酮"
 }

@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [],
+  "summary": "一種相對罕見的迷幻苯乙胺類物質，並可能具有單胺氧化酶抑制劑（MAOI）作用。藥效持久，且劑量反應曲線難以預測。與多數物質併用時的安全性存疑。",
+  "localizedName": "2C-T-7"
 }

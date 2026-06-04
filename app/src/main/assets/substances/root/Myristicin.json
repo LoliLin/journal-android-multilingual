@@ -6,14 +6,19 @@
   "url": "https://psychonautwiki.org/wiki/Myristicin",
   "isApproved": true,
   "crossTolerances": [],
+  "addictionPotential": "is not known to be addictive",
+  "toxicities": [
+    "is neurotoxic",
+    "can be fatal in extremely high doses"
+  ],
   "categories": [
     "deliriant"
   ],
   "interactions": {
     "dangerous": [
       "Opioids",
-      "Dextromethorphan",
-      "Diphenhydramine"
+      "DXM",
+      "DPH"
     ],
     "unsafe": [
       "Stimulants",
@@ -22,7 +27,7 @@
     ],
     "uncertain": [
       "Benzodiazepines",
-      "Depressant"
+      "Depressants"
     ]
   },
   "roas": [

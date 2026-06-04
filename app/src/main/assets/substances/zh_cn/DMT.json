@@ -1,20 +1,24 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "极低毒性。"
-  ],
-  "summary": "一种流行且强力的迷幻剂，通常有两种使用方式：蒸发吸入以获得短暂的“突破”体验，或与酶抑制剂合用以获得长时间强烈旅行（也称 ayahuasca 或 pharmahuasca）。",
-  "localizedName": "DMT",
-  "effectsSummary": "Intense visual and auditory hallucinations, ego dissolution, out-of-body experiences, breakthrough into alternative realities. Onset is extremely rapid and duration is short.",
-  "dosageRemark": "DMT is not active orally unless combined with an MAOI. Vaporization/injection provides rapid onset.",
-  "generalRisks": "Extreme psychological reactions, panic, fear. Temporary increase in blood pressure. Risk of HPPD.",
-  "longtermRisks": "No research results on long-term risks. HPPD is rare. Main risk is psychological distress during the experience.",
-  "saferUse": [
-    "Always have a trip sitter present.",
-    "Start with low doses.",
-    "Have a safe and comfortable setting."
-  ],
   "tolerance": {
-    "full": "似乎不会产生"
-  }
+    "full": "似乎并未发生"
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [
+    "极低毒性"
+  ],
+  "summary": "一种流行且强效的致幻剂，通常有两种使用方式：要么通过汽化吸入以获得短暂的\"突破性\"体验，要么与酶抑制剂结合使用以进行漫长而强烈的致幻旅程（这也被称为死藤水或药物死藤水）。",
+  "effectsSummary": "效果在很大程度上取决于环境与心境。血压和脉搏升高，瞳孔放大。身心分离与自我消解是常见现象，濒死体验也相对频繁，尤其是在高剂量摄入时。中毒状态下时间感知会发生巨大变化，几分钟可能被感知为极其漫长而强烈。此外，恐惧、欣快等不同情绪可能在短时间内交替出现。使用者报告称会沉浸于极其\"怪异\"的世界，在那里存在、环境与物质之间产生关联。就DMT而言，这种现象在视觉上尤为显著，即图像与自我、物质及自身社会中的存在相互联结。身体感知也会受到影响，可能感到失重或认为自己正在坠落。\n\n口服DMT仅在与MAO抑制剂联用时有效。MAO抑制剂（如哈尔明碱）是能阻止单胺氧化酶分解体内肾上腺素、多巴胺、血清素等信使物质，以及咖啡因、可卡因、吗啡等外源性生物碱的物质或药物。迷幻药汤阿亚瓦斯卡和昌加正是此类组合。服用MAO抑制剂后，食用奶酪等日常食品将危及生命。",
+  "dosageRemark": "死藤水是一种萨满草药制剂，由含DMT的卡皮木叶（Psychotria viridis）和含哈尔明的死藤蔓（Banisteriopsis caapi）制成。哈尔明是一种单胺氧化酶抑制剂。单胺氧化酶抑制剂是能阻止单胺氧化酶分解体内信使物质（如肾上腺素、多巴胺、血清素等）以及外来生物碱（如咖啡因、可卡因等）的物质和药物。正常情况下，单胺氧化酶甚至会在活性物质DMT通过血脑屏障进入中枢神经系统之前就将其分解。\n\n昌加是一种混合了含DMT植物（但通常主要为结晶态DMT）和具有单胺氧化酶抑制作用的草药的吸食混合物。",
+  "generalRisks": "使用DMT的风险主要在于心理层面，且取决于使用者的人格结构。迷幻体验中的感知变化可能极为强烈，尤其对缺乏经验的用户而言，铺天盖地的印象会令其难以承受。突发情绪爆发的感知也可能被视为相当令人不安且难以招架。在高剂量下，此类心理副作用可能持续数日至数周。若未遵循\"情境与心境\"原则，可能出现错误反应、方向感丧失、恐慌、偏执及恐怖体验。生理副作用包括恶心、呕吐、心率加快、呼吸轻微加速、血压升高、瞳孔放大、唾液分泌增多、震颤、烦躁不安、头痛及运动障碍。",
+  "longtermRisks": "自我认知和现实认知可能出现永久性紊乱。世界观可能被永久性地质疑，这可能导致难以应对日常生活。潜在的（隐藏的）精神病可能被诱发。",
+  "saferUse": [
+    "仅在感觉良好时服用。若担心药效过强，请勿使用。若对药物本身感到恐惧，请勿使用。",
+    "切勿单独使用DMT！请在安全的环境中，与值得信赖且有经验的人一同服用。",
+    "服用DMT时应保持坐姿或躺姿，因为中毒期间身体感知和活动能力会受损。",
+    "初次用药需谨慎。若无效果，下次再增加剂量。切勿在同一天内追加用药。",
+    "服用前后应避免食用含单胺氧化酶抑制剂的食物，如熟成奶酪、熏鱼或熏肉、酸菜、豆腐、巧克力等。",
+    "高血压患者不应服用DMT。",
+    "使用DMT的旅程应保持为一种特殊的体验。请确保在服用DMT后间隔较长时间，并与他人交流你的体验，以便更好地消化和整合。"
+  ],
+  "localizedName": "DMT"
 }

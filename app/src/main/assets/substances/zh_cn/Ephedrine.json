@@ -1,14 +1,14 @@
 {
   "toxicities": [],
-  "summary": "麻黄碱是一种拟交感胺，常用作兴奋剂、集中注意力、减充血、抑制食欲，并用于治疗麻醉相关低血压。为甲基苯丙胺的类似物，常用于甲基苯丙胺生产。",
-  "localizedName": "麻黄碱",
-  "effectsSummary": "Ephedrine has a stimulating effect. It increases alertness, energy, and focus. It also acts as a bronchodilator and decongestant.",
-  "generalRisks": "Increased heart rate and blood pressure, anxiety, insomnia, palpitations. Risk of heart problems in susceptible individuals.",
-  "longtermRisks": "Regular use may lead to cardiovascular strain and psychological dependence.",
+  "summary": "麻黄碱是一种拟交感胺类物质，常被用作兴奋剂、注意力增强剂、减充血剂、食欲抑制剂，并用于治疗麻醉引起的低血压。它是甲基苯丙胺的类似物，并常用于制造甲基苯丙胺。",
+  "effectsSummary": "促进血液循环，增强动力与表现，并抑制食欲。",
+  "generalRisks": "即使低剂量也可能出现：心悸、烦躁不安、睡眠问题、尿急或尿潴留以及口干。还可能产生焦虑感、血压升高（血管收缩）、食欲不振、头晕、心律失常甚至心脏病发作。  \n过量服用时：可能出现意识混乱和偏执。麻黄草中的鞣酸成分若大量摄入，可能引起胃部不适。",
+  "longtermRisks": "持续使用：记忆力和注意力受损，易怒，神经紧张，攻击性行为，心律失常，慢性高血压，牙齿损坏，肝脏/肾脏损伤以及心理障碍。定期使用麻黄碱会导致耐受性和依赖性的产生，尤其是伴随心理症状。",
   "saferUse": [
-    "从低剂量开始。",
-    "如果有心脏问题避免使用。",
-    "避免与其他兴奋剂同用。",
-    "不要在晚间使用以避免失眠。"
-  ]
+    "服用低剂量的麻黄碱，因为活性成分含量可能差异很大，尤其是在草药中！",
+    "饮用足够的水（每小时3-5分升），并且不要饮酒！",
+    "患有循环系统问题/疾病、甲状腺疾病以及肝脏或肾脏损伤的人群不应服用麻黄碱！",
+    "麻黄碱并非在无医疗监督下有效的减肥方式。"
+  ],
+  "localizedName": "麻黄碱"
 }

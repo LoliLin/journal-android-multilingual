@@ -1,26 +1,28 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种相当罕见的共情剂，与 MDMA 关系密切，但效力更弱。",
-  "localizedName": "MDEA",
-  "effectsSummary": "MDEA is an entactogen similar to MDMA but milder. Increased empathy, mild euphoria, enhanced sensory perception. Less stimulating than MDMA.",
-  "dosageRemark": "MDEA is less potent than MDMA. Effects are milder but also less stimulating.",
-  "generalRisks": "Hyperthermia, serotonin syndrome. Jaw clenching, increased heart rate. Similar risks to MDMA but generally milder.",
-  "longtermRisks": "Regular use may cause neurotoxicity and serotonin system damage.",
-  "saferUse": [
-    "保持水分。",
-    "注意体温，避免过热。",
-    "不要频繁使用。",
-    "从低剂量开始。",
-    "使用后补充 5-HTP。",
-    "避免与其他血清素药物同用。",
-    "注意体温变化。"
-  ],
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "1-1.5 个月",
-    "zero": "2-3 个月"
-  }
+    "full": "长期且反复使用",
+    "half": "1-1.5个月",
+    "zero": "2-3个月",
+    "halfToleranceInHours": 900,
+    "zeroToleranceInHours": 1800
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "一种相当罕见的共情剂，与MDMA密切相关，但效力较前者为弱。",
+  "effectsSummary": "MDEA与MDMA密切相关。其主要区别在于对自身感受的感知程度（致幻共情效应）、共情理解能力（共情效应）以及致幻效果的强弱。",
+  "dosageRemark": "每公斤体重1.3毫克（1.3毫克 × 80公斤 = 100毫克）",
+  "generalRisks": "恶心、口干、下颌肌肉痉挛、出汗、协调障碍、睡眠障碍和颤抖。",
+  "longtermRisks": "MDA具有神经毒性（损害神经）和肝毒性（损害肝脏）；长期使用可导致类似精神分裂症的症状。",
+  "saferUse": [
+    "先测试三分之一或半片药。",
+    "等待两小时让药效发挥作用后再增加剂量。",
+    "避免混合食用。",
+    "避免饮酒，饮用足量的非酒精饮料（每小时0.3-0.5升）。",
+    "在派对跳舞间隙休息一下，呼吸些新鲜空气。",
+    "定期暂停消费。身体需要时间恢复。",
+    "服用药物的人建议了解药物相互作用。"
+  ],
+  "localizedName": "MDEA"
 }

@@ -1,12 +1,13 @@
 {
-  "addictionPotential": "无成瘾性且滥用潜力低。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种存在于牵牛花与夏威夷婴儿玫瑰种子中的化学物质，通常合法可得。其精神作用与 LSD 类似但几乎无视觉效应。以强烈恶心和高剂量下显著的时间延迟感而闻名。",
-  "localizedName": "LSA",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "zero": "7天",
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "非成瘾性，滥用潜力低",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种存在于牵牛花和夏威夷婴儿木玫瑰种子中的化学物质，这些种子通常可以合法获取。其精神作用类似于LSD，但几乎不产生视觉效应。它以极易引发恶心著称，并在高剂量下导致显著的时间感知扭曲。",
+  "localizedName": "LSA"
 }

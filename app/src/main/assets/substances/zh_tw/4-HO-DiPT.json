@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種迷幻色胺，也稱為伊普羅辛。作為裸蓋菇素的同系物，此藥物可能具有類似迷幻蘑菇的效果。據稱其同類藥物中起效迅速且作用時間相對較短。",
+  "localizedName": "4-HO-DiPT"
 }

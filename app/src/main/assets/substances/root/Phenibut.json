@@ -10,10 +10,16 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of days of continuous use",
-    "zero": "7 - 14 days"
+    "zero": "7 - 14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "GABA"
+  ],
+  "addictionPotential": "moderately physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids"
   ],
   "categories": [
     "depressant",
@@ -21,6 +27,7 @@
     "habit-forming",
     "nootropic"
   ],
+  "summary": "A derivative of GABA with the addition of a phenyl ring which allows it to cross the Blood Brain Barrier. Is mostly used as an anti-anxiety and anti-insomnia medication. Tolerance and physical dependency builds very quickly.",
   "roas": [
     {
       "name": "oral",

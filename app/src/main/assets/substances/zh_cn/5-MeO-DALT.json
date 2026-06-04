@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种作用机制未知的奇特药物。具有一些迷幻效应，也有非典型迷幻的作用，如增加食欲。据称具有快速、强烈且短效的内源性宗教体验效应。",
-  "localizedName": "5-MeO-DALT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种作用机制未知的奇特药物。具有一些致幻效果，同时伴有非典型致幻剂的特性，如增进食欲。据报告称，其具有快速、强烈且短暂的精神活性作用。",
+  "localizedName": "5-甲氧基-N,N-二烯丙基色胺"
 }

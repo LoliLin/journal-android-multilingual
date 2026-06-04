@@ -1,7 +1,13 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [],
+  "summary": "一種強效、具刺激性的迷幻色胺，有時被比作5-MeO-DiPT。具有異常強烈的身體感受與較弱的視覺效果。常被認為具有極強的同理心引發作用。",
+  "localizedName": "5-MeO-MiPT"
 }

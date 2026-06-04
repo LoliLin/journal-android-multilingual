@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "Mexedrone 是卡西酮类兴奋剂，通过影响血清素、多巴胺和去甲肾上腺素再摄取产生欣快，与甲卡西酮效应相似。被视为设计师药物，全球处于法律灰色地带。",
-  "localizedName": "Mexedrone",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "Mexedrone是一种卡西酮类兴奋剂药物。它通过改变血清素、多巴胺和去甲肾上腺素的再摄取来产生欣快感，其效果与甲氧麻黄酮相似。它被视为一种设计药物，在全球范围内处于法律灰色地带。",
+  "localizedName": "美西酮"
 }

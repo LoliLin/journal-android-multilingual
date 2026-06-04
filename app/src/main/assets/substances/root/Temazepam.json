@@ -9,16 +9,23 @@
   "isApproved": true,
   "tolerance": {
     "full": "within a couple of days of continuous use",
-    "zero": "7-14 days"
+    "zero": "7-14 days",
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "benzodiazepines"
+  ],
+  "addictionPotential": "extremely physically and psychologically addictive",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": [
     "depressant",
     "benzodiazepine",
     "habit-forming"
   ],
+  "summary": "Temazepam's brand name is Restoril. It is a hypnotic benzodiazepine with effects similar to clonazepam, frequently prescribed as a sleep aid. Some users report mild euphoria alongside the hypnotic effects.",
   "roas": [
     {
       "name": "oral",
@@ -31,13 +38,13 @@
       },
       "duration": {
         "onset": {
-          "min": 15,
+          "min": 30,
           "max": 60,
           "units": "minutes"
         },
         "total": {
-          "min": 0.5,
-          "max": 3,
+          "min": 7,
+          "max": 8,
           "units": "hours"
         },
         "afterglow": {

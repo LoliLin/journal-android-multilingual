@@ -1,27 +1,29 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种强效、长效的迷幻兴奋剂。历史上很少被刻意使用，但偶尔被当作 LSD 出售。然而近年来在研究化学品社区中找到了自己的位置。",
-  "localizedName": "DOI",
-  "effectsSummary": "DOI is a potent psychedelic with effects similar to DOB but slightly shorter duration. Visual hallucinations, altered perception, ego dissolution.",
-  "generalRisks": "Dangerous increase in blood pressure. Risk of panic attacks and psychological distress. Overheating risk.",
-  "longtermRisks": "No research results on long-term risks. HPPD possible.",
-  "saferUse": [
-    "只使用毫克秤精确测量剂量。",
-    "安排陪护人在场。",
-    "确保有充足的时间。",
-    "从低剂量开始。",
-    "避免混合使用。",
-    "注意：DOI 持续时间长，请规划好时间安排。",
-    "高剂量时安排陪护人。",
-    "避免过热和脱水。",
-    "在安全、熟悉的环境中使用。"
-  ],
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "10-14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "10-14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 288
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种强效、长效的迷幻兴奋剂。历史上，它很少被刻意服用，但偶尔会被当作LSD出售。然而，近年来它在研究化学领域找到了自己的一席之地。",
+  "effectsSummary": "起初，安非他命的典型效应显现，如警觉性提高、脉搏加快、轻微欣快感、自信心增强和交谈欲望增加。随后，效果发生变化：常感到强烈的活动冲动，感官知觉、情感和共情能力增强，对色彩的感知更为鲜明。使用DOB和DOI时，会看到彩色、重叠、脉动的图案。而DOM的这种效应则较弱。",
+  "generalRisks": "由于DOI起效较慢，重复服用导致过量的风险尤为突出。其作用持续时间长，会带来心理负担。常见困惑或焦虑情绪，高剂量时尤为明显。部分DOB使用者反映膀胱有灼烧或压迫感。高剂量下可能出现暂时性瘫痪、无法交流或痛觉迟钝（注意：存在受伤及意外风险）。还可能出现磨牙及心血管系统负担加重的情况。",
+  "longtermRisks": "由于作用持久且强烈，使用——尤其是频繁使用——存在丧失现实感的风险，这种症状可能表现为精神分裂症特征和焦虑状态。服用DOI可能诱发潜在的（隐匿性）精神病。",
+  "saferUse": [
+    "DOM不适合作为派对药物，仅应由有经验的用户使用。",
+    "由于药效持续时间较长，请提前规划行程。",
+    "切勿单独服用DOI，且仅在你身心状态极佳、休息充分时方可服用！",
+    "注意环境与心境：仅在感到安全的地方服用DOI，并避免外界不必要的干扰！为旅程做好充分准备，并在内心做好应对药效持久性的准备。",
+    "旅途中要喝足够的水。",
+    "应不惜一切代价避免混合使用这些强效物质。",
+    "作为安非他命衍生物，DOI因其作用时间较长而尤为消耗体力。清淡的富含维生素的食物、水果、蔬菜汁、维生素和矿物质有助于在药效消退后平稳过渡，并能减轻宿醉感。",
+    "旅行后安排足够的恢复时间（至少1天）！",
+    "与DOI的旅程应保持为非凡的体验。请确保在消费后安排长时间的休息，以便消化这段经历。"
+  ],
+  "localizedName": "4-碘-2,5-二甲氧基-Α-甲基苯甲胺"
 }

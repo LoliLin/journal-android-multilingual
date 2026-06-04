@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种迷幻致幻物，由 Alexander Shulgin 首次合成。轻剂量增强认知和对艺术音乐等的欣赏，高剂量产生视觉效果。该药物以产生身体负荷而闻名。",
-  "localizedName": "4-HO-DPT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种由亚历山大·舒尔金首次合成的迷幻致幻剂。低剂量时能增强认知能力，提升对艺术和音乐等事物的欣赏力，而高剂量则会导致视觉幻象。已知该药物会引起身体负担。",
+  "localizedName": "4-羟基-N,N-二丙基色胺"
 }

@@ -9,10 +9,16 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "cannabinoids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "cannabinoid",
@@ -20,27 +26,30 @@
     "tentative",
     "habit-forming"
   ],
+  "summary": "A synthetic cannabanoid that is a Indazole. Produces subjective effects somehwat similar to that of Cannabis, yet with a very short duration. Analogue of STS-135, in which the core indole structure is subbed with an indazole base.",
   "interactions": {
-    "dangerous": [],
+    "dangerous": [
+      "Lithium"
+    ],
     "unsafe": [],
     "uncertain": [
       "2C-T-x",
       "2C-x",
       "5-MeO-xxT",
-      "Substituted amphetamines",
-      "ΑMT",
+      "Amphetamines",
+      "aMT",
       "Cocaine",
       "DMT",
       "DOx",
       "LSD",
       "Mescaline",
-      "Psilocybin mushrooms",
+      "Psilocybin",
       "25x-NBOMe"
     ]
   },
   "roas": [
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 0.5,

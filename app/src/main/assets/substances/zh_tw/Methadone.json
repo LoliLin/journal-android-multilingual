@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "極具成癮性且具有高度濫用潛力",
+  "toxicities": [
+    "中度毒性",
+    "與抑制劑（如酒精或苯二氮平類藥物）混合使用時可能致命"
+  ],
+  "summary": "一種合成類鴉片藥物，用作鎮痛劑，常用於其他類鴉片藥物的戒斷治療，因其半衰期較長。",
+  "localizedName": "美沙酮"
 }

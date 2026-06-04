@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "幾乎在攝取之後立即",
+    "half": "5-7天",
+    "zero": "14 天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種迷幻藥物，為LSD的效力略強的類似物，由亞歷山大·舒爾金首次合成——有時被描述為比LSD較不「粗糙」。雖不如相關的AL-LAD常見，但自2015年在網路研究化學領域推出後，已獲得一定程度的流行。",
+  "localizedName": "ETH-LAD"
 }

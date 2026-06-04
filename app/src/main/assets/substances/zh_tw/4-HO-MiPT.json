@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種相當受歡迎的色胺衍生物與裸蓋菇素類似物，最初由亞歷山大·舒爾金合成。據報導，其效果與迷幻蘑菇相當，但持續時間較短。",
+  "localizedName": "4-HO-MiPT"
 }

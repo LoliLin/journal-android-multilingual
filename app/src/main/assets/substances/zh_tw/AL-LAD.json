@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "幾乎在攝取之後立即",
+    "half": "5-7天",
+    "zero": "14 天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知",
+    "極低毒性"
+  ],
+  "summary": "AL-LAD 是一種致幻藥物，屬於麥角醯胺類，是 LSD 的類似物。據報導，它與 LSD 相比有一些微妙的體驗差異（例如更強的視覺效果），且作用時間似乎略短。AL-LAD 的劑量與 LSD 相似，取決於純度。自 2013 年起在網路上可取得，使其在藥物社群中廣受歡迎。",
+  "localizedName": "AL-LAD"
 }

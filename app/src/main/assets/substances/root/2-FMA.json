@@ -8,25 +8,32 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "A long-acting stimulant often compared to lisdexamphetamine. Thought to lack some of amphetamine's neurotoxic metabolites. Very functional, and for this reason it is commonly used for studying.",
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -39,7 +46,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

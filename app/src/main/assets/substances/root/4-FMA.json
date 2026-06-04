@@ -8,11 +8,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -20,14 +26,15 @@
     "research-chemical",
     "habit-forming"
   ],
+  "summary": "A stimulant with some empathogenic properties, and analogue of Methamphetamine with similar effects. Reported to be less effective than 2-FMA and related compounds. Little is known about the pharmacological effects of this compound. Not to be confused with 4-FA, which has a different effect profile, despite similar potency.",
   "interactions": {
     "dangerous": [
       "Tramadol",
-      "ΑMT",
-      "MAOI"
+      "aMT",
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "PCP",
       "25x-NBOMe",
       "2C-T-x",
@@ -40,7 +47,7 @@
       "GBL",
       "Opioids",
       "Cocaine",
-      "Cannabis",
+      "THC",
       "Caffeine",
       "Ketamine",
       "Methoxetamine",

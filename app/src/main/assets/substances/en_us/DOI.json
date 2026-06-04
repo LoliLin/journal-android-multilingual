@@ -1,8 +1,29 @@
 {
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "5-7 days",
+    "zero": "10-14 days",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 288
+  },
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "toxic dose is unknown"
   ],
   "summary": "A potent, long-acting psychedelic stimulant. Historically, it has rarely been consumed deliberately, but occasionally sold as LSD. However, it has recently found its own little nest in the research chemical community.",
+  "effectsSummary": "At the beginning, typical effects of amphetamine unfold, such as increased alertness, accelerated pulse, slight euphoria, increased self-confidence and urge to talk. Afterwards, the effect changes: one often feels a strong urge to move, sensory perception, feelings and empathy are heightened, colours are perceived more distinctly. With DOB and DOI, coloured, superimposed, pulsating patterns are perceived. This effect is weaker with DOM.",
+  "generalRisks": "Since the effect of DOI comes on late, the danger of overdosing by refilling is particularly great. The long duration of action poses a psychological burden. Confusion or anxiety is common, especially at high doses. Some DOB users report a burning or pressure sensation in the bladder. At high doses, temporary paralysis, inability to communicate or insensitivity to pain (caution: risk of injury and accidents) may occur. Teeth grinding and strain on the cardiovascular system are also possible.",
+  "longtermRisks": "Due to the long and intense effects, use - especially frequent use - carries the risk of a loss of reality, which can manifest itself in schizophrenic traits and anxiety states. The consumption of DOI can trigger latent (hidden) psychoses.",
+  "saferUse": [
+    "DOM are not suitable as party drugs and should only be used by experienced users.",
+    "Plan your trip ahead because of the long duration of action.",
+    "Never consume DOI alone and only when you feel very well mentally and physically and are well rested!",
+    "Pay attention to set and setting: only take DOI in a place where you feel safe and avoid unwanted disturbances from outside! Prepare yourself well for the trip and prepare yourself internally for the long duration of the effect.",
+    "Drink enough water during the trip.",
+    "Mixed use of these potent substances should be avoided at all costs.",
+    "As amphetamine derivatives, DOI can be particularly draining because of their long duration of action. Light vitamin-rich food, fruits, vegetable juices, vitamins and minerals promote a soft landing after the trip has subsided and can weaken a hangover.",
+    "Plan enough time for recovery after the trip (at least 1 day)!",
+    "A trip with DOI should remain an exceptional experience. Make sure to take long breaks from consumption so that the experience can be processed."
+  ],
   "localizedName": "DOI"
 }

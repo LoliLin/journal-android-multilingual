@@ -10,10 +10,16 @@
   "tolerance": {
     "full": "after repeated and frequent usage",
     "half": "7 days",
-    "zero": "14 days"
+    "zero": "14 days",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
   },
   "crossTolerances": [
     "dopamine"
+  ],
+  "addictionPotential": "mildly habit forming",
+  "toxicities": [
+    "extremely low toxicity"
   ],
   "categories": [
     "stimulant"
@@ -23,16 +29,16 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

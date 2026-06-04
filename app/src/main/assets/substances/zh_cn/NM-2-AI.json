@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "summary": "一种氨基茚类兴奋剂，与 2-AI 很接近但效力更低、持续更长。",
-  "localizedName": "NM-2-AI",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "summary": "属于氨基茚满类兴奋剂。与其同类药物2-AI非常相似，但药效较低，持续时间更长。",
+  "localizedName": "NM-2-AI"
 }

@@ -10,30 +10,38 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "modafanil",
     "analog"
   ],
+  "addictionPotential": "mildly addictive with a low potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "categories": [
-    "nootropic"
+    "stimulant",
+    "nootropic",
+    "eugeroic"
   ],
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

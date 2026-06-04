@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "尝试该药物未被归因于负面健康影响。"
-  ],
-  "summary": "一种非常罕见的苯乙胺类迷幻剂。",
-  "localizedName": "2C-T",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "尝试这种药物不会对健康产生负面影响"
+  ],
+  "summary": "一种非常罕见的致幻性苯乙胺。",
+  "localizedName": "2C-T"
 }

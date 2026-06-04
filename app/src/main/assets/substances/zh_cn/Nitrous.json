@@ -1,20 +1,25 @@
 {
-  "addictionPotential": "轻度成瘾，滥用潜力中等。",
-  "toxicities": [
-    "确切毒性剂量未知。"
-  ],
-  "localizedName": "一氧化二氮",
-  "effectsSummary": "Euphoria, laughter, dissociation, dizziness, altered perception of sound, time distortion, short duration.",
-  "dosageRemark": "Effects come on very quickly and last only 1-5 minutes. Frequent use can lead to vitamin B12 deficiency.",
-  "longtermRisks": "Frequent use causes vitamin B12 deficiency leading to neurological damage, numbness, weakness, and pernicious anemia.",
-  "saferUse": [
-    "Take breaks between balloons to allow oxygen intake.",
-    "Supplement with B12 if using regularly.",
-    "Never inhale directly from a pressurized tank."
-  ],
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "具有轻度成瘾性，滥用可能性中等",
+  "toxicities": [
+    "确切的中毒剂量未知"
+  ],
+  "effectsSummary": "放松、欣快感、视觉和听觉感知的变化、时间感的丧失。",
+  "dosageRemark": "轻度恶心、头痛；若过量或不当服用，可能导致意识丧失、血压下降、心律失常，最严重时因呼吸麻痹而死亡。若供氧不足有窒息危险，\"离开\"时跌倒受伤风险增加。",
+  "longtermRisks": "持续使用一氧化二氮会给神经系统带来压力，并导致维生素B12缺乏（存在细胞功能紊乱和暂时性不孕的风险）。可能出现伴有心理症状的依赖性。",
+  "saferUse": [
+    "切勿直接从胶囊或气瓶中吸入一氧化二氮（存在喉部和支气管冻伤风险！）。",
+    "在坐姿或躺姿下使用一氧化二氮（降低受伤风险）。",
+    "休息一下，避免一氧化二氮浓度过高。",
+    "避免混合饮用，尤其是与酒精同服。",
+    "患有心血管或呼吸系统疾病的人不应使用一氧化二氮，癫痫或中耳炎患者也应避免使用。肋骨骨折或曾遭遇潜水事故的人同样不宜使用一氧化二氮。",
+    "一氧化二氮会导致血浆同型半胱氨酸急剧升高，这种效应在携带亚甲基四氢叶酸还原酶（MTHFR）C677T或A1298C基因变异的患者中更为显著。"
+  ],
+  "localizedName": "一氧化二氮"
 }

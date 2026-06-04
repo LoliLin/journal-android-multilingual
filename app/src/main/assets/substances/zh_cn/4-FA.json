@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [],
-  "summary": "一种常作为 MDMA 替代的共情剂，持续时间相似，但兴奋“尾巴”更长，此时效应更像安非他明。不要与 4-FMA 混淆，后者效力相近但共情性不强。",
-  "localizedName": "4-FA",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [],
+  "summary": "一种常被用作MDMA替代品的共情剂，其共情作用持续时间相似。然而，该药物具有更长的兴奋剂\"尾效\"，在此期间其效果更类似于安非他命。请勿与4-FMA混淆，后者虽具有相似效力，但并无显著的共情作用。",
+  "localizedName": "4-FA"
 }

@@ -2,19 +2,23 @@
   "name": "4F-EPH",
   "commonNames": [
     "4F-EPH",
-    "4FEPH"
+    "4-FEPH"
   ],
   "url": "https://psychonautwiki.org/wiki/4F-EPH",
   "isApproved": true,
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
   ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [],
   "categories": [
     "stimulant"
   ],
@@ -23,16 +27,16 @@
       "25x-NBOMe",
       "25x-NBOH",
       "Tramadol",
-      "MAOI"
+      "MAOIs"
     ],
     "unsafe": [
-      "Dextromethorphan",
+      "DXM",
       "MDMA",
       "Stimulants"
     ],
     "uncertain": [
       "Alcohol",
-      "Methoxetamine",
+      "MXE",
       "Dissociatives"
     ]
   },

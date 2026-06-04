@@ -1,7 +1,16 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "非成癮性且濫用可能性低",
+  "toxicities": [
+    "即使長期攝取高劑量，仍然安全",
+    "確切的中毒劑量未知"
+  ],
+  "summary": "一種促智藥及吡拉西坦類似物，亦稱為fonturacetam，此藥物已被證實具有潛在的增強記憶、抗焦慮、抗失憶及抗憂鬱效果，但娛樂價值極低。其藥效約為吡拉西坦的45倍。",
+  "localizedName": "苯基吡拉西坦"
 }

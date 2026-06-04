@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种非常罕见的利色胺，效力略低于 LSD，但持续时间更短。",
-  "localizedName": "PRO-LAD",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "5-7 天",
-    "zero": "14 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "5-7天",
+    "zero": "14天",
+    "halfToleranceInHours": 144,
+    "zeroToleranceInHours": 336
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种非常罕见的麦角酰胺，其效力略低于LSD，但作用持续时间较短。",
+  "localizedName": "PRO-LAD"
 }

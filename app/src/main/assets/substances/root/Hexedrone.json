@@ -8,18 +8,23 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dopamine",
     "stimulant"
   ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [],
   "categories": [
     "stimulant",
     "research-chemical",
     "tentative",
     "habit-forming"
   ],
+  "summary": "A rare mephedrone analogue also known as MACP, a cathinone stimulant with similar effects to pentedrone.",
   "roas": [
     {
       "name": "oral",

@@ -8,10 +8,17 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "high toxicity relative to its dose due to its extreme potency",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -19,25 +26,25 @@
     "habit-forming",
     "depressant"
   ],
+  "summary": "A µ-opioid receptor agonist that is related to AH-7921. Having a very short duration.",
   "interactions": {
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [

@@ -9,35 +9,42 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "half": "3 days",
-    "zero": "7 days"
+    "zero": "7 days",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
   },
   "crossTolerances": [
     "psychedelic"
+  ],
+  "addictionPotential": "not habit-forming",
+  "toxicities": [
+    "toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
+  "summary": "A strange drug with an unknown mechanism of action. Some psychedelic effects alongside some effects non-characteristic of psychedelics like appetite enhancement. Reported as having rapid, intense and short acting entheogenic effects.",
   "interactions": {
     "dangerous": [
-      "ΑMT",
-      "MAOI",
+      "aMT",
+      "MAOIs",
       "PCP"
     ],
     "unsafe": [
-      "Substituted amphetamines",
+      "Amphetamines",
       "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "Tramadol"
     ],
     "uncertain": [
-      "2C-T-X",
-      "2C-X",
-      "Cannabis",
+      "2C-T-x",
+      "2C-x",
+      "THC",
       "DOx",
       "MDMA",
       "Mescaline",
-      "25x-NBOMe"
+      "NBOMe"
     ]
   },
   "roas": [
@@ -51,15 +58,35 @@
         "heavyMin": 35
       },
       "duration": {
+        "onset": {
+          "min": 10,
+          "max": 15,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 20,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
         "total": {
-          "min": 3,
-          "max": 6,
+          "min": 2,
+          "max": 4,
           "units": "hours"
         }
       }
     },
     {
-      "name": "smoked",
+      "name": "inhaled",
       "dose": {
         "units": "mg",
         "lightMin": 3,
@@ -69,7 +96,12 @@
       "duration": {
         "onset": {
           "min": 15,
-          "max": 60,
+          "max": 30,
+          "units": "seconds"
+        },
+        "comeup": {
+          "min": 15,
+          "max": 30,
           "units": "seconds"
         },
         "peak": {

@@ -1,14 +1,16 @@
 {
-  "addictionPotential": "中度成瘾且滥用潜力高。",
-  "toxicities": [
-    "低毒性。",
-    "与酒精或苯二氮卓等抑制剂混用可能致命。"
-  ],
-  "summary": "一种弱效半合成阿片镇痛及镇咳药。常与阿司匹林或对乙酰氨基酚配成糖浆出售。不要与效力稍弱的可待因混淆。",
-  "localizedName": "Dihydrocodeine",
   "tolerance": {
-    "full": "长期重复使用后产生",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期反复使用后形成",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾，具有较高的滥用潜力",
+  "toxicities": [
+    "低毒性",
+    "与酒精或苯二氮卓类等抑制剂混合使用时可能致命"
+  ],
+  "summary": "一种弱效的半合成阿片类镇痛和镇咳药物。常以糖浆形式与阿司匹林或对乙酰氨基酚复方销售。请勿与药效稍弱的可待因混淆。",
+  "localizedName": "双氢可待因"
 }

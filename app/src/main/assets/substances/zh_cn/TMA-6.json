@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "一种罕见的迷幻安非他明与麦司卡林类似物。由 Alexander Shulgin 首次合成，他称其为“甲氧基化安非他明中最有回报且最愉悦的一种”。",
-  "localizedName": "TMA-6",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "一种罕见的迷幻苯丙胺和麦斯卡林类似物。由亚历山大·舒尔金首次合成，他将其描述为“甲氧基化苯丙胺中最令人满足和愉悦的物质之一”。",
+  "localizedName": "TMA-6"
 }

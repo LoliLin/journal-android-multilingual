@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "毒性劑量未知"
+  ],
+  "summary": "一種罕見的迷幻色胺，被認為會代謝成4-HO-MET。起效時間、持續時間和強度會有所不同，但效果特徵大致相同。",
+  "localizedName": "4-AcO-MET"
 }

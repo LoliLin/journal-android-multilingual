@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "攝入後幾乎立即產生",
+    "full": "幾乎在攝取之後立即",
     "half": "3 天",
-    "zero": "7 天"
-  }
+    "zero": "7 天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "無成癮性",
+  "toxicities": [
+    "嘗試此藥物並未發現任何負面健康影響"
+  ],
+  "summary": "一種不尋常的迷幻藥物，效果類似於2C-B，持續時間稍長，但因2000年代的一些死亡案例而受到批評。也類似於2C-T-7，但持續時間較短。與興奮劑和同理心藥物同時使用可能不安全。",
+  "localizedName": "2C-T-2"
 }

@@ -1,7 +1,15 @@
 {
   "tolerance": {
-    "full": "長期重複使用後產生",
+    "full": "長期且反覆使用後會產生",
     "half": "3 - 7 天",
-    "zero": "1 - 2 週"
-  }
+    "zero": "1 - 2 週",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "中度成瘾性且具有高度濫用潛力",
+  "toxicities": [
+    "確切的中毒劑量未知"
+  ],
+  "summary": "一種解離性藥物，效力較MXE弱且較不混亂，但其他特性相似。據報導，低劑量時會產生輕微的興奮作用。",
+  "localizedName": "依芬尼定"
 }

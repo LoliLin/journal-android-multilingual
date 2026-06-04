@@ -1,13 +1,15 @@
 {
-  "addictionPotential": "高度成瘾且有较高不良副作用风险，如精神病。",
-  "toxicities": [
-    "毒性剂量未知。"
-  ],
-  "summary": "3-MeO-PCP 的一种环结构替换变体。效力略强于 3-MeO-PCP。",
-  "localizedName": "3-MeO-PCE",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "summary": "3-MeO-PCP 经环替换修饰，效力略高于 3-MeO-PCP。",
+  "localizedName": "3-甲氧基乙环利定"
 }

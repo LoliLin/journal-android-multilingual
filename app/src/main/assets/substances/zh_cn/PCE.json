@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "高度成瘾且有较高不良副作用风险，如精神病。",
-  "toxicities": [],
-  "summary": "Eticyclidine（PCE）是一种解离性麻醉剂，具有致幻效应。效力略高于苯环己哌啶（PCP）。",
-  "localizedName": "PCE",
   "tolerance": {
-    "full": "长期重复使用",
-    "half": "3 - 7 天",
-    "zero": "1 - 2 周"
-  }
+    "full": "长期且反复使用",
+    "half": "3 - 7天",
+    "zero": "1 - 2周",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
+  "toxicities": [],
+  "summary": "乙环利定（PCE）是一种具有致幻作用的分离性麻醉剂，其效力略强于苯环利定。",
+  "localizedName": "PCE"
 }

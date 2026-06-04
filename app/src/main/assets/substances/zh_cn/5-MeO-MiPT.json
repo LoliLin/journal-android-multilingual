@@ -1,11 +1,13 @@
 {
-  "addictionPotential": "不易形成习惯。",
-  "toxicities": [],
-  "summary": "一种强效、刺激性的迷幻色胺，有时与 5-MeO-DiPT 相比。具有异常强烈的身体感与较弱视觉效果。常被认为很具共情性。",
-  "localizedName": "5-MeO-MiPT",
   "tolerance": {
-    "full": "摄入后几乎立即产生",
-    "half": "3 天",
-    "zero": "7 天"
-  }
+    "full": "摄入后几乎立即",
+    "half": "3天",
+    "zero": "7天",
+    "halfToleranceInHours": 72,
+    "zeroToleranceInHours": 168
+  },
+  "addictionPotential": "无成瘾性",
+  "toxicities": [],
+  "summary": "一种强效、刺激性的迷幻色胺，有时被比作5-MeO-DiPT。具有异常强烈的身体感受和较弱的视觉效果。常被认为具有极强的共情作用。",
+  "localizedName": "5-甲氧基-N-甲基-N-异丙基色胺"
 }

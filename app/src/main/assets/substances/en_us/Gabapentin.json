@@ -1,4 +1,9 @@
 {
+  "tolerance": {
+    "full": "with prolonged continuous usage",
+    "zero": "7-14 days",
+    "zeroToleranceInHours": 252
+  },
   "toxicities": [
     "low toxicity"
   ],

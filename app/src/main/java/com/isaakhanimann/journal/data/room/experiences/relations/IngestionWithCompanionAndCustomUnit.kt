@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.data.room.experiences.relations
 
+import android.content.Context
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
@@ -62,18 +63,26 @@ data class IngestionWithCompanionAndCustomUnit(
                 )
             }
         }
-    val doseDescription: String get() = customUnitDose?.doseDescription ?: ingestionDoseDescription
 
-    private val ingestionDoseDescription get() = ingestion.dose?.let { dose ->
-        ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
+    
+    fun getDoseDescription(context:Context): String {
+        return customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
+    }
+
+
+    private fun getIngestionDoseDescription(context:Context): String {
+        return ingestion.dose?.let { dose ->
+            ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
             "${dose.toReadableString()}±${estimatedDoseDeviation.toReadableString()} ${ingestion.units}"
-        } ?: run {
-            val description = "${dose.toReadableString()} ${ingestion.units}"
-            if (isEstimate) {
-                "~$description"
-            } else {
-                description
+            } ?: run {
+                val description = "${dose.toReadableString()} ${ingestion.units}"
+                if (isEstimate) {
+                    "~$description"
+                } else {
+                    description
+                }
             }
-        }
-    } ?: com.isaakhanimann.journal.localization.I18n.translate(androidx.compose.ui.platform.LocalContext.current, "dose_unknown")
+        } ?: com.isaakhanimann.journal.localization.I18n.translate(context, "dose_unknown")
+    }
+ 
 }

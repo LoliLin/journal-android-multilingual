@@ -9,10 +9,16 @@
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "dissociative"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "exact toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -20,10 +26,11 @@
     "habit-forming",
     "tentative"
   ],
+  "summary": "Dissociative of the Arylcyclohexylamine class. Structurally related to Deschloroketamine.",
   "interactions": {
     "dangerous": [
       "Stimulants",
-      "Depressant"
+      "Depressants"
     ],
     "unsafe": [],
     "uncertain": []

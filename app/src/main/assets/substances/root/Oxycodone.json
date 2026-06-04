@@ -11,17 +11,26 @@
     "Codilek",
     "Oxydor",
     "Redocam",
-    "Oxygesic"
+    "Oxygesic",
+    "Percodan",
+    "Percocet"
   ],
   "url": "https://psychonautwiki.org/wiki/Oxycodone",
   "isApproved": true,
   "tolerance": {
     "full": "develops with prolonged and repeated use",
     "half": "3 - 7 days",
-    "zero": "1 - 2 weeks"
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
   },
   "crossTolerances": [
     "opioids"
+  ],
+  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "low toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -29,6 +38,7 @@
     "depressant",
     "common"
   ],
+  "summary": "A semisynthetic opioid analgesic developed in 1917, prescribed primarily for pain management. It has become extremely popular as a recreational drug in some areas, and carries a high potential for addiction. Reported as being a little more 'stimulating' than other opioids.",
   "effectsSummary": "Oxycodone has analgesic, depressant, antianxiety, cough suppressant and psychotropic properties. More intense dreams may also occur. Due to its relaxing and euphoric properties, it is used as a recreational drug, and is said to be more stimulating and mood-lifting than other opioids.",
   "generalRisks": "Very common side effects, as with all opioids, are constipation and constriction of the pupils. Drowsiness, dizziness, headache, itching, muscle twitching, sleep disturbances and mood swings are also to be expected. In women, menstruation may also be absent.\nOther opioid-typical side effects such as hallucinations, confusion, vomiting and nausea are less common with oxycodone.\nOverdoses with oxycodone are life-threatening, as the substance has a strong respiratory depressant effect even in low doses when abused, which can lead to respiratory arrest and coma. For opioid addicts, the lethal dose can be much higher. An overdose is treated by taking naloxone, an opioid antagonist.",
   "longtermRisks": "The consumption of oxycodone leads to physical and psychological dependence after a short time, even more quickly than with morphine. Tolerance builds up, which is why higher and higher doses have to be consumed. Strong withdrawal symptoms such as restlessness, irritability, depression, insomnia, sweating, cold shivers, vomiting, diarrhoea and painful cramps may occur.",
@@ -46,21 +56,20 @@
     "dangerous": [
       "Alcohol",
       "Benzodiazepines",
-      "Cocaine",
-      "Dextromethorphan",
+      "DXM",
       "GHB",
       "GBL",
       "Ketamine",
-      "Methoxetamine",
+      "MXE",
       "Tramadol",
       "Grapefruit"
     ],
     "unsafe": [],
     "uncertain": [
-      "Substituted amphetamines",
-      "MAOI",
+      "MAOIs",
       "Nitrous",
-      "PCP"
+      "PCP",
+      "Stimulants"
     ]
   },
   "roas": [
@@ -76,8 +85,50 @@
       "duration": {
         "onset": {
           "min": 2,
-          "max": 5,
+          "max": 7,
           "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 45,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 7.5,
+        "strongMin": 12.5,
+        "heavyMin": 15
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 1,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
         },
         "total": {
           "min": 3,
@@ -97,13 +148,45 @@
       },
       "duration": {
         "onset": {
-          "min": 20,
-          "max": 40,
+          "min": 10,
+          "max": 30,
           "units": "minutes"
+        },
+        "comeup": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 0,
+          "max": 2,
+          "units": "hours"
         },
         "total": {
           "min": 4,
-          "max": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "inhaled",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 8,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "total": {
+          "min": 1,
+          "max": 3,
           "units": "hours"
         }
       }
