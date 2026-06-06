@@ -40,8 +40,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.localization.i18n
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,20 +63,23 @@ fun DonateScreen() {
             verticalArrangement = Arrangement.Center
         ) {
             Spacer(modifier = Modifier.height(5.dp))
+            val clipboardManager = LocalClipboardManager.current
             val uriHandler = LocalUriHandler.current
+            val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
+            
             DonateButton(
-                imageVector = Icons.Outlined.Coffee,
-                text = i18n("donate_buy_me_a_coffee")
+                imageVector = Icons.Outlined.CurrencyBitcoin, 
+                text = "BitCoin"
             ) {
-                uriHandler.openUri("https://www.buymeacoffee.com/isaakhanimann")
+                clipboardManager.setText(AnnotatedString(btcAddress))
             }
-            Spacer(modifier = Modifier.height(15.dp))
-            DonateButton(
-                imageVector = Icons.Outlined.Payment,
-                text = i18n("donate_paypal")
-            ) {
-                uriHandler.openUri("https://www.paypal.com/donate/?hosted_button_id=A8XKEKXN64VQJ")
-            }
+            //Spacer(modifier = Modifier.height(15.dp))
+            //DonateButton(
+            //    imageVector = Icons.Outlined.Payment,
+            //    text = i18n("donate_paypal")
+            //) {
+            //    uriHandler.openUri("https://www.paypal.com/donate/?hosted_button_id=A8XKEKXN64VQJ")
+            //}
         }
     }
 }
