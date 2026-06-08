@@ -125,7 +125,8 @@ fun EditIngestionScreen(
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
         customUnit = viewModel.customUnit,
         onCustomUnitChange = viewModel::onChangeCustomUnit,
-        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value
+        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
     )
 }
 
@@ -159,7 +160,8 @@ fun EditIngestionScreenPreview() {
             consumerNamesSorted = listOf("Dave", "Ali"),
             customUnit = null,
             onCustomUnitChange = {},
-            otherCustomUnits = emptyList()
+            otherCustomUnits = emptyList(),
+            ownerUserName = "lolin"
         )
     }
 }
@@ -192,7 +194,8 @@ fun EditIngestionScreen(
     consumerNamesSorted: List<String>,
     customUnit: CustomUnit?,
     onCustomUnitChange: (CustomUnit?) -> Unit,
-    otherCustomUnits: List<CustomUnit>
+    otherCustomUnits: List<CustomUnit>,
+    ownerUserName: String
 ) {
     var isPresentingBottomSheet by rememberSaveable { mutableStateOf(false) }
     val skipPartiallyExpanded by remember { mutableStateOf(false) }
@@ -440,7 +443,7 @@ fun EditIngestionScreen(
                     )
                 ) {
                     Text(
-                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { YOU })),
+                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { ownerUserName })),
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {

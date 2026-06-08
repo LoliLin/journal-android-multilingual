@@ -62,7 +62,8 @@ fun EditExperienceScreen(
         text = viewModel.enteredText,
         onTextChange = { viewModel.enteredText = it },
         location = viewModel.enteredLocation,
-        onLocationChange = { viewModel.enteredLocation = it }
+        onLocationChange = { viewModel.enteredLocation = it },
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
     )
 }
 
@@ -77,7 +78,8 @@ fun EditExperienceScreenPreview() {
         text = i18n("sample_notes"),
         onTextChange = {},
         location = "Zurich",
-        onLocationChange = {}
+        onLocationChange = {},
+        ownerUserName = "lolin"
     )
 }
 
@@ -91,7 +93,8 @@ fun EditExperienceScreen(
     text: String,
     onTextChange: (String) -> Unit,
     location: String,
-    onLocationChange: (String) -> Unit
+    onLocationChange: (String) -> Unit,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {

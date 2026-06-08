@@ -60,23 +60,10 @@ fun TimelineScreen(
     val timelineScreenModel = TimelineScreenModel(
         title = viewModel.consumerName,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
-        ratings = if (viewModel.consumerName == YOU) viewModel.ratingsFlow.collectAsState().value else emptyList(),
-        timedNotes = if (viewModel.consumerName == YOU) viewModel.timedNotesFlow.collectAsState().value else emptyList(),
+        ratings = viewModel.ratingsFlow.collectAsState().value,
+        timedNotes = viewModel.timedNotesFlow.collectAsState().value
     )
     TimelineScreen(timelineScreenModel)
-}
-
-@Preview
-@Composable
-fun TimelineScreenPreview(
-    @PreviewParameter(
-        TimelineScreenModelPreviewProvider::class,
-        limit = 1
-    ) timelineScreenModel: TimelineScreenModel
-) {
-    JournalTheme {
-        TimelineScreen(timelineScreenModel)
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

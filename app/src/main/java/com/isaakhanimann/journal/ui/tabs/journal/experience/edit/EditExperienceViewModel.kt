@@ -32,11 +32,30 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+import javax.inject.Inject
+
 
 @HiltViewModel
 class EditExperienceViewModel @Inject constructor(
     private val repository: ExperienceRepository,
-    state: SavedStateHandle
+    state: SavedStateHandle,
+    private val userPreferences: UserPreferences,
 ) :
     ViewModel() {
 
@@ -47,6 +66,12 @@ class EditExperienceViewModel @Inject constructor(
     var enteredLocation by mutableStateOf("")
     private var oldLongitude: Double? = null
     private var oldLatitude: Double? = null
+
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+            initialValue = "You",
+                    scope = viewModelScope,
+                            started = SharingStarted.WhileSubscribed(5000)
+                                )
 
 
     init {

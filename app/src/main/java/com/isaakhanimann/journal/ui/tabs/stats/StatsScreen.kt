@@ -85,26 +85,9 @@ fun StatsScreen(
         onTapOption = viewModel::onTapOption,
         statsModel = viewModel.statsModelFlow.collectAsState().value,
         onChangeConsumerName = viewModel::onChangeConsumer,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
     )
-}
-
-@Preview
-@Composable
-fun StatsPreview(
-    @PreviewParameter(
-        StatsPreviewProvider::class,
-    ) statsModel: StatsModel
-) {
-    JournalTheme {
-        StatsScreen(
-            navigateToSubstanceCompanion = { _, _ -> },
-            onTapOption = {},
-            statsModel = statsModel,
-            onChangeConsumerName = {},
-            consumerNamesSorted = listOf("You", "Someone else")
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,7 +97,8 @@ fun StatsScreen(
     onTapOption: (option: TimePickerOption) -> Unit,
     statsModel: StatsModel,
     onChangeConsumerName: (String?) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {
@@ -145,7 +129,7 @@ fun StatsScreen(
                             onDismissRequest = { isConsumerSelectionExpanded = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text(YOU) },
+                                text = { Text(userOwnerName) },
                                 onClick = {
                                     onChangeConsumerName(null)
                                     isConsumerSelectionExpanded = false
