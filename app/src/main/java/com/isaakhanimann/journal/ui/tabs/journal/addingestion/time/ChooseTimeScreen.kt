@@ -226,6 +226,20 @@ fun ChooseTimeScreen(
                         timeString = localDateTime.getStringOfPattern("HH:mm"),
                         modifier = Modifier.fillMaxWidth()
                     )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(5)) }) {
+                            Text("-5 min")
+                        }
+                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(10)) }) {
+                            Text("-10 min")
+                        }
+                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(30)) }) {
+                            Text("-30 min")
+                        }
+                    }
                 }
                 CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {
                     val isCloseToExperience = experienceTitleToAddTo != null

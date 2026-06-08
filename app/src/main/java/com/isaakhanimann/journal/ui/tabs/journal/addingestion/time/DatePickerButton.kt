@@ -35,6 +35,11 @@ import androidx.compose.ui.platform.LocalContext
 import com.isaakhanimann.journal.R
 import java.time.LocalDateTime
 import com.isaakhanimann.journal.localization.i18n
+import android.widget.Toast
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 
 @Composable
 fun DatePickerButton(
@@ -44,6 +49,7 @@ fun DatePickerButton(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val clipboardManager = LocalClipboardManager.current
     val dialogTheme =
         if (isSystemInDarkTheme()) R.style.DialogThemeDark else R.style.DialogThemeLight
     val datePickerDialog = DatePickerDialog(
@@ -60,7 +66,15 @@ fun DatePickerButton(
             )
         }, localDateTime.year, localDateTime.monthValue - 1, localDateTime.dayOfMonth
     )
-    OutlinedButton(onClick = datePickerDialog::show, modifier = modifier) {
+    val longPressModifier = modifier.pointerInput(dateString) {
+        detectTapGestures(
+            onLongPress = {
+                clipboardManager.setText(AnnotatedString(dateString))
+                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+    OutlinedButton(onClick = datePickerDialog::show, modifier = longPressModifier) {
         Icon(
             Icons.Outlined.Event,
             contentDescription = i18n("Open calendar")

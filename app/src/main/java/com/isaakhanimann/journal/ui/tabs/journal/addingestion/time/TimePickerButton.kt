@@ -33,6 +33,11 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import android.widget.Toast
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.R
 import java.time.LocalDateTime
 import com.isaakhanimann.journal.localization.i18n
@@ -46,6 +51,7 @@ fun TimePickerButton(
     hasOutline: Boolean = true
 ) {
     val context = LocalContext.current
+    val clipboardManager = LocalClipboardManager.current
     val dialogTheme =
         if (isSystemInDarkTheme()) R.style.DialogThemeDark else R.style.DialogThemeLight
     val timePickerDialog = TimePickerDialog(
@@ -62,8 +68,18 @@ fun TimePickerButton(
             )
         }, localDateTime.hour, localDateTime.minute, DateFormat.is24HourFormat(context)
     )
+
+    val longPressModifier = modifier.pointerInput(timeString) {
+        detectTapGestures(
+            onLongPress = {
+                clipboardManager.setText(AnnotatedString(timeString))
+                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
     if (hasOutline) {
-        OutlinedButton(onClick = timePickerDialog::show, modifier = modifier) {
+        OutlinedButton(onClick = timePickerDialog::show, modifier = longPressModifier) {
             Icon(
                 Icons.Outlined.Schedule,
                 contentDescription = i18n("open_time_picker")
@@ -72,7 +88,7 @@ fun TimePickerButton(
             Text(timeString)
         }
     } else {
-        TextButton(onClick = timePickerDialog::show, modifier = modifier) {
+        TextButton(onClick = timePickerDialog::show, modifier = longPressModifier) {
             Icon(
                 Icons.Outlined.Schedule,
                 contentDescription = i18n("open_time_picker")

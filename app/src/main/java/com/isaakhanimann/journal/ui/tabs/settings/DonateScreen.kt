@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Coffee
 import androidx.compose.material.icons.outlined.Payment
+import androidx.compose.material.icons.outlined.CurrencyBitcoin
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
@@ -45,6 +46,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.localization.i18n
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -63,8 +66,11 @@ fun DonateScreen() {
             verticalArrangement = Arrangement.Center
         ) {
             Spacer(modifier = Modifier.height(5.dp))
+
+            val context = LocalContext.current
             val clipboardManager = LocalClipboardManager.current
             val uriHandler = LocalUriHandler.current
+
             val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
             
             DonateButton(
@@ -72,7 +78,9 @@ fun DonateScreen() {
                 text = "BitCoin"
             ) {
                 clipboardManager.setText(AnnotatedString(btcAddress))
+                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
             }
+            
             //Spacer(modifier = Modifier.height(15.dp))
             //DonateButton(
             //    imageVector = Icons.Outlined.Payment,
