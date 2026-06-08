@@ -72,13 +72,15 @@ fun DonateScreen() {
             val uriHandler = LocalUriHandler.current
 
             val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
-            
+
+
+            val copyTip = i18n("copied_to_clipboard")
             DonateButton(
                 imageVector = Icons.Outlined.CurrencyBitcoin, 
                 text = "BitCoin"
             ) {
                 clipboardManager.setText(AnnotatedString(btcAddress))
-                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
             }
             
             //Spacer(modifier = Modifier.height(15.dp))
