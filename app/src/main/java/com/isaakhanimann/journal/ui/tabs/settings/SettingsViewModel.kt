@@ -60,7 +60,7 @@ class SettingsViewModel @Inject constructor(
     )
 
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-        initialValue = null,
+        initialValue = "You",
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )

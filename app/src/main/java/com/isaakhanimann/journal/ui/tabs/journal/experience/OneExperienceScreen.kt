@@ -150,6 +150,7 @@ fun OneExperienceScreen(
         onChangeTimeDisplayOption = viewModel::saveTimeDisplayOption,
         navigateToTimelineScreen = navigateToTimelineScreen,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
     )
 }
 
@@ -176,7 +177,8 @@ fun OneExperienceScreen(
     timeDisplayOption: TimeDisplayOption,
     onChangeTimeDisplayOption: (SavedTimeDisplayOption) -> Unit,
     navigateToTimelineScreen: (consumerName: String) -> Unit,
-    areDosageDotsHidden: Boolean
+    areDosageDotsHidden: Boolean,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {
@@ -469,7 +471,7 @@ fun OneExperienceScreen(
                                 .fillMaxWidth()
                                 .height(200.dp)
                                 .clickable {
-                                    navigateToTimelineScreen(YOU)
+                                    navigateToTimelineScreen(ownerUserName)
                                 }
                         )
                         val hasOralIngestion =

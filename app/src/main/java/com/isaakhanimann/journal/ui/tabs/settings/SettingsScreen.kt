@@ -112,27 +112,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.AvatarUtil
 import kotlinx.coroutines.launch
 import java.io.File
 
-@Preview
-@Composable
-fun SettingsPreview() {
-    SettingsScreen(
-        deleteEverything = {},
-        navigateToFAQ = {},
-        navigateToComboSettings = {},
-        navigateToSubstanceColors = {},
-        navigateToCustomUnits = {},
-        navigateToDonate = {},
-        importFile = {},
-        exportFile = {},
-        snackbarHostState = remember { SnackbarHostState() },
-        areDosageDotsHidden = false,
-        saveDosageDotsAreHidden = {},
-        supportedLanguages = mapOf("en_us" to "English (US)", "zh_cn" to "中文（中国）"),
-        selectedLanguageKey = null,
-        saveSelectedLanguage = {}
-    )
-}
-
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
