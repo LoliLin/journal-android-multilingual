@@ -149,7 +149,7 @@ fun OneExperienceScreen(
         timeDisplayOption = viewModel.timeDisplayOptionFlow.collectAsState().value,
         onChangeTimeDisplayOption = viewModel::saveTimeDisplayOption,
         navigateToTimelineScreen = navigateToTimelineScreen,
-        areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value
+        areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
         ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
     )
 }
