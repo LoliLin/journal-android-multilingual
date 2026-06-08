@@ -88,6 +88,30 @@ import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import kotlinx.coroutines.launch
 import java.time.Instant
 
+import android.widget.Toast
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.data.room.experiences.entities.AvatarUtil
+import kotlinx.coroutines.launch
+import java.io.File
+
 @Preview
 @Composable
 fun SettingsPreview() {
@@ -121,6 +145,7 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState(initial = "You").value
     val supportedLanguages = remember(context) { I18n.getSupportedLanguages(context) }
     SettingsScreen(
         navigateToFAQ = navigateToFAQ,
@@ -137,7 +162,9 @@ fun SettingsScreen(
         saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
         supportedLanguages = supportedLanguages,
         selectedLanguageKey = selectedLanguageKey,
-        saveSelectedLanguage = viewModel::saveSelectedLanguage
+        saveSelectedLanguage = viewModel::saveSelectedLanguage,
+        ownerUserName = ownerUserName,
+        saveOwnerUserName = viewModel::saveOwnerUserName,
     )
 }
 
@@ -159,6 +186,8 @@ fun SettingsScreen(
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
+    ownerUserName: String?,
+    saveOwnerUserName: (String?) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -175,6 +204,12 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
+
+            OwnerProfileCard(
+                ownerUserName = ownerUserName,
+                onUserNameChanged = saveOwnerUserName
+            )
+
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
                     imageVector = Icons.Outlined.Medication,
@@ -500,5 +535,120 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(text)
         Spacer(modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+fun OwnerProfileCard(
+    ownerUserName: String,
+    onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
+    modifier: Modifier = Modifier
+) {
+    val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
+
+    // 当前头像文件
+    val avatarFile = remember(ownerUserName) {
+        AvatarUtil.getUserAvatar(context, ownerUserName)
+    }
+
+    // 控制改名对话框
+    var showEditDialog by remember { mutableStateOf(false) }
+    var newName by remember(ownerUserName) { mutableStateOf(ownerUserName) }
+
+    // 头像选择触发器
+    val pickAvatar = AvatarUtil.acquireUserAvatar(
+        context = context,
+        userName = ownerUserName,
+        onAvatarSaved = {
+            // 头像保存后，由于 avatarFile 依赖 ownerUserName，重新计算会触发刷新
+        }
+    )
+
+    // 改名对话框
+    if (showEditDialog) {
+        AlertDialog(
+            onDismissRequest = { showEditDialog = false },
+            title = { Text(i18n("change_name")) },
+            text = {
+                OutlinedTextField(
+                    value = newName,
+                    onValueChange = { newName = it },
+                    singleLine = true,
+                    label = { Text(i18n("name")) }
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    val trimmed = newName.trim()
+                    if (trimmed.isNotEmpty() && trimmed != ownerUserName) {
+                        // 更新存储的用户名
+                        onUserNameChanged(trimmed)
+                        // 同步头像文件：如果旧头像存在，重命名为新用户名
+                        val oldFile = AvatarUtil.getUserAvatar(context, ownerUserName)
+                        if (oldFile?.exists() == true) {
+                            val newFile = AvatarUtil.getAvatarFile(context, trimmed)
+                            oldFile.renameTo(newFile)
+                        }
+                        // 刷新界面（ownerUserName 变化后 avatarFile 会自动重新计算）
+                    }
+                    showEditDialog = false
+                }) {
+                    Text(i18n("save"))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showEditDialog = false }) {
+                    Text(i18n("cancel"))
+                }
+            }
+        )
+    }
+
+    // 卡片布局：头像居中 + 名字下方居中
+    ElevatedCard(modifier = modifier.padding(vertical = 5.dp)) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            // 头像区域（可点击更换）
+            Box(
+                modifier = Modifier
+                    .size(80.dp)
+                    .clip(CircleShape)
+                    .clickable { pickAvatar() },
+                contentAlignment = Alignment.Center
+            ) {
+                if (avatarFile != null) {
+                    AsyncImage(
+                        model = avatarFile,
+                        contentDescription = "头像",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "默认头像",
+                        modifier = Modifier.size(48.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // 用户名（可点击改名）
+            Text(
+                text = ownerUserName,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier
+                    .clickable { showEditDialog = true }
+                    .padding(horizontal = 8.dp),
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
