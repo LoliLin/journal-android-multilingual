@@ -165,8 +165,8 @@ fun SettingsScreen(
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
-    ownerUserName: String?,
-    saveOwnerUserName: (String?) -> Unit,
+    ownerUserName: String,
+    saveOwnerUserName: (String) -> Unit,
 ) {
     Scaffold(
         topBar = {
