@@ -66,11 +66,12 @@ fun DatePickerButton(
             )
         }, localDateTime.year, localDateTime.monthValue - 1, localDateTime.dayOfMonth
     )
+    val copyTip = i18n("copied_to_clipboard")
     val longPressModifier = modifier.pointerInput(dateString) {
         detectTapGestures(
             onLongPress = {
                 clipboardManager.setText(AnnotatedString(dateString))
-                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
             }
         )
     }
