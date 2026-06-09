@@ -62,7 +62,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
-import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
+import com.isaakhanimann.journal.ui.tabs.journal.components.
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -89,7 +89,8 @@ fun JournalScreen(
         isSearchEnabled = viewModel.isSearchEnabled.value,
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
-        substanceRepository = viewModel.substanceRepository
+        substanceRepository = viewModel.substanceRepository,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -109,7 +110,8 @@ fun JournalScreen(
     isSearchEnabled: Boolean,
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-    substanceRepository: SubstanceRepository
+    substanceRepository: SubstanceRepository,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {
@@ -274,7 +276,8 @@ fun JournalScreen(
                                 navigateToExperiencePopNothing(experienceWithIngestions.experience.id)
                             },
                             isTimeRelativeToNow = isTimeRelativeToNow,
-                            substanceRepository = substanceRepository
+                            substanceRepository = substanceRepository,
+                            ownerUserName = ownerUserName
                         )
                         HorizontalDivider()
                     }
