@@ -86,47 +86,8 @@ fun CheckInteractionsScreen(
         },
         isShowingAlert = viewModel.isShowingAlert,
         alertInteractionType = viewModel.alertInteractionType,
-        alertText = viewModel.alertText
-    )
-}
-
-@Preview
-@Composable
-fun CheckInteractionsScreenPreview(@PreviewParameter(SubstanceWithCategoriesPreviewProvider::class) substanceWithCategories: SubstanceWithCategories) {
-    CheckInteractionsScreen(
-        substanceName = "LSD",
-        substanceUrl = "",
-        isSearchingForInteractions = true,
-        dangerousInteractions = substanceWithCategories.substance.interactions?.dangerous
-            ?: emptyList(),
-        unsafeInteractions = substanceWithCategories.substance.interactions?.unsafe ?: emptyList(),
-        uncertainInteractions = substanceWithCategories.substance.interactions?.uncertain
-            ?: emptyList(),
-        navigateToNext = {},
-        navigateToURL = {},
-        dismissAlert = {},
-        isShowingAlert = false,
-        alertInteractionType = InteractionType.DANGEROUS,
-        alertText = "Dangerous interaction with Heroin taken 4h ago"
-    )
-}
-
-@Preview
-@Composable
-fun CheckInteractionsScreenPreview2() {
-    CheckInteractionsScreen(
-        substanceName = "MDMA",
-        substanceUrl = "",
-        isSearchingForInteractions = true,
-        dangerousInteractions = emptyList(),
-        unsafeInteractions = emptyList(),
-        uncertainInteractions = emptyList(),
-        navigateToNext = {},
-        navigateToURL = {},
-        dismissAlert = {},
-        isShowingAlert = true,
-        alertInteractionType = InteractionType.DANGEROUS,
-        alertText = "Dangerous interaction with Heroin taken 4h ago."
+        alertText = viewModel.alertText,
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
 
@@ -144,7 +105,8 @@ fun CheckInteractionsScreen(
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
     navigateToNext: () -> Unit,
-    navigateToURL: (url: String) -> Unit
+    navigateToURL: (url: String) -> Unit,
+    getSubstanceDisplayName: (substance: String) -> String
 ) {
     Scaffold(
         topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to substanceName))) }) },

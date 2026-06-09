@@ -40,7 +40,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
-    substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository,
     private val experienceRepo: ExperienceRepository,
     private val combinationSettingsStorage: CombinationSettingsStorage,
     private val interactionChecker: InteractionChecker,

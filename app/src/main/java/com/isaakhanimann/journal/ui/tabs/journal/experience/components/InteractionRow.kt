@@ -40,7 +40,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.localization.i18n
 
 @Composable
-fun InteractionRow(interaction: Interaction) {
+fun InteractionRow(interaction: Interaction, getSubstanceDisplayName: (substance: String) -> String) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RectangleShape,
@@ -53,8 +53,8 @@ fun InteractionRow(interaction: Interaction) {
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "${interaction.aName} and ${interaction.bName}",
+            Text( //TODO : i18n
+                text = "${getSubstanceDisplayName(interaction.aName)} + ${getSubstanceDisplayName(interaction.bName)}",
                 textAlign = TextAlign.Center,
                 color = Color.Black,
             )

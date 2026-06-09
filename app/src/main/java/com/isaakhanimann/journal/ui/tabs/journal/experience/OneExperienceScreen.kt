@@ -681,7 +681,7 @@ fun OneExperienceScreen(
                 ) {
                     CardTitle(title = i18n("substance_interactions_title"))
                     interactions.forEachIndexed { index, interaction ->
-                        InteractionRow(interaction = interaction)
+                        InteractionRow(interaction = interaction, getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName)
                         if (index < interactions.size - 1) {
                             HorizontalDivider()
                         }
@@ -699,9 +699,9 @@ fun OneExperienceScreen(
                         oneExperienceScreenModel.interactionExplanations.forEach {
                             SuggestionChip(
                                 onClick = {
-                                    navigateToURL(it.url) //699
+                                    navigateToURL(it.url)
                                 },
-                                label = { Text(it.name) }
+                                label = { Text(viewModel.substanceRepo.getDisplayName(it.name)) }
                             )
                         }
                     }
