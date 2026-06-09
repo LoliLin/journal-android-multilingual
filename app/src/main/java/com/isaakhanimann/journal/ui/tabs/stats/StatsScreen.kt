@@ -85,7 +85,7 @@ fun StatsScreen(
         statsModel = viewModel.statsModelFlow.collectAsState().value,
         onChangeConsumerName = viewModel::onChangeConsumer,
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You")
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 

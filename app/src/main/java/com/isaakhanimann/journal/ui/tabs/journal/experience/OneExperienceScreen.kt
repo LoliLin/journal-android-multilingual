@@ -114,11 +114,11 @@ fun OneExperienceScreen(
     val isFavorite = viewModel.isFavoriteFlow.collectAsState().value
     val oneExperienceScreenModel = OneExperienceScreenModel(
         isFavorite = isFavorite,
-        title = experience?.title ?: "You",
+        title = experience?.title ?: "",
         firstIngestionTime = ingestionsWithCompanions.firstOrNull()?.ingestion?.time
             ?: experience?.sortDate ?: Instant.now(),
-        notes = experience?.text ?: "You",
-        locationName = experience?.location?.name ?: "You",
+        notes = experience?.text ?: "",
+        locationName = experience?.location?.name ?: "",
         isCurrentExperience = viewModel.isCurrentExperienceFlow.collectAsState().value,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
         cumulativeDoses = viewModel.cumulativeDosesFlow.collectAsState().value,
