@@ -545,10 +545,11 @@ fun EditIngestionScreen(
 
                         leadingContent = {
 
-                            val conAvatar = remember(consumerName) {
-
-                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
-
+                            val ctxCon = LocalContext.current
+                            val conAvatar = remember(consumerName) {
+
+                                AvatarUtil.getUserAvatar(ctxCon, consumerName)
+
                             }
 
                             if (conAvatar != null) {

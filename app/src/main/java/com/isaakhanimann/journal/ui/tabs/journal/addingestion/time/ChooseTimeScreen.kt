@@ -334,12 +334,12 @@ fun ChooseTimeScreen(
                                             onChangeOfConsumerName(consumerName)
                                             areConsumerNamesExpanded = false
                                         },
-                                        leadingIcon = {
-
-                                            val avatarFile = remember(consumerName) {
-
-                                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
-
+                                        leadingIcon = {
+                                            val ctxCsm = LocalContext.current
+                                            val avatarFile = remember(consumerName) {
+
+                                                AvatarUtil.getUserAvatar(ctxCsm, consumerName)
+
                                             }
 
                                             if (avatarFile != null) {
