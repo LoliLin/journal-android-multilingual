@@ -66,6 +66,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.foundation.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -117,11 +123,27 @@ fun StatsScreen(
                 actions = {
                     if (consumerNamesSorted.isNotEmpty()) {
                         var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
+                        val context = LocalContext.current
                         IconButton(onClick = { isConsumerSelectionExpanded = true }) {
-                            Icon(
-                                Icons.Outlined.Person,
-                                contentDescription = i18n("stats_consumer")
-                            )
+                            val avatarFile = remember(ownerUserName) {
+                                AvatarUtil.getUserAvatar(context, ownerUserName)
+                            }
+                            if (avatarFile != null) {
+                                AsyncImage(
+                                    model = avatarFile,
+                                    contentDescription = i18n("stats_consumer"),
+                                    modifier = Modifier.size(32.dp).clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            } else {
+                                Icon(
+                                    Icons.Outlined.Person,
+                                    contentDescription = i18n("stats_consumer"),
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                        .clip(CircleShape)
+                                )
+                            }
                         }
                         DropdownMenu(
                             expanded = isConsumerSelectionExpanded,

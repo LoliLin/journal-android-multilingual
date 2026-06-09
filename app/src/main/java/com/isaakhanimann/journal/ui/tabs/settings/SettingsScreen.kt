@@ -602,7 +602,9 @@ fun OwnerProfileCard(
                     Icon(
                         imageVector = Icons.Default.Person,
                         contentDescription = "默认头像",
-                        modifier = Modifier.size(48.dp),
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(CircleShape),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
