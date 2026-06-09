@@ -48,7 +48,8 @@ class JournalViewModel @Inject constructor(
 
     searchRepository: SearchRepository,
 
-    val substanceRepository: SubstanceRepository
+    val substanceRepository: SubstanceRepository,
+    private val userPreferences: UserPreferences
 
 ) : ViewModel() {
 
