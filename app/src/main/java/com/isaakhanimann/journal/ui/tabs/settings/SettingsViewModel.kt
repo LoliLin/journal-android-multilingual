@@ -40,8 +40,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(
-    private val context: Context,
+class SettingsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val experienceRepository: ExperienceRepository,
     private val fileSystemConnection: FileSystemConnection,
     private val userPreferences: UserPreferences,
