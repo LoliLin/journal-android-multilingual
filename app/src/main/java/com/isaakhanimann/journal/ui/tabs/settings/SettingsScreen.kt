@@ -514,12 +514,18 @@ fun OwnerProfileCard(
     onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-    val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+
+    var avatarRefresh by remember { mutableStateOf(0) }
+
+
 
     // 当前头像文件
-    val avatarFile = remember(ownerUserName) {
+
+    val avatarFile = remember(ownerUserName, avatarRefresh) {
+
         AvatarUtil.getUserAvatar(context, ownerUserName)
+
     }
 
     // 控制改名对话框
@@ -528,11 +534,17 @@ fun OwnerProfileCard(
 
     // 头像选择触发器
     val pickAvatar = AvatarUtil.acquireUserAvatar(
+
         context = context,
+
         userName = ownerUserName,
+
         onAvatarSaved = {
-            // 头像保存后，由于 avatarFile 依赖 ownerUserName，重新计算会触发刷新
+
+            avatarRefresh++
+
         }
+
     )
 
     // 改名对话框
@@ -564,7 +576,7 @@ fun OwnerProfileCard(
                     }
                     showEditDialog = false
                 }) {
-                    Text(i18n("save"))
+                    Text(i18n("common_done"))
                 }
             },
             dismissButton = {

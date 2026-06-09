@@ -73,6 +73,12 @@ import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme
@@ -110,40 +116,76 @@ fun StatsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        if (statsModel.consumerName == null) {
-                            i18n("stats_title")
-                        } else {
+
+                        if (statsModel.consumerName != null) {
+
                             i18n(
+
                                 "stats_title_for_consumer",
+
                                 replacements = mapOf("consumer" to statsModel.consumerName)
+
                             )
+
+                        } else if (ownerUserName != "You") {
+
+                            i18n(
+
+                                "stats_title_for_consumer",
+
+                                replacements = mapOf("consumer" to ownerUserName)
+
+                            )
+
+                        } else {
+
+                            i18n("stats_title")
+
                         }
+
                     )
                 },
                 actions = {
-                    if (consumerNamesSorted.isNotEmpty()) {
-                        var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
-                        val context = LocalContext.current
+                    var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
+
+                    val context = LocalContext.current
+
+                    val currentConsumerName = statsModel.consumerName ?: ownerUserName
+
+                    val currentAvatarFile = remember(currentConsumerName) {
+
+                        AvatarUtil.getUserAvatar(context, currentConsumerName)
+
+                    }
+
                         IconButton(onClick = { isConsumerSelectionExpanded = true }) {
-                            val avatarFile = remember(ownerUserName) {
-                                AvatarUtil.getUserAvatar(context, ownerUserName)
-                            }
-                            if (avatarFile != null) {
+
+                            if (currentAvatarFile != null) {
+
                                 AsyncImage(
-                                    model = avatarFile,
+
+                                    model = currentAvatarFile,
+
                                     contentDescription = i18n("stats_consumer"),
+
                                     modifier = Modifier.size(32.dp).clip(CircleShape),
+
                                     contentScale = ContentScale.Crop
+
                                 )
+
                             } else {
+
                                 Icon(
+
                                     Icons.Outlined.Person,
-                                    contentDescription = i18n("stats_consumer"),
-                                    modifier = Modifier
-                                        .size(32.dp)
-                                        .clip(CircleShape)
+
+                                    contentDescription = i18n("stats_consumer")
+
                                 )
+
                             }
+
                         }
                         DropdownMenu(
                             expanded = isConsumerSelectionExpanded,
@@ -184,9 +226,11 @@ fun StatsScreen(
                                 )
                             }
                         }
-                    }
+
                 }
+
             )
+
         }
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {

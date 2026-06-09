@@ -56,11 +56,19 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 
 @Preview(showBackground = true)
 @Composable
+
 fun ExperienceRow(
+
     @PreviewParameter(ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider::class) experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings,
+
     navigateToExperienceScreen: () -> Unit = {},
+
     isTimeRelativeToNow: Boolean = true,
-    substanceRepository: SubstanceRepository
+
+    substanceRepository: SubstanceRepository,
+
+    ownerUserName: String = "You"
+
 ) {
     Row(
         modifier = Modifier
@@ -106,12 +114,12 @@ fun ExperienceRow(
                     Text(text = rating)
                 }
             }
-            val consumerNames = remember(ingestions) {
-                ingestions.mapNotNull { it.ingestion.consumerName }.distinct()
-                    .joinToString(separator = ", ")
-            }
-            if (consumerNames.isNotEmpty()) {
-                Text(text = i18n("with_consumers", mapOf("names" to consumerNames)), style = MaterialTheme.typography.labelSmall)
+            val consumerNames = remember(ingestions, ownerUserName) {
+                ingestions.map { it.ingestion.consumerName.ifBlank { ownerUserName } }.distinct()
+                    .joinToString(separator = ", ")
+            }
+            if (consumerNames.isNotEmpty()) {
+                Text(text = consumerNames, style = MaterialTheme.typography.labelSmall)
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

@@ -516,5 +516,6 @@
   "substances_ingestion": "{substance} ingestion",
   "edit_custom_substance": "Edit custom substance",
   "show_on_timeline": "Show on timeline",
-  "your_cumulative_doses": "Your cumulative doses"
+  "your_cumulative_doses": "Your cumulative doses",
+  "change_name": "Change name"
 }

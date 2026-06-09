@@ -205,7 +205,8 @@ fun ExperienceRowWithFetch(
                 navigateToExperiencePopNothing(experienceId)
             },
             isTimeRelativeToNow = false,
-            substanceRepository = viewModel.substanceRepository
+            substanceRepository = viewModel.substanceRepository,
+            ownerUserName = "You"
         )
     }
 }
