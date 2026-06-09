@@ -32,7 +32,8 @@ data class JournalExport(
     val experiences: List<ExperienceSerializable> = emptyList(),
     val substanceCompanions: List<SubstanceCompanion> = emptyList(),
     val customSubstances: List<CustomSubstance> = emptyList(),
-    val customUnits: List<CustomUnitSerializable> = emptyList()
+    val customUnits: List<CustomUnitSerializable> = emptyList(),
+    val avatars: Map<String, String> = emptyMap()
 )
 
 @Serializable
