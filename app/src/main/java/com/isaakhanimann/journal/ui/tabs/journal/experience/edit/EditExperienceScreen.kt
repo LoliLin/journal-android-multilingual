@@ -64,7 +64,7 @@ fun EditExperienceScreen(
         onTextChange = { viewModel.enteredText = it },
         location = viewModel.enteredLocation,
         onLocationChange = { viewModel.enteredLocation = it },
-        ownerUserName = viewModel.(ownerUserNameFlow.collectAsState().value ?: "You")
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You")
     )
 }
 

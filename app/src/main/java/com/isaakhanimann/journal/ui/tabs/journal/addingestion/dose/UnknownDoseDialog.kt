@@ -25,7 +25,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import com.isaakhanimann.journal.localization.i18n
 import androidx.compose.ui.tooling.preview.Preview
-import com.isaakhanimann.journal.localization.i18n
 
 @Preview
 @Composable

@@ -115,7 +115,7 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
-    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState(initial = "You").value
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState(initial = "You").value ?: "You"
     val supportedLanguages = remember(context) { I18n.getSupportedLanguages(context) }
     SettingsScreen(
         navigateToFAQ = navigateToFAQ,
