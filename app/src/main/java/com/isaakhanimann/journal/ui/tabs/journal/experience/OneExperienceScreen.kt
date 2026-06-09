@@ -451,7 +451,7 @@ fun OneExperienceScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitle(title = i18n("effect_timeline"))
+                        CardTitle(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName )
                         TextButton(onClick = navigateToExplainTimeline) {
                             Text(text = i18n("limitations"))
                         }
