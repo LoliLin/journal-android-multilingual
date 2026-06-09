@@ -114,11 +114,11 @@ fun OneExperienceScreen(
     val isFavorite = viewModel.isFavoriteFlow.collectAsState().value
     val oneExperienceScreenModel = OneExperienceScreenModel(
         isFavorite = isFavorite,
-        title = experience?.title ?: "",
+        title = experience?.title ?: "You",
         firstIngestionTime = ingestionsWithCompanions.firstOrNull()?.ingestion?.time
             ?: experience?.sortDate ?: Instant.now(),
-        notes = experience?.text ?: "",
-        locationName = experience?.location?.name ?: "",
+        notes = experience?.text ?: "You",
+        locationName = experience?.location?.name ?: "You",
         isCurrentExperience = viewModel.isCurrentExperienceFlow.collectAsState().value,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
         cumulativeDoses = viewModel.cumulativeDosesFlow.collectAsState().value,
@@ -150,7 +150,7 @@ fun OneExperienceScreen(
         onChangeTimeDisplayOption = viewModel::saveTimeDisplayOption,
         navigateToTimelineScreen = navigateToTimelineScreen,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
+        ownerUserName = viewModel.(ownerUserNameFlow.collectAsState().value ?: "You")
     )
 }
 

@@ -35,6 +35,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
@@ -63,7 +64,7 @@ fun EditExperienceScreen(
         onTextChange = { viewModel.enteredText = it },
         location = viewModel.enteredLocation,
         onLocationChange = { viewModel.enteredLocation = it },
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
+        ownerUserName = viewModel.(ownerUserNameFlow.collectAsState().value ?: "You")
     )
 }
 

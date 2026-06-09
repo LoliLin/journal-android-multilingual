@@ -89,27 +89,18 @@ import kotlinx.coroutines.launch
 import java.time.Instant
 
 import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.data.room.experiences.entities.AvatarUtil
-import kotlinx.coroutines.launch
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import java.io.File
 
 @Composable
@@ -165,8 +156,8 @@ fun SettingsScreen(
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
-    ownerUserName: String,
-    saveOwnerUserName: (String) -> Unit,
+    ownerUserName: String = "You",
+    saveOwnerUserName: (String?) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -519,7 +510,7 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
 
 @Composable
 fun OwnerProfileCard(
-    ownerUserName: String,
+    ownerUserName: String = "You",
     onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
     modifier: Modifier = Modifier
 ) {

@@ -66,7 +66,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -86,7 +85,7 @@ fun StatsScreen(
         statsModel = viewModel.statsModelFlow.collectAsState().value,
         onChangeConsumerName = viewModel::onChangeConsumer,
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You")
     )
 }
 
@@ -129,7 +128,7 @@ fun StatsScreen(
                             onDismissRequest = { isConsumerSelectionExpanded = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text(userOwnerName) },
+                                text = { Text(ownerUserName) },
                                 onClick = {
                                     onChangeConsumerName(null)
                                     isConsumerSelectionExpanded = false
