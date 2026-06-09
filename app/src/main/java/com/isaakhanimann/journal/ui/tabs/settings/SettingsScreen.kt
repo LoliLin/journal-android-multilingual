@@ -514,8 +514,10 @@ fun OwnerProfileCard(
     onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-
+    val context = LocalContext.current
+
+
+
     var avatarRefresh by remember { mutableStateOf(0) }
 
 
@@ -581,7 +583,7 @@ fun OwnerProfileCard(
             },
             dismissButton = {
                 TextButton(onClick = { showEditDialog = false }) {
-                    Text(i18n("cancel"))
+                    Text(i18n("common_cancel"))
                 }
             }
         )
@@ -608,7 +610,8 @@ fun OwnerProfileCard(
                         model = avatarFile,
                         contentDescription = "头像",
                         modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
+                        key = avatarRefresh
                     )
                 } else {
                     Icon(
