@@ -607,7 +607,7 @@ fun OwnerProfileCard(
             ) {
                 if (avatarFile != null) {
                     AsyncImage(
-                        model = "${avatarFile?.absolutePath}?v=$avatarRefresh",
+                        model = avatarFile,
                         contentDescription = "头像",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
