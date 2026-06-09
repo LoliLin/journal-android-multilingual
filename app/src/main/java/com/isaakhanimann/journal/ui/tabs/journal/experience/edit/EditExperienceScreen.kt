@@ -35,6 +35,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
@@ -62,7 +63,8 @@ fun EditExperienceScreen(
         text = viewModel.enteredText,
         onTextChange = { viewModel.enteredText = it },
         location = viewModel.enteredLocation,
-        onLocationChange = { viewModel.enteredLocation = it }
+        onLocationChange = { viewModel.enteredLocation = it },
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -77,7 +79,8 @@ fun EditExperienceScreenPreview() {
         text = i18n("sample_notes"),
         onTextChange = {},
         location = "Zurich",
-        onLocationChange = {}
+        onLocationChange = {},
+        ownerUserName = "lolin"
     )
 }
 
@@ -91,7 +94,8 @@ fun EditExperienceScreen(
     text: String,
     onTextChange: (String) -> Unit,
     location: String,
-    onLocationChange: (String) -> Unit
+    onLocationChange: (String) -> Unit,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {

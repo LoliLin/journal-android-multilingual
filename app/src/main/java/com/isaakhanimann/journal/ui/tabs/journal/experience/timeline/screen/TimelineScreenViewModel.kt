@@ -26,7 +26,6 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.main.navigation.routers.CONSUMER_NAME_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
@@ -37,11 +36,25 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+
+
 @HiltViewModel
 class TimelineScreenViewModel @Inject constructor(
     experienceRepo: ExperienceRepository,
     private val substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
+    state: SavedStateHandle,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
 
     private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
@@ -50,11 +63,7 @@ class TimelineScreenViewModel @Inject constructor(
     private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(experienceID)
         .map { ingestions ->
             ingestions.filter {
-                if (consumerName == YOU) {
-                    it.ingestion.consumerName == null
-                } else {
                     it.ingestion.consumerName == consumerName
-                }
             }
         }
 
@@ -73,6 +82,12 @@ class TimelineScreenViewModel @Inject constructor(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000)
             )
+    
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+            initialValue = "You",
+                    scope = viewModelScope,
+                            started = SharingStarted.WhileSubscribed(5000)
+                                )
 
 
     private val sortedIngestionsWithCompanionsFlow =

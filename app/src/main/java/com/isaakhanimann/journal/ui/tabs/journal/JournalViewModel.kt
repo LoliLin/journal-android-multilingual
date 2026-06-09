@@ -28,16 +28,29 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import java.time.temporal.ChronoUnit
+
 
 @HiltViewModel
-class JournalViewModel @Inject constructor(
-    experienceRepo: ExperienceRepository,
-    searchRepository: SearchRepository,
-    val substanceRepository: SubstanceRepository
+class JournalViewModel @Inject constructor(
+
+    experienceRepo: ExperienceRepository,
+
+    searchRepository: SearchRepository,
+
+    val substanceRepository: SubstanceRepository,
+    private val userPreferences: UserPreferences
+
 ) : ViewModel() {
 
 
@@ -47,6 +60,12 @@ class JournalViewModel @Inject constructor(
         isTimeRelativeToNow.value = isRelative
     }
     val isSearchEnabled = mutableStateOf(false)
+
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
     fun onChangeOfIsSearchEnabled(newValue: Boolean) {
         if (newValue) {

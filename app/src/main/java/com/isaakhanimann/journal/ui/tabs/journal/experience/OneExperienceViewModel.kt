@@ -77,6 +77,12 @@ class OneExperienceViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val areDosageDotsHiddenFlow = userPreferences.areDosageDotsHiddenFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,

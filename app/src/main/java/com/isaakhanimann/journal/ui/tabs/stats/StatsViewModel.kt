@@ -46,11 +46,19 @@ import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import java.time.temporal.ChronoUnit
 
 @HiltViewModel
 class StatsViewModel @Inject constructor(
     experienceRepo: ExperienceRepository,
-    val substanceRepo: SubstanceRepository
+    val substanceRepo: SubstanceRepository,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
 
     private val _optionFlow = MutableStateFlow(TimePickerOption.WEEKS_26)
@@ -236,6 +244,12 @@ class StatsViewModel @Inject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
+        
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 }
 
 data class StatsModel(

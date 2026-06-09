@@ -15,9 +15,9 @@ android {
         applicationId "in.kawaiis.journal"
         minSdk 26
         targetSdk 34
-        versionCode 9020
+        versionCode 9030
 
-        versionName "9.2"
+        versionName "9.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -112,4 +112,5 @@ dependencies {
     implementation "com.google.accompanist:accompanist-webview:0.27.0"
     implementation "com.kizitonwose.calendar:compose:2.5.0"
     implementation "com.github.Towdium:PinIn:1.6.0"
+    implementation "io.coil-kt:coil-compose:2.5.0"
 }

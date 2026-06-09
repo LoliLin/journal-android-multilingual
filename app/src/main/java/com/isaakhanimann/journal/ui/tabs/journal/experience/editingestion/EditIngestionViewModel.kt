@@ -46,10 +46,19 @@ import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
 
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import java.time.Instant
+
 @HiltViewModel
 class EditIngestionViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    state: SavedStateHandle,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
     private var ingestionFlow: MutableStateFlow<Ingestion?> = MutableStateFlow(null)
     var ingestion: Ingestion? = null
@@ -72,6 +81,12 @@ class EditIngestionViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+            initialValue = "You",
+                    scope = viewModelScope,
+                            started = SharingStarted.WhileSubscribed(5000)
+                                )
 
     fun onChangeEstimatedDoseStandardDeviation(newEstimatedDoseStandardDeviation: String) {
         estimatedDoseStandardDeviation = newEstimatedDoseStandardDeviation

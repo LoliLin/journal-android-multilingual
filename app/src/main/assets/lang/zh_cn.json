@@ -516,5 +516,6 @@
   "route_intramuscular_desc": "肌肉注射",
   "route_intravenous_desc": "静脉注射",
   "route_smoked_desc": "加热吸入",
-  "route_inhaled_desc": "直接吸入"
+  "route_inhaled_desc": "直接吸入",
+  "change_name": "修改名称"
 }

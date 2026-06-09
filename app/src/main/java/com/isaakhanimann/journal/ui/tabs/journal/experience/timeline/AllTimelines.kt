@@ -54,51 +54,6 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 
 
-@Preview(showBackground = true)
-@Composable
-fun AllTimelinesPreview(
-    @PreviewParameter(
-        TimelinesPreviewProvider::class,
-    ) dataForEffectLines: List<DataForOneEffectLine>
-) {
-    AllTimelines(
-        dataForEffectLines = dataForEffectLines,
-        dataForRatings = listOf(
-            DataForOneRating(
-                time = Instant.now().minus(3, ChronoUnit.HOURS),
-                option = ShulginRatingOption.MINUS
-            ),
-            DataForOneRating(
-                time = Instant.now().minus(2, ChronoUnit.HOURS),
-                option = ShulginRatingOption.TWO_PLUS
-            ),
-            DataForOneRating(
-                time = Instant.now().minus(1, ChronoUnit.HOURS),
-                option = ShulginRatingOption.THREE_PLUS
-            ),
-            DataForOneRating(
-                time = Instant.now().plus(2, ChronoUnit.HOURS),
-                option = ShulginRatingOption.FOUR_PLUS
-            )
-        ),
-        dataForTimedNotes = listOf(
-            DataForOneTimedNote(
-                time = Instant.now().minus(30, ChronoUnit.MINUTES),
-                color = AdaptiveColor.PURPLE
-            ),
-            DataForOneTimedNote(
-                time = Instant.now().plus(30, ChronoUnit.MINUTES),
-                color = AdaptiveColor.BLUE
-            ),
-        ),
-        isShowingCurrentTime = true,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-    )
-}
-
-
 @Composable
 fun AllTimelines(
     dataForEffectLines: List<DataForOneEffectLine>,

@@ -36,6 +36,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_HIDE_ORAL_DISCLAIMER = booleanPreferencesKey("key_hide_oral_disclaimer")
         val KEY_HIDE_DOSAGE_DOTS = booleanPreferencesKey("key_hide_dosage_dots")
         val KEY_SELECTED_LANGUAGE = stringPreferencesKey("key_selected_language")
+        val KEY_OWNER_USER_NAME = stringPreferencesKey("key_owner_user_name")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -85,5 +86,20 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     val selectedLanguageFlow: Flow<String?> = dataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE]
+        }
+    
+    suspend fun saveOwnerUserName(value: String?) {
+        dataStore.edit { preferences ->
+            if (value == null) {
+                preferences.remove(PreferencesKeys.KEY_OWNER_USER_NAME)
+            } else {
+                preferences[PreferencesKeys.KEY_OWNER_USER_NAME] = value
+            }
+        }
+    }
+
+    val ownerUserNameFlow: Flow<String?> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_OWNER_USER_NAME] ?: "You"
         }
 }

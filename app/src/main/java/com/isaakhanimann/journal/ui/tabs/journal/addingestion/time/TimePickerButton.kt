@@ -69,11 +69,13 @@ fun TimePickerButton(
         }, localDateTime.hour, localDateTime.minute, DateFormat.is24HourFormat(context)
     )
 
+    val copyTip = i18n("copied_to_clipboard")
+
     val longPressModifier = modifier.pointerInput(timeString) {
         detectTapGestures(
             onLongPress = {
                 clipboardManager.setText(AnnotatedString(timeString))
-                Toast.makeText(context, i18n("copied_to_clipboard"), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
             }
         )
     }

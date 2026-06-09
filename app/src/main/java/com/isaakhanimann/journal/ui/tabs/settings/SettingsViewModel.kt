@@ -18,7 +18,11 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings
 
+import android.content.Context
+import java.io.File
+import java.io.FileOutputStream
 import android.net.Uri
+import dagger.hilt.android.qualifiers.ApplicationContext
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
@@ -28,6 +32,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -35,7 +40,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(
+class SettingsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val experienceRepository: ExperienceRepository,
     private val fileSystemConnection: FileSystemConnection,
     private val userPreferences: UserPreferences,
@@ -59,11 +65,23 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val snackbarHostState = SnackbarHostState()
 
     fun saveSelectedLanguage(languageKey: String?) {
         viewModelScope.launch {
             userPreferences.saveSelectedLanguage(languageKey)
+        }
+    }
+
+    fun saveOwnerUserName(userName: String?) {
+        viewModelScope.launch {
+            userPreferences.saveOwnerUserName(userName)
         }
     }
 
@@ -81,6 +99,14 @@ class SettingsViewModel @Inject constructor(
                     val journalExport = json.decodeFromString<JournalExport>(text)
                     experienceRepository.deleteEverything()
                     experienceRepository.insertEverything(journalExport)
+                    journalExport.avatars.forEach { (userName, base64) ->
+                        try {
+                            val decoded = java.util.Base64.getDecoder().decode(base64)
+                            val avatarFile = AvatarUtil.getAvatarFile(context, userName)
+                            avatarFile.parentFile?.mkdirs()
+                            FileOutputStream(avatarFile).use { it.write(decoded) }
+                        } catch (_: Exception) { }
+                    }
                     snackbarHostState.showSnackbar(
                         message = "Import successful",
                         duration = SnackbarDuration.Short
@@ -167,11 +193,20 @@ class SettingsViewModel @Inject constructor(
                     note = it.note
                 )
             }
+            val ownerUserName = userPreferences.ownerUserNameFlow.firstOrNull() ?: "You"
+            val avatarFile = AvatarUtil.getUserAvatar(context, ownerUserName)
+            val avatars = if (avatarFile != null && avatarFile.exists()) {
+                val bytes = avatarFile.readBytes()
+                mapOf(ownerUserName to java.util.Base64.getEncoder().encodeToString(bytes))
+            } else {
+                emptyMap()
+            }
             val journalExport = JournalExport(
                 experiences = experiencesSerializable,
                 substanceCompanions = experienceRepository.getAllSubstanceCompanions(),
                 customSubstances = experienceRepository.getAllCustomSubstances(),
-                customUnits = customUnitsSerializable
+                customUnits = customUnitsSerializable,
+                avatars = avatars
             )
             try {
                 val jsonList = Json.encodeToString(journalExport)

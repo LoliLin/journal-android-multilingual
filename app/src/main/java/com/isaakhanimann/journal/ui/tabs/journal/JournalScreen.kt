@@ -89,7 +89,8 @@ fun JournalScreen(
         isSearchEnabled = viewModel.isSearchEnabled.value,
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
-        substanceRepository = viewModel.substanceRepository
+        substanceRepository = viewModel.substanceRepository,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -109,7 +110,8 @@ fun JournalScreen(
     isSearchEnabled: Boolean,
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-    substanceRepository: SubstanceRepository
+    substanceRepository: SubstanceRepository,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {
@@ -274,7 +276,8 @@ fun JournalScreen(
                                 navigateToExperiencePopNothing(experienceWithIngestions.experience.id)
                             },
                             isTimeRelativeToNow = isTimeRelativeToNow,
-                            substanceRepository = substanceRepository
+                            substanceRepository = substanceRepository,
+                            ownerUserName = ownerUserName
                         )
                         HorizontalDivider()
                     }

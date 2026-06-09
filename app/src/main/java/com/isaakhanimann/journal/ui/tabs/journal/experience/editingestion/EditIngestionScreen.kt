@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -79,8 +80,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
@@ -125,7 +131,8 @@ fun EditIngestionScreen(
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
         customUnit = viewModel.customUnit,
         onCustomUnitChange = viewModel::onChangeCustomUnit,
-        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value
+        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -159,7 +166,8 @@ fun EditIngestionScreenPreview() {
             consumerNamesSorted = listOf("Dave", "Ali"),
             customUnit = null,
             onCustomUnitChange = {},
-            otherCustomUnits = emptyList()
+            otherCustomUnits = emptyList(),
+            ownerUserName = "lolin"
         )
     }
 }
@@ -192,7 +200,8 @@ fun EditIngestionScreen(
     consumerNamesSorted: List<String>,
     customUnit: CustomUnit?,
     onCustomUnitChange: (CustomUnit?) -> Unit,
-    otherCustomUnits: List<CustomUnit>
+    otherCustomUnits: List<CustomUnit>,
+    ownerUserName: String
 ) {
     var isPresentingBottomSheet by rememberSaveable { mutableStateOf(false) }
     val skipPartiallyExpanded by remember { mutableStateOf(false) }
@@ -440,7 +449,7 @@ fun EditIngestionScreen(
                     )
                 ) {
                     Text(
-                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { YOU })),
+                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { ownerUserName })),
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
@@ -498,12 +507,25 @@ fun EditIngestionScreen(
             LazyColumn {
                 item {
                     ListItem(
-                        headlineContent = { Text(YOU) },
+                        headlineContent = { Text(ownerUserName) },
                         leadingContent = {
-                            Icon(
-                                Icons.Default.Person,
-                                contentDescription = i18n("stats_consumer")
-                            )
+                            val ctx = LocalContext.current
+                            val ownerAvatar = remember(ownerUserName) {
+                                AvatarUtil.getUserAvatar(ctx, ownerUserName)
+                            }
+                            if (ownerAvatar != null) {
+                                AsyncImage(
+                                    model = ownerAvatar,
+                                    contentDescription = i18n("stats_consumer"),
+                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            } else {
+                                Icon(
+                                    Icons.Default.Person,
+                                    contentDescription = i18n("stats_consumer")
+                                )
+                            }
                         },
                         modifier = Modifier.clickable {
                             onChangeConsumerName("")
@@ -516,14 +538,48 @@ fun EditIngestionScreen(
                     )
                 }
                 items(consumerNamesSorted) { consumerName ->
+
                     ListItem(
+
                         headlineContent = { Text(consumerName) },
+
                         leadingContent = {
-                            Icon(
-                                Icons.Default.Person,
-                                contentDescription = i18n("stats_consumer")
-                            )
+
+                            val ctxCon = LocalContext.current
+                            val conAvatar = remember(consumerName) {
+
+                                AvatarUtil.getUserAvatar(ctxCon, consumerName)
+
+                            }
+
+                            if (conAvatar != null) {
+
+                                AsyncImage(
+
+                                    model = conAvatar,
+
+                                    contentDescription = i18n("stats_consumer"),
+
+                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+
+                                    contentScale = ContentScale.Crop
+
+                                )
+
+                            } else {
+
+                                Icon(
+
+                                    Icons.Default.Person,
+
+                                    contentDescription = i18n("stats_consumer")
+
+                                )
+
+                            }
+
                         },
+
                         modifier = Modifier.clickable {
                             onChangeConsumerName(consumerName)
                             scope.launch { bottomSheetState.hide() }.invokeOnCompletion {

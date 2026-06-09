@@ -66,7 +66,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.ui.YOU
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -85,26 +90,9 @@ fun StatsScreen(
         onTapOption = viewModel::onTapOption,
         statsModel = viewModel.statsModelFlow.collectAsState().value,
         onChangeConsumerName = viewModel::onChangeConsumer,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
-}
-
-@Preview
-@Composable
-fun StatsPreview(
-    @PreviewParameter(
-        StatsPreviewProvider::class,
-    ) statsModel: StatsModel
-) {
-    JournalTheme {
-        StatsScreen(
-            navigateToSubstanceCompanion = { _, _ -> },
-            onTapOption = {},
-            statsModel = statsModel,
-            onChangeConsumerName = {},
-            consumerNamesSorted = listOf("You", "Someone else")
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,38 +102,91 @@ fun StatsScreen(
     onTapOption: (option: TimePickerOption) -> Unit,
     statsModel: StatsModel,
     onChangeConsumerName: (String?) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
+    ownerUserName: String
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        if (statsModel.consumerName == null) {
-                            i18n("stats_title")
-                        } else {
+
+                        if (statsModel.consumerName != null) {
+
                             i18n(
+
                                 "stats_title_for_consumer",
+
                                 replacements = mapOf("consumer" to statsModel.consumerName)
+
                             )
+
+                        } else if (ownerUserName != "You") {
+
+                            i18n(
+
+                                "stats_title_for_consumer",
+
+                                replacements = mapOf("consumer" to ownerUserName)
+
+                            )
+
+                        } else {
+
+                            i18n("stats_title")
+
                         }
+
                     )
                 },
                 actions = {
-                    if (consumerNamesSorted.isNotEmpty()) {
-                        var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
+                    var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
+
+                    val context = LocalContext.current
+
+                    val currentConsumerName = statsModel.consumerName ?: ownerUserName
+
+                    val currentAvatarFile = remember(currentConsumerName) {
+
+                        AvatarUtil.getUserAvatar(context, currentConsumerName)
+
+                    }
+
                         IconButton(onClick = { isConsumerSelectionExpanded = true }) {
-                            Icon(
-                                Icons.Outlined.Person,
-                                contentDescription = i18n("stats_consumer")
-                            )
+
+                            if (currentAvatarFile != null) {
+
+                                AsyncImage(
+
+                                    model = currentAvatarFile,
+
+                                    contentDescription = i18n("stats_consumer"),
+
+                                    modifier = Modifier.size(32.dp).clip(CircleShape),
+
+                                    contentScale = ContentScale.Crop
+
+                                )
+
+                            } else {
+
+                                Icon(
+
+                                    Icons.Outlined.Person,
+
+                                    contentDescription = i18n("stats_consumer")
+
+                                )
+
+                            }
+
                         }
                         DropdownMenu(
                             expanded = isConsumerSelectionExpanded,
                             onDismissRequest = { isConsumerSelectionExpanded = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text(YOU) },
+                                text = { Text(ownerUserName) },
                                 onClick = {
                                     onChangeConsumerName(null)
                                     isConsumerSelectionExpanded = false
@@ -179,9 +220,11 @@ fun StatsScreen(
                                 )
                             }
                         }
-                    }
+
                 }
+
             )
+
         }
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {

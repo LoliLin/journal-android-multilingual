@@ -39,6 +39,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -70,8 +71,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -111,7 +117,8 @@ fun ChooseTimeScreen(
         isEnteredTitleOk = viewModel.isEnteredTitleOk,
         consumerName = viewModel.consumerName,
         onChangeOfConsumerName = viewModel::changeConsumerName,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -175,7 +182,8 @@ fun ChooseTimeScreen(
     isEnteredTitleOk: Boolean,
     consumerName: String,
     onChangeOfConsumerName: (String) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
+    ownerUserName: String = "You"
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
@@ -281,7 +289,7 @@ fun ChooseTimeScreen(
                         )
                     ) {
                         Text(
-                            text = "Consumed by: ${consumerName.ifBlank { YOU }}",
+                            text = "Consumed by: ${consumerName.ifBlank { ownerUserName }}",
                             style = MaterialTheme.typography.titleMedium
                         )
                         if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
@@ -294,16 +302,29 @@ fun ChooseTimeScreen(
                                 onDismissRequest = { areConsumerNamesExpanded = false }
                             ) {
                                 DropdownMenuItem(
-                                    text = { Text(YOU) },
+                                    text = { Text(ownerUserName) },
                                     onClick = {
                                         onChangeOfConsumerName("")
                                         areConsumerNamesExpanded = false
                                     },
                                     leadingIcon = {
-                                        Icon(
-                                            Icons.Default.Person,
-                                            contentDescription = i18n("stats_consumer")
-                                        )
+                                        val ctx = LocalContext.current
+                                        val ownerAvatar = remember(ownerUserName) {
+                                            AvatarUtil.getUserAvatar(ctx, ownerUserName)
+                                        }
+                                        if (ownerAvatar != null) {
+                                            AsyncImage(
+                                                model = ownerAvatar,
+                                                contentDescription = i18n("stats_consumer"),
+                                                modifier = Modifier.size(24.dp).clip(CircleShape),
+                                                contentScale = ContentScale.Crop
+                                            )
+                                        } else {
+                                            Icon(
+                                                Icons.Default.Person,
+                                                contentDescription = i18n("stats_consumer")
+                                            )
+                                        }
                                     }
                                 )
                                 consumerNamesSorted.forEach { consumerName ->
@@ -313,16 +334,50 @@ fun ChooseTimeScreen(
                                             onChangeOfConsumerName(consumerName)
                                             areConsumerNamesExpanded = false
                                         },
-                                        leadingIcon = {
-                                            Icon(
-                                                Icons.Default.Person,
-                                                contentDescription = i18n("stats_consumer")
-                                            )
+                                        leadingIcon = {
+                                            val ctxCsm = LocalContext.current
+                                            val avatarFile = remember(consumerName) {
+
+                                                AvatarUtil.getUserAvatar(ctxCsm, consumerName)
+
+                                            }
+
+                                            if (avatarFile != null) {
+
+                                                AsyncImage(
+
+                                                    model = avatarFile,
+
+                                                    contentDescription = i18n("stats_consumer"),
+
+                                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+
+                                                    contentScale = ContentScale.Crop
+
+                                                )
+
+                                            } else {
+
+                                                Icon(
+
+                                                    Icons.Default.Person,
+
+                                                    contentDescription = i18n("stats_consumer")
+
+                                                )
+
+                                            }
+
                                         }
+
                                     )
+
                                 }
+
                             }
+
                         }
+
                         var showNewConsumerTextField by remember { mutableStateOf(false) }
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
