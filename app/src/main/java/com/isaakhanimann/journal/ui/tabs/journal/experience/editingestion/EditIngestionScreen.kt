@@ -125,7 +125,7 @@ fun EditIngestionScreen(
         customUnit = viewModel.customUnit,
         onCustomUnitChange = viewModel::onChangeCustomUnit,
         otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You")
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
