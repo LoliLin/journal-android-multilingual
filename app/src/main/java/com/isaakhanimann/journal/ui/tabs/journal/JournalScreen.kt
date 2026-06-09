@@ -274,8 +274,7 @@ fun JournalScreen(
                                 navigateToExperiencePopNothing(experienceWithIngestions.experience.id)
                             },
                             isTimeRelativeToNow = isTimeRelativeToNow,
-                            substanceRepository = substanceRepository,
-                            ownerUserName = ownerUserName
+                            substanceRepository = substanceRepository
                         )
                         HorizontalDivider()
                     }

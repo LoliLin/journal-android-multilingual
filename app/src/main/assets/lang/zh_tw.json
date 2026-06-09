@@ -515,5 +515,7 @@
   "route_intravenous_desc": "靜脈注射",
   "route_smoked_desc": "加熱吸入",
   "route_inhaled_desc": "直接吸入",
-  "change_name": "修改名稱"
+  "change_name": "修改名稱",
+  "dose_unknown": "未知剂量",
+  "effect_timeline": "效果曲线"
 }

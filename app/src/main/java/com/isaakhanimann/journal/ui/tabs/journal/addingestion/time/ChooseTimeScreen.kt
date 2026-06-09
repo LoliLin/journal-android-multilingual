@@ -71,6 +71,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
@@ -302,10 +308,23 @@ fun ChooseTimeScreen(
                                         areConsumerNamesExpanded = false
                                     },
                                     leadingIcon = {
-                                        Icon(
-                                            Icons.Default.Person,
-                                            contentDescription = i18n("stats_consumer")
-                                        )
+                                        val ctx = LocalContext.current
+                                        val ownerAvatar = remember(ownerUserName) {
+                                            AvatarUtil.getUserAvatar(ctx, ownerUserName)
+                                        }
+                                        if (ownerAvatar != null) {
+                                            AsyncImage(
+                                                model = ownerAvatar,
+                                                contentDescription = i18n("stats_consumer"),
+                                                modifier = Modifier.size(24.dp).clip(CircleShape),
+                                                contentScale = ContentScale.Crop
+                                            )
+                                        } else {
+                                            Icon(
+                                                Icons.Default.Person,
+                                                contentDescription = i18n("stats_consumer")
+                                            )
+                                        }
                                     }
                                 )
                                 consumerNamesSorted.forEach { consumerName ->
