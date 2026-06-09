@@ -72,7 +72,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -112,7 +111,8 @@ fun ChooseTimeScreen(
         isEnteredTitleOk = viewModel.isEnteredTitleOk,
         consumerName = viewModel.consumerName,
         onChangeOfConsumerName = viewModel::changeConsumerName,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
 
@@ -176,7 +176,8 @@ fun ChooseTimeScreen(
     isEnteredTitleOk: Boolean,
     consumerName: String,
     onChangeOfConsumerName: (String) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
+    ownerUserName: String = "You"
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
@@ -282,7 +283,7 @@ fun ChooseTimeScreen(
                         )
                     ) {
                         Text(
-                            text = "Consumed by: ${consumerName.ifBlank { YOU }}",
+                            text = "Consumed by: ${consumerName.ifBlank { ownerUserName }}",
                             style = MaterialTheme.typography.titleMedium
                         )
                         if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
@@ -295,7 +296,7 @@ fun ChooseTimeScreen(
                                 onDismissRequest = { areConsumerNamesExpanded = false }
                             ) {
                                 DropdownMenuItem(
-                                    text = { Text(YOU) },
+                                    text = { Text(ownerUserName) },
                                     onClick = {
                                         onChangeOfConsumerName("")
                                         areConsumerNamesExpanded = false

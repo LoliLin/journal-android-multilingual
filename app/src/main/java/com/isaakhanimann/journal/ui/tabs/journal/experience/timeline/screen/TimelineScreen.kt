@@ -46,7 +46,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote

@@ -26,7 +26,6 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.main.navigation.routers.CONSUMER_NAME_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement

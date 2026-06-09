@@ -76,7 +76,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines

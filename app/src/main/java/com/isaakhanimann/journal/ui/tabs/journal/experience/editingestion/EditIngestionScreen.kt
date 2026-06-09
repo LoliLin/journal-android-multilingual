@@ -80,7 +80,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
@@ -501,7 +500,7 @@ fun EditIngestionScreen(
             LazyColumn {
                 item {
                     ListItem(
-                        headlineContent = { Text(YOU) },
+                        headlineContent = { Text(ownerUserName) },
                         leadingContent = {
                             Icon(
                                 Icons.Default.Person,

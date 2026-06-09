@@ -46,6 +46,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
@@ -65,9 +67,16 @@ const val hourLimitToSeparateIngestions: Long = 12
 @HiltViewModel
 class ChooseTimeViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
+    private val userPreferences: UserPreferences,
     state: SavedStateHandle
 ) : ViewModel() {
     var substanceName  by mutableStateOf("")
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
     var enteredTitle by mutableStateOf(LocalDateTime.now().getStringOfPattern("dd MMMM yyyy"))
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
