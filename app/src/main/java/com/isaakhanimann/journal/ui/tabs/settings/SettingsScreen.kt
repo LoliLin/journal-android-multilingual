@@ -607,11 +607,10 @@ fun OwnerProfileCard(
             ) {
                 if (avatarFile != null) {
                     AsyncImage(
-                        model = avatarFile,
+                        model = "${avatarFile?.absolutePath}?v=$avatarRefresh",
                         contentDescription = "头像",
                         modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop,
-                        key = avatarRefresh
+                        contentScale = ContentScale.Crop
                     )
                 } else {
                     Icon(
