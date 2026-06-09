@@ -114,12 +114,18 @@ fun ExperienceRow(
                     Text(text = rating)
                 }
             }
-            val consumerNames = remember(ingestions, ownerUserName) {
-                ingestions.map { it.ingestion.consumerName.ifBlank { ownerUserName } }.distinct()
-                    .joinToString(separator = ", ")
-            }
-            if (consumerNames.isNotEmpty()) {
-                Text(text = consumerNames, style = MaterialTheme.typography.labelSmall)
+            val consumerNames = remember(ingestions, ownerUserName) {
+
+                ingestions.map { (it.ingestion.consumerName?.ifBlank { ownerUserName } ?: ownerUserName) }.distinct()
+
+                    .joinToString(separator = ", ")
+
+            }
+
+            if (consumerNames.isNotEmpty()) {
+
+                Text(text = consumerNames, style = MaterialTheme.typography.labelSmall)
+
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

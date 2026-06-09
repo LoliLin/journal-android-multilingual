@@ -73,12 +73,6 @@ import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import coil.compose.AsyncImage
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.JournalTheme

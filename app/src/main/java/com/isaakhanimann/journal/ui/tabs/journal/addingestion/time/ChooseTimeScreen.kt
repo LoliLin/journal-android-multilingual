@@ -334,28 +334,50 @@ fun ChooseTimeScreen(
                                             onChangeOfConsumerName(consumerName)
                                             areConsumerNamesExpanded = false
                                         },
-                                        leadingIcon = {
-                                            val avatarFile = remember(consumerName) {
-                                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
-                                            }
-                                            if (avatarFile != null) {
-                                                AsyncImage(
-                                                    model = avatarFile,
-                                                    contentDescription = i18n("stats_consumer"),
-                                                    modifier = Modifier.size(24.dp).clip(CircleShape),
-                                                    contentScale = ContentScale.Crop
-                                                )
-                                            } else {
-                                                Icon(
-                                                    Icons.Default.Person,
-                                                    contentDescription = i18n("stats_consumer")
-                                                )
-                                            }
-                                        }
-                                    )
-                                }
-                            }
-                        }
+                                        leadingIcon = {
+
+                                            val avatarFile = remember(consumerName) {
+
+                                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
+
+                                            }
+
+                                            if (avatarFile != null) {
+
+                                                AsyncImage(
+
+                                                    model = avatarFile,
+
+                                                    contentDescription = i18n("stats_consumer"),
+
+                                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+
+                                                    contentScale = ContentScale.Crop
+
+                                                )
+
+                                            } else {
+
+                                                Icon(
+
+                                                    Icons.Default.Person,
+
+                                                    contentDescription = i18n("stats_consumer")
+
+                                                )
+
+                                            }
+
+                                        }
+
+                                    )
+
+                                }
+
+                            }
+
+                        }
+
                         var showNewConsumerTextField by remember { mutableStateOf(false) }
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),

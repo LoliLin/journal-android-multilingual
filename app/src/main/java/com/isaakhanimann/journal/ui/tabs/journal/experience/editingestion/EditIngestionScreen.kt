@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -536,27 +537,48 @@ fun EditIngestionScreen(
                         }
                     )
                 }
-                items(consumerNamesSorted) { consumerName ->
-                    ListItem(
-                        headlineContent = { Text(consumerName) },
-                        leadingContent = {
-                            val conAvatar = remember(consumerName) {
-                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
-                            }
-                            if (conAvatar != null) {
-                                AsyncImage(
-                                    model = conAvatar,
-                                    contentDescription = i18n("stats_consumer"),
-                                    modifier = Modifier.size(24.dp).clip(CircleShape),
-                                    contentScale = ContentScale.Crop
-                                )
-                            } else {
-                                Icon(
-                                    Icons.Default.Person,
-                                    contentDescription = i18n("stats_consumer")
-                                )
-                            }
-                        },
+                items(consumerNamesSorted) { consumerName ->
+
+                    ListItem(
+
+                        headlineContent = { Text(consumerName) },
+
+                        leadingContent = {
+
+                            val conAvatar = remember(consumerName) {
+
+                                AvatarUtil.getUserAvatar(LocalContext.current, consumerName)
+
+                            }
+
+                            if (conAvatar != null) {
+
+                                AsyncImage(
+
+                                    model = conAvatar,
+
+                                    contentDescription = i18n("stats_consumer"),
+
+                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+
+                                    contentScale = ContentScale.Crop
+
+                                )
+
+                            } else {
+
+                                Icon(
+
+                                    Icons.Default.Person,
+
+                                    contentDescription = i18n("stats_consumer")
+
+                                )
+
+                            }
+
+                        },
+
                         modifier = Modifier.clickable {
                             onChangeConsumerName(consumerName)
                             scope.launch { bottomSheetState.hide() }.invokeOnCompletion {
