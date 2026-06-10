@@ -33,6 +33,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,7 +58,9 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
 
 @Preview(showBackground = true)
@@ -82,6 +85,9 @@ fun ExperienceRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
+        val context = LocalContext.current
+        val currentView = LocalView.current
+        val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
         ColorRectangle(ingestions = ingestions)
@@ -158,7 +164,6 @@ fun ExperienceRow(
 
         IconButton(onClick = {
             coroutineScope.launch {
-                try {
                     val tempViewModel: OneExperienceViewModel = hiltViewModel(
                         key = "share_temp_vm_${experience.id}"
                     )
@@ -178,10 +183,6 @@ fun ExperienceRow(
                     }
 
                     shareBitmap(context, bitmap)
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
             }
         }) {
             Icon(
