@@ -115,6 +115,15 @@ class OneExperienceViewModel @Inject constructor(
         }
     }
 
+    fun reInit(expId: Int) {
+        experienceId = expId
+        viewModelScope.launch {
+            val experience = experienceRepo.getExperience(expId)
+            val isFavorite = experience?.isFavorite ?: false
+            localIsFavoriteFlow.emit(isFavorite)
+        }
+    }
+
     fun saveIsFavorite(isFavorite: Boolean) {
         viewModelScope.launch {
             localIsFavoriteFlow.emit(isFavorite)
