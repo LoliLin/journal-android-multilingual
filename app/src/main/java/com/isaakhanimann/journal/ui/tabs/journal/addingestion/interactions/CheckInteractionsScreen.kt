@@ -86,7 +86,7 @@ fun CheckInteractionsScreen(
         },
         isShowingAlert = viewModel.isShowingAlert,
         alertInteractionType = viewModel.alertInteractionType,
-        alertText = viewModel.alertText,
+        alertMessages = viewModel.alertMessages,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
@@ -100,7 +100,7 @@ fun CheckInteractionsScreen(
     isShowingAlert: Boolean,
     dismissAlert: () -> Unit,
     alertInteractionType: InteractionType?,
-    alertText: String,
+    alertMessages: List<InteractionAlertMessage>,
     dangerousInteractions: List<String>,
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
@@ -198,7 +198,15 @@ fun CheckInteractionsScreen(
                         }
                     },
                     text = {
-                        Text(text = alertText)
+                        Column {
+                            alertMessages.forEach { msg ->
+                                val typeDisplay = i18n(msg.params["type"] ?: "interaction_alert_title")
+                                val params = msg.params.mapValues { (k, v) ->
+                                    if (k == "type") typeDisplay else v
+                                }
+                                Text(text = i18n(msg.i18nKey, params))
+                            }
+                        }
                     },
                     confirmButton = {
                         Row(

@@ -38,6 +38,11 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
 
+data class InteractionAlertMessage(
+    val i18nKey: String,
+    val params: Map<String, String> = emptyMap()
+)
+
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
     val substanceRepo: SubstanceRepository,
@@ -55,7 +60,7 @@ class CheckInteractionsViewModel @Inject constructor(
     var isSearchingForInteractions by mutableStateOf(true)
     var isShowingAlert by mutableStateOf(false)
     var alertInteractionType by mutableStateOf<InteractionType?>(null)
-    var alertText by mutableStateOf("")
+    var alertMessages by mutableStateOf<List<InteractionAlertMessage>>(emptyList())
     private var latestIngestionsOfEverySubstanceSinceTwoDays: List<Ingestion> = emptyList()
 
     init {
