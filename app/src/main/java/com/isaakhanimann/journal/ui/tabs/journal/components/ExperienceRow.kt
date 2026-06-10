@@ -95,7 +95,7 @@ fun ExperienceRow(
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
         
         ColorRectangle(ingestions = ingestions)
-        Column {
+        Column (modifier = Modifier.weight(1f)){
             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
                 Text(
                     text = experience.title,
