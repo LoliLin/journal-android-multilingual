@@ -1,10 +1,10 @@
-
 package com.isaakhanimann.journal.ui.utils
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
@@ -16,54 +16,61 @@ import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.android.awaitFrame // 👈 关键：引入等待下一帧的挂起函数
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
+/**
+ * 安全、不卡死主线程的 Compose 转 Bitmap 方案
+ */
 suspend fun renderComposeViewToBitmap(
     context: Context,
     widthPx: Int,
     lifecycleView: View,
     content: @Composable () -> Unit
-): Bitmap = withContext(Dispatchers.Main) { 
-    
-    val container = FrameLayout(context)
-    val composeView = ComposeView(context).apply {
-        // 【核心修复 1】避免离屏 View 离开屏幕时直接被销毁
-        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
-        setContent {
-            content()
+): Bitmap {
+    // 1. 核心修复：整个 View 的创建、配置和测量，全部包装在一个轻量级的主线程任务中，
+    // 执行完立刻释放主线程，让水波纹等特效继续动，绝不卡死！
+    val composeView = withContext(Dispatchers.Main) {
+        val container = FrameLayout(context)
+        val view = ComposeView(context).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+            setContent {
+                content()
+            }
         }
+        container.addView(view)
+
+        // 拷贝宿主环境
+        view.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
+        view.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
+        view.setViewTreeSavedStateRegistryOwner(lifecycleView.findViewTreeSavedStateRegistryOwner())
+        
+        view
     }
-    container.addView(composeView)
 
-    composeView.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
-    composeView.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
-    composeView.setViewTreeSavedStateRegistryOwner(lifecycleView.findViewTreeSavedStateRegistryOwner())
+    // 2. 核心修复：放开主线程控制权，挂起协程，老老实实让出 150 毫秒的时间！
+    // 这段时间内，主线程可以自由地让你的点击水波纹特效流畅地播完，同时 Compose 在后台悄悄把 Text("Try") 拼装好。
+    delay(150)
 
-    // 【核心修复 2】：强行等待 Android 的 UI 渲染时钟走 1-2 帧！
-    // 这一步能让 Compose 闭包在后台悄悄完成 Recomposition，真正把卡片、文本甚至图标给“拼装”出来。
-    awaitFrame()
-    awaitFrame()
+    // 3. 再次回到主线程进行收网（测量、布局、截图）
+    return withContext(Dispatchers.Main) {
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        composeView.measure(widthSpec, heightSpec)
+        
+        val measuredWidth = composeView.measuredWidth
+        // 保底处理：如果依然是 0，给 100 像素防止 createBitmap 崩溃闪退
+        val measuredHeight = composeView.measuredHeight.coerceAtLeast(100)
+        
+        composeView.layout(0, 0, measuredWidth, measuredHeight)
 
-    // 此时再进行测量，高度就绝对不会是 0 了
-    val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
-    val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-    composeView.measure(widthSpec, heightSpec)
-    
-    val measuredWidth = composeView.measuredWidth
-    // 如果万一还是 0，给一个保底高度，防止 createBitmap 崩溃
-    val measuredHeight = composeView.measuredHeight.coerceAtLeast(1)
-    
-    composeView.layout(0, 0, measuredWidth, measuredHeight)
+        val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        composeView.draw(canvas)
 
-    // 创建对应大小的画布
-    val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
-    val canvas = Canvas(bitmap)
-    
-    composeView.draw(canvas)
-
-    // 顺手从容器移除，保持内存干净
-    container.removeView(composeView)
-
-    return@withContext bitmap
+        // 干净利落地移除
+        (composeView.parent as? ViewGroup)?.removeView(composeView)
+        
+        bitmap
+    }
 }
