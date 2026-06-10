@@ -49,17 +49,6 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
-@Preview(showBackground = true)
-@Composable
-fun SuggestionRowPreview(@PreviewParameter(SubstanceSuggestionProvider::class) substanceRouteSuggestion: SubstanceRouteSuggestion) {
-    SuggestionRow(
-        substanceRouteSuggestion = substanceRouteSuggestion,
-        navigateToDose = { _: String, _: AdministrationRoute -> },
-        navigateToCustomUnitChooseDose = {},
-        navigateToCustomDose = { _: Int, _: AdministrationRoute -> },
-        navigateToChooseTime = { _: String, _: AdministrationRoute, _: Double?, _: String?, _: Boolean, _: Double?, _: Int? -> }
-    )
-}
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -69,6 +58,7 @@ fun SuggestionRow(
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
     navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
     navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
+    getSubstanceDisplayName: (substanceName: String) -> String
 ) {
     Column(
         modifier = Modifier
@@ -83,8 +73,9 @@ fun SuggestionRow(
                 administrationRouteKey(substanceRouteSuggestion.route),
                 substanceRouteSuggestion.route.displayText
             )
+            val displayName = getSubstanceDisplayName(substanceRouteSuggestion.substanceName)
             Text(
-                text = "${substanceRouteSuggestion.substanceName} $routeName",
+                text = "$displayName $routeName",
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.weight(1f))

@@ -105,7 +105,8 @@ fun AddIngestionSearchScreen(
         },
         filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value,
         filteredCustomUnits = viewModel.filteredCustomUnitsFlow.collectAsState().value,
-        filteredCustomSubstances = viewModel.filteredCustomSubstancesFlow.collectAsState().value
+        filteredCustomSubstances = viewModel.filteredCustomSubstancesFlow.collectAsState().value,
+        getSubstanceDisplayName = viewModel.substanceRepo::getSubstanceDisplayName
     )
 }
 
@@ -126,7 +127,8 @@ fun AddIngestionSearchScreen(
     onChangeSearchText: (searchText: String) -> Unit,
     filteredSubstances: List<SubstanceModel>,
     filteredCustomUnits: List<CustomUnit>,
-    filteredCustomSubstances: List<CustomSubstance>
+    filteredCustomSubstances: List<CustomSubstance>,
+    getSubstanceDisplayName: (substanceName: String) -> String
 ) {
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
@@ -200,7 +202,8 @@ fun AddIngestionSearchScreen(
                         navigateToDose = navigateToDose,
                         navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
                         navigateToCustomDose = navigateToCustomDose,
-                        navigateToChooseTime = navigateToChooseTime
+                        navigateToChooseTime = navigateToChooseTime,
+                        getSubstanceDisplayName = getSubstanceDisplayName
                     )
                     if (index < substanceRouteSuggestions.size - 1) {
                         HorizontalDivider()
