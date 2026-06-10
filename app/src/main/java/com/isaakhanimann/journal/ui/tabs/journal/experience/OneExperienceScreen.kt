@@ -77,6 +77,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitleWithAvatar
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
@@ -91,6 +92,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneT
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+
 import java.time.Instant
 
 @Composable
@@ -453,7 +455,7 @@ fun OneExperienceScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitle(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName )
+                        CardTitleWithAvatar(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName, username = ownerUserName)
                         TextButton(onClick = navigateToExplainTimeline) {
                             Text(text = i18n("limitations"))
                         }
@@ -635,7 +637,7 @@ fun OneExperienceScreen(
             }
             oneExperienceScreenModel.consumersWithIngestions.forEach { consumerWithIngestions ->
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
-                    CardTitle(title = consumerWithIngestions.consumerName)
+                    CardTitleWithAvatar(title = consumerWithIngestions.consumerName, username = consumerWithIngestions.consumerName)
                     Column(
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
