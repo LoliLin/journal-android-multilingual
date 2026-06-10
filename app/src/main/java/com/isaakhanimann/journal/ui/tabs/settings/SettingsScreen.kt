@@ -607,7 +607,10 @@ fun OwnerProfileCard(
             ) {
                 if (avatarFile != null) {
                     AsyncImage(
-                        model = avatarFile,
+                        model = ImageRequest.Builder(context)
+                               .data(avatarFile)
+                               .setParameter("version", avatarRefresh) // ✨ 强行改变请求特征，让 Coil 缓存失效并重新加载
+                               .build(),
                         contentDescription = "头像",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
