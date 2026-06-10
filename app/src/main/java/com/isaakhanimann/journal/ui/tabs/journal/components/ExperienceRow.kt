@@ -168,7 +168,7 @@ fun ExperienceRow(
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
                 if (activity != null) {
-                   val tempViewModel = androidx.lifecycle.ViewModelProvider(activity)[YourViewModelClass::class.java]
+                   val tempViewModel = androidx.lifecycle.ViewModelProvider(activity)[OneExperienceViewModel::class.java]
                    tempViewModel.reInit(experience.id)
     
                    val bitmap = renderComposeViewToBitmap(
