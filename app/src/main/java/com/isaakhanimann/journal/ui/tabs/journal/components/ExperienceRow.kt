@@ -171,12 +171,7 @@ fun ExperienceRow(
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
                 if (activity != null) {
-                    val bitmap = Bitmap.createBitmap(500, 500, Bitmap.Config.ARGB_8888).apply {
-            // 把它涂成全红色，方便你在成功分享后能一眼认出来
-            eraseColor(android.graphics.Color.RED) 
-                    }
-
-                    /*
+                
                    val bitmap = renderComposeViewToBitmap(
                        context = context,
                        widthPx = 1080,
@@ -184,7 +179,7 @@ fun ExperienceRow(
                    ) {
                         Text("Try")
                         //ShareableExperienceCard(experience = experienceWithIngestionsCompanionsAndRatings)
-                   }*/
+                   }
             
                    shareBitmap(context, bitmap)
                }
