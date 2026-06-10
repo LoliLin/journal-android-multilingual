@@ -91,11 +91,6 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
-
-        val tempViewModel: OneExperienceViewModel = hiltViewModel(
-            key = "share_temp_vm_${experience.id}"
-        )
-        tempViewModel.reInit(experience.id)
         
         ColorRectangle(ingestions = ingestions)
         Column {
@@ -171,15 +166,21 @@ fun ExperienceRow(
 
         IconButton(onClick = {
             coroutineScope.launch {
-                    val bitmap = renderComposeViewToBitmap(
-                        context = context,
-                        widthPx = 1080, 
-                        lifecycleView = currentView
-                    ) {
+                val activity = context as? androidx.activity.ComponentActivity
+                if (activity != null) {
+                   val tempViewModel = androidx.lifecycle.ViewModelProvider(activity)[YourViewModelClass::class.java]
+                   tempViewModel.reInit(experience.id)
+    
+                   val bitmap = renderComposeViewToBitmap(
+                       context = context,
+                       widthPx = 1080,
+                      lifecycleView = currentView
+                   ) {
                         ShareableExperienceCard(viewModel = tempViewModel)
-                    }
-
-                    shareBitmap(context, bitmap)
+                   }
+            
+                   shareBitmap(context, bitmap)
+               }
             }
         }) {
             Icon(
