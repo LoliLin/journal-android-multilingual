@@ -199,17 +199,11 @@ fun CheckInteractionsScreen(
                         }
                     },
                     text = {
-
                         Column {
-
                             alertMessages.forEach { msg ->
-
                                 Text(text = msg.translate())
-
                             }
-
                         }
-
                     },
                     confirmButton = {
                         Row(

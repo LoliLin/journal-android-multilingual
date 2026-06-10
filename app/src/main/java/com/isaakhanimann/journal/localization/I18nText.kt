@@ -3,6 +3,7 @@ package com.isaakhanimann.journal.localization
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.isaakhanimann.journal.localization.I18n
 
 data class I18nText(
     val i18nKey: String,

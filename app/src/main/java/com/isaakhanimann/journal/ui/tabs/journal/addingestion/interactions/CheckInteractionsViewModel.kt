@@ -105,78 +105,42 @@ class CheckInteractionsViewModel @Inject constructor(
             }
         val now = Instant.now()
 
-        val messages = mutableListOf<I18nText>()
-
-        dangerousIngestions.forEach { ingestion ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_with_time",
-
-                params = mapOf("type" to "interaction_level_dangerous", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
-
-            ))
-
-        }
-
-        dangerousExtras.forEach { extra ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_no_time",
-
-                params = mapOf("type" to "interaction_level_dangerous", "name" to extra)
-
-            ))
-
-        }
-
-        unsafeIngestions.forEach { ingestion ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_with_time",
-
-                params = mapOf("type" to "interaction_level_unsafe", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
-
-            ))
-
-        }
-
-        unsafeExtras.forEach { extra ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_no_time",
-
-                params = mapOf("type" to "interaction_level_unsafe", "name" to extra)
-
-            ))
-
-        }
-
-        uncertainIngestions.forEach { ingestion ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_with_time",
-
-                params = mapOf("type" to "interaction_level_uncertain", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
-
-            ))
-
-        }
-
-        uncertainExtras.forEach { extra ->
-
-            messages.add(I18nText(
-
-                i18nKey = "interaction_alert_no_time",
-
-                params = mapOf("type" to "interaction_level_uncertain", "name" to extra)
-
-            ))
-
+        val messages = mutableListOf<I18nText>()
+        dangerousIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_dangerous_with_time",
+                params = mapOf("name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            ))
+        }
+        dangerousExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_dangerous",
+                params = mapOf("name" to extra)
+            ))
+        }
+        unsafeIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_unsafe_with_time",
+                params = mapOf("name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            ))
+        }
+        unsafeExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_unsafe",
+                params = mapOf("name" to extra)
+            ))
+        }
+        uncertainIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_uncertain_with_time",
+                params = mapOf("name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            ))
+        }
+        uncertainExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_uncertain",
+                params = mapOf("name" to extra)
+            ))
         }
 
         alertMessages = messages.distinctBy { it.i18nKey + it.params.toString() }
