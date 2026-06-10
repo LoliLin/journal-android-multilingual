@@ -125,7 +125,7 @@ fun ShareableExperienceCard(
     ElevatedCard(modifier = Modifier
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
-            .wrapContentHeight() 
+            
 ) {
                     CardTitle(title = oneExperienceScreenModel.title)
         Column(
