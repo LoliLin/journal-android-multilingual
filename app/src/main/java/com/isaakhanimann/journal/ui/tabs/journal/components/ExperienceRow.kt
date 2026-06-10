@@ -29,6 +29,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -182,8 +184,9 @@ fun ExperienceRow(
             }
         }) {
             Icon(
-                imageVector = Icons.Default.Share,
-                contentDescription = "分享卡片"
+                Icons.Default.Share,
+                contentDescription = "分享卡片",
+                modifier = Modifier.size(ButtonDefaults.IconSize)
             )
         }
     }
