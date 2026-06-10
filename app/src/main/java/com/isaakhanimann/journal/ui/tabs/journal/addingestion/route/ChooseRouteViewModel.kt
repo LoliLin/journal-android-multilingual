@@ -31,7 +31,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChooseRouteViewModel @Inject constructor(
-    substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
     val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
