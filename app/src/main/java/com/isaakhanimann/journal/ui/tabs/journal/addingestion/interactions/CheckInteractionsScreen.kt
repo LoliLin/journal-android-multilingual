@@ -59,6 +59,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
+import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
 import com.isaakhanimann.journal.ui.tabs.search.substance.InteractionExplanationButton
@@ -100,7 +101,7 @@ fun CheckInteractionsScreen(
     isShowingAlert: Boolean,
     dismissAlert: () -> Unit,
     alertInteractionType: InteractionType?,
-    alertMessages: List<InteractionAlertMessage>,
+    alertMessages: List<I18nText>,
     dangerousInteractions: List<String>,
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
@@ -198,15 +199,17 @@ fun CheckInteractionsScreen(
                         }
                     },
                     text = {
+
                         Column {
+
                             alertMessages.forEach { msg ->
-                                val typeDisplay = i18n(msg.params["type"] ?: "interaction_alert_title")
-                                val params = msg.params.mapValues { (k, v) ->
-                                    if (k == "type") typeDisplay else v
-                                }
-                                Text(text = i18n(msg.i18nKey, params))
+
+                                Text(text = msg.translate())
+
                             }
+
                         }
+
                     },
                     confirmButton = {
                         Row(

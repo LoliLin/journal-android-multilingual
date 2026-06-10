@@ -34,14 +34,15 @@ import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import com.isaakhanimann.journal.localization.I18nText
+
 import java.time.Instant
+
 import java.time.temporal.ChronoUnit
+
 import javax.inject.Inject
 
-data class InteractionAlertMessage(
-    val i18nKey: String,
-    val params: Map<String, String> = emptyMap()
-)
+
 
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
@@ -60,7 +61,7 @@ class CheckInteractionsViewModel @Inject constructor(
     var isSearchingForInteractions by mutableStateOf(true)
     var isShowingAlert by mutableStateOf(false)
     var alertInteractionType by mutableStateOf<InteractionType?>(null)
-    var alertMessages by mutableStateOf<List<InteractionAlertMessage>>(emptyList())
+    var alertMessages by mutableStateOf<List<I18nText>>(emptyList())
     private var latestIngestionsOfEverySubstanceSinceTwoDays: List<Ingestion> = emptyList()
 
     init {
@@ -103,40 +104,82 @@ class CheckInteractionsViewModel @Inject constructor(
                 return
             }
         val now = Instant.now()
-        val messages = dangerousIngestions.map { ingestion ->
-            "Dangerous interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
-        }.toMutableList()
-        messages += dangerousExtras.map { extra ->
-            "Dangerous interaction with $extra."
+
+        val messages = mutableListOf<I18nText>()
+
+        dangerousIngestions.forEach { ingestion ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_with_time",
+
+                params = mapOf("type" to "interaction_level_dangerous", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+
+            ))
+
         }
-        messages += unsafeIngestions.map { ingestion ->
-            "Unsafe interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+
+        dangerousExtras.forEach { extra ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_no_time",
+
+                params = mapOf("type" to "interaction_level_dangerous", "name" to extra)
+
+            ))
+
         }
-        messages += unsafeExtras.map { extra ->
-            "Unsafe interaction with $extra."
+
+        unsafeIngestions.forEach { ingestion ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_with_time",
+
+                params = mapOf("type" to "interaction_level_unsafe", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+
+            ))
+
         }
-        messages += uncertainIngestions.map { ingestion ->
-            "Uncertain interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+
+        unsafeExtras.forEach { extra ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_no_time",
+
+                params = mapOf("type" to "interaction_level_unsafe", "name" to extra)
+
+            ))
+
         }
-        messages += uncertainExtras.map { extra ->
-            "Uncertain interaction with $extra."
+
+        uncertainIngestions.forEach { ingestion ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_with_time",
+
+                params = mapOf("type" to "interaction_level_uncertain", "name" to ingestion.substanceName, "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+
+            ))
+
         }
-        alertText = messages.distinct().joinToString(separator = "\n")
+
+        uncertainExtras.forEach { extra ->
+
+            messages.add(I18nText(
+
+                i18nKey = "interaction_alert_no_time",
+
+                params = mapOf("type" to "interaction_level_uncertain", "name" to extra)
+
+            ))
+
+        }
+
+        alertMessages = messages.distinctBy { it.i18nKey + it.params.toString() }
         isShowingAlert = true
     }
 
