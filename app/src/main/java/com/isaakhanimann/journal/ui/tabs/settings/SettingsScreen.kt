@@ -100,6 +100,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import java.io.File
 
