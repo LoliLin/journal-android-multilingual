@@ -230,11 +230,11 @@ fun shareBitmap(context: Context, bitmap: Bitmap) {
                 type = "image/png"
             }
             
-            /
+            
             context.startActivity(Intent.createChooser(shareIntent, "Share"))
         }
     } catch (e: Exception) {
-        /
+        
         e.printStackTrace()
     }
 }
