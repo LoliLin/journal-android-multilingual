@@ -59,6 +59,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
+import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
 import com.isaakhanimann.journal.ui.tabs.search.substance.InteractionExplanationButton
@@ -86,7 +87,7 @@ fun CheckInteractionsScreen(
         },
         isShowingAlert = viewModel.isShowingAlert,
         alertInteractionType = viewModel.alertInteractionType,
-        alertText = viewModel.alertText,
+        alertMessages = viewModel.alertMessages,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
@@ -100,7 +101,7 @@ fun CheckInteractionsScreen(
     isShowingAlert: Boolean,
     dismissAlert: () -> Unit,
     alertInteractionType: InteractionType?,
-    alertText: String,
+    alertMessages: List<I18nText>,
     dangerousInteractions: List<String>,
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
@@ -109,7 +110,7 @@ fun CheckInteractionsScreen(
     getSubstanceDisplayName: (substance: String) -> String
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to substanceName))) }) },
+        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to getSubstanceDisplayName(substanceName)))) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -143,7 +144,7 @@ fun CheckInteractionsScreen(
                         if (dangerousInteractions.isNotEmpty()) {
                             items(dangerousInteractions) {
                                 InteractionRow(
-                                    text = it,
+                                    text = getSubstanceDisplayName(it),
                                     interactionType = InteractionType.DANGEROUS,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
@@ -152,7 +153,7 @@ fun CheckInteractionsScreen(
                         if (unsafeInteractions.isNotEmpty()) {
                             items(unsafeInteractions) {
                                 InteractionRow(
-                                    text = it, interactionType = InteractionType.UNSAFE,
+                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNSAFE,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
                             }
@@ -160,7 +161,7 @@ fun CheckInteractionsScreen(
                         if (uncertainInteractions.isNotEmpty()) {
                             items(uncertainInteractions) {
                                 InteractionRow(
-                                    text = it, interactionType = InteractionType.UNCERTAIN,
+                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNCERTAIN,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
                             }
@@ -198,7 +199,11 @@ fun CheckInteractionsScreen(
                         }
                     },
                     text = {
-                        Text(text = alertText)
+                        Column {
+                            alertMessages.forEach { msg ->
+                                Text(text = msg.translate())
+                            }
+                        }
                     },
                     confirmButton = {
                         Row(

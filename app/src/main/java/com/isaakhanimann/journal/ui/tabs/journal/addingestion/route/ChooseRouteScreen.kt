@@ -91,30 +91,8 @@ fun ChooseRouteScreen(
         dismissInjectionDialog = {
             viewModel.isShowingInjectionDialog = false
         },
-        substanceName = viewModel.substanceName
-    )
-}
-
-@Preview
-@Composable
-fun ChooseRouteScreenPreview() {
-    val pwRoutes = listOf(AdministrationRoute.INSUFFLATED, AdministrationRoute.ORAL)
-    val otherRoutes = AdministrationRoute.values().filter { route ->
-        !pwRoutes.contains(route)
-    }
-    val otherRoutesChunked = otherRoutes.chunked(2)
-    ChooseRouteScreen(
-        showOtherRoutes = false,
-        onChangeOfShowOtherRoutes = {},
-        pwRoutes = pwRoutes,
-        otherRoutesChunked = otherRoutesChunked,
-        onRouteTapped = {},
-        navigateToRouteExplanationScreen = {},
-        navigateToURL = {},
-        isShowingInjectionDialog = false,
-        navigateWithCurrentRoute = {},
-        dismissInjectionDialog = {},
-        substanceName = "LSD"
+        substanceName = viewModel.substanceName,
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
 
@@ -132,11 +110,12 @@ fun ChooseRouteScreen(
     navigateWithCurrentRoute: () -> Unit,
     dismissInjectionDialog: () -> Unit,
     substanceName: String,
+    getSubstanceDisplayName: (substance: String) -> String
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("$substanceName route") },
+                title = { Text(i18n("substances_route", mapOf("substance" to getSubstanceDisplayName(substanceName)))) },
                 navigationIcon = {
                     if (showOtherRoutes && pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {

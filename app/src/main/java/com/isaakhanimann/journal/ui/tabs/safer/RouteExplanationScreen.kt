@@ -50,6 +50,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.ui.utils.administrationRouteArticleKey
 
 
 @Preview
@@ -97,7 +98,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                 val routeTitle = i18nOrDefault(administrationRouteKey(it), it.displayText)
                 SectionWithTitle(title = routeTitle) {
                     Text(
-                        text = it.articleText,
+                        text = i18nOrDefault(administrationRouteArticleKey(it), it.articleText),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -122,7 +123,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                 val routeTitle = i18nOrDefault(administrationRouteKey(it), it.displayText)
                 SectionWithTitle(title = routeTitle) {
                     Text(
-                        text = it.articleText,
+                        text = i18nOrDefault(administrationRouteArticleKey(it), it.articleText),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)

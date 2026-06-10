@@ -6,10 +6,22 @@ fun categoryNameKey(name: String): String {
     return "categories.$name"
 }
 
-fun administrationRouteKey(route: AdministrationRoute): String {
-    return "route_${route.name.lowercase()}"
-}
-
-fun administrationRouteDescriptionKey(route: AdministrationRoute): String {
-    return "route_${route.name.lowercase()}_desc"
+fun administrationRouteKey(route: AdministrationRoute): String {
+
+    return "route_${route.name.lowercase()}"
+
+}
+
+
+
+fun administrationRouteDescriptionKey(route: AdministrationRoute): String {
+
+    return "route_${route.name.lowercase()}_desc"
+
+}
+
+fun administrationRouteArticleKey(route: AdministrationRoute): String {
+
+    return "route_${route.name.lowercase()}_article"
+
 }

@@ -149,7 +149,8 @@ fun OneExperienceScreen(
         onChangeTimeDisplayOption = viewModel::saveTimeDisplayOption,
         navigateToTimelineScreen = navigateToTimelineScreen,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
 
@@ -177,7 +178,8 @@ fun OneExperienceScreen(
     onChangeTimeDisplayOption: (SavedTimeDisplayOption) -> Unit,
     navigateToTimelineScreen: (consumerName: String) -> Unit,
     areDosageDotsHidden: Boolean,
-    ownerUserName: String
+    ownerUserName: String,
+    getSubstanceDisplayName: (String) -> String
 ) {
     Scaffold(
         topBar = {
@@ -515,7 +517,7 @@ fun OneExperienceScreen(
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
-                            substanceRepo = viewModel.substanceRepo
+                            getSubstanceDisplayName = getSubstanceDisplayName
                         )
                         if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
                             HorizontalDivider()
@@ -665,7 +667,7 @@ fun OneExperienceScreen(
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
-                            substanceRepo = viewModel.substanceRepo
+                            getSubstanceDisplayName = getSubstanceDisplayName
                         )
                         if (index < consumerWithIngestions.ingestionElements.size - 1) {
                             HorizontalDivider()
@@ -681,7 +683,7 @@ fun OneExperienceScreen(
                 ) {
                     CardTitle(title = i18n("substance_interactions_title"))
                     interactions.forEachIndexed { index, interaction ->
-                        InteractionRow(interaction = interaction, getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName)
+                        InteractionRow(interaction = interaction, getSubstanceDisplayName = getSubstanceDisplayName)
                         if (index < interactions.size - 1) {
                             HorizontalDivider()
                         }

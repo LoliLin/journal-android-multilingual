@@ -34,9 +34,15 @@ import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import com.isaakhanimann.journal.localization.I18nText
+
 import java.time.Instant
+
 import java.time.temporal.ChronoUnit
+
 import javax.inject.Inject
+
+
 
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
@@ -55,7 +61,7 @@ class CheckInteractionsViewModel @Inject constructor(
     var isSearchingForInteractions by mutableStateOf(true)
     var isShowingAlert by mutableStateOf(false)
     var alertInteractionType by mutableStateOf<InteractionType?>(null)
-    var alertText by mutableStateOf("")
+    var alertMessages by mutableStateOf<List<I18nText>>(emptyList())
     private var latestIngestionsOfEverySubstanceSinceTwoDays: List<Ingestion> = emptyList()
 
     init {
@@ -98,40 +104,54 @@ class CheckInteractionsViewModel @Inject constructor(
                 return
             }
         val now = Instant.now()
-        val messages = dangerousIngestions.map { ingestion ->
-            "Dangerous interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
-        }.toMutableList()
-        messages += dangerousExtras.map { extra ->
-            "Dangerous interaction with $extra."
+
+        val messages = mutableListOf<I18nText>()
+
+        dangerousIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_dangerous_with_time",
+                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+
+            ))
+
         }
-        messages += unsafeIngestions.map { ingestion ->
-            "Unsafe interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+
+        dangerousExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_dangerous",
+                params = mapOf("name" to substanceRepo.getDisplayName(extra))
+            ))
         }
-        messages += unsafeExtras.map { extra ->
-            "Unsafe interaction with $extra."
+
+        unsafeIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_unsafe_with_time",
+                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            ))
         }
-        messages += uncertainIngestions.map { ingestion ->
-            "Uncertain interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+
+        unsafeExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_unsafe",
+                params = mapOf("name" to substanceRepo.getDisplayName(extra))
+            ))
         }
-        messages += uncertainExtras.map { extra ->
-            "Uncertain interaction with $extra."
+
+        uncertainIngestions.forEach { ingestion ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_uncertain_with_time",
+                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            ))
         }
-        alertText = messages.distinct().joinToString(separator = "\n")
+
+        uncertainExtras.forEach { extra ->
+            messages.add(I18nText(
+                i18nKey = "interaction_alert_uncertain",
+                params = mapOf("name" to substanceRepo.getDisplayName(extra))
+            ))
+        }
+
+        alertMessages = messages.distinctBy { it.i18nKey + it.params.toString() }
         isShowingAlert = true
     }
 
