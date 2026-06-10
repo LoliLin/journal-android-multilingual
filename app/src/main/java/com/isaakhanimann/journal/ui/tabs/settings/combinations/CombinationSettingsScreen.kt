@@ -65,20 +65,6 @@ class SubstanceInteraction(
     val toggle: () -> Unit,
 )
 
-@Preview
-@Composable
-fun CombinationSettingsPreview() {
-    CombinationSettingsScreen(
-        substanceInteractions = listOf(
-            SubstanceInteraction(name = "Alcohol", toggle = {}, isOn = true),
-            SubstanceInteraction(name = "Caffeine", toggle = {}, isOn = false),
-            SubstanceInteraction(name = "Cannabis", toggle = {}, isOn = false),
-            SubstanceInteraction(name = "Grapefruit", toggle = {}, isOn = true),
-            SubstanceInteraction(name = "Hormonal birth control", toggle = {}, isOn = false),
-        )
-    )
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CombinationSettingsScreen(

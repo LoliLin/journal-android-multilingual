@@ -109,7 +109,7 @@ fun CheckInteractionsScreen(
     getSubstanceDisplayName: (substance: String) -> String
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to substanceName))) }) },
+        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to getSubstanceDisplayName(substanceName)))) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -143,7 +143,7 @@ fun CheckInteractionsScreen(
                         if (dangerousInteractions.isNotEmpty()) {
                             items(dangerousInteractions) {
                                 InteractionRow(
-                                    text = it,
+                                    text = getSubstanceDisplayName(it),
                                     interactionType = InteractionType.DANGEROUS,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
@@ -152,7 +152,7 @@ fun CheckInteractionsScreen(
                         if (unsafeInteractions.isNotEmpty()) {
                             items(unsafeInteractions) {
                                 InteractionRow(
-                                    text = it, interactionType = InteractionType.UNSAFE,
+                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNSAFE,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
                             }
@@ -160,7 +160,7 @@ fun CheckInteractionsScreen(
                         if (uncertainInteractions.isNotEmpty()) {
                             items(uncertainInteractions) {
                                 InteractionRow(
-                                    text = it, interactionType = InteractionType.UNCERTAIN,
+                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNCERTAIN,
                                     verticalPaddingInside = verticalPaddingInside,
                                 )
                             }

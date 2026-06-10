@@ -53,7 +53,7 @@ fun InteractionRow(interaction: Interaction, getSubstanceDisplayName: (substance
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text( //TODO : i18n
+            Text( 
                 text = "${getSubstanceDisplayName(interaction.aName)} + ${getSubstanceDisplayName(interaction.bName)}",
                 textAlign = TextAlign.Center,
                 color = Color.Black,
