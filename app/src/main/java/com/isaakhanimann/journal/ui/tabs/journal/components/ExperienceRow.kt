@@ -34,7 +34,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -185,7 +185,7 @@ fun ExperienceRow(
             }
         }) {
             Icon(
-                Icons.Default.Share,
+                Icons.Outlined.Share,
                 contentDescription = "分享卡片",
                 modifier = Modifier.size(ButtonDefaults.IconSize)
             )
