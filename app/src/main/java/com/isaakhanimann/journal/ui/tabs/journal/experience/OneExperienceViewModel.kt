@@ -95,7 +95,7 @@ class OneExperienceViewModel @Inject constructor(
         }
     }
 
-    private val experienceId: Int
+    private var experienceId: Int
 
     private val localIsFavoriteFlow = MutableStateFlow(false)
 
