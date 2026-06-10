@@ -21,54 +21,50 @@ package com.isaakhanimann.journal.ui.tabs.journal.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
 
 @Preview(showBackground = true)
 @Composable
-
 fun ExperienceRow(
 
     @PreviewParameter(ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider::class) experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings,
 
     navigateToExperienceScreen: () -> Unit = {},
-
     isTimeRelativeToNow: Boolean = true,
-
     substanceRepository: SubstanceRepository,
-
-    ownerUserName: String = "You"
-
+    ownerUserName: String = "You",
+    experienceId: Int,
 ) {
     Row(
         modifier = Modifier
@@ -153,6 +149,40 @@ fun ExperienceRow(
                     )
                 }
             }
+        }
+
+        IconButton(onClick = {
+            coroutineScope.launch {
+                try {
+                    val tempViewModel: OneExperienceViewModel = hiltViewModel(
+                        key = "share_temp_vm_${experience.id}"
+                    )
+
+                    tempViewModel.reInit(experience.id)
+
+                    tempViewModel.experienceStateFlow
+                        .filter { it != null } 
+                        .first()               
+
+                    val bitmap = renderComposeViewToBitmap(
+                        context = context,
+                        widthPx = 1080, 
+                        lifecycleView = currentView
+                    ) {
+                        ShareableExperienceCard(viewModel = tempViewModel)
+                    }
+
+                    shareBitmap(context, bitmap)
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }) {
+            Icon(
+                imageVector = Icons.Default.Share,
+                contentDescription = "分享卡片"
+            )
         }
     }
 }
