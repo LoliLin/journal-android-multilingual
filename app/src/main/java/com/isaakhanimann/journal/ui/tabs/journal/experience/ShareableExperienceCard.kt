@@ -74,11 +74,14 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
+import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 
 @Composable
 fun ShareableExperienceCard(
-    viewModel: OneExperienceViewModel = hiltViewModel()
+    viewModel: OneExperienceViewModel = hiltViewModel(),
+    experience: ExperienceWithIngestionsCompanionsAndRatings
 ) {
+    viewModel.reInit(experience.experience.id)
     val ingestionsWithCompanions = viewModel.ingestionsWithCompanionsFlow.collectAsState().value
     val experience = viewModel.experienceFlow.collectAsState().value
     val isFavorite = viewModel.isFavoriteFlow.collectAsState().value
