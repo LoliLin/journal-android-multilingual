@@ -123,8 +123,8 @@ fun ShareableExperienceCard(
     val verticalCardPadding = 4.dp
 
     ElevatedCard(modifier = Modifier
-.padding(vertical = verticalCardPadding)
-.width(720.dp) 
+       .padding(vertical = verticalCardPadding)
+       .fillMaxWidth() 
             .wrapContentHeight() 
 ) {
                     CardTitle(title = oneExperienceScreenModel.title)
@@ -359,22 +359,8 @@ fun ShareableExperienceCard(
                             HorizontalDivider()
                         }
                     }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Text(
-                        text = i18n("interaction_explanations"),
-                        style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier.padding(horizontal = horizontalPadding)
-                    )
-                    FlowRow(
-                        horizontalArrangement = Arrangement.spacedBy(5.dp),
-                        modifier = Modifier.padding(horizontal = horizontalPadding)
-                    ) {
-                        oneExperienceScreenModel.interactionExplanations.forEach {
-                            SuggestionChip(
-                                label = { Text(viewModel.substanceRepo.getDisplayName(it.name)) }
-                            )
-                        }
-                    }
+                    
+                    
                 }
             }
             Spacer(modifier = Modifier.height(60.dp))
