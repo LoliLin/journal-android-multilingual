@@ -106,7 +106,7 @@ fun AddIngestionSearchScreen(
         filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value,
         filteredCustomUnits = viewModel.filteredCustomUnitsFlow.collectAsState().value,
         filteredCustomSubstances = viewModel.filteredCustomSubstancesFlow.collectAsState().value,
-        getSubstanceDisplayName = viewModel.substanceRepo::getSubstanceDisplayName
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
     )
 }
 
