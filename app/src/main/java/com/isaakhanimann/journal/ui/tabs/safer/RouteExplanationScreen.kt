@@ -97,7 +97,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                 val routeTitle = i18nOrDefault(administrationRouteKey(it), it.displayText)
                 SectionWithTitle(title = routeTitle) {
                     Text(
-                        text = i18nOrDefault(administrationRouteDescriptionKey(it), it.descriptionText),
+                        text = i18nOrDefault(administrationRouteDescriptionKey(it), it.description),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
