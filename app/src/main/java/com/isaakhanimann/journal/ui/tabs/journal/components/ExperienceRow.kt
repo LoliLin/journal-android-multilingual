@@ -18,6 +18,12 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.components
 
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import androidx.core.content.FileProvider
+import java.io.File
+import java.io.FileOutputStream
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -185,6 +191,53 @@ fun ExperienceRow(
         }
     }
 }
+
+
+fun shareBitmap(context: Context, bitmap: Bitmap) {
+    try {
+        val cachePath = File(context.cacheDir, "images")
+        if (!cachePath.exists()) {
+            cachePath.mkdirs() 
+        }
+
+        val file = File(cachePath, "experience_share_${System.currentTimeMillis()}.png")
+        
+    
+        val stream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream) // 100 代表无损最高质量
+        stream.close()
+
+    
+        val contentUri = FileProvider.getUriForFile(
+            context, 
+            "in.kawaiis.journal.fileprovider", 
+            file
+        )
+
+        if (contentUri != null) {
+        
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                
+                
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) 
+                
+            
+                putExtra(Intent.EXTRA_STREAM, contentUri)
+               
+                
+                type = "image/png"
+            }
+            
+            /
+            context.startActivity(Intent.createChooser(shareIntent, "Share"))
+        }
+    } catch (e: Exception) {
+        /
+        e.printStackTrace()
+    }
+}
+
 
 @Composable
 fun ColorRectangle(ingestions: List<IngestionWithCompanionAndCustomUnit>) {
