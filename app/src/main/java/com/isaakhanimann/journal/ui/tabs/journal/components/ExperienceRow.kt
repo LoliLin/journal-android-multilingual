@@ -24,6 +24,7 @@ import android.graphics.Bitmap
 import androidx.core.content.FileProvider
 import java.io.File
 import java.io.FileOutputStream
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -90,6 +91,12 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
+
+        val tempViewModel: OneExperienceViewModel = hiltViewModel(
+            key = "share_temp_vm_${experience.id}"
+        )
+        tempViewModel.reInit(experience.id)
+        
         ColorRectangle(ingestions = ingestions)
         Column {
             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
@@ -164,16 +171,6 @@ fun ExperienceRow(
 
         IconButton(onClick = {
             coroutineScope.launch {
-                    val tempViewModel: OneExperienceViewModel = hiltViewModel(
-                        key = "share_temp_vm_${experience.id}"
-                    )
-
-                    tempViewModel.reInit(experience.id)
-
-                    tempViewModel.experienceStateFlow
-                        .filter { it != null } 
-                        .first()               
-
                     val bitmap = renderComposeViewToBitmap(
                         context = context,
                         widthPx = 1080, 
