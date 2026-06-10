@@ -168,15 +168,13 @@ fun ExperienceRow(
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
                 if (activity != null) {
-                   val tempViewModel = androidx.lifecycle.ViewModelProvider(activity)[OneExperienceViewModel::class.java]
-                   tempViewModel.reInit(experience.id)
-    
+                   
                    val bitmap = renderComposeViewToBitmap(
                        context = context,
                        widthPx = 1080,
                       lifecycleView = currentView
                    ) {
-                        ShareableExperienceCard(viewModel = tempViewModel)
+                        ShareableExperienceCard(viewModel = tempViewModel, experience = experienceWithIngestionsCompanionsAndRatings)
                    }
             
                    shareBitmap(context, bitmap)
