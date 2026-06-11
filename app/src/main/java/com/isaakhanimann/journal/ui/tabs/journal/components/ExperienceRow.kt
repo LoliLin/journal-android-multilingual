@@ -74,6 +74,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
 import androidx.compose.runtime.collectAsState
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 
 @Preview(showBackground = true)
 @Composable
