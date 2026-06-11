@@ -64,7 +64,7 @@ object AchievementList {
     fun getAll(): Map<String, Achievement> = achievements.toMap()
 
     init {
-        register("n552aa_pr80", "drawable://n552aa_pr80")
+        register("n552aa_pr80", "drawable://n552aa_pr80.jpg")
     }
 }
 
