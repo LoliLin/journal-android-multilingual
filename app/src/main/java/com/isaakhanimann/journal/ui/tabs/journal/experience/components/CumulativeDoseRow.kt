@@ -77,35 +77,3 @@ fun CumulativeDoseRow(
         }
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun CumulativeDoseRowPreview() {
-    CumulativeDoseRow(
-        cumulativeDose = CumulativeDose(
-            substanceName = "Amphetamine",
-            cumulativeRouteAndDose = listOf(
-                CumulativeRouteAndDose(
-                    cumulativeDose = 30.0,
-                    units = "mg",
-                    isEstimate = false,
-                    cumulativeDoseStandardDeviation = 12.0,
-                    numDots = 6,
-                    route = AdministrationRoute.INSUFFLATED,
-                    hasMoreThanOneIngestion = true
-                ),
-                CumulativeRouteAndDose(
-                    cumulativeDose = 25.0,
-                    units = "mg",
-                    isEstimate = false,
-                    cumulativeDoseStandardDeviation = 12.0,
-                    numDots = 5,
-                    route = AdministrationRoute.ORAL,
-                    hasMoreThanOneIngestion = true
-                )
-            )
-        ),
-        areDosageDotsHidden = false,
-        modifier = Modifier.fillMaxWidth()
-    )
-}
