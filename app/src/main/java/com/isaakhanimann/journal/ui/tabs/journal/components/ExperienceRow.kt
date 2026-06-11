@@ -102,7 +102,7 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
-        val timedNotes by rowViewModel.getTimedNotes(experience.id).collectAsState(initial = emptyList())
+        val timedNotes = rowViewModel.getTimedNotes(experience.id).collectAsState(initial = emptyList()).value
         
         ColorRectangle(ingestions = ingestions)
         Column (modifier = Modifier.weight(1f)){
