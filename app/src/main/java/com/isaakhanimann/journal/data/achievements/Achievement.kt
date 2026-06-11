@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.layout.Column
 import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.localization.i18n
 import coil.compose.AsyncImage
 
 import androidx.compose.animation.*
@@ -32,6 +33,9 @@ import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+
+import androidx.compose.foundation.clickable
+import kotlinx.coroutines.flow.SharedFlow
 
 data class Achievement(
     val registerName: String,
@@ -126,10 +130,10 @@ fun AchievementLogoButton(registerName: String, modifier: Modifier = Modifier) {
 }
 
 object AchievementEventBus {
-    private val _events = MutableSharedFlow<Achievement>()
-    val events: SharedFlow<Achievement> = _events.asSharedFlow()
+    private val _events = MutableSharedFlow<String>()
+    val events: SharedFlow<String> = _events.asSharedFlow()
 
-    suspend fun send(achievement: Achievement) {
+    suspend fun send(achievement: String) {
         _events.emit(achievement)
     }
 }
@@ -140,20 +144,19 @@ fun AchievementGetToast(
     onDismiss: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    var currentAchievement by remember { mutableStateOf<Achievement?>(null) }
+    var currentRegisterName by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
         AchievementEventBus.events.collect { achievement ->
-            currentAchievement = achievement
-            // 1.5秒后自动清除
+            currentRegisterName = achievement.registerName  // extract the name
             delay(1500)
-            currentAchievement = null
+            currentRegisterName = null
             onDismiss()
         }
     }
 
     AnimatedVisibility(
-        visible = currentAchievement != null,
+        visible = currentRegisterName != null,
         enter = slideInHorizontally(initialOffsetX = { it }) + fadeIn(),
         exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut()
     ) {
@@ -169,24 +172,28 @@ fun AchievementGetToast(
                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                AsyncImage(
-                    model = currentAchievement?.iconPath,
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp).clip(CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Column {
-                    Text(
-                        text = currentAchievement?.getLocalizedName(context) ?: "",
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Bold
+                // Safely get the Achievement object from the stored registerName
+                val achievementObj = currentRegisterName?.let { AchievementList.get(it) }
+                if (achievementObj != null) {
+                    AsyncImage(
+                        model = achievementObj.iconPath,
+                        contentDescription = null,
+                        modifier = Modifier.size(32.dp).clip(CircleShape),
+                        contentScale = ContentScale.Crop
                     )
-                    Text(
-                        text = "Achievement Unlocked!",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.primary
-                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Column {
+                        Text(
+                            text = achievementObj.getLocalizedName(context),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = "Achievement Unlocked!",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
                 }
             }
         }
