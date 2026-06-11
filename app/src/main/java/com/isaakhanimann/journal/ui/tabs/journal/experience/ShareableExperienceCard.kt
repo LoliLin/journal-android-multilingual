@@ -56,10 +56,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.draw.scale
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitleWithAvatar
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
@@ -254,9 +256,9 @@ fun ShareableExperienceCard(
     ElevatedCard(modifier = Modifier
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
-            
-) {
-                    CardTitle(title = oneExperienceScreenModel.title)
+    ) {
+        if(ownerUserName != "You") CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
+        CardTitle(title = oneExperienceScreenModel.title)
         Column(
             modifier = Modifier
         .fillMaxWidth() 
@@ -288,7 +290,7 @@ fun ShareableExperienceCard(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitle(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName )
+                        CardTitleWithAvatar(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName, username = ownerUserName)
                         
                     }
                     Column(
@@ -440,7 +442,7 @@ fun ShareableExperienceCard(
             }
             oneExperienceScreenModel.consumersWithIngestions.forEach { consumerWithIngestions ->
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
-                    CardTitle(title = consumerWithIngestions.consumerName)
+                    CardTitleWithAvatar(title = consumerWithIngestions.consumerName, username = consumerWithIngestions.consumerName)
                     Column(
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -493,6 +495,18 @@ fun ShareableExperienceCard(
                 }
             }
             Spacer(modifier = Modifier.height(60.dp))
+            ElevatedCard(
+                    modifier = Modifier
+                        .padding(vertical = verticalCardPadding)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.End
+                ) {
+                    CardTitle(title = "Journal Android Multilingual")
+                    CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME, Modifier.scale(0.5f))
+                }
+            }
         }
     }
 }
