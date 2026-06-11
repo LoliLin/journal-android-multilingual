@@ -73,6 +73,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneT
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import java.time.Instant
 
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
@@ -206,7 +207,7 @@ fun ShareableExperienceCard(
         val substance = substanceRepo.getSubstance(substanceName = name)
         InteractionExplanation(
             name = substance?.name ?: name,
-            url = substance?.interactionExplanationURL
+            url = ""
         )
     }
 
