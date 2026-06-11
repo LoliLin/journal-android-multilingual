@@ -91,13 +91,15 @@ fun JournalScreen(
             viewModel.addAchievement(targetAchievement)
         }
     }
+    
 
     val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     
-    if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
-        viewModel.addAchievement("in_kawaiis")
+    LaunchedEffect(achievements) {
+        if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
+            viewModel.addAchievement("in_kawaiis")
+        }
     }
-
 
     JournalScreen(
         navigateToExperiencePopNothing = navigateToExperiencePopNothing,
