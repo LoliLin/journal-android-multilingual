@@ -1,5 +1,6 @@
 package com.isaakhanimann.journal.ui.tabs.journal.experience
 
+import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -73,51 +74,178 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneT
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import java.time.Instant
+
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
+import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsTimedNotesAndRatings
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
+
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.ConsumerWithIngestions
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionExplanation
+
+import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 
 @Composable
 fun ShareableExperienceCard(
-    viewModel: OneExperienceViewModel = hiltViewModel(),
-    experience: ExperienceWithIngestionsCompanionsAndRatings
+    val substanceRepo: SubstanceRepository,
+    val interactionChecker: InteractionChecker,
+    val ownerUserName: String,
+    val getSubstanceDisplayName: (String) -> String,
+    val timedNotes: List<TimedNote>,
+    val experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
 ) {
-    viewModel.reInit(experience.experience.id)
-    val ingestionsWithCompanions = viewModel.ingestionsWithCompanionsFlow.collectAsState().value
-    val experience = viewModel.experienceFlow.collectAsState().value
-    val isFavorite = viewModel.isFavoriteFlow.collectAsState().value
+    val experience = experienceWithIngestionsCompanionsAndRatings.experience
+    val ingestionsWithCompanions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
+    val ratings = experienceWithIngestionsCompanionsAndRatings.ratings
+    val sortedIngestions = ingestionsWithCompanions.sortedBy { it.ingestion.time }
+
+    // 1. 同步提取所有需要的本地 Roa 数据
+    val allIngestionElements = sortedIngestions.map { oneIngestionWithComp ->
+        val ingestion = oneIngestionWithComp.ingestion
+       
+        val substance = substanceRepo.getSubstance(ingestion.substanceName)
+        val roa = substance?.getRoa(ingestion.administrationRoute)
+        
+        val numDots = if (oneIngestionWithComp.customUnit != null) {
+            roa?.roaDose?.getNumDots(
+                ingestionDose = oneIngestionWithComp.customUnitDose?.calculatedDose,
+                ingestionUnits = oneIngestionWithComp.customUnit?.originalUnit
+            )
+        } else {
+            roa?.roaDose?.getNumDots(
+                oneIngestionWithComp.ingestion.dose,
+                ingestionUnits = oneIngestionWithComp.ingestion.units
+            )
+        }
+
+        Pair(
+            IngestionElement(
+                ingestionWithCompanionAndCustomUnit = oneIngestionWithComp,
+                roaDuration = roa?.roaDuration,
+                numDots = numDots
+            ),
+            roa?.roaDose
+        )
+    }
+
+    // 2. 剥离出【自己】和【同行伙伴】的数据
+    val myElementsWithRoa = allIngestionElements.filter { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName == null }
+    val myIngestionElements = myElementsWithRoa.map { it.first }
+
+    val otherElementsWithRoa = allIngestionElements.filter { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName != null }
+    val consumersWithIngestions = otherElementsWithRoa
+        .groupBy { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName }
+        .mapNotNull { entry ->
+            val consumerName = entry.key ?: return@mapNotNull null
+            ConsumerWithIngestions(
+                consumerName = consumerName,
+                ingestionElements = entry.value.map { it.first }.sortedBy { it.first.ingestionWithCompanionAndCustomUnit.ingestion.time }
+            )
+        }
+
+    // 3. 纯手写计算累计剂量
+    val cumulativeDoses = myElementsWithRoa.map { it.first }
+        .groupBy { it.ingestionWithCompanionAndCustomUnit.ingestion.substanceName }
+        .map { groupedBySubstanceName ->
+            val elements = groupedBySubstanceName.value
+            val cumulativeRouteDose = elements.groupBy { it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute }
+                .mapNotNull { groupedByRoute ->
+                    val groupedElements = groupedByRoute.value
+                    if (groupedElements.any { it.ingestionWithCompanionAndCustomUnit.ingestion.dose == null }) return@mapNotNull null
+                    val firstElement = groupedElements.first().ingestionWithCompanionAndCustomUnit
+                    val units = firstElement.originalUnit ?: return@mapNotNull null
+                    if (groupedElements.any { it.ingestionWithCompanionAndCustomUnit.originalUnit != units }) return@mapNotNull null
+                    
+                    val isEstimate = groupedElements.any { 
+                        it.ingestionWithCompanionAndCustomUnit.ingestion.isDoseAnEstimate || 
+                        it.ingestionWithCompanionAndCustomUnit.customUnit?.isEstimate ?: false 
+                    }
+                    val cumulativeDose = groupedElements.mapNotNull { it.ingestionWithCompanionAndCustomUnit.pureDose }.sum()
+                    val cumulativeDoseStandardDeviation = groupedElements.mapNotNull { it.ingestionWithCompanionAndCustomUnit.pureDoseStandardDeviation }.sum()
+                    
+                    val targetRoaDose = myElementsWithRoa.firstOrNull { 
+                        it.first.ingestionWithCompanionAndCustomUnit.ingestion.substanceName == firstElement.ingestion.substanceName &&
+                        it.first.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute == firstElement.ingestion.administrationRoute
+                    }?.second
+                    val numDots = targetRoaDose?.getNumDots(ingestionDose = cumulativeDose, ingestionUnits = units)
+
+                    CumulativeRouteAndDose(
+                        cumulativeDose = cumulativeDose,
+                        units = units,
+                        isEstimate = isEstimate,
+                        cumulativeDoseStandardDeviation = if (cumulativeDoseStandardDeviation > 0) cumulativeDoseStandardDeviation else null,
+                        numDots = numDots,
+                        route = firstElement.ingestion.administrationRoute,
+                        hasMoreThanOneIngestion = groupedElements.size > 1
+                    )
+                }
+            CumulativeDose(
+                substanceName = groupedBySubstanceName.key,
+                cumulativeRouteAndDose = cumulativeRouteDose
+            )
+        }
+        .filter { it.cumulativeRouteAndDose.isNotEmpty() && it.cumulativeRouteAndDose.any { route -> route.hasMoreThanOneIngestion } }
+
+    // 4. 计算相互作用机制
+    val interactionsToCheck = sortedIngestions.map { it.ingestion.substanceName }.distinct()
+    val interactions = interactionsToCheck.flatMapIndexed { index: Int, interaction: String ->
+        interactionsToCheck.drop(index + 1).mapNotNull { other ->
+           
+            interactionChecker.getInteractionBetween(interaction, other)
+        }
+    }.sortedByDescending { it.interactionType.dangerCount }
+
+    val interactionExplanations = interactions.flatMap {
+        listOf(it.aName, it.bName)
+    }.distinct().mapNotNull { name ->
+        val substance = substanceRepo.getSubstance(substanceName = name)
+        InteractionExplanation(
+            name = substance?.name ?: name,
+            url = substance?.interactionExplanationURL
+        )
+    }
+
+    // 5. 装填 ScreenModel
     val oneExperienceScreenModel = OneExperienceScreenModel(
-        isFavorite = isFavorite,
+        isFavorite = experience?.isFavorite ?: false,
         title = experience?.title ?: "",
-        firstIngestionTime = ingestionsWithCompanions.firstOrNull()?.ingestion?.time
+        firstIngestionTime = sortedIngestions.firstOrNull()?.ingestion?.time
             ?: experience?.sortDate ?: Instant.now(),
         notes = experience?.text ?: "",
         locationName = experience?.location?.name ?: "",
-        isCurrentExperience = viewModel.isCurrentExperienceFlow.collectAsState().value,
-        ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
-        cumulativeDoses = viewModel.cumulativeDosesFlow.collectAsState().value,
-        interactions = viewModel.interactionsFlow.collectAsState().value,
-        interactionExplanations = viewModel.interactionExplanationsFlow.collectAsState().value,
-        ratings = viewModel.ratingsFlow.collectAsState().value,
-        timedNotes = viewModel.timedNotesFlow.collectAsState().value,
-        consumersWithIngestions = viewModel.consumersWithIngestionsFlow.collectAsState().value
+        isCurrentExperience = false, 
+        ingestionElements = myIngestionElements,
+        cumulativeDoses = cumulativeDoses,
+        interactions = interactions,
+        interactionExplanations = interactionExplanations,
+        ratings = ratings,
+        timedNotes = experienceWithIngestionsTimedNotesAndRatings.timedNotes.sortedBy { it.time },
+        consumersWithIngestions = consumersWithIngestions
     )
+
+    // 6. 送去纯展示层
     ShareableExperienceCard(
         oneExperienceScreenModel = oneExperienceScreenModel,
-        viewModel = viewModel,
-        
-
-        timeDisplayOption = viewModel.timeDisplayOptionFlow.collectAsState().value,
-        areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
-        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
+        viewModel = hiltViewModel(), 
+        timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
+        areDosageDotsHidden = false,
+        ownerUserName = ownerUserName,
+        getSubstanceDisplayName = getSubstanceDisplayName
     )
 }
 
+      
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun ShareableExperienceCard(
     oneExperienceScreenModel: OneExperienceScreenModel,
-    viewModel: OneExperienceViewModel,
     timeDisplayOption: TimeDisplayOption,
     areDosageDotsHidden: Boolean,
     ownerUserName: String,
