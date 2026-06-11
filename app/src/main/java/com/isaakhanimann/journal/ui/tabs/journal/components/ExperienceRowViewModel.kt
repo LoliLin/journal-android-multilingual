@@ -56,6 +56,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceC
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 @HiltViewModel
 class ExperienceRowViewModel @Inject constructor(
@@ -65,12 +66,8 @@ class ExperienceRowViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-  fun getTimedNotes(experienceId: Int) : List<TimedNote>{
-    return experienceRepo.getTimedNotesFlowSorted(experienceId).stateIn(
-                initialValue = emptyList(),
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000)
-            ).collectAsState().value
-  }
+  fun getTimedNotes(experienceId: Int): Flow<List<TimedNote>> {
+        return experienceRepo.getTimedNotesFlowSorted(experienceId)
+    }
   
 }
