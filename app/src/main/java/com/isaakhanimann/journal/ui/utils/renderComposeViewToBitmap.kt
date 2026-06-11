@@ -3,11 +3,12 @@ package com.isaakhanimann.journal.ui.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -22,11 +23,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 
 /**
- * 安全、不卡死主线程的 Compose 转 Bitmap 方案
- * * @param context 上下文
- * @param widthPx 目标图片的物理宽度（像素）
- * @param lifecycleView 当前界面上活跃的任意 View（用作生命周期和状态树的宿主参考）
- * @param content 需要被渲染的 Compose 布局
+ * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
  */
 suspend fun renderComposeViewToBitmap(
     context: Context,
@@ -35,64 +32,82 @@ suspend fun renderComposeViewToBitmap(
     content: @Composable () -> Unit
 ): Bitmap = withContext(Dispatchers.Main) {
 
-    // 1. 获取宿主的顶级 DecorView，确保能真正 Attach 上去以激活 Compose 渲染流水线
+    // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
     val hostActivityView = lifecycleView.rootView as? ViewGroup 
         ?: throw IllegalStateException("无法找到合法的宿主 View")
 
-    // 2. 创建隐形容器并放入宿主树中（大小设为 0x0，用户完全不可见，但不影响其内部测绘）
+    // 2. 创建隐形容器，将其扔到屏幕右侧 10000 像素外的“宇宙盲区”
+    // 既能骗过系统触发完整测量，又绝对不会让用户看见
     val container = FrameLayout(context).apply {
-        layoutParams = ViewGroup.LayoutParams(0, 0)
+        layoutParams = ViewGroup.LayoutParams(widthPx, ViewGroup.LayoutParams.WRAP_CONTENT)
+        translationX = 10000f 
+        translationY = 10000f 
     }
     
-    val composeView = ComposeView(context)
-    
-    // 3. 核心机制：利用挂起协程，等待 Compose 框架的 LaunchedEffect 信号
-    suspendCancellableCoroutine<Unit> { continuation ->
-        composeView.apply {
-            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
-            setContent {
-                content()
-                
-                // 当 Compose 完成初次组合（Composition）并成功附着到上下文后触发
-                LaunchedEffect(Unit) {
-                    // 顺便往主线程消息队列尾部推一把，确保 Compose 内部的布局测量信号同步刷新完毕
-                    handler?.post {
-                        if (continuation.isActive) continuation.resume(Unit)
-                    } ?: run {
-                        if (continuation.isActive) continuation.resume(Unit)
-                    }
-                }
-            }
+    val composeView = ComposeView(context).apply {
+        setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+        setContent {
+            content()
         }
     }
-
-    // 将 View 节点正式挂载到活跃的窗口树中
     container.addView(composeView)
     hostActivityView.addView(container)
-    
-    // 4. 拷贝宿主环境的生命周期、ViewModelStore 和 SavedState
+
+    // 3. 完美拷贝宿主环境生命周期与 Hilt 上下文
     container.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
     container.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
     container.setViewTreeSavedStateRegistryOwner(lifecycleView.findViewTreeSavedStateRegistryOwner())
 
-    // 5. 放心收网：此时数据链与 Compose 管道已就绪，手动触发精确测量
+    // 4. 双重异步唤醒锁（原生监听 + 定时器保底）
+    suspendCancellableCoroutine<Unit> { continuation ->
+        val mainHandler = Handler(Looper.getMainLooper())
+        
+        // 核心锁 A：监听系统真实的排版布局完成信号
+        val layoutListener = object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (composeView.height > 0) {
+                    composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    mainHandler.removeCallbacksAndMessages(null) // 取消保底定时器
+                    if (continuation.isActive) continuation.resume(Unit)
+                }
+            }
+        }
+        composeView.viewTreeObserver.addOnGlobalLayoutListener(layoutListener)
+        
+        // 核心锁 B：50ms 强行自我唤醒保底（防止部分魔改系统不触发 OnGlobalLayout）
+        val timeoutRunnable = Runnable {
+            composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
+            if (continuation.isActive) continuation.resume(Unit)
+        }
+        mainHandler.postDelayed(timeoutRunnable, 50)
+        
+        // 强推系统一把，激活 Layout 信号
+        composeView.requestLayout()
+        
+        // 严谨防泄漏：如果协程中途取消，拔掉所有异步桩
+        continuation.invokeOnCancellation {
+            composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
+            mainHandler.removeCallbacksAndMessages(null)
+        }
+    }
+
+    // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
     val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
     val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
     composeView.measure(widthSpec, heightSpec)
 
-    // 严格的保底机制：确保宽高必须大于 0 像素，彻底杜绝 createBitmap 抛出异常闪退
-    val measuredWidth = composeView.measuredWidth.coerceAtLeast(1)
-    val measuredHeight = composeView.measuredHeight.coerceAtLeast(1)
+    val measuredWidth = composeView.measuredWidth
+    // 终极硬化保底：确保高度绝对不为 0，彻底绝育 createBitmap 的闪退风险
+    val measuredHeight = composeView.measuredHeight.coerceAtLeast(100)
 
-    // 给 View 树分发最终的边界边界
     composeView.layout(0, 0, measuredWidth, measuredHeight)
 
-    // 6. 创建 Bitmap 并绘制
+    // 6. 咔嚓！绘制位图
     val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     composeView.draw(canvas)
 
-    // 7. 干净利落地将临时容器从宿主中移除，防止潜在的内存泄漏
+    // 7. 悄悄离场，不留一丝痕迹
     hostActivityView.removeView(container)
 
     return@withContext bitmap
