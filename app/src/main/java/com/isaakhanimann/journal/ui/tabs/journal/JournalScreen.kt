@@ -80,7 +80,7 @@ fun JournalScreen(
     val experiences = viewModel.experiences.collectAsState().value
 
     val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList())
-    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0d)
+    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState()
 
 
     LaunchedEffect(pregabalinTotalDose, achievements) {
