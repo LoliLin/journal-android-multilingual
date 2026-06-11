@@ -73,7 +73,13 @@ fun MainScreen(
                             val isSelected =
                                 currentDestination?.hierarchy?.any { it.route == tab.route } == true
                             NavigationBarItem(
-                                icon = { Icon(tab.icon, contentDescription = null) },
+                                icon = { 
+                                    if (isSelected) {
+                                        Icon(tab.iconSelected, contentDescription = null) 
+                                    } else {
+                                        Icon(tab.icon, contentDescription = null)        
+                                    }
+                                },
                                 label = { Text(i18n(tab.labelKey)) },
                                 selected = isSelected,
                                 onClick = {

@@ -534,5 +534,9 @@
   "interaction_alert_unsafe": "与{name}存在不安全相互作用。",
   "interaction_alert_unsafe_with_time": "{name}（{time}前）存在不安全相互作用。",
   "interaction_alert_uncertain": "与{name}存在不确定相互作用。",
-  "interaction_alert_uncertain_with_time": "{name}（{time}前）存在不确定相互作用。"
+  "interaction_alert_uncertain_with_time": "{name}（{time}前）存在不确定相互作用。",
+  "achievement.n552aa_pr80": "？？N552AA？！",
+  "achievement.n552aa_pr80.desc": "累计服用普瑞巴林两万毫克！",
+  "achievement.in_kawaiis": "洛，铃？",
+  "achievement.in_kawaiis.desc": "java.lang.NullPointerException"
 }

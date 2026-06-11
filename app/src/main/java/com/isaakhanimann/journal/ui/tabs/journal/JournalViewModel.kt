@@ -27,6 +27,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flow
@@ -34,24 +35,59 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import com.isaakhanimann.journal.data.achievement.AchievementEventBus
 import java.time.temporal.ChronoUnit
 
 
 @HiltViewModel
 class JournalViewModel @Inject constructor(
 
-    experienceRepo: ExperienceRepository,
+    val experienceRepo: ExperienceRepository,
 
-    searchRepository: SearchRepository,
+    val searchRepository: SearchRepository,
 
     val substanceRepository: SubstanceRepository,
     private val userPreferences: UserPreferences
 
 ) : ViewModel() {
+
+    val achievementsFlow = userPreferences.achievementsFlow.stateIn(
+        initialValue = emptyList(),
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun addAchievement(achievement: String) {
+        viewModelScope.launch {
+            userPreferences.addAchievement(achievement)
+            AchievementEventBus.send(achievement)
+        }
+    }
+
+    private val totalDoseFlowCache = mutableMapOf<String, Flow<Double>>()
+
+    fun getTotalDoseFlow(substanceName: String): Flow<Double> {
+        return totalDoseFlowCache.getOrPut(substanceName) {
+            experienceRepo.getSortedExperienceWithIngestionsCompanionsAndRatingsFlow()
+                .map { experiences ->
+                    experiences.flatMap { it.ingestionsWithCompanions }
+                        .filter { it.ingestion.substanceName == substanceName }
+                        .sumOf { it.ingestion.dose ?: 0.0 } 
+                }
+                .stateIn(
+                    scope = viewModelScope,
+                    started = SharingStarted.WhileSubscribed(5000),
+                    initialValue = 0.0
+                )
+        }
+    }
+
+    val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin")
 
 
     val isTimeRelativeToNow = mutableStateOf(false)

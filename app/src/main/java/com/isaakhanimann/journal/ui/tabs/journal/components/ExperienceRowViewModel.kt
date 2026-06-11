@@ -36,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
@@ -55,8 +56,10 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewMod
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 class ExperienceRowViewModel @Inject constructor(
@@ -66,8 +69,14 @@ class ExperienceRowViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-  fun getTimedNotes(experienceId: Int): Flow<List<TimedNote>> {
+    fun getTimedNotes(experienceId: Int): Flow<List<TimedNote>> {
         return experienceRepo.getTimedNotesFlowSorted(experienceId)
     }
+
+    val achievementsFlow = userPreferences.achievementsFlow.stateIn(
+        initialValue = emptyList(),
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
   
 }

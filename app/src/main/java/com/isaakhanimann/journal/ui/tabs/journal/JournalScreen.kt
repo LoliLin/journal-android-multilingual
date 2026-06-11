@@ -59,6 +59,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
@@ -67,6 +68,9 @@ import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.data.achievement.AchievementGetToast
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
 fun JournalScreen(
@@ -74,8 +78,29 @@ fun JournalScreen(
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
     viewModel: JournalViewModel = hiltViewModel()
-) {
+) { 
     val experiences = viewModel.experiences.collectAsState().value
+
+    val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
+    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0.0)
+
+
+    LaunchedEffect(pregabalinTotalDose, achievements) {
+        val targetAchievement = "n552aa_pr80"
+        if (pregabalinTotalDose >= 20000 && !achievements.contains(targetAchievement)) {
+            viewModel.addAchievement(targetAchievement)
+        }
+    }
+    
+
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+    
+    LaunchedEffect(achievements) {
+        if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
+            viewModel.addAchievement("in_kawaiis")
+        }
+    }
+
     JournalScreen(
         navigateToExperiencePopNothing = navigateToExperiencePopNothing,
         navigateToAddIngestion = navigateToAddIngestion,
@@ -90,7 +115,7 @@ fun JournalScreen(
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
         substanceRepository = viewModel.substanceRepository,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+        ownerUserName = ownerUserName
     )
 }
 
@@ -118,6 +143,8 @@ fun JournalScreen(
             TopAppBar(
                 title = { Text(i18n("journal")) },
                 actions = {
+
+
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
                         onCheckedChange = onChangeIsRelative
@@ -196,6 +223,9 @@ fun JournalScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
+            AchievementGetToast(
+                modifier = Modifier.align(Alignment.TopEnd)
+            )
             Column(
                 modifier = Modifier
                     .fillMaxSize(),

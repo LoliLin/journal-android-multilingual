@@ -92,6 +92,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionEx
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
+import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
+import androidx.compose.foundation.layout.*
 
 @Composable
 fun ShareableExperienceCard(
@@ -100,6 +102,7 @@ fun ShareableExperienceCard(
     ownerUserName: String,
     getSubstanceDisplayName: (String) -> String,
     timedNotes: List<TimedNote>,
+    achievements: List<String> = emptyList(),
     experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
 ) {
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
@@ -237,6 +240,7 @@ fun ShareableExperienceCard(
         timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
         areDosageDotsHidden = false,
         ownerUserName = ownerUserName,
+        achievements = achievements,
         getSubstanceDisplayName = getSubstanceDisplayName
     )
 }
@@ -249,6 +253,7 @@ fun ShareableExperienceCard(
     timeDisplayOption: TimeDisplayOption,
     areDosageDotsHidden: Boolean,
     ownerUserName: String,
+    achievements: List<String> = emptyList(),
     getSubstanceDisplayName: (String) -> String
 ) {
     val verticalCardPadding = 4.dp
@@ -257,7 +262,28 @@ fun ShareableExperienceCard(
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
     ) {
-        if(ownerUserName != "You") CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
+        Column(
+            modifier = Modifier
+                .fillMaxWidth() 
+                .padding(horizontal = horizontalPadding)
+        ) {
+        
+            CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
+            if (achievements.isNotEmpty()){
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    achievements.forEach { achievementName ->
+                        AchievementLogoButton(registerName = achievementName)
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
+                }
+            }
+        }
+        
         CardTitle(title = oneExperienceScreenModel.title)
         Column(
             modifier = Modifier
@@ -352,6 +378,7 @@ fun ShareableExperienceCard(
                         CumulativeDoseRow(
                             cumulativeDose = cumulativeDose,
                             areDosageDotsHidden = areDosageDotsHidden,
+                            getSubstanceDisplayName = getSubstanceDisplayName,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding)
@@ -504,7 +531,7 @@ fun ShareableExperienceCard(
                     horizontalAlignment = Alignment.End
                 ) {
                     CardTitle(title = "Journal Android Multilingual")
-                    CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME, Modifier.scale(0.5f))
+                    Column(modifier = Modifier.scale(0.5f)){ CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME) }
                 }
             }
         }

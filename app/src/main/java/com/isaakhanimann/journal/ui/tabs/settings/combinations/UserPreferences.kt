@@ -37,11 +37,26 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_HIDE_DOSAGE_DOTS = booleanPreferencesKey("key_hide_dosage_dots")
         val KEY_SELECTED_LANGUAGE = stringPreferencesKey("key_selected_language")
         val KEY_OWNER_USER_NAME = stringPreferencesKey("key_owner_user_name")
+        val KEY_OWNER_USER_ACHIEVEMENT = stringPreferencesKey("key_owner_user_achievement") // registerName;
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_TIME_DISPLAY_OPTION] = value.name
+        }
+    }
+
+    suspend fun addAchievement(value: String) {
+        dataStore.edit { preferences ->
+            val current = preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT]
+            val newValue = if (current.isNullOrEmpty()) {
+                value
+            } else {
+                val items = current.split(";").toMutableSet()
+                items.add(value)
+                items.joinToString(";")
+            }
+            preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT] = newValue
         }
     }
 
@@ -56,6 +71,14 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
             preferences[PreferencesKeys.KEY_HIDE_ORAL_DISCLAIMER] = value
         }
     }
+
+    val achievementsFlow: Flow<List<String>> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT]
+                ?.split(";")
+                ?.filter { it.isNotEmpty() }
+                ?: emptyList()
+        }
 
     val isOralDisclaimerHiddenFlow: Flow<Boolean> = dataStore.data
         .map { preferences ->

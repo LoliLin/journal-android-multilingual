@@ -74,6 +74,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
 import androidx.compose.runtime.collectAsState
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 
 @Preview(showBackground = true)
 @Composable
@@ -176,27 +177,32 @@ fun ExperienceRow(
             }
         }
 
+        val substanceRepo = rowViewModel.substanceRepo
+        val interactionChecker = rowViewModel.interactionChecker
+        val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
+        val achievements = rowViewModel.achievementsFlow.collectAsState().value
         IconButton(onClick = {
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
                 if (activity != null) {
                 
-                   val bitmap = renderComposeViewToBitmap(
+                    val bitmap = renderComposeViewToBitmap(
                        context = context,
                        widthPx = 1080,
-                      lifecycleView = currentView
-                   ) {
-                       
-                        ShareableExperienceCard(
-                            substanceRepo = rowViewModel.substanceRepo,
-                            interactionChecker = rowViewModel.interactionChecker,
-                            ownerUserName = ownerUserName,
-                            getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName,
-                            timedNotes = timedNotes,
-                            experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
-                        )
+                       lifecycleView = currentView
+                    ) {
+                        JournalTheme(){
+                            ShareableExperienceCard(
+                                substanceRepo = substanceRepo,
+                                interactionChecker = interactionChecker,
+                                ownerUserName = ownerUserName,
+                                getSubstanceDisplayName = getSubstanceDisplayName,
+                                timedNotes = timedNotes,
+                                achievements = achievements,
+                                experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
+                            )
+                        }
                    }
-            
                    shareBitmap(context, bitmap)
                }
             }

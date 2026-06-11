@@ -40,7 +40,8 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(
+class SettingsViewModel @Inject constructor(
+
     @ApplicationContext private val context: Context,
     private val experienceRepository: ExperienceRepository,
     private val fileSystemConnection: FileSystemConnection,
@@ -65,6 +66,12 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val achievementsFlow = userPreferences.achievementsFlow.stateIn(
+        initialValue = emptyList(),
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
         scope = viewModelScope,
@@ -76,6 +83,12 @@ class SettingsViewModel @Inject constructor(
     fun saveSelectedLanguage(languageKey: String?) {
         viewModelScope.launch {
             userPreferences.saveSelectedLanguage(languageKey)
+        }
+    }
+
+    fun addAchievement(achievement: String) {
+        viewModelScope.launch {
+            userPreferences.addAchievement(achievement)
         }
     }
 

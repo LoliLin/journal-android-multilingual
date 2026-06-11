@@ -534,5 +534,9 @@
   "interaction_alert_unsafe": "Unsafe interaction with {name}.",
   "interaction_alert_unsafe_with_time": "Unsafe interaction with {name} (taken {time} ago).",
   "interaction_alert_uncertain": "Uncertain interaction with {name}.",
-  "interaction_alert_uncertain_with_time": "Uncertain interaction with {name} (taken {time} ago)."
+  "interaction_alert_uncertain_with_time": "Uncertain interaction with {name} (taken {time} ago).",
+  "achievement.n552aa_pr80": "N552AA?!",
+  "achievement.n552aa_pr80.desc": "Cumulatively taken 20,000 mg of pregabalin!",
+  "achievement.in_kawaiis": "洛，铃？",
+  "achievement.in_kawaiis.desc": "java.lang.NullPointerException"
 }
