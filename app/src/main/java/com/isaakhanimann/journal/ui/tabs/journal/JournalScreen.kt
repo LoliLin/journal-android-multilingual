@@ -92,6 +92,12 @@ fun JournalScreen(
         }
     }
 
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+    
+    if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
+        viewModel.addAchievement("in_kawaiis")
+    }
+
 
     JournalScreen(
         navigateToExperiencePopNothing = navigateToExperiencePopNothing,
@@ -107,7 +113,7 @@ fun JournalScreen(
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
         substanceRepository = viewModel.substanceRepository,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+        ownerUserName = ownerUserName
     )
 }
 
