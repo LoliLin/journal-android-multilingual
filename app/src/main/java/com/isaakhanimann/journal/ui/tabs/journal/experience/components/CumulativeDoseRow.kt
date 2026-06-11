@@ -42,13 +42,14 @@ import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 fun CumulativeDoseRow(
     cumulativeDose: CumulativeDose,
     areDosageDotsHidden: Boolean,
+    getSubstanceDisplayName: (String) -> String,
     modifier: Modifier
 ) {
     Column(
         modifier = modifier,
     ) {
         Text(
-            text = cumulativeDose.substanceName,
+            text = getSubstanceDisplayName(cumulativeDose.substanceName),
             style = MaterialTheme.typography.titleMedium
         )
         cumulativeDose.cumulativeRouteAndDose.forEach { cumulativeRouteAndDose ->

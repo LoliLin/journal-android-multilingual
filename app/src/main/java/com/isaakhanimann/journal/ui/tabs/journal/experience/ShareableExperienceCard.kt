@@ -378,6 +378,7 @@ fun ShareableExperienceCard(
                         CumulativeDoseRow(
                             cumulativeDose = cumulativeDose,
                             areDosageDotsHidden = areDosageDotsHidden,
+                            getSubstanceDisplayName = getSubstanceDisplayName,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding)
