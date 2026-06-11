@@ -79,7 +79,7 @@ fun JournalScreen(
 ) {
     val experiences = viewModel.experiences.collectAsState().value
 
-    val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList())
+    val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
     val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState()
 
 
@@ -135,7 +135,7 @@ fun JournalScreen(
                 actions = {
 
                     AchievementGetToast(
-                        modifier = Modifier.align(Alignment.TopEnd)
+                        modifier = Modifier.align(Alignment.End) 
                     )
 
                     IconToggleButton(

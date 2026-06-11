@@ -86,7 +86,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun addAchievement(achievement: String?) {
+    fun addAchievement(achievement: String) {
         viewModelScope.launch {
             userPreferences.addAchievement(achievement)
         }

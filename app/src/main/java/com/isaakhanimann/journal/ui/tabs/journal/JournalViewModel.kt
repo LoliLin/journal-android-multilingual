@@ -35,7 +35,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlin.math.sumOf
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
@@ -76,8 +76,8 @@ class JournalViewModel @Inject constructor(
             experienceRepo.getSortedExperienceWithIngestionsCompanionsAndRatingsFlow()
                 .map { experiences ->
                     experiences.flatMap { it.ingestionsWithCompanionAndCustomUnit }
-                        .filter { it.ingestion.substanceName == substanceName }
-                        .sumOf { it.ingestion.dose ?: 0.0 }  
+                        .filter { it.substanceName == substanceName }
+                        .sumOf { it.dose ?: 0.0 }  
                 }
                 .stateIn(
                     scope = viewModelScope,
