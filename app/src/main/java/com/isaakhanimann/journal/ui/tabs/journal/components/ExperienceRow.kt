@@ -177,8 +177,8 @@ fun ExperienceRow(
                        widthPx = 1080,
                       lifecycleView = currentView
                    ) {
-                        Text("Try")
-                        //ShareableExperienceCard(experience = experienceWithIngestionsCompanionsAndRatings)
+                       
+                        ShareableExperienceCard(experience = experienceWithIngestionsCompanionsAndRatings)
                    }
             
                    shareBitmap(context, bitmap)
