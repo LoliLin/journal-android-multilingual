@@ -148,7 +148,7 @@ fun AchievementGetToast(
 
     LaunchedEffect(Unit) {
         AchievementEventBus.events.collect { achievement ->
-            currentRegisterName = achievement.registerName  // extract the name
+            currentRegisterName = achievement  // extract the name
             delay(1500)
             currentRegisterName = null
             onDismiss()

@@ -78,11 +78,11 @@ fun JournalScreen(
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
     viewModel: JournalViewModel = hiltViewModel()
-) {
+) { 
     val experiences = viewModel.experiences.collectAsState().value
 
     val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
-    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState()
+    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0.0)
 
 
     LaunchedEffect(pregabalinTotalDose, achievements) {
