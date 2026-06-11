@@ -21,6 +21,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
+import coil.ImageLoader
+import coil.compose.LocalImageLoader
+import androidx.compose.runtime.CompositionLocalProvider
 
 /**
  * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
@@ -47,7 +50,11 @@ suspend fun renderComposeViewToBitmap(
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
         setContent {
-            content()
+            CompositionLocalProvider(
+                LocalImageLoader provides ImageLoader(context)
+            ) {
+                content()
+            }
         }
     }
     container.addView(composeView)
