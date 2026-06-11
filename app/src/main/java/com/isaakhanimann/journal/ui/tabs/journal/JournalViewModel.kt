@@ -87,11 +87,7 @@ class JournalViewModel @Inject constructor(
         }
     }
 
-    val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin").stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = 0.0
-    )
+    val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin")
 
 
     val isTimeRelativeToNow = mutableStateOf(false)
