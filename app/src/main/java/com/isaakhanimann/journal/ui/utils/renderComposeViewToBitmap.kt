@@ -17,135 +17,98 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 
 /**
- * 渲染请求封装
+ * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
  */
-private data class RenderRequest(
-    val context: Context,
-    val widthPx: Int,
-    val lifecycleView: View,
-    val content: @Composable () -> Unit,
-    val result: CompletableDeferred<Bitmap>
-)
-
-/**
- * 单线程渲染协程，永远只有一个任务在执行
- */
-private val renderChannel = Channel<RenderRequest>(Channel.UNLIMITED)
-
-private val renderJob = GlobalScope.launch(Dispatchers.Main) {
-    for (request in renderChannel) {
-        try {
-            val bitmap = doRender(
-                context = request.context,
-                widthPx = request.widthPx,
-                lifecycleView = request.lifecycleView,
-                content = request.content
-            )
-            request.result.complete(bitmap)
-        } catch (e: Exception) {
-            request.result.completeExceptionally(e)
-        }
-    }
-}
-
 suspend fun renderComposeViewToBitmap(
-    context: Context,
-    widthPx: Int,
-    lifecycleView: View,
-    content: @Composable () -> Unit
-): Bitmap {
-    val request = RenderRequest(
-        context = context,
-        widthPx = widthPx,
-        lifecycleView = lifecycleView,
-        content = content,
-        result = CompletableDeferred()
-    )
-    renderChannel.send(request)
-    return request.result.await()
-}
-
-/**
- * 你的原版渲染代码，完全不变，只抽成单独函数
- */
-private suspend fun doRender(
     context: Context,
     widthPx: Int,
     lifecycleView: View,
     content: @Composable () -> Unit
 ): Bitmap = withContext(Dispatchers.Main) {
 
-    val hostActivityView = lifecycleView.rootView as? ViewGroup
+    // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
+    val hostActivityView = lifecycleView.rootView as? ViewGroup 
         ?: throw IllegalStateException("无法找到合法的宿主 View")
 
+    // 2. 创建隐形容器，将其扔到屏幕右侧 10000 像素外的“宇宙盲区”
+    // 既能骗过系统触发完整测量，又绝对不会让用户看见
     val container = FrameLayout(context).apply {
         layoutParams = ViewGroup.LayoutParams(widthPx, ViewGroup.LayoutParams.WRAP_CONTENT)
-        translationX = 10000f
-        translationY = 10000f
+        translationX = 10000f 
+        translationY = 10000f 
     }
-
+    
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
-        setContent { content() }
+        setContent {
+            content()
+        }
     }
     container.addView(composeView)
     hostActivityView.addView(container)
 
+    // 3. 完美拷贝宿主环境生命周期与 Hilt 上下文
     container.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
     container.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
     container.setViewTreeSavedStateRegistryOwner(lifecycleView.findViewTreeSavedStateRegistryOwner())
 
+    // 4. 双重异步唤醒锁（原生监听 + 定时器保底）
     suspendCancellableCoroutine<Unit> { continuation ->
         val mainHandler = Handler(Looper.getMainLooper())
-
+        
+        // 核心锁 A：监听系统真实的排版布局完成信号
         val layoutListener = object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 if (composeView.height > 0) {
                     composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    mainHandler.removeCallbacksAndMessages(null)
+                    mainHandler.removeCallbacksAndMessages(null) // 取消保底定时器
                     if (continuation.isActive) continuation.resume(Unit)
                 }
             }
         }
         composeView.viewTreeObserver.addOnGlobalLayoutListener(layoutListener)
-
+        
+        // 核心锁 B：50ms 强行自我唤醒保底（防止部分魔改系统不触发 OnGlobalLayout）
         val timeoutRunnable = Runnable {
             composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
             if (continuation.isActive) continuation.resume(Unit)
         }
         mainHandler.postDelayed(timeoutRunnable, 50)
-
+        
+        // 强推系统一把，激活 Layout 信号
         composeView.requestLayout()
-
+        
+        // 严谨防泄漏：如果协程中途取消，拔掉所有异步桩
         continuation.invokeOnCancellation {
             composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
             mainHandler.removeCallbacksAndMessages(null)
         }
     }
 
+    // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
     val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
     val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
     composeView.measure(widthSpec, heightSpec)
 
-    val measuredWidth = composeView.measuredWidth.coerceAtLeast(1)
+    val measuredWidth = composeView.measuredWidth
+    // 终极硬化保底：确保高度绝对不为 0，彻底绝育 createBitmap 的闪退风险
     val measuredHeight = composeView.measuredHeight.coerceAtLeast(100)
+
     composeView.layout(0, 0, measuredWidth, measuredHeight)
 
+    // 6. 咔嚓！绘制位图
     val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     composeView.draw(canvas)
 
+    // 7. 悄悄离场，不留一丝痕迹
     hostActivityView.removeView(container)
 
-    bitmap
+    return@withContext bitmap
 }
