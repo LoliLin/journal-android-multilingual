@@ -64,7 +64,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.Cumulativ
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.rating.RatingRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote.TimedNoteRow
@@ -74,7 +73,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneT
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import java.time.Instant
 
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
@@ -94,12 +92,12 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Inter
 
 @Composable
 fun ShareableExperienceCard(
-    val substanceRepo: SubstanceRepository,
-    val interactionChecker: InteractionChecker,
-    val ownerUserName: String,
-    val getSubstanceDisplayName: (String) -> String,
-    val timedNotes: List<TimedNote>,
-    val experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
+    substanceRepo: SubstanceRepository,
+    interactionChecker: InteractionChecker,
+    ownerUserName: String,
+    getSubstanceDisplayName: (String) -> String,
+    timedNotes: List<TimedNote>,
+    experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
 ) {
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
     val ingestionsWithCompanions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
@@ -146,7 +144,7 @@ fun ShareableExperienceCard(
             val consumerName = entry.key ?: return@mapNotNull null
             ConsumerWithIngestions(
                 consumerName = consumerName,
-                ingestionElements = entry.value.map { it.first }.sortedBy { it.first.ingestionWithCompanionAndCustomUnit.ingestion.time }
+                ingestionElements = entry.value.map { it.first }.sortedBy { it.ingestionWithCompanionAndCustomUnit.ingestion.time }
             )
         }
 
@@ -218,7 +216,7 @@ fun ShareableExperienceCard(
         title = experience?.title ?: "",
         firstIngestionTime = sortedIngestions.firstOrNull()?.ingestion?.time
             ?: experience?.sortDate ?: Instant.now(),
-        notes = experience?.text ?: "",
+        notes = experience?.text?.let { it } ?: ""
         locationName = experience?.location?.name ?: "",
         isCurrentExperience = false, 
         ingestionElements = myIngestionElements,
@@ -226,14 +224,13 @@ fun ShareableExperienceCard(
         interactions = interactions,
         interactionExplanations = interactionExplanations,
         ratings = ratings,
-        timedNotes = experienceWithIngestionsTimedNotesAndRatings.timedNotes.sortedBy { it.time },
+        timedNotes = timedNotes,
         consumersWithIngestions = consumersWithIngestions
     )
 
     // 6. 送去纯展示层
     ShareableExperienceCard(
         oneExperienceScreenModel = oneExperienceScreenModel,
-        viewModel = hiltViewModel(), 
         timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
         areDosageDotsHidden = false,
         ownerUserName = ownerUserName,
