@@ -78,7 +78,7 @@ import javax.inject.Inject
 fun ExperienceRow(
 
     @PreviewParameter(ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider::class) experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings,
-    rowViewModel: ExperienceRowViewModel = hiltViewModel() 
+    rowViewModel: ExperienceRowViewModel = hiltViewModel(),
     navigateToExperienceScreen: () -> Unit = {},
     isTimeRelativeToNow: Boolean = true,
     substanceRepository: SubstanceRepository,
