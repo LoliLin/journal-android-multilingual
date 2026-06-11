@@ -71,6 +71,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
 import dagger.hilt.android.lifecycle.HiltViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
 
 @Preview(showBackground = true)
@@ -100,7 +101,7 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
-        val timedNotes = rowViewModel.timedNotesFlow.collectAsState().value
+        val timedNotes = rowViewModel.getTimedNotes(experience.id)
         
         ColorRectangle(ingestions = ingestions)
         Column (modifier = Modifier.weight(1f)){
@@ -247,21 +248,4 @@ fun ColorRectangle(ingestions: List<IngestionWithCompanionAndCustomUnit>) {
                 .background(Color.LightGray.copy(0.1f)),
         ) {}
     }
-}
-
-@HiltViewModel
-internal class ExperienceRowViewModel @Inject constructor(
-    val substanceRepo: SubstanceRepository,
-    val interactionChecker: InteractionChecker,
-    val experienceRepo: ExperienceRepository, 
-    private val userPreferences: UserPreferences
-) : ViewModel() {
-
-    val timedNotesFlow =
-        experienceRepo.getTimedNotesFlowSorted(experienceId)
-            .stateIn(
-                initialValue = emptyList(),
-                scope = viewModelScope,
-                started = SharingStarted.WhileSubscribed(5000)
-            )
 }
