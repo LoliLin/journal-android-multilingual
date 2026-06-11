@@ -52,6 +52,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
@@ -63,16 +64,21 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
 import com.isaakhanimann.journal.ui.utils.shareBitmap
+import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @Preview(showBackground = true)
 @Composable
 fun ExperienceRow(
 
     @PreviewParameter(ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider::class) experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings,
-
+    rowViewModel: ExperienceRowViewModel = hiltViewModel() 
     navigateToExperienceScreen: () -> Unit = {},
     isTimeRelativeToNow: Boolean = true,
     substanceRepository: SubstanceRepository,
@@ -94,6 +100,7 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
+        val timedNotes = rowViewModel.timedNotesFlow.collectAsState().value
         
         ColorRectangle(ingestions = ingestions)
         Column (modifier = Modifier.weight(1f)){
@@ -178,7 +185,14 @@ fun ExperienceRow(
                       lifecycleView = currentView
                    ) {
                        
-                        ShareableExperienceCard(experience = experienceWithIngestionsCompanionsAndRatings)
+                        ShareableExperienceCard(
+                            substanceRepo = rowViewModel.substanceRepo,
+                            interactionChecker = rowViewModel.interactionChecker,
+                            ownerUserName = ownerUserName,
+                            getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName,
+                            timedNotes = timedNotes,
+                            experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
+                        )
                    }
             
                    shareBitmap(context, bitmap)
@@ -233,4 +247,21 @@ fun ColorRectangle(ingestions: List<IngestionWithCompanionAndCustomUnit>) {
                 .background(Color.LightGray.copy(0.1f)),
         ) {}
     }
+}
+
+@HiltViewModel
+internal class ExperienceRowViewModel @Inject constructor(
+    val substanceRepo: SubstanceRepository,
+    val interactionChecker: InteractionChecker,
+    val experienceRepo: ExperienceRepository, 
+    private val userPreferences: UserPreferences
+) : ViewModel() {
+
+    val timedNotesFlow =
+        experienceRepo.getTimedNotesFlowSorted(experienceId)
+            .stateIn(
+                initialValue = emptyList(),
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5000)
+            )
 }
