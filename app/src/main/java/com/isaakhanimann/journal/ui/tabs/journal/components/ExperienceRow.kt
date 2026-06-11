@@ -190,15 +190,17 @@ fun ExperienceRow(
                        widthPx = 1080,
                        lifecycleView = currentView
                     ) {
-                        ShareableExperienceCard(
-                            substanceRepo = substanceRepo,
-                            interactionChecker = interactionChecker,
-                            ownerUserName = ownerUserName,
-                            getSubstanceDisplayName = getSubstanceDisplayName,
-                            timedNotes = timedNotes,
-                            achievements = achievements,
-                            experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
-                        )
+                        JournalTheme(){
+                            ShareableExperienceCard(
+                                substanceRepo = substanceRepo,
+                                interactionChecker = interactionChecker,
+                                ownerUserName = ownerUserName,
+                                getSubstanceDisplayName = getSubstanceDisplayName,
+                                timedNotes = timedNotes,
+                                achievements = achievements,
+                                experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
+                            )
+                        }
                    }
                    shareBitmap(context, bitmap)
                }
