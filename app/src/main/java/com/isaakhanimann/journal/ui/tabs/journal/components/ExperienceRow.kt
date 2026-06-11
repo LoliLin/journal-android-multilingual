@@ -176,28 +176,30 @@ fun ExperienceRow(
             }
         }
 
+        val substanceRepo = rowViewModel.substanceRepo
+        val interactionChecker = rowViewModel.interactionChecker
+        val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
+        val achievements = viewModel.achievementsFlow.collectAsState().value
         IconButton(onClick = {
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
                 if (activity != null) {
                 
-                   val bitmap = renderComposeViewToBitmap(
+                    val bitmap = renderComposeViewToBitmap(
                        context = context,
                        widthPx = 1080,
                        lifecycleView = currentView
-                   ) {
-                       
+                    ) {
                         ShareableExperienceCard(
-                            substanceRepo = rowViewModel.substanceRepo,
-                            interactionChecker = rowViewModel.interactionChecker,
+                            substanceRepo = substanceRepo,
+                            interactionChecker = interactionChecker,
                             ownerUserName = ownerUserName,
-                            getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName,
+                            getSubstanceDisplayName = getSubstanceDisplayName,
                             timedNotes = timedNotes,
-                            achievements = viewModel.achievementsFlow.collectAsState().value
+                            achievements = achievements,
                             experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
                         )
                    }
-            
                    shareBitmap(context, bitmap)
                }
             }
