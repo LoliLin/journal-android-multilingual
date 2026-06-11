@@ -30,40 +30,46 @@ sealed class TabRouter(
     val route: String,
     val childRoute: String,
     val labelKey: String,
-    val icon: ImageVector
+    val icon: ImageVector,
+    val iconSelected: ImageVector
 ) {
     object Journal : TabRouter(
         route = "journalTab",
         childRoute = NoArgumentRouter.JournalRouter.route,
         labelKey = "journal",
-        icon = Icons.Outlined.Book
+        icon = Icons.Outlined.Book,
+        iconSelected = Icons.Filled.Book
     )
 
     object Statistics : TabRouter(
         route = "statisticsTab",
         childRoute = NoArgumentRouter.StatsRouter.route,
         labelKey = "stats",
-        icon = Icons.Outlined.BarChart
+        icon = Icons.Outlined.BarChart,
+        iconSelected = Icons.Filled.BarChart
     )
 
     object Substances : TabRouter(
         route = "substancesTab",
         childRoute = NoArgumentRouter.SubstancesRouter.route,
         labelKey = "substances",
-        icon = Icons.Outlined.Medication
+        icon = Icons.Outlined.Medication,
+        iconSelected = Icons.Filled.Medication
     )
 
     object SaferUse : TabRouter(
         route = "saferTab",
         childRoute = NoArgumentRouter.SaferRouter.route,
         labelKey = "safer",
-        icon = Icons.Outlined.HealthAndSafety
+        icon = Icons.Outlined.HealthAndSafety,
+        iconSelected = Icons.Filled.HealthAndSafety
     )
 
     object Settings : TabRouter(
         route = "settingsTab",
         childRoute = NoArgumentRouter.SettingsRouter.route,
         labelKey = "settings",
-        icon = Icons.Outlined.Settings
+        icon = Icons.Outlined.Settings,
+        iconSelected = Icons.Filled.Settings
     )
 }
