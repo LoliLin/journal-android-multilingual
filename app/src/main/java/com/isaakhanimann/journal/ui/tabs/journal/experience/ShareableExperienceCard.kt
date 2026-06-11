@@ -504,7 +504,7 @@ fun ShareableExperienceCard(
                     horizontalAlignment = Alignment.End
                 ) {
                     CardTitle(title = "Journal Android Multilingual")
-                    Box(modifier = Modifier.scale(0.5f)){CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME)}
+                    Column(modifier = Modifier.scale(0.5f)){ CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME) }
                 }
             }
         }

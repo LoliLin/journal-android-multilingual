@@ -69,6 +69,8 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.data.achievement.AchievementGetToast
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 @Composable
 fun JournalScreen(
@@ -134,9 +136,6 @@ fun JournalScreen(
                 title = { Text(i18n("journal")) },
                 actions = {
 
-                    AchievementGetToast(
-                        modifier = Modifier.align(Alignment.End) 
-                    )
 
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
@@ -216,6 +215,9 @@ fun JournalScreen(
                 .fillMaxSize()
                 .padding(padding)
         ) {
+            AchievementGetToast(
+                modifier = Modifier.align(Alignment.TopEnd)
+            )
             Column(
                 modifier = Modifier
                     .fillMaxSize(),

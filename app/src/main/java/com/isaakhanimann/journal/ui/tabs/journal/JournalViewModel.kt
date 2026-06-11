@@ -75,9 +75,9 @@ class JournalViewModel @Inject constructor(
         return totalDoseFlowCache.getOrPut(substanceName) {
             experienceRepo.getSortedExperienceWithIngestionsCompanionsAndRatingsFlow()
                 .map { experiences ->
-                    experiences.flatMap { it.ingestionsWithCompanionAndCustomUnit }
-                        .filter { it.substanceName == substanceName }
-                        .sumOf { it.dose ?: 0.0 }  
+                    experiences.flatMap { it.ingestionsWithCompanions }
+                        .filter { it.ingestion.substanceName == substanceName }
+                        .sumOf { it.ingestion.dose ?: 0.0 } 
                 }
                 .stateIn(
                     scope = viewModelScope,
