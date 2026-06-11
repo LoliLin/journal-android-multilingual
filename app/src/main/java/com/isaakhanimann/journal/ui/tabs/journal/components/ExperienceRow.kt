@@ -73,6 +73,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
+import androidx.compose.runtime.collectAsState
 
 @Preview(showBackground = true)
 @Composable
@@ -101,7 +102,7 @@ fun ExperienceRow(
         val coroutineScope = rememberCoroutineScope()
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
-        val timedNotes = rowViewModel.getTimedNotes(experience.id)
+        val timedNotes by rowViewModel.getTimedNotes(experience.id).collectAsState(initial = emptyList())
         
         ColorRectangle(ingestions = ingestions)
         Column (modifier = Modifier.weight(1f)){
