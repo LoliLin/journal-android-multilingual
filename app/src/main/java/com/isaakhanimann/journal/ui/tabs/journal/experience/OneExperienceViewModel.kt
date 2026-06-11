@@ -95,7 +95,7 @@ class OneExperienceViewModel @Inject constructor(
         }
     }
 
-    private val experienceId: Int
+    private var experienceId: Int
 
     private val localIsFavoriteFlow = MutableStateFlow(false)
 
@@ -107,6 +107,15 @@ class OneExperienceViewModel @Inject constructor(
 
     init {
         val expId = state.get<Int>(EXPERIENCE_ID_KEY)!!
+        experienceId = expId
+        viewModelScope.launch {
+            val experience = experienceRepo.getExperience(expId)
+            val isFavorite = experience?.isFavorite ?: false
+            localIsFavoriteFlow.emit(isFavorite)
+        }
+    }
+
+    fun reInit(expId: Int) {
         experienceId = expId
         viewModelScope.launch {
             val experience = experienceRepo.getExperience(expId)
