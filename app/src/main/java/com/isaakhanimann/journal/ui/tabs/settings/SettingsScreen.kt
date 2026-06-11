@@ -85,6 +85,9 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+
+import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
+
 import kotlinx.coroutines.launch
 import java.time.Instant
 
@@ -136,6 +139,7 @@ fun SettingsScreen(
         saveSelectedLanguage = viewModel::saveSelectedLanguage,
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
+        achievements = viewModel.achievementsFlow.collectAsState().value
     )
 }
 
@@ -158,6 +162,7 @@ fun SettingsScreen(
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
     ownerUserName: String = "You",
+    achievements: List<String> = emptyList(),
     saveOwnerUserName: (String?) -> Unit,
 ) {
     Scaffold(
@@ -178,7 +183,8 @@ fun SettingsScreen(
 
             OwnerProfileCard(
                 ownerUserName = ownerUserName,
-                onUserNameChanged = saveOwnerUserName
+                onUserNameChanged = saveOwnerUserName,
+                achievements = achievements
             )
 
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
@@ -512,12 +518,11 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
 @Composable
 fun OwnerProfileCard(
     ownerUserName: String = "You",
+    achievements: List<String> = emptyList(),
     onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-
-
 
     var avatarRefresh by remember { mutableStateOf(0) }
 
@@ -639,6 +644,19 @@ fun OwnerProfileCard(
                     .padding(horizontal = 8.dp),
                 textAlign = TextAlign.Center
             )
+            if (achievements.isNotEmpty()){
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    achievements.forEach { achievementName ->
+                        AchievementLogoButton(registerName = achievementName)
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
+                }
+            }
         }
     }
 }

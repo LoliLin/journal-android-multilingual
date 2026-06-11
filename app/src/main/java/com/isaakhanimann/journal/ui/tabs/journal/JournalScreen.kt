@@ -59,6 +59,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
@@ -67,6 +68,7 @@ import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.data.achievement.AchievementGetToast
 
 @Composable
 fun JournalScreen(
@@ -76,6 +78,19 @@ fun JournalScreen(
     viewModel: JournalViewModel = hiltViewModel()
 ) {
     val experiences = viewModel.experiences.collectAsState().value
+
+    val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList())
+    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0d)
+
+
+    LaunchedEffect(pregabalinTotalDose, achievements) {
+        val targetAchievement = "n552aa_pr80"
+        if (pregabalinTotalDose >= 20000 && !achievements.contains(targetAchievement)) {
+            viewModel.addAchievement(targetAchievement)
+        }
+    }
+
+
     JournalScreen(
         navigateToExperiencePopNothing = navigateToExperiencePopNothing,
         navigateToAddIngestion = navigateToAddIngestion,
@@ -118,6 +133,11 @@ fun JournalScreen(
             TopAppBar(
                 title = { Text(i18n("journal")) },
                 actions = {
+
+                    AchievementGetToast(
+                        modifier = Modifier.align(Alignment.TopEnd)
+                    )
+
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
                         onCheckedChange = onChangeIsRelative
