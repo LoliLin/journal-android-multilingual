@@ -92,6 +92,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionEx
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
+import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
+import androidx.compose.foundation.layout.*
 
 @Composable
 fun ShareableExperienceCard(

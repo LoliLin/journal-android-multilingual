@@ -179,7 +179,7 @@ fun ExperienceRow(
         val substanceRepo = rowViewModel.substanceRepo
         val interactionChecker = rowViewModel.interactionChecker
         val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
-        val achievements = viewModel.achievementsFlow.collectAsState().value
+        val achievements = rowViewModel.achievementsFlow.collectAsState().value
         IconButton(onClick = {
             coroutineScope.launch {
                 val activity = context as? androidx.activity.ComponentActivity
