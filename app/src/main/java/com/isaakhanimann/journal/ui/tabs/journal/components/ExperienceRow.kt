@@ -193,6 +193,7 @@ fun ExperienceRow(
                             ownerUserName = ownerUserName,
                             getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName,
                             timedNotes = timedNotes,
+                            achievements = viewModel.achievementsFlow.collectAsState().value
                             experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
                         )
                    }

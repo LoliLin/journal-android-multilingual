@@ -100,6 +100,7 @@ fun ShareableExperienceCard(
     ownerUserName: String,
     getSubstanceDisplayName: (String) -> String,
     timedNotes: List<TimedNote>,
+    achievements: List<String> = emptyList(),
     experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
 ) {
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
@@ -237,6 +238,7 @@ fun ShareableExperienceCard(
         timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
         areDosageDotsHidden = false,
         ownerUserName = ownerUserName,
+        achievements = achievements,
         getSubstanceDisplayName = getSubstanceDisplayName
     )
 }
@@ -249,6 +251,7 @@ fun ShareableExperienceCard(
     timeDisplayOption: TimeDisplayOption,
     areDosageDotsHidden: Boolean,
     ownerUserName: String,
+    achievements: List<String> = emptyList(),
     getSubstanceDisplayName: (String) -> String
 ) {
     val verticalCardPadding = 4.dp
@@ -257,7 +260,23 @@ fun ShareableExperienceCard(
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
     ) {
-        if(ownerUserName != "You") CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
+        if(ownerUserName != "You") {
+            CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
+
+            if (achievements.isNotEmpty()){
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    achievements.forEach { achievementName ->
+                        AchievementLogoButton(registerName = achievementName)
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
+                }
+            }
+        }
         CardTitle(title = oneExperienceScreenModel.title)
         Column(
             modifier = Modifier
