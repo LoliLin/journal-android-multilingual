@@ -64,7 +64,7 @@ object AchievementList {
     fun getAll(): Map<String, Achievement> = achievements.toMap()
 
     init {
-        register("n552aa_pr80", "drawable://n552aa_pr80.jpg")
+        register("n552aa_pr80", "file:///android_asset/images/achievements/n552aa_pr80.jpg")
     }
 }
 
@@ -88,7 +88,7 @@ fun AchievementLogoButton(registerName: String, modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        AsyncImage(
+                        AsyncImage( 
                             model = achievement.iconPath,
                             contentDescription = achievement.registerName,
                             modifier = Modifier

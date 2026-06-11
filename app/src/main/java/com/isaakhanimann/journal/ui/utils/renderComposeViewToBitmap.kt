@@ -21,16 +21,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
+import kotlinx.coroutines.sync.Mutex  
+import kotlinx.coroutines.sync.withLock 
 
 /**
  * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
  */
+private val renderMutex = Mutex() 
+
 suspend fun renderComposeViewToBitmap(
     context: Context,
     widthPx: Int,
     lifecycleView: View,
     content: @Composable () -> Unit
 ): Bitmap = withContext(Dispatchers.Main) {
+    renderMutex.withLock {
 
     // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
     val hostActivityView = lifecycleView.rootView as? ViewGroup 
@@ -111,4 +116,5 @@ suspend fun renderComposeViewToBitmap(
     hostActivityView.removeView(container)
 
     return@withContext bitmap
+    }
 }
