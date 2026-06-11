@@ -262,9 +262,13 @@ fun ShareableExperienceCard(
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
     ) {
-        if(ownerUserName != "You") {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth() 
+                .padding(horizontal = horizontalPadding)
+        ) {
+        
             CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
-
             if (achievements.isNotEmpty()){
                 Spacer(modifier = Modifier.height(8.dp))
                 
@@ -279,6 +283,7 @@ fun ShareableExperienceCard(
                 }
             }
         }
+        
         CardTitle(title = oneExperienceScreenModel.title)
         Column(
             modifier = Modifier
