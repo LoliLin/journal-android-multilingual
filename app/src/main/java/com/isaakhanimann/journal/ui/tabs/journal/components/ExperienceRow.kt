@@ -70,7 +70,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Inter
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
-import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCardData
+import com.isaakhanimann.journal.ui.tabs.journal.experience.prepareShareableExperienceCardData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
@@ -105,7 +105,7 @@ fun ExperienceRow(
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
         val timedNotes = rowViewModel.getTimedNotes(experience.id).collectAsState(initial = emptyList()).value
-        val cardData = ShareableExperienceCardData(
+        val cardData = prepareShareableExperienceCardData(
                                 substanceRepo = substanceRepo,
                                 interactionChecker = interactionChecker,
                                 ownerUserName = ownerUserName,
