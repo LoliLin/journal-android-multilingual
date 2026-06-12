@@ -248,15 +248,6 @@ fun prepareShareableExperienceCardData(
         consumersWithIngestions = consumersWithIngestions
     )
 
-    // 6. 送去纯展示层
-    ShareableExperienceCard(
-        oneExperienceScreenModel = oneExperienceScreenModel,
-        timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
-        areDosageDotsHidden = false,
-        ownerUserName = ownerUserName,
-        achievements = achievements,
-        getSubstanceDisplayName = getSubstanceDisplayName
-    )
     return ShareableExperienceCardData(
         oneExperienceScreenModel = oneExperienceScreenModel,
         timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
