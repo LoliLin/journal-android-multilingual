@@ -95,8 +95,22 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Inter
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import androidx.compose.foundation.layout.*
 
-@Composable
-fun ShareableExperienceCard(
+@Stable
+class SubstanceDisplayNameProvider(
+    val get: (String) -> String
+)
+
+@Stable
+data class ShareableExperienceCardData(
+    val oneExperienceScreenModel: OneExperienceScreenModel,
+    val ownerUserName: String,
+    val achievements: List<String> = emptyList(),
+    val substanceDisplayNameProvider: SubstanceDisplayNameProvider,
+    val timeDisplayOption: TimeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
+    val areDosageDotsHidden: Boolean = false
+)
+
+fun prepareShareableExperienceCardData(
     substanceRepo: SubstanceRepository,
     interactionChecker: InteractionChecker,
     ownerUserName: String,
@@ -104,7 +118,7 @@ fun ShareableExperienceCard(
     timedNotes: List<TimedNote>,
     achievements: List<String> = emptyList(),
     experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
-) {
+): ShareableExperienceCardData{
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
     val ingestionsWithCompanions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
     val ratings = experienceWithIngestionsCompanionsAndRatings.ratings
@@ -243,8 +257,28 @@ fun ShareableExperienceCard(
         achievements = achievements,
         getSubstanceDisplayName = getSubstanceDisplayName
     )
+    return ShareableExperienceCardData(
+        oneExperienceScreenModel = oneExperienceScreenModel,
+        timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
+        areDosageDotsHidden = false,
+        ownerUserName = ownerUserName,
+        achievements = achievements,
+        substanceDisplayNameProvider = SubstanceDisplayNameProvider(getSubstanceDisplayName)
+    )
 }
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+fun ShareableExperienceCard(cardData: ShareableExperienceCardData) {
+    ShareableExperienceCard(
+        oneExperienceScreenModel = cardData.oneExperienceScreenModel,
+        timeDisplayOption = cardData.timeDisplayOption,
+        areDosageDotsHidden = cardData.areDosageDotsHidden,
+        ownerUserName = cardData.ownerUserName,
+        achievements = cardData.achievements,
+        getSubstanceDisplayName = cardData.substanceDisplayNameProvider::get
+    )
+}
       
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
