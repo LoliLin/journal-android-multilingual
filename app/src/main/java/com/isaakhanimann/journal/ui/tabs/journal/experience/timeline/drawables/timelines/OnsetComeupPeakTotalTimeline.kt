@@ -33,21 +33,27 @@ data class OnsetComeupPeakTotalTimeline(
     val peak: FullDurationRange,
     val total: FullDurationRange,
     val peakAndTotalWeight: Float,
-    val ingestionTimeRelativeToStartInSeconds: Float
+    val ingestionTimeRelativeToStartInSeconds: Float,
+    override val nonNormalisedHeight: Float,
 ) : TimelineDrawable {
+
+    override var referenceHeight = 1f
 
     override val endOfLineRelativeToStartInSeconds: Float =
         ingestionTimeRelativeToStartInSeconds + total.maxInSeconds
 
     override fun drawTimeLine(
         drawScope: DrawScope,
-        height: Float,
+        canvasHeight: Float,
         pixelsPerSec: Float,
         color: Color,
         density: Density
     ) {
+        val normalisedHeight = nonNormalisedHeight / referenceHeight
+        val heightInPx = normalisedHeight * canvasHeight
+        val top = canvasHeight - heightInPx
         val onsetAndComeupWeight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(onsetAndComeupWeight) * pixelsPerSec)
         val comeupEndX =
@@ -56,10 +62,10 @@ data class OnsetComeupPeakTotalTimeline(
             comeupEndX + (peak.interpolateAtValueInSeconds(peakAndTotalWeight) * pixelsPerSec)
         drawScope.drawPath(
             path = Path().apply {
-                moveTo(x = startX, y = height)
-                lineTo(x = onsetEndX, y = height)
-                lineTo(x = comeupEndX, y = 0f)
-                lineTo(x = peakEndX, y = 0f)
+                moveTo(x = startX, y = canvasHeight)
+                lineTo(x = onsetEndX, y = canvasHeight)
+                lineTo(x = comeupEndX, y = top)
+                lineTo(x = peakEndX, y = top)
             },
             color = color,
             style = density.normalStroke
@@ -68,19 +74,19 @@ data class OnsetComeupPeakTotalTimeline(
             startX + (total.interpolateAtValueInSeconds(peakAndTotalWeight) * pixelsPerSec)
         drawScope.drawPath(
             path = Path().apply {
-                moveTo(x = peakEndX, y = 0f)
-                lineTo(x = offsetEndX, y = height)
+                moveTo(x = peakEndX, y = top)
+                lineTo(x = offsetEndX, y = canvasHeight)
             },
             color = color,
             style = density.dottedStroke
         )
         val combinedPath = Path().apply {
-            val alignedHeight = height + drawScope.strokeWidth/2
-            moveTo(x = startX, y = alignedHeight)
-            lineTo(x = onsetEndX, y = alignedHeight)
-            lineTo(x = comeupEndX, y = 0f)
-            lineTo(x = peakEndX, y = 0f)
-            lineTo(x = offsetEndX, y = alignedHeight)
+            val alignedBottom = canvasHeight + drawScope.strokeWidth / 2
+            moveTo(x = startX, y = alignedBottom)
+            lineTo(x = onsetEndX, y = alignedBottom)
+            lineTo(x = comeupEndX, y = top)
+            lineTo(x = peakEndX, y = top)
+            lineTo(x = offsetEndX, y = alignedBottom)
             close()
         }
         drawScope.drawPath(
@@ -90,12 +96,16 @@ data class OnsetComeupPeakTotalTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = canvasHeight)
         )
     }
 }
 
-fun RoaDuration.toOnsetComeupPeakTotalTimeline(peakAndTotalWeight: Float, ingestionTimeRelativeToStartInSeconds: Float): OnsetComeupPeakTotalTimeline? {
+fun RoaDuration.toOnsetComeupPeakTotalTimeline(
+    peakAndTotalWeight: Float,
+    ingestionTimeRelativeToStartInSeconds: Float,
+    nonNormalisedHeight: Float,
+): OnsetComeupPeakTotalTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     val fullPeak = peak?.toFullDurationRange()
@@ -107,7 +117,8 @@ fun RoaDuration.toOnsetComeupPeakTotalTimeline(peakAndTotalWeight: Float, ingest
             peak = fullPeak,
             total = fullTotal,
             peakAndTotalWeight = peakAndTotalWeight,
-            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds
+            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds,
+            nonNormalisedHeight = nonNormalisedHeight,
         )
     } else {
         null

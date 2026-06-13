@@ -28,9 +28,84 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOn
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 
+private val sampleRoaDuration = RoaDuration(
+    onset = DurationRange(
+        min = 20f,
+        max = 40f,
+        units = DurationUnits.MINUTES
+    ),
+    comeup = DurationRange(
+        min = 15f,
+        max = 30f,
+        units = DurationUnits.MINUTES
+    ),
+    peak = DurationRange(
+        min = 1.5f,
+        max = 2.5f,
+        units = DurationUnits.HOURS
+    ),
+    offset = DurationRange(
+        min = 2f,
+        max = 4f,
+        units = DurationUnits.HOURS
+    ),
+    total = DurationRange(
+        min = 3f,
+        max = 5f,
+        units = DurationUnits.HOURS
+    ),
+    afterglow = DurationRange(
+        min = 12f,
+        max = 48f,
+        units = DurationUnits.HOURS
+    )
+)
+
 class TimelinesPreviewProvider :
     PreviewParameterProvider<List<DataForOneEffectLine>> {
     override val values: Sequence<List<DataForOneEffectLine>> = sequenceOf(
+        listOf(
+            DataForOneEffectLine(
+                substanceName = "name15",
+                route = AdministrationRoute.ORAL,
+                roaDuration = sampleRoaDuration,
+                height = 3f,
+                horizontalWeight = 0.5f,
+                color = AdaptiveColor.BLUE,
+                startTime = Instant.now().minus(3, ChronoUnit.HOURS),
+                endTime = null,
+            ),
+            DataForOneEffectLine(
+                substanceName = "name16",
+                route = AdministrationRoute.ORAL,
+                roaDuration = sampleRoaDuration,
+                height = 2f,
+                horizontalWeight = 0.5f,
+                color = AdaptiveColor.GREEN,
+                startTime = Instant.now().minus(80, ChronoUnit.MINUTES),
+                endTime = Instant.now().plus(100, ChronoUnit.MINUTES),
+            ),
+            DataForOneEffectLine(
+                substanceName = "name17",
+                route = AdministrationRoute.ORAL,
+                roaDuration = sampleRoaDuration,
+                height = 5f,
+                horizontalWeight = 0.5f,
+                color = AdaptiveColor.PINK,
+                startTime = Instant.now().minus(40, ChronoUnit.MINUTES),
+                endTime = Instant.now().plus(150, ChronoUnit.MINUTES),
+            ),
+            DataForOneEffectLine(
+                substanceName = "name17",
+                route = AdministrationRoute.ORAL,
+                roaDuration = sampleRoaDuration,
+                height = 1f,
+                horizontalWeight = 0.5f,
+                color = AdaptiveColor.PURPLE,
+                startTime = Instant.now().plus(160, ChronoUnit.MINUTES),
+                endTime = Instant.now().plus(200, ChronoUnit.MINUTES),
+            ),
+        ),
         listOf(
             DataForOneEffectLine(
                 substanceName = "name",
@@ -50,7 +125,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -76,7 +152,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -102,7 +179,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -132,7 +210,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -166,7 +245,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -196,7 +276,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             )
         ),
         listOf(
@@ -238,7 +319,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(4, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name",
@@ -278,7 +360,8 @@ class TimelinesPreviewProvider :
                 height = 0.5f,
                 horizontalWeight = 0.25f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(3, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(3, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name",
@@ -318,7 +401,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.RED,
-                startTime = Instant.now().minus(1, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(1, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name2",
@@ -338,7 +422,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.ORANGE,
-                startTime = Instant.now()
+                startTime = Instant.now(),
+                endTime = null,
             )
         ),
         listOf(
@@ -380,7 +465,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(3, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(3, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name2",
@@ -420,7 +506,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.PURPLE,
-                startTime = Instant.now().minus(150, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(150, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name3",
@@ -460,7 +547,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BROWN,
-                startTime = Instant.now().minus(130, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(130, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name4",
@@ -500,7 +588,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.ORANGE,
-                startTime = Instant.now().minus(1, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(1, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name5",
@@ -540,7 +629,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.RED,
-                startTime = Instant.now().minus(50, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(50, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "nam6",
@@ -580,7 +670,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.GREEN,
-                startTime = Instant.now().minus(40, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(40, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name7",
@@ -620,7 +711,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.CYAN,
-                startTime = Instant.now().minus(30, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(30, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name8",
@@ -660,7 +752,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(28, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(28, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name9",
@@ -700,7 +793,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.RED,
-                startTime = Instant.now().minus(24, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(24, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name10",
@@ -740,7 +834,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.ORANGE,
-                startTime = Instant.now().minus(20, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(20, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name11",
@@ -780,7 +875,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BROWN,
-                startTime = Instant.now().minus(15, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(15, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name12",
@@ -820,7 +916,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.INDIGO,
-                startTime = Instant.now().minus(10, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(10, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name13",
@@ -860,7 +957,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.RED,
-                startTime = Instant.now().minus(5, ChronoUnit.MINUTES)
+                startTime = Instant.now().minus(5, ChronoUnit.MINUTES),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name14",
@@ -900,7 +998,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.GREEN,
-                startTime = Instant.now()
+                startTime = Instant.now(),
+                endTime = null,
             )
         ),
         listOf(
@@ -942,7 +1041,8 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.BLUE,
-                startTime = Instant.now().minus(3, ChronoUnit.HOURS)
+                startTime = Instant.now().minus(3, ChronoUnit.HOURS),
+                endTime = null,
             ),
             DataForOneEffectLine(
                 substanceName = "name16",
@@ -982,8 +1082,9 @@ class TimelinesPreviewProvider :
                 height = 1f,
                 horizontalWeight = 0.5f,
                 color = AdaptiveColor.GREEN,
-                startTime = Instant.now()
-            )
-        )
+                startTime = Instant.now(),
+                endTime = null,
+            ),
+        ),
     )
 }

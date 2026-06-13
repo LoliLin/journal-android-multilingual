@@ -48,6 +48,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
@@ -65,11 +68,12 @@ fun SearchScreen(
     Scaffold(
         floatingActionButton = {
             if (!isFocused) {
-                FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
+                FloatingActionButton(
+                    onClick = { focusRequester.requestFocus() }) {
                     Icon(Icons.Default.Keyboard, contentDescription = "Keyboard")
                 }
             }
-        }
+        },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             SearchField(
@@ -78,7 +82,8 @@ fun SearchScreen(
                     .focusRequester(focusRequester)
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
-                    },
+                    }
+                    .clearAndSetSemantics { },
                 searchText = searchViewModel.searchTextFlow.collectAsState().value,
                 onChange = {
                     searchViewModel.filterSubstances(searchText = it)
@@ -93,7 +98,6 @@ fun SearchScreen(
             val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
             val filteredCustomSubstances =
                 searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
-            val customColor = searchViewModel.customColor
             if (activeFilters.isNotEmpty()) {
                 LazyRow(
                     horizontalArrangement = Arrangement.spacedBy(2.dp),
@@ -168,15 +172,18 @@ fun SearchScreen(
                     }
 
                     item {
+                        val addCustomSubstanceText = "Add custom substance"
                         TextButton(
                             onClick = navigateToAddCustomSubstanceScreen,
-                            modifier = Modifier.padding(horizontal = horizontalPadding)
+                            modifier = Modifier
+                                .padding(horizontal = horizontalPadding)
+                                .semantics { contentDescription = addCustomSubstanceText }
                         ) {
                             Icon(
                                 Icons.Outlined.Add, contentDescription = "Add"
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                            Text(text = "Add custom substance")
+                            Text(text = addCustomSubstanceText)
                         }
                     }
                 }

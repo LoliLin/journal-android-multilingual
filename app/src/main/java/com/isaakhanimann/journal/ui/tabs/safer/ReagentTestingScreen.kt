@@ -25,13 +25,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -46,34 +42,24 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun ReagentTestingPreview() {
-    ReagentTestingScreen(navigateToReagentTestingArticle = {})
-}
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ReagentTestingScreen(
-    navigateToReagentTestingArticle: () -> Unit
-) {
+fun ReagentTestingScreen() {
+    val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Reagent testing") })
-        },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = navigateToReagentTestingArticle,
-                icon = {
-                    Icon(
-                        Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
-                    )
-                },
-                text = { Text("Article") },
+            TopAppBar(
+                title = { Text("Reagent testing") },
+                actions = {
+                    TextButton(
+                        onClick = { uriHandler.openUri("https://psychonautwiki.org/wiki/Reagent_testing_kits") },
+                    ) {
+                        Text("Article")
+                    }
+                }
             )
-        }
+        },
     ) { padding ->
         Column(
             modifier = Modifier
@@ -103,7 +89,6 @@ Reagents can only determine the presence, not the quantity or purity, of a parti
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     HorizontalDivider()
-                    val uriHandler = LocalUriHandler.current
                     TextButton(onClick = { uriHandler.openUri("https://dancesafe.org/testing-kit-instructions/") }) {
                         Text(text = "DanceSafe")
                     }

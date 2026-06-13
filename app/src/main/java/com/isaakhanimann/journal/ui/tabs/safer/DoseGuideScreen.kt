@@ -25,18 +25,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
@@ -48,7 +46,6 @@ fun DoseGuideScreenPreview() {
     DoseGuideScreen(
         navigateToDoseClassification = {},
         navigateToVolumetricDosing = {},
-        navigateToPWDosageArticle = {}
     )
 }
 
@@ -56,25 +53,22 @@ fun DoseGuideScreenPreview() {
 @Composable
 fun DoseGuideScreen(
     navigateToDoseClassification: () -> Unit,
-    navigateToVolumetricDosing: () -> Unit,
-    navigateToPWDosageArticle: () -> Unit,
+    navigateToVolumetricDosing: () -> Unit
 ) {
+    val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Dosage guide") })
-        },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = navigateToPWDosageArticle,
-                icon = {
-                    Icon(
-                        Icons.Outlined.Newspaper,
-                        contentDescription = "Open link"
-                    )
-                },
-                text = { Text("Article") },
+            TopAppBar(
+                title = { Text("Dosage guide") },
+                actions = {
+                    TextButton(
+                        onClick = { uriHandler.openUri("https://psychonautwiki.org/wiki/Dosage") },
+                    ) {
+                        Text("Article")
+                    }
+                }
             )
-        }
+        },
     ) { padding ->
         Column(
             modifier = Modifier

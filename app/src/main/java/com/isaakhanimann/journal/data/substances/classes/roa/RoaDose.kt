@@ -94,4 +94,22 @@ data class RoaDose(
                 false
             }
         }
+
+    val averageCommonDose: Double? get() {
+        return if (commonMin != null && strongMin != null) {
+            (commonMin + strongMin) / 2
+        } else {
+            null
+        }
+    }
+
+    fun getStrengthRelativeToCommonDose(dose: Double): Double? {
+        return averageCommonDose?.let {
+            if (it > 0) {
+                dose/it
+            } else {
+                null
+            }
+        }
+    }
 }

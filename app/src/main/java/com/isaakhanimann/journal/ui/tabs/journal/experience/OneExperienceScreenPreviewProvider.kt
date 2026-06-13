@@ -33,7 +33,6 @@ import com.isaakhanimann.journal.data.substances.classes.roa.DurationRange
 import com.isaakhanimann.journal.data.substances.classes.roa.DurationUnits
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.ConsumerWithIngestions
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
@@ -130,7 +129,7 @@ class OneExperienceScreenPreviewProvider :
                     experienceId = 0
                 )
             ),
-            timedNotes = listOf(
+            timedNotesSorted = listOf(
                 TimedNote(
                     creationDate = getInstant(
                         year = 2022,
@@ -172,11 +171,8 @@ class OneExperienceScreenPreviewProvider :
                     isPartOfTimeline = true
                 )
             ),
-            consumersWithIngestions = listOf(
-                ConsumerWithIngestions(consumerName = "David", ingestionElements = ingestionElements),
-                ConsumerWithIngestions(consumerName = "Laura", ingestionElements = ingestionElements),
-                ConsumerWithIngestions(consumerName = "Lorene", ingestionElements = ingestionElements),
-            )
+            consumersWithIngestions = emptyList(),
+            dataForEffectLines = emptyList()
         )
     )
 
@@ -193,6 +189,7 @@ class OneExperienceScreenPreviewProvider :
                             hourOfDay = 20,
                             minute = 5
                         )!!,
+                        endTime = null,
                         administrationRoute = AdministrationRoute.ORAL,
                         dose = 90.0,
                         isDoseAnEstimate = false,
@@ -255,6 +252,7 @@ class OneExperienceScreenPreviewProvider :
                             hourOfDay = 23,
                             minute = 5
                         )!!,
+                        endTime = null,
                         administrationRoute = AdministrationRoute.INSUFFLATED,
                         dose = 80.0,
                         isDoseAnEstimate = false,
@@ -313,6 +311,7 @@ class OneExperienceScreenPreviewProvider :
                             hourOfDay = 1,
                             minute = 15
                         )!!,
+                        endTime = null,
                         administrationRoute = AdministrationRoute.INSUFFLATED,
                         dose = 50.0,
                         isDoseAnEstimate = false,

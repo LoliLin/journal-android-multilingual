@@ -28,7 +28,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -40,8 +42,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.BottomSheetDefaults
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -80,12 +83,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.ui.YOU
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.IngestionTimePickerOption
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePointOrRangePicker
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
@@ -93,6 +96,7 @@ import java.time.LocalDateTime
 @Composable
 fun EditIngestionScreen(
     viewModel: EditIngestionViewModel = hiltViewModel(),
+    navigateToAddIngestion: () -> Unit,
     navigateBack: () -> Unit
 ) {
     EditIngestionScreen(
@@ -103,7 +107,7 @@ fun EditIngestionScreen(
         isKnown = viewModel.isKnown,
         toggleIsKnown = viewModel::toggleIsKnown,
         dose = viewModel.dose,
-        onDoseChange = { viewModel.dose = it },
+        onDoseChange = viewModel::onDoseChange,
         estimatedDoseStandardDeviation = viewModel.estimatedDoseStandardDeviation,
         onEstimatedDoseStandardDeviationChange = viewModel::onChangeEstimatedDoseStandardDeviation,
         units = viewModel.units,
@@ -117,14 +121,23 @@ fun EditIngestionScreen(
             viewModel.onDoneTap()
             navigateBack()
         },
-        localDateTime = viewModel.localDateTimeFlow.collectAsState().value,
-        onTimeChange = viewModel::onChangeTime,
+        ingestionTimePickerOption = viewModel.ingestionTimePickerOptionFlow.collectAsState().value,
+        onChangeTimePickerOption = viewModel::onChangeTimePickerOption,
+        onChangeStartDateOrTime = viewModel::onChangeStartTime,
+        localDateTimeStart = viewModel.localDateTimeStartFlow.collectAsState().value,
+        localDateTimeEnd = viewModel.localDateTimeEndFlow.collectAsState().value,
+        onChangeEndDateOrTime = viewModel::onChangeEndTime,
         consumerName = viewModel.consumerName,
         onChangeConsumerName = viewModel::onChangeConsumerName,
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
         customUnit = viewModel.customUnit,
         onCustomUnitChange = viewModel::onChangeCustomUnit,
-        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value
+        otherCustomUnits = viewModel.otherCustomUnits.collectAsState().value,
+        addIngestionWithClonedTime = {
+            viewModel.saveClonedIngestionTime()
+            navigateBack()
+            navigateToAddIngestion()
+        }
     )
 }
 
@@ -151,14 +164,19 @@ fun EditIngestionScreenPreview() {
             navigateBack = {},
             deleteIngestion = {},
             onDone = {},
-            localDateTime = LocalDateTime.now(),
-            onTimeChange = {},
+            ingestionTimePickerOption = IngestionTimePickerOption.POINT_IN_TIME,
+            onChangeTimePickerOption = {},
+            onChangeStartDateOrTime = {},
+            localDateTimeStart = LocalDateTime.now(),
+            localDateTimeEnd = LocalDateTime.now(),
+            onChangeEndDateOrTime = {},
             consumerName = "",
             onChangeConsumerName = {},
             consumerNamesSorted = listOf("Dave", "Ali"),
             customUnit = null,
             onCustomUnitChange = {},
-            otherCustomUnits = emptyList()
+            otherCustomUnits = emptyList(),
+            addIngestionWithClonedTime = {}
         )
     }
 }
@@ -184,14 +202,19 @@ fun EditIngestionScreen(
     navigateBack: () -> Unit,
     deleteIngestion: () -> Unit,
     onDone: () -> Unit,
-    localDateTime: LocalDateTime,
-    onTimeChange: (LocalDateTime) -> Unit,
+    ingestionTimePickerOption: IngestionTimePickerOption,
+    onChangeTimePickerOption: (option: IngestionTimePickerOption) -> Unit,
+    onChangeStartDateOrTime: (LocalDateTime) -> Unit,
+    localDateTimeStart: LocalDateTime,
+    onChangeEndDateOrTime: (LocalDateTime) -> Unit,
+    localDateTimeEnd: LocalDateTime,
     consumerName: String,
     onChangeConsumerName: (String) -> Unit,
     consumerNamesSorted: List<String>,
     customUnit: CustomUnit?,
     onCustomUnitChange: (CustomUnit?) -> Unit,
-    otherCustomUnits: List<CustomUnit>
+    otherCustomUnits: List<CustomUnit>,
+    addIngestionWithClonedTime: () -> Unit
 ) {
     var isPresentingBottomSheet by rememberSaveable { mutableStateOf(false) }
     val skipPartiallyExpanded by remember { mutableStateOf(false) }
@@ -243,6 +266,7 @@ fun EditIngestionScreen(
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
+                modifier = Modifier.imePadding(),
                 onClick = onDone,
                 icon = {
                     Icon(
@@ -277,7 +301,7 @@ fun EditIngestionScreen(
                 }
                 AnimatedVisibility(visible = isKnown) {
                     Column {
-                        if (customUnit==null) {
+                        if (customUnit == null) {
                             OutlinedTextField(
                                 value = units,
                                 onValueChange = onUnitsChange,
@@ -292,13 +316,16 @@ fun EditIngestionScreen(
                         }
                         OutlinedTextField(
                             value = dose,
-                            onValueChange = onDoseChange,
+                            onValueChange = {
+                                onDoseChange(it.replace(oldChar = ',', newChar = '.'))
+                            },
                             label = { Text(text = "Dose") },
                             trailingIcon = { Text(text = units) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = {
                                 focusManager.clearFocus()
                             }),
+                            isError = dose.toDoubleOrNull() == null,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                             singleLine = true
                         )
@@ -310,23 +337,45 @@ fun EditIngestionScreen(
                             Text("Estimate", style = MaterialTheme.typography.titleMedium)
                         }
                         AnimatedVisibility(visible = isEstimate) {
-                            OutlinedTextField(
-                                value = estimatedDoseStandardDeviation,
-                                onValueChange = onEstimatedDoseStandardDeviationChange,
-                                label = { Text("Estimated standard deviation") },
-                                trailingIcon = {
-                                    Text(
-                                        text = units,
-                                        modifier = Modifier.padding(horizontal = horizontalPadding)
-                                    )
-                                },
-                                keyboardActions = KeyboardActions(onDone = {
-                                    focusManager.clearFocus()
-                                }),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                singleLine = true,
-                                modifier = Modifier.fillMaxWidth()
-                            )
+                            Column {
+                                OutlinedTextField(
+                                    value = estimatedDoseStandardDeviation,
+                                    onValueChange = {
+                                        onEstimatedDoseStandardDeviationChange(
+                                            it.replace(
+                                                oldChar = ',',
+                                                newChar = '.'
+                                            )
+                                        )
+                                    },
+                                    label = { Text("Estimated standard deviation") },
+                                    trailingIcon = {
+                                        Text(
+                                            text = units,
+                                            modifier = Modifier.padding(horizontal = horizontalPadding)
+                                        )
+                                    },
+                                    keyboardActions = KeyboardActions(onDone = {
+                                        focusManager.clearFocus()
+                                    }),
+                                    isError = estimatedDoseStandardDeviation.toDoubleOrNull() == null,
+                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                    singleLine = true,
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                                val mean = dose.toDoubleOrNull()
+                                val standardDeviation = estimatedDoseStandardDeviation.toDoubleOrNull()
+                                val isExplanationShown = mean != null && standardDeviation != null
+                                AnimatedVisibility(isExplanationShown) {
+                                    if (mean != null && standardDeviation != null) {
+                                        StandardDeviationExplanation(
+                                            mean = mean,
+                                            standardDeviation = standardDeviation,
+                                            unit = units
+                                        )
+                                    }
+                                }
+                            }
                         }
                         if (otherCustomUnits.isNotEmpty()) {
                             var isShowingDropDownMenu by remember { mutableStateOf(false) }
@@ -364,7 +413,7 @@ fun EditIngestionScreen(
                     }
                 }
             }
-            CardWithTitle(title = "Notes") {
+            CardWithTitle(title = "Ingestion notes") {
                 OutlinedTextField(
                     value = note,
                     onValueChange = onNoteChange,
@@ -385,17 +434,13 @@ fun EditIngestionScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    DatePickerButton(
-                        localDateTime = localDateTime,
-                        onChange = onTimeChange,
-                        dateString = localDateTime.getStringOfPattern("EEE dd MMM yyyy"),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    TimePickerButton(
-                        localDateTime = localDateTime,
-                        onChange = onTimeChange,
-                        timeString = localDateTime.getStringOfPattern("HH:mm"),
-                        modifier = Modifier.fillMaxWidth()
+                    TimePointOrRangePicker(
+                        onChangeTimePickerOption = onChangeTimePickerOption,
+                        ingestionTimePickerOption = ingestionTimePickerOption,
+                        localDateTimeStart = localDateTimeStart,
+                        onChangeStartDateOrTime = onChangeStartDateOrTime,
+                        localDateTimeEnd = localDateTimeEnd,
+                        onChangeEndDateOrTime = onChangeEndDateOrTime
                     )
                     var isShowingDropDownMenu by remember { mutableStateOf(false) }
                     Box(
@@ -486,13 +531,32 @@ fun EditIngestionScreen(
                     }
                 }
             }
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(
+                        horizontal = horizontalPadding,
+                        vertical = 3.dp
+                    )
+                ) {
+                    TextButton(onClick = addIngestionWithClonedTime) {
+                        Icon(
+                            Icons.Outlined.Add, contentDescription = "Add"
+                        )
+                        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                        Text(text = "Add ingestion at same time")
+                    }
+                }
+            }
         }
     }
     if (isPresentingBottomSheet) {
         ModalBottomSheet(
             onDismissRequest = { isPresentingBottomSheet = false },
             sheetState = bottomSheetState,
-            windowInsets = BottomSheetDefaults.windowInsets
         ) {
             LazyColumn {
                 item {

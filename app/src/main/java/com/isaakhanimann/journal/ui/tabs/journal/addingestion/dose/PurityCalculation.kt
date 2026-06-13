@@ -46,7 +46,9 @@ fun PurityCalculation(
         val focusManager = LocalFocusManager.current
         OutlinedTextField(
             value = purityText,
-            onValueChange = onPurityChange,
+            onValueChange = {
+                onPurityChange(it.replace(oldChar = ',', newChar = '.'))
+            },
             label = { Text("Purity") },
             isError = !isValidPurity,
             trailingIcon = {
@@ -69,13 +71,14 @@ fun PurityCalculation(
             )
         }
         if (convertedDoseAndUnitText != null) {
+            val textStyle = MaterialTheme.typography.titleMedium
             Row(
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Converted amount")
-                Text(text = convertedDoseAndUnitText)
+                Text(text = "Impure dose", style = textStyle)
+                Text(text = convertedDoseAndUnitText, style = textStyle)
             }
         }
     }

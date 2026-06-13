@@ -33,6 +33,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Location
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.relations.CustomUnitWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
@@ -55,8 +56,8 @@ interface ExperienceDao {
 
     @Query(
         "SELECT * FROM ingestion as i" +
-                " INNER JOIN (SELECT id, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
-                " ON i.id = sub.id AND i.time = sub.maxTime" +
+                " INNER JOIN (SELECT id, MAX(time) AS time FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
+                " ON i.id = sub.id AND i.time = sub.time" +
                 " ORDER BY time DESC"
     )
     suspend fun getLatestIngestionOfEverySubstanceSinceDate(instant: Instant): List<Ingestion>
@@ -73,6 +74,10 @@ interface ExperienceDao {
 
     @Query("SELECT * FROM substancecompanion")
     suspend fun getAllSubstanceCompanions(): List<SubstanceCompanion>
+
+    @Transaction
+    @Query("SELECT * FROM experience WHERE sortDate > :fromInstant AND sortDate < :toInstant ORDER BY sortDate DESC")
+    suspend fun getSortedExperiencesWithIngestionsWithSortDateBetween(fromInstant: Instant, toInstant: Instant): List<ExperienceWithIngestions>
 
     @Query("SELECT substanceName FROM ingestion ORDER BY time DESC LIMIT :limit")
     fun getSortedLastUsedSubstanceNamesFlow(limit: Int): Flow<List<String>>
@@ -102,7 +107,7 @@ interface ExperienceDao {
     fun getSortedIngestionsWithSubstanceCompanionsFlow(): Flow<List<IngestionWithCompanionAndCustomUnit>>
 
     @Transaction
-    @Query("SELECT * FROM ingestion ORDER BY time DESC LIMIT :limit")
+    @Query("SELECT * FROM ingestion ORDER BY creationDate DESC LIMIT :limit")
     fun getSortedIngestionsWithSubstanceCompanionsFlow(limit: Int): Flow<List<IngestionWithCompanionAndCustomUnit>>
 
     @Query("SELECT * FROM ingestion ORDER BY time DESC LIMIT :limit")
@@ -119,6 +124,9 @@ interface ExperienceDao {
 
     @Query("SELECT * FROM customsubstance WHERE id = :id")
     fun getCustomSubstanceFlow(id: Int): Flow<CustomSubstance?>
+
+    @Query("SELECT * FROM customsubstance WHERE name = :name")
+    suspend fun getCustomSubstance(name: String): CustomSubstance?
 
     @Query("SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC")
     fun getSortedIngestionsFlow(substanceName: String): Flow<List<Ingestion>>
@@ -146,6 +154,10 @@ interface ExperienceDao {
 
     @Query("SELECT * FROM customunit WHERE id =:id")
     suspend fun getCustomUnit(id: Int): CustomUnit?
+
+    @Transaction
+    @Query("SELECT * FROM customunit WHERE id =:id")
+    suspend fun getCustomUnitWithIngestions(id: Int): CustomUnitWithIngestions?
 
     @Query("SELECT * FROM experience WHERE id =:id")
     fun getExperienceFlow(id: Int): Flow<Experience?>
@@ -175,6 +187,31 @@ interface ExperienceDao {
     @Transaction
     @Query("SELECT * FROM ingestion WHERE id =:id")
     fun getIngestionWithCompanionFlow(id: Int): Flow<IngestionWithCompanionAndCustomUnit?>
+
+    @Transaction
+    @Query("UPDATE ingestion SET units = 'mg', dose = dose * 1000 WHERE substanceName = 'Benzydamine' AND units = 'g'")
+    suspend fun migrateBenzydamine()
+
+
+    @Transaction
+    suspend fun migrateCannabisAndMushroomUnits() {
+        migrateCannabisIngestionUnits()
+        migrateMushroomsIngestionUnits()
+        migrateCannabisCustomUnits()
+        migrateMushroomsCustomUnits()
+    }
+
+    @Query("UPDATE ingestion SET units = 'mg THC' WHERE substanceName = 'Cannabis' AND units = 'mg'")
+    suspend fun migrateCannabisIngestionUnits()
+
+    @Query("UPDATE ingestion SET units = 'mg Psilocybin' WHERE substanceName = 'Psilocybin mushrooms' AND units = 'mg'")
+    suspend fun migrateMushroomsIngestionUnits()
+
+    @Query("UPDATE customunit SET originalUnit = 'mg THC' WHERE substanceName = 'Cannabis' AND originalUnit = 'mg'")
+    suspend fun migrateCannabisCustomUnits()
+
+    @Query("UPDATE customunit SET originalUnit = 'mg Psilocybin' WHERE substanceName = 'Psilocybin mushrooms' AND originalUnit = 'mg'")
+    suspend fun migrateMushroomsCustomUnits()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(experience: Experience): Long
@@ -210,6 +247,10 @@ interface ExperienceDao {
             delete(it)
         }
     }
+
+    @Transaction
+    @Query("DELETE FROM substancecompanion WHERE substanceName NOT IN (SELECT substanceName FROM ingestion)")
+    suspend fun deleteUnusedSubstanceCompanions()
 
     @Delete
     suspend fun delete(ingestion: Ingestion)
@@ -283,7 +324,7 @@ interface ExperienceDao {
     suspend fun insert(rating: ShulginRating)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(customUnit: CustomUnit)
+    suspend fun insert(customUnit: CustomUnit): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(timedNote: TimedNote)
@@ -327,6 +368,7 @@ interface ExperienceDao {
                 val newIngestion = Ingestion(
                     substanceName = ingestionSerializable.substanceName,
                     time = ingestionSerializable.time,
+                    endTime = ingestionSerializable.endTime,
                     creationDate = ingestionSerializable.creationDate,
                     administrationRoute = ingestionSerializable.administrationRoute,
                     dose = ingestionSerializable.dose,
@@ -377,6 +419,7 @@ interface ExperienceDao {
                     isEstimate = it.isEstimate,
                     isArchived = it.isArchived,
                     unit = it.unit,
+                    unitPlural = it.unitPlural,
                     originalUnit = it.originalUnit,
                     note = it.note
                 )
@@ -414,7 +457,7 @@ interface ExperienceDao {
     suspend fun insert(substanceCompanion: SubstanceCompanion)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(customSubstance: CustomSubstance)
+    suspend fun insert(customSubstance: CustomSubstance): Long
 
     @Delete
     suspend fun delete(customSubstance: CustomSubstance)

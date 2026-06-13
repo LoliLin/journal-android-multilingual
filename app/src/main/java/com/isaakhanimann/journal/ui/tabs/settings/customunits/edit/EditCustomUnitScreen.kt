@@ -19,6 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.edit
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
@@ -34,9 +35,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
@@ -50,6 +53,8 @@ fun EditCustomUnitScreen(
 ) {
     EditCustomUnitScreenContent(
         substanceName = viewModel.substanceName,
+        administrationRoute = viewModel.administrationRoute,
+        numberOfIngestionsWithThisCustomUnit = viewModel.numberOfIngestionsWithThisCustomUnit,
         roaDose = viewModel.roaDose,
         dismiss = {
             viewModel.updateAndDismissAfter(dismiss = navigateBack)
@@ -66,13 +71,19 @@ fun EditCustomUnitScreen(
         isShowingUnitsField = viewModel.roaDose?.units?.isBlank() ?: true,
         unit = viewModel.unit,
         onChangeOfUnits = viewModel::onChangeOfUnit,
+        unitPlural = viewModel.unitPlural,
+        onChangeOfUnitPlural = viewModel::onChangeOfUnitPlural,
         originalUnit = viewModel.originalUnit,
         onChangeOfOriginalUnit = viewModel::onChangeOfOriginalUnit,
         note = viewModel.note,
         onChangeOfNote = viewModel::onChangeOfNote,
         isArchived = viewModel.isArchived,
         onChangeOfIsArchived = viewModel::onChangeOfIsArchived,
-        onDelete = viewModel::deleteCustomUnit
+        onDelete = {
+            viewModel.deleteCustomUnit {
+                navigateBack()
+            }
+        }
     )
 }
 
@@ -83,6 +94,8 @@ private fun EditCustomUnitScreenPreview(
 ) {
     EditCustomUnitScreenContent(
         substanceName = "Example",
+        administrationRoute = AdministrationRoute.ORAL,
+        numberOfIngestionsWithThisCustomUnit = 3,
         roaDose = roaDose,
         dismiss = {},
         name = "Pink rocket",
@@ -97,6 +110,8 @@ private fun EditCustomUnitScreenPreview(
         isShowingUnitsField = false,
         unit = "pill",
         onChangeOfUnits = {},
+        unitPlural = "pills",
+        onChangeOfUnitPlural = {},
         originalUnit = "mg",
         onChangeOfOriginalUnit = {},
         note = "",
@@ -111,6 +126,8 @@ private fun EditCustomUnitScreenPreview(
 @Composable
 private fun EditCustomUnitScreenContent(
     substanceName: String,
+    administrationRoute: AdministrationRoute,
+    numberOfIngestionsWithThisCustomUnit: Int?,
     roaDose: RoaDose?,
     dismiss: () -> Unit,
     name: String,
@@ -125,6 +142,8 @@ private fun EditCustomUnitScreenContent(
     isShowingUnitsField: Boolean,
     unit: String,
     onChangeOfUnits: (units: String) -> Unit,
+    unitPlural: String,
+    onChangeOfUnitPlural: (unitPlural: String) -> Unit,
     originalUnit: String,
     onChangeOfOriginalUnit: (String) -> Unit,
     note: String,
@@ -177,12 +196,16 @@ private fun EditCustomUnitScreenContent(
             )
         },
         floatingActionButton = {
-            FloatingDoneButton {
-                dismiss()
-            }
+            FloatingDoneButton(
+                onDone = dismiss,
+                modifier = Modifier.imePadding(),
+            )
         }
     ) { padding ->
         EditCustomUnitSections(
+            substanceName = substanceName,
+            administrationRoute = administrationRoute,
+            numberOfIngestionsWithThisCustomUnit = numberOfIngestionsWithThisCustomUnit,
             padding = padding,
             roaDose = roaDose,
             name = name,
@@ -197,6 +220,8 @@ private fun EditCustomUnitScreenContent(
             isShowingUnitsField = isShowingUnitsField,
             unit = unit,
             onChangeOfUnits = onChangeOfUnits,
+            unitPlural = unitPlural,
+            onChangeOfUnitPlural = onChangeOfUnitPlural,
             originalUnit = originalUnit,
             onChangeOfOriginalUnit = onChangeOfOriginalUnit,
             note = note,

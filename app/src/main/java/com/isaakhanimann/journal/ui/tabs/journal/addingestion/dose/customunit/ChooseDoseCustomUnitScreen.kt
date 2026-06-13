@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
@@ -52,6 +53,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,7 +64,8 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.asPlural
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.justUnit
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -78,6 +81,7 @@ fun ChooseDoseCustomUnitScreen(
         substanceName: String,
         customUnitId: Int?
     ) -> Unit,
+    navigateToCreateCustomUnit: (route: AdministrationRoute, substanceName: String) -> Unit,
     viewModel: ChooseDoseCustomUnitViewModel = hiltViewModel()
 ) {
     viewModel.customUnit?.let { customUnitUnwrapped ->
@@ -107,6 +111,7 @@ fun ChooseDoseCustomUnitScreen(
                     customUnitUnwrapped.id
                 )
             },
+            navigateToCreateCustomUnit = navigateToCreateCustomUnit,
             useUnknownDoseAndNavigate = {
                 navigateToChooseTimeAndMaybeColor(
                     customUnitUnwrapped.administrationRoute,
@@ -140,6 +145,7 @@ fun ChooseDoseCustomUnitScreenPreview(
             originalUnit = "mg",
             name = "Big Spoon",
             unit = "spoon",
+            unitPlural = "spoons",
             note = "Note about custom unit dose"
         ),
         roaDose = roaDose,
@@ -154,6 +160,7 @@ fun ChooseDoseCustomUnitScreenPreview(
         isEstimate = false,
         onChangeIsEstimate = {},
         navigateToNext = {},
+        navigateToCreateCustomUnit = { _: AdministrationRoute, _: String -> },
         useUnknownDoseAndNavigate = {},
         currentDoseClass = DoseClass.THRESHOLD,
         customUnitCalculationText = "2 pills x 20 mg = 40 mg",
@@ -176,17 +183,19 @@ fun ChooseDoseCustomUnitScreen(
     isEstimate: Boolean,
     onChangeIsEstimate: (Boolean) -> Unit,
     navigateToNext: () -> Unit,
+    navigateToCreateCustomUnit: (route: AdministrationRoute, substanceName: String) -> Unit,
     useUnknownDoseAndNavigate: () -> Unit,
     currentDoseClass: DoseClass?,
     customUnitCalculationText: String?,
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("${customUnit.substanceName} (${customUnit.name})") })
+            TopAppBar(title = { Text(customUnit.name) })
         },
         floatingActionButton = {
             if (isValidDose) {
                 ExtendedFloatingActionButton(
+                    modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
                     icon = {
                         Icon(
@@ -210,10 +219,12 @@ fun ChooseDoseCustomUnitScreen(
             )
             Spacer(modifier = Modifier.height(4.dp))
             ElevatedCard(
-                modifier = Modifier.padding(
-                    horizontal = horizontalPadding,
-                    vertical = 4.dp
-                )
+                modifier = Modifier
+                    .padding(
+                        horizontal = horizontalPadding,
+                        vertical = 4.dp
+                    )
+                    .fillMaxWidth()
             ) {
                 Column(
                     modifier = Modifier.padding(
@@ -221,6 +232,10 @@ fun ChooseDoseCustomUnitScreen(
                         vertical = 10.dp
                     )
                 ) {
+                    Text(
+                        text = "${customUnit.substanceName} ${customUnit.administrationRoute.displayText}",
+                        style = MaterialTheme.typography.titleLarge
+                    )
                     if (!doseRemark.isNullOrBlank()) {
                         Text(text = doseRemark, style = MaterialTheme.typography.bodySmall)
                     }
@@ -231,16 +246,12 @@ fun ChooseDoseCustomUnitScreen(
                     if (roaDose != null) {
                         RoaDoseView(roaDose = roaDose)
                     }
-                    AnimatedVisibility(visible = currentDoseClass != null && customUnitCalculationText != null) {
-                        if (currentDoseClass != null && customUnitCalculationText != null) {
-                            val doseColor = currentDoseClass.getComposeColor(isSystemInDarkTheme())
-                            Text(
-                                text = customUnitCalculationText,
-                                color = doseColor,
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                        }
-                    }
+                    Text(
+                        text = customUnitCalculationText ?: "",
+                        color = currentDoseClass?.getComposeColor(isSystemInDarkTheme())
+                            ?: Color.Unspecified,
+                        style = MaterialTheme.typography.labelLarge
+                    )
                 }
             }
             ElevatedCard(
@@ -265,15 +276,23 @@ fun ChooseDoseCustomUnitScreen(
                     LaunchedEffect(Unit) {
                         focusRequester.requestFocus()
                     }
+                    val pluralizableUnit = customUnit.getPluralizableUnit()
                     OutlinedTextField(
                         value = doseText,
-                        onValueChange = onChangeDoseText,
+                        onValueChange = {
+                            onChangeDoseText(
+                                it.replace(
+                                    oldChar = ',',
+                                    newChar = '.'
+                                )
+                            )
+                        },
                         textStyle = textStyle,
                         label = { Text("Dose", style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
-                                text = customUnit.unit.asPlural(dose ?: 2.0),
+                                text = pluralizableUnit.justUnit(dose ?: 1.0),
                                 style = textStyle,
                                 modifier = Modifier.padding(horizontal = horizontalPadding)
                             )
@@ -295,30 +314,60 @@ fun ChooseDoseCustomUnitScreen(
                         Text("Estimate", style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
-                        OutlinedTextField(
-                            value = estimatedDoseDeviationText,
-                            onValueChange = onChangeEstimatedDoseDeviationText,
-                            textStyle = textStyle,
-                            label = { Text("Estimated standard deviation", style = textStyle) },
-                            trailingIcon = {
-                                Text(
-                                    text = customUnit.unit.asPlural(estimatedDoseDeviation ?: 2.0),
-                                    style = textStyle,
-                                    modifier = Modifier.padding(horizontal = horizontalPadding)
-                                )
-                            },
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            }),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        Column {
+                            OutlinedTextField(
+                                value = estimatedDoseDeviationText,
+                                onValueChange = {
+                                    onChangeEstimatedDoseDeviationText(
+                                        it.replace(
+                                            oldChar = ',',
+                                            newChar = '.'
+                                        )
+                                    )
+                                },
+                                textStyle = textStyle,
+                                label = { Text("Estimated standard deviation", style = textStyle) },
+                                trailingIcon = {
+                                    Text(
+                                        text = pluralizableUnit.justUnit(estimatedDoseDeviation ?: 1.0),
+                                        style = textStyle,
+                                        modifier = Modifier.padding(horizontal = horizontalPadding)
+                                    )
+                                },
+                                keyboardActions = KeyboardActions(onDone = {
+                                    focusManager.clearFocus()
+                                }),
+                                isError = estimatedDoseDeviationText.toDoubleOrNull() == null,
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            val mean = doseText.toDoubleOrNull()
+                            val standardDeviation = estimatedDoseDeviationText.toDoubleOrNull()
+                            val isExplanationShown = mean != null && standardDeviation != null
+                            AnimatedVisibility(isExplanationShown) {
+                                if (mean != null && standardDeviation != null) {
+                                    StandardDeviationExplanation(
+                                        mean = mean,
+                                        standardDeviation = standardDeviation,
+                                        unit = pluralizableUnit.justUnit(mean)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
             TextButton(onClick = useUnknownDoseAndNavigate) {
                 Text(text = "Log unknown dose")
+            }
+            TextButton(onClick = {
+                navigateToCreateCustomUnit(
+                    customUnit.administrationRoute,
+                    customUnit.substanceName
+                )
+            }) {
+                Text(text = "Create new unit")
             }
         }
     }

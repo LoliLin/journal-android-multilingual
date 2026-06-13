@@ -21,235 +21,295 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.navigation
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_SUBSTANCE_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.URL_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddCustom
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAdministrationRouteExplanationScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCheckInteractions
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCheckSaferUse
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseCustomRoute
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseDose
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseDoseCustom
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseDoseCustomUnit
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseRouteOfAddIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseTimeAndMaybeColor
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSaferSniffingOnJournalTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToURLInJournalTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToVolumetricDosingScreenOnJournalTab
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChooseDoseScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstance.CustomChooseDose
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstance.CustomSubstanceChooseDoseScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.ChooseDoseCustomUnitScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.CheckInteractionsScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomChooseRouteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomSubstanceChooseRouteScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse.CheckSaferUseScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ChooseTimeScreen
-import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.FinishIngestionScreen
+import com.isaakhanimann.journal.ui.tabs.safer.RouteExplanationScreen
+import com.isaakhanimann.journal.ui.tabs.search.custom.AddCustomSubstanceAndContinueScreen
+import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.FinishAddCustomUnitScreen
+import kotlinx.serialization.Serializable
 
 fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.AddIngestionSearchRouter.route,
-        route = NoArgumentRouter.AddIngestionRouter.route,
+    navigation<AddIngestionRoute>(
+        startDestination = AddIngestionSearchRoute,
     ) {
-        composableWithTransitions(NoArgumentRouter.AddIngestionSearchRouter.route) {
+        composableWithTransitions<AddIngestionSearchRoute> {
             AddIngestionSearchScreen(
-                navigateToCheckInteractions = {
-                    navController.navigateToCheckInteractions(substanceName = it)
+                navigateToCheckInteractions = { substanceName ->
+                    navController.navigate(CheckInteractionsRoute(substanceName))
                 },
-                navigateToCheckSaferUse = {
-                    navController.navigateToCheckSaferUse(substanceName = it)
+                navigateToCheckSaferUse = { substanceName ->
+                    navController.navigate(CheckSaferUseRoute(substanceName))
                 },
-                navigateToCustomSubstanceChooseRoute = navController::navigateToChooseCustomRoute,
-                navigateToChooseTime = { substanceName, route, dose, units, isEstimate, estimatedDoseStandardDeviation, customUnitId ->
-                    navController.navigateToChooseTimeAndMaybeColor(
-                        administrationRoute = route,
-                        units = units,
-                        isEstimate = isEstimate,
-                        dose = dose,
-                        estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
-                        substanceName = substanceName,
-                        customUnitId = customUnitId,
-                        customSubstanceId = null
+                navigateToCustomSubstanceChooseRoute = { customSubstanceName ->
+                    navController.navigate(CustomSubstanceChooseRouteRoute(customSubstanceName))
+                },
+                navigateToChooseTime = { substanceName, administrationRoute, dose, units, isEstimate, estimatedDoseStandardDeviation, customUnitId ->
+                    navController.navigate(
+                        FinishIngestionRoute(
+                            administrationRoute = administrationRoute,
+                            units = units,
+                            isEstimate = isEstimate,
+                            dose = dose,
+                            estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
+                            substanceName = substanceName,
+                            customUnitId = customUnitId,
+                        )
                     )
                 },
-                navigateToCustomDose = { customSubstanceId, route ->
-                    navController.navigateToChooseDoseCustom(customSubstanceId, route)
+                navigateToChooseCustomSubstanceDose = { customSubstanceName, administrationRoute ->
+                    navController.navigate(
+                        ChooseCustomSubstanceDoseRoute(
+                            customSubstanceName = customSubstanceName,
+                            administrationRoute = administrationRoute
+
+                        )
+                    )
                 },
-                navigateToDose = { substanceName, route ->
-                    navController.navigateToChooseDose(substanceName, route)
+                navigateToDose = { substanceName, administrationRoute ->
+                    navController.navigate(
+                        ChooseDoseRoute(
+                            substanceName = substanceName,
+                            administrationRoute = administrationRoute
+                        )
+                    )
                 },
                 navigateToChooseRoute = { substanceName ->
-                    navController.navigateToChooseRouteOfAddIngestion(substanceName)
+                    navController.navigate(ChooseRouteOfAddIngestionRoute(substanceName = substanceName))
                 },
-                navigateToAddCustomSubstanceScreen = navController::navigateToAddCustom,
-                navigateToCustomUnitChooseDose = navController::navigateToChooseDoseCustomUnit
+                navigateToAddCustomSubstanceScreen = { searchText ->
+                    navController.navigate(AddCustomSubstanceRouteOnAddIngestionGraph(searchText = searchText))
+                },
+                navigateToCustomUnitChooseDose = { customUnitId ->
+                    navController.navigate(ChooseDoseCustomUnitRoute(customUnitId = customUnitId))
+                }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.CheckInteractionsRouter.route,
-            arguments = ArgumentRouter.CheckInteractionsRouter.args
-        ) { backStackEntry ->
+        composableWithTransitions<AddCustomSubstanceRouteOnAddIngestionGraph> { backStackEntry ->
+            val route = backStackEntry.toRoute<AddCustomSubstanceRouteOnAddIngestionGraph>()
+            AddCustomSubstanceAndContinueScreen(
+                navigateToChooseRoa = { customSubstanceName ->
+                    navController.navigate(CustomSubstanceChooseRouteRoute(customSubstanceName)) {
+                        popUpTo(AddIngestionSearchRoute)
+                    }
+                },
+                initialName = route.searchText
+            )
+        }
+        composableWithTransitions<CheckInteractionsRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<CheckInteractionsRoute>()
             CheckInteractionsScreen(
                 navigateToNext = {
-                    val args = backStackEntry.arguments!!
-                    val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
-                    navController.navigateToChooseRouteOfAddIngestion(substanceName = substanceName)
+                    navController.navigate(ChooseRouteOfAddIngestionRoute(substanceName = route.substanceName))
                 },
-                navigateToURL = navController::navigateToURLInJournalTab
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.CheckSaferUseRouter.route,
-            arguments = ArgumentRouter.CheckSaferUseRouter.args
-        ) { backStackEntry ->
+        composableWithTransitions<CheckSaferUseRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<CheckSaferUseRoute>()
             CheckSaferUseScreen(
                 navigateToNext = {
-                    val args = backStackEntry.arguments!!
-                    val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
-                    navController.navigateToCheckInteractions(substanceName = substanceName)
+                    navController.navigate(CheckInteractionsRoute(substanceName = route.substanceName))
                 },
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.JournalTabURLRouter.route,
-            arguments = ArgumentRouter.JournalTabURLRouter.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val url = args.getString(URL_KEY)!!
-            UrlScreen(url = url)
-        }
-        composableWithTransitions(
-            ArgumentRouter.ChooseDoseCustomUnitRouter.route,
-            arguments = ArgumentRouter.ChooseDoseCustomUnitRouter.args
-        ) {
-            ChooseDoseCustomUnitScreen(navigateToChooseTimeAndMaybeColor = { administrationRoute: AdministrationRoute,
-                units: String?,
-                isEstimate: Boolean,
-                dose: Double?,
-                estimatedDoseStandardDeviation: Double?,
-                substanceName: String,
-                customUnitId: Int? ->
-                navController.navigateToChooseTimeAndMaybeColor(
-                    administrationRoute,
-                    units,
-                    isEstimate,
-                    dose,
-                    estimatedDoseStandardDeviation,
-                    substanceName,
-                    customUnitId,
-                    customSubstanceId = null
-                )
-            })
-        }
-        composableWithTransitions(
-            ArgumentRouter.ChooseRouteOfAddIngestionRouter.route,
-            arguments = ArgumentRouter.ChooseRouteOfAddIngestionRouter.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
-            ChooseRouteScreen(
-                navigateToChooseDose = { administrationRoute ->
-                    navController.navigateToChooseDose(
-                        substanceName = substanceName,
-                        administrationRoute = administrationRoute,
+        composableWithTransitions<ChooseDoseCustomUnitRoute> {
+            ChooseDoseCustomUnitScreen(
+                navigateToChooseTimeAndMaybeColor = { administrationRoute: AdministrationRoute,
+                                                      units: String?,
+                                                      isEstimate: Boolean,
+                                                      dose: Double?,
+                                                      estimatedDoseStandardDeviation: Double?,
+                                                      substanceName: String,
+                                                      customUnitId: Int? ->
+                    navController.navigate(
+                        FinishIngestionRoute(
+                            administrationRoute = administrationRoute,
+                            isEstimate = isEstimate,
+                            units = units,
+                            dose = dose,
+                            estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
+                            substanceName = substanceName,
+                            customUnitId = customUnitId,
+                        )
                     )
                 },
-                navigateToRouteExplanationScreen = navController::navigateToAdministrationRouteExplanationScreen,
-                navigateToURL = navController::navigateToURLInJournalTab
-            )
-        }
-        composableWithTransitions(
-            ArgumentRouter.CustomChooseRouteRouter.route,
-            arguments = ArgumentRouter.CustomChooseRouteRouter.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val customSubstanceId = args.getInt(CUSTOM_SUBSTANCE_ID_KEY)
-            CustomChooseRouteScreen(
-                onRouteTap = { administrationRoute ->
-                    navController.navigateToChooseDoseCustom(
-                        customSubstanceId = customSubstanceId,
-                        administrationRoute = administrationRoute,
+                navigateToCreateCustomUnit = { administrationRoute, substanceName ->
+                    navController.navigate(
+                        FinishAddCustomUnitRoute(
+                            administrationRoute = administrationRoute,
+                            substanceName = substanceName
+                        )
                     )
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.CustomChooseDoseRouter.route,
-            arguments = ArgumentRouter.CustomChooseDoseRouter.args
-        ) { backStackEntry ->
-            CustomChooseDose(
-                navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
-                    val args = backStackEntry.arguments!!
-                    val customSubstanceId = args.getInt(CUSTOM_SUBSTANCE_ID_KEY)
-                    val route =
-                        AdministrationRoute.valueOf(args.getString(ADMINISTRATION_ROUTE_KEY)!!)
-                    navController.navigateToChooseTimeAndMaybeColor(
-                        administrationRoute = route,
-                        units = units,
-                        isEstimate = isEstimate,
-                        dose = dose,
-                        estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
-                        substanceName = null,
-                        customSubstanceId = customSubstanceId,
-                        customUnitId = null
+        composableWithTransitions<ChooseRouteOfAddIngestionRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<ChooseRouteOfAddIngestionRoute>()
+            ChooseRouteScreen(
+                navigateToChooseDose = { administrationRoute ->
+                    navController.navigate(
+                        ChooseDoseRoute(
+                            substanceName = route.substanceName,
+                            administrationRoute = administrationRoute
+                        )
                     )
                 },
-                navigateToSaferSniffingScreen = navController::navigateToSaferSniffingOnJournalTab,
-                navigateToURL = navController::navigateToURLInJournalTab
+                navigateToRouteExplanationScreen = {
+                    navController.navigate(AdministrationRouteExplanationRouteOnJournalTab)
+                }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.ChooseDoseRouter.route,
-            arguments = ArgumentRouter.ChooseDoseRouter.args
-        ) { backStackEntry ->
+        composableWithTransitions<CustomSubstanceChooseRouteRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<CustomSubstanceChooseRouteRoute>()
+            CustomSubstanceChooseRouteScreen(
+                onRouteTap = { administrationRoute ->
+                    navController.navigate(
+                        ChooseCustomSubstanceDoseRoute(
+                            customSubstanceName = route.customSubstanceName,
+                            administrationRoute = administrationRoute
+                        )
+                    )
+                }
+            )
+        }
+        composableWithTransitions<ChooseCustomSubstanceDoseRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<ChooseCustomSubstanceDoseRoute>()
+            CustomSubstanceChooseDoseScreen(
+                navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
+                    navController.navigate(
+                        FinishIngestionRoute(
+                            administrationRoute = route.administrationRoute,
+                            units = units,
+                            isEstimate = isEstimate,
+                            dose = dose,
+                            estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
+                            substanceName = route.customSubstanceName,
+                            customUnitId = null
+                        )
+                    )
+                },
+                navigateToCreateCustomUnit = {
+                    navController.navigate(
+                        FinishAddCustomUnitRoute(
+                            substanceName = route.customSubstanceName,
+                            administrationRoute = route.administrationRoute
+                        )
+                    )
+                },
+                navigateToSaferSniffingScreen = {
+                    navController.navigate(SaferSniffingRouteOnJournalTab)
+                },
+            )
+        }
+        composableWithTransitions<ChooseDoseRoute> { backStackEntry ->
+            val route = backStackEntry.toRoute<ChooseDoseRoute>()
             ChooseDoseScreen(
                 navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
-                    val args = backStackEntry.arguments!!
-                    val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
-                    val route =
-                        AdministrationRoute.valueOf(args.getString(ADMINISTRATION_ROUTE_KEY)!!)
-                    navController.navigateToChooseTimeAndMaybeColor(
-                        administrationRoute = route,
-                        units = units,
-                        isEstimate = isEstimate,
-                        dose = dose,
-                        estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
-                        substanceName = substanceName,
-                        customUnitId = null,
-                        customSubstanceId = null
+                    navController.navigate(
+                        FinishIngestionRoute(
+                            administrationRoute = route.administrationRoute,
+                            units = units,
+                            isEstimate = isEstimate,
+                            dose = dose,
+                            estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
+                            substanceName = route.substanceName,
+                            customUnitId = null,
+                        )
                     )
                 },
-                navigateToVolumetricDosingScreenOnJournalTab = navController::navigateToVolumetricDosingScreenOnJournalTab,
-                navigateToSaferSniffingScreen = navController::navigateToSaferSniffingOnJournalTab,
-                navigateToURL = navController::navigateToURLInJournalTab
+                navigateToVolumetricDosingScreenOnJournalTab = {
+                    navController.navigate(VolumetricDosingOnJournalTabRoute)
+                },
+                navigateToSaferSniffingScreen = {
+                    navController.navigate(SaferSniffingRouteOnJournalTab)
+                },
+                navigateToCreateCustomUnit = {
+                    navController.navigate(
+                        FinishAddCustomUnitRoute(
+                            substanceName = route.substanceName,
+                            administrationRoute = route.administrationRoute
+                        )
+                    )
+                }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.ChooseTimeRouter.route,
-            arguments = ArgumentRouter.ChooseTimeRouter.args
-        ) {
-            ChooseTimeScreen(
-                dismissAddIngestionScreens = navController::dismissAddIngestionScreens,
+        composableWithTransitions<FinishIngestionRoute> {
+            FinishIngestionScreen(
+                dismissAddIngestionScreens = {
+                    navController.popBackStack(route = AddIngestionRoute, inclusive = true)
+                },
+            )
+        }
+        composableWithTransitions<AdministrationRouteExplanationRouteOnJournalTab> {
+            RouteExplanationScreen()
+        }
+        composableWithTransitions<FinishAddCustomUnitRoute> {
+            FinishAddCustomUnitScreen(
+                dismissAddCustomUnit = { customUnitId ->
+                    navController.navigate(ChooseDoseCustomUnitRoute(customUnitId = customUnitId)) {
+                        popUpTo(AddIngestionSearchRoute)
+                    }
+                },
             )
         }
     }
 }
 
-fun NavController.navigateToAddIngestion() {
-    navigate(NoArgumentRouter.AddIngestionRouter.route)
-}
+@Serializable
+object AddIngestionRoute
 
-fun NavController.navigateToCalendar() {
-    navigate(NoArgumentRouter.CalendarRouter.route)
-}
+@Serializable
+object AddIngestionSearchRoute
 
-fun NavController.dismissAddIngestionScreens() {
-    popBackStack(route = NoArgumentRouter.AddIngestionRouter.route, inclusive = true)
-}
+@Serializable
+data class CheckInteractionsRoute(val substanceName: String)
+
+@Serializable
+data class CheckSaferUseRoute(val substanceName: String)
+
+@Serializable
+data class ChooseDoseCustomUnitRoute(val customUnitId: Int)
+
+@Serializable
+data class ChooseRouteOfAddIngestionRoute(val substanceName: String)
+
+@Serializable
+data class CustomSubstanceChooseRouteRoute(val customSubstanceName: String)
+
+@Serializable
+data class ChooseCustomSubstanceDoseRoute(
+    val customSubstanceName: String,
+    val administrationRoute: AdministrationRoute,
+)
+
+@Serializable
+data class ChooseDoseRoute(
+    val substanceName: String,
+    val administrationRoute: AdministrationRoute
+)
+
+@Serializable
+data class FinishIngestionRoute(
+    val administrationRoute: AdministrationRoute,
+    val isEstimate: Boolean,
+    val units: String?,
+    val dose: Double?,
+    val estimatedDoseStandardDeviation: Double?,
+    val substanceName: String, // can be name of pw substance or custom substance
+    val customUnitId: Int?,
+)
+
+@Serializable
+object AdministrationRouteExplanationRouteOnJournalTab
+
+@Serializable
+data class AddCustomSubstanceRouteOnAddIngestionGraph(val searchText: String)

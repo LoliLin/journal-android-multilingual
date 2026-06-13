@@ -24,14 +24,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
-import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
-import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.graphs.FinishAddCustomUnitRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,14 +43,15 @@ class FinishAddCustomUnitViewModel @Inject constructor(
     substanceRepository: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
-    val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
-    private val administrationRoute: AdministrationRoute
+    private val finishAddCustomUnitRoute = state.toRoute<FinishAddCustomUnitRoute>()
+    var substanceName by mutableStateOf("")
+    val administrationRoute = finishAddCustomUnitRoute.administrationRoute
 
-    val substance = substanceRepository.getSubstance(state.get<String>(SUBSTANCE_NAME_KEY)!!)!!
-
-    var roaDose: RoaDose?
+    var substance by mutableStateOf<Substance?>(null)
+    val roaDose get() = substance?.getRoa(administrationRoute)?.roaDose
 
     var name by mutableStateOf("")
+    var isUnitsFieldShown by mutableStateOf(false)
 
     val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(ingestionDose = dose)
 
@@ -63,9 +63,20 @@ class FinishAddCustomUnitViewModel @Inject constructor(
 
     fun onChangeOfUnit(newUnit: String) {
         unit = newUnit
+        unitPlural = if (newUnit != "mg" && newUnit != "g" && newUnit.lowercase() != "ml" && newUnit.lastOrNull() != 's') {
+            newUnit + "s"
+        } else {
+            newUnit
+        }
     }
 
-    var originalUnit by mutableStateOf("")
+    var unitPlural by mutableStateOf("")
+
+    fun onChangeOfUnitPlural(newUnit: String) {
+        unitPlural = newUnit
+    }
+
+    var originalUnit by mutableStateOf("mg")
 
     fun onChangeOfOriginalUnit(newUnit: String) {
         originalUnit = newUnit
@@ -75,14 +86,15 @@ class FinishAddCustomUnitViewModel @Inject constructor(
     fun onChangeOfDose(newDose: String) {
         doseText = newDose
     }
+
     val dose: Double? get() = doseText.toDoubleOrNull()
 
     var estimatedDoseDeviationText by mutableStateOf("")
     fun onChangeOfEstimatedDoseDeviation(newEstimatedDoseDeviation: String) {
         estimatedDoseDeviationText = newEstimatedDoseDeviation
     }
-    private val estimatedDoseDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
 
+    private val estimatedDoseDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
 
     var isEstimate by mutableStateOf(false)
     fun onChangeOfIsEstimate(newIsEstimate: Boolean) {
@@ -101,34 +113,42 @@ class FinishAddCustomUnitViewModel @Inject constructor(
     }
 
     init {
-        val routeString = state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
-        administrationRoute = AdministrationRoute.valueOf(routeString)
-        roaDose = substance.getRoa(administrationRoute)?.roaDose
         originalUnit = roaDose?.units ?: ""
-    }
-
-    fun createSaveAndDismissAfter(dismiss: () -> Unit) {
         viewModelScope.launch {
-            createAndSaveCustomUnit()
-            withContext(Dispatchers.Main) {
-                dismiss()
+            substanceName = finishAddCustomUnitRoute.substanceName
+            substance = substanceRepository.getSubstance(finishAddCustomUnitRoute.substanceName)
+            originalUnit = roaDose?.units ?: "mg"
+            isUnitsFieldShown = roaDose?.units?.isBlank() ?: true
+            if (substance == null || roaDose?.units == null) {
+                val customSubstance =
+                    experienceRepo.getCustomSubstance(finishAddCustomUnitRoute.substanceName)
+                if (customSubstance != null) {
+                    originalUnit = customSubstance.units
+                    isUnitsFieldShown = false
+                }
             }
         }
     }
 
-    private suspend fun createAndSaveCustomUnit() {
-        val customUnit = CustomUnit(
-            substanceName = substanceName,
-            name = name,
-            administrationRoute = administrationRoute,
-            dose = dose,
-            isEstimate = isEstimate,
-            estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseDeviation else null,
-            isArchived = isArchived,
-            unit = unit,
-            originalUnit = originalUnit,
-            note = note
-        )
-        experienceRepo.insert(customUnit)
+    fun createSaveAndDismissAfter(dismiss: (customUnitId: Int) -> Unit) {
+        viewModelScope.launch {
+            val customUnit = CustomUnit(
+                substanceName = substanceName,
+                name = name,
+                administrationRoute = administrationRoute,
+                dose = dose,
+                isEstimate = isEstimate,
+                estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseDeviation else null,
+                isArchived = isArchived,
+                unit = unit,
+                unitPlural = unitPlural,
+                originalUnit = originalUnit,
+                note = note
+            )
+            val customUnitId = experienceRepo.insert(customUnit)
+            withContext(Dispatchers.Main) {
+                dismiss(customUnitId)
+            }
+        }
     }
 }

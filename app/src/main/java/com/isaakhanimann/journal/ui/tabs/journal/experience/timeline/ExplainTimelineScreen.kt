@@ -60,7 +60,7 @@ fun ExplainTimelineScreen() {
                 .padding(horizontal = horizontalPadding)
         ) {
             VerticalSpace()
-            CardWithTitle(title = "Simplifying assumptions") {
+            CardWithTitle(title = "Simplifying/False assumptions") {
                 val text = buildAnnotatedString {
                     append("To be able to draw the timeline with the given data multiple ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.ExtraBold)) {
@@ -71,10 +71,10 @@ fun ExplainTimelineScreen() {
                 SectionText(text = text)
                 BulletPoints(
                     points = listOf(
-                        "\"Taking e.g. x amount now will give the same effect as taking x amount later. There is no immediate tolerance.\"",
-                        "\"Taking twice the dose will give twice the effect.\"",
-                        "\"Duration ranges from PsychonautWiki can be applied for all kinds of dosages.\"",
-                        "\"Oral ingestions are always on an empty stomach and therefore not delayed (by up to 4 hours).\""
+                        "Taking e.g. x amount now will give the same effect as taking x amount later. There is no immediate tolerance.",
+                        "Taking twice the dose will give twice the effect.",
+                        "Duration ranges from PsychonautWiki can be applied for all kinds of dosages.",
+                        "Oral ingestions are always on an empty stomach and therefore not delayed (by up to 4 hours).",
                     )
                 )
             }
@@ -87,6 +87,7 @@ fun ExplainTimelineScreen() {
                         "Different administration routes are always drawn as separate timelines even if they are of the same substance. They also take the full height of the canvas, not the height that is proportional to the dose or effect.",
                         "If any of the 4 durations are missing but the total duration is given, then the first defined durations are drawn and as soon as a missing duration is encountered it uses the total to infer the end of the timeline and draws a dotted line to the end. If the total is not given it just stops drawing the line. So if there is no timeline or part of the timeline is missing that means that the duration is not defined in PsychonautWiki. If you add the missing durations in PsychonautWiki, the full timeline will be shown in the next update.",
                         "The vertical trajectory of dotted lines is unknown. So if you see a dotted line that means it is not known how the effect develops over that timeframe. The only thing that is known is where the line will end.",
+                        "When a time range is given for the ingestion and all durations are defined for the route of administration then the app assumes the dosage was evenly consumed in that time frame and cumulates the curves of the infinitesimal ingestions using convolution."
                     )
                 )
             }

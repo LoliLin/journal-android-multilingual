@@ -26,21 +26,18 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
-fun NavGraphBuilder.composableWithTransitions(
-    route: String,
-    arguments: List<NamedNavArgument> = emptyList(),
-    content: @Composable (AnimatedVisibilityScope.(NavBackStackEntry) -> Unit)
+inline fun <reified T : Any> NavGraphBuilder.composableWithTransitions(
+    noinline content: @Composable (AnimatedVisibilityScope.(NavBackStackEntry) -> Unit)
 ) {
     val withinTabTransitionTimeInMs = 300
     val tabSwitchTimeInMs = 200
-    composable(
-        route = route,
-        arguments = arguments,
+    composable<T>(
         exitTransition = {
             if (isChangingTab()) {
                 fadeOut(animationSpec = tween(tabSwitchTimeInMs))
@@ -86,11 +83,9 @@ fun NavGraphBuilder.composableWithTransitions(
 }
 
 fun AnimatedContentTransitionScope<NavBackStackEntry>.isChangingTab(): Boolean {
-    // check grandparents because in a tab graph there can be another nested graph such as addIngestion
-    val initialParent = initialState.destination.parent
-    val initialGrandParent = initialParent?.parent
-    val targetParent = targetState.destination.parent
-    val targetGrandParent = targetParent?.parent
-    return (initialGrandParent?.route ?: initialParent?.route) != (targetGrandParent?.route
-        ?: targetParent?.route)
+    val initialTopLevel = initialState.destination.hierarchy.firstOrNull { navDestination ->
+        topLevelRoutes.any { navDestination.hasRoute(it.route::class) } }
+    val targetTopLevel = targetState.destination.hierarchy.firstOrNull { navDestination ->
+        topLevelRoutes.any { navDestination.hasRoute(it.route::class) } }
+    return initialTopLevel != targetTopLevel
 }

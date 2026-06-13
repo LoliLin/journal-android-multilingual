@@ -82,7 +82,7 @@ fun StatsScreen(
         onTapOption = viewModel::onTapOption,
         statsModel = viewModel.statsModelFlow.collectAsState().value,
         onChangeConsumerName = viewModel::onChangeConsumer,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
     )
 }
 
@@ -99,7 +99,7 @@ fun StatsPreview(
             onTapOption = {},
             statsModel = statsModel,
             onChangeConsumerName = {},
-            consumerNamesSorted = listOf("You", "Someone else")
+            consumerNamesSorted = listOf("You", "Someone else"),
         )
     }
 }
@@ -111,7 +111,7 @@ fun StatsScreen(
     onTapOption: (option: TimePickerOption) -> Unit,
     statsModel: StatsModel,
     onChangeConsumerName: (String?) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
 ) {
     Scaffold(
         topBar = {
@@ -165,7 +165,7 @@ fun StatsScreen(
                     }
                 }
             )
-        }
+        },
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
             EmptyScreenDisclaimer(
@@ -178,7 +178,7 @@ fun StatsScreen(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
                     contentColor = MaterialTheme.colorScheme.onSurface,
                 ) {
-                    TimePickerOption.values().forEachIndexed { index, option ->
+                    TimePickerOption.entries.forEachIndexed { index, option ->
                         Tab(
                             text = { Text(option.displayText) },
                             selected = statsModel.selectedOption.tabIndex == index,

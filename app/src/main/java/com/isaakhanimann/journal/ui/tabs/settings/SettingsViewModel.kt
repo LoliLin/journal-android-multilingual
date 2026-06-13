@@ -41,11 +41,29 @@ class SettingsViewModel @Inject constructor(
     private val userPreferences: UserPreferences,
 ) : ViewModel() {
 
-    fun saveDosageDotsAreHidden(value: Boolean) {
-        viewModelScope.launch {
-            userPreferences.saveDosageDotsAreHidden(value)
-        }
+    fun saveDosageDotsAreHidden(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveDosageDotsAreHidden(value)
     }
+
+    fun saveAreSubstanceHeightsIndependent(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveAreSubstanceHeightsIndependent(value)
+    }
+
+    fun saveIsTimelineHidden(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveIsTimelineHidden(value)
+    }
+
+    val isTimelineHiddenFlow = userPreferences.isTimelineHiddenFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    val areSubstanceHeightsIndependentFlow = userPreferences.areSubstanceHeightsIndependentFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
     val areDosageDotsHiddenFlow = userPreferences.areDosageDotsHiddenFlow.stateIn(
         initialValue = false,
@@ -100,6 +118,7 @@ class SettingsViewModel @Inject constructor(
                         IngestionSerializable(
                             substanceName = ingestion.substanceName,
                             time = ingestion.time,
+                            endTime = ingestion.endTime,
                             creationDate = ingestion.creationDate,
                             administrationRoute = ingestion.administrationRoute,
                             dose = ingestion.dose,
@@ -151,6 +170,7 @@ class SettingsViewModel @Inject constructor(
                     isEstimate = it.isEstimate,
                     isArchived = it.isArchived,
                     unit = it.unit,
+                    unitPlural = it.unitPlural,
                     originalUnit = it.originalUnit,
                     note = it.note
                 )

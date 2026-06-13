@@ -18,17 +18,41 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance.roa
 
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.text.NumberFormat
 import java.util.Locale
-import kotlin.math.roundToInt
+
 
 fun Double.toReadableString(): String {
-    if (this>100) {
-        return this.roundToInt().toString()
+    val numberOfSignificantDigits = if (this > 1) 3 else 2
+    val roundedNumber = roundToSignificantDigits(this, numberOfSignificantDigits)
+    return formatToMaximumFractionDigits(roundedNumber, 6)
+}
+
+fun Double.toPreservedString(): String {
+    val numberFormat = NumberFormat.getInstance(Locale.US).apply {
+        isGroupingUsed = false
     }
-    val format = if (this > 10) {
-        "%.1f"
-    } else {
-        "%.2f"
-    }
-    return String.format(Locale.US, format, this).replace("0*$".toRegex(), "").replace("\\.$".toRegex(), "")
+    return numberFormat.format(this)
+}
+
+fun roundToSignificantDigits(value: Double, significantDigits: Int): Double {
+    if (value == 0.0) return 0.0
+    val bigDecimal = BigDecimal(value)
+    val scale = significantDigits - bigDecimal.precision() + bigDecimal.scale()
+    return bigDecimal.setScale(scale, RoundingMode.HALF_UP).toDouble()
+}
+
+fun formatToMaximumFractionDigits(value: Double, maximumFractionDigits: Int): String {
+    val df = DecimalFormat()
+    df.decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
+    df.isDecimalSeparatorAlwaysShown = false
+    df.minimumFractionDigits = 0
+    df.maximumFractionDigits = maximumFractionDigits
+    df.isGroupingUsed = false
+
+    return df.format(value)
 }

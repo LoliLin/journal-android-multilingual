@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -45,11 +46,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.theme.minimumTouchTargetHeight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -85,6 +89,19 @@ fun DrugTestingScreen() {
                     url = "https://triptalks.at"
                 )
             }
+            CardWithTesting(title = "Australia") {
+                TestingServiceItem(
+                    name = "CanTEST",
+                    city = "Canberra",
+                    url = "https://www.cahma.org.au/services/cantest/"
+                )
+                HorizontalDivider()
+                TestingServiceItem(
+                    name = "CheQpoint",
+                    city = "Queensland",
+                    url = "https://www.quihn.org/cheqpoint/"
+                )
+            }
             CardWithTesting(title = "Belgium") {
                 TestingServiceItem(
                     name = "Modus Vivendi",
@@ -103,6 +120,11 @@ fun DrugTestingScreen() {
                     name = "Get Your Drugs Tested",
                     city = "Vancouver",
                     url = "http://www.vch.ca/public-health/harm-reduction/overdose-prevention-response/drug-checking"
+                )
+                TestingServiceItem(
+                    name = "grip",
+                    city = "Montreal",
+                    url = "https://grip-prevention.ca/en/drug-checking/"
                 )
             }
             CardWithTesting(title = "Germany") {
@@ -145,6 +167,13 @@ fun DrugTestingScreen() {
                     url = "https://www.drugs-test.nl/en/testlocations/"
                 )
             }
+            CardWithTesting(title = "Norway") {
+                TestingServiceItem(
+                    name = "Rusopplysningen",
+                    city = "Oslo",
+                    url = "https://rusopplysningen.no/analysetjeneste"
+                )
+            }
             CardWithTesting(title = "Slovenia") {
                 TestingServiceItem(
                     name = "DrogArt",
@@ -157,6 +186,11 @@ fun DrugTestingScreen() {
                     name = "Energy Control",
                     city = "Various locations",
                     url = "https://energycontrol.org/servicio-de-analisis/"
+                )
+                TestingServiceItem(
+                    name = "CHEMSAFE",
+                    city = "Various locations",
+                    url = "https://www.chem-safe.org/check-your-chems/"
                 )
                 TestingServiceItem(
                     name = "Kykeon Analytics",
@@ -199,6 +233,12 @@ fun DrugTestingScreen() {
                     city = "Luzern",
                     url = "https://www.gassenarbeit.ch/angebote/dilu"
                 )
+                HorizontalDivider()
+                TestingServiceItem(
+                    name = "NightLife Vaud",
+                    city = "Lausanne",
+                    url = "https://nightlifevaud.ch/permanence/"
+                )
             }
 
             CardWithTesting(title = "United Kingdom") {
@@ -209,12 +249,16 @@ fun DrugTestingScreen() {
                 )
             }
             val uriHandler = LocalUriHandler.current
-            TextButton(onClick = {
-                uriHandler.openUri("https://t.me/isaakhanimann")
-            }) {
+            val reportServiceText = "Report missing service"
+            TextButton(
+                onClick = {
+                    uriHandler.openUri("https://t.me/isaakhanimann")
+                },
+                modifier = Modifier.semantics {
+                    contentDescription = reportServiceText
+                }) {
                 Text(
-                    "Report missing service",
-                    style = MaterialTheme.typography.bodySmall,
+                    reportServiceText,
                     textDecoration = TextDecoration.Underline
                 )
             }
@@ -268,6 +312,7 @@ fun TestingServiceItem(
                 uriHandler.openUri(url)
             }
             .padding(horizontal = horizontalPadding, vertical = 5.dp)
+            .heightIn(min = minimumTouchTargetHeight)
             .fillMaxWidth()
     ) {
         Icon(

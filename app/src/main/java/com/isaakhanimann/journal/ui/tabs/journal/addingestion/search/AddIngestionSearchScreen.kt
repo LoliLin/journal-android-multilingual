@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -61,6 +62,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
@@ -70,7 +72,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.SuggestionRow
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.SubstanceRouteSuggestion
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.Suggestion
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -80,25 +82,28 @@ fun AddIngestionSearchScreen(
     navigateToCheckSaferUse: (substanceName: String) -> Unit,
     navigateToChooseRoute: (substanceName: String) -> Unit,
     navigateToDose: (substanceName: String, route: AdministrationRoute) -> Unit,
-    navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
+    navigateToChooseCustomSubstanceDose: (customSubstanceName: String, route: AdministrationRoute) -> Unit,
     navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
-    navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
+    navigateToCustomSubstanceChooseRoute: (customSubstanceName: String) -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
-    navigateToAddCustomSubstanceScreen: () -> Unit,
+    navigateToAddCustomSubstanceScreen: (searchText: String) -> Unit,
     viewModel: AddIngestionSearchViewModel = hiltViewModel()
 ) {
+    val searchText = viewModel.searchTextFlow.collectAsState().value
     AddIngestionSearchScreen(
         navigateToCheckInteractions = navigateToCheckInteractions,
         navigateToCheckSaferUse = navigateToCheckSaferUse,
         navigateToChooseRoute = navigateToChooseRoute,
-        navigateToCustomDose = navigateToCustomDose,
+        navigateToCustomDose = navigateToChooseCustomSubstanceDose,
         navigateToCustomSubstanceChooseRoute = navigateToCustomSubstanceChooseRoute,
         navigateToChooseTime = navigateToChooseTime,
         navigateToDose = navigateToDose,
-        navigateToAddCustomSubstanceScreen = navigateToAddCustomSubstanceScreen,
+        navigateToAddCustomSubstanceScreen = {
+            navigateToAddCustomSubstanceScreen(searchText)
+        },
         navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
-        substanceRouteSuggestions = viewModel.filteredSuggestions.collectAsState().value,
-        searchText = viewModel.searchTextFlow.collectAsState().value,
+        suggestions = viewModel.filteredSuggestions.collectAsState().value,
+        searchText = searchText,
         onChangeSearchText = {
             viewModel.updateSearchText(it)
         },
@@ -115,12 +120,12 @@ fun AddIngestionSearchScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
     navigateToCheckSaferUse: (substanceName: String) -> Unit,
     navigateToDose: (substanceName: String, route: AdministrationRoute) -> Unit,
-    navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
+    navigateToCustomDose: (customSubstanceName: String, route: AdministrationRoute) -> Unit,
     navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
-    navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
+    navigateToCustomSubstanceChooseRoute: (customSubstanceName: String) -> Unit,
     navigateToAddCustomSubstanceScreen: () -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
-    substanceRouteSuggestions: List<SubstanceRouteSuggestion>,
+    suggestions: List<Suggestion>,
     searchText: String,
     onChangeSearchText: (searchText: String) -> Unit,
     filteredSubstances: List<SubstanceModel>,
@@ -142,7 +147,7 @@ fun AddIngestionSearchScreen(
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.17f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().clearAndSetSemantics {  },
             )
             TextField(
                 value = searchText,
@@ -154,7 +159,7 @@ fun AddIngestionSearchScreen(
                     .focusRequester(focusRequester)
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
-                    },
+                    }.clearAndSetSemantics {  },
                 placeholder = { Text(text = "Search substances") },
                 leadingIcon = {
                     Icon(
@@ -178,27 +183,27 @@ fun AddIngestionSearchScreen(
                 },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    autoCorrect = false,
+                    autoCorrectEnabled = false,
                     imeAction = ImeAction.Done,
                     capitalization = KeyboardCapitalization.Words,
                 ),
                 singleLine = true
             )
             LazyColumn {
-                if (substanceRouteSuggestions.isNotEmpty()) {
+                if (suggestions.isNotEmpty()) {
                     stickyHeader {
                         SectionHeader(title = "Quick logging")
                     }
                 }
-                itemsIndexed(substanceRouteSuggestions) { index, substanceRow ->
+                itemsIndexed(suggestions) { index, suggestion ->
                     SuggestionRow(
-                        substanceRouteSuggestion = substanceRow,
+                        suggestion = suggestion,
                         navigateToDose = navigateToDose,
                         navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
                         navigateToCustomDose = navigateToCustomDose,
                         navigateToChooseTime = navigateToChooseTime
                     )
-                    if (index < substanceRouteSuggestions.size - 1) {
+                    if (index < suggestions.size - 1) {
                         HorizontalDivider()
                     }
                 }
@@ -215,7 +220,7 @@ fun AddIngestionSearchScreen(
                         hasSaferUse = false,
                         hasInteractions = false
                     ), onTap = {
-                        navigateToCustomSubstanceChooseRoute(customSubstance.id)
+                        navigateToCustomSubstanceChooseRoute(customSubstance.name)
                     })
                     if (index < filteredCustomSubstances.size - 1) {
                         HorizontalDivider()
@@ -239,7 +244,7 @@ fun AddIngestionSearchScreen(
                         SectionHeader(title = "Substances")
                     }
                 }
-                itemsIndexed(filteredSubstances) { index, substance ->
+                items(filteredSubstances) { substance ->
                     SubstanceRowAddIngestion(substanceModel = substance, onTap = {
                         if (substance.hasSaferUse) {
                             navigateToCheckSaferUse(substance.name)
@@ -249,11 +254,10 @@ fun AddIngestionSearchScreen(
                             navigateToChooseRoute(substance.name)
                         }
                     })
-                    if (index < filteredSubstances.size - 1) {
-                        HorizontalDivider()
-                    }
+                    HorizontalDivider()
                 }
                 item {
+                    HorizontalDivider()
                     TextButton(
                         onClick = navigateToAddCustomSubstanceScreen,
                         modifier = Modifier.padding(horizontal = horizontalPadding)
@@ -264,6 +268,7 @@ fun AddIngestionSearchScreen(
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                         Text(text = "Add custom substance")
                     }
+                    HorizontalDivider()
                 }
                 item {
                     if (filteredSubstances.isEmpty() && filteredCustomSubstances.isEmpty()) {
