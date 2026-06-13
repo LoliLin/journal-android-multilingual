@@ -8,7 +8,7 @@ Licensed, GPLv3
 
 # Journal Android Multilingual
 
-Journal 是一个著名的用于记录药物使用情况的应用，广泛流传于 Oder 之间。Journal 自 9.0 起转闭源程序，并对其高级功能收费。与此同时，Journal 以全英文的方式呈现，对其他语言使用者晦涩难懂。
+Journal 是一个著名的用于记录药物使用情况的应用，广泛流传于 Oder 之间。Journal 自 ~~9.0~~ 11.1 起转闭源程序，并对其高级功能收费。与此同时，Journal 以全英文的方式呈现，对其他语言使用者晦涩难懂。
 
 Journal 的数据来自 PsychonautWiki，这是一个全英文 wiki。
 
