@@ -95,6 +95,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import androidx.compose.foundation.layout.*
+import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
 
 @Stable
 class SubstanceDisplayNameProvider(
@@ -288,27 +289,11 @@ fun ShareableExperienceCard(
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth() 
-                .padding(horizontal = horizontalPadding)
-        ) {
-        
-            CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
-            if (achievements.isNotEmpty()){
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    achievements.forEach { achievementName ->
-                        AchievementLogoButton(registerName = achievementName)
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                }
-            }
-        }
+        OwnerProfileCard(
+            ownerUserName = ownerUserName,
+            achievements = achievements,
+            onUserNameChanged = {}
+        )
         
         CardTitle(title = oneExperienceScreenModel.title)
         Column(
