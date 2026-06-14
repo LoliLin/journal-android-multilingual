@@ -3,6 +3,7 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience
 import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
+import androidx.compose.runtime.Stable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -94,9 +95,24 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import androidx.compose.foundation.layout.*
+import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
 
-@Composable
-fun ShareableExperienceCard(
+@Stable
+class SubstanceDisplayNameProvider(
+    val get: (String) -> String
+)
+
+@Stable
+data class ShareableExperienceCardData(
+    val oneExperienceScreenModel: OneExperienceScreenModel,
+    val ownerUserName: String,
+    val achievements: List<String> = emptyList(),
+    val substanceDisplayNameProvider: SubstanceDisplayNameProvider,
+    val timeDisplayOption: TimeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
+    val areDosageDotsHidden: Boolean = false
+)
+
+fun prepareShareableExperienceCardData(
     substanceRepo: SubstanceRepository,
     interactionChecker: InteractionChecker,
     ownerUserName: String,
@@ -104,7 +120,7 @@ fun ShareableExperienceCard(
     timedNotes: List<TimedNote>,
     achievements: List<String> = emptyList(),
     experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
-) {
+): ShareableExperienceCardData{
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
     val ingestionsWithCompanions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
     val ratings = experienceWithIngestionsCompanionsAndRatings.ratings
@@ -234,17 +250,28 @@ fun ShareableExperienceCard(
         consumersWithIngestions = consumersWithIngestions
     )
 
-    // 6. 送去纯展示层
-    ShareableExperienceCard(
+    return ShareableExperienceCardData(
         oneExperienceScreenModel = oneExperienceScreenModel,
         timeDisplayOption = TimeDisplayOption.RELATIVE_TO_START,
         areDosageDotsHidden = false,
         ownerUserName = ownerUserName,
         achievements = achievements,
-        getSubstanceDisplayName = getSubstanceDisplayName
+        substanceDisplayNameProvider = SubstanceDisplayNameProvider(getSubstanceDisplayName)
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+fun ShareableExperienceCard(cardData: ShareableExperienceCardData) {
+    ShareableExperienceCard(
+        oneExperienceScreenModel = cardData.oneExperienceScreenModel,
+        timeDisplayOption = cardData.timeDisplayOption,
+        areDosageDotsHidden = cardData.areDosageDotsHidden,
+        ownerUserName = cardData.ownerUserName,
+        achievements = cardData.achievements,
+        getSubstanceDisplayName = cardData.substanceDisplayNameProvider.get
+    )
+}
       
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -262,27 +289,11 @@ fun ShareableExperienceCard(
        .padding(vertical = verticalCardPadding)
        .fillMaxWidth() 
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth() 
-                .padding(horizontal = horizontalPadding)
-        ) {
-        
-            CardTitleWithAvatar(title = ownerUserName, username = ownerUserName, modifier = Modifier.scale(2f))
-            if (achievements.isNotEmpty()){
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    achievements.forEach { achievementName ->
-                        AchievementLogoButton(registerName = achievementName)
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                }
-            }
-        }
+        OwnerProfileCard(
+            ownerUserName = ownerUserName,
+            achievements = achievements,
+            onUserNameChanged = {}
+        )
         
         CardTitle(title = oneExperienceScreenModel.title)
         Column(

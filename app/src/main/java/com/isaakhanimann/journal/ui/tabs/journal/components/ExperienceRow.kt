@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.components
 
+import android.util.Log
+import android.widget.Toast
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -70,6 +72,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Inter
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
+import com.isaakhanimann.journal.ui.tabs.journal.experience.prepareShareableExperienceCardData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRowViewModel
 import javax.inject.Inject
@@ -104,6 +107,21 @@ fun ExperienceRow(
         val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
         val timedNotes = rowViewModel.getTimedNotes(experience.id).collectAsState(initial = emptyList()).value
+        val substanceRepo = rowViewModel.substanceRepo
+        val interactionChecker = rowViewModel.interactionChecker
+        val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
+        val achievements = rowViewModel.achievementsFlow.collectAsState().value
+
+        
+        val cardData = prepareShareableExperienceCardData(
+                                substanceRepo = substanceRepo,
+                                interactionChecker = interactionChecker,
+                                ownerUserName = ownerUserName,
+                                getSubstanceDisplayName = getSubstanceDisplayName,
+                                timedNotes = timedNotes,
+                                achievements = achievements,
+                                experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
+                            )
         
         ColorRectangle(ingestions = ingestions)
         Column (modifier = Modifier.weight(1f)){
@@ -176,35 +194,28 @@ fun ExperienceRow(
                 }
             }
         }
-
-        val substanceRepo = rowViewModel.substanceRepo
-        val interactionChecker = rowViewModel.interactionChecker
-        val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
-        val achievements = rowViewModel.achievementsFlow.collectAsState().value
         IconButton(onClick = {
             coroutineScope.launch {
-                val activity = context as? androidx.activity.ComponentActivity
-                if (activity != null) {
-                
-                    val bitmap = renderComposeViewToBitmap(
-                       context = context,
-                       widthPx = 1080,
-                       lifecycleView = currentView
-                    ) {
-                        JournalTheme(){
-                            ShareableExperienceCard(
-                                substanceRepo = substanceRepo,
-                                interactionChecker = interactionChecker,
-                                ownerUserName = ownerUserName,
-                                getSubstanceDisplayName = getSubstanceDisplayName,
-                                timedNotes = timedNotes,
-                                achievements = achievements,
-                                experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
-                            )
-                        }
-                   }
-                   shareBitmap(context, bitmap)
-               }
+                try {
+                    val activity = context as? androidx.activity.ComponentActivity
+                    if (activity != null) {
+                        val bitmap = renderComposeViewToBitmap(
+                            context = context,
+                            widthPx = 1080,
+                            lifecycleView = currentView,
+                            content = {
+                                JournalTheme {
+                                ShareableExperienceCard(cardData = cardData)
+                                }
+                            },
+                            postLayoutDelayMs = 300L
+                        )
+                        shareBitmap(context, bitmap)
+                    }
+                } catch (e: Exception) {
+                    Log.e("ExperienceRow", "error", e)
+                    Toast.makeText(context, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                }
             }
         }) {
             Icon(

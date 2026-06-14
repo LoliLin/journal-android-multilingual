@@ -24,6 +24,8 @@ import kotlin.coroutines.resume
 import coil.ImageLoader
 import coil.compose.LocalImageLoader
 import androidx.compose.runtime.CompositionLocalProvider
+import coil.intercept.Interceptor
+import kotlinx.coroutines.delay
 
 /**
  * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
@@ -32,7 +34,8 @@ suspend fun renderComposeViewToBitmap(
     context: Context,
     widthPx: Int,
     lifecycleView: View,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    postLayoutDelayMs: Long = 0L
 ): Bitmap = withContext(Dispatchers.Main) {
 
     // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
@@ -50,8 +53,19 @@ suspend fun renderComposeViewToBitmap(
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
         setContent {
+            // 创建一个自动禁用硬件加速的 ImageLoader
+            val safeImageLoader = ImageLoader.Builder(context)
+                .components {
+                    add(coil.intercept.Interceptor { chain ->
+                        val newRequest = chain.request.newBuilder()
+                            .allowHardware(false)   // 关键！禁用硬件位图
+                            .build()
+                        chain.proceed(newRequest)
+                    })
+                }
+                .build()
             CompositionLocalProvider(
-                LocalImageLoader provides ImageLoader(context)
+                LocalImageLoader provides safeImageLoader
             ) {
                 content()
             }
@@ -98,6 +112,10 @@ suspend fun renderComposeViewToBitmap(
         }
     }
 
+    if (postLayoutDelayMs > 0) {
+        delay(postLayoutDelayMs)
+    }
+
     // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
     val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
     val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
@@ -115,7 +133,10 @@ suspend fun renderComposeViewToBitmap(
     composeView.draw(canvas)
 
     // 7. 悄悄离场，不留一丝痕迹
+    val safeBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, false)
+    bitmap.recycle()
+
     hostActivityView.removeView(container)
 
-    return@withContext bitmap
+    return@withContext safeBitmap
 }
