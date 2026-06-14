@@ -194,22 +194,24 @@ fun ExperienceRow(
         }
         IconButton(onClick = {
             coroutineScope.launch {
-                val activity = context as? androidx.activity.ComponentActivity
-                if (activity != null) {
-                
-                    val bitmap = renderComposeViewToBitmap(
-                       context = context,
-                       widthPx = 1080,
-                       lifecycleView = currentView
-                    ) {
-                        JournalTheme(){
-                            ShareableExperienceCard(
-                                cardData = cardData
-                            )
+                try {
+                    val activity = context as? androidx.activity.ComponentActivity
+                    if (activity != null) {
+                        val bitmap = renderComposeViewToBitmap(
+                            context = context,
+                            widthPx = 1080,
+                            lifecycleView = currentView
+                        ) {
+                            JournalTheme {
+                                ShareableExperienceCard(cardData = cardData)
+                            }
                         }
-                   }
-                   shareBitmap(context, bitmap)
-               }
+                        shareBitmap(context, bitmap)
+                    }
+                } catch (e: Exception) {
+                    Log.e("ExperienceRow", "error", e)
+                    Toast.makeText(context, "${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                }
             }
         }) {
             Icon(
