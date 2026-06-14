@@ -202,7 +202,8 @@ fun ExperienceRow(
                         val bitmap = renderComposeViewToBitmap(
                             context = context,
                             widthPx = 1080,
-                            lifecycleView = currentView
+                            lifecycleView = currentView,
+                            postLayoutDelayMs = 300L
                         ) {
                             JournalTheme {
                                 ShareableExperienceCard(cardData = cardData)

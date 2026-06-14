@@ -25,6 +25,7 @@ import coil.ImageLoader
 import coil.compose.LocalImageLoader
 import androidx.compose.runtime.CompositionLocalProvider
 import coil.intercept.Interceptor
+import kotlinx.coroutines.delay
 
 /**
  * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
@@ -33,7 +34,8 @@ suspend fun renderComposeViewToBitmap(
     context: Context,
     widthPx: Int,
     lifecycleView: View,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    postLayoutDelayMs: Long = 0L
 ): Bitmap = withContext(Dispatchers.Main) {
 
     // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
@@ -108,6 +110,10 @@ suspend fun renderComposeViewToBitmap(
             composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
             mainHandler.removeCallbacksAndMessages(null)
         }
+    }
+
+    if (postLayoutDelayMs > 0) {
+        delay(postLayoutDelayMs)
     }
 
     // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
