@@ -115,7 +115,10 @@ suspend fun renderComposeViewToBitmap(
     composeView.draw(canvas)
 
     // 7. 悄悄离场，不留一丝痕迹
+    val safeBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, false)
+    bitmap.recycle()
+
     hostActivityView.removeView(container)
 
-    return@withContext bitmap
+    return@withContext safeBitmap
 }
