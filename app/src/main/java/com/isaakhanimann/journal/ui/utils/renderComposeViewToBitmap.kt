@@ -24,7 +24,7 @@ import kotlin.coroutines.resume
 import coil.ImageLoader
 import coil.compose.LocalImageLoader
 import androidx.compose.runtime.CompositionLocalProvider
-import coil.interceptor.Interceptor
+import coil.intercept.Interceptor
 
 /**
  * 终极完全体：安全、丝滑、绝不卡死且绝不无反应的 Compose 转 Bitmap 方案
@@ -54,7 +54,7 @@ suspend fun renderComposeViewToBitmap(
             // 创建一个自动禁用硬件加速的 ImageLoader
             val safeImageLoader = ImageLoader.Builder(context)
                 .components {
-                    add(coil.interceptor.Interceptor { chain ->
+                    add(coil.intercept.Interceptor { chain ->
                         val newRequest = chain.request.newBuilder()
                             .allowHardware(false)   // 关键！禁用硬件位图
                             .build()
