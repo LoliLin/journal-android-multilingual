@@ -203,12 +203,13 @@ fun ExperienceRow(
                             context = context,
                             widthPx = 1080,
                             lifecycleView = currentView,
-                            postLayoutDelayMs = 300L
-                        ) {
-                            JournalTheme {
+                            content = {
+                                JournalTheme {
                                 ShareableExperienceCard(cardData = cardData)
-                            }
-                        }
+                                }
+                            },
+                            postLayoutDelayMs = 300L
+                        )
                         shareBitmap(context, bitmap)
                     }
                 } catch (e: Exception) {
