@@ -268,7 +268,7 @@ fun ShareableExperienceCard(cardData: ShareableExperienceCardData) {
         areDosageDotsHidden = cardData.areDosageDotsHidden,
         ownerUserName = cardData.ownerUserName,
         achievements = cardData.achievements,
-        getSubstanceDisplayName = cardData.substanceDisplayNameProvider::get
+        getSubstanceDisplayName = cardData.substanceDisplayNameProvider.get
     )
 }
       
