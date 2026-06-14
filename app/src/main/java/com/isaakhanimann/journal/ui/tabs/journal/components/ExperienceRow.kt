@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.components
 
+import android.util.Log
+import android.widget.Toast
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
