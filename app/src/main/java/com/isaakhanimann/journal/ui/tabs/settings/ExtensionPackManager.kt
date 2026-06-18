@@ -116,6 +116,16 @@ object ExtensionPackLoader {
         // SubstanceRepository's extended loading path
     }
 
+    fun deleteExtension(context: Context, registerName: String): Boolean {
+        val packDir = java.io.File(context.filesDir, EXT_DIR, registerName)
+        return if (packDir.exists()) {
+            packDir.deleteRecursively()
+            com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
+            I18n.notifyOverridesChanged()
+            !packDir.exists()
+        } else false
+    }
+
     fun downloadAndInstall(context: Context, pack: ExtensionPack, updateUrl: String): String {
         return try {
             val tempFile = File(context.cacheDir, "download_${pack.registerName}.zip")
@@ -344,13 +354,14 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.outline
                 )
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    TextButton(onClick = {
+                Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    IconButton(onClick = {
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pack.officalLink))
                         context.startActivity(intent)
-                    }) { Text(i18n("extension_open_link")) }
-
-                    TextButton(
+                    }) {
+                        Icon(Icons.Outlined.OpenInNew, contentDescription = i18n("extension_open_link"), modifier = Modifier.size(20.dp))
+                    }
+                    IconButton(
                         onClick = {
                             if (!checkingUpdate) {
                                 checkingUpdate = true
@@ -358,11 +369,10 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                                     val info = ExtensionPackLoader.checkUpdate(pack.updateJsonLink, pack.versionCode)
                                     if (info != null) {
                                         updateInfo = info
-                                        checkingUpdate = false
                                     } else {
                                         snackbarHostState.showSnackbar("No update available")
-                                        checkingUpdate = false
                                     }
+                                    checkingUpdate = false
                                 }
                             }
                         },
@@ -371,23 +381,37 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                         if (checkingUpdate) {
                             CircularProgressIndicator(Modifier.size(16.dp), strokeWidth = 2.dp)
                         } else {
-                            Text(if (updateInfo != null) "${i18n("extension_update")} (${updateInfo!!.versionName})" else i18n("extension_check_update"))
+                            Icon(
+                                if (updateInfo != null) Icons.Outlined.SystemUpdateAlt else Icons.Outlined.Update,
+                                contentDescription = i18n("extension_check_update"),
+                                modifier = Modifier.size(20.dp),
+                                tint = if (updateInfo != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         }
                     }
-
                     if (updateInfo != null) {
-                        TextButton(
-                            onClick = {
-                                scope.launch {
-                                    snackbarHostState.showSnackbar("Downloading...")
-                                    val result = ExtensionPackLoader.downloadAndInstall(context, pack, updateInfo!!.url)
-                                    snackbarHostState.showSnackbar(result)
-                                    onRefresh()
-                                }
+                        IconButton(onClick = {
+                            scope.launch {
+                                snackbarHostState.showSnackbar("Downloading...")
+                                val result = ExtensionPackLoader.downloadAndInstall(context, pack, updateInfo!!.url)
+                                snackbarHostState.showSnackbar(result)
+                                onRefresh()
                             }
-                        ) {
-                            Text(i18n("extension_download"))
+                        }) {
+                            Icon(Icons.Outlined.FileDownload, contentDescription = i18n("extension_download"), modifier = Modifier.size(20.dp))
                         }
+                    }
+                    IconButton(onClick = {
+                        scope.launch {
+                            if (ExtensionPackLoader.deleteExtension(context, pack.registerName)) {
+                                snackbarHostState.showSnackbar("Deleted: " + pack.registerName)
+                                onRefresh()
+                            } else {
+                                snackbarHostState.showSnackbar("Delete failed")
+                            }
+                        }
+                    }) {
+                        Icon(Icons.Outlined.Delete, contentDescription = "Delete", modifier = Modifier.size(20.dp), tint = MaterialTheme.colorScheme.error)
                     }
                 }
             }
