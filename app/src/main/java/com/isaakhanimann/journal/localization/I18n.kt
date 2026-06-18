@@ -99,22 +99,23 @@ object I18n {
             mutableMapOf<String, String>()
         }
 
-        val extDir = java.io.File(context.filesDir, "ext_packs")
-        if (extDir.exists()) {
-            extDir.listFiles()?.forEach { packDir ->
-                val extFile = java.io.File(packDir, fileName)
-                if (extFile.exists()) {
-                    try {
-                        val json = JSONObject(extFile.readText())
-                        val keys = json.keys()
-                        while (keys.hasNext()) {
-                            val key = keys.next()
-                            resultMap[key] = json.optString(key, "")
-                        }
-                    } catch (_: Exception) {
-                    }
-                }
-            }
+        val extDir = java.io.File(context.filesDir, "ext_packs")
+        if (extDir.exists()) {
+            extDir.listFiles()?.forEach { packDir ->
+                val i18nDir = java.io.File(packDir, "i18n")
+                if (i18nDir.exists()) {
+                    i18nDir.listFiles()?.filter { it.name.endsWith(".json") }?.forEach { extFile ->
+                        try {
+                            val json = JSONObject(extFile.readText())
+                            val keys = json.keys()
+                            while (keys.hasNext()) {
+                                val key = keys.next()
+                                resultMap[key] = json.optString(key, "")
+                            }
+                        } catch (_: Exception) { }
+                    }
+                }
+            }
         }
 
         return resultMap

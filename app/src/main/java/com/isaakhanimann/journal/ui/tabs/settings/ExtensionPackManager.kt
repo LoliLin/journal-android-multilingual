@@ -202,7 +202,7 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
                 snackbarHostState.showSnackbar(resultMsg)
             }
             packs = ExtensionPackLoader.getInstalledPacks(context)
-            updateInfos = emptyMap()
+            
             LaunchedEffect(Unit) {
                 packs.forEach { pack ->
                     val info = ExtensionPackLoader.checkUpdate(pack.updateJsonLink, pack.versionCode)
@@ -239,7 +239,6 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         } else {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
-                    val updateInfo = updateInfos[pack.registerName]
                     ExtensionPackRow(pack = pack, updateInfo = updateInfo, context = context)
                     Spacer(Modifier.height(8.dp))
                 }
@@ -261,7 +260,7 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
         ) {
             if (pack.iconPath != null) {
                 AsyncImage(
-                    model = java.io.File(appContext.filesDir, "ext_packs/${pack.registerName}/${pack.iconPath}"),
+                    model = java.io.File(context.filesDir, "ext_packs/${pack.registerName}/${pack.iconPath}"),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp).clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
                 )
@@ -275,11 +274,11 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
             }
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = i18n(pack.titleKey, fallback = pack.titleKey),
+                    text = i18nOrDefault(pack.titleKey, pack.titleKey),
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = i18n(pack.descriptionKey, fallback = pack.descriptionKey),
+                    text = i18nOrDefault(pack.descriptionKey, pack.descriptionKey),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

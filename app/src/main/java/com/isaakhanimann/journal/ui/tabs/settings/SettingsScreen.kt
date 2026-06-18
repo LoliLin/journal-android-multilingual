@@ -382,7 +382,7 @@ fun SettingsScreen(
                                 onClick = {
                                     isShowingDeleteDialog = false
                                     deleteEverything()
-                                    extScope.launch {
+                                    scope.launch {
                                         snackbarHostState.showSnackbar(
                                             message = deletedSnackbarMessage,
                                             duration = SnackbarDuration.Short
