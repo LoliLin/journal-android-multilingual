@@ -31,6 +31,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.File
 import java.net.URL
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceEvents
 
 data class ExtensionPack(
     val registerName: String,
@@ -96,14 +97,19 @@ object ExtensionPackLoader {
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
         val packDir = File(context.filesDir, "$EXT_DIR/${pack.registerName}")
+
+        SubstanceEvents.notifySubstanceReload()
+        I18n.markDirty()
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
         val packDir = File(context.filesDir, "$EXT_DIR/$registerName")
         return if (packDir.exists()) {
             packDir.deleteRecursively()
-            //com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
-            //I18n.notifyOverridesChanged()
+
+            SubstanceEvents.notifySubstanceReload()
+            I18n.markDirty()
+            
             !packDir.exists()
         } else false
     }
