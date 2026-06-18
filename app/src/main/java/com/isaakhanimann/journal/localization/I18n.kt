@@ -6,13 +6,20 @@ import androidx.compose.ui.platform.LocalContext
 import java.util.Locale
 import org.json.JSONObject
 
-object I18n {
-    private var strings: Map<String, String> = emptyMap()
-    private val extraStrings = mutableMapOf<String, String>()
-    private var loadedLangKey: String? = null
-
-    fun setOverride(key: String, value: String) {
-        extraStrings[key] = value
+object I18n {
+
+    private var strings: Map<String, String> = emptyMap()
+
+    private val extraStrings = mutableMapOf<String, String>()
+
+    private var loadedLangKey: String? = null
+
+
+
+    fun setOverride(key: String, value: String) {
+
+        extraStrings[key] = value
+
     }
     private const val FALLBACK_LANG_KEY = "en_us"
     private var preferredLangKey: String? = null
@@ -100,6 +107,7 @@ object I18n {
 
 @Composable
 fun i18n(key: String, replacements: Map<String, String> = emptyMap()): String {
+    I18n.overrideVersion // observe changes from extension packs
     val context = LocalContext.current
     return I18n.translate(context, key, replacements)
 }
@@ -110,6 +118,7 @@ fun i18nOrDefault(
     fallback: String,
     replacements: Map<String, String> = emptyMap(),
 ): String {
+    I18n.overrideVersion // observe changes from extension packs
     val context = LocalContext.current
     return I18n.translateOrDefault(context, key, fallback, replacements)
 }

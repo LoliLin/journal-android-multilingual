@@ -94,6 +94,7 @@ object ExtensionPackLoader {
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
+        // Load i18n from extension's i18n/ directory
         val packDir = File(context.filesDir, EXT_DIR, pack.registerName)
 
         // Load i18n overrides from extension's i18n/ directory
