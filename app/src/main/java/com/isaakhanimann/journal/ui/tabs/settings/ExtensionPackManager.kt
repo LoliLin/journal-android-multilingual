@@ -99,7 +99,7 @@ object ExtensionPackLoader {
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
-        val packDir = File(context.filesDir, "$EXT_DIR/${pack.registerName}")
+        val packDir = File(context.filesDir, "$EXT_DIR/$registerName")
         return if (packDir.exists()) {
             packDir.deleteRecursively()
             //com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
@@ -233,7 +233,9 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         } else {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
-                    ExtensionPackRow(pack = pack, context = context, scope = scope, snackbarHostState = snackbarHostState )
+                    ExtensionPackRow(pack = pack, context = context, scope = scope, snackbarHostState = snackbarHostState ){
+                        
+                    }
                     Spacer(Modifier.height(8.dp))
                 }
             }
