@@ -95,11 +95,11 @@ object ExtensionPackLoader {
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
-        val packDir = File(context.filesDir, ＂$EXT_DIR/${pack.registerName}")
+        val packDir = File(context.filesDir, "$EXT_DIR/${pack.registerName}")
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
-        val packDir = File(context.filesDir, ＂$EXT_DIR/${pack.registerName}")
+        val packDir = File(context.filesDir, "$EXT_DIR/${pack.registerName}")
         return if (packDir.exists()) {
             packDir.deleteRecursively()
             //com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
