@@ -92,7 +92,7 @@ class SubstanceRepository @Inject constructor(
             mergeCategories(merged, loadCategoriesForLanguage(key))
         }
         var substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
-            val v0, mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
+            val v0 = mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
             mergeSubstanceJsonMaps(v0, loadSubstanceJsonFromExtensions(key, appContext))
         }
         
