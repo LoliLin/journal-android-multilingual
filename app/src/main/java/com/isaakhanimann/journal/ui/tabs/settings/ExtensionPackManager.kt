@@ -240,7 +240,7 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
                     ExtensionPackRow(pack = pack, context = context, scope = scope, snackbarHostState = snackbarHostState ){
-                        
+                        refreshKey++
                     }
                     Spacer(Modifier.height(8.dp))
                 }
