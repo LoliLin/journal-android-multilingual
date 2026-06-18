@@ -1,0 +1,118 @@
+{
+  "name": "Vitamin C",
+  "localizedName": "Vitamin C",
+  "commonNames": [
+    "Ascorbic Acid",
+    "L-Ascorbic Acid",
+    "Cenolate"
+  ],
+  "url": "https://en.wikipedia.org/wiki/Vitamin_C",
+  "isApproved": true,
+  "tolerance": {
+    "full": "not applicable (essential nutrient, no receptor tachyphylaxis)",
+    "zero": "not applicable"
+  },
+  "crossTolerances": [],
+  "toxicities": [
+    "Very low acute toxicity. Megadoses (>2000mg/day oral) may cause osmotic diarrhea, abdominal cramps, and increase the risk of calcium oxalate kidney stones in susceptible individuals.",
+    "Doses above 1000mg saturate the intestinal active transport system, leading to a sharp decline in bioavailability."
+  ],
+  "categories": [
+    "vitamin",
+    "antioxidant",
+    "essential-nutrient"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 30,
+        "commonMin": 100,
+        "strongMin": 500,
+        "heavyMin": 1000
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 0,
+          "max": 0,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "max": 99
+      }
+    },
+    {
+      "name": "intravenous",
+      "dose": {
+        "units": "mg",
+        "lightMin": 500,
+        "commonMin": 2000,
+        "strongMin": 10000,
+        "heavyMin": 50000
+      },
+      "duration": {
+        "onset": {
+          "min": 0,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 5,
+          "max": 15,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 0,
+          "max": 0,
+          "units": "hours"
+        }
+      },
+      "bioavailability": {
+        "max": 100
+      }
+    }
+  ]
+}
+
