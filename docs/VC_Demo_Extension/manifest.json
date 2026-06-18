@@ -1,0 +1,9 @@
+{
+  "registerName": "VC_Demo_Extension",
+  "titleTranslateable": "VC_Demo_Extension.title",
+  "descriptionTranslateable": "VC_Demo_Extension.desc",
+  "officalLink": "https://github.com/LoliLin/journal-android-multilingual/blob/extension_pack/docs/VC_Demo_Extension",
+  "updateJsonLink": "https://raw.githubusercontent.com/LoliLin/journal-android-multilingual/refs/heads/extension_pack/docs/VC_Demo_Extension/update.json",
+  "versionName": "1.0.0",
+  "versionCode": 1
+}
