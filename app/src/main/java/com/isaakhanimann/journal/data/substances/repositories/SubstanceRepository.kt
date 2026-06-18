@@ -92,8 +92,8 @@ class SubstanceRepository @Inject constructor(
             mergeCategories(merged, loadCategoriesForLanguage(key))
         }
         var substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
-            mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
-            mergeSubstanceJsonMaps(merged, loadSubstanceJsonFromExtensions(key, appContext))
+            val v0, mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
+            mergeSubstanceJsonMaps(v0, loadSubstanceJsonFromExtensions(key, appContext))
         }
         
         val substances = parseSubstancesFromJsonMap(substancesByFile)
@@ -174,7 +174,7 @@ class SubstanceRepository @Inject constructor(
             ?: emptyList()
 
         return files
-            .filter { it.endsWith(".json") && it.name != CATEGORIES_FILE_NAME }
+            .filter { it.name.endsWith(".json") && it.name != CATEGORIES_FILE_NAME }
             .sortedBy { it.name }
             .mapNotNull { file ->
                 runCatching {
