@@ -79,7 +79,7 @@ object ExtensionPackLoader {
     }
 
     suspend fun checkUpdate(updateJsonLink: String, currentVersionCode: Int): ExtensionUpdateInfo? {
-        return try {
+        return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { try {
             val jsonText = URL(updateJsonLink).readText()
             val json = JSONObject(jsonText)
             val latest = json.keys().asSequence()
@@ -92,7 +92,7 @@ object ExtensionPackLoader {
                     url = info.getString("url")
                 )
             } else null
-        } catch (_: Exception) { null }
+        } catch (_: Exception) { null }}
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
