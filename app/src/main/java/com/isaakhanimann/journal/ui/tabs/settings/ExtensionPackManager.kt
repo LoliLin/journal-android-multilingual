@@ -74,7 +74,7 @@ object ExtensionPackLoader {
             updateJsonLink = json.getString("updateJsonLink"),
             versionName = json.getString("versionName"),
             versionCode = json.getInt("versionCode"),
-            iconPath = json.optString("icon", null)?.let { File(packDir, it).takeIf { f -> f.exists() }?.absolutePath }
+            iconPath = json.optString("icon", null)
         )
     }
 
