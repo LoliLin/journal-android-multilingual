@@ -29,9 +29,27 @@ import com.isaakhanimann.journal.data.substances.search.PinyinSubstanceSearcher
 import com.isaakhanimann.journal.data.substances.search.SubstanceSearcher
 import com.isaakhanimann.journal.localization.I18n
 import dagger.hilt.android.qualifiers.ApplicationContext
+import org.json.JSONArray
 import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
+
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
+
+object SubstanceEvents {
+    private val _substanceReloadSignal = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val substanceReloadSignal = _substanceReloadSignal.asSharedFlow()
+
+    fun notifySubstanceReload() {
+        _substanceReloadSignal.tryEmit(Unit)
+    }
+}
+
 
 @Singleton
 class SubstanceRepository @Inject constructor(
@@ -47,6 +65,12 @@ class SubstanceRepository @Inject constructor(
         private const val ZH_CN_LANGUAGE_KEY = "zh_cn"
     }
 
+    private var needsReload = false;
+
+    fun markDirty() {
+        needsReload = true
+    }
+
     private var substanceFile: SubstanceFile
     private var loadedLanguageKey: String
     var searcher: SubstanceSearcher = DefaultSubstanceSearcher()
@@ -57,14 +81,25 @@ class SubstanceRepository @Inject constructor(
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
         updateSearcher(languageKey)
+        needsReload = false
+        CoroutineScope(Dispatchers.Default).launch {
+            SubstanceEvents.substanceReloadSignal.collect {
+                markDirty()
+            }
+        }
     }
 
     private fun ensureLanguageLoaded() {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
-        if (languageKey == loadedLanguageKey) return
+        if (languageKey == loadedLanguageKey && !needsReload) return
+        reload(languageKey)
+    }
+
+    private fun reload(languageKey: String) {
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
         updateSearcher(languageKey)
+        needsReload = false
     }
 
     fun updateSearcher(languageKey: String) {
@@ -83,9 +118,11 @@ class SubstanceRepository @Inject constructor(
         val categories = languageKeys.fold(emptyList<Category>()) { merged, key ->
             mergeCategories(merged, loadCategoriesForLanguage(key))
         }
-        val substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
-            mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
+        var substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
+            val v0 = mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
+            mergeSubstanceJsonMaps(v0, loadSubstanceJsonFromExtensions(key, appContext))
         }
+        
         val substances = parseSubstancesFromJsonMap(substancesByFile)
 
         return SubstanceFile(categories = categories, substances = substances)
@@ -93,10 +130,38 @@ class SubstanceRepository @Inject constructor(
 
     private fun loadCategoriesForLanguage(languageKey: String): List<Category> {
         val path = "$SUBSTANCES_DIR/$languageKey/$CATEGORIES_FILE_NAME"
-        return runCatching {
-            appContext.assets.open(path).bufferedReader().use { reader ->
-                substanceParser.parseCategories(reader.readText())
+
+    
+        val mergedJson = run {
+            val baseArray = try {
+                val baseText = appContext.assets.open(path).bufferedReader().use { it.readText() }
+                JSONArray(baseText)
+            } catch (_: Exception) {
+                JSONArray()  
             }
+
+        
+            val extDir = java.io.File(appContext.filesDir, "ext_packs")
+            if (extDir.exists() && extDir.isDirectory) {
+                extDir.listFiles()?.forEach { packDir ->
+                    val extFile = java.io.File(packDir, path)
+                    if (extFile.isFile) {
+                        try {
+                            val extArray = JSONArray(extFile.readText())
+                            for (i in 0 until extArray.length()) {
+                                baseArray.put(extArray.get(i))
+                            }
+                        } catch (_: Exception) {
+                        
+                        }
+                    }
+                }
+            }
+            baseArray.toString()
+        }
+
+        return runCatching {
+            substanceParser.parseCategories(mergedJson)
         }.getOrElse { emptyList() }
     }
 
@@ -115,6 +180,34 @@ class SubstanceRepository @Inject constructor(
                         val key = fileName.removeSuffix(".json")
                         key to JSONObject(reader.readText())
                     }
+                }.getOrNull()
+            }
+            .toMap()
+    }
+
+    private fun loadSubstanceJsonFromExtensions(languageKey: String, context: android.content.Context): Map<String, JSONObject> {
+        val extDir = java.io.File(context.filesDir, "ext_packs")
+        if (!extDir.exists()) return emptyMap()
+
+        val files = extDir.listFiles()
+            ?.flatMap { packDir ->
+                val subDir = java.io.File(packDir, "substances/$languageKey")
+                if (subDir.exists()) {
+                    subDir.listFiles()?.toList() ?: emptyList()
+                } else {
+                    emptyList()
+                }
+            }
+            ?: emptyList()
+
+        return files
+            .filter { it.name.endsWith(".json") && it.name != CATEGORIES_FILE_NAME }
+            .sortedBy { it.name }
+            .mapNotNull { file ->
+                runCatching {
+                    val key = file.nameWithoutExtension
+                    val json = org.json.JSONObject(file.readText())
+                    key to json
                 }.getOrNull()
             }
             .toMap()

@@ -538,5 +538,15 @@
   "achievement.n552aa_pr80": "N552AA?!",
   "achievement.n552aa_pr80.desc": "Cumulatively taken 20,000 mg of pregabalin!",
   "achievement.in_kawaiis": "洛，铃？",
-  "achievement.in_kawaiis.desc": "java.lang.NullPointerException"
+  "achievement.in_kawaiis.desc": "java.lang.NullPointerException",
+  "settings_extension_pack": "Extension pack",
+  "settings_extension_import": "Import extension pack",
+  "settings_extension_import_description": "Import a .zip extension pack to add new substances, translations and more.",
+  "extension_import_success": "Extension pack imported successfully",
+  "extension_import_failed": "Extension pack import failed",
+  "extension_no_packs": "No extension packs installed",
+  "extension_open_link": "Open link",
+  "extension_update": "Update",
+  "extension_check_update": "Check update",
+  "extension_download": "Download"
 }

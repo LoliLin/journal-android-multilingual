@@ -538,5 +538,15 @@
   "achievement.n552aa_pr80": "？？N552AA？！",
   "achievement.n552aa_pr80.desc": "累積服用普瑞巴林兩萬毫克！",
   "achievement.in_kawaiis": "洛，铃？",
-  "achievement.in_kawaiis.desc": "java.lang.NullPointerException"
+  "achievement.in_kawaiis.desc": "java.lang.NullPointerException",
+  "settings_extension_pack": "擴展包",
+  "settings_extension_import": "導入擴展包",
+  "settings_extension_import_description": "導入 .zip 擴展包以添加新物質、翻譯等。",
+  "extension_import_success": "擴展包導入成功",
+  "extension_import_failed": "擴展包導入失敗",
+  "extension_no_packs": "未安裝擴展包",
+  "extension_open_link": "打開鏈接",
+  "extension_update": "更新",
+  "extension_check_update": "檢查更新",
+  "extension_download": "下載"
 }

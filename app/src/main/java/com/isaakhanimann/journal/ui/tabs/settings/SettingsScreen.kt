@@ -49,6 +49,7 @@ import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -80,6 +81,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackImporter
 import com.isaakhanimann.journal.localization.i18n
 
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
@@ -116,6 +118,7 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
+    navigateToExtensionPack: () -> Unit = {},
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
@@ -128,6 +131,7 @@ fun SettingsScreen(
         navigateToCustomUnits = navigateToCustomUnits,
         navigateToDonate = navigateToDonate,
         navigateToIconPicker = navigateToIconPicker,
+        navigateToExtensionPack = navigateToExtensionPack,
         deleteEverything = viewModel::deleteEverything,
         importFile = viewModel::importFile,
         exportFile = viewModel::exportFile,
@@ -152,6 +156,7 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
+    navigateToExtensionPack: () -> Unit = {},
     deleteEverything: () -> Unit,
     importFile: (uri: Uri) -> Unit,
     exportFile: (uri: Uri) -> Unit,
@@ -399,7 +404,25 @@ fun SettingsScreen(
                     )
                 }
             }
+
+            CardWithTitle(title = i18n("settings_extension_pack"), innerPaddingHorizontal = 0.dp) {
+
+                SettingsButton(
+
+                    imageVector = Icons.Outlined.Extension,
+
+                    text = i18n("settings_extension_import")
+
+                ) {
+
+                    navigateToExtensionPack()
+
+                }
+
+            }
+
             val uriHandler = LocalUriHandler.current
+
             CardWithTitle(title = i18n("settings_feedback"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = i18n("settings_faq")) {
                     navigateToFAQ()

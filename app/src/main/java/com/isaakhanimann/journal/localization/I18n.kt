@@ -9,8 +9,15 @@ import org.json.JSONObject
 object I18n {
     private var strings: Map<String, String> = emptyMap()
     private var loadedLangKey: String? = null
+
     private const val FALLBACK_LANG_KEY = "en_us"
     private var preferredLangKey: String? = null
+
+    private var needsReload = false
+
+    fun markDirty() {
+        needsReload = true
+    }
 
     fun getCurrentLanguageKey(): String {
         val locale = Locale.getDefault()
@@ -57,7 +64,7 @@ object I18n {
 
     private fun ensureLoaded(context: Context) {
         val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
-        if (currentKey == loadedLangKey && strings.isNotEmpty()) return
+        if (currentKey == loadedLangKey && strings.isNotEmpty() && !needsReload) return
 
         val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)
         val localizedStrings = if (currentKey != FALLBACK_LANG_KEY) {
@@ -67,6 +74,7 @@ object I18n {
         }
         strings = fallbackStrings + localizedStrings
         loadedLangKey = currentKey
+        needsReload = false
     }
 
     private fun loadLanguageFile(context: Context, langKey: String): Map<String, String> {
@@ -75,7 +83,7 @@ object I18n {
     }
 
     private fun loadStringsFile(context: Context, filePath: String): Map<String, String> {
-        return try {
+        val resultMap = try {
             context.assets.open(filePath).use { inputStream ->
                 val jsonText = inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
                 val jsonObject = JSONObject(jsonText)
@@ -88,8 +96,27 @@ object I18n {
                 map
             }
         } catch (e: Exception) {
-            emptyMap()
+            mutableMapOf<String, String>()
         }
+
+        val extDir = java.io.File(context.filesDir, "ext_packs")
+        if (extDir.exists()) {
+            extDir.listFiles()?.forEach { packDir ->
+                val extFile = java.io.File(packDir, filePath)
+                if (extFile.exists()) {
+                    try {
+                        val json = JSONObject(extFile.readText())
+                        val keys = json.keys()
+                        while (keys.hasNext()) {
+                            val key = keys.next()
+                            resultMap[key] = json.optString(key, "")
+                        }
+                    } catch (_: Exception) {
+                    }
+                }
+            }
+        }
+        return resultMap
     }
 }
 
