@@ -78,7 +78,10 @@ class SubstanceRepository @Inject constructor(
 
     init {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
-        reload()
+        substanceFile = loadSubstanceFile(languageKey)
+        loadedLanguageKey = languageKey
+        updateSearcher(languageKey)
+        needsReload = false
         CoroutineScope(Dispatchers.Default).launch {
             SubstanceEvents.substanceReloadSignal.collect {
                 markDirty()
@@ -89,10 +92,10 @@ class SubstanceRepository @Inject constructor(
     private fun ensureLanguageLoaded() {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
         if (languageKey == loadedLanguageKey && !needsReload) return
-        reload()
+        reload(languageKey)
     }
 
-    private fun reload() {
+    private fun reload(languageKey: String) {
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
         updateSearcher(languageKey)
