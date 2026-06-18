@@ -65,7 +65,7 @@ object ExtensionPackImporter {
             // Apply overrides
             ExtensionPackLoader.applyExtension(context, pack)
 
-            return "Extension pack '${pack.titleDefault}' v${pack.versionName} imported ($extracted files)"
+            return "Extension pack '${pack.registerName}' v${pack.versionName} imported ($extracted files)"
         } catch (e: Exception) {
             "Import failed: ${e.localizedMessage ?: "unknown error"}"
         }
