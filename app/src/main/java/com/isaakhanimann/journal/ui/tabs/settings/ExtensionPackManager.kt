@@ -94,34 +94,15 @@ object ExtensionPackLoader {
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
-        // Load i18n from extension's i18n/ directory
         val packDir = File(context.filesDir, EXT_DIR, pack.registerName)
-
-        // Load i18n overrides from extension's i18n/ directory
-        val i18nDir = File(packDir, "i18n")
-        if (i18nDir.exists()) {
-            i18nDir.listFiles()?.forEach { langFile ->
-                if (langFile.name.endsWith(".json")) {
-                    try {
-                        val json = org.json.JSONObject(langFile.readText())
-                        json.keys().forEach { key ->
-                            I18n.setOverride(key, json.getString(key))
-                        }
-                    } catch (_: Exception) { }
-                }
-            }
-        }
-
-        // Substance files in extensions/substances/<lang>/ are picked up by
-        // SubstanceRepository's extended loading path
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
         val packDir = java.io.File(context.filesDir, EXT_DIR, registerName)
         return if (packDir.exists()) {
             packDir.deleteRecursively()
-            com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
-            I18n.notifyOverridesChanged()
+            //com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
+            //I18n.notifyOverridesChanged()
             !packDir.exists()
         } else false
     }
@@ -211,101 +192,55 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
     LaunchedEffect(refreshKey) {
         packs = ExtensionPackLoader.getInstalledPacks(context)
     }
-
     val snackbarHostState = remember { SnackbarHostState() }
-
     val importLauncher = rememberLauncherForActivityResult(
-
         contract = ActivityResultContracts.OpenDocument()
-
     ) { uri ->
-
         if (uri != null) {
-
             val resultMsg = ExtensionPackImporter.import(context, uri)
-
             scope.launch {
-
                 snackbarHostState.showSnackbar(resultMsg)
-
             }
-
             packs = ExtensionPackLoader.getInstalledPacks(context)
-
             updateInfos = emptyMap()
-
             LaunchedEffect(Unit) {
-
                 packs.forEach { pack ->
-
                     val info = ExtensionPackLoader.checkUpdate(pack.updateJsonLink, pack.versionCode)
-
                     updateInfos = updateInfos + (pack.registerName to info)
-
                 }
-
             }
-
         }
-
     }
 
-
-
     Scaffold(
-
         snackbarHost = { SnackbarHost(snackbarHostState) },
-
         topBar = {
-
             TopAppBar(
-
                 title = { Text(i18n("settings_extension_pack")) },
-
                 navigationIcon = {
-
                     IconButton(onClick = navigateBack) {
-
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
-
                     }
-
                 },
 
                 actions = {
-
                     IconButton(onClick = { importLauncher.launch(arrayOf("application/zip")) }) {
-
                         Icon(Icons.Outlined.FileDownload, "Import")
-
                     }
-
                 }
-
             )
-
         }
 
     ) { padding ->
-
         if (packs.isEmpty()) {
-
             Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-
                 Text(i18n("extension_no_packs"), style = MaterialTheme.typography.bodyLarge)
-
             }
-
         } else {
-
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
-
                 items(packs, key = { it.registerName }) { pack ->
-
                     val updateInfo = updateInfos[pack.registerName]
-
                     ExtensionPackRow(pack = pack, updateInfo = updateInfo, context = context)
-
                     Spacer(Modifier.height(8.dp))
                 }
             }
@@ -326,7 +261,7 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
         ) {
             if (pack.iconPath != null) {
                 AsyncImage(
-                    model = java.io.File(pack.iconPath),
+                    model = java.io.File(appContext.filesDir, "ext_packs/${pack.registerName}/${pack.iconPath}"),
                     contentDescription = null,
                     modifier = Modifier.size(40.dp).clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
                 )
@@ -411,7 +346,7 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                             }
                         }
                     }) {
-                        Icon(Icons.Outlined.Delete, contentDescription = "Delete", modifier = Modifier.size(20.dp), tint = MaterialTheme.colorScheme.error)
+                        Icon(Icons.Outlined.Delete, contentDescription = i18n("common_delete"), modifier = Modifier.size(20.dp), tint = MaterialTheme.colorScheme.error)
                     }
                 }
             }

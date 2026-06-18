@@ -45,7 +45,12 @@ class SubstanceRepository @Inject constructor(
         private const val ROOT_LANGUAGE_KEY = "root"
         private const val FALLBACK_LANGUAGE_KEY = ROOT_LANGUAGE_KEY
         private const val ZH_CN_LANGUAGE_KEY = "zh_cn"
+    }
 
+    private var needsReload = false;
+
+    fun markDirty() {
+        needsReload = true
     }
 
     private var substanceFile: SubstanceFile
@@ -66,6 +71,7 @@ class SubstanceRepository @Inject constructor(
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
         updateSearcher(languageKey)
+        needsReload = false
     }
 
     fun updateSearcher(languageKey: String) {
@@ -86,25 +92,9 @@ class SubstanceRepository @Inject constructor(
         }
         var substancesByFile = languageKeys.fold(emptyMap<String, JSONObject>()) { merged, key ->
             mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
+            mergeSubstanceJsonMaps(merged, loadSubstanceJsonFromExtensions(key, appContext))
         }
-        // Merge extension pack substances
-        try {
-            val extDir = java.io.File(appContext.filesDir, "ext_packs")
-            if (extDir.exists()) {
-                val langSubDir = java.io.File(extDir, "substances/$languageKey")
-                if (langSubDir.exists()) {
-                    val extMaps = mutableMapOf<String, org.json.JSONObject>()
-                    langSubDir.listFiles()?.filter { it.name.endsWith(".json") }?.forEach { f ->
-                        try {
-                            val json = org.json.JSONObject(f.readText())
-                            extMaps[f.nameWithoutExtension] = json
-                        } catch (_: Exception) { }
-                    }
-                    substancesByFile = mergeSubstanceJsonMaps(substancesByFile, extMaps)
-                }
-                }
-            }
-        } catch (_: Exception) { }
+        
         val substances = parseSubstancesFromJsonMap(substancesByFile)
 
         return SubstanceFile(categories = categories, substances = substances)
@@ -112,10 +102,38 @@ class SubstanceRepository @Inject constructor(
 
     private fun loadCategoriesForLanguage(languageKey: String): List<Category> {
         val path = "$SUBSTANCES_DIR/$languageKey/$CATEGORIES_FILE_NAME"
-        return runCatching {
-            appContext.assets.open(path).bufferedReader().use { reader ->
-                substanceParser.parseCategories(reader.readText())
+
+    
+        val mergedJson = run {
+            val baseArray = try {
+                val baseText = appContext.assets.open(path).bufferedReader().use { it.readText() }
+                JSONArray(baseText)
+            } catch (_: Exception) {
+                JSONArray()  
             }
+
+        
+            val extDir = java.io.File(appContext.filesDir, "ext_packs")
+            if (extDir.exists() && extDir.isDirectory) {
+                extDir.listFiles()?.forEach { packDir ->
+                    val extFile = java.io.File(packDir, path)
+                    if (extFile.isFile) {
+                        try {
+                            val extArray = JSONArray(extFile.readText())
+                            for (i in 0 until extArray.length()) {
+                                baseArray.put(extArray.get(i))
+                            }
+                        } catch (_: Exception) {
+                        
+                        }
+                    }
+                }
+            }
+            baseArray.toString()
+        }
+
+        return runCatching {
+            substanceParser.parseCategories(mergedJson)
         }.getOrElse { emptyList() }
     }
 
@@ -134,6 +152,34 @@ class SubstanceRepository @Inject constructor(
                         val key = fileName.removeSuffix(".json")
                         key to JSONObject(reader.readText())
                     }
+                }.getOrNull()
+            }
+            .toMap()
+    }
+
+    private fun loadSubstanceJsonFromExtensions(languageKey: String, context: android.content.Context): Map<String, JSONObject> {
+        val extDir = java.io.File(context.filesDir, "ext_packs")
+        if (!extDir.exists()) return emptyMap()
+
+        val files = extDir.listFiles()
+            ?.flatMap { packDir ->
+                val subDir = java.io.File(packDir, "substances/$languageKey")
+                if (subDir.exists()) {
+                    subDir.listFiles()?.toList() ?: emptyList()
+                } else {
+                    emptyList()
+                }
+            }
+            ?: emptyList()
+
+        return files
+            .filter { it.endsWith(".json") && it.name != CATEGORIES_FILE_NAME }
+            .sortedBy { it.name }
+            .mapNotNull { file ->
+                runCatching {
+                    val key = file.nameWithoutExtension
+                    val json = org.json.JSONObject(file.readText())
+                    key to json
                 }.getOrNull()
             }
             .toMap()
@@ -219,41 +265,6 @@ class SubstanceRepository @Inject constructor(
     override fun getCategory(categoryName: String): Category? {
         ensureLanguageLoaded()
         return substanceFile.categories.firstOrNull { it.name == categoryName }
-    }
-
-    fun reloadFromExtensions(context: android.content.Context) {
-        try {
-            val extSubstancesDir = java.io.File(context.filesDir, "ext_packs")
-            if (!extSubstancesDir.exists()) return
-            val langKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
-            val extFiles = mutableListOf<java.io.File>()
-            extSubstancesDir.listFiles()?.forEach { packDir ->
-                val substancesDir = java.io.File(packDir, "substances/$langKey")
-                if (substancesDir.exists()) {
-                    substancesDir.listFiles()?.filter { it.name.endsWith(".json") }?.forEach { f ->
-                        extFiles.add(f)
-                    }
-                }
-            }
-            if (extFiles.isEmpty()) return
-
-            val extSubstances = mutableListOf<com.isaakhanimann.journal.data.substances.classes.Substance>()
-            extFiles.forEach { file ->
-                try {
-                    val json = org.json.JSONObject(file.readText())
-                    if (!json.has("name")) json.put("name", file.nameWithoutExtension)
-                    val substance = substanceParser.parseSubstance(json.toString())
-                    if (substance != null) extSubstances.add(substance)
-                } catch (_: Exception) { }
-            }
-
-            val mergedSubstances = substanceFile.substances.toMutableList()
-            mergedSubstances.addAll(extSubstances)
-            substanceFile = com.isaakhanimann.journal.data.substances.classes.SubstanceFile(
-                categories = substanceFile.categories,
-                substances = mergedSubstances
-            )
-        } catch (_: Exception) { }
     }
 
     override fun getSubstanceWithCategories(substanceName: String): SubstanceWithCategories? {
