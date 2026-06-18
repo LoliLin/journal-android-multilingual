@@ -34,6 +34,23 @@ import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
 
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
+
+object SubstanceEvents {
+    private val _substanceReloadSignal = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val substanceReloadSignal = _substanceReloadSignal.asSharedFlow()
+
+    fun notifySubstanceReload() {
+        _substanceReloadSignal.tryEmit(Unit)
+    }
+}
+
+
 @Singleton
 class SubstanceRepository @Inject constructor(
     @ApplicationContext private val appContext: Context,
@@ -61,14 +78,21 @@ class SubstanceRepository @Inject constructor(
 
     init {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
-        substanceFile = loadSubstanceFile(languageKey)
-        loadedLanguageKey = languageKey
-        updateSearcher(languageKey)
+        reload()
+        CoroutineScope(Dispatchers.Default).launch {
+            SubstanceEvents.substanceReloadSignal.collect {
+                markDirty()
+            }
+        }
     }
 
     private fun ensureLanguageLoaded() {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
         if (languageKey == loadedLanguageKey && !needsReload) return
+        reload()
+    }
+
+    private fun reload() {
         substanceFile = loadSubstanceFile(languageKey)
         loadedLanguageKey = languageKey
         updateSearcher(languageKey)
