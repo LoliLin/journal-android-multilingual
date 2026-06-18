@@ -415,7 +415,7 @@ fun SettingsScreen(
 
                 ) {
 
-                    // TODO: launch ZIP file picker
+                    navigateToExtensionPack()
 
                 }
 
