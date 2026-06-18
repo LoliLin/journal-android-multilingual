@@ -233,7 +233,7 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         } else {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
-                    ExtensionPackRow(pack = pack, context = context，scope = scope, snackbarHostState = snackbarHostState)
+                    ExtensionPackRow(pack = pack, context = context, scope = scope, snackbarHostState = snackbarHostState )
                     Spacer(Modifier.height(8.dp))
                 }
             }
