@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.File
@@ -94,11 +95,11 @@ object ExtensionPackLoader {
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
-        val packDir = File(context.filesDir, EXT_DIR, pack.registerName)
+        val packDir = File(context.filesDir, ＂$EXT_DIR/${pack.registerName}")
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
-        val packDir = java.io.File(context.filesDir, EXT_DIR, registerName)
+        val packDir = File(context.filesDir, ＂$EXT_DIR/${pack.registerName}")
         return if (packDir.exists()) {
             packDir.deleteRecursively()
             //com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository.triggerReload()
@@ -122,8 +123,8 @@ object ExtensionPackLoader {
     }
 
     private fun installPackFromZip(context: Context, zipFile: File, registerName: String): String {
-        return try {
-            val baseDir = File(context.filesDir, EXT_DIR)
+        val baseDir = File(context.filesDir, EXT_DIR)
+        return try{
             val targetDir = File(baseDir, registerName)
             val backupDir = File(baseDir, ".${registerName}_bak")
 
@@ -202,13 +203,6 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
                 snackbarHostState.showSnackbar(resultMsg)
             }
             packs = ExtensionPackLoader.getInstalledPacks(context)
-            
-            LaunchedEffect(Unit) {
-                packs.forEach { pack ->
-                    val info = ExtensionPackLoader.checkUpdate(pack.updateJsonLink, pack.versionCode)
-                    updateInfos = updateInfos + (pack.registerName to info)
-                }
-            }
         }
     }
 
@@ -239,7 +233,7 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         } else {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
-                    ExtensionPackRow(pack = pack, updateInfo = updateInfo, context = context)
+                    ExtensionPackRow(pack = pack, context = context，scope = scope, snackbarHostState = snackbarHostState)
                     Spacer(Modifier.height(8.dp))
                 }
             }
