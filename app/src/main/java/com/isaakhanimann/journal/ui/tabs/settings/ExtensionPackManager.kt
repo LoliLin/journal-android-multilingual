@@ -84,7 +84,7 @@ object ExtensionPackLoader {
             val json = JSONObject(jsonText)
             val latest = json.keys().asSequence()
                 .map { it.toInt() }
-                .maxOrNull() ?: return null
+                .maxOrNull() ?: return@withContext null
             if (latest > currentVersionCode) {
                 val info = json.getJSONObject(latest.toString())
                 ExtensionUpdateInfo(
