@@ -29,10 +29,12 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToComboSetti
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCustomUnits
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToDonate
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditCustomUnit
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExtensionPack
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToFAQ
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIconPicker
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceColors
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
+import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
 import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
 import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
 import com.isaakhanimann.journal.ui.tabs.settings.SettingsScreen
@@ -56,12 +58,14 @@ fun NavGraphBuilder.settingsGraph(navController: NavController) {
                 navigateToSubstanceColors = navController::navigateToSubstanceColors,
                 navigateToCustomUnits = navController::navigateToCustomUnits,
                 navigateToDonate = navController::navigateToDonate,
+navigateToExtensionPack = navController::navigateToExtensionPack,
 navigateToIconPicker = navController::navigateToIconPicker
             )
         }
         composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
         composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
         composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) { IconPickerScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) { ExtensionPackScreen(navigateBack = navController::popBackStack) }
         composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) { CombinationSettingsScreen() }
         composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) { SubstanceColorsScreen() }
         composableWithTransitions(NoArgumentRouter.CustomUnitArchiveRouter.route) {

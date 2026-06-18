@@ -6,9 +6,14 @@ import androidx.compose.ui.platform.LocalContext
 import java.util.Locale
 import org.json.JSONObject
 
-object I18n {
-    private var strings: Map<String, String> = emptyMap()
-    private var loadedLangKey: String? = null
+object I18n {
+    private var strings: Map<String, String> = emptyMap()
+    private val extraStrings = mutableMapOf<String, String>()
+    private var loadedLangKey: String? = null
+
+    fun setOverride(key: String, value: String) {
+        extraStrings[key] = value
+    }
     private const val FALLBACK_LANG_KEY = "en_us"
     private var preferredLangKey: String? = null
 
@@ -32,7 +37,7 @@ object I18n {
         replacements: Map<String, String> = emptyMap(),
     ): String {
         ensureLoaded(context)
-        val raw = strings[key] ?: strings["missing_key"] ?: key
+        val raw = extraStrings[key] ?: strings[key] ?: strings["missing_key"] ?: key
         return replacements.entries.fold(raw) { acc, entry ->
             acc.replace("{${entry.key}}", entry.value)
         }

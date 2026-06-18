@@ -31,6 +31,7 @@ sealed class NoArgumentRouter(val route: String) {
     object AddCustomUnitsSearchSubstanceRouter : NoArgumentRouter(route = "addCustomUnitsSearch")
     object FAQRouter : NoArgumentRouter(route = "faqRoute")
     object IconPickerRouter : NoArgumentRouter(route = "iconPicker")
+    object ExtensionPackRouter : NoArgumentRouter(route = "extensionPack")
     object DonateRouter : NoArgumentRouter(route = "donate")
     object ExplainTimelineOnSearchTabRouter : NoArgumentRouter(route = "explainTimelineOnSearchTab")
     object ExplainTimelineOnJournalTabRouter :
@@ -111,6 +112,10 @@ fun NavController.navigateToSaferSniffingOnJournalTab() {
 
 fun NavController.navigateToFAQ() {
     navigate(NoArgumentRouter.FAQRouter.route)
+}
+
+fun NavController.navigateToExtensionPack() {
+    navigate(NoArgumentRouter.ExtensionPackRouter.route)
 }
 
 fun NavController.navigateToIconPicker() {
