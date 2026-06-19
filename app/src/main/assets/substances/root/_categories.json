@@ -121,5 +121,17 @@
     "description": "Hypnotics, or soporifics, are a class of drugs which promote and induce sleep. They are the opposite of eugeroics which promote wakefulness. They are commonly distributed in the form of pharmaceutical drugs prescribed to treat insomnia.",
     "url": "https://psychonautwiki.org/wiki/Hypnotic",
     "color": 4293455940
+  },
+  {
+    "name": "mood-stabilizer",
+    "description": "Mood stabilizers are considered a cornerstone in the treatment of bipolar disorder, where they help prevent relapses into both manic and depressive episodes and maintain long-term mood stability.",
+    "url": "https://en.wikipedia.org/wiki/Mood_stabilizer",
+    "color": 4293455940
+  },
+  {
+    "name": "antiparkinsonian",
+    "description": "These agent are used to treat Parkinson's disease.",
+    "url": "https://en.wikipedia.org/wiki/Category:Antiparkinsonian_agents",
+    "color": 4293455940
   }
 ]

@@ -89,6 +89,7 @@ class JournalViewModel @Inject constructor(
 
     val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin")
 
+    val amantadineDoseFlow = getTotalDoseFlow("Amantadine")
 
     val isTimeRelativeToNow = mutableStateOf(false)
 

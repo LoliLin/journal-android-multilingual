@@ -1,0 +1,50 @@
+{
+  "name": "8-Chlorotheophylline",
+  "commonNames": [
+    "8-Chlorotheophylline",
+    "8-CTP",
+    "1,3-dimethyl-8-chloroxanthine"
+  ],
+  "url": "https://en.wikipedia.org/wiki/8-Chlorotheophylline",
+  "isApproved": false,
+  "tolerance": {
+    "full": "Tolerance develops with repeated use, similar to caffeine",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "crossTolerances": [
+    "Xanthines",
+    "Caffeine"
+  ],
+  "addictionPotential": "low addiction potential with minimal abuse liability",
+  "toxicities": [
+    "May cause cardiac issues at high doses, especially when combined with diphenhydramine in dimenhydrinate"
+  ],
+  "categories": [
+    "stimulant"
+  ],
+  "summary": "8-Chlorotheophylline is a xanthine-class stimulant chemically and functionally similar to caffeine. It is primarily used as a wakefulness-promoting agent in dimenhydrinate to counteract the sedative effects of diphenhydramine.",
+  "effectsSummary": "Stimulation, increased wakefulness, increased heart rate, potential cardiac stress at high doses, especially when combined with diphenhydramine.",
+  "dosageRemark": "Usually not taken alone; found in fixed combination with diphenhydramine as dimenhydrinate. Individual dosing is not well established.",
+  "generalRisks": "May cause cardiac issues at high doses. When combined with diphenhydramine (as in dimenhydrinate), may lead to severe tachycardia.",
+  "longtermRisks": "Limited data on long-term risks. As a xanthine derivative, chronic high intake may lead to similar issues as caffeine including anxiety, sleep disturbances, and cardiovascular strain.",
+  "saferUse": [
+    "Avoid high doses when taken as part of dimenhydrinate",
+    "Be aware of the combined effects with diphenhydramine",
+    "Monitor heart rate if using regularly"
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [
+      "Diphenhydramine",
+      "MAOIs"
+    ],
+    "uncertain": [
+      "stimulants",
+      "Alcohol"
+    ]
+  },
+  "roas": []
+}

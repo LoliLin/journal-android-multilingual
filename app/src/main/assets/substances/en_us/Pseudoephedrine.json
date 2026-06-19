@@ -1,0 +1,24 @@
+{
+  "tolerance": {
+    "full": "develops with repeated and frequent use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "moderate addictive potential; can cause psychological dependence",
+  "toxicities": [
+    "LD50 in rats is 1,674 mg/kg orally. Overdose may cause severe hypertension, cardiac arrhythmia, stroke, and seizures."
+  ],
+  "summary": "Pseudoephedrine is a sympathomimetic drug of the phenethylamine and amphetamine chemical classes. It is used medically as a nasal/sinus decongestant and recreationally as a mild stimulant. It is structurally related to methamphetamine and is regulated as a precursor chemical in many countries.",
+  "effectsSummary": "Mild to moderate stimulation, bronchodilation, appetite suppression, increased endurance, mild euphoria, vasoconstriction, increased heart rate and blood pressure, focus enhancement, anxiety at higher doses.",
+  "dosageRemark": "Therapeutic decongestant doses are 30-60mg. Stimulant effects become noticeable at 60-120mg. Higher doses increase side effects disproportionately.",
+  "generalRisks": "Increased heart rate and blood pressure, vasoconstriction, dry mouth, nausea, pupil dilation at high doses. Can cause anxiety and jitteriness.",
+  "longtermRisks": "Moderate addiction potential with psychological dependence. Tolerance develops quickly. May cause cardiovascular strain with chronic use.",
+  "saferUse": [
+    "Avoid if you have hypertension or heart conditions",
+    "Do not exceed recommended doses",
+    "Stay hydrated"
+  ],
+  "localizedName": "Pseudoephedrine"
+}
