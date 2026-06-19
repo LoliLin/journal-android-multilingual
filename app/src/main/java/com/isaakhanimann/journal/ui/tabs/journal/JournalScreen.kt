@@ -83,7 +83,22 @@ fun JournalScreen(
 
     val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
     val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0.0)
+    val amantadineDose by viewModel.amantadineDoseFlow.collectAsState(initial = 0.0)
 
+
+    LaunchedEffect(pregabalinTotalDose, achievements) {
+        val targetAchievement = "n552aa_pr80"
+        if (pregabalinTotalDose >= 20000 && !achievements.contains(targetAchievement)) {
+            viewModel.addAchievement(targetAchievement)
+        }
+    }
+
+    LaunchedEffect(amantadineDose, achievements) {
+        val targetAchievement = "chicken_amantadine"
+        if (amantadineDose > 0 && !achievements.contains(targetAchievement)) {
+            viewModel.addAchievement(targetAchievement)
+        }
+    }
 
     LaunchedEffect(pregabalinTotalDose, achievements) {
         val targetAchievement = "n552aa_pr80"

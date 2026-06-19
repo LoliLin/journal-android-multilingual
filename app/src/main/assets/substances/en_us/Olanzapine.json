@@ -1,0 +1,25 @@
+{
+  "tolerance": {
+    "full": "tolerance to sedative effects develops with continued use",
+    "half": "7 - 14 days",
+    "zero": "2 - 4 weeks",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 504
+  },
+  "addictionPotential": "low addiction potential; not typically abused",
+  "toxicities": [
+    "Weight gain, increased risk of type 2 diabetes, metabolic syndrome, extrapyramidal symptoms (less than other antipsychotics)"
+  ],
+  "summary": "Olanzapine is a widely used atypical antipsychotic of the thienobenzodiazepine class. It produces sedation and neuroleptic effects. It can be used for trip termination, especially for stimulant-related situations, as it blocks dopamine action.",
+  "effectsSummary": "Sedation, increased appetite, muscle relaxation, motor control loss, dizziness, anxiety suppression, emotional blunting, cognitive suppression, body heaviness.",
+  "dosageRemark": "Bioavailability is 60-65% orally. Effects vary significantly between individuals. Therapeutic doses start at 2.5-5mg for antipsychotic effects.",
+  "generalRisks": "Weight gain, drowsiness, dizziness, dry mouth, constipation, extrapyramidal symptoms. More likely to cause weight gain and diabetes than other antipsychotics.",
+  "longtermRisks": "Significant weight gain, increased risk of type 2 diabetes, metabolic syndrome, tardive dyskinesia (lower risk than typical antipsychotics). May cause cognitive dulling.",
+  "saferUse": [
+    "Only use as prescribed by a doctor",
+    "Monitor weight and blood sugar regularly",
+    "Avoid alcohol and other CNS depressants",
+    "Do not use for trip termination without medical supervision"
+  ],
+  "localizedName": "Olanzapine"
+}

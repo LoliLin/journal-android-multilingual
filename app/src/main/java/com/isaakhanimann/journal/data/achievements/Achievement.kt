@@ -66,6 +66,7 @@ object AchievementList {
     init {
         register("n552aa_pr80", "file:///android_asset/images/achievements/n552aa_pr80.jpg")
         register("in_kawaiis", "file:///android_asset/images/achievements/in_kawaiis.jpg")
+        register("chicken_amantadine", "file:///android_asset/images/achievements/chicken_amantadine.jpg")
     }
 }
 

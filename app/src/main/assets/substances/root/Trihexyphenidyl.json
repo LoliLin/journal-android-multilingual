@@ -1,0 +1,76 @@
+{
+  "name": "Trihexyphenidyl",
+  "commonNames": [
+    "Trihexyphenidyl",
+    "Benzhexol",
+    "Artane"
+  ],
+  "url": "https://en.wikipedia.org/wiki/Trihexyphenidyl",
+  "isApproved": true,
+  "tolerance": {
+    "full": "develops with repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "crossTolerances": [
+    "Anticholinergics",
+    "Deliriants"
+  ],
+  "addictionPotential": "moderate addictive potential; psychological dependence reported; abuse potential increasing in recent years",
+  "toxicities": [
+    "Anticholinergic toxicity: hyperthermia, seizures, cardiac arrhythmias, circulatory collapse. Chronic use may cause permanent cognitive deficits."
+  ],
+  "categories": [
+    "deliriant",
+    "antiparkinsonian"
+  ],
+  "summary": "Trihexyphenidyl is a centrally acting muscarinic acetylcholine receptor antagonist used primarily for Parkinson's disease and drug-induced extrapyramidal symptoms. At high doses, it produces deliriant effects with hallucinations and euphoria, leading to increasing abuse potential.",
+  "effectsSummary": "Antiparkinsonian effects at therapeutic doses, mild euphoria, relaxation, hallucinations (visual and auditory), dry mouth, dilated pupils, blurred vision, confusion, delirium at high doses.",
+  "dosageRemark": "Medical doses for Parkinson's: 1-5mg daily. Recreational doses are not well established. Abuse typically involves exceeding prescribed doses significantly.",
+  "generalRisks": "Dry mouth, blurred vision, mydriasis, constipation, urinary retention, tachycardia, confusion, memory impairment. High doses cause acute delirium with hallucinations, confusion, agitation.",
+  "longtermRisks": "Tolerance, psychological dependence, withdrawal syndrome (anxiety, depression, cholinergic rebound). Chronic exposure may cause permanent cognitive deficits, dementia-like symptoms, and psychotic features.",
+  "saferUse": [
+    "Use only as prescribed by a doctor",
+    "Avoid alcohol and other anticholinergics",
+    "Do not exceed recommended therapeutic doses",
+    "Monitor for cognitive changes with long-term use"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Other anticholinergics",
+      "CNS depressants"
+    ],
+    "unsafe": [],
+    "uncertain": [
+      "Antipsychotics",
+      "SSRIs"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": null,
+        "commonMin": null,
+        "strongMin": null,
+        "heavyMin": null
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

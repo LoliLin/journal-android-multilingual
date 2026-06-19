@@ -1,0 +1,26 @@
+{
+  "tolerance": {
+    "full": "No significant tolerance develops to therapeutic effects",
+    "half": "N/A",
+    "zero": "N/A",
+    "halfToleranceInHours": 0,
+    "zeroToleranceInHours": 0
+  },
+  "addictionPotential": "no addictive potential; not habit-forming",
+  "toxicities": [
+    "Lithium has a narrow therapeutic window (0.6-1.2 mM blood concentration). Toxicity occurs above 1.5 mM. Symptoms: nausea, vomiting, tremor, confusion, seizures, coma, death. Chronic toxicity: kidney damage, thyroid dysfunction."
+  ],
+  "summary": "Lithium is a naturally occurring alkali metal used primarily as a mood stabilizer for bipolar disorder. It inhibits GSK-3β activating the Wnt/β-catenin pathway, and substitutes for sodium in voltage-gated channels. Recent research suggests endogenous lithium deficiency may be an early molecular event in Alzheimer's disease.",
+  "effectsSummary": "Mood stabilization, reduced manic episodes, suicide prevention, neuroprotection via GSK-3β inhibition, enhanced neurogenesis, reduced amyloid deposition. Low doses (5-25mg elemental lithium as orotate) may have nootropic and anti-aging effects.",
+  "dosageRemark": "Lithium carbonate therapeutic dose: 600-1800mg daily (110-330mg elemental lithium), blood level 0.6-1.2mM requires monitoring. Low-dose lithium orotate supplements (5-25mg elemental lithium) available without prescription. Lithium orotate has better brain penetration and avoids Aβ plaque sequestration compared to carbonate.",
+  "generalRisks": "At therapeutic doses: hypothyroidism, kidney damage, weight gain, tremor, cognitive dulling. At low supplement doses (5-25mg): minimal side effects expected. Must avoid dehydration and monitor kidney function at higher doses.",
+  "longtermRisks": "Chronic high-dose lithium therapy: hypothyroidism, nephrogenic diabetes insipidus, kidney damage, weight gain, tremor. Low-dose supplementation: long-term risks not well characterized but expected to be minimal.",
+  "saferUse": [
+    "Monitor blood lithium levels if using therapeutic doses",
+    "Stay well hydrated",
+    "Avoid dehydration and NSAIDs if on lithium therapy",
+    "Do not combine with diuretics without medical supervision",
+    "Low-dose orotate form is safer for non-prescription use (5-25mg elemental lithium/day)"
+  ],
+  "localizedName": "Lithium"
+}

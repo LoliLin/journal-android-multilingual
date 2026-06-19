@@ -1,0 +1,76 @@
+{
+  "name": "Atropine",
+  "commonNames": [
+    "Atropine",
+    "Hyoscyamine (racemic)"
+  ],
+  "url": "https://en.wikipedia.org/wiki/Atropine",
+  "isApproved": false,
+  "tolerance": {
+    "full": "develops with repeated use",
+    "half": "N/A",
+    "zero": "N/A",
+    "halfToleranceInHours": 0,
+    "zeroToleranceInHours": 0
+  },
+  "crossTolerances": [
+    "Anticholinergics",
+    "Deliriants"
+  ],
+  "addictionPotential": "not typically considered addictive due to unpleasant effects at active doses",
+  "toxicities": [
+    "Anticholinergic toxicity: hyperthermia, tachycardia, delirium, seizures, respiratory depression, coma. Relatively low LD50 in humans."
+  ],
+  "categories": [
+    "deliriant"
+  ],
+  "summary": "Atropine is a tropane alkaloid and anticholinergic agent found in plants of the Solanaceae family (including Datura). It acts as a competitive antagonist at muscarinic acetylcholine receptors. Medically used for bradycardia, as an antisialagogue, and as an antidote for organophosphate poisoning. At high doses it produces anticholinergic delirium.",
+  "effectsSummary": "Anticholinergic syndrome: dry mouth, blurred vision, photophobia, dilated pupils, urinary retention, constipation, tachycardia, flushing, hyperthermia. At delirium doses: confusion, agitation, hallucinations, amnesia.",
+  "dosageRemark": "Medical doses: 0.4-1mg IV/IM. Toxic symptoms begin above 2mg. Severe toxicity above 10mg. The delirium threshold varies widely between individuals.",
+  "generalRisks": "Peripheral anticholinergic effects even at low doses. Central anticholinergic syndrome at higher doses: confusion, agitation, hallucinations, coma. Hyperthermia risk in hot environments.",
+  "longtermRisks": "Chronic use not recommended due to anticholinergic burden. Long-term anticholinergic use associated with increased dementia risk.",
+  "saferUse": [
+    "Only use under medical supervision",
+    "Avoid in hot environments due to hyperthermia risk",
+    "Do not combine with other anticholinergics",
+    "Start with lowest effective dose"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Other anticholinergics",
+      "Deliriants"
+    ],
+    "unsafe": [
+      "CNS depressants",
+      "Alcohol"
+    ],
+    "uncertain": [
+      "Antipsychotics",
+      "MAOIs"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": null,
+        "commonMin": null,
+        "strongMin": null,
+        "heavyMin": null
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}

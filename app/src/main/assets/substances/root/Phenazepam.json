@@ -1,0 +1,90 @@
+{
+  "name": "Phenazepam",
+  "commonNames": [
+    "Phenazepam",
+    "Bromdihydrochlorphenylbenzodiazepine",
+    "Fenazepam",
+    "Phenaz"
+  ],
+  "url": "https://en.wikipedia.org/wiki/Phenazepam",
+  "isApproved": false,
+  "tolerance": {
+    "full": "develops within several days of continuous use to sedative-hypnotic effects",
+    "half": "7 - 14 days",
+    "zero": "14 - 21 days",
+    "halfToleranceInHours": 168,
+    "zeroToleranceInHours": 336
+  },
+  "crossTolerances": [
+    "Benzodiazepines",
+    "GABAergic drugs",
+    "Alcohol",
+    "Barbiturates"
+  ],
+  "addictionPotential": "highly addictive both physically and psychologically; severe withdrawal including seizures and death",
+  "toxicities": [
+    "Long half-life (up to 60 hours) increases overdose risk. Active metabolite 3-hydroxyphenazepam. Fatal respiratory depression when combined with other depressants."
+  ],
+  "categories": [
+    "depressant",
+    "benzodiazepine",
+    "research-chemical"
+  ],
+  "summary": "Phenazepam is a benzodiazepine depressant originally developed in the Soviet Union. It produces anxiolytic, sedative, muscle relaxant, and amnesic effects. It is known for its long duration and high potency, with street names including 'Bonsai', 'Soviet Benzodiazepine', and 'Panda'.",
+  "effectsSummary": "Anxiety suppression, sedation, muscle relaxation, disinhibition, amnesia, respiratory depression, dizziness, paradoxical reactions including aggression and anxiety.",
+  "dosageRemark": "Extremely potent — threshold effects at 0.5mg. Long onset (1-4 hours) creates risk of redosing before effects manifest. Half-life up to 60 hours.",
+  "generalRisks": "Strong sedation, muscle relaxation, respiratory depression, motor control loss. Paradoxical reactions in rare cases. Long duration increases risk of dangerous interactions.",
+  "longtermRisks": "High addiction potential. Withdrawal can be life-threatening, causing seizures and death. Cognitive impairment with long-term use. Cross-tolerance with all GABAergic substances.",
+  "saferUse": [
+    "Use volumetric dosing for accuracy",
+    "Wait 4+ hours before considering redose",
+    "Never combine with other depressants",
+    "Never abruptly discontinue after regular use",
+    "Taper gradually over weeks when stopping"
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Opioids",
+      "Barbiturates",
+      "GHB/GBL",
+      "Other benzodiazepines",
+      "Depressants"
+    ],
+    "unsafe": [
+      "Dissociatives"
+    ],
+    "uncertain": [
+      "Stimulants"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 1,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 240,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 15,
+          "max": 24,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 15,
+          "max": 36,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}
