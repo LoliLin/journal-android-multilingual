@@ -543,6 +543,8 @@
   "achievement.n552aa_pr80.desc": "累计服用普瑞巴林两万毫克！",
   "achievement.in_kawaiis": "洛，铃？",
   "achievement.in_kawaiis.desc": "java.lang.NullPointerException",
+  "achievement.chicken_amantadine": "变成？一只，鸡",
+  "achievement.chicken_amantadine.desc": "不得了，！这个，金刚烷胺吃了之后。我，变成一只，鸡？操你妈。，我要，跳？楼",
   "settings_extension_pack": "扩展包",
   "settings_extension_import": "导入扩展包",
   "settings_extension_import_description": "导入 .zip 扩展包以添加新物质、翻译等。",

@@ -543,6 +543,8 @@
   "achievement.n552aa_pr80.desc": "Cumulatively taken 20,000 mg of pregabalin!",
   "achievement.in_kawaiis": "洛，铃？",
   "achievement.in_kawaiis.desc": "java.lang.NullPointerException",
+  "achievement.chicken_amantadine": "变成？一只，鸡",
+  "achievement.chicken_amantadine.desc": "不得了，！这个，金刚烷胺吃了之后。我，变成一只，鸡？操你妈。，我要，跳？楼",
   "settings_extension_pack": "Extension pack",
   "settings_extension_import": "Import extension pack",
   "settings_extension_import_description": "Import a .zip extension pack to add new substances, translations and more.",
