@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
-suspend fun shareBitmap(context: Context, bitmap: Bitmap) {
+suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = null) {
     // 1. 强行切到 IO 线程，绝对不堵塞主线程
     withContext(Dispatchers.IO) {
         try {
@@ -36,6 +36,10 @@ suspend fun shareBitmap(context: Context, bitmap: Bitmap) {
             val shareIntent = Intent(Intent.ACTION_SEND).apply {
                 type = "image/png"
                 putExtra(Intent.EXTRA_STREAM, contentUri)
+
+                if (!extraText.isNullOrEmpty()) {
+                    putExtra(Intent.EXTRA_TEXT, extraText)
+                }
                 // 极其关键：临时授予接收方（分享去处的App）读取这个文件的权限
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) 
             }
