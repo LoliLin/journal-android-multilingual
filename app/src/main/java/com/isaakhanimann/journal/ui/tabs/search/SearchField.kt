@@ -134,7 +134,7 @@ fun SearchField(
         },
         keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
         keyboardOptions = KeyboardOptions.Default.copy(
-            autoCorrect = false,
+            autoCorrectEnabled = false,
             imeAction = ImeAction.Done,
             capitalization = KeyboardCapitalization.Words,
         ),

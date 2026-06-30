@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Check Out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # 拉取完整历史以确保能正常 push
 
@@ -81,14 +81,14 @@ jobs:
           git push origin "$TAG_TAG"
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: "17"
+          java-version: "21"
           cache: gradle
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       - name: Install build tools and platform
         run: |

@@ -2,6 +2,8 @@
 
 Extension Pack 是一个 `.zip` 文件，用于扩展 PsychonautWiki Journal 的功能。
 
+[Get Template](https://github.com/LoliLin/journal-android-multilingual-ext_template)
+
 ## 目录结构
 
 ```
@@ -38,10 +40,9 @@ extension_pack.zip
 | 字段 | 类型 | 必需 | 说明 |
 |------|------|:----:|------|
 | `registerName` | string | ✅ | 唯一标识符 |
+| `icon` | string | ❌ | icon的相对路径 |
 | `titleTranslateable` | string | ✅ | 标题 i18n key |
-| `titleDefault` | string | ❌ | 标题回退文本 |
 | `descriptionTranslateable` | string | ✅ | 描述 i18n key |
-| `descriptionDefault` | string | ❌ | 描述回退文本 |
 | `officalLink` | string | ✅ | 官网链接 |
 | `updateJsonLink` | string | ✅ | 更新查询 URL |
 | `versionName` | string | ✅ | 版本名称 |

@@ -502,7 +502,7 @@ fun EditIngestionScreen(
         ModalBottomSheet(
             onDismissRequest = { isPresentingBottomSheet = false },
             sheetState = bottomSheetState,
-            windowInsets = BottomSheetDefaults.windowInsets
+            contentWindowInsets = { BottomSheetDefaults.windowInsets }
         ) {
             LazyColumn {
                 item {
@@ -545,11 +545,16 @@ fun EditIngestionScreen(
 
                         leadingContent = {
 
-                            val ctxCon = LocalContext.current
-                            val conAvatar = remember(consumerName) {
-
-                                AvatarUtil.getUserAvatar(ctxCon, consumerName)
-
+                            val ctxCon = LocalContext.current
+
+                            val conAvatar = remember(consumerName) {
+
+
+
+                                AvatarUtil.getUserAvatar(ctxCon, consumerName)
+
+
+
                             }
 
                             if (conAvatar != null) {
