@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # 1. 监控 Gradle 依赖（App 核心依赖与 Kotlin 插件）
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly" # 每周检查一次（可选 daily, weekly, monthly）
+    open-pull-requests-limit: 5 # 限制同时打开的 PR 数量，免得看花眼
+    target-branch: "main" # 你的主分支名
+
+  # 2. 监控 GitHub Actions（如果你用了 CI/CD 脚本）
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
