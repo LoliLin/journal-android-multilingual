@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Check Out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # 拉取完整历史以确保能正常 push
 
