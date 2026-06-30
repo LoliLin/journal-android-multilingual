@@ -1,0 +1,136 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: 'Version Name'
+        required: true
+      version_code:
+        description: 'Version Code'
+        required: true
+      release_name:
+        description: 'Release Title'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # 允许修改代码、推送 Tag 和创建 Release
+
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 拉取完整历史以确保能正常 push
+
+      # 1. 根据输入修改 Android 项目的版本号文件
+      - name: Update Version in Source Files
+        run: |
+          NEW_V_NAME="${{ github.event.inputs.version_name }}"
+          NEW_V_CODE="${{ github.event.inputs.version_code }}"
+          
+          echo "Updating files to VersionName: $NEW_V_NAME, VersionCode: $NEW_V_CODE..."
+          
+          # 修改 app/build.gradle
+          GRADLE_FILE="app/build.gradle"
+          if [ -f "$GRADLE_FILE" ]; then
+            sed -i "s/versionCode [0-9]*/versionCode $NEW_V_CODE/g" "$GRADLE_FILE"
+            sed -i "s/versionName \".*\"/versionName \"$NEW_V_NAME\"/g" "$GRADLE_FILE"
+          else
+            echo "Error: $GRADLE_FILE not found!"
+            exit 1
+          fi
+          
+          # 修改 Constants.kt
+          CONSTANTS_FILE="app/src/main/java/com/isaakhanimann/journal/ui/Constants.kt"
+          if [ -f "$CONSTANTS_FILE" ]; then
+            sed -i "s/const val VERSION_NAME = \".*\"/const val VERSION_NAME = \"$NEW_V_NAME\"/g" "$CONSTANTS_FILE"
+          else
+            echo "Error: $CONSTANTS_FILE not found!"
+            exit 1
+          fi
+
+      # 2. Commit 刚才修改的版本文件并 Push 源码
+      - name: Commit & Push Version Bump
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add app/build.gradle app/src/main/java/com/isaakhanimann/journal/ui/Constants.kt
+          
+          if ! git diff --cached --exit-code; then
+            git commit -m "chore: bump version to v${{ github.event.inputs.version_name }} (${{ github.event.inputs.version_code }})"
+            git push origin HEAD:${{ github.ref }}
+          else
+            echo "No changes detected, skipping commit."
+          fi
+
+      # 3. 自动创建并推送 Git Tag
+      - name: Create and Push Tag
+        run: |
+          TAG_TAG="${{ github.event.inputs.version_name }}"
+          echo "TAG_TAG=$TAG_TAG" >> $GITHUB_ENV
+          
+          # 如果云端已有同名 tag 先清理（防止重复运行报错）
+          git tag -d "$TAG_TAG" 2>/dev/null || true
+          git push origin :refs/tags/$TAG_TAG 2>/dev/null || true
+          
+          git tag "$TAG_TAG"
+          git push origin "$TAG_TAG"
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install build tools and platform
+        run: |
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+          yes | sdkmanager --licenses
+
+      - name: Grant Gradle execute permission
+        run: chmod +x ./gradlew
+
+      - name: Build release APK (main repo)
+        if: github.repository == 'LoliLin/journal-android-multilingual'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --stacktrace
+
+
+      - name: Build debug APK (forks)
+        if: github.repository != 'LoliLin/journal-android-multilingual'
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Prepare Artifacts and Rename APK
+        run: |
+          mkdir -p downloads
+          V_NAME="${{ github.event.inputs.version_name }}"
+          
+          if [ "${{ github.repository }}" = "LoliLin/journal-android-multilingual" ]; then
+            # 主仓库：移动并重命名 release APK
+            # 兼容 app-release.apk 或包含其他后缀的 app-release-unsigned.apk 等情况
+            find app/build/outputs/apk/release/ -name "app-*.apk" -exec cp {} downloads/journal-android-multilingual-$V_NAME.apk \;
+          else
+            # Fork 仓库：移动并重命名 debug APK
+            find app/build/outputs/apk/debug/ -name "app-*.apk" -exec cp {} downloads/journal-android-multilingual-${V_NAME}-debug.apk \;
+          fi
+          
+      - name: Release to GitHub
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "downloads/*"
+          tag: ${{ github.event.inputs.version_name }}
+          name: ${{ github.event.inputs.release_name }}
+          generateReleaseNotes: true   
+          allowUpdates: true
