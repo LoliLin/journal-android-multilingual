@@ -43,7 +43,7 @@ jobs:
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: app-${{ github.repository != 'LoliLin/journal-android-multilingual' && 'debug' || 'release' }}
           path: app/build/outputs/apk/${{ github.repository != 'LoliLin/journal-android-multilingual' && 'debug' || 'release' }}/app-*.apk
