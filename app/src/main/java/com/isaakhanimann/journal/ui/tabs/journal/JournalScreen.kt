@@ -158,8 +158,6 @@ fun JournalScreen(
             TopAppBar(
                 title = { Text(i18n("journal")) },
                 actions = {
-
-
                     IconToggleButton(
                         checked = isTimeRelativeToNow,
                         onCheckedChange = onChangeIsRelative

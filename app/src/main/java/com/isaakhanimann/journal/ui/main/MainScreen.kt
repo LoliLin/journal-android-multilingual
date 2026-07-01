@@ -108,7 +108,7 @@ fun MainScreen(
                     navController,
                     startDestination = TabRouter.Journal.route,
                     modifier = Modifier
-                        .padding(innerPadding)
+                        .padding(bottom = innerPadding.calculateBottomPadding())
                 ) {
                     journalGraph(navController)
                     statsGraph(navController)
