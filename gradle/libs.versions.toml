@@ -35,7 +35,7 @@ nav3Core = "1.1.2"                         # Navigation3 (预览版)
 lifecycleViewmodelNav3 = "2.11.0"
 
 # 其他 AndroidX
-hiltNavigationCompose = "1.2.0"
+hiltNavigationCompose = "1.4.0"
 datastore = "1.2.1"
 splashscreen = "1.2.0"
 
