@@ -11,7 +11,7 @@ androidxActivity = "1.13.0"
 androidxComposeBom = "2026.06.00"          # 统一使用最新的 BOM
 
 # Hilt
-hilt = "2.59.2"
+hilt = "2.60.1"
 androidxHilt = "1.3.0"                     # hilt-lifecycle-viewmodel-compose
 
 # Room
