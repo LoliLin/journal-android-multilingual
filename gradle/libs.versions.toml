@@ -32,7 +32,7 @@ serializationJson = "1.11.0"
 # Navigation
 navigationCompose = "2.7.7"                # 传统 Navigation Compose
 nav3Core = "1.1.2"                         # Navigation3 (预览版)
-lifecycleViewmodelNav3 = "2.10.0"
+lifecycleViewmodelNav3 = "2.11.0"
 
 # 其他 AndroidX
 hiltNavigationCompose = "1.2.0"
