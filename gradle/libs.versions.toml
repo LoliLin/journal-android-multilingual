@@ -27,7 +27,7 @@ espresso = "3.5.1"
 
 # 协程 & 序列化
 coroutines = "1.11.0"
-serializationJson = "1.6.0"
+serializationJson = "1.11.0"
 
 # Navigation
 navigationCompose = "2.7.7"                # 传统 Navigation Compose
