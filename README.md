@@ -17,3 +17,5 @@ Journal 的数据来自 PsychonautWiki，这是一个全英文 wiki。
 同时，Journal Android Multilingual 目前也添加了一些趣味性内容，并以趣味性的版本命名法。例如：v9.3 - 鸡哥奇遇记
 
 [从此，获得更多](https://github.com/LoliLin/journal-android-multilingual/releases)  
+
+[拓展包开发模板](https://github.com/LoliLin/journal-android-multilingual-ext_template)

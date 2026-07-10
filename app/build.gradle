@@ -13,9 +13,9 @@ android {
         applicationId "in.kawaiis.journal"
         minSdk 26
         targetSdk 37
-        versionCode 9064
+        versionCode 9066
 
-        versionName "9.6.4"
+        versionName "9.6.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -45,6 +45,12 @@ android {
                 signingConfig = null
             }
             minifyEnabled false
+
+            vcsInfo {
+                // F-Droid reproducible builds: the embedded VCS info differs between
+                // build environments, breaking byte-identical verification.
+                include = false
+            }
         }
     }
 
@@ -55,12 +61,24 @@ android {
 
     buildFeatures {
         compose true
-        buildConfig = true
+        buildConfig = false
     }
 
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+        jniLibs {
+            keepDebugSymbols += "**/*.so"
+        }
+    }
+
+    splits {
+        abi {
+            enable true    
+            reset()  
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64" 
+            universalApk true
         }
     }
     
