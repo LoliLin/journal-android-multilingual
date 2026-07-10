@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         applicationId "in.kawaiis.journal"
         minSdk 26
-        targetSdk 36
+        targetSdk 37
         versionCode 9064
 
         versionName "9.6.4"
