@@ -82,6 +82,10 @@ android {
             universalApk true
         }
     }
+
+    dependenciesInfo {
+        includeInApk = false
+    }
     
     namespace "com.isaakhanimann.journal"
 }
