@@ -44,7 +44,10 @@ android {
             } else {
                 signingConfig = null
             }
-            minifyEnabled false
+            
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             vcsInfo {
                 // F-Droid reproducible builds: the embedded VCS info differs between
