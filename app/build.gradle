@@ -14,9 +14,9 @@ android {
         applicationId "in.kawaiis.journal"
         minSdk 26
         targetSdk 37
-        versionCode 9067
+        versionCode 9068
 
-        versionName "9.6.7"
+        versionName "9.6.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
