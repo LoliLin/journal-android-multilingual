@@ -23,7 +23,7 @@ jobs:
 
       - name: Install build tools and platform
         run: |
-          sdkmanager "platform-tools" "platforms;android-37" "build-tools;37.0.0"
+          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
           yes | sdkmanager --licenses
 
       - name: Grant Gradle execute permission
