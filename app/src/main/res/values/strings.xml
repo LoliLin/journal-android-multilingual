@@ -17,7 +17,7 @@
   -->
 
 <resources>
-    <string name="app_name">Journal</string>
+    <string name="app_name">Journal Multilingual</string>
     <string name="journal">Journal</string>
     <string name="substances">Drugs</string>
     <string name="safer">Safer</string>
