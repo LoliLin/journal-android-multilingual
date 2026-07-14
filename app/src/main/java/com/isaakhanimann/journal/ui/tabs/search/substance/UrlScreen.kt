@@ -18,20 +18,22 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
-
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import android.net.Uri
 import androidx.compose.runtime.LaunchedEffect
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 
-import com.isaakhanimann.journal.ui.tabs.search.substance.UrlViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
+
+import com.isaakhanimann.journal.ui.tabs.search.substance.UrlViewModel
 
 @Composable
 fun UrlScreen(
@@ -40,7 +42,7 @@ fun UrlScreen(
     onHandled: () -> Unit,
 ) {
     val isOpenLinkInBrowser by viewModel.isOpenLinkInBrowserFlow.collectAsState()
-    UrlScreen(isOpenLinkInBrowser = isOpenLinkInBrowser, url = url, onHandled = onHandled)
+    UrlScreen(isOpenLinkInBrowser = isOpenLinkInBrowser, url = url, onHandled = onHandled, appContext = viewModel.appContext)
 }
 
 @Composable
@@ -48,19 +50,42 @@ fun UrlScreen(
     isOpenLinkInBrowser: Boolean,
     url: String,
     onHandled: () -> Unit,
+    appContext: Context,
 ) {
     val context = LocalContext.current
+    
+    val toolbarColor = MaterialTheme.colorScheme.surface.toArgb()
 
-    LaunchedEffect(Unit) {
-        if (isOpenLinkInBrowser) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            context.startActivity(intent)
-        } else {
-            val customTabsIntent = CustomTabsIntent.Builder()
-                .setToolbarColor(ContextCompat.getColor(context, android.R.color.holo_blue_dark))
-                .build()
-            customTabsIntent.launchUrl(context, Uri.parse(url))
+    LaunchedEffect(url) {
+        if (url.isBlank()) {
+            onHandled()
+            return@LaunchedEffect
         }
-        onHandled()
+
+        val parsedUri = Uri.parse(url)
+        
+        try {
+            if (isOpenLinkInBrowser) {
+                val intent = Intent(Intent.ACTION_VIEW, parsedUri).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                context.startActivity(intent)
+            } else {
+                val customTabsIntent = CustomTabsIntent.Builder()
+                    .setToolbarColor(toolbarColor)
+                    .build()
+                customTabsIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                customTabsIntent.launchUrl(context, parsedUri)
+            }
+        } catch (e: Exception) { 
+            e.printStackTrace()
+            android.widget.Toast.makeText(
+                context, 
+                "Failed to Open", 
+                android.widget.Toast.LENGTH_SHORT
+            ).show()
+        } finally {
+            onHandled()
+        }
     }
 }
