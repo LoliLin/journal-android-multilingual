@@ -43,7 +43,7 @@ splashscreen = "1.2.0"
 accompanist = "0.27.0"
 calendar = "2.10.1"
 pinIn = "1.6.0"
-coil = "2.5.0"
+coil = "2.7.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
