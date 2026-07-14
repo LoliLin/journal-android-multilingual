@@ -554,5 +554,6 @@
   "extension_open_link": "Open link",
   "extension_update": "Update",
   "extension_check_update": "Check update",
-  "extension_download": "Download"
+  "extension_download": "Download",
+  "settings_OpenLinkInBrowser":"Open Link in Browser"
 }

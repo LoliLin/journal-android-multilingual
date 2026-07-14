@@ -554,5 +554,6 @@
   "extension_open_link": "打開鏈接",
   "extension_update": "更新",
   "extension_check_update": "檢查更新",
-  "extension_download": "下載"
+  "extension_download": "下載",
+  "settings_OpenLinkInBrowser":"在瀏覽器中開啟連結"
 }

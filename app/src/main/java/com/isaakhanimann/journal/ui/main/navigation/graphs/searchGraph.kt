@@ -83,7 +83,7 @@ fun NavGraphBuilder.searchGraph(navController: NavController) {
         ) { backStackEntry ->
             val args = backStackEntry.arguments!!
             val url = args.getString(URL_KEY)!!
-            UrlScreen(url = url)
+            UrlScreen(url = url, onHandled = navController::popBackStack)
         }
         composableWithTransitions(
             ArgumentRouter.CategoryRouter.route, arguments = ArgumentRouter.CategoryRouter.args

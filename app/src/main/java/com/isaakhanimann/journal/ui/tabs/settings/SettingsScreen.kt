@@ -138,6 +138,8 @@ fun SettingsScreen(
         snackbarHostState = viewModel.snackbarHostState,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
         saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
+        isOpenLinkInBrowser = viewModel.isOpenLinkInBrowserFlow.collectAsState().value,
+        saveOpenLinkInBrowser = viewModel::saveOpenLinkInBrowser,
         supportedLanguages = supportedLanguages,
         selectedLanguageKey = selectedLanguageKey,
         saveSelectedLanguage = viewModel::saveSelectedLanguage,
@@ -163,6 +165,8 @@ fun SettingsScreen(
     snackbarHostState: SnackbarHostState,
     areDosageDotsHidden: Boolean,
     saveDosageDotsAreHidden: (Boolean) -> Unit,
+    isOpenLinkInBrowser: Boolean,
+    saveOpenLinkInBrowser: (Boolean) -> Unit,
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
@@ -239,35 +243,41 @@ fun SettingsScreen(
                     )
                 }
                 HorizontalDivider()
+
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = i18n("settings_hide_dosage_dots"))
-
                     Switch(
-
                         checked = areDosageDotsHidden,
-
                         onCheckedChange = saveDosageDotsAreHidden)
+
+                }
+
+                HorizontalDivider()
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = i18n("settings_OpenLinkInBrowser"))
+                    Switch(
+                        checked = isOpenLinkInBrowser,
+                        onCheckedChange = saveOpenLinkInBrowser)
 
                 }
 
                 HorizontalDivider()
 
                 SettingsButton(
-
                     imageVector = Icons.Outlined.StarBorder,
-
                     text = i18n("settings_icon_title")
-
                 ) {
-
                     navigateToIconPicker()
-
                 }
-
             }
 
             CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {
