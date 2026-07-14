@@ -103,7 +103,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    val isOpenLinkInBrowser: Flow<Boolean> = dataStore.data
+    val isOpenLinkInBrowserFlow: Flow<Boolean> = dataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.KEY_OPEN_LINK_IN_BROWSER] ?: false
         }

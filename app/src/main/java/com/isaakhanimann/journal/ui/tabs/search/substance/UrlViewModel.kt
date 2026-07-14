@@ -17,7 +17,7 @@ class UrlViewModel @Inject constructor(
     private val userPreferences: UserPreferences,
 ) : ViewModel() {
 
-    val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowser.stateIn(
+    val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowserFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)

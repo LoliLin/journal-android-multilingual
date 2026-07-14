@@ -62,11 +62,11 @@ class SettingsViewModel @Inject constructor(
 
     fun saveOpenLinkInBrowser(value: Boolean) {
         viewModelScope.launch {
-            userPreferences.OpenLinkInBrowser(value)
+            userPreferences.saveOpenLinkInBrowser(value)
         }
     }
 
-    val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowser.stateIn(
+    val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowserFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
