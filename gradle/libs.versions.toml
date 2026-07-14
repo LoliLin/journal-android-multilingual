@@ -9,6 +9,7 @@ androidxCore = "1.18.0"
 androidxLifecycle = "2.11.0"
 androidxActivity = "1.13.0"
 androidxComposeBom = "2026.06.00"          # 统一使用最新的 BOM
+androidxbrowser = "1.10.0"
 
 # Hilt
 hilt = "2.60.1"
@@ -109,6 +110,7 @@ accompanist-webview = { module = "com.google.accompanist:accompanist-webview", v
 kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", version.ref = "calendar" }
 towdium-pinin = { module = "com.github.Towdium:PinIn", version.ref = "pinIn" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxbrowser" }
 
 # 测试库
 junit = { module = "junit:junit", version.ref = "junit" }
