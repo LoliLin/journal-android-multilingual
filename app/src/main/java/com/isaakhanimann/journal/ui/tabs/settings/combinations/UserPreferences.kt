@@ -35,6 +35,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_TIME_DISPLAY_OPTION = stringPreferencesKey("key_time_display_option")
         val KEY_HIDE_ORAL_DISCLAIMER = booleanPreferencesKey("key_hide_oral_disclaimer")
         val KEY_HIDE_DOSAGE_DOTS = booleanPreferencesKey("key_hide_dosage_dots")
+        val KEY_OPEN_LINK_IN_BROWSER = booleanPreferencesKey("key_open_link_in_browser")
         val KEY_SELECTED_LANGUAGE = stringPreferencesKey("key_selected_language")
         val KEY_OWNER_USER_NAME = stringPreferencesKey("key_owner_user_name")
         val KEY_OWNER_USER_ACHIEVEMENT = stringPreferencesKey("key_owner_user_achievement") // registerName;
@@ -94,6 +95,17 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     val areDosageDotsHiddenFlow: Flow<Boolean> = dataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.KEY_HIDE_DOSAGE_DOTS] ?: false
+        }
+    
+    suspend fun saveOpenLinkInBrowser(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_OPEN_LINK_IN_BROWSER] = value
+        }
+    }
+
+    val isOpenLinkInBrowser: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_OPEN_LINK_IN_BROWSER] ?: false
         }
 
     suspend fun saveSelectedLanguage(value: String?) {

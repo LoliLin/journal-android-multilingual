@@ -19,53 +19,48 @@
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
 import android.content.Intent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.Scaffold
+import androidx.core.content.ContextCompat
+
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import android.net.Uri
+import androidx.compose.runtime.LaunchedEffect
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.google.accompanist.web.LoadingState
-import com.google.accompanist.web.WebView
-import com.google.accompanist.web.rememberWebViewState
+
+import com.isaakhanimann.journal.ui.tabs.search.substance.UrlViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun UrlScreen(url: String) {
+fun UrlScreen(
+    viewModel: UrlViewModel = hiltViewModel(),
+    url: String,
+    onHandled: () -> Unit,
+) {
+    val isOpenLinkInBrowser by viewModel.isOpenLinkInBrowserFlow.collectAsState()
+    UrlScreen(isOpenLinkInBrowser = isOpenLinkInBrowser, url = url, onHandled = onHandled)
+}
+
+@Composable
+fun UrlScreen(
+    isOpenLinkInBrowser: Boolean,
+    url: String,
+    onHandled: () -> Unit,
+) {
     val context = LocalContext.current
-    val sendIntent: Intent = Intent().apply {
-        action = Intent.ACTION_SEND
-        putExtra(Intent.EXTRA_TEXT, url)
-        type = "text/plain"
-    }
-    val shareIntent = Intent.createChooser(sendIntent, null)
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(onClick = {
-                context.startActivity(shareIntent)
-            }) {
-                Icon(Icons.Filled.Share, "Share link")
-            }
-        },
-    ) { padding ->
-        Column(modifier = Modifier.padding(padding)) {
-            val state = rememberWebViewState(url = url)
-            val loadingState = state.loadingState
-            if (loadingState is LoadingState.Loading) {
-                LinearProgressIndicator(
-                    progress = { loadingState.progress },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
-            WebView(
-                state = state,
-                modifier = Modifier.weight(1f),
-            )
+
+    LaunchedEffect(Unit) {
+        if (isOpenLinkInBrowser) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            context.startActivity(intent)
+        } else {
+            val customTabsIntent = CustomTabsIntent.Builder()
+                .setToolbarColor(ContextCompat.getColor(context, android.R.color.holo_blue_dark))
+                .build()
+            customTabsIntent.launchUrl(context, Uri.parse(url))
         }
+        onHandled()
     }
 }

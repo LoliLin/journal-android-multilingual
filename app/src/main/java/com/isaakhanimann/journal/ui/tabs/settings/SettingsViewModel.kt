@@ -60,6 +60,18 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    fun saveOpenLinkInBrowser(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.OpenLinkInBrowser(value)
+        }
+    }
+
+    val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowser.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val selectedLanguageFlow = userPreferences.selectedLanguageFlow.stateIn(
         initialValue = null,
         scope = viewModelScope,
