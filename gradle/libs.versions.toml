@@ -6,7 +6,7 @@ ksp = "2.3.9"
 
 # AndroidX 核心库
 androidxCore = "1.18.0"
-androidxLifecycle = "2.10.0"
+androidxLifecycle = "2.11.0"
 androidxActivity = "1.13.0"
 androidxComposeBom = "2026.06.00"          # 统一使用最新的 BOM
 
