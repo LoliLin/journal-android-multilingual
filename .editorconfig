@@ -1,0 +1,2 @@
+[*.{kt,kts}]
+ktlint_code_style = android_studio   # 或 ktlint_official
