@@ -129,9 +129,12 @@ fun SubstanceCompanionScreen(
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
                     CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
-                        ToleranceSection(
-                            tolerance = tolerance,
-                            crossTolerances = crossTolerances
+                        ToleranceSection(
+                            tolerance = tolerance,
+                            crossTolerances = crossTolerances,
+                            getSubstanceDisplayName = substanceRepo?.let { repo ->
+                                { name -> repo.getDisplayName(name) }
+                            }
                         )
                     }
                 }

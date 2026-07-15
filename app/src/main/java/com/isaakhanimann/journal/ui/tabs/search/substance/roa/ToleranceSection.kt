@@ -47,58 +47,60 @@ fun ToleranceSectionPreview() {
     )
 }
 
-@Composable
-fun ToleranceSection(
-    tolerance: Tolerance?,
-    crossTolerances: List<String>,
-    modifier: Modifier = Modifier
-) {
-    if (tolerance != null || crossTolerances.isNotEmpty()) {
-        Column(modifier) {
-            if (tolerance != null) {
-                val labelWidth = 40.dp
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.full != null) {
-                        Text(
-                            text = i18n("tolerance_full_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.full)
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.half != null) {
-                        Text(
-                            text = i18n("tolerance_half_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.half)
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.zero != null) {
-                        Text(
-                            text = i18n("tolerance_zero_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.zero)
-                    }
-                }
-                Text(text = i18n("tolerance_zero_explanation"), style = MaterialTheme.typography.bodySmall)
-            }
-            if (crossTolerances.isNotEmpty()) {
-                val names = crossTolerances.map { it }.distinct()
-                    .joinToString(separator = ", ")
-                Text(text = i18n("tolerance_cross_with", mapOf("names" to names)))
-            }
-        }
-
-    }
-
+@Composable
+fun ToleranceSection(
+    tolerance: Tolerance?,
+    crossTolerances: List<String>,
+    modifier: Modifier = Modifier,
+    getSubstanceDisplayName: ((String) -> String)? = null
+) {
+    if (tolerance != null || crossTolerances.isNotEmpty()) {
+        Column(modifier) {
+            if (tolerance != null) {
+                val labelWidth = 40.dp
+                Row(
+                    verticalAlignment = Alignment.Top
+                ) {
+                    if (tolerance.full != null) {
+                        Text(
+                            text = i18n("tolerance_full_label"),
+                            modifier = Modifier.width(labelWidth)
+                        )
+                        Text(text = tolerance.full)
+                    }
+                }
+                Row(
+                    verticalAlignment = Alignment.Top
+                ) {
+                    if (tolerance.half != null) {
+                        Text(
+                            text = i18n("tolerance_half_label"),
+                            modifier = Modifier.width(labelWidth)
+                        )
+                        Text(text = tolerance.half)
+                    }
+                }
+                Row(
+                    verticalAlignment = Alignment.Top
+                ) {
+                    if (tolerance.zero != null) {
+                        Text(
+                            text = i18n("tolerance_zero_label"),
+                            modifier = Modifier.width(labelWidth)
+                        )
+                        Text(text = tolerance.zero)
+                    }
+                }
+                Text(text = i18n("tolerance_zero_explanation"), style = MaterialTheme.typography.bodySmall)
+            }
+            if (crossTolerances.isNotEmpty()) {
+                val names = crossTolerances.map { name ->
+                    getSubstanceDisplayName?.invoke(name) ?: name
+                }.distinct().joinToString(separator = ", ")
+                Text(text = i18n("tolerance_cross_with", mapOf("names" to names)))
+            }
+        }
+
+    }
+
 }
