@@ -1,0 +1,17 @@
+Journal Multilingual is an open-source Android app for tracking substance use and accessing harm reduction information.
+
+It is a community fork of PsychonautWiki Journal with additional language support.
+
+Features:
+• Interaction checker — check potential risks when combining substances
+• Timeline view — visualize substance effects over time
+• Substance database — dosage, duration and risk info for over 100 substances, sourced from PsychonautWiki
+• Multi-language support — UI and substance data translated into Simplified Chinese, Traditional Chinese, and English
+• Pinyin search for Chinese substance names
+• Data export and import
+• Customizable app icon
+• Extension pack system for community-contributed data
+
+Privacy: No accounts. No cloud sync. All data stays on your device.
+
+Note: This is a community fork of the original PsychonautWiki Journal app.

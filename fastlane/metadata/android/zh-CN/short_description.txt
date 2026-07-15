@@ -1,1 +1,1 @@
-PsychonautWiki Journal 的多邻国版
+开源的药物使用记录工具，支持交互检查和多语言界面。
