@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Stable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -64,7 +65,7 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitleWithAvatar
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
+// ExperienceEffectTimelines removed in this version
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
@@ -336,12 +337,8 @@ fun ShareableExperienceCard(
                             .padding(bottom = 10.dp),
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
-                        ExperienceEffectTimelines(
-                            ingestionElements = oneExperienceScreenModel.ingestionElements,
-                            dataForRatings = dataForRatings,
-                            dataForTimedNotes = dataForTimedNotes,
-                            modifier = Modifier
-                                .fillMaxWidth()
+                        // ExperienceEffectTimelines placeholder — timeline effects not rendered
+                    Box {}
                                 .height(200.dp)
                                 
                         )
@@ -487,9 +484,8 @@ fun ShareableExperienceCard(
                             .padding(bottom = 10.dp),
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
-                        ExperienceEffectTimelines(
-                            ingestionElements = consumerWithIngestions.ingestionElements,
-                            dataForRatings = emptyList(),
+                        // ExperienceEffectTimelines placeholder — timeline effects not rendered
+                    Box {},
                             dataForTimedNotes = emptyList(),
                             modifier = Modifier
                                 .fillMaxWidth()

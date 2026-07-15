@@ -61,7 +61,7 @@ fun OverallRatingRow(
 
 
 @Composable
-private fun RatingRow(
+fun RatingRow(
     modifier: Modifier = Modifier,
     ratingSign: String,
     content: @Composable () -> Unit
@@ -81,7 +81,7 @@ private fun RatingRow(
 
 @Preview
 @Composable
-private fun RatingRowPreview(@PreviewParameter(RatingPreviewProvider::class) rating: ShulginRating) {
+fun RatingRowPreview(@PreviewParameter(RatingPreviewProvider::class) rating: ShulginRating) {
     RatingRow(
         ratingSign = rating.option.sign,
         modifier = Modifier.fillMaxWidth()
