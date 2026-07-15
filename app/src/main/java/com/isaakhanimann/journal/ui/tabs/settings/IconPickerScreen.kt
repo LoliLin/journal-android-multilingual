@@ -121,6 +121,8 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             iconOptions.forEach { option ->
+                val msg_switched = i18n("settings_icon_switched")
+                val msg_switch_failed = i18n("settings_icon_switch_failed")
                 IconOptionCard(
                     option = option,
                     isSelected = selectedKey == option.key,
@@ -128,17 +130,23 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                         if (!isSwitching && selectedKey != option.key) {
                             isSwitching = true
                             val success = switchIcon(pm, aliases, enableKey = option.key)
-                            if (success) {
-                                selectedKey = option.key
-                                val msg = i18n("settings_icon_switched")
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(msg)
-                                }
-                            } else {
-                                val msg = i18n("settings_icon_switch_failed")
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(msg)
-                                }
+                            if (success) {
+
+                                selectedKey = option.key
+
+                                val msg = msg_switched
+
+                                scope.launch {
+
+                                    snackbarHostState.showSnackbar(msg)
+
+                                }
+
+                            } else {
+                                val msg = msg_switch_failed
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(msg)
+                                }
                             }
                             isSwitching = false
                         }
@@ -147,13 +155,9 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
             }
 
             Text(
-
                 text = i18n("settings_icon_current", mapOf("name" to selectedKey)),
-
                 style = MaterialTheme.typography.bodySmall,
-
                 color = MaterialTheme.colorScheme.onSurfaceVariant
-
             )
         }
     }
