@@ -556,5 +556,9 @@
   "extension_check_update": "Check update",
   "extension_download": "Download",
   "settings_OpenLinkInBrowser": "Open Link in Browser",
-  "substance_activity_title": "Activity"
+  "substance_activity_title": "Activity",
+  "settings_icon_switched": "Icon switched",
+  "settings_icon_switch_failed": "Icon switch failed",
+  "settings_icon_current": "Current: {name}",
+  "common_back": "Back"
 }

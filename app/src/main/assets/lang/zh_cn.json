@@ -556,5 +556,9 @@
   "extension_check_update": "检查更新",
   "extension_download": "下载",
   "settings_OpenLinkInBrowser": "在浏览器中打开链接",
-  "substance_activity_title": "活动记录"
+  "substance_activity_title": "活动记录",
+  "settings_icon_switched": "图标已切换",
+  "settings_icon_switch_failed": "图标切换失败",
+  "settings_icon_current": "当前: {name}",
+  "common_back": "返回"
 }
