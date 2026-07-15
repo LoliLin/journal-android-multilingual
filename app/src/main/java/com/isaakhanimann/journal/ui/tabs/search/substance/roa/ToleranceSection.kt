@@ -18,6 +18,9 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance.roa
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
@@ -31,76 +34,114 @@ import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.localization.i18n
 
-@Preview(showBackground = true)
 @Composable
-fun ToleranceSectionPreview() {
+fun ToleranceSection(
+    tolerance: Tolerance?,
+    crossTolerances: List<String>,
+    modifier: Modifier = Modifier,
+    isSubstance: ((String) -> Boolean),
+    getSubstanceDisplayName: ((String) -> String),
+    navToSubstance: ((String) -> Unit),
+    isCategory: ((String) -> Boolean),
+    getCategoryDisplayName: ((String) -> String),
+    navToCategory: ((String) -> Unit),
+) {
+    val descriptor: (String) -> Pair<String, (String) -> Unit> = { name ->
+        when {
+            isSubstance(name) -> getSubstanceDisplayName(name) to { navToSubstance(name) }
+            isCategory(name) -> getCategoryDisplayName(name) to { navToCategory(name) }
+            else -> name to {} 
+        }
+    }
+    
     ToleranceSection(
-        tolerance = Tolerance(
-            full = "with prolonged use",
-            half = "two weeks",
-            zero = "1 month"
-        ),
-        crossTolerances = listOf(
-            "dopamine",
-            "stimulant"
-        ),
+        tolerance = tolerance,
+        crossTolerances = crossTolerances,
+        modifier = modifier,
+        crossToleranceDescriptor = descriptor
     )
 }
 
-@Composable
-fun ToleranceSection(
-    tolerance: Tolerance?,
-    crossTolerances: List<String>,
-    modifier: Modifier = Modifier,
-    getSubstanceDisplayName: ((String) -> String)? = null
-) {
-    if (tolerance != null || crossTolerances.isNotEmpty()) {
-        Column(modifier) {
-            if (tolerance != null) {
-                val labelWidth = 40.dp
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.full != null) {
-                        Text(
-                            text = i18n("tolerance_full_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.full)
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.half != null) {
-                        Text(
-                            text = i18n("tolerance_half_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.half)
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.Top
-                ) {
-                    if (tolerance.zero != null) {
-                        Text(
-                            text = i18n("tolerance_zero_label"),
-                            modifier = Modifier.width(labelWidth)
-                        )
-                        Text(text = tolerance.zero)
-                    }
-                }
-                Text(text = i18n("tolerance_zero_explanation"), style = MaterialTheme.typography.bodySmall)
-            }
-            if (crossTolerances.isNotEmpty()) {
-                val names = crossTolerances.map { name ->
-                    getSubstanceDisplayName?.invoke(name) ?: name
-                }.distinct().joinToString(separator = ", ")
-                Text(text = i18n("tolerance_cross_with", mapOf("names" to names)))
-            }
-        }
-
-    }
-
+@Composable
+fun ToleranceSection(
+    tolerance: Tolerance?,
+    crossTolerances: List<String>,
+    modifier: Modifier = Modifier,
+    getSubstanceDisplayName: ((String) -> String)
+) {
+    val descriptor = getSubstanceDisplayName.let { displayFn ->
+        { name: String ->
+            displayFn(name) to {}
+        }
+    }
+    
+    ToleranceSection(
+        tolerance = tolerance,
+        crossTolerances = crossTolerances,
+        modifier = modifier,
+        crossToleranceDescriptor = descriptor
+    )
+}
+
+@Composable
+fun ToleranceSection(
+    tolerance: Tolerance?,
+    crossTolerances: List<String>,
+    modifier: Modifier = Modifier,
+    crossToleranceDescriptor: ((String) -> Pair<String, (String) -> Unit>)
+) {
+
+    if (tolerance != null || crossTolerances.isNotEmpty()) {
+
+        Column(modifier) {
+            tolerance?.let { tol ->
+                listOf(
+                    Triple(i18n("tolerance_full_label"), tol.full),
+                    Triple(i18n("tolerance_half_label"), tol.half),
+                    Triple(i18n("tolerance_zero_label"), tol.zero)
+                ).filter { it.second != null }.forEach { (label, value) ->
+                    ToleranceItem(label = label, value = value!!)
+                }
+                if (tol.zero != null) {
+                    Text(
+                        text = i18n("tolerance_zero_explanation"),
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
+            }
+
+            if (crossTolerances.isNotEmpty()) {
+                val topPadding = if (tolerance != null) 8.dp else 0.dp
+
+                Text(
+                    text = i18n("tolerance_cross_with_title"), 
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(top = topPadding)
+                )
+
+                Column(
+                    modifier = Modifier.padding(top = 4.dp),
+                ) {
+                    crossTolerances.forEachIndexed { index, originalName ->
+                        val (displayName, clickAction) = crossToleranceDescriptor(originalName)
+                        Text(
+                            text = displayName,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.clickable { clickAction(originalName) }
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ToleranceItem(label: String, value: String, modifier: Modifier = Modifier) {
+    Column(modifier) {
+        Text(text = label, style = MaterialTheme.typography.titleSmall)
+        Text(text = value, style = MaterialTheme.typography.bodyMedium)
+    }
 }
