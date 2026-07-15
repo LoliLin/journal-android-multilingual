@@ -95,9 +95,9 @@ fun ToleranceSection(
         Column(modifier) {
             tolerance?.let { tol ->
                 listOf(
-                    Triple(i18n("tolerance_full_label"), tol.full),
-                    Triple(i18n("tolerance_half_label"), tol.half),
-                    Triple(i18n("tolerance_zero_label"), tol.zero)
+                    i18n("tolerance_full_label") to tol.full,
+                    i18n("tolerance_half_label") to tol.half,
+                    i18n("tolerance_zero_label") to tol.zero
                 ).filter { it.second != null }.forEach { (label, value) ->
                     ToleranceItem(label = label, value = value!!)
                 }

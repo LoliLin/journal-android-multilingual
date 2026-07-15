@@ -173,7 +173,7 @@ fun SubstanceCompanionScreen(
                             crossTolerances = crossTolerances,
 
                             isSubstance = substanceRepo::isSubstance,
-                            isCategory = substanceRepo::isCategory
+                            isCategory = substanceRepo::isCategory,
                             getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
                             getCategoryDisplayName = { name ->
                                 substanceRepo.getCategory(name)?.getLocalizedName(context) ?: name
