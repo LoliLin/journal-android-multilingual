@@ -36,23 +36,32 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DotRows
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
-import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-import java.time.Instant
-import java.time.temporal.ChronoUnit
+
+@Preview(showBackground = true)
+@Composable
+fun IngestionRowPreview(@PreviewParameter(IngestionRowPreviewProvider::class) ingestionElement: IngestionElement) {
+    IngestionRow(
+        ingestionElement = ingestionElement,
+        areDosageDotsHidden = false,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = "Fri 07:17",
+            style = MaterialTheme.typography.labelMedium
+        )
+    }
+}
+
 
 @Composable
 fun IngestionRow(
     ingestionElement: IngestionElement,
-    timeDisplayOption: TimeDisplayOption,
-    startTime: Instant,
     areDosageDotsHidden: Boolean,
     modifier: Modifier = Modifier,
-    getSubstanceDisplayName: (String) -> String,
+    time: @Composable () -> Unit,
 ) {
     val ingestionWithCompanionAndCustomUnit = ingestionElement.ingestionWithCompanionAndCustomUnit
     val ingestion = ingestionWithCompanionAndCustomUnit.ingestion
@@ -62,42 +71,34 @@ fun IngestionRow(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = modifier.height(intrinsicSize = IntrinsicSize.Min)
     ) {
-        VerticalLine(color = ingestionWithCompanionAndCustomUnit.substanceCompanion!!.color)
+        VerticalLine(color = ingestionWithCompanionAndCustomUnit.substanceCompanion?.color ?: AdaptiveColor.RED)
         Column {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.Top,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                val customUnitName = if (customUnit != null) ", ${customUnit.name}" else ""
-                Text(
-                    modifier = Modifier.weight(1f),
-                    text = getSubstanceDisplayName(ingestion.substanceName) + customUnitName,
-                    style = MaterialTheme.typography.titleMedium
-                )
-                TimeText(
-                    time = ingestion.time,
-                    timeDisplayOption = timeDisplayOption,
-                    startTime = startTime,
-                    style = MaterialTheme.typography.titleSmall
-                )
+            time()
+            val title = if (customUnit != null) {
+                "${ingestion.substanceName}, ${customUnit.name}"
+            } else {
+                ingestion.substanceName
             }
+            Text(
+                modifier = Modifier.weight(1f),
+                text = title,
+                style = MaterialTheme.typography.titleMedium
+            )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                val routeName = i18nOrDefault(
-                    administrationRouteKey(ingestion.administrationRoute),
-                    ingestion.administrationRoute.displayText
-                ).lowercase()
                 val text = buildAnnotatedString {
-                    append(ingestionWithCompanionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
+                    append(ingestionWithCompanionAndCustomUnit.doseDescription)
                     withStyle(style = SpanStyle(color = Color.Gray)) {
                         if (customUnit == null) {
-                            append(" $routeName")
-                        }
-                        ingestionWithCompanionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                            append(" = $it $routeName")
+                            append(" " + ingestion.administrationRoute.displayText.lowercase())
+                        } else {
+                            ingestionWithCompanionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
+                                append(" = $it ${ingestion.administrationRoute.displayText.lowercase()}")
+                            } ?: run {
+                                append(" = unknown dose ${ingestion.administrationRoute.displayText.lowercase()}")
+                            }
                         }
                     }
                 }
