@@ -16,7 +16,9 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
+package com.isaakhanimann.journal
+
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ui.tabs.journal.addingestion.time
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,14 +33,14 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_SUBSTANCE_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.DOSE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.ESTIMATED_DOSE_STANDARD_DEVIATION_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.IS_ESTIMATE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.UNITS_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ADMINISTRATION_ROUTE_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.CUSTOM_SUBSTANCE_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.CUSTOM_UNIT_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.DOSE_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ESTIMATED_DOSE_STANDARD_DEVIATION_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.IS_ESTIMATE_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.UNITS_KEY
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -185,21 +187,21 @@ class ChooseTimeViewModel @Inject constructor(
     }
 
     init {
-        val routeString = state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
-        substanceName = state.get<String>(SUBSTANCE_NAME_KEY) ?: ""
+        val routeString = state.get<String>(NavArgKeys.ADMINISTRATION_ROUTE_KEY)!!
+        substanceName = state.get<String>(NavArgKeys.SUBSTANCE_NAME_KEY) ?: ""
         administrationRoute = AdministrationRoute.valueOf(routeString)
-        dose = state.get<String>(DOSE_KEY)?.toDoubleOrNull()
-        estimatedDoseStandardDeviation = state.get<String>(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
-        customUnitId = state.get<String>(CUSTOM_UNIT_ID_KEY)?.toIntOrNull()
-        units = state.get<String>(UNITS_KEY)?.let {
+        dose = state.get<String>(NavArgKeys.DOSE_KEY)?.toDoubleOrNull()
+        estimatedDoseStandardDeviation = state.get<String>(NavArgKeys.ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
+        customUnitId = state.get<String>(NavArgKeys.CUSTOM_UNIT_ID_KEY)?.toIntOrNull()
+        units = state.get<String>(NavArgKeys.UNITS_KEY)?.let {
             if (it == "null") {
                 null
             } else {
                 it
             }
         }
-        isEstimate = state.get<Boolean>(IS_ESTIMATE_KEY)!!
-        val customSubstanceId = state.get<String>(CUSTOM_SUBSTANCE_ID_KEY)?.toIntOrNull()
+        isEstimate = state.get<Boolean>(NavArgKeys.IS_ESTIMATE_KEY)!!
+        val customSubstanceId = state.get<String>(NavArgKeys.CUSTOM_SUBSTANCE_ID_KEY)?.toIntOrNull()
         viewModelScope.launch {
             if (customSubstanceId!=null) {
                 val customSubstance = experienceRepo.getCustomSubstanceFlow(customSubstanceId).firstOrNull()

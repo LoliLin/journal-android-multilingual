@@ -16,14 +16,16 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.search.substance
+package com.isaakhanimann.journal
+
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ui.tabs.search.substance
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.SUBSTANCE_NAME_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -36,7 +38,7 @@ class SubstanceViewModel @Inject constructor(
     state: SavedStateHandle
 ) : ViewModel() {
 
-    val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
+    val substanceName = state.get<String>(NavArgKeys.SUBSTANCE_NAME_KEY)!!
 
     val substanceWithCategories = substanceRepo.getSubstanceWithCategories(substanceName)!!
     val interactionNameLookup = substanceRepo.getAllSubstances().associate { substance ->

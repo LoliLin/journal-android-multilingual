@@ -16,7 +16,9 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions
+package com.isaakhanimann.journal
+
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ui.tabs.journal.addingestion.interactions
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +30,7 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.SUBSTANCE_NAME_KEY
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -52,7 +54,7 @@ class CheckInteractionsViewModel @Inject constructor(
     private val interactionChecker: InteractionChecker,
     state: SavedStateHandle,
 ) : ViewModel() {
-    val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
+    val substanceName = state.get<String>(NavArgKeys.SUBSTANCE_NAME_KEY)!!
     val substance = substanceRepo.getSubstance(substanceName)!!
     val dangerousInteractions = substance.interactions?.dangerous ?: emptyList()
     val unsafeInteractions = substance.interactions?.unsafe ?: emptyList()

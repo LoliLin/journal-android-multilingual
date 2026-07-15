@@ -16,7 +16,9 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.journal.experience.editingestion
+package com.isaakhanimann.journal
+
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ui.tabs.journal.experience.editingestion
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -28,7 +30,7 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.INGESTION_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.INGESTION_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
@@ -93,7 +95,7 @@ class EditIngestionViewModel @Inject constructor(
     }
 
     init {
-        val id = state.get<Int>(INGESTION_ID_KEY)!!
+        val id = state.get<Int>(NavArgKeys.INGESTION_ID_KEY)!!
         viewModelScope.launch {
             val ingestionAndCustomUnit =
                 experienceRepo.getIngestionFlow(id = id).first() ?: return@launch

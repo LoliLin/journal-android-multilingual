@@ -16,7 +16,9 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen
+package com.isaakhanimann.journal
+
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.ui.tabs.journal.experience.timeline.screen
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -26,8 +28,8 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.CONSUMER_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.CONSUMER_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routers.NavArgKeys.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -57,8 +59,8 @@ class TimelineScreenViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-    private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
-    val consumerName = state.get<String>(CONSUMER_NAME_KEY)!!
+    private val experienceID = state.get<Int>(NavArgKeys.EXPERIENCE_ID_KEY)!!
+    val consumerName = state.get<String>(NavArgKeys.CONSUMER_NAME_KEY)!!
 
     private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(experienceID)
         .map { ingestions ->
