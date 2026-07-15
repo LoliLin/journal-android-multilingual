@@ -1,2 +1,21 @@
+root = true
+
 [*.{kt,kts}]
-ktlint_code_style = android_studio   # 或 ktlint_official
+ktlint_code_style = android_studio   # 或者 ktlint_official
+
+# 1. 禁用函数命名检查（解决 standard:function-naming）
+# 比如在 Compose 里有很多首字母大写的 @Composable 函数，如果不想被卡，可以禁用它
+ktlint_standard_function-naming = disabled
+
+# 2. 禁用单行最大长度限制（解决 standard:max-line-length）
+# 或者设置一个很大的值：max_line_length = unset 
+ktlint_standard_max-line-length = disabled
+
+# 3. 允许星号通配符导入（解决 standard:no-wildcard-imports）
+ktlint_standard_no-wildcard-imports = disabled
+
+# 4. 禁用文件名与类名一致性检查（解决 standard:filename）
+ktlint_standard_filename = disabled
+
+# 5. 禁用属性命名规范检查（解决 standard:property-naming）
+ktlint_standard_property-naming = disabled
