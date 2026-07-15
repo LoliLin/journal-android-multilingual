@@ -332,10 +332,11 @@ fun SubstanceScreen(
                 SectionWithTitle(title = i18n("substance_tolerance_title")) {
                     Column {
                         VerticalSpace()
-                        ToleranceSection(
-                            tolerance = substance.tolerance,
-                            crossTolerances = substance.crossTolerances,
-                            modifier = Modifier.padding(horizontal = horizontalPadding)
+                        ToleranceSection(
+                            tolerance = substance.tolerance,
+                            crossTolerances = substance.crossTolerances,
+                            modifier = Modifier.padding(horizontal = horizontalPadding),
+                            getSubstanceDisplayName = { name -> interactionNameLookup[name] ?: name }
                         )
                         VerticalSpace()
                     }
