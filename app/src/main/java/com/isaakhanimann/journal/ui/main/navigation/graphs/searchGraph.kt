@@ -74,7 +74,8 @@ fun NavGraphBuilder.searchGraph(navController: NavController) {
                 navigateToExplainTimeline = navController::navigateToExplainTimelineOnSearchTab,
                 navigateToCategoryScreen = navController::navigateToCategoryScreen,
                 navigateToVolumetricDosingScreen = navController::navigateToVolumetricDosingScreenOnSearchTab,
-                navigateToArticle = navController::navigateToURLScreenOnSearchTab
+                navigateToArticle = navController::navigateToURLScreenOnSearchTab,
+                navigateToSubstanceScreen = navController::navigateToSubstanceScreen
             )
         }
         composableWithTransitions(

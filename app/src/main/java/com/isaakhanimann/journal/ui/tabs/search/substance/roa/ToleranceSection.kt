@@ -41,10 +41,10 @@ fun ToleranceSection(
     modifier: Modifier = Modifier,
     isSubstance: ((String) -> Boolean),
     getSubstanceDisplayName: ((String) -> String),
-    navToSubstance: ((String) -> Unit),
+    navToSubstance: ((String) -> Unit) = {}
     isCategory: ((String) -> Boolean),
     getCategoryDisplayName: ((String) -> String),
-    navToCategory: ((String) -> Unit),
+    navToCategory: ((String) -> Unit) = {}
 ) {
     val descriptor: (String) -> Pair<String, (String) -> Unit> = { name ->
         when {
@@ -69,7 +69,7 @@ fun ToleranceSection(
     modifier: Modifier = Modifier,
     getSubstanceDisplayName: ((String) -> String)
 ) {
-    val descriptor = getSubstanceDisplayName.let { displayFn ->
+    val descriptor (String) -> Pair<String, (String) -> Unit> = getSubstanceDisplayName.let { displayFn ->
         { name: String ->
             displayFn(name) to {}
         }

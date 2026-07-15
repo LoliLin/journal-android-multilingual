@@ -96,6 +96,8 @@ import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.absoluteValue
 
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+
 @Composable
 fun SubstanceScreen(
     navigateToDosageExplanationScreen: () -> Unit,
@@ -105,6 +107,7 @@ fun SubstanceScreen(
     navigateToExplainTimeline: () -> Unit,
     navigateToArticle: (url: String) -> Unit,
     navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateToSubstanceScreen: (substanceName: String) -> Unit,
     viewModel: SubstanceViewModel = hiltViewModel()
 ) {
     SubstanceScreen(
@@ -115,33 +118,12 @@ fun SubstanceScreen(
         navigateToCategoryScreen = navigateToCategoryScreen,
         navigateToExplainTimeline = navigateToExplainTimeline,
         navigateToURL = navigateToArticle,
+        navigateToSubstanceScreen = navigateToSubstanceScreen,
         substanceWithCategories = viewModel.substanceWithCategories,
         interactionNameLookup = viewModel.interactionNameLookup,
-        customUnits = viewModel.customUnitsFlow.collectAsState().value
+        customUnits = viewModel.customUnitsFlow.collectAsState().value,
+        substanceRepo = viewModel.substanceRepo
     )
-}
-
-@Preview(uiMode = UI_MODE_NIGHT_YES)
-@Composable
-fun SubstanceScreenPreview(
-    @PreviewParameter(SubstanceWithCategoriesPreviewProvider::class) substanceWithCategories: SubstanceWithCategories
-) {
-    JournalTheme {
-        SubstanceScreen(
-            navigateToDosageExplanationScreen = {},
-            navigateToSaferHallucinogensScreen = {},
-            navigateToSaferStimulantsScreen = {},
-            navigateToVolumetricDosingScreen = {},
-            navigateToExplainTimeline = {},
-            navigateToURL = {},
-            navigateToCategoryScreen = {},
-            substanceWithCategories = substanceWithCategories,
-            interactionNameLookup = emptyMap(),
-            customUnits = listOf(
-                CustomUnit.mdmaSample
-            )
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -154,9 +136,11 @@ fun SubstanceScreen(
     navigateToExplainTimeline: () -> Unit,
     navigateToURL: (url: String) -> Unit,
     navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateToSubstanceScreen: (substanceName: String) -> Unit,
     substanceWithCategories: SubstanceWithCategories,
     interactionNameLookup: Map<String, String>,
-    customUnits: List<CustomUnit>
+    customUnits: List<CustomUnit>,
+    substanceRepo: SubstanceRepository
 ) {
     val substance = substanceWithCategories.substance
     Scaffold(
@@ -331,12 +315,26 @@ fun SubstanceScreen(
             if (substance.tolerance != null || substance.crossTolerances.isNotEmpty()) {
                 SectionWithTitle(title = i18n("substance_tolerance_title")) {
                     Column {
+
+                        val context = androidx.compose.ui.platform.LocalContext.current
+
                         VerticalSpace()
-                        ToleranceSection(
-                            tolerance = substance.tolerance,
-                            crossTolerances = substance.crossTolerances,
-                            modifier = Modifier.padding(horizontal = horizontalPadding),
-                            getSubstanceDisplayName = { name -> interactionNameLookup[name] ?: name }
+                        ToleranceSection(
+
+                            tolerance = substance.tolerance,
+
+                            crossTolerances = substance.crossTolerances,
+
+                            modifier = Modifier.padding(horizontal = horizontalPadding),
+
+                            isSubstance = substanceRepo::isSubstance,
+                            isCategory = substanceRepo::isCategory,
+                            getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
+                            getCategoryDisplayName = { name ->
+                                substanceRepo.getCategory(name).getLocalizedName(context)
+                            },
+                            navToCategory = navigateToCategoryScreen,
+                            navToSubstance = navigateToSubstanceScreen
                         )
                         VerticalSpace()
                     }

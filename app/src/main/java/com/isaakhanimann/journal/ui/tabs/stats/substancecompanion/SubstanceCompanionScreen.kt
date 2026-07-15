@@ -81,10 +81,13 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import androidx.compose.ui.unit.times   // 添加这一行
+import androidx.compose.ui.unit.times 
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun SubstanceCompanionScreen(
+    navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateToSubstanceScreen: (substanceName: String) -> Unit,
     viewModel: SubstanceCompanionViewModel = hiltViewModel()
 ) {
     val companion = viewModel.thisCompanionFlow.collectAsState().value
@@ -95,6 +98,9 @@ fun SubstanceCompanionScreen(
         ) {}
     } else {
         SubstanceCompanionScreen(
+            navigateToCategoryScreen = navigateToCategoryScreen,
+            navigateToSubstanceScreen = navigateToSubstanceScreen,
+            
             substanceCompanion = companion,
 
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
@@ -115,6 +121,8 @@ fun SubstanceCompanionScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SubstanceCompanionScreen(
+    navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateToSubstanceScreen: (substanceName: String) -> Unit,
 
     substanceCompanion: SubstanceCompanion,
 
@@ -156,12 +164,22 @@ fun SubstanceCompanionScreen(
 
                     CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
 
+                        val context = LocalContext.current
+
                         ToleranceSection(
 
                             tolerance = tolerance,
 
-                            crossTolerances = crossTolerances
+                            crossTolerances = crossTolerances,
 
+                            isSubstance = substanceRepo::isSubstance,
+                            isCategory = substanceRepo::isCategory
+                            getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
+                            getCategoryDisplayName = { name ->
+                                substanceRepo.getCategory(name).getLocalizedName(context)
+                            },
+                            navToCategory = navigateToCategoryScreen,
+                            navToSubstance = navigateToSubstanceScreen
                         )
 
                     }
@@ -375,5 +393,6 @@ private fun firstColIndexOfMonth(weeks: List<List<DailyCount>>, targetMonth: Int
     weeks.forEachIndexed { i, week ->
         if (week[3].date.monthValue == targetMonth) return i
     }
-    return 0
+    return 0
+
 }
