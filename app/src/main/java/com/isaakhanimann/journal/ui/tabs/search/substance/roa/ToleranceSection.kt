@@ -66,27 +66,6 @@ fun ToleranceSection(
     tolerance: Tolerance?,
     crossTolerances: List<String>,
     modifier: Modifier = Modifier,
-    getSubstanceDisplayName: ((String) -> String)
-) {
-    val descriptor : (String) -> Pair<String, (String) -> Unit> = getSubstanceDisplayName.let { displayFn ->
-        { name: String ->
-            displayFn(name) to {}
-        }
-    }
-    
-    ToleranceSection(
-        tolerance = tolerance,
-        crossTolerances = crossTolerances,
-        modifier = modifier,
-        crossToleranceDescriptor = descriptor
-    )
-}
-
-@Composable
-fun ToleranceSection(
-    tolerance: Tolerance?,
-    crossTolerances: List<String>,
-    modifier: Modifier = Modifier,
     crossToleranceDescriptor: ((String) -> Pair<String, (String) -> Unit>)
 ) {
 
