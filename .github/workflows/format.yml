@@ -19,14 +19,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install ktlint
+      - name: ktlint
         run: |
           curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.3.1/ktlint
           chmod +x ktlint
-          sudo mv ktlint /usr/local/bin/
-
-      - name: Format Kotlin files
-        run: ktlint --format "**/*.kt" --relative --editorconfig=/dev/null
+          ./ktlint -F "**/*.kt"
+          rm ktlint
 
       - name: Install Prettier
         run: npm install -g prettier
