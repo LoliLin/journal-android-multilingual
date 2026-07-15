@@ -555,5 +555,6 @@
   "extension_update": "Update",
   "extension_check_update": "Check update",
   "extension_download": "Download",
-  "settings_OpenLinkInBrowser":"Open Link in Browser"
+  "settings_OpenLinkInBrowser": "Open Link in Browser",
+  "stomach_quarter_full": "Quarter full"
 }

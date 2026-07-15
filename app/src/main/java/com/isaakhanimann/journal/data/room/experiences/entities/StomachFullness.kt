@@ -18,8 +18,10 @@
 
 package com.isaakhanimann.journal.data.room.experiences.entities
 
-import android.content.Context
-import com.isaakhanimann.journal.localization.I18n
+import android.content.Context
+
+import com.isaakhanimann.journal.localization.I18n
+
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -35,7 +37,6 @@ enum class StomachFullness {
         override val onsetDelayForOralInHours: Double = 0.0
     },
     QUARTER_FULL {
-        override val text = "Quarter full"
         override val serialized = "QUARTERFULL"
         override val onsetDelayForOralInHours = 0.75
     },
@@ -57,9 +58,10 @@ enum class StomachFullness {
 
     fun getTranslatedText(context: Context): String {
         val key = when (this) {
-            EMPTY -> "stomach_empty"
-            HALF_FULL -> "stomach_half_full"
-            FULL -> "stomach_full"
+            EMPTY -> "stomach_empty"
+            QUARTER_FULL -> "stomach_quarter_full"
+            HALF_FULL -> "stomach_half_full"
+            FULL -> "stomach_full"
             VERY_FULL -> "stomach_very_full"
         }
         return I18n.translate(context, key)
