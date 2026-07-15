@@ -304,6 +304,7 @@
   "time_now_label": "现在",
   "title_label": "标题",
   "tolerance_cross_with": "与 {names} 存在交叉耐受。",
+  "tolerance_cross_with_title": "交叉耐受",
   "tolerance_full_label": "完全耐受：",
   "tolerance_half_label": "半衰耐受：",
   "tolerance_zero_explanation": "* 零耐受指恢复到首次使用般的感受所需时间。",

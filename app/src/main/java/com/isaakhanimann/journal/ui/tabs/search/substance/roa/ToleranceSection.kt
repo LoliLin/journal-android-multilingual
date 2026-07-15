@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.localization.i18n
+import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun ToleranceSection(
@@ -94,7 +95,7 @@ fun ToleranceSection(
 
                 Text(
                     text = i18n("tolerance_cross_with_title"), 
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(top = topPadding)
                 )
 
@@ -119,7 +120,7 @@ fun ToleranceSection(
 @Composable
 fun ToleranceItem(label: String, value: String, modifier: Modifier = Modifier) {
     Column(modifier) {
-        Text(text = label, style = MaterialTheme.typography.titleSmall)
+        Text(text = label, style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold))
         Text(text = value, style = MaterialTheme.typography.bodyMedium)
     }
 }
