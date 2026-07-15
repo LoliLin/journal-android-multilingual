@@ -38,7 +38,7 @@ class InteractionsPreviewProvider : PreviewParameterProvider<Interactions> {
                 "MDMA",
                 "Stimulants",
                 "Dextromethorphan"
-            ),
+            )
         )
     )
 }

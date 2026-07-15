@@ -50,13 +50,12 @@ fun TimedNoteRowPreview(@PreviewParameter(TimedNotePreviewProvider::class) timed
     )
 }
 
-
 @Composable
 fun TimedNoteRow(
     timedNote: TimedNote,
     timeDisplayOption: TimeDisplayOption,
     startTime: Instant,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -65,16 +64,18 @@ fun TimedNoteRow(
     ) {
         val isDarkTheme = isSystemInDarkTheme()
         val strokeWidth = 3.dp
-        Canvas(modifier = Modifier
-            .fillMaxHeight()
-            .width(strokeWidth)
-            .padding(vertical = 5.dp)) {
+        Canvas(
+            modifier = Modifier
+                .fillMaxHeight()
+                .width(strokeWidth)
+                .padding(vertical = 5.dp)
+        ) {
             if (timedNote.isPartOfTimeline) {
                 val strokeWidthPx = strokeWidth.toPx()
                 drawLine(
                     color = timedNote.color.getComposeColor(isDarkTheme),
-                    start = Offset(x = size.width/2, y = 0f),
-                    end = Offset(x = size.width/2, y = size.height),
+                    start = Offset(x = size.width / 2, y = 0f),
+                    end = Offset(x = size.width / 2, y = size.height),
                     strokeWidth = strokeWidthPx,
                     cap = StrokeCap.Round,
                     pathEffect = PathEffect.dashPathEffect(
@@ -87,7 +88,10 @@ fun TimedNoteRow(
             }
         }
         Column {
-            Row(horizontalArrangement = Arrangement.spacedBy(15.dp), verticalAlignment = Alignment.Bottom) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(15.dp),
+                verticalAlignment = Alignment.Bottom
+            ) {
                 TimeText(
                     time = timedNote.time,
                     timeDisplayOption = timeDisplayOption,

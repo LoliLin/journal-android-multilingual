@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "首次於50年代合成，這種罕見藥物在1990年代由大衛·尼科爾斯重新審視。它是麥斯卡林的類似物，效力約強六倍，因此是一種強效的迷幻苯乙胺。主觀效果可能包括刺激感與幻覺。",
   "localizedName": "Escaline"
 }

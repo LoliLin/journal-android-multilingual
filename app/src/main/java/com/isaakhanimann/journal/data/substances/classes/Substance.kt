@@ -40,17 +40,17 @@ data class Substance(
     val longtermRisks: String?,
     val saferUse: List<String>,
     val interactions: Interactions?,
-    val roas: List<Roa>,
+    val roas: List<Roa>
 ) {
-    fun getRoa(route: AdministrationRoute): Roa? {
-        return roas.firstOrNull { it.route == route }
-    }
+    fun getRoa(route: AdministrationRoute): Roa? = roas.firstOrNull { it.route == route }
 
     val hasInteractions: Boolean get() {
         return if (interactions == null) {
             false
         } else {
-            interactions.uncertain.isNotEmpty() || interactions.unsafe.isNotEmpty() || interactions.dangerous.isNotEmpty()
+            interactions.uncertain.isNotEmpty() ||
+                interactions.unsafe.isNotEmpty() ||
+                interactions.dangerous.isNotEmpty()
         }
     }
 
@@ -60,14 +60,14 @@ data class Substance(
                 "hallucinogen",
                 "psychedelic",
                 "dissociative",
-                "deliriant",
+                "deliriant"
             )
             hallucinogens.contains(it.lowercase())
         }
     val isStimulant
         get() = categories.any {
             val stimulants = setOf(
-                "stimulant",
+                "stimulant"
             )
             stimulants.contains(it.lowercase())
         }

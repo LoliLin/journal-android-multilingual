@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "extremely addictive with a high potential for abuse",
-  "toxicities": [
-    "estimated oral LD50 of 6.5 - 13 mg/kg in humans"
-  ],
+  "toxicities": ["estimated oral LD50 of 6.5 - 13 mg/kg in humans"],
   "summary": "A chemical found in tobacco, aubergines and tomatoes which is considered one of the most addictive drugs in existence. It is a mild stimulant, with stress relieving effects. It is widely used in the form of cigarettes, the use of which carries a high risk of causing cancer or heart issues over time. Increasingly, it is 'vaped' as a purportedly safer alternative to smoking.",
   "effectsSummary": "Nicotine promotes the release of the hormone adrenaline as well as the neurotransmitters dopamine and serotonin. In low quantities, nicotine thus has a stimulating effect. Nicotine briefly and reversibly accelerates the heartbeat and causes constriction of the blood vessels. The central short-term effects include above all an increase in psychomotor performance as well as attention and memory. In higher doses, nicotine has a calming and muscle-relaxing effect; it reduces feelings of hunger, anxiety and aggression. Nicotine is responsible for addiction to tobacco products.",
   "dosageRemark": "Individual and dependent on the form of consumption. The lethal dose of nicotine for adults is about 60 mg; for children and adolescents it is significantly lower.",

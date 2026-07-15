@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 132
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "苯丙胺类兴奋剂药物",
   "localizedName": "3-FMA"
 }

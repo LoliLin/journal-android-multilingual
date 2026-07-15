@@ -1,15 +1,11 @@
 {
   "name": "Risperidone",
-  "commonNames": [
-    "Risperdal"
-  ],
+  "commonNames": ["Risperdal"],
   "url": "https://psychonautwiki.org/wiki/Risperidone",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "antipsychotic"
-  ],
+  "categories": ["antipsychotic"],
   "roas": [
     {
       "name": "oral",

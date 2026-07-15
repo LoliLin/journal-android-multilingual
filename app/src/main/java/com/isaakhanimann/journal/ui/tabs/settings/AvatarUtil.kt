@@ -2,10 +2,10 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Context
 import android.net.Uri
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import java.io.File
 import java.io.FileOutputStream
 
@@ -22,16 +22,14 @@ object AvatarUtil {
     /**
      * 检查用户是否已设置头像。
      */
-    fun isUserHasAvatar(context: Context, userName: String): Boolean {
-        return getAvatarFile(context, userName)?.exists() == true
-    }
+    fun isUserHasAvatar(context: Context, userName: String): Boolean =
+        getAvatarFile(context, userName)?.exists() == true
 
     /**
      * 获取用户的头像文件，若文件不存在则返回 null。
      */
-    fun getUserAvatar(context: Context, userName: String): File? {
-        return getAvatarFile(context, userName)?.takeIf { it.exists() }
-    }
+    fun getUserAvatar(context: Context, userName: String): File? =
+        getAvatarFile(context, userName)?.takeIf { it.exists() }
 
     /**
      * 生成一个用于触发“选择并保存头像”的 Composable 工具。

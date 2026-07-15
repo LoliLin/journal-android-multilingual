@@ -45,7 +45,7 @@ fun SaferSniffingScreen() {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("safer_sniffing_short")) })
-        },
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -53,7 +53,9 @@ fun SaferSniffingScreen() {
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
-            ElevatedCard(modifier = Modifier.padding(vertical = 5.dp, horizontal = horizontalPadding)) {
+            ElevatedCard(
+                modifier = Modifier.padding(vertical = 5.dp, horizontal = horizontalPadding)
+            ) {
                 Text(
                     text = i18n("sniffing_intro"),
                     textAlign = TextAlign.Left,

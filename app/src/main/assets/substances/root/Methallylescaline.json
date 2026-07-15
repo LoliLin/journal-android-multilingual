@@ -1,9 +1,6 @@
 {
   "name": "Methallylescaline",
-  "commonNames": [
-    "Methallylescaline",
-    "MAL"
-  ],
+  "commonNames": ["Methallylescaline", "MAL"],
   "url": "https://psychonautwiki.org/wiki/Methallylescaline",
   "isApproved": true,
   "tolerance": {
@@ -13,17 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "research-chemical"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "research-chemical"],
   "summary": "Mescaline analogue first synthesised by Alexander Shulgin, derived from and less potent than allylescaline. A psychedelic phenethylamine which causes stimulation, euphoria and hallucinatory experiences.",
   "roas": [
     {

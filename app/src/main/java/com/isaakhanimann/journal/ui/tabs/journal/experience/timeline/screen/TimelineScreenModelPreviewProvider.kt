@@ -34,8 +34,7 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.utils.getInstant
 
-class TimelineScreenModelPreviewProvider :
-    PreviewParameterProvider<TimelineScreenModel> {
+class TimelineScreenModelPreviewProvider : PreviewParameterProvider<TimelineScreenModel> {
 
     override val values: Sequence<TimelineScreenModel> = sequenceOf(
         TimelineScreenModel(
@@ -120,7 +119,7 @@ class TimelineScreenModelPreviewProvider :
                     experienceId = 0,
                     isPartOfTimeline = true
                 )
-            ),
+            )
         )
     )
 

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 132
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "安非他命類興奮劑。據報導其效果與右旋安非他命相似，但欣快感較溫和，且消退過程相對平緩。與4-FA相比，作用時間較短且較不具同理心增強效果。相較於安非他命，被認為產生的神經毒性代謝物較少。",
   "localizedName": "2-FA"
 }

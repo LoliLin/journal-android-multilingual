@@ -1,15 +1,11 @@
 {
   "name": "25E-NBOH",
-  "commonNames": [
-    "25E-NBOH"
-  ],
+  "commonNames": ["25E-NBOH"],
   "url": "https://psychonautwiki.org/wiki/25E-NBOH",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "psychedelic"
-  ],
+  "categories": ["psychedelic"],
   "roas": [
     {
       "name": "sublingual",

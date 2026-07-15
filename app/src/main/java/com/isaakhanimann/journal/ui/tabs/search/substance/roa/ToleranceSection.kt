@@ -19,20 +19,16 @@
 package com.isaakhanimann.journal.ui.tabs.search.substance.roa
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.localization.i18n
-import androidx.compose.ui.text.font.FontWeight
 
 @Composable
 fun ToleranceSection(
@@ -50,10 +46,10 @@ fun ToleranceSection(
         when {
             isSubstance(name) -> getSubstanceDisplayName(name) to { navToSubstance(name) }
             isCategory(name) -> getCategoryDisplayName(name) to { navToCategory(name) }
-            else -> name to {} 
+            else -> name to {}
         }
     }
-    
+
     ToleranceSection(
         tolerance = tolerance,
         crossTolerances = crossTolerances,
@@ -69,9 +65,7 @@ fun ToleranceSection(
     modifier: Modifier = Modifier,
     crossToleranceDescriptor: ((String) -> Pair<String, (String) -> Unit>)
 ) {
-
     if (tolerance != null || crossTolerances.isNotEmpty()) {
-
         Column(modifier) {
             tolerance?.let { tol ->
                 listOf(
@@ -94,13 +88,13 @@ fun ToleranceSection(
                 val topPadding = if (tolerance != null) 8.dp else 0.dp
 
                 Text(
-                    text = i18n("tolerance_cross_with_title"), 
+                    text = i18n("tolerance_cross_with_title"),
                     style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(top = topPadding)
                 )
 
                 Column(
-                    modifier = Modifier.padding(top = 4.dp),
+                    modifier = Modifier.padding(top = 4.dp)
                 ) {
                     crossTolerances.forEachIndexed { index, originalName ->
                         val (displayName, clickAction) = crossToleranceDescriptor(originalName)
@@ -120,7 +114,10 @@ fun ToleranceSection(
 @Composable
 fun ToleranceItem(label: String, value: String, modifier: Modifier = Modifier) {
     Column(modifier) {
-        Text(text = label, style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold))
+        Text(
+            text = label,
+            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold)
+        )
         Text(text = value, style = MaterialTheme.typography.bodyMedium)
     }
 }

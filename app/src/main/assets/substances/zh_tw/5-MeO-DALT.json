@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種作用機制不明的奇特藥物。具有某些迷幻效果，同時也帶有非典型迷幻藥物的特性，例如食慾增強。據報導，其具有快速、強烈且短暫的致幻作用。",
   "localizedName": "5-MeO-DALT"
 }

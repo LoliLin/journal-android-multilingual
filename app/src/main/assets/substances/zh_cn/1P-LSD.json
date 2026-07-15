@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "非成瘾性，滥用潜力低",
-  "toxicities": [
-    "相对于剂量而言毒性极低"
-  ],
+  "toxicities": ["相对于剂量而言毒性极低"],
   "summary": "一种LSD类似物，其效力略强但持续时间较短。据报告其效果与LSD极为相似，且目前看来同样安全。该物质于2014年末问世，因其隐含的合法性、与LSD的相似性以及互联网上的广泛可及性，迅速成为一种广受欢迎的研究用化学品。",
   "localizedName": "1P-LSD"
 }

@@ -4,9 +4,7 @@
     "zero": "7 - 14天",
     "zeroToleranceInHours": 252
   },
-  "toxicities": [
-    "低毒性"
-  ],
+  "toxicities": ["低毒性"],
   "summary": "普瑞巴林（乐瑞卡）是一种γ-氨基丁酸衍生物，用于治疗神经病理性疼痛、癫痫发作以及焦虑症。",
   "localizedName": "普瑞巴林"
 }

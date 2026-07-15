@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "not addictive with a low potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A nootropic drug of the racetam class, originally developed to treat Alzheimer's disease, it is currently being investigated as a treatment for major depressive disorder and generalised anxiety disorder. May be a modulator of the AMPA receptor. Limited recreational value.",
   "localizedName": "Coluracetam"
 }

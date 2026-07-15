@@ -54,21 +54,18 @@ fun SubstanceRowPreview(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SubstanceRow(
-    substanceModel: SubstanceModel,
-    onTap: (substanceName: String) -> Unit
-) {
+fun SubstanceRow(substanceModel: SubstanceModel, onTap: (substanceName: String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
                 onTap(substanceModel.name)
             }
-            .padding(horizontal = horizontalPadding, vertical = 3.dp),
+            .padding(horizontal = horizontalPadding, vertical = 3.dp)
     ) {
         Text(
             text = substanceModel.displayName,
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleMedium
         )
         if (substanceModel.commonNames.isNotEmpty()) {
             val commaSeparatedNames = substanceModel.commonNames.joinToString(separator = ", ")

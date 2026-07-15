@@ -1,8 +1,6 @@
 {
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "LD50 is around 50 times a regular dose"
-  ],
+  "toxicities": ["LD50 is around 50 times a regular dose"],
   "summary": "A concoction made of two or more plants that contain at least an MAOI and DMT, the combination of which allows the DMT to work orally. Typically associated to south american cultures. Also, sometimes approximated synthetically by taking an external MAOI with extracted DMT. Causes intense, spiritually orientated hallucinogenic experiences.",
   "localizedName": "Ayahuasca"
 }

@@ -45,7 +45,7 @@ data class OnsetTotalTimeline(
         density: Density
     ) {
         val onsetWeight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(onsetWeight) * pixelsPerSec)
         drawScope.drawPath(
@@ -78,8 +78,8 @@ data class OnsetTotalTimeline(
             color = color,
             style = density.dottedStroke
         )
-        path.lineTo(x = startX + totalX, y = height + drawScope.strokeWidth/2)
-        path.lineTo(x = startX, y = height + drawScope.strokeWidth/2)
+        path.lineTo(x = startX + totalX, y = height + drawScope.strokeWidth / 2)
+        path.lineTo(x = startX, y = height + drawScope.strokeWidth / 2)
         path.close()
         drawScope.drawPath(
             path = path,
@@ -88,12 +88,15 @@ data class OnsetTotalTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }
 
-fun RoaDuration.toOnsetTotalTimeline(totalWeight: Float, ingestionTimeRelativeToStartInSeconds: Float): OnsetTotalTimeline? {
+fun RoaDuration.toOnsetTotalTimeline(
+    totalWeight: Float,
+    ingestionTimeRelativeToStartInSeconds: Float
+): OnsetTotalTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullTotal = total?.toFullDurationRange()
     return if (fullOnset != null && fullTotal != null) {

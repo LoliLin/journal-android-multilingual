@@ -80,7 +80,7 @@ fun EditCustomUnitScreen(
 @Preview
 @Composable
 private fun EditCustomUnitScreenPreview(
-    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose,
+    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose
 ) {
     EditCustomUnitScreenContent(
         substanceName = "Example",

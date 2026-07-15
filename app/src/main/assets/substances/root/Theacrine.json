@@ -1,10 +1,6 @@
 {
   "name": "Theacrine",
-  "commonNames": [
-    "Theacrine",
-    "Temurin",
-    "Temorine"
-  ],
+  "commonNames": ["Theacrine", "Temurin", "Temorine"],
   "url": "https://psychonautwiki.org/wiki/Theacrine",
   "isApproved": true,
   "tolerance": {
@@ -17,10 +13,7 @@
   "crossTolerances": [],
   "addictionPotential": "produces dependence with chronic use and has a low abuse potential",
   "toxicities": [],
-  "categories": [
-    "stimulant",
-    "nootropic"
-  ],
+  "categories": ["stimulant", "nootropic"],
   "summary": "Small alkaloid which can be seen as a structurally modified version of caffeine, with similar stimulating effects. It also shares anti-inflammatory and analgesic effects with caffeine.",
   "roas": [
     {

@@ -22,7 +22,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.Instant
 
-
 @Entity
 data class ShulginRating(
     @PrimaryKey(autoGenerate = true)

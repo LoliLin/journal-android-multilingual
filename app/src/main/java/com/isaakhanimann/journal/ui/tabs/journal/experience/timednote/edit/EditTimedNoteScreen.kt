@@ -50,11 +50,11 @@ fun EditTimedNoteScreen(
                         onClick = {
                             viewModel.delete()
                             navigateBack()
-                        },
+                        }
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = i18n("delete_note"),
+                            contentDescription = i18n("delete_note")
                         )
                     }
                     IconButton(onClick = {

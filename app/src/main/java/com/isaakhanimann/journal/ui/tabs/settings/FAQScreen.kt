@@ -86,4 +86,3 @@ fun QuestionAnswerRow(question: String, answer: String) {
         )
     }
 }
-

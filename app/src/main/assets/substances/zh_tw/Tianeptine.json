@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "輕微上癮性",
-  "toxicities": [
-    "寬廣的治療指數與安全範圍"
-  ],
+  "toxicities": ["寬廣的治療指數與安全範圍"],
   "summary": "一種三環類抗憂鬱藥物，其藥理特性在同類藥物中相當獨特，例如可能對NMDA/AMPA受體產生間接作用，並作為μ-鴉片受體的全效激動劑。雖然此物質的濫用情況並不常見，但在少數國家已有相關案例報告。",
   "localizedName": "噻奈普汀"
 }

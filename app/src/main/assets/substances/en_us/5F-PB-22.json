@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "Synthetic cannabinoid, agonist of the cannabinoid receptors which has a strong sedating aspect. Being a synthetic cannabinoid it has a very fast onset.",
   "localizedName": "5F-PB-22"
 }

@@ -1,9 +1,6 @@
 {
   "name": "Baclofen",
-  "commonNames": [
-    "Baclofen",
-    "Lioresal"
-  ],
+  "commonNames": ["Baclofen", "Lioresal"],
   "url": "https://psychonautwiki.org/wiki/Baclofen",
   "isApproved": true,
   "tolerance": {
@@ -11,18 +8,13 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "GABA"
-  ],
+  "crossTolerances": ["GABA"],
   "addictionPotential": "moderately physically and psychologically addictive",
   "toxicities": [
     "low toxicity",
     "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids"
   ],
-  "categories": [
-    "depressant",
-    "habit-forming"
-  ],
+  "categories": ["depressant", "habit-forming"],
   "summary": "Also known as Lioresal, Baclofen is a GABAb receptor agonist and central nervous system depressant used to treat spasticity, and holds promise as a treatment for alcoholism. It exhibits mild intoxicating effects similar to phenibut or pregabalin.",
   "interactions": {
     "dangerous": [

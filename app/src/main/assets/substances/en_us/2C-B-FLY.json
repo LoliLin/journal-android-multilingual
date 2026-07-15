@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "Psychedelic phenethylamine that is the dihydrodifuran analog of 2C-B.",
   "localizedName": "2C-B-FLY"
 }

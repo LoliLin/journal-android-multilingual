@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
+  "toxicities": ["potentially fatal at heavy dosages"],
   "summary": "A codeine-derived opioid generally unheard of outside the United States. Generally mild in effects, used as an analgesic and cough-supressant. Sometimes used recreationally.",
   "localizedName": "Hydrocodone"
 }

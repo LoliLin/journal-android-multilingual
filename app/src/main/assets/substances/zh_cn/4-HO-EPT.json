@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "EPT的4-羟基版本。效力略强于前者。",
   "localizedName": "4-羟基-N-乙基-N-丙基色胺"
 }

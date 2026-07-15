@@ -1,12 +1,6 @@
 {
   "name": "Tapentadol",
-  "commonNames": [
-    "Tapentadol",
-    "Nucynta",
-    "Palexia",
-    "Yantil",
-    "Yantil SR"
-  ],
+  "commonNames": ["Tapentadol", "Nucynta", "Palexia", "Yantil", "Yantil SR"],
   "url": "https://psychonautwiki.org/wiki/Tapentadol",
   "isApproved": true,
   "tolerance": {
@@ -16,19 +10,13 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "opioids"
-  ],
+  "crossTolerances": ["opioids"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
     "low toxicity",
     "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
-  "categories": [
-    "opioid",
-    "habit-forming",
-    "depressant"
-  ],
+  "categories": ["opioid", "habit-forming", "depressant"],
   "summary": "An opioid analgesic drug with potency somewhere between tramadol and morphine, and with a similar action to Tramadol. Also an adrenergic reuptake inhibitor. High addiction potential. Potential for respiratory depression in overdose. Should not be combined with depressants or stimulants.",
   "interactions": {
     "dangerous": [
@@ -48,12 +36,7 @@
       "5-HTP"
     ],
     "unsafe": [],
-    "uncertain": [
-      "MAOIs",
-      "Nitrous",
-      "PCP",
-      "Stimulants"
-    ]
+    "uncertain": ["MAOIs", "Nitrous", "PCP", "Stimulants"]
   },
   "roas": [
     {

@@ -1,18 +1,11 @@
 {
   "name": "Promethazine",
-  "commonNames": [
-    "Phenergan",
-    "Lergigan"
-  ],
+  "commonNames": ["Phenergan", "Lergigan"],
   "url": "https://psychonautwiki.org/wiki/Promethazine",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "deliriant",
-    "depressant",
-    "common"
-  ],
+  "categories": ["deliriant", "depressant", "common"],
   "summary": "A first generation antihistamine,  which also possesses anticholinergic, strong sedative and antipsychotic properties. Once commonly used as a treatment for psychosis, it is now more commonly seen as a component of codeine cough syrups as an anti-nausea agent.",
   "roas": [
     {

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "三甲氧基苯丙胺-2，一种由亚历山大·舒尔金首次合成的致幻性苯丙胺类兴奋剂。该化合物较为罕见，其活性与其他致幻性苯丙胺类药物相似。人类使用历史较短。",
   "localizedName": "TMA-2"
 }

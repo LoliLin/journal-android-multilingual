@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "尝试这种药物不会对健康产生负面影响"
-  ],
+  "toxicities": ["尝试这种药物不会对健康产生负面影响"],
   "summary": "一种非常罕见的致幻性苯乙胺。",
   "localizedName": "2C-T"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
+  "toxicities": ["potentially fatal at heavy dosages"],
   "summary": "A relatively new and popular research chemical with psychedelic properties. Users report an uncomfortable body load with very strong visuals, though with less of a mental aspect than most psychedelics. Commonly mis-sold as LSD, since it is much cheaper to produce. Is considered quite unsafe, and has caused several deaths at 'regular' doses.",
   "localizedName": "25I-NBOMe"
 }

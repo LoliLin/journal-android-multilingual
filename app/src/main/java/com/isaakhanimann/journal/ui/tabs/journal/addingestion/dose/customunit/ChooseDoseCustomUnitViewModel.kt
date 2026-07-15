@@ -32,8 +32,8 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.CustomUnitDose
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class ChooseDoseCustomUnitViewModel @Inject constructor(
@@ -89,7 +89,9 @@ class ChooseDoseCustomUnitViewModel @Inject constructor(
                 }
             }
         }
-    val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(ingestionDose = customUnitDose?.calculatedDose)
+    val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(
+        ingestionDose = customUnitDose?.calculatedDose
+    )
     val customUnitCalculationText: String? get() {
         return customUnitDose?.calculatedDoseDescription
     }

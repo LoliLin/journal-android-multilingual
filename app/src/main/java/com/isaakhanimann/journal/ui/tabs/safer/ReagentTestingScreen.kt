@@ -53,12 +53,9 @@ fun ReagentTestingPreview() {
     ReagentTestingScreen(navigateToReagentTestingArticle = {})
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReagentTestingScreen(
-    navigateToReagentTestingArticle: () -> Unit
-) {
+fun ReagentTestingScreen(navigateToReagentTestingArticle: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("safer_reagent_testing")) })
@@ -72,7 +69,7 @@ fun ReagentTestingScreen(
                         contentDescription = i18n("common_open_link")
                     )
                 },
-                text = { Text(i18n("common_article")) },
+                text = { Text(i18n("common_article")) }
             )
         }
     ) { padding ->
@@ -103,7 +100,9 @@ fun ReagentTestingScreen(
                     Spacer(modifier = Modifier.height(5.dp))
                     HorizontalDivider()
                     val uriHandler = LocalUriHandler.current
-                    TextButton(onClick = { uriHandler.openUri("https://dancesafe.org/testing-kit-instructions/") }) {
+                    TextButton(onClick = {
+                        uriHandler.openUri("https://dancesafe.org/testing-kit-instructions/")
+                    }) {
                         Text(text = "DanceSafe")
                     }
                     HorizontalDivider()

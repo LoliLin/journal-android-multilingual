@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種結構上類似MDMA的共情劑。通常比MDMA更具視覺效果。常被回報說比大多數其他刺激性共情劑更不具刺激性且更放鬆。迷幻效果比6-APB弱。持續時間遠比MDMA長。",
   "localizedName": "5-MAPB"
 }

@@ -43,7 +43,7 @@ fun SaferStimulantsScreen() {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("safer_stimulants_title")) })
-        },
+        }
     ) { padding ->
         Column(
             modifier = Modifier

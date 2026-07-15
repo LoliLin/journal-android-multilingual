@@ -49,11 +49,11 @@ fun AddTimedNoteScreen(
                         viewModel.onDoneTap()
                         navigateBack()
                     }) {
-                            Icon(
-                                Icons.Filled.Done,
-                                contentDescription = i18n("common_done")
-                            )
-                        }
+                        Icon(
+                            Icons.Filled.Done,
+                            contentDescription = i18n("common_done")
+                        )
+                    }
                 }
             )
         }

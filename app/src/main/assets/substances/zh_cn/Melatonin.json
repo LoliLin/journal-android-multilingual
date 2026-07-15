@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "极低毒性"
-  ],
+  "toxicities": ["极低毒性"],
   "summary": "一种在体内自然产生的激素，根据昼夜节律在一天中的特定时间促进睡眠。它也常作为药物用于治疗失眠和促进正常的睡眠周期。在药物体验的尾声，它可用于促进睡意，尽管其催眠效果并不特别显著。",
   "localizedName": "褪黑素"
 }

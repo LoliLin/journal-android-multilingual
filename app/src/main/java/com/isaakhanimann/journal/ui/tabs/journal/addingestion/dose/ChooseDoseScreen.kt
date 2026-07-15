@@ -79,7 +79,12 @@ import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
 fun ChooseDoseScreen(
-    navigateToChooseTimeAndMaybeColor: (units: String?, isEstimate: Boolean, dose: Double?, estimatedDoseStandardDeviation: Double?) -> Unit,
+    navigateToChooseTimeAndMaybeColor: (
+        units: String?,
+        isEstimate: Boolean,
+        dose: Double?,
+        estimatedDoseStandardDeviation: Double?
+    ) -> Unit,
     navigateToVolumetricDosingScreenOnJournalTab: () -> Unit,
     navigateToURL: (url: String) -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
@@ -133,9 +138,7 @@ fun ChooseDoseScreen(
 
 @Preview
 @Composable
-fun ChooseDoseScreenPreview(
-    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose,
-) {
+fun ChooseDoseScreenPreview(@PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose) {
     ChooseDoseScreen(
         navigateToVolumetricDosingScreen = {},
         navigateToSaferSniffingScreen = {},
@@ -221,7 +224,7 @@ fun ChooseDoseScreen(
     convertedDoseAndUnitText: String?,
     isShowingUnitsField: Boolean,
     units: String,
-    onChangeOfUnits: (units: String) -> Unit,
+    onChangeOfUnits: (units: String) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -250,7 +253,7 @@ fun ChooseDoseScreen(
                             contentDescription = i18n("common_next")
                         )
                     },
-                    text = { Text(i18n("common_next")) },
+                    text = { Text(i18n("common_next")) }
                 )
             }
         }
@@ -262,10 +265,12 @@ fun ChooseDoseScreen(
         ) {
             LinearProgressIndicator(
                 progress = { 0.67f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(4.dp))
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+            ) {
                 Column(
                     modifier = Modifier.padding(
                         horizontal = horizontalPadding,
@@ -288,7 +293,7 @@ fun ChooseDoseScreen(
                             )
                             Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                             Text(
-                                text = i18n("dosage_info_missing"),
+                                text = i18n("dosage_info_missing")
                             )
                         }
                     }
@@ -296,7 +301,9 @@ fun ChooseDoseScreen(
                     Text(text = i18n("dose_disclaimer"), style = MaterialTheme.typography.bodySmall)
                 }
             }
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+            ) {
                 Column(
                     modifier = Modifier.padding(
                         horizontal = horizontalPadding,
@@ -343,7 +350,9 @@ fun ChooseDoseScreen(
                             value = units,
                             onValueChange = onChangeOfUnits,
                             label = { Text(i18n("dose_units_label")) },
-                            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                            keyboardActions = KeyboardActions(onDone = {
+                                focusManager.clearFocus()
+                            }),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth()
@@ -368,10 +377,13 @@ fun ChooseDoseScreen(
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            i18n("dose_estimate_label"),
+                            style = MaterialTheme.typography.titleMedium
+                        )
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         OutlinedTextField(
@@ -433,13 +445,15 @@ fun ChooseDoseScreen(
                     Icon(
                         Icons.Outlined.Info,
                         contentDescription = i18n("substance_info"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(text = i18n("safer_sniffing_short"))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
-                TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {
+                TextButton(onClick = {
+                    navigateToURL(AdministrationRoute.saferPluggingArticleURL)
+                }) {
                     Icon(
                         Icons.Outlined.Newspaper,
                         contentDescription = i18n("common_open_link")
@@ -453,15 +467,22 @@ fun ChooseDoseScreen(
                     Icon(
                         Icons.Outlined.Info,
                         contentDescription = i18n("substance_info"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(text = i18n("dose_guide_volumetric_title"))
                 }
             }
             if (administrationRoute == AdministrationRoute.SMOKED && substanceName != "Cannabis") {
-                ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
-                    ChasingTheDragonText(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 10.dp))
+                ElevatedCard(
+                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+                ) {
+                    ChasingTheDragonText(
+                        modifier = Modifier.padding(
+                            horizontal = horizontalPadding,
+                            vertical = 10.dp
+                        )
+                    )
                 }
             }
         }

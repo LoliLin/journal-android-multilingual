@@ -31,11 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
-import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
@@ -46,7 +43,7 @@ fun CumulativeDoseRow(
     modifier: Modifier
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier
     ) {
         Text(
             text = getSubstanceDisplayName(cumulativeDose.substanceName),

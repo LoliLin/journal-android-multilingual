@@ -368,6 +368,6 @@ class RoaDurationPreviewProvider : PreviewParameterProvider<RoaDuration> {
                 max = 24f,
                 units = DurationUnits.HOURS
             )
-        ),
+        )
     )
 }

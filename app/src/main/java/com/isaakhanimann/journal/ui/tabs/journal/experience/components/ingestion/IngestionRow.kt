@@ -33,8 +33,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DotRows
@@ -43,7 +41,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import java.time.Instant
-import java.time.temporal.ChronoUnit
 
 @Composable
 fun IngestionRow(
@@ -52,7 +49,7 @@ fun IngestionRow(
     startTime: Instant,
     areDosageDotsHidden: Boolean,
     modifier: Modifier = Modifier,
-    getSubstanceDisplayName: (String) -> String,
+    getSubstanceDisplayName: (String) -> String
 ) {
     val ingestionWithCompanionAndCustomUnit = ingestionElement.ingestionWithCompanionAndCustomUnit
     val ingestion = ingestionWithCompanionAndCustomUnit.ingestion
@@ -91,7 +88,11 @@ fun IngestionRow(
                     ingestion.administrationRoute.displayText
                 ).lowercase()
                 val text = buildAnnotatedString {
-                    append(ingestionWithCompanionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
+                    append(
+                        ingestionWithCompanionAndCustomUnit.getDoseDescription(
+                            androidx.compose.ui.platform.LocalContext.current
+                        )
+                    )
                     withStyle(style = SpanStyle(color = Color.Gray)) {
                         if (customUnit == null) {
                             append(" $routeName")

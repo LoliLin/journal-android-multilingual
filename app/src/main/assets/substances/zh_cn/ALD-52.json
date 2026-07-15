@@ -7,10 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知",
-    "极低毒性"
-  ],
+  "toxicities": ["毒性剂量未知", "极低毒性"],
   "summary": "ALD-52，即N-乙酰基-LSD，是LSD的一种较为罕见的化学类似物，由阿尔伯特·霍夫曼首次合成。它因涉及“橙色阳光”案件而闻名。作为一种致幻性麦角酰胺，该化合物表现出与LSD相似的特性，并被认为是LSD的前体药物。",
   "localizedName": "ALD-52"
 }

@@ -32,9 +32,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.AdministrationRoutePicker
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteViewModel
-import com.isaakhanimann.journal.localization.i18n
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,7 +45,16 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("substances_route", replacements = mapOf("substance" to "${viewModel.substanceName}"))) },
+                title = {
+                    Text(
+                        i18n(
+                            "substances_route",
+                            replacements = mapOf(
+                                "substance" to "${viewModel.substanceName}"
+                            )
+                        )
+                    )
+                },
                 navigationIcon = {
                     if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { viewModel.showOtherRoutes = false }) {

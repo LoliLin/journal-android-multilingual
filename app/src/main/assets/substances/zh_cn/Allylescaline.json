@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "麦斯卡林的类似物，剂量低得多，似乎主要依赖于色彩效果。",
   "localizedName": "烯丙基乙斯卡林"
 }

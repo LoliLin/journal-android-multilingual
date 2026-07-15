@@ -38,7 +38,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
@@ -59,17 +58,11 @@ fun CombinationSettingsScreen(viewModel: CombinationSettingsViewModel = hiltView
     )
 }
 
-class SubstanceInteraction(
-    val name: String,
-    val isOn: Boolean,
-    val toggle: () -> Unit,
-)
+class SubstanceInteraction(val name: String, val isOn: Boolean, val toggle: () -> Unit)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CombinationSettingsScreen(
-    substanceInteractions: List<SubstanceInteraction>
-) {
+fun CombinationSettingsScreen(substanceInteractions: List<SubstanceInteraction>) {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("settings_combinations_title")) })
@@ -81,7 +74,9 @@ fun CombinationSettingsScreen(
                 .padding(padding)
         ) {
             Spacer(modifier = Modifier.height(5.dp))
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+            ) {
                 Column(
                     modifier = Modifier.padding(
                         horizontal = horizontalPadding,
@@ -105,7 +100,8 @@ fun CombinationSettingsScreen(
                             Text(text = substanceInteraction.name)
                             Switch(
                                 checked = substanceInteraction.isOn,
-                                onCheckedChange = { substanceInteraction.toggle() })
+                                onCheckedChange = { substanceInteraction.toggle() }
+                            )
                         }
                     }
                 }
@@ -113,6 +109,3 @@ fun CombinationSettingsScreen(
         }
     }
 }
-
-
-

@@ -64,7 +64,7 @@ fun SaferUsePreview() {
         navigateToDosageClassificationScreen = {},
         navigateToRouteExplanationScreen = {},
         navigateToURL = {},
-        navigateToReagentTestingScreen = {},
+        navigateToReagentTestingScreen = {}
     )
 }
 
@@ -78,12 +78,12 @@ fun SaferUseScreen(
     navigateToDosageClassificationScreen: () -> Unit,
     navigateToRouteExplanationScreen: () -> Unit,
     navigateToURL: (url: String) -> Unit,
-    navigateToReagentTestingScreen: () -> Unit,
+    navigateToReagentTestingScreen: () -> Unit
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("safer_use_title")) },
+                title = { Text(i18n("safer_use_title")) }
             )
         }
     ) { padding ->
@@ -105,7 +105,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Outlined.Biotech,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_drug_testing_services"))
@@ -117,7 +117,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Outlined.Science,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_reagent_testing"))
@@ -167,7 +167,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Default.OpenInBrowser,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_swiss_combo_checker"))
@@ -181,7 +181,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Default.OpenInBrowser,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_tripsit_combo_checker"))
@@ -192,42 +192,48 @@ fun SaferUseScreen(
                 SaferText(text = i18n("safer_administration_routes_body"))
                 Button(
                     onClick = {
-                        uriHandler.openUri("https://www.youtube.com/watch?v=31fuvYXxeV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR")
+                        uriHandler.openUri(
+                            "https://www.youtube.com/watch?v=31fuvYXxeV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
+                        )
                     },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_snorting_video"))
                 }
                 Button(
                     onClick = {
-                        uriHandler.openUri("https://www.youtube.com/watch?v=lBlS2e46CV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR")
+                        uriHandler.openUri(
+                            "https://www.youtube.com/watch?v=lBlS2e46CV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
+                        )
                     },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_smoking_video"))
                 }
                 Button(
                     onClick = {
-                        uriHandler.openUri("https://www.youtube.com/watch?v=N7HjCPz4A7Y&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR")
+                        uriHandler.openUri(
+                            "https://www.youtube.com/watch?v=N7HjCPz4A7Y&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
+                        )
                     },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
                         Icons.Default.PlayArrow,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_injecting_video"))
@@ -239,7 +245,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Outlined.Info,
                         contentDescription = i18n("substance_info"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_administration_routes_info"))
@@ -266,7 +272,7 @@ fun SaferUseScreen(
                     Icon(
                         Icons.Default.PlayArrow,
                         contentDescription = i18n("common_open_link"),
-                        modifier = Modifier.size(ButtonDefaults.IconSize),
+                        modifier = Modifier.size(ButtonDefaults.IconSize)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(i18n("safer_recovery_position_video"))

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种由亚历山大·舒尔金首次合成的迷幻致幻剂。低剂量时能增强认知能力，提升对艺术和音乐等事物的欣赏力，而高剂量则会导致视觉幻象。已知该药物会引起身体负担。",
   "localizedName": "4-羟基-N,N-二丙基色胺"
 }

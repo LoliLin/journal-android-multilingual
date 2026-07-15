@@ -1,8 +1,6 @@
 {
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种强烈的迷幻药物，具有非常强烈的视觉效果，有时因其相对不适的身体负担而受到批评。除此之外，其效果与其他2c-x类药物相似。",
   "localizedName": "2C-E"
 }

@@ -53,8 +53,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.localization.i18n
 import kotlinx.coroutines.launch
 
 data class IconOption(
@@ -74,24 +74,27 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     val snackbarHostState = remember { SnackbarHostState() }
 
     val iconOptions = listOf(
-            IconOption(
-                key = "classic",
-                label = i18n("settings_icon_classic"),
-                backgroundColor = Color(0xFF2196F3),
-                iconRes = R.mipmap.ic_launcher,
-                aliasName = ".MainActivity_Classic"
-            ),
-            IconOption(
-                key = "springwind",
-                label = i18n("settings_icon_springwind"),
-                backgroundColor = Color(0xFFFF8C94),
-                iconRes = R.drawable.ic_springwind_foreground,
-                aliasName = ".MainActivity_SpringWind"
-            )
+        IconOption(
+            key = "classic",
+            label = i18n("settings_icon_classic"),
+            backgroundColor = Color(0xFF2196F3),
+            iconRes = R.mipmap.ic_launcher,
+            aliasName = ".MainActivity_Classic"
+        ),
+        IconOption(
+            key = "springwind",
+            label = i18n("settings_icon_springwind"),
+            backgroundColor = Color(0xFFFF8C94),
+            iconRes = R.drawable.ic_springwind_foreground,
+            aliasName = ".MainActivity_SpringWind"
         )
+    )
 
     val aliases = remember {
-        iconOptions.associate { it.key to ComponentName(context, "com.isaakhanimann.journal${it.aliasName}") }
+        iconOptions.associate {
+            it.key to
+                ComponentName(context, "com.isaakhanimann.journal${it.aliasName}")
+        }
     }
 
     var selectedKey by remember {
@@ -106,7 +109,10 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                 title = { Text(i18n("settings_icon_title")) },
                 navigationIcon = {
                     IconButton(onClick = navigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = i18n("common_back"))
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = i18n("common_back")
+                        )
                     }
                 }
             )
@@ -131,17 +137,13 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
                             isSwitching = true
                             val success = switchIcon(pm, aliases, enableKey = option.key)
                             if (success) {
-
                                 selectedKey = option.key
 
                                 val msg = msg_switched
 
                                 scope.launch {
-
                                     snackbarHostState.showSnackbar(msg)
-
                                 }
-
                             } else {
                                 val msg = msg_switch_failed
                                 scope.launch {
@@ -163,10 +165,7 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
     }
 }
 
-private fun getCurrentIconKey(
-    pm: PackageManager,
-    aliases: Map<String, ComponentName>
-): String {
+private fun getCurrentIconKey(pm: PackageManager, aliases: Map<String, ComponentName>): String {
     aliases.forEach { (key, component) ->
         try {
             val state = pm.getComponentEnabledSetting(component)
@@ -205,26 +204,24 @@ private fun switchIcon(
 }
 
 @Composable
-private fun IconOptionCard(
-    option: IconOption,
-    isSelected: Boolean,
-    onClick: () -> Unit
-) {
+private fun IconOptionCard(option: IconOption, isSelected: Boolean, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (isSelected)
+            containerColor = if (isSelected) {
                 MaterialTheme.colorScheme.primaryContainer
-            else
+            } else {
                 MaterialTheme.colorScheme.surfaceVariant
+            }
         ),
-        border = if (isSelected)
+        border = if (isSelected) {
             BorderStroke(2.dp, MaterialTheme.colorScheme.outline)
-        else
+        } else {
             null
+        }
     ) {
         Row(
             modifier = Modifier

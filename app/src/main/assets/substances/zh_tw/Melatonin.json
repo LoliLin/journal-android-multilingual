@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "極低毒性"
-  ],
+  "toxicities": ["極低毒性"],
   "summary": "一種由人體自然產生的荷爾蒙，根據晝夜節律在一天中的特定時間促進睡眠。它通常也作為藥物使用，用於治療失眠並促進正常的睡眠週期。在藥物體驗的尾聲，它可用於促進睡意，但其催眠效果並非特別顯著。",
   "localizedName": "褪黑激素"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "致幻性苯乙胺，是2C-B的二氢二呋喃类似物。",
   "localizedName": "2C-B-FLY"
 }

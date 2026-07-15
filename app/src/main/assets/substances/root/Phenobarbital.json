@@ -1,11 +1,6 @@
 {
   "name": "Phenobarbital",
-  "commonNames": [
-    "Phenobarbital",
-    "Phenobarbitone",
-    "Luminal",
-    "Phenobarb"
-  ],
+  "commonNames": ["Phenobarbital", "Phenobarbitone", "Luminal", "Phenobarb"],
   "url": "https://psychonautwiki.org/wiki/Phenobarbital",
   "isApproved": true,
   "crossTolerances": [],
@@ -14,11 +9,7 @@
     "moderate toxicity",
     "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "categories": [
-    "depressant",
-    "habit-forming",
-    "barbiturate"
-  ],
+  "categories": ["depressant", "habit-forming", "barbiturate"],
   "summary": "CNS depressant that is used mostly for insomnia (In older patients) and epliepsy (in younger patients) And it a very strong narcotic, that can be taken most ways. It's used less as \"safer\" alternatives have been made (Benzodiazepines).",
   "roas": [
     {

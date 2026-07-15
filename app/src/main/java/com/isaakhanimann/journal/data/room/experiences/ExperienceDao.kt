@@ -42,8 +42,8 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithExperienceAndCustomUnit
 import com.isaakhanimann.journal.ui.tabs.settings.JournalExport
-import kotlinx.coroutines.flow.Flow
 import java.time.Instant
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ExperienceDao {
@@ -56,9 +56,9 @@ interface ExperienceDao {
 
     @Query(
         "SELECT * FROM ingestion as i" +
-                " INNER JOIN (SELECT id, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
-                " ON i.id = sub.id AND i.time = sub.maxTime" +
-                " ORDER BY time DESC"
+            " INNER JOIN (SELECT id, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
+            " ON i.id = sub.id AND i.time = sub.maxTime" +
+            " ORDER BY time DESC"
     )
     @RewriteQueriesToDropUnusedColumns
     suspend fun getLatestIngestionOfEverySubstanceSinceDate(instant: Instant): List<Ingestion>
@@ -89,7 +89,9 @@ interface ExperienceDao {
 
     @Transaction
     @Query("SELECT * FROM experience ORDER BY sortDate DESC LIMIT :limit")
-    fun getSortedExperiencesWithIngestionsAndCompanionsFlow(limit: Int): Flow<List<ExperienceWithIngestionsAndCompanions>>
+    fun getSortedExperiencesWithIngestionsAndCompanionsFlow(
+        limit: Int
+    ): Flow<List<ExperienceWithIngestionsAndCompanions>>
 
     @Transaction
     @Query("SELECT * FROM experience ORDER BY sortDate DESC")
@@ -105,7 +107,9 @@ interface ExperienceDao {
 
     @Transaction
     @Query("SELECT * FROM ingestion ORDER BY time DESC LIMIT :limit")
-    fun getSortedIngestionsWithSubstanceCompanionsFlow(limit: Int): Flow<List<IngestionWithCompanionAndCustomUnit>>
+    fun getSortedIngestionsWithSubstanceCompanionsFlow(
+        limit: Int
+    ): Flow<List<IngestionWithCompanionAndCustomUnit>>
 
     @Query("SELECT * FROM ingestion ORDER BY time DESC LIMIT :limit")
     fun getSortedIngestions(limit: Int): Flow<List<Ingestion>>
@@ -113,7 +117,9 @@ interface ExperienceDao {
     @Query("SELECT * FROM ingestion ORDER BY time DESC")
     fun getSortedIngestionsFlow(): Flow<List<Ingestion>>
 
-    @Query("SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC LIMIT :limit")
+    @Query(
+        "SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC LIMIT :limit"
+    )
     fun getSortedIngestionsFlow(substanceName: String, limit: Int): Flow<List<Ingestion>>
 
     @Query("SELECT * FROM customsubstance")
@@ -127,18 +133,24 @@ interface ExperienceDao {
 
     @Transaction
     @Query("SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC")
-    fun getSortedIngestionsWithExperienceAndCustomUnitFlow(substanceName: String): Flow<List<IngestionWithExperienceAndCustomUnit>>
+    fun getSortedIngestionsWithExperienceAndCustomUnitFlow(
+        substanceName: String
+    ): Flow<List<IngestionWithExperienceAndCustomUnit>>
 
     @Query("SELECT * FROM experience WHERE id =:id")
     suspend fun getExperience(id: Int): Experience?
 
     @Transaction
     @Query("SELECT * FROM experience WHERE id =:id")
-    suspend fun getExperienceWithIngestionsCompanionsAndRatings(id: Int): ExperienceWithIngestionsCompanionsAndRatings?
+    suspend fun getExperienceWithIngestionsCompanionsAndRatings(
+        id: Int
+    ): ExperienceWithIngestionsCompanionsAndRatings?
 
     @Transaction
     @Query("SELECT * FROM ingestion WHERE experienceId =:experienceId")
-    suspend fun getIngestionsWithCompanions(experienceId: Int): List<IngestionWithCompanionAndCustomUnit>
+    suspend fun getIngestionsWithCompanions(
+        experienceId: Int
+    ): List<IngestionWithCompanionAndCustomUnit>
 
     @Query("SELECT * FROM shulginrating WHERE id =:id")
     suspend fun getRating(id: Int): ShulginRating?
@@ -237,7 +249,6 @@ interface ExperienceDao {
         deleteExperience(experienceId)
     }
 
-
     @Transaction
     @Query("DELETE FROM ingestion")
     suspend fun deleteAllIngestions()
@@ -302,9 +313,7 @@ interface ExperienceDao {
     }
 
     @Transaction
-    suspend fun insertEverything(
-        journalExport: JournalExport
-    ) {
+    suspend fun insertEverything(journalExport: JournalExport) {
         journalExport.experiences.forEachIndexed { indexExperience, experienceSerializable ->
             val experienceID = indexExperience + 1
             val newExperience = Experience(
@@ -397,11 +406,15 @@ interface ExperienceDao {
 
     @Transaction
     @Query("SELECT * FROM experience WHERE id = :experienceId")
-    fun getExperienceWithIngestionsAndCompanionsFlow(experienceId: Int): Flow<ExperienceWithIngestionsAndCompanions?>
+    fun getExperienceWithIngestionsAndCompanionsFlow(
+        experienceId: Int
+    ): Flow<ExperienceWithIngestionsAndCompanions?>
 
     @Transaction
     @Query("SELECT * FROM ingestion WHERE experienceId = :experienceId")
-    fun getIngestionsWithCompanionsFlow(experienceId: Int): Flow<List<IngestionWithCompanionAndCustomUnit>>
+    fun getIngestionsWithCompanionsFlow(
+        experienceId: Int
+    ): Flow<List<IngestionWithCompanionAndCustomUnit>>
 
     @Query("SELECT * FROM shulginrating WHERE experienceId = :experienceId")
     fun getRatingsFlow(experienceId: Int): Flow<List<ShulginRating>>
@@ -409,7 +422,9 @@ interface ExperienceDao {
     @Query("SELECT * FROM timednote WHERE experienceId = :experienceId ORDER BY time")
     fun getTimedNotesFlowSorted(experienceId: Int): Flow<List<TimedNote>>
 
-    @Query("SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC LIMIT 1")
+    @Query(
+        "SELECT * FROM ingestion WHERE substanceName = :substanceName ORDER BY time DESC LIMIT 1"
+    )
     suspend fun getLastIngestion(substanceName: String): Ingestion?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -442,8 +457,13 @@ interface ExperienceDao {
     @Query("SELECT * FROM customunit WHERE isArchived = :isArchived ORDER BY creationDate DESC")
     fun getSortedCustomUnitsFlow(isArchived: Boolean): Flow<List<CustomUnit>>
 
-    @Query("SELECT * FROM customunit WHERE isArchived = :isArchived AND substanceName = :substanceName ORDER BY creationDate DESC")
-    fun getSortedCustomUnitsFlowBasedOnName(substanceName: String, isArchived: Boolean): Flow<List<CustomUnit>>
+    @Query(
+        "SELECT * FROM customunit WHERE isArchived = :isArchived AND substanceName = :substanceName ORDER BY creationDate DESC"
+    )
+    fun getSortedCustomUnitsFlowBasedOnName(
+        substanceName: String,
+        isArchived: Boolean
+    ): Flow<List<CustomUnit>>
 
     @Query("SELECT * FROM customunit ORDER BY creationDate DESC")
     fun getAllCustomUnitsFlow(): Flow<List<CustomUnit>>

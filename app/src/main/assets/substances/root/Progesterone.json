@@ -5,9 +5,7 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "depressant"
-  ],
+  "categories": ["depressant"],
   "roas": [
     {
       "name": "oral",

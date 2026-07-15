@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "劑量低得多的麥斯卡林類似物，似乎高度依賴於色彩效果。",
   "localizedName": "烯丙基麦司卡林"
 }

@@ -78,7 +78,8 @@ class ChooseDoseViewModel @Inject constructor(
     }
 
     fun onEstimatedDoseStandardDeviationChange(newEstimatedStandardDeviationText: String) {
-        estimatedDoseStandardDeviationText = newEstimatedStandardDeviationText.replace(oldChar = ',', newChar = '.')
+        estimatedDoseStandardDeviationText =
+            newEstimatedStandardDeviationText.replace(oldChar = ',', newChar = '.')
     }
 
     init {
@@ -88,5 +89,4 @@ class ChooseDoseViewModel @Inject constructor(
         roaDose = substance.getRoa(administrationRoute)?.roaDose
         units = roaDose?.units ?: ""
     }
-
 }

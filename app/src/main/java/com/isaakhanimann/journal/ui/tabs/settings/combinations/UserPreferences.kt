@@ -24,10 +24,10 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
 class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
@@ -63,7 +63,9 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
 
     val savedTimeDisplayOptionFlow: Flow<SavedTimeDisplayOption> = dataStore.data
         .map { preferences ->
-            val name = preferences[PreferencesKeys.KEY_TIME_DISPLAY_OPTION] ?: SavedTimeDisplayOption.REGULAR.name
+            val name =
+                preferences[PreferencesKeys.KEY_TIME_DISPLAY_OPTION]
+                    ?: SavedTimeDisplayOption.REGULAR.name
             SavedTimeDisplayOption.valueOf(name)
         }
 
@@ -96,7 +98,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_HIDE_DOSAGE_DOTS] ?: false
         }
-    
+
     suspend fun saveOpenLinkInBrowser(value: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_OPEN_LINK_IN_BROWSER] = value
@@ -122,7 +124,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE]
         }
-    
+
     suspend fun saveOwnerUserName(value: String?) {
         dataStore.edit { preferences ->
             if (value == null) {

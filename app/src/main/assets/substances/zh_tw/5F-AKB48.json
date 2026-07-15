@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種合成的大麻素，屬於吲唑類。其主觀效果與大麻有些相似，但作用時間非常短。它是STS-135的類似物，其中核心的吲哚結構被替換為吲唑基底。",
   "localizedName": "5F-AKB48"
 }

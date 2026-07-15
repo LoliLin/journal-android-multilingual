@@ -1,60 +1,51 @@
 package com.isaakhanimann.journal.data.achievement
 
 import android.content.Context
+import androidx.compose.animation.*
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
-import coil.compose.AsyncImage
-
-import androidx.compose.animation.*
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
-import androidx.compose.foundation.clickable
-import kotlinx.coroutines.flow.SharedFlow
+data class Achievement(val registerName: String, val iconPath: String) {
 
-data class Achievement(
-    val registerName: String,
-    val iconPath: String
-) {
+    fun getLocalizedName(context: Context): String =
+        I18n.translateOrDefault(context, "achievement.$registerName", registerName)
 
-    fun getLocalizedName(context: Context): String {
-        return I18n.translateOrDefault(context, "achievement.$registerName", registerName)
-    }
-
-    fun getLocalizedDescription(context: Context): String {
-        return I18n.translateOrDefault(context, "achievement.$registerName.desc", "")
-    }
+    fun getLocalizedDescription(context: Context): String =
+        I18n.translateOrDefault(context, "achievement.$registerName.desc", "")
 }
 
 object AchievementList {
     private val achievements = mutableMapOf<String, Achievement>()
 
-   
     fun register(registerName: String, iconPath: String) {
         achievements[registerName] = Achievement(registerName, iconPath)
     }
@@ -66,7 +57,10 @@ object AchievementList {
     init {
         register("n552aa_pr80", "file:///android_asset/images/achievements/n552aa_pr80.jpg")
         register("in_kawaiis", "file:///android_asset/images/achievements/in_kawaiis.jpg")
-        register("chicken_amantadine", "file:///android_asset/images/achievements/chicken_amantadine.jpg")
+        register(
+            "chicken_amantadine",
+            "file:///android_asset/images/achievements/chicken_amantadine.jpg"
+        )
     }
 }
 
@@ -90,7 +84,7 @@ fun AchievementLogoButton(registerName: String, modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        AsyncImage( 
+                        AsyncImage(
                             model = achievement.iconPath,
                             contentDescription = achievement.registerName,
                             modifier = Modifier
@@ -113,11 +107,12 @@ fun AchievementLogoButton(registerName: String, modifier: Modifier = Modifier) {
                 }
             )
         }
-        Box(modifier = Modifier
-            .size(24.dp)
-            .clip(CircleShape)
-            .clickable { showDialog = true },
-        contentAlignment = Alignment.Center
+        Box(
+            modifier = Modifier
+                .size(24.dp)
+                .clip(CircleShape)
+                .clickable { showDialog = true },
+            contentAlignment = Alignment.Center
         ) {
             AsyncImage(
                 model = achievement.iconPath,
@@ -141,16 +136,13 @@ object AchievementEventBus {
 }
 
 @Composable
-fun AchievementGetToast(
-    modifier: Modifier = Modifier,
-    onDismiss: () -> Unit = {}
-) {
+fun AchievementGetToast(modifier: Modifier = Modifier, onDismiss: () -> Unit = {}) {
     val context = LocalContext.current
     var currentRegisterName by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
         AchievementEventBus.events.collect { achievement ->
-            currentRegisterName = achievement  // extract the name
+            currentRegisterName = achievement // extract the name
             delay(1500)
             currentRegisterName = null
             onDismiss()
@@ -164,7 +156,7 @@ fun AchievementGetToast(
     ) {
         Card(
             modifier = modifier
-                .padding(end = 16.dp, top = 80.dp) 
+                .padding(end = 16.dp, top = 80.dp)
                 .wrapContentSize(),
             shape = RoundedCornerShape(8.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),

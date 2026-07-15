@@ -4,12 +4,8 @@
   "url": "https://psychonautwiki.org/wiki/Meclofenoxate",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [
-    "extremely low toxicity"
-  ],
-  "categories": [
-    "nootropic"
-  ],
+  "toxicities": ["extremely low toxicity"],
+  "categories": ["nootropic"],
   "roas": [
     {
       "name": "oral",

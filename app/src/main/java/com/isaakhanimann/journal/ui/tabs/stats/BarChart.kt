@@ -171,11 +171,11 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
             val style = MaterialTheme.typography.bodySmall
             Text(
                 text = startDateText,
-                style = style,
+                style = style
             )
             Text(
                 text = i18n("time_now_label"),
-                style = style,
+                style = style
             )
         }
     }

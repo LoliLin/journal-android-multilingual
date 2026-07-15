@@ -3,6 +3,8 @@ package com.isaakhanimann.journal.ui.tabs.settings
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,28 +12,25 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.*
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material3.*
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import coil.compose.AsyncImage
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceEvents
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
-import kotlinx.coroutines.launch
-import org.json.JSONObject
 import java.io.File
 import java.net.URL
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceEvents
+import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 data class ExtensionPack(
     val registerName: String,
@@ -44,10 +43,7 @@ data class ExtensionPack(
     val iconPath: String? = null
 )
 
-data class ExtensionUpdateInfo(
-    val versionName: String,
-    val url: String
-)
+data class ExtensionUpdateInfo(val versionName: String, val url: String)
 
 object ExtensionPackLoader {
     private const val EXT_DIR = "ext_packs"
@@ -60,7 +56,9 @@ object ExtensionPackLoader {
             if (!manifestFile.exists()) return@mapNotNull null
             try {
                 parseManifest(manifestFile.readText(), packDir)
-            } catch (_: Exception) { null }
+            } catch (_: Exception) {
+                null
+            }
         } ?: emptyList()
     }
 
@@ -79,20 +77,26 @@ object ExtensionPackLoader {
     }
 
     suspend fun checkUpdate(updateJsonLink: String, currentVersionCode: Int): ExtensionUpdateInfo? {
-        return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { try {
-            val jsonText = URL(updateJsonLink).readText()
-            val json = JSONObject(jsonText)
-            val latest = json.keys().asSequence()
-                .map { it.toInt() }
-                .maxOrNull() ?: return@withContext null
-            if (latest > currentVersionCode) {
-                val info = json.getJSONObject(latest.toString())
-                ExtensionUpdateInfo(
-                    versionName = info.getString("versionName"),
-                    url = info.getString("url")
-                )
-            } else null
-        } catch (_: Exception) { null }}
+        return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+            try {
+                val jsonText = URL(updateJsonLink).readText()
+                val json = JSONObject(jsonText)
+                val latest = json.keys().asSequence()
+                    .map { it.toInt() }
+                    .maxOrNull() ?: return@withContext null
+                if (latest > currentVersionCode) {
+                    val info = json.getJSONObject(latest.toString())
+                    ExtensionUpdateInfo(
+                        versionName = info.getString("versionName"),
+                        url = info.getString("url")
+                    )
+                } else {
+                    null
+                }
+            } catch (_: Exception) {
+                null
+            }
+        }
     }
 
     fun applyExtension(context: Context, pack: ExtensionPack) {
@@ -109,28 +113,28 @@ object ExtensionPackLoader {
 
             SubstanceEvents.notifySubstanceReload()
             I18n.markDirty()
-            
+
             !packDir.exists()
-        } else false
+        } else {
+            false
+        }
     }
 
-    fun downloadAndInstall(context: Context, pack: ExtensionPack, updateUrl: String): String {
-        return try {
-            val tempFile = File(context.cacheDir, "download_${pack.registerName}.zip")
-            URL(updateUrl).openStream().use { input ->
-                tempFile.outputStream().use { output -> input.copyTo(output) }
-            }
-            val result = installPackFromZip(context, tempFile, pack.registerName)
-            tempFile.delete()
-            result
-        } catch (e: Exception) {
-            "Download failed: ${e.localizedMessage ?: "unknown error"}"
+    fun downloadAndInstall(context: Context, pack: ExtensionPack, updateUrl: String): String = try {
+        val tempFile = File(context.cacheDir, "download_${pack.registerName}.zip")
+        URL(updateUrl).openStream().use { input ->
+            tempFile.outputStream().use { output -> input.copyTo(output) }
         }
+        val result = installPackFromZip(context, tempFile, pack.registerName)
+        tempFile.delete()
+        result
+    } catch (e: Exception) {
+        "Download failed: ${e.localizedMessage ?: "unknown error"}"
     }
 
     private fun installPackFromZip(context: Context, zipFile: File, registerName: String): String {
         val baseDir = File(context.filesDir, EXT_DIR)
-        return try{
+        return try {
             val targetDir = File(baseDir, registerName)
             val backupDir = File(baseDir, ".${registerName}_bak")
 
@@ -169,7 +173,7 @@ object ExtensionPackLoader {
             val pack = parseManifest(manifestFile.readText(), targetDir)
             if (pack != null) applyExtension(context, pack)
 
-            return "Installed: ${registerName}"
+            return "Installed: $registerName"
         } catch (e: Exception) {
             // Rollback
             val targetDir2 = File(baseDir, registerName)
@@ -239,7 +243,12 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         } else {
             LazyColumn(Modifier.fillMaxSize().padding(padding).padding(16.dp)) {
                 items(packs, key = { it.registerName }) { pack ->
-                    ExtensionPackRow(pack = pack, context = context, scope = scope, snackbarHostState = snackbarHostState ){
+                    ExtensionPackRow(
+                        pack = pack,
+                        context = context,
+                        scope = scope,
+                        snackbarHostState = snackbarHostState
+                    ) {
                         refreshKey++
                     }
                     Spacer(Modifier.height(8.dp))
@@ -250,7 +259,13 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
 }
 
 @Composable
-private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotlinx.coroutines.CoroutineScope, snackbarHostState: SnackbarHostState, onRefresh: () -> Unit) {
+private fun ExtensionPackRow(
+    pack: ExtensionPack,
+    context: Context,
+    scope: kotlinx.coroutines.CoroutineScope,
+    snackbarHostState: SnackbarHostState,
+    onRefresh: () -> Unit
+) {
     var checkingUpdate by remember { mutableStateOf(false) }
     var updateInfo by remember { mutableStateOf<ExtensionUpdateInfo?>(null) }
 
@@ -262,9 +277,14 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
         ) {
             if (pack.iconPath != null) {
                 AsyncImage(
-                    model = java.io.File(context.filesDir, "ext_packs/${pack.registerName}/${pack.iconPath}"),
+                    model = java.io.File(
+                        context.filesDir,
+                        "ext_packs/${pack.registerName}/${pack.iconPath}"
+                    ),
                     contentDescription = null,
-                    modifier = Modifier.size(40.dp).clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                    modifier = Modifier.size(
+                        40.dp
+                    ).clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
                 )
             } else {
                 Icon(
@@ -295,14 +315,21 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pack.officalLink))
                         context.startActivity(intent)
                     }) {
-                        Icon(Icons.Outlined.OpenInNew, contentDescription = i18n("extension_open_link"), modifier = Modifier.size(20.dp))
+                        Icon(
+                            Icons.Outlined.OpenInNew,
+                            contentDescription = i18n("extension_open_link"),
+                            modifier = Modifier.size(20.dp)
+                        )
                     }
                     IconButton(
                         onClick = {
                             if (!checkingUpdate) {
                                 checkingUpdate = true
                                 scope.launch {
-                                    val info = ExtensionPackLoader.checkUpdate(pack.updateJsonLink, pack.versionCode)
+                                    val info = ExtensionPackLoader.checkUpdate(
+                                        pack.updateJsonLink,
+                                        pack.versionCode
+                                    )
                                     if (info != null) {
                                         updateInfo = info
                                     } else {
@@ -318,10 +345,22 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                             CircularProgressIndicator(Modifier.size(16.dp), strokeWidth = 2.dp)
                         } else {
                             Icon(
-                                if (updateInfo != null) Icons.Outlined.SystemUpdateAlt else Icons.Outlined.Update,
+                                if (updateInfo !=
+                                    null
+                                ) {
+                                    Icons.Outlined.SystemUpdateAlt
+                                } else {
+                                    Icons.Outlined.Update
+                                },
                                 contentDescription = i18n("extension_check_update"),
                                 modifier = Modifier.size(20.dp),
-                                tint = if (updateInfo != null) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                                tint = if (updateInfo !=
+                                    null
+                                ) {
+                                    MaterialTheme.colorScheme.primary
+                                } else {
+                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                }
                             )
                         }
                     }
@@ -329,12 +368,20 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                         IconButton(onClick = {
                             scope.launch {
                                 snackbarHostState.showSnackbar("Downloading...")
-                                val result = ExtensionPackLoader.downloadAndInstall(context, pack, updateInfo!!.url)
+                                val result = ExtensionPackLoader.downloadAndInstall(
+                                    context,
+                                    pack,
+                                    updateInfo!!.url
+                                )
                                 snackbarHostState.showSnackbar(result)
                                 onRefresh()
                             }
                         }) {
-                            Icon(Icons.Outlined.FileDownload, contentDescription = i18n("extension_download"), modifier = Modifier.size(20.dp))
+                            Icon(
+                                Icons.Outlined.FileDownload,
+                                contentDescription = i18n("extension_download"),
+                                modifier = Modifier.size(20.dp)
+                            )
                         }
                     }
                     IconButton(onClick = {
@@ -347,7 +394,12 @@ private fun ExtensionPackRow(pack: ExtensionPack, context: Context, scope: kotli
                             }
                         }
                     }) {
-                        Icon(Icons.Outlined.Delete, contentDescription = i18n("common_delete"), modifier = Modifier.size(20.dp), tint = MaterialTheme.colorScheme.error)
+                        Icon(
+                            Icons.Outlined.Delete,
+                            contentDescription = i18n("common_delete"),
+                            modifier = Modifier.size(20.dp),
+                            tint = MaterialTheme.colorScheme.error
+                        )
                     }
                 }
             }

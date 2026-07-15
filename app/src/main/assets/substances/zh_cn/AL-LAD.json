@@ -7,10 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知",
-    "极低毒性"
-  ],
+  "toxicities": ["毒性剂量未知", "极低毒性"],
   "summary": "AL-LAD是一种致幻药物，属于麦角酰胺类化合物，是LSD的类似物。据报告，其与LSD相比存在一些细微的体验差异（例如更强的视觉效果），且作用持续时间略短。AL-LAD的剂量与LSD相似，具体取决于纯度。自2013年起，该物质在互联网上流通，在药物使用者群体中获得了广泛流行。",
   "localizedName": "AL-LAD"
 }

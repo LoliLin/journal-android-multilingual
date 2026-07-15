@@ -23,8 +23,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import com.isaakhanimann.journal.localization.i18n
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.localization.i18n
 
 @Preview
 @Composable
@@ -36,10 +36,7 @@ fun UnknownDoseDialogPreview() {
 }
 
 @Composable
-fun UnknownDoseDialog(
-    useUnknownDoseAndNavigate: () -> Unit,
-    dismiss: () -> Unit
-) {
+fun UnknownDoseDialog(useUnknownDoseAndNavigate: () -> Unit, dismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = dismiss,
         title = {

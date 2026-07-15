@@ -25,9 +25,9 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
@@ -64,14 +64,19 @@ class SearchViewModel @Inject constructor(
         substanceRepo.getAllCategories().map { category ->
             val isActive = filters.contains(category.name)
             CategoryChipModel(
-                rawName = category.name, color = category.color, isActive = isActive
+                rawName = category.name,
+                color = category.color,
+                isActive = isActive
             )
         }
     }.combine(isShowingCustomSubstancesFlow) { chips, isShowingCustom ->
         val newChips = chips.toMutableList()
         newChips.add(
-            0, CategoryChipModel(
-                rawName = customChipName, color = customColor, isActive = isShowingCustom
+            0,
+            CategoryChipModel(
+                rawName = customChipName,
+                color = customColor,
+                isActive = isShowingCustom
             )
         )
         return@combine newChips
@@ -83,8 +88,22 @@ class SearchViewModel @Inject constructor(
 
     val customColor = Color.Cyan
 
-    val filteredSubstancesFlow = combine(searchTextFlow, filtersFlow, experienceRepo.getSortedLastUsedSubstanceNamesFlow(limit = 200)) { searchText, filters, recents ->
-        return@combine searchRepository.getMatchingSubstances(searchText = searchText, filterCategories = filters, recentlyUsedSubstanceNamesSorted = recents).map { it.toSubstanceModel() }
+    val filteredSubstancesFlow = combine(
+        searchTextFlow,
+        filtersFlow,
+        experienceRepo.getSortedLastUsedSubstanceNamesFlow(limit = 200)
+    ) {
+            searchText,
+            filters,
+            recents
+        ->
+        return@combine searchRepository.getMatchingSubstances(
+            searchText = searchText,
+            filterCategories = filters,
+            recentlyUsedSubstanceNamesSorted = recents
+        ).map {
+            it.toSubstanceModel()
+        }
     }.stateIn(
         initialValue = emptyList(),
         scope = viewModelScope,
@@ -103,7 +122,8 @@ class SearchViewModel @Inject constructor(
         customSubstancesFlow.combine(searchTextFlow) { customSubstances, searchText ->
             customSubstances.filter { custom ->
                 custom.name.contains(
-                    other = searchText, ignoreCase = true
+                    other = searchText,
+                    ignoreCase = true
                 )
             }
         }.stateIn(
@@ -113,10 +133,6 @@ class SearchViewModel @Inject constructor(
         )
 }
 
-data class CategoryChipModel(
-    val rawName: String, val color: Color, val isActive: Boolean
-)
+data class CategoryChipModel(val rawName: String, val color: Color, val isActive: Boolean)
 
-data class CategoryModel(
-    val rawName: String, val color: Color
-)
+data class CategoryModel(val rawName: String, val color: Color)

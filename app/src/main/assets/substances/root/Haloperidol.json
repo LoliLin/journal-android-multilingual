@@ -1,8 +1,6 @@
 {
   "name": "Haloperidol",
-  "commonNames": [
-    "Haldol"
-  ],
+  "commonNames": ["Haldol"],
   "url": "https://psychonautwiki.org/wiki/Haloperidol",
   "isApproved": true,
   "crossTolerances": [],
@@ -10,9 +8,7 @@
     "can have serious side effects at higher dosages",
     "risk of having severe extrapyramidal symptoms and muscle rigidity"
   ],
-  "categories": [
-    "antipsychotic"
-  ],
+  "categories": ["antipsychotic"],
   "roas": [
     {
       "name": "oral",

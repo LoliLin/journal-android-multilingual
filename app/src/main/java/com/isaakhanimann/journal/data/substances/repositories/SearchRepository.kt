@@ -23,27 +23,37 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SearchRepository @Inject constructor(
-    val substanceRepo: SubstanceRepository
-) : SearchRepositoryInterface {
+class SearchRepository @Inject constructor(val substanceRepo: SubstanceRepository) :
+    SearchRepositoryInterface {
 
     override fun getMatchingSubstances(
         searchText: String,
         filterCategories: List<String>,
-        recentlyUsedSubstanceNamesSorted: List<String>,
+        recentlyUsedSubstanceNamesSorted: List<String>
     ): List<SubstanceWithCategories> {
         val substancesMatchingCategories = getSubstancesMatchingCategories(filterCategories)
-        val substancesFilteredWithText = getSubstancesMatchingSearchText(searchText, prefilteredSubstances = substancesMatchingCategories)
-        return getSubstancesSorted(prefilteredSubstances = substancesFilteredWithText, recentlyUsedSubstanceNamesSorted = recentlyUsedSubstanceNamesSorted)
+        val substancesFilteredWithText =
+            getSubstancesMatchingSearchText(
+                searchText,
+                prefilteredSubstances = substancesMatchingCategories
+            )
+        return getSubstancesSorted(
+            prefilteredSubstances = substancesFilteredWithText,
+            recentlyUsedSubstanceNamesSorted = recentlyUsedSubstanceNamesSorted
+        )
     }
 
-    private fun getSubstancesMatchingCategories(filterCategories: List<String>): List<SubstanceWithCategories> {
-        return substanceRepo.getAllSubstancesWithCategories().filter { substanceWithCategories ->
+    private fun getSubstancesMatchingCategories(
+        filterCategories: List<String>
+    ): List<SubstanceWithCategories> =
+        substanceRepo.getAllSubstancesWithCategories().filter { substanceWithCategories ->
             filterCategories.all { substanceWithCategories.substance.categories.contains(it) }
         }
-    }
 
-    private fun getSubstancesMatchingSearchText(searchText: String, prefilteredSubstances: List<SubstanceWithCategories>): List<SubstanceWithCategories> {
+    private fun getSubstancesMatchingSearchText(
+        searchText: String,
+        prefilteredSubstances: List<SubstanceWithCategories>
+    ): List<SubstanceWithCategories> {
         val sources = prefilteredSubstances.map { it.substance }
         val matches = substanceRepo.searcher.search(searchText, sources)
         val substanceByName = prefilteredSubstances.associateBy { it.substance.name }
@@ -56,14 +66,20 @@ class SearchRepository @Inject constructor(
     ): List<SubstanceWithCategories> {
         val recentNames = recentlyUsedSubstanceNamesSorted.distinct()
         val recentlyUsedMatches =
-            recentNames.filter { recent -> prefilteredSubstances.any { it.substance.name == recent } }
+            recentNames.filter { recent ->
+                prefilteredSubstances.any { it.substance.name == recent }
+            }
                 .mapNotNull {
                     substanceRepo.getSubstanceWithCategories(
                         substanceName = it
                     )
                 }
         val commonSubstanceMatches =
-            prefilteredSubstances.filter { sub -> sub.categories.any { cat -> cat.name == "common" } }
-        return (recentlyUsedMatches + commonSubstanceMatches + prefilteredSubstances).distinctBy { it.substance.name }
+            prefilteredSubstances.filter { sub ->
+                sub.categories.any { cat -> cat.name == "common" }
+            }
+        return (recentlyUsedMatches + commonSubstanceMatches + prefilteredSubstances).distinctBy {
+            it.substance.name
+        }
     }
 }

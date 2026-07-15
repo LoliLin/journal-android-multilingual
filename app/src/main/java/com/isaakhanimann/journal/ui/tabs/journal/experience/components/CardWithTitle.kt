@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
-
 @Composable
 fun CardWithTitle(
     modifier: Modifier = Modifier,

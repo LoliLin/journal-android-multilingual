@@ -7,10 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知",
-    "極低毒性"
-  ],
+  "toxicities": ["毒性劑量未知", "極低毒性"],
   "summary": "ALD-52，即N-乙醯基LSD，是LSD的一種較不常見的化學類似物，最初由阿爾伯特·霍夫曼合成。它因「橙色陽光」審判而聞名。作為一種迷幻的麥角醯胺，該化合物表現出與LSD相似的特性，並被認為是LSD的前驅藥物。",
   "localizedName": "ALD-52"
 }

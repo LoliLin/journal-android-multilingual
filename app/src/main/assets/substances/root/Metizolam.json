@@ -1,9 +1,6 @@
 {
   "name": "Metizolam",
-  "commonNames": [
-    "Metizolam",
-    "Desmethyletizolam"
-  ],
+  "commonNames": ["Metizolam", "Desmethyletizolam"],
   "url": "https://psychonautwiki.org/wiki/Metizolam",
   "isApproved": true,
   "tolerance": {
@@ -13,14 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "thienzodiazepines",
-    "benzodiazepines"
-  ],
+  "crossTolerances": ["thienzodiazepines", "benzodiazepines"],
   "addictionPotential": "extremely addictive",
-  "toxicities": [
-    "large therapeutic index and margin of safety"
-  ],
+  "toxicities": ["large therapeutic index and margin of safety"],
   "categories": [
     "depressant",
     "benzodiazepine",

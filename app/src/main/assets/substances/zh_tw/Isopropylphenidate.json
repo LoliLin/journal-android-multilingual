@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "IPPH（或錯誤稱之為IPH）是一種新型的哌啶類哌甲酯類似物及NDRI興奮劑，但其身體副作用顯著較少。",
   "localizedName": "異丙基哌啶酯"
 }

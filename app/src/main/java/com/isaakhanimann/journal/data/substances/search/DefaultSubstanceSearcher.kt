@@ -33,7 +33,8 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
             )
         }
         val prefixMatches = sources.filter { substance ->
-            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
+            val allNames =
+                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
             allNames.any { name ->
                 name.replace(Regex("[- ]"), "").startsWith(
                     prefix = searchString,
@@ -42,7 +43,8 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
             }
         }
         val matches = sources.filter { substance ->
-            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
+            val allNames =
+                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
             allNames.any { name ->
                 name.replace(Regex("[- ]"), "").contains(
                     other = searchString,

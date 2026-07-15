@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "長期使用會產生依賴性，且具有高度濫用潛力。",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種強效的解離劑，常被比作MXE，但作用時間更長、鎮靜效果更弱，且整體體驗不同。使用者回報其效果類似於PCP。效力約為4-MeO-PCP的十倍。",
   "localizedName": "3-MeO-PCP"
 }

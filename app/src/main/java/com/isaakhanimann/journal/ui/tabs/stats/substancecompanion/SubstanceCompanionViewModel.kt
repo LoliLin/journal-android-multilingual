@@ -34,6 +34,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.Instant
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -42,8 +44,6 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import java.time.Instant
-import javax.inject.Inject
 
 @HiltViewModel
 class SubstanceCompanionViewModel @Inject constructor(
@@ -83,10 +83,12 @@ class SubstanceCompanionViewModel @Inject constructor(
                 val allIngestionBursts: MutableList<IngestionsBurst> = mutableListOf()
                 for (oneExperience in experiencesWithIngestions) {
                     val experience = oneExperience.value.firstOrNull()?.experience ?: continue
-                    val ingestionsSorted = oneExperience.value.map { IngestionsBurst.IngestionAndCustomUnit(
-                        ingestion = it.ingestion,
-                        customUnit = it.customUnit
-                    ) }.sortedBy { it.ingestion.time }
+                    val ingestionsSorted = oneExperience.value.map {
+                        IngestionsBurst.IngestionAndCustomUnit(
+                            ingestion = it.ingestion,
+                            customUnit = it.customUnit
+                        )
+                    }.sortedBy { it.ingestion.time }
                     val experienceStart = ingestionsSorted.first().ingestion.time
                     val experienceEnd = ingestionsSorted.last().ingestion.time
                     val diffText = getTimeDifferenceText(
@@ -115,10 +117,7 @@ data class IngestionsBurst(
     val experience: Experience,
     val ingestions: List<IngestionAndCustomUnit>
 ) {
-    data class IngestionAndCustomUnit(
-        val ingestion: Ingestion,
-        val customUnit: CustomUnit?
-    ) {
+    data class IngestionAndCustomUnit(val ingestion: Ingestion, val customUnit: CustomUnit?) {
         val customUnitDose: CustomUnitDose?
             get() = ingestion.dose?.let { doseUnwrapped ->
                 customUnit?.let { customUnitUnwrapped ->
@@ -131,26 +130,21 @@ data class IngestionsBurst(
                 }
             }
 
-        
-        fun getDoseDescription(context:Context): String {
-            return customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
-        }
+        fun getDoseDescription(context: Context): String =
+            customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
 
-        
-        private fun getIngestionDoseDescription(context:Context): String {
-            return ingestion.dose?.let { dose -> 
+        private fun getIngestionDoseDescription(context: Context): String =
+            ingestion.dose?.let { dose ->
                 ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviation ->
-                "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${ingestion.units}"
+                    "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${ingestion.units}"
                 } ?: run {
                     val description = "${dose.toReadableString()} ${ingestion.units}"
-                if (ingestion.isDoseAnEstimate) {
+                    if (ingestion.isDoseAnEstimate) {
                         "~$description"
                     } else {
-                    description
+                        description
                     }
                 }
             } ?: com.isaakhanimann.journal.localization.I18n.translate(context, "dose_unknown")
-        }
-    }       
+    }
 }
-    

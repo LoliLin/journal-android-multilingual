@@ -16,13 +16,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "opioids"
-  ],
+  "crossTolerances": ["opioids"],
   "addictionPotential": "produces dependence with chronic use and has a high abuse potential",
-  "toxicities": [
-    "low toxicity"
-  ],
+  "toxicities": ["low toxicity"],
   "categories": [
     "stimulant",
     "opioid",
@@ -44,12 +40,7 @@
       "Grapefruit"
     ],
     "unsafe": [],
-    "uncertain": [
-      "MAOIs",
-      "Nitrous",
-      "PCP",
-      "Stimulants"
-    ]
+    "uncertain": ["MAOIs", "Nitrous", "PCP", "Stimulants"]
   },
   "roas": [
     {

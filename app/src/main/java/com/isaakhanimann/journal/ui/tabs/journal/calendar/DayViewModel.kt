@@ -26,11 +26,8 @@ import com.kizitonwose.calendar.core.CalendarDay
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-
 @HiltViewModel
-class DayViewModel @Inject constructor(
-    val experienceRepo: ExperienceRepository,
-) : ViewModel() {
+class DayViewModel @Inject constructor(val experienceRepo: ExperienceRepository) : ViewModel() {
 
     suspend fun getExperienceInfo(day: CalendarDay): ExperienceInfo {
         val startOfDay = day.date.atStartOfDay().getInstant()
@@ -46,7 +43,4 @@ class DayViewModel @Inject constructor(
     }
 }
 
-data class ExperienceInfo(
-    val experienceIds: List<Int>,
-    val colors: List<AdaptiveColor>
-)
+data class ExperienceInfo(val experienceIds: List<Int>, val colors: List<AdaptiveColor>)

@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 240
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
+  "toxicities": ["extremely low toxicity"],
   "localizedName": "Theanine"
 }

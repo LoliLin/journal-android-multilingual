@@ -18,7 +18,6 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -65,14 +64,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChasingTheDragonText
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.OptionalDosageUnitDisclaimer
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.CustomUnitRoaDoseView
@@ -83,20 +83,14 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.duration.RoaDurationView
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-import com.isaakhanimann.journal.ui.utils.categoryNameKey
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.localization.i18nOrDefault
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.absoluteValue
-
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
 @Composable
 fun SubstanceScreen(
@@ -156,7 +150,7 @@ fun SubstanceScreen(
                         contentDescription = i18n("substance_open_article")
                     )
                 },
-                text = { Text(i18n("substance_more_info")) },
+                text = { Text(i18n("substance_more_info")) }
             )
         }
     ) { padding ->
@@ -180,7 +174,10 @@ fun SubstanceScreen(
                             horizontal = horizontalPadding
                         )
                     ) {
-                        Icon(imageVector = Icons.Default.GppBad, contentDescription = i18n("verified"))
+                        Icon(
+                            imageVector = Icons.Default.GppBad,
+                            contentDescription = i18n("verified")
+                        )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                         Text(text = i18n("substance_info_not_approved"))
                     }
@@ -209,7 +206,7 @@ fun SubstanceScreen(
                         }
                         FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(5.dp),
-                            verticalArrangement = Arrangement.spacedBy(5.dp),
+                            verticalArrangement = Arrangement.spacedBy(5.dp)
                         ) {
                             categories.forEach { category ->
                                 CategoryChipFromSubstanceScreen(category, navigateToCategoryScreen)
@@ -221,7 +218,10 @@ fun SubstanceScreen(
             val roasWithDosesDefined = substance.roas.filter { roa ->
                 val roaDose = roa.roaDose
                 val isEveryDoseNull =
-                    roaDose?.lightMin == null && roaDose?.commonMin == null && roaDose?.strongMin == null && roaDose?.heavyMin == null
+                    roaDose?.lightMin == null &&
+                        roaDose?.commonMin == null &&
+                        roaDose?.strongMin == null &&
+                        roaDose?.heavyMin == null
                 return@filter !isEveryDoseNull
             }
             if (substance.dosageRemark != null || roasWithDosesDefined.isNotEmpty()) {
@@ -273,7 +273,9 @@ fun SubstanceScreen(
                                         )
                                     )
                                 }
-                                if (roa.route == AdministrationRoute.SMOKED && substance.name != "Cannabis") {
+                                if (roa.route == AdministrationRoute.SMOKED &&
+                                    substance.name != "Cannabis"
+                                ) {
                                     Spacer(modifier = Modifier.height(5.dp))
                                     ChasingTheDragonText(
                                         titleStyle = MaterialTheme.typography.titleMedium
@@ -308,14 +310,12 @@ fun SubstanceScreen(
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(i18n("substance_dosage_classification"))
                         }
-
                     }
                 }
             }
             if (substance.tolerance != null || substance.crossTolerances.isNotEmpty()) {
                 SectionWithTitle(title = i18n("substance_tolerance_title")) {
                     Column {
-
                         val context = androidx.compose.ui.platform.LocalContext.current
 
                         VerticalSpace()
@@ -329,7 +329,7 @@ fun SubstanceScreen(
 
                             isSubstance = substanceRepo::isSubstance,
                             isCategory = substanceRepo::isCategory,
-                            
+
                             getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
                             getCategoryDisplayName = { name ->
                                 substanceRepo.getCategory(name)?.getLocalizedName(context) ?: name
@@ -363,7 +363,11 @@ fun SubstanceScreen(
             val roasWithDurationsDefined = substance.roas.filter { roa ->
                 val roaDuration = roa.roaDuration
                 val isEveryDurationNull =
-                    roaDuration?.onset == null && roaDuration?.comeup == null && roaDuration?.peak == null && roaDuration?.offset == null && roaDuration?.total == null
+                    roaDuration?.onset == null &&
+                        roaDuration?.comeup == null &&
+                        roaDuration?.peak == null &&
+                        roaDuration?.offset == null &&
+                        roaDuration?.total == null
                 return@filter !isEveryDurationNull
             }
             if (roasWithDurationsDefined.isNotEmpty()) {
@@ -371,7 +375,7 @@ fun SubstanceScreen(
                     Column(Modifier.padding(horizontal = horizontalPadding)) {
                         var ingestionTime by remember { mutableStateOf(LocalDateTime.now()) }
                         Row(
-                            verticalAlignment = Alignment.CenterVertically,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(i18n("substance_duration_start"))
                             Spacer(modifier = Modifier.width(5.dp))
@@ -379,7 +383,7 @@ fun SubstanceScreen(
                                 localDateTime = ingestionTime,
                                 onChange = { ingestionTime = it },
                                 timeString = ingestionTime.getStringOfPattern("HH:mm"),
-                                hasOutline = false,
+                                hasOutline = false
                             )
                             val isTimeALotDifferentToNow = ChronoUnit.MINUTES.between(
                                 ingestionTime,
@@ -430,11 +434,11 @@ fun SubstanceScreen(
                         roasWithDurationsDefined.forEachIndexed { index, roa ->
                             Column(
                                 modifier = Modifier.padding(
-                                    vertical = 5.dp,
+                                    vertical = 5.dp
                                 )
                             ) {
                                 Row(
-                                    verticalAlignment = Alignment.CenterVertically,
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     RouteColorCircle(roa.route)
                                     Spacer(modifier = Modifier.width(8.dp))
@@ -470,7 +474,10 @@ fun SubstanceScreen(
             }
             val interactions = substance.interactions
             if (interactions != null) {
-                if (interactions.dangerous.isNotEmpty() || interactions.unsafe.isNotEmpty() || interactions.uncertain.isNotEmpty()) {
+                if (interactions.dangerous.isNotEmpty() ||
+                    interactions.unsafe.isNotEmpty() ||
+                    interactions.uncertain.isNotEmpty()
+                ) {
                     SectionWithTitle(title = i18n("substance_interactions_title")) {
                         InteractionsView(
                             interactions = substance.interactions,

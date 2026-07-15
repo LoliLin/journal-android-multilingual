@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种相当强效的色胺类物质，其视觉效果与\"蘑菇类\"致幻体验相似，但身体负担较小。具有极强的吸湿性。剂量安全性似乎较高。与2C-B等物质类似。",
   "localizedName": "4-乙酰氧基-N-甲基-N-异丙基色胺"
 }

@@ -21,7 +21,6 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -40,19 +39,15 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables.AxisDrawable
-import kotlinx.coroutines.delay
 import java.time.Duration
 import java.time.Instant
-import java.time.temporal.ChronoUnit
-
+import kotlinx.coroutines.delay
 
 @Composable
 fun AllTimelines(
@@ -60,7 +55,7 @@ fun AllTimelines(
     dataForRatings: List<DataForOneRating>,
     dataForTimedNotes: List<DataForOneTimedNote>,
     isShowingCurrentTime: Boolean,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     if (dataForEffectLines.isEmpty()) {
         Text(text = i18n("insufficient_timeline_data"))
@@ -143,7 +138,7 @@ fun AllTimelines(
                         currentTime = currentTime,
                         pixelsPerSec = pixelsPerSec,
                         isDarkTheme = isDarkTheme,
-                        canvasHeightOuter = canvasHeightWithVerticalLine,
+                        canvasHeightOuter = canvasHeightWithVerticalLine
                     )
                 }
             }
@@ -164,7 +159,7 @@ fun DrawScope.drawCurrentTime(
     currentTime: Instant,
     pixelsPerSec: Float,
     isDarkTheme: Boolean,
-    canvasHeightOuter: Float,
+    canvasHeightOuter: Float
 ) {
     val endTime = startTime.plusSeconds(timelineWidthInSeconds.toLong())
     if (startTime.isBefore(currentTime) && endTime.isAfter(currentTime)) {

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "長期使用會產生依賴性，且具有高度濫用潛力。",
-  "toxicities": [
-    "低毒性"
-  ],
+  "toxicities": ["低毒性"],
   "summary": "一種由帽柱木（Mitragyna Speciosa）葉子製成的藥物，與咖啡有親緣關係。低劑量時具有興奮作用，高劑量時則產生類鴉片效果。頻繁大量使用可能導致生理成癮及戒斷症狀。",
   "localizedName": "卡痛"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種罕見的色胺類迷幻藥，與DMT密切相關，具有有趣的特性：幾乎沒有視覺幻覺，但具有強烈的聽覺效果。",
   "localizedName": "DiPT"
 }

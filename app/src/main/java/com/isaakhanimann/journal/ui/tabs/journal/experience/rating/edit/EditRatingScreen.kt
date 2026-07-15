@@ -39,10 +39,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingPickerSection
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingsExplanationSection
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.TimePickerSection
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import java.time.LocalDateTime
@@ -62,10 +62,7 @@ fun EditRatingScreenPreview() {
 }
 
 @Composable
-fun EditRatingScreen(
-    viewModel: EditRatingViewModel = hiltViewModel(),
-    navigateBack: () -> Unit
-) {
+fun EditRatingScreen(viewModel: EditRatingViewModel = hiltViewModel(), navigateBack: () -> Unit) {
     EditRatingScreen(
         onDone = {
             viewModel.onDoneTap()
@@ -100,11 +97,11 @@ fun EditRatingScreen(
                 title = { Text(i18n("edit_shulgin_rating")) },
                 actions = {
                     IconButton(
-                        onClick = { onDelete() },
+                        onClick = { onDelete() }
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = i18n("delete_rating"),
+                            contentDescription = i18n("delete_rating")
                         )
                     }
                 }

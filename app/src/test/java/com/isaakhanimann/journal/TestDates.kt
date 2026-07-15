@@ -22,11 +22,11 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables.A
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
+import java.time.Instant
+import java.time.temporal.ChronoUnit
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Test
-import java.time.Instant
-import java.time.temporal.ChronoUnit
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -65,7 +65,8 @@ class TestDates {
             selectedDate.minus(
                 12,
                 ChronoUnit.HOURS
-            ) < lastIngestionTime && selectedDate.plus(12, ChronoUnit.HOURS) > firstIngestionTime
+            ) < lastIngestionTime &&
+                selectedDate.plus(12, ChronoUnit.HOURS) > firstIngestionTime
         )
     }
 

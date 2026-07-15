@@ -34,11 +34,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.BulletPoints
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,9 +48,9 @@ fun SaferHallucinogensScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("hallucinogens_screen_title")) },
+                title = { Text(i18n("hallucinogens_screen_title")) }
             )
-        },
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -58,7 +58,9 @@ fun SaferHallucinogensScreen() {
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 3.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 3.dp)
+            ) {
                 Text(
                     text = i18n("safer_hallucinogen_subtitle"),
                     modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 5.dp)
@@ -83,7 +85,6 @@ fun SaferHallucinogensScreen() {
             }
             SectionWithTitle(title = i18n("hallucinogens_set_mind_title")) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
-
                     SectionText(
                         text = i18n("hallucinogens_set_mind_body").trimIndent()
                     )
@@ -122,16 +123,21 @@ fun SaferHallucinogensScreen() {
                     )
                     VerticalSpace()
                 }
-            }
-            SectionWithTitle(title = i18n("hallucinogens_aborting_title")) {
-                Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
-                    SectionText(
-                        text = i18n("hallucinogens_aborting_body").trimIndent()
-                    )
-                    VerticalSpace()
-                }
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-        }
-    }
+            }
+
+            SectionWithTitle(title = i18n("hallucinogens_aborting_title")) {
+                Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
+                    SectionText(
+
+                        text = i18n("hallucinogens_aborting_body").trimIndent()
+
+                    )
+
+                    VerticalSpace()
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+    }
 }

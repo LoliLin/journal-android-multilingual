@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "高劑量下可能致命"
-  ],
+  "toxicities": ["高劑量下可能致命"],
   "summary": "迷幻苯乙胺，在低微克範圍內具有活性，但口服無效。",
   "localizedName": "25B-NBOMe"
 }

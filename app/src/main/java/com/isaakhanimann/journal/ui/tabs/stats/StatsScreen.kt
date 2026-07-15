@@ -35,6 +35,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -61,29 +62,24 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
-import com.isaakhanimann.journal.ui.theme.JournalTheme
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-
 
 @Composable
 fun StatsScreen(
     viewModel: StatsViewModel = hiltViewModel(),
-    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit,
+    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
 ) {
     StatsScreen(
         navigateToSubstanceCompanion = navigateToSubstanceCompanion,
@@ -112,7 +108,6 @@ fun StatsScreen(
                     Text(
 
                         if (statsModel.consumerName != null) {
-
                             i18n(
 
                                 "stats_title_for_consumer",
@@ -120,9 +115,7 @@ fun StatsScreen(
                                 replacements = mapOf("consumer" to statsModel.consumerName)
 
                             )
-
                         } else if (ownerUserName != "You") {
-
                             i18n(
 
                                 "stats_title_for_consumer",
@@ -130,11 +123,8 @@ fun StatsScreen(
                                 replacements = mapOf("consumer" to ownerUserName)
 
                             )
-
                         } else {
-
                             i18n("stats_title")
-
                         }
 
                     )
@@ -147,52 +137,61 @@ fun StatsScreen(
                     val currentConsumerName = statsModel.consumerName ?: ownerUserName
 
                     val currentAvatarFile = remember(currentConsumerName) {
-
                         AvatarUtil.getUserAvatar(context, currentConsumerName)
-
                     }
 
-                        IconButton(onClick = { isConsumerSelectionExpanded = true }) {
+                    IconButton(onClick = { isConsumerSelectionExpanded = true }) {
+                        if (currentAvatarFile != null) {
+                            AsyncImage(
 
-                            if (currentAvatarFile != null) {
+                                model = currentAvatarFile,
 
-                                AsyncImage(
+                                contentDescription = i18n("stats_consumer"),
 
-                                    model = currentAvatarFile,
+                                modifier = Modifier.size(32.dp).clip(CircleShape),
 
-                                    contentDescription = i18n("stats_consumer"),
+                                contentScale = ContentScale.Crop
 
-                                    modifier = Modifier.size(32.dp).clip(CircleShape),
+                            )
+                        } else {
+                            Icon(
 
-                                    contentScale = ContentScale.Crop
+                                Icons.Outlined.Person,
 
-                                )
+                                contentDescription = i18n("stats_consumer")
 
-                            } else {
-
-                                Icon(
-
-                                    Icons.Outlined.Person,
-
-                                    contentDescription = i18n("stats_consumer")
-
-                                )
-
-                            }
-
+                            )
                         }
-                        DropdownMenu(
-                            expanded = isConsumerSelectionExpanded,
-                            onDismissRequest = { isConsumerSelectionExpanded = false }
-                        ) {
+                    }
+                    DropdownMenu(
+                        expanded = isConsumerSelectionExpanded,
+                        onDismissRequest = { isConsumerSelectionExpanded = false }
+                    ) {
+                        DropdownMenuItem(
+                            text = { Text(ownerUserName) },
+                            onClick = {
+                                onChangeConsumerName(null)
+                                isConsumerSelectionExpanded = false
+                            },
+                            leadingIcon = {
+                                if (statsModel.consumerName == null) {
+                                    Icon(
+                                        Icons.Filled.Check,
+                                        contentDescription = i18n("common_check"),
+                                        modifier = Modifier.size(ButtonDefaults.IconSize)
+                                    )
+                                }
+                            }
+                        )
+                        consumerNamesSorted.forEach { consumerName ->
                             DropdownMenuItem(
-                                text = { Text(ownerUserName) },
+                                text = { Text(consumerName) },
                                 onClick = {
-                                    onChangeConsumerName(null)
+                                    onChangeConsumerName(consumerName)
                                     isConsumerSelectionExpanded = false
                                 },
                                 leadingIcon = {
-                                    if (statsModel.consumerName == null) {
+                                    if (statsModel.consumerName == consumerName) {
                                         Icon(
                                             Icons.Filled.Check,
                                             contentDescription = i18n("common_check"),
@@ -201,30 +200,11 @@ fun StatsScreen(
                                     }
                                 }
                             )
-                            consumerNamesSorted.forEach { consumerName ->
-                                DropdownMenuItem(
-                                    text = { Text(consumerName) },
-                                    onClick = {
-                                        onChangeConsumerName(consumerName)
-                                        isConsumerSelectionExpanded = false
-                                    },
-                                    leadingIcon = {
-                                        if (statsModel.consumerName == consumerName) {
-                                            Icon(
-                                                Icons.Filled.Check,
-                                                contentDescription = i18n("common_check"),
-                                                modifier = Modifier.size(ButtonDefaults.IconSize)
-                                            )
-                                        }
-                                    }
-                                )
-                            }
                         }
-
+                    }
                 }
 
             )
-
         }
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
@@ -236,7 +216,7 @@ fun StatsScreen(
             Column(modifier = Modifier.padding(padding)) {
                 TabRow(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
-                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    contentColor = MaterialTheme.colorScheme.onSurface
                 ) {
                     TimePickerOption.values().forEachIndexed { index, option ->
                         Tab(
@@ -301,7 +281,12 @@ fun StatsScreen(
                                         ) {}
                                         Column {
                                             Text(
-                                                text = (subStat.substanceRepo?.getDisplayName(subStat.substanceName) ?: subStat.substanceName),
+                                                text = (
+                                                    subStat.substanceRepo?.getDisplayName(
+                                                        subStat.substanceName
+                                                    )
+                                                        ?: subStat.substanceName
+                                                    ),
                                                 style = MaterialTheme.typography.titleMedium
                                             )
                                             val experienceCountText =
@@ -309,19 +294,21 @@ fun StatsScreen(
                                                     i18n(
                                                         "stats_experience_count_one",
                                                         replacements = mapOf(
-                                                            "count" to subStat.experienceCount.toString()
+                                                            "count" to
+                                                                subStat.experienceCount.toString()
                                                         )
                                                     )
                                                 } else {
                                                     i18n(
                                                         "stats_experience_count_other",
                                                         replacements = mapOf(
-                                                            "count" to subStat.experienceCount.toString()
+                                                            "count" to
+                                                                subStat.experienceCount.toString()
                                                         )
                                                     )
                                                 }
                                             Text(
-                                                text = experienceCountText,
+                                                text = experienceCountText
                                             )
                                         }
                                         Spacer(modifier = Modifier.weight(1f))
@@ -329,13 +316,17 @@ fun StatsScreen(
                                             val cumulativeDose = subStat.totalDose
                                             if (cumulativeDose != null) {
                                                 if (cumulativeDose.isEstimate) {
-                                                    if (cumulativeDose.estimatedDoseStandardDeviation != null) {
+                                                    if (cumulativeDose.estimatedDoseStandardDeviation !=
+                                                        null
+                                                    ) {
                                                         Text(
                                                             text = i18n(
                                                                 "stats_total_dose_estimated_with_sd",
                                                                 replacements = mapOf(
-                                                                    "dose" to cumulativeDose.dose.toReadableString(),
-                                                                    "sd" to cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
+                                                                    "dose" to
+                                                                        cumulativeDose.dose.toReadableString(),
+                                                                    "sd" to
+                                                                        cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
                                                                     "units" to cumulativeDose.units
                                                                 )
                                                             )
@@ -345,7 +336,8 @@ fun StatsScreen(
                                                             text = i18n(
                                                                 "stats_total_dose_estimated",
                                                                 replacements = mapOf(
-                                                                    "dose" to cumulativeDose.dose.toReadableString(),
+                                                                    "dose" to
+                                                                        cumulativeDose.dose.toReadableString(),
                                                                     "units" to cumulativeDose.units
                                                                 )
                                                             )
@@ -356,12 +348,12 @@ fun StatsScreen(
                                                         text = i18n(
                                                             "stats_total_dose",
                                                             replacements = mapOf(
-                                                                "dose" to cumulativeDose.dose.toReadableString(),
+                                                                "dose" to
+                                                                    cumulativeDose.dose.toReadableString(),
                                                                 "units" to cumulativeDose.units
                                                             )
                                                         )
                                                     )
-
                                                 }
                                             } else {
                                                 Text(text = i18n("stats_total_dose_unknown"))
@@ -372,11 +364,10 @@ fun StatsScreen(
                                                     it.administrationRoute.displayText
                                                 ).lowercase()
                                                 Text(
-                                                    text = "$routeName ${it.count}x ",
+                                                    text = "$routeName ${it.count}x "
                                                 )
                                             }
                                         }
-
                                     }
                                     HorizontalDivider()
                                 }

@@ -7,9 +7,6 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知",
-    "极低毒性"
-  ],
+  "toxicities": ["毒性剂量未知", "极低毒性"],
   "localizedName": "1cP-MiPLA"
 }

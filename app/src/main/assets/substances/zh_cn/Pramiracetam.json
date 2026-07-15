@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "无成瘾性，滥用可能性低",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种中枢神经系统兴奋剂，属于拉西坦类化合物，具有促智作用。其效力远强于吡拉西坦，但作用机制似乎相似。",
   "localizedName": "普拉西坦"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "极易上瘾",
-  "toxicities": [
-    "较大的治疗指数和安全范围"
-  ],
+  "toxicities": ["较大的治疗指数和安全范围"],
   "summary": "亦称为去甲基依替唑仑，是一种噻吩并二氮杂䓬类化合物，其效果与结构均与依替唑仑相似，但药效约为其一半，半衰期则延长约60%。作为一种镇静催眠药，过量使用可能导致失忆和抑制力下降。",
   "localizedName": "美替唑仑"
 }

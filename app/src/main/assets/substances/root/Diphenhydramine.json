@@ -15,18 +15,10 @@
     "zero": "1 - 2 weeks",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "deliriant"
-  ],
+  "crossTolerances": ["deliriant"],
   "addictionPotential": "produces dependence with chronic use",
-  "toxicities": [
-    "fatal at amounts close to or exceeding 2 grams"
-  ],
-  "categories": [
-    "deliriant",
-    "depressant",
-    "common"
-  ],
+  "toxicities": ["fatal at amounts close to or exceeding 2 grams"],
+  "categories": ["deliriant", "depressant", "common"],
   "summary": "An antihistamine which, when taken in smaller doses relieves allergies and insomnia. In larger doses works as a deliriant and can actually keep the user awake. Generally the 'high' of this drug is reported as dysphoric, potentially causing hallucinations indistinguishable from reality.",
   "roas": [
     {

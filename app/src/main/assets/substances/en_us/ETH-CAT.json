@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 96
   },
   "addictionPotential": "mildly addictive with a comparatively low potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "localizedName": "ETH-CAT"
 }

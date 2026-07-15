@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "高劑量下致命"
-  ],
+  "toxicities": ["高劑量下致命"],
   "summary": "一種相對較新且受歡迎的研究化學物質。一種短效迷幻劑，與2C-C相關，效果類似於LSD，但更具視覺效果，且較少「思維迷幻」。常被誤當作LSD販售。會引起不適的身體負擔，即使在常規劑量範圍內也曾導致數起死亡案例。",
   "localizedName": "25C-NBOMe"
 }

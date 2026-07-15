@@ -26,13 +26,12 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
-class AddCustomSubstanceViewModel @Inject constructor(
-    val experienceRepo: ExperienceRepository,
-) : ViewModel() {
+class AddCustomSubstanceViewModel @Inject constructor(val experienceRepo: ExperienceRepository) :
+    ViewModel() {
 
     var name by mutableStateOf("")
     var units by mutableStateOf("")

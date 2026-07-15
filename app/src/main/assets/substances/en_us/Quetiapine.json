@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity"
-  ],
+  "toxicities": ["low toxicity"],
   "summary": "An atypical antipsychotic medication under the brand name Seroquel. Also used to treat insomnia and mood swings. This drug is very sedating and can stop/slow down psychedelic drug trips. Infrequently abused.",
   "localizedName": "Quetiapine"
 }

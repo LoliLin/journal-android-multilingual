@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "高劑量下可能致命"
-  ],
+  "toxicities": ["高劑量下可能致命"],
   "summary": "一種苯乙胺類迷幻劑與興奮劑衍生物，源自2C-C，此化合物與25c-NBOMe相關且具有類似效果。其效力顯著高於2C-C，但低於25c-NBOMe。NBOH化合物過量可能導致危險的血管收縮，並可能引發不適的身體負擔。",
   "localizedName": "25C-NBOH"
 }

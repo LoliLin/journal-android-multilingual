@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "卡西酮类致幻剂和兴奋剂。",
   "localizedName": "丁基酮"
 }

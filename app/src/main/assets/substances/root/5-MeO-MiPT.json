@@ -1,9 +1,6 @@
 {
   "name": "5-MeO-MiPT",
-  "commonNames": [
-    "5-MeO-MiPT",
-    "Moxy"
-  ],
+  "commonNames": ["5-MeO-MiPT", "Moxy"],
   "url": "https://psychonautwiki.org/wiki/5-MeO-MiPT",
   "isApproved": true,
   "tolerance": {
@@ -13,39 +10,15 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
   "toxicities": [],
-  "categories": [
-    "psychedelic",
-    "entactogen",
-    "research-chemical",
-    "common"
-  ],
+  "categories": ["psychedelic", "entactogen", "research-chemical", "common"],
   "summary": "A potent, stimulating psychedelic tryptamine, sometimes compared to 5-MeO-DiPT.  Has an unusually strong body component and weak visual effects. Often said to be very empathogenic.",
   "interactions": {
-    "dangerous": [
-      "aMT",
-      "MAOIs",
-      "PCP"
-    ],
-    "unsafe": [
-      "Amphetamines",
-      "Cocaine",
-      "DXM",
-      "Tramadol"
-    ],
-    "uncertain": [
-      "2C-T-x",
-      "2C-x",
-      "THC",
-      "DOx",
-      "MDMA",
-      "Mescaline",
-      "NBOMe"
-    ]
+    "dangerous": ["aMT", "MAOIs", "PCP"],
+    "unsafe": ["Amphetamines", "Cocaine", "DXM", "Tramadol"],
+    "uncertain": ["2C-T-x", "2C-x", "THC", "DOx", "MDMA", "Mescaline", "NBOMe"]
   },
   "roas": [
     {

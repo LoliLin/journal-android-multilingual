@@ -43,11 +43,11 @@ import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 @Composable
 fun CustomUnitArchiveScreen(
     viewModel: CustomUnitArchiveViewModel = hiltViewModel(),
-    navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    navigateToEditCustomUnit: (customUnitId: Int) -> Unit
 ) {
     CustomUnitArchiveScreenContent(
         customUnits = viewModel.customUnitsFlow.collectAsState().value,
-        navigateToEditCustomUnit = navigateToEditCustomUnit,
+        navigateToEditCustomUnit = navigateToEditCustomUnit
     )
 }
 
@@ -79,9 +79,9 @@ fun CustomUnitArchiveScreenPreview() {
                 unit = "pill",
                 originalUnit = "mg",
                 note = ""
-            ),
+            )
         ),
-        navigateToEditCustomUnit = { _ -> },
+        navigateToEditCustomUnit = { _ -> }
     )
 }
 
@@ -89,7 +89,7 @@ fun CustomUnitArchiveScreenPreview() {
 @Composable
 fun CustomUnitArchiveScreenContent(
     customUnits: List<CustomUnit>,
-    navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    navigateToEditCustomUnit: (customUnitId: Int) -> Unit
 ) {
     Scaffold(
         topBar = {

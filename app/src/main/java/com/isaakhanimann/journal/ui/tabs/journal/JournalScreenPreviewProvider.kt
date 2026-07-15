@@ -34,7 +34,7 @@ import com.isaakhanimann.journal.ui.utils.getInstant
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 
-//? wtf is this
+// ? wtf is this
 class JournalScreenPreviewProvider :
     PreviewParameterProvider<List<ExperienceWithIngestionsCompanionsAndRatings>> {
     override val values: Sequence<List<ExperienceWithIngestionsCompanionsAndRatings>> =
@@ -342,7 +342,7 @@ class JournalScreenPreviewProvider :
                         )
                     ),
                     ratings = listOf()
-                ),
+                )
             )
         )
 }

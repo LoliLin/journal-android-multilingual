@@ -35,8 +35,8 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIconPicker
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceColors
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
 import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
-import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
 import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
+import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
 import com.isaakhanimann.journal.ui.tabs.settings.SettingsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.colors.SubstanceColorsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsScreen
@@ -47,10 +47,10 @@ import com.isaakhanimann.journal.ui.tabs.settings.customunits.edit.EditCustomUni
 fun NavGraphBuilder.settingsGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.SettingsRouter.route,
-        route = TabRouter.Settings.route,
+        route = TabRouter.Settings.route
     ) {
         composableWithTransitions(
-            route = NoArgumentRouter.SettingsRouter.route,
+            route = NoArgumentRouter.SettingsRouter.route
         ) {
             SettingsScreen(
                 navigateToFAQ = navController::navigateToFAQ,
@@ -58,18 +58,28 @@ fun NavGraphBuilder.settingsGraph(navController: NavController) {
                 navigateToSubstanceColors = navController::navigateToSubstanceColors,
                 navigateToCustomUnits = navController::navigateToCustomUnits,
                 navigateToDonate = navController::navigateToDonate,
-navigateToExtensionPack = navController::navigateToExtensionPack,
-navigateToIconPicker = navController::navigateToIconPicker
+                navigateToExtensionPack = navController::navigateToExtensionPack,
+                navigateToIconPicker = navController::navigateToIconPicker
             )
         }
         composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
         composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
-        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) { IconPickerScreen(navigateBack = navController::popBackStack) }
-        composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) { ExtensionPackScreen(navigateBack = navController::popBackStack) }
-        composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) { CombinationSettingsScreen() }
-        composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) { SubstanceColorsScreen() }
+        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) {
+            IconPickerScreen(navigateBack = navController::popBackStack)
+        }
+        composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) {
+            ExtensionPackScreen(navigateBack = navController::popBackStack)
+        }
+        composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) {
+            CombinationSettingsScreen()
+        }
+        composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) {
+            SubstanceColorsScreen()
+        }
         composableWithTransitions(NoArgumentRouter.CustomUnitArchiveRouter.route) {
-            CustomUnitArchiveScreen(navigateToEditCustomUnit = navController::navigateToEditCustomUnit)
+            CustomUnitArchiveScreen(
+                navigateToEditCustomUnit = navController::navigateToEditCustomUnit
+            )
         }
         addCustomUnitGraph(navController)
         composableWithTransitions(NoArgumentRouter.CustomUnitsRouter.route) {

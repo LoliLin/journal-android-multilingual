@@ -39,12 +39,11 @@ fun TimeRelativeToStartText(
     val duration = Duration.between(startTime, time)
     val relativeTime = when {
         duration.toDays() > 3 -> "+ ${duration.toDays()} d"
-        duration.toHours() > 24 -> "+ ${roundToOneDecimal(duration.toHours().toDouble()/24.0)} d"
-        duration.toHours() > 1 -> "+ ${roundToOneDecimal(duration.toMinutes().toDouble()/60.0)} h"
+        duration.toHours() > 24 -> "+ ${roundToOneDecimal(duration.toHours().toDouble() / 24.0)} d"
+        duration.toHours() > 1 -> "+ ${roundToOneDecimal(duration.toMinutes().toDouble() / 60.0)} h"
         duration.toMinutes() > 0 -> "+ ${duration.toMinutes()} min"
-        duration.toMillis() > 0 -> "+ ${(duration.toMillis()/1000).toInt()} s"
+        duration.toMillis() > 0 -> "+ ${(duration.toMillis() / 1000).toInt()} s"
         else -> time.getStringOfPattern("EEE HH:mm")
-
     }
     Text(
         text = relativeTime,
@@ -56,7 +55,13 @@ fun TimeRelativeToStartText(
 @Composable
 fun TimeRelativeToStartTextPreview() {
     Column {
-        TimeRelativeToStartText(time = Instant.now(), startTime = Instant.now().minus(4, ChronoUnit.HOURS))
-        TimeRelativeToStartText(time = Instant.now(), startTime = Instant.now().minus(20, ChronoUnit.MINUTES))
+        TimeRelativeToStartText(
+            time = Instant.now(),
+            startTime = Instant.now().minus(4, ChronoUnit.HOURS)
+        )
+        TimeRelativeToStartText(
+            time = Instant.now(),
+            startTime = Instant.now().minus(20, ChronoUnit.MINUTES)
+        )
     }
 }

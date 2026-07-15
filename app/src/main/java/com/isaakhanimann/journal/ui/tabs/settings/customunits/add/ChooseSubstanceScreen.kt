@@ -18,7 +18,6 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.add
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -70,7 +69,7 @@ fun ChooseSubstanceScreen(
         onChangeSearchText = {
             viewModel.updateSearchText(it)
         },
-        filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value,
+        filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value
     )
 }
 
@@ -79,7 +78,7 @@ private fun ChooseSubstanceScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
     searchText: String,
     onChangeSearchText: (searchText: String) -> Unit,
-    filteredSubstances: List<SubstanceModel>,
+    filteredSubstances: List<SubstanceModel>
 ) {
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
@@ -99,7 +98,7 @@ private fun ChooseSubstanceScreen(
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.17f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             TextField(
                 value = searchText,
@@ -116,7 +115,7 @@ private fun ChooseSubstanceScreen(
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = i18n("common_search"),
+                        contentDescription = i18n("common_search")
                     )
                 },
                 trailingIcon = {
@@ -127,7 +126,7 @@ private fun ChooseSubstanceScreen(
                             }) {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = i18n("common_close"),
+                                    contentDescription = i18n("common_close")
                                 )
                             }
                         }
@@ -137,7 +136,7 @@ private fun ChooseSubstanceScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     autoCorrectEnabled = false,
                     imeAction = ImeAction.Done,
-                    capitalization = KeyboardCapitalization.Words,
+                    capitalization = KeyboardCapitalization.Words
                 ),
                 singleLine = true
             )

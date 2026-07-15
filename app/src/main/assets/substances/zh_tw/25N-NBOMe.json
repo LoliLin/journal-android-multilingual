@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "高劑量下可能致命"
-  ],
+  "toxicities": ["高劑量下可能致命"],
   "summary": "一種罕見、高效且呈黃色的迷幻苯乙胺類物質，為2C-N的衍生物。其作用與其他NBOMe化合物相似，會產生幻覺、強烈的身體負荷、興奮感及血管收縮。高劑量下血管收縮可能具有危險性，請謹慎使用。",
   "localizedName": "25N-NBOMe"
 }

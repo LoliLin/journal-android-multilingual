@@ -23,7 +23,7 @@ object I18n {
         val locale = Locale.getDefault()
         val language = locale.language.lowercase()
         val country = locale.country.lowercase()
-        return if (country.isNullOrBlank()) language else "${language}_${country}"
+        return if (country.isNullOrBlank()) language else "${language}_$country"
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
@@ -36,7 +36,7 @@ object I18n {
     fun translate(
         context: Context,
         key: String,
-        replacements: Map<String, String> = emptyMap(),
+        replacements: Map<String, String> = emptyMap()
     ): String {
         ensureLoaded(context)
         val raw = strings[key] ?: strings["missing_key"] ?: key
@@ -49,7 +49,7 @@ object I18n {
         context: Context,
         key: String,
         fallback: String,
-        replacements: Map<String, String> = emptyMap(),
+        replacements: Map<String, String> = emptyMap()
     ): String {
         ensureLoaded(context)
         val raw = strings[key] ?: fallback
@@ -58,9 +58,8 @@ object I18n {
         }
     }
 
-    fun getSupportedLanguages(context: Context): Map<String, String> {
-        return loadStringsFile(context, "lang/supported.json")
-    }
+    fun getSupportedLanguages(context: Context): Map<String, String> =
+        loadStringsFile(context, "lang/supported.json")
 
     private fun ensureLoaded(context: Context) {
         val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
@@ -130,7 +129,7 @@ fun i18n(key: String, replacements: Map<String, String> = emptyMap()): String {
 fun i18nOrDefault(
     key: String,
     fallback: String,
-    replacements: Map<String, String> = emptyMap(),
+    replacements: Map<String, String> = emptyMap()
 ): String {
     val context = LocalContext.current
     return I18n.translateOrDefault(context, key, fallback, replacements)

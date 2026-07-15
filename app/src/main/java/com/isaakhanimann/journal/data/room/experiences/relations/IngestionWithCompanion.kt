@@ -31,5 +31,5 @@ data class IngestionWithCompanion(
         parentColumn = "substanceName",
         entityColumn = "substanceName"
     )
-    var substanceCompanion: SubstanceCompanion?,
+    var substanceCompanion: SubstanceCompanion?
 )

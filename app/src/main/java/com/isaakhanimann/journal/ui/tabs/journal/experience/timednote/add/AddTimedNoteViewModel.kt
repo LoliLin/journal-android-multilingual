@@ -30,13 +30,13 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.utils.getInstant
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.launch
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AddTimedNoteViewModel @Inject constructor(
@@ -54,7 +54,9 @@ class AddTimedNoteViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val ingestionsWithCompanions = experienceRepo.getIngestionsWithCompanions(experienceId)
-            val substanceColors = ingestionsWithCompanions.mapNotNull { it.substanceCompanion?.color }.distinct()
+            val substanceColors = ingestionsWithCompanions.mapNotNull {
+                it.substanceCompanion?.color
+            }.distinct()
             val notes = experienceRepo.getTimedNotes(experienceId)
             val noteColors = notes.map { it.color }.distinct()
             alreadyUsedColors = (substanceColors + noteColors).distinct()

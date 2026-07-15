@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 2
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "localizedName": "蟾毒色胺"
 }

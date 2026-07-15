@@ -52,7 +52,9 @@ import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstan
 
 @Preview
 @Composable
-fun InteractionsPreview(@PreviewParameter(InteractionsPreviewProvider::class) interactions: Interactions) {
+fun InteractionsPreview(
+    @PreviewParameter(InteractionsPreviewProvider::class) interactions: Interactions
+) {
     InteractionsView(
         interactions = interactions,
         navigateToURL = {},

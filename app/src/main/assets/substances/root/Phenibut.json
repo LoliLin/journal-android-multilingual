@@ -1,11 +1,6 @@
 {
   "name": "Phenibut",
-  "commonNames": [
-    "Phenibut",
-    "Fenibut",
-    "Phenybut",
-    "PhGABA"
-  ],
+  "commonNames": ["Phenibut", "Fenibut", "Phenybut", "PhGABA"],
   "url": "https://psychonautwiki.org/wiki/Phenibut",
   "isApproved": true,
   "tolerance": {
@@ -13,9 +8,7 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "GABA"
-  ],
+  "crossTolerances": ["GABA"],
   "addictionPotential": "moderately physically and psychologically addictive",
   "toxicities": [
     "low toxicity",

@@ -44,12 +44,10 @@ fun CustomUnitRoaDoseView(roaDose: RoaDose, customUnit: CustomUnit) {
     )
 }
 
-fun roundToSensibly(num: Double): Double {
-    return if (num > 100) {
-        round(num)
-    } else if (num > 10) {
-        round(num * 10.0) / 10.0
-    } else {
-        round(num * 100.0) / 100.0
-    }
+fun roundToSensibly(num: Double): Double = if (num > 100) {
+    round(num)
+} else if (num > 10) {
+    round(num * 10.0) / 10.0
+} else {
+    round(num * 100.0) / 100.0
 }

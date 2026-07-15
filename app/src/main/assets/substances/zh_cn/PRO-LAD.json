@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种非常罕见的麦角酰胺，其效力略低于LSD，但作用持续时间较短。",
   "localizedName": "PRO-LAD"
 }

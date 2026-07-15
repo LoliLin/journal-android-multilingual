@@ -23,22 +23,27 @@ import com.isaakhanimann.journal.localization.I18n
 
 enum class SavedTimeDisplayOption {
     AUTO {
-        override fun getTranslatedText(context: Context): String = I18n.translate(context, "time_display_auto")
+        override fun getTranslatedText(context: Context): String =
+            I18n.translate(context, "time_display_auto")
     },
     RELATIVE_TO_NOW {
-        override fun getTranslatedText(context: Context): String = I18n.translate(context, "journal_time_relative_to_now")
+        override fun getTranslatedText(context: Context): String =
+            I18n.translate(context, "journal_time_relative_to_now")
     },
     RELATIVE_TO_START {
-        override fun getTranslatedText(context: Context): String = I18n.translate(context, "time_display_relative_start")
+        override fun getTranslatedText(context: Context): String =
+            I18n.translate(context, "time_display_relative_start")
     },
     REGULAR {
-        override fun getTranslatedText(context: Context): String = I18n.translate(context, "journal_regular_time")
+        override fun getTranslatedText(context: Context): String =
+            I18n.translate(context, "journal_regular_time")
     };
 
     abstract fun getTranslatedText(context: Context): String
 }
 
-
 enum class TimeDisplayOption {
-    RELATIVE_TO_NOW, RELATIVE_TO_START, REGULAR;
+    RELATIVE_TO_NOW,
+    RELATIVE_TO_START,
+    REGULAR
 }

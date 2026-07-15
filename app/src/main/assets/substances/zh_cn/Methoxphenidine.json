@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "二芳基乙胺类解离剂，是二苯乙啶的更强效类似物。已知其作用不可预测，并可能导致意识丧失。",
   "localizedName": "甲氧苯啶"
 }

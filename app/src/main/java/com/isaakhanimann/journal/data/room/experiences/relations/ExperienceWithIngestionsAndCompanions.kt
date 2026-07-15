@@ -33,5 +33,6 @@ data class ExperienceWithIngestionsAndCompanions(
     ) val ingestionsWithCompanionAndCustomUnit: List<IngestionWithCompanionAndCustomUnit>
 ) {
     val sortInstant: Instant
-        get() = ingestionsWithCompanionAndCustomUnit.firstOrNull()?.ingestion?.time ?: experience.sortDate
+        get() = ingestionsWithCompanionAndCustomUnit.firstOrNull()?.ingestion?.time
+            ?: experience.sortDate
 }

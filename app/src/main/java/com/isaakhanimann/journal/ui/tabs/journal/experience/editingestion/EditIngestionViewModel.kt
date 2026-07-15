@@ -30,9 +30,13 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.INGESTION_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -42,17 +46,6 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
-import javax.inject.Inject
-
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import java.time.Instant
 
 @HiltViewModel
 class EditIngestionViewModel @Inject constructor(
@@ -72,9 +65,14 @@ class EditIngestionViewModel @Inject constructor(
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
     var consumerName by mutableStateOf("")
     var customUnit: CustomUnit? by mutableStateOf(null)
-    val otherCustomUnits = experienceRepo.getAllCustomUnitsFlow().combine(ingestionFlow) { customUnits, ing ->
-        customUnits.filter {customUnit ->
-            customUnit.administrationRoute == ing?.administrationRoute && customUnit.substanceName == ing.substanceName && customUnit.id != ing.customUnitId
+    val otherCustomUnits = experienceRepo.getAllCustomUnitsFlow().combine(ingestionFlow) {
+            customUnits,
+            ing
+        ->
+        customUnits.filter { customUnit ->
+            customUnit.administrationRoute == ing?.administrationRoute &&
+                customUnit.substanceName == ing.substanceName &&
+                customUnit.id != ing.customUnitId
         }
     }.stateIn(
         initialValue = emptyList(),
@@ -83,10 +81,10 @@ class EditIngestionViewModel @Inject constructor(
     )
 
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-            initialValue = "You",
-                    scope = viewModelScope,
-                            started = SharingStarted.WhileSubscribed(5000)
-                                )
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
     fun onChangeEstimatedDoseStandardDeviation(newEstimatedDoseStandardDeviation: String) {
         estimatedDoseStandardDeviation = newEstimatedDoseStandardDeviation
@@ -102,7 +100,8 @@ class EditIngestionViewModel @Inject constructor(
             ingestion = ing
             note = ing.notes ?: ""
             isEstimate = ing.isDoseAnEstimate
-            estimatedDoseStandardDeviation = ing.estimatedDoseStandardDeviation?.toReadableString() ?: ""
+            estimatedDoseStandardDeviation =
+                ing.estimatedDoseStandardDeviation?.toReadableString() ?: ""
             experienceId = ing.experienceId
             dose = ing.dose?.toReadableString() ?: ""
             isKnown = ing.dose != null
@@ -171,7 +170,8 @@ class EditIngestionViewModel @Inject constructor(
                 it.isDoseAnEstimate = isEstimate
                 it.experienceId = experienceId
                 it.dose = if (isKnown) dose.toDoubleOrNull() else null
-                it.estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseStandardDeviation.toDoubleOrNull() else null
+                it.estimatedDoseStandardDeviation =
+                    if (isEstimate) estimatedDoseStandardDeviation.toDoubleOrNull() else null
                 it.units = units
                 it.customUnitId = customUnit?.id
                 it.time = selectedInstant
@@ -190,7 +190,4 @@ class EditIngestionViewModel @Inject constructor(
     }
 }
 
-data class ExperienceOption(
-    val id: Int,
-    val title: String
-)
+data class ExperienceOption(val id: Int, val title: String)

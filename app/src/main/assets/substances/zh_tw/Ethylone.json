@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種欣快感興奮劑，自甲氧麻黃酮被禁用後常被用來替代MDMA。其效力與同理心誘發作用略低於甲氧麻黃酮，常被形容為更偏向「純粹的興奮劑」。",
   "localizedName": "乙基酮"
 }

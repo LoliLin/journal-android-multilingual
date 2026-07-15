@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "屬於氨基茚滿類的興奮劑。它與其更知名的同類物質2-AI相當接近，但效力較低，持續時間卻更長。",
   "localizedName": "NM-2-AI"
 }

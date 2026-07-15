@@ -58,11 +58,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.asPlural
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
@@ -120,7 +120,7 @@ fun ChooseDoseCustomUnitScreen(
                 )
             },
             currentDoseClass = viewModel.currentDoseClass,
-            customUnitCalculationText = viewModel.customUnitCalculationText,
+            customUnitCalculationText = viewModel.customUnitCalculationText
         )
     }
 }
@@ -128,7 +128,7 @@ fun ChooseDoseCustomUnitScreen(
 @Preview
 @Composable
 fun ChooseDoseCustomUnitScreenPreview(
-    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose,
+    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose
 ) {
     ChooseDoseCustomUnitScreen(
         customUnit = CustomUnit(
@@ -157,7 +157,7 @@ fun ChooseDoseCustomUnitScreenPreview(
         navigateToNext = {},
         useUnknownDoseAndNavigate = {},
         currentDoseClass = DoseClass.THRESHOLD,
-        customUnitCalculationText = "2 pills x 20 mg = 40 mg",
+        customUnitCalculationText = "2 pills x 20 mg = 40 mg"
     )
 }
 
@@ -179,7 +179,7 @@ fun ChooseDoseCustomUnitScreen(
     navigateToNext: () -> Unit,
     useUnknownDoseAndNavigate: () -> Unit,
     currentDoseClass: DoseClass?,
-    customUnitCalculationText: String?,
+    customUnitCalculationText: String?
 ) {
     Scaffold(
         topBar = {
@@ -195,7 +195,7 @@ fun ChooseDoseCustomUnitScreen(
                             contentDescription = i18n("common_next")
                         )
                     },
-                    text = { Text(i18n("common_next")) },
+                    text = { Text(i18n("common_next")) }
                 )
             }
         }
@@ -207,7 +207,7 @@ fun ChooseDoseCustomUnitScreen(
         ) {
             LinearProgressIndicator(
                 progress = { 0.67f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(4.dp))
             ElevatedCard(
@@ -232,7 +232,10 @@ fun ChooseDoseCustomUnitScreen(
                     if (roaDose != null) {
                         RoaDoseView(roaDose = roaDose)
                     }
-                    AnimatedVisibility(visible = currentDoseClass != null && customUnitCalculationText != null) {
+                    AnimatedVisibility(
+                        visible =
+                        currentDoseClass != null && customUnitCalculationText != null
+                    ) {
                         if (currentDoseClass != null && customUnitCalculationText != null) {
                             val doseColor = currentDoseClass.getComposeColor(isSystemInDarkTheme())
                             Text(
@@ -290,10 +293,13 @@ fun ChooseDoseCustomUnitScreen(
                     )
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            i18n("dose_estimate_label"),
+                            style = MaterialTheme.typography.titleMedium
+                        )
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         OutlinedTextField(

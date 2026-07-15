@@ -45,9 +45,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun SubstanceColorsScreen(
-    viewModel: SubstanceColorsViewModel = hiltViewModel(),
-) {
+fun SubstanceColorsScreen(viewModel: SubstanceColorsViewModel = hiltViewModel()) {
     SubstanceColorsScreenContent(
         substanceCompanions = viewModel.substanceCompanionsFlow.collectAsState().value,
         updateColor = viewModel::updateColor,
@@ -69,7 +67,7 @@ fun SubstanceColorsScreenPreview() {
                 substanceName = "Substance with longer 3",
                 color = AdaptiveColor.YELLOW
             ),
-            SubstanceCompanion(substanceName = "Substance 4", color = AdaptiveColor.OLIVE),
+            SubstanceCompanion(substanceName = "Substance 4", color = AdaptiveColor.OLIVE)
         ),
         updateColor = { _, _ -> },
         alreadyUsedColors = alreadyUsedColors,
@@ -89,7 +87,7 @@ fun SubstanceColorsScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("settings_substance_colors")) })
-        },
+        }
     ) { padding ->
         LazyColumn(
             modifier = Modifier

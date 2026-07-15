@@ -5,10 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "極度生理與心理成癮性",
-  "toxicities": [
-    "低毒性",
-    "與抑制劑如酒精或鴉片類藥物混合使用時可能致命"
-  ],
+  "toxicities": ["低毒性", "與抑制劑如酒精或鴉片類藥物混合使用時可能致命"],
   "summary": "一種苯二氮平類藥物，為地西泮的類似物，最早由Leo Sternbach於1960年在Hoffman-LaRoche公司合成。近年來，它作為一種RC苯二氮平類藥物在灰色市場上變得顯著，特別是在依替唑侖供應減少的情況下。作為一種鎮靜催眠藥，其中至長半衰期，效果與地西泮相似，但藥效強10倍。",
   "localizedName": "迪克拉西泮"
 }

@@ -52,11 +52,11 @@ fun SubstanceRowAddIngestion(
             .clickable {
                 onTap(substanceModel.name)
             }
-            .padding(horizontal = horizontalPadding, vertical = 8.dp),
+            .padding(horizontal = horizontalPadding, vertical = 8.dp)
     ) {
         Text(
             text = substanceModel.displayName,
-            style = MaterialTheme.typography.titleMedium,
+            style = MaterialTheme.typography.titleMedium
         )
         if (substanceModel.commonNames.isNotEmpty()) {
             val commaSeparatedNames = substanceModel.commonNames.joinToString(separator = ", ")

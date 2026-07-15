@@ -1,7 +1,5 @@
 {
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "NSAID with local anesthetic and analgesic properties, similar to ibuprofen or naproxen. Sometimes abused in overdose with reported delirant and stimulant effects.",
   "localizedName": "Benzydamine"
 }

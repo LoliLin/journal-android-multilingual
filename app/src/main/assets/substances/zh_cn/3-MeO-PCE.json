@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "3-MeO-PCP 经环替换修饰，效力略高于 3-MeO-PCP。",
   "localizedName": "3-甲氧基乙环利定"
 }

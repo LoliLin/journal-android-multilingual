@@ -10,13 +10,9 @@
   ],
   "url": "https://psychonautwiki.org/wiki/Salvinorin%20A",
   "isApproved": true,
-  "crossTolerances": [
-    "hallucinogen"
-  ],
+  "crossTolerances": ["hallucinogen"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "categories": [
     "hallucinogen",
     "dissociative",

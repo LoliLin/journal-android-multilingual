@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,8 +27,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Coffee
-import androidx.compose.material.icons.outlined.Payment
 import androidx.compose.material.icons.outlined.CurrencyBitcoin
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,14 +39,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.localization.i18n
-import android.widget.Toast
-import androidx.compose.ui.platform.LocalContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -73,23 +71,22 @@ fun DonateScreen() {
 
             val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
 
-
             val copyTip = i18n("copied_to_clipboard")
             DonateButton(
-                imageVector = Icons.Outlined.CurrencyBitcoin, 
+                imageVector = Icons.Outlined.CurrencyBitcoin,
                 text = "BitCoin"
             ) {
                 clipboardManager.setText(AnnotatedString(btcAddress))
                 Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
             }
-            
-            //Spacer(modifier = Modifier.height(15.dp))
-            //DonateButton(
+
+            // Spacer(modifier = Modifier.height(15.dp))
+            // DonateButton(
             //    imageVector = Icons.Outlined.Payment,
             //    text = i18n("donate_paypal")
-            //) {
+            // ) {
             //    uriHandler.openUri("https://www.paypal.com/donate/?hosted_button_id=A8XKEKXN64VQJ")
-            //}
+            // }
         }
     }
 }

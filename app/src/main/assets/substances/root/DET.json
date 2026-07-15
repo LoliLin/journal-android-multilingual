@@ -1,9 +1,6 @@
 {
   "name": "DET",
-  "commonNames": [
-    "Diethyltryptamine",
-    "DET"
-  ],
+  "commonNames": ["Diethyltryptamine", "DET"],
   "url": "https://psychonautwiki.org/wiki/DET",
   "isApproved": true,
   "tolerance": {
@@ -13,18 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "tentative"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "research-chemical", "tentative"],
   "summary": "A surprisingly uncommon analogue of DMT with similar effects and reported oral activity without the aid of an MAOI.",
   "roas": [
     {

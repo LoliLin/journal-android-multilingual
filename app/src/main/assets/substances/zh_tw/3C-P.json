@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "相當新穎且罕見的興奮劑、迷幻藥及安非他命，其特性類似於2Cx類藥物。為普羅斯卡林的3-碳同系物。",
   "localizedName": "3C-P"
 }

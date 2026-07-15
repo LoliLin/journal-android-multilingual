@@ -20,6 +20,8 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
+import android.widget.Toast
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -31,15 +33,13 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import com.isaakhanimann.journal.R
-import java.time.LocalDateTime
-import com.isaakhanimann.journal.localization.i18n
-import android.widget.Toast
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
+import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.localization.i18n
+import java.time.LocalDateTime
 
 @Composable
 fun DatePickerButton(
@@ -64,7 +64,10 @@ fun DatePickerButton(
                     .withHour(localDateTime.hour)
                     .withMinute(localDateTime.minute)
             )
-        }, localDateTime.year, localDateTime.monthValue - 1, localDateTime.dayOfMonth
+        },
+        localDateTime.year,
+        localDateTime.monthValue - 1,
+        localDateTime.dayOfMonth
     )
     val copyTip = i18n("copied_to_clipboard")
     val longPressModifier = modifier.pointerInput(dateString) {

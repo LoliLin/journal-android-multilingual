@@ -28,21 +28,16 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.Instant
+import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import com.isaakhanimann.journal.localization.I18nText
-
-import java.time.Instant
-
-import java.time.temporal.ChronoUnit
-
-import javax.inject.Inject
-
-
 
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
@@ -50,7 +45,7 @@ class CheckInteractionsViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
     private val combinationSettingsStorage: CombinationSettingsStorage,
     private val interactionChecker: InteractionChecker,
-    state: SavedStateHandle,
+    state: SavedStateHandle
 ) : ViewModel() {
     val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
     val substance = substanceRepo.getSubstance(substanceName)!!
@@ -88,11 +83,17 @@ class CheckInteractionsViewModel @Inject constructor(
         val enabledExtraInteractions =
             combinationSettingsStorage.enabledInteractionsFlow.first()
         val dangerousExtras =
-            enabledExtraInteractions.filter { substance.interactions?.dangerous?.contains(it) == true }
+            enabledExtraInteractions.filter {
+                substance.interactions?.dangerous?.contains(it) ==
+                    true
+            }
         val unsafeExtras =
             enabledExtraInteractions.filter { substance.interactions?.unsafe?.contains(it) == true }
         val uncertainExtras =
-            enabledExtraInteractions.filter { substance.interactions?.uncertain?.contains(it) == true }
+            enabledExtraInteractions.filter {
+                substance.interactions?.uncertain?.contains(it) ==
+                    true
+            }
         alertInteractionType =
             if (dangerousIngestions.isNotEmpty() || dangerousExtras.isNotEmpty()) {
                 InteractionType.DANGEROUS
@@ -108,47 +109,70 @@ class CheckInteractionsViewModel @Inject constructor(
         val messages = mutableListOf<I18nText>()
 
         dangerousIngestions.forEach { ingestion ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_dangerous_with_time",
-                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_dangerous_with_time",
+                    params = mapOf(
+                        "name" to substanceRepo.getDisplayName(ingestion.substanceName),
+                        "time" to
+                            getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now)
+                    )
 
-            ))
-
+                )
+            )
         }
 
         dangerousExtras.forEach { extra ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_dangerous",
-                params = mapOf("name" to substanceRepo.getDisplayName(extra))
-            ))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_dangerous",
+                    params = mapOf("name" to substanceRepo.getDisplayName(extra))
+                )
+            )
         }
 
         unsafeIngestions.forEach { ingestion ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_unsafe_with_time",
-                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
-            ))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_unsafe_with_time",
+                    params = mapOf(
+                        "name" to substanceRepo.getDisplayName(ingestion.substanceName),
+                        "time" to
+                            getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now)
+                    )
+                )
+            )
         }
 
         unsafeExtras.forEach { extra ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_unsafe",
-                params = mapOf("name" to substanceRepo.getDisplayName(extra))
-            ))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_unsafe",
+                    params = mapOf("name" to substanceRepo.getDisplayName(extra))
+                )
+            )
         }
 
         uncertainIngestions.forEach { ingestion ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_uncertain_with_time",
-                params = mapOf("name" to substanceRepo.getDisplayName(ingestion.substanceName), "time" to getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now))
-            ))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_uncertain_with_time",
+                    params = mapOf(
+                        "name" to substanceRepo.getDisplayName(ingestion.substanceName),
+                        "time" to
+                            getTimeDifferenceText(fromInstant = ingestion.time, toInstant = now)
+                    )
+                )
+            )
         }
 
         uncertainExtras.forEach { extra ->
-            messages.add(I18nText(
-                i18nKey = "interaction_alert_uncertain",
-                params = mapOf("name" to substanceRepo.getDisplayName(extra))
-            ))
+            messages.add(
+                I18nText(
+                    i18nKey = "interaction_alert_uncertain",
+                    params = mapOf("name" to substanceRepo.getDisplayName(extra))
+                )
+            )
         }
 
         alertMessages = messages.distinctBy { it.i18nKey + it.params.toString() }
@@ -172,10 +196,5 @@ class CheckInteractionsViewModel @Inject constructor(
         }
     }
 
-    data class IngestionInteraction(
-        val ingestion: Ingestion,
-        val interactionType: InteractionType
-    )
-
-
+    data class IngestionInteraction(val ingestion: Ingestion, val interactionType: InteractionType)
 }

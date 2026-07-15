@@ -18,6 +18,5 @@
 
 package com.isaakhanimann.journal.ui.utils
 
-fun getInteractionExplanationURLForSubstance(substanceURL: String): String {
-    return "$substanceURL#Dangerous_interactions"
-}
+fun getInteractionExplanationURLForSubstance(substanceURL: String): String =
+    "$substanceURL#Dangerous_interactions"

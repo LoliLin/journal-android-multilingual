@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "Mexedrone 是一種屬於卡西酮類的興奮劑藥物。它會改變血清素、多巴胺和正腎上腺素的再吸收，從而產生欣快感，其效果類似於甲氧麻黃酮。它被視為一種設計師藥物，在全球範圍內處於法律灰色地帶。",
   "localizedName": "Mexedrone"
 }

@@ -47,9 +47,7 @@ fun CategoryChipDeletePreview(
 }
 
 @Composable
-fun CategoryChipDelete(
-    categoryChipModel: CategoryChipModel, onClick: () -> Unit
-) {
+fun CategoryChipDelete(categoryChipModel: CategoryChipModel, onClick: () -> Unit) {
     val displayName = if (categoryChipModel.rawName == "custom") {
         i18n("search_custom")
     } else {
@@ -71,6 +69,5 @@ fun CategoryChipDelete(
         )
         Spacer(Modifier.width(3.dp))
         Text(text = displayName, Modifier.padding(bottom = 2.dp))
-
     }
 }

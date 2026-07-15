@@ -1,9 +1,6 @@
 {
   "name": "Ephenidine",
-  "commonNames": [
-    "Ephenidine",
-    "NEDPA"
-  ],
+  "commonNames": ["Ephenidine", "NEDPA"],
   "url": "https://psychonautwiki.org/wiki/Ephenidine",
   "isApproved": true,
   "tolerance": {
@@ -13,13 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "dissociative"
-  ],
+  "crossTolerances": ["dissociative"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "categories": [
     "dissociative",
     "research-chemical",
@@ -28,10 +21,7 @@
   ],
   "summary": "A dissociative drug which is less potent and less confusing than MXE but with otherwise similar properties. Reported as causing light stimulant effects at lower doses.",
   "interactions": {
-    "dangerous": [
-      "Stimulants",
-      "Depressants"
-    ],
+    "dangerous": ["Stimulants", "Depressants"],
     "unsafe": [],
     "uncertain": []
   },

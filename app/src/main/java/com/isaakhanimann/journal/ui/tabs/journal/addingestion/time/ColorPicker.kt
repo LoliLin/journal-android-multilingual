@@ -89,7 +89,7 @@ fun ColorPicker(
         Icon(
             imageVector = Icons.Default.Edit,
             contentDescription = i18n("edit_color"),
-            modifier = Modifier.padding(20.dp),
+            modifier = Modifier.padding(20.dp)
         )
     }
     if (isColorPickerVisible) {
@@ -159,16 +159,13 @@ fun ColorDialog(
             ) {
                 Text(i18n("common_cancel"), textAlign = TextAlign.Center)
             }
-        },
+        }
     )
 }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun CircleColorButtons(
-    colors: List<AdaptiveColor>,
-    onTapOnColor: (AdaptiveColor) -> Unit
-) {
+fun CircleColorButtons(colors: List<AdaptiveColor>, onTapOnColor: (AdaptiveColor) -> Unit) {
     val isDarkTheme = isSystemInDarkTheme()
     val spacing = 5.dp
     FlowRow(
@@ -189,5 +186,4 @@ fun CircleColorButtons(
             ) {}
         }
     }
-
 }

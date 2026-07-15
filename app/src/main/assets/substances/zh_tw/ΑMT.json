@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 720
   },
   "addictionPotential": "中度成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "localizedName": "ΑMT"
 }

@@ -1,9 +1,6 @@
 {
   "name": "Bufotenin",
-  "commonNames": [
-    "Bufotenin",
-    "5-HO-DMT"
-  ],
+  "commonNames": ["Bufotenin", "5-HO-DMT"],
   "url": "https://psychonautwiki.org/wiki/Bufotenin",
   "isApproved": true,
   "tolerance": {
@@ -15,23 +12,12 @@
   },
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic"],
   "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "THC",
-      "Stimulants"
-    ]
+    "dangerous": ["Lithium"],
+    "unsafe": ["Tramadol"],
+    "uncertain": ["THC", "Stimulants"]
   },
   "roas": [
     {

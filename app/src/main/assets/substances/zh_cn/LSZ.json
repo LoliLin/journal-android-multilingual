@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种与LSD非常相似的麦角酰胺，通常仅凭其较短的持续时间即可区分，不过一些主观报告指出它可能更具内省性，且略微不那么令人困惑。",
   "localizedName": "LSZ"
 }

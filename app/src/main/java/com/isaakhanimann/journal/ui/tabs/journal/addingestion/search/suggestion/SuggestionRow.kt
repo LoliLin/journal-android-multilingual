@@ -36,8 +36,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
@@ -49,7 +47,6 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
-
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SuggestionRow(
@@ -57,7 +54,15 @@ fun SuggestionRow(
     navigateToDose: (substanceName: String, route: AdministrationRoute) -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
     navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
-    navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
+    navigateToChooseTime: (
+        substanceName: String,
+        route: AdministrationRoute,
+        dose: Double?,
+        units: String?,
+        isEstimate: Boolean,
+        estimatedDoseStandardDeviation: Double?,
+        customUnitId: Int?
+    ) -> Unit,
     getSubstanceDisplayName: (substanceName: String) -> String
 ) {
     Column(
@@ -122,7 +127,14 @@ fun SuggestionRow(
                                         } ${doseAndUnit.unit}"
                                     )
                                 } else {
-                                    Text(text = i18n("dose_estimated_label_short", mapOf("description" to description)))
+                                    Text(
+                                        text = i18n(
+                                            "dose_estimated_label_short",
+                                            mapOf(
+                                                "description" to description
+                                            )
+                                        )
+                                    )
                                 }
                             } else {
                                 Text(text = description)
@@ -130,7 +142,7 @@ fun SuggestionRow(
                         } else {
                             Text(text = i18n("dose_unknown_short"))
                         }
-                    },
+                    }
                 )
             }
             val pureDoseUnit = substanceRouteSuggestion.dosesAndUnit.firstOrNull()?.unit
@@ -150,11 +162,11 @@ fun SuggestionRow(
                 }, label = {
                     Text("Enter $pureDoseUnit")
                 }, icon = {
-                        Icon(
-                            imageVector = Icons.Default.Keyboard,
-                            contentDescription = i18n("search_keyboard")
-                        )
-                    })
+                    Icon(
+                        imageVector = Icons.Default.Keyboard,
+                        contentDescription = i18n("search_keyboard")
+                    )
+                })
             }
         }
         FlowRow(horizontalArrangement = Arrangement.spacedBy(5.dp)) {

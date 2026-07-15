@@ -26,7 +26,7 @@ class CategoryChipPreviewProvider : PreviewParameterProvider<CategoryChipModel> 
         CategoryChipModel(
             rawName = "common",
             color = Color.Blue,
-            isActive = true,
+            isActive = true
         )
     )
 }

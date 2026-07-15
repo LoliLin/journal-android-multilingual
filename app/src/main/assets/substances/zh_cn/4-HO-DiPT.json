@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种迷幻色胺，也称为伊普罗辛。作为裸盖菇素的同系物，该药物可能具有与迷幻蘑菇相似的效果。据称，在该类药物中，其起效迅速且作用持续时间相对较短。",
   "localizedName": "4-羟基-N,N-二异丙基色胺"
 }

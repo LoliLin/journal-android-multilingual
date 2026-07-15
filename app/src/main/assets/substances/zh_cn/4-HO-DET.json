@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种由阿尔伯特·霍夫曼首次合成的稀有化合物，亦称乙辛。其结构与4-HO-MET（美辛）和裸盖菇素（4-HO-DMT）相关，具有类似的致幻效果，但人类使用记录极少。可能类似蘑菇的作用，并具有潜在兴奋性。",
   "localizedName": "4-羟基-N,N-二乙基色胺"
 }

@@ -36,7 +36,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -62,7 +61,6 @@ fun CategoryPreview() {
     )
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
@@ -74,8 +72,10 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
     } else {
         Scaffold(
             topBar = {
-                val context = androidx.compose.ui.platform.LocalContext.current
-                val displayName = category.getLocalizedName(context)
+                val context = androidx.compose.ui.platform.LocalContext.current
+
+                val displayName = category.getLocalizedName(context)
+
                 TopAppBar(title = { Text(displayName) })
             },
             floatingActionButton = {
@@ -88,13 +88,15 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
                                 contentDescription = i18n("category_open_link")
                             )
                         },
-                        text = { Text(i18n("category_more_info")) },
+                        text = { Text(i18n("category_more_info")) }
                     )
                 }
             }
         ) { padding ->
             Text(
-                text = category.getLocalizedDescription(androidx.compose.ui.platform.LocalContext.current),
+                text = category.getLocalizedDescription(
+                    androidx.compose.ui.platform.LocalContext.current
+                ),
                 textAlign = TextAlign.Left,
                 modifier = Modifier
                     .padding(padding)

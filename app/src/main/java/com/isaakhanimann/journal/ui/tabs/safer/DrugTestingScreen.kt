@@ -224,10 +224,7 @@ fun DrugTestingScreen() {
 }
 
 @Composable
-fun CardWithTesting(
-    title: String,
-    content: @Composable () -> Unit
-) {
+fun CardWithTesting(title: String, content: @Composable () -> Unit) {
     ElevatedCard(modifier = Modifier.padding(vertical = 5.dp)) {
         Column(
             Modifier.padding(vertical = 5.dp)
@@ -255,11 +252,7 @@ fun TestingServiceItemPreview() {
 }
 
 @Composable
-fun TestingServiceItem(
-    name: String,
-    city: String,
-    url: String
-) {
+fun TestingServiceItem(name: String, city: String, url: String) {
     val uriHandler = LocalUriHandler.current
     Row(
         verticalAlignment = Alignment.CenterVertically,

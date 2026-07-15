@@ -1,8 +1,6 @@
 {
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种罕见的致幻色胺，与DMT和DET相关。关于该药物的效果或药理作用，目前所知甚少。",
   "localizedName": "MET"
 }

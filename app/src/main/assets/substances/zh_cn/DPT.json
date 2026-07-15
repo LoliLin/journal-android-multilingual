@@ -1,8 +1,6 @@
 {
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "N,N-二丙基色胺，一种致幻色胺化合物，是DMT的鲜为人知的类似物，具有类似的致幻效果。与DMT一样，它是一种部分血清素受体激动剂。",
   "localizedName": "DPT"
 }

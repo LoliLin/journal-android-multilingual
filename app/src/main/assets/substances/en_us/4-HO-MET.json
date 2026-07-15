@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "A lesser known psychedelic tryptamine. Functional analogue of Psilocin. Very poorly soluble in water and alcohol.",
   "localizedName": "4-HO-MET"
 }

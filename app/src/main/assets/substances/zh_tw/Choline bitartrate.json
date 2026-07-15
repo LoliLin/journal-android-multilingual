@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "極低毒性"
-  ],
+  "toxicities": ["極低毒性"],
   "localizedName": "重酒石酸膽鹼"
 }

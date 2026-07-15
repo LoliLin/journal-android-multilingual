@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种合成大麻素，属于吲唑类。其主观效应与 Cannabis 有些相似，但持续时间很短。它是 STS-135 的类似物，其中核心的吲哚结构被替换为吲唑基团。",
   "localizedName": "5F-AKB48"
 }

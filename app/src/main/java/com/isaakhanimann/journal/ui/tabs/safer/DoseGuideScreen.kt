@@ -58,7 +58,7 @@ fun DoseGuideScreenPreview() {
 fun DoseGuideScreen(
     navigateToDoseClassification: () -> Unit,
     navigateToVolumetricDosing: () -> Unit,
-    navigateToPWDosageArticle: () -> Unit,
+    navigateToPWDosageArticle: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -73,7 +73,7 @@ fun DoseGuideScreen(
                         contentDescription = i18n("common_open_link")
                     )
                 },
-                text = { Text(i18n("common_article")) },
+                text = { Text(i18n("common_article")) }
             )
         }
     ) { padding ->
@@ -84,7 +84,6 @@ fun DoseGuideScreen(
                 .padding(padding)
                 .padding(horizontal = horizontalPadding)
         ) {
-
             SectionText(text = i18n("dose_guide_intro"))
             val titleStyle = MaterialTheme.typography.titleMedium
             Text(i18n("dose_guide_choosing_title"), style = titleStyle)

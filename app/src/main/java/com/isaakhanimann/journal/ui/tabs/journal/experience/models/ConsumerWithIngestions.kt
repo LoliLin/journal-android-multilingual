@@ -20,5 +20,5 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.models
 
 data class ConsumerWithIngestions(
     val consumerName: String,
-    val ingestionElements: List<IngestionElement>,
+    val ingestionElements: List<IngestionElement>
 )

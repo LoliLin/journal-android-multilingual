@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "不具成瘾性，且濫用可能性低",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種屬於拉西坦類的益智藥物，最初開發用於治療阿茲海默症，目前正被研究作為重鬱症及廣泛性焦慮症的治療方法。可能為AMPA受體的調節劑。娛樂用途價值有限。",
   "localizedName": "可樂拉西坦"
 }

@@ -61,7 +61,7 @@ fun SearchScreen(
     searchViewModel: SearchViewModel = hiltViewModel(),
     onSubstanceTap: (substanceModel: SubstanceModel) -> Unit,
     onCustomSubstanceTap: (customSubstanceId: Int) -> Unit,
-    navigateToAddCustomSubstanceScreen: () -> Unit,
+    navigateToAddCustomSubstanceScreen: () -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
@@ -88,7 +88,9 @@ fun SearchScreen(
                 isShowingFilter = true
             )
 
-            val activeFilters = searchViewModel.chipCategoriesFlow.collectAsState().value.filter { it.isActive }
+            val activeFilters = searchViewModel.chipCategoriesFlow.collectAsState().value.filter {
+                it.isActive
+            }
             val onFilterTapped = searchViewModel::onFilterTapped
             val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
             val filteredCustomSubstances = searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
@@ -135,7 +137,9 @@ fun SearchScreen(
                     }
 
                     items(filteredSubstances) { substance ->
-                        SubstanceRow(substanceModel = substance, onTap = { onSubstanceTap(substance) })
+                        SubstanceRow(substanceModel = substance, onTap = {
+                            onSubstanceTap(substance)
+                        })
                         HorizontalDivider()
                     }
 

@@ -20,13 +20,9 @@ import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun CardTitleWithAvatar(
-    username: String,
-    title: String,
-    modifier: Modifier = Modifier
-) {
+fun CardTitleWithAvatar(username: String, title: String, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    
+
     val conAvatar = remember(username) {
         AvatarUtil.getUserAvatar(context, username)
     }
@@ -37,7 +33,6 @@ fun CardTitleWithAvatar(
             .padding(horizontal = horizontalPadding, vertical = 5.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-       
         if (conAvatar != null) {
             AsyncImage(
                 model = conAvatar,
@@ -56,7 +51,6 @@ fun CardTitleWithAvatar(
             )
         }
 
-        
         Spacer(modifier = Modifier.width(8.dp))
 
         Text(
@@ -65,4 +59,3 @@ fun CardTitleWithAvatar(
         )
     }
 }
-

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A stimulant with some empathogenic properties, and analogue of Methamphetamine with similar effects. Reported to be less effective than 2-FMA and related compounds. Little is known about the pharmacological effects of this compound. Not to be confused with 4-FA, which has a different effect profile, despite similar potency.",
   "localizedName": "4-FMA"
 }

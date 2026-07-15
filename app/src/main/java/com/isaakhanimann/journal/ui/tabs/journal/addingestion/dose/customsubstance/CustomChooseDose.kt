@@ -71,7 +71,12 @@ import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
 fun CustomChooseDose(
-    navigateToChooseTimeAndMaybeColor: (units: String?, isEstimate: Boolean, dose: Double?, estimatedDoseStandardDeviation: Double?) -> Unit,
+    navigateToChooseTimeAndMaybeColor: (
+        units: String?,
+        isEstimate: Boolean,
+        dose: Double?,
+        estimatedDoseStandardDeviation: Double?
+    ) -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
     navigateToURL: (url: String) -> Unit,
     viewModel: CustomChooseDoseViewModel = hiltViewModel()
@@ -141,7 +146,6 @@ fun CustomChooseDosePreview() {
     )
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomChooseDose(
@@ -193,7 +197,8 @@ fun CustomChooseDose(
                             dismiss = { isShowingUnknownDoseDialog = false }
                         )
                     }
-                })
+                }
+            )
         },
         floatingActionButton = {
             if (isValidDose) {
@@ -205,7 +210,7 @@ fun CustomChooseDose(
                             contentDescription = i18n("common_next")
                         )
                     },
-                    text = { Text(i18n("common_next")) },
+                    text = { Text(i18n("common_next")) }
                 )
             }
         }
@@ -217,10 +222,12 @@ fun CustomChooseDose(
         ) {
             LinearProgressIndicator(
                 progress = { 0.67f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(4.dp))
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+            ) {
                 Column(
                     modifier = Modifier.padding(
                         horizontal = horizontalPadding,
@@ -251,10 +258,13 @@ fun CustomChooseDose(
                     )
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            i18n("dose_estimate_label"),
+                            style = MaterialTheme.typography.titleMedium
+                        )
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         OutlinedTextField(
@@ -281,7 +291,9 @@ fun CustomChooseDose(
                 }
             }
             AnimatedVisibility(visible = isValidDose) {
-                ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
+                ElevatedCard(
+                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
+                ) {
                     Column(
                         modifier = Modifier.padding(
                             horizontal = horizontalPadding,
@@ -302,7 +314,9 @@ fun CustomChooseDose(
                     Text(text = i18n("safer_sniffing_short"))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
-                TextButton(onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) }) {
+                TextButton(onClick = {
+                    navigateToURL(AdministrationRoute.saferPluggingArticleURL)
+                }) {
                     Icon(
                         Icons.Outlined.Newspaper,
                         contentDescription = i18n("common_open_link")

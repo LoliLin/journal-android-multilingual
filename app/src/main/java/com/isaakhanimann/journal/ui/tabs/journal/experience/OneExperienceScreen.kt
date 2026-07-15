@@ -70,8 +70,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -89,10 +87,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperienceScreenModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-
 import java.time.Instant
 
 @Composable
@@ -108,7 +104,7 @@ fun OneExperienceScreen(
     navigateToEditRatingScreen: (ratingId: Int) -> Unit,
     navigateToEditTimedNoteScreen: (timedNoteId: Int) -> Unit,
     navigateToTimelineScreen: (consumerName: String) -> Unit,
-    navigateBack: () -> Unit,
+    navigateBack: () -> Unit
 ) {
     val ingestionsWithCompanions = viewModel.ingestionsWithCompanionsFlow.collectAsState().value
     val experience = viewModel.experienceFlow.collectAsState().value
@@ -208,7 +204,7 @@ fun OneExperienceScreen(
                                     if (option == savedTimeDisplayOption) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription =i18n("common_check"),
+                                            contentDescription = i18n("common_check"),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }
@@ -220,7 +216,7 @@ fun OneExperienceScreen(
                     IconButton(onClick = { areEditOptionsExpanded = true }) {
                         Icon(
                             Icons.Default.Edit,
-                            contentDescription = i18n("edit_options"),
+                            contentDescription = i18n("edit_options")
                         )
                     }
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
@@ -261,15 +257,12 @@ fun OneExperienceScreen(
                             text = { Text(i18n("edit_title_notes_location")) },
 
                             onClick = {
-
                                 navigateToEditExperienceScreen()
 
                                 areEditOptionsExpanded = false
-
                             },
 
                             leadingIcon = {
-
                                 Icon(
 
                                     Icons.Outlined.Edit,
@@ -285,15 +278,12 @@ fun OneExperienceScreen(
                                 text = { Text(i18n("unmark_favorite")) },
 
                                 onClick = {
-
                                     saveIsFavorite(false)
 
                                     areEditOptionsExpanded = false
-
                                 },
 
                                 leadingIcon = {
-
                                     Icon(
 
                                         Icons.Filled.Star,
@@ -308,15 +298,12 @@ fun OneExperienceScreen(
                                 text = { Text(i18n("mark_favorite")) },
 
                                 onClick = {
-
                                     saveIsFavorite(true)
 
                                     areEditOptionsExpanded = false
-
                                 },
 
                                 leadingIcon = {
-
                                     Icon(
 
                                         Icons.Outlined.StarOutline,
@@ -332,15 +319,12 @@ fun OneExperienceScreen(
                             text = { Text(i18n("delete_experience_question")) },
 
                             onClick = {
-
                                 isShowingDeleteDialog = true
 
                                 areEditOptionsExpanded = false
-
                             },
 
                             leadingIcon = {
-
                                 Icon(
 
                                     Icons.Outlined.Delete,
@@ -356,7 +340,7 @@ fun OneExperienceScreen(
                     IconButton(onClick = { areAddOptionsExpanded = true }) {
                         Icon(
                             Icons.Outlined.Add,
-                            contentDescription = i18n("add_options"),
+                            contentDescription = i18n("add_options")
                         )
                     }
                     DropdownMenu(
@@ -367,15 +351,12 @@ fun OneExperienceScreen(
                             text = { Text(i18n("add_timed_note")) },
 
                             onClick = {
-
                                 navigateToAddTimedNoteScreen()
 
                                 areAddOptionsExpanded = false
-
                             },
 
                             leadingIcon = {
-
                                 Icon(
 
                                     Icons.AutoMirrored.Outlined.NoteAdd,
@@ -389,11 +370,9 @@ fun OneExperienceScreen(
                             text = { Text(i18n("add_shulgin_rating")) },
 
                             onClick = {
-
                                 navigateToAddRatingScreen()
 
                                 areAddOptionsExpanded = false
-
                             },
 
                             leadingIcon = {
@@ -448,14 +427,28 @@ fun OneExperienceScreen(
                         DataForOneTimedNote(time = it.time, color = it.color)
                     }
             val isWorthDrawing =
-                ingestionElements.isNotEmpty() && !(ingestionElements.all { it.roaDuration == null } && dataForRatings.isEmpty() && dataForTimedNotes.isEmpty())
+                ingestionElements.isNotEmpty() &&
+                    !(
+                        ingestionElements.all { it.roaDuration == null } &&
+                            dataForRatings.isEmpty() &&
+                            dataForTimedNotes.isEmpty()
+                        )
             if (isWorthDrawing) {
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitleWithAvatar(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName, username = ownerUserName)
+                        CardTitleWithAvatar(
+                            title = if (ownerUserName ==
+                                "You"
+                            ) {
+                                i18n("effect_timeline")
+                            } else {
+                                ownerUserName
+                            },
+                            username = ownerUserName
+                        )
                         TextButton(onClick = navigateToExplainTimeline) {
                             Text(text = i18n("limitations"))
                         }
@@ -478,7 +471,10 @@ fun OneExperienceScreen(
                                 }
                         )
                         val hasOralIngestion =
-                            oneExperienceScreenModel.ingestionElements.any { it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute == AdministrationRoute.ORAL }
+                            oneExperienceScreenModel.ingestionElements.any {
+                                it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute ==
+                                    AdministrationRoute.ORAL
+                            }
                         if (hasOralIngestion && !isOralDisclaimerHidden) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text(
@@ -507,7 +503,10 @@ fun OneExperienceScreen(
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()
                     }
-                    oneExperienceScreenModel.ingestionElements.forEachIndexed { index, ingestionElement ->
+                    oneExperienceScreenModel.ingestionElements.forEachIndexed {
+                            index,
+                            ingestionElement
+                        ->
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
@@ -515,7 +514,9 @@ fun OneExperienceScreen(
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
-                                    navigateToIngestionScreen(ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id)
+                                    navigateToIngestionScreen(
+                                        ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id
+                                    )
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
@@ -618,10 +619,12 @@ fun OneExperienceScreen(
             }
             val notes = oneExperienceScreenModel.notes
             if (notes.isNotBlank()) {
-                ElevatedCard(modifier = Modifier
-                    .padding(vertical = verticalCardPadding)
-                    .fillMaxWidth()
-                    .clickable { navigateToEditExperienceScreen() }) {
+                ElevatedCard(
+                    modifier = Modifier
+                        .padding(vertical = verticalCardPadding)
+                        .fillMaxWidth()
+                        .clickable { navigateToEditExperienceScreen() }
+                ) {
                     CardTitle(title = i18n("common_notes"))
                     Column(
                         modifier = Modifier
@@ -638,7 +641,10 @@ fun OneExperienceScreen(
             }
             oneExperienceScreenModel.consumersWithIngestions.forEach { consumerWithIngestions ->
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
-                    CardTitleWithAvatar(title = consumerWithIngestions.consumerName, username = consumerWithIngestions.consumerName)
+                    CardTitleWithAvatar(
+                        title = consumerWithIngestions.consumerName,
+                        username = consumerWithIngestions.consumerName
+                    )
                     Column(
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -658,7 +664,10 @@ fun OneExperienceScreen(
                         )
                     }
                     HorizontalDivider()
-                    consumerWithIngestions.ingestionElements.forEachIndexed { index, ingestionElement ->
+                    consumerWithIngestions.ingestionElements.forEachIndexed {
+                            index,
+                            ingestionElement
+                        ->
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
@@ -666,7 +675,9 @@ fun OneExperienceScreen(
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
-                                    navigateToIngestionScreen(ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id)
+                                    navigateToIngestionScreen(
+                                        ingestionElement.ingestionWithCompanionAndCustomUnit.ingestion.id
+                                    )
                                 }
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
@@ -686,7 +697,10 @@ fun OneExperienceScreen(
                 ) {
                     CardTitle(title = i18n("substance_interactions_title"))
                     interactions.forEachIndexed { index, interaction ->
-                        InteractionRow(interaction = interaction, getSubstanceDisplayName = getSubstanceDisplayName)
+                        InteractionRow(
+                            interaction = interaction,
+                            getSubstanceDisplayName = getSubstanceDisplayName
+                        )
                         if (index < interactions.size - 1) {
                             HorizontalDivider()
                         }

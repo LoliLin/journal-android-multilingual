@@ -1,9 +1,6 @@
 {
   "name": "Adrafinil",
-  "commonNames": [
-    "Adrafinil",
-    "Olmifon"
-  ],
+  "commonNames": ["Adrafinil", "Olmifon"],
   "url": "https://psychonautwiki.org/wiki/Adrafinil",
   "isApproved": true,
   "tolerance": {
@@ -13,10 +10,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "benzhydryl",
-    "nootropic|nootropics"
-  ],
+  "crossTolerances": ["benzhydryl", "nootropic|nootropics"],
   "addictionPotential": "not addictive with a low potential for abuse",
   "toxicities": [],
   "categories": [

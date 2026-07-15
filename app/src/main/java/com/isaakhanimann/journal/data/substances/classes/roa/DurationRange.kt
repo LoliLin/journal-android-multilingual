@@ -18,11 +18,7 @@
 
 package com.isaakhanimann.journal.data.substances.classes.roa
 
-data class DurationRange(
-    val min: Float?,
-    val max: Float?,
-    val units: DurationUnits?
-) {
+data class DurationRange(val min: Float?, val max: Float?, val units: DurationUnits?) {
     val text
         get() = "${min.toString().removeSuffix(".0")}-${
             max.toString().removeSuffix(".0")

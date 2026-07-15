@@ -20,8 +20,8 @@ package com.isaakhanimann.journal.ui.utils
 
 import java.time.Instant
 import java.time.LocalDateTime
-import java.time.ZoneId
 import java.time.YearMonth
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 fun getInstant(year: Int, month: Int, day: Int, hourOfDay: Int, minute: Int): Instant? {
@@ -40,13 +40,10 @@ fun LocalDateTime.getStringOfPattern(pattern: String): String {
     return this.format(formatter)
 }
 
-fun Instant.getLocalDateTime(): LocalDateTime {
-    return LocalDateTime.ofInstant(this, ZoneId.systemDefault())
-}
+fun Instant.getLocalDateTime(): LocalDateTime =
+    LocalDateTime.ofInstant(this, ZoneId.systemDefault())
 
-fun LocalDateTime.getInstant(): Instant {
-    return this.atZone(ZoneId.systemDefault()).toInstant()
-}
+fun LocalDateTime.getInstant(): Instant = this.atZone(ZoneId.systemDefault()).toInstant()
 
 fun getLocalizedPatternString(yearMonth: java.time.YearMonth): String {
     val locale = java.util.Locale.getDefault()

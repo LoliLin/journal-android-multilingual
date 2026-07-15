@@ -34,7 +34,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.FinishAddCusto
 fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.AddCustomUnitsSearchSubstanceRouter.route,
-        route = NoArgumentRouter.AddCustomUnitsRouter.route,
+        route = NoArgumentRouter.AddCustomUnitsRouter.route
     ) {
         composableWithTransitions(NoArgumentRouter.AddCustomUnitsSearchSubstanceRouter.route) {
             ChooseSubstanceScreen(
@@ -53,7 +53,7 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
                 onRouteChosen = { administrationRoute ->
                     navController.navigateToFinishAddCustomUnit(
                         substanceName = substanceName,
-                        administrationRoute = administrationRoute,
+                        administrationRoute = administrationRoute
                     )
                 }
             )
@@ -63,7 +63,7 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
             arguments = ArgumentRouter.FinishAddCustomUnitRouter.args
         ) {
             FinishAddCustomUnitScreen(
-                dismissAddCustomUnit = navController::dismissAddCustomUnits,
+                dismissAddCustomUnit = navController::dismissAddCustomUnits
             )
         }
     }

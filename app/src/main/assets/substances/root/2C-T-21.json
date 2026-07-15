@@ -1,9 +1,6 @@
 {
   "name": "2C-T-21",
-  "commonNames": [
-    "2C-T-21",
-    "Aurora"
-  ],
+  "commonNames": ["2C-T-21", "Aurora"],
   "url": "https://psychonautwiki.org/wiki/2C-T-21",
   "isApproved": true,
   "tolerance": {
@@ -13,16 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
   "toxicities": [],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "tentative"
-  ],
+  "categories": ["psychedelic", "research-chemical", "tentative"],
   "summary": "A rare psychedelic phenethylamine.",
   "roas": [
     {

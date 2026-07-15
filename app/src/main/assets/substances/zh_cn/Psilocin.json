@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "极低毒性"
-  ],
+  "toxicities": ["极低毒性"],
   "summary": "脱磷酸裸盖菇素是一种取代色胺生物碱，存在于大多数致幻蘑菇中。由于其分子结构中含有羟基（-OH），在溶液中相对不稳定。",
   "localizedName": "脱磷酸裸盖菇素"
 }

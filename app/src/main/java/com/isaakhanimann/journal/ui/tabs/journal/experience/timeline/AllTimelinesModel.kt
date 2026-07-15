@@ -55,11 +55,15 @@ class AllTimelinesModel(
                 return@map RoaGroup(
                     linesPerRoute.first().color,
                     linesPerRoute.first().roaDuration,
-                    linesPerRoute.map { WeightedLine(it.startTime, it.horizontalWeight, it.height) })
+                    linesPerRoute.map {
+                        WeightedLine(it.startTime, it.horizontalWeight, it.height)
+                    }
+                )
             }
         }
         val allStartTimeCandidates = ratingTimes + ingestionTimes + noteTimes
-        startTime = allStartTimeCandidates.reduce { acc, date -> if (acc.isBefore(date)) acc else date }
+        startTime =
+            allStartTimeCandidates.reduce { acc, date -> if (acc.isBefore(date)) acc else date }
         val groupDrawables = roaGroups.map { group ->
             GroupDrawable(
                 startTimeGraph = startTime,
@@ -84,7 +88,13 @@ class AllTimelinesModel(
         } else {
             0f
         }
-        val maxCandidates = listOf(maxWidthIngestions, maxWidthRating, maxWidthNote, 2.hours.inWholeSeconds.toFloat())
+        val maxCandidates =
+            listOf(
+                maxWidthIngestions,
+                maxWidthRating,
+                maxWidthNote,
+                2.hours.inWholeSeconds.toFloat()
+            )
         widthInSeconds = maxCandidates.max() + 10.minutes.inWholeSeconds.toFloat()
         axisDrawable = AxisDrawable(startTime, widthInSeconds)
     }

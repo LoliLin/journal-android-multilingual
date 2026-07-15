@@ -50,7 +50,8 @@ data class IngestionWithCompanionAndCustomUnit(
     val isEstimate: Boolean get() = ingestion.isDoseAnEstimate || customUnit?.isEstimate ?: false
 
     val pureDoseStandardDeviation: Double?
-        get() = customUnitDose?.calculatedDoseStandardDeviation ?: ingestion.estimatedDoseStandardDeviation
+        get() = customUnitDose?.calculatedDoseStandardDeviation
+            ?: ingestion.estimatedDoseStandardDeviation
 
     val customUnitDose: CustomUnitDose?
         get() = ingestion.dose?.let { doseUnwrapped ->
@@ -64,16 +65,13 @@ data class IngestionWithCompanionAndCustomUnit(
             }
         }
 
-    
-    fun getDoseDescription(context:Context): String {
-        return customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
-    }
+    fun getDoseDescription(context: Context): String =
+        customUnitDose?.doseDescription ?: getIngestionDoseDescription(context)
 
-
-    private fun getIngestionDoseDescription(context:Context): String {
-        return ingestion.dose?.let { dose ->
+    private fun getIngestionDoseDescription(context: Context): String =
+        ingestion.dose?.let { dose ->
             ingestion.estimatedDoseStandardDeviation?.let { estimatedDoseDeviation ->
-            "${dose.toReadableString()}±${estimatedDoseDeviation.toReadableString()} ${ingestion.units}"
+                "${dose.toReadableString()}±${estimatedDoseDeviation.toReadableString()} ${ingestion.units}"
             } ?: run {
                 val description = "${dose.toReadableString()} ${ingestion.units}"
                 if (isEstimate) {
@@ -83,6 +81,4 @@ data class IngestionWithCompanionAndCustomUnit(
                 }
             }
         } ?: com.isaakhanimann.journal.localization.I18n.translate(context, "dose_unknown")
-    }
- 
 }

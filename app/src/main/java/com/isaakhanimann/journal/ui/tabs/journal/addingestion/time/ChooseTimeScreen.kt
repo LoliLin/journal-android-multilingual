@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -39,7 +40,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -48,6 +48,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -62,7 +63,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -70,20 +74,15 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.LocalDateTime
-
 
 @Composable
 fun ChooseTimeScreen(
@@ -187,12 +186,18 @@ fun ChooseTimeScreen(
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
-        topBar = { TopAppBar(title = { Text( i18n(
-            "substances_ingestion",
-            replacements = mapOf(
-                "substance" to "$substanceName"
-            )
-        ) ) }) },
+        topBar = {
+            TopAppBar(title = {
+                Text(
+                    i18n(
+                        "substances_ingestion",
+                        replacements = mapOf(
+                            "substance" to "$substanceName"
+                        )
+                    )
+                )
+            })
+        },
         floatingActionButton = {
             AnimatedVisibility(
                 visible = !isLoadingColor,
@@ -212,7 +217,7 @@ fun ChooseTimeScreen(
         ) {
             LinearProgressIndicator(
                 progress = { 0.9f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -238,25 +243,42 @@ fun ChooseTimeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(5)) }) {
+                        OutlinedButton(onClick = {
+                            onChangeDateOrTime(localDateTime.minusMinutes(5))
+                        }) {
                             Text("-5 min")
                         }
-                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(10)) }) {
+                        OutlinedButton(onClick = {
+                            onChangeDateOrTime(localDateTime.minusMinutes(10))
+                        }) {
                             Text("-10 min")
                         }
-                        OutlinedButton(onClick = { onChangeDateOrTime(localDateTime.minusMinutes(30)) }) {
+                        OutlinedButton(onClick = {
+                            onChangeDateOrTime(localDateTime.minusMinutes(30))
+                        }) {
                             Text("-30 min")
                         }
                     }
                 }
-                CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {
+                CardWithTitle(
+                    title = i18n("common_experience"),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     val isCloseToExperience = experienceTitleToAddTo != null
                     AnimatedVisibility(visible = isCloseToExperience) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.clickable { check(isChecked.not()) }) {
+                            modifier = Modifier.clickable { check(isChecked.not()) }
+                        ) {
                             Checkbox(checked = isChecked, onCheckedChange = check)
-                            Text(text = i18n("add_to_experience", mapOf("title" to (experienceTitleToAddTo ?: ""))))
+                            Text(
+                                text = i18n(
+                                    "add_to_experience",
+                                    mapOf(
+                                        "title" to (experienceTitleToAddTo ?: "")
+                                    )
+                                )
+                            )
                         }
                     }
                     AnimatedVisibility(visible = !isCloseToExperience || !isChecked) {
@@ -266,7 +288,9 @@ fun ChooseTimeScreen(
                             singleLine = true,
                             label = { Text(text = i18n("common_new_experience_title")) },
                             isError = !isEnteredTitleOk,
-                            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                            keyboardActions = KeyboardActions(onDone = {
+                                focusManager.clearFocus()
+                            }),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 imeAction = ImeAction.Done,
                                 capitalization = KeyboardCapitalization.Words
@@ -334,30 +358,28 @@ fun ChooseTimeScreen(
                                             onChangeOfConsumerName(consumerName)
                                             areConsumerNamesExpanded = false
                                         },
-                                        leadingIcon = {
-                                            val ctxCsm = LocalContext.current
-                                            val avatarFile = remember(consumerName) {
-
-                                                AvatarUtil.getUserAvatar(ctxCsm, consumerName)
-
+                                        leadingIcon = {
+                                            val ctxCsm = LocalContext.current
+
+                                            val avatarFile = remember(consumerName) {
+                                                AvatarUtil.getUserAvatar(ctxCsm, consumerName)
                                             }
 
                                             if (avatarFile != null) {
-
                                                 AsyncImage(
 
                                                     model = avatarFile,
 
                                                     contentDescription = i18n("stats_consumer"),
 
-                                                    modifier = Modifier.size(24.dp).clip(CircleShape),
+                                                    modifier = Modifier.size(
+                                                        24.dp
+                                                    ).clip(CircleShape),
 
                                                     contentScale = ContentScale.Crop
 
                                                 )
-
                                             } else {
-
                                                 Icon(
 
                                                     Icons.Default.Person,
@@ -365,17 +387,12 @@ fun ChooseTimeScreen(
                                                     contentDescription = i18n("stats_consumer")
 
                                                 )
-
                                             }
-
                                         }
 
                                     )
-
                                 }
-
                             }
-
                         }
 
                         var showNewConsumerTextField by remember { mutableStateOf(false) }
@@ -387,8 +404,9 @@ fun ChooseTimeScreen(
                                 checked = showNewConsumerTextField,
                                 onCheckedChange = {
                                     showNewConsumerTextField = !showNewConsumerTextField
-                                })
-                        Text(i18n("common_enter_new_consumer"))
+                                }
+                            )
+                            Text(i18n("common_enter_new_consumer"))
                         }
                         AnimatedVisibility(visible = showNewConsumerTextField) {
                             OutlinedTextField(
@@ -442,11 +460,7 @@ fun ChooseTimeScreen(
 }
 
 @Composable
-fun NoteSection(
-    previousNotes: List<String>,
-    note: String,
-    onNoteChange: (String) -> Unit
-) {
+fun NoteSection(previousNotes: List<String>, note: String, onNoteChange: (String) -> Unit) {
     var isShowingSuggestions by remember { mutableStateOf(true) }
     val focusManager = LocalFocusManager.current
     Column {

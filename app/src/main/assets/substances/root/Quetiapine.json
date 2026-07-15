@@ -1,9 +1,6 @@
 {
   "name": "Quetiapine",
-  "commonNames": [
-    "Quetiapine",
-    "Seroquel"
-  ],
+  "commonNames": ["Quetiapine", "Seroquel"],
   "url": "https://psychonautwiki.org/wiki/Quetiapine",
   "isApproved": true,
   "tolerance": {
@@ -13,23 +10,13 @@
   },
   "crossTolerances": [],
   "addictionPotential": "moderately physically and psychologically addictive",
-  "toxicities": [
-    "low toxicity"
-  ],
-  "categories": [
-    "antipsychotic",
-    "depressant"
-  ],
+  "toxicities": ["low toxicity"],
+  "categories": ["antipsychotic", "depressant"],
   "summary": "An atypical antipsychotic medication under the brand name Seroquel. Also used to treat insomnia and mood swings. This drug is very sedating and can stop/slow down psychedelic drug trips. Infrequently abused.",
   "interactions": {
-    "dangerous": [
-      "Depressants"
-    ],
+    "dangerous": ["Depressants"],
     "unsafe": [],
-    "uncertain": [
-      "Stimulants",
-      "Dissociatives"
-    ]
+    "uncertain": ["Stimulants", "Dissociatives"]
   },
   "roas": [
     {

@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "localizedName": "PARGY-LAD"
 }

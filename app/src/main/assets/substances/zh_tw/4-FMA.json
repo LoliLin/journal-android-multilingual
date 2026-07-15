@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種具有部分同理心作用的興奮劑，是甲基安非他命的類似物，效果相似。據報導其效果不如2-FMA及相關化合物。目前對該化合物的藥理作用所知甚少。請勿與4-FA混淆，後者雖效力相近，但作用特性不同。",
   "localizedName": "4-FMA"
 }

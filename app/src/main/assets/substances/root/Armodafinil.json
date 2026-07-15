@@ -17,20 +17,12 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "benzhydryl",
-    "nootropic"
-  ],
+  "crossTolerances": ["benzhydryl", "nootropic"],
   "addictionPotential": "mildly addictive with a low potential for abuse",
   "toxicities": [
     "The median lethal dose at which 50% of participants die (LD50) from either armodafinil or modafinil for human beings has never been reached"
   ],
-  "categories": [
-    "stimulant",
-    "eugeroic",
-    "nootropic",
-    "habit-forming"
-  ],
+  "categories": ["stimulant", "eugeroic", "nootropic", "habit-forming"],
   "summary": "The more potent of the two modafinil isomers, said to have a longer duration and lesser side effects. Sometimes prescribed for ADHD and daytime sleepiness.",
   "interactions": {
     "dangerous": [
@@ -40,16 +32,8 @@
       "MAOIs",
       "Hormonal birth control"
     ],
-    "unsafe": [
-      "DXM",
-      "MDMA",
-      "Stimulants"
-    ],
-    "uncertain": [
-      "Alcohol",
-      "MXE",
-      "Dissociatives"
-    ]
+    "unsafe": ["DXM", "MDMA", "Stimulants"],
+    "uncertain": ["Alcohol", "MXE", "Dissociatives"]
   },
   "roas": [
     {

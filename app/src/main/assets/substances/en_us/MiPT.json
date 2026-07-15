@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "N-Methyl-N-isopropyltryptamine, a tryptamine analogue of DMT, a very uncommon drug with very few reports of human use. Described as 'more psychedelic than hallucinogenic' users report only mild visuals with some stimulation and cognitive effects. One of the more stable tryptamines.",
   "localizedName": "MiPT"
 }

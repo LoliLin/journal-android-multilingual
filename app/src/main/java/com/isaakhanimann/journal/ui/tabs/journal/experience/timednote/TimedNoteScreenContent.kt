@@ -60,7 +60,7 @@ fun TimedNoteScreenContentPreview() {
                     }
                 }
             )
-        },
+        }
     ) { padding ->
         val alreadyUsedColors = listOf(AdaptiveColor.BLUE, AdaptiveColor.PINK)
         val otherColors = AdaptiveColor.values().filter { color ->
@@ -109,7 +109,7 @@ fun TimedNoteScreenContent(
         modifier = modifier
             .padding(10.dp)
             .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         OutlinedTextField(
             value = note,

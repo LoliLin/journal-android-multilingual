@@ -1,22 +1,12 @@
 {
   "name": "Secobarbital",
-  "commonNames": [
-    "Secobarbital",
-    "Secobarbitone",
-    "Seconal"
-  ],
+  "commonNames": ["Secobarbital", "Secobarbitone", "Seconal"],
   "url": "https://psychonautwiki.org/wiki/Secobarbital",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "extremely physically and psychologically addictive",
-  "toxicities": [
-    "moderate toxicity"
-  ],
-  "categories": [
-    "depressant",
-    "habit-forming",
-    "barbiturate"
-  ],
+  "toxicities": ["moderate toxicity"],
+  "categories": ["depressant", "habit-forming", "barbiturate"],
   "summary": "A Barbiturate derivative that possesses all the classic effects of todays Benzodiazepines, and the old Barbiturates. It's used in the treatment of Epilepsy, short term treatment for insomnia, and a preoperative medication for anaesthesia and anxiolysis for short surgical/diagnostic/therapeutic procedures.",
   "roas": [
     {

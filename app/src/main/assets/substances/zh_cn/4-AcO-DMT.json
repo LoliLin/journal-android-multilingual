@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "非成瘾性，滥用潜力低",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种与裸盖菇素效果极为相似的前体药物。",
   "localizedName": "4-乙酰氧基-N,N-二甲基色胺"
 }

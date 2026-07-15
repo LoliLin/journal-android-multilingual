@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "无成瘾性，滥用可能性低",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种属于拉西坦类别的益智药物，最初用于治疗阿尔茨海默病，目前正被研究用于治疗重度抑郁症和广泛性焦虑障碍。可能作为AMPA受体的调节剂。娱乐用途价值有限。",
   "localizedName": "考拉西坦"
 }

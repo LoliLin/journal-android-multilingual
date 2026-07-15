@@ -28,7 +28,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SaferUseViewModel @Inject constructor(
     substanceRepo: SubstanceRepository,
-    state: SavedStateHandle,
+    state: SavedStateHandle
 ) : ViewModel() {
     val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
     val substance = substanceRepo.getSubstance(substanceName)!!

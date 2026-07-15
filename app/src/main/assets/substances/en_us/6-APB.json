@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 1176
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A stimulant, empathogen and analog of MDA. Typically more visual than MDMA or MDA, as well as having a much longer onset and duration. Users often report a slightly more psychedelic headspace as well. Commonly sold as an alternative to MDMA and MDA.",
   "localizedName": "6-APB"
 }

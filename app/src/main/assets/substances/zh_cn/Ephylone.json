@@ -3,8 +3,6 @@
     "full": "长期反复使用后形成"
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "localizedName": "依芬酮"
 }

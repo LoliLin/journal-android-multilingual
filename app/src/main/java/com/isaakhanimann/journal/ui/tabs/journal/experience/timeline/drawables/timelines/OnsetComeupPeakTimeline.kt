@@ -39,7 +39,8 @@ data class OnsetComeupPeakTimeline(
 ) : TimelineDrawable {
 
     override val endOfLineRelativeToStartInSeconds: Float =
-        ingestionTimeRelativeToStartInSeconds + onset.maxInSeconds + comeup.maxInSeconds + peak.maxInSeconds
+        ingestionTimeRelativeToStartInSeconds + onset.maxInSeconds + comeup.maxInSeconds +
+            peak.maxInSeconds
 
     override fun drawTimeLine(
         drawScope: DrawScope,
@@ -49,7 +50,7 @@ data class OnsetComeupPeakTimeline(
         density: Density
     ) {
         val weight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(weight) * pixelsPerSec)
         val comeupEndX =
@@ -67,8 +68,8 @@ data class OnsetComeupPeakTimeline(
             color = color,
             style = density.normalStroke
         )
-        path.lineTo(x = peakEndX, y = height + drawScope.strokeWidth/2)
-        path.lineTo(x = startX, y = height + drawScope.strokeWidth/2)
+        path.lineTo(x = peakEndX, y = height + drawScope.strokeWidth / 2)
+        path.lineTo(x = startX, y = height + drawScope.strokeWidth / 2)
         path.close()
         drawScope.drawPath(
             path = path,
@@ -77,12 +78,15 @@ data class OnsetComeupPeakTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }
 
-fun RoaDuration.toOnsetComeupPeakTimeline(peakWeight: Float, ingestionTimeRelativeToStartInSeconds: Float): OnsetComeupPeakTimeline? {
+fun RoaDuration.toOnsetComeupPeakTimeline(
+    peakWeight: Float,
+    ingestionTimeRelativeToStartInSeconds: Float
+): OnsetComeupPeakTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     val fullPeak = peak?.toFullDurationRange()

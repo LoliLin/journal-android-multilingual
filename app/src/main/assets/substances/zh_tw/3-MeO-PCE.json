@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "高度成瘾性，且具有引發精神異常等不良副作用的極高風險。",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "3-MeO-PCP 經由環取代修飾，效力略高於 3-MeO-PCP。",
   "localizedName": "3-MeO-PCE"
 }

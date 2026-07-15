@@ -24,11 +24,8 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class InteractionChecker @Inject constructor(
-    private val substanceRepo: SubstanceRepository,
-) {
+class InteractionChecker @Inject constructor(private val substanceRepo: SubstanceRepository) {
     fun getInteractionBetween(aName: String, bName: String): Interaction? {
         if (aName == bName) {
             return null
@@ -41,42 +38,48 @@ class InteractionChecker @Inject constructor(
             return Interaction(
                 aName = aName,
                 bName = bName,
-                interactionType = interactionType,
+                interactionType = interactionType
             )
         } else if (interactionFromAToB != null) {
             return Interaction(
                 aName = aName,
                 bName = bName,
-                interactionType = interactionFromAToB,
+                interactionType = interactionFromAToB
             )
         } else if (interactionFromBToA != null) {
             return Interaction(
                 aName = aName,
                 bName = bName,
-                interactionType = interactionFromBToA,
+                interactionType = interactionFromBToA
             )
         } else {
             return null
         }
     }
 
-    private fun getInteractionFromAToB(
-        aName: String,
-        bName: String,
-    ): InteractionType? {
+    private fun getInteractionFromAToB(aName: String, bName: String): InteractionType? {
         val substanceA = substanceRepo.getSubstance(aName)
         if (substanceA != null) {
-            val directInteraction = getDirectInteraction(interactions = substanceA.interactions, substanceName = bName)
+            val directInteraction =
+                getDirectInteraction(interactions = substanceA.interactions, substanceName = bName)
             if (directInteraction != null) {
                 return directInteraction
             }
-            val wildcardInteraction = getWildcardInteraction(interactions = substanceA.interactions, substanceName = bName)
+            val wildcardInteraction =
+                getWildcardInteraction(
+                    interactions = substanceA.interactions,
+                    substanceName = bName
+                )
             if (wildcardInteraction != null) {
                 return wildcardInteraction
             }
             val substanceB = substanceRepo.getSubstance(bName)
             if (substanceB != null) {
-                val classInteraction = getClassInteraction(interactions = substanceA.interactions, categories = substanceB.categories)
+                val classInteraction =
+                    getClassInteraction(
+                        interactions = substanceA.interactions,
+                        categories = substanceB.categories
+                    )
                 if (classInteraction != null) {
                     return classInteraction
                 }
@@ -85,7 +88,10 @@ class InteractionChecker @Inject constructor(
         return null
     }
 
-    private fun getDirectInteraction(interactions: Interactions?, substanceName: String): InteractionType? {
+    private fun getDirectInteraction(
+        interactions: Interactions?,
+        substanceName: String
+    ): InteractionType? {
         if (interactions == null) {
             return null
         }
@@ -100,7 +106,10 @@ class InteractionChecker @Inject constructor(
         }
     }
 
-    private fun getWildcardInteraction(interactions: Interactions?, substanceName: String): InteractionType? {
+    private fun getWildcardInteraction(
+        interactions: Interactions?,
+        substanceName: String
+    ): InteractionType? {
         if (interactions == null) {
             return null
         }
@@ -115,7 +124,10 @@ class InteractionChecker @Inject constructor(
         }
     }
 
-    private fun getClassInteraction(interactions: Interactions?, categories: List<String>): InteractionType? {
+    private fun getClassInteraction(
+        interactions: Interactions?,
+        categories: List<String>
+    ): InteractionType? {
         if (interactions == null) {
             return null
         }
@@ -133,10 +145,10 @@ class InteractionChecker @Inject constructor(
     private fun isClassMatch(interactions: List<String>, categories: List<String>): Boolean {
         val extendedInteractions = extendAndCleanInteractions(interactions)
         return categories.any { categoryName ->
-                extendedInteractions.any { interactionName ->
-                    interactionName.contains(categoryName, ignoreCase = true)
-                }
+            extendedInteractions.any { interactionName ->
+                interactionName.contains(categoryName, ignoreCase = true)
             }
+        }
     }
 
     private fun isWildcardMatch(interactions: List<String>, substanceName: String): Boolean {
@@ -236,11 +248,6 @@ class InteractionChecker @Inject constructor(
         "3-FPM",
         "Prolintane"
     )
-
 }
 
-data class Interaction(
-    val aName: String,
-    val bName: String,
-    val interactionType: InteractionType,
-)
+data class Interaction(val aName: String, val bName: String, val interactionType: InteractionType)

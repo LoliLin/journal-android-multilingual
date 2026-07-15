@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度生理和心理成瘾性",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "1,4-丁二醇是一种具有醉人效果的透明液体。它是γ-羟基丁酸的前体药物，效果相似但据称略逊一筹。此外，它比γ-羟基丁酸可能带来更多健康风险，例如肝毒性。",
   "localizedName": "1,4-丁二醇"
 }

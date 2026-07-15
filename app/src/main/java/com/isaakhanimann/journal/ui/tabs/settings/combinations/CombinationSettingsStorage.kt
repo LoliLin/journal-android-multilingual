@@ -22,14 +22,15 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
-
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Singleton
-class CombinationSettingsStorage @Inject constructor(private val dataStore: DataStore<Preferences>) {
+class CombinationSettingsStorage @Inject constructor(
+    private val dataStore: DataStore<Preferences>
+) {
 
     private val substanceInteractionKey = stringSetPreferencesKey("substanceInteractions")
 
@@ -42,9 +43,13 @@ class CombinationSettingsStorage @Inject constructor(private val dataStore: Data
         dataStore.edit { settings ->
             val oldSet = settings[substanceInteractionKey] ?: emptySet()
             val newSet =
-                if (oldSet.contains(substanceInteraction)) oldSet.minus(substanceInteraction) else oldSet.plus(
-                    substanceInteraction
-                )
+                if (oldSet.contains(substanceInteraction)) {
+                    oldSet.minus(substanceInteraction)
+                } else {
+                    oldSet.plus(
+                        substanceInteraction
+                    )
+                }
             settings[substanceInteractionKey] = newSet
         }
     }
@@ -73,7 +78,4 @@ class CombinationSettingsStorage @Inject constructor(private val dataStore: Data
     }
 }
 
-data class Option(
-    val name: String,
-    val enabled: Boolean
-)
+data class Option(val name: String, val enabled: Boolean)

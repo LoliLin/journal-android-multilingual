@@ -51,26 +51,23 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.data.achievement.AchievementGetToast
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.data.achievement.AchievementGetToast
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 
 @Composable
 fun JournalScreen(
@@ -78,13 +75,12 @@ fun JournalScreen(
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
     viewModel: JournalViewModel = hiltViewModel()
-) { 
+) {
     val experiences = viewModel.experiences.collectAsState().value
 
     val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
     val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0.0)
     val amantadineDose by viewModel.amantadineDoseFlow.collectAsState(initial = 0.0)
-
 
     LaunchedEffect(pregabalinTotalDose, achievements) {
         val targetAchievement = "n552aa_pr80"
@@ -106,10 +102,9 @@ fun JournalScreen(
             viewModel.addAchievement(targetAchievement)
         }
     }
-    
 
     val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
-    
+
     LaunchedEffect(achievements) {
         if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
             viewModel.addAchievement("in_kawaiis")
@@ -133,7 +128,6 @@ fun JournalScreen(
         ownerUserName = ownerUserName
     )
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -225,7 +219,7 @@ fun JournalScreen(
                             contentDescription = i18n("common_add")
                         )
                     },
-                    text = { Text(i18n("journal_ingestion")) },
+                    text = { Text(i18n("journal_ingestion")) }
                 )
             }
         }
@@ -253,7 +247,7 @@ fun JournalScreen(
                             leadingIcon = {
                                 Icon(
                                     Icons.Default.Search,
-                                    contentDescription = i18n("common_search"),
+                                    contentDescription = i18n("common_search")
                                 )
                             },
                             trailingIcon = {
@@ -265,14 +259,16 @@ fun JournalScreen(
                                     ) {
                                         Icon(
                                             Icons.Default.Close,
-                                            contentDescription = i18n("common_close"),
+                                            contentDescription = i18n("common_close")
                                         )
                                     }
                                 }
                             },
                             label = { Text(text = i18n("journal_search_by_title_or_substance")) },
                             modifier = Modifier.fillMaxWidth(),
-                            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                            keyboardActions = KeyboardActions(onDone = {
+                                focusManager.clearFocus()
+                            }),
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Text,
                                 capitalization = KeyboardCapitalization.Sentences
@@ -287,7 +283,9 @@ fun JournalScreen(
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = i18n("journal_no_favorite_experience_titles_match_search"),
+                                        text = i18n(
+                                            "journal_no_favorite_experience_titles_match_search"
+                                        ),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
@@ -316,7 +314,9 @@ fun JournalScreen(
                         ExperienceRow(
                             experienceWithIngestions,
                             navigateToExperienceScreen = {
-                                navigateToExperiencePopNothing(experienceWithIngestions.experience.id)
+                                navigateToExperiencePopNothing(
+                                    experienceWithIngestions.experience.id
+                                )
                             },
                             isTimeRelativeToNow = isTimeRelativeToNow,
                             substanceRepository = substanceRepository,

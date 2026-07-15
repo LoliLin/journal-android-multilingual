@@ -115,7 +115,16 @@ fun ChooseRouteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("substances_route", mapOf("substance" to getSubstanceDisplayName(substanceName)))) },
+                title = {
+                    Text(
+                        i18n(
+                            "substances_route",
+                            mapOf(
+                                "substance" to getSubstanceDisplayName(substanceName)
+                            )
+                        )
+                    )
+                },
                 navigationIcon = {
                     if (showOtherRoutes && pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {
@@ -140,7 +149,7 @@ fun ChooseRouteScreen(
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.5f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             AnimatedVisibility(visible = isShowingInjectionDialog) {
                 InjectionDialog(
@@ -182,7 +191,10 @@ fun InjectionDialog(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.Default.Warning, contentDescription = i18n("interaction_warning"))
+                Icon(
+                    imageVector = Icons.Default.Warning,
+                    contentDescription = i18n("interaction_warning")
+                )
                 Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                 Text(text = i18n("safer_injection"), style = MaterialTheme.typography.headlineSmall)
             }
@@ -193,9 +205,7 @@ fun InjectionDialog(
                 Text(i18n("safer_injection_guide.t2"))
                 SaferInjectionLink(navigateToURL)
                 Text(i18n("safer_injection_guide.t3"))
-
             }
-
         },
         confirmButton = {
             TextButton(
@@ -230,7 +240,10 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
             )
             if (screenHeightPx > 500) {
                 Text(
-                    text = i18nOrDefault(administrationRouteDescriptionKey(route), route.description),
+                    text = i18nOrDefault(
+                        administrationRouteDescriptionKey(route),
+                        route.description
+                    ),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -238,7 +251,6 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
         }
     }
 }
-
 
 @Composable
 fun SaferInjectionLink(navigateToURL: (url: String) -> Unit) {
@@ -248,7 +260,7 @@ fun SaferInjectionLink(navigateToURL: (url: String) -> Unit) {
         Icon(
             Icons.Outlined.Newspaper,
             contentDescription = i18n("interaction_open_link"),
-            modifier = Modifier.size(ButtonDefaults.IconSize),
+            modifier = Modifier.size(ButtonDefaults.IconSize)
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(i18n("safer_injection_guide"))

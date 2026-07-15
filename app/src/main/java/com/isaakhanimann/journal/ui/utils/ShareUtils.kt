@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.core.content.FileProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = null) {
     // 1. 强行切到 IO 线程，绝对不堵塞主线程
@@ -19,7 +19,7 @@ suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = n
             }
             val file = File(cachePath, "experience_share_${System.currentTimeMillis()}.png")
             val stream = FileOutputStream(file)
-            
+
             // 压缩并写入磁盘
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
             stream.close()
@@ -41,17 +41,16 @@ suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = n
                     putExtra(Intent.EXTRA_TEXT, extraText)
                 }
                 // 极其关键：临时授予接收方（分享去处的App）读取这个文件的权限
-                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) 
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
 
             // 4. 切回主线程调起系统分享选择器
             withContext(Dispatchers.Main) {
                 context.startActivity(Intent.createChooser(shareIntent, "分享到"))
             }
-
         } catch (e: Exception) {
             // 哪怕由于奇奇怪怪的原因失败了，也只是打印日志，绝对不会让 App 闪退
-            e.printStackTrace() 
+            e.printStackTrace()
         }
     }
 }

@@ -1,9 +1,6 @@
 {
   "name": "PCE",
-  "commonNames": [
-    "PCE",
-    "Eticyclidine"
-  ],
+  "commonNames": ["PCE", "Eticyclidine"],
   "url": "https://psychonautwiki.org/wiki/PCE",
   "isApproved": true,
   "tolerance": {
@@ -13,22 +10,13 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "dissociative"
-  ],
+  "crossTolerances": ["dissociative"],
   "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
   "toxicities": [],
-  "categories": [
-    "dissociative",
-    "tentative",
-    "habit-forming"
-  ],
+  "categories": ["dissociative", "tentative", "habit-forming"],
   "summary": "Eticyclidine (PCE) is a Dissociative anesthetic that has hallucinogenic effects. Slightly more potent than Phencyclidine.",
   "interactions": {
-    "dangerous": [
-      "Stimulants",
-      "Depressants"
-    ],
+    "dangerous": ["Stimulants", "Depressants"],
     "unsafe": [],
     "uncertain": []
   },

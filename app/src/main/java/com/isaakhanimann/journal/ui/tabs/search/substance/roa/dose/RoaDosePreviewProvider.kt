@@ -28,7 +28,7 @@ class RoaDosePreviewProvider : PreviewParameterProvider<RoaDose> {
             lightMin = 20.0,
             commonMin = 40.0,
             strongMin = 90.0,
-            heavyMin = 140.0,
+            heavyMin = 140.0
         )
     )
 }

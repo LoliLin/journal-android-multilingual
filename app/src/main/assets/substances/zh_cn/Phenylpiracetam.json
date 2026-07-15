@@ -7,10 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "非成瘾性，滥用可能性低",
-  "toxicities": [
-    "即使长期大量摄入也是安全的",
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["即使长期大量摄入也是安全的", "确切的中毒剂量未知"],
   "summary": "一种益智药和吡拉西坦类似物，也被称为fonturacetam，该药物已被证明具有潜在的增强记忆、抗焦虑、抗遗忘和抗抑郁作用，但几乎没有娱乐价值。其效力约为吡拉西坦的45倍。",
   "localizedName": "苯基吡拉西坦"
 }

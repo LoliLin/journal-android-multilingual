@@ -35,8 +35,8 @@ data class FullTimelines(
     val peak: FullDurationRange,
     val offset: FullDurationRange,
     val weightedLines: List<WeightedLine>,
-    val startTimeGraph: Instant,
-    ) : TimelineDrawable {
+    val startTimeGraph: Instant
+) : TimelineDrawable {
 
     data class WeightedLineRelativeToFirst(
         val startTimeRelativeToGroupInSeconds: Float,
@@ -44,40 +44,31 @@ data class FullTimelines(
         val height: Float
     )
 
-    data class LineSegment(
-        val start: Point,
-        val end: Point
-    ) {
-        fun isInside(x: Float): Boolean {
-            return start.x <= x && x < end.x
-        }
+    data class LineSegment(val start: Point, val end: Point) {
+        fun isInside(x: Float): Boolean = start.x <= x && x < end.x
 
         fun heightAt(x: Float): Float {
             val divider = end.x - start.x
             if (divider == 0f) return 0f
-            val m = (end.y - start.y)/divider
-            val b = start.y - m*start.x
-            return m*x + b
+            val m = (end.y - start.y) / divider
+            val b = start.y - m * start.x
+            return m * x + b
         }
     }
 
-    data class Point(
-        val x: Float,
-        val y: Float,
-    )
+    data class Point(val x: Float, val y: Float)
 
-    data class FinalPoint(
-        val x: Float,
-        val y: Float,
-        val isIngestionPoint: Boolean = false
-    )
+    data class FinalPoint(val x: Float, val y: Float, val isIngestionPoint: Boolean = false)
 
     private val finalPoints: List<FinalPoint>
 
     init {
         val weightedRelatives = weightedLines.map {
             WeightedLineRelativeToFirst(
-                startTimeRelativeToGroupInSeconds = Duration.between(startTimeGraph, it.startTime).seconds.toFloat(),
+                startTimeRelativeToGroupInSeconds = Duration.between(
+                    startTimeGraph,
+                    it.startTime
+                ).seconds.toFloat(),
                 horizontalWeight = it.horizontalWeight,
                 height = it.height
             )
@@ -86,7 +77,8 @@ data class FullTimelines(
             val result = mutableListOf<LineSegment>()
             val onsetAndComeupWeight = 0.5f
             val onsetEndX =
-                relative.startTimeRelativeToGroupInSeconds + onset.interpolateAtValueInSeconds(onsetAndComeupWeight)
+                relative.startTimeRelativeToGroupInSeconds +
+                    onset.interpolateAtValueInSeconds(onsetAndComeupWeight)
             val comeupStartPoint = Point(x = onsetEndX, y = 0f)
             val comeupEndX =
                 onsetEndX + comeup.interpolateAtValueInSeconds(onsetAndComeupWeight)
@@ -120,7 +112,9 @@ data class FullTimelines(
         val linePoints = lineSegments.flatMap { lineSegment ->
             listOf(lineSegment.start.x, lineSegment.end.x)
         }.distinct().map { FinalPoint(x = it, y = 0f) }
-        val ingestionPoints = weightedRelatives.map { FinalPoint(x = it.startTimeRelativeToGroupInSeconds, y = 0f, isIngestionPoint = true) }
+        val ingestionPoints = weightedRelatives.map {
+            FinalPoint(x = it.startTimeRelativeToGroupInSeconds, y = 0f, isIngestionPoint = true)
+        }
         val pointsToConsider = ingestionPoints + linePoints
         val pointsWithHeight = pointsToConsider.map { finalPoint ->
             val x = finalPoint.x
@@ -131,11 +125,19 @@ data class FullTimelines(
                     0f
                 }
             }.sum()
-            return@map FinalPoint(x = x, y = sumOfHeights, isIngestionPoint = finalPoint.isIngestionPoint)
+            return@map FinalPoint(
+                x = x,
+                y = sumOfHeights,
+                isIngestionPoint = finalPoint.isIngestionPoint
+            )
         }
         val highestY = pointsWithHeight.maxOf { it.y }
         val normalizedHeightPoints = pointsWithHeight.map { pointWithHeight ->
-            return@map FinalPoint(x = pointWithHeight.x, y = pointWithHeight.y/highestY, isIngestionPoint = pointWithHeight.isIngestionPoint)
+            return@map FinalPoint(
+                x = pointWithHeight.x,
+                y = pointWithHeight.y / highestY,
+                isIngestionPoint = pointWithHeight.isIngestionPoint
+            )
         }
         val sortedPoints = normalizedHeightPoints.sortedBy { it.x }
         this.finalPoints = sortedPoints
@@ -154,11 +156,11 @@ data class FullTimelines(
         val path = Path().apply {
             val firstPoint = finalPoints.first()
             val rest = finalPoints.drop(1)
-            val firstHeightInPx = firstPoint.y*height
-            moveTo(x = firstPoint.x*pixelsPerSec, y = height - firstHeightInPx)
+            val firstHeightInPx = firstPoint.y * height
+            moveTo(x = firstPoint.x * pixelsPerSec, y = height - firstHeightInPx)
             for (point in rest) {
-                val heightInPx = point.y*height
-                lineTo(x = point.x*pixelsPerSec, y = height - heightInPx)
+                val heightInPx = point.y * height
+                lineTo(x = point.x * pixelsPerSec, y = height - heightInPx)
             }
         }
         drawScope.drawPath(
@@ -166,8 +168,11 @@ data class FullTimelines(
             color = color,
             style = density.normalStroke
         )
-        path.lineTo(x = finalPoints.last().x*pixelsPerSec, y = height + drawScope.strokeWidth/2)
-        path.lineTo(x = finalPoints.first().x*pixelsPerSec, y = height + drawScope.strokeWidth/2)
+        path.lineTo(x = finalPoints.last().x * pixelsPerSec, y = height + drawScope.strokeWidth / 2)
+        path.lineTo(
+            x = finalPoints.first().x * pixelsPerSec,
+            y = height + drawScope.strokeWidth / 2
+        )
         path.close()
         drawScope.drawPath(
             path = path,
@@ -178,14 +183,17 @@ data class FullTimelines(
                 drawScope.drawCircle(
                     color = color,
                     radius = density.ingestionDotRadius,
-                    center = Offset(x = point.x*pixelsPerSec, y = height - point.y*height)
+                    center = Offset(x = point.x * pixelsPerSec, y = height - point.y * height)
                 )
             }
         }
     }
 }
 
-fun RoaDuration.toFullTimelines(weightedLines: List<WeightedLine>, startTimeGraph: Instant): FullTimelines? {
+fun RoaDuration.toFullTimelines(
+    weightedLines: List<WeightedLine>,
+    startTimeGraph: Instant
+): FullTimelines? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     val fullPeak = peak?.toFullDurationRange()

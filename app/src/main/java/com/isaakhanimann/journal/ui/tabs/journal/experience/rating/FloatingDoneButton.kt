@@ -27,7 +27,7 @@ import androidx.compose.runtime.Composable
 import com.isaakhanimann.journal.localization.i18n
 
 @Composable
-fun FloatingDoneButton(onDone: ()->Unit) {
+fun FloatingDoneButton(onDone: () -> Unit) {
     ExtendedFloatingActionButton(
         onClick = onDone,
         icon = {

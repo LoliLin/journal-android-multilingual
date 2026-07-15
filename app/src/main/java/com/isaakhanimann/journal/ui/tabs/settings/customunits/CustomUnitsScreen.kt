@@ -56,8 +56,8 @@ fun CustomUnitsScreen(
     viewModel: CustomUnitsViewModel = hiltViewModel(),
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
     navigateToAddCustomUnit: () -> Unit,
-    navigateToCustomUnitArchive: () -> Unit,
-    ) {
+    navigateToCustomUnitArchive: () -> Unit
+) {
     CustomUnitsScreenContent(
         customUnits = viewModel.customUnitsFlow.collectAsState().value,
         navigateToEditCustomUnit = navigateToEditCustomUnit,
@@ -86,7 +86,7 @@ fun CustomUnitsScreenContent(
     customUnits: List<CustomUnit>,
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
     navigateToAddCustomUnit: () -> Unit,
-    navigateToCustomUnitArchive: () -> Unit,
+    navigateToCustomUnitArchive: () -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -99,7 +99,8 @@ fun CustomUnitsScreenContent(
                             contentDescription = i18n("custom_units_go_to_archive")
                         )
                     }
-                })
+                }
+            )
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -142,10 +143,7 @@ fun CustomUnitsScreenContent(
 }
 
 @Composable
-fun CustomUnitRow(
-    customUnit: CustomUnit,
-    navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
-) {
+fun CustomUnitRow(customUnit: CustomUnit, navigateToEditCustomUnit: (customUnitId: Int) -> Unit) {
     Column(
         modifier = Modifier
             .clickable {
@@ -172,14 +170,12 @@ fun CustomUnitRow(
     }
 }
 
-fun CustomUnit.getDoseOfOneUnitDescription(): String {
-    return this.dose?.let { unwrappedDose ->
-        if (this.isEstimate) {
-            this.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviationUnwrapped ->
-                "${unwrappedDose.toReadableString()}±${estimatedDoseStandardDeviationUnwrapped.toReadableString()} ${this.originalUnit}"
-            } ?: "~${unwrappedDose.toReadableString()} ${this.originalUnit}"
-        } else {
-            "${unwrappedDose.toReadableString()} ${this.originalUnit}"
-        }
-    } ?: "Unknown dose"
-}
+fun CustomUnit.getDoseOfOneUnitDescription(): String = this.dose?.let { unwrappedDose ->
+    if (this.isEstimate) {
+        this.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviationUnwrapped ->
+            "${unwrappedDose.toReadableString()}±${estimatedDoseStandardDeviationUnwrapped.toReadableString()} ${this.originalUnit}"
+        } ?: "~${unwrappedDose.toReadableString()} ${this.originalUnit}"
+    } else {
+        "${unwrappedDose.toReadableString()} ${this.originalUnit}"
+    }
+} ?: "Unknown dose"

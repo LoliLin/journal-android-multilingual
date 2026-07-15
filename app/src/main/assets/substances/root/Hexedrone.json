@@ -1,8 +1,6 @@
 {
   "name": "Hexedrone",
-  "commonNames": [
-    "Hexedrone"
-  ],
+  "commonNames": ["Hexedrone"],
   "url": "https://psychonautwiki.org/wiki/Hexedrone",
   "isApproved": true,
   "tolerance": {
@@ -12,10 +10,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "dopamine",
-    "stimulant"
-  ],
+  "crossTolerances": ["dopamine", "stimulant"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [],
   "categories": [

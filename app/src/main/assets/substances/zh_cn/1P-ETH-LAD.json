@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种新型迷幻麦角酰胺，疑似为ETH-LAD的前体药物，这或许可以解释为何两者剂量非常相似。它也可能具有独立活性。要理解其机制需进行科学研究，但目前尚无相关研究。",
   "localizedName": "1P-ETH-LAD"
 }

@@ -32,6 +32,8 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.TIMED_NOTE_ID_KEY
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.LocalDateTime
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -40,8 +42,6 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
-import javax.inject.Inject
 
 @HiltViewModel
 class EditTimedNoteViewModel @Inject constructor(
@@ -71,7 +71,6 @@ class EditTimedNoteViewModel @Inject constructor(
             isPartOfTimeline = loadedNote.isPartOfTimeline
         }
     }
-
 
     fun onChangeTime(newLocalDateTime: LocalDateTime) {
         viewModelScope.launch {

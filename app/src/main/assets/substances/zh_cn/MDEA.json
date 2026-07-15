@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 1800
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种相当罕见的共情剂，与MDMA密切相关，但效力较前者为弱。",
   "effectsSummary": "MDEA与MDMA密切相关。其主要区别在于对自身感受的感知程度（致幻共情效应）、共情理解能力（共情效应）以及致幻效果的强弱。",
   "dosageRemark": "每公斤体重1.3毫克（1.3毫克 × 80公斤 = 100毫克）",

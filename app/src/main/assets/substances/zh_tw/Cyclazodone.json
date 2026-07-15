@@ -6,8 +6,6 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "localizedName": "Cyclazodone"
 }

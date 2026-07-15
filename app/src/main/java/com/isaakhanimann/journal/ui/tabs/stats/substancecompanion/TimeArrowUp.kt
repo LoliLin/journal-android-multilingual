@@ -58,21 +58,21 @@ fun TimeArrowUp(timeText: String) {
                 end = Offset(x = canvasWidth / 2, y = canvasHeight),
                 strokeWidth = strokeWidth,
                 color = color,
-                cap = StrokeCap.Round,
+                cap = StrokeCap.Round
             )
             drawLine(
                 start = Offset(x = canvasWidth / 2, y = 0f),
                 end = Offset(x = 0f, y = canvasHeight / 4),
                 strokeWidth = strokeWidth,
                 color = color,
-                cap = StrokeCap.Round,
+                cap = StrokeCap.Round
             )
             drawLine(
                 start = Offset(x = canvasWidth / 2, y = 0f),
                 end = Offset(x = canvasWidth, y = canvasHeight / 4),
                 strokeWidth = strokeWidth,
                 color = color,
-                cap = StrokeCap.Round,
+                cap = StrokeCap.Round
             )
         }
         Text(text = timeText)
@@ -89,7 +89,7 @@ fun TimeArrowUp(timeText: String) {
                 end = Offset(x = canvasWidth / 2, y = canvasHeight),
                 strokeWidth = strokeWidth,
                 color = color,
-                cap = StrokeCap.Round,
+                cap = StrokeCap.Round
             )
         }
     }

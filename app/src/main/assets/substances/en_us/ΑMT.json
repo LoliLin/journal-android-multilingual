@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 720
   },
   "addictionPotential": "moderately habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "localizedName": "ΑMT"
 }

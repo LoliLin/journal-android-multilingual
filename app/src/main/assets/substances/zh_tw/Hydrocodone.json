@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成癮性",
-  "toxicities": [
-    "高劑量下可能致命"
-  ],
+  "toxicities": ["高劑量下可能致命"],
   "summary": "一種源自可待因的鴉片類藥物，在美國以外通常鮮為人知。藥效通常溫和，用作鎮痛劑和止咳藥。有時會被當作娛樂性藥物使用。",
   "localizedName": "氫可酮"
 }

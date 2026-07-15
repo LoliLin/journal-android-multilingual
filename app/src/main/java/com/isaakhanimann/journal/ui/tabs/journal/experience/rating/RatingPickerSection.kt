@@ -78,11 +78,16 @@ fun RatingPickerSection(
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.padding(start = 16.dp)
                     )
-                    val context = androidx.compose.ui.platform.LocalContext.current
-                    Text(
-                        text = oneRating.getShortDescription(context),
-                        style = MaterialTheme.typography.labelSmall,
-                        modifier = Modifier.padding(start = 16.dp)
+                    val context = androidx.compose.ui.platform.LocalContext.current
+
+                    Text(
+
+                        text = oneRating.getShortDescription(context),
+
+                        style = MaterialTheme.typography.labelSmall,
+
+                        modifier = Modifier.padding(start = 16.dp)
+
                     )
                 }
             }

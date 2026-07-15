@@ -30,10 +30,9 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE
 import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_SUBSTANCE_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-
 
 @HiltViewModel
 class CustomChooseDoseViewModel @Inject constructor(
@@ -98,5 +97,4 @@ class CustomChooseDoseViewModel @Inject constructor(
             units = customSubstance.units
         }
     }
-
 }

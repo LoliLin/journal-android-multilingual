@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "produces dependence with chronic use and has a high abuse potential",
-  "toxicities": [
-    "low toxicity"
-  ],
+  "toxicities": ["low toxicity"],
   "summary": "A drug made out of the leaves of Mitragyna Speciosa, which is related to coffee. Stimulating at lower doses, with opioid effects at higher doses. Frequent heavy use can cause physical addiction and withdrawals.",
   "localizedName": "Kratom"
 }

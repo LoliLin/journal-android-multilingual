@@ -20,10 +20,11 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
-import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,24 +33,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ContactSupport
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Code
 import androidx.compose.material.icons.outlined.DeleteForever
+import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Medication
-import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
-import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material.icons.outlined.Extension
+import androidx.compose.material3.*
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -65,6 +67,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -74,40 +77,24 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import com.isaakhanimann.journal.localization.I18n
-import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackImporter
 import com.isaakhanimann.journal.localization.i18n
-
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-
-import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
-
-import kotlinx.coroutines.launch
 import java.time.Instant
-
-import android.widget.Toast
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
-import java.io.File
+import kotlinx.coroutines.launch
 
 @Composable
 fun SettingsScreen(
@@ -118,7 +105,7 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
-    navigateToExtensionPack: () -> Unit = {},
+    navigateToExtensionPack: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
@@ -172,7 +159,7 @@ fun SettingsScreen(
     saveSelectedLanguage: (String?) -> Unit,
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
-    saveOwnerUserName: (String?) -> Unit,
+    saveOwnerUserName: (String?) -> Unit
 ) {
     Scaffold(
         topBar = {
@@ -180,7 +167,7 @@ fun SettingsScreen(
                 title = { Text(i18n("settings")) }
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -189,7 +176,6 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-
             OwnerProfileCard(
                 ownerUserName = ownerUserName,
                 onUserNameChanged = saveOwnerUserName,
@@ -252,12 +238,12 @@ fun SettingsScreen(
                     Text(text = i18n("settings_hide_dosage_dots"))
                     Switch(
                         checked = areDosageDotsHidden,
-                        onCheckedChange = saveDosageDotsAreHidden)
-
+                        onCheckedChange = saveDosageDotsAreHidden
+                    )
                 }
 
                 HorizontalDivider()
-                
+
                 Row(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -266,8 +252,8 @@ fun SettingsScreen(
                     Text(text = i18n("settings_OpenLinkInBrowser"))
                     Switch(
                         checked = isOpenLinkInBrowser,
-                        onCheckedChange = saveOpenLinkInBrowser)
-
+                        onCheckedChange = saveOpenLinkInBrowser
+                    )
                 }
 
                 HorizontalDivider()
@@ -312,7 +298,11 @@ fun SettingsScreen(
                             TextButton(
                                 onClick = {
                                     isShowingExportDialog = false
-                                    launcherExport.launch("Journal ${Instant.now().getStringOfPattern("dd MMM yyyy")}.json")
+                                    launcherExport.launch(
+                                        "Journal ${Instant.now().getStringOfPattern(
+                                            "dd MMM yyyy"
+                                        )}.json"
+                                    )
                                 }
                             ) {
                                 Text(i18n("common_export"))
@@ -336,7 +326,9 @@ fun SettingsScreen(
                     isShowingImportDialog = true
                 }
                 val launcherImport =
-                    rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri ->
+                    rememberLauncherForActivityResult(
+                        contract = ActivityResultContracts.GetContent()
+                    ) { uri ->
                         if (uri != null) {
                             importFile(uri)
                         }
@@ -416,7 +408,6 @@ fun SettingsScreen(
             }
 
             CardWithTitle(title = i18n("settings_extension_pack"), innerPaddingHorizontal = 0.dp) {
-
                 SettingsButton(
 
                     imageVector = Icons.Outlined.Extension,
@@ -424,17 +415,17 @@ fun SettingsScreen(
                     text = i18n("settings_extension_import")
 
                 ) {
-
                     navigateToExtensionPack()
-
                 }
-
             }
 
             val uriHandler = LocalUriHandler.current
 
             CardWithTitle(title = i18n("settings_feedback"), innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = i18n("settings_faq")) {
+                SettingsButton(
+                    imageVector = Icons.Outlined.QuestionAnswer,
+                    text = i18n("settings_faq")
+                ) {
                     navigateToFAQ()
                 }
                 HorizontalDivider()
@@ -442,15 +433,23 @@ fun SettingsScreen(
                     imageVector = Icons.AutoMirrored.Outlined.ContactSupport,
                     text = i18n("settings_feedback_button")
                 ) {
-                    uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual/issues")
+                    uriHandler.openUri(
+                        "https://github.com/LoliLin/journal-android-multilingual/issues"
+                    )
                 }
                 HorizontalDivider()
-                SettingsButton(imageVector = Icons.Outlined.VolunteerActivism, text = i18n("settings_donate")) {
+                SettingsButton(
+                    imageVector = Icons.Outlined.VolunteerActivism,
+                    text = i18n("settings_donate")
+                ) {
                     navigateToDonate()
                 }
             }
             CardWithTitle(title = i18n("settings_app"), innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.Code, text = i18n("settings_source_code")) {
+                SettingsButton(
+                    imageVector = Icons.Outlined.Code,
+                    text = i18n("settings_source_code")
+                ) {
                     uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual")
                 }
                 HorizontalDivider()
@@ -466,7 +465,12 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 Text(
-                    text = i18n("settings_version_with_value", mapOf("version" to com.isaakhanimann.journal.ui.VERSION_NAME)),
+                    text = i18n(
+                        "settings_version_with_value",
+                        mapOf(
+                            "version" to com.isaakhanimann.journal.ui.VERSION_NAME
+                        )
+                    ),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
@@ -482,7 +486,7 @@ private fun LanguageSelectionDialog(
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     onSelectLanguage: (String?) -> Unit,
-    onDismiss: () -> Unit,
+    onDismiss: () -> Unit
 ) {
     val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
     AlertDialog(
@@ -530,7 +534,6 @@ private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () ->
 
 const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 
-
 @Composable
 fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) {
     TextButton(
@@ -552,21 +555,17 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
 fun OwnerProfileCard(
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
-    onUserNameChanged: (String) -> Unit,   // 调用 ViewModel/DataStore 更新用户名
+    onUserNameChanged: (String) -> Unit, // 调用 ViewModel/DataStore 更新用户名
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
 
     var avatarRefresh by remember { mutableStateOf(0) }
 
-
-
     // 当前头像文件
 
     val avatarFile = remember(ownerUserName, avatarRefresh) {
-
         AvatarUtil.getUserAvatar(context, ownerUserName)
-
     }
 
     // 控制改名对话框
@@ -581,9 +580,7 @@ fun OwnerProfileCard(
         userName = ownerUserName,
 
         onAvatarSaved = {
-
             avatarRefresh++
-
         }
 
     )
@@ -647,9 +644,9 @@ fun OwnerProfileCard(
                 if (avatarFile != null) {
                     AsyncImage(
                         model = ImageRequest.Builder(context)
-                               .data(avatarFile)
-                               .setParameter("version", avatarRefresh) // ✨ 强行改变请求特征，让 Coil 缓存失效并重新加载
-                               .build(),
+                            .data(avatarFile)
+                            .setParameter("version", avatarRefresh) // ✨ 强行改变请求特征，让 Coil 缓存失效并重新加载
+                            .build(),
                         contentDescription = "头像",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
@@ -677,9 +674,9 @@ fun OwnerProfileCard(
                     .padding(horizontal = 8.dp),
                 textAlign = TextAlign.Center
             )
-            if (achievements.isNotEmpty()){
+            if (achievements.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(8.dp))
-                
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center

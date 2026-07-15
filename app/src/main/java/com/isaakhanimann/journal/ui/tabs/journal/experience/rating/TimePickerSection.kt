@@ -39,14 +39,11 @@ fun TimePickerSectionPreview() {
 }
 
 @Composable
-fun TimePickerSection(
-    selectedTime: LocalDateTime,
-    onTimeChange: (LocalDateTime) -> Unit,
-) {
+fun TimePickerSection(selectedTime: LocalDateTime, onTimeChange: (LocalDateTime) -> Unit) {
     CardWithTitle(title = i18n("common_time")) {
         Column(
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             DatePickerButton(
                 localDateTime = selectedTime,

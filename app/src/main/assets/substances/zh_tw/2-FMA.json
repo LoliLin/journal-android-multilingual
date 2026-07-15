@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種長效型興奮劑，常與利斯德安非他命相提並論。被認為缺乏安非他命部分具神經毒性的代謝產物。功能性極強，因此常被用於學術研究。",
   "localizedName": "2-FMA"
 }

@@ -31,5 +31,5 @@ data class CustomSubstance(
     val id: Int = 0,
     val name: String,
     var units: String,
-    var description: String,
+    var description: String
 )

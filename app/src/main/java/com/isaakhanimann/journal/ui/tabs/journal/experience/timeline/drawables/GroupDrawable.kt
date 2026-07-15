@@ -33,7 +33,7 @@ class GroupDrawable(
     val color: AdaptiveColor,
     roaDuration: RoaDuration?,
     weightedLines: List<WeightedLine>
-): TimelineDrawable {
+) : TimelineDrawable {
     private val timelineDrawables: List<TimelineDrawable>
 
     init {
@@ -44,51 +44,70 @@ class GroupDrawable(
             val onsetComeupPeakTotals = weightedLines.mapNotNull {
                 roaDuration?.toOnsetComeupPeakTotalTimeline(
                     peakAndTotalWeight = it.horizontalWeight,
-                    ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime))
+                    ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                        it.startTime
+                    )
+                )
             }
             onsetComeupPeakTotals.ifEmpty {
                 val onsetComeupTotals = weightedLines.mapNotNull {
                     roaDuration?.toOnsetComeupTotalTimeline(
                         totalWeight = it.horizontalWeight,
-                        ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                        ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                            it.startTime
+                        )
                     )
                 }
                 onsetComeupTotals.ifEmpty {
                     val onsetTotals = weightedLines.mapNotNull {
                         roaDuration?.toOnsetTotalTimeline(
                             totalWeight = it.horizontalWeight,
-                            ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                            ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                it.startTime
+                            )
                         )
                     }
                     onsetTotals.ifEmpty {
                         val totals = weightedLines.mapNotNull {
                             roaDuration?.toTotalTimeline(
                                 totalWeight = it.horizontalWeight,
-                                ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                                ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                    it.startTime
+                                )
                             )
                         }
                         totals.ifEmpty {
                             val onsetComeupPeaks = weightedLines.mapNotNull {
                                 roaDuration?.toOnsetComeupPeakTimeline(
                                     peakWeight = it.horizontalWeight,
-                                    ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                                    ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                        it.startTime
+                                    )
                                 )
                             }
                             onsetComeupPeaks.ifEmpty {
                                 val onsetComeups = weightedLines.mapNotNull {
                                     roaDuration?.toOnsetComeupTimeline(
-                                        ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                                        ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                            it.startTime
+                                        )
                                     )
                                 }
                                 onsetComeups.ifEmpty {
                                     val onsets = weightedLines.mapNotNull {
                                         roaDuration?.toOnsetTimeline(
-                                            ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime)
+                                            ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                                it.startTime
+                                            )
                                         )
                                     }
                                     onsets.ifEmpty {
                                         weightedLines.map {
-                                            NoTimeline(ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(it.startTime))
+                                            NoTimeline(
+                                                ingestionTimeRelativeToStartInSeconds = getDistanceFromStartGraphInSeconds(
+                                                    it.startTime
+                                                )
+                                            )
                                         }
                                     }
                                 }
@@ -100,11 +119,8 @@ class GroupDrawable(
         }
     }
 
-
-
-    private fun getDistanceFromStartGraphInSeconds(time: Instant): Float {
-        return Duration.between(startTimeGraph, time).seconds.toFloat()
-    }
+    private fun getDistanceFromStartGraphInSeconds(time: Instant): Float =
+        Duration.between(startTimeGraph, time).seconds.toFloat()
 
     override fun drawTimeLine(
         drawScope: DrawScope,

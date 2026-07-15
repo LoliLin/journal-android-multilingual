@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种解离性药物，效力较MXE弱且致幻性较低，但其他特性相似。据报告，低剂量使用时会产生轻微的兴奋剂效果。",
   "localizedName": "依芬尼定"
 }

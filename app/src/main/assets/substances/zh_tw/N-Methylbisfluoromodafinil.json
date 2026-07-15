@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "輕微成癮性，濫用潛力低",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "localizedName": "N-甲基雙氟莫達非尼"
 }

@@ -42,20 +42,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun TimelineScreen(
-    viewModel: TimelineScreenViewModel = hiltViewModel()
-) {
+fun TimelineScreen(viewModel: TimelineScreenViewModel = hiltViewModel()) {
     val timelineScreenModel = TimelineScreenModel(
         title = viewModel.consumerName,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
@@ -80,12 +75,13 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                 .fillMaxSize()
                 .padding(padding)
                 .padding(top = 3.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
             val configuration = LocalConfiguration.current
             val screenWidth = configuration.screenWidthDp.toFloat()
             var canvasWidth by remember { mutableFloatStateOf(screenWidth) }
-            val isOrientationPortrait = LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT
+            val isOrientationPortrait =
+                LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -105,7 +101,9 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                             )
                         }
                     },
-                    dataForTimedNotes = timelineScreenModel.timedNotes.filter { it.isPartOfTimeline }
+                    dataForTimedNotes = timelineScreenModel.timedNotes.filter {
+                        it.isPartOfTimeline
+                    }
                         .map {
                             DataForOneTimedNote(time = it.time, color = it.color)
                         },
@@ -120,7 +118,7 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                 onValueChange = { value ->
                     canvasWidth = value
                 },
-                valueRange = screenWidth..5*screenWidth,
+                valueRange = screenWidth..5 * screenWidth,
                 modifier = Modifier.padding(horizontal = 30.dp)
             )
         }

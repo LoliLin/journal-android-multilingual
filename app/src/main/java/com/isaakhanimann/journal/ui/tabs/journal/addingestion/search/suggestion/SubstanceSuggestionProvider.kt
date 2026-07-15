@@ -52,7 +52,7 @@ class SubstanceSuggestionProvider : PreviewParameterProvider<SubstanceRouteSugge
                     unit = "mg",
                     isEstimate = false,
                     estimatedDoseStandardDeviation = null
-                ),
+                )
             ),
             customUnitDoses = listOf(
                 CustomUnitDose(
@@ -97,7 +97,7 @@ class SubstanceSuggestionProvider : PreviewParameterProvider<SubstanceRouteSugge
                     unit = "mg",
                     isEstimate = false,
                     estimatedDoseStandardDeviation = null
-                ),
+                )
             ),
             customUnitDoses = emptyList(),
             customUnits = emptyList(),
@@ -114,7 +114,7 @@ class SubstanceSuggestionProvider : PreviewParameterProvider<SubstanceRouteSugge
                     unit = "mg",
                     isEstimate = false,
                     estimatedDoseStandardDeviation = null
-                ),
+                )
             ),
             customUnitDoses = emptyList(),
             customUnits = emptyList(),

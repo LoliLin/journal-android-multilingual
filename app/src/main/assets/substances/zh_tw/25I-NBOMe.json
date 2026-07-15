@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "高劑量下可能致命"
-  ],
+  "toxicities": ["高劑量下可能致命"],
   "summary": "一種相對新穎且受歡迎的研究化學物質，具有迷幻特性。使用者回報稱，它會帶來不適的身體負擔與非常強烈的視覺效果，但心理層面的影響比多數迷幻藥較少。由於生產成本遠低於LSD，常被誤當作LSD販售。此物質被認為相當不安全，且在「常規」劑量下已導致多起死亡案例。",
   "localizedName": "25I-NBOMe"
 }

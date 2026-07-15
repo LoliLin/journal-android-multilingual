@@ -19,10 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Context
-import java.io.File
-import java.io.FileOutputStream
 import android.net.Uri
-import dagger.hilt.android.qualifiers.ApplicationContext
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
@@ -30,14 +27,15 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.FileOutputStream
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import javax.inject.Inject
-
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
@@ -45,7 +43,7 @@ class SettingsViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val experienceRepository: ExperienceRepository,
     private val fileSystemConnection: FileSystemConnection,
-    private val userPreferences: UserPreferences,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
 
     fun saveDosageDotsAreHidden(value: Boolean) {

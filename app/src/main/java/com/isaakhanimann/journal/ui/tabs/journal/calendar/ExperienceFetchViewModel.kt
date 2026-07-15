@@ -25,14 +25,12 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-
 @HiltViewModel
 class ExperienceFetchViewModel @Inject constructor(
     val experienceRepo: ExperienceRepository,
-    val substanceRepository: SubstanceRepository,
+    val substanceRepository: SubstanceRepository
 ) : ViewModel() {
 
-    suspend fun getExperience(experienceId: Int): ExperienceWithIngestionsCompanionsAndRatings? {
-        return experienceRepo.getExperienceWithIngestionsCompanionsAndRatings(experienceId)
-    }
+    suspend fun getExperience(experienceId: Int): ExperienceWithIngestionsCompanionsAndRatings? =
+        experienceRepo.getExperienceWithIngestionsCompanionsAndRatings(experienceId)
 }

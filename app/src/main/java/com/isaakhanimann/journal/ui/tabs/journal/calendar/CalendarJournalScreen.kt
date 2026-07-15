@@ -62,15 +62,15 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.getLocalizedPatternString
 import com.kizitonwose.calendar.compose.VerticalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
-import com.isaakhanimann.journal.ui.utils.getLocalizedPatternString
+import kotlinx.coroutines.launch
 
 @Preview
 @Composable
@@ -84,9 +84,7 @@ fun CalendarJournalScreenPreview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CalendarJournalScreen(
-    navigateToExperiencePopNothing: (experienceId: Int) -> Unit,
-) {
+fun CalendarJournalScreen(navigateToExperiencePopNothing: (experienceId: Int) -> Unit) {
     val currentMonth = remember { YearMonth.now() }
     val startMonth = remember { currentMonth.minusYears(20) }
     val endMonth = remember { currentMonth.plusMonths(10) }
@@ -113,7 +111,7 @@ fun CalendarJournalScreen(
                     }
                 }
             )
-        },
+        }
     ) { padding ->
         val sheetState = rememberModalBottomSheetState()
         var showBottomSheet by remember { mutableStateOf(false) }
@@ -137,7 +135,8 @@ fun CalendarJournalScreen(
                                 showBottomSheet = false
                             }
                         }
-                    })
+                    }
+                )
             }
         }
         VerticalCalendar(
@@ -243,7 +242,10 @@ fun Day(
             aspectRatioModifier
         }
         val now = LocalDate.now()
-        val isToday = day.date.year == now.year && day.date.monthValue == now.monthValue && day.date.dayOfMonth == now.dayOfMonth
+        val isToday =
+            day.date.year == now.year &&
+                day.date.monthValue == now.monthValue &&
+                day.date.dayOfMonth == now.dayOfMonth
         Box(
             modifier = modifier,
             contentAlignment = Alignment.Center
@@ -261,7 +263,7 @@ fun Day(
                     )
                 } else {
                     Text(
-                        text = day.date.dayOfMonth.toString(),
+                        text = day.date.dayOfMonth.toString()
                     )
                 }
                 HorizontalColorRectangle(
@@ -277,10 +279,7 @@ fun Day(
 }
 
 @Composable
-fun HorizontalColorRectangle(
-    modifier: Modifier,
-    colors: List<AdaptiveColor>
-) {
+fun HorizontalColorRectangle(modifier: Modifier, colors: List<AdaptiveColor>) {
     val isDarkTheme = isSystemInDarkTheme()
     if (colors.size >= 2) {
         val brush = remember(colors) {
@@ -289,14 +288,14 @@ fun HorizontalColorRectangle(
         }
         Box(
             modifier = modifier
-                .background(brush),
+                .background(brush)
         ) {}
     } else if (colors.size == 1) {
         Box(
             modifier = modifier
                 .background(
                     colors.first().getComposeColor(isDarkTheme)
-                ),
+                )
         ) {}
     } else {
         Box(

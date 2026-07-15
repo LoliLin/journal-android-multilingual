@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "大剂量使用时可能致命"
-  ],
+  "toxicities": ["大剂量使用时可能致命"],
   "summary": "致幻性苯乙胺类物质，在微克级低剂量下具有活性，但口服无效。",
   "localizedName": "25B-NBOMe"
 }

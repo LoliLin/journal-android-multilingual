@@ -29,17 +29,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.ui.tabs.journal.components.roundToOneDecimal
-import kotlinx.coroutines.delay
 import java.time.Duration
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import kotlin.math.absoluteValue
+import kotlinx.coroutines.delay
 
 @Composable
-fun TimeRelativeToNowText(
-    time: Instant,
-    style: TextStyle = MaterialTheme.typography.bodyMedium
-) {
+fun TimeRelativeToNowText(time: Instant, style: TextStyle = MaterialTheme.typography.bodyMedium) {
     val now: MutableState<Instant> = remember { mutableStateOf(Instant.now()) }
     LaunchedEffect(key1 = "updateTime") {
         while (true) {

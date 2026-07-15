@@ -1,8 +1,5 @@
 {
   "addictionPotential": "尚未发现具有成瘾性",
-  "toxicities": [
-    "具有神经毒性",
-    "极高剂量下可能致命"
-  ],
+  "toxicities": ["具有神经毒性", "极高剂量下可能致命"],
   "localizedName": "肉豆蔻醚"
 }

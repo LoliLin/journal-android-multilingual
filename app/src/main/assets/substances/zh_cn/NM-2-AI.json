@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "属于氨基茚满类兴奋剂。与其同类药物2-AI非常相似，但药效较低，持续时间更长。",
   "localizedName": "NM-2-AI"
 }

@@ -35,8 +35,8 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.BulletPoints
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
@@ -49,9 +49,9 @@ fun ExplainTimelineScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("timeline_info_title")) },
+                title = { Text(i18n("timeline_info_title")) }
             )
-        },
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -75,7 +75,7 @@ fun ExplainTimelineScreen() {
                         i18n("timeline_assumption_bullet1"),
                         i18n("timeline_assumption_bullet2"),
                         i18n("timeline_assumption_bullet3"),
-                        i18n("timeline_assumption_bullet4"),
+                        i18n("timeline_assumption_bullet4")
                     )
                 )
             }
@@ -87,7 +87,7 @@ fun ExplainTimelineScreen() {
                         i18n("timeline_understanding_bullet3"),
                         i18n("timeline_understanding_bullet4"),
                         i18n("timeline_understanding_bullet5"),
-                        i18n("timeline_understanding_bullet6"),
+                        i18n("timeline_understanding_bullet6")
                     )
                 )
             }
@@ -114,4 +114,3 @@ fun ExplainTimelineScreen() {
         }
     }
 }
-

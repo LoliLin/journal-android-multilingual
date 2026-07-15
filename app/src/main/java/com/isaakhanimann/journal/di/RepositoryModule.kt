@@ -36,9 +36,7 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindSubstanceParser(
-        substanceParser: SubstanceParser
-    ): SubstanceParserInterface
+    abstract fun bindSubstanceParser(substanceParser: SubstanceParser): SubstanceParserInterface
 
     @Binds
     @Singleton

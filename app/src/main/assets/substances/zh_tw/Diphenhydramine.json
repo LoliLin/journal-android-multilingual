@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "長期使用會產生依賴性",
-  "toxicities": [
-    "接近或超過2克時致命"
-  ],
+  "toxicities": ["接近或超過2克時致命"],
   "summary": "一種抗組織胺藥物，小劑量服用可緩解過敏與失眠，大劑量則會產生譫妄作用，甚至使人保持清醒。通常使用者回報此藥物的「快感」屬於煩躁不安型，可能引發與現實難以區分的幻覺。",
   "localizedName": "苯海拉明"
 }

@@ -67,10 +67,7 @@ fun AddRatingScreenPreview() {
 }
 
 @Composable
-fun AddRatingScreen(
-    viewModel: AddRatingViewModel = hiltViewModel(),
-    navigateBack: () -> Unit
-) {
+fun AddRatingScreen(viewModel: AddRatingViewModel = hiltViewModel(), navigateBack: () -> Unit) {
     AddRatingScreen(
         onDone = {
             viewModel.onDoneTap()
@@ -82,7 +79,7 @@ fun AddRatingScreen(
         onRatingChange = viewModel::onChangeRating,
         canAddOverallRating = !viewModel.isThereAlreadyAnOverallRatingFlow.collectAsState().value,
         isOverallRating = viewModel.isThisOverallRating,
-        onChangeIsOverallRating = {viewModel.isThisOverallRating = it}
+        onChangeIsOverallRating = { viewModel.isThisOverallRating = it }
     )
 }
 
@@ -101,7 +98,7 @@ fun AddRatingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(i18n("add_shulgin_rating")) },
+                title = { Text(i18n("add_shulgin_rating")) }
             )
         },
         floatingActionButton = {
@@ -116,9 +113,10 @@ fun AddRatingScreen(
         ) {
             Spacer(modifier = Modifier.height(3.dp))
             if (canAddOverallRating) {
-                ElevatedCard(modifier = Modifier
-                    .padding(vertical = 5.dp)
-                    .fillMaxWidth()
+                ElevatedCard(
+                    modifier = Modifier
+                        .padding(vertical = 5.dp)
+                        .fillMaxWidth()
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,

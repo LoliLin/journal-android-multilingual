@@ -1,7 +1,5 @@
 {
   "addictionPotential": "低滥用潜力",
-  "toxicities": [
-    "耐受性良好，且几乎没有毒性。"
-  ],
+  "toxicities": ["耐受性良好，且几乎没有毒性。"],
   "localizedName": "大麻二酚"
 }

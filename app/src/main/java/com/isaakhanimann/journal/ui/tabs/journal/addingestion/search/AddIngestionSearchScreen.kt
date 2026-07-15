@@ -82,7 +82,15 @@ fun AddIngestionSearchScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
     navigateToDose: (substanceName: String, route: AdministrationRoute) -> Unit,
     navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
-    navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
+    navigateToChooseTime: (
+        substanceName: String,
+        route: AdministrationRoute,
+        dose: Double?,
+        units: String?,
+        isEstimate: Boolean,
+        estimatedDoseStandardDeviation: Double?,
+        customUnitId: Int?
+    ) -> Unit,
     navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
     navigateToAddCustomSubstanceScreen: () -> Unit,
@@ -118,7 +126,15 @@ fun AddIngestionSearchScreen(
     navigateToCheckSaferUse: (substanceName: String) -> Unit,
     navigateToDose: (substanceName: String, route: AdministrationRoute) -> Unit,
     navigateToCustomDose: (customSubstanceId: Int, route: AdministrationRoute) -> Unit,
-    navigateToChooseTime: (substanceName: String, route: AdministrationRoute, dose: Double?, units: String?, isEstimate: Boolean, estimatedDoseStandardDeviation: Double?, customUnitId: Int?) -> Unit,
+    navigateToChooseTime: (
+        substanceName: String,
+        route: AdministrationRoute,
+        dose: Double?,
+        units: String?,
+        isEstimate: Boolean,
+        estimatedDoseStandardDeviation: Double?,
+        customUnitId: Int?
+    ) -> Unit,
     navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
     navigateToAddCustomSubstanceScreen: () -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
@@ -148,7 +164,7 @@ fun AddIngestionSearchScreen(
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.17f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             TextField(
                 value = searchText,
@@ -165,7 +181,7 @@ fun AddIngestionSearchScreen(
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = i18n("common_search"),
+                        contentDescription = i18n("common_search")
                     )
                 },
                 trailingIcon = {
@@ -176,7 +192,7 @@ fun AddIngestionSearchScreen(
                             }) {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = i18n("common_close"),
+                                    contentDescription = i18n("common_close")
                                 )
                             }
                         }
@@ -186,7 +202,7 @@ fun AddIngestionSearchScreen(
                 keyboardOptions = KeyboardOptions.Default.copy(
                     autoCorrectEnabled = false,
                     imeAction = ImeAction.Done,
-                    capitalization = KeyboardCapitalization.Words,
+                    capitalization = KeyboardCapitalization.Words
                 ),
                 singleLine = true
             )
@@ -215,16 +231,19 @@ fun AddIngestionSearchScreen(
                     }
                 }
                 itemsIndexed(filteredCustomSubstances) { index, customSubstance ->
-                    SubstanceRowAddIngestion(substanceModel = SubstanceModel(
-                        name = customSubstance.name,
-                        displayName = customSubstance.name,
-                        commonNames = emptyList(),
-                        categories = emptyList(),
-                        hasSaferUse = false,
-                        hasInteractions = false
-                    ), onTap = {
-                        navigateToCustomSubstanceChooseRoute(customSubstance.id)
-                    })
+                    SubstanceRowAddIngestion(
+                        substanceModel = SubstanceModel(
+                            name = customSubstance.name,
+                            displayName = customSubstance.name,
+                            commonNames = emptyList(),
+                            categories = emptyList(),
+                            hasSaferUse = false,
+                            hasInteractions = false
+                        ),
+                        onTap = {
+                            navigateToCustomSubstanceChooseRoute(customSubstance.id)
+                        }
+                    )
                     if (index < filteredCustomSubstances.size - 1) {
                         HorizontalDivider()
                     }
@@ -237,7 +256,8 @@ fun AddIngestionSearchScreen(
                 itemsIndexed(filteredCustomUnits) { index, customUnit ->
                     CustomUnitRowAddIngestion(
                         customUnit = customUnit,
-                        navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose)
+                        navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose
+                    )
                     if (index < filteredCustomUnits.size - 1) {
                         HorizontalDivider()
                     }
@@ -289,9 +309,11 @@ fun AddIngestionSearchScreen(
 
 @Composable
 fun SectionHeader(title: String) {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .background(MaterialTheme.colorScheme.background)) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
         Surface(
             color = MaterialTheme.colorScheme.secondaryContainer,
             modifier = Modifier.fillMaxWidth()
@@ -306,7 +328,6 @@ fun SectionHeader(title: String) {
         }
     }
 }
-
 
 @Composable
 fun ColorCircle(adaptiveColor: AdaptiveColor) {

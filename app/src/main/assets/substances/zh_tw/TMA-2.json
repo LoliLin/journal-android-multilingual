@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "三甲氧基安非他命-2，一種由亞歷山大·舒爾金首次合成的迷幻安非他命與興奮劑。此化合物較為罕見，其活性與其他迷幻安非他命相似。人類使用歷史簡述。",
   "localizedName": "TMA-2"
 }

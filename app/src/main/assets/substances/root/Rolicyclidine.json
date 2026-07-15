@@ -1,8 +1,6 @@
 {
   "name": "Rolicyclidine",
-  "commonNames": [
-    "PCPy"
-  ],
+  "commonNames": ["PCPy"],
   "url": "https://psychonautwiki.org/wiki/Rolicyclidine",
   "isApproved": true,
   "tolerance": {
@@ -12,9 +10,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "dissociative|dissociatives"
-  ],
+  "crossTolerances": ["dissociative|dissociatives"],
   "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
   "toxicities": [],
   "categories": [
@@ -45,10 +41,7 @@
       "SSRIs",
       "DXM"
     ],
-    "uncertain": [
-      "MXE",
-      "Caffeine"
-    ]
+    "uncertain": ["MXE", "Caffeine"]
   },
   "roas": [
     {

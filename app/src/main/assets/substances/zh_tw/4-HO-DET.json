@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種由阿爾伯特·霍夫曼首次合成的稀有化合物，亦稱為乙辛。其結構與4-HO-MET（美托辛）及裸蓋菇素（4-HO-DMT）相關，具有類似的迷幻效果，但人類使用記錄極少。可能與蘑菇效果相似，且具潛在的刺激性。",
   "localizedName": "4-HO-DET"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "长期使用会产生依赖性，且具有较高的滥用潜力。",
-  "toxicities": [
-    "低毒性"
-  ],
+  "toxicities": ["低毒性"],
   "summary": "一种由帽柱木叶制成的药物，这种植物与咖啡有亲缘关系。低剂量时具有兴奋作用，高剂量时则产生阿片类效果。频繁大量使用会导致身体成瘾和戒断症状。",
   "localizedName": "卡痛"
 }

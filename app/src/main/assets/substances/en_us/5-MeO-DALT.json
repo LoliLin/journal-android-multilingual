@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "A strange drug with an unknown mechanism of action. Some psychedelic effects alongside some effects non-characteristic of psychedelics like appetite enhancement. Reported as having rapid, intense and short acting entheogenic effects.",
   "localizedName": "5-MeO-DALT"
 }

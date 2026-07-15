@@ -7,10 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown",
-    "extremely low toxicity"
-  ],
+  "toxicities": ["toxic dose is unknown", "extremely low toxicity"],
   "summary": "ALD-52, or N-acetyl-LSD is a less common chemical analogue of LSD, first synthesised by Albert Hoffman. It was famously implicated in the 'Orange Sunshine' trial. A psychedelic lysergamide, this compound exhibits similar properties to LSD, and is thought to be a pro-drug for LSD.",
   "localizedName": "ALD-52"
 }

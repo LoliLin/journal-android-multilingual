@@ -52,20 +52,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
-import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
 import com.isaakhanimann.journal.ui.tabs.search.substance.InteractionExplanationButton
-import com.isaakhanimann.journal.ui.tabs.search.substance.SubstanceWithCategoriesPreviewProvider
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-
 
 @Composable
 fun CheckInteractionsScreen(
@@ -110,7 +105,18 @@ fun CheckInteractionsScreen(
     getSubstanceDisplayName: (substance: String) -> String
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(i18n("check_interactions_title", mapOf("name" to getSubstanceDisplayName(substanceName)))) }) },
+        topBar = {
+            TopAppBar(title = {
+                Text(
+                    i18n(
+                        "check_interactions_title",
+                        mapOf(
+                            "name" to getSubstanceDisplayName(substanceName)
+                        )
+                    )
+                )
+            })
+        },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -121,10 +127,13 @@ fun CheckInteractionsScreen(
             } else {
                 LinearProgressIndicator(
                     progress = { 0.33f },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
-            if (dangerousInteractions.isEmpty() && unsafeInteractions.isEmpty() && uncertainInteractions.isEmpty()) {
+            if (dangerousInteractions.isEmpty() &&
+                unsafeInteractions.isEmpty() &&
+                uncertainInteractions.isEmpty()
+            ) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
@@ -136,7 +145,8 @@ fun CheckInteractionsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            horizontal = horizontalPadding, vertical = 10.dp
+                            horizontal = horizontalPadding,
+                            vertical = 10.dp
                         )
                 ) {
                     val verticalPaddingInside = 4.dp
@@ -146,23 +156,25 @@ fun CheckInteractionsScreen(
                                 InteractionRow(
                                     text = getSubstanceDisplayName(it),
                                     interactionType = InteractionType.DANGEROUS,
-                                    verticalPaddingInside = verticalPaddingInside,
+                                    verticalPaddingInside = verticalPaddingInside
                                 )
                             }
                         }
                         if (unsafeInteractions.isNotEmpty()) {
                             items(unsafeInteractions) {
                                 InteractionRow(
-                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNSAFE,
-                                    verticalPaddingInside = verticalPaddingInside,
+                                    text = getSubstanceDisplayName(it),
+                                    interactionType = InteractionType.UNSAFE,
+                                    verticalPaddingInside = verticalPaddingInside
                                 )
                             }
                         }
                         if (uncertainInteractions.isNotEmpty()) {
                             items(uncertainInteractions) {
                                 InteractionRow(
-                                    text = getSubstanceDisplayName(it), interactionType = InteractionType.UNCERTAIN,
-                                    verticalPaddingInside = verticalPaddingInside,
+                                    text = getSubstanceDisplayName(it),
+                                    interactionType = InteractionType.UNCERTAIN,
+                                    verticalPaddingInside = verticalPaddingInside
                                 )
                             }
                         }
@@ -177,9 +189,7 @@ fun CheckInteractionsScreen(
                 AlertDialog(
                     onDismissRequest = dismissAlert,
                     title = {
-
                         val title = when (alertInteractionType) {
-
                             InteractionType.DANGEROUS -> i18n("interaction_dangerous_alert")
 
                             InteractionType.UNSAFE -> i18n("interaction_unsafe_alert")
@@ -187,12 +197,11 @@ fun CheckInteractionsScreen(
                             InteractionType.UNCERTAIN -> i18n("interaction_uncertain_alert")
 
                             else -> i18n("interaction_alert_title")
-
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 imageVector = Icons.Default.Warning,
-                                contentDescription = i18n("interaction_warning"),
+                                contentDescription = i18n("interaction_warning")
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(text = title, style = MaterialTheme.typography.titleLarge)
@@ -247,7 +256,7 @@ fun InteractionRow(
                 text = text,
                 textAlign = TextAlign.Center,
                 color = Color.Black,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.weight(1f))
             LazyRow {
@@ -255,7 +264,7 @@ fun InteractionRow(
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
                         contentDescription = i18n("interaction_warning"),
-                        tint = Color.Black,
+                        tint = Color.Black
                     )
                 }
             }

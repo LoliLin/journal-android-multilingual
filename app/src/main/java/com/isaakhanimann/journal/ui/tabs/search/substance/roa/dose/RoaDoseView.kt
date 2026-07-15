@@ -26,19 +26,14 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 
 @Preview(showBackground = true)
 @Composable
-fun RoaDoseViewPreview(
-    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose,
-) {
+fun RoaDoseViewPreview(@PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose) {
     RoaDoseView(
-        roaDose = roaDose,
+        roaDose = roaDose
     )
 }
 
 @Composable
-fun RoaDoseView(
-    roaDose: RoaDose,
-    modifier: Modifier = Modifier
-) {
+fun RoaDoseView(roaDose: RoaDose, modifier: Modifier = Modifier) {
     DoseClassificationRow(
         modifier = modifier,
         lightMin = roaDose.lightMin,

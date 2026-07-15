@@ -39,14 +39,19 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.ESTIMATED_DOSE_STAND
 import com.isaakhanimann.journal.ui.main.navigation.routers.IS_ESTIMATE_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.UNITS_KEY
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
@@ -55,11 +60,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 
 const val hourLimitToSeparateIngestions: Long = 12
 
@@ -69,7 +69,7 @@ class ChooseTimeViewModel @Inject constructor(
     private val userPreferences: UserPreferences,
     state: SavedStateHandle
 ) : ViewModel() {
-    var substanceName  by mutableStateOf("")
+    var substanceName by mutableStateOf("")
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
         scope = viewModelScope,
@@ -81,10 +81,11 @@ class ChooseTimeViewModel @Inject constructor(
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
     var consumerName by mutableStateOf("")
 
-
     private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
 
-    val sortedConsumerNamesFlow = experienceRepo.getSortedIngestions(limit = 200).map { ingestions ->
+    val sortedConsumerNamesFlow = experienceRepo.getSortedIngestions(
+        limit = 200
+    ).map { ingestions ->
         return@map ingestions.mapNotNull { it.consumerName }.distinct()
     }.stateIn(
         initialValue = emptyList(),
@@ -105,7 +106,8 @@ class ChooseTimeViewModel @Inject constructor(
                     selectedInstant.minus(hourLimitToSeparateIngestions, ChronoUnit.HOURS)
                 val selectedDatePlusLimit =
                     selectedInstant.plus(hourLimitToSeparateIngestions, ChronoUnit.HOURS)
-                return@firstOrNull selectedDateMinusLimit < lastIngestionTime && selectedDatePlusLimit > firstIngestionTime
+                return@firstOrNull selectedDateMinusLimit < lastIngestionTime &&
+                    selectedDatePlusLimit > firstIngestionTime
             }
         }
 
@@ -115,7 +117,6 @@ class ChooseTimeViewModel @Inject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
-
 
     val userWantsToContinueSameExperienceFlow = MutableStateFlow(true)
 
@@ -189,7 +190,8 @@ class ChooseTimeViewModel @Inject constructor(
         substanceName = state.get<String>(SUBSTANCE_NAME_KEY) ?: ""
         administrationRoute = AdministrationRoute.valueOf(routeString)
         dose = state.get<String>(DOSE_KEY)?.toDoubleOrNull()
-        estimatedDoseStandardDeviation = state.get<String>(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
+        estimatedDoseStandardDeviation =
+            state.get<String>(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
         customUnitId = state.get<String>(CUSTOM_UNIT_ID_KEY)?.toIntOrNull()
         units = state.get<String>(UNITS_KEY)?.let {
             if (it == "null") {
@@ -201,8 +203,10 @@ class ChooseTimeViewModel @Inject constructor(
         isEstimate = state.get<Boolean>(IS_ESTIMATE_KEY)!!
         val customSubstanceId = state.get<String>(CUSTOM_SUBSTANCE_ID_KEY)?.toIntOrNull()
         viewModelScope.launch {
-            if (customSubstanceId!=null) {
-                val customSubstance = experienceRepo.getCustomSubstanceFlow(customSubstanceId).firstOrNull()
+            if (customSubstanceId != null) {
+                val customSubstance = experienceRepo.getCustomSubstanceFlow(
+                    customSubstanceId
+                ).firstOrNull()
                 if (customSubstance != null) {
                     substanceName = customSubstance.name
                 }
@@ -214,7 +218,10 @@ class ChooseTimeViewModel @Inject constructor(
                 isShowingColorPicker = true
                 val alreadyUsedColors = allCompanions.map { it.color }
                 val otherColors = AdaptiveColor.values().filter { !alreadyUsedColors.contains(it) }
-                selectedColor = otherColors.filter { it.isPreferred }.randomOrNull() ?: otherColors.randomOrNull() ?: AdaptiveColor.values().random()
+                selectedColor =
+                    otherColors.filter { it.isPreferred }.randomOrNull()
+                        ?: otherColors.randomOrNull()
+                        ?: AdaptiveColor.values().random()
             } else {
                 selectedColor = thisCompanion.color
             }

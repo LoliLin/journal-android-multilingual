@@ -21,23 +21,18 @@ package com.isaakhanimann.journal.data.substances.classes
 import com.isaakhanimann.journal.ui.tabs.search.CategoryModel
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 
-data class SubstanceWithCategories(
-    val substance: Substance, val categories: List<Category>
-
-
-) {
-    fun toSubstanceModel(): SubstanceModel {
-        return SubstanceModel(
-            name = substance.name,
-            displayName = substance.displayName,
-            commonNames = substance.commonNames,
-            categories = categories.map { category ->
-                CategoryModel(
-                    rawName = category.name, color = category.color
-                )
-            },
-            hasSaferUse = substance.saferUse.isNotEmpty(),
-            hasInteractions = substance.hasInteractions
-        )
-    }
+data class SubstanceWithCategories(val substance: Substance, val categories: List<Category>) {
+    fun toSubstanceModel(): SubstanceModel = SubstanceModel(
+        name = substance.name,
+        displayName = substance.displayName,
+        commonNames = substance.commonNames,
+        categories = categories.map { category ->
+            CategoryModel(
+                rawName = category.name,
+                color = category.color
+            )
+        },
+        hasSaferUse = substance.saferUse.isNotEmpty(),
+        hasInteractions = substance.hasInteractions
+    )
 }

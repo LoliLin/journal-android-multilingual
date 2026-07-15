@@ -1,9 +1,6 @@
 {
   "name": "Efavirenz",
-  "commonNames": [
-    "Efavirenz",
-    "Sustiva"
-  ],
+  "commonNames": ["Efavirenz", "Sustiva"],
   "url": "https://psychonautwiki.org/wiki/Efavirenz",
   "isApproved": true,
   "crossTolerances": [],
@@ -12,17 +9,9 @@
     "low toxicity",
     "may cause liver toxicity at high doses or after chronic use"
   ],
-  "categories": [
-    "psychedelic"
-  ],
+  "categories": ["psychedelic"],
   "interactions": {
-    "dangerous": [
-      "SNRIs",
-      "MAOIs",
-      "Serotonin releasers",
-      "SSRIs",
-      "5-HTP"
-    ],
+    "dangerous": ["SNRIs", "MAOIs", "Serotonin releasers", "SSRIs", "5-HTP"],
     "unsafe": [],
     "uncertain": []
   },

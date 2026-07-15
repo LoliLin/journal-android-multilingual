@@ -32,10 +32,10 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @HiltViewModel
 class EditCustomUnitViewModel @Inject constructor(
@@ -58,7 +58,8 @@ class EditCustomUnitViewModel @Inject constructor(
                 name = customUnit.name
                 unit = customUnit.unit
                 doseText = customUnit.dose?.toReadableString() ?: ""
-                estimatedDoseDeviationText = customUnit.estimatedDoseStandardDeviation?.toReadableString() ?: ""
+                estimatedDoseDeviationText =
+                    customUnit.estimatedDoseStandardDeviation?.toReadableString() ?: ""
                 isEstimate = customUnit.isEstimate
                 isArchived = customUnit.isArchived
                 note = customUnit.note
@@ -102,7 +103,6 @@ class EditCustomUnitViewModel @Inject constructor(
     }
     val estimatedDoseStandardDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
 
-
     var isEstimate by mutableStateOf(false)
     fun onChangeOfIsEstimate(newIsEstimate: Boolean) {
         isEstimate = newIsEstimate
@@ -126,7 +126,8 @@ class EditCustomUnitViewModel @Inject constructor(
                 it.name = name
                 it.isEstimate = isEstimate
                 it.originalUnit = originalUnit
-                it.estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseStandardDeviation else null
+                it.estimatedDoseStandardDeviation =
+                    if (isEstimate) estimatedDoseStandardDeviation else null
                 it.isArchived = isArchived
                 it.unit = unit
                 it.note = note

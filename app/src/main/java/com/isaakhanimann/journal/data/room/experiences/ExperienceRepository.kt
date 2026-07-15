@@ -32,13 +32,13 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanion
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithExperienceAndCustomUnit
 import com.isaakhanimann.journal.ui.tabs.settings.JournalExport
+import java.time.Instant
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
-import java.time.Instant
-import javax.inject.Inject
-import javax.inject.Singleton
 
 @Singleton
 class ExperienceRepository @Inject constructor(private val experienceDao: ExperienceDao) {
@@ -60,9 +60,8 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         substanceCompanion
     )
 
-    suspend fun insertEverything(
-        journalExport: JournalExport
-    ) = experienceDao.insertEverything(journalExport)
+    suspend fun insertEverything(journalExport: JournalExport) =
+        experienceDao.insertEverything(journalExport)
 
     suspend fun insertIngestionAndCompanion(
         ingestion: Ingestion,
@@ -80,14 +79,11 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
     suspend fun deleteEverythingOfExperience(experienceId: Int) =
         experienceDao.deleteEverythingOfExperience(experienceId)
 
-    suspend fun delete(experience: Experience) =
-        experienceDao.delete(experience)
+    suspend fun delete(experience: Experience) = experienceDao.delete(experience)
 
-    suspend fun delete(rating: ShulginRating) =
-        experienceDao.delete(rating)
+    suspend fun delete(rating: ShulginRating) = experienceDao.delete(rating)
 
-    suspend fun delete(timedNote: TimedNote) =
-        experienceDao.delete(timedNote)
+    suspend fun delete(timedNote: TimedNote) = experienceDao.delete(timedNote)
 
     suspend fun delete(experienceWithIngestions: ExperienceWithIngestions) =
         experienceDao.deleteExperienceWithIngestions(experienceWithIngestions)
@@ -135,8 +131,12 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         experienceDao.getSortedLastUsedSubstanceNamesFlow(limit).flowOn(Dispatchers.IO).conflate()
 
     suspend fun getExperience(id: Int): Experience? = experienceDao.getExperience(id)
-    suspend fun getExperienceWithIngestionsCompanionsAndRatings(id: Int): ExperienceWithIngestionsCompanionsAndRatings? = experienceDao.getExperienceWithIngestionsCompanionsAndRatings(id)
-    suspend fun getIngestionsWithCompanions(experienceId: Int) = experienceDao.getIngestionsWithCompanions(experienceId)
+    suspend fun getExperienceWithIngestionsCompanionsAndRatings(
+        id: Int
+    ): ExperienceWithIngestionsCompanionsAndRatings? =
+        experienceDao.getExperienceWithIngestionsCompanionsAndRatings(id)
+    suspend fun getIngestionsWithCompanions(experienceId: Int) =
+        experienceDao.getIngestionsWithCompanions(experienceId)
     suspend fun getRating(id: Int): ShulginRating? = experienceDao.getRating(id)
     suspend fun getTimedNote(id: Int): TimedNote? = experienceDao.getTimedNote(id)
     suspend fun getCustomUnit(id: Int): CustomUnit? = experienceDao.getCustomUnit(id)
@@ -149,20 +149,18 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
             .flowOn(Dispatchers.IO)
             .conflate()
 
-    fun getRatingsFlow(experienceId: Int) =
-        experienceDao.getRatingsFlow(experienceId)
-            .flowOn(Dispatchers.IO)
-            .conflate()
+    fun getRatingsFlow(experienceId: Int) = experienceDao.getRatingsFlow(experienceId)
+        .flowOn(Dispatchers.IO)
+        .conflate()
 
     fun getTimedNotesFlowSorted(experienceId: Int) =
         experienceDao.getTimedNotesFlowSorted(experienceId)
             .flowOn(Dispatchers.IO)
             .conflate()
 
-    fun getExperienceFlow(experienceId: Int) =
-        experienceDao.getExperienceFlow(experienceId)
-            .flowOn(Dispatchers.IO)
-            .conflate()
+    fun getExperienceFlow(experienceId: Int) = experienceDao.getExperienceFlow(experienceId)
+        .flowOn(Dispatchers.IO)
+        .conflate()
 
     suspend fun getLatestIngestionOfEverySubstanceSinceDate(instant: Instant): List<Ingestion> =
         experienceDao.getLatestIngestionOfEverySubstanceSinceDate(instant)
@@ -188,24 +186,20 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
     suspend fun update(substanceCompanion: SubstanceCompanion) =
         experienceDao.update(substanceCompanion)
 
-    suspend fun insert(customSubstance: CustomSubstance) =
-        experienceDao.insert(customSubstance)
+    suspend fun insert(customSubstance: CustomSubstance) = experienceDao.insert(customSubstance)
 
-    suspend fun delete(customSubstance: CustomSubstance) =
-        experienceDao.delete(customSubstance)
+    suspend fun delete(customSubstance: CustomSubstance) = experienceDao.delete(customSubstance)
 
-    suspend fun update(customSubstance: CustomSubstance) =
-        experienceDao.update(customSubstance)
+    suspend fun update(customSubstance: CustomSubstance) = experienceDao.update(customSubstance)
 
     fun getSortedIngestionsWithSubstanceCompanionsFlow(limit: Int) =
         experienceDao.getSortedIngestionsWithSubstanceCompanionsFlow(limit)
             .flowOn(Dispatchers.IO)
             .conflate()
 
-    fun getSortedIngestions(limit: Int) =
-        experienceDao.getSortedIngestions(limit)
-            .flowOn(Dispatchers.IO)
-            .conflate()
+    fun getSortedIngestions(limit: Int) = experienceDao.getSortedIngestions(limit)
+        .flowOn(Dispatchers.IO)
+        .conflate()
 
     fun getSortedIngestionsFlow(substanceName: String, limit: Int) =
         experienceDao.getSortedIngestionsFlow(substanceName, limit)
@@ -225,9 +219,10 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         .flowOn(Dispatchers.IO)
         .conflate()
 
-    fun getUnArchivedCustomUnitsFlow(substanceName: String) = experienceDao.getSortedCustomUnitsFlowBasedOnName(substanceName, false)
-        .flowOn(Dispatchers.IO)
-        .conflate()
+    fun getUnArchivedCustomUnitsFlow(substanceName: String) =
+        experienceDao.getSortedCustomUnitsFlowBasedOnName(substanceName, false)
+            .flowOn(Dispatchers.IO)
+            .conflate()
 
     fun getAllCustomUnitsFlow() = experienceDao.getAllCustomUnitsFlow()
         .flowOn(Dispatchers.IO)

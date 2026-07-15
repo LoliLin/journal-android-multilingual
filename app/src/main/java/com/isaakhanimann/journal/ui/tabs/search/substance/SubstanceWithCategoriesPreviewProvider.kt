@@ -46,7 +46,7 @@ class SubstanceWithCategoriesPreviewProvider : PreviewParameterProvider<Substanc
                             "mg",
                             lightMin = 20.0,
                             commonMin = 40.0,
-                            strongMin  = 90.0,
+                            strongMin = 90.0,
                             heavyMin = 140.0
                         ),
                         roaDuration = RoaDuration(
@@ -92,7 +92,7 @@ class SubstanceWithCategoriesPreviewProvider : PreviewParameterProvider<Substanc
                             "mg",
                             lightMin = 20.0,
                             commonMin = 40.0,
-                            strongMin  = 90.0,
+                            strongMin = 90.0,
                             heavyMin = 140.0
                         ),
                         roaDuration = RoaDuration(
@@ -138,7 +138,7 @@ class SubstanceWithCategoriesPreviewProvider : PreviewParameterProvider<Substanc
                             "mg",
                             lightMin = 20.0,
                             commonMin = 40.0,
-                            strongMin  = 90.0,
+                            strongMin = 90.0,
                             heavyMin = 140.0
                         ),
                         roaDuration = RoaDuration(
@@ -202,7 +202,7 @@ class SubstanceWithCategoriesPreviewProvider : PreviewParameterProvider<Substanc
                         "MDMA",
                         "Stimulants",
                         "Dextromethorphan"
-                    ),
+                    )
                 ),
                 summary = "This is a little summary of the substance.",
                 effectsSummary = "This is a little summary of the effects.",

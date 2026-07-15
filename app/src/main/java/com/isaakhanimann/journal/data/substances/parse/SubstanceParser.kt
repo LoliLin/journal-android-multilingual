@@ -22,58 +22,50 @@ import androidx.compose.ui.graphics.Color
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.*
 import com.isaakhanimann.journal.data.substances.classes.roa.*
-import org.json.JSONArray
-import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
+import org.json.JSONArray
+import org.json.JSONObject
 
 @Singleton
 class SubstanceParser @Inject constructor() : SubstanceParserInterface {
 
-    override fun parseSubstanceFile(string: String): SubstanceFile {
-        return try {
-            val wholeFile = JSONObject(string)
-            SubstanceFile(
-                categories = parseCategoriesArray(wholeFile.getOptionalJSONArray("categories")),
-                substances = parseSubstancesArray(wholeFile.getOptionalJSONArray("substances"))
-            )
-        } catch (e: Exception) {
-            SubstanceFile(emptyList(), emptyList())
-        }
+    override fun parseSubstanceFile(string: String): SubstanceFile = try {
+        val wholeFile = JSONObject(string)
+        SubstanceFile(
+            categories = parseCategoriesArray(wholeFile.getOptionalJSONArray("categories")),
+            substances = parseSubstancesArray(wholeFile.getOptionalJSONArray("substances"))
+        )
+    } catch (e: Exception) {
+        SubstanceFile(emptyList(), emptyList())
     }
 
-    override fun extractSubstanceString(string: String): String? {
-        return try {
-            val wholeFile = JSONObject(string)
-            val data = wholeFile.getJSONObject("data")
-            val substances = data.getJSONArray("substances")
-            substances.toString()
-        } catch (e: Exception) {
-            null
-        }
+    override fun extractSubstanceString(string: String): String? = try {
+        val wholeFile = JSONObject(string)
+        val data = wholeFile.getJSONObject("data")
+        val substances = data.getJSONArray("substances")
+        substances.toString()
+    } catch (e: Exception) {
+        null
     }
 
-    override fun parseCategories(string: String): List<Category> {
-        return try {
-            val trimmed = string.trim()
-            val jsonCategories = if (trimmed.startsWith("[")) {
-                JSONArray(trimmed)
-            } else {
-                JSONObject(trimmed).getOptionalJSONArray("categories")
-            }
-            parseCategoriesArray(jsonCategories)
-        } catch (e: Exception) {
-            emptyList()
+    override fun parseCategories(string: String): List<Category> = try {
+        val trimmed = string.trim()
+        val jsonCategories = if (trimmed.startsWith("[")) {
+            JSONArray(trimmed)
+        } else {
+            JSONObject(trimmed).getOptionalJSONArray("categories")
         }
+        parseCategoriesArray(jsonCategories)
+    } catch (e: Exception) {
+        emptyList()
     }
 
-    override fun parseSubstance(string: String): Substance? {
-        return try {
-            val jsonSubstance = JSONObject(string)
-            parseSubstance(jsonSubstance)
-        } catch (e: Exception) {
-            null
-        }
+    override fun parseSubstance(string: String): Substance? = try {
+        val jsonSubstance = JSONObject(string)
+        parseSubstance(jsonSubstance)
+    } catch (e: Exception) {
+        null
     }
 
     private fun parseCategoriesArray(jsonCategories: JSONArray?): List<Category> {
@@ -152,7 +144,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
             longtermRisks = longtermRisks,
             saferUse = saferUse,
             interactions = interactions,
-            roas = roas,
+            roas = roas
         )
     }
 
@@ -260,7 +252,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
             lightMin = lightMin,
             commonMin = commonMin,
             strongMin = strongMin,
-            heavyMin = heavyMin,
+            heavyMin = heavyMin
         )
     }
 
@@ -278,7 +270,13 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         val total = parseDurationRange(jsonTotal)
         val jsonAfterglow = jsonRoaDuration.getOptionalJSONObject("afterglow")
         val afterglow = parseDurationRange(jsonAfterglow)
-        return if (onset == null && comeup == null && peak == null && offset == null && total == null && afterglow == null) {
+        return if (onset == null &&
+            comeup == null &&
+            peak == null &&
+            offset == null &&
+            total == null &&
+            afterglow == null
+        ) {
             null
         } else {
             RoaDuration(

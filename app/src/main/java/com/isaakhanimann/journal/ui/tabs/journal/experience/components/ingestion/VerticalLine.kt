@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 
-
 @Composable
 fun VerticalLine(color: AdaptiveColor) {
     val isDarkTheme = isSystemInDarkTheme()

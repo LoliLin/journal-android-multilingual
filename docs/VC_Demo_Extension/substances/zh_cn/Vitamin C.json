@@ -1,10 +1,6 @@
 {
   "localizedName": "抗坏血酸",
-  "commonNames": [
-    "维生素C",
-    "维他命C",
-    "VC"
-  ],
+  "commonNames": ["维生素C", "维他命C", "VC"],
   "tolerance": {
     "full": "不适用",
     "zero": "不适用"

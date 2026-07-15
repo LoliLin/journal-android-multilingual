@@ -1,8 +1,6 @@
 {
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "N,N-Dipropyltryptamine, a psychedelic tryptamine compound and lesser-known analogue of DMT, with similar psychedelic effects. Like DMT it is a partial serotonin receptor agonist.",
   "localizedName": "DPT"
 }

@@ -1,22 +1,15 @@
 {
   "name": "Mephenaqualone",
-  "commonNames": [
-    "Mephenaqualone"
-  ],
+  "commonNames": ["Mephenaqualone"],
   "url": "https://psychonautwiki.org/wiki/Mephenaqualone",
   "isApproved": false,
   "tolerance": {
     "full": "within a few days of repeated administration"
   },
-  "crossTolerances": [
-    "GABA|gabaergic",
-    "depressants"
-  ],
+  "crossTolerances": ["GABA|gabaergic", "depressants"],
   "addictionPotential": "highly addictive",
   "toxicities": [],
-  "categories": [
-    "depressant"
-  ],
+  "categories": ["depressant"],
   "roas": [
     {
       "name": "oral",

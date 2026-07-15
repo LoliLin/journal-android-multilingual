@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种强效致幻剂，作用持久，属于苯乙胺和取代安非他命类物质。有时被当作LSD出售，但也因其自身特性受到许多人喜爱。通常以比LSD稍大的吸墨纸形式出售，但也可购买粉末形态。",
   "localizedName": "2,5-二甲氧基-4-氯苯丙胺"
 }

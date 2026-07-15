@@ -23,17 +23,18 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
 
 @HiltViewModel
-class CustomUnitsViewModel @Inject constructor(
-    experienceRepository: ExperienceRepository,
-) : ViewModel() {
+class CustomUnitsViewModel @Inject constructor(experienceRepository: ExperienceRepository) :
+    ViewModel() {
 
-    val customUnitsFlow: StateFlow<List<CustomUnit>> = experienceRepository.getCustomUnitsFlow(false).stateIn(
+    val customUnitsFlow: StateFlow<List<CustomUnit>> = experienceRepository.getCustomUnitsFlow(
+        false
+    ).stateIn(
         initialValue = emptyList(),
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "N-甲基-N-异丙基色胺，是DMT的一种色胺类似物，一种非常罕见的药物，仅有极少数人类使用报告。被描述为“致幻性大于迷幻性”，使用者报告仅有轻微视觉效应，伴随一定刺激感和认知影响。属于较为稳定的色胺类物质之一。",
   "localizedName": "MiPT"
 }

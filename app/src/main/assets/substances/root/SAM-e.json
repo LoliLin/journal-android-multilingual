@@ -1,18 +1,12 @@
 {
   "name": "SAM-e",
-  "commonNames": [
-    "S-Adenosyl Methionine",
-    "SAM-e",
-    "Methylguanidoacetic Acid"
-  ],
+  "commonNames": ["S-Adenosyl Methionine", "SAM-e", "Methylguanidoacetic Acid"],
   "url": "https://psychonautwiki.org/wiki/SAM-e",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "not habit-forming with a low potential for abuse",
   "toxicities": [],
-  "categories": [
-    "nootropic"
-  ],
+  "categories": ["nootropic"],
   "roas": [
     {
       "name": "oral",

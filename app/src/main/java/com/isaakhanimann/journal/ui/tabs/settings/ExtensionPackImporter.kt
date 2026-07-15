@@ -28,14 +28,16 @@ object ExtensionPackImporter {
             }
 
             if (manifestContent == null) {
-                zipFile.close(); tempFile.delete()
+                zipFile.close()
+                tempFile.delete()
                 return "Invalid pack: manifest.json not found"
             }
 
             val parsed = ExtensionPackLoader.parseManifest(manifestContent, context.cacheDir)
             val pack = parsed
             if (pack == null) {
-                zipFile.close(); tempFile.delete()
+                zipFile.close()
+                tempFile.delete()
                 return "Invalid pack: manifest.json parse failed"
             }
 

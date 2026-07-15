@@ -1,9 +1,6 @@
 {
   "name": "Allylescaline",
-  "commonNames": [
-    "Allylescaline",
-    "AL"
-  ],
+  "commonNames": ["Allylescaline", "AL"],
   "url": "https://psychonautwiki.org/wiki/Allylescaline",
   "isApproved": true,
   "tolerance": {
@@ -13,17 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "research-chemical"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "research-chemical"],
   "summary": "Mescaline analogue with a much lower dose, that seems to rely heavily on colours.",
   "roas": [
     {

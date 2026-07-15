@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種相當強效的色胺類物質，被認為能產生類似「迷幻蘑菇」的視覺效果，但身體負擔較小。具有極強的吸濕性。劑量使用上似乎相當安全。與2C-B這類物質相似。",
   "localizedName": "4-AcO-MiPT"
 }

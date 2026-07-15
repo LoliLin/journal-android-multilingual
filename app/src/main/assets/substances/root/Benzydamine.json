@@ -1,20 +1,11 @@
 {
   "name": "Benzydamine",
-  "commonNames": [
-    "Benzydamine",
-    "Tantum Verde"
-  ],
+  "commonNames": ["Benzydamine", "Tantum Verde"],
   "url": "https://psychonautwiki.org/wiki/Benzydamine",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "deliriant",
-    "stimulant",
-    "tentative"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["deliriant", "stimulant", "tentative"],
   "summary": "NSAID with local anesthetic and analgesic properties, similar to ibuprofen or naproxen. Sometimes abused in overdose with reported delirant and stimulant effects.",
   "roas": [
     {

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 1800
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种与MDMA相关的兴奋剂和致幻剂，是MDA的类似物。据报道，高剂量使用时具有相当强的致幻作用。它是一种三重单胺再摄取抑制剂，同时也是血清素2B受体的强效完全激动剂。",
   "localizedName": "6-APDB"
 }

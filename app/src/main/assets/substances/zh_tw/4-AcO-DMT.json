@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "非成癮性且濫用潛力低",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種與蘑菇效果極為相似的Psilocin前驅藥物。",
   "localizedName": "4-AcO-DMT"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "屬於麥角醯胺類的迷幻藥，相較於其「老大哥」LSD，每單位重量的效力較弱，且會產生較為溫和、夢幻甚至帶有鎮靜效果的迷幻體驗。",
   "localizedName": "LSM-775"
 }

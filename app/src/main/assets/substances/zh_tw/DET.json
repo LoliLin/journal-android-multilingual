@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種相當罕見的DMT類似物，具有相似的效果，且據報導無需MAOI輔助即可口服發揮活性。",
   "localizedName": "DET"
 }

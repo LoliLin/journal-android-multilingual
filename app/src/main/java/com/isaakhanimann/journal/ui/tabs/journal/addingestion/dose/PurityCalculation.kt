@@ -66,7 +66,7 @@ fun PurityCalculation(
         if (!isValidPurity) {
             Text(
                 text = i18n("purity_error"),
-                color = MaterialTheme.colorScheme.error,
+                color = MaterialTheme.colorScheme.error
             )
         }
         if (convertedDoseAndUnitText != null) {

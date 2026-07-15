@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "N-甲基-N-異丙基色胺，是DMT的色胺類似物，一種非常罕見且極少有人類使用報告的藥物。使用者描述其「迷幻效果強於致幻作用」，僅有輕微視覺效果，伴隨些許刺激感與認知影響。屬於較穩定的色胺類物質之一。",
   "localizedName": "MiPT"
 }

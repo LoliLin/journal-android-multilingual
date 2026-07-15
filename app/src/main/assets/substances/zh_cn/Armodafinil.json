@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "轻度成瘾，滥用可能性较低",
-  "toxicities": [
-    "阿莫达非尼或莫达非尼对人类半数致死剂量（LD50）从未达到。"
-  ],
+  "toxicities": ["阿莫达非尼或莫达非尼对人类半数致死剂量（LD50）从未达到。"],
   "summary": "两种莫达非尼异构体中效力更强的一种，据称作用时间更长且副作用更小。有时被用于治疗注意力缺陷多动症和日间嗜睡症。",
   "localizedName": "阿莫达非尼"
 }

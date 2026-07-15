@@ -29,17 +29,16 @@ import com.isaakhanimann.journal.data.substances.search.PinyinSubstanceSearcher
 import com.isaakhanimann.journal.data.substances.search.SubstanceSearcher
 import com.isaakhanimann.journal.localization.I18n
 import dagger.hilt.android.qualifiers.ApplicationContext
-import org.json.JSONArray
-import org.json.JSONObject
 import javax.inject.Inject
 import javax.inject.Singleton
-
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import org.json.JSONArray
+import org.json.JSONObject
 
 object SubstanceEvents {
     private val _substanceReloadSignal = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
@@ -50,11 +49,10 @@ object SubstanceEvents {
     }
 }
 
-
 @Singleton
 class SubstanceRepository @Inject constructor(
     @ApplicationContext private val appContext: Context,
-    private val substanceParser: SubstanceParserInterface,
+    private val substanceParser: SubstanceParserInterface
 ) : SubstanceRepositoryInterface {
 
     companion object {
@@ -65,7 +63,7 @@ class SubstanceRepository @Inject constructor(
         private const val ZH_CN_LANGUAGE_KEY = "zh_cn"
     }
 
-    private var needsReload = false;
+    private var needsReload = false
 
     fun markDirty() {
         needsReload = true
@@ -109,21 +107,15 @@ class SubstanceRepository @Inject constructor(
         }
     }
 
-    fun getDisplayName(substanceName: String): String {
-        return getSubstance(substanceName)?.displayName ?: substanceName
-    }
+    fun getDisplayName(substanceName: String): String =
+        getSubstance(substanceName)?.displayName ?: substanceName
 
-    fun isSubstance(substanceName: String): Boolean {
-        return getSubstance(substanceName) != null
-    }
+    fun isSubstance(substanceName: String): Boolean = getSubstance(substanceName) != null
 
-    fun isCategory(substanceName: String): Boolean {
-        return getCategory(substanceName) != null
-    }
+    fun isCategory(substanceName: String): Boolean = getCategory(substanceName) != null
 
-    fun getSubstanceDisplayName(substanceName: String): String {
-        return getSubstance(substanceName)?.displayName ?: substanceName
-    }
+    fun getSubstanceDisplayName(substanceName: String): String =
+        getSubstance(substanceName)?.displayName ?: substanceName
 
     private fun loadSubstanceFile(languageKey: String): SubstanceFile {
         val languageKeys = listOf(ROOT_LANGUAGE_KEY, FALLBACK_LANGUAGE_KEY, languageKey).distinct()
@@ -134,7 +126,7 @@ class SubstanceRepository @Inject constructor(
             val v0 = mergeSubstanceJsonMaps(merged, loadSubstanceJsonForLanguage(key))
             mergeSubstanceJsonMaps(v0, loadSubstanceJsonFromExtensions(key, appContext))
         }
-        
+
         val substances = parseSubstancesFromJsonMap(substancesByFile)
 
         return SubstanceFile(categories = categories, substances = substances)
@@ -143,16 +135,14 @@ class SubstanceRepository @Inject constructor(
     private fun loadCategoriesForLanguage(languageKey: String): List<Category> {
         val path = "$SUBSTANCES_DIR/$languageKey/$CATEGORIES_FILE_NAME"
 
-    
         val mergedJson = run {
             val baseArray = try {
                 val baseText = appContext.assets.open(path).bufferedReader().use { it.readText() }
                 JSONArray(baseText)
             } catch (_: Exception) {
-                JSONArray()  
+                JSONArray()
             }
 
-        
             val extDir = java.io.File(appContext.filesDir, "ext_packs")
             if (extDir.exists() && extDir.isDirectory) {
                 extDir.listFiles()?.forEach { packDir ->
@@ -164,7 +154,6 @@ class SubstanceRepository @Inject constructor(
                                 baseArray.put(extArray.get(i))
                             }
                         } catch (_: Exception) {
-                        
                         }
                     }
                 }
@@ -197,7 +186,10 @@ class SubstanceRepository @Inject constructor(
             .toMap()
     }
 
-    private fun loadSubstanceJsonFromExtensions(languageKey: String, context: android.content.Context): Map<String, JSONObject> {
+    private fun loadSubstanceJsonFromExtensions(
+        languageKey: String,
+        context: android.content.Context
+    ): Map<String, JSONObject> {
         val extDir = java.io.File(context.filesDir, "ext_packs")
         if (!extDir.exists()) return emptyMap()
 
@@ -225,7 +217,10 @@ class SubstanceRepository @Inject constructor(
             .toMap()
     }
 
-    private fun mergeCategories(fallback: List<Category>, localized: List<Category>): List<Category> {
+    private fun mergeCategories(
+        fallback: List<Category>,
+        localized: List<Category>
+    ): List<Category> {
         val merged = linkedMapOf<String, Category>()
         fallback.forEach { merged[it.name] = it }
         localized.forEach { merged[it.name] = it }
@@ -266,13 +261,13 @@ class SubstanceRepository @Inject constructor(
         return result
     }
 
-    private fun parseSubstancesFromJsonMap(substancesByFile: Map<String, JSONObject>): List<Substance> {
-        return substancesByFile.toSortedMap().mapNotNull { (key, json) ->
-            if (!json.has("name")) {
-                json.put("name", key)
-            }
-            substanceParser.parseSubstance(json.toString())
+    private fun parseSubstancesFromJsonMap(
+        substancesByFile: Map<String, JSONObject>
+    ): List<Substance> = substancesByFile.toSortedMap().mapNotNull { (key, json) ->
+        if (!json.has("name")) {
+            json.put("name", key)
         }
+        substanceParser.parseSubstance(json.toString())
     }
 
     override fun getAllSubstances(): List<Substance> {

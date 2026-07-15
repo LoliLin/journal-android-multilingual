@@ -57,10 +57,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
-import com.isaakhanimann.journal.localization.i18n
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
 
@@ -121,7 +121,6 @@ fun EditCustomSubstance(
     )
 }
 
-
 @Preview
 @Composable
 fun AddCustomSubstancePreview() {
@@ -163,11 +162,11 @@ fun AddOrEditCustomSubstance(
                 if (isShowingDelete) {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     IconButton(
-                        onClick = { isShowingDeleteDialog = true },
+                        onClick = { isShowingDeleteDialog = true }
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = i18n("delete_substance"),
+                            contentDescription = i18n("delete_substance")
                         )
                     }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
@@ -208,7 +207,7 @@ fun AddOrEditCustomSubstance(
                             contentDescription = i18n("common_done")
                         )
                     },
-                    text = { Text(i18n("common_done")) },
+                    text = { Text(i18n("common_done")) }
                 )
             }
         }
@@ -271,7 +270,6 @@ fun AddOrEditCustomSubstance(
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(5.dp))
-
         }
     }
 }

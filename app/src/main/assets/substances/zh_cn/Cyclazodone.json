@@ -6,8 +6,6 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "localizedName": "环丙唑酮"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "轻度上瘾",
-  "toxicities": [
-    "较大的治疗指数和安全范围"
-  ],
+  "toxicities": ["较大的治疗指数和安全范围"],
   "summary": "一种三环类抗抑郁药，其药理特性与同类药物相比相当独特。例如，它可能对NMDA/AMPA受体产生间接作用，并且是μ-阿片受体的完全激动剂。尽管这种物质的滥用并不常见，但在少数国家已有相关报道。",
   "localizedName": "噻奈普汀"
 }

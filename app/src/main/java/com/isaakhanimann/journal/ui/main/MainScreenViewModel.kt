@@ -26,19 +26,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 val ARE_CONDITIONS_ACCEPTED = booleanPreferencesKey("are_conditions_accepted")
 
 @HiltViewModel
 class MainScreenViewModel @Inject constructor(
     private val dataStore: DataStore<Preferences>,
-    private val userPreferences: UserPreferences,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
 
     val isAcceptedFlow: StateFlow<Boolean> = dataStore.data

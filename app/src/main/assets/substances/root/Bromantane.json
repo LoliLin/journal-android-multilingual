@@ -1,20 +1,11 @@
 {
   "name": "Bromantane",
-  "commonNames": [
-    "Bromantane",
-    "Bromantan",
-    "Ladasten"
-  ],
+  "commonNames": ["Bromantane", "Bromantan", "Ladasten"],
   "url": "https://psychonautwiki.org/wiki/Bromantane",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "stimulant",
-    "nootropic",
-    "depressant",
-    "research-chemical"
-  ],
+  "categories": ["stimulant", "nootropic", "depressant", "research-chemical"],
   "summary": "An unusual stimulant and anxiolytic drug with dopamine and serotonin reuptake inhibition properties. Infamously used as a doping agent in the 1996 Olympics. There are some concerns it may exacerbate the underlying causes of Alzheimer's disease.",
   "roas": [
     {

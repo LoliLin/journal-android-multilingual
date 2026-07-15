@@ -27,16 +27,9 @@ import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompani
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -45,14 +38,16 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import java.time.temporal.ChronoUnit
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class StatsViewModel @Inject constructor(
@@ -94,7 +89,10 @@ class StatsViewModel @Inject constructor(
     private val areThereAnyIngestionsFlow =
         allExperiencesSortedFlow.combine(consumerFlow) { experiences, consumerName ->
             experiences.any { experience ->
-                experience.ingestionsWithCompanionAndCustomUnit.any { it.ingestion.consumerName == consumerName }
+                experience.ingestionsWithCompanionAndCustomUnit.any {
+                    it.ingestion.consumerName ==
+                        consumerName
+                }
             }
         }
 
@@ -139,7 +137,10 @@ class StatsViewModel @Inject constructor(
         consumerName: String?
     ): List<ColorCount> {
         return experiences.map { experience ->
-            experience.ingestionsWithCompanionAndCustomUnit.filter { it.ingestion.consumerName == consumerName }
+            experience.ingestionsWithCompanionAndCustomUnit.filter {
+                it.ingestion.consumerName ==
+                    consumerName
+            }
                 .map { it.ingestion.substanceName }.toSet()
         }.flatten()
             .groupBy { it }.values.mapNotNull { sameNames ->
@@ -160,15 +161,24 @@ class StatsViewModel @Inject constructor(
         companionFlow
     ) { relevantExperiencesSorted, consumerName, companions ->
         val allIngestions =
-            relevantExperiencesSorted.flatMap { experience -> experience.ingestionsWithCompanionAndCustomUnit.filter { it.ingestion.consumerName == consumerName } }
+            relevantExperiencesSorted.flatMap { experience ->
+                experience.ingestionsWithCompanionAndCustomUnit.filter {
+                    it.ingestion.consumerName ==
+                        consumerName
+                }
+            }
         val experienceNamesMap =
             relevantExperiencesSorted.map { experience ->
-                experience.ingestionsWithCompanionAndCustomUnit.filter { it.ingestion.consumerName == consumerName }.map { it.ingestion.substanceName }
+                experience.ingestionsWithCompanionAndCustomUnit.filter {
+                    it.ingestion.consumerName ==
+                        consumerName
+                }.map { it.ingestion.substanceName }
                     .toSet()
             }.flatten().groupBy { it }
         val map = allIngestions.groupBy { it.ingestion.substanceName }
         return@combine map.values.mapNotNull { groupedIngestions ->
-            val name = groupedIngestions.firstOrNull()?.ingestion?.substanceName ?: return@mapNotNull null
+            val name =
+                groupedIngestions.firstOrNull()?.ingestion?.substanceName ?: return@mapNotNull null
             val oneCompanion =
                 companions.firstOrNull { it.substanceName == name } ?: return@mapNotNull null
             val experienceCounts = experienceNamesMap[name]?.size ?: 0
@@ -192,7 +202,9 @@ class StatsViewModel @Inject constructor(
         }
     }
 
-    private fun getTotalDose(groupedIngestions: List<IngestionWithCompanionAndCustomUnit>): TotalDose? {
+    private fun getTotalDose(
+        groupedIngestions: List<IngestionWithCompanionAndCustomUnit>
+    ): TotalDose? {
         val units = groupedIngestions.firstOrNull()?.originalUnit ?: return null
         if (groupedIngestions.any { it.originalUnit != units || it.pureDose == null }) return null
         val sumDose = groupedIngestions.sumOf { it.pureDose ?: 0.0 }
@@ -202,7 +214,8 @@ class StatsViewModel @Inject constructor(
             dose = sumDose,
             units = units,
             isEstimate = isEstimate,
-            estimatedDoseStandardDeviation = sumStandardDeviations.takeIf { it > 0 })
+            estimatedDoseStandardDeviation = sumStandardDeviations.takeIf { it > 0 }
+        )
     }
 
     val statsModelFlow: StateFlow<StatsModel> =
@@ -244,7 +257,7 @@ class StatsViewModel @Inject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
-        
+
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
         scope = viewModelScope,
@@ -261,10 +274,7 @@ data class StatsModel(
     val consumerName: String?
 )
 
-data class ColorCount(
-    val color: AdaptiveColor,
-    val count: Int
-)
+data class ColorCount(val color: AdaptiveColor, val count: Int)
 
 data class StatItem(
     val substanceName: String,
@@ -273,13 +283,10 @@ data class StatItem(
     val experienceCount: Int,
     val ingestionCount: Int,
     val routeCounts: List<RouteCount>,
-    val totalDose: TotalDose?,
+    val totalDose: TotalDose?
 )
 
-data class RouteCount(
-    val administrationRoute: AdministrationRoute,
-    val count: Int
-)
+data class RouteCount(val administrationRoute: AdministrationRoute, val count: Int)
 
 data class TotalDose(
     val dose: Double,
@@ -339,8 +346,6 @@ enum class TimePickerOption {
     abstract val allBucketSizes: Period
 }
 
-fun Instant.getEndOfDay(): Instant {
-    return this.atOffset(ZoneOffset.UTC)
-        .with(LocalTime.of(23,59,59, this.nano))
-        .toInstant()
-}
+fun Instant.getEndOfDay(): Instant = this.atOffset(ZoneOffset.UTC)
+    .with(LocalTime.of(23, 59, 59, this.nano))
+    .toInstant()

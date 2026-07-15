@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "不產生依賴性且濫用潛力低",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "乙基丙基色胺是一種新型色胺，是DMT的結構同系物。",
   "localizedName": "EPT"
 }

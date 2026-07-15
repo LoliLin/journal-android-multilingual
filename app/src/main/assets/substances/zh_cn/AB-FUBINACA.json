@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "可以说，AB-FUBINACA是最常见的人工合成大麻素之一，最初由辉瑞公司作为镇痛药研发，但后来被放弃用于医疗用途。此后，它在研究化学品领域获得了一定关注，然而其极高的效力以及被掺入合成混合物中的特性使其具有危险性，且已导致过量使用致死的案例。请务必谨慎使用。",
   "localizedName": "AB-FUBINACA"
 }

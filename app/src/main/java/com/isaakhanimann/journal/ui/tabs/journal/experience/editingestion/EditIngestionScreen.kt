@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -72,6 +73,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -79,23 +83,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
+import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import kotlinx.coroutines.launch
 import java.time.LocalDateTime
-
+import kotlinx.coroutines.launch
 
 @Composable
 fun EditIngestionScreen(
@@ -241,11 +240,11 @@ fun EditIngestionScreen(
                         )
                     }
                     IconButton(
-                        onClick = { isShowingDeleteDialog = true },
+                        onClick = { isShowingDeleteDialog = true }
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = i18n("delete_ingestion"),
+                            contentDescription = i18n("delete_ingestion")
                         )
                     }
                 }
@@ -287,7 +286,7 @@ fun EditIngestionScreen(
                 }
                 AnimatedVisibility(visible = isKnown) {
                     Column {
-                        if (customUnit==null) {
+                        if (customUnit == null) {
                             OutlinedTextField(
                                 value = units,
                                 onValueChange = onUnitsChange,
@@ -314,10 +313,13 @@ fun EditIngestionScreen(
                         )
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(10.dp),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
                         ) {
                             Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                            Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                i18n("dose_estimate_label"),
+                                style = MaterialTheme.typography.titleMedium
+                            )
                         }
                         AnimatedVisibility(visible = isEstimate) {
                             OutlinedTextField(
@@ -333,7 +335,9 @@ fun EditIngestionScreen(
                                 keyboardActions = KeyboardActions(onDone = {
                                     focusManager.clearFocus()
                                 }),
-                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                keyboardOptions = KeyboardOptions(
+                                    keyboardType = KeyboardType.Number
+                                ),
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -393,7 +397,7 @@ fun EditIngestionScreen(
             CardWithTitle(title = i18n("common_time")) {
                 Column(
                     verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     DatePickerButton(
                         localDateTime = localDateTime,
@@ -418,7 +422,15 @@ fun EditIngestionScreen(
                             onClick = { isShowingDropDownMenu = true },
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(text = if (selectedOption?.title != null) "Part of " + selectedOption.title else "Part of unknown experience")
+                            Text(
+                                text = if (selectedOption?.title !=
+                                    null
+                                ) {
+                                    "Part of " + selectedOption.title
+                                } else {
+                                    "Part of unknown experience"
+                                }
+                            )
                         }
                         DropdownMenu(
                             expanded = isShowingDropDownMenu,
@@ -449,7 +461,12 @@ fun EditIngestionScreen(
                     )
                 ) {
                     Text(
-                        text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { ownerUserName })),
+                        text = i18n(
+                            "consumed_by",
+                            mapOf(
+                                "name" to consumerName.ifBlank { ownerUserName }
+                            )
+                        ),
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
@@ -468,7 +485,8 @@ fun EditIngestionScreen(
                             checked = showNewConsumerTextField,
                             onCheckedChange = {
                                 showNewConsumerTextField = !showNewConsumerTextField
-                            })
+                            }
+                        )
                         Text(i18n("common_enter_new_consumer"))
                     }
                     AnimatedVisibility(visible = showNewConsumerTextField) {
@@ -544,21 +562,13 @@ fun EditIngestionScreen(
                         headlineContent = { Text(consumerName) },
 
                         leadingContent = {
-
                             val ctxCon = LocalContext.current
 
                             val conAvatar = remember(consumerName) {
-
-
-
                                 AvatarUtil.getUserAvatar(ctxCon, consumerName)
-
-
-
                             }
 
                             if (conAvatar != null) {
-
                                 AsyncImage(
 
                                     model = conAvatar,
@@ -570,9 +580,7 @@ fun EditIngestionScreen(
                                     contentScale = ContentScale.Crop
 
                                 )
-
                             } else {
-
                                 Icon(
 
                                     Icons.Default.Person,
@@ -580,9 +588,7 @@ fun EditIngestionScreen(
                                     contentDescription = i18n("stats_consumer")
 
                                 )
-
                             }
-
                         },
 
                         modifier = Modifier.clickable {

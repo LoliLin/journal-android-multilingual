@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "尝试这种药物不会对健康产生负面影响"
-  ],
+  "toxicities": ["尝试这种药物不会对健康产生负面影响"],
   "summary": "一种非常罕见的致幻兴奋剂，属于苯乙胺类化合物，与麦斯卡林结构类似且效果相近。按重量计算，其效力约为麦斯卡林的5至7倍。",
   "localizedName": "丙斯卡林"
 }

@@ -35,8 +35,7 @@ data class CumulativeRouteAndDose(
     val route: AdministrationRoute,
     val hasMoreThanOneIngestion: Boolean
 ) {
-    val doseDescription: String get()
-    {
+    val doseDescription: String get() {
         val description = cumulativeDose.toReadableString() + " $units"
         return if (isEstimate) {
             if (cumulativeDoseStandardDeviation != null && cumulativeDoseStandardDeviation > 0) {

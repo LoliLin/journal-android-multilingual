@@ -17,19 +17,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
-  "categories": [
-    "psychedelic",
-    "tentative",
-    "entactogen",
-    "research-chemical"
-  ],
+  "toxicities": ["extremely low toxicity"],
+  "categories": ["psychedelic", "tentative", "entactogen", "research-chemical"],
   "summary": "Psilocin is a substutued tryptamine alkaloid, that is present in most psychedelic mushrooms. It is relatively unstable in solution due to the -OH group.",
   "roas": [
     {

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 1800
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種相當罕見的催情劑，與MDMA密切相關，但其效力不如前者。",
   "effectsSummary": "MDEA 與 MDMA 密切相關。其主要差異在於對自身感受的感知程度（觸感作用）、同理心理解強度（同理作用）以及致幻效果的發生情況。",
   "dosageRemark": "每公斤體重1.3毫克（1.3毫克 x 80公斤 = 100毫克）",

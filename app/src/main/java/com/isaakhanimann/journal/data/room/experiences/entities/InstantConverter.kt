@@ -23,12 +23,8 @@ import java.time.Instant
 
 class InstantConverter {
     @TypeConverter
-    fun toLong(instant: Instant?): Long? {
-        return instant?.epochSecond
-    }
+    fun toLong(instant: Instant?): Long? = instant?.epochSecond
 
     @TypeConverter
-    fun fromLong(value: Long?): Instant? {
-        return value?.let { Instant.ofEpochSecond(it) }
-    }
+    fun fromLong(value: Long?): Instant? = value?.let { Instant.ofEpochSecond(it) }
 }

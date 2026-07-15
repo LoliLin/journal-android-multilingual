@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "輕微成癮性",
-  "toxicities": [
-    "極低毒性"
-  ],
+  "toxicities": ["極低毒性"],
   "localizedName": "酪氨酸"
 }

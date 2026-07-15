@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 2
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "localizedName": "Bufotenin"
 }

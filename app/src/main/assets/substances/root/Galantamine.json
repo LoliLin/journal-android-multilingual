@@ -1,19 +1,12 @@
 {
   "name": "Galantamine",
-  "commonNames": [
-    "Galantamine"
-  ],
+  "commonNames": ["Galantamine"],
   "url": "https://psychonautwiki.org/wiki/Galantamine",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
-  "categories": [
-    "oneirogen",
-    "nootropic"
-  ],
+  "toxicities": ["extremely low toxicity"],
+  "categories": ["oneirogen", "nootropic"],
   "roas": [
     {
       "name": "oral",

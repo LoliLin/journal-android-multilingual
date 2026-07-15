@@ -49,16 +49,14 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.administrationRouteArticleKey
-
+import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Preview
 @Composable
 fun RouteExplanationPreview() {
     RouteExplanationScreen(navigateToURL = {})
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -76,7 +74,7 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                         contentDescription = i18n("substance_open_article")
                     )
                 },
-                text = { Text(i18n("common_article")) },
+                text = { Text(i18n("common_article")) }
             )
         }
     ) { padding ->
@@ -86,7 +84,9 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
-            ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 3.dp)) {
+            ElevatedCard(
+                modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 3.dp)
+            ) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     SectionText(
                         text = i18n("routes_intro")
@@ -106,12 +106,14 @@ fun RouteExplanationScreen(navigateToURL: (url: String) -> Unit) {
                     )
                     if (it == AdministrationRoute.RECTAL) {
                         Button(
-                            onClick = { navigateToURL(AdministrationRoute.saferPluggingArticleURL) },
+                            onClick = {
+                                navigateToURL(AdministrationRoute.saferPluggingArticleURL)
+                            },
                             modifier = Modifier.padding(horizontal = 5.dp)
                         ) {
                             Icon(
                                 Icons.Outlined.Newspaper,
-                                contentDescription = i18n("substance_open_article"),
+                                contentDescription = i18n("substance_open_article")
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(i18n("safer_plugging"))

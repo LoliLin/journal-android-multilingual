@@ -21,8 +21,4 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import java.time.Instant
 
-data class DataForOneRating(
-    val time: Instant,
-    val option: ShulginRatingOption
-)
-
+data class DataForOneRating(val time: Instant, val option: ShulginRatingOption)

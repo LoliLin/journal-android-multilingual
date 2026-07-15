@@ -41,8 +41,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideExperiencesDao(appDatabase: AppDatabase): ExperienceDao =
-        appDatabase.experienceDao()
+    fun provideExperiencesDao(appDatabase: AppDatabase): ExperienceDao = appDatabase.experienceDao()
 
     @Singleton
     @Provides
@@ -55,12 +54,12 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providePreferencesDataStore(@ApplicationContext appContext: Context): DataStore<Preferences> {
-        return PreferenceDataStoreFactory.create(
-            corruptionHandler = ReplaceFileCorruptionHandler(
-                produceNewData = { emptyPreferences() }
-            ),
-            produceFile = { appContext.preferencesDataStoreFile("user_preferences") }
-        )
-    }
+    fun providePreferencesDataStore(
+        @ApplicationContext appContext: Context
+    ): DataStore<Preferences> = PreferenceDataStoreFactory.create(
+        corruptionHandler = ReplaceFileCorruptionHandler(
+            produceNewData = { emptyPreferences() }
+        ),
+        produceFile = { appContext.preferencesDataStoreFile("user_preferences") }
+    )
 }

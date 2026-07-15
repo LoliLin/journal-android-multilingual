@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "A very rare lysergamide that is slightly less potent than LSD, yet with a shorter duration of action.",
   "localizedName": "PRO-LAD"
 }

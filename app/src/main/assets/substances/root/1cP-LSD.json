@@ -1,8 +1,6 @@
 {
   "name": "1cP-LSD",
-  "commonNames": [
-    "1cP-LSD"
-  ],
+  "commonNames": ["1cP-LSD"],
   "url": "https://psychonautwiki.org/wiki/1cP-LSD",
   "isApproved": true,
   "tolerance": {
@@ -12,25 +10,14 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "non-addictive with a low abuse potential",
   "toxicities": [],
-  "categories": [
-    "psychedelic"
-  ],
+  "categories": ["psychedelic"],
   "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "THC",
-      "Stimulants"
-    ]
+    "dangerous": ["Lithium"],
+    "unsafe": ["Tramadol"],
+    "uncertain": ["THC", "Stimulants"]
   },
   "roas": [
     {

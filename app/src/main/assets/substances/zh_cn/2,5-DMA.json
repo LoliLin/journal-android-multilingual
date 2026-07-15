@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 204
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "localizedName": "2,5-二甲氧基苯丙胺"
 }

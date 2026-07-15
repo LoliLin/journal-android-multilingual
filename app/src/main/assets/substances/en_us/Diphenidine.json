@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A dissociative anaesthetic related to ephenidine with similar qualities to PCP and ketamine. Has seen some popularity as a recreational RC. Dosage curve has been reported as particularly steep, so care should be taken.",
   "localizedName": "Diphenidine"
 }

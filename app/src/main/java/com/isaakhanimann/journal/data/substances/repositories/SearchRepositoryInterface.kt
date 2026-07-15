@@ -22,8 +22,8 @@ import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 
 interface SearchRepositoryInterface {
     fun getMatchingSubstances(
-    searchText: String,
-    filterCategories: List<String>,
-    recentlyUsedSubstanceNamesSorted: List<String>,
+        searchText: String,
+        filterCategories: List<String>,
+        recentlyUsedSubstanceNamesSorted: List<String>
     ): List<SubstanceWithCategories>
 }

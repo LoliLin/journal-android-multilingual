@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "A rare tryptamine psychedelic closely related to DMT, with the interesting property of having little visual hallucinations, but strong auditory effects.",
   "localizedName": "DiPT"
 }

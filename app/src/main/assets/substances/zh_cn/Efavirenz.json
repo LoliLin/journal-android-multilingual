@@ -1,8 +1,5 @@
 {
   "addictionPotential": "已知无成瘾性",
-  "toxicities": [
-    "低毒性",
-    "高剂量或长期使用可能导致肝脏毒性"
-  ],
+  "toxicities": ["低毒性", "高剂量或长期使用可能导致肝脏毒性"],
   "localizedName": "依法韦仑"
 }

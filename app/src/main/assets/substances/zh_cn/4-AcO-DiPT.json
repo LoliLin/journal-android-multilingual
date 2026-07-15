@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种罕见且使用历史较短的迷幻色胺，也被称为伊普拉西汀。可能由亚历山大·舒尔金首次合成。有报告称其会引起严重恶心，效果与2C-B和蘑菇相当。",
   "localizedName": "4-乙酰氧基-N,N-二异丙基色胺"
 }

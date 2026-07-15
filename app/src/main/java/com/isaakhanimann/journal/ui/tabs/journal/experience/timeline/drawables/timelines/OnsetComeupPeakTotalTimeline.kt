@@ -47,7 +47,7 @@ data class OnsetComeupPeakTotalTimeline(
         density: Density
     ) {
         val onsetAndComeupWeight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(onsetAndComeupWeight) * pixelsPerSec)
         val comeupEndX =
@@ -75,7 +75,7 @@ data class OnsetComeupPeakTotalTimeline(
             style = density.dottedStroke
         )
         val combinedPath = Path().apply {
-            val alignedHeight = height + drawScope.strokeWidth/2
+            val alignedHeight = height + drawScope.strokeWidth / 2
             moveTo(x = startX, y = alignedHeight)
             lineTo(x = onsetEndX, y = alignedHeight)
             lineTo(x = comeupEndX, y = 0f)
@@ -90,12 +90,15 @@ data class OnsetComeupPeakTotalTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }
 
-fun RoaDuration.toOnsetComeupPeakTotalTimeline(peakAndTotalWeight: Float, ingestionTimeRelativeToStartInSeconds: Float): OnsetComeupPeakTotalTimeline? {
+fun RoaDuration.toOnsetComeupPeakTotalTimeline(
+    peakAndTotalWeight: Float,
+    ingestionTimeRelativeToStartInSeconds: Float
+): OnsetComeupPeakTotalTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     val fullPeak = peak?.toFullDurationRange()

@@ -53,9 +53,7 @@ fun AcceptConditionsPreview() {
 }
 
 @Composable
-fun AcceptConditionsScreen(
-    onTapAccept: () -> Unit
-) {
+fun AcceptConditionsScreen(onTapAccept: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround,
@@ -70,7 +68,13 @@ fun AcceptConditionsScreen(
         val allIsChecked =
             checkedState0 && checkedState1 && checkedState2 && checkedState3
         val painter =
-            if (allIsChecked) painterResource(R.drawable.eye_open) else painterResource(R.drawable.eye_closed)
+            if (allIsChecked) {
+                painterResource(
+                    R.drawable.eye_open
+                )
+            } else {
+                painterResource(R.drawable.eye_closed)
+            }
         Image(
             painter = painter,
             contentDescription = i18n("psychonaut_wiki_eye"),
@@ -89,20 +93,24 @@ fun AcceptConditionsScreen(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.spacedBy(5.dp)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically,
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.clickable {
                     checkedState0 = checkedState0.not()
-                }) {
+                }
+            ) {
                 Checkbox(
                     checked = checkedState0,
                     onCheckedChange = { checkedState0 = it }
                 )
                 Text(text = i18n("screen_accept_acknowledge"))
             }
-            Row(verticalAlignment = Alignment.CenterVertically,
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.clickable {
                     checkedState1 = checkedState1.not()
-                }) {
+                }
+            ) {
                 Checkbox(
                     checked = checkedState1,
                     onCheckedChange = { checkedState1 = it }
@@ -121,10 +129,12 @@ fun AcceptConditionsScreen(
                 )
                 Text(text = i18n("screen_accept_inaccurate"))
             }
-            Row(verticalAlignment = Alignment.CenterVertically,
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.clickable {
                     checkedState3 = checkedState3.not()
-                }) {
+                }
+            ) {
                 Checkbox(
                     checked = checkedState3,
                     onCheckedChange = { checkedState3 = it }

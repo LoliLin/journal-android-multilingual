@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "长期使用会产生依赖性",
-  "toxicities": [
-    "接近或超过2克时致命"
-  ],
+  "toxicities": ["接近或超过2克时致命"],
   "summary": "一种抗组胺药，小剂量服用可缓解过敏和失眠。大剂量服用则会产生谵妄作用，反而使人保持清醒。通常使用者报告称该药物的\"快感\"是令人不适的，可能引发与现实难以区分的幻觉。",
   "localizedName": "苯海拉明"
 }

@@ -18,7 +18,4 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.models
 
-data class InteractionExplanation(
-    val name: String,
-    val url: String
-)
+data class InteractionExplanation(val name: String, val url: String)

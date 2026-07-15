@@ -27,5 +27,5 @@ import kotlinx.serialization.Serializable
 data class SubstanceCompanion(
     @PrimaryKey(autoGenerate = false)
     val substanceName: String,
-    var color: AdaptiveColor,
+    var color: AdaptiveColor
 )

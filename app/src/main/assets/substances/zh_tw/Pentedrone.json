@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種強效的NDRI卡西酮類興奮劑，具有令人上癮的效果，但被認為並非特別令人愉悅。",
   "localizedName": "戊基酮"
 }

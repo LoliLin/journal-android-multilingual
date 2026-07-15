@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "An empathogen structurally similar to MDMA. Typically more visual than MDMA. Often reported to be much less stimulating and more relaxing than most other stimulating empathogens. Less psychedelic than 6-APB. Much longer lasting than MDMA.",
   "localizedName": "5-MAPB"
 }

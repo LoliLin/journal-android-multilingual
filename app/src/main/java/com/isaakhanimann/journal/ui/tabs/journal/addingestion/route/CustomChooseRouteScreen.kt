@@ -57,7 +57,7 @@ fun CustomChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.5f },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth()
             )
             val spacing = 6
             Column(

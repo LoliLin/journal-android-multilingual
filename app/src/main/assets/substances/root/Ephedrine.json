@@ -1,17 +1,11 @@
 {
   "name": "Ephedrine",
-  "commonNames": [
-    "Ephedrine",
-    "Ephedra"
-  ],
+  "commonNames": ["Ephedrine", "Ephedra"],
   "url": "https://psychonautwiki.org/wiki/Ephedrine",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "stimulant",
-    "habit-forming"
-  ],
+  "categories": ["stimulant", "habit-forming"],
   "summary": "Ephedrine is a sympathomimetic amine commonly used as a stimulant, concentration aid, decongestant, appetite suppressant, and to treat hypotension associated with anaesthesia. A methamphetamine analogue and commonly used in the production of methamphetamine.",
   "effectsSummary": "Stimulates circulation, increases drive and performance, and suppresses appetite.",
   "generalRisks": "Even at low doses: Palpitations, restlessness, sleep problems, urinary urgency or retention and dry mouth. Also possible are feelings of anxiety, increased blood pressure (vasoconstriction), loss of appetite, dizziness, cardiac arrhythmias and even heart attacks.\nIn case of overdose: confusion and paranoia. The tannins of ephedra herb can cause stomach complaints in larger quantities.",

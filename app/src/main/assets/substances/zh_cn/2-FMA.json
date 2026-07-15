@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种常与利右苯丙胺相提并论的长效兴奋剂。被认为缺乏安非他明的一些神经毒性代谢产物。功能性极强，因此常被用于学习研究。",
   "localizedName": "2-FMA"
 }

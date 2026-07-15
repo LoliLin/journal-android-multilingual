@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "具備輕微成癮性，且濫用潛力較低",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種選擇性血清素釋放劑，極少在沒有興奮劑的情況下使用以達到理想效果。過去被認為不具有神經毒性，然而MDAI已被涉及在多起致命與非致命的中毒案例中，因此可能對健康構成比過去認知中更高的風險。",
   "localizedName": "MDAI"
 }

@@ -35,12 +35,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.localization.i18n
 
 @Composable
-fun InteractionRow(interaction: Interaction, getSubstanceDisplayName: (substance: String) -> String) {
+fun InteractionRow(
+    interaction: Interaction,
+    getSubstanceDisplayName: (substance: String) -> String
+) {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RectangleShape,
@@ -53,10 +56,12 @@ fun InteractionRow(interaction: Interaction, getSubstanceDisplayName: (substance
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text( 
-                text = "${getSubstanceDisplayName(interaction.aName)} + ${getSubstanceDisplayName(interaction.bName)}",
+            Text(
+                text = "${getSubstanceDisplayName(
+                    interaction.aName
+                )} + ${getSubstanceDisplayName(interaction.bName)}",
                 textAlign = TextAlign.Center,
-                color = Color.Black,
+                color = Color.Black
             )
             Spacer(modifier = Modifier.weight(1f))
             LazyRow {
@@ -64,7 +69,7 @@ fun InteractionRow(interaction: Interaction, getSubstanceDisplayName: (substance
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
                         contentDescription = i18n("interaction_warning"),
-                        tint = Color.Black,
+                        tint = Color.Black
                     )
                 }
             }

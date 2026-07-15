@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "不产生依赖性，且滥用潜力低",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "乙丙色胺是一种新型色胺，是DMT的结构类似物。",
   "localizedName": "EPT"
 }

@@ -69,7 +69,7 @@ fun SearchField(
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
-                contentDescription = i18n("common_search"),
+                contentDescription = i18n("common_search")
             )
         },
         trailingIcon = {
@@ -81,7 +81,7 @@ fun SearchField(
                     }) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = i18n("common_close"),
+                            contentDescription = i18n("common_close")
                         )
                     }
                 }
@@ -90,7 +90,7 @@ fun SearchField(
                     var isExpanded by remember { mutableStateOf(false) }
                     val activeFilters = categories.filter { it.isActive }
                     IconButton(
-                        onClick = { isExpanded = true },
+                        onClick = { isExpanded = true }
                     ) {
                         BadgedBox(badge = {
                             if (activeFilters.isNotEmpty()) {
@@ -105,7 +105,7 @@ fun SearchField(
                     }
                     DropdownMenu(
                         expanded = isExpanded,
-                        onDismissRequest = { isExpanded = false },
+                        onDismissRequest = { isExpanded = false }
                     ) {
                         categories.forEach { categoryChipModel ->
                             val displayName = if (categoryChipModel.rawName == "custom") {
@@ -116,7 +116,8 @@ fun SearchField(
                                     categoryChipModel.rawName
                                 )
                             }
-                            DropdownMenuItem(text = { Text(displayName) },
+                            DropdownMenuItem(
+                                text = { Text(displayName) },
                                 onClick = { onFilterTapped(categoryChipModel.rawName) },
                                 leadingIcon = {
                                     if (categoryChipModel.isActive) {
@@ -126,7 +127,8 @@ fun SearchField(
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }
-                                })
+                                }
+                            )
                         }
                     }
                 }
@@ -136,7 +138,7 @@ fun SearchField(
         keyboardOptions = KeyboardOptions.Default.copy(
             autoCorrectEnabled = false,
             imeAction = ImeAction.Done,
-            capitalization = KeyboardCapitalization.Words,
+            capitalization = KeyboardCapitalization.Words
         ),
         singleLine = true
     )

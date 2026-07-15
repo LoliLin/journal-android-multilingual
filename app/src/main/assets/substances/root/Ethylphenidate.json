@@ -1,9 +1,6 @@
 {
   "name": "Ethylphenidate",
-  "commonNames": [
-    "Ethylphenidate",
-    "EPH"
-  ],
+  "commonNames": ["Ethylphenidate", "EPH"],
   "url": "https://psychonautwiki.org/wiki/Ethylphenidate",
   "isApproved": true,
   "tolerance": {
@@ -13,38 +10,15 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "dopaminergic",
-    "stimulants"
-  ],
+  "crossTolerances": ["dopaminergic", "stimulants"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
-  "categories": [
-    "stimulant",
-    "research-chemical",
-    "habit-forming",
-    "common"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
+  "categories": ["stimulant", "research-chemical", "habit-forming", "common"],
   "summary": "Potent psychostimulant, similar to Methylphenidate. Note: Ethylphenidate should NOT be insufflated as it is known to be highly caustic and will cause serious harm to your nasal septum, even with light usage.",
   "interactions": {
-    "dangerous": [
-      "25x-NBOMe",
-      "25x-NBOH",
-      "Tramadol",
-      "MAOIs"
-    ],
-    "unsafe": [
-      "DXM",
-      "MDMA",
-      "Stimulants"
-    ],
-    "uncertain": [
-      "Alcohol",
-      "MXE",
-      "Dissociatives"
-    ]
+    "dangerous": ["25x-NBOMe", "25x-NBOH", "Tramadol", "MAOIs"],
+    "unsafe": ["DXM", "MDMA", "Stimulants"],
+    "uncertain": ["Alcohol", "MXE", "Dissociatives"]
   },
   "roas": [
     {

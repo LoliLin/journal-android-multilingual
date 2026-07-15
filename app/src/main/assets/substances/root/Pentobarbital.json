@@ -1,10 +1,6 @@
 {
   "name": "Pentobarbital",
-  "commonNames": [
-    "Pentobarbital",
-    "pentobarbitone",
-    "Nembutal"
-  ],
+  "commonNames": ["Pentobarbital", "pentobarbitone", "Nembutal"],
   "url": "https://psychonautwiki.org/wiki/Pentobarbital",
   "isApproved": true,
   "crossTolerances": [],
@@ -13,11 +9,7 @@
     "moderate toxicity",
     "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "categories": [
-    "depressant",
-    "habit-forming",
-    "barbiturate"
-  ],
+  "categories": ["depressant", "habit-forming", "barbiturate"],
   "summary": "A CNS depressant drug that is of the barbituate class. Typically not used often as it is easier to OD on than benzodiazepines, the new alternative to barbituates. Used often for insomnia, to cause sedation.",
   "roas": [
     {

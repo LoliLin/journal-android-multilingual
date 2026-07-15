@@ -65,7 +65,7 @@ fun VolumetricDosingScreen(navigateToVolumetricLiquidDosingArticle: () -> Unit) 
                         contentDescription = i18n("substance_open_article")
                     )
                 },
-                text = { Text(i18n("category_more_info")) },
+                text = { Text(i18n("category_more_info")) }
             )
         }
     ) { padding ->

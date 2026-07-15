@@ -46,9 +46,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "autoGenerate": true
         },
         "indices": [],
@@ -120,9 +118,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "autoGenerate": true
         },
         "indices": [],
@@ -146,9 +142,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "substanceName"
-          ],
+          "columnNames": ["substanceName"],
           "autoGenerate": false
         },
         "indices": [],
@@ -184,9 +178,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "autoGenerate": true
         },
         "indices": [],

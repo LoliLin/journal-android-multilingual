@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "麦斯卡林类似物，由亚历山大·舒尔金首次合成，源自烯丙基麦斯卡林且效力较弱。这是一种致幻性苯乙胺类物质，可引发兴奋、欣快感及幻觉体验。",
   "localizedName": "甲基烯丙基麦斯卡林"
 }

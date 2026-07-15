@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "IPPH (or incorrectly IPH) is a novel piperidine based methylphenidate analogue and NDRI stimulant, but comes with much less physical side effects.",
   "localizedName": "Isopropylphenidate"
 }

@@ -21,28 +21,20 @@ package com.isaakhanimann.journal.ui.tabs.journal
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.data.achievement.AchievementEventBus
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import javax.inject.Inject
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
-import com.isaakhanimann.journal.data.achievement.AchievementEventBus
-import java.time.temporal.ChronoUnit
-
 
 @HiltViewModel
 class JournalViewModel @Inject constructor(
@@ -71,13 +63,13 @@ class JournalViewModel @Inject constructor(
 
     private val totalDoseFlowCache = mutableMapOf<String, Flow<Double>>()
 
-    fun getTotalDoseFlow(substanceName: String): Flow<Double> {
-        return totalDoseFlowCache.getOrPut(substanceName) {
+    fun getTotalDoseFlow(substanceName: String): Flow<Double> =
+        totalDoseFlowCache.getOrPut(substanceName) {
             experienceRepo.getSortedExperienceWithIngestionsCompanionsAndRatingsFlow()
                 .map { experiences ->
                     experiences.flatMap { it.ingestionsWithCompanions }
                         .filter { it.ingestion.substanceName == substanceName }
-                        .sumOf { it.ingestion.dose ?: 0.0 } 
+                        .sumOf { it.ingestion.dose ?: 0.0 }
                 }
                 .stateIn(
                     scope = viewModelScope,
@@ -85,7 +77,6 @@ class JournalViewModel @Inject constructor(
                     initialValue = 0.0
                 )
         }
-    }
 
     val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin")
 
@@ -145,24 +136,36 @@ class JournalViewModel @Inject constructor(
                     val matchingSubstances = searchRepository.getMatchingSubstances(
                         searchText = searchText,
                         filterCategories = emptyList(),
-                        recentlyUsedSubstanceNamesSorted = emptyList())
+                        recentlyUsedSubstanceNamesSorted = emptyList()
+                    )
                     if (isFavoriteEnabled) {
                         experiencesWithIngestions.filter {
-                            it.experience.isFavorite && (it.experience.title.contains(
-                                other = searchText,
-                                ignoreCase = true
-                            ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
-                                matchingSubstances.any { sub -> sub.substance.name == ingestionWithCompanion.substanceCompanion?.substanceName  }
-                            })
+                            it.experience.isFavorite &&
+                                (
+                                    it.experience.title.contains(
+                                        other = searchText,
+                                        ignoreCase = true
+                                    ) ||
+                                        it.ingestionsWithCompanions.any { ingestionWithCompanion ->
+                                            matchingSubstances.any { sub ->
+                                                sub.substance.name ==
+                                                    ingestionWithCompanion.substanceCompanion?.substanceName
+                                            }
+                                        }
+                                    )
                         }
                     } else {
                         experiencesWithIngestions.filter {
                             it.experience.title.contains(
                                 other = searchText,
                                 ignoreCase = true
-                            ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
-                                matchingSubstances.any { sub -> sub.substance.name == ingestionWithCompanion.substanceCompanion?.substanceName  }
-                            }
+                            ) ||
+                                it.ingestionsWithCompanions.any { ingestionWithCompanion ->
+                                    matchingSubstances.any { sub ->
+                                        sub.substance.name ==
+                                            ingestionWithCompanion.substanceCompanion?.substanceName
+                                    }
+                                }
                         }
                     }
                 }

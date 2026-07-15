@@ -20,6 +20,8 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 
 import android.app.TimePickerDialog
 import android.text.format.DateFormat
+import android.widget.Toast
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
@@ -32,15 +34,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import android.widget.Toast
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.R
-import java.time.LocalDateTime
 import com.isaakhanimann.journal.localization.i18n
+import java.time.LocalDateTime
 
 @Composable
 fun TimePickerButton(
@@ -66,7 +66,10 @@ fun TimePickerButton(
                     .withHour(newHour)
                     .withMinute(newMinute)
             )
-        }, localDateTime.hour, localDateTime.minute, DateFormat.is24HourFormat(context)
+        },
+        localDateTime.hour,
+        localDateTime.minute,
+        DateFormat.is24HourFormat(context)
     )
 
     val copyTip = i18n("copied_to_clipboard")
@@ -99,5 +102,4 @@ fun TimePickerButton(
             Text(timeString)
         }
     }
-
 }

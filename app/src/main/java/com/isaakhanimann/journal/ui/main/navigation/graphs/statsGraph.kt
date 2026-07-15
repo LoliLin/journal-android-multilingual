@@ -25,24 +25,26 @@ import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
 import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCategoryScreen
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.stats.StatsScreen
 import com.isaakhanimann.journal.ui.tabs.stats.substancecompanion.SubstanceCompanionScreen
 
-
 fun NavGraphBuilder.statsGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.StatsRouter.route,
-        route = TabRouter.Statistics.route,
+        route = TabRouter.Statistics.route
     ) {
         composableWithTransitions(
-            route = NoArgumentRouter.StatsRouter.route,
+            route = NoArgumentRouter.StatsRouter.route
         ) {
             StatsScreen(
-                navigateToSubstanceCompanion = {substanceName, consumerName ->
-                    navController.navigateToSubstanceCompanionScreen(substanceName = substanceName, consumerName=consumerName)
+                navigateToSubstanceCompanion = { substanceName, consumerName ->
+                    navController.navigateToSubstanceCompanionScreen(
+                        substanceName = substanceName,
+                        consumerName = consumerName
+                    )
                 }
             )
         }

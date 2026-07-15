@@ -20,8 +20,4 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline
 
 import java.time.Instant
 
-data class WeightedLine(
-    val startTime: Instant,
-    val horizontalWeight: Float,
-    val height: Float
-)
+data class WeightedLine(val startTime: Instant, val horizontalWeight: Float, val height: Float)

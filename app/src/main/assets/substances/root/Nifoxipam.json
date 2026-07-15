@@ -1,8 +1,6 @@
 {
   "name": "Nifoxipam",
-  "commonNames": [
-    "Nifoxipam"
-  ],
+  "commonNames": ["Nifoxipam"],
   "url": "https://psychonautwiki.org/wiki/Nifoxipam",
   "isApproved": true,
   "tolerance": {
@@ -10,9 +8,7 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "benzodiazepines"
-  ],
+  "crossTolerances": ["benzodiazepines"],
   "addictionPotential": "extremely physically and psychologically addictive",
   "toxicities": [
     "low toxicity",

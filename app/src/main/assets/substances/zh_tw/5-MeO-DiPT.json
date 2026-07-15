@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "5-甲氧基二異丙基色胺，又稱「狐狸」，是一種與DMT相關的迷幻色胺類物質，會扭曲視覺與聽覺感知。據報導，高劑量使用時會產生強烈的身體負擔，其作用方式與同類藥物相似。",
   "localizedName": "5-MeO-DiPT"
 }

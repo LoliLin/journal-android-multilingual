@@ -1,106 +1,58 @@
 package com.isaakhanimann.journal.ui.tabs.journal.experience
 
-import android.content.Context
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.clickable
-import androidx.compose.runtime.Stable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.NoteAdd
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material.icons.outlined.ExposurePlus2
-import androidx.compose.material.icons.outlined.StarOutline
-import androidx.compose.material.icons.outlined.Timer
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.draw.scale
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitleWithAvatar
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.rating.RatingRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote.TimedNoteRow
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.ConsumerWithIngestions
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionExplanation
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperienceScreenModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
-import com.isaakhanimann.journal.ui.theme.JournalTheme
+import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import java.time.Instant
 
-import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
-import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsTimedNotesAndRatings
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
-
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeDose
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.CumulativeRouteAndDose
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.ConsumerWithIngestions
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionExplanation
-
-import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
-import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
-import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
-import androidx.compose.foundation.layout.*
-import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
-
 @Stable
-class SubstanceDisplayNameProvider(
-    val get: (String) -> String
-)
+class SubstanceDisplayNameProvider(val get: (String) -> String)
 
 @Stable
 data class ShareableExperienceCardData(
@@ -120,7 +72,7 @@ fun prepareShareableExperienceCardData(
     timedNotes: List<TimedNote>,
     achievements: List<String> = emptyList(),
     experienceWithIngestionsCompanionsAndRatings: ExperienceWithIngestionsCompanionsAndRatings
-): ShareableExperienceCardData{
+): ShareableExperienceCardData {
     val experience = experienceWithIngestionsCompanionsAndRatings.experience
     val ingestionsWithCompanions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
     val ratings = experienceWithIngestionsCompanionsAndRatings.ratings
@@ -129,10 +81,10 @@ fun prepareShareableExperienceCardData(
     // 1. 同步提取所有需要的本地 Roa 数据
     val allIngestionElements = sortedIngestions.map { oneIngestionWithComp ->
         val ingestion = oneIngestionWithComp.ingestion
-       
+
         val substance = substanceRepo.getSubstance(ingestion.substanceName)
         val roa = substance?.getRoa(ingestion.administrationRoute)
-        
+
         val numDots = if (oneIngestionWithComp.customUnit != null) {
             roa?.roaDose?.getNumDots(
                 ingestionDose = oneIngestionWithComp.customUnitDose?.calculatedDose,
@@ -156,17 +108,25 @@ fun prepareShareableExperienceCardData(
     }
 
     // 2. 剥离出【自己】和【同行伙伴】的数据
-    val myElementsWithRoa = allIngestionElements.filter { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName == null }
+    val myElementsWithRoa = allIngestionElements.filter {
+        it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName ==
+            null
+    }
     val myIngestionElements = myElementsWithRoa.map { it.first }
 
-    val otherElementsWithRoa = allIngestionElements.filter { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName != null }
+    val otherElementsWithRoa = allIngestionElements.filter {
+        it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName !=
+            null
+    }
     val consumersWithIngestions = otherElementsWithRoa
         .groupBy { it.first.ingestionWithCompanionAndCustomUnit.ingestion.consumerName }
         .mapNotNull { entry ->
             val consumerName = entry.key ?: return@mapNotNull null
             ConsumerWithIngestions(
                 consumerName = consumerName,
-                ingestionElements = entry.value.map { it.first }.sortedBy { it.ingestionWithCompanionAndCustomUnit.ingestion.time }
+                ingestionElements = entry.value.map {
+                    it.first
+                }.sortedBy { it.ingestionWithCompanionAndCustomUnit.ingestion.time }
             )
         }
 
@@ -175,32 +135,61 @@ fun prepareShareableExperienceCardData(
         .groupBy { it.ingestionWithCompanionAndCustomUnit.ingestion.substanceName }
         .map { groupedBySubstanceName ->
             val elements = groupedBySubstanceName.value
-            val cumulativeRouteDose = elements.groupBy { it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute }
+            val cumulativeRouteDose = elements.groupBy {
+                it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute
+            }
                 .mapNotNull { groupedByRoute ->
                     val groupedElements = groupedByRoute.value
-                    if (groupedElements.any { it.ingestionWithCompanionAndCustomUnit.ingestion.dose == null }) return@mapNotNull null
+                    if (groupedElements.any {
+                            it.ingestionWithCompanionAndCustomUnit.ingestion.dose ==
+                                null
+                        }
+                    ) {
+                        return@mapNotNull null
+                    }
                     val firstElement = groupedElements.first().ingestionWithCompanionAndCustomUnit
                     val units = firstElement.originalUnit ?: return@mapNotNull null
-                    if (groupedElements.any { it.ingestionWithCompanionAndCustomUnit.originalUnit != units }) return@mapNotNull null
-                    
-                    val isEstimate = groupedElements.any { 
-                        it.ingestionWithCompanionAndCustomUnit.ingestion.isDoseAnEstimate || 
-                        it.ingestionWithCompanionAndCustomUnit.customUnit?.isEstimate ?: false 
+                    if (groupedElements.any {
+                            it.ingestionWithCompanionAndCustomUnit.originalUnit !=
+                                units
+                        }
+                    ) {
+                        return@mapNotNull null
                     }
-                    val cumulativeDose = groupedElements.mapNotNull { it.ingestionWithCompanionAndCustomUnit.pureDose }.sum()
-                    val cumulativeDoseStandardDeviation = groupedElements.mapNotNull { it.ingestionWithCompanionAndCustomUnit.pureDoseStandardDeviation }.sum()
-                    
-                    val targetRoaDose = myElementsWithRoa.firstOrNull { 
-                        it.first.ingestionWithCompanionAndCustomUnit.ingestion.substanceName == firstElement.ingestion.substanceName &&
-                        it.first.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute == firstElement.ingestion.administrationRoute
+
+                    val isEstimate = groupedElements.any {
+                        it.ingestionWithCompanionAndCustomUnit.ingestion.isDoseAnEstimate ||
+                            it.ingestionWithCompanionAndCustomUnit.customUnit?.isEstimate ?: false
+                    }
+                    val cumulativeDose = groupedElements.mapNotNull {
+                        it.ingestionWithCompanionAndCustomUnit.pureDose
+                    }.sum()
+                    val cumulativeDoseStandardDeviation = groupedElements.mapNotNull {
+                        it.ingestionWithCompanionAndCustomUnit.pureDoseStandardDeviation
+                    }.sum()
+
+                    val targetRoaDose = myElementsWithRoa.firstOrNull {
+                        it.first.ingestionWithCompanionAndCustomUnit.ingestion.substanceName ==
+                            firstElement.ingestion.substanceName &&
+                            it.first.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute ==
+                            firstElement.ingestion.administrationRoute
                     }?.second
-                    val numDots = targetRoaDose?.getNumDots(ingestionDose = cumulativeDose, ingestionUnits = units)
+                    val numDots = targetRoaDose?.getNumDots(
+                        ingestionDose = cumulativeDose,
+                        ingestionUnits = units
+                    )
 
                     CumulativeRouteAndDose(
                         cumulativeDose = cumulativeDose,
                         units = units,
                         isEstimate = isEstimate,
-                        cumulativeDoseStandardDeviation = if (cumulativeDoseStandardDeviation > 0) cumulativeDoseStandardDeviation else null,
+                        cumulativeDoseStandardDeviation = if (cumulativeDoseStandardDeviation >
+                            0
+                        ) {
+                            cumulativeDoseStandardDeviation
+                        } else {
+                            null
+                        },
                         numDots = numDots,
                         route = firstElement.ingestion.administrationRoute,
                         hasMoreThanOneIngestion = groupedElements.size > 1
@@ -211,13 +200,16 @@ fun prepareShareableExperienceCardData(
                 cumulativeRouteAndDose = cumulativeRouteDose
             )
         }
-        .filter { it.cumulativeRouteAndDose.isNotEmpty() && it.cumulativeRouteAndDose.any { route -> route.hasMoreThanOneIngestion } }
+        .filter {
+            it.cumulativeRouteAndDose.isNotEmpty() &&
+                it.cumulativeRouteAndDose.any { route -> route.hasMoreThanOneIngestion }
+        }
 
     // 4. 计算相互作用机制
     val interactionsToCheck = sortedIngestions.map { it.ingestion.substanceName }.distinct()
     val interactions = interactionsToCheck.flatMapIndexed { index: Int, interaction: String ->
         interactionsToCheck.drop(index + 1).mapNotNull { other ->
-           
+
             interactionChecker.getInteractionBetween(interaction, other)
         }
     }.sortedByDescending { it.interactionType.dangerCount }
@@ -240,7 +232,7 @@ fun prepareShareableExperienceCardData(
             ?: experience?.sortDate ?: Instant.now(),
         notes = experience?.text?.let { it } ?: "",
         locationName = experience?.location?.name ?: "",
-        isCurrentExperience = false, 
+        isCurrentExperience = false,
         ingestionElements = myIngestionElements,
         cumulativeDoses = cumulativeDoses,
         interactions = interactions,
@@ -272,7 +264,7 @@ fun ShareableExperienceCard(cardData: ShareableExperienceCardData) {
         getSubstanceDisplayName = cardData.substanceDisplayNameProvider.get
     )
 }
-      
+
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun ShareableExperienceCard(
@@ -285,23 +277,23 @@ fun ShareableExperienceCard(
 ) {
     val verticalCardPadding = 4.dp
 
-    ElevatedCard(modifier = Modifier
-       .padding(vertical = verticalCardPadding)
-       .fillMaxWidth() 
+    ElevatedCard(
+        modifier = Modifier
+            .padding(vertical = verticalCardPadding)
+            .fillMaxWidth()
     ) {
         OwnerProfileCard(
             ownerUserName = ownerUserName,
             achievements = achievements,
             onUserNameChanged = {}
         )
-        
+
         CardTitle(title = oneExperienceScreenModel.title)
         Column(
             modifier = Modifier
-        .fillMaxWidth() 
+                .fillMaxWidth()
                 .padding(horizontal = horizontalPadding)
         ) {
-            
             val ingestionElements = oneExperienceScreenModel.ingestionElements
             val dataForRatings = oneExperienceScreenModel.ratings.mapNotNull {
                 val ratingTime = it.time
@@ -320,15 +312,28 @@ fun ShareableExperienceCard(
                         DataForOneTimedNote(time = it.time, color = it.color)
                     }
             val isWorthDrawing =
-                ingestionElements.isNotEmpty() && !(ingestionElements.all { it.roaDuration == null } && dataForRatings.isEmpty() && dataForTimedNotes.isEmpty())
+                ingestionElements.isNotEmpty() &&
+                    !(
+                        ingestionElements.all { it.roaDuration == null } &&
+                            dataForRatings.isEmpty() &&
+                            dataForTimedNotes.isEmpty()
+                        )
             if (isWorthDrawing) {
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        CardTitleWithAvatar(title = if (ownerUserName == "You") i18n("effect_timeline") else ownerUserName, username = ownerUserName)
-                        
+                        CardTitleWithAvatar(
+                            title = if (ownerUserName ==
+                                "You"
+                            ) {
+                                i18n("effect_timeline")
+                            } else {
+                                ownerUserName
+                            },
+                            username = ownerUserName
+                        )
                     }
                     Column(
                         modifier = Modifier
@@ -343,11 +348,13 @@ fun ShareableExperienceCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(200.dp)
-                                
+
                         )
                         val hasOralIngestion =
-                            oneExperienceScreenModel.ingestionElements.any { it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute == AdministrationRoute.ORAL }
-                       
+                            oneExperienceScreenModel.ingestionElements.any {
+                                it.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute ==
+                                    AdministrationRoute.ORAL
+                            }
                     }
                 }
             }
@@ -361,7 +368,10 @@ fun ShareableExperienceCard(
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()
                     }
-                    oneExperienceScreenModel.ingestionElements.forEachIndexed { index, ingestionElement ->
+                    oneExperienceScreenModel.ingestionElements.forEachIndexed {
+                            index,
+                            ingestionElement
+                        ->
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
@@ -460,10 +470,11 @@ fun ShareableExperienceCard(
             }
             val notes = oneExperienceScreenModel.notes
             if (notes.isNotBlank()) {
-                ElevatedCard(modifier = Modifier
-                    .padding(vertical = verticalCardPadding)
-                    .fillMaxWidth()
-                 ) {
+                ElevatedCard(
+                    modifier = Modifier
+                        .padding(vertical = verticalCardPadding)
+                        .fillMaxWidth()
+                ) {
                     CardTitle(title = i18n("common_notes"))
                     Column(
                         modifier = Modifier
@@ -480,7 +491,10 @@ fun ShareableExperienceCard(
             }
             oneExperienceScreenModel.consumersWithIngestions.forEach { consumerWithIngestions ->
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
-                    CardTitleWithAvatar(title = consumerWithIngestions.consumerName, username = consumerWithIngestions.consumerName)
+                    CardTitleWithAvatar(
+                        title = consumerWithIngestions.consumerName,
+                        username = consumerWithIngestions.consumerName
+                    )
                     Column(
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -494,11 +508,14 @@ fun ShareableExperienceCard(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(200.dp)
-                             
+
                         )
                     }
                     HorizontalDivider()
-                    consumerWithIngestions.ingestionElements.forEachIndexed { index, ingestionElement ->
+                    consumerWithIngestions.ingestionElements.forEachIndexed {
+                            index,
+                            ingestionElement
+                        ->
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
@@ -523,29 +540,31 @@ fun ShareableExperienceCard(
                 ) {
                     CardTitle(title = i18n("substance_interactions_title"))
                     interactions.forEachIndexed { index, interaction ->
-                        InteractionRow(interaction = interaction, getSubstanceDisplayName = getSubstanceDisplayName)
+                        InteractionRow(
+                            interaction = interaction,
+                            getSubstanceDisplayName = getSubstanceDisplayName
+                        )
                         if (index < interactions.size - 1) {
                             HorizontalDivider()
                         }
                     }
-                    
-                    
                 }
             }
             Spacer(modifier = Modifier.height(60.dp))
             ElevatedCard(
-                    modifier = Modifier
-                        .padding(vertical = verticalCardPadding)
+                modifier = Modifier
+                    .padding(vertical = verticalCardPadding)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.End
                 ) {
                     CardTitle(title = "Journal Android Multilingual")
-                    Column(modifier = Modifier.scale(0.5f)){ CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME) }
+                    Column(modifier = Modifier.scale(0.5f)) {
+                        CardTitle(title = com.isaakhanimann.journal.ui.VERSION_NAME)
+                    }
                 }
             }
         }
     }
 }
-  

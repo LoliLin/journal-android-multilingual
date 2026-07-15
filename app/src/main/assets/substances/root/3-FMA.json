@@ -1,8 +1,6 @@
 {
   "name": "3-FMA",
-  "commonNames": [
-    "3-FMA"
-  ],
+  "commonNames": ["3-FMA"],
   "url": "https://psychonautwiki.org/wiki/3-FMA",
   "isApproved": true,
   "tolerance": {
@@ -12,15 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 132
   },
-  "crossTolerances": [
-    "dopamine",
-    "serotonin|serotonergic",
-    "stimulant"
-  ],
+  "crossTolerances": ["dopamine", "serotonin|serotonergic", "stimulant"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "categories": [
     "entactogen",
     "stimulant",
@@ -29,11 +21,7 @@
   ],
   "summary": "Stimulant drug in the amphetamine family",
   "interactions": {
-    "dangerous": [
-      "Tramadol",
-      "ΑMT",
-      "MAOI"
-    ],
+    "dangerous": ["Tramadol", "ΑMT", "MAOI"],
     "unsafe": [
       "Dextromethorphan",
       "PCP",

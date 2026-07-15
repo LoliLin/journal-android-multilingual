@@ -1,9 +1,6 @@
 {
   "name": "3-FA",
-  "commonNames": [
-    "3-FA",
-    "PAL-353"
-  ],
+  "commonNames": ["3-FA", "PAL-353"],
   "url": "https://psychonautwiki.org/wiki/3-FA",
   "isApproved": true,
   "tolerance": {
@@ -13,14 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 132
   },
-  "crossTolerances": [
-    "dopamine",
-    "stimulant"
-  ],
+  "crossTolerances": ["dopamine", "stimulant"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "categories": [
     "stimulant",
     "research-chemical",
@@ -29,19 +21,8 @@
   ],
   "summary": "A stimulant that is close to equipotent with methamphetamine and acts as a monoamine releasing agent , but has more selectivity for dopamine/noradrenaline over serotonin.",
   "interactions": {
-    "dangerous": [
-      "Tramadol",
-      "aMT",
-      "MAOIs"
-    ],
-    "unsafe": [
-      "DXM",
-      "PCP",
-      "25x-NBOMe",
-      "2C-T-x",
-      "5-MeO-xxT",
-      "DOx"
-    ],
+    "dangerous": ["Tramadol", "aMT", "MAOIs"],
+    "unsafe": ["DXM", "PCP", "25x-NBOMe", "2C-T-x", "5-MeO-xxT", "DOx"],
     "uncertain": [
       "Alcohol",
       "GHB",

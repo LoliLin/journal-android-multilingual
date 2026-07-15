@@ -23,7 +23,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.utils.getInstant
 
-
 class RatingPreviewProvider : PreviewParameterProvider<ShulginRating> {
     override val values: Sequence<ShulginRating> = sequenceOf(
         ShulginRating(
@@ -61,6 +60,6 @@ class RatingPreviewProvider : PreviewParameterProvider<ShulginRating> {
             )!!,
             option = ShulginRatingOption.TWO_PLUS,
             experienceId = 0
-        ),
+        )
     )
 }

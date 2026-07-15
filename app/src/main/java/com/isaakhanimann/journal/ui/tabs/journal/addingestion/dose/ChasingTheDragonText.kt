@@ -31,7 +31,7 @@ import com.isaakhanimann.journal.localization.i18n
 @Composable
 fun ChasingTheDragonText(
     modifier: Modifier = Modifier,
-    titleStyle: TextStyle = MaterialTheme.typography.titleMedium,
+    titleStyle: TextStyle = MaterialTheme.typography.titleMedium
 ) {
     Column(
         modifier = modifier
@@ -40,4 +40,3 @@ fun ChasingTheDragonText(
         Text(text = i18n("chasing_the_dragon_body"))
     }
 }
-

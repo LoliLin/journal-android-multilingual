@@ -1,8 +1,6 @@
 {
   "name": "Nicotine",
-  "commonNames": [
-    "Nicotine"
-  ],
+  "commonNames": ["Nicotine"],
   "url": "https://psychonautwiki.org/wiki/Nicotine",
   "isApproved": true,
   "tolerance": {
@@ -14,9 +12,7 @@
   },
   "crossTolerances": [],
   "addictionPotential": "extremely addictive with a high potential for abuse",
-  "toxicities": [
-    "estimated oral LD50 of 6.5 - 13 mg/kg in humans"
-  ],
+  "toxicities": ["estimated oral LD50 of 6.5 - 13 mg/kg in humans"],
   "categories": [
     "depressant",
     "stimulant",

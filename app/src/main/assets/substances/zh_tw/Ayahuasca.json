@@ -1,8 +1,6 @@
 {
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "LD50 約為常規劑量的 50 倍"
-  ],
+  "toxicities": ["LD50 約為常規劑量的 50 倍"],
   "summary": "一種由兩種或多種植物混合製成的藥劑，其中至少包含MAOI和DMT，這種組合使DMT能夠口服發揮作用。通常與南美洲文化相關。此外，有時也會通過將外部MAOI與提取的DMT結合，以合成方式近似製成。會引發強烈、具有靈性導向的幻覺體驗。",
   "localizedName": "死藤水"
 }

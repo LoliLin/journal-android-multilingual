@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "屬於二芳基乙胺類的解離性藥物，為二苯胺的強效類似物。已知其作用難以預測，並可能導致暫時性失憶。",
   "localizedName": "甲氧苯环利定"
 }

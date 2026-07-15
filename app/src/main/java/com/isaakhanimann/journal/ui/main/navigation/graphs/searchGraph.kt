@@ -46,26 +46,25 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.SubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.category.CategoryScreen
 
-
 fun NavGraphBuilder.searchGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.SubstancesRouter.route,
-        route = TabRouter.Substances.route,
+        route = TabRouter.Substances.route
     ) {
         composableWithTransitions(
-            route = NoArgumentRouter.SubstancesRouter.route,
+            route = NoArgumentRouter.SubstancesRouter.route
         ) {
             SearchScreen(
                 onSubstanceTap = {
                     navController.navigateToSubstanceScreen(substanceName = it.name)
                 },
                 onCustomSubstanceTap = navController::navigateToEditCustomSubstance,
-                navigateToAddCustomSubstanceScreen = navController::navigateToAddCustom,
+                navigateToAddCustomSubstanceScreen = navController::navigateToAddCustom
             )
         }
         composableWithTransitions(
             route = ArgumentRouter.SubstanceRouter.route,
-            arguments = ArgumentRouter.SubstanceRouter.args,
+            arguments = ArgumentRouter.SubstanceRouter.args
         ) {
             SubstanceScreen(
                 navigateToDosageExplanationScreen = navController::navigateToDosageExplanationScreenOnSearchTab,
@@ -87,12 +86,14 @@ fun NavGraphBuilder.searchGraph(navController: NavController) {
             UrlScreen(url = url, onHandled = navController::popBackStack)
         }
         composableWithTransitions(
-            ArgumentRouter.CategoryRouter.route, arguments = ArgumentRouter.CategoryRouter.args
+            ArgumentRouter.CategoryRouter.route,
+            arguments = ArgumentRouter.CategoryRouter.args
         ) {
             CategoryScreen(navigateToURL = navController::navigateToURLScreenOnSearchTab)
         }
         composableWithTransitions(
-            ArgumentRouter.EditCustomRouter.route, arguments = ArgumentRouter.EditCustomRouter.args
+            ArgumentRouter.EditCustomRouter.route,
+            arguments = ArgumentRouter.EditCustomRouter.args
         ) {
             EditCustomSubstance(navigateBack = navController::popBackStack)
         }
@@ -108,6 +109,8 @@ fun NavGraphBuilder.searchGraph(navController: NavController) {
                 )
             })
         }
-        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnSearchTabRouter.route) { ExplainTimelineScreen() }
+        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnSearchTabRouter.route) {
+            ExplainTimelineScreen()
+        }
     }
 }

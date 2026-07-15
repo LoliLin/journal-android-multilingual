@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 132
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种与甲基苯丙胺效力相近的兴奋剂，作为单胺释放剂发挥作用，但对多巴胺/去甲肾上腺素的选择性高于血清素。",
   "localizedName": "3-FA"
 }

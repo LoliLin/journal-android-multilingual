@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 132
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A stimulant that is close to equipotent with methamphetamine and acts as a monoamine releasing agent , but has more selectivity for dopamine/noradrenaline over serotonin.",
   "localizedName": "3-FA"
 }

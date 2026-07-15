@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種三重單胺再攝取抑制劑。其對5-HT2B受體的激動作用，使得5-APB長期使用可能具有心臟毒性，如同在其他5-HT2B激動劑（例如芬氟拉明和MDMA）中所觀察到的情況。",
   "localizedName": "5-APB"
 }

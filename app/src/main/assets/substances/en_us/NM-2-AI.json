@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "Stimulant that is in the aminoindane class. Is it quite close to it's bigger brother 2-AI. Yet this has a lower potency, has a longer duration though.",
   "localizedName": "NM-2-AI"
 }

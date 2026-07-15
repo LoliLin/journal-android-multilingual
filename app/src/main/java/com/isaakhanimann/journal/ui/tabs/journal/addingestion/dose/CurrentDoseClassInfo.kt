@@ -46,7 +46,6 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 
-
 @Preview
 @Composable
 fun CurrentDoseClassInfoPreview(@PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose) {
@@ -55,7 +54,6 @@ fun CurrentDoseClassInfoPreview(@PreviewParameter(RoaDosePreviewProvider::class)
 
 @Composable
 fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
-
     val doseColor = currentDoseClass.getComposeColor(isSystemInDarkTheme())
 
     var isShowingDoseClassDialog by remember { mutableStateOf(false) }
@@ -65,7 +63,7 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
     TextButton(
         onClick = {
             isShowingDoseClassDialog = true
-        },
+        }
     ) {
         Icon(
             Icons.Outlined.Info,
@@ -75,11 +73,21 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
 
         val text = when (currentDoseClass) {
-            DoseClass.THRESHOLD -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()} ${roaDose.units}"
-            DoseClass.LIGHT -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.lightMin?.toReadableString()}-${roaDose.commonMin?.toReadableString()} ${roaDose.units}"
-            DoseClass.COMMON -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.commonMin?.toReadableString()}-${roaDose.strongMin?.toReadableString()} ${roaDose.units}"
-            DoseClass.STRONG -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.strongMin?.toReadableString()}-${roaDose.heavyMin?.toReadableString()} ${roaDose.units}"
-            DoseClass.HEAVY -> "${currentDoseClass.getLocalizedName(context).lowercase()} ${roaDose.heavyMin?.toReadableString()} ${roaDose.units}-.."
+            DoseClass.THRESHOLD -> "${currentDoseClass.getLocalizedName(
+                context
+            ).lowercase()} ${roaDose.lightMin?.toReadableString()} ${roaDose.units}"
+            DoseClass.LIGHT -> "${currentDoseClass.getLocalizedName(
+                context
+            ).lowercase()} ${roaDose.lightMin?.toReadableString()}-${roaDose.commonMin?.toReadableString()} ${roaDose.units}"
+            DoseClass.COMMON -> "${currentDoseClass.getLocalizedName(
+                context
+            ).lowercase()} ${roaDose.commonMin?.toReadableString()}-${roaDose.strongMin?.toReadableString()} ${roaDose.units}"
+            DoseClass.STRONG -> "${currentDoseClass.getLocalizedName(
+                context
+            ).lowercase()} ${roaDose.strongMin?.toReadableString()}-${roaDose.heavyMin?.toReadableString()} ${roaDose.units}"
+            DoseClass.HEAVY -> "${currentDoseClass.getLocalizedName(
+                context
+            ).lowercase()} ${roaDose.heavyMin?.toReadableString()} ${roaDose.units}-.."
         }
         Text(
             text = text,
@@ -92,8 +100,10 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
             onDismissRequest = { isShowingDoseClassDialog = false },
             title = {
                 Text(
-                    text = "${currentDoseClass.getLocalizedName(context)} ${i18n("substance_dosage_title")}",
-                    style = MaterialTheme.typography.titleLarge,
+                    text = "${currentDoseClass.getLocalizedName(
+                        context
+                    )} ${i18n("substance_dosage_title")}",
+                    style = MaterialTheme.typography.titleLarge
                 )
             },
             text = {
@@ -109,7 +119,7 @@ fun CurrentDoseClassInfo(currentDoseClass: DoseClass, roaDose: RoaDose) {
                 ) {
                     Text(i18n("common_close"))
                 }
-            },
+            }
         )
     }
 }

@@ -22,7 +22,7 @@ import java.util.Locale
 import kotlin.math.roundToInt
 
 fun Double.toReadableString(): String {
-    if (this>100) {
+    if (this > 100) {
         return this.roundToInt().toString()
     }
     val format = if (this > 10) {
@@ -30,5 +30,9 @@ fun Double.toReadableString(): String {
     } else {
         "%.2f"
     }
-    return String.format(Locale.US, format, this).replace("0*$".toRegex(), "").replace("\\.$".toRegex(), "")
+    return String.format(
+        Locale.US,
+        format,
+        this
+    ).replace("0*$".toRegex(), "").replace("\\.$".toRegex(), "")
 }

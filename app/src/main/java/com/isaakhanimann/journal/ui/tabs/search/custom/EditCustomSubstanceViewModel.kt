@@ -28,9 +28,9 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_SUBSTANCE_ID_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class EditCustomSubstanceViewModel @Inject constructor(
@@ -49,7 +49,8 @@ class EditCustomSubstanceViewModel @Inject constructor(
         val customSubstanceId = state.get<Int>(CUSTOM_SUBSTANCE_ID_KEY)!!
         viewModelScope.launch {
             val customSubstance =
-                experienceRepo.getCustomSubstanceFlow(customSubstanceId).firstOrNull() ?: return@launch
+                experienceRepo.getCustomSubstanceFlow(customSubstanceId).firstOrNull()
+                    ?: return@launch
             id = customSubstanceId
             name = customSubstance.name
             units = customSubstance.units

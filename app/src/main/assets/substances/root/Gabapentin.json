@@ -1,11 +1,6 @@
 {
   "name": "Gabapentin",
-  "commonNames": [
-    "Gabapentin",
-    "Neurontin",
-    "Gabarone",
-    "Gralise"
-  ],
+  "commonNames": ["Gabapentin", "Neurontin", "Gabarone", "Gralise"],
   "url": "https://psychonautwiki.org/wiki/Gabapentin",
   "isApproved": true,
   "tolerance": {
@@ -14,19 +9,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
-  "toxicities": [
-    "low toxicity"
-  ],
-  "categories": [
-    "depressant",
-    "habit-forming"
-  ],
+  "toxicities": ["low toxicity"],
+  "categories": ["depressant", "habit-forming"],
   "summary": "An analogue of GABA also known as Neurontin, originally developed to treat epilepsy. Commonly prescribed for neuropathic pain, it also has pronounced anxiolytic effects leading to its use in treating anxiety disorders.",
   "interactions": {
-    "dangerous": [
-      "Opioids",
-      "Depressants"
-    ],
+    "dangerous": ["Opioids", "Depressants"],
     "unsafe": [],
     "uncertain": []
   },

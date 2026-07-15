@@ -1,9 +1,6 @@
 {
   "name": "MPT",
-  "commonNames": [
-    "MPT",
-    "Methylpropyltryptamine"
-  ],
+  "commonNames": ["MPT", "Methylpropyltryptamine"],
   "url": "https://psychonautwiki.org/wiki/MPT",
   "isApproved": true,
   "tolerance": {
@@ -13,16 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic"],
   "roas": [
     {
       "name": "oral",

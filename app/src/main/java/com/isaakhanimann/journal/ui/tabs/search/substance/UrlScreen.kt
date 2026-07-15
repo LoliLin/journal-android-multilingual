@@ -22,27 +22,24 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-
 import androidx.hilt.navigation.compose.hiltViewModel
 
-import com.isaakhanimann.journal.ui.tabs.search.substance.UrlViewModel
-
 @Composable
-fun UrlScreen(
-    viewModel: UrlViewModel = hiltViewModel(),
-    url: String,
-    onHandled: () -> Unit,
-) {
+fun UrlScreen(viewModel: UrlViewModel = hiltViewModel(), url: String, onHandled: () -> Unit) {
     val isOpenLinkInBrowser by viewModel.isOpenLinkInBrowserFlow.collectAsState()
-    UrlScreen(isOpenLinkInBrowser = isOpenLinkInBrowser, url = url, onHandled = onHandled, appContext = viewModel.appContext)
+    UrlScreen(
+        isOpenLinkInBrowser = isOpenLinkInBrowser,
+        url = url,
+        onHandled = onHandled,
+        appContext = viewModel.appContext
+    )
 }
 
 @Composable
@@ -50,10 +47,10 @@ fun UrlScreen(
     isOpenLinkInBrowser: Boolean,
     url: String,
     onHandled: () -> Unit,
-    appContext: Context,
+    appContext: Context
 ) {
     val context = LocalContext.current
-    
+
     val toolbarColor = MaterialTheme.colorScheme.surface.toArgb()
 
     LaunchedEffect(url) {
@@ -63,7 +60,7 @@ fun UrlScreen(
         }
 
         val parsedUri = Uri.parse(url)
-        
+
         try {
             if (isOpenLinkInBrowser) {
                 val intent = Intent(Intent.ACTION_VIEW, parsedUri).apply {
@@ -77,11 +74,11 @@ fun UrlScreen(
                 customTabsIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 customTabsIntent.launchUrl(context, parsedUri)
             }
-        } catch (e: Exception) { 
+        } catch (e: Exception) {
             e.printStackTrace()
             android.widget.Toast.makeText(
-                context, 
-                "Failed to Open", 
+                context,
+                "Failed to Open",
                 android.widget.Toast.LENGTH_SHORT
             ).show()
         } finally {

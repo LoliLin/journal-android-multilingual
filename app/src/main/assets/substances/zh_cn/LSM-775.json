@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "麦角酰胺类迷幻剂，单位重量效力较弱，与它的\"老大哥\"LSD相比，能产生一种相当温和、梦幻甚至带有镇静效果的迷幻体验。",
   "localizedName": "LSM-775"
 }

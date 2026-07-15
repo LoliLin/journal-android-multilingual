@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "無成癮性",
-  "toxicities": [
-    "毒性劑量未知"
-  ],
+  "toxicities": ["毒性劑量未知"],
   "summary": "一種新的迷幻性麥角醯胺，被懷疑是ETH-LAD的前驅藥物，這或許能解釋為何兩者的劑量極為相似。或者它本身可能具有活性。需要進行科學研究才能理解，但目前尚無相關研究。",
   "localizedName": "1P-ETH-LAD"
 }

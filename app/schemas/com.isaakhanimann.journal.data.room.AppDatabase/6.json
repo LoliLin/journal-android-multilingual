@@ -65,9 +65,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []
@@ -163,9 +161,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []
@@ -189,9 +185,7 @@
         ],
         "primaryKey": {
           "autoGenerate": false,
-          "columnNames": [
-            "substanceName"
-          ]
+          "columnNames": ["substanceName"]
         },
         "indices": [],
         "foreignKeys": []
@@ -227,9 +221,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []
@@ -271,9 +263,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []
@@ -327,9 +317,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []
@@ -413,9 +401,7 @@
         ],
         "primaryKey": {
           "autoGenerate": true,
-          "columnNames": [
-            "id"
-          ]
+          "columnNames": ["id"]
         },
         "indices": [],
         "foreignKeys": []

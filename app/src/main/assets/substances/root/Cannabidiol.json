@@ -1,20 +1,12 @@
 {
   "name": "Cannabidiol",
-  "commonNames": [
-    "Cannabidiol",
-    "CBD",
-    "Epidiolex"
-  ],
+  "commonNames": ["Cannabidiol", "CBD", "Epidiolex"],
   "url": "https://psychonautwiki.org/wiki/Cannabidiol",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "low abuse potential",
-  "toxicities": [
-    "well-tolerated and shows little to no toxicity"
-  ],
-  "categories": [
-    "cannabinoid"
-  ],
+  "toxicities": ["well-tolerated and shows little to no toxicity"],
+  "categories": ["cannabinoid"],
   "roas": [
     {
       "name": "oral",

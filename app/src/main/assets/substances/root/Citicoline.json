@@ -1,18 +1,12 @@
 {
   "name": "Citicoline",
-  "commonNames": [
-    "Citicoline"
-  ],
+  "commonNames": ["Citicoline"],
   "url": "https://psychonautwiki.org/wiki/Citicoline",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
-  "categories": [
-    "nootropic"
-  ],
+  "toxicities": ["extremely low toxicity"],
+  "categories": ["nootropic"],
   "roas": [
     {
       "name": "oral",

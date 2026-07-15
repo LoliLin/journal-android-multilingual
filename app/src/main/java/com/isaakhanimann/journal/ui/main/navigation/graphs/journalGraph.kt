@@ -52,14 +52,13 @@ import com.isaakhanimann.journal.ui.tabs.safer.DoseExplanationScreen
 import com.isaakhanimann.journal.ui.tabs.safer.VolumetricDosingScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.SaferSniffingScreen
 
-
 fun NavGraphBuilder.journalGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.JournalRouter.route,
-        route = TabRouter.Journal.route,
+        route = TabRouter.Journal.route
     ) {
         composableWithTransitions(
-            route = NoArgumentRouter.JournalRouter.route,
+            route = NoArgumentRouter.JournalRouter.route
         ) {
             JournalScreen(
                 navigateToExperiencePopNothing = navController::navigateToExperience,
@@ -107,7 +106,8 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
             VolumetricDosingScreen(
                 navigateToVolumetricLiquidDosingArticle = {
                     navController.navigateToURLInJournalTab(url = VOLUMETRIC_DOSE_ARTICLE_URL)
-                })
+                }
+            )
         }
         composableWithTransitions(
             ArgumentRouter.ExperienceRouter.route,
@@ -150,12 +150,18 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
             EditIngestionScreen(navigateBack = navController::popBackStack)
         }
         addIngestionGraph(navController)
-        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnJournalTabRouter.route) { ExplainTimelineScreen() }
-        composableWithTransitions(NoArgumentRouter.DosageExplanationRouterOnSearchTab.route) { DoseExplanationScreen() }
-        composableWithTransitions(NoArgumentRouter.SaferSniffingOnJournalTab.route) { SaferSniffingScreen() }
+        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnJournalTabRouter.route) {
+            ExplainTimelineScreen()
+        }
+        composableWithTransitions(NoArgumentRouter.DosageExplanationRouterOnSearchTab.route) {
+            DoseExplanationScreen()
+        }
+        composableWithTransitions(NoArgumentRouter.SaferSniffingOnJournalTab.route) {
+            SaferSniffingScreen()
+        }
         composableWithTransitions(NoArgumentRouter.CalendarRouter.route) {
             CalendarJournalScreen(
-                navigateToExperiencePopNothing = navController::navigateToExperience,
+                navigateToExperiencePopNothing = navController::navigateToExperience
             )
         }
     }

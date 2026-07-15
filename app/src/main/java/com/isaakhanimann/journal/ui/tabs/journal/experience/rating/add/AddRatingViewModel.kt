@@ -31,12 +31,12 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AddRatingViewModel @Inject constructor(
@@ -48,7 +48,9 @@ class AddRatingViewModel @Inject constructor(
     val experienceId = state.get<Int>(EXPERIENCE_ID_KEY)!!
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
 
-    var isThereAlreadyAnOverallRatingFlow = experienceRepo.getRatingsFlow(experienceId).map { ratings ->
+    var isThereAlreadyAnOverallRatingFlow = experienceRepo.getRatingsFlow(
+        experienceId
+    ).map { ratings ->
         ratings.any { it.time == null }
     }.stateIn(
         initialValue = true,
@@ -59,7 +61,9 @@ class AddRatingViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             val experience = experienceRepo.getExperience(id = experienceId) ?: return@launch
-            val isOldExperience = experience.sortDate.isBefore(Instant.now().minus(12, ChronoUnit.HOURS))
+            val isOldExperience = experience.sortDate.isBefore(
+                Instant.now().minus(12, ChronoUnit.HOURS)
+            )
             if (isOldExperience) {
                 localDateTimeFlow.emit(experience.sortDate.getLocalDateTime())
             }

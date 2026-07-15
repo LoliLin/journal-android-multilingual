@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "Psychedelic drug of the tryptamine class. Higher homologue of Psilocin, and is the 4-hydroxy analogue of N-Methyl-N-Propyltryptamine.",
   "localizedName": "4-HO-MPT"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种罕见的色胺类迷幻剂，与DMT密切相关，具有一个有趣的特点：几乎不产生视觉幻觉，但听觉效果强烈。",
   "localizedName": "二异丙基色胺"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "合成大麻素，是大麻素受体的激动剂，具有强烈的镇静作用。作为一种合成大麻素，其起效非常迅速。",
   "localizedName": "5F-PB-22"
 }

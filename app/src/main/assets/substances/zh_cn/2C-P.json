@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "滥用和依赖的可能性较低",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种合成苯乙胺，其效果有时被比作2C-E，但持续时间更长，且身体负担更为显著。它是2C-X系列中效力最强的化合物之一。",
   "localizedName": "2C-P"
 }

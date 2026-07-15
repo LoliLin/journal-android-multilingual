@@ -5,9 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度生理和心理成瘾性",
-  "toxicities": [
-    "低毒性"
-  ],
+  "toxicities": ["低毒性"],
   "summary": "一种非典型抗精神病药物，商品名为思瑞康。也用于治疗失眠和情绪波动。此药具有强效镇静作用，可终止或减缓致幻药物的迷幻体验。较少被滥用。",
   "localizedName": "喹硫平"
 }

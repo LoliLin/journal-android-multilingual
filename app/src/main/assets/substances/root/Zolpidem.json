@@ -1,11 +1,6 @@
 {
   "name": "Zolpidem",
-  "commonNames": [
-    "Ambien",
-    "Intermezzo",
-    "Edluar",
-    "Zolpimist"
-  ],
+  "commonNames": ["Ambien", "Intermezzo", "Edluar", "Zolpimist"],
   "url": "https://psychonautwiki.org/wiki/Zolpidem",
   "isApproved": true,
   "crossTolerances": [],
@@ -14,12 +9,7 @@
     "low toxicity",
     "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "categories": [
-    "hallucinogen",
-    "depressant",
-    "habit-forming",
-    "common"
-  ],
+  "categories": ["hallucinogen", "depressant", "habit-forming", "common"],
   "summary": "Commonly prescribed for insomnia, Ambien (zolpidem) can cause realistic hallucinations similar to those of deliriants, and is very likely to cause amnesia at higher doses. Take care when using this drug, as it tends to lower inhibitions to a level which causes the user to do things they might not normally do when sober.",
   "roas": [
     {

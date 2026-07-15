@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "localizedName": "5-甲氧基-N,N-二异丙基苯并呋喃-2-乙胺"
 }

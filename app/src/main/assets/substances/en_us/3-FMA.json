@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 132
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "Stimulant drug in the amphetamine family",
   "localizedName": "3-FMA"
 }

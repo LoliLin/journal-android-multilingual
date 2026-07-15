@@ -22,17 +22,10 @@ import android.content.Context
 import androidx.compose.ui.graphics.Color
 import com.isaakhanimann.journal.localization.I18n
 
-data class Category(
-    val name: String,
-    val description: String,
-    val url: String?,
-    val color: Color
-) {
-    fun getLocalizedName(context: Context): String {
-        return I18n.translateOrDefault(context, "categories.$name", name)
-    }
+data class Category(val name: String, val description: String, val url: String?, val color: Color) {
+    fun getLocalizedName(context: Context): String =
+        I18n.translateOrDefault(context, "categories.$name", name)
 
-    fun getLocalizedDescription(context: Context): String {
-        return I18n.translateOrDefault(context, "categories.$name.desc", description)
-    }
+    fun getLocalizedDescription(context: Context): String =
+        I18n.translateOrDefault(context, "categories.$name.desc", description)
 }

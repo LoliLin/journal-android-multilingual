@@ -26,7 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import com.isaakhanimann.journal.localization.i18n
 
-
 @Composable
 fun NextFAB(navigateToNext: () -> Unit) {
     ExtendedFloatingActionButton(
@@ -37,6 +36,6 @@ fun NextFAB(navigateToNext: () -> Unit) {
                 contentDescription = i18n("common_next")
             )
         },
-        text = { Text(i18n("common_next")) },
+        text = { Text(i18n("common_next")) }
     )
 }

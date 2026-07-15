@@ -33,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 
-
 @Preview
 @Composable
 fun DoseClassificationPreview() {
@@ -45,6 +44,7 @@ fun DoseClassificationPreview() {
         unit = "mg"
     )
 }
+
 @Composable
 fun DoseClassificationRow(
     lightMin: Double?,
@@ -72,7 +72,8 @@ fun DoseClassificationRow(
             modifier = Modifier.textBrush(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        threshColor, lightColor
+                        threshColor,
+                        lightColor
                     )
                 )
             )
@@ -90,7 +91,8 @@ fun DoseClassificationRow(
             modifier = Modifier.textBrush(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        lightColor, commonColor
+                        lightColor,
+                        commonColor
                     )
                 )
             )
@@ -105,7 +107,8 @@ fun DoseClassificationRow(
             modifier = Modifier.textBrush(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        commonColor, strongColor
+                        commonColor,
+                        strongColor
                     )
                 )
             )
@@ -120,7 +123,8 @@ fun DoseClassificationRow(
             modifier = Modifier.textBrush(
                 brush = Brush.horizontalGradient(
                     colors = listOf(
-                        strongColor, heavyColor
+                        strongColor,
+                        heavyColor
                     )
                 )
             )

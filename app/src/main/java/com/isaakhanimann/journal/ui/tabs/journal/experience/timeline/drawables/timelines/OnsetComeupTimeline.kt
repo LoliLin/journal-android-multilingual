@@ -47,7 +47,7 @@ data class OnsetComeupTimeline(
         density: Density
     ) {
         val weight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(weight) * pixelsPerSec)
         val comeupEndX =
@@ -62,8 +62,8 @@ data class OnsetComeupTimeline(
             color = color,
             style = density.normalStroke
         )
-        path.lineTo(x = comeupEndX, y = height + drawScope.strokeWidth/2)
-        path.lineTo(x = startX, y = height + drawScope.strokeWidth/2)
+        path.lineTo(x = comeupEndX, y = height + drawScope.strokeWidth / 2)
+        path.lineTo(x = startX, y = height + drawScope.strokeWidth / 2)
         path.close()
         drawScope.drawPath(
             path = path,
@@ -72,12 +72,14 @@ data class OnsetComeupTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }
 
-fun RoaDuration.toOnsetComeupTimeline(ingestionTimeRelativeToStartInSeconds: Float): OnsetComeupTimeline? {
+fun RoaDuration.toOnsetComeupTimeline(
+    ingestionTimeRelativeToStartInSeconds: Float
+): OnsetComeupTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     return if (fullOnset != null && fullComeup != null) {

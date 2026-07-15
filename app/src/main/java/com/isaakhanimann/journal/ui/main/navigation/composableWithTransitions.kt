@@ -91,6 +91,8 @@ fun AnimatedContentTransitionScope<NavBackStackEntry>.isChangingTab(): Boolean {
     val initialGrandParent = initialParent?.parent
     val targetParent = targetState.destination.parent
     val targetGrandParent = targetParent?.parent
-    return (initialGrandParent?.route ?: initialParent?.route) != (targetGrandParent?.route
-        ?: targetParent?.route)
+    return (initialGrandParent?.route ?: initialParent?.route) != (
+        targetGrandParent?.route
+            ?: targetParent?.route
+        )
 }

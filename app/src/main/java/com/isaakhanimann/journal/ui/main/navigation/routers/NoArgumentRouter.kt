@@ -20,7 +20,6 @@ package com.isaakhanimann.journal.ui.main.navigation.routers
 
 import androidx.navigation.NavController
 
-
 sealed class NoArgumentRouter(val route: String) {
     object StatsRouter : NoArgumentRouter(route = "stats")
     object CombinationSettingsRouter : NoArgumentRouter(route = "combinationSettings")

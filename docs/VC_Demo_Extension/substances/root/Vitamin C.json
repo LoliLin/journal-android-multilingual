@@ -1,11 +1,7 @@
 {
   "name": "Vitamin C",
   "localizedName": "Vitamin C",
-  "commonNames": [
-    "Ascorbic Acid",
-    "L-Ascorbic Acid",
-    "Cenolate"
-  ],
+  "commonNames": ["Ascorbic Acid", "L-Ascorbic Acid", "Cenolate"],
   "url": "https://en.wikipedia.org/wiki/Vitamin_C",
   "isApproved": true,
   "tolerance": {
@@ -17,11 +13,7 @@
     "Very low acute toxicity. Megadoses (>2000mg/day oral) may cause osmotic diarrhea, abdominal cramps, and increase the risk of calcium oxalate kidney stones in susceptible individuals.",
     "Doses above 1000mg saturate the intestinal active transport system, leading to a sharp decline in bioavailability."
   ],
-  "categories": [
-    "vitamin",
-    "antioxidant",
-    "essential-nutrient"
-  ],
+  "categories": ["vitamin", "antioxidant", "essential-nutrient"],
   "roas": [
     {
       "name": "oral",

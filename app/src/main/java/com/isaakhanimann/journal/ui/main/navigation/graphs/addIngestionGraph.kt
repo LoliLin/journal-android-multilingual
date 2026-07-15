@@ -56,7 +56,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
     navigation(
         startDestination = NoArgumentRouter.AddIngestionSearchRouter.route,
-        route = NoArgumentRouter.AddIngestionRouter.route,
+        route = NoArgumentRouter.AddIngestionRouter.route
     ) {
         composableWithTransitions(NoArgumentRouter.AddIngestionSearchRouter.route) {
             AddIngestionSearchScreen(
@@ -67,7 +67,15 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                     navController.navigateToCheckSaferUse(substanceName = it)
                 },
                 navigateToCustomSubstanceChooseRoute = navController::navigateToChooseCustomRoute,
-                navigateToChooseTime = { substanceName, route, dose, units, isEstimate, estimatedDoseStandardDeviation, customUnitId ->
+                navigateToChooseTime = {
+                        substanceName,
+                        route,
+                        dose,
+                        units,
+                        isEstimate,
+                        estimatedDoseStandardDeviation,
+                        customUnitId
+                    ->
                     navController.navigateToChooseTimeAndMaybeColor(
                         administrationRoute = route,
                         units = units,
@@ -114,7 +122,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                     val args = backStackEntry.arguments!!
                     val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
                     navController.navigateToCheckInteractions(substanceName = substanceName)
-                },
+                }
             )
         }
         composableWithTransitions(
@@ -129,13 +137,15 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
             ArgumentRouter.ChooseDoseCustomUnitRouter.route,
             arguments = ArgumentRouter.ChooseDoseCustomUnitRouter.args
         ) {
-            ChooseDoseCustomUnitScreen(navigateToChooseTimeAndMaybeColor = { administrationRoute: AdministrationRoute,
-                units: String?,
-                isEstimate: Boolean,
-                dose: Double?,
-                estimatedDoseStandardDeviation: Double?,
-                substanceName: String,
-                customUnitId: Int? ->
+            ChooseDoseCustomUnitScreen(navigateToChooseTimeAndMaybeColor = {
+                    administrationRoute: AdministrationRoute,
+                    units: String?,
+                    isEstimate: Boolean,
+                    dose: Double?,
+                    estimatedDoseStandardDeviation: Double?,
+                    substanceName: String,
+                    customUnitId: Int?
+                ->
                 navController.navigateToChooseTimeAndMaybeColor(
                     administrationRoute,
                     units,
@@ -158,7 +168,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                 navigateToChooseDose = { administrationRoute ->
                     navController.navigateToChooseDose(
                         substanceName = substanceName,
-                        administrationRoute = administrationRoute,
+                        administrationRoute = administrationRoute
                     )
                 },
                 navigateToRouteExplanationScreen = navController::navigateToAdministrationRouteExplanationScreen,
@@ -175,7 +185,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                 onRouteTap = { administrationRoute ->
                     navController.navigateToChooseDoseCustom(
                         customSubstanceId = customSubstanceId,
-                        administrationRoute = administrationRoute,
+                        administrationRoute = administrationRoute
                     )
                 }
             )
@@ -185,7 +195,12 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
             arguments = ArgumentRouter.CustomChooseDoseRouter.args
         ) { backStackEntry ->
             CustomChooseDose(
-                navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
+                navigateToChooseTimeAndMaybeColor = {
+                        units,
+                        isEstimate,
+                        dose,
+                        estimatedDoseStandardDeviation
+                    ->
                     val args = backStackEntry.arguments!!
                     val customSubstanceId = args.getInt(CUSTOM_SUBSTANCE_ID_KEY)
                     val route =
@@ -210,7 +225,12 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
             arguments = ArgumentRouter.ChooseDoseRouter.args
         ) { backStackEntry ->
             ChooseDoseScreen(
-                navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
+                navigateToChooseTimeAndMaybeColor = {
+                        units,
+                        isEstimate,
+                        dose,
+                        estimatedDoseStandardDeviation
+                    ->
                     val args = backStackEntry.arguments!!
                     val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
                     val route =
@@ -236,7 +256,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
             arguments = ArgumentRouter.ChooseTimeRouter.args
         ) {
             ChooseTimeScreen(
-                dismissAddIngestionScreens = navController::dismissAddIngestionScreens,
+                dismissAddIngestionScreens = navController::dismissAddIngestionScreens
             )
         }
     }

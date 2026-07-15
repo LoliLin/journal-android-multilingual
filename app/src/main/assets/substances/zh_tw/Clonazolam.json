@@ -5,10 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "極度生理與心理成癮性",
-  "toxicities": [
-    "低毒性",
-    "可能致命"
-  ],
+  "toxicities": ["低毒性", "可能致命"],
   "summary": "一種長效型苯二氮平類藥物，具有強烈的催眠效果。其安全性尚未充分確立，且有報告指出連續服用三天的人曾出現癲癇發作。與三唑侖最為相似，但半衰期長得多。",
   "localizedName": "克諾那唑侖"
 }

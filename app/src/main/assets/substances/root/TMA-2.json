@@ -1,8 +1,6 @@
 {
   "name": "TMA-2",
-  "commonNames": [
-    "TMA-2"
-  ],
+  "commonNames": ["TMA-2"],
   "url": "https://psychonautwiki.org/wiki/TMA-2",
   "isApproved": true,
   "tolerance": {
@@ -12,19 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "stimulant",
-    "research-chemical",
-    "tentative"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "stimulant", "research-chemical", "tentative"],
   "summary": "Trimethoxyamphetamine-2, a psychedelic amphetamine and stimulant first synthesised by Alexander Shulgin. An uncommon compound of similar activity to other psychedelic amphetamines. Short history of human use.",
   "roas": [
     {

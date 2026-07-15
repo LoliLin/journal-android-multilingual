@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "非成癮性且濫用潛力低",
-  "toxicities": [
-    "相對於劑量而言毒性極低"
-  ],
+  "toxicities": ["相對於劑量而言毒性極低"],
   "summary": "1B-LSD（1-丁醯基-麥角酸二乙醯胺）是一種LSD類似物，其效力似乎與1P-LSD相當（略高於LSD），作用時間則比LSD稍短，同樣被認為與1P-LSD相近。該物質於2018年底推出，並被積極推廣為1P-LSD的替代品。目前1B-LSD尚未建立明確的安全性資料。",
   "localizedName": "1B-LSD"
 }

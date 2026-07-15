@@ -99,8 +99,8 @@ fun FinishAddCustomUnitScreen(
 @Preview
 @Composable
 private fun FinishAddCustomUnitScreenPreview(
-    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose,
-    ) {
+    @PreviewParameter(RoaDosePreviewProvider::class) roaDose: RoaDose
+) {
     FinishAddCustomUnitScreenContent(
         substanceName = "Example",
         roaDose = roaDose,
@@ -149,7 +149,7 @@ private fun FinishAddCustomUnitScreenContent(
     note: String,
     onChangeOfNote: (String) -> Unit,
     isArchived: Boolean,
-    onChangeOfIsArchived: (Boolean) -> Unit,
+    onChangeOfIsArchived: (Boolean) -> Unit
 ) {
     Scaffold(
         topBar = { TopAppBar(title = { Text("$substanceName unit") }) },
@@ -179,7 +179,8 @@ private fun FinishAddCustomUnitScreenContent(
             note = note,
             onChangeOfNote = onChangeOfNote,
             isArchived = isArchived,
-            onChangeOfIsArchived = onChangeOfIsArchived)
+            onChangeOfIsArchived = onChangeOfIsArchived
+        )
     }
 }
 
@@ -204,7 +205,7 @@ fun EditCustomUnitSections(
     note: String,
     onChangeOfNote: (String) -> Unit,
     isArchived: Boolean,
-    onChangeOfIsArchived: (Boolean) -> Unit,
+    onChangeOfIsArchived: (Boolean) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -234,7 +235,9 @@ fun EditCustomUnitSections(
                     textStyle = textStyle,
                     singleLine = true,
                     label = { Text(text = i18n("name_to_identify")) },
-                    keyboardActions = KeyboardActions(onNext = { focusRequesterUnit.requestFocus() }),
+                    keyboardActions = KeyboardActions(onNext = {
+                        focusRequesterUnit.requestFocus()
+                    }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
                         capitalization = KeyboardCapitalization.Words
@@ -251,7 +254,9 @@ fun EditCustomUnitSections(
                     singleLine = true,
                     label = { Text(text = i18n("unit_singular_form")) },
                     placeholder = { Text(text = i18n("unit_placeholder_example")) },
-                    keyboardActions = KeyboardActions(onNext = { focusRequesterNote.requestFocus() }),
+                    keyboardActions = KeyboardActions(onNext = {
+                        focusRequesterNote.requestFocus()
+                    }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
                         capitalization = KeyboardCapitalization.None
@@ -264,7 +269,9 @@ fun EditCustomUnitSections(
                     value = note,
                     onValueChange = onChangeOfNote,
                     label = { Text(text = i18n("note_label")) },
-                    keyboardActions = KeyboardActions(onNext = { focusRequesterDose.requestFocus() }),
+                    keyboardActions = KeyboardActions(onNext = {
+                        focusRequesterDose.requestFocus()
+                    }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
                         capitalization = KeyboardCapitalization.Sentences
@@ -316,11 +323,11 @@ fun EditCustomUnitSections(
                         .fillMaxWidth()
                         .focusRequester(focusRequesterDose)
                 )
-                    if (isShowingUnitsField) {
-                        OutlinedTextField(
-                            value = originalUnit,
-                            onValueChange = onChangeOfOriginalUnit,
-                            label = { Text(i18n("dose_units_label")) },
+                if (isShowingUnitsField) {
+                    OutlinedTextField(
+                        value = originalUnit,
+                        onValueChange = onChangeOfOriginalUnit,
+                        label = { Text(i18n("dose_units_label")) },
                         keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                         singleLine = true,
@@ -346,7 +353,7 @@ fun EditCustomUnitSections(
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
                     Text(i18n("dose_estimate_label"), style = MaterialTheme.typography.titleMedium)
@@ -379,16 +386,20 @@ fun EditCustomUnitSections(
                 }
             }
         }
-        ElevatedCard(modifier = Modifier
-            .padding(horizontal = horizontalPadding, vertical = 4.dp)
-            .fillMaxWidth()) {
-            Column(modifier = Modifier.padding(
-                horizontal = horizontalPadding,
-                vertical = 10.dp
-            )) {
+        ElevatedCard(
+            modifier = Modifier
+                .padding(horizontal = horizontalPadding, vertical = 4.dp)
+                .fillMaxWidth()
+        ) {
+            Column(
+                modifier = Modifier.padding(
+                    horizontal = horizontalPadding,
+                    vertical = 10.dp
+                )
+            ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Switch(checked = isArchived, onCheckedChange = onChangeOfIsArchived)
                     Text(i18n("archive"), style = MaterialTheme.typography.titleMedium)

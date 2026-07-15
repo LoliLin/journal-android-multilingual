@@ -5,10 +5,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "极度生理和心理上瘾",
-  "toxicities": [
-    "低毒性",
-    "潜在致命"
-  ],
+  "toxicities": ["低毒性", "潜在致命"],
   "summary": "一种长效苯二氮卓类药物，具有强烈的催眠作用。其安全性尚未充分确立，有报告称连续服用三天的人曾出现癫痫发作。与三唑仑最为相似，但半衰期长得多。",
   "localizedName": "氯硝唑仑"
 }

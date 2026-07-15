@@ -1,8 +1,6 @@
 {
   "name": "Diclazepam",
-  "commonNames": [
-    "Diclazepam"
-  ],
+  "commonNames": ["Diclazepam"],
   "url": "https://psychonautwiki.org/wiki/Diclazepam",
   "isApproved": true,
   "tolerance": {
@@ -10,19 +8,13 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "GABAergic"
-  ],
+  "crossTolerances": ["GABAergic"],
   "addictionPotential": "extremely physically and psychologically addictive",
   "toxicities": [
     "low toxicity",
     "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "categories": [
-    "depressant",
-    "benzodiazepine",
-    "habit-forming"
-  ],
+  "categories": ["depressant", "benzodiazepine", "habit-forming"],
   "summary": "A benzodiazepine drug and analogue of diazepam first synthesised by Leo Sternbach at Hoffman-LaRoche in 1960, it has become prominent as an RC benzodiazepine on the grey market in recent years, particularly with the decline in etizolam availability. A sedative and hypnotic it is of intermediate to long half life with similar effects to diazepam, though 10x more potent.",
   "roas": [
     {

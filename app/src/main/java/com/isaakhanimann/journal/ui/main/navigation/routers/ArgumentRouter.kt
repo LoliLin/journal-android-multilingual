@@ -71,7 +71,6 @@ private const val ROUTE_START_URL = "url/"
 private const val ROUTE_START_JOURNAL_TAB_URL = "journalTabUrl/"
 private const val ROUTE_START_SAFER_TAB_URL = "saferTabUrl/"
 
-
 sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>) {
     object ExperienceRouter : ArgumentRouter(
         route = "$ROUTE_START_EXPERIENCES{$EXPERIENCE_ID_KEY}",
@@ -170,7 +169,7 @@ sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>)
     object SubstanceRouter : ArgumentRouter(
         route = "$ROUTE_START_SUBSTANCES{$SUBSTANCE_NAME_KEY}",
         args = listOf(
-            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
+            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType }
         )
     )
 
@@ -178,35 +177,35 @@ sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>)
         route = "$ROUTE_START_SUBSTANCE_COMPANION{$SUBSTANCE_NAME_KEY}/?$CONSUMER_NAME_KEY={$CONSUMER_NAME_KEY}",
         args = listOf(
             navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
-            navArgument(CONSUMER_NAME_KEY) { nullable = true },
+            navArgument(CONSUMER_NAME_KEY) { nullable = true }
         )
     )
 
     object CheckInteractionsRouter : ArgumentRouter(
         route = "$ROUTE_START_CHECK_INTERACTIONS{$SUBSTANCE_NAME_KEY}",
         args = listOf(
-            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
+            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType }
         )
     )
 
     object CheckSaferUseRouter : ArgumentRouter(
         route = "$ROUTE_START_CHECK_SAFER_USE{$SUBSTANCE_NAME_KEY}",
         args = listOf(
-            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
+            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType }
         )
     )
 
     object ChooseRouteOfAddIngestionRouter : ArgumentRouter(
         route = "$ROUTE_START_CHOOSE_ROUTE_OF_ADD_INGESTION{$SUBSTANCE_NAME_KEY}",
         args = listOf(
-            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
+            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType }
         )
     )
 
     object ChooseRouteOfAddCustomUnitRouter : ArgumentRouter(
         route = "$ROUTE_START_OF_ADD_CUSTOM_UNIT{$SUBSTANCE_NAME_KEY}",
         args = listOf(
-            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType },
+            navArgument(SUBSTANCE_NAME_KEY) { type = NavType.StringType }
         )
     )
 
@@ -228,7 +227,7 @@ sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>)
             navArgument(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY) { nullable = true },
             navArgument(SUBSTANCE_NAME_KEY) { nullable = true },
             navArgument(CUSTOM_UNIT_ID_KEY) { nullable = true },
-            navArgument(CUSTOM_SUBSTANCE_ID_KEY) { nullable = true },
+            navArgument(CUSTOM_SUBSTANCE_ID_KEY) { nullable = true }
         )
     )
 
@@ -332,7 +331,6 @@ fun NavController.navigateToChooseRouteOfAddCustomUnit(substanceName: String) {
     navigate("$ROUTE_START_OF_ADD_CUSTOM_UNIT$substanceName")
 }
 
-
 fun NavController.navigateToChooseDose(
     substanceName: String,
     administrationRoute: AdministrationRoute
@@ -355,9 +353,11 @@ fun NavController.navigateToChooseTimeAndMaybeColor(
     estimatedDoseStandardDeviation: Double?,
     substanceName: String?,
     customUnitId: Int?,
-    customSubstanceId: Int?,
+    customSubstanceId: Int?
 ) {
-    navigate("$ROUTE_START_CHOOSE_TIME${administrationRoute.name}/$isEstimate/?$UNITS_KEY=$units/?$DOSE_KEY=$dose/?$ESTIMATED_DOSE_STANDARD_DEVIATION_KEY=$estimatedDoseStandardDeviation/?$SUBSTANCE_NAME_KEY=$substanceName/?$CUSTOM_UNIT_ID_KEY=$customUnitId/?$CUSTOM_SUBSTANCE_ID_KEY=$customSubstanceId")
+    navigate(
+        "$ROUTE_START_CHOOSE_TIME${administrationRoute.name}/$isEstimate/?$UNITS_KEY=$units/?$DOSE_KEY=$dose/?$ESTIMATED_DOSE_STANDARD_DEVIATION_KEY=$estimatedDoseStandardDeviation/?$SUBSTANCE_NAME_KEY=$substanceName/?$CUSTOM_UNIT_ID_KEY=$customUnitId/?$CUSTOM_SUBSTANCE_ID_KEY=$customSubstanceId"
+    )
 }
 
 fun NavController.navigateToFinishAddCustomUnit(

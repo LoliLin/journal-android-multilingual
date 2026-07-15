@@ -19,12 +19,9 @@
 package com.isaakhanimann.journal.data.substances.search
 
 import com.isaakhanimann.journal.data.substances.classes.Substance
-import java.lang.reflect.Modifier
 import me.towdium.pinin.PinIn
-import me.towdium.pinin.searchers.TreeSearcher
-import me.towdium.pinin.searchers.Searcher.Logic.CONTAIN
 
-class PinyinSubstanceSearcher() : SubstanceSearcher {
+class PinyinSubstanceSearcher : SubstanceSearcher {
 
     private val pinIn = PinIn().apply {
         config()
@@ -43,17 +40,23 @@ class PinyinSubstanceSearcher() : SubstanceSearcher {
 
         val mainPrefixMatches = sources.filter { substance ->
             val cleanedName = substance.name.replace(Regex("[- ]"), "")
-            
+
             if (cleanedName.startsWith(searchString, ignoreCase = true)) return@filter true
-            
+
             if (cleanedName.isNotEmpty() && searchString.isNotEmpty()) {
-                val firstCharMatch = pinIn.contains(cleanedName.first().toString(), searchString.first().toString())
+                val firstCharMatch = pinIn.contains(
+                    cleanedName.first().toString(),
+                    searchString.first().toString()
+                )
                 firstCharMatch && pinIn.contains(cleanedName, searchString)
-            } else false
+            } else {
+                false
+            }
         }
 
         val prefixMatches = sources.filter { substance ->
-            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
+            val allNames =
+                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
             allNames.any { name ->
                 val cleanedName = name.replace(Regex("[- ]"), "")
                 cleanedName.startsWith(searchString, ignoreCase = true)
@@ -61,12 +64,13 @@ class PinyinSubstanceSearcher() : SubstanceSearcher {
         }
 
         val matches = sources.filter { substance ->
-            val allNames = substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
+            val allNames =
+                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
             allNames.any { name ->
                 val cleanedName = name.replace(Regex("[- ]"), "")
-                
-                pinIn.contains(cleanedName, searchString) || 
-                cleanedName.contains(searchString, ignoreCase = true)
+
+                pinIn.contains(cleanedName, searchString) ||
+                    cleanedName.contains(searchString, ignoreCase = true)
             }
         }
 

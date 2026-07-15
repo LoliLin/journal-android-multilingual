@@ -1,8 +1,6 @@
 {
   "name": "EPT",
-  "commonNames": [
-    "EPT"
-  ],
+  "commonNames": ["EPT"],
   "url": "https://psychonautwiki.org/wiki/EPT",
   "isApproved": true,
   "tolerance": {
@@ -12,18 +10,10 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "does not produce dependence and has low abuse potential",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "tentative",
-    "research-chemical"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "tentative", "research-chemical"],
   "summary": "Ethylpropyltryptamine a novel tryptamine, that is the structural homologue of DMT.",
   "roas": [
     {

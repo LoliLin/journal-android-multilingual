@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "Mexedrone是一种卡西酮类兴奋剂药物。它通过改变血清素、多巴胺和去甲肾上腺素的再摄取来产生欣快感，其效果与甲氧麻黄酮相似。它被视为一种设计药物，在全球范围内处于法律灰色地带。",
   "localizedName": "美西酮"
 }

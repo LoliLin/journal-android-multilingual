@@ -1,13 +1,12 @@
 {
   "name": "N-Acetylcysteine",
-  "commonNames": [
-    "N-Acetylcysteine",
-    "NAC"
-  ],
+  "commonNames": ["N-Acetylcysteine", "NAC"],
   "url": "https://psychonautwiki.org/wiki/N-Acetylcysteine",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": ["High doses may cause nausea, vomiting, rash, and fever. IV administration may cause anaphylactoid reactions. Potentially hepatotoxic when taken 4 hours after alcohol consumption."],
+  "toxicities": [
+    "High doses may cause nausea, vomiting, rash, and fever. IV administration may cause anaphylactoid reactions. Potentially hepatotoxic when taken 4 hours after alcohol consumption."
+  ],
   "summary": "N-Acetylcysteine (NAC) is a precursor to the antioxidant glutathione, used medically for acetaminophen overdose and as a mucolytic. It is being researched for psychiatric conditions including addiction, OCD, schizophrenia, and bipolar disorder.",
   "effectsSummary": "Appetite suppression, cough suppression, bronchodilation, increased motivation, anxiety suppression, focus enhancement, addiction suppression, anti-inflammatory effects.",
   "dosageRemark": "Safe oral dosage ranges from 300mg to 3000mg daily depending on individual factors and health conditions. Oral bioavailability is approximately 4%.",
@@ -18,9 +17,7 @@
     "Do not take after consuming alcohol",
     "Consult a doctor if on other medications"
   ],
-  "categories": [
-    "nootropic"
-  ],
+  "categories": ["nootropic"],
   "roas": [
     {
       "name": "oral",

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种强效的NDRI卡西酮类兴奋剂，具有令人欲罢不能的效果，但被认为并非特别令人愉悦。",
   "localizedName": "喷他酮"
 }

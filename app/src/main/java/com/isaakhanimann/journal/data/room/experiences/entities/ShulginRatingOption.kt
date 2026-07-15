@@ -57,7 +57,6 @@ enum class ShulginRatingOption {
         override val shortDescription = "totally engaged, ignoring no longer an option"
         override val longDescription = "Not only are the chronology and the nature of a drug's action quite clear, but ignoring its action is no longer an option. The subject is totally engaged in the experience, for better or worse."
         override val verticalSign = "+\n+\n+"
-
     },
     FOUR_PLUS {
         override val sign = "++++"
@@ -73,11 +72,9 @@ enum class ShulginRatingOption {
     abstract val longDescription: String
     abstract val verticalSign: String
 
-    fun getShortDescription(context: Context): String {
-        return I18n.translateOrDefault(context, "shulgin_${rawValue}_short", shortDescription)
-    }
+    fun getShortDescription(context: Context): String =
+        I18n.translateOrDefault(context, "shulgin_${rawValue}_short", shortDescription)
 
-    fun getLongDescription(context: Context): String {
-        return I18n.translateOrDefault(context, "shulgin_${rawValue}_long", longDescription)
-    }
+    fun getLongDescription(context: Context): String =
+        I18n.translateOrDefault(context, "shulgin_${rawValue}_long", longDescription)
 }

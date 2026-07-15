@@ -24,17 +24,17 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SubstanceColorsViewModel @Inject constructor(
-    private val experienceRepository: ExperienceRepository,
+    private val experienceRepository: ExperienceRepository
 ) : ViewModel() {
 
     private val _substanceCompanionsFlow = MutableStateFlow<List<SubstanceCompanion>>(emptyList())
@@ -82,5 +82,4 @@ class SubstanceColorsViewModel @Inject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
-
 }

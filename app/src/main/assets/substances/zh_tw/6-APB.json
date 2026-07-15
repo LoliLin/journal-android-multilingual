@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 1176
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種興奮劑、同理心劑，也是MDA的類似物。通常比MDMA或MDA更具視覺效果，且起效時間和持續時間更長。使用者常回報其精神狀態也略帶迷幻感。常被當作MDMA和MDA的替代品販售。",
   "localizedName": "6-APB"
 }

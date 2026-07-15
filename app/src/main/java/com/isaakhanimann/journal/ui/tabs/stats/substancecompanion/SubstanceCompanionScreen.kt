@@ -19,35 +19,20 @@
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
 import androidx.compose.foundation.background
-
 import androidx.compose.foundation.isSystemInDarkTheme
-
 import androidx.compose.foundation.layout.Arrangement
-
 import androidx.compose.foundation.layout.Box
-
 import androidx.compose.foundation.layout.Column
-
 import androidx.compose.foundation.layout.Row
-
 import androidx.compose.foundation.layout.Spacer
-
 import androidx.compose.foundation.layout.fillMaxSize
-
 import androidx.compose.foundation.layout.fillMaxWidth
-
 import androidx.compose.foundation.layout.height
-
 import androidx.compose.foundation.layout.padding
-
 import androidx.compose.foundation.layout.size
-
 import androidx.compose.foundation.layout.width
-
 import androidx.compose.foundation.lazy.LazyColumn
-
 import androidx.compose.foundation.lazy.items
-
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -62,27 +47,24 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.times
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import androidx.compose.ui.unit.times 
-import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -116,37 +98,32 @@ fun SubstanceCompanionScreen(
     }
 }
 
-
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SubstanceCompanionScreen(
     navigateToCategoryScreen: (categoryName: String) -> Unit,
     navigateToSubstanceScreen: (substanceName: String) -> Unit,
-
     substanceCompanion: SubstanceCompanion,
-
     ingestionBursts: List<IngestionsBurst>,
-
     tolerance: Tolerance?,
-
     crossTolerances: List<String>,
-
     consumerName: String? = null,
-
     substanceRepo: SubstanceRepository
-
 ) {
-
     Scaffold(
 
         topBar = {
-
             val title = if (consumerName == null) {
-
-                (substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)
+                (
+                    substanceRepo?.getDisplayName(substanceCompanion.substanceName)
+                        ?: substanceCompanion.substanceName
+                    )
             } else {
-                "${(substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)} ($consumerName)"
+                "${(
+                    substanceRepo?.getDisplayName(
+                        substanceCompanion.substanceName
+                    ) ?: substanceCompanion.substanceName
+                    )} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }
@@ -159,11 +136,11 @@ fun SubstanceCompanionScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             item {
-
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
-
-                    CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
-
+                    CardWithTitle(
+                        title = i18n("substance_tolerance_title"),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
                         val context = LocalContext.current
 
                         ToleranceSection(
@@ -181,14 +158,15 @@ fun SubstanceCompanionScreen(
                             navToCategory = navigateToCategoryScreen,
                             navToSubstance = navigateToSubstanceScreen
                         )
-
                     }
 
                     Spacer(Modifier.height(12.dp))
-
                 }
 
-                CardWithTitle(title = i18n("substance_activity_title"), modifier = Modifier.fillMaxWidth()) {
+                CardWithTitle(
+                    title = i18n("substance_activity_title"),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     ActivityGrid(
                         ingestionBursts = ingestionBursts,
                         modifier = Modifier.fillMaxWidth()
@@ -198,7 +176,6 @@ fun SubstanceCompanionScreen(
                 Spacer(Modifier.height(16.dp))
 
                 Text(text = i18n("time_now_label"))
-
             }
             items(ingestionBursts) { burst ->
                 TimeArrowUp(timeText = burst.timeUntil)
@@ -213,10 +190,12 @@ fun SubstanceCompanionScreen(
                         ) {
                             Text(
                                 text = burst.experience.title,
-                                style = MaterialTheme.typography.titleMedium,
+                                style = MaterialTheme.typography.titleMedium
                             )
                             Text(
-                                text = burst.experience.sortDate.getStringOfPattern("EEE, dd MMM yyyy"),
+                                text = burst.experience.sortDate.getStringOfPattern(
+                                    "EEE, dd MMM yyyy"
+                                ),
                                 style = MaterialTheme.typography.titleMedium
                             )
                         }
@@ -247,8 +226,16 @@ fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit)
             ingestionAndCustomUnit.ingestion.administrationRoute.displayText
         ).lowercase()
         val text = buildAnnotatedString {
-            append(ingestionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
-            withStyle(style = SpanStyle(color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray )) {
+            append(
+                ingestionAndCustomUnit.getDoseDescription(
+                    androidx.compose.ui.platform.LocalContext.current
+                )
+            )
+            withStyle(
+                style = SpanStyle(
+                    color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray
+                )
+            ) {
                 if (ingestionAndCustomUnit.customUnit == null) {
                     append(" $routeName")
                 }
@@ -260,27 +247,13 @@ fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit)
         Text(text = text, style = MaterialTheme.typography.titleSmall)
         val dateString = ingestionAndCustomUnit.ingestion.time.getStringOfPattern("HH:mm")
         Text(text = dateString)
-
     }
-
 }
 
-
-
-private data class DailyCount(
-
-    val date: java.time.LocalDate,
-
-    val count: Int
-
-)
-
+private data class DailyCount(val date: java.time.LocalDate, val count: Int)
 
 @Composable
-fun ActivityGrid(
-    ingestionBursts: List<IngestionsBurst>,
-    modifier: Modifier = Modifier
-) {
+fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Modifier) {
     val now = java.time.LocalDate.now()
     val oneYearAgo = now.minusDays(364)
 
@@ -346,8 +319,13 @@ fun ActivityGrid(
                         style = MaterialTheme.typography.labelSmall,
                         color = textColor,
                         fontSize = 10.sp,
-                        modifier = Modifier.padding(start = if (lastMonth == -1) 0.dp
-                            else (cellSize + gap) * (col - firstColIndexOfMonth(weeks, lastMonth)))
+                        modifier = Modifier.padding(
+                            start = if (lastMonth == -1) {
+                                0.dp
+                            } else {
+                                (cellSize + gap) * (col - firstColIndexOfMonth(weeks, lastMonth))
+                            }
+                        )
                     )
                     lastMonth = month
                 }
@@ -358,7 +336,12 @@ fun ActivityGrid(
         dayAbbr.forEachIndexed { row, label ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (label.isNotEmpty()) {
-                    Text(text = label, fontSize = 9.sp, color = textColor, modifier = Modifier.width(26.dp))
+                    Text(
+                        text = label,
+                        fontSize = 9.sp,
+                        color = textColor,
+                        modifier = Modifier.width(26.dp)
+                    )
                 } else {
                     Spacer(Modifier.width(26.dp))
                 }
@@ -370,16 +353,38 @@ fun ActivityGrid(
                                 if (isDark) Color(0xFF2D2D2D) else Color(0xFFEBEDF0)
                             } else {
                                 when {
-                                    cell.count == 1 -> if (isDark) Color(0xFF1E4529) else Color(0xFF9BE9A8)
-                                    cell.count == 2 -> if (isDark) Color(0xFF195C2E) else Color(0xFF40C463)
-                                    cell.count >= 5 -> if (isDark) Color(0xFF0E630F) else Color(0xFF196127)
+                                    cell.count == 1 -> if (isDark) {
+                                        Color(
+                                            0xFF1E4529
+                                        )
+                                    } else {
+                                        Color(0xFF9BE9A8)
+                                    }
+                                    cell.count == 2 -> if (isDark) {
+                                        Color(
+                                            0xFF195C2E
+                                        )
+                                    } else {
+                                        Color(0xFF40C463)
+                                    }
+                                    cell.count >= 5 -> if (isDark) {
+                                        Color(
+                                            0xFF0E630F
+                                        )
+                                    } else {
+                                        Color(0xFF196127)
+                                    }
                                     else -> if (isDark) Color(0xFF0E4429) else Color(0xFF216E39)
                                 }
                             }
                         } else {
                             Color.Transparent
                         }
-                        Box(modifier = Modifier.size(cellSize).background(color, RoundedCornerShape(2.dp)))
+                        Box(
+                            modifier = Modifier.size(
+                                cellSize
+                            ).background(color, RoundedCornerShape(2.dp))
+                        )
                         Spacer(Modifier.width(gap))
                     }
                 }
@@ -394,5 +399,4 @@ private fun firstColIndexOfMonth(weeks: List<List<DailyCount>>, targetMonth: Int
         if (week[3].date.monthValue == targetMonth) return i
     }
     return 0
-
 }

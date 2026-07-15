@@ -28,13 +28,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-
 
 @Preview
 @Composable
@@ -47,13 +46,12 @@ fun RatingRowPreview(@PreviewParameter(RatingPreviewProvider::class) rating: Shu
     )
 }
 
-
 @Composable
 fun RatingRow(
     rating: ShulginRating,
     timeDisplayOption: TimeDisplayOption,
     startTime: Instant,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,

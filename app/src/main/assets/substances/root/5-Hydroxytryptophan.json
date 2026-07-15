@@ -15,9 +15,7 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "nootropic"
-  ],
+  "categories": ["nootropic"],
   "interactions": {
     "dangerous": [
       "SSRIs",

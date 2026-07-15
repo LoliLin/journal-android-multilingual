@@ -28,7 +28,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables.T
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ingestionDotRadius
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.normalStroke
 
-
 data class OnsetTimeline(
     val onset: FullDurationRange,
     val ingestionTimeRelativeToStartInSeconds: Float
@@ -45,7 +44,7 @@ data class OnsetTimeline(
         density: Density
     ) {
         val weight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(weight) * pixelsPerSec)
         drawScope.drawPath(
@@ -59,7 +58,7 @@ data class OnsetTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "色胺类迷幻药物。为裸盖菇素的更高同系物，亦是N-甲基-N-丙基色胺的4-羟基类似物。",
   "localizedName": "4-羟基-N-甲基-N-丙基色胺"
 }

@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾性且具有高度濫用潛力",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "summary": "一種與依芬尼定相關的解離性麻醉劑，具有類似PCP和氯胺酮的特性。作為娛樂性研究化學品曾有一定流行度。據報導其劑量曲線特別陡峭，使用時需格外謹慎。",
   "localizedName": "二苯乙啶"
 }

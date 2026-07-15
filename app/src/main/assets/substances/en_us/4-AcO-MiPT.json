@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
+  "toxicities": ["toxic dose is unknown"],
   "summary": "A quite potent tryptamine that has be related to having \"shroom-like\" visuals. Yet without much bodyload. Very hydroscopic. Seems to be quite safe in dosing. Similar to the likes of 2C-B.",
   "localizedName": "4-AcO-MiPT"
 }

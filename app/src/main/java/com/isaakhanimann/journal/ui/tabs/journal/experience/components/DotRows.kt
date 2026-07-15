@@ -32,14 +32,14 @@ import androidx.compose.ui.unit.dp
 fun DotRows(numDots: Int) {
     val verticalPadding = 2.dp
     Column {
-        if (numDots==0) {
+        if (numDots == 0) {
             Row(modifier = Modifier.padding(vertical = verticalPadding)) {
                 for (dot in 1..4) {
                     Dot(isFull = false)
                 }
             }
         } else {
-            val numFullRows = numDots/4
+            val numFullRows = numDots / 4
             val dotsInLastRow = numDots.rem(4)
             if (numFullRows > 0) {
                 for (row in 1..numFullRows) {

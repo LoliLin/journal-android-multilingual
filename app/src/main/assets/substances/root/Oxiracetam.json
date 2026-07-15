@@ -1,8 +1,6 @@
 {
   "name": "Oxiracetam",
-  "commonNames": [
-    "Oxiracetam"
-  ],
+  "commonNames": ["Oxiracetam"],
   "url": "https://psychonautwiki.org/wiki/Oxiracetam",
   "isApproved": true,
   "tolerance": {
@@ -12,19 +10,13 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "racetam",
-    "nootropic"
-  ],
+  "crossTolerances": ["racetam", "nootropic"],
   "addictionPotential": "non-addictive with a low potential for abuse",
   "toxicities": [
     "safe even when high doses are consumed for a long period of time",
     "exact toxic dosage is unknown"
   ],
-  "categories": [
-    "stimulant",
-    "nootropic"
-  ],
+  "categories": ["stimulant", "nootropic"],
   "summary": "Oxiracetam is a racetam nootropic, having a hydroxyl group being the only difference between this and Piracetam. It used as a nootropic, namely for increased cognitive function. It is usually used two to three times a day. This substance is normally taken with Choline, can cause headaches without the addition of Choline.",
   "roas": [
     {

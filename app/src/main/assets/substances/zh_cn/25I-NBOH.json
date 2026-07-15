@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": [
-    "大剂量使用时可能致命"
-  ],
+  "toxicities": ["大剂量使用时可能致命"],
   "summary": "一种苯乙胺类致幻剂和兴奋剂，是2C-I的衍生物，该化合物与25i-NBOMe相关且具有类似效果。其效力显著强于2C-I，但弱于25i-NBOMe。NBOH类化合物过量可能导致危险的血管收缩，并可能引发不适的身体负担。",
   "localizedName": "25I-NBOH"
 }

@@ -25,9 +25,7 @@ import androidx.compose.ui.unit.Density
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables.TimelineDrawable
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ingestionDotRadius
 
-data class NoTimeline(
-    val ingestionTimeRelativeToStartInSeconds: Float
-) : TimelineDrawable {
+data class NoTimeline(val ingestionTimeRelativeToStartInSeconds: Float) : TimelineDrawable {
 
     override val endOfLineRelativeToStartInSeconds: Float =
         ingestionTimeRelativeToStartInSeconds
@@ -42,7 +40,7 @@ data class NoTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
         )
     }
 }

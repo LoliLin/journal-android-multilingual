@@ -47,7 +47,7 @@ fun AdministrationRoutePicker(
     onChangeOfShowOtherRoutes: (Boolean) -> Unit,
     pwRoutes: List<AdministrationRoute>,
     otherRoutesChunked: List<List<AdministrationRoute>>,
-    onRouteTapped: (route: AdministrationRoute) -> Unit,
+    onRouteTapped: (route: AdministrationRoute) -> Unit
 ) {
     val spacing = 6
     Column(
@@ -98,7 +98,7 @@ fun AdministrationRoutePicker(
             exit = fadeOut()
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(spacing.dp),
+                verticalArrangement = Arrangement.spacedBy(spacing.dp)
             ) {
                 pwRoutes.forEach { route ->
                     ElevatedCard(
@@ -151,6 +151,6 @@ fun AdministrationRoutePickerPreview() {
         onChangeOfShowOtherRoutes = {},
         pwRoutes = pwRoutes,
         otherRoutesChunked = otherRoutesChunked,
-        onRouteTapped = {},
+        onRouteTapped = {}
     )
 }

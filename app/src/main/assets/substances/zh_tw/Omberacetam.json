@@ -7,8 +7,6 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "非成癮性且濫用可能性低",
-  "toxicities": [
-    "確切的中毒劑量未知"
-  ],
+  "toxicities": ["確切的中毒劑量未知"],
   "localizedName": "N-1-苯基乙酰基-L-脯氨酰甘氨酸乙酯（Noopept）"
 }

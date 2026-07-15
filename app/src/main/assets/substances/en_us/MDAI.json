@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "somewhat habit-forming with a low potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
   "summary": "A selective serotonin releasing agent which is rarely used without a stimulant to obtain desirable effects. Previously believed not to be neuruotoxic, however MDAI has been implicated in several lethal and non-lethal intoxications, and as such may pose more of a risk to health than previously believed.",
   "localizedName": "MDAI"
 }

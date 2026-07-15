@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
+  "toxicities": ["extremely low toxicity"],
   "summary": "A naturally occurring hormone produced in the body, which promotes sleep at certain times in the day based on the circadian rhythm. It is also commonly available as a drug to treat insomnia and promote a proper sleep cycle. It can be used to promote sleepfulness at the tail-end of drug experiences, though it is not particularly hypnotic.",
   "localizedName": "Melatonin"
 }

@@ -1,8 +1,6 @@
 {
   "name": "Choline bitartrate",
-  "commonNames": [
-    "Choline"
-  ],
+  "commonNames": ["Choline"],
   "url": "https://psychonautwiki.org/wiki/Choline%20bitartrate",
   "isApproved": true,
   "tolerance": {
@@ -14,12 +12,8 @@
   },
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": [
-    "extremely low toxicity"
-  ],
-  "categories": [
-    "nootropic"
-  ],
+  "toxicities": ["extremely low toxicity"],
+  "categories": ["nootropic"],
   "roas": [
     {
       "name": "oral",

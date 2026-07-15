@@ -5,10 +5,7 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": [
-    "hallucinogen",
-    "depressant"
-  ],
+  "categories": ["hallucinogen", "depressant"],
   "roas": [
     {
       "name": "oral",

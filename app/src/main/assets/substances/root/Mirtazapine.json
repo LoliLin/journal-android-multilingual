@@ -1,13 +1,6 @@
 {
   "name": "Mirtazapine",
-  "commonNames": [
-    "Avanza",
-    "Axit",
-    "Mirtaz",
-    "Mirtazon",
-    "Remeron",
-    "Zispin"
-  ],
+  "commonNames": ["Avanza", "Axit", "Mirtaz", "Mirtazon", "Remeron", "Zispin"],
   "url": "https://psychonautwiki.org/wiki/Mirtazapine",
   "isApproved": true,
   "tolerance": {
@@ -20,17 +13,11 @@
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
   "toxicities": [],
-  "categories": [
-    "deliriant",
-    "depressant",
-    "antidepressant"
-  ],
+  "categories": ["deliriant", "depressant", "antidepressant"],
   "interactions": {
     "dangerous": [],
     "unsafe": [],
-    "uncertain": [
-      "Antidepressants"
-    ]
+    "uncertain": ["Antidepressants"]
   },
   "roas": [
     {

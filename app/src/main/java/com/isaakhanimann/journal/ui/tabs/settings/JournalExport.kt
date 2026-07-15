@@ -24,8 +24,8 @@ import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOpt
 import com.isaakhanimann.journal.data.room.experiences.entities.StomachFullness
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
-import kotlinx.serialization.Serializable
 import java.time.Instant
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class JournalExport(
@@ -40,8 +40,8 @@ data class JournalExport(
 data class ExperienceSerializable(
     val title: String,
     val text: String,
-    @Serializable(with= InstantSerializer::class) val creationDate: Instant = Instant.now(),
-    @Serializable(with= InstantSerializer::class) val sortDate: Instant,
+    @Serializable(with = InstantSerializer::class) val creationDate: Instant = Instant.now(),
+    @Serializable(with = InstantSerializer::class) val sortDate: Instant,
     val isFavorite: Boolean = false,
     val ingestions: List<IngestionSerializable> = emptyList(),
     val location: LocationSerializable? = null,
@@ -50,11 +50,11 @@ data class ExperienceSerializable(
 )
 
 @Serializable
-data class CustomUnitSerializable (
+data class CustomUnitSerializable(
     val id: Int = 0,
     val substanceName: String,
     val name: String,
-    @Serializable(with= InstantSerializer::class) val creationDate: Instant = Instant.now(),
+    @Serializable(with = InstantSerializer::class) val creationDate: Instant = Instant.now(),
     val administrationRoute: AdministrationRoute,
     var dose: Double? = null,
     var estimatedDoseStandardDeviation: Double? = null,
@@ -67,16 +67,16 @@ data class CustomUnitSerializable (
 
 @Serializable
 data class RatingSerializable(
-    @Serializable(with= ShulginRatingOptionSerializer::class) val option: ShulginRatingOption,
-    @Serializable(with= InstantSerializer::class) var time: Instant? = null,
-    @Serializable(with= InstantSerializer::class) var creationDate: Instant? = Instant.now()
+    @Serializable(with = ShulginRatingOptionSerializer::class) val option: ShulginRatingOption,
+    @Serializable(with = InstantSerializer::class) var time: Instant? = null,
+    @Serializable(with = InstantSerializer::class) var creationDate: Instant? = Instant.now()
 )
 
 @Serializable
 data class IngestionSerializable(
     val substanceName: String,
-    @Serializable(with= InstantSerializer::class) var time: Instant,
-    @Serializable(with= InstantSerializer::class) var creationDate: Instant? = Instant.now(),
+    @Serializable(with = InstantSerializer::class) var time: Instant,
+    @Serializable(with = InstantSerializer::class) var creationDate: Instant? = Instant.now(),
     val administrationRoute: AdministrationRoute,
     var dose: Double? = null,
     var isDoseAnEstimate: Boolean,
@@ -97,8 +97,8 @@ data class LocationSerializable(
 
 @Serializable
 data class TimedNoteSerializable(
-    @Serializable(with= InstantSerializer::class) var creationDate: Instant,
-    @Serializable(with= InstantSerializer::class) var time: Instant,
+    @Serializable(with = InstantSerializer::class) var creationDate: Instant,
+    @Serializable(with = InstantSerializer::class) var time: Instant,
     var note: String,
     var color: AdaptiveColor,
     var isPartOfTimeline: Boolean

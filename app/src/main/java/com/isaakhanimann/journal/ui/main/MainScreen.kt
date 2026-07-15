@@ -46,9 +46,7 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
 @Composable
-fun MainScreen(
-    viewModel: MainScreenViewModel = hiltViewModel()
-) {
+fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
     LaunchedEffect(selectedLanguageKey) {
         I18n.setPreferredLanguageKey(selectedLanguageKey)
@@ -73,18 +71,21 @@ fun MainScreen(
                             val isSelected =
                                 currentDestination?.hierarchy?.any { it.route == tab.route } == true
                             NavigationBarItem(
-                                icon = { 
+                                icon = {
                                     if (isSelected) {
-                                        Icon(tab.iconSelected, contentDescription = null) 
+                                        Icon(tab.iconSelected, contentDescription = null)
                                     } else {
-                                        Icon(tab.icon, contentDescription = null)        
+                                        Icon(tab.icon, contentDescription = null)
                                     }
                                 },
                                 label = { Text(i18n(tab.labelKey)) },
                                 selected = isSelected,
                                 onClick = {
                                     if (isSelected) {
-                                        val isAlreadyOnTopOfTab = tabs.any { it.childRoute == currentDestination?.route }
+                                        val isAlreadyOnTopOfTab = tabs.any {
+                                            it.childRoute ==
+                                                currentDestination?.route
+                                        }
                                         if (!isAlreadyOnTopOfTab) {
                                             navController.popBackStack()
                                         }
@@ -104,19 +105,19 @@ fun MainScreen(
                 }
             }
         ) { innerPadding ->
-                NavHost(
-                    navController,
-                    startDestination = TabRouter.Journal.route,
-                    modifier = Modifier
-                        .padding(bottom = innerPadding.calculateBottomPadding())
-                ) {
-                    journalGraph(navController)
-                    statsGraph(navController)
-                    searchGraph(navController)
-                    saferGraph(navController)
-                    settingsGraph(navController)
-                }
+            NavHost(
+                navController,
+                startDestination = TabRouter.Journal.route,
+                modifier = Modifier
+                    .padding(bottom = innerPadding.calculateBottomPadding())
+            ) {
+                journalGraph(navController)
+                statsGraph(navController)
+                searchGraph(navController)
+                saferGraph(navController)
+                settingsGraph(navController)
             }
+        }
     } else {
         AcceptConditionsScreen(onTapAccept = viewModel::accept)
     }

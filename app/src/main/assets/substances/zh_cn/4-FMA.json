@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": [
-    "确切的中毒剂量未知"
-  ],
+  "toxicities": ["确切的中毒剂量未知"],
   "summary": "一种具有部分致幻作用的兴奋剂，是甲基苯丙胺的类似物，效果相似。据报道其效力低于2-FMA及相关化合物。目前对该化合物的药理作用知之甚少。请勿与4-FA混淆，后者尽管效力相似，但作用特征不同。",
   "localizedName": "4-FMA"
 }

@@ -24,11 +24,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class FileSystemConnection @Inject constructor(
-    @ApplicationContext private val context: Context
-) {
+class FileSystemConnection @Inject constructor(@ApplicationContext private val context: Context) {
     fun getTextFromUri(uri: Uri): String? {
         try {
             val input = context.contentResolver.openInputStream(uri) ?: return null
@@ -48,8 +45,5 @@ class FileSystemConnection @Inject constructor(
         } catch (_: Exception) {
             throw Exception("Failed To Save")
         }
-
     }
-
-
 }

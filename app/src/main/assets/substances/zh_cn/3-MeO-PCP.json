@@ -7,9 +7,7 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "长期使用会产生依赖性，且具有较高的滥用潜力。",
-  "toxicities": [
-    "毒性剂量未知"
-  ],
+  "toxicities": ["毒性剂量未知"],
   "summary": "一种强效解离剂，常与MXE相提并论，但作用时间更长，镇静效果弱得多，且整体体验不同。使用者报告其效果类似于PCP。药效约为4-MeO-PCP的十倍。",
   "localizedName": "3-甲氧基苯环利定"
 }

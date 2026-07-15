@@ -29,25 +29,13 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.main.navigation.routers.CONSUMER_NAME_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
-
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
-import java.time.Instant
-import java.time.temporal.ChronoUnit
-
 
 @HiltViewModel
 class TimelineScreenViewModel @Inject constructor(
@@ -60,10 +48,12 @@ class TimelineScreenViewModel @Inject constructor(
     private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
     val consumerName = state.get<String>(CONSUMER_NAME_KEY)!!
 
-    private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(experienceID)
+    private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(
+        experienceID
+    )
         .map { ingestions ->
             ingestions.filter {
-                    it.ingestion.consumerName == consumerName
+                it.ingestion.consumerName == consumerName
             }
         }
 
@@ -82,13 +72,12 @@ class TimelineScreenViewModel @Inject constructor(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000)
             )
-    
-    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-            initialValue = "You",
-                    scope = viewModelScope,
-                            started = SharingStarted.WhileSubscribed(5000)
-                                )
 
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
     private val sortedIngestionsWithCompanionsFlow =
         ingestionsWithCompanionsFlow.map { ingestionsWithCompanions ->
@@ -124,18 +113,18 @@ class TimelineScreenViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
-    private fun getIngestionElements(sortedIngestionsWith: List<IngestionWithAssociatedData>): List<IngestionElement> {
-        return sortedIngestionsWith.map { ingestionWith ->
-            val numDots =
-                ingestionWith.roaDose?.getNumDots(
-                    ingestionWith.ingestionWithCompanionAndCustomUnit.ingestion.dose,
-                    ingestionUnits = ingestionWith.ingestionWithCompanionAndCustomUnit.ingestion.units
-                )
-            IngestionElement(
-                ingestionWithCompanionAndCustomUnit = ingestionWith.ingestionWithCompanionAndCustomUnit,
-                roaDuration = ingestionWith.roaDuration,
-                numDots = numDots
+    private fun getIngestionElements(
+        sortedIngestionsWith: List<IngestionWithAssociatedData>
+    ): List<IngestionElement> = sortedIngestionsWith.map { ingestionWith ->
+        val numDots =
+            ingestionWith.roaDose?.getNumDots(
+                ingestionWith.ingestionWithCompanionAndCustomUnit.ingestion.dose,
+                ingestionUnits = ingestionWith.ingestionWithCompanionAndCustomUnit.ingestion.units
             )
-        }
+        IngestionElement(
+            ingestionWithCompanionAndCustomUnit = ingestionWith.ingestionWithCompanionAndCustomUnit,
+            roaDuration = ingestionWith.roaDuration,
+            numDots = numDots
+        )
     }
 }

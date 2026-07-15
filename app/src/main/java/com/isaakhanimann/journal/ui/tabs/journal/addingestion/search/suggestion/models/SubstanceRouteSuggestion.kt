@@ -60,13 +60,20 @@ data class CustomUnitDose(
     val calculatedDoseStandardDeviation: Double?
         get() {
             return customUnit.dose?.let { expectationY ->
-                val standardDeviationY = if (customUnit.isEstimate) (customUnit.estimatedDoseStandardDeviation ?: 0.0) else 0.0
+                val standardDeviationY = if (customUnit.isEstimate) {
+                    (
+                        customUnit.estimatedDoseStandardDeviation
+                            ?: 0.0
+                        )
+                } else {
+                    0.0
+                }
                 val expectationX = dose
                 val standardDeviationX = if (isEstimate) (estimatedDoseStandardDeviation ?: 0.0) else 0.0
                 val sum1 = standardDeviationX.pow(2) + expectationX.pow(2)
                 val sum2 = standardDeviationY.pow(2) + expectationY.pow(2)
                 val expectations = expectationX.pow(2) * expectationY.pow(2)
-                val productVariance = sum1*sum2 - expectations
+                val productVariance = sum1 * sum2 - expectations
                 if (productVariance > 0.0000001) {
                     return sqrt(productVariance)
                 } else {
@@ -76,8 +83,7 @@ data class CustomUnitDose(
         }
 
     // 20 mg or 20±2 mg
-    val calculatedDoseDescription: String? get()
-    {
+    val calculatedDoseDescription: String? get() {
         return calculatedDose?.let { calculatedDoseUnwrapped ->
             calculatedDoseStandardDeviation?.let {
                 return "${calculatedDoseUnwrapped.toReadableString()}±${it.toReadableString()} ${customUnit.originalUnit}"
@@ -93,12 +99,13 @@ data class CustomUnitDose(
     }
 
     // 2 pills
-    val doseDescription: String get()
-    {
+    val doseDescription: String get() {
         val description = dose.toStringWith(unit = customUnit.unit)
         return if (isEstimate) {
             if (estimatedDoseStandardDeviation != null) {
-                "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${customUnit.unit.asPlural(dose)}"
+                "${dose.toReadableString()}±${estimatedDoseStandardDeviation.toReadableString()} ${customUnit.unit.asPlural(
+                    dose
+                )}"
             } else {
                 "~$description"
             }
@@ -108,19 +115,14 @@ data class CustomUnitDose(
     }
 }
 
-fun Double.toStringWith(unit: String): String {
-    return if (this != 1.0 && !unit.endsWith("s")) {
-        "${this.toReadableString()} ${unit}s"
-    } else {
-        "${this.toReadableString()} $unit"
-    }
+fun Double.toStringWith(unit: String): String = if (this != 1.0 && !unit.endsWith("s")) {
+    "${this.toReadableString()} ${unit}s"
+} else {
+    "${this.toReadableString()} $unit"
 }
 
-fun String.asPlural(basedOn: Double): String {
-    return if (basedOn != 1.0 && !this.endsWith("s")) {
-        "${this}s"
-    } else {
-        this
-    }
+fun String.asPlural(basedOn: Double): String = if (basedOn != 1.0 && !this.endsWith("s")) {
+    "${this}s"
+} else {
+    this
 }
-

@@ -33,10 +33,10 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @HiltViewModel
 class FinishAddCustomUnitViewModel @Inject constructor(
@@ -82,7 +82,6 @@ class FinishAddCustomUnitViewModel @Inject constructor(
         estimatedDoseDeviationText = newEstimatedDoseDeviation
     }
     private val estimatedDoseDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
-
 
     var isEstimate by mutableStateOf(false)
     fun onChangeOfIsEstimate(newIsEstimate: Boolean) {
