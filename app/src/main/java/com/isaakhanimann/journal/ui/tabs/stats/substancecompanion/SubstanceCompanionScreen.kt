@@ -375,7 +375,5 @@ private fun firstColIndexOfMonth(weeks: List<List<DailyCount>>, targetMonth: Int
     weeks.forEachIndexed { i, week ->
         if (week[3].date.monthValue == targetMonth) return i
     }
-    return 0
-}
-
+    return 0
 }
