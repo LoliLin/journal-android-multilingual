@@ -1,0 +1,22 @@
+Journal Multilingual is a fork of PsychonautWiki Journal — an open-source Android app designed to make recreational drug use safer through informed decision-making and data tracking.
+
+What makes this version different:
+• Fully localized UI with multi-language support for a global audience
+• Translated substance data covering effects, dosages, risks, and harm-reduction info
+• Substance search with Pinyin support for Chinese-speaking users
+• Customizable app icon with multiple themes to choose from
+• Extension pack system for community-contributed data and features
+• Share experience reports with screenshot functionality
+• Avatar and user profile management for multi-user tracking
+
+Core features inherited from the original:
+• Log and track substance use with dosage, route, and timing
+• Get personalized interaction warnings between different substances
+• View clear, interactive timelines of your experiences
+• Access comprehensive substance information from PsychonautWiki
+• Learn about harm reduction, safer use practices, and responsible dosing
+• Export and import your data for backup or transfer
+
+Privacy-first: all data stays on your device. No accounts, no cloud sync, no tracking.
+
+Note: This is a community fork and is not affiliated with the official PsychonautWiki Journal project.
