@@ -170,13 +170,12 @@ fun SubstanceCompanionScreen(
 
                 }
 
-                ActivityGrid(
-
-                    ingestionBursts = ingestionBursts,
-
-                    modifier = Modifier.fillMaxWidth()
-
-                )
+                CardWithTitle(title = i18n("substance_activity_title"), modifier = Modifier.fillMaxWidth()) {
+                    ActivityGrid(
+                        ingestionBursts = ingestionBursts,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
                 Spacer(Modifier.height(16.dp))
 
@@ -267,14 +266,18 @@ fun ActivityGrid(
     val now = java.time.LocalDate.now()
     val oneYearAgo = now.minusDays(364)
 
+    // Map ingestion counts by date (past 12 months)
     val dateCountMap = androidx.compose.runtime.remember(ingestionBursts) {
         val map = mutableMapOf<java.time.LocalDate, Int>()
+        val cutoff = oneYearAgo.minusDays(7)
         for (burst in ingestionBursts) {
-            for (ingestion in burst.ingestions) {
-                val date = ingestion.ingestion.time
+            for (item in burst.ingestions) {
+                val date = item.ingestion.time
                     .atZone(java.time.ZoneId.systemDefault())
                     .toLocalDate()
-                map[date] = (map[date] ?: 0) + 1
+                if (date >= cutoff) {
+                    map[date] = (map[date] ?: 0) + 1
+                }
             }
         }
         map
@@ -284,21 +287,26 @@ fun ActivityGrid(
         (dateCountMap.values.maxOrNull() ?: 1).coerceAtLeast(1)
     }
 
-    val gridData = androidx.compose.runtime.remember(oneYearAgo, now, dateCountMap) {
-        val weeks = mutableListOf<List<DailyCount>>()
-        var current = oneYearAgo
-        while (current.dayOfWeek != java.time.DayOfWeek.MONDAY) {
-            current = current.minusDays(1)
+    // Build weeks FROM this week backward TO one year ago
+    val weeks = androidx.compose.runtime.remember(now, dateCountMap) {
+        val result = mutableListOf<List<DailyCount>>()
+        // Start from Monday of this week
+        var monday = now
+        while (monday.dayOfWeek != java.time.DayOfWeek.MONDAY) {
+            monday = monday.minusDays(1)
         }
-        while (current <= now) {
+        // Go backward week by week
+        var current = monday
+        val end = oneYearAgo.minusDays(7)
+        while (current > end) {
             val week = (0..6).map { offset ->
                 val day = current.plusDays(offset.toLong())
                 DailyCount(day, dateCountMap[day] ?: 0)
             }
-            weeks.add(week)
-            current = current.plusDays(7)
+            result.add(week)
+            current = current.minusDays(7)
         }
-        weeks
+        result
     }
 
     val cellSize = 12.dp
@@ -308,51 +316,52 @@ fun ActivityGrid(
 
     Column(modifier = modifier.padding(4.dp)) {
         // Month labels
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(start = 28.dp),
-            horizontalArrangement = Arrangement.Start
-        ) {
+        Row(modifier = Modifier.fillMaxWidth().padding(start = 28.dp)) {
             var lastMonth = -1
-            gridData.forEachIndexed { col, week ->
-                val month = week[3].date.monthValue
+            weeks.forEachIndexed { col, week ->
+                val mid = week[3]
+                val month = mid.date.monthValue
                 if (month != lastMonth) {
-                    val isFirst = lastMonth == -1
                     Text(
                         text = java.time.format.DateTimeFormatter.ofPattern("MMM")
-                            .withLocale(java.util.Locale.US).format(week[3].date),
+                            .withLocale(java.util.Locale.US).format(mid.date),
                         style = MaterialTheme.typography.labelSmall,
                         color = textColor,
                         fontSize = 10.sp,
-                        modifier = Modifier.padding(start = if (isFirst) 0.dp else (col - firstMonthCol(gridData, lastMonth)) * (cellSize + gap))
+                        modifier = Modifier.padding(start = if (lastMonth == -1) 0.dp
+                            else (cellSize + gap) * (col - firstColIndexOfMonth(weeks, lastMonth)))
                     )
                     lastMonth = month
                 }
             }
         }
-
         // Grid rows
         val dayAbbr = listOf("Mon", "", "Wed", "", "Fri", "", "")
         dayAbbr.forEachIndexed { row, label ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (label.isNotEmpty()) {
-                    Text(text = label, fontSize = 9.sp, color = textColor,
-                        modifier = Modifier.width(26.dp))
+                    Text(text = label, fontSize = 9.sp, color = textColor, modifier = Modifier.width(26.dp))
                 } else {
                     Spacer(Modifier.width(26.dp))
                 }
-                gridData.forEach { week ->
+                weeks.forEach { week ->
                     if (row < week.size) {
                         val cell = week[row]
                         val color = if (cell.date <= now) {
-                            activityCellColor(cell.count, maxCount, isDark)
+                            if (cell.count == 0) {
+                                if (isDark) Color(0xFF2D2D2D) else Color(0xFFEBEDF0)
+                            } else {
+                                when {
+                                    cell.count == 1 -> if (isDark) Color(0xFF1E4529) else Color(0xFF9BE9A8)
+                                    cell.count == 2 -> if (isDark) Color(0xFF195C2E) else Color(0xFF40C463)
+                                    cell.count >= 5 -> if (isDark) Color(0xFF0E630F) else Color(0xFF196127)
+                                    else -> if (isDark) Color(0xFF0E4429) else Color(0xFF216E39)
+                                }
+                            }
                         } else {
                             Color.Transparent
                         }
-                        Box(
-                            modifier = Modifier
-                                .size(cellSize)
-                                .background(color, RoundedCornerShape(2.dp))
-                        )
+                        Box(modifier = Modifier.size(cellSize).background(color, RoundedCornerShape(2.dp)))
                         Spacer(Modifier.width(gap))
                     }
                 }
@@ -362,19 +371,11 @@ fun ActivityGrid(
     }
 }
 
-private fun firstMonthCol(weeks: List<List<DailyCount>>, targetMonth: Int): Int {
+private fun firstColIndexOfMonth(weeks: List<List<DailyCount>>, targetMonth: Int): Int {
     weeks.forEachIndexed { i, week ->
         if (week[3].date.monthValue == targetMonth) return i
     }
     return 0
 }
 
-private fun activityCellColor(count: Int, maxCount: Int, isDark: Boolean): Color {
-    if (count == 0) return if (isDark) Color(0xFF2D2D2D) else Color(0xFFEBEDF0)
-    val intensity = (count.toFloat() / maxCount.toFloat()).coerceIn(0f, 1f)
-    return when {
-        intensity > 0.66f -> if (isDark) Color(0xFF0E4429) else Color(0xFF216E39)
-        intensity > 0.33f -> if (isDark) Color(0xFF195C2E) else Color(0xFF7BC96F)
-        else -> if (isDark) Color(0xFF263C28) else Color(0xFFC6E48B)
-    }
 }
