@@ -81,6 +81,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import androidx.compose.ui.unit.times   // 添加这一行
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -322,7 +323,7 @@ fun ActivityGrid(
                         style = MaterialTheme.typography.labelSmall,
                         color = textColor,
                         fontSize = 10.sp,
-                        modifier = Modifier.padding(start = if (isFirst) 0.dp else ((col - firstMonthCol(gridData, lastMonth)) * (cellSize + gap)).dp)
+                        modifier = Modifier.padding(start = if (isFirst) 0.dp else (col - firstMonthCol(gridData, lastMonth)) * (cellSize + gap))
                     )
                     lastMonth = month
                 }
