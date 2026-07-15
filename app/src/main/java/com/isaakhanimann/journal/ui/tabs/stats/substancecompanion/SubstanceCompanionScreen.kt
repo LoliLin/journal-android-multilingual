@@ -100,7 +100,7 @@ fun SubstanceCompanionScreen(
         SubstanceCompanionScreen(
             navigateToCategoryScreen = navigateToCategoryScreen,
             navigateToSubstanceScreen = navigateToSubstanceScreen,
-            
+
             substanceCompanion = companion,
 
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
@@ -176,7 +176,7 @@ fun SubstanceCompanionScreen(
                             isCategory = substanceRepo::isCategory
                             getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
                             getCategoryDisplayName = { name ->
-                                substanceRepo.getCategory(name).getLocalizedName(context)
+                                substanceRepo.getCategory(name)?.getLocalizedName(context) ?: name
                             },
                             navToCategory = navigateToCategoryScreen,
                             navToSubstance = navigateToSubstanceScreen

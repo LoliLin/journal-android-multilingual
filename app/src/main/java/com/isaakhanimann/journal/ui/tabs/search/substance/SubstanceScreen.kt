@@ -329,9 +329,10 @@ fun SubstanceScreen(
 
                             isSubstance = substanceRepo::isSubstance,
                             isCategory = substanceRepo::isCategory,
+                            
                             getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
                             getCategoryDisplayName = { name ->
-                                substanceRepo.getCategory(name).getLocalizedName(context)
+                                substanceRepo.getCategory(name)?.getLocalizedName(context) ?: name
                             },
                             navToCategory = navigateToCategoryScreen,
                             navToSubstance = navigateToSubstanceScreen

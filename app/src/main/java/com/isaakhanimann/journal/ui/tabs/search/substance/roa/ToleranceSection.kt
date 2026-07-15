@@ -22,7 +22,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,7 +40,7 @@ fun ToleranceSection(
     modifier: Modifier = Modifier,
     isSubstance: ((String) -> Boolean),
     getSubstanceDisplayName: ((String) -> String),
-    navToSubstance: ((String) -> Unit) = {}
+    navToSubstance: ((String) -> Unit) = {},
     isCategory: ((String) -> Boolean),
     getCategoryDisplayName: ((String) -> String),
     navToCategory: ((String) -> Unit) = {}
@@ -69,7 +68,7 @@ fun ToleranceSection(
     modifier: Modifier = Modifier,
     getSubstanceDisplayName: ((String) -> String)
 ) {
-    val descriptor (String) -> Pair<String, (String) -> Unit> = getSubstanceDisplayName.let { displayFn ->
+    val descriptor : (String) -> Pair<String, (String) -> Unit> = getSubstanceDisplayName.let { displayFn ->
         { name: String ->
             displayFn(name) to {}
         }

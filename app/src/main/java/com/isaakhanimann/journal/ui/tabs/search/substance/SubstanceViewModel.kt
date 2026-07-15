@@ -31,7 +31,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SubstanceViewModel @Inject constructor(
-    substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository,
     experienceRepo: ExperienceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
