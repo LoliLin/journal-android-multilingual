@@ -95,7 +95,7 @@ fun ToleranceSection(
 
                 Text(
                     text = i18n("tolerance_cross_with_title"), 
-                    style = style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(top = topPadding)
                 )
 
