@@ -258,10 +258,6 @@ private data class DailyCount(
 )
 
 
-
-@Composable
-
-
 @Composable
 fun ActivityGrid(
     ingestionBursts: List<IngestionsBurst>,
@@ -326,7 +322,7 @@ fun ActivityGrid(
                         style = MaterialTheme.typography.labelSmall,
                         color = textColor,
                         fontSize = 10.sp,
-                        modifier = Modifier.padding(start = if (isFirst) 0.dp else ((col - firstMonthCol(gridData, lastMonth)) * (cellSize + gap)))
+                        modifier = Modifier.padding(start = if (isFirst) 0.dp else ((col - firstMonthCol(gridData, lastMonth)) * (cellSize + gap)).dp)
                     )
                     lastMonth = month
                 }
