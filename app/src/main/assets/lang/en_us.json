@@ -304,6 +304,7 @@
   "time_now_label": "Now",
   "title_label": "Title",
   "tolerance_cross_with": "Cross tolerance with {names}.",
+  "tolerance_cross_with_title": "Cross tolerance with ",
   "tolerance_full_label": "full:",
   "tolerance_half_label": "half:",
   "tolerance_zero_explanation": "* zero is the time until tolerance is like the first time.",
