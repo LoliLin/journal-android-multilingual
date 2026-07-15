@@ -57,7 +57,8 @@ import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
+import com.isaakhanimann.journal.ui.utils.getShortTimeText
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -153,13 +154,13 @@ fun SubstanceCompanionScreen(
                                 style = MaterialTheme.typography.titleMedium,
                             )
                             Text(
-                                text = burst.experience.sortDate.getStringOfPattern("EEE, dd MMM yyyy"),
+                                text = burst.experience.sortDate.getDateWithWeekdayText(),
                                 style = MaterialTheme.typography.titleMedium
                             )
                         }
                         HorizontalDivider()
                         burst.ingestions.forEachIndexed { index, ingestion ->
-                            IngestionRow(ingestionAndCustomUnit = ingestion)
+                            IngestionRowOnSubstanceCompanionScreen(ingestionAndCustomUnit = ingestion)
                             if (index < burst.ingestions.size - 1) {
                                 HorizontalDivider()
                             }
@@ -172,7 +173,7 @@ fun SubstanceCompanionScreen(
 }
 
 @Composable
-fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit) {
+fun IngestionRowOnSubstanceCompanionScreen(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -185,17 +186,29 @@ fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit)
         ).lowercase()
         val text = buildAnnotatedString {
             append(ingestionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
+            if (ingestionAndCustomUnit.customUnit != null) {
+                append(" " + ingestionAndCustomUnit.customUnit.name)
+            }
             withStyle(style = SpanStyle(color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray )) {
+                val routeText =
+                    ingestionAndCustomUnit.ingestion.administrationRoute.displayText.lowercase()
                 if (ingestionAndCustomUnit.customUnit == null) {
+<<<<<<< HEAD
                     append(" $routeName")
                 }
                 ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
                     append(" = $it $routeName")
+=======
+                    append(" $routeText")
+                }
+                ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
+                    append(" = $it $routeText")
+>>>>>>> isaakhanimann
                 }
             }
         }
-        Text(text = text, style = MaterialTheme.typography.titleSmall)
-        val dateString = ingestionAndCustomUnit.ingestion.time.getStringOfPattern("HH:mm")
+        Text(text = text, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
+        val dateString = ingestionAndCustomUnit.ingestion.time.getShortTimeText()
         Text(text = dateString)
     }
 }

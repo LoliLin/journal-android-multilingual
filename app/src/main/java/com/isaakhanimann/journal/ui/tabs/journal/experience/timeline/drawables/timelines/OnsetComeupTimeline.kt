@@ -33,37 +33,43 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.strokeWidth
 data class OnsetComeupTimeline(
     val onset: FullDurationRange,
     val comeup: FullDurationRange,
-    val ingestionTimeRelativeToStartInSeconds: Float
+    val ingestionTimeRelativeToStartInSeconds: Float,
+    override val nonNormalisedHeight: Float,
 ) : TimelineDrawable {
+
+    override var referenceHeight = 1f
 
     override val endOfLineRelativeToStartInSeconds: Float =
         ingestionTimeRelativeToStartInSeconds + onset.maxInSeconds + comeup.maxInSeconds
 
     override fun drawTimeLine(
         drawScope: DrawScope,
-        height: Float,
+        canvasHeight: Float,
         pixelsPerSec: Float,
         color: Color,
         density: Density
     ) {
+        val normalisedHeight = nonNormalisedHeight / referenceHeight
+        val heightInPx = normalisedHeight * canvasHeight
+        val top = canvasHeight - heightInPx
         val weight = 0.5f
-        val startX = ingestionTimeRelativeToStartInSeconds*pixelsPerSec
+        val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
         val onsetEndX =
             startX + (onset.interpolateAtValueInSeconds(weight) * pixelsPerSec)
         val comeupEndX =
             onsetEndX + (comeup.interpolateAtValueInSeconds(weight) * pixelsPerSec)
         val path = Path().apply {
-            moveTo(x = startX, y = height)
-            lineTo(x = onsetEndX, y = height)
-            lineTo(x = comeupEndX, y = 0f)
+            moveTo(x = startX, y = canvasHeight)
+            lineTo(x = onsetEndX, y = canvasHeight)
+            lineTo(x = comeupEndX, y = top)
         }
         drawScope.drawPath(
             path = path,
             color = color,
             style = density.normalStroke
         )
-        path.lineTo(x = comeupEndX, y = height + drawScope.strokeWidth/2)
-        path.lineTo(x = startX, y = height + drawScope.strokeWidth/2)
+        path.lineTo(x = comeupEndX, y = canvasHeight + drawScope.strokeWidth / 2)
+        path.lineTo(x = startX, y = canvasHeight + drawScope.strokeWidth / 2)
         path.close()
         drawScope.drawPath(
             path = path,
@@ -72,19 +78,23 @@ data class OnsetComeupTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds*pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = canvasHeight)
         )
     }
 }
 
-fun RoaDuration.toOnsetComeupTimeline(ingestionTimeRelativeToStartInSeconds: Float): OnsetComeupTimeline? {
+fun RoaDuration.toOnsetComeupTimeline(
+    ingestionTimeRelativeToStartInSeconds: Float,
+    nonNormalisedHeight: Float,
+): OnsetComeupTimeline? {
     val fullOnset = onset?.toFullDurationRange()
     val fullComeup = comeup?.toFullDurationRange()
     return if (fullOnset != null && fullComeup != null) {
         OnsetComeupTimeline(
             onset = fullOnset,
             comeup = fullComeup,
-            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds
+            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds,
+            nonNormalisedHeight = nonNormalisedHeight,
         )
     } else {
         null

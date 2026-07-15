@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.models
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
 import java.time.Instant
 
 data class OneExperienceScreenModel(
@@ -35,6 +36,7 @@ data class OneExperienceScreenModel(
     val interactions: List<Interaction>,
     val interactionExplanations: List<InteractionExplanation>,
     val ratings: List<ShulginRating>,
-    val timedNotes: List<TimedNote>,
-    val consumersWithIngestions: List<ConsumerWithIngestions>
+    val timedNotesSorted: List<TimedNote>,
+    val consumersWithIngestions: List<ConsumerWithIngestions>,
+    val dataForEffectLines: List<DataForOneEffectLine>,
 )

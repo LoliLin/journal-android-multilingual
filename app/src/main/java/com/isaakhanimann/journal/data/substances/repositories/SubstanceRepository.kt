@@ -285,9 +285,9 @@ class SubstanceRepository @Inject constructor(
         return substanceFile.categories
     }
 
-    override fun getSubstance(substanceName: String): Substance? {
-        ensureLanguageLoaded()
-        return substanceFile.substancesMap[substanceName]
+    override fun getSubstance(substanceName: String): Substance? {
+        ensureLanguageLoaded()
+        return substanceFile.substancesMap[substanceName]
     }
 
     override fun getCategory(categoryName: String): Category? {

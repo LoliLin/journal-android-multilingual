@@ -23,13 +23,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.graphs.ChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -37,11 +37,12 @@ import javax.inject.Inject
 @HiltViewModel
 class ChooseDoseViewModel @Inject constructor(
     repository: SubstanceRepository,
-    state: SavedStateHandle
+    state: SavedStateHandle,
 ) : ViewModel() {
-    val substance: Substance
-    val administrationRoute: AdministrationRoute
-    val roaDose: RoaDose?
+    private val chooseDoseRoute = state.toRoute<ChooseDoseRoute>()
+    val substance: Substance = repository.getSubstance(chooseDoseRoute.substanceName)!!
+    val administrationRoute: AdministrationRoute = chooseDoseRoute.administrationRoute
+    val roaDose: RoaDose? = substance.getRoa(administrationRoute)?.roaDose
     var isEstimate by mutableStateOf(false)
     var doseText by mutableStateOf("")
     var estimatedDoseStandardDeviationText by mutableStateOf("")
@@ -57,14 +58,14 @@ class ChooseDoseViewModel @Inject constructor(
             }
         }
     val isPurityValid: Boolean get() = purity != null
-    val rawDoseWithUnit: String?
+    val impureDoseWithUnit: String?
         get() {
             dose.let {
                 if (it == null) return null
                 purity.let { safePurity ->
                     if (safePurity == null) return null
                     val result = it.div(safePurity).times(100)
-                    return result.toReadableString() + " ${roaDose?.units ?: ""}"
+                    return result.toReadableString() + " impure ${roaDose?.units ?: ""}"
                 }
             }
         }
@@ -74,18 +75,14 @@ class ChooseDoseViewModel @Inject constructor(
     val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(ingestionDose = dose)
 
     fun onDoseTextChange(newDoseText: String) {
-        doseText = newDoseText.replace(oldChar = ',', newChar = '.')
+        doseText = newDoseText
     }
 
     fun onEstimatedDoseStandardDeviationChange(newEstimatedStandardDeviationText: String) {
-        estimatedDoseStandardDeviationText = newEstimatedStandardDeviationText.replace(oldChar = ',', newChar = '.')
+        estimatedDoseStandardDeviationText = newEstimatedStandardDeviationText
     }
 
     init {
-        substance = repository.getSubstance(state.get<String>(SUBSTANCE_NAME_KEY)!!)!!
-        val routeString = state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
-        administrationRoute = AdministrationRoute.valueOf(routeString)
-        roaDose = substance.getRoa(administrationRoute)?.roaDose
         units = roaDose?.units ?: ""
     }
 

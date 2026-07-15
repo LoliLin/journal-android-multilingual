@@ -38,6 +38,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -105,7 +107,9 @@ fun CombinationSettingsScreen(
                             Text(text = substanceInteraction.name)
                             Switch(
                                 checked = substanceInteraction.isOn,
-                                onCheckedChange = { substanceInteraction.toggle() })
+                                onCheckedChange = { substanceInteraction.toggle() },
+                                modifier = Modifier.semantics { contentDescription = substanceInteraction.name }
+                            )
                         }
                     }
                 }

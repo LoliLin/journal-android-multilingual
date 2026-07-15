@@ -18,12 +18,10 @@
 
 package com.isaakhanimann.journal.data.room.experiences.entities
 
-import android.content.Context
-import com.isaakhanimann.journal.localization.I18n
-import kotlinx.serialization.ExperimentalSerializationApi
+import android.content.Context
+import com.isaakhanimann.journal.localization.I18n
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Serializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -35,6 +33,11 @@ enum class StomachFullness {
     EMPTY {
         override val serialized = "EMPTY"
         override val onsetDelayForOralInHours: Double = 0.0
+    },
+    QUARTER_FULL {
+        override val text = "Quarter full"
+        override val serialized = "QUARTERFULL"
+        override val onsetDelayForOralInHours = 0.75
     },
     HALF_FULL {
         override val serialized = "HALFFULL"
@@ -63,8 +66,6 @@ enum class StomachFullness {
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializer(forClass = StomachFullness::class)
 object StomachFullnessSerializer : KSerializer<StomachFullness> {
 
     override val descriptor: SerialDescriptor =
@@ -76,7 +77,7 @@ object StomachFullnessSerializer : KSerializer<StomachFullness> {
 
     override fun deserialize(decoder: Decoder): StomachFullness {
         val value = decoder.decodeString()
-        val fullness = StomachFullness.values().find { it.serialized == value }
+        val fullness = StomachFullness.entries.find { it.serialized == value }
         if (fullness == null) {
             throw IllegalArgumentException("$value is not a valid stomach fullness")
         } else {

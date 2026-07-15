@@ -18,8 +18,12 @@
 
 package com.isaakhanimann.journal.data.substances
 
+import androidx.annotation.Keep
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import kotlinx.serialization.Serializable
 
+@Keep // to fix this issue: https://issuetracker.google.com/issues/358137294. Apparently all enums used as navigation args are getting their metadata removed in minified builds.
+@Serializable
 enum class AdministrationRoute {
     ORAL {
         override val displayText = "Oral"
@@ -150,9 +154,9 @@ Many substances can be inhaled to achieve an altered state of consciousness, how
     abstract val color: AdaptiveColor
 
     companion object {
-        const val psychonautWikiArticleURL =
+        const val PSYCHONAUT_WIKI_ARTICLE_URL =
             "https://psychonautwiki.org/wiki/Route_of_administration"
-        const val saferInjectionArticleURL = "https://psychonautwiki.org/wiki/Safer_injection_guide"
-        const val saferPluggingArticleURL = "https://wiki.tripsit.me/wiki/Quick_Guide_to_Plugging"
+        const val SAFER_INJECTION_ARTICLE_URL = "https://psychonautwiki.org/wiki/Safer_injection_guide"
+        const val SAFER_PLUGGING_ARTICLE_URL = "https://wiki.tripsit.me/wiki/Quick_Guide_to_Plugging"
     }
 }

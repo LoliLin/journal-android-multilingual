@@ -18,21 +18,11 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.graphs
 
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigation
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToComboSettings
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCustomUnits
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToDonate
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditCustomUnit
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExtensionPack
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToFAQ
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIconPicker
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceColors
+import com.isaakhanimann.journal.ui.main.navigation.SettingsTopLevelRoute
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
 import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
 import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
@@ -43,47 +33,88 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettin
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.archive.CustomUnitArchiveScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.edit.EditCustomUnitScreen
+import kotlinx.serialization.Serializable
 
-fun NavGraphBuilder.settingsGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.SettingsRouter.route,
-        route = TabRouter.Settings.route,
+fun NavGraphBuilder.settingsGraph(navController: NavHostController) {
+    navigation<SettingsTopLevelRoute>(
+        startDestination = SettingsScreenRoute,
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.SettingsRouter.route,
-        ) {
+        composableWithTransitions<SettingsScreenRoute> {
             SettingsScreen(
-                navigateToFAQ = navController::navigateToFAQ,
-                navigateToComboSettings = navController::navigateToComboSettings,
-                navigateToSubstanceColors = navController::navigateToSubstanceColors,
-                navigateToCustomUnits = navController::navigateToCustomUnits,
-                navigateToDonate = navController::navigateToDonate,
-navigateToExtensionPack = navController::navigateToExtensionPack,
-navigateToIconPicker = navController::navigateToIconPicker
+                navigateToFAQ = {
+                    navController.navigate(FAQRoute)
+                },
+                navigateToComboSettings = {
+                    navController.navigate(CombinationSettingsRoute)
+                },
+                navigateToSubstanceColors = {
+                    navController.navigate(SubstanceColorsRoute)
+                },
+                navigateToCustomUnits = {
+                    navController.navigate(CustomUnitsRoute)
+                },
+                navigateToDonate = {
+                    navController.navigate(DonateRoute)
+                },
+                navigateToIconPicker = {
+                    navController.navigate(IconPickerRoute)
+                },
+                navigateToExtensionPack = {
+                    navController.navigate(ExtensionPackRoute)
+                },
             )
         }
-        composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
-        composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
-        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) { IconPickerScreen(navigateBack = navController::popBackStack) }
-        composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) { ExtensionPackScreen(navigateBack = navController::popBackStack) }
-        composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) { CombinationSettingsScreen() }
-        composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) { SubstanceColorsScreen() }
-        composableWithTransitions(NoArgumentRouter.CustomUnitArchiveRouter.route) {
-            CustomUnitArchiveScreen(navigateToEditCustomUnit = navController::navigateToEditCustomUnit)
+        composableWithTransitions<FAQRoute> { FAQScreen() }
+        composableWithTransitions<DonateRoute> { DonateScreen() }
+        composableWithTransitions<IconPickerRoute> { IconPickerScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions<ExtensionPackRoute> { ExtensionPackScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions<CombinationSettingsRoute> { CombinationSettingsScreen() }
+        composableWithTransitions<SubstanceColorsRoute> { SubstanceColorsScreen() }
+        composableWithTransitions<CustomUnitArchiveRoute> {
+            CustomUnitArchiveScreen(navigateToEditCustomUnit = { customUnitId ->
+                navController.navigate(EditCustomUnitRoute(customUnitId))
+            })
         }
         addCustomUnitGraph(navController)
-        composableWithTransitions(NoArgumentRouter.CustomUnitsRouter.route) {
+        composableWithTransitions<CustomUnitsRoute> {
             CustomUnitsScreen(
-                navigateToAddCustomUnit = navController::navigateToAddCustomUnits,
-                navigateToEditCustomUnit = navController::navigateToEditCustomUnit,
-                navigateToCustomUnitArchive = navController::navigateToCustomUnitArchive
+                navigateToAddCustomUnit = {
+                    navController.navigate(AddCustomUnitsParentRoute)
+                },
+                navigateToEditCustomUnit = { customUnitId ->
+                    navController.navigate(EditCustomUnitRoute(customUnitId))
+                },
+                navigateToCustomUnitArchive = {
+                    navController.navigate(CustomUnitArchiveRoute)
+                }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.EditCustomUnitRouter.route,
-            arguments = ArgumentRouter.EditCustomUnitRouter.args
-        ) {
+        composableWithTransitions<EditCustomUnitRoute> {
             EditCustomUnitScreen(navigateBack = navController::popBackStack)
         }
     }
 }
+
+@Serializable
+object SettingsScreenRoute
+
+@Serializable
+object FAQRoute
+
+@Serializable
+object DonateRoute
+
+@Serializable
+object CombinationSettingsRoute
+
+@Serializable
+object SubstanceColorsRoute
+
+@Serializable
+object CustomUnitArchiveRoute
+
+@Serializable
+object CustomUnitsRoute
+
+@Serializable
+data class EditCustomUnitRoute(val customUnitId: Int)
