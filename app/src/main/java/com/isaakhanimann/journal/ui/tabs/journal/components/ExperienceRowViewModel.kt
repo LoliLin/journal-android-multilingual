@@ -52,7 +52,7 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
-import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.experience.ExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceCard
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import dagger.hilt.android.lifecycle.HiltViewModel

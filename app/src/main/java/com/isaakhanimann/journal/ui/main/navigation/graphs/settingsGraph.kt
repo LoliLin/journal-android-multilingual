@@ -110,11 +110,17 @@ object CombinationSettingsRoute
 @Serializable
 object SubstanceColorsRoute
 
-@Serializable
-object CustomUnitArchiveRoute
-
-@Serializable
-object CustomUnitsRoute
-
-@Serializable
-data class EditCustomUnitRoute(val customUnitId: Int)
+@Serializable
+object CustomUnitArchiveRoute
+
+@Serializable
+object CustomUnitsRoute
+
+@Serializable
+data class EditCustomUnitRoute(val customUnitId: Int)
+
+@Serializable
+object IconPickerRoute
+
+@Serializable
+object ExtensionPackRoute

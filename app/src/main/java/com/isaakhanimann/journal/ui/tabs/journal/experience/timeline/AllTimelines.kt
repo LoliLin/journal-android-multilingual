@@ -55,7 +55,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.getDurationText
@@ -69,8 +68,6 @@ import java.time.temporal.ChronoUnit
 import kotlin.math.max
 
 
-<<<<<<< HEAD
-=======
 @Preview(showBackground = true)
 @Composable
 fun AllTimelinesPreview(
@@ -120,7 +117,6 @@ fun AllTimelinesPreview(
 }
 
 
->>>>>>> isaakhanimann
 @Composable
 fun AllTimelines(
     model: AllTimelinesModel,
@@ -128,100 +124,6 @@ fun AllTimelines(
     timeDisplayOption: TimeDisplayOption,
     modifier: Modifier = Modifier,
 ) {
-<<<<<<< HEAD
-    if (dataForEffectLines.isEmpty()) {
-        Text(text = i18n("insufficient_timeline_data"))
-    } else {
-        val model: AllTimelinesModel = remember(dataForEffectLines, dataForRatings) {
-            AllTimelinesModel(
-                dataForLines = dataForEffectLines,
-                dataForRatings = dataForRatings,
-                timedNotes = dataForTimedNotes
-            )
-        }
-        val isDarkTheme = isSystemInDarkTheme()
-        val density = LocalDensity.current
-        val axisLabelSize = MaterialTheme.typography.labelMedium.fontSize
-        val axisLabelTextPaint = remember(density) {
-            Paint().apply {
-                color =
-                    if (isDarkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
-                textAlign = Paint.Align.CENTER
-                textSize = density.run { axisLabelSize.toPx() }
-            }
-        }
-        val ratingSize = MaterialTheme.typography.labelLarge.fontSize
-        val ratingTextPaint = remember(density) {
-            Paint().apply {
-                color =
-                    if (isDarkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
-                textAlign = Paint.Align.CENTER
-                textSize = density.run { ratingSize.toPx() }
-            }
-        }
-        var currentTime by remember {
-            mutableStateOf(Instant.now())
-        }
-        LaunchedEffect(key1 = currentTime) {
-            val oneSec = 1000L
-            delay(oneSec)
-            currentTime = Instant.now()
-        }
-        Canvas(modifier = modifier) {
-            val canvasWithLabelsHeight = size.height
-            val labelsHeight = axisLabelSize.toPx()
-            val canvasWidth = size.width
-            val pixelsPerSec = canvasWidth / model.widthInSeconds
-            inset(left = 0f, top = 0f, right = 0f, bottom = labelsHeight + strokeWidth) {
-                val canvasHeightWithVerticalLine = size.height
-                model.groupDrawables.forEach { group ->
-                    group.drawTimeLine(
-                        drawScope = this,
-                        height = canvasHeightWithVerticalLine,
-                        pixelsPerSec = pixelsPerSec,
-                        color = group.color.getComposeColor(isDarkTheme),
-                        density = density
-                    )
-                }
-                dataForRatings.forEach { dataForOneRating ->
-                    drawRating(
-                        startTime = model.startTime,
-                        ratingTime = dataForOneRating.time,
-                        pixelsPerSec = pixelsPerSec,
-                        canvasHeightOuter = canvasHeightWithVerticalLine,
-                        rating = dataForOneRating.option,
-                        textPaint = ratingTextPaint
-                    )
-                }
-                dataForTimedNotes.forEach { dataForOneTimedNote ->
-                    drawTimedNote(
-                        startTime = model.startTime,
-                        noteTime = dataForOneTimedNote.time,
-                        color = dataForOneTimedNote.color,
-                        pixelsPerSec = pixelsPerSec,
-                        canvasHeightOuter = canvasHeightWithVerticalLine,
-                        isDarkTheme = isDarkTheme
-                    )
-                }
-                if (isShowingCurrentTime) {
-                    drawCurrentTime(
-                        startTime = model.startTime,
-                        timelineWidthInSeconds = model.widthInSeconds,
-                        currentTime = currentTime,
-                        pixelsPerSec = pixelsPerSec,
-                        isDarkTheme = isDarkTheme,
-                        canvasHeightOuter = canvasHeightWithVerticalLine,
-                    )
-                }
-            }
-            drawAxis(
-                axisDrawable = model.axisDrawable,
-                pixelsPerSec = pixelsPerSec,
-                canvasWidth = canvasWidth,
-                canvasHeight = canvasWithLabelsHeight,
-                textPaint = axisLabelTextPaint
-            )
-=======
     val isDarkTheme = isSystemInDarkTheme()
     val density = LocalDensity.current
     val axisLabelSize = MaterialTheme.typography.labelMedium.fontSize
@@ -231,7 +133,6 @@ fun AllTimelines(
                 if (isDarkTheme) android.graphics.Color.WHITE else android.graphics.Color.BLACK
             textAlign = Paint.Align.CENTER
             textSize = density.run { axisLabelSize.toPx() }
->>>>>>> isaakhanimann
         }
     }
 

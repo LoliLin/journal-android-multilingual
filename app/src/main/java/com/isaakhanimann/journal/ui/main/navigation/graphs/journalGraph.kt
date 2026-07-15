@@ -75,7 +75,19 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
             TimelineScreen()
         }
         composableWithTransitions<VolumetricDosingOnJournalTabRoute> {
-            VolumetricDosingScreen()
+
+            VolumetricDosingScreen(
+
+                navigateToVolumetricLiquidDosingArticle = {
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://psychonautwiki.org/wiki/Volumetric_dosing"))
+
+                    navController.context.startActivity(intent)
+
+                },
+
+            )
+
         }
         composableWithTransitions<ExperienceRoute> { backStackEntry ->
             val experienceRoute: ExperienceRoute = backStackEntry.toRoute()
@@ -121,13 +133,10 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
                 }
             )
         }
-        composableWithTransitions<EditIngestionRoute> {
-            EditIngestionScreen(
-                navigateBack = navController::popBackStack,
-                navigateToAddIngestion = {
-                    navController.navigate(AddIngestionRoute)
-                }
-            )
+        composableWithTransitions<EditIngestionRoute> {
+            EditIngestionScreen(
+                navigateBack = navController::popBackStack,
+            )
         }
         addIngestionGraph(navController)
         composableWithTransitions<ExplainTimelineOnJournalTabRoute> { ExplainTimelineScreen() }

@@ -78,14 +78,14 @@ fun AddCustomSubstance(
         onNameChange = { viewModel.name = it },
         onUnitsChange = { viewModel.units = it },
         onDescriptionChange = { viewModel.description = it },
-        onDoneTap = {
+        navigateBack = {
             scope.launch {
                 snackbarHostState.showSnackbar(
                     message = "Custom substance added",
                     duration = SnackbarDuration.Short
                 )
             }
-            viewModel.onDoneTap()
+            viewModel.navigateBack()
             navigateBack()
         },
         isDoneEnabled = viewModel.isValid,
@@ -107,8 +107,8 @@ fun EditCustomSubstance(
         onNameChange = { viewModel.name = it },
         onUnitsChange = { viewModel.units = it },
         onDescriptionChange = { viewModel.description = it },
-        onDoneTap = {
-            viewModel.onDoneTap()
+        navigateBack = {
+            viewModel.navigateBack()
             navigateBack()
         },
         isDoneEnabled = viewModel.isValid,
@@ -132,7 +132,7 @@ fun AddCustomSubstancePreview() {
         onNameChange = {},
         onUnitsChange = {},
         onDescriptionChange = {},
-        onDoneTap = {},
+        navigateBack = {},
         isDoneEnabled = true,
         title = i18n("search_add_custom_substance"),
         isShowingDelete = false,
@@ -149,7 +149,7 @@ fun AddOrEditCustomSubstance(
     onNameChange: (String) -> Unit,
     onUnitsChange: (String) -> Unit,
     onDescriptionChange: (String) -> Unit,
-    onDoneTap: () -> Unit,
+    navigateBack: () -> Unit,
     isDoneEnabled: Boolean,
     title: String,
     isShowingDelete: Boolean,
@@ -201,7 +201,7 @@ fun AddOrEditCustomSubstance(
         floatingActionButton = {
             if (isDoneEnabled) {
                 ExtendedFloatingActionButton(
-                    onClick = onDoneTap,
+                    onClick = navigateBack,
                     icon = {
                         Icon(
                             Icons.Filled.Done,

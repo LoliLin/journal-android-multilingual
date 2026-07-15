@@ -49,14 +49,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
-import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 import com.isaakhanimann.journal.ui.utils.getShortTimeText
 
@@ -73,49 +69,49 @@ fun SubstanceCompanionScreen(
     } else {
         SubstanceCompanionScreen(
             substanceCompanion = companion,
-
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
-
             tolerance = viewModel.tolerance,
-
             crossTolerances = viewModel.crossTolerances,
-
-            consumerName = viewModel.consumerName,
-
-            substanceRepo = viewModel.substanceRepo
+            consumerName = viewModel.consumerName
         )
     }
 }
 
-
+@Preview
+@Composable
+fun SubstanceCompanionPreview(@PreviewParameter(SubstanceCompanionScreenPreviewProvider::class) pair: Pair<SubstanceCompanion, List<IngestionsBurst>>) {
+    JournalTheme {
+        SubstanceCompanionScreen(
+            substanceCompanion = pair.first,
+            ingestionBursts = pair.second,
+            tolerance = Tolerance(
+                full = "with prolonged use",
+                half = "two weeks",
+                zero = "1 month"
+            ),
+            crossTolerances = listOf(
+                "dopamine",
+                "stimulant"
+            ),
+        )
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SubstanceCompanionScreen(
-
     substanceCompanion: SubstanceCompanion,
-
     ingestionBursts: List<IngestionsBurst>,
-
     tolerance: Tolerance?,
-
     crossTolerances: List<String>,
-
-    consumerName: String? = null,
-
-    substanceRepo: SubstanceRepository
-
+    consumerName: String? = null
 ) {
-
     Scaffold(
-
         topBar = {
-
             val title = if (consumerName == null) {
-
-                (substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)
+                substanceCompanion.substanceName
             } else {
-                "${(substanceRepo?.getDisplayName(substanceCompanion.substanceName) ?: substanceCompanion.substanceName)} ($consumerName)"
+                "${substanceCompanion.substanceName} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }
@@ -129,14 +125,14 @@ fun SubstanceCompanionScreen(
         ) {
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
-                    CardWithTitle(title = i18n("substance_tolerance_title"), modifier = Modifier.fillMaxWidth()) {
+                    CardWithTitle(title = "Tolerance", modifier = Modifier.fillMaxWidth()) {
                         ToleranceSection(
                             tolerance = tolerance,
                             crossTolerances = crossTolerances
                         )
                     }
                 }
-                Text(text = i18n("time_now_label"))
+                Text(text = "Now")
             }
             items(ingestionBursts) { burst ->
                 TimeArrowUp(timeText = burst.timeUntil)
@@ -180,12 +176,8 @@ fun IngestionRowOnSubstanceCompanionScreen(ingestionAndCustomUnit: IngestionsBur
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        val routeName = i18nOrDefault(
-            administrationRouteKey(ingestionAndCustomUnit.ingestion.administrationRoute),
-            ingestionAndCustomUnit.ingestion.administrationRoute.displayText
-        ).lowercase()
         val text = buildAnnotatedString {
-            append(ingestionAndCustomUnit.getDoseDescription(androidx.compose.ui.platform.LocalContext.current))
+            append(ingestionAndCustomUnit.doseDescription)
             if (ingestionAndCustomUnit.customUnit != null) {
                 append(" " + ingestionAndCustomUnit.customUnit.name)
             }
@@ -193,17 +185,10 @@ fun IngestionRowOnSubstanceCompanionScreen(ingestionAndCustomUnit: IngestionsBur
                 val routeText =
                     ingestionAndCustomUnit.ingestion.administrationRoute.displayText.lowercase()
                 if (ingestionAndCustomUnit.customUnit == null) {
-<<<<<<< HEAD
-                    append(" $routeName")
-                }
-                ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                    append(" = $it $routeName")
-=======
                     append(" $routeText")
                 }
                 ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
                     append(" = $it $routeText")
->>>>>>> isaakhanimann
                 }
             }
         }

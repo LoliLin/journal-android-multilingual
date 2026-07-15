@@ -65,9 +65,9 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun FinishAddCustomUnitScreen(
-    dismissAddCustomUnit: () -> Unit,
-    viewModel: FinishAddCustomUnitViewModel = hiltViewModel()
+fun FinishAddCustomUnitScreen(
+    dismissAddCustomUnit: (customUnitId: Int) -> Unit,
+    viewModel: FinishAddCustomUnitViewModel = hiltViewModel()
 ) {
     FinishAddCustomUnitScreenContent(
         substanceName = viewModel.substanceName,

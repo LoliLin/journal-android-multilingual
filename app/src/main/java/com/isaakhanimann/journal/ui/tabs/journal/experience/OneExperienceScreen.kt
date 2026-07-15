@@ -90,6 +90,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperience
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
 import com.isaakhanimann.journal.ui.theme.JournalTheme
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 
@@ -97,7 +98,7 @@ import java.time.Instant
 
 @Composable
 fun OneExperienceScreen(
-    viewModel: OneExperienceViewModel = hiltViewModel(),
+    viewModel: ExperienceViewModel = hiltViewModel(),
     navigateToAddIngestionSearch: () -> Unit,
     navigateToEditExperienceScreen: () -> Unit,
     navigateToExplainTimeline: () -> Unit,
@@ -160,7 +161,7 @@ fun OneExperienceScreen(
 @Composable
 fun OneExperienceScreen(
     oneExperienceScreenModel: OneExperienceScreenModel,
-    viewModel: OneExperienceViewModel,
+    viewModel: ExperienceViewModel,
     isOralDisclaimerHidden: Boolean,
     onChangeIsOralDisclaimerHidden: (Boolean) -> Unit,
     addIngestion: () -> Unit,

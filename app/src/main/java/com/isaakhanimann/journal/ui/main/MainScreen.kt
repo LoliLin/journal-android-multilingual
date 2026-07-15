@@ -43,7 +43,7 @@ import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
+import com.isaakhanimann.journal.ui.utils.keyboard.false /* keyboard state */
 
 @Composable
 fun MainScreen(
@@ -57,7 +57,7 @@ fun MainScreen(
         val navController = rememberNavController()
         Scaffold(
             bottomBar = {
-                val isShowingBottomBar = isKeyboardOpen().value.not()
+                val isShowingBottomBar = false /* keyboard state */().value.not()
                 if (isShowingBottomBar) {
                     NavigationBar {
                         val navBackStackEntry by navController.currentBackStackEntryAsState()

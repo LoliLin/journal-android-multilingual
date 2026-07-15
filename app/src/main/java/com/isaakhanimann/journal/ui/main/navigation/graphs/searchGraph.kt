@@ -51,29 +51,70 @@ fun NavGraphBuilder.searchGraph(navController: NavHostController) {
             )
         }
         composableWithTransitions<SubstanceRoute> {
+
             SubstanceScreen(
+
                 navigateToDosageExplanationScreen = {
+
                     navController.navigate(DosageExplanationRouteOnSearchTab)
+
                 },
+
                 navigateToSaferHallucinogensScreen = {
+
                     navController.navigate(SaferHallucinogensRoute)
+
                 },
+
                 navigateToSaferStimulantsScreen = {
+
                     navController.navigate(SaferStimulantsRoute)
+
                 },
+
                 navigateToExplainTimeline = {
+
                     navController.navigate(ExplainTimelineOnSearchTabRoute)
+
                 },
+
                 navigateToCategoryScreen = { categoryName ->
+
                     navController.navigate(CategoryRoute(categoryName))
+
                 },
+
                 navigateToVolumetricDosingScreen = {
+
                     navController.navigate(VolumetricDosingOnSearchTabRoute)
+
                 },
+
+                navigateToArticle = { url ->
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+
+                    navController.context.startActivity(intent)
+
+                },
+
             )
+
         }
         composableWithTransitions<CategoryRoute> {
-            CategoryScreen()
+
+            CategoryScreen(
+
+                navigateToURL = { url ->
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+
+                    navController.context.startActivity(intent)
+
+                },
+
+            )
+
         }
         composableWithTransitions<EditCustomSubstanceRoute> {
             EditCustomSubstanceScreen(navigateBack = navController::popBackStack)
@@ -83,8 +124,13 @@ fun NavGraphBuilder.searchGraph(navController: NavHostController) {
                 navigateBack = navController::popBackStack
             )
         }
-        composableWithTransitions<VolumetricDosingOnSearchTabRoute> {
-            VolumetricDosingScreen()
+        composableWithTransitions<VolumetricDosingOnSearchTabRoute> {
+            VolumetricDosingScreen(
+                navigateToVolumetricLiquidDosingArticle = {
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://psychonautwiki.org/wiki/Volumetric_dosing"))
+                    navController.context.startActivity(intent)
+                },
+            )
         }
         composableWithTransitions<ExplainTimelineOnSearchTabRoute> { ExplainTimelineScreen() }
 

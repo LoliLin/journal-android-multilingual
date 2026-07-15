@@ -39,52 +39,130 @@ fun NavGraphBuilder.saferGraph(navController: NavHostController) {
         startDestination = SaferUseScreenRoute
     ) {
         composableWithTransitions<SaferUseScreenRoute> {
+
             SaferUseScreen(
+
                 navigateToDrugTestingScreen = {
+
                     navController.navigate(DrugTestingRoute)
+
                 },
+
                 navigateToSaferHallucinogensScreen = {
+
                     navController.navigate(SaferHallucinogensRoute)
+
                 },
+
                 navigateToVolumetricDosingScreen = {
+
                     navController.navigate(VolumetricDosingOnSaferTabRoute)
+
                 },
+
                 navigateToDosageGuideScreen = {
+
                     navController.navigate(DosageGuideRoute)
+
                 },
+
                 navigateToDosageClassificationScreen = {
+
                     navController.navigate(DosageExplanationRouteOnSaferTab)
+
                 },
+
                 navigateToRouteExplanationScreen = {
+
                     navController.navigate(AdministrationRouteExplanationRouteOnSaferTab)
+
                 },
+
+                navigateToURL = { url ->
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+
+                    navController.context.startActivity(intent)
+
+                },
+
                 navigateToReagentTestingScreen = {
+
                     navController.navigate(ReagentTestingRoute)
+
                 }
+
             )
+
         }
         composableWithTransitions<SaferHallucinogensRoute> { SaferHallucinogensScreen() }
         composableWithTransitions<SaferStimulantsRoute> { SaferStimulantsScreen() }
         composableWithTransitions<DosageExplanationRouteOnSaferTab> { DoseExplanationScreen() }
         composableWithTransitions<AdministrationRouteExplanationRouteOnSaferTab> {
-            RouteExplanationScreen()
+
+            RouteExplanationScreen(
+
+                navigateToURL = { url ->
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+
+                    navController.context.startActivity(intent)
+
+                },
+
+            )
+
         }
         composableWithTransitions<DrugTestingRoute> { DrugTestingScreen() }
         composableWithTransitions<DosageGuideRoute> {
+
             DoseGuideScreen(
+
                 navigateToDoseClassification = {
+
                     navController.navigate(DosageExplanationRouteOnSaferTab)
+
                 },
+
                 navigateToVolumetricDosing = {
+
                     navController.navigate(VolumetricDosingOnSaferTabRoute)
+
                 },
+
+                navigateToPWDosageArticle = {
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://psychonautwiki.org/wiki/Dosage"))
+
+                    navController.context.startActivity(intent)
+
+                },
+
             )
+
         }
         composableWithTransitions<VolumetricDosingOnSaferTabRoute> {
-            VolumetricDosingScreen()
+
+            VolumetricDosingScreen(
+
+                navigateToVolumetricLiquidDosingArticle = {
+
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://psychonautwiki.org/wiki/Volumetric_dosing"))
+
+                    navController.context.startActivity(intent)
+
+                },
+
+            )
+
         }
-        composableWithTransitions<ReagentTestingRoute> {
-            ReagentTestingScreen()
+        composableWithTransitions<ReagentTestingRoute> {
+            ReagentTestingScreen(
+                navigateToReagentTestingArticle = {
+                    val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://psychonautwiki.org/wiki/Reagent_testing"))
+                    navController.context.startActivity(intent)
+                },
+            )
         }
     }
 }

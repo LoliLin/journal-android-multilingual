@@ -92,7 +92,7 @@ fun SearchScreen(
             val onFilterTapped = searchViewModel::onFilterTapped
             val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
             val filteredCustomSubstances = searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
-            val customColor = searchViewModel.customColor
+            val MaterialTheme.colorScheme.primary = searchViewModel.MaterialTheme.colorScheme.primary
 
             if (activeFilters.isNotEmpty()) {
                 LazyRow(
@@ -124,7 +124,7 @@ fun SearchScreen(
                                 displayName = customSubstance.name,
                                 commonNames = emptyList(),
                                 categories = listOf(
-                                    CategoryModel(rawName = "custom", color = customColor)
+                                    CategoryModel(rawName = "custom", color = MaterialTheme.colorScheme.primary)
                                 ),
                                 hasSaferUse = false,
                                 hasInteractions = false
