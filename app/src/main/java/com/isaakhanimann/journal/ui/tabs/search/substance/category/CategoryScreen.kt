@@ -107,7 +107,7 @@ fun CategoryScreen(
             HorizontalDivider()
 
             LazyColumn {
-                    items(substancesModels) { substance ->
+                    items(substanceModels) { substance ->
                         SubstanceRow(substanceModel = substance, onTap = {
                             onSubstanceTap(substance)
                     })
