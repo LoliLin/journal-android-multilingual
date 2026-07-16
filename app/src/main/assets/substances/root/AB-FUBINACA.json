@@ -1,6 +1,8 @@
 {
   "name": "AB-FUBINACA",
-  "commonNames": ["Ab-fubi"],
+  "commonNames": [
+    "Ab-fubi"
+  ],
   "url": "https://psychonautwiki.org/wiki/AB-FUBINACA",
   "isApproved": true,
   "tolerance": {
@@ -10,9 +12,13 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["cannabinoids"],
+  "crossTolerances": [
+    "cannabinoid"
+  ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "categories": [
     "cannabinoid",
     "research-chemical",
@@ -22,7 +28,9 @@
   ],
   "summary": "Arguably the most common synthetic cannabinoid, AB-FUBINACA was originally developed by Pfizer as an analgesic, but has since abandoned for medical use. It has since found a following in the RC community, however it's extremely high potency and inclusion in synthetic blends makes it dangerous, and it has killed in overdose. Exercise caution.",
   "interactions": {
-    "dangerous": ["Lithium"],
+    "dangerous": [
+      "Lithium"
+    ],
     "unsafe": [],
     "uncertain": [
       "2C-T-x",
