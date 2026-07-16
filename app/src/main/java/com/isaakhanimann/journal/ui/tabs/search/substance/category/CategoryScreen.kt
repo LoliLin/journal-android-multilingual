@@ -42,6 +42,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun CategoryScreen(
