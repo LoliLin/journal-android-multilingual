@@ -43,7 +43,6 @@ import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.item
 
 @Composable
 fun CategoryScreen(
@@ -108,8 +107,9 @@ fun CategoryScreen(
                         textAlign = TextAlign.Left,
                     )
                 }
-
-                HorizontalDivider()
+                item{
+                    HorizontalDivider()
+                }
                 items(substanceModels) { substance ->
                     SubstanceRow(substanceModel = substance, onTap = {
                         onSubstanceTap(substance)
