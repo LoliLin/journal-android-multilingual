@@ -43,6 +43,7 @@ import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.item
 
 @Composable
 fun CategoryScreen(
@@ -95,27 +96,26 @@ fun CategoryScreen(
                 }
             }
         ) { padding ->
-            Text(
-                text = category.getLocalizedDescription(
-                    androidx.compose.ui.platform.LocalContext.current
-                ),
-                textAlign = TextAlign.Left,
-                modifier = Modifier
-                    .padding(padding)
-                    .padding(horizontal = horizontalPadding, vertical = 10.dp)
-            )
+            LazyColumn(modifier = Modifier
+                        .padding(padding)
+                        .padding(horizontal = horizontalPadding, vertical = 10.dp)
+            ){
+                item{
+                    Text(
+                        text = category.getLocalizedDescription(
+                            androidx.compose.ui.platform.LocalContext.current
+                        ),
+                        textAlign = TextAlign.Left,
+                    )
+                }
 
-            HorizontalDivider()
-
-            LazyColumn {
-                    items(substanceModels) { substance ->
-                        SubstanceRow(substanceModel = substance, onTap = {
-                            onSubstanceTap(substance)
+                HorizontalDivider()
+                items(substanceModels) { substance ->
+                    SubstanceRow(substanceModel = substance, onTap = {
+                        onSubstanceTap(substance)
                     })
-                    HorizontalDivider()
                 }
             }
-
         }
     }
 }
