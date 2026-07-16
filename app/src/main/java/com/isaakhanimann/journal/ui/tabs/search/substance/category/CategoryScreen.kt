@@ -27,6 +27,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,32 +39,33 @@ import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
+import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 
 @Composable
 fun CategoryScreen(
     navigateToURL: (url: String) -> Unit,
+    onSubstanceTap: (substanceModel: SubstanceModel) -> Unit,
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
-    CategoryScreen(category = viewModel.category, navigateToURL = navigateToURL)
-}
-
-@Preview
-@Composable
-fun CategoryPreview() {
     CategoryScreen(
-        category = Category(
-            name = "psychedelic",
-            description = "Psychedelics are drugs which alter the perception, causing a number of mental effects which manifest in many forms including altered states of consciousness, visual or tactile effects.",
-            url = "https://psychonautwiki.org/wiki/Psychedelics",
-            color = Color.Red
-        ),
-        navigateToURL = {}
+        category = viewModel.category, 
+        navigateToURL = navigateToURL,
+        onSubstanceTap = onSubstanceTap,
+        substanceModels = viewModel.substanceModels
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
+fun CategoryScreen(
+    category: Category?, 
+    navigateToURL: (url: String) -> Unit,
+    substanceModels: List<SubstanceModel>,
+    onSubstanceTap: (substanceModel: SubstanceModel) -> Unit
+) {
     if (category == null) {
         EmptyScreenDisclaimer(
             title = i18n("category_not_found"),
@@ -102,6 +104,18 @@ fun CategoryScreen(category: Category?, navigateToURL: (url: String) -> Unit) {
                     .padding(padding)
                     .padding(horizontal = horizontalPadding, vertical = 10.dp)
             )
+
+            HorizontalDivider()
+
+            LazyColumn {
+                    items(substanceModels) { substance ->
+                        SubstanceRow(substanceModel = substance, onTap = {
+                            onSubstanceTap(substance)
+                    })
+                    HorizontalDivider()
+                }
+            }
+
         }
     }
 }

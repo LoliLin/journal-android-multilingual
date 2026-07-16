@@ -1,6 +1,8 @@
 {
   "name": "STS-135",
-  "commonNames": ["STS-135"],
+  "commonNames": [
+    "STS-135"
+  ],
   "url": "https://psychonautwiki.org/wiki/STS-135",
   "isApproved": true,
   "tolerance": {
@@ -10,12 +12,20 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["cannabinoids"],
+  "crossTolerances": [
+    "cannabinoid"
+  ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "categories": ["cannabinoid"],
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
+  "categories": [
+    "cannabinoid"
+  ],
   "interactions": {
-    "dangerous": ["Lithium"],
+    "dangerous": [
+      "Lithium"
+    ],
     "unsafe": [],
     "uncertain": [
       "2C-T-x",

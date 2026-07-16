@@ -89,7 +89,12 @@ fun NavGraphBuilder.searchGraph(navController: NavController) {
             ArgumentRouter.CategoryRouter.route,
             arguments = ArgumentRouter.CategoryRouter.args
         ) {
-            CategoryScreen(navigateToURL = navController::navigateToURLScreenOnSearchTab)
+            CategoryScreen(
+                navigateToURL = navController::navigateToURLScreenOnSearchTab,
+                onSubstanceTap = {
+                    navController.navigateToSubstanceScreen(substanceName = it.name)
+                }
+            )
         }
         composableWithTransitions(
             ArgumentRouter.EditCustomRouter.route,

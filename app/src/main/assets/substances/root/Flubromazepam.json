@@ -1,6 +1,8 @@
 {
   "name": "Flubromazepam",
-  "commonNames": ["Flubromazepam"],
+  "commonNames": [
+    "Flubromazepam"
+  ],
   "url": "https://psychonautwiki.org/wiki/Flubromazepam",
   "isApproved": true,
   "tolerance": {
@@ -8,7 +10,9 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["benzodiazepines"],
+  "crossTolerances": [
+    "benzodiazepine"
+  ],
   "addictionPotential": "extremely physically and psychologically addictive",
   "toxicities": [
     "low toxicity",

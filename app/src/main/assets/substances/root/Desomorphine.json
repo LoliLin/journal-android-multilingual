@@ -1,11 +1,19 @@
 {
   "name": "Desomorphine",
-  "commonNames": ["Desomorphine", "Krokodil", "Krok"],
+  "commonNames": [
+    "Desomorphine",
+    "Krokodil",
+    "Krok"
+  ],
   "url": "https://psychonautwiki.org/wiki/Desomorphine",
   "isApproved": true,
-  "crossTolerances": ["opioids"],
+  "crossTolerances": [
+    "opioid"
+  ],
   "toxicities": [],
-  "categories": ["opioid"],
+  "categories": [
+    "opioid"
+  ],
   "roas": [
     {
       "name": "oral",
