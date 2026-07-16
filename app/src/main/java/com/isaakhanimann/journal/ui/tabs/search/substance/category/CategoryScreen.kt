@@ -114,6 +114,7 @@ fun CategoryScreen(
                     SubstanceRow(substanceModel = substance, onTap = {
                         onSubstanceTap(substance)
                     })
+                    HorizontalDivider()
                 }
             }
         }
