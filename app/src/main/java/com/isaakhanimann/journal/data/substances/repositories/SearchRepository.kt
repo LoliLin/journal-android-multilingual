@@ -43,7 +43,7 @@ class SearchRepository @Inject constructor(val substanceRepo: SubstanceRepositor
         )
     }
 
-    private fun getSubstancesMatchingCategories(
+    fun getSubstancesMatchingCategories(
         filterCategories: List<String>
     ): List<SubstanceWithCategories> =
         substanceRepo.getAllSubstancesWithCategories().filter { substanceWithCategories ->
