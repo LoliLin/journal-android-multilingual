@@ -1,0 +1,25 @@
+Version 9.8 (2026-07-18)
+
+Added
+
+List category substances in CategoryScreen (#73).
+
+Improved
+
+Added a HorizontalDivider for each SubstanceRow to improve visual separation.
+
+Enhanced the formatting of the torrence row for better readability.
+
+Replaced the store icon with a new design.
+
+Fixed the overlap issue between LocalizedDescription and the scrollbar in CategoryScreen.
+
+Fixed
+
+Hot fix for compilation errors.
+
+Chore
+
+Refactored the formatting workflow for Kotlin and JSON files.
+
+Applied automated code formatting (style fixes) to all Kotlin and JSON sources.

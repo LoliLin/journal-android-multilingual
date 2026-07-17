@@ -1,0 +1,3 @@
+feat: translate cross-tolerance names via display name lookup by @LoliLin in #70
+feat: translate IconPickerScreen UI strings by @LoliLin in #69
+GitHub like by @LoliLin in #71
