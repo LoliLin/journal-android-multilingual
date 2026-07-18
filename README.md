@@ -8,7 +8,7 @@ Licensed, GPLv3-Only
 
 # Journal Android Multilingual
 
-<a href='https://f-droid.org/en/packages/in.kawaiis.journal/'><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="100" /></a>
+<a href='https://f-droid.org/en/packages/in.kawaiis.journal/'><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on-zh-cn.png" height="100" /></a>
 
 Journal 是一个著名的用于记录药物使用情况的应用，广泛流传于 Oder 之间。Journal 自 ~~9.0~~ 11.1 起转闭源程序，并对其高级功能收费。与此同时，Journal 以全英文的方式呈现，对其他语言使用者晦涩难懂。
 
