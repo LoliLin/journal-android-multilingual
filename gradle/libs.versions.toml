@@ -24,7 +24,7 @@ androidxTestExt = "1.3.0"
 androidxTestRunner = "1.7.0"
 junit = "4.13.2"
 jsonTest = "20260522"
-espresso = "3.5.1"
+espresso = "3.7.0"
 
 # 协程 & 序列化
 coroutines = "1.11.0"
