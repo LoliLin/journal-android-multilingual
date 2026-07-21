@@ -41,7 +41,7 @@ datastore = "1.2.1"
 splashscreen = "1.2.0"
 
 # 第三方库
-accompanist = "0.27.0"
+accompanist = "0.36.0"
 calendar = "2.10.1"
 pinIn = "1.6.0"
 coil = "2.7.0"
