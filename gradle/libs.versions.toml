@@ -13,7 +13,7 @@ androidxbrowser = "1.10.0"
 
 # Hilt
 hilt = "2.60.1"
-androidxHilt = "1.3.0"                     # hilt-lifecycle-viewmodel-compose
+androidxHilt = "1.4.0"                     # hilt-lifecycle-viewmodel-compose
 
 # Room
 androidxRoom = "2.8.4"
