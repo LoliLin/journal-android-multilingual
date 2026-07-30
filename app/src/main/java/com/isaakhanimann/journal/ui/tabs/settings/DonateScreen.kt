@@ -44,7 +44,8 @@ import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.AnnotatedString
+import android.content.ClipData
+import kotlinx.coroutines.launch
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
@@ -80,7 +81,7 @@ fun DonateScreen() {
                 text = "BitCoin"
             ) {
                 scope.launch {
-                    clipboard.setClipEntry(ClipEntry(AnnotatedString(btcAddress)))
+                    clipboard.setClipEntry(ClipEntry(ClipData.newPlainText("", btcAddress)))
                     Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
                 }
             }

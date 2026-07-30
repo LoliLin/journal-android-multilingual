@@ -39,7 +39,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
+import android.content.ClipData
+import kotlinx.coroutines.launch
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.localization.i18n
 import java.time.LocalDateTime
@@ -81,7 +82,7 @@ fun TimePickerButton(
         detectTapGestures(
             onLongPress = {
                 scope.launch {
-                    clipboard.setClipEntry(ClipEntry(AnnotatedString(timeString)))
+                    clipboard.setClipEntry(ClipEntry(ClipData.newPlainText("", timeString)))
                     Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
                 }
             }
