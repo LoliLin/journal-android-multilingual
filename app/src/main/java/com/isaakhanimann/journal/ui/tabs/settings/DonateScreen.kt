@@ -36,10 +36,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.AnnotatedString
@@ -66,7 +68,8 @@ fun DonateScreen() {
             Spacer(modifier = Modifier.height(5.dp))
 
             val context = LocalContext.current
-            val clipboardManager = LocalClipboardManager.current
+            val clipboard = LocalClipboard.current
+            val scope = rememberCoroutineScope()
             val uriHandler = LocalUriHandler.current
 
             val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
@@ -76,8 +79,10 @@ fun DonateScreen() {
                 imageVector = Icons.Outlined.CurrencyBitcoin,
                 text = "BitCoin"
             ) {
-                clipboardManager.setText(AnnotatedString(btcAddress))
-                Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
+                scope.launch {
+                    clipboard.setClipEntry(ClipEntry(AnnotatedString(btcAddress)))
+                    Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
+                }
             }
 
             // Spacer(modifier = Modifier.height(15.dp))

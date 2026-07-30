@@ -32,9 +32,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import com.isaakhanimann.journal.R
@@ -49,7 +51,8 @@ fun DatePickerButton(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val clipboardManager = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
+    val scope = rememberCoroutineScope()
     val dialogTheme =
         if (isSystemInDarkTheme()) R.style.DialogThemeDark else R.style.DialogThemeLight
     val datePickerDialog = DatePickerDialog(
@@ -73,8 +76,10 @@ fun DatePickerButton(
     val longPressModifier = modifier.pointerInput(dateString) {
         detectTapGestures(
             onLongPress = {
-                clipboardManager.setText(AnnotatedString(dateString))
-                Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
+                scope.launch {
+                    clipboard.setClipEntry(ClipEntry(AnnotatedString(dateString)))
+                    Toast.makeText(context, copyTip, Toast.LENGTH_SHORT).show()
+                }
             }
         )
     }

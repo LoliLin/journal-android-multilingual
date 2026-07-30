@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -18,9 +17,6 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
-import coil.ImageLoader
-import coil.compose.LocalImageLoader
-import coil.intercept.Interceptor
 import kotlin.coroutines.resume
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -52,24 +48,8 @@ suspend fun renderComposeViewToBitmap(
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
         setContent {
-            // 创建一个自动禁用硬件加速的 ImageLoader
-            val safeImageLoader = ImageLoader.Builder(context)
-                .components {
-                    add(
-                        coil.intercept.Interceptor { chain ->
-                            val newRequest = chain.request.newBuilder()
-                                .allowHardware(false) // 关键！禁用硬件位图
-                                .build()
-                            chain.proceed(newRequest)
-                        }
-                    )
-                }
-                .build()
-            CompositionLocalProvider(
-                LocalImageLoader provides safeImageLoader
-            ) {
-                content()
-            }
+            // 通过 JournalApplication 实现的 ImageLoaderFactory 提供禁用硬件位图的加载器
+            content()
         }
     }
     container.addView(composeView)
