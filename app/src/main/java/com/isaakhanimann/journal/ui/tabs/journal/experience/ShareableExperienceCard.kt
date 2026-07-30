@@ -226,12 +226,12 @@ fun prepareShareableExperienceCardData(
 
     // 5. 装填 ScreenModel
     val oneExperienceScreenModel = OneExperienceScreenModel(
-        isFavorite = experience?.isFavorite ?: false,
-        title = experience?.title ?: "",
+        isFavorite = experience.isFavorite ?: false,
+        title = experience.title ?: "",
         firstIngestionTime = sortedIngestions.firstOrNull()?.ingestion?.time
-            ?: experience?.sortDate ?: Instant.now(),
-        notes = experience?.text?.let { it } ?: "",
-        locationName = experience?.location?.name ?: "",
+            ?: experience.sortDate ?: Instant.now(),
+        notes = experience.text?.let { it } ?: "",
+        locationName = experience.location?.name ?: "",
         isCurrentExperience = false,
         ingestionElements = myIngestionElements,
         cumulativeDoses = cumulativeDoses,

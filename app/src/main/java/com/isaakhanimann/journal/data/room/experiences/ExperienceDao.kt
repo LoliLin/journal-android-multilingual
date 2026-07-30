@@ -55,7 +55,7 @@ interface ExperienceDao {
     fun getIngestionsSortedDescendingFlow(): Flow<List<Ingestion>>
 
     @Query(
-        "SELECT * FROM ingestion as i" +
+        "SELECT i.* FROM ingestion as i" +
             " INNER JOIN (SELECT id, MAX(time) AS maxTime FROM ingestion WHERE time > :instant GROUP BY substanceName) as sub" +
             " ON i.id = sub.id AND i.time = sub.maxTime" +
             " ORDER BY time DESC"

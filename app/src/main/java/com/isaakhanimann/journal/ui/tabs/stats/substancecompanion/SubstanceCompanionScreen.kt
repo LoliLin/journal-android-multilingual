@@ -54,7 +54,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -115,12 +115,12 @@ fun SubstanceCompanionScreen(
         topBar = {
             val title = if (consumerName == null) {
                 (
-                    substanceRepo?.getDisplayName(substanceCompanion.substanceName)
+                    substanceRepo.getDisplayName(substanceCompanion.substanceName)
                         ?: substanceCompanion.substanceName
                     )
             } else {
                 "${(
-                    substanceRepo?.getDisplayName(
+                    substanceRepo.getDisplayName(
                         substanceCompanion.substanceName
                     ) ?: substanceCompanion.substanceName
                     )} ($consumerName)"
