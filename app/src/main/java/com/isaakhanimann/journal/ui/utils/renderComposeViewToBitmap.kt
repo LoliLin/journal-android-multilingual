@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -17,6 +19,9 @@ import androidx.lifecycle.setViewTreeLifecycleOwner
 import androidx.lifecycle.setViewTreeViewModelStoreOwner
 import androidx.savedstate.findViewTreeSavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
+import coil.ImageLoader
+import coil.compose.LocalImageLoader
+import coil.intercept.Interceptor
 import kotlin.coroutines.resume
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -45,11 +50,30 @@ suspend fun renderComposeViewToBitmap(
         translationY = 10000f
     }
 
+    @Suppress("DEPRECATION")
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
         setContent {
-            // 通过 JournalApplication 实现的 ImageLoaderFactory 提供禁用硬件位图的加载器
-            content()
+            // 仅在离屏渲染时禁用硬件位图，确保 Compose 视图能被绘制到软件 Canvas
+            val safeImageLoader = remember {
+                ImageLoader.Builder(context)
+                    .components {
+                        add(
+                            Interceptor { chain ->
+                                val newRequest = chain.request.newBuilder()
+                                    .allowHardware(false)
+                                    .build()
+                                chain.proceed(newRequest)
+                            }
+                        )
+                    }
+                    .build()
+            }
+            CompositionLocalProvider(
+                LocalImageLoader provides safeImageLoader
+            ) {
+                content()
+            }
         }
     }
     container.addView(composeView)
