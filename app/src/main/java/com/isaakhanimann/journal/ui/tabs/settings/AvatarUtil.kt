@@ -23,7 +23,7 @@ object AvatarUtil {
      * 检查用户是否已设置头像。
      */
     fun isUserHasAvatar(context: Context, userName: String): Boolean =
-        getAvatarFile(context, userName).exists() == true
+        getAvatarFile(context, userName).exists()
 
     /**
      * 获取用户的头像文件，若文件不存在则返回 null。
