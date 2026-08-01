@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.OpenInNew
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.material3.CircularProgressIndicator
@@ -316,7 +317,7 @@ private fun ExtensionPackRow(
                         context.startActivity(intent)
                     }) {
                         Icon(
-                            Icons.Outlined.OpenInNew,
+                            Icons.AutoMirrored.Outlined.OpenInNew,
                             contentDescription = i18n("extension_open_link"),
                             modifier = Modifier.size(20.dp)
                         )
