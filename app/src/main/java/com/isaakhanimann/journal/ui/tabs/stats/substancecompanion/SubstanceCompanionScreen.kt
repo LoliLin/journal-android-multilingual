@@ -114,16 +114,9 @@ fun SubstanceCompanionScreen(
 
         topBar = {
             val title = if (consumerName == null) {
-                (
-                    substanceRepo.getDisplayName(substanceCompanion.substanceName)
-                        ?: substanceCompanion.substanceName
-                    )
+                substanceRepo.getDisplayName(substanceCompanion.substanceName)
             } else {
-                "${(
-                    substanceRepo.getDisplayName(
-                        substanceCompanion.substanceName
-                    ) ?: substanceCompanion.substanceName
-                    )} ($consumerName)"
+                "${substanceRepo.getDisplayName(substanceCompanion.substanceName)} ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }

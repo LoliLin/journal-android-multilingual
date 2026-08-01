@@ -49,7 +49,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneT
 import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
-import java.time.Instant
 
 @Stable
 class SubstanceDisplayNameProvider(val get: (String) -> String)
@@ -226,11 +225,11 @@ fun prepareShareableExperienceCardData(
 
     // 5. 装填 ScreenModel
     val oneExperienceScreenModel = OneExperienceScreenModel(
-        isFavorite = experience.isFavorite ?: false,
-        title = experience.title ?: "",
+        isFavorite = experience.isFavorite,
+        title = experience.title,
         firstIngestionTime = sortedIngestions.firstOrNull()?.ingestion?.time
-            ?: experience.sortDate ?: Instant.now(),
-        notes = experience.text?.let { it } ?: "",
+            ?: experience.sortDate,
+        notes = experience.text,
         locationName = experience.location?.name ?: "",
         isCurrentExperience = false,
         ingestionElements = myIngestionElements,
