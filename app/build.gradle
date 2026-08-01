@@ -26,7 +26,7 @@ android {
             def b64 = System.getenv("KEYSTORE_BASE64")
             if (b64 != null && !b64.isBlank()) {
                 b64 = b64.trim().replaceAll("\\s", "")
-                def keystoreFile = file("${project.buildDir}/release.keystore.jks")
+                def keystoreFile = file("${project.layout.buildDirectory.get()}/release.keystore.jks")
                 keystoreFile.parentFile.mkdirs()
                 keystoreFile.bytes = java.util.Base64.getDecoder().decode(b64)
                 storeFile = keystoreFile
@@ -68,7 +68,7 @@ android {
         buildConfig = false
     }
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -125,7 +125,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
 
-    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.accompanist.webview)
     implementation(libs.kizitonwose.calendar.compose)
     implementation(libs.towdium.pinin)

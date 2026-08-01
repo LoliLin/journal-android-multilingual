@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.search.substance
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -29,7 +30,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun UrlScreen(viewModel: UrlViewModel = hiltViewModel(), url: String, onHandled: () -> Unit) {
@@ -69,7 +70,11 @@ fun UrlScreen(
                 context.startActivity(intent)
             } else {
                 val customTabsIntent = CustomTabsIntent.Builder()
-                    .setToolbarColor(toolbarColor)
+                    .setDefaultColorSchemeParams(
+                        CustomTabColorSchemeParams.Builder()
+                            .setToolbarColor(toolbarColor)
+                            .build()
+                    )
                     .build()
                 customTabsIntent.intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 customTabsIntent.launchUrl(context, parsedUri)

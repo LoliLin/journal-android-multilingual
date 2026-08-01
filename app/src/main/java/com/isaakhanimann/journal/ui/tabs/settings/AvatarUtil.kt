@@ -23,13 +23,13 @@ object AvatarUtil {
      * 检查用户是否已设置头像。
      */
     fun isUserHasAvatar(context: Context, userName: String): Boolean =
-        getAvatarFile(context, userName)?.exists() == true
+        getAvatarFile(context, userName).exists()
 
     /**
      * 获取用户的头像文件，若文件不存在则返回 null。
      */
     fun getUserAvatar(context: Context, userName: String): File? =
-        getAvatarFile(context, userName)?.takeIf { it.exists() }
+        getAvatarFile(context, userName).takeIf { it.exists() }
 
     /**
      * 生成一个用于触发“选择并保存头像”的 Composable 工具。

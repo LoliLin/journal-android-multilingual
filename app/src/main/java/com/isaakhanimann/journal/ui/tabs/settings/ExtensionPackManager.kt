@@ -72,7 +72,7 @@ object ExtensionPackLoader {
             updateJsonLink = json.getString("updateJsonLink"),
             versionName = json.getString("versionName"),
             versionCode = json.getInt("versionCode"),
-            iconPath = json.optString("icon", null)
+            iconPath = json.optString("icon")
         )
     }
 
@@ -316,7 +316,7 @@ private fun ExtensionPackRow(
                         context.startActivity(intent)
                     }) {
                         Icon(
-                            Icons.Outlined.OpenInNew,
+                            Icons.Outlined.Link,
                             contentDescription = i18n("extension_open_link"),
                             modifier = Modifier.size(20.dp)
                         )

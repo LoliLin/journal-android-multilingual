@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -49,22 +50,25 @@ suspend fun renderComposeViewToBitmap(
         translationY = 10000f
     }
 
+    @Suppress("DEPRECATION")
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
         setContent {
-            // 创建一个自动禁用硬件加速的 ImageLoader
-            val safeImageLoader = ImageLoader.Builder(context)
-                .components {
-                    add(
-                        coil.intercept.Interceptor { chain ->
-                            val newRequest = chain.request.newBuilder()
-                                .allowHardware(false) // 关键！禁用硬件位图
-                                .build()
-                            chain.proceed(newRequest)
-                        }
-                    )
-                }
-                .build()
+            // 仅在离屏渲染时禁用硬件位图，确保 Compose 视图能被绘制到软件 Canvas
+            val safeImageLoader = remember {
+                ImageLoader.Builder(context)
+                    .components {
+                        add(
+                            Interceptor { chain ->
+                                val newRequest = chain.request.newBuilder()
+                                    .allowHardware(false)
+                                    .build()
+                                chain.proceed(newRequest)
+                            }
+                        )
+                    }
+                    .build()
+            }
             CompositionLocalProvider(
                 LocalImageLoader provides safeImageLoader
             ) {

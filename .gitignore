@@ -10,6 +10,7 @@
 local.properties
 release
 .alma-snapshots
+.workbuddy
 *.keystore.jks
 *.keystore
 keystore_b64.txt
