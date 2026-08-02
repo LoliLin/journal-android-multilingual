@@ -1,8 +1,6 @@
 {
   "name": "O-Desmethyltramadol",
-  "commonNames": [
-    "O-Desmethyltramadol"
-  ],
+  "commonNames": ["O-Desmethyltramadol"],
   "url": "https://psychonautwiki.org/wiki/O-Desmethyltramadol",
   "isApproved": true,
   "tolerance": {
@@ -12,9 +10,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "opioid"
-  ],
+  "crossTolerances": ["opioid"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
     "moderate potential toxicity relative to its dose due to its potency",
@@ -46,12 +42,7 @@
       "5-HTP"
     ],
     "unsafe": [],
-    "uncertain": [
-      "MAOIs",
-      "Nitrous",
-      "PCP",
-      "Stimulants"
-    ]
+    "uncertain": ["MAOIs", "Nitrous", "PCP", "Stimulants"]
   },
   "roas": [
     {

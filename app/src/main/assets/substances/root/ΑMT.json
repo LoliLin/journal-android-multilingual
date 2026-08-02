@@ -1,10 +1,6 @@
 {
   "name": "ΑMT",
-  "commonNames": [
-    "AMT",
-    "αMT",
-    "Indopan"
-  ],
+  "commonNames": ["AMT", "αMT", "Indopan"],
   "url": "https://psychonautwiki.org/wiki/%CE%91MT",
   "isApproved": true,
   "tolerance": {
@@ -14,17 +10,10 @@
     "halfToleranceInHours": 336,
     "zeroToleranceInHours": 720
   },
-  "crossTolerances": [
-    "psychedelic"
-  ],
+  "crossTolerances": ["psychedelic"],
   "addictionPotential": "moderately habit-forming",
-  "toxicities": [
-    "toxic dose is unknown"
-  ],
-  "categories": [
-    "psychedelic",
-    "entactogen"
-  ],
+  "toxicities": ["toxic dose is unknown"],
+  "categories": ["psychedelic", "entactogen"],
   "interactions": {
     "dangerous": [
       "2C-T-x",
@@ -44,11 +33,7 @@
       "Tramadol"
     ],
     "unsafe": [],
-    "uncertain": [
-      "Alcohol",
-      "Caffeine",
-      "THC"
-    ]
+    "uncertain": ["Alcohol", "Caffeine", "THC"]
   },
   "roas": [
     {

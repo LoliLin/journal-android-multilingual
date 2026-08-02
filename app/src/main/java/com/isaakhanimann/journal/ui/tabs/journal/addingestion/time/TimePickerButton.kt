@@ -19,6 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 
 import android.app.TimePickerDialog
+import android.content.ClipData
 import android.text.format.DateFormat
 import android.widget.Toast
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -39,11 +40,10 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
-import android.content.ClipData
-import kotlinx.coroutines.launch
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.localization.i18n
 import java.time.LocalDateTime
+import kotlinx.coroutines.launch
 
 @Composable
 fun TimePickerButton(

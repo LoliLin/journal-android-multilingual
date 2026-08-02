@@ -17,10 +17,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "benzhydryl",
-    "nootropic"
-  ],
+  "crossTolerances": ["benzhydryl", "nootropic"],
   "addictionPotential": "not addictive with a low potential for abuse",
   "toxicities": [
     "The median lethal dose at which 50% of participants die (LD50) from modafinil for human beings has never been reached"
@@ -55,16 +52,8 @@
       "Hormonal Birth Control",
       "CYP2C19-substrates"
     ],
-    "unsafe": [
-      "DXM",
-      "MDMA",
-      "Stimulants"
-    ],
-    "uncertain": [
-      "Alcohol",
-      "MXE",
-      "Dissociatives"
-    ]
+    "unsafe": ["DXM", "MDMA", "Stimulants"],
+    "uncertain": ["Alcohol", "MXE", "Dissociatives"]
   },
   "roas": [
     {

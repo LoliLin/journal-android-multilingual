@@ -1,10 +1,6 @@
 {
   "name": "APICA",
-  "commonNames": [
-    "APICA",
-    "SDB-001",
-    "2NE1"
-  ],
+  "commonNames": ["APICA", "SDB-001", "2NE1"],
   "url": "https://psychonautwiki.org/wiki/APICA",
   "isApproved": true,
   "tolerance": {
@@ -14,16 +10,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "cannabinoid"
-  ],
+  "crossTolerances": ["cannabinoid"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [
-    "exact toxic dosage is unknown"
-  ],
-  "categories": [
-    "cannabinoid"
-  ],
+  "toxicities": ["exact toxic dosage is unknown"],
+  "categories": ["cannabinoid"],
   "roas": [
     {
       "name": "inhaled",

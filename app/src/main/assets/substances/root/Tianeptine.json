@@ -1,11 +1,6 @@
 {
   "name": "Tianeptine",
-  "commonNames": [
-    "Tianeptine",
-    "Stablon",
-    "Coaxil",
-    "Tatinol"
-  ],
+  "commonNames": ["Tianeptine", "Stablon", "Coaxil", "Tatinol"],
   "url": "https://psychonautwiki.org/wiki/Tianeptine",
   "isApproved": true,
   "tolerance": {
@@ -15,14 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "antidepressant",
-    "opioid"
-  ],
+  "crossTolerances": ["antidepressant", "opioid"],
   "addictionPotential": "mildly addictive",
-  "toxicities": [
-    "large therapeutic index and margin of safety"
-  ],
+  "toxicities": ["large therapeutic index and margin of safety"],
   "categories": [
     "nootropic",
     "opioid",

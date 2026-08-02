@@ -14,19 +14,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "opioid"
-  ],
+  "crossTolerances": ["opioid"],
   "addictionPotential": "moderately addictive",
-  "toxicities": [
-    "potentially fatal at heavy dosages"
-  ],
-  "categories": [
-    "opioid",
-    "depressant",
-    "habit-forming",
-    "common"
-  ],
+  "toxicities": ["potentially fatal at heavy dosages"],
+  "categories": ["opioid", "depressant", "habit-forming", "common"],
   "summary": "A codeine-derived opioid generally unheard of outside the United States. Generally mild in effects, used as an analgesic and cough-supressant. Sometimes used recreationally.",
   "interactions": {
     "dangerous": [
@@ -41,12 +32,7 @@
       "Grapefruit"
     ],
     "unsafe": [],
-    "uncertain": [
-      "MAOIs",
-      "Nitrous",
-      "PCP",
-      "Stimulants"
-    ]
+    "uncertain": ["MAOIs", "Nitrous", "PCP", "Stimulants"]
   },
   "roas": [
     {

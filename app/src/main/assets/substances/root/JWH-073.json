@@ -1,9 +1,6 @@
 {
   "name": "JWH-073",
-  "commonNames": [
-    "JWH-073",
-    "Spice"
-  ],
+  "commonNames": ["JWH-073", "Spice"],
   "url": "https://psychonautwiki.org/wiki/JWH-073",
   "isApproved": true,
   "tolerance": {
@@ -13,18 +10,12 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "cannabinoid"
-  ],
+  "crossTolerances": ["cannabinoid"],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [],
-  "categories": [
-    "cannabinoid"
-  ],
+  "categories": ["cannabinoid"],
   "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
+    "dangerous": ["Lithium"],
     "unsafe": [],
     "uncertain": [
       "2C-T-x",

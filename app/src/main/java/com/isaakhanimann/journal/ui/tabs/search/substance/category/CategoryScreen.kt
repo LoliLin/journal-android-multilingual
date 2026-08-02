@@ -19,30 +19,28 @@
 package com.isaakhanimann.journal.ui.tabs.search.substance.category
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
-import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
+import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CategoryScreen(
@@ -51,7 +49,7 @@ fun CategoryScreen(
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
     CategoryScreen(
-        category = viewModel.category, 
+        category = viewModel.category,
         navigateToURL = navigateToURL,
         onSubstanceTap = onSubstanceTap,
         substanceModels = viewModel.substanceModels
@@ -61,7 +59,7 @@ fun CategoryScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryScreen(
-    category: Category?, 
+    category: Category?,
     navigateToURL: (url: String) -> Unit,
     substanceModels: List<SubstanceModel>,
     onSubstanceTap: (substanceModel: SubstanceModel) -> Unit
@@ -95,19 +93,20 @@ fun CategoryScreen(
                 }
             }
         ) { padding ->
-            LazyColumn(modifier = Modifier
-                        .padding(padding)
-                        .padding(horizontal = horizontalPadding, vertical = 10.dp)
-            ){
-                item{
+            LazyColumn(
+                modifier = Modifier
+                    .padding(padding)
+                    .padding(horizontal = horizontalPadding, vertical = 10.dp)
+            ) {
+                item {
                     Text(
                         text = category.getLocalizedDescription(
                             androidx.compose.ui.platform.LocalContext.current
                         ),
-                        textAlign = TextAlign.Left,
+                        textAlign = TextAlign.Left
                     )
                 }
-                item{
+                item {
                     HorizontalDivider()
                 }
                 items(substanceModels) { substance ->

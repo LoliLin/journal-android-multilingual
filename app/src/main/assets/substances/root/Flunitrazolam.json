@@ -1,8 +1,6 @@
 {
   "name": "Flunitrazolam",
-  "commonNames": [
-    "Flunitrazolam"
-  ],
+  "commonNames": ["Flunitrazolam"],
   "url": "https://psychonautwiki.org/wiki/Flunitrazolam",
   "isApproved": true,
   "tolerance": {
@@ -10,20 +8,13 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": [
-    "benzodiazepine"
-  ],
+  "crossTolerances": ["benzodiazepine"],
   "addictionPotential": "extremely physically and psychologically addictive",
   "toxicities": [
     "low toxicity",
     "potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "categories": [
-    "depressant",
-    "benzodiazepine",
-    "habit-forming",
-    "tentative"
-  ],
+  "categories": ["depressant", "benzodiazepine", "habit-forming", "tentative"],
   "summary": "A very potent hypnotic Benzodiazepine. Triazolo version of Flunitrazepam.",
   "roas": [
     {
