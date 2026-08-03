@@ -34,9 +34,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.combine
 
 @HiltViewModel
 class TimelineScreenViewModel @Inject constructor(
@@ -61,16 +61,23 @@ class TimelineScreenViewModel @Inject constructor(
         initialValue = ownerUserNameFlow.value == consumerName
     )
 
-    private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(experienceID)
+    private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(
+        experienceID
+    )
         .combine(isOwnerUser) { ingestions, isOwner ->
             ingestions.filter {
-                if (!isOwner) it.ingestion.consumerName == consumerName else it.ingestion.consumerName == null
+                if (!isOwner) {
+                    it.ingestion.consumerName == consumerName
+                } else {
+                    it.ingestion.consumerName ==
+                        null
+                }
             }
         }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = emptyList() 
+            initialValue = emptyList()
         )
 
     val ratingsFlow =
