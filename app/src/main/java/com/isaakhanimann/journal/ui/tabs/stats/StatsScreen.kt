@@ -216,13 +216,34 @@ fun StatsScreen(
             Column(modifier = Modifier.padding(padding)) {
                 PrimaryTabRow(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    contentColor = MaterialTheme.colorScheme.onSurface,
+                    containerColor = Color.Transparent,  
+                    indicatorPlacement = TabIndicatorPlacement.Overlay,
+                    indicator = { tabPositions ->
+                        if (selectedTabIndex < tabPositions.size) {
+                            val tabPosition = tabPositions[selectedTabIndex]
+                            Box(
+                                Modifier
+                                    .tabIndicatorOffset(tabPosition) 
+                                    .height(36.dp)                   
+                                    .padding(horizontal = 6.dp)        
+                                    .background(
+                                        color = MaterialTheme.colorScheme.primaryContainer,
+                                        shape = RoundedCornerShape(50)  
+                                    )
+                            )
+                        }
+                    }
                 ) {
                     TimePickerOption.values().forEachIndexed { index, option ->
                         Tab(
                             text = { Text(option.displayText) },
                             selected = statsModel.selectedOption.tabIndex == index,
                             onClick = { onTapOption(option) }
+                            color = if (statsModel.selectedOption.tabIndex == index)
+                                        MaterialTheme.colorScheme.onPrimaryContainer
+                                    else
+                                        MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
