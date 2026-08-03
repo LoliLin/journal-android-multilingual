@@ -83,7 +83,6 @@ import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.animation.core.tween
 
 import androidx.compose.material3.TabIndicatorScope
-import androidx.compose.material3.TabRowDefaults.tabIndicatorLayout
 
 
 @Composable
@@ -232,9 +231,6 @@ fun StatsScreen(
                             val selectedIndex = statsModel.selectedOption.tabIndex
                             Box(
                                 Modifier
-                                    .tabIndicatorLayout(
-                                        selectedTabIndex = selectedIndex
-                                    )
                                     .height(36.dp)                   
                                     .padding(horizontal = 6.dp)        
                                     .background(
@@ -261,9 +257,7 @@ fun StatsScreen(
                             text = {
                                 Text(
                                     text = option.displayText,
-                                    color = textColor,
-                                    selectedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                    color = textColor
                                 ) 
                             },
                             selected = isSelected,
