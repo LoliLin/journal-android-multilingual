@@ -220,7 +220,7 @@ fun ExtensionPackScreen() {
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text(i18n("settings_extension_pack")) }
+                title = { Text(i18n("settings_extension_pack")) },
 
                 actions = {
                     IconButton(onClick = { importLauncher.launch(arrayOf("application/zip")) }) {
