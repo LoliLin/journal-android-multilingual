@@ -79,6 +79,11 @@ import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
+import androidx.compose.material3.tabIndicatorOffset
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+
+
 @Composable
 fun StatsScreen(
     viewModel: StatsViewModel = hiltViewModel(),
@@ -239,17 +244,26 @@ fun StatsScreen(
                     }
                 ) {
                     TimePickerOption.values().forEachIndexed { index, option ->
+
+                        val isSelected = statsModel.selectedOption.tabIndex == index
+                        val textColor by animateColorAsState(
+                            targetValue = if (isSelected) {
+                                MaterialTheme.colorScheme.onPrimaryContainer
+                            } else {
+                                MaterialTheme.colorScheme.onSurfaceVariant
+                            },
+                            animationSpec = tween(durationMillis = 300), 
+                            label = "tabTextColor"
+                        )
+                        
                         Tab(
-                            text = { 
+                            text = {
                                 Text(
                                     text = option.displayText,
-                                    color = if (statsModel.selectedOption.tabIndex == index)
-                                                MaterialTheme.colorScheme.onPrimaryContainer
-                                            else
-                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                    color = tabTextColor
                                 ) 
                             },
-                            selected = statsModel.selectedOption.tabIndex == index,
+                            selected = isSelected,
                             onClick = { onTapOption(option) }
                         )
                     }
