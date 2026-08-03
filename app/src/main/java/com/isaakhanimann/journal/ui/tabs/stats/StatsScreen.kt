@@ -46,7 +46,6 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.TabIndicatorPlacement
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -79,8 +78,8 @@ import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
-import androidx.compose.material3.tabIndicatorOffset
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.animation.core.tween
 
 
@@ -226,7 +225,6 @@ fun StatsScreen(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
                     contentColor = MaterialTheme.colorScheme.onSurface,
                     containerColor = Color.Transparent,  
-                    indicatorPlacement = TabIndicatorPlacement.Overlay,
                     indicator = { tabPositions ->
                         if (statsModel.selectedOption.tabIndex < tabPositions.size) {
                             val tabPosition = tabPositions[statsModel.selectedOption.tabIndex]
@@ -243,7 +241,7 @@ fun StatsScreen(
                         }
                     }
                 ) {
-                    TimePickerOption.values().forEachIndexed { index, option ->
+                    TimePickerOption.entries.forEachIndexed { index, option ->
 
                         val isSelected = statsModel.selectedOption.tabIndex == index
                         val textColor by animateColorAsState(
@@ -260,7 +258,9 @@ fun StatsScreen(
                             text = {
                                 Text(
                                     text = option.displayText,
-                                    color = tabTextColor
+                                    color = textColor,
+                                    selectedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                    unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant
                                 ) 
                             },
                             selected = isSelected,
