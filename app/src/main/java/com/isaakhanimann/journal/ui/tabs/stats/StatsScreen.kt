@@ -239,7 +239,7 @@ fun StatsScreen(
                         Tab(
                             text = { Text(option.displayText) },
                             selected = statsModel.selectedOption.tabIndex == index,
-                            onClick = { onTapOption(option) }
+                            onClick = { onTapOption(option) },
                             color = if (statsModel.selectedOption.tabIndex == index)
                                         MaterialTheme.colorScheme.onPrimaryContainer
                                     else
