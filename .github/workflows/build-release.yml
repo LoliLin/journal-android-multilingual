@@ -23,7 +23,16 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0 # 拉取完整历史以确保能正常 push
+          fetch-depth: 0
+          
+      - name: Generate AI Changelog
+        uses: SwufeFox/Fastlane-AI-Changelog@v1
+        with:
+          openai_api_key: ${{ secrets.CHAT_TOKEN }}
+          api_base_url: 'https://api.deepseek.com/v1'
+          model: 'deepseek-v4-flash'
+          version_code: "${{ github.event.inputs.version_code }}"
+          locales: 'zh-CN,en-US,zh-TW'
 
       # 1. 根据输入修改 Android 项目的版本号文件
       - name: Update Version in Source Files
