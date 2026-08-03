@@ -49,6 +49,18 @@ class TimelineScreenViewModel @Inject constructor(
     private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
     val consumerName = state.get<String>(CONSUMER_NAME_KEY)!!
 
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    val isOwnerUser = ownerUserNameFlow.map { it == consumerName }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = ownerUserNameFlow.value == consumerName
+    )
+
     private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(experienceID)
         .combine(isOwnerUser) { ingestions, isOwner ->
             ingestions.filter {
@@ -76,18 +88,6 @@ class TimelineScreenViewModel @Inject constructor(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000)
             )
-
-    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-        initialValue = "You",
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
-
-    val isOwnerUser = ownerUserNameFlow.map { it == consumerName }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000),
-        initialValue = ownerUserNameFlow.value == consumerName
-    )
 
     private val sortedIngestionsWithCompanionsFlow =
         ingestionsWithCompanionsFlow.map { ingestionsWithCompanions ->
