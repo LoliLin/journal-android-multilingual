@@ -19,4 +19,5 @@ jobs:
       - name: DeepSeek Code Review
         uses: hustcer/deepseek-review@v1
         with:
+          temperature: 1
           chat-token: ${{ secrets.CHAT_TOKEN }}
