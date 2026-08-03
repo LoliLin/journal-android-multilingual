@@ -65,10 +65,10 @@ fun NavGraphBuilder.settingsGraph(navController: NavController) {
         composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
         composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
         composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) {
-            IconPickerScreen(navigateBack = navController::popBackStack)
+            IconPickerScreen()
         }
         composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) {
-            ExtensionPackScreen(navigateBack = navController::popBackStack)
+            ExtensionPackScreen()
         }
         composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) {
             CombinationSettingsScreen()

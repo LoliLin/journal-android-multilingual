@@ -67,7 +67,7 @@ data class IconOption(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun IconPickerScreen(navigateBack: () -> Unit) {
+fun IconPickerScreen() {
     val context = LocalContext.current
     val pm = context.packageManager
     val scope = rememberCoroutineScope()
@@ -106,15 +106,7 @@ fun IconPickerScreen(navigateBack: () -> Unit) {
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text(i18n("settings_icon_title")) },
-                navigationIcon = {
-                    IconButton(onClick = navigateBack) {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = i18n("common_back")
-                        )
-                    }
-                }
+                title = { Text(i18n("settings_icon_title")) }
             )
         }
     ) { padding ->

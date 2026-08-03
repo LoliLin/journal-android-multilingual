@@ -194,7 +194,7 @@ object ExtensionPackLoader {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExtensionPackScreen(navigateBack: () -> Unit) {
+fun ExtensionPackScreen() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var refreshKey by remember { mutableStateOf(0) }
@@ -221,11 +221,6 @@ fun ExtensionPackScreen(navigateBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = { Text(i18n("settings_extension_pack")) },
-                navigationIcon = {
-                    IconButton(onClick = navigateBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
-                    }
-                },
 
                 actions = {
                     IconButton(onClick = { importLauncher.launch(arrayOf("application/zip")) }) {
