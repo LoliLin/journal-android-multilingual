@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -45,6 +46,7 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.TabIndicatorPlacement
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -67,6 +69,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.localization.i18n
@@ -220,8 +223,8 @@ fun StatsScreen(
                     containerColor = Color.Transparent,  
                     indicatorPlacement = TabIndicatorPlacement.Overlay,
                     indicator = { tabPositions ->
-                        if (selectedTabIndex < tabPositions.size) {
-                            val tabPosition = tabPositions[selectedTabIndex]
+                        if (statsModel.selectedOption.tabIndex < tabPositions.size) {
+                            val tabPosition = tabPositions[statsModel.selectedOption.tabIndex]
                             Box(
                                 Modifier
                                     .tabIndicatorOffset(tabPosition) 
@@ -237,13 +240,17 @@ fun StatsScreen(
                 ) {
                     TimePickerOption.values().forEachIndexed { index, option ->
                         Tab(
-                            text = { Text(option.displayText) },
+                            text = { 
+                                Text(
+                                    text = option.displayText,
+                                    color = if (statsModel.selectedOption.tabIndex == index)
+                                                MaterialTheme.colorScheme.onPrimaryContainer
+                                            else
+                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                ) 
+                            },
                             selected = statsModel.selectedOption.tabIndex == index,
-                            onClick = { onTapOption(option) },
-                            color = if (statsModel.selectedOption.tabIndex == index)
-                                        MaterialTheme.colorScheme.onPrimaryContainer
-                                    else
-                                        MaterialTheme.colorScheme.onSurfaceVariant
+                            onClick = { onTapOption(option) }
                         )
                     }
                 }
