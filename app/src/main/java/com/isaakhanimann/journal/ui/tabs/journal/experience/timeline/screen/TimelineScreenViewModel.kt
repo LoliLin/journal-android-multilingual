@@ -34,6 +34,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -48,14 +49,36 @@ class TimelineScreenViewModel @Inject constructor(
     private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
     val consumerName = state.get<String>(CONSUMER_NAME_KEY)!!
 
+    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    val isOwnerUser = ownerUserNameFlow.map { it == consumerName }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = ownerUserNameFlow.value == consumerName
+    )
+
     private val ingestionsWithCompanionsFlow = experienceRepo.getIngestionsWithCompanionsFlow(
         experienceID
     )
-        .map { ingestions ->
+        .combine(isOwnerUser) { ingestions, isOwner ->
             ingestions.filter {
-                it.ingestion.consumerName == consumerName
+                if (!isOwner) {
+                    it.ingestion.consumerName == consumerName
+                } else {
+                    it.ingestion.consumerName ==
+                        null
+                }
             }
         }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
     val ratingsFlow =
         experienceRepo.getRatingsFlow(experienceID)
@@ -72,12 +95,6 @@ class TimelineScreenViewModel @Inject constructor(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000)
             )
-
-    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-        initialValue = "You",
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
 
     private val sortedIngestionsWithCompanionsFlow =
         ingestionsWithCompanionsFlow.map { ingestionsWithCompanions ->
