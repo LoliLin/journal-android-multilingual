@@ -82,6 +82,9 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.animation.core.tween
 
+import androidx.compose.material3.TabIndicatorScope
+import androidx.compose.material3.TabRowDefaults.tabIndicatorLayout
+
 
 @Composable
 fun StatsScreen(
@@ -225,12 +228,13 @@ fun StatsScreen(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
                     contentColor = MaterialTheme.colorScheme.onSurface,
                     containerColor = Color.Transparent,  
-                    indicator = { tabPositions ->
-                        if (statsModel.selectedOption.tabIndex < tabPositions.size) {
-                            val tabPosition = tabPositions[statsModel.selectedOption.tabIndex]
+                    indicator = {
+                            val selectedIndex = statsModel.selectedOption.tabIndex
                             Box(
                                 Modifier
-                                    .tabIndicatorOffset(tabPosition) 
+                                    .tabIndicatorLayout(
+                                        selectedTabIndex = selectedIndex
+                                    )
                                     .height(36.dp)                   
                                     .padding(horizontal = 6.dp)        
                                     .background(
@@ -238,7 +242,6 @@ fun StatsScreen(
                                         shape = RoundedCornerShape(50)  
                                     )
                             )
-                        }
                     }
                 ) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
