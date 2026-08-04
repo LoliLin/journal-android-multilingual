@@ -56,6 +56,34 @@ class TestDates {
     }
 
     @Test
+    fun dateDifferencesBoundaries() {
+        // Exactly 24h falls into the hours branch (whole hours, rounded), not the days branch.
+        assertEquals(
+            "24 hours",
+            getTimeDifferenceText(
+                Instant.parse("2022-06-05T10:00:00Z"),
+                Instant.parse("2022-06-06T10:00:00Z")
+            )
+        )
+        // 90 minutes is below the 3-hour threshold and lands in the minutes branch.
+        assertEquals(
+            "90 minutes",
+            getTimeDifferenceText(
+                Instant.parse("2022-06-05T10:00:00Z"),
+                Instant.parse("2022-06-05T11:30:00Z")
+            )
+        )
+        // Negative durations surface as negative whole minutes.
+        assertEquals(
+            "-90 minutes",
+            getTimeDifferenceText(
+                Instant.parse("2022-06-05T11:30:00Z"),
+                Instant.parse("2022-06-05T10:00:00Z")
+            )
+        )
+    }
+
+    @Test
     fun dateRange() {
         val firstIngestionTime =
             getInstant(year = 2022, month = 9, day = 23, hourOfDay = 14, minute = 20)!!

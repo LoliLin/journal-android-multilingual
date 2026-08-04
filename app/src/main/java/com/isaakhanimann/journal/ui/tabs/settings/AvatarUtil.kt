@@ -63,9 +63,11 @@ object AvatarUtil {
      */
     fun getAvatarFile(context: Context, userName: String): File {
         val dir = File(context.filesDir, AVATAR_DIR)
-        // Strip path separators and other filesystem-hostile characters so a
+        // Whitelist approach: keep only letters/digits (incl. Unicode) and - _ so a
         // user-supplied (or imported) name can never escape the Avatars directory.
-        val safeName = userName.replace(Regex("[\\\\/:*?\"<>|\\r\\n]"), "_")
+        val safeName = userName.map { c ->
+            if (c.isLetterOrDigit() || c == '-' || c == '_') c else '_'
+        }.joinToString("")
         return File(dir, "$safeName$EXTENSION")
     }
 

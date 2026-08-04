@@ -86,12 +86,13 @@ object ExtensionPackLoader {
     suspend fun checkUpdate(updateJsonLink: String, currentVersionCode: Int): ExtensionUpdateInfo? {
         return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
             try {
-                val connection = URL(updateJsonLink).openConnection() as java.net.HttpURLConnection
+                val url = URL(updateJsonLink)
+                if (url.protocol != "https") return@withContext null
+                val connection = url.openConnection() as java.net.HttpURLConnection
                 connection.connectTimeout = 10_000
                 connection.readTimeout = 10_000
                 // Never follow redirects: a https->http redirect would silently downgrade the channel.
                 connection.instanceFollowRedirects = false
-                if (connection.url.protocol != "https") return@withContext null
                 val jsonText = connection.inputStream.bufferedReader().use { it.readText() }
                 val json = JSONObject(jsonText)
                 val latest = json.keys().asSequence()
@@ -144,17 +145,27 @@ object ExtensionPackLoader {
     ): String = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
         val tempFile = File(context.cacheDir, "download_${pack.registerName}.zip")
         try {
-            val connection = URL(updateInfo.url).openConnection() as java.net.HttpURLConnection
+            val url = URL(updateInfo.url)
+            if (url.protocol != "https") return@withContext "Download failed: https required"
+            val connection = url.openConnection() as java.net.HttpURLConnection
             connection.connectTimeout = 10_000
             connection.readTimeout = 10_000
             // Never follow redirects: a https->http redirect would silently downgrade the channel.
             connection.instanceFollowRedirects = false
-            if (connection.url.protocol != "https") return@withContext "Download failed: https required"
             connection.inputStream.use { input ->
                 tempFile.outputStream().use { output ->
-                    val bytes = input.copyTo(output)
-                    if (bytes > MAX_TOTAL_UNCOMPRESSED_BYTES) {
-                        throw Exception("Download too large")
+                    // Stream with a running size check so an oversized download aborts
+                    // before the whole file is written.
+                    val buffer = ByteArray(8192)
+                    var total = 0L
+                    while (true) {
+                        val read = input.read(buffer)
+                        if (read == -1) break
+                        total += read
+                        if (total > MAX_TOTAL_UNCOMPRESSED_BYTES) {
+                            throw Exception("Download too large")
+                        }
+                        output.write(buffer, 0, read)
                     }
                 }
             }

@@ -67,7 +67,11 @@ class SubstanceRepository @Inject constructor(
     private var needsReload = false
 
     fun markDirty() {
-        needsReload = true
+        // Take the same lock as ensureLanguageLoaded so a reload in progress cannot
+        // clear a dirty flag that was set while it was running (lost-update race).
+        synchronized(reloadLock) {
+            needsReload = true
+        }
     }
 
     @Volatile
