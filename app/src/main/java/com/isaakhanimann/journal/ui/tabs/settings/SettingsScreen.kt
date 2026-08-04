@@ -394,12 +394,15 @@ fun SettingsScreen(
                             Column {
                                 Text(i18n("settings_delete_description"))
 
-                                Spacer(modifier = Modifier.height(24.dp))
+                                Spacer(modifier = Modifier.height(16.dp))
 
                                 Icon(
                                     imageVector = if (deleteSliderValue >= 0.98f) Icons.Outlined.DeleteForever else Icons.Outlined.WarningAmber,
+                                    contentDescription = i18n("settings_delete_title"),
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                        .clip(CircleShape),
                                     tint = if (deleteSliderValue >= 0.98f) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.errorContainer,
-                                    modifier = Modifier.size(48.dp)
                                 )
 
                                 Slider(
