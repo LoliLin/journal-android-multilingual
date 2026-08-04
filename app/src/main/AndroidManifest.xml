@@ -63,6 +63,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+        <receiver
+            android:name=".ui.notifications.EffectNotificationReceiver"
+            android:exported="false" />
         <provider
           android:name="androidx.core.content.FileProvider"
           android:authorities="in.kawaiis.journal.fileprovider" 
