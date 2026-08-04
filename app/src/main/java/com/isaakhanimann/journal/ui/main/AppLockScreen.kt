@@ -40,11 +40,17 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var hasTriedAutoPrompt by remember { mutableStateOf(false) }
 
+    // Resolve strings in composable context (i18n() is @Composable and cannot be
+    // called inside the remember {} calculation below); the prompt lambda captures them.
+    val failedText = i18n("app_lock_failed")
+    val titleText = i18n("app_lock_title")
+    val subtitleText = i18n("app_lock_subtitle")
+
     val promptAuthenticate: () -> Unit = remember(context) {
         {
             val activity = context as? FragmentActivity
             if (activity == null) {
-                errorMessage = i18n("app_lock_failed")
+                errorMessage = failedText
                 return@remember
             }
             val executor = ContextCompat.getMainExecutor(context)
@@ -70,8 +76,8 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                 }
             )
             val promptInfo = BiometricPrompt.PromptInfo.Builder()
-                .setTitle(i18n("app_lock_title"))
-                .setSubtitle(i18n("app_lock_subtitle"))
+                .setTitle(titleText)
+                .setSubtitle(subtitleText)
                 .setAllowedAuthenticators(
                     BiometricManager.Authenticators.BIOMETRIC_WEAK or
                         BiometricManager.Authenticators.DEVICE_CREDENTIAL
@@ -81,7 +87,7 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                 prompt.authenticate(promptInfo)
             } catch (e: Exception) {
                 // e.g. BiometricPrompt shown before the activity is resumed
-                errorMessage = i18n("app_lock_failed")
+                errorMessage = failedText
             }
         }
     }
