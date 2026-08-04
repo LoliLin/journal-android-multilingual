@@ -26,18 +26,21 @@ class QuickTimedNoteViewModel @Inject constructor(
 ) : ViewModel() {
     var note by mutableStateOf("")
         private set
-    val experienceId = state.get<Int>(EXPERIENCE_ID_KEY)!!
+    // Null-safe: a missing/unsurvivable navigation argument must not crash the app
+    // (e.g. process death while the route was being rebuilt).
+    val experienceId: Int? = state.get<Int>(EXPERIENCE_ID_KEY)
 
     fun onChangeNote(newNote: String) {
         note = newNote
     }
 
     fun onDoneTap() {
+        val targetExperienceId = experienceId ?: return
         if (note.isBlank()) return
         val newTimedNote = TimedNote(
             time = Instant.now(),
             creationDate = Instant.now(),
-            experienceId = experienceId,
+            experienceId = targetExperienceId,
             isPartOfTimeline = true,
             color = AdaptiveColor.BLUE,
             note = note.trim()

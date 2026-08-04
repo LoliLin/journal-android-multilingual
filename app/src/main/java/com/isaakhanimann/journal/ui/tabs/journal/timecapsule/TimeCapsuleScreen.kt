@@ -64,7 +64,15 @@ fun TimeCapsuleScreen(
         }
     ) { padding ->
         if (isLoading) {
-            // brief loading; list is small, resolves within a frame or two
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding),
+                verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
+                horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
+            ) {
+                androidx.compose.material3.CircularProgressIndicator()
+            }
         } else if (experiences.isEmpty()) {
             Column(
                 modifier = Modifier

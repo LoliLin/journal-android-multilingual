@@ -111,6 +111,8 @@ object Notifications {
 
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
+            // Substance names are sensitive: hide the content on the lock screen.
+            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setContentTitle(I18n.translate(context, "effect_notification_title"))
             .setContentText(text)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
