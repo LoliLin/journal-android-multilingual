@@ -16,12 +16,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.lightColorScheme
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -37,19 +40,33 @@ import java.time.Instant
  */
 @Composable
 fun StatsReportCard(statsModel: StatsModel) {
+    // The off-screen renderer measures the content with an EXACT width constraint
+    // (e.g. 1080px), so the card fills the container instead of declaring its own
+    // width in dp — dp would be scaled by density and overflow the constraint.
     MaterialTheme(colorScheme = lightColorScheme()) {
-        Column(
-            modifier = Modifier
-                .width(1080.dp)
-                .background(MaterialTheme.colorScheme.background)
-                .padding(36.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)
+        // Force the day uiMode for the whole subtree: BarChart reads
+        // isSystemInDarkTheme() from LocalConfiguration, which would otherwise
+        // draw dark-theme ticks on the light card when the system is in dark mode.
+        val configuration = LocalConfiguration.current
+        CompositionLocalProvider(
+            LocalConfiguration provides configuration.copy(
+                uiMode = (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
+                    Configuration.UI_MODE_NIGHT_NO
+            )
         ) {
-            ReportHeader(statsModel)
-            ReportNumbers(statsModel)
-            ReportTrend(statsModel)
-            ReportTopSubstances(statsModel)
-            ReportFooter()
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.background)
+                    .padding(36.dp),
+                verticalArrangement = Arrangement.spacedBy(24.dp)
+            ) {
+                ReportHeader(statsModel)
+                ReportNumbers(statsModel)
+                ReportTrend(statsModel)
+                ReportTopSubstances(statsModel)
+                ReportFooter()
+            }
         }
     }
 }
@@ -122,9 +139,10 @@ private fun NumberCard(value: Int, label: String, modifier: Modifier = Modifier)
         ) {
             Text(
                 text = value.toString(),
-                style = MaterialTheme.typography.headlineLarge,
+                style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
+                maxLines = 1
             )
             Text(
                 text = label,
