@@ -405,7 +405,9 @@ private fun ExtensionPackRow(
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pack.officalLink))
                             context.startActivity(intent)
                         } catch (e: Exception) {
-                            snackbarHostState.showSnackbar("Cannot open link")
+                            scope.launch {
+                                snackbarHostState.showSnackbar("Cannot open link")
+                            }
                         }
                     }) {
                         Icon(
