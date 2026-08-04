@@ -49,6 +49,8 @@
   "app_lock_subtitle": "验证身份以打开应用",
   "app_lock_hint": "使用生物识别或设备 PIN 解锁",
   "app_lock_unlock": "解锁",
+  "app_lock_use_password": "使用设备密码",
+
   "app_lock_failed": "验证失败，请重试。",
   "app_lock_cancel": "取消",
   "app_lock_no_credential": "尚未设置屏幕锁或生物识别，请先在系统设置中设置。",

@@ -49,6 +49,8 @@
   "app_lock_subtitle": "Verify your identity to open the app",
   "app_lock_hint": "Unlock with biometrics or your device PIN",
   "app_lock_unlock": "Unlock",
+  "app_lock_use_password": "Use device password",
+
   "app_lock_failed": "Authentication failed. Please try again.",
   "app_lock_cancel": "Cancel",
   "app_lock_no_credential": "No screen lock or biometrics set up. Please set a screen lock in system settings first.",
