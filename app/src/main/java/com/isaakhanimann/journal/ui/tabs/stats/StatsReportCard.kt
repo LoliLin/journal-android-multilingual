@@ -48,11 +48,13 @@ fun StatsReportCard(statsModel: StatsModel) {
         // isSystemInDarkTheme() from LocalConfiguration, which would otherwise
         // draw dark-theme ticks on the light card when the system is in dark mode.
         val configuration = LocalConfiguration.current
+        // Configuration.copy() is API 33+; use the copy constructor (API 1) instead.
+        val dayModeConfiguration = Configuration(configuration).apply {
+            uiMode = (uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
+                Configuration.UI_MODE_NIGHT_NO
+        }
         CompositionLocalProvider(
-            LocalConfiguration provides configuration.copy(
-                uiMode = (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
-                    Configuration.UI_MODE_NIGHT_NO
-            )
+            LocalConfiguration provides dayModeConfiguration
         ) {
             Column(
                 modifier = Modifier

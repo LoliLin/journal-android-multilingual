@@ -79,7 +79,6 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     DisposableEffect(activity) {
         val listener = { intent: android.content.Intent ->
             parseNavIntent(intent)?.let { pendingNav = it }
-            true
         }
         activity?.addOnNewIntentListener(listener)
         onDispose { activity?.removeOnNewIntentListener(listener) }

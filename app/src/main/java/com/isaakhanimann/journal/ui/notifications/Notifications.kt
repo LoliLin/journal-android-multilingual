@@ -40,7 +40,7 @@ object Notifications {
 
     const val CHANNEL_EFFECTS = "effects"
     const val CHANNEL_TIME_CAPSULE = "time_capsule"
-    private const val EFFECT_NOTIFICATION_ID_BASE = 1000
+    const val EFFECT_NOTIFICATION_ID_BASE = 1000
     const val TIME_CAPSULE_NOTIFICATION_ID = 2001
     private const val REQUEST_CODE_BASE = 3000
 
