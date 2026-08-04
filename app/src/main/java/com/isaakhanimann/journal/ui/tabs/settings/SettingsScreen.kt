@@ -72,6 +72,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -95,6 +96,12 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
 import kotlinx.coroutines.launch
+
+import androidx.compose.foundation.layout.height
+
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
+
 
 @Composable
 fun SettingsScreen(
@@ -363,6 +370,9 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
+                
+                var deleteSliderValue by remember { mutableFloatStateOf(0f) }
+                
                 SettingsButton(
                     imageVector = Icons.Outlined.DeleteForever,
                     text = i18n("settings_delete_everything")
@@ -373,36 +383,56 @@ fun SettingsScreen(
                 val deletedSnackbarMessage = i18n("settings_deleted_snackbar")
                 AnimatedVisibility(visible = isShowingDeleteDialog) {
                     AlertDialog(
-                        onDismissRequest = { isShowingDeleteDialog = false },
+                        onDismissRequest = { 
+                            isShowingDeleteDialog = false 
+                            deleteSliderValue = 0f         
+                        },
                         title = {
                             Text(text = i18n("settings_delete_title"))
                         },
                         text = {
-                            Text(i18n("settings_delete_description"))
-                        },
-                        confirmButton = {
-                            TextButton(
-                                onClick = {
-                                    isShowingDeleteDialog = false
-                                    deleteEverything()
-                                    scope.launch {
-                                        snackbarHostState.showSnackbar(
-                                            message = deletedSnackbarMessage,
-                                            duration = SnackbarDuration.Short
-                                        )
-                                    }
-                                }
-                            ) {
-                                Text(i18n("common_delete"))
+                            Column {
+                                Text(i18n("settings_delete_description"))
+
+                                Spacer(modifier = Modifier.height(16.dp))
+
+                                Icon(
+                                    imageVector = if (deleteSliderValue >= 0.98f) Icons.Outlined.DeleteForever else Icons.Outlined.WarningAmber,
+                                    contentDescription = i18n("settings_delete_title"),
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                        .clip(CircleShape),
+                                    tint = if (deleteSliderValue >= 0.98f) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.errorContainer,
+                                )
+
+                                Slider(
+                                    value = deleteSliderValue,
+                                    onValueChange = { deleteSliderValue = it },
+                                    onValueChangeFinished = {
+                                        if (deleteSliderValue >= 0.98f) {
+                                            isShowingDeleteDialog = false
+                                            deleteEverything()
+                                            scope.launch {
+                                                snackbarHostState.showSnackbar(
+                                                    message = deletedSnackbarMessage,
+                                                    duration = SnackbarDuration.Short
+                                                )
+                                            }
+                                            deleteSliderValue = 0f
+                                        } else {
+                                            deleteSliderValue = 0f
+                                        }
+                                    },
+                                    valueRange = 0f..1f,
+                                    colors = SliderDefaults.colors(
+                                        thumbColor = MaterialTheme.colorScheme.error,
+                                        activeTrackColor = MaterialTheme.colorScheme.error,
+                                        inactiveTrackColor = MaterialTheme.colorScheme.errorContainer
+                                    )
+                                )
                             }
                         },
-                        dismissButton = {
-                            TextButton(
-                                onClick = { isShowingDeleteDialog = false }
-                            ) {
-                                Text(i18n("common_cancel"))
-                            }
-                        }
+                        confirmButton = {}
                     )
                 }
             }
