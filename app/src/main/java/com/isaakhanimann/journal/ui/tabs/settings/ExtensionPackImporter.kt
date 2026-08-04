@@ -14,60 +14,64 @@ object ExtensionPackImporter {
                 tempFile.outputStream().use { output -> input.copyTo(output) }
             } ?: return "Cannot read file"
 
-            val zipFile = ZipFile(tempFile)
-            val entries = zipFile.entries()
-
-            // Find manifest.json first
-            var manifestContent: String? = null
-            while (entries.hasMoreElements()) {
-                val entry = entries.nextElement()
-                if (entry.name == "manifest.json") {
-                    manifestContent = zipFile.getInputStream(entry).bufferedReader().readText()
-                    break
-                }
-            }
-
-            if (manifestContent == null) {
-                zipFile.close()
-                tempFile.delete()
-                return "Invalid pack: manifest.json not found"
-            }
-
-            val parsed = ExtensionPackLoader.parseManifest(manifestContent, context.cacheDir)
-            val pack = parsed
-            if (pack == null) {
-                zipFile.close()
-                tempFile.delete()
-                return "Invalid pack: manifest.json parse failed"
-            }
-
-            // Extract to permanent storage
-            val packDir = File(context.filesDir, "ext_packs/${pack.registerName}")
-            packDir.mkdirs()
-
-            val zipEntries = zipFile.entries()
-            var extracted = 0
-            while (zipEntries.hasMoreElements()) {
-                val entry = zipEntries.nextElement()
-                val target = File(packDir, entry.name)
-                if (entry.isDirectory) {
-                    target.mkdirs()
-                } else {
-                    target.parentFile?.mkdirs()
-                    zipFile.getInputStream(entry).use { input ->
-                        target.outputStream().use { output -> input.copyTo(output) }
+            try {
+                val zipFile = ZipFile(tempFile)
+                try {
+                    // Find manifest.json first
+                    var manifestContent: String? = null
+                    val entries = zipFile.entries()
+                    while (entries.hasMoreElements()) {
+                        val entry = entries.nextElement()
+                        if (entry.name == "manifest.json") {
+                            manifestContent = zipFile.getInputStream(entry).bufferedReader().readText()
+                            break
+                        }
                     }
-                    extracted++
+
+                    if (manifestContent == null) {
+                        return "Invalid pack: manifest.json not found"
+                    }
+
+                    val pack = ExtensionPackLoader.parseManifest(manifestContent, context.cacheDir)
+                    if (pack == null) {
+                        return "Invalid pack: manifest.json parse failed"
+                    }
+                    if (!isValidRegisterName(pack.registerName)) {
+                        return "Invalid pack: registerName contains illegal characters"
+                    }
+
+                    val packDir = File(context.filesDir, "ext_packs/${pack.registerName}")
+                    // Refuse downgrades / same-version re-installs.
+                    val existingManifest = File(packDir, "manifest.json")
+                    if (existingManifest.exists()) {
+                        val existingPack = ExtensionPackLoader.parseManifest(
+                            existingManifest.readText(),
+                            packDir
+                        )
+                        if (existingPack != null && pack.versionCode <= existingPack.versionCode) {
+                            return "Already installed (v${existingPack.versionName} >= v${pack.versionName})"
+                        }
+                    }
+
+                    // Replace semantics: remove previous install so stale files cannot linger.
+                    if (packDir.exists()) {
+                        packDir.deleteRecursively()
+                    }
+                    packDir.mkdirs()
+
+                    // Extraction validates entry names (path traversal) and size limits.
+                    val extracted = ExtensionPackLoader.extractZipSafely(zipFile, packDir)
+
+                    // Apply overrides
+                    ExtensionPackLoader.applyExtension(context, pack)
+
+                    "Extension pack '${pack.registerName}' v${pack.versionName} imported ($extracted files)"
+                } finally {
+                    zipFile.close()
                 }
+            } finally {
+                tempFile.delete()
             }
-
-            zipFile.close()
-            tempFile.delete()
-
-            // Apply overrides
-            ExtensionPackLoader.applyExtension(context, pack)
-
-            return "Extension pack '${pack.registerName}' v${pack.versionName} imported ($extracted files)"
         } catch (e: Exception) {
             "Import failed: ${e.localizedMessage ?: "unknown error"}"
         }

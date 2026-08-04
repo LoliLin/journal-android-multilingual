@@ -41,11 +41,13 @@ class MainScreenViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-    val isAcceptedFlow: StateFlow<Boolean> = dataStore.data
+    // null until the DataStore value is read, so the first frame shows nothing
+    // instead of flashing either the app content or the accept screen.
+    val isAcceptedFlow: StateFlow<Boolean?> = dataStore.data
         .map { preferences ->
             preferences[ARE_CONDITIONS_ACCEPTED] ?: false
         }.stateIn(
-            initialValue = true,
+            initialValue = null,
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )

@@ -63,16 +63,25 @@ class SubstanceRepository @Inject constructor(
         private const val ZH_CN_LANGUAGE_KEY = "zh_cn"
     }
 
+    @Volatile
     private var needsReload = false
 
     fun markDirty() {
         needsReload = true
     }
 
+    @Volatile
     private var substanceFile: SubstanceFile
+    @Volatile
     private var loadedLanguageKey: String
+    @Volatile
     var searcher: SubstanceSearcher = DefaultSubstanceSearcher()
         private set
+
+    // Serializes lazy reloads: getters may be called from any thread (e.g. IO vs main)
+    // and a reload swaps the in-memory substanceFile reference. Substance objects are
+    // immutable snapshots, so old references held by the UI stay valid after a swap.
+    private val reloadLock = Any()
 
     init {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
@@ -90,7 +99,11 @@ class SubstanceRepository @Inject constructor(
     private fun ensureLanguageLoaded() {
         val languageKey = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
         if (languageKey == loadedLanguageKey && !needsReload) return
-        reload(languageKey)
+        synchronized(reloadLock) {
+            // Re-check inside the lock: another thread may have reloaded meanwhile.
+            if (languageKey == loadedLanguageKey && !needsReload) return
+            reload(languageKey)
+        }
     }
 
     private fun reload(languageKey: String) {

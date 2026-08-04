@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.main
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -51,7 +53,11 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     LaunchedEffect(selectedLanguageKey) {
         I18n.setPreferredLanguageKey(selectedLanguageKey)
     }
-    if (viewModel.isAcceptedFlow.collectAsState().value) {
+    val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
+    if (isAccepted == null) {
+        // DataStore value not read yet: show nothing instead of flashing content.
+        Box(modifier = Modifier.fillMaxSize())
+    } else if (isAccepted) {
         val navController = rememberNavController()
         Scaffold(
             bottomBar = {

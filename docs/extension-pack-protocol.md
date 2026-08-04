@@ -54,11 +54,26 @@ extension_pack.zip
 
 ```json
 {
-  "2": {"versionName": "2.0.0", "url": "https://example.com/ext_v2.0.0.zip"}
+  "2": {"versionName": "2.0.0", "url": "https://example.com/ext_v2.0.0.zip", "sha256": "<hex sha256 of the zip>"}
 }
 ```
 
 key 为 `versionCode`，系统比较后显示更新按钮。
+
+### 安全要求（v2 协议）
+
+- `sha256` 字段**必填**：应用下载 zip 后计算 SHA-256 并与该值比对，不一致则拒绝安装。缺少 `sha256` 的更新条目会被忽略（视为无更新）。
+- `url` 与 `updateJsonLink` 必须为 `https`，否则更新检查/下载直接失败。
+- 建议所有扩展包作者在发布流程中生成校验和，例如：
+  ```bash
+  cd 扩展包目录 && zip -r ../ext.zip . && sha256sum ../ext.zip
+  ```
+
+## 安装与更新行为
+
+- 导入或更新**降级安装会被拒绝**：目标包的 `versionCode` 必须大于已安装版本。
+- 更新流程：下载 → SHA-256 校验 → 备份现有版本 → 解压（拒绝路径穿越与超大包，上限 100MB / 2000 个文件）→ 校验 `manifest.json` → 替换。任何一步失败都会回滚到备份版本。
+- 重新导入同名包会先删除旧目录再解压，避免残留文件与覆盖层合并。
 
 ## 加载机制（Hook）
 

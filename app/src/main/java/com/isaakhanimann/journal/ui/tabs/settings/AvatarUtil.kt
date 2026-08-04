@@ -63,7 +63,10 @@ object AvatarUtil {
      */
     fun getAvatarFile(context: Context, userName: String): File {
         val dir = File(context.filesDir, AVATAR_DIR)
-        return File(dir, "$userName$EXTENSION")
+        // Strip path separators and other filesystem-hostile characters so a
+        // user-supplied (or imported) name can never escape the Avatars directory.
+        val safeName = userName.replace(Regex("[\\\\/:*?\"<>|\\r\\n]"), "_")
+        return File(dir, "$safeName$EXTENSION")
     }
 
     /**

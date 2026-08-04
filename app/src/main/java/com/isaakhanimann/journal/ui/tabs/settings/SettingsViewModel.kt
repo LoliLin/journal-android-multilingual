@@ -120,8 +120,7 @@ class SettingsViewModel @Inject constructor(
                 try {
                     val json = Json { ignoreUnknownKeys = true }
                     val journalExport = json.decodeFromString<JournalExport>(text)
-                    experienceRepository.deleteEverything()
-                    experienceRepository.insertEverything(journalExport)
+                    experienceRepository.replaceEverything(journalExport)
                     journalExport.avatars.forEach { (userName, base64) ->
                         try {
                             val decoded = java.util.Base64.getDecoder().decode(base64)
@@ -135,7 +134,6 @@ class SettingsViewModel @Inject constructor(
                         duration = SnackbarDuration.Short
                     )
                 } catch (e: Exception) {
-                    println("Error when decoding: ${e.message}")
                     snackbarHostState.showSnackbar(
                         message = "Decoding file failed",
                         duration = SnackbarDuration.Short

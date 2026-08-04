@@ -15,8 +15,14 @@ object I18n {
 
     private var needsReload = false
 
+    // translate() is called from composition (main thread) while extension-pack
+    // installs can markDirty from any thread; guard all mutable state with one lock.
+    private val lock = Any()
+
     fun markDirty() {
-        needsReload = true
+        synchronized(lock) {
+            needsReload = true
+        }
     }
 
     fun getCurrentLanguageKey(): String {
@@ -27,21 +33,23 @@ object I18n {
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
-        preferredLangKey = languageKey?.lowercase()
-        loadedLangKey = null
+        synchronized(lock) {
+            preferredLangKey = languageKey?.lowercase()
+            loadedLangKey = null
+        }
     }
 
-    fun getPreferredLanguageKey(): String? = preferredLangKey
+    fun getPreferredLanguageKey(): String? = synchronized(lock) { preferredLangKey }
 
     fun translate(
         context: Context,
         key: String,
         replacements: Map<String, String> = emptyMap()
-    ): String {
-        ensureLoaded(context)
+    ): String = synchronized(lock) {
+        ensureLoadedLocked(context)
         val raw = strings[key] ?: strings["missing_key"] ?: key
-        return replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{${entry.key}}", entry.value)
+        replacements.entries.fold(raw) { acc, entry ->
+            acc.replace("{" + entry.key + "}", entry.value)
         }
     }
 
@@ -50,18 +58,18 @@ object I18n {
         key: String,
         fallback: String,
         replacements: Map<String, String> = emptyMap()
-    ): String {
-        ensureLoaded(context)
+    ): String = synchronized(lock) {
+        ensureLoadedLocked(context)
         val raw = strings[key] ?: fallback
         return replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{${entry.key}}", entry.value)
+            acc.replace("{" + entry.key + "}", entry.value)
         }
     }
 
     fun getSupportedLanguages(context: Context): Map<String, String> =
         loadStringsFile(context, "lang/supported.json")
 
-    private fun ensureLoaded(context: Context) {
+    private fun ensureLoadedLocked(context: Context) {
         val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
         if (currentKey == loadedLangKey && strings.isNotEmpty() && !needsReload) return
 

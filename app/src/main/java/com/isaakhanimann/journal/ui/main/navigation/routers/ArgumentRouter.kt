@@ -21,10 +21,9 @@ package com.isaakhanimann.journal.ui.main.navigation.routers
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavController
 import androidx.navigation.NavType
+import android.net.Uri
 import androidx.navigation.navArgument
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 // argument keys
 const val EXPERIENCE_ID_KEY = "experienceId"
@@ -277,26 +276,23 @@ fun NavController.navigateToEditTimedNote(timedNoteId: Int, experienceId: Int) {
 }
 
 fun NavController.navigateToTimelineScreen(consumerName: String, experienceId: Int) {
-    navigate("$ROUTE_START_TIMELINE_SCREEN$consumerName/$experienceId")
+    navigate("$ROUTE_START_TIMELINE_SCREEN${Uri.encode(consumerName)}/$experienceId")
 }
 
 fun NavController.navigateToSubstanceScreen(substanceName: String) {
-    navigate(ROUTE_START_SUBSTANCES + substanceName)
+    navigate(ROUTE_START_SUBSTANCES + Uri.encode(substanceName))
 }
 
 fun NavController.navigateToURLScreenOnSearchTab(url: String) {
-    val encodedUrl = URLEncoder.encode(url, StandardCharsets.UTF_8.toString())
-    navigate(ROUTE_START_URL + encodedUrl)
+    navigate(ROUTE_START_URL + Uri.encode(url))
 }
 
 fun NavController.navigateToURLInJournalTab(url: String) {
-    val encodedUrl = URLEncoder.encode(url, StandardCharsets.UTF_8.toString())
-    navigate(ROUTE_START_JOURNAL_TAB_URL + encodedUrl)
+    navigate(ROUTE_START_JOURNAL_TAB_URL + Uri.encode(url))
 }
 
 fun NavController.navigateToURLInSaferTab(url: String) {
-    val encodedUrl = URLEncoder.encode(url, StandardCharsets.UTF_8.toString())
-    navigate(ROUTE_START_SAFER_TAB_URL + encodedUrl)
+    navigate(ROUTE_START_SAFER_TAB_URL + Uri.encode(url))
 }
 
 fun NavController.navigateToEditCustomSubstance(customSubstanceId: Int) {
@@ -308,34 +304,35 @@ fun NavController.navigateToChooseCustomRoute(customSubstanceId: Int) {
 }
 
 fun NavController.navigateToSubstanceCompanionScreen(substanceName: String, consumerName: String?) {
-    navigate("$ROUTE_START_SUBSTANCE_COMPANION$substanceName/?$CONSUMER_NAME_KEY=$consumerName")
+    val consumerQuery = consumerName?.let { "?$CONSUMER_NAME_KEY=${Uri.encode(it)}" } ?: ""
+    navigate("$ROUTE_START_SUBSTANCE_COMPANION${Uri.encode(substanceName)}$consumerQuery")
 }
 
 fun NavController.navigateToCategoryScreen(categoryName: String) {
-    navigate(ROUTE_START_CATEGORY + categoryName)
+    navigate(ROUTE_START_CATEGORY + Uri.encode(categoryName))
 }
 
 fun NavController.navigateToCheckInteractions(substanceName: String) {
-    navigate("$ROUTE_START_CHECK_INTERACTIONS$substanceName")
+    navigate("$ROUTE_START_CHECK_INTERACTIONS${Uri.encode(substanceName)}")
 }
 
 fun NavController.navigateToCheckSaferUse(substanceName: String) {
-    navigate("$ROUTE_START_CHECK_SAFER_USE$substanceName")
+    navigate("$ROUTE_START_CHECK_SAFER_USE${Uri.encode(substanceName)}")
 }
 
 fun NavController.navigateToChooseRouteOfAddIngestion(substanceName: String) {
-    navigate("$ROUTE_START_CHOOSE_ROUTE_OF_ADD_INGESTION$substanceName")
+    navigate("$ROUTE_START_CHOOSE_ROUTE_OF_ADD_INGESTION${Uri.encode(substanceName)}")
 }
 
 fun NavController.navigateToChooseRouteOfAddCustomUnit(substanceName: String) {
-    navigate("$ROUTE_START_OF_ADD_CUSTOM_UNIT$substanceName")
+    navigate("$ROUTE_START_OF_ADD_CUSTOM_UNIT${Uri.encode(substanceName)}")
 }
 
 fun NavController.navigateToChooseDose(
     substanceName: String,
     administrationRoute: AdministrationRoute
 ) {
-    navigate("$ROUTE_START_CHOOSE_DOSE$substanceName/${administrationRoute.name}")
+    navigate("$ROUTE_START_CHOOSE_DOSE${Uri.encode(substanceName)}/${administrationRoute.name}")
 }
 
 fun NavController.navigateToChooseDoseCustom(
@@ -364,5 +361,5 @@ fun NavController.navigateToFinishAddCustomUnit(
     substanceName: String,
     administrationRoute: AdministrationRoute
 ) {
-    navigate("$ROUTE_START_FINISH_ADD_CUSTOM_UNIT$substanceName/${administrationRoute.name}")
+    navigate("$ROUTE_START_FINISH_ADD_CUSTOM_UNIT${Uri.encode(substanceName)}/${administrationRoute.name}")
 }

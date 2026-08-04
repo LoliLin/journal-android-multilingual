@@ -73,7 +73,7 @@ fun ExperienceRow(
     navigateToExperienceScreen: () -> Unit = {},
     isTimeRelativeToNow: Boolean = true,
     substanceRepository: SubstanceRepository,
-    ownerUserName: String = "You"
+    ownerUserName: String = i18n("you")
 ) {
     Row(
         modifier = Modifier
