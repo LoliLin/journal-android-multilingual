@@ -80,7 +80,6 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
@@ -115,33 +114,9 @@ fun StatsScreen(
     val currentView = LocalView.current
     val coroutineScope = rememberCoroutineScope()
     var isSharing by remember { mutableStateOf(false) }
-    val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
+    val widthPx = 1080
     val shareStatsContent: @Composable () -> Unit = {
-        JournalTheme {
-            Surface(color = MaterialTheme.colorScheme.background) {
-                Column(
-                    modifier = Modifier.padding(vertical = 12.dp)
-                ) {
-                    Text(
-                        text = i18n(
-                            "stats_experiences_since",
-                            replacements = mapOf("date" to statsModel.startDateText)
-                        ),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(start = 10.dp, top = 5.dp)
-                    )
-                    Text(
-                        text = i18n("stats_substance_counted_once"),
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.padding(start = 10.dp, bottom = 10.dp)
-                    )
-                    BarChart(
-                        buckets = statsModel.chartBuckets,
-                        startDateText = statsModel.startDateText
-                    )
-                }
-            }
-        }
+        StatsReportCard(statsModel = statsModel)
     }
     Scaffold(
         topBar = {

@@ -598,5 +598,17 @@
   "time_capsule_notification_title": "时间胶囊：去年的今天",
   "time_capsule_notification_text": "去年的今天你记录了 {count} 个体验",
   "time_capsule_screen_title": "去年的今天",
-  "time_capsule_empty": "去年的今天没有记录"
+  "time_capsule_empty": "去年的今天没有记录",
+  "stats_report_title": "统计报告",
+  "stats_report_records": "记录次数",
+  "stats_report_experiences": "体验",
+  "stats_report_substances": "物质",
+  "stats_report_trend": "趋势",
+  "stats_report_top": "物质排行",
+  "stats_report_generated": "生成于 {date}",
+  "stats_report_period_days_7": "最近 7 天",
+  "stats_report_period_days_30": "最近 30 天",
+  "stats_report_period_weeks_26": "最近 6 个月",
+  "stats_report_period_months_12": "最近 12 个月",
+  "stats_report_period_years_10": "最近 10 年"
 }
