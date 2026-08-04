@@ -43,7 +43,14 @@ data class ExtensionPack(
     val iconPath: String? = null
 )
 
-data class ExtensionUpdateInfo(val versionName: String, val url: String)
+data class ExtensionUpdateInfo(val versionName: String, val url: String, val sha256: String)
+
+private const val MAX_TOTAL_UNCOMPRESSED_BYTES = 100L * 1024 * 1024
+private const val MAX_ENTRY_COUNT = 2000
+private val PACK_NAME_REGEX = Regex("^[A-Za-z0-9_-]+$")
+
+fun isValidRegisterName(registerName: String): Boolean =
+    PACK_NAME_REGEX.matches(registerName)
 
 object ExtensionPackLoader {
     private const val EXT_DIR = "ext_packs"
@@ -79,16 +86,26 @@ object ExtensionPackLoader {
     suspend fun checkUpdate(updateJsonLink: String, currentVersionCode: Int): ExtensionUpdateInfo? {
         return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
             try {
-                val jsonText = URL(updateJsonLink).readText()
+                val url = URL(updateJsonLink)
+                if (url.protocol != "https") return@withContext null
+                val connection = url.openConnection() as java.net.HttpURLConnection
+                connection.connectTimeout = 10_000
+                connection.readTimeout = 10_000
+                // Never follow redirects: a https->http redirect would silently downgrade the channel.
+                connection.instanceFollowRedirects = false
+                val jsonText = connection.inputStream.bufferedReader().use { it.readText() }
                 val json = JSONObject(jsonText)
                 val latest = json.keys().asSequence()
-                    .map { it.toInt() }
+                    .mapNotNull { it.toIntOrNull() }
                     .maxOrNull() ?: return@withContext null
                 if (latest > currentVersionCode) {
                     val info = json.getJSONObject(latest.toString())
+                    // Refuse unsigned updates: the sha256 field is mandatory in the new protocol.
+                    if (!info.has("sha256")) return@withContext null
                     ExtensionUpdateInfo(
                         versionName = info.getString("versionName"),
-                        url = info.getString("url")
+                        url = info.getString("url"),
+                        sha256 = info.getString("sha256")
                     )
                 } else {
                     null
@@ -107,6 +124,7 @@ object ExtensionPackLoader {
     }
 
     fun deleteExtension(context: Context, registerName: String): Boolean {
+        if (!isValidRegisterName(registerName)) return false
         val packDir = File(context.filesDir, "$EXT_DIR/$registerName")
         return if (packDir.exists()) {
             packDir.deleteRecursively()
@@ -120,16 +138,51 @@ object ExtensionPackLoader {
         }
     }
 
-    fun downloadAndInstall(context: Context, pack: ExtensionPack, updateUrl: String): String = try {
+    suspend fun downloadAndInstall(
+        context: Context,
+        pack: ExtensionPack,
+        updateInfo: ExtensionUpdateInfo
+    ): String = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
         val tempFile = File(context.cacheDir, "download_${pack.registerName}.zip")
-        URL(updateUrl).openStream().use { input ->
-            tempFile.outputStream().use { output -> input.copyTo(output) }
+        try {
+            val url = URL(updateInfo.url)
+            if (url.protocol != "https") return@withContext "Download failed: https required"
+            val connection = url.openConnection() as java.net.HttpURLConnection
+            connection.connectTimeout = 10_000
+            connection.readTimeout = 10_000
+            // Never follow redirects: a https->http redirect would silently downgrade the channel.
+            connection.instanceFollowRedirects = false
+            connection.inputStream.use { input ->
+                tempFile.outputStream().use { output ->
+                    // Stream with a running size check so an oversized download aborts
+                    // before the whole file is written.
+                    val buffer = ByteArray(8192)
+                    var total = 0L
+                    while (true) {
+                        val read = input.read(buffer)
+                        if (read == -1) break
+                        total += read
+                        if (total > MAX_TOTAL_UNCOMPRESSED_BYTES) {
+                            throw Exception("Download too large")
+                        }
+                        output.write(buffer, 0, read)
+                    }
+                }
+            }
+            // Verify integrity before installing anything.
+            val actualSha256 = tempFile.inputStream().use { input ->
+                java.security.MessageDigest.getInstance("SHA-256").digest(input.readBytes())
+                    .joinToString("") { "%02x".format(it) }
+            }
+            if (!actualSha256.equals(updateInfo.sha256, ignoreCase = true)) {
+                return@withContext "Download failed: checksum mismatch"
+            }
+            installPackFromZip(context, tempFile, pack.registerName)
+        } catch (e: Exception) {
+            "Download failed: ${e.localizedMessage ?: "unknown error"}"
+        } finally {
+            tempFile.delete()
         }
-        val result = installPackFromZip(context, tempFile, pack.registerName)
-        tempFile.delete()
-        result
-    } catch (e: Exception) {
-        "Download failed: ${e.localizedMessage ?: "unknown error"}"
     }
 
     private fun installPackFromZip(context: Context, zipFile: File, registerName: String): String {
@@ -143,45 +196,98 @@ object ExtensionPackLoader {
                 targetDir.renameTo(backupDir)
             }
 
-            // Extract
-            java.util.zip.ZipFile(zipFile).use { zip ->
-                val entries = zip.entries()
-                while (entries.hasMoreElements()) {
-                    val entry = entries.nextElement()
-                    val outFile = File(targetDir, entry.name)
-                    if (entry.isDirectory) {
-                        outFile.mkdirs()
-                    } else {
-                        outFile.parentFile?.mkdirs()
-                        zip.getInputStream(entry).use { input ->
-                            outFile.outputStream().use { output -> input.copyTo(output) }
+            try {
+                // Refuse downgrades/reinstalls of the same version.
+                val oldManifest = File(backupDir, "manifest.json")
+                val newPack = java.util.zip.ZipFile(zipFile).use { zip ->
+                    val manifestEntry = zip.getEntry("manifest.json")
+                        ?: throw Exception("manifest.json missing")
+                    parseManifest(
+                        zip.getInputStream(manifestEntry).bufferedReader().readText(),
+                        backupDir
+                    ) ?: throw Exception("manifest.json parse failed")
+                }
+                if (!isValidRegisterName(newPack.registerName)) {
+                    throw Exception("invalid registerName")
+                }
+                if (oldManifest.exists()) {
+                    val oldPack = parseManifest(oldManifest.readText(), backupDir)
+                    if (oldPack != null && newPack.versionCode <= oldPack.versionCode) {
+                        throw Exception(
+                            "already installed (v${oldPack.versionName} >= v${newPack.versionName})"
+                        )
+                    }
+                }
+
+                // Extract (validated against path traversal and size limits)
+                java.util.zip.ZipFile(zipFile).use { zip ->
+                    extractZipSafely(zip, targetDir)
+                }
+
+                // Verify
+                if (!File(targetDir, "manifest.json").exists()) {
+                    throw Exception("manifest.json missing")
+                }
+
+                // Success - remove backup
+                if (backupDir.exists()) backupDir.deleteRecursively()
+
+                // Apply
+                applyExtension(context, newPack)
+
+                "Installed: $registerName"
+            } catch (e: Exception) {
+                // Rollback
+                targetDir.deleteRecursively()
+                if (backupDir.exists()) backupDir.renameTo(targetDir)
+                "Install failed: ${e.localizedMessage ?: "unknown error"}"
+            }
+        } catch (e: Exception) {
+            "Install failed: ${e.localizedMessage ?: "unknown error"}"
+        }
+    }
+
+    /**
+     * Extracts zip entries into [targetDir], rejecting path traversal, absolute
+     * paths and unbounded sizes. Returns the number of files extracted.
+     */
+    internal fun extractZipSafely(zipFile: java.util.zip.ZipFile, targetDir: File): Int {
+        val targetCanonical = targetDir.canonicalPath
+        var totalBytes = 0L
+        var count = 0
+        val entries = zipFile.entries()
+        while (entries.hasMoreElements()) {
+            val entry = entries.nextElement()
+            val entryName = entry.name
+            if (entryName.contains("..") || entryName.startsWith("/") ||
+                entryName.contains("\\") || entryName.contains(":")
+            ) {
+                throw Exception("Invalid entry name in zip: $entryName")
+            }
+            val outFile = File(targetDir, entryName)
+            if (!outFile.canonicalPath.startsWith(targetCanonical + File.separator) &&
+                outFile.canonicalPath != targetCanonical
+            ) {
+                throw Exception("Entry escapes pack directory: $entryName")
+            }
+            if (entry.isDirectory) {
+                outFile.mkdirs()
+            } else {
+                count++
+                if (count > MAX_ENTRY_COUNT) throw Exception("Too many files in zip")
+                outFile.parentFile?.mkdirs()
+                zipFile.getInputStream(entry).use { input ->
+                    outFile.outputStream().use { output ->
+                        val written = input.copyTo(output)
+                        totalBytes += written
+                        if (totalBytes > MAX_TOTAL_UNCOMPRESSED_BYTES) {
+                            throw Exception("Zip too large")
                         }
                     }
                 }
             }
-
-            // Verify
-            if (!File(targetDir, "manifest.json").exists()) {
-                throw Exception("manifest.json missing")
-            }
-
-            // Success - remove backup
-            if (backupDir.exists()) backupDir.deleteRecursively()
-
-            // Apply
-            val manifestFile = File(targetDir, "manifest.json")
-            val pack = parseManifest(manifestFile.readText(), targetDir)
-            if (pack != null) applyExtension(context, pack)
-
-            return "Installed: $registerName"
-        } catch (e: Exception) {
-            // Rollback
-            val targetDir2 = File(baseDir, registerName)
-            val backupDir2 = File(baseDir, ".${registerName}_bak")
-            targetDir2.deleteRecursively()
-            if (backupDir2.exists()) backupDir2.renameTo(targetDir2)
-            "Install failed: ${e.localizedMessage ?: "unknown error"}"
         }
+        return count
     }
 
     fun getExtensionSubstanceDir(context: Context): File? {
@@ -208,11 +314,14 @@ fun ExtensionPackScreen() {
         contract = ActivityResultContracts.OpenDocument()
     ) { uri ->
         if (uri != null) {
-            val resultMsg = ExtensionPackImporter.import(context, uri)
             scope.launch {
+                // Blocking zip copy/extract runs off the main thread.
+                val resultMsg = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                    ExtensionPackImporter.import(context, uri)
+                }
                 snackbarHostState.showSnackbar(resultMsg)
+                packs = ExtensionPackLoader.getInstalledPacks(context)
             }
-            packs = ExtensionPackLoader.getInstalledPacks(context)
         }
     }
 
@@ -307,8 +416,14 @@ private fun ExtensionPackRow(
                 )
                 Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     IconButton(onClick = {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pack.officalLink))
-                        context.startActivity(intent)
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(pack.officalLink))
+                            context.startActivity(intent)
+                        } catch (e: Exception) {
+                            scope.launch {
+                                snackbarHostState.showSnackbar("Cannot open link")
+                            }
+                        }
                     }) {
                         Icon(
                             Icons.Outlined.Link,
@@ -366,7 +481,7 @@ private fun ExtensionPackRow(
                                 val result = ExtensionPackLoader.downloadAndInstall(
                                     context,
                                     pack,
-                                    updateInfo!!.url
+                                    updateInfo!!
                                 )
                                 snackbarHostState.showSnackbar(result)
                                 onRefresh()

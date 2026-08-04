@@ -20,8 +20,11 @@ jobs:
     name: Code Review
     steps:
       - name: DeepSeek Code Review
-        uses: hustcer/deepseek-review@v1
+        # pinned from v1.21
+        if: github.event_name != 'issue_comment' || github.event.comment.user.login == 'LoliLin'
+        uses: hustcer/deepseek-review@eccde2e9781008d795e366b951e313e37af88dd5
         with:
           temperature: 1
           chat-token: ${{ secrets.CHAT_TOKEN }}
           watch-mention: "@github-actions"
+          allowed-associations: "OWNER,MEMBER,COLLABORATOR"

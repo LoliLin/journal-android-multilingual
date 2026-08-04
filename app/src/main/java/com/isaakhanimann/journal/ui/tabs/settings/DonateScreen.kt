@@ -78,7 +78,7 @@ fun DonateScreen() {
             val copyTip = i18n("copied_to_clipboard")
             DonateButton(
                 imageVector = Icons.Outlined.CurrencyBitcoin,
-                text = "BitCoin"
+                text = i18n("donate_bitcoin")
             ) {
                 scope.launch {
                     clipboard.setClipEntry(ClipEntry(ClipData.newPlainText("", btcAddress)))

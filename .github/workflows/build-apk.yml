@@ -42,6 +42,9 @@ jobs:
         if: github.repository != 'LoliLin/journal-android-multilingual'
         run: ./gradlew assembleDebug --stacktrace
 
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest --stacktrace
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v7
         with:

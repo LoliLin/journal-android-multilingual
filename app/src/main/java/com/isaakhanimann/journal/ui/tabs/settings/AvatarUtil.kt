@@ -63,7 +63,12 @@ object AvatarUtil {
      */
     fun getAvatarFile(context: Context, userName: String): File {
         val dir = File(context.filesDir, AVATAR_DIR)
-        return File(dir, "$userName$EXTENSION")
+        // Whitelist approach: keep only letters/digits (incl. Unicode) and - _ so a
+        // user-supplied (or imported) name can never escape the Avatars directory.
+        val safeName = userName.map { c ->
+            if (c.isLetterOrDigit() || c == '-' || c == '_') c else '_'
+        }.joinToString("")
+        return File(dir, "$safeName$EXTENSION")
     }
 
     /**

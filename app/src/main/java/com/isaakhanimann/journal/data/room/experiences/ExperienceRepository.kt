@@ -63,6 +63,9 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
     suspend fun insertEverything(journalExport: JournalExport) =
         experienceDao.insertEverything(journalExport)
 
+    suspend fun replaceEverything(journalExport: JournalExport) =
+        experienceDao.replaceEverything(journalExport)
+
     suspend fun insertIngestionAndCompanion(
         ingestion: Ingestion,
         substanceCompanion: SubstanceCompanion

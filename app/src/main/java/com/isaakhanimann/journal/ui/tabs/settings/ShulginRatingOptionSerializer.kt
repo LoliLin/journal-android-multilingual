@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.settings
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
@@ -39,6 +40,8 @@ object ShulginRatingOptionSerializer : KSerializer<ShulginRatingOption> {
         val foundRating = ShulginRatingOption.values().firstOrNull {
             it.rawValue == ratingRawValue
         }
-        return foundRating ?: ShulginRatingOption.FOUR_PLUS
+        return foundRating ?: throw SerializationException(
+            "Unknown ShulginRatingOption raw value: $ratingRawValue"
+        )
     }
 }

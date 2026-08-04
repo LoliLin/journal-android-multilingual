@@ -39,11 +39,12 @@ class FileSystemConnection @Inject constructor(@ApplicationContext private val c
 
     fun saveTextInUri(uri: Uri, text: String) {
         try {
-            val output = context.contentResolver.openOutputStream(uri) ?: return
+            val output = context.contentResolver.openOutputStream(uri)
+                ?: throw Exception("Cannot open output stream for URI")
             output.bufferedWriter().use { it.write(text) }
             output.close()
-        } catch (_: Exception) {
-            throw Exception("Failed To Save")
+        } catch (e: Exception) {
+            throw Exception("Failed To Save", e)
         }
     }
 }

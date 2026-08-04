@@ -169,14 +169,14 @@ interface ExperienceDao {
     fun getIngestionWithExperienceFlow(id: Int): Flow<IngestionWithExperienceAndCustomUnit?>
 
     @Transaction
-    @Query("SELECT * FROM ingestion WHERE time > :fromInstant AND time < :toInstant")
+    @Query("SELECT * FROM ingestion WHERE time >= :fromInstant AND time < :toInstant")
     fun getIngestionWithExperiencesFlow(
         fromInstant: Instant,
         toInstant: Instant
     ): Flow<List<IngestionWithExperienceAndCustomUnit>>
 
     @Transaction
-    @Query("SELECT * FROM ingestion WHERE time > :fromInstant AND time < :toInstant")
+    @Query("SELECT * FROM ingestion WHERE time >= :fromInstant AND time < :toInstant")
     suspend fun getIngestionsWithCompanions(
         fromInstant: Instant,
         toInstant: Instant
@@ -219,10 +219,10 @@ interface ExperienceDao {
 
     @Transaction
     suspend fun deleteExperienceWithIngestions(experienceWithIngestions: ExperienceWithIngestions) {
-        delete(experience = experienceWithIngestions.experience)
-        experienceWithIngestions.ingestions.forEach {
-            delete(it)
-        }
+        deleteExperience(experienceWithIngestions.experience.id)
+        deleteIngestions(experienceWithIngestions.experience.id)
+        deleteRatings(experienceWithIngestions.experience.id)
+        deleteTimedNotes(experienceWithIngestions.experience.id)
     }
 
     @Delete
@@ -246,6 +246,7 @@ interface ExperienceDao {
     suspend fun deleteEverythingOfExperience(experienceId: Int) {
         deleteIngestions(experienceId)
         deleteRatings(experienceId)
+        deleteTimedNotes(experienceId)
         deleteExperience(experienceId)
     }
 
@@ -260,6 +261,10 @@ interface ExperienceDao {
     @Transaction
     @Query("DELETE FROM ingestion WHERE experienceId = :experienceId")
     suspend fun deleteIngestions(experienceId: Int)
+
+    @Transaction
+    @Query("DELETE FROM timednote WHERE experienceId = :experienceId")
+    suspend fun deleteTimedNotes(experienceId: Int)
 
     @Transaction
     @Query("DELETE FROM shulginrating WHERE experienceId = :experienceId")
@@ -310,6 +315,16 @@ interface ExperienceDao {
         insert(ingestion)
         insert(experience)
         insert(substanceCompanion)
+    }
+
+    /**
+     * Atomically replaces all journal data with the given export: the wipe and the refill
+     * run in one transaction, so an interruption or failure cannot leave the database empty.
+     */
+    @Transaction
+    suspend fun replaceEverything(journalExport: JournalExport) {
+        deleteEverything()
+        insertEverything(journalExport)
     }
 
     @Transaction
