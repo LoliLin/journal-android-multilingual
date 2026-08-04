@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -40,6 +42,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -59,12 +62,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -73,8 +80,12 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
+import com.isaakhanimann.journal.ui.utils.shareBitmap
+import kotlinx.coroutines.launch
 
 @Composable
 fun StatsScreen(
@@ -101,6 +112,37 @@ fun StatsScreen(
     consumerNamesSorted: List<String>,
     ownerUserName: String
 ) {
+    val currentView = LocalView.current
+    val coroutineScope = rememberCoroutineScope()
+    var isSharing by remember { mutableStateOf(false) }
+    val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
+    val shareStatsContent: @Composable () -> Unit = {
+        JournalTheme {
+            Surface(color = MaterialTheme.colorScheme.background) {
+                Column(
+                    modifier = Modifier.padding(vertical = 12.dp)
+                ) {
+                    Text(
+                        text = i18n(
+                            "stats_experiences_since",
+                            replacements = mapOf("date" to statsModel.startDateText)
+                        ),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(start = 10.dp, top = 5.dp)
+                    )
+                    Text(
+                        text = i18n("stats_substance_counted_once"),
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(start = 10.dp, bottom = 10.dp)
+                    )
+                    BarChart(
+                        buckets = statsModel.chartBuckets,
+                        startDateText = statsModel.startDateText
+                    )
+                }
+            }
+        }
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -133,6 +175,47 @@ fun StatsScreen(
                     var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
 
                     val context = LocalContext.current
+
+                    if (statsModel.statItems.isNotEmpty()) {
+                        IconButton(
+                            onClick = {
+                                if (!isSharing) {
+                                    isSharing = true
+                                    coroutineScope.launch {
+                                        try {
+                                            val activity = context as? androidx.activity.ComponentActivity
+                                            if (activity != null) {
+                                                val bitmap = renderComposeViewToBitmap(
+                                                    context = context,
+                                                    widthPx = widthPx,
+                                                    lifecycleView = currentView,
+                                                    content = shareStatsContent,
+                                                    postLayoutDelayMs = 300L
+                                                )
+                                                shareBitmap(context, bitmap)
+                                            }
+                                        } catch (e: Exception) {
+                                            Log.e("StatsScreen", "error", e)
+                                            Toast.makeText(
+                                                context,
+                                                "${e.localizedMessage}",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } finally {
+                                            isSharing = false
+                                        }
+                                    }
+                                }
+                            },
+                            enabled = !isSharing
+                        ) {
+                            Icon(
+                                Icons.Outlined.Share,
+                                contentDescription = i18n("common_share"),
+                                modifier = Modifier.size(ButtonDefaults.IconSize)
+                            )
+                        }
+                    }
 
                     val currentConsumerName = statsModel.consumerName ?: ownerUserName
 

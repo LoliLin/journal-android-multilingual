@@ -37,6 +37,27 @@ class FileSystemConnection @Inject constructor(@ApplicationContext private val c
         }
     }
 
+    fun getBytesFromUri(uri: Uri): ByteArray? {
+        return try {
+            val input = context.contentResolver.openInputStream(uri) ?: return null
+            val bytes = input.readBytes()
+            input.close()
+            bytes
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    fun saveBytesInUri(uri: Uri, bytes: ByteArray) {
+        try {
+            val output = context.contentResolver.openOutputStream(uri)
+                ?: throw Exception("Cannot open output stream for URI")
+            output.use { it.write(bytes) }
+        } catch (e: Exception) {
+            throw Exception("Failed To Save", e)
+        }
+    }
+
     fun saveTextInUri(uri: Uri, text: String) {
         try {
             val output = context.contentResolver.openOutputStream(uri)

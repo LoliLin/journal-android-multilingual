@@ -27,8 +27,10 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -57,6 +59,21 @@ class MainScreenViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    val isAppLockEnabledFlow: StateFlow<Boolean> = userPreferences.isAppLockEnabledFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    // Unlock state lives for the process lifetime: once authenticated, the app stays
+    // unlocked until it is killed. Reset when the lock is disabled by the user.
+    private val _isUnlocked = MutableStateFlow(false)
+    val isUnlockedFlow: StateFlow<Boolean> = _isUnlocked.asStateFlow()
+
+    fun markUnlocked() {
+        _isUnlocked.value = true
+    }
 
     fun accept() {
         viewModelScope.launch {

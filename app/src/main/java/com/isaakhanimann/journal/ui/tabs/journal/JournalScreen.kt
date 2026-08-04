@@ -61,6 +61,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.isaakhanimann.journal.data.achievement.AchievementEvaluator
 import com.isaakhanimann.journal.data.achievement.AchievementGetToast
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -79,35 +80,17 @@ fun JournalScreen(
     val experiences = viewModel.experiences.collectAsState().value
 
     val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
-    val pregabalinTotalDose by viewModel.pregabalinTotalDoseFlow.collectAsState(initial = 0.0)
-    val amantadineDose by viewModel.amantadineDoseFlow.collectAsState(initial = 0.0)
-
-    LaunchedEffect(pregabalinTotalDose, achievements) {
-        val targetAchievement = "n552aa_pr80"
-        if (pregabalinTotalDose >= 20000 && !achievements.contains(targetAchievement)) {
-            viewModel.addAchievement(targetAchievement)
-        }
-    }
-
-    LaunchedEffect(amantadineDose, achievements) {
-        val targetAchievement = "chicken_amantadine"
-        if (amantadineDose > 0 && !achievements.contains(targetAchievement)) {
-            viewModel.addAchievement(targetAchievement)
-        }
-    }
-
-    LaunchedEffect(pregabalinTotalDose, achievements) {
-        val targetAchievement = "n552aa_pr80"
-        if (pregabalinTotalDose >= 20000 && !achievements.contains(targetAchievement)) {
-            viewModel.addAchievement(targetAchievement)
-        }
-    }
-
+    val ingestions by viewModel.ingestionsFlow.collectAsState(initial = emptyList())
     val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
 
-    LaunchedEffect(achievements) {
-        if (ownerUserName == "洛铃" && !achievements.contains("in_kawaiis")) {
-            viewModel.addAchievement("in_kawaiis")
+    LaunchedEffect(ingestions, achievements, ownerUserName) {
+        for (definition in viewModel.achievementDefinitions) {
+            if (
+                !achievements.contains(definition.registerName) &&
+                AchievementEvaluator.evaluate(definition, ingestions, ownerUserName)
+            ) {
+                viewModel.addAchievement(definition.registerName)
+            }
         }
     }
 

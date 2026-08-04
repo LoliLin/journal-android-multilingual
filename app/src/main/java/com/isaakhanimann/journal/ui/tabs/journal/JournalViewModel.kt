@@ -21,6 +21,8 @@ package com.isaakhanimann.journal.ui.tabs.journal
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.data.achievement.AchievementDefinition
+import com.isaakhanimann.journal.data.achievement.AchievementDefinitionsLoader
 import com.isaakhanimann.journal.data.achievement.AchievementEventBus
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
@@ -28,11 +30,9 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -44,9 +44,13 @@ class JournalViewModel @Inject constructor(
     val searchRepository: SearchRepository,
 
     val substanceRepository: SubstanceRepository,
-    private val userPreferences: UserPreferences
+    private val userPreferences: UserPreferences,
+    achievementDefinitionsLoader: AchievementDefinitionsLoader
 
 ) : ViewModel() {
+
+    val achievementDefinitions: List<AchievementDefinition> =
+        achievementDefinitionsLoader.definitions
 
     val achievementsFlow = userPreferences.achievementsFlow.stateIn(
         initialValue = emptyList(),
@@ -61,26 +65,11 @@ class JournalViewModel @Inject constructor(
         }
     }
 
-    private val totalDoseFlowCache = mutableMapOf<String, Flow<Double>>()
-
-    fun getTotalDoseFlow(substanceName: String): Flow<Double> =
-        totalDoseFlowCache.getOrPut(substanceName) {
-            experienceRepo.getSortedExperienceWithIngestionsCompanionsAndRatingsFlow()
-                .map { experiences ->
-                    experiences.flatMap { it.ingestionsWithCompanions }
-                        .filter { it.ingestion.substanceName == substanceName }
-                        .sumOf { it.ingestion.dose ?: 0.0 }
-                }
-                .stateIn(
-                    scope = viewModelScope,
-                    started = SharingStarted.WhileSubscribed(5000),
-                    initialValue = 0.0
-                )
-        }
-
-    val pregabalinTotalDoseFlow = getTotalDoseFlow("Pregabalin")
-
-    val amantadineDoseFlow = getTotalDoseFlow("Amantadine")
+    val ingestionsFlow = experienceRepo.getSortedIngestionsFlow().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = emptyList()
+    )
 
     val isTimeRelativeToNow = mutableStateOf(false)
 
