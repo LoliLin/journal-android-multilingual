@@ -70,7 +70,8 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                 BiometricManager.from(context).canAuthenticate()
             }
             when (canAuthenticate) {
-                BiometricManager.BIOMETRIC_ERROR_NO_DEVICE_CREDENTIAL,
+                // No biometric enrolled OR no device credential set: the androidx
+                // BiometricManager folds both cases into BIOMETRIC_ERROR_NONE_ENROLLED.
                 BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
                     errorMessage = noCredentialText
                     return@remember
