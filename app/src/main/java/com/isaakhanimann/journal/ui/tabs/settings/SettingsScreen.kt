@@ -370,6 +370,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
+                
                 var deleteSliderValue by remember { mutableFloatStateOf(0f) }
                 
                 SettingsButton(
@@ -394,6 +395,12 @@ fun SettingsScreen(
                                 Text(i18n("settings_delete_description"))
 
                                 Spacer(modifier = Modifier.height(24.dp))
+
+                                Icon(
+                                    imageVector = if (deleteSliderValue >= 0.98f) Icons.Outlined.DeleteForever else Icons.Outlined.WarningAmber,
+                                    tint = if (deleteSliderValue >= 0.98f) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.errorContainer,
+                                    modifier = Modifier.size(48.dp)
+                                )
 
                                 Slider(
                                     value = deleteSliderValue,
