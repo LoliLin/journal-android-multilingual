@@ -89,6 +89,8 @@ object ExtensionPackLoader {
                 val connection = URL(updateJsonLink).openConnection() as java.net.HttpURLConnection
                 connection.connectTimeout = 10_000
                 connection.readTimeout = 10_000
+                // Never follow redirects: a https->http redirect would silently downgrade the channel.
+                connection.instanceFollowRedirects = false
                 if (connection.url.protocol != "https") return@withContext null
                 val jsonText = connection.inputStream.bufferedReader().use { it.readText() }
                 val json = JSONObject(jsonText)
@@ -145,6 +147,8 @@ object ExtensionPackLoader {
             val connection = URL(updateInfo.url).openConnection() as java.net.HttpURLConnection
             connection.connectTimeout = 10_000
             connection.readTimeout = 10_000
+            // Never follow redirects: a https->http redirect would silently downgrade the channel.
+            connection.instanceFollowRedirects = false
             if (connection.url.protocol != "https") return@withContext "Download failed: https required"
             connection.inputStream.use { input ->
                 tempFile.outputStream().use { output ->

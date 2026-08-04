@@ -120,10 +120,14 @@ class SettingsViewModel @Inject constructor(
                 try {
                     val json = Json { ignoreUnknownKeys = true }
                     val journalExport = json.decodeFromString<JournalExport>(text)
+                    // Decode all avatars up front: an invalid base64 payload aborts the
+                    // import before the database is replaced, leaving no partial state.
+                    val decodedAvatars = journalExport.avatars.map { (userName, base64) ->
+                        userName to java.util.Base64.getDecoder().decode(base64)
+                    }
                     experienceRepository.replaceEverything(journalExport)
-                    journalExport.avatars.forEach { (userName, base64) ->
+                    decodedAvatars.forEach { (userName, decoded) ->
                         try {
-                            val decoded = java.util.Base64.getDecoder().decode(base64)
                             val avatarFile = AvatarUtil.getAvatarFile(context, userName)
                             avatarFile.parentFile?.mkdirs()
                             FileOutputStream(avatarFile).use { it.write(decoded) }

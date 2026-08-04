@@ -38,7 +38,7 @@ GPLv3 fork of PsychonautWiki Journal (a substance-use journaling app): single-mo
 ./gradlew assembleDebug
 ./gradlew assembleRelease        # unsigned unless signing env vars set
 
-# Unit tests (JVM; tests are NOT run in CI)
+# Unit tests (JVM; run in CI on every push/PR via build-apk.yml)
 ./gradlew testDebugUnitTest
 
 # Instrumented tests (needs device/emulator)
@@ -92,6 +92,6 @@ GPLv3 fork of PsychonautWiki Journal (a substance-use journaling app): single-mo
 
 - **Framework**: JUnit4 + `org.junit.Assert` (one file, `DoubleReadableExtensionKtTest.kt`, inconsistently uses `junit.framework.TestCase` — use `org.junit.Assert` in new tests). `testImplementation` includes `org.json:json` because android.jar's org.json stubs throw in JVM tests; `SubstanceParser` needs it.
 - **Coverage**: 4 JVM unit tests (`TestRegex.kt`, `TestParse.kt`, `TestDates.kt`, `DoubleReadableExtensionKtTest.kt`) + 1 instrumented smoke test (`ExampleInstrumentedTest.kt`). No Robolectric, no Compose UI tests, no test resources — test data is inline triple-quoted strings. Do not add tests that read `assets/` (impossible without Robolectric).
-- **Run**: `./gradlew testDebugUnitTest` (Windows: `gradlew.bat`). Tests are NOT run in CI — don't assume CI catches a red suite.
+- **Run**: `./gradlew testDebugUnitTest` (Windows: `gradlew.bat`). CI runs the unit suite on every push/PR (build-apk.yml), so a red test blocks merges.
 - **Known red flag**: `TestDates.dateDifferences` asserts a fractional-string output (e.g. `"1,9 days"`) that current `getTimeDifferenceText` (whole units like `"45 hours"`) can no longer produce — the test is stale; don't treat the suite as a green baseline without running it.
 - **QA expectations**: keep new tests deterministic and pure-JVM; keep them ktlint-clean (format bot reformats everything). For instrumented behavior, manual device verification; import/export fixtures live in `Sample Files/`.
