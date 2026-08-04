@@ -305,7 +305,6 @@ fun SettingsScreen(
                         )
                     }
                 }
-                HorizontalDivider()
             }
 
             CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {

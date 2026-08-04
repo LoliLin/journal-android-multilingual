@@ -45,6 +45,9 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
     val failedText = i18n("app_lock_failed")
     val titleText = i18n("app_lock_title")
     val subtitleText = i18n("app_lock_subtitle")
+    val cancelText = i18n("app_lock_cancel")
+    val noCredentialText = i18n("app_lock_no_credential")
+    val unavailableText = i18n("app_lock_unavailable")
 
     val promptAuthenticate: () -> Unit = remember(context) {
         {
@@ -53,6 +56,35 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                 errorMessage = failedText
                 return@remember
             }
+
+            // Pre-flight check so we can show a clear message instead of a dead prompt
+            // (e.g. no PIN set up, no biometrics enrolled, no hardware).
+            val authenticators =
+                BiometricManager.Authenticators.BIOMETRIC_WEAK or
+                    BiometricManager.Authenticators.DEVICE_CREDENTIAL
+            val canAuthenticate = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                BiometricManager.from(context).canAuthenticate(authenticators)
+            } else {
+                // DEVICE_CREDENTIAL only exists on API 30+; on older devices fall
+                // back to the no-arg check (biometric-only).
+                BiometricManager.from(context).canAuthenticate()
+            }
+            when (canAuthenticate) {
+                BiometricManager.BIOMETRIC_ERROR_NO_DEVICE_CREDENTIAL,
+                BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                    errorMessage = noCredentialText
+                    return@remember
+                }
+                BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE,
+                BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE,
+                BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED,
+                BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED,
+                BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> {
+                    errorMessage = unavailableText
+                    return@remember
+                }
+            }
+
             val executor = ContextCompat.getMainExecutor(context)
             val prompt = BiometricPrompt(
                 activity,
@@ -75,16 +107,24 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                     }
                 }
             )
-            val promptInfo = BiometricPrompt.PromptInfo.Builder()
+            val promptBuilder = BiometricPrompt.PromptInfo.Builder()
                 .setTitle(titleText)
                 .setSubtitle(subtitleText)
-                .setAllowedAuthenticators(
-                    BiometricManager.Authenticators.BIOMETRIC_WEAK or
-                        BiometricManager.Authenticators.DEVICE_CREDENTIAL
-                )
-                .build()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                // API 30+: biometrics or device credential, no negative button needed.
+                promptBuilder.setAllowedAuthenticators(authenticators)
+            } else {
+                // API < 30: device credential is unsupported and biometric-only
+                // prompts require an explicit negative button, otherwise
+                // authenticate() throws IllegalArgumentException.
+                promptBuilder
+                    .setNegativeButtonText(cancelText)
+                    .setAllowedAuthenticators(
+                        BiometricManager.Authenticators.BIOMETRIC_WEAK
+                    )
+            }
             try {
-                prompt.authenticate(promptInfo)
+                prompt.authenticate(promptBuilder.build())
             } catch (e: Exception) {
                 // e.g. BiometricPrompt shown before the activity is resumed
                 errorMessage = failedText
