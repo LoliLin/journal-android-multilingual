@@ -583,5 +583,20 @@
   "settings_icon_switched": "圖示已切換",
   "settings_icon_switch_failed": "圖示切換失敗",
   "settings_icon_current": "目前: {name}",
-  "common_back": "返回"
+  "common_back": "返回",
+  "common_untitled": "無標題",
+  "quick_note_title": "快速筆記",
+  "quick_note_hint": "現在感覺如何？",
+  "effect_notification_channel": "藥效進行中",
+  "effect_notification_title": "藥效進行中",
+  "effect_notification_text": "{substance} · 自 {time}",
+  "effect_notification_action_note": "記錄筆記",
+  "effect_notification_action_stop": "結束藥效",
+  "settings_effect_notification": "藥效期通知",
+  "settings_effect_notification_description": "藥效期間顯示通知，可隨時快速記錄筆記",
+  "time_capsule_channel": "時間膠囊",
+  "time_capsule_notification_title": "時間膠囊：去年的今天",
+  "time_capsule_notification_text": "去年的今天你記錄了 {count} 個體驗",
+  "time_capsule_screen_title": "去年的今天",
+  "time_capsule_empty": "去年的今天沒有記錄"
 }

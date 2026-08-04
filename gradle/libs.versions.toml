@@ -40,6 +40,7 @@ hiltNavigationCompose = "1.4.0"
 datastore = "1.2.1"
 splashscreen = "1.2.0"
 biometric = "1.1.0"
+work = "2.10.0"
 
 # 第三方库
 accompanist = "0.36.0"
@@ -82,6 +83,8 @@ hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", ve
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 androidx-hilt-lifecycle-viewmodel-compose = { module = "androidx.hilt:hilt-lifecycle-viewmodel-compose", version.ref = "androidxHilt" }
+androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidxHilt" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidxHilt" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 # Room
@@ -112,6 +115,7 @@ towdium-pinin = { module = "com.github.Towdium:PinIn", version.ref = "pinIn" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxbrowser" }
 androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 
 # 测试库
 junit = { module = "junit:junit", version.ref = "junit" }

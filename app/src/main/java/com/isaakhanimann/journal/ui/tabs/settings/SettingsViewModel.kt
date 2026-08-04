@@ -76,6 +76,18 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    val isEffectNotificationEnabledFlow = userPreferences.isEffectNotificationEnabledFlow.stateIn(
+        initialValue = true,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveEffectNotificationEnabled(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.saveEffectNotificationEnabled(value)
+        }
+    }
+
     val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowserFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,

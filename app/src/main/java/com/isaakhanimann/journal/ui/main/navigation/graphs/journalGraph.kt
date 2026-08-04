@@ -29,6 +29,8 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddRating
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditExperience
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditRating
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditTimedNote
@@ -45,6 +47,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.editingestion.EditIn
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add.AddRatingScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.edit.EditRatingScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.AddTimedNoteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.QuickTimedNoteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.timecapsule.TimeCapsuleScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit.EditTimedNoteScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ExplainTimelineScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen.TimelineScreen
@@ -63,7 +67,8 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
             JournalScreen(
                 navigateToExperiencePopNothing = navController::navigateToExperience,
                 navigateToAddIngestion = navController::navigateToAddIngestion,
-                navigateToCalendar = navController::navigateToCalendar
+                navigateToCalendar = navController::navigateToCalendar,
+                navigateToQuickTimedNote = navController::navigateToQuickTimedNote
             )
         }
         composableWithTransitions(
@@ -83,6 +88,20 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
             arguments = ArgumentRouter.AddTimedNoteRouter.args
         ) {
             AddTimedNoteScreen(navigateBack = navController::popBackStack)
+        }
+        composableWithTransitions(
+            ArgumentRouter.QuickTimedNoteRouter.route,
+            arguments = ArgumentRouter.QuickTimedNoteRouter.args
+        ) {
+            QuickTimedNoteScreen(navigateBack = navController::popBackStack)
+        }
+        composableWithTransitions(
+            ArgumentRouter.TimeCapsuleRouter.route
+        ) {
+            TimeCapsuleScreen(
+                navigateBack = navController::popBackStack,
+                navigateToExperience = navController::navigateToExperience
+            )
         }
         composableWithTransitions(
             ArgumentRouter.EditRatingRouter.route,

@@ -75,6 +75,7 @@ fun JournalScreen(
     navigateToExperiencePopNothing: (experienceId: Int) -> Unit,
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
+    navigateToQuickTimedNote: (experienceId: Int) -> Unit,
     viewModel: JournalViewModel = hiltViewModel()
 ) {
     val experiences = viewModel.experiences.collectAsState().value
@@ -108,7 +109,8 @@ fun JournalScreen(
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
         substanceRepository = viewModel.substanceRepository,
-        ownerUserName = ownerUserName
+        ownerUserName = ownerUserName,
+        navigateToQuickTimedNote = navigateToQuickTimedNote
     )
 }
 
@@ -128,8 +130,12 @@ fun JournalScreen(
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
     substanceRepository: SubstanceRepository,
-    ownerUserName: String
+    ownerUserName: String,
+    navigateToQuickTimedNote: (experienceId: Int) -> Unit = {}
 ) {
+    val latestExperienceId = experiences
+        .firstOrNull { it.ingestions.isNotEmpty() }
+        ?.experience?.id
     Scaffold(
         topBar = {
             TopAppBar(
@@ -148,6 +154,14 @@ fun JournalScreen(
                             Icon(
                                 Icons.Outlined.Timer,
                                 contentDescription = i18n("journal_time_relative_to_now")
+                            )
+                        }
+                    }
+                    if (latestExperienceId != null) {
+                        IconButton(onClick = { navigateToQuickTimedNote(latestExperienceId) }) {
+                            Icon(
+                                Icons.Outlined.EditNote,
+                                contentDescription = i18n("quick_note_title")
                             )
                         }
                     }

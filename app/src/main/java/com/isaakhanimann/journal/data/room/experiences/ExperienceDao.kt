@@ -67,6 +67,15 @@ interface ExperienceDao {
     @Query("SELECT * FROM experience ORDER BY sortDate")
     suspend fun getAllExperiencesWithIngestionsTimedNotesAndRatingsSorted(): List<ExperienceWithIngestionsTimedNotesAndRatings>
 
+    @Transaction
+    @Query(
+        "SELECT * FROM experience WHERE sortDate >= :fromInstant AND sortDate < :toInstant ORDER BY sortDate"
+    )
+    suspend fun getExperiencesWithIngestionsTimedNotesAndRatingsInRange(
+        fromInstant: Instant,
+        toInstant: Instant
+    ): List<ExperienceWithIngestionsTimedNotesAndRatings>
+
     @Query("SELECT * FROM customunit ORDER BY creationDate")
     suspend fun getAllCustomUnitsSorted(): List<CustomUnit>
 

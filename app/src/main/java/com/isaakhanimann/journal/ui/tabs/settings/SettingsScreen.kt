@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -138,6 +139,8 @@ fun SettingsScreen(
         saveOpenLinkInBrowser = viewModel::saveOpenLinkInBrowser,
         isAppLockEnabled = viewModel.isAppLockEnabledFlow.collectAsState().value,
         saveAppLockEnabled = viewModel::saveAppLockEnabled,
+        isEffectNotificationEnabled = viewModel.isEffectNotificationEnabledFlow.collectAsState().value,
+        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled,
         supportedLanguages = supportedLanguages,
         selectedLanguageKey = selectedLanguageKey,
         saveSelectedLanguage = viewModel::saveSelectedLanguage,
@@ -168,6 +171,8 @@ fun SettingsScreen(
     saveOpenLinkInBrowser: (Boolean) -> Unit,
     isAppLockEnabled: Boolean,
     saveAppLockEnabled: (Boolean) -> Unit,
+    isEffectNotificationEnabled: Boolean,
+    saveEffectNotificationEnabled: (Boolean) -> Unit,
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
@@ -304,6 +309,39 @@ fun SettingsScreen(
                             onCheckedChange = saveAppLockEnabled
                         )
                     }
+                }
+                HorizontalDivider()
+                val permissionLauncher = rememberLauncherForActivityResult(
+                    contract = ActivityResultContracts.RequestPermission()
+                ) { granted ->
+                    if (!granted) {
+                        saveEffectNotificationEnabled(false)
+                    }
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(text = i18n("settings_effect_notification"))
+                        Text(
+                            text = i18n("settings_effect_notification_description"),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Switch(
+                        checked = isEffectNotificationEnabled,
+                        onCheckedChange = { enabled ->
+                            saveEffectNotificationEnabled(enabled)
+                            if (enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                            }
+                        }
+                    )
                 }
             }
 

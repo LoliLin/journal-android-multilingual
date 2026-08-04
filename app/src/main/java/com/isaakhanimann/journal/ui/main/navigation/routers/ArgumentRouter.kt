@@ -51,6 +51,8 @@ private const val ROUTE_START_CHOOSE_DOSE_CUSTOM_UNIT = "chooseDoseCustomUnit/"
 private const val ROUTE_START_EDIT_EXPERIENCE = "editExperience/"
 private const val ROUTE_START_ADD_RATING = "addRating/"
 private const val ROUTE_START_ADD_TIMED_NOTE = "addTimedNote/"
+private const val ROUTE_START_QUICK_TIMED_NOTE = "quickTimedNote/"
+private const val ROUTE_START_TIME_CAPSULE = "timeCapsule"
 private const val ROUTE_START_EDIT_RATING = "editRating/"
 private const val ROUTE_START_EDIT_TIMED_NOTE = "editTimedNote/"
 private const val ROUTE_START_EDIT_CUSTOM = "editCustom/"
@@ -104,6 +106,16 @@ sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>)
     object AddTimedNoteRouter : ArgumentRouter(
         route = "$ROUTE_START_ADD_TIMED_NOTE{$EXPERIENCE_ID_KEY}",
         args = listOf(navArgument(EXPERIENCE_ID_KEY) { type = NavType.IntType })
+    )
+
+    object QuickTimedNoteRouter : ArgumentRouter(
+        route = "$ROUTE_START_QUICK_TIMED_NOTE{$EXPERIENCE_ID_KEY}",
+        args = listOf(navArgument(EXPERIENCE_ID_KEY) { type = NavType.IntType })
+    )
+
+    object TimeCapsuleRouter : ArgumentRouter(
+        route = ROUTE_START_TIME_CAPSULE,
+        args = emptyList()
     )
 
     object EditRatingRouter : ArgumentRouter(
@@ -265,6 +277,14 @@ fun NavController.navigateToAddRating(experienceId: Int) {
 
 fun NavController.navigateToAddTimedNote(experienceId: Int) {
     navigate(ROUTE_START_ADD_TIMED_NOTE + experienceId)
+}
+
+fun NavController.navigateToQuickTimedNote(experienceId: Int) {
+    navigate(ROUTE_START_QUICK_TIMED_NOTE + experienceId)
+}
+
+fun NavController.navigateToTimeCapsule() {
+    navigate(ROUTE_START_TIME_CAPSULE)
 }
 
 fun NavController.navigateToEditRating(ratingId: Int) {
