@@ -93,7 +93,7 @@ fun TimeCapsuleScreen(
             LazyColumn(modifier = Modifier.fillMaxSize().padding(padding)) {
                 items(experiences, key = { it.experience.id }) { item ->
                     val substanceNames = item.ingestions
-                        .map { it.ingestion.substanceName }
+                        .map { it.substanceName }
                         .distinct()
                         .joinToString(", ")
                     Column(

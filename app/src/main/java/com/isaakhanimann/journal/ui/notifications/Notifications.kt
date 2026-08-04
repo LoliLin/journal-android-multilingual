@@ -27,7 +27,7 @@ class EffectNotificationReceiver : BroadcastReceiver() {
         val experienceId = intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
         if (experienceId > 0) {
             NotificationManagerCompat.from(context)
-                .cancel(EFFECT_NOTIFICATION_ID_BASE + experienceId)
+                .cancel(Notifications.EFFECT_NOTIFICATION_ID_BASE + experienceId)
         }
     }
 }

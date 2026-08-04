@@ -32,8 +32,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -75,7 +77,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     var pendingNav by remember { mutableStateOf<Pair<String, Int>?>(null) }
     val activity = LocalContext.current as? androidx.activity.ComponentActivity
     DisposableEffect(activity) {
-        val listener = androidx.activity.OnNewIntentListener { intent ->
+        val listener = { intent: android.content.Intent ->
             parseNavIntent(intent)?.let { pendingNav = it }
             true
         }
