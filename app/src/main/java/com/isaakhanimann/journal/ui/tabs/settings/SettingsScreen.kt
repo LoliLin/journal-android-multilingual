@@ -83,6 +83,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -128,12 +129,15 @@ fun SettingsScreen(
         navigateToExtensionPack = navigateToExtensionPack,
         deleteEverything = viewModel::deleteEverything,
         importFile = viewModel::importFile,
+        isImportEncrypted = viewModel::isImportEncrypted,
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
         saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
         isOpenLinkInBrowser = viewModel.isOpenLinkInBrowserFlow.collectAsState().value,
         saveOpenLinkInBrowser = viewModel::saveOpenLinkInBrowser,
+        isAppLockEnabled = viewModel.isAppLockEnabledFlow.collectAsState().value,
+        saveAppLockEnabled = viewModel::saveAppLockEnabled,
         supportedLanguages = supportedLanguages,
         selectedLanguageKey = selectedLanguageKey,
         saveSelectedLanguage = viewModel::saveSelectedLanguage,
@@ -154,13 +158,16 @@ fun SettingsScreen(
     navigateToIconPicker: () -> Unit = {},
     navigateToExtensionPack: () -> Unit = {},
     deleteEverything: () -> Unit,
-    importFile: (uri: Uri) -> Unit,
-    exportFile: (uri: Uri) -> Unit,
+    importFile: (uri: Uri, password: String?) -> Unit,
+    isImportEncrypted: (Uri) -> Boolean,
+    exportFile: (uri: Uri, password: String?) -> Unit,
     snackbarHostState: SnackbarHostState,
     areDosageDotsHidden: Boolean,
     saveDosageDotsAreHidden: (Boolean) -> Unit,
     isOpenLinkInBrowser: Boolean,
     saveOpenLinkInBrowser: (Boolean) -> Unit,
+    isAppLockEnabled: Boolean,
+    saveAppLockEnabled: (Boolean) -> Unit,
     supportedLanguages: Map<String, String>,
     selectedLanguageKey: String?,
     saveSelectedLanguage: (String?) -> Unit,
@@ -273,6 +280,33 @@ fun SettingsScreen(
                 }
             }
 
+            CardWithTitle(title = i18n("settings_privacy"), innerPaddingHorizontal = 0.dp) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(text = i18n("settings_app_lock"))
+                            Text(
+                                text = i18n("settings_app_lock_description"),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        Switch(
+                            checked = isAppLockEnabled,
+                            onCheckedChange = saveAppLockEnabled
+                        )
+                    }
+                }
+            }
+
             CardWithTitle(title = i18n("settings_app_data"), innerPaddingHorizontal = 0.dp) {
                 var isShowingExportDialog by remember { mutableStateOf(false) }
                 SettingsButton(
@@ -282,6 +316,8 @@ fun SettingsScreen(
                     isShowingExportDialog = true
                 }
                 val jsonMIMEType = "application/json"
+                var exportEncrypt by remember { mutableStateOf(false) }
+                var exportPassword by remember { mutableStateOf("") }
                 val launcherExport =
                     rememberLauncherForActivityResult(
                         contract = ActivityResultContracts.CreateDocument(
@@ -289,7 +325,7 @@ fun SettingsScreen(
                         )
                     ) { uri ->
                         if (uri != null) {
-                            exportFile(uri)
+                            exportFile(uri, if (exportEncrypt) exportPassword else null)
                         }
                     }
                 AnimatedVisibility(visible = isShowingExportDialog) {
@@ -299,16 +335,44 @@ fun SettingsScreen(
                             Text(text = i18n("settings_export_title"))
                         },
                         text = {
-                            Text(i18n("settings_export_description"))
+                            Column {
+                                Text(i18n("settings_export_description"))
+                                Spacer(modifier = Modifier.height(12.dp))
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(text = i18n("settings_export_encrypt"))
+                                    Switch(
+                                        checked = exportEncrypt,
+                                        onCheckedChange = {
+                                            exportEncrypt = it
+                                            if (!it) exportPassword = ""
+                                        }
+                                    )
+                                }
+                                if (exportEncrypt) {
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    OutlinedTextField(
+                                        value = exportPassword,
+                                        onValueChange = { exportPassword = it },
+                                        label = { Text(i18n("settings_export_password")) },
+                                        visualTransformation = PasswordVisualTransformation(),
+                                        singleLine = true
+                                    )
+                                }
+                            }
                         },
                         confirmButton = {
                             TextButton(
+                                enabled = !exportEncrypt || exportPassword.isNotBlank(),
                                 onClick = {
                                     isShowingExportDialog = false
                                     launcherExport.launch(
                                         "Journal ${Instant.now().getStringOfPattern(
                                             "dd MMM yyyy"
-                                        )}.json"
+                                        )}.${if (exportEncrypt) "jenc" else "json"}"
                                     )
                                 }
                             ) {
@@ -332,14 +396,66 @@ fun SettingsScreen(
                 ) {
                     isShowingImportDialog = true
                 }
+                var pendingImportUri by remember { mutableStateOf<Uri?>(null) }
+                var importPassword by remember { mutableStateOf("") }
+                val scopeImport = rememberCoroutineScope()
                 val launcherImport =
                     rememberLauncherForActivityResult(
                         contract = ActivityResultContracts.GetContent()
                     ) { uri ->
                         if (uri != null) {
-                            importFile(uri)
+                            scopeImport.launch {
+                                if (isImportEncrypted(uri)) {
+                                    importPassword = ""
+                                    pendingImportUri = uri
+                                } else {
+                                    importFile(uri, null)
+                                }
+                            }
                         }
                     }
+                AnimatedVisibility(visible = pendingImportUri != null) {
+                    AlertDialog(
+                        onDismissRequest = { pendingImportUri = null },
+                        title = {
+                            Text(text = i18n("settings_import_encrypted_title"))
+                        },
+                        text = {
+                            Column {
+                                Text(i18n("settings_import_encrypted_description"))
+                                Spacer(modifier = Modifier.height(12.dp))
+                                OutlinedTextField(
+                                    value = importPassword,
+                                    onValueChange = { importPassword = it },
+                                    label = { Text(i18n("settings_import_password")) },
+                                    visualTransformation = PasswordVisualTransformation(),
+                                    singleLine = true
+                                )
+                            }
+                        },
+                        confirmButton = {
+                            TextButton(
+                                enabled = importPassword.isNotBlank(),
+                                onClick = {
+                                    val uri = pendingImportUri
+                                    pendingImportUri = null
+                                    if (uri != null) {
+                                        importFile(uri, importPassword)
+                                    }
+                                }
+                            ) {
+                                Text(i18n("common_import"))
+                            }
+                        },
+                        dismissButton = {
+                            TextButton(
+                                onClick = { pendingImportUri = null }
+                            ) {
+                                Text(i18n("common_cancel"))
+                            }
+                        }
+                    )
+                }
                 AnimatedVisibility(visible = isShowingImportDialog) {
                     AlertDialog(
                         onDismissRequest = { isShowingImportDialog = false },

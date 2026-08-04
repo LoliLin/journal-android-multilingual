@@ -39,6 +39,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_SELECTED_LANGUAGE = stringPreferencesKey("key_selected_language")
         val KEY_OWNER_USER_NAME = stringPreferencesKey("key_owner_user_name")
         val KEY_OWNER_USER_ACHIEVEMENT = stringPreferencesKey("key_owner_user_achievement") // registerName;
+        val KEY_APP_LOCK_ENABLED = booleanPreferencesKey("key_app_lock_enabled")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -124,6 +125,17 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_SELECTED_LANGUAGE]
         }
+
+    val isAppLockEnabledFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_APP_LOCK_ENABLED] ?: false
+        }
+
+    suspend fun saveAppLockEnabled(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_APP_LOCK_ENABLED] = value
+        }
+    }
 
     suspend fun saveOwnerUserName(value: String?) {
         dataStore.edit { preferences ->

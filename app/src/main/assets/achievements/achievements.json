@@ -1,0 +1,29 @@
+{
+  "achievements": [
+    {
+      "registerName": "n552aa_pr80",
+      "iconPath": "n552aa_pr80.jpg",
+      "condition": {
+        "type": "totalDoseAtLeast",
+        "substanceName": "Pregabalin",
+        "minTotalMg": 20000
+      }
+    },
+    {
+      "registerName": "in_kawaiis",
+      "iconPath": "in_kawaiis.jpg",
+      "condition": {
+        "type": "ownerNameEquals",
+        "value": "洛铃"
+      }
+    },
+    {
+      "registerName": "chicken_amantadine",
+      "iconPath": "chicken_amantadine.jpg",
+      "condition": {
+        "type": "substanceUsed",
+        "substanceName": "Amantadine"
+      }
+    }
+  ]
+}

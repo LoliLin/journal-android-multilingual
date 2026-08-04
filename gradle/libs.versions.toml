@@ -39,6 +39,7 @@ lifecycleViewmodelNav3 = "2.11.0"
 hiltNavigationCompose = "1.4.0"
 datastore = "1.2.1"
 splashscreen = "1.2.0"
+biometric = "1.1.0"
 
 # 第三方库
 accompanist = "0.36.0"
@@ -110,6 +111,7 @@ kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", ve
 towdium-pinin = { module = "com.github.Towdium:PinIn", version.ref = "pinIn" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxbrowser" }
+androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
 
 # 测试库
 junit = { module = "junit:junit", version.ref = "junit" }

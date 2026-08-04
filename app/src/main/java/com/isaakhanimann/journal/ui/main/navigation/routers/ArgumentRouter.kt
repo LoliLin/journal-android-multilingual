@@ -304,8 +304,10 @@ fun NavController.navigateToChooseCustomRoute(customSubstanceId: Int) {
 }
 
 fun NavController.navigateToSubstanceCompanionScreen(substanceName: String, consumerName: String?) {
+    // The registered route is substancesCompanion/{substanceName}/?consumerName=... —
+    // the trailing slash after the substance name is part of the pattern and must be kept.
     val consumerQuery = consumerName?.let { "?$CONSUMER_NAME_KEY=${Uri.encode(it)}" } ?: ""
-    navigate("$ROUTE_START_SUBSTANCE_COMPANION${Uri.encode(substanceName)}$consumerQuery")
+    navigate("$ROUTE_START_SUBSTANCE_COMPANION${Uri.encode(substanceName)}/$consumerQuery")
 }
 
 fun NavController.navigateToCategoryScreen(categoryName: String) {

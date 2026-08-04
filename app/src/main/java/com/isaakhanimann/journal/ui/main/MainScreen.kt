@@ -57,7 +57,13 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     if (isAccepted == null) {
         // DataStore value not read yet: show nothing instead of flashing content.
         Box(modifier = Modifier.fillMaxSize())
-    } else if (isAccepted) {
+    } else if (!isAccepted) {
+        AcceptConditionsScreen(onTapAccept = viewModel::accept)
+    } else if (viewModel.isAppLockEnabledFlow.collectAsState().value &&
+        !viewModel.isUnlockedFlow.collectAsState().value
+    ) {
+        AppLockScreen(onUnlocked = viewModel::markUnlocked)
+    } else {
         val navController = rememberNavController()
         Scaffold(
             bottomBar = {
@@ -124,7 +130,5 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 settingsGraph(navController)
             }
         }
-    } else {
-        AcceptConditionsScreen(onTapAccept = viewModel::accept)
     }
 }

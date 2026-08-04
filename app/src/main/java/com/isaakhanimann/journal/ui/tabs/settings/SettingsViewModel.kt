@@ -64,6 +64,18 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    val isAppLockEnabledFlow = userPreferences.isAppLockEnabledFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveAppLockEnabled(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.saveAppLockEnabled(value)
+        }
+    }
+
     val isOpenLinkInBrowserFlow = userPreferences.isOpenLinkInBrowserFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,
@@ -108,16 +120,54 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun importFile(uri: Uri) {
+    /** Returns true when the picked file starts with the encrypted-export magic (reads only the prefix). */
+    fun isImportEncrypted(uri: Uri): Boolean {
+        return try {
+            val input = context.contentResolver.openInputStream(uri) ?: return false
+            val prefix = ByteArray(5)
+            var read = 0
+            while (read < prefix.size) {
+                val n = input.read(prefix, read, prefix.size - read)
+                if (n == -1) break
+                read += n
+            }
+            input.close()
+            ExportEncryption.isEncryptedExport(prefix)
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    fun importFile(uri: Uri, password: String? = null) {
         viewModelScope.launch {
-            val text = fileSystemConnection.getTextFromUri(uri)
-            if (text == null) {
+            val bytes = fileSystemConnection.getBytesFromUri(uri)
+            if (bytes == null) {
                 snackbarHostState.showSnackbar(
                     message = "File not found",
                     duration = SnackbarDuration.Short
                 )
             } else {
                 try {
+                    val text = if (ExportEncryption.isEncryptedExport(bytes)) {
+                        if (password == null) {
+                            snackbarHostState.showSnackbar(
+                                message = "This backup is encrypted",
+                                duration = SnackbarDuration.Short
+                            )
+                            return@launch
+                        }
+                        try {
+                            ExportEncryption.decryptExport(bytes, password)
+                        } catch (_: javax.crypto.AEADBadTagException) {
+                            snackbarHostState.showSnackbar(
+                                message = "Wrong password",
+                                duration = SnackbarDuration.Short
+                            )
+                            return@launch
+                        }
+                    } else {
+                        bytes.toString(Charsets.UTF_8)
+                    }
                     val json = Json { ignoreUnknownKeys = true }
                     val journalExport = json.decodeFromString<JournalExport>(text)
                     // Decode all avatars up front: an invalid base64 payload aborts the
@@ -147,7 +197,7 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun exportFile(uri: Uri) {
+    fun exportFile(uri: Uri, password: String? = null) {
         viewModelScope.launch {
             val experiencesWithIngestionsAndRatings =
                 experienceRepository.getAllExperiencesWithIngestionsTimedNotesAndRatingsSorted()
@@ -235,7 +285,12 @@ class SettingsViewModel @Inject constructor(
             )
             try {
                 val jsonList = Json.encodeToString(journalExport)
-                fileSystemConnection.saveTextInUri(uri, text = jsonList)
+                if (password == null) {
+                    fileSystemConnection.saveTextInUri(uri, text = jsonList)
+                } else {
+                    val encrypted = ExportEncryption.encryptExport(jsonList, password)
+                    fileSystemConnection.saveBytesInUri(uri, encrypted)
+                }
                 snackbarHostState.showSnackbar(
                     message = "Export successful",
                     duration = SnackbarDuration.Short
