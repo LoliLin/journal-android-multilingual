@@ -1,0 +1,6 @@
+- One-tap timed note entry; new effect notification with "Add note" and "End effects" actions.
+- Daily time capsule recap notification for experiences from one year ago.
+- Optional app lock via biometric or device PIN.
+- Encrypted export with optional password; import verifies password and rejects corrupt data.
+- Share timeline and stats as images; delete confirmation now uses a slider.
+- Hardened import/export and extension pack handling.
