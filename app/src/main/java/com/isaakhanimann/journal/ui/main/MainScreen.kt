@@ -100,22 +100,12 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     } else {
         val navController = rememberNavController()
         LaunchedEffect(pendingNav) {
-            val navigation = pendingNav
-            if (navigation != null) {
-                // Wait one frame so the NavHost graph is fully attached before navigating
-                // (relevant right after unlocking — this branch composes for the first time).
-                kotlinx.coroutines.delay(150)
-                android.util.Log.i("MainScreen", "consuming pendingNav: $navigation")
-                try {
-                    val (target, experienceId) = navigation
-                    when (target) {
-                        NAV_QUICK_NOTE -> if (experienceId > 0) {
-                            navController.navigateToQuickTimedNote(experienceId)
-                        }
-                        NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
+            pendingNav?.let { (target, experienceId) ->
+                when (target) {
+                    NAV_QUICK_NOTE -> if (experienceId > 0) {
+                        navController.navigateToQuickTimedNote(experienceId)
                     }
-                } catch (e: Exception) {
-                    android.util.Log.e("MainScreen", "navigation failed", e)
+                    NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
                 }
                 pendingNav = null
             }
