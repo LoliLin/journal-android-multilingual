@@ -63,6 +63,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+        <!-- JournalApplication implements Configuration.Provider (on-demand WorkManager
+             initialization), so the default startup initializer must be removed. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
         <receiver
             android:name=".ui.notifications.EffectNotificationReceiver"
             android:exported="false" />
