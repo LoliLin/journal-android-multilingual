@@ -27,10 +27,15 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -40,12 +45,23 @@ import androidx.navigation.compose.rememberNavController
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
+import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
+import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
+import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
+import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
+
+private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? {
+    val target = intent?.getStringExtra(EXTRA_NAVIGATE_TO) ?: return null
+    return target to intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
+}
 
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
@@ -54,6 +70,24 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         I18n.setPreferredLanguageKey(selectedLanguageKey)
     }
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
+
+    // Notification taps can steer the app to a target screen (quick note / time capsule).
+    // Tracked above the gate so the intent survives the accept/lock screens and is
+    // consumed by the content branch once it composes.
+    var pendingNav by remember { mutableStateOf<Pair<String, Int>?>(null) }
+    val activity = LocalContext.current as? androidx.activity.ComponentActivity
+    DisposableEffect(activity) {
+        val listener = { intent: android.content.Intent ->
+            parseNavIntent(intent)?.let { pendingNav = it }
+            Unit
+        }
+        activity?.addOnNewIntentListener(listener)
+        onDispose { activity?.removeOnNewIntentListener(listener) }
+    }
+    LaunchedEffect(Unit) {
+        parseNavIntent(activity?.intent)?.let { pendingNav = it }
+    }
+
     if (isAccepted == null) {
         // DataStore value not read yet: show nothing instead of flashing content.
         Box(modifier = Modifier.fillMaxSize())
@@ -65,6 +99,17 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
         val navController = rememberNavController()
+        LaunchedEffect(pendingNav) {
+            pendingNav?.let { (target, experienceId) ->
+                when (target) {
+                    NAV_QUICK_NOTE -> if (experienceId > 0) {
+                        navController.navigateToQuickTimedNote(experienceId)
+                    }
+                    NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
+                }
+                pendingNav = null
+            }
+        }
         Scaffold(
             bottomBar = {
                 val isShowingBottomBar = isKeyboardOpen().value.not()

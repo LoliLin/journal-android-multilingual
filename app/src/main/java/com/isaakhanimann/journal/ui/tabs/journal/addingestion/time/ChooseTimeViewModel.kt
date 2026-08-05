@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -39,10 +40,12 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.ESTIMATED_DOSE_STAND
 import com.isaakhanimann.journal.ui.main.navigation.routers.IS_ESTIMATE_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.UNITS_KEY
+import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -67,6 +70,7 @@ const val hourLimitToSeparateIngestions: Long = 12
 class ChooseTimeViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
     private val userPreferences: UserPreferences,
+    @ApplicationContext private val appContext: Context,
     state: SavedStateHandle
 ) : ViewModel() {
     var substanceName by mutableStateOf("")
@@ -260,6 +264,7 @@ class ChooseTimeViewModel @Inject constructor(
             color = selectedColor
         )
         val ingestionTime = localDateTimeFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        val savedExperienceId: Int
         if (userWantsToCreateANewExperience || oldIdToUse == null) {
             val newExperience = Experience(
                 id = newIdToUse,
@@ -275,11 +280,23 @@ class ChooseTimeViewModel @Inject constructor(
                 experience = newExperience,
                 substanceCompanion = substanceCompanion
             )
+            savedExperienceId = newExperience.id
         } else {
             val newIngestion = createNewIngestion(oldIdToUse)
             experienceRepo.insertIngestionAndCompanion(
                 ingestion = newIngestion,
                 substanceCompanion = substanceCompanion
+            )
+            savedExperienceId = oldIdToUse
+        }
+        // Keep a lightweight "effects in progress" notification with a quick-note
+        // action so notes can be added from any other app while effects last.
+        if (userPreferences.isEffectNotificationEnabledFlow.first()) {
+            Notifications.showEffectNotification(
+                context = appContext,
+                experienceId = savedExperienceId,
+                substanceName = substanceName,
+                ingestionTime = ingestionTime
             )
         }
     }

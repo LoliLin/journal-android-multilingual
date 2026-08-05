@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,7 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
+import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.InteractionChecker
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.hourLimitToSeparateIngestions
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
@@ -39,6 +41,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionEx
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
@@ -61,6 +64,7 @@ class OneExperienceViewModel @Inject constructor(
     val substanceRepo: SubstanceRepository,
     private val interactionChecker: InteractionChecker,
     private val userPreferences: UserPreferences,
+    @ApplicationContext private val appContext: Context,
     combinationSettingsStorage: CombinationSettingsStorage,
     state: SavedStateHandle
 ) : ViewModel() {
@@ -354,6 +358,8 @@ class OneExperienceViewModel @Inject constructor(
     fun deleteExperience() {
         viewModelScope.launch {
             experienceRepo.deleteEverythingOfExperience(experienceId = experienceId)
+            // The 'effects in progress' notification must not outlive its experience.
+            Notifications.cancelEffectNotification(appContext, experienceId)
         }
     }
 

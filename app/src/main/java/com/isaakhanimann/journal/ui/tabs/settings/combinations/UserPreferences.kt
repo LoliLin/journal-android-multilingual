@@ -40,6 +40,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_OWNER_USER_NAME = stringPreferencesKey("key_owner_user_name")
         val KEY_OWNER_USER_ACHIEVEMENT = stringPreferencesKey("key_owner_user_achievement") // registerName;
         val KEY_APP_LOCK_ENABLED = booleanPreferencesKey("key_app_lock_enabled")
+        val KEY_EFFECT_NOTIFICATION_ENABLED = booleanPreferencesKey("key_effect_notification_enabled")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -130,6 +131,17 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_APP_LOCK_ENABLED] ?: false
         }
+
+    val isEffectNotificationEnabledFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_EFFECT_NOTIFICATION_ENABLED] ?: true
+        }
+
+    suspend fun saveEffectNotificationEnabled(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_EFFECT_NOTIFICATION_ENABLED] = value
+        }
+    }
 
     suspend fun saveAppLockEnabled(value: Boolean) {
         dataStore.edit { preferences ->
