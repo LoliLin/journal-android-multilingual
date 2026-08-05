@@ -76,6 +76,9 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
         {
             val keyguardManager =
                 context.getSystemService(Context.KEYGUARD_SERVICE) as? KeyguardManager
+            // Deprecated on API 33+ in favor of BiometricPrompt's DEVICE_CREDENTIAL,
+            // but kept deliberately as the library-independent fallback channel.
+            @Suppress("DEPRECATION")
             val intent = keyguardManager?.createConfirmDeviceCredentialIntent(
                 titleText,
                 subtitleText
@@ -105,7 +108,9 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
                     BiometricManager.from(context).canAuthenticate(authenticators)
                 } else {
                     // DEVICE_CREDENTIAL only exists on API 30+; on older devices fall
-                    // back to the no-arg check (biometric-only).
+                    // back to the no-arg check (biometric-only). The no-arg overload is
+                    // deprecated upstream but is the only option below API 30.
+                    @Suppress("DEPRECATION")
                     BiometricManager.from(context).canAuthenticate()
                 }
                 if (canAuthenticate == BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED) {
