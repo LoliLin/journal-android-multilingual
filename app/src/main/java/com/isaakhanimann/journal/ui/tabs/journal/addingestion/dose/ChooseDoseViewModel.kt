@@ -36,7 +36,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChooseDoseViewModel @Inject constructor(
-    repository: SubstanceRepository,
+    val repository: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
     val substance: Substance

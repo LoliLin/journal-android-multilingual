@@ -94,6 +94,7 @@ fun ChooseDoseScreen(
         navigateToVolumetricDosingScreen = navigateToVolumetricDosingScreenOnJournalTab,
         navigateToSaferSniffingScreen = navigateToSaferSniffingScreen,
         substanceName = viewModel.substance.name,
+        getSubstanceDisplayName = viewModel.repository::getDisplayName,
         roaDose = viewModel.roaDose,
         administrationRoute = viewModel.administrationRoute,
         doseText = viewModel.doseText,
@@ -205,6 +206,7 @@ fun ChooseDoseScreen(
     navigateToSaferSniffingScreen: () -> Unit,
     navigateToURL: (url: String) -> Unit,
     substanceName: String,
+    getSubstanceDisplayName: (String) -> String = { it },
     roaDose: RoaDose?,
     administrationRoute: AdministrationRoute,
     doseRemark: String?,
@@ -237,7 +239,10 @@ fun ChooseDoseScreen(
                     Text(
                         i18n(
                             "dose_title_with_route",
-                            mapOf("substance" to substanceName, "route" to routeName)
+                            mapOf(
+                                "substance" to getSubstanceDisplayName(substanceName),
+                                "route" to routeName
+                            )
                         )
                     )
                 }

@@ -50,7 +50,9 @@ fun ChooseRouteDuringAddCustomUnitScreen(
                         i18n(
                             "substances_route",
                             replacements = mapOf(
-                                "substance" to "${viewModel.substanceName}"
+                                "substance" to viewModel.substanceRepo.getDisplayName(
+                                    viewModel.substanceName
+                                )
                             )
                         )
                     )

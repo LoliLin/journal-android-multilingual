@@ -610,5 +610,7 @@
   "stats_report_period_days_30": "最近 30 天",
   "stats_report_period_weeks_26": "最近 6 個月",
   "stats_report_period_months_12": "最近 12 個月",
-  "stats_report_period_years_10": "最近 10 年"
+  "stats_report_period_years_10": "最近 10 年",
+  "choose_time_color_title": "{substance} 顏色",
+  "custom_unit_title": "{substance} 單位"
 }
