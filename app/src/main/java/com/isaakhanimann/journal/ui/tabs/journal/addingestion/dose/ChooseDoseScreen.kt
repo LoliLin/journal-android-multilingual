@@ -22,6 +22,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -37,6 +38,7 @@ import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Newspaper
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,6 +48,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -67,6 +70,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -74,6 +78,7 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
+import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
@@ -83,7 +88,8 @@ fun ChooseDoseScreen(
         units: String?,
         isEstimate: Boolean,
         dose: Double?,
-        estimatedDoseStandardDeviation: Double?
+        estimatedDoseStandardDeviation: Double?,
+        customUnitId: Int?
     ) -> Unit,
     navigateToVolumetricDosingScreenOnJournalTab: () -> Unit,
     navigateToURL: (url: String) -> Unit,
@@ -107,11 +113,14 @@ fun ChooseDoseScreen(
             viewModel.isEstimate = it
         },
         navigateToNext = {
+            val customUnit = viewModel.customUnitsFlow.value
+                .firstOrNull { it.id == viewModel.selectedCustomUnitId }
             navigateToChooseTimeAndMaybeColor(
                 viewModel.units,
                 viewModel.isEstimate,
-                viewModel.dose,
-                viewModel.estimatedDoseStandardDeviation
+                viewModel.doseForNext(customUnit),
+                viewModel.estimatedDoseStandardDeviation,
+                viewModel.selectedCustomUnitId
             )
         },
         navigateToURL = navigateToURL,
@@ -119,6 +128,7 @@ fun ChooseDoseScreen(
             navigateToChooseTimeAndMaybeColor(
                 viewModel.units,
                 false,
+                null,
                 null,
                 null
             )
@@ -132,7 +142,18 @@ fun ChooseDoseScreen(
         convertedDoseAndUnitText = viewModel.rawDoseWithUnit,
         isShowingUnitsField = viewModel.roaDose?.units?.isBlank() ?: true,
         units = viewModel.units,
-        onChangeOfUnits = { viewModel.units = it }
+        onChangeOfUnits = { viewModel.units = it },
+        customUnits = viewModel.customUnitsFlow.collectAsState().value,
+        selectedCustomUnitId = viewModel.selectedCustomUnitId,
+        onSelectCustomUnit = viewModel::selectCustomUnit,
+        onCreateCustomUnit = viewModel::createCustomUnit,
+        onClearCustomUnit = viewModel::clearCustomUnit,
+        quickUnitName = viewModel.quickUnitName,
+        onQuickUnitNameChange = { viewModel.quickUnitName = it },
+        quickUnitDoseText = viewModel.quickUnitDoseText,
+        onQuickUnitDoseTextChange = { viewModel.quickUnitDoseText = it },
+        quickUnitUnitText = viewModel.quickUnitUnitText,
+        onQuickUnitUnitTextChange = { viewModel.quickUnitUnitText = it }
     )
 }
 
@@ -224,7 +245,18 @@ fun ChooseDoseScreen(
     convertedDoseAndUnitText: String?,
     isShowingUnitsField: Boolean,
     units: String,
-    onChangeOfUnits: (units: String) -> Unit
+    onChangeOfUnits: (units: String) -> Unit,
+    customUnits: List<CustomUnit> = emptyList(),
+    selectedCustomUnitId: Int? = null,
+    onSelectCustomUnit: (Int?) -> Unit = {},
+    onCreateCustomUnit: () -> Unit = {},
+    onClearCustomUnit: () -> Unit = {},
+    quickUnitName: String = "",
+    onQuickUnitNameChange: (String) -> Unit = {},
+    quickUnitDoseText: String = "",
+    onQuickUnitDoseTextChange: (String) -> Unit = {},
+    quickUnitUnitText: String = "",
+    onQuickUnitUnitTextChange: (String) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -323,11 +355,22 @@ fun ChooseDoseScreen(
                     LaunchedEffect(Unit) {
                         focusRequester.requestFocus()
                     }
+                    val selectedCustomUnitForLabel =
+                        customUnits.firstOrNull { it.id == selectedCustomUnitId }
                     OutlinedTextField(
                         value = doseText,
                         onValueChange = onChangeDoseText,
                         textStyle = textStyle,
-                        label = { Text(i18n("dose_label"), style = textStyle) },
+                        label = {
+                            Text(
+                                if (selectedCustomUnitForLabel != null) {
+                                    i18n("quick_custom_unit_count_label")
+                                } else {
+                                    i18n("dose_label")
+                                },
+                                style = textStyle
+                            )
+                        },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -405,6 +448,135 @@ fun ChooseDoseScreen(
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth()
                         )
+                    }
+
+                    // --- Quick custom unit ---
+                    val selectedCustomUnit =
+                        customUnits.firstOrNull { it.id == selectedCustomUnitId }
+                    var isShowingQuickUnitDialog by remember { mutableStateOf(false) }
+                    if (selectedCustomUnit != null) {
+                        val quantity = doseText.toDoubleOrNull()
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = i18n(
+                                    "quick_custom_unit_count",
+                                    mapOf(
+                                        "unit" to selectedCustomUnit.name,
+                                        "dose" to selectedCustomUnit.dose.toReadableString(),
+                                        "originalUnit" to selectedCustomUnit.originalUnit
+                                    )
+                                ),
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            TextButton(onClick = onClearCustomUnit) {
+                                Text(text = i18n("quick_custom_unit_clear"))
+                            }
+                        }
+                        if (quantity != null) {
+                            Text(
+                                text = i18n(
+                                    "quick_custom_unit_converted",
+                                    mapOf(
+                                        "dose" to (quantity * selectedCustomUnit.dose).toReadableString(),
+                                        "unit" to selectedCustomUnit.originalUnit
+                                    )
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    } else {
+                        TextButton(onClick = { isShowingQuickUnitDialog = true }) {
+                            Text(text = i18n("quick_custom_unit"))
+                        }
+                        if (isShowingQuickUnitDialog) {
+                            AlertDialog(
+                                onDismissRequest = { isShowingQuickUnitDialog = false },
+                                title = { Text(i18n("quick_custom_unit_title")) },
+                                text = {
+                                    Column(
+                                        modifier = Modifier.verticalScroll(rememberScrollState())
+                                    ) {
+                                        if (customUnits.isNotEmpty()) {
+                                            Text(
+                                                text = i18n("quick_custom_unit_existing"),
+                                                style = MaterialTheme.typography.titleSmall
+                                            )
+                                            customUnits.forEach { unit ->
+                                                Row(
+                                                    verticalAlignment = Alignment.CenterVertically,
+                                                    modifier = Modifier
+                                                        .fillMaxWidth()
+                                                        .clickable {
+                                                            onSelectCustomUnit(unit.id)
+                                                            isShowingQuickUnitDialog = false
+                                                        }
+                                                ) {
+                                                    RadioButton(
+                                                        selected = unit.id == selectedCustomUnitId,
+                                                        onClick = null
+                                                    )
+                                                    Text(
+                                                        text = "${unit.name} · ${unit.dose.toReadableString()} ${unit.originalUnit}"
+                                                    )
+                                                }
+                                            }
+                                            Spacer(modifier = Modifier.height(8.dp))
+                                        }
+                                        Text(
+                                            text = i18n("quick_custom_unit_new"),
+                                            style = MaterialTheme.typography.titleSmall
+                                        )
+                                        OutlinedTextField(
+                                            value = quickUnitName,
+                                            onValueChange = onQuickUnitNameChange,
+                                            label = { Text(i18n("quick_custom_unit_name")) },
+                                            singleLine = true,
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                        OutlinedTextField(
+                                            value = quickUnitDoseText,
+                                            onValueChange = onQuickUnitDoseTextChange,
+                                            label = { Text(i18n("quick_custom_unit_dose")) },
+                                            keyboardOptions = KeyboardOptions(
+                                                keyboardType = KeyboardType.Number
+                                            ),
+                                            singleLine = true,
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                        OutlinedTextField(
+                                            value = quickUnitUnitText,
+                                            onValueChange = onQuickUnitUnitTextChange,
+                                            label = { Text(i18n("quick_custom_unit_unit")) },
+                                            singleLine = true,
+                                            modifier = Modifier.fillMaxWidth()
+                                        )
+                                    }
+                                },
+                                confirmButton = {
+                                    TextButton(
+                                        enabled = quickUnitName.isNotBlank() &&
+                                            quickUnitDoseText.toDoubleOrNull() != null &&
+                                            quickUnitUnitText.isNotBlank(),
+                                        onClick = {
+                                            onCreateCustomUnit()
+                                            isShowingQuickUnitDialog = false
+                                        }
+                                    ) {
+                                        Text(i18n("common_done"))
+                                    }
+                                },
+                                dismissButton = {
+                                    TextButton(onClick = { isShowingQuickUnitDialog = false }) {
+                                        Text(i18n("common_cancel"))
+                                    }
+                                }
+                            )
+                        }
                     }
                 }
             }

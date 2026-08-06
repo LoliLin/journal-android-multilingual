@@ -310,7 +310,7 @@ interface ExperienceDao {
     suspend fun insert(rating: ShulginRating)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(customUnit: CustomUnit)
+    suspend fun insert(customUnit: CustomUnit): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(timedNote: TimedNote)

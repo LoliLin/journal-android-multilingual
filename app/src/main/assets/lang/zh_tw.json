@@ -610,5 +610,16 @@
   "stats_report_period_days_30": "最近 30 天",
   "stats_report_period_weeks_26": "最近 6 個月",
   "stats_report_period_months_12": "最近 12 個月",
-  "stats_report_period_years_10": "最近 10 年"
+  "stats_report_period_years_10": "最近 10 年",
+  "quick_custom_unit": "快速自訂單位",
+  "quick_custom_unit_title": "自訂單位",
+  "quick_custom_unit_existing": "已有單位",
+  "quick_custom_unit_new": "新建單位",
+  "quick_custom_unit_name": "單位名稱",
+  "quick_custom_unit_dose": "每單位劑量",
+  "quick_custom_unit_unit": "單位",
+  "quick_custom_unit_count": "{count} × {unit}（{dose} {originalUnit}）",
+  "quick_custom_unit_count_label": "數量",
+  "quick_custom_unit_converted": "= {dose} {unit}",
+  "quick_custom_unit_clear": "清除"
 }
