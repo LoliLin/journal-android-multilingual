@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -68,14 +69,21 @@ fun InteractionsView(
     interactions: Interactions,
     substanceURL: String,
     navigateToURL: (url: String) -> Unit,
-    displayNameForSubstance: (name: String) -> String
+    displayNameForSubstance: (name: String) -> String,
+    navigateToSubstance: (substanceName: String) -> Unit = {},
+    isSubstance: (name: String) -> Boolean = { false }
 ) {
     Column {
         if (interactions.dangerous.isNotEmpty()) {
             interactions.dangerous.forEach {
                 InteractionRowSubstanceScreen(
                     text = displayNameForSubstance(it),
-                    interactionType = InteractionType.DANGEROUS
+                    interactionType = InteractionType.DANGEROUS,
+                    onClick = if (isSubstance(it)) {
+                        { navigateToSubstance(it) }
+                    } else {
+                        null
+                    }
                 )
             }
         }
@@ -83,7 +91,12 @@ fun InteractionsView(
             interactions.unsafe.forEach {
                 InteractionRowSubstanceScreen(
                     text = displayNameForSubstance(it),
-                    interactionType = InteractionType.UNSAFE
+                    interactionType = InteractionType.UNSAFE,
+                    onClick = if (isSubstance(it)) {
+                        { navigateToSubstance(it) }
+                    } else {
+                        null
+                    }
                 )
             }
         }
@@ -91,7 +104,12 @@ fun InteractionsView(
             interactions.uncertain.forEach {
                 InteractionRowSubstanceScreen(
                     text = displayNameForSubstance(it),
-                    interactionType = InteractionType.UNCERTAIN
+                    interactionType = InteractionType.UNCERTAIN,
+                    onClick = if (isSubstance(it)) {
+                        { navigateToSubstance(it) }
+                    } else {
+                        null
+                    }
                 )
             }
         }
@@ -118,11 +136,13 @@ fun InteractionExplanationButton(substanceURL: String, navigateToURL: (url: Stri
 fun InteractionRowSubstanceScreen(
     text: String,
     interactionType: InteractionType,
-    verticalPaddingInside: Dp = 2.dp
+    verticalPaddingInside: Dp = 2.dp,
+    onClick: (() -> Unit)? = null
 ) {
     Surface(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable(enabled = onClick != null) { onClick?.invoke() },
         shape = RectangleShape,
         color = interactionType.color
     ) {

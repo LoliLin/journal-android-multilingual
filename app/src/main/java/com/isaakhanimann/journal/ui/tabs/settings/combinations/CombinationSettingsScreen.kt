@@ -41,6 +41,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -97,7 +98,11 @@ fun CombinationSettingsScreen(substanceInteractions: List<SubstanceInteraction>)
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(text = substanceInteraction.name)
+                            // The stored option name is the English identifier; display it
+                            // through the i18n layer (key: settings_interaction_option_<name>).
+                            val key = "settings_interaction_option_" +
+                                substanceInteraction.name.lowercase().replace(' ', '_')
+                            Text(text = i18nOrDefault(key, substanceInteraction.name))
                             Switch(
                                 checked = substanceInteraction.isOn,
                                 onCheckedChange = { substanceInteraction.toggle() }
