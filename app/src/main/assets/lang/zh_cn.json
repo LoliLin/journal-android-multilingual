@@ -611,6 +611,8 @@
   "stats_report_period_weeks_26": "最近 6 个月",
   "stats_report_period_months_12": "最近 12 个月",
   "stats_report_period_years_10": "最近 10 年",
+  "choose_time_color_title": "{substance} 颜色",
+  "custom_unit_title": "{substance} 单位",
   "settings_interaction_option_alcohol": "酒精",
   "settings_interaction_option_caffeine": "咖啡因",
   "settings_interaction_option_cannabis": "大麻",

@@ -611,6 +611,8 @@
   "stats_report_period_weeks_26": "Last 6 months",
   "stats_report_period_months_12": "Last 12 months",
   "stats_report_period_years_10": "Last 10 years",
+  "choose_time_color_title": "{substance} color",
+  "custom_unit_title": "{substance} unit",
   "settings_interaction_option_alcohol": "Alcohol",
   "settings_interaction_option_caffeine": "Caffeine",
   "settings_interaction_option_cannabis": "Cannabis",
