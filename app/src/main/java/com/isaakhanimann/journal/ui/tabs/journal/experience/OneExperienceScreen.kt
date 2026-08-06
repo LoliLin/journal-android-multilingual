@@ -447,7 +447,10 @@ fun OneExperienceScreen(
                             } else {
                                 ownerUserName
                             },
-                            username = ownerUserName
+                            username = ownerUserName,
+                            // weight(1f): CardTitleWithAvatar fills the row width on its own,
+                            // which would push the "Limitations" button off-screen.
+                            modifier = Modifier.weight(1f)
                         )
                         TextButton(onClick = navigateToExplainTimeline) {
                             Text(text = i18n("limitations"))
@@ -459,13 +462,22 @@ fun OneExperienceScreen(
                             .padding(bottom = 10.dp),
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
+                        // When the substance data lacks onset/comeup/peak/offset the curve
+                        // degrades to a bottom line; shrink the canvas so there is no big
+                        // empty gap between the title and the curve.
+                        val hasFullDuration = ingestionElements.any {
+                            it.roaDuration?.onset != null &&
+                                it.roaDuration?.comeup != null &&
+                                it.roaDuration?.peak != null &&
+                                it.roaDuration?.offset != null
+                        }
                         ExperienceEffectTimelines(
                             ingestionElements = oneExperienceScreenModel.ingestionElements,
                             dataForRatings = dataForRatings,
                             dataForTimedNotes = dataForTimedNotes,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(200.dp)
+                                .height(if (hasFullDuration) 200.dp else 110.dp)
                                 .clickable {
                                     navigateToTimelineScreen(ownerUserName)
                                 }
