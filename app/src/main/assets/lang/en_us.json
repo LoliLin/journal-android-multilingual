@@ -612,5 +612,19 @@
   "stats_report_period_months_12": "Last 12 months",
   "stats_report_period_years_10": "Last 10 years",
   "choose_time_color_title": "{substance} color",
-  "custom_unit_title": "{substance} unit"
+  "custom_unit_title": "{substance} unit",
+  "settings_interaction_option_alcohol": "Alcohol",
+  "settings_interaction_option_caffeine": "Caffeine",
+  "settings_interaction_option_cannabis": "Cannabis",
+  "settings_interaction_option_grapefruit": "Grapefruit",
+  "settings_interaction_option_hormonal_birth_control": "Hormonal birth control",
+  "settings_interaction_option_nicotine": "Nicotine",
+  "settings_interaction_option_lithium": "Lithium",
+  "settings_interaction_option_maoi": "MAOI",
+  "settings_interaction_option_ssris": "SSRIs",
+  "settings_interaction_option_snris": "SNRIs",
+  "settings_interaction_option_5-hydroxytryptophan": "5-Hydroxytryptophan",
+  "settings_interaction_option_tricyclic_antidepressants": "Tricyclic antidepressants",
+  "settings_interaction_option_antibiotics": "Antibiotics",
+  "settings_interaction_option_antihistamine": "Antihistamine"
 }
