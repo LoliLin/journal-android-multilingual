@@ -70,6 +70,7 @@ import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 fun SubstanceCompanionScreen(
     navigateToCategoryScreen: (categoryName: String) -> Unit,
     navigateToSubstanceScreen: (substanceName: String) -> Unit,
+    navigateToIngestion: (ingestionId: Int) -> Unit,
     viewModel: SubstanceCompanionViewModel = hiltViewModel()
 ) {
     val companion = viewModel.thisCompanionFlow.collectAsState().value
@@ -82,6 +83,7 @@ fun SubstanceCompanionScreen(
         SubstanceCompanionScreen(
             navigateToCategoryScreen = navigateToCategoryScreen,
             navigateToSubstanceScreen = navigateToSubstanceScreen,
+            navigateToIngestion = navigateToIngestion,
 
             substanceCompanion = companion,
 
@@ -103,6 +105,7 @@ fun SubstanceCompanionScreen(
 fun SubstanceCompanionScreen(
     navigateToCategoryScreen: (categoryName: String) -> Unit,
     navigateToSubstanceScreen: (substanceName: String) -> Unit,
+    navigateToIngestion: (ingestionId: Int) -> Unit,
     substanceCompanion: SubstanceCompanion,
     ingestionBursts: List<IngestionsBurst>,
     tolerance: Tolerance?,
@@ -194,7 +197,12 @@ fun SubstanceCompanionScreen(
                         }
                         HorizontalDivider()
                         burst.ingestions.forEachIndexed { index, ingestion ->
-                            IngestionRow(ingestionAndCustomUnit = ingestion)
+                            IngestionRow(
+                                ingestionAndCustomUnit = ingestion,
+                                onClick = {
+                                    navigateToIngestion(ingestion.ingestion.id)
+                                }
+                            )
                             if (index < burst.ingestions.size - 1) {
                                 HorizontalDivider()
                             }
@@ -207,10 +215,14 @@ fun SubstanceCompanionScreen(
 }
 
 @Composable
-fun IngestionRow(ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit) {
+fun IngestionRow(
+    ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit,
+    onClick: (() -> Unit)? = null
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(enabled = onClick != null) { onClick?.invoke() }
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
