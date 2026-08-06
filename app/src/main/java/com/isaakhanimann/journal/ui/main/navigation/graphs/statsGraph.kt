@@ -54,7 +54,8 @@ fun NavGraphBuilder.statsGraph(navController: NavController) {
         ) {
             SubstanceCompanionScreen(
                 navigateToCategoryScreen = navController::navigateToCategoryScreen,
-                navigateToSubstanceScreen = navController::navigateToSubstanceScreen
+                navigateToSubstanceScreen = navController::navigateToSubstanceScreen,
+                navigateToIngestion = navController::navigateToIngestion
             )
         }
     }

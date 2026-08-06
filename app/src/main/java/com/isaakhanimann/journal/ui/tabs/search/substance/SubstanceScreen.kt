@@ -485,7 +485,9 @@ fun SubstanceScreen(
                             navigateToURL = navigateToURL,
                             displayNameForSubstance = { name ->
                                 interactionNameLookup[name] ?: name
-                            }
+                            },
+                            navigateToSubstance = navigateToSubstanceScreen,
+                            isSubstance = substanceRepo::isSubstance
                         )
                     }
                 }

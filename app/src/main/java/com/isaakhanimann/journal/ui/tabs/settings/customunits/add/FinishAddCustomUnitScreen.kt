@@ -71,6 +71,7 @@ fun FinishAddCustomUnitScreen(
 ) {
     FinishAddCustomUnitScreenContent(
         substanceName = viewModel.substanceName,
+        getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName,
         roaDose = viewModel.roaDose,
         dismiss = {
             viewModel.createSaveAndDismissAfter(dismiss = dismissAddCustomUnit)
@@ -130,6 +131,7 @@ private fun FinishAddCustomUnitScreenPreview(
 @Composable
 private fun FinishAddCustomUnitScreenContent(
     substanceName: String,
+    getSubstanceDisplayName: (String) -> String = { it },
     roaDose: RoaDose?,
     dismiss: () -> Unit,
     name: String,
@@ -152,7 +154,13 @@ private fun FinishAddCustomUnitScreenContent(
     onChangeOfIsArchived: (Boolean) -> Unit
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName unit") }) },
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(i18n("custom_unit_title", mapOf("substance" to getSubstanceDisplayName(substanceName))))
+                }
+            )
+        },
         floatingActionButton = {
             FloatingDoneButton {
                 dismiss()

@@ -111,6 +111,7 @@ fun ChooseTimeScreen(
         check = viewModel::toggleCheck,
         isChecked = viewModel.userWantsToContinueSameExperienceFlow.collectAsState().value,
         substanceName = viewModel.substanceName,
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
         enteredTitle = viewModel.enteredTitle,
         onChangeOfEnteredTitle = viewModel::changeTitle,
         isEnteredTitleOk = viewModel.isEnteredTitleOk,
@@ -176,6 +177,7 @@ fun ChooseTimeScreen(
     check: (Boolean) -> Unit,
     isChecked: Boolean,
     substanceName: String,
+    getSubstanceDisplayName: (String) -> String = { it },
     enteredTitle: String,
     onChangeOfEnteredTitle: (String) -> Unit,
     isEnteredTitleOk: Boolean,
@@ -192,7 +194,7 @@ fun ChooseTimeScreen(
                     i18n(
                         "substances_ingestion",
                         replacements = mapOf(
-                            "substance" to "$substanceName"
+                            "substance" to getSubstanceDisplayName(substanceName)
                         )
                     )
                 )
@@ -442,7 +444,10 @@ fun ChooseTimeScreen(
                 }
                 if (isShowingColorPicker) {
                     CardWithTitle(
-                        title = "$substanceName color",
+                        title = i18n(
+                            "choose_time_color_title",
+                            mapOf("substance" to getSubstanceDisplayName(substanceName))
+                        ),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         ColorPicker(

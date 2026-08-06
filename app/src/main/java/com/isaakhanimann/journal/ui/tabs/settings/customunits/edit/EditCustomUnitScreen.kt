@@ -51,6 +51,7 @@ fun EditCustomUnitScreen(
 ) {
     EditCustomUnitScreenContent(
         substanceName = viewModel.substanceName,
+        getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName,
         roaDose = viewModel.roaDose,
         dismiss = {
             viewModel.updateAndDismissAfter(dismiss = navigateBack)
@@ -112,6 +113,7 @@ private fun EditCustomUnitScreenPreview(
 @Composable
 private fun EditCustomUnitScreenContent(
     substanceName: String,
+    getSubstanceDisplayName: (String) -> String = { it },
     roaDose: RoaDose?,
     dismiss: () -> Unit,
     name: String,
@@ -137,7 +139,9 @@ private fun EditCustomUnitScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("$substanceName unit") },
+                title = {
+                    Text(i18n("custom_unit_title", mapOf("substance" to getSubstanceDisplayName(substanceName))))
+                },
                 actions = {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     IconButton(onClick = { isShowingDeleteDialog = true }) {

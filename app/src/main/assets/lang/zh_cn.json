@@ -621,5 +621,21 @@
   "quick_custom_unit_count": "{count} × {unit}（{dose} {originalUnit}）",
   "quick_custom_unit_count_label": "数量",
   "quick_custom_unit_converted": "= {dose} {unit}",
-  "quick_custom_unit_clear": "清除"
+  "quick_custom_unit_clear": "清除",
+  "choose_time_color_title": "{substance} 颜色",
+  "custom_unit_title": "{substance} 单位",
+  "settings_interaction_option_alcohol": "酒精",
+  "settings_interaction_option_caffeine": "咖啡因",
+  "settings_interaction_option_cannabis": "大麻",
+  "settings_interaction_option_grapefruit": "西柚",
+  "settings_interaction_option_hormonal_birth_control": "激素类避孕药",
+  "settings_interaction_option_nicotine": "尼古丁",
+  "settings_interaction_option_lithium": "锂盐",
+  "settings_interaction_option_maoi": "单胺氧化酶抑制剂",
+  "settings_interaction_option_ssris": "选择性血清素再摄取抑制剂",
+  "settings_interaction_option_snris": "血清素与去甲肾上腺素再摄取抑制剂",
+  "settings_interaction_option_5-hydroxytryptophan": "5-羟基色氨酸",
+  "settings_interaction_option_tricyclic_antidepressants": "三环类抗抑郁药",
+  "settings_interaction_option_antibiotics": "抗生素",
+  "settings_interaction_option_antihistamine": "抗组胺药"
 }

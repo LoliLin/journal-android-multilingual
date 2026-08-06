@@ -120,7 +120,8 @@ fun ChooseDoseCustomUnitScreen(
                 )
             },
             currentDoseClass = viewModel.currentDoseClass,
-            customUnitCalculationText = viewModel.customUnitCalculationText
+            customUnitCalculationText = viewModel.customUnitCalculationText,
+            getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
         )
     }
 }
@@ -179,11 +180,18 @@ fun ChooseDoseCustomUnitScreen(
     navigateToNext: () -> Unit,
     useUnknownDoseAndNavigate: () -> Unit,
     currentDoseClass: DoseClass?,
-    customUnitCalculationText: String?
+    customUnitCalculationText: String?,
+    getSubstanceDisplayName: (String) -> String = { it }
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("${customUnit.substanceName} (${customUnit.name})") })
+            TopAppBar(
+                title = {
+                    Text(
+                        "${getSubstanceDisplayName(customUnit.substanceName)} (${customUnit.name})"
+                    )
+                }
+            )
         },
         floatingActionButton = {
             if (isValidDose) {
