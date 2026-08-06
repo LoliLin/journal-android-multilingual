@@ -229,7 +229,8 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                         units,
                         isEstimate,
                         dose,
-                        estimatedDoseStandardDeviation
+                        estimatedDoseStandardDeviation,
+                        customUnitId
                     ->
                     val args = backStackEntry.arguments!!
                     val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
@@ -242,7 +243,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
                         dose = dose,
                         estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
                         substanceName = substanceName,
-                        customUnitId = null,
+                        customUnitId = customUnitId,
                         customSubstanceId = null
                     )
                 },
