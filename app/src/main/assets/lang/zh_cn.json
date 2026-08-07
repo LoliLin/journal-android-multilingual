@@ -670,5 +670,6 @@
   "time_between": "时间间隔",
   "finish_substance_color": "{substance} 的颜色",
   "suggestion_enter_dose": "输入 {unit}",
-  "sd_means": "表示："
-}
+  "sd_means": "表示：",
+  "common_confirm": "确认",
+  "settings_delete_type_confirm": "输入 \"Delete\" 以确认"}
