@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.models
 
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
+
 data class ConsumerWithIngestions(
     val consumerName: String,
     val ingestionElements: List<IngestionElement>

@@ -30,8 +30,9 @@ import kotlin.time.Duration.Companion.minutes
 
 class AllTimelinesModel(
     dataForLines: List<DataForOneEffectLine>,
-    dataForRatings: List<DataForOneRating>,
-    timedNotes: List<DataForOneTimedNote>
+    val dataForRatings: List<DataForOneRating>,
+    val timedNotes: List<DataForOneTimedNote>,
+    areSubstanceHeightsIndependent: Boolean = false,
 ) {
     val startTime: Instant
     val widthInSeconds: Float
@@ -48,32 +49,40 @@ class AllTimelinesModel(
         val ratingTimes = dataForRatings.map { it.time }
         val ingestionTimes = dataForLines.map { it.startTime }
         val noteTimes = timedNotes.map { it.time }
-        val roaGroups = dataForLines.groupBy { it.substanceName }.flatMap { substanceGroup ->
-            val linesPerSubstance = substanceGroup.value
-            return@flatMap linesPerSubstance.groupBy { it.route }.map { routeGroup ->
-                val linesPerRoute = routeGroup.value
-                return@map RoaGroup(
-                    linesPerRoute.first().color,
-                    linesPerRoute.first().roaDuration,
-                    linesPerRoute.map {
-                        WeightedLine(it.startTime, it.horizontalWeight, it.height)
-                    }
-                )
-            }
-        }
         val allStartTimeCandidates = ratingTimes + ingestionTimes + noteTimes
         startTime =
             allStartTimeCandidates.reduce { acc, date -> if (acc.isBefore(date)) acc else date }
+        val roaGroups = dataForLines.groupBy { it.substanceName }
+            .flatMap { substanceGroup ->
+                val linesPerSubstance = substanceGroup.value
+                return@flatMap linesPerSubstance.groupBy { it.route }.map { routeGroup ->
+                    val linesPerRoute = routeGroup.value
+                    return@map RoaGroup(
+                        color = linesPerRoute.first().color,
+                        roaDuration = linesPerRoute.first().roaDuration,
+                        weightedLines = linesPerRoute.map {
+                            WeightedLine(
+                                startTime = it.startTime,
+                                endTime = it.endTime,
+                                horizontalWeight = it.horizontalWeight,
+                                height = it.height
+                            )
+                        })
+                }
+            }
         val groupDrawables = roaGroups.map { group ->
             GroupDrawable(
                 startTimeGraph = startTime,
                 color = group.color,
                 roaDuration = group.roaDuration,
-                weightedLines = group.weightedLines
+                weightedLines = group.weightedLines,
+                areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
             )
         }
+        val overallMaxHeight = groupDrawables.maxOfOrNull { it.nonNormalisedHeight } ?: 1f
+        groupDrawables.forEach { it.normaliseHeight(overallMaxHeight) }
         this.groupDrawables = groupDrawables
-        val maxWidthIngestions: Float = groupDrawables.maxOfOrNull {
+        val maxWidthOfGroups: Float = groupDrawables.maxOfOrNull {
             it.endOfLineRelativeToStartInSeconds
         } ?: 0f
         val latestRating = ratingTimes.maxOrNull()
@@ -88,13 +97,12 @@ class AllTimelinesModel(
         } else {
             0f
         }
-        val maxCandidates =
-            listOf(
-                maxWidthIngestions,
-                maxWidthRating,
-                maxWidthNote,
-                2.hours.inWholeSeconds.toFloat()
-            )
+        val maxCandidates = listOf(
+            maxWidthOfGroups,
+            maxWidthRating,
+            maxWidthNote,
+            2.hours.inWholeSeconds.toFloat()
+        )
         widthInSeconds = maxCandidates.max() + 10.minutes.inWholeSeconds.toFloat()
         axisDrawable = AxisDrawable(startTime, widthInSeconds)
     }

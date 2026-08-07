@@ -48,6 +48,10 @@ class SubstanceColorsViewModel @Inject constructor(
         }
     }
 
+    fun deleteUnusedSubstanceCompanions() = viewModelScope.launch {
+        experienceRepository.deleteUnusedSubstanceCompanions()
+    }
+
     fun updateColor(color: AdaptiveColor, substanceName: String) {
         viewModelScope.launch {
             val updatedList = _substanceCompanionsFlow.value.map { companion ->
@@ -74,7 +78,7 @@ class SubstanceColorsViewModel @Inject constructor(
 
     val otherColorsFlow: StateFlow<List<AdaptiveColor>> =
         alreadyUsedColorsFlow.map { alreadyUsedColors ->
-            AdaptiveColor.values().filter {
+            AdaptiveColor.entries.filter {
                 !alreadyUsedColors.contains(it)
             }
         }.stateIn(

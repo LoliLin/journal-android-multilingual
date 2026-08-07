@@ -19,16 +19,20 @@
 package com.isaakhanimann.journal.ui.tabs.settings.customunits
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Inventory
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
@@ -37,11 +41,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -59,10 +67,13 @@ fun CustomUnitsScreen(
     navigateToCustomUnitArchive: () -> Unit
 ) {
     CustomUnitsScreenContent(
-        customUnits = viewModel.customUnitsFlow.collectAsState().value,
+        filteredUnits = viewModel.filteredCustomUnitsFlow.collectAsState().value,
         navigateToEditCustomUnit = navigateToEditCustomUnit,
         navigateToAddCustomUnit = navigateToAddCustomUnit,
-        navigateToCustomUnitArchive = navigateToCustomUnitArchive
+        navigateToCustomUnitArchive = navigateToCustomUnitArchive,
+        searchText = viewModel.searchTextFlow.collectAsState().value,
+        onSearch = viewModel::onSearch,
+        getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName
     )
 }
 
@@ -70,23 +81,29 @@ fun CustomUnitsScreen(
 @Composable
 fun CustomUnitsScreenPreview() {
     CustomUnitsScreenContent(
-        customUnits = listOf(
+        filteredUnits = listOf(
             CustomUnit.mdmaSample,
             CustomUnit.twoCBSample
         ),
         navigateToEditCustomUnit = { _ -> },
         navigateToAddCustomUnit = {},
-        navigateToCustomUnitArchive = {}
+        navigateToCustomUnitArchive = {},
+        searchText = "",
+        onSearch = {},
+        getSubstanceDisplayName = { it }
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomUnitsScreenContent(
-    customUnits: List<CustomUnit>,
+    filteredUnits: List<CustomUnit>,
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
     navigateToAddCustomUnit: () -> Unit,
-    navigateToCustomUnitArchive: () -> Unit
+    navigateToCustomUnitArchive: () -> Unit,
+    searchText: String,
+    onSearch: (String) -> Unit,
+    getSubstanceDisplayName: (String) -> String,
 ) {
     Scaffold(
         topBar = {
@@ -104,6 +121,7 @@ fun CustomUnitsScreenContent(
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
+                modifier = Modifier.imePadding(),
                 onClick = navigateToAddCustomUnit,
                 icon = {
                     Icon(Icons.Default.Add, contentDescription = i18n("custom_units_add"))
@@ -114,36 +132,78 @@ fun CustomUnitsScreenContent(
             )
         }
     ) { padding ->
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-        ) {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
-                items(customUnits) { customUnit ->
-                    CustomUnitRow(
-                        customUnit = customUnit,
-                        navigateToEditCustomUnit = navigateToEditCustomUnit
+        Column(modifier = Modifier.padding(padding)) {
+            val focusManager = LocalFocusManager.current
+            TextField(
+                modifier = Modifier.fillMaxWidth(),
+                value = searchText,
+                onValueChange = { value ->
+                    onSearch(value)
+                },
+                placeholder = { Text(text = i18n("common_search")) },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = i18n("common_search"),
                     )
-                    HorizontalDivider()
+                },
+                trailingIcon = {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        // clear search button
+                        if (searchText.isNotEmpty()) {
+                            IconButton(onClick = {
+                                onSearch("")
+                            }) {
+                                Icon(
+                                    Icons.Default.Close,
+                                    contentDescription = i18n("common_close"),
+                                )
+                            }
+                        }
+                    }
+                },
+                keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    autoCorrectEnabled = false,
+                    imeAction = ImeAction.Done,
+                    capitalization = KeyboardCapitalization.Words,
+                ),
+                singleLine = true
+            )
+            if (filteredUnits.isEmpty()) {
+                if(searchText.isEmpty()) {
+                    EmptyScreenDisclaimer(
+                        title = i18n("custom_units_empty_title"),
+                        description = i18n("custom_units_empty_desc")
+                    )
+                } else {
+                    EmptyScreenDisclaimer(
+                        title = i18n("custom_units_empty_search_title"),
+                        description = i18n("custom_units_empty_search_desc")
+                    )
                 }
-            }
-            if (customUnits.isEmpty()) {
-                EmptyScreenDisclaimer(
-                    title = i18n("custom_units_empty_title"),
-                    description = i18n("custom_units_empty_description")
-                )
+            } else {
+                LazyColumn {
+                    items(filteredUnits) { customUnit ->
+                        CustomUnitRow(
+                            customUnit = customUnit,
+                            navigateToEditCustomUnit = navigateToEditCustomUnit,
+                            getSubstanceDisplayName = getSubstanceDisplayName
+                        )
+                        HorizontalDivider()
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun CustomUnitRow(customUnit: CustomUnit, navigateToEditCustomUnit: (customUnitId: Int) -> Unit) {
+fun CustomUnitRow(
+    customUnit: CustomUnit,
+    navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    getSubstanceDisplayName: (String) -> String
+) {
     Column(
         modifier = Modifier
             .clickable {
@@ -154,11 +214,11 @@ fun CustomUnitRow(customUnit: CustomUnit, navigateToEditCustomUnit: (customUnitI
         horizontalAlignment = Alignment.Start
     ) {
         Text(
-            text = "${customUnit.substanceName}, ${customUnit.name}",
+            text = "${getSubstanceDisplayName(customUnit.substanceName)}, ${customUnit.name}",
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "${customUnit.getDoseOfOneUnitDescription()} per ${customUnit.unit}",
+            text = i18n("custom_units_dose_per_unit", mapOf("dose" to customUnit.getDoseOfOneUnitDescription(), "unit" to customUnit.unit)),
             style = MaterialTheme.typography.titleSmall
         )
         if (customUnit.note.isNotBlank()) {
@@ -170,12 +230,3 @@ fun CustomUnitRow(customUnit: CustomUnit, navigateToEditCustomUnit: (customUnitI
     }
 }
 
-fun CustomUnit.getDoseOfOneUnitDescription(): String = this.dose?.let { unwrappedDose ->
-    if (this.isEstimate) {
-        this.estimatedDoseStandardDeviation?.let { estimatedDoseStandardDeviationUnwrapped ->
-            "${unwrappedDose.toReadableString()}±${estimatedDoseStandardDeviationUnwrapped.toReadableString()} ${this.originalUnit}"
-        } ?: "~${unwrappedDose.toReadableString()} ${this.originalUnit}"
-    } else {
-        "${unwrappedDose.toReadableString()} ${this.originalUnit}"
-    }
-} ?: "Unknown dose"

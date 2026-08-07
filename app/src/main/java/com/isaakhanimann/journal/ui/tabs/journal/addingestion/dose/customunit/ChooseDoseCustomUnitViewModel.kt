@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class ChooseDoseCustomUnitViewModel @Inject constructor(
     experienceRepo: ExperienceRepository,
-    substanceRepo: SubstanceRepository,
+    val substanceRepo: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
 

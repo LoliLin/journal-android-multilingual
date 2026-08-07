@@ -19,6 +19,10 @@
 package com.isaakhanimann.journal.ui.tabs.journal
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.achievement.AchievementDefinition
@@ -31,37 +35,40 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+val IS_MIGRATED_0 = booleanPreferencesKey("is_migrated_0")
+val IS_MIGRATED_1 = booleanPreferencesKey("is_migrated_1")
+
 @HiltViewModel
 class JournalViewModel @Inject constructor(
-
     val experienceRepo: ExperienceRepository,
-
     val searchRepository: SearchRepository,
-
     val substanceRepository: SubstanceRepository,
+    private val dataStore: DataStore<Preferences>,
     private val userPreferences: UserPreferences,
     achievementDefinitionsLoader: AchievementDefinitionsLoader
-
 ) : ViewModel() {
 
     val achievementDefinitions: List<AchievementDefinition> =
         achievementDefinitionsLoader.definitions
 
-    val achievementsFlow = userPreferences.achievementsFlow.stateIn(
-        initialValue = emptyList(),
+    val achievementsFlow: StateFlow<List<String>?> = userPreferences.achievementsFlow.stateIn(
+        initialValue = null,
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
 
     fun addAchievement(achievement: String) {
         viewModelScope.launch {
-            userPreferences.addAchievement(achievement)
-            AchievementEventBus.send(achievement)
+            val added = userPreferences.addAchievement(achievement)
+            if (added) {
+                AchievementEventBus.send(achievement)
+            }
         }
     }
 
@@ -76,13 +83,34 @@ class JournalViewModel @Inject constructor(
     fun onChangeRelative(isRelative: Boolean) {
         isTimeRelativeToNow.value = isRelative
     }
+
     val isSearchEnabled = mutableStateOf(false)
 
-    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-        initialValue = "You",
+    val ownerUserNameFlow: StateFlow<String?> = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = null,
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    fun resetAddIngestionTimes() = viewModelScope.launch {
+        userPreferences.saveLastIngestionTimeOfExperience(null)
+        userPreferences.saveClonedIngestionTime(null)
+    }
+
+    fun maybeMigrate() {
+        viewModelScope.launch {
+            dataStore.edit { settings ->
+                if (settings[IS_MIGRATED_0] == null) {
+                    experienceRepo.migrateBenzydamine()
+                    settings[IS_MIGRATED_0] = true
+                }
+                if (settings[IS_MIGRATED_1] == null) {
+                    experienceRepo.migrateCannabisAndMushroomUnits()
+                    settings[IS_MIGRATED_1] = true
+                }
+            }
+        }
+    }
 
     fun onChangeOfIsSearchEnabled(newValue: Boolean) {
         if (newValue) {
@@ -116,49 +144,51 @@ class JournalViewModel @Inject constructor(
             .combine(searchTextFlow) { experiencesWithIngestions, searchText ->
                 Pair(first = experiencesWithIngestions, second = searchText)
             }
+            .combine(experienceRepo.getCustomSubstancesFlow()) { pair, customSubstances ->
+                Pair(first = pair, second = customSubstances)
+            }
             .combine(isFavoriteEnabledFlow) { pair, isFavoriteEnabled ->
-                val experiencesWithIngestions = pair.first
-                val searchText = pair.second
-                val filtered = if (searchText.isEmpty() && !isFavoriteEnabled) {
-                    experiencesWithIngestions
-                } else {
+                var experiencesWithIngestions = pair.first.first
+                val searchText = pair.first.second
+                val customSubstances = pair.second
+
+                if (isFavoriteEnabled) {
+                    // only favorites
+                    experiencesWithIngestions =
+                        experiencesWithIngestions.filter { it.experience.isFavorite }
+                }
+                if (searchText.isNotEmpty()) {
+                    // collect substances with matching names
                     val matchingSubstances = searchRepository.getMatchingSubstances(
                         searchText = searchText,
                         filterCategories = emptyList(),
                         recentlyUsedSubstanceNamesSorted = emptyList()
-                    )
-                    if (isFavoriteEnabled) {
-                        experiencesWithIngestions.filter {
-                            it.experience.isFavorite &&
-                                (
-                                    it.experience.title.contains(
-                                        other = searchText,
-                                        ignoreCase = true
-                                    ) ||
-                                        it.ingestionsWithCompanions.any { ingestionWithCompanion ->
-                                            matchingSubstances.any { sub ->
-                                                sub.substance.name ==
-                                                    ingestionWithCompanion.substanceCompanion?.substanceName
-                                            }
-                                        }
-                                    )
-                        }
-                    } else {
-                        experiencesWithIngestions.filter {
-                            it.experience.title.contains(
-                                other = searchText,
-                                ignoreCase = true
-                            ) ||
-                                it.ingestionsWithCompanions.any { ingestionWithCompanion ->
-                                    matchingSubstances.any { sub ->
-                                        sub.substance.name ==
-                                            ingestionWithCompanion.substanceCompanion?.substanceName
-                                    }
-                                }
-                        }
+                    ).map { it.substance.name } + customSubstances.map { it.name }.filter {
+                        it.contains(other = searchText, ignoreCase = true)
+                    }
+
+                    // experience title, text or some consumed substance must contain search string or the consumer needs to match
+                    experiencesWithIngestions = experiencesWithIngestions.filter {
+                        it.experience.title.contains(
+                            other = searchText,
+                            ignoreCase = true
+                        ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
+                            val isSubstanceAMatch =
+                                matchingSubstances.any { name -> name == ingestionWithCompanion.substanceCompanion?.substanceName }
+                            val isConsumerAMatch =
+                                ingestionWithCompanion.ingestion.consumerName?.contains(
+                                    searchText,
+                                    ignoreCase = true
+                                )
+                                    ?: false
+                            isSubstanceAMatch || isConsumerAMatch
+                        } || it.experience.text.contains(
+                            other = searchText,
+                            ignoreCase = true
+                        )
                     }
                 }
-                return@combine filtered
+                return@combine experiencesWithIngestions
             }
             .stateIn(
                 initialValue = emptyList(),

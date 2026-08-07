@@ -19,8 +19,8 @@
 package com.isaakhanimann.journal.ui.tabs.settings
 
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
@@ -37,7 +37,7 @@ object ShulginRatingOptionSerializer : KSerializer<ShulginRatingOption> {
 
     override fun deserialize(decoder: Decoder): ShulginRatingOption {
         val ratingRawValue = decoder.decodeString()
-        val foundRating = ShulginRatingOption.values().firstOrNull {
+        val foundRating = ShulginRatingOption.entries.firstOrNull {
             it.rawValue == ratingRawValue
         }
         return foundRating ?: throw SerializationException(

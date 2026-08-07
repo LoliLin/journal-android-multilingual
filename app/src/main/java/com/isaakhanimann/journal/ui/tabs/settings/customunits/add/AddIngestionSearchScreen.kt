@@ -23,7 +23,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -49,36 +49,46 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.SubstanceRowAddIngestion
+import com.isaakhanimann.journal.ui.tabs.search.CategoryModel
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
+import com.isaakhanimann.journal.ui.tabs.search.customColor
+import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 
 @Composable
 fun ChooseSubstanceScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
+    navigateToCustomSubstanceChooseRoute: (customSubstanceName: String) -> Unit = {},
     viewModel: AddIngestionSearchViewModel = hiltViewModel()
 ) {
     ChooseSubstanceScreen(
         navigateToChooseRoute = navigateToChooseRoute,
+        navigateToCustomSubstanceChooseRoute = navigateToCustomSubstanceChooseRoute,
         searchText = viewModel.searchTextFlow.collectAsState().value,
         onChangeSearchText = {
             viewModel.updateSearchText(it)
         },
-        filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value
+        filteredSubstances = viewModel.filteredSubstancesFlow.collectAsState().value,
+        filteredCustomSubstances = viewModel.filteredCustomSubstancesFlow.collectAsState().value
     )
 }
 
 @Composable
 private fun ChooseSubstanceScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
+    navigateToCustomSubstanceChooseRoute: (customSubstanceName: String) -> Unit,
     searchText: String,
     onChangeSearchText: (searchText: String) -> Unit,
-    filteredSubstances: List<SubstanceModel>
+    filteredSubstances: List<SubstanceModel>,
+    filteredCustomSubstances: List<CustomSubstance>,
 ) {
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
@@ -98,7 +108,9 @@ private fun ChooseSubstanceScreen(
         Column(modifier = Modifier.padding(padding)) {
             LinearProgressIndicator(
                 progress = { 0.17f },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clearAndSetSemantics { },
             )
             TextField(
                 value = searchText,
@@ -110,7 +122,8 @@ private fun ChooseSubstanceScreen(
                     .focusRequester(focusRequester)
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
-                    },
+                    }
+                    .clearAndSetSemantics { },
                 placeholder = { Text(text = i18n("search_substances_placeholder")) },
                 leadingIcon = {
                     Icon(
@@ -141,16 +154,31 @@ private fun ChooseSubstanceScreen(
                 singleLine = true
             )
             LazyColumn {
-                itemsIndexed(filteredSubstances) { index, substance ->
+                items(filteredSubstances) { substance ->
                     SubstanceRowAddIngestion(substanceModel = substance, onTap = {
                         navigateToChooseRoute(substance.name)
                     })
-                    if (index < filteredSubstances.size - 1) {
-                        HorizontalDivider()
-                    }
+                    HorizontalDivider()
+                }
+                items(filteredCustomSubstances) { customSubstance ->
+                    SubstanceRow(substanceModel = SubstanceModel(
+                        name = customSubstance.name,
+                        displayName = customSubstance.name,
+                        commonNames = emptyList(),
+                        categories = listOf(
+                            CategoryModel(
+                                rawName = "custom", color = customColor
+                            )
+                        ),
+                        hasSaferUse = false,
+                        hasInteractions = false
+                    ), onTap = {
+                        navigateToCustomSubstanceChooseRoute(customSubstance.name)
+                    })
+                    HorizontalDivider()
                 }
                 item {
-                    if (filteredSubstances.isEmpty()) {
+                    if (filteredSubstances.isEmpty() && filteredCustomSubstances.isEmpty()) {
                         Text(
                             i18n("search_no_match"),
                             modifier = Modifier.padding(10.dp)

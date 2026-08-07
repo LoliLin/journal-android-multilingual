@@ -63,7 +63,7 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
             arguments = ArgumentRouter.FinishAddCustomUnitRouter.args
         ) {
             FinishAddCustomUnitScreen(
-                dismissAddCustomUnit = navController::dismissAddCustomUnits
+                dismissAddCustomUnit = { navController.dismissAddCustomUnits() }
             )
         }
     }

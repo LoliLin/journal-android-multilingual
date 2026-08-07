@@ -96,7 +96,7 @@ class ChooseDoseViewModel @Inject constructor(
         )
         viewModelScope.launch {
             val id = experienceRepo.insert(customUnit = newCustomUnit)
-            selectedCustomUnitId = id.toInt()
+            selectedCustomUnitId = id
             quickUnitName = ""
             quickUnitDoseText = ""
             quickUnitUnitText = ""
@@ -132,7 +132,7 @@ class ChooseDoseViewModel @Inject constructor(
     /** The dose value to persist: in custom-unit mode the input is a count. */
     fun doseForNext(customUnit: CustomUnit?): Double? =
         if (customUnit != null) {
-            doseText.toDoubleOrNull()?.times(customUnit.dose)
+            doseText.toDoubleOrNull()?.times(customUnit.dose ?: 0.0)
         } else {
             dose
         }

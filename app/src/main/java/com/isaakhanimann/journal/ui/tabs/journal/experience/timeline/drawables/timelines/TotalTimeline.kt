@@ -33,36 +33,42 @@ data class TotalTimeline(
     val total: FullDurationRange,
     val totalWeight: Float,
     val percentSmoothness: Float = 0.5f,
-    val ingestionTimeRelativeToStartInSeconds: Float
+    val ingestionTimeRelativeToStartInSeconds: Float,
+    override val nonNormalisedHeight: Float,
 ) : TimelineDrawable {
+
+    override var referenceHeight = 1f
 
     override val endOfLineRelativeToStartInSeconds: Float =
         ingestionTimeRelativeToStartInSeconds + total.maxInSeconds
 
     override fun drawTimeLine(
         drawScope: DrawScope,
-        height: Float,
+        canvasHeight: Float,
         pixelsPerSec: Float,
         color: Color,
         density: Density
     ) {
+        val normalisedHeight = nonNormalisedHeight / referenceHeight
+        val heightInPx = normalisedHeight * canvasHeight
+        val top = canvasHeight - heightInPx
         val path = Path().apply {
             val totalMinX = total.minInSeconds * pixelsPerSec
             val totalX = total.interpolateAtValueInSeconds(totalWeight) * pixelsPerSec
             val startX = ingestionTimeRelativeToStartInSeconds * pixelsPerSec
-            moveTo(startX, height)
+            moveTo(startX, canvasHeight)
             endSmoothLineTo(
                 smoothnessBetween0And1 = percentSmoothness,
                 startX = startX,
                 endX = startX + (totalMinX / 2),
-                endY = 0f
+                endY = top
             )
             startSmoothLineTo(
                 smoothnessBetween0And1 = percentSmoothness,
                 startX = startX + (totalMinX / 2),
-                startY = 0f,
+                startY = top,
                 endX = startX + totalX,
-                endY = height
+                endY = canvasHeight
             )
         }
         drawScope.drawPath(
@@ -78,21 +84,23 @@ data class TotalTimeline(
         drawScope.drawCircle(
             color = color,
             radius = density.ingestionDotRadius,
-            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = height)
+            center = Offset(x = ingestionTimeRelativeToStartInSeconds * pixelsPerSec, y = canvasHeight)
         )
     }
 }
 
 fun RoaDuration.toTotalTimeline(
     totalWeight: Float,
-    ingestionTimeRelativeToStartInSeconds: Float
+    ingestionTimeRelativeToStartInSeconds: Float,
+    nonNormalisedHeight: Float,
 ): TotalTimeline? {
     val fullTotal = total?.toFullDurationRange()
     return if (fullTotal != null) {
         TotalTimeline(
             total = fullTotal,
             totalWeight = totalWeight,
-            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds
+            ingestionTimeRelativeToStartInSeconds = ingestionTimeRelativeToStartInSeconds,
+            nonNormalisedHeight = nonNormalisedHeight,
         )
     } else {
         null

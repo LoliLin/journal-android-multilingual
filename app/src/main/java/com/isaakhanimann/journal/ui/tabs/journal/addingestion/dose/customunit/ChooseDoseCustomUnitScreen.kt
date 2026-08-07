@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
@@ -63,6 +64,7 @@ import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.asPlural
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
@@ -196,6 +198,7 @@ fun ChooseDoseCustomUnitScreen(
         floatingActionButton = {
             if (isValidDose) {
                 ExtendedFloatingActionButton(
+                    modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
                     icon = {
                         Icon(
@@ -310,25 +313,45 @@ fun ChooseDoseCustomUnitScreen(
                         )
                     }
                     AnimatedVisibility(visible = isEstimate) {
-                        OutlinedTextField(
-                            value = estimatedDoseDeviationText,
-                            onValueChange = onChangeEstimatedDoseDeviationText,
-                            textStyle = textStyle,
-                            label = { Text(i18n("dose_estimated_sd_label"), style = textStyle) },
-                            trailingIcon = {
-                                Text(
-                                    text = customUnit.unit.asPlural(estimatedDoseDeviation ?: 2.0),
-                                    style = textStyle,
-                                    modifier = Modifier.padding(horizontal = horizontalPadding)
-                                )
-                            },
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            }),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        Column {
+                            OutlinedTextField(
+                                value = estimatedDoseDeviationText,
+                                onValueChange = onChangeEstimatedDoseDeviationText,
+                                textStyle = textStyle,
+                                label = {
+                                    Text(
+                                        i18n("dose_estimated_sd_label"),
+                                        style = textStyle
+                                    )
+                                },
+                                isError = estimatedDoseDeviationText.toDoubleOrNull() == null,
+                                trailingIcon = {
+                                    Text(
+                                        text = customUnit.unit.asPlural(estimatedDoseDeviation ?: 2.0),
+                                        style = textStyle,
+                                        modifier = Modifier.padding(horizontal = horizontalPadding)
+                                    )
+                                },
+                                keyboardActions = KeyboardActions(onDone = {
+                                    focusManager.clearFocus()
+                                }),
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            val mean = doseText.toDoubleOrNull()
+                            val standardDeviation = estimatedDoseDeviationText.toDoubleOrNull()
+                            val isExplanationShown = mean != null && standardDeviation != null
+                            AnimatedVisibility(isExplanationShown) {
+                                if (mean != null && standardDeviation != null) {
+                                    StandardDeviationExplanation(
+                                        mean = mean,
+                                        standardDeviation = standardDeviation,
+                                        unit = customUnit.unit.asPlural(mean)
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }

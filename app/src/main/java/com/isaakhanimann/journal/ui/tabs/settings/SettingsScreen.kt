@@ -46,6 +46,7 @@ import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
 import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
@@ -60,6 +61,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -69,6 +71,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -103,6 +106,7 @@ import androidx.compose.foundation.layout.height
 
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+
 
 
 @Composable
@@ -146,7 +150,11 @@ fun SettingsScreen(
         saveSelectedLanguage = viewModel::saveSelectedLanguage,
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
-        achievements = viewModel.achievementsFlow.collectAsState().value
+        achievements = viewModel.achievementsFlow.collectAsState().value,
+        isTimelineHidden = viewModel.isTimelineHiddenFlow.collectAsState().value,
+        saveIsTimelineHidden = viewModel::saveIsTimelineHidden,
+        areSubstanceHeightsIndependent = viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value,
+        saveAreSubstanceHeightsIndependent = viewModel::saveAreSubstanceHeightsIndependent,
     )
 }
 
@@ -178,7 +186,11 @@ fun SettingsScreen(
     saveSelectedLanguage: (String?) -> Unit,
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
-    saveOwnerUserName: (String?) -> Unit
+    saveOwnerUserName: (String?) -> Unit,
+    isTimelineHidden: Boolean,
+    saveIsTimelineHidden: (Boolean) -> Unit,
+    areSubstanceHeightsIndependent: Boolean,
+    saveAreSubstanceHeightsIndependent: (Boolean) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -249,8 +261,19 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
 
+                SettingsButton(
+                    imageVector = Icons.Outlined.StarBorder,
+                    text = i18n("settings_icon_title")
+                ) {
+                    navigateToIconPicker()
+                }
+
+                HorizontalDivider()
+
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -276,12 +299,61 @@ fun SettingsScreen(
                 }
 
                 HorizontalDivider()
-
-                SettingsButton(
-                    imageVector = Icons.Outlined.StarBorder,
-                    text = i18n("settings_icon_title")
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    navigateToIconPicker()
+                    Text(text = i18n("settings_hide_timeline"))
+                    Switch(
+                        checked = isTimelineHidden,
+                        onCheckedChange = saveIsTimelineHidden
+                    )
+                }
+                HorizontalDivider()
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+                    var showBottomSheet by remember { mutableStateOf(false) }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(5.dp),
+                        modifier = Modifier
+                            .clickable {
+                                showBottomSheet = true
+                            }
+                            .padding(end = ButtonDefaults.IconSpacing)
+                    ) {
+                        Text(text = i18n("settings_independent_substance_heights"))
+                        if (showBottomSheet) {
+                            ModalBottomSheet(
+                                onDismissRequest = {
+                                    showBottomSheet = false
+                                },
+                                sheetState = sheetState
+                            ) {
+                                Text(
+                                    text = i18n("settings_independent_substance_heights_description").trimIndent(),
+                                    modifier = Modifier
+                                        .padding(horizontal = horizontalPadding)
+                                        .padding(bottom = 15.dp)
+                                        .verticalScroll(state = rememberScrollState())
+                                )
+                            }
+                        }
+                        Icon(Icons.Outlined.Info, contentDescription = i18n("common_show_more_info"))
+                    }
+                    Switch(
+                        checked = areSubstanceHeightsIndependent,
+                        onCheckedChange = saveAreSubstanceHeightsIndependent
+                    )
                 }
             }
 

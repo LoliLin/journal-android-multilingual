@@ -34,6 +34,10 @@ enum class SavedTimeDisplayOption {
         override fun getTranslatedText(context: Context): String =
             I18n.translate(context, "time_display_relative_start")
     },
+    TIME_BETWEEN {
+        override fun getTranslatedText(context: Context): String =
+            I18n.translate(context, "time_between")
+    },
     REGULAR {
         override fun getTranslatedText(context: Context): String =
             I18n.translate(context, "journal_regular_time")
@@ -43,7 +47,5 @@ enum class SavedTimeDisplayOption {
 }
 
 enum class TimeDisplayOption {
-    RELATIVE_TO_NOW,
-    RELATIVE_TO_START,
-    REGULAR
+    RELATIVE_TO_NOW, RELATIVE_TO_START, TIME_BETWEEN, REGULAR;
 }

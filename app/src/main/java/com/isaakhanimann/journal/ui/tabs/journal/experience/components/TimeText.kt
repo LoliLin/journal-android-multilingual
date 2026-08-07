@@ -52,5 +52,12 @@ fun TimeText(
                 style = style
             )
         }
+        TimeDisplayOption.TIME_BETWEEN -> {
+            val timeString = time.getStringOfPattern("EEE HH:mm")
+            Text(
+                text = timeString,
+                style = style
+            )
+        }
     }
 }

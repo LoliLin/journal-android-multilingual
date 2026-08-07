@@ -35,6 +35,10 @@ enum class StomachFullness {
         override val serialized = "EMPTY"
         override val onsetDelayForOralInHours: Double = 0.0
     },
+    QUARTER_FULL {
+        override val serialized = "QUARTERFULL"
+        override val onsetDelayForOralInHours = 0.75
+    },
     HALF_FULL {
         override val serialized = "HALFFULL"
         override val onsetDelayForOralInHours = 1.5
@@ -54,6 +58,7 @@ enum class StomachFullness {
     fun getTranslatedText(context: Context): String {
         val key = when (this) {
             EMPTY -> "stomach_empty"
+            QUARTER_FULL -> "stomach_quarter_full"
             HALF_FULL -> "stomach_half_full"
             FULL -> "stomach_full"
             VERY_FULL -> "stomach_very_full"
@@ -74,7 +79,7 @@ object StomachFullnessSerializer : KSerializer<StomachFullness> {
 
     override fun deserialize(decoder: Decoder): StomachFullness {
         val value = decoder.decodeString()
-        val fullness = StomachFullness.values().find { it.serialized == value }
+        val fullness = StomachFullness.entries.find { it.serialized == value }
         if (fullness == null) {
             throw IllegalArgumentException("$value is not a valid stomach fullness")
         } else {

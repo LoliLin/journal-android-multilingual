@@ -106,7 +106,7 @@ class EditTimedNoteViewModel @Inject constructor(
 
     val otherColorsFlow: StateFlow<List<AdaptiveColor>> =
         alreadyUsedColorsFlow.map { alreadyUsedColors ->
-            AdaptiveColor.values().filter {
+            AdaptiveColor.entries.filter {
                 !alreadyUsedColors.contains(it)
             }
         }.stateIn(

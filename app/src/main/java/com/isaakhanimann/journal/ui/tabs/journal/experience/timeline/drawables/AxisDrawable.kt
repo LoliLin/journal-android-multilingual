@@ -27,11 +27,12 @@ import kotlin.math.roundToLong
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
-data class AxisDrawable(val startTime: Instant, val widthInSeconds: Float) {
+data class AxisDrawable(
+    val startTime: Instant,
+    val widthInSeconds: Float
+) {
     fun getFullHours(pixelsPerSec: Float, widthInPixels: Float): List<FullHour> {
-        val widthInWholeHours = widthInSeconds.toLong().toDuration(
-            DurationUnit.SECONDS
-        ).inWholeHours
+        val widthInWholeHours = widthInSeconds.toLong().toDuration(DurationUnit.SECONDS).inWholeHours
         val widthPerHour = widthInPixels / widthInWholeHours
         val minWidthPerHour = 80.0
         var stepSize = (minWidthPerHour / widthPerHour).roundToLong()
@@ -53,11 +54,7 @@ data class AxisDrawable(val startTime: Instant, val widthInSeconds: Float) {
     }
 
     companion object {
-        fun getInstantsBetween(
-            startTime: Instant,
-            endTime: Instant,
-            stepSizeInHours: Long
-        ): List<Instant> {
+        fun getInstantsBetween(startTime: Instant, endTime: Instant, stepSizeInHours: Long): List<Instant> {
             val firstDate = startTime.nearestFullHourInTheFuture()
             val fullHours: MutableList<Instant> = mutableListOf()
             var checkTime = firstDate
@@ -79,4 +76,8 @@ fun Instant.nearestFullHourInTheFuture(): Instant {
     return newDateTime.toInstant()
 }
 
-data class FullHour(val distanceFromStart: Float, val label: String)
+
+data class FullHour(
+    val distanceFromStart: Float,
+    val label: String
+)

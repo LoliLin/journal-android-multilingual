@@ -27,6 +27,7 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCategoryScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIngestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.stats.StatsScreen
 import com.isaakhanimann.journal.ui.tabs.stats.substancecompanion.SubstanceCompanionScreen

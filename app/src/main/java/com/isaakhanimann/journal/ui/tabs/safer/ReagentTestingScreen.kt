@@ -47,6 +47,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun ReagentTestingPreview() {
@@ -71,7 +72,7 @@ fun ReagentTestingScreen(navigateToReagentTestingArticle: () -> Unit) {
                 },
                 text = { Text(i18n("common_article")) }
             )
-        }
+        },
     ) { padding ->
         Column(
             modifier = Modifier

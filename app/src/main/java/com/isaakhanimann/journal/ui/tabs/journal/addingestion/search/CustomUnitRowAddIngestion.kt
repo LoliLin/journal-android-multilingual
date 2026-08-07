@@ -29,13 +29,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
-import com.isaakhanimann.journal.ui.tabs.settings.customunits.getDoseOfOneUnitDescription
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CustomUnitRowAddIngestion(
     customUnit: CustomUnit,
-    navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit
+    navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
+    getSubstanceDisplayName: (String) -> String
 ) {
     Column(
         modifier = Modifier
@@ -47,11 +48,11 @@ fun CustomUnitRowAddIngestion(
         horizontalAlignment = Alignment.Start
     ) {
         Text(
-            text = "${customUnit.substanceName} (${customUnit.name})",
+            text = "${getSubstanceDisplayName(customUnit.substanceName)} ${customUnit.administrationRoute.displayText.lowercase()}, ${customUnit.name}",
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "${customUnit.getDoseOfOneUnitDescription()} per ${customUnit.unit}",
+            text = i18n("custom_units_dose_per_unit", mapOf("dose" to customUnit.getDoseOfOneUnitDescription(), "unit" to customUnit.unit)),
             style = MaterialTheme.typography.titleSmall
         )
     }

@@ -61,6 +61,7 @@ data class CustomUnitSerializable(
     var isEstimate: Boolean,
     var isArchived: Boolean,
     var unit: String,
+    var unitPlural: String?,
     val originalUnit: String,
     var note: String
 )
@@ -76,6 +77,7 @@ data class RatingSerializable(
 data class IngestionSerializable(
     val substanceName: String,
     @Serializable(with = InstantSerializer::class) var time: Instant,
+    @Serializable(with = InstantSerializer::class) var endTime: Instant? = null,
     @Serializable(with = InstantSerializer::class) var creationDate: Instant? = Instant.now(),
     val administrationRoute: AdministrationRoute,
     var dose: Double? = null,

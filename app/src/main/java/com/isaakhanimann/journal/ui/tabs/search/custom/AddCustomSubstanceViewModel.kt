@@ -49,4 +49,17 @@ class AddCustomSubstanceViewModel @Inject constructor(val experienceRepo: Experi
             experienceRepo.insert(customSubstance)
         }
     }
+
+    /** Upstream-style creation that reports the new substance name via callback. */
+    fun addCustomSubstance(onSuccess: (substanceName: String) -> Unit) {
+        viewModelScope.launch {
+            val customSubstance = CustomSubstance(
+                name = name,
+                units = units,
+                description = description
+            )
+            experienceRepo.insert(customSubstance)
+            onSuccess(name)
+        }
+    }
 }

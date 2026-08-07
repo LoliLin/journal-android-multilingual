@@ -136,3 +136,6 @@ class SearchViewModel @Inject constructor(
 data class CategoryChipModel(val rawName: String, val color: Color, val isActive: Boolean)
 
 data class CategoryModel(val rawName: String, val color: Color)
+
+/** Upstream-compatible marker color for custom substances. */
+val customColor = Color.Cyan

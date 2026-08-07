@@ -32,6 +32,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,7 +46,12 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun SubstanceColorsScreen(viewModel: SubstanceColorsViewModel = hiltViewModel()) {
+fun SubstanceColorsScreen(
+    viewModel: SubstanceColorsViewModel = hiltViewModel(),
+) {
+    LaunchedEffect(Unit) {
+        viewModel.deleteUnusedSubstanceCompanions()
+    }
     SubstanceColorsScreenContent(
         substanceCompanions = viewModel.substanceCompanionsFlow.collectAsState().value,
         updateColor = viewModel::updateColor,
@@ -58,7 +64,7 @@ fun SubstanceColorsScreen(viewModel: SubstanceColorsViewModel = hiltViewModel())
 @Composable
 fun SubstanceColorsScreenPreview() {
     val alreadyUsedColors = listOf(AdaptiveColor.OLIVE, AdaptiveColor.AUBURN)
-    val otherColors = AdaptiveColor.values().filter { !alreadyUsedColors.contains(it) }
+    val otherColors = AdaptiveColor.entries.filter { !alreadyUsedColors.contains(it) }
     SubstanceColorsScreenContent(
         substanceCompanions = listOf(
             SubstanceCompanion(substanceName = "Substance 1", color = AdaptiveColor.AUBURN),

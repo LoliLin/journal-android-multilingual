@@ -78,7 +78,7 @@ fun IconPickerScreen() {
             key = "classic",
             label = i18n("settings_icon_classic"),
             backgroundColor = Color(0xFF2196F3),
-            iconRes = R.mipmap.ic_launcher,
+            iconRes = R.mipmap.ic_launcher_foreground,
             aliasName = ".MainActivity_Classic"
         ),
         IconOption(

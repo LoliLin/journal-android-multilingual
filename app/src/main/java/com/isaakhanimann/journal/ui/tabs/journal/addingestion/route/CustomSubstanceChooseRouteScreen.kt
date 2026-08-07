@@ -43,12 +43,12 @@ import com.isaakhanimann.journal.localization.i18n
 @Preview
 @Composable
 fun CustomChooseRouteScreenPreview() {
-    CustomChooseRouteScreen(onRouteTap = {})
+    CustomSubstanceChooseRouteScreen(onRouteTap = {})
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
+fun CustomSubstanceChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(i18n("route")) })
@@ -64,7 +64,7 @@ fun CustomChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
                 modifier = Modifier.padding(10.dp),
                 verticalArrangement = Arrangement.spacedBy(spacing.dp)
             ) {
-                val routesChunked = AdministrationRoute.values().toList().chunked(2)
+                val routesChunked = AdministrationRoute.entries.toList().chunked(2)
                 routesChunked.forEach { chunk ->
                     Row(
                         modifier = Modifier

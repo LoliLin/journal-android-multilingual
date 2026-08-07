@@ -101,7 +101,6 @@ fun StatsScreen(
         ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
     )
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StatsScreen(
@@ -288,7 +287,7 @@ fun StatsScreen(
                 }
 
             )
-        }
+        },
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
             EmptyScreenDisclaimer(
@@ -301,7 +300,7 @@ fun StatsScreen(
                     selectedTabIndex = statsModel.selectedOption.tabIndex,
                     contentColor = MaterialTheme.colorScheme.onSurface
                 ) {
-                    TimePickerOption.values().forEachIndexed { index, option ->
+                    TimePickerOption.entries.forEachIndexed { index, option ->
                         Tab(
                             text = { Text(option.displayText) },
                             selected = statsModel.selectedOption.tabIndex == index,
