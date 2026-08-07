@@ -55,6 +55,7 @@ import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.*
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -76,7 +77,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
@@ -104,8 +104,6 @@ import kotlinx.coroutines.launch
 
 import androidx.compose.foundation.layout.height
 
-import androidx.compose.material3.Slider
-import androidx.compose.material3.SliderDefaults
 
 
 
@@ -596,8 +594,7 @@ fun SettingsScreen(
                 }
                 HorizontalDivider()
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
-                
-                var deleteSliderValue by remember { mutableFloatStateOf(0f) }
+                var deleteConfirmText by remember { mutableStateOf("") }
                 
                 SettingsButton(
                     imageVector = Icons.Outlined.DeleteForever,
@@ -609,9 +606,9 @@ fun SettingsScreen(
                 val deletedSnackbarMessage = i18n("settings_deleted_snackbar")
                 AnimatedVisibility(visible = isShowingDeleteDialog) {
                     AlertDialog(
-                        onDismissRequest = { 
-                            isShowingDeleteDialog = false 
-                            deleteSliderValue = 0f         
+                        onDismissRequest = {
+                            isShowingDeleteDialog = false
+                            deleteConfirmText = ""
                         },
                         title = {
                             Text(text = i18n("settings_delete_title"))
@@ -622,43 +619,38 @@ fun SettingsScreen(
 
                                 Spacer(modifier = Modifier.height(16.dp))
 
-                                Icon(
-                                    imageVector = if (deleteSliderValue >= 0.98f) Icons.Outlined.DeleteForever else Icons.Outlined.WarningAmber,
-                                    contentDescription = i18n("settings_delete_title"),
-                                    modifier = Modifier
-                                        .size(32.dp)
-                                        .clip(CircleShape),
-                                    tint = if (deleteSliderValue >= 0.98f) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.errorContainer,
-                                )
-
-                                Slider(
-                                    value = deleteSliderValue,
-                                    onValueChange = { deleteSliderValue = it },
-                                    onValueChangeFinished = {
-                                        if (deleteSliderValue >= 0.98f) {
-                                            isShowingDeleteDialog = false
-                                            deleteEverything()
-                                            scope.launch {
-                                                snackbarHostState.showSnackbar(
-                                                    message = deletedSnackbarMessage,
-                                                    duration = SnackbarDuration.Short
-                                                )
-                                            }
-                                            deleteSliderValue = 0f
-                                        } else {
-                                            deleteSliderValue = 0f
-                                        }
-                                    },
-                                    valueRange = 0f..1f,
-                                    colors = SliderDefaults.colors(
-                                        thumbColor = MaterialTheme.colorScheme.error,
-                                        activeTrackColor = MaterialTheme.colorScheme.error,
-                                        inactiveTrackColor = MaterialTheme.colorScheme.errorContainer
-                                    )
+                                OutlinedTextField(
+                                    value = deleteConfirmText,
+                                    onValueChange = { deleteConfirmText = it },
+                                    label = { Text(i18n("settings_delete_type_confirm")) },
+                                    singleLine = true,
+                                    isError = deleteConfirmText.isNotBlank() && deleteConfirmText.trim() != "Delete",
+                                    modifier = Modifier.fillMaxWidth()
                                 )
                             }
                         },
-                        confirmButton = {}
+                        confirmButton = {
+                            Button(
+                                onClick = {
+                                    isShowingDeleteDialog = false
+                                    deleteConfirmText = ""
+                                    deleteEverything()
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(
+                                            message = deletedSnackbarMessage,
+                                            duration = SnackbarDuration.Short
+                                        )
+                                    }
+                                },
+                                enabled = deleteConfirmText.trim() == "Delete",
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = MaterialTheme.colorScheme.error,
+                                    disabledContainerColor = MaterialTheme.colorScheme.errorContainer
+                                )
+                            ) {
+                                Text(i18n("common_confirm"))
+                            }
+                        }
                     )
                 }
             }

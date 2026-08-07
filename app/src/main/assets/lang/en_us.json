@@ -670,5 +670,6 @@
   "time_between": "Time between",
   "finish_substance_color": "{substance} color",
   "suggestion_enter_dose": "Enter {unit}",
-  "sd_means": "means:"
-}
+  "sd_means": "means:",
+  "common_confirm": "Confirm",
+  "settings_delete_type_confirm": "Type \"Delete\" to confirm"}
