@@ -19,6 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.search
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -41,6 +42,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
@@ -73,7 +75,7 @@ fun SearchField(
             )
         },
         trailingIcon = {
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 // clear search button
                 if (searchText.isNotEmpty()) {
                     IconButton(onClick = {

@@ -21,18 +21,23 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -40,7 +45,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
@@ -60,13 +64,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -74,28 +76,32 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
-import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
+
 @Composable
-fun ChooseTimeScreen(
+fun FinishIngestionScreen(
     dismissAddIngestionScreens: () -> Unit,
-    viewModel: ChooseTimeViewModel = hiltViewModel()
+    viewModel: FinishIngestionScreenViewModel = hiltViewModel()
 ) {
-    val localDateTime = viewModel.localDateTimeFlow.collectAsState().value
-    ChooseTimeScreen(
+    val localDateTime = viewModel.localDateTimeStartFlow.collectAsState().value
+    FinishIngestionScreen(
         createSaveAndDismissAfter = {
             viewModel.createSaveAndDismissAfter(dismiss = dismissAddIngestionScreens)
         },
-        onChangeDateOrTime = viewModel::onChangeDateOrTime,
-        localDateTime = localDateTime,
+        ingestionTimePickerOption = viewModel.ingestionTimePickerOptionFlow.collectAsState().value,
+        onChangeTimePickerOption = viewModel::onChangeTimePickerOption,
+        onChangeStartDateOrTime = viewModel::onChangeStartDateOrTime,
+        localDateTimeStart = localDateTime,
+        localDateTimeEnd = viewModel.localDateTimeEndFlow.collectAsState().value,
+        onChangeEndDateOrTime = viewModel::onChangeEndDateOrTime,
         isLoadingColor = viewModel.isLoadingColor,
         isShowingColorPicker = viewModel.isShowingColorPicker,
         selectedColor = viewModel.selectedColor,
@@ -107,9 +113,9 @@ fun ChooseTimeScreen(
         onNoteChange = {
             viewModel.note = it
         },
-        experienceTitleToAddTo = viewModel.experienceTitleToAddToFlow.collectAsState().value,
-        check = viewModel::toggleCheck,
-        isChecked = viewModel.userWantsToContinueSameExperienceFlow.collectAsState().value,
+        experiencesInRange = viewModel.experiencesInRangeFlow.collectAsState().value,
+        selectedExperience = viewModel.selectedExperienceFlow.collectAsState().value,
+        onChangeOfSelectedExperience = viewModel::onChangeOfSelectedExperience,
         substanceName = viewModel.substanceName,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
         enteredTitle = viewModel.enteredTitle,
@@ -117,22 +123,25 @@ fun ChooseTimeScreen(
         isEnteredTitleOk = viewModel.isEnteredTitleOk,
         consumerName = viewModel.consumerName,
         onChangeOfConsumerName = viewModel::changeConsumerName,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value
     )
 }
 
 @Preview
 @Composable
-fun ChooseTimeScreenPreview() {
+fun FinishIngestionScreenPreview() {
     val alreadyUsedColors = listOf(AdaptiveColor.BLUE, AdaptiveColor.PINK)
-    val otherColors = AdaptiveColor.values().filter { color ->
+    val otherColors = AdaptiveColor.entries.filter { color ->
         !alreadyUsedColors.contains(color)
     }
-    ChooseTimeScreen(
+    FinishIngestionScreen(
         createSaveAndDismissAfter = {},
-        onChangeDateOrTime = {},
-        localDateTime = LocalDateTime.now(),
+        ingestionTimePickerOption = IngestionTimePickerOption.POINT_IN_TIME,
+        onChangeTimePickerOption = {},
+        onChangeStartDateOrTime = {},
+        localDateTimeStart = LocalDateTime.now(),
+        localDateTimeEnd = LocalDateTime.now(),
+        onChangeEndDateOrTime = {},
         isLoadingColor = false,
         isShowingColorPicker = true,
         selectedColor = AdaptiveColor.BLUE,
@@ -145,9 +154,9 @@ fun ChooseTimeScreenPreview() {
         ),
         note = "",
         onNoteChange = {},
-        experienceTitleToAddTo = "New Years Eve",
-        check = {},
-        isChecked = false,
+        experiencesInRange = emptyList(),
+        selectedExperience = null,
+        onChangeOfSelectedExperience = {},
         substanceName = "LSD",
         enteredTitle = "This is my title",
         onChangeOfEnteredTitle = {},
@@ -160,10 +169,14 @@ fun ChooseTimeScreenPreview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChooseTimeScreen(
+fun FinishIngestionScreen(
     createSaveAndDismissAfter: () -> Unit,
-    onChangeDateOrTime: (LocalDateTime) -> Unit,
-    localDateTime: LocalDateTime,
+    ingestionTimePickerOption: IngestionTimePickerOption,
+    onChangeTimePickerOption: (option: IngestionTimePickerOption) -> Unit,
+    onChangeStartDateOrTime: (LocalDateTime) -> Unit,
+    localDateTimeStart: LocalDateTime,
+    onChangeEndDateOrTime: (LocalDateTime) -> Unit,
+    localDateTimeEnd: LocalDateTime,
     isLoadingColor: Boolean,
     isShowingColorPicker: Boolean,
     selectedColor: AdaptiveColor,
@@ -173,9 +186,9 @@ fun ChooseTimeScreen(
     previousNotes: List<String>,
     note: String,
     onNoteChange: (String) -> Unit,
-    experienceTitleToAddTo: String?,
-    check: (Boolean) -> Unit,
-    isChecked: Boolean,
+    experiencesInRange: List<ExperienceWithIngestions>,
+    selectedExperience: ExperienceWithIngestions?,
+    onChangeOfSelectedExperience: (ExperienceWithIngestions?) -> Unit,
     substanceName: String,
     getSubstanceDisplayName: (String) -> String = { it },
     enteredTitle: String,
@@ -183,13 +196,13 @@ fun ChooseTimeScreen(
     isEnteredTitleOk: Boolean,
     consumerName: String,
     onChangeOfConsumerName: (String) -> Unit,
-    consumerNamesSorted: List<String>,
-    ownerUserName: String = "You"
+    consumerNamesSorted: List<String>
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
         topBar = {
-            TopAppBar(title = {
+            TopAppBar(
+                title = {
                 Text(
                     i18n(
                         "substances_ingestion",
@@ -198,7 +211,8 @@ fun ChooseTimeScreen(
                         )
                     )
                 )
-            })
+            }
+            )
         },
         floatingActionButton = {
             AnimatedVisibility(
@@ -206,20 +220,22 @@ fun ChooseTimeScreen(
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
-                FloatingDoneButton {
-                    createSaveAndDismissAfter()
-                }
+                FloatingDoneButton(
+                    onDone = createSaveAndDismissAfter,
+                    modifier = Modifier.imePadding()
+                )
             }
         }
     ) { padding ->
         Column(
             modifier = Modifier
                 .padding(padding)
+                .imePadding()
                 .verticalScroll(rememberScrollState())
         ) {
             LinearProgressIndicator(
                 progress = { 0.9f },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
             )
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -229,70 +245,59 @@ fun ChooseTimeScreen(
             ) {
                 Spacer(modifier = Modifier.height(3.dp))
                 CardWithTitle(title = i18n("common_time")) {
-                    DatePickerButton(
-                        localDateTime = localDateTime,
-                        onChange = onChangeDateOrTime,
-                        dateString = localDateTime.getStringOfPattern("EEE dd MMM yyyy"),
-                        modifier = Modifier.fillMaxWidth()
+                    TimePointOrRangePicker(
+                        onChangeTimePickerOption = onChangeTimePickerOption,
+                        ingestionTimePickerOption = ingestionTimePickerOption,
+                        localDateTimeStart = localDateTimeStart,
+                        onChangeStartDateOrTime = onChangeStartDateOrTime,
+                        localDateTimeEnd = localDateTimeEnd,
+                        onChangeEndDateOrTime = onChangeEndDateOrTime
                     )
-                    TimePickerButton(
-                        localDateTime = localDateTime,
-                        onChange = onChangeDateOrTime,
-                        timeString = localDateTime.getStringOfPattern("HH:mm"),
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        OutlinedButton(onClick = {
-                            onChangeDateOrTime(localDateTime.minusMinutes(5))
-                        }) {
-                            Text("-5 min")
-                        }
-                        OutlinedButton(onClick = {
-                            onChangeDateOrTime(localDateTime.minusMinutes(10))
-                        }) {
-                            Text("-10 min")
-                        }
-                        OutlinedButton(onClick = {
-                            onChangeDateOrTime(localDateTime.minusMinutes(30))
-                        }) {
-                            Text("-30 min")
-                        }
-                    }
                 }
-                CardWithTitle(
-                    title = i18n("common_experience"),
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    val isCloseToExperience = experienceTitleToAddTo != null
-                    AnimatedVisibility(visible = isCloseToExperience) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.clickable { check(isChecked.not()) }
+                CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {
+                    var isShowingDropDownMenu by remember { mutableStateOf(false) }
+                    Box(
+                        modifier = Modifier
+                            .wrapContentSize(Alignment.TopEnd)
+                    ) {
+                        OutlinedButton(
+                            onClick = { isShowingDropDownMenu = true },
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            Checkbox(checked = isChecked, onCheckedChange = check)
-                            Text(
-                                text = i18n(
-                                    "add_to_experience",
-                                    mapOf(
-                                        "title" to (experienceTitleToAddTo ?: "")
-                                    )
+                            val selectedExperienceTitle = selectedExperience?.experience?.title
+                            Text(text = if (selectedExperienceTitle != null) i18n("finish_part_of_experience", mapOf("experience" to selectedExperienceTitle)) else i18n("finish_part_of_new_experience"))
+                        }
+                        DropdownMenu(
+                            expanded = isShowingDropDownMenu,
+                            onDismissRequest = { isShowingDropDownMenu = false }
+                        ) {
+                            experiencesInRange.forEach { experienceWithIngestions ->
+                                val experience = experienceWithIngestions.experience
+                                DropdownMenuItem(
+                                    text = { Text(experience.title) },
+                                    onClick = {
+                                        onChangeOfSelectedExperience(experienceWithIngestions)
+                                        isShowingDropDownMenu = false
+                                    }
                                 )
+                            }
+                            DropdownMenuItem(
+                                text = { Text(i18n("finish_new_experience")) },
+                                onClick = {
+                                    onChangeOfSelectedExperience(null)
+                                    isShowingDropDownMenu = false
+                                }
                             )
                         }
                     }
-                    AnimatedVisibility(visible = !isCloseToExperience || !isChecked) {
+                    AnimatedVisibility(visible = selectedExperience == null) {
                         OutlinedTextField(
                             value = enteredTitle,
                             onValueChange = onChangeOfEnteredTitle,
                             singleLine = true,
                             label = { Text(text = i18n("common_new_experience_title")) },
                             isError = !isEnteredTitleOk,
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            }),
+                            keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions.Default.copy(
                                 imeAction = ImeAction.Done,
                                 capitalization = KeyboardCapitalization.Words
@@ -315,42 +320,29 @@ fun ChooseTimeScreen(
                         )
                     ) {
                         Text(
-                            text = "Consumed by: ${consumerName.ifBlank { ownerUserName }}",
+                            text = i18n("consumed_by", mapOf("name" to consumerName.ifBlank { i18n("you") })),
                             style = MaterialTheme.typography.titleMedium
                         )
                         if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
                             var areConsumerNamesExpanded by remember { mutableStateOf(false) }
                             TextButton(onClick = { areConsumerNamesExpanded = true }) {
-                                Text(text = i18n("choose_other_consumer"))
+                                Text(text = i18n("finish_choose_other_consumer"))
                             }
                             DropdownMenu(
                                 expanded = areConsumerNamesExpanded,
                                 onDismissRequest = { areConsumerNamesExpanded = false }
                             ) {
                                 DropdownMenuItem(
-                                    text = { Text(ownerUserName) },
+                                    text = { Text(i18n("you")) },
                                     onClick = {
                                         onChangeOfConsumerName("")
                                         areConsumerNamesExpanded = false
                                     },
                                     leadingIcon = {
-                                        val ctx = LocalContext.current
-                                        val ownerAvatar = remember(ownerUserName) {
-                                            AvatarUtil.getUserAvatar(ctx, ownerUserName)
-                                        }
-                                        if (ownerAvatar != null) {
-                                            AsyncImage(
-                                                model = ownerAvatar,
-                                                contentDescription = i18n("stats_consumer"),
-                                                modifier = Modifier.size(24.dp).clip(CircleShape),
-                                                contentScale = ContentScale.Crop
-                                            )
-                                        } else {
-                                            Icon(
-                                                Icons.Default.Person,
-                                                contentDescription = i18n("stats_consumer")
-                                            )
-                                        }
+                                        Icon(
+                                            Icons.Default.Person,
+                                            contentDescription = i18n("stats_consumer")
+                                        )
                                     }
                                 )
                                 consumerNamesSorted.forEach { consumerName ->
@@ -361,42 +353,15 @@ fun ChooseTimeScreen(
                                             areConsumerNamesExpanded = false
                                         },
                                         leadingIcon = {
-                                            val ctxCsm = LocalContext.current
-
-                                            val avatarFile = remember(consumerName) {
-                                                AvatarUtil.getUserAvatar(ctxCsm, consumerName)
-                                            }
-
-                                            if (avatarFile != null) {
-                                                AsyncImage(
-
-                                                    model = avatarFile,
-
-                                                    contentDescription = i18n("stats_consumer"),
-
-                                                    modifier = Modifier.size(
-                                                        24.dp
-                                                    ).clip(CircleShape),
-
-                                                    contentScale = ContentScale.Crop
-
-                                                )
-                                            } else {
-                                                Icon(
-
-                                                    Icons.Default.Person,
-
-                                                    contentDescription = i18n("stats_consumer")
-
-                                                )
-                                            }
+                                            Icon(
+                                                Icons.Default.Person,
+                                                contentDescription = i18n("stats_consumer")
+                                            )
                                         }
-
                                     )
                                 }
                             }
                         }
-
                         var showNewConsumerTextField by remember { mutableStateOf(false) }
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -406,8 +371,7 @@ fun ChooseTimeScreen(
                                 checked = showNewConsumerTextField,
                                 onCheckedChange = {
                                     showNewConsumerTextField = !showNewConsumerTextField
-                                }
-                            )
+                                })
                             Text(i18n("common_enter_new_consumer"))
                         }
                         AnimatedVisibility(visible = showNewConsumerTextField) {
@@ -435,7 +399,7 @@ fun ChooseTimeScreen(
                         }
                     }
                 }
-                CardWithTitle(title = i18n("common_notes")) {
+                CardWithTitle(title = i18n("finish_ingestion_note")) {
                     NoteSection(
                         previousNotes,
                         note,
@@ -444,10 +408,7 @@ fun ChooseTimeScreen(
                 }
                 if (isShowingColorPicker) {
                     CardWithTitle(
-                        title = i18n(
-                            "choose_time_color_title",
-                            mapOf("substance" to getSubstanceDisplayName(substanceName))
-                        ),
+                        title = i18n("finish_substance_color", mapOf("substance" to substanceName)),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         ColorPicker(
@@ -458,16 +419,23 @@ fun ChooseTimeScreen(
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(3.dp))
+                Spacer(modifier = Modifier.height(70.dp))
             }
         }
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun NoteSection(previousNotes: List<String>, note: String, onNoteChange: (String) -> Unit) {
+fun NoteSection(
+    previousNotes: List<String>,
+    note: String,
+    onNoteChange: (String) -> Unit
+) {
     var isShowingSuggestions by remember { mutableStateOf(true) }
     val focusManager = LocalFocusManager.current
+    val coroutineScope = rememberCoroutineScope()
+    val bringIntoViewRequester = BringIntoViewRequester()
     Column {
         OutlinedTextField(
             value = note,
@@ -484,11 +452,16 @@ fun NoteSection(previousNotes: List<String>, note: String, onNoteChange: (String
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .onFocusChanged { focusState ->
-                    if (focusState.isFocused) {
+                .bringIntoViewRequester(bringIntoViewRequester)
+                .onFocusEvent { focusState ->
+                    if (focusState.isFocused && focusState.hasFocus) {
                         isShowingSuggestions = true
+                        coroutineScope.launch {
+                            bringIntoViewRequester.bringIntoView()
+                        }
                     }
                 }
+
         )
         if (previousNotes.isNotEmpty() && isShowingSuggestions) {
             Column {
@@ -506,7 +479,7 @@ fun NoteSection(previousNotes: List<String>, note: String, onNoteChange: (String
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 Icons.Filled.ContentCopy,
-                                contentDescription = i18n("copy"),
+                                contentDescription = i18n("common_copy"),
                                 Modifier.size(15.dp)
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))

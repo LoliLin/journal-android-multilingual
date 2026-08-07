@@ -48,6 +48,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
@@ -73,7 +76,7 @@ fun SearchScreen(
                     Icon(Icons.Default.Keyboard, contentDescription = i18n("search_keyboard"))
                 }
             }
-        }
+        },
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             SearchField(
@@ -95,6 +98,7 @@ fun SearchScreen(
             val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
             val filteredCustomSubstances = searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
             val customColor = searchViewModel.customColor
+
 
             if (activeFilters.isNotEmpty()) {
                 LazyRow(

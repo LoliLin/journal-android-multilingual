@@ -78,7 +78,9 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.OptionalDosag
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.CustomUnitRoaDoseView
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.AllTimelines
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.AllTimelinesModel
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.duration.RoaDurationView
@@ -416,18 +418,27 @@ fun SubstanceScreen(
                                     height = 1f,
                                     horizontalWeight = 0.5f,
                                     color = roa.route.color,
-                                    startTime = ingestionTime.getInstant()
+                                    startTime = ingestionTime.getInstant(),
+                                    endTime = null
                                 )
                             }
                         }
+                        val timelineModel = remember(dataForEffectLines) {
+                            AllTimelinesModel(
+                                dataForLines = dataForEffectLines,
+                                dataForRatings = emptyList(),
+                                timedNotes = emptyList(),
+                                areSubstanceHeightsIndependent = false
+                            )
+                        }
                         AllTimelines(
-                            dataForEffectLines = dataForEffectLines,
-                            dataForRatings = emptyList(),
-                            dataForTimedNotes = emptyList(),
+                            model = timelineModel,
                             isShowingCurrentTime = false,
+                            timeDisplayOption = TimeDisplayOption.REGULAR,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(200.dp)
+                                .height(200.dp),
+                            areSubstanceHeightsIndependent = false
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         HorizontalDivider()
@@ -627,7 +638,8 @@ fun CategoryChipFromSubstanceScreen(
                 navigateToCategoryScreen(category.name)
             }
             .background(color = category.color.copy(alpha = 0.2f))
-            .padding(vertical = 4.dp, horizontal = 10.dp)
+            .height(48.dp)
+            .padding(horizontal = 12.dp)
     ) {
         Text(text = displayName)
         Spacer(modifier = Modifier.width(3.dp))

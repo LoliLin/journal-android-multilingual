@@ -256,7 +256,8 @@ fun AddIngestionSearchScreen(
                 itemsIndexed(filteredCustomUnits) { index, customUnit ->
                     CustomUnitRowAddIngestion(
                         customUnit = customUnit,
-                        navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose
+                        navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
+                        getSubstanceDisplayName = getSubstanceDisplayName
                     )
                     if (index < filteredCustomUnits.size - 1) {
                         HorizontalDivider()

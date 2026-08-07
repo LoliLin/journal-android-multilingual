@@ -76,14 +76,14 @@ fun CheckInteractionsScreen(
         unsafeInteractions = viewModel.unsafeInteractions,
         uncertainInteractions = viewModel.uncertainInteractions,
         navigateToNext = navigateToNext,
-        navigateToURL = navigateToURL,
         dismissAlert = {
             viewModel.isShowingAlert = false
         },
         isShowingAlert = viewModel.isShowingAlert,
         alertInteractionType = viewModel.alertInteractionType,
         alertMessages = viewModel.alertMessages,
-        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
+        navigateToURL = navigateToURL
     )
 }
 
@@ -101,8 +101,8 @@ fun CheckInteractionsScreen(
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
     navigateToNext: () -> Unit,
-    navigateToURL: (url: String) -> Unit,
-    getSubstanceDisplayName: (substance: String) -> String
+    getSubstanceDisplayName: (substance: String) -> String,
+    navigateToURL: (url: String) -> Unit
 ) {
     Scaffold(
         topBar = {

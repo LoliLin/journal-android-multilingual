@@ -22,8 +22,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
+import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
@@ -33,6 +35,13 @@ import kotlinx.coroutines.flow.map
 class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
     private object PreferencesKeys {
         val KEY_TIME_DISPLAY_OPTION = stringPreferencesKey("key_time_display_option")
+
+        // last ingestion time of experience is used when adding an ingestion from a past experience
+        // cloned ingestion time is used to copy the time from another ingestion
+        // those values need to be set/reset whenever an ingestion is added
+        val KEY_LAST_INGESTION_OF_EXPERIENCE = longPreferencesKey("KEY_LAST_INGESTION_OF_EXPERIENCE")
+        val KEY_CLONED_INGESTION_TIME = longPreferencesKey("KEY_CLONED_INGESTION_TIME")
+
         val KEY_HIDE_ORAL_DISCLAIMER = booleanPreferencesKey("key_hide_oral_disclaimer")
         val KEY_HIDE_DOSAGE_DOTS = booleanPreferencesKey("key_hide_dosage_dots")
         val KEY_OPEN_LINK_IN_BROWSER = booleanPreferencesKey("key_open_link_in_browser")
@@ -41,6 +50,8 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_OWNER_USER_ACHIEVEMENT = stringPreferencesKey("key_owner_user_achievement") // registerName;
         val KEY_APP_LOCK_ENABLED = booleanPreferencesKey("key_app_lock_enabled")
         val KEY_EFFECT_NOTIFICATION_ENABLED = booleanPreferencesKey("key_effect_notification_enabled")
+        val KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT = booleanPreferencesKey("KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT")
+        val KEY_IS_TIMELINE_HIDDEN = booleanPreferencesKey("KEY_IS_TIMELINE_HIDDEN")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -49,18 +60,16 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    suspend fun addAchievement(value: String) {
+    suspend fun addAchievement(value: String): Boolean {
+        var added = false
         dataStore.edit { preferences ->
             val current = preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT]
-            val newValue = if (current.isNullOrEmpty()) {
-                value
-            } else {
-                val items = current.split(";").toMutableSet()
-                items.add(value)
-                items.joinToString(";")
-            }
-            preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT] = newValue
+            val items = current?.split(";")?.filter { it.isNotEmpty() }?.toMutableSet()
+                ?: mutableSetOf()
+            added = items.add(value)
+            preferences[PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT] = items.joinToString(";")
         }
+        return added
     }
 
     val savedTimeDisplayOptionFlow: Flow<SavedTimeDisplayOption> = dataStore.data
@@ -69,6 +78,38 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
                 preferences[PreferencesKeys.KEY_TIME_DISPLAY_OPTION]
                     ?: SavedTimeDisplayOption.REGULAR.name
             SavedTimeDisplayOption.valueOf(name)
+        }
+
+    suspend fun saveLastIngestionTimeOfExperience(value: Instant?) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_LAST_INGESTION_OF_EXPERIENCE] = value?.epochSecond ?: 0L
+        }
+    }
+
+    val lastIngestionTimeOfExperienceFlow: Flow<Instant?> = dataStore.data
+        .map { preferences ->
+            val epochSecond = preferences[PreferencesKeys.KEY_LAST_INGESTION_OF_EXPERIENCE] ?: 0L
+            if (epochSecond != 0L) {
+                Instant.ofEpochSecond(epochSecond)
+            } else {
+                null
+            }
+        }
+
+    suspend fun saveClonedIngestionTime(value: Instant?) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_CLONED_INGESTION_TIME] = value?.epochSecond ?: 0L
+        }
+    }
+
+    val clonedIngestionTimeFlow: Flow<Instant?> = dataStore.data
+        .map { preferences ->
+            val epochSecond = preferences[PreferencesKeys.KEY_CLONED_INGESTION_TIME] ?: 0L
+            if (epochSecond != 0L) {
+                Instant.ofEpochSecond(epochSecond)
+            } else {
+                null
+            }
         }
 
     suspend fun saveOralDisclaimerIsHidden(value: Boolean) {
@@ -100,6 +141,28 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_HIDE_DOSAGE_DOTS] ?: false
         }
+
+    suspend fun saveAreSubstanceHeightsIndependent(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT] = value
+        }
+    }
+
+    val areSubstanceHeightsIndependentFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT] ?: false
+        }
+
+    val isTimelineHiddenFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_IS_TIMELINE_HIDDEN] ?: false
+        }
+
+    suspend fun saveIsTimelineHidden(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_IS_TIMELINE_HIDDEN] = value
+        }
+    }
 
     suspend fun saveOpenLinkInBrowser(value: Boolean) {
         dataStore.edit { preferences ->

@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -65,6 +66,7 @@ import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.PurityCalculation
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.UnknownDoseDialog
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
@@ -203,6 +205,7 @@ fun CustomChooseDose(
         floatingActionButton = {
             if (isValidDose) {
                 ExtendedFloatingActionButton(
+                    modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
                     icon = {
                         Icon(
@@ -267,26 +270,45 @@ fun CustomChooseDose(
                         )
                     }
                     AnimatedVisibility(visible = isEstimate) {
-                        OutlinedTextField(
-                            value = estimatedDoseStandardDeviationText,
-                            onValueChange = onChangeEstimatedStandardDeviationText,
-                            textStyle = textStyle,
-                            label = { Text(i18n("dose_estimated_sd_label"), style = textStyle) },
-                            isError = !isValidDose,
-                            trailingIcon = {
-                                Text(
-                                    text = units,
-                                    style = textStyle,
-                                    modifier = Modifier.padding(horizontal = horizontalPadding)
-                                )
-                            },
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            }),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        Column {
+                            OutlinedTextField(
+                                value = estimatedDoseStandardDeviationText,
+                                onValueChange = onChangeEstimatedStandardDeviationText,
+                                textStyle = textStyle,
+                                label = {
+                                    Text(
+                                        i18n("dose_estimated_sd_label"),
+                                        style = textStyle
+                                    )
+                                },
+                                isError = estimatedDoseStandardDeviationText.toDoubleOrNull() == null,
+                                trailingIcon = {
+                                    Text(
+                                        text = units,
+                                        style = textStyle,
+                                        modifier = Modifier.padding(horizontal = horizontalPadding)
+                                    )
+                                },
+                                keyboardActions = KeyboardActions(onDone = {
+                                    focusManager.clearFocus()
+                                }),
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            val mean = doseText.toDoubleOrNull()
+                            val standardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull()
+                            val isExplanationShown = mean != null && standardDeviation != null
+                            AnimatedVisibility(isExplanationShown) {
+                                if (mean != null && standardDeviation != null) {
+                                    StandardDeviationExplanation(
+                                        mean = mean,
+                                        standardDeviation = standardDeviation,
+                                        unit = units
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -315,7 +337,7 @@ fun CustomChooseDose(
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 TextButton(onClick = {
-                    navigateToURL(AdministrationRoute.saferPluggingArticleURL)
+                    navigateToURL(AdministrationRoute.SAFER_PLUGGING_ARTICLE_URL)
                 }) {
                     Icon(
                         Icons.Outlined.Newspaper,

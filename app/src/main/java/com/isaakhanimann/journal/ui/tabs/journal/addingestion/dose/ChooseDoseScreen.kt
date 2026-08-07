@@ -26,6 +26,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -55,6 +56,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -196,9 +198,9 @@ fun ChooseDoseScreenPreview2() {
         navigateToVolumetricDosingScreen = {},
         navigateToSaferSniffingScreen = {},
         substanceName = "Example Substance",
-        doseRemark = null,
         roaDose = null,
         administrationRoute = AdministrationRoute.ORAL,
+        doseRemark = null,
         doseText = "5",
         onChangeDoseText = {},
         estimatedDoseStandardDeviationText = "",
@@ -283,6 +285,7 @@ fun ChooseDoseScreen(
         floatingActionButton = {
             if (isValidDose) {
                 ExtendedFloatingActionButton(
+                    modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
                     icon = {
                         Icon(
@@ -379,7 +382,7 @@ fun ChooseDoseScreen(
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
-                                text = units,
+                                text = selectedCustomUnitForLabel?.unit ?: units,
                                 style = textStyle,
                                 modifier = Modifier.padding(horizontal = horizontalPadding)
                             )
@@ -434,25 +437,45 @@ fun ChooseDoseScreen(
                         )
                     }
                     AnimatedVisibility(visible = isEstimate) {
-                        OutlinedTextField(
-                            value = estimatedDoseStandardDeviationText,
-                            onValueChange = onChangeEstimatedDoseStandardDeviationText,
-                            textStyle = textStyle,
-                            label = { Text(i18n("dose_estimated_sd_label"), style = textStyle) },
-                            trailingIcon = {
-                                Text(
-                                    text = units,
-                                    style = textStyle,
-                                    modifier = Modifier.padding(horizontal = horizontalPadding)
-                                )
-                            },
-                            keyboardActions = KeyboardActions(onDone = {
-                                focusManager.clearFocus()
-                            }),
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        Column {
+                            OutlinedTextField(
+                                value = estimatedDoseStandardDeviationText,
+                                onValueChange = onChangeEstimatedDoseStandardDeviationText,
+                                textStyle = textStyle,
+                                label = {
+                                    Text(
+                                        i18n("dose_estimated_sd_label"),
+                                        style = textStyle
+                                    )
+                                },
+                                trailingIcon = {
+                                    Text(
+                                        text = units,
+                                        style = textStyle,
+                                        modifier = Modifier.padding(horizontal = horizontalPadding)
+                                    )
+                                },
+                                keyboardActions = KeyboardActions(onDone = {
+                                    focusManager.clearFocus()
+                                }),
+                                isError = estimatedDoseStandardDeviationText.toDoubleOrNull() == null,
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                            val mean = doseText.toDoubleOrNull()
+                            val standardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull()
+                            val isExplanationShown = mean != null && standardDeviation != null
+                            AnimatedVisibility(isExplanationShown) {
+                                if (mean != null && standardDeviation != null) {
+                                    StandardDeviationExplanation(
+                                        mean = mean,
+                                        standardDeviation = standardDeviation,
+                                        unit = units
+                                    )
+                                }
+                            }
+                        }
                     }
 
                     // --- Quick custom unit ---
@@ -471,7 +494,7 @@ fun ChooseDoseScreen(
                                     "quick_custom_unit_count",
                                     mapOf(
                                         "unit" to selectedCustomUnit.name,
-                                        "dose" to selectedCustomUnit.dose.toReadableString(),
+                                        "dose" to (selectedCustomUnit.dose ?: 0.0).toReadableString(),
                                         "originalUnit" to selectedCustomUnit.originalUnit
                                     )
                                 ),
@@ -486,7 +509,7 @@ fun ChooseDoseScreen(
                                 text = i18n(
                                     "quick_custom_unit_converted",
                                     mapOf(
-                                        "dose" to (quantity * selectedCustomUnit.dose).toReadableString(),
+                                        "dose" to (quantity * (selectedCustomUnit.dose ?: 0.0)).toReadableString(),
                                         "unit" to selectedCustomUnit.originalUnit
                                     )
                                 ),
@@ -526,7 +549,7 @@ fun ChooseDoseScreen(
                                                         onClick = null
                                                     )
                                                     Text(
-                                                        text = "${unit.name} · ${unit.dose.toReadableString()} ${unit.originalUnit}"
+                                                        text = "${unit.name} · ${(unit.dose ?: 0.0).toReadableString()} ${unit.originalUnit}"
                                                     )
                                                 }
                                             }
@@ -587,10 +610,7 @@ fun ChooseDoseScreen(
             }
             AnimatedVisibility(visible = isValidDose) {
                 ElevatedCard(
-                    modifier = Modifier.padding(
-                        horizontal = horizontalPadding,
-                        vertical = 4.dp
-                    )
+                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)
                 ) {
                     Column(
                         modifier = Modifier.padding(
@@ -629,7 +649,7 @@ fun ChooseDoseScreen(
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 TextButton(onClick = {
-                    navigateToURL(AdministrationRoute.saferPluggingArticleURL)
+                    navigateToURL(AdministrationRoute.SAFER_PLUGGING_ARTICLE_URL)
                 }) {
                     Icon(
                         Icons.Outlined.Newspaper,

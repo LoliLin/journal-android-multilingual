@@ -66,6 +66,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 14,
                                     minute = 20
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.ORAL,
                                 dose = 90.0,
                                 isDoseAnEstimate = false,
@@ -93,6 +94,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 14,
                                     minute = 20
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.INSUFFLATED,
                                 dose = 30.0,
                                 isDoseAnEstimate = false,
@@ -120,6 +122,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 14,
                                     minute = 20
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.INSUFFLATED,
                                 dose = 50.0,
                                 isDoseAnEstimate = false,
@@ -172,6 +175,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 12,
                                     minute = 20
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.ORAL,
                                 dose = 90.0,
                                 isDoseAnEstimate = false,
@@ -217,6 +221,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 18,
                                     minute = 13
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.INSUFFLATED,
                                 dose = 30.0,
                                 isDoseAnEstimate = false,
@@ -244,6 +249,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 18,
                                     minute = 13
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.INSUFFLATED,
                                 dose = 20.0,
                                 isDoseAnEstimate = false,
@@ -296,6 +302,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 18,
                                     minute = 13
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.ORAL,
                                 dose = 90.0,
                                 isDoseAnEstimate = false,
@@ -323,6 +330,7 @@ class JournalScreenPreviewProvider :
                                     hourOfDay = 18,
                                     minute = 13
                                 )!!,
+                                endTime = null,
                                 administrationRoute = AdministrationRoute.INSUFFLATED,
                                 dose = 20.0,
                                 isDoseAnEstimate = false,

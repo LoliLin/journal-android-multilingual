@@ -24,11 +24,13 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import com.isaakhanimann.journal.localization.i18n
 
 @Composable
-fun FloatingDoneButton(onDone: () -> Unit) {
+fun FloatingDoneButton(onDone: () -> Unit, modifier: Modifier = Modifier) {
     ExtendedFloatingActionButton(
+        modifier = modifier,
         onClick = onDone,
         icon = {
             Icon(

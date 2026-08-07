@@ -27,10 +27,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -40,6 +42,7 @@ import androidx.compose.material.icons.outlined.EditNote
 import androidx.compose.material.icons.outlined.SearchOff
 import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material.icons.outlined.Timer
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
@@ -54,7 +57,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,6 +76,7 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import kotlinx.coroutines.launch
 
 @Composable
 fun JournalScreen(
@@ -81,24 +88,36 @@ fun JournalScreen(
 ) {
     val experiences = viewModel.experiences.collectAsState().value
 
-    val achievements by viewModel.achievementsFlow.collectAsState(initial = emptyList<String>())
+    val achievements by viewModel.achievementsFlow.collectAsState(initial = null as List<String>?)
     val ingestions by viewModel.ingestionsFlow.collectAsState(initial = emptyList())
-    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
 
     LaunchedEffect(ingestions, achievements, ownerUserName) {
+        // Skip until DataStore has loaded: with the initial emptyList() a cold start
+        // re-triggered already-unlocked achievements (toast + event) before the
+        // persisted list arrived.
+        val achieved = achievements ?: return@LaunchedEffect
+        val ownerName = ownerUserName ?: return@LaunchedEffect
         for (definition in viewModel.achievementDefinitions) {
             if (
-                !achievements.contains(definition.registerName) &&
-                AchievementEvaluator.evaluate(definition, ingestions, ownerUserName)
+                !achieved.contains(definition.registerName) &&
+                AchievementEvaluator.evaluate(definition, ingestions, ownerName)
             ) {
                 viewModel.addAchievement(definition.registerName)
             }
         }
     }
 
+    LaunchedEffect(Unit) {
+        viewModel.maybeMigrate()
+    }
+
     JournalScreen(
         navigateToExperiencePopNothing = navigateToExperiencePopNothing,
-        navigateToAddIngestion = navigateToAddIngestion,
+        navigateToAddIngestion = {
+            viewModel.resetAddIngestionTimes()
+            navigateToAddIngestion()
+        },
         navigateToCalendar = navigateToCalendar,
         isFavoriteEnabled = viewModel.isFavoriteEnabledFlow.collectAsState().value,
         onChangeIsFavorite = viewModel::onChangeFavorite,
@@ -110,7 +129,7 @@ fun JournalScreen(
         onChangeIsSearchEnabled = viewModel::onChangeOfIsSearchEnabled,
         experiences = experiences,
         substanceRepository = viewModel.substanceRepository,
-        ownerUserName = ownerUserName,
+        ownerUserName = ownerUserName ?: "You",
         navigateToQuickTimedNote = navigateToQuickTimedNote
     )
 }
@@ -302,25 +321,48 @@ fun JournalScreen(
                         }
                     }
                 }
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    if (experiences.isNotEmpty()) {
-                        item {
+                val listState = rememberLazyListState()
+                val isScrollUpButtonShown by remember {
+                    derivedStateOf {
+                        listState.firstVisibleItemIndex > 0
+                    }
+                }
+                Box(contentAlignment = Alignment.TopEnd) {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        state = listState
+                    ) {
+                        if (experiences.isNotEmpty()) {
+                            item {
+                                HorizontalDivider()
+                            }
+                        }
+                        items(experiences) { experienceWithIngestions ->
+                            ExperienceRow(
+                                experienceWithIngestions,
+                                navigateToExperienceScreen = {
+                                    navigateToExperiencePopNothing(
+                                        experienceWithIngestions.experience.id
+                                    )
+                                },
+                                isTimeRelativeToNow = isTimeRelativeToNow,
+                                substanceRepository = substanceRepository,
+                                ownerUserName = ownerUserName
+                            )
                             HorizontalDivider()
                         }
                     }
-                    items(experiences) { experienceWithIngestions ->
-                        ExperienceRow(
-                            experienceWithIngestions,
-                            navigateToExperienceScreen = {
-                                navigateToExperiencePopNothing(
-                                    experienceWithIngestions.experience.id
-                                )
-                            },
-                            isTimeRelativeToNow = isTimeRelativeToNow,
-                            substanceRepository = substanceRepository,
-                            ownerUserName = ownerUserName
-                        )
-                        HorizontalDivider()
+                    this@Column.AnimatedVisibility(visible = isScrollUpButtonShown) {
+                        val scope = rememberCoroutineScope()
+                        ElevatedButton(
+                            modifier = Modifier.padding(all = horizontalPadding),
+                            onClick = {
+                                scope.launch {
+                                    listState.scrollToItem(index = 0)
+                                }
+                            }) {
+                            Icon(Icons.Default.ArrowUpward, contentDescription = "Scroll to top")
+                        }
                     }
                 }
             }

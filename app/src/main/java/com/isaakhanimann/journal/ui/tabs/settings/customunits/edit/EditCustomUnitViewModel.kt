@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -40,7 +41,7 @@ import kotlinx.coroutines.withContext
 @HiltViewModel
 class EditCustomUnitViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
-    substanceRepository: SubstanceRepository,
+    val substanceRepository: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
 
@@ -48,15 +49,19 @@ class EditCustomUnitViewModel @Inject constructor(
     init {
         val customUnitId = state.get<Int>(CUSTOM_UNIT_ID_KEY)!!
         viewModelScope.launch {
-            val customUnit = experienceRepo.getCustomUnit(customUnitId)
+            val customUnitWithIngestions = experienceRepo.getCustomUnitWithIngestions(customUnitId)
+            val customUnit = customUnitWithIngestions?.customUnit
             this@EditCustomUnitViewModel.customUnit = customUnit
             if (customUnit != null) {
                 substanceName = customUnit.substanceName
-                val substance = substanceRepository.getSubstance(customUnit.substanceName)!!
-                roaDose = substance.getRoa(customUnit.administrationRoute)?.roaDose
+                administrationRoute = customUnit.administrationRoute
+                val substance = substanceRepository.getSubstance(customUnit.substanceName)
+                roaDose = substance?.getRoa(customUnit.administrationRoute)?.roaDose
                 originalUnit = customUnit.originalUnit
                 name = customUnit.name
+                val pluralizableUnit = customUnit.getPluralizableUnit()
                 unit = customUnit.unit
+                unitPlural = pluralizableUnit.plural
                 doseText = customUnit.dose?.toReadableString() ?: ""
                 estimatedDoseDeviationText =
                     customUnit.estimatedDoseStandardDeviation?.toReadableString() ?: ""
@@ -64,6 +69,7 @@ class EditCustomUnitViewModel @Inject constructor(
                 isArchived = customUnit.isArchived
                 note = customUnit.note
             }
+            numberOfIngestionsWithThisCustomUnit = customUnitWithIngestions?.ingestions?.size
         }
     }
 
@@ -71,7 +77,10 @@ class EditCustomUnitViewModel @Inject constructor(
 
     var name by mutableStateOf("")
 
+    var numberOfIngestionsWithThisCustomUnit: Int? by mutableStateOf(null)
+
     var substanceName by mutableStateOf("")
+    var administrationRoute by mutableStateOf(AdministrationRoute.ORAL)
 
     val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(ingestionDose = dose)
 
@@ -83,6 +92,12 @@ class EditCustomUnitViewModel @Inject constructor(
 
     fun onChangeOfUnit(newUnit: String) {
         unit = newUnit
+    }
+
+    var unitPlural by mutableStateOf("")
+
+    fun onChangeOfUnitPlural(newUnit: String) {
+        unitPlural = newUnit
     }
 
     var originalUnit by mutableStateOf("")
@@ -126,8 +141,8 @@ class EditCustomUnitViewModel @Inject constructor(
                 it.name = name
                 it.isEstimate = isEstimate
                 it.originalUnit = originalUnit
-                it.estimatedDoseStandardDeviation =
-                    if (isEstimate) estimatedDoseStandardDeviation else null
+                it.unitPlural = unitPlural
+                it.estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseStandardDeviation else null
                 it.isArchived = isArchived
                 it.unit = unit
                 it.note = note
@@ -139,11 +154,15 @@ class EditCustomUnitViewModel @Inject constructor(
         }
     }
 
-    fun deleteCustomUnit() {
+    fun deleteCustomUnit(dismiss: () -> Unit) {
         viewModelScope.launch {
             customUnit?.let {
                 experienceRepo.delete(customUnit = it)
             }
+            withContext(Dispatchers.Main) {
+                dismiss()
+            }
         }
     }
+
 }

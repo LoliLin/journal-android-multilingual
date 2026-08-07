@@ -62,14 +62,8 @@ class CustomChooseDoseViewModel @Inject constructor(
                 if (it == null) return null
                 purity.let { safePurity ->
                     if (safePurity == null) return null
-                    val value = String
-                        .format("%.2f", it.div(safePurity).times(100))
-                        .toDoubleOrNull()
-                    if (value != null) {
-                        return value.toReadableString() + " $units"
-                    } else {
-                        return null
-                    }
+                    val result = it.div(safePurity).times(100)
+                    return result.toReadableString() + " $units"
                 }
             }
         }

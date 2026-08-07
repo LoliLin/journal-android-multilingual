@@ -93,27 +93,15 @@ fun SuggestionRow(
             substanceRouteSuggestion.dosesAndUnit.forEach { doseAndUnit ->
                 SuggestionChip(
                     onClick = {
-                        if (substanceRouteSuggestion.customSubstanceId != null) {
-                            navigateToChooseTime(
-                                substanceRouteSuggestion.substanceName,
-                                substanceRouteSuggestion.route,
-                                doseAndUnit.dose,
-                                doseAndUnit.unit,
-                                doseAndUnit.isEstimate,
-                                doseAndUnit.estimatedDoseStandardDeviation,
-                                null
-                            )
-                        } else {
-                            navigateToChooseTime(
-                                substanceRouteSuggestion.substanceName,
-                                substanceRouteSuggestion.route,
-                                doseAndUnit.dose,
-                                doseAndUnit.unit,
-                                doseAndUnit.isEstimate,
-                                doseAndUnit.estimatedDoseStandardDeviation,
-                                null
-                            )
-                        }
+                        navigateToChooseTime(
+                            substanceRouteSuggestion.substanceName,
+                            substanceRouteSuggestion.route,
+                            doseAndUnit.dose,
+                            doseAndUnit.unit,
+                            doseAndUnit.isEstimate,
+                            doseAndUnit.estimatedDoseStandardDeviation,
+                            null
+                        )
                     },
                     label = {
                         if (doseAndUnit.dose != null) {
@@ -160,7 +148,7 @@ fun SuggestionRow(
                         )
                     }
                 }, label = {
-                    Text("Enter $pureDoseUnit")
+                    Text(i18n("suggestion_enter_dose", mapOf("unit" to pureDoseUnit)))
                 }, icon = {
                     Icon(
                         imageVector = Icons.Default.Keyboard,

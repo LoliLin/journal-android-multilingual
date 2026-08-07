@@ -24,7 +24,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -45,6 +44,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -57,10 +57,9 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.ShareableExperienceC
 import com.isaakhanimann.journal.ui.tabs.journal.experience.prepareShareableExperienceCardData
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
 import com.isaakhanimann.journal.ui.utils.shareBitmap
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @Preview(showBackground = true)
@@ -83,13 +82,13 @@ fun ExperienceRow(
             .fillMaxWidth()
             .height(IntrinsicSize.Min)
             .padding(horizontal = horizontalPadding, vertical = 5.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         val context = LocalContext.current
         val currentView = LocalView.current
         val coroutineScope = rememberCoroutineScope()
-        val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions
+        val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions.sortedBy { it.ingestion.time }
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
         val timedNotes = rowViewModel.getTimedNotes(
             experience.id
@@ -173,17 +172,17 @@ fun ExperienceRow(
                     )
                 } else {
                     Text(
-                        text = experienceWithIngestionsCompanionsAndRatings.sortInstant.getStringOfPattern(
-                            "EEE, dd MMM yyyy"
-                        ),
+                        text = experienceWithIngestionsCompanionsAndRatings.sortInstant.getDateWithWeekdayText(),
                         style = timeStyle
                     )
                 }
+                Spacer(modifier = Modifier.width(10.dp))
                 val location = experience.location
                 if (location != null) {
                     Text(
                         text = location.name,
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.labelMedium,
+                        textAlign = TextAlign.End
                     )
                 }
             }

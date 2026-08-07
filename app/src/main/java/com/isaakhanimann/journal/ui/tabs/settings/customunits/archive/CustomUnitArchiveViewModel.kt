@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.settings.customunits.archive
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -29,7 +30,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
-class CustomUnitArchiveViewModel @Inject constructor(experienceRepository: ExperienceRepository) :
+class CustomUnitArchiveViewModel @Inject constructor(
+    experienceRepository: ExperienceRepository,
+    val substanceRepository: SubstanceRepository
+) :
     ViewModel() {
 
     val customUnitsFlow: StateFlow<List<CustomUnit>> = experienceRepository.getCustomUnitsFlow(

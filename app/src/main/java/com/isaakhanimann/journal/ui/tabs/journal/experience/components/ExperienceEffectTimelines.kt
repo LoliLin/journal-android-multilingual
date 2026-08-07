@@ -24,8 +24,10 @@ import androidx.compose.ui.Modifier
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.AllTimelines
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.AllTimelinesModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 
 @Composable
 fun ExperienceEffectTimelines(
@@ -54,15 +56,24 @@ fun ExperienceEffectTimelines(
                 horizontalWeight = horizontalWeight,
                 color = oneElement.ingestionWithCompanionAndCustomUnit.substanceCompanion?.color
                     ?: AdaptiveColor.RED,
-                startTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.time
+                startTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.time,
+                endTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.endTime
             )
         }
     }
+    val model = remember(effectTimelines, dataForRatings, dataForTimedNotes) {
+        AllTimelinesModel(
+            dataForLines = effectTimelines,
+            dataForRatings = dataForRatings,
+            timedNotes = dataForTimedNotes,
+            areSubstanceHeightsIndependent = false
+        )
+    }
     AllTimelines(
-        dataForEffectLines = effectTimelines,
-        dataForRatings = dataForRatings,
-        dataForTimedNotes = dataForTimedNotes,
+        model = model,
         isShowingCurrentTime = true,
-        modifier = modifier
+        timeDisplayOption = TimeDisplayOption.REGULAR,
+        modifier = modifier,
+        areSubstanceHeightsIndependent = false
     )
 }

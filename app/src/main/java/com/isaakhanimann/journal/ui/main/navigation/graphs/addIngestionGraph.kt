@@ -47,10 +47,10 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstan
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.ChooseDoseCustomUnitScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.CheckInteractionsScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomChooseRouteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomSubstanceChooseRouteScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse.CheckSaferUseScreen
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ChooseTimeScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.FinishIngestionScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 
 fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
@@ -181,7 +181,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         ) { backStackEntry ->
             val args = backStackEntry.arguments!!
             val customSubstanceId = args.getInt(CUSTOM_SUBSTANCE_ID_KEY)
-            CustomChooseRouteScreen(
+            CustomSubstanceChooseRouteScreen(
                 onRouteTap = { administrationRoute ->
                     navController.navigateToChooseDoseCustom(
                         customSubstanceId = customSubstanceId,
@@ -256,7 +256,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
             ArgumentRouter.ChooseTimeRouter.route,
             arguments = ArgumentRouter.ChooseTimeRouter.args
         ) {
-            ChooseTimeScreen(
+            FinishIngestionScreen(
                 dismissAddIngestionScreens = navController::dismissAddIngestionScreens
             )
         }

@@ -34,6 +34,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DotRows
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
@@ -59,7 +60,7 @@ fun IngestionRow(
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         modifier = modifier.height(intrinsicSize = IntrinsicSize.Min)
     ) {
-        VerticalLine(color = ingestionWithCompanionAndCustomUnit.substanceCompanion!!.color)
+        VerticalLine(color = ingestionWithCompanionAndCustomUnit.substanceCompanion?.color ?: AdaptiveColor.RED)
         Column {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),

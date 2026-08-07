@@ -47,7 +47,8 @@ fun CustomUnitArchiveScreen(
 ) {
     CustomUnitArchiveScreenContent(
         customUnits = viewModel.customUnitsFlow.collectAsState().value,
-        navigateToEditCustomUnit = navigateToEditCustomUnit
+        navigateToEditCustomUnit = navigateToEditCustomUnit,
+        getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName
     )
 }
 
@@ -65,6 +66,7 @@ fun CustomUnitArchiveScreenPreview() {
                 isEstimate = true,
                 isArchived = false,
                 unit = "spoon",
+                unitPlural = "spoons",
                 originalUnit = "mg",
                 note = ""
             ),
@@ -77,11 +79,13 @@ fun CustomUnitArchiveScreenPreview() {
                 isEstimate = true,
                 isArchived = false,
                 unit = "pill",
+                unitPlural = "pills",
                 originalUnit = "mg",
                 note = ""
             )
         ),
-        navigateToEditCustomUnit = { _ -> }
+        navigateToEditCustomUnit = { _ -> },
+        getSubstanceDisplayName = { it }
     )
 }
 
@@ -89,7 +93,8 @@ fun CustomUnitArchiveScreenPreview() {
 @Composable
 fun CustomUnitArchiveScreenContent(
     customUnits: List<CustomUnit>,
-    navigateToEditCustomUnit: (customUnitId: Int) -> Unit
+    navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    getSubstanceDisplayName: (String) -> String
 ) {
     Scaffold(
         topBar = {
@@ -109,7 +114,8 @@ fun CustomUnitArchiveScreenContent(
                 items(customUnits) { customUnit ->
                     CustomUnitRow(
                         customUnit = customUnit,
-                        navigateToEditCustomUnit = navigateToEditCustomUnit
+                        navigateToEditCustomUnit = navigateToEditCustomUnit,
+                        getSubstanceDisplayName = getSubstanceDisplayName
                     )
                     HorizontalDivider()
                 }

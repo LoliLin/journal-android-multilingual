@@ -96,6 +96,30 @@ fun ChooseRouteScreen(
     )
 }
 
+@Preview
+@Composable
+fun ChooseRouteScreenPreview() {
+    val pwRoutes = listOf(AdministrationRoute.INSUFFLATED, AdministrationRoute.ORAL)
+    val otherRoutes = AdministrationRoute.entries.filter { route ->
+        !pwRoutes.contains(route)
+    }
+    val otherRoutesChunked = otherRoutes.chunked(2)
+    ChooseRouteScreen(
+        showOtherRoutes = false,
+        onChangeOfShowOtherRoutes = {},
+        pwRoutes = pwRoutes,
+        otherRoutesChunked = otherRoutesChunked,
+        onRouteTapped = {},
+        navigateToRouteExplanationScreen = {},
+        navigateToURL = {},
+        isShowingInjectionDialog = false,
+        navigateWithCurrentRoute = {},
+        dismissInjectionDialog = {},
+        substanceName = "LSD",
+        getSubstanceDisplayName = { it }
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChooseRouteScreen(
@@ -255,7 +279,7 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
 @Composable
 fun SaferInjectionLink(navigateToURL: (url: String) -> Unit) {
     TextButton(onClick = {
-        navigateToURL(AdministrationRoute.saferInjectionArticleURL)
+        navigateToURL(AdministrationRoute.SAFER_INJECTION_ARTICLE_URL)
     }) {
         Icon(
             Icons.Outlined.Newspaper,

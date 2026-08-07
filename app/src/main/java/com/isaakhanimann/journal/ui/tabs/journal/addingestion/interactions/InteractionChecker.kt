@@ -157,7 +157,7 @@ class InteractionChecker @Inject constructor(private val substanceRepo: Substanc
             Regex(
                 pattern = interaction.replace(
                     oldValue = "x",
-                    newValue = "[\\S]*",
+                    newValue = "[\\S]{2}",
                     ignoreCase = true
                 ),
                 option = RegexOption.IGNORE_CASE

@@ -204,9 +204,10 @@ class OneExperienceViewModel @Inject constructor(
                 isCurrentExperience: Boolean
             ->
             when (savedOption) {
-                SavedTimeDisplayOption.AUTO -> if (isCurrentExperience) TimeDisplayOption.RELATIVE_TO_NOW else TimeDisplayOption.RELATIVE_TO_START
+                SavedTimeDisplayOption.AUTO -> if (isCurrentExperience) TimeDisplayOption.RELATIVE_TO_NOW else TimeDisplayOption.REGULAR
                 SavedTimeDisplayOption.RELATIVE_TO_NOW -> TimeDisplayOption.RELATIVE_TO_NOW
                 SavedTimeDisplayOption.RELATIVE_TO_START -> TimeDisplayOption.RELATIVE_TO_START
+                SavedTimeDisplayOption.TIME_BETWEEN -> TimeDisplayOption.TIME_BETWEEN
                 SavedTimeDisplayOption.REGULAR -> TimeDisplayOption.REGULAR
             }
         }.stateIn(
@@ -322,7 +323,7 @@ class OneExperienceViewModel @Inject constructor(
                 enabledInteractions
             ->
             val interactionsToCheck =
-                ingestions.map { it.ingestion.substanceName }.plus(enabledInteractions).distinct()
+                ingestions.filter { it.ingestion.consumerName == null }.map { it.ingestion.substanceName }.plus(enabledInteractions).distinct()
             return@combine interactionsToCheck.flatMapIndexed { index: Int, interaction: String ->
                 return@flatMapIndexed interactionsToCheck.drop(index + 1).mapNotNull { other ->
                     interactionChecker.getInteractionBetween(

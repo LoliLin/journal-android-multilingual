@@ -75,7 +75,7 @@ fun DoseGuideScreen(
                 },
                 text = { Text(i18n("common_article")) }
             )
-        }
+        },
     ) { padding ->
         Column(
             modifier = Modifier

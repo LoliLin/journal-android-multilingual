@@ -23,6 +23,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -30,6 +31,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,6 +42,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -54,101 +58,121 @@ fun AcceptConditionsPreview() {
 
 @Composable
 fun AcceptConditionsScreen(onTapAccept: () -> Unit) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceAround,
-        modifier = Modifier
-            .padding(10.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
-        var checkedState0 by remember { mutableStateOf(false) }
-        var checkedState1 by remember { mutableStateOf(false) }
-        var checkedState2 by remember { mutableStateOf(false) }
-        var checkedState3 by remember { mutableStateOf(false) }
-        val allIsChecked =
-            checkedState0 && checkedState1 && checkedState2 && checkedState3
-        val painter =
-            if (allIsChecked) {
-                painterResource(
-                    R.drawable.eye_open
-                )
-            } else {
-                painterResource(R.drawable.eye_closed)
-            }
-        Image(
-            painter = painter,
-            contentDescription = i18n("psychonaut_wiki_eye"),
-            modifier = Modifier
-                .clip(RoundedCornerShape(30.dp))
-                .clickable {
-                    checkedState0 = true
-                    checkedState1 = true
-                    checkedState2 = true
-                    checkedState3 = true
-                }
-                .fillMaxWidth(0.4f)
-                .padding(bottom = 10.dp)
-        )
+    Scaffold { padding ->
         Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.spacedBy(5.dp)
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier
+                .padding(padding)
+                .padding(10.dp)
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable {
-                    checkedState0 = checkedState0.not()
+            var checkedState0 by remember { mutableStateOf(false) }
+            var checkedState1 by remember { mutableStateOf(false) }
+            var checkedState2 by remember { mutableStateOf(false) }
+            var checkedState3 by remember { mutableStateOf(false) }
+            val allIsChecked =
+                checkedState0 && checkedState1 && checkedState2 && checkedState3
+            val painter =
+                if (allIsChecked) {
+                    painterResource(
+                        R.drawable.eye_open
+                    )
+                } else {
+                    painterResource(R.drawable.eye_closed)
                 }
+            Image(
+                painter = painter,
+                contentDescription = i18n("psychonaut_wiki_eye"),
+                modifier = Modifier
+                    .clip(RoundedCornerShape(30.dp))
+                    .clickable {
+                        checkedState0 = true
+                        checkedState1 = true
+                        checkedState2 = true
+                        checkedState3 = true
+                    }
+                    .fillMaxWidth(0.4f)
+                    .padding(bottom = 20.dp)
+            )
+            Column(
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
-                Checkbox(
-                    checked = checkedState0,
-                    onCheckedChange = { checkedState0 = it }
-                )
-                Text(text = i18n("screen_accept_acknowledge"))
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable {
-                    checkedState1 = checkedState1.not()
+                val acknowledgeText = i18n("screen_accept_acknowledge")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        checkedState0 = checkedState0.not()
+                    }
+                ) {
+                    Checkbox(
+                        checked = checkedState0,
+                        onCheckedChange = { checkedState0 = it },
+                        modifier = Modifier.semantics {
+                            contentDescription = acknowledgeText
+                        }
+                    )
+                    Text(text = acknowledgeText)
                 }
-            ) {
-                Checkbox(
-                    checked = checkedState1,
-                    onCheckedChange = { checkedState1 = it }
-                )
-                Text(text = i18n("screen_accept_risk"))
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable {
-                    checkedState2 = checkedState2.not()
+                val riskText = i18n("screen_accept_risk")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        checkedState1 = checkedState1.not()
+                    }
+                ) {
+                    Checkbox(
+                        checked = checkedState1,
+                        onCheckedChange = { checkedState1 = it },
+                        modifier = Modifier.semantics {
+                            contentDescription = riskText
+                        }
+                    )
+                    Text(text = riskText)
                 }
-            ) {
-                Checkbox(
-                    checked = checkedState2,
-                    onCheckedChange = { checkedState2 = it }
-                )
-                Text(text = i18n("screen_accept_inaccurate"))
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable {
-                    checkedState3 = checkedState3.not()
+                val inaccurateText = i18n("screen_accept_inaccurate")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        checkedState2 = checkedState2.not()
+                    }
+                ) {
+                    Checkbox(
+                        checked = checkedState2,
+                        onCheckedChange = { checkedState2 = it },
+                        modifier = Modifier.semantics {
+                            contentDescription = inaccurateText
+                        }
+                    )
+                    Text(text = inaccurateText)
                 }
-            ) {
-                Checkbox(
-                    checked = checkedState3,
-                    onCheckedChange = { checkedState3 = it }
-                )
-                Text(text = i18n("screen_accept_professional"))
+                val professionalText = i18n("screen_accept_professional")
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable {
+                        checkedState3 = checkedState3.not()
+                    }
+                ) {
+                    Checkbox(
+                        checked = checkedState3,
+                        onCheckedChange = { checkedState3 = it },
+                        modifier = Modifier.semantics {
+                            contentDescription = professionalText
+                        }
+                    )
+                    Text(text = professionalText)
+                }
             }
-        }
-        Text(
-            text = i18n("screen_accept_stay"),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 15.dp)
-        )
-        Button(onClick = onTapAccept, enabled = allIsChecked) {
-            Text(text = i18n("continue"))
+            Text(
+                text = i18n("screen_accept_stay"),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)
+            )
+            Button(onClick = onTapAccept, enabled = allIsChecked) {
+                Text(text = i18n("continue"))
+            }
         }
     }
 }

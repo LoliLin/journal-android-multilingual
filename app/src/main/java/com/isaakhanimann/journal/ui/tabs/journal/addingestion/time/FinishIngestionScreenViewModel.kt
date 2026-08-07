@@ -18,13 +18,13 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.time
 
-import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import android.content.Context
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
@@ -34,7 +34,6 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_SUBSTANCE_ID_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.DOSE_KEY
 import com.isaakhanimann.journal.ui.main.navigation.routers.ESTIMATED_DOSE_STANDARD_DEVIATION_KEY
@@ -44,93 +43,68 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.UNITS_KEY
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
+import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.Duration
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 
 const val hourLimitToSeparateIngestions: Long = 12
 
+enum class IngestionTimePickerOption {
+    POINT_IN_TIME, TIME_RANGE
+}
+
 @HiltViewModel
-class ChooseTimeViewModel @Inject constructor(
+class FinishIngestionScreenViewModel @Inject constructor(
     private val experienceRepo: ExperienceRepository,
     private val userPreferences: UserPreferences,
-    @ApplicationContext private val appContext: Context,
     val substanceRepo: SubstanceRepository,
+    @ApplicationContext private val appContext: Context,
     state: SavedStateHandle
 ) : ViewModel() {
     var substanceName by mutableStateOf("")
-    val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
-        initialValue = "You",
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
-
-    val localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
+    val localDateTimeStartFlow = MutableStateFlow(LocalDateTime.now())
+    val localDateTimeEndFlow = MutableStateFlow(LocalDateTime.now().plusMinutes(30))
+    val ingestionTimePickerOptionFlow = MutableStateFlow(IngestionTimePickerOption.POINT_IN_TIME)
+    val experiencesInRangeFlow = MutableStateFlow<List<ExperienceWithIngestions>>(emptyList())
+    val selectedExperienceFlow = MutableStateFlow<ExperienceWithIngestions?>(null)
     var enteredTitle by mutableStateOf(LocalDateTime.now().getStringOfPattern("dd MMMM yyyy"))
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
     var consumerName by mutableStateOf("")
 
-    private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
 
-    val sortedConsumerNamesFlow = experienceRepo.getSortedIngestions(
-        limit = 200
-    ).map { ingestions ->
-        return@map ingestions.mapNotNull { it.consumerName }.distinct()
-    }.stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
-
-    private val experienceWithIngestionsToAddToFlow: Flow<ExperienceWithIngestions?> =
-        sortedExperiencesFlow.combine(localDateTimeFlow) { sortedExperiences, localDateTime ->
-            val selectedInstant = localDateTime.getInstant()
-            return@combine sortedExperiences.firstOrNull { experience ->
-                val sortedIngestions = experience.ingestions.sortedBy { it.time }
-                val firstIngestionTime =
-                    sortedIngestions.firstOrNull()?.time ?: return@firstOrNull false
-                val lastIngestionTime =
-                    sortedIngestions.lastOrNull()?.time ?: return@firstOrNull false
-                val selectedDateMinusLimit =
-                    selectedInstant.minus(hourLimitToSeparateIngestions, ChronoUnit.HOURS)
-                val selectedDatePlusLimit =
-                    selectedInstant.plus(hourLimitToSeparateIngestions, ChronoUnit.HOURS)
-                return@firstOrNull selectedDateMinusLimit < lastIngestionTime &&
-                    selectedDatePlusLimit > firstIngestionTime
-            }
+    fun onChangeTimePickerOption(ingestionTimePickerOption: IngestionTimePickerOption) =
+        viewModelScope.launch {
+            ingestionTimePickerOptionFlow.emit(ingestionTimePickerOption)
         }
 
-    val experienceTitleToAddToFlow: StateFlow<String?> =
-        experienceWithIngestionsToAddToFlow.map { it?.experience?.title }.stateIn(
-            initialValue = null,
+    private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
+
+    val sortedConsumerNamesFlow =
+        experienceRepo.getSortedIngestions(limit = 200).map { ingestions ->
+            return@map ingestions.mapNotNull { it.consumerName }.distinct()
+        }.stateIn(
+            initialValue = emptyList(),
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
-
-    val userWantsToContinueSameExperienceFlow = MutableStateFlow(true)
-
-    fun toggleCheck(userWantsToContinueSameExperience: Boolean) {
-        viewModelScope.launch {
-            userWantsToContinueSameExperienceFlow.emit(userWantsToContinueSameExperience)
-        }
-    }
 
     var isLoadingColor by mutableStateOf(true)
     var isShowingColorPicker by mutableStateOf(false)
@@ -177,7 +151,7 @@ class ChooseTimeViewModel @Inject constructor(
 
     val otherColorsFlow: StateFlow<List<AdaptiveColor>> =
         alreadyUsedColorsFlow.map { alreadyUsedColors ->
-            AdaptiveColor.values().filter {
+            AdaptiveColor.entries.filter {
                 !alreadyUsedColors.contains(it)
             }
         }.stateIn(
@@ -192,9 +166,11 @@ class ChooseTimeViewModel @Inject constructor(
     }
 
     init {
-        val routeString = state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
+        // Fork navigation passes string-route arguments via SavedStateHandle (no type-safe routes).
         substanceName = state.get<String>(SUBSTANCE_NAME_KEY) ?: ""
-        administrationRoute = AdministrationRoute.valueOf(routeString)
+        administrationRoute = AdministrationRoute.valueOf(
+            state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
+        )
         dose = state.get<String>(DOSE_KEY)?.toDoubleOrNull()
         estimatedDoseStandardDeviation =
             state.get<String>(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
@@ -207,27 +183,33 @@ class ChooseTimeViewModel @Inject constructor(
             }
         }
         isEstimate = state.get<Boolean>(IS_ESTIMATE_KEY)!!
-        val customSubstanceId = state.get<String>(CUSTOM_SUBSTANCE_ID_KEY)?.toIntOrNull()
         viewModelScope.launch {
-            if (customSubstanceId != null) {
-                val customSubstance = experienceRepo.getCustomSubstanceFlow(
-                    customSubstanceId
-                ).firstOrNull()
-                if (customSubstance != null) {
-                    substanceName = customSubstance.name
+            val lastIngestionTimeOfExperience =
+                userPreferences.lastIngestionTimeOfExperienceFlow.first()
+            val clonedIngestionTime = userPreferences.clonedIngestionTimeFlow.first()
+            if (clonedIngestionTime != null) {
+                localDateTimeStartFlow.emit(clonedIngestionTime.getLocalDateTime())
+                localDateTimeEndFlow.emit(clonedIngestionTime.plus(30, ChronoUnit.MINUTES).getLocalDateTime())
+                updateTitleBasedOnTime(clonedIngestionTime)
+            } else if (lastIngestionTimeOfExperience != null) {
+                val wasLastIngestionOfExperienceMoreThan20HoursAgo =
+                    lastIngestionTimeOfExperience < Instant.now().minus(20, ChronoUnit.HOURS)
+                if (wasLastIngestionOfExperienceMoreThan20HoursAgo) {
+                    localDateTimeStartFlow.emit(lastIngestionTimeOfExperience.getLocalDateTime())
+                    localDateTimeEndFlow.emit(lastIngestionTimeOfExperience.plus(30, ChronoUnit.MINUTES).getLocalDateTime())
+                    updateTitleBasedOnTime(lastIngestionTimeOfExperience)
                 }
             }
+            updateExperiencesBasedOnSelectedTime()
             val allCompanions = experienceRepo.getAllSubstanceCompanionsFlow().first()
             val thisCompanion = allCompanions.firstOrNull { it.substanceName == substanceName }
             substanceCompanion = thisCompanion
             if (thisCompanion == null) {
                 isShowingColorPicker = true
                 val alreadyUsedColors = allCompanions.map { it.color }
-                val otherColors = AdaptiveColor.values().filter { !alreadyUsedColors.contains(it) }
-                selectedColor =
-                    otherColors.filter { it.isPreferred }.randomOrNull()
-                        ?: otherColors.randomOrNull()
-                        ?: AdaptiveColor.values().random()
+                val otherColors = AdaptiveColor.entries.filter { !alreadyUsedColors.contains(it) }
+                selectedColor = otherColors.filter { it.isPreferred }.randomOrNull()
+                    ?: otherColors.randomOrNull() ?: AdaptiveColor.entries.random()
             } else {
                 selectedColor = thisCompanion.color
             }
@@ -235,16 +217,63 @@ class ChooseTimeViewModel @Inject constructor(
         }
     }
 
-    fun onChangeDateOrTime(newLocalDateTime: LocalDateTime) {
+    fun onChangeOfSelectedExperience(experienceWithIngestions: ExperienceWithIngestions?) =
         viewModelScope.launch {
-            localDateTimeFlow.emit(
-                newLocalDateTime
-            )
-            val ingestionTime = newLocalDateTime.atZone(ZoneId.systemDefault()).toInstant()
-            if (!hasTitleBeenChanged) {
-                enteredTitle = ingestionTime.getStringOfPattern("dd MMMM yyyy")
-            }
+            selectedExperienceFlow.emit(experienceWithIngestions)
         }
+
+    fun onChangeStartDateOrTime(newLocalDateTime: LocalDateTime) = viewModelScope.launch {
+        localDateTimeStartFlow.emit(newLocalDateTime)
+        updateExperiencesBasedOnSelectedTime()
+        val startTime = newLocalDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        if (!hasTitleBeenChanged) {
+            updateTitleBasedOnTime(startTime)
+        }
+        val endTime = localDateTimeEndFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        if (startTime > endTime || Duration.between(startTime, endTime).toHours() > 24) {
+            val newEndTime = startTime.plus(30, ChronoUnit.MINUTES)
+            localDateTimeEndFlow.emit(newEndTime.getLocalDateTime())
+        }
+    }
+
+    fun onChangeEndDateOrTime(newLocalDateTime: LocalDateTime) = viewModelScope.launch {
+        localDateTimeEndFlow.emit(newLocalDateTime)
+        val endTime = newLocalDateTime.atZone(ZoneId.systemDefault()).toInstant()
+        val startTime =
+            localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        if (startTime > endTime) {
+            val newStartTime = endTime.minus(30, ChronoUnit.MINUTES)
+            localDateTimeStartFlow.emit(newStartTime.getLocalDateTime())
+        }
+    }
+
+    private fun updateTitleBasedOnTime(time: Instant) {
+        enteredTitle = time.getStringOfPattern("dd MMMM yyyy")
+    }
+
+    private suspend fun updateExperiencesBasedOnSelectedTime() {
+        val selectedInstant = localDateTimeStartFlow.value.getInstant()
+        val fromInstant = selectedInstant.minus(3, ChronoUnit.DAYS)
+        val toInstant = selectedInstant.plus(1, ChronoUnit.DAYS)
+        val experiencesInRange =
+            experienceRepo.getSortedExperiencesWithIngestionsWithSortDateBetween(
+                fromInstant = fromInstant,
+                toInstant = toInstant
+            )
+        experiencesInRangeFlow.emit(experiencesInRange)
+        val closestExperience = experiencesInRange.firstOrNull { experience ->
+            val sortedIngestions = experience.ingestions.sortedBy { it.time }
+            val firstIngestionTime =
+                sortedIngestions.firstOrNull()?.time ?: return@firstOrNull false
+            val upperBoundBasedOnFirstIngestion = firstIngestionTime.plus(15, ChronoUnit.HOURS)
+            val lastIngestionTime = sortedIngestions.lastOrNull()?.time ?: return@firstOrNull false
+            val upperBoundBasedOnLastIngestion = lastIngestionTime.plus(3, ChronoUnit.HOURS)
+            val finalUpperBound =
+                maxOf(upperBoundBasedOnFirstIngestion, upperBoundBasedOnLastIngestion)
+            val lowerBound = firstIngestionTime.minus(3, ChronoUnit.HOURS)
+            return@firstOrNull selectedInstant in lowerBound..finalUpperBound
+        }
+        selectedExperienceFlow.emit(closestExperience)
     }
 
     fun createSaveAndDismissAfter(dismiss: () -> Unit) {
@@ -257,17 +286,16 @@ class ChooseTimeViewModel @Inject constructor(
     }
 
     private suspend fun createAndSaveIngestion() {
-        val newIdToUse = newExperienceIdToUseFlow.firstOrNull() ?: 1
-        val oldIdToUse = experienceWithIngestionsToAddToFlow.firstOrNull()?.experience?.id
-        val userWantsToCreateANewExperience =
-            !(userWantsToContinueSameExperienceFlow.firstOrNull() ?: true)
         val substanceCompanion = SubstanceCompanion(
             substanceName,
             color = selectedColor
         )
-        val ingestionTime = localDateTimeFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        val oldIdToUse = selectedExperienceFlow.firstOrNull()?.experience?.id
+        val ingestionTime =
+            localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
         val savedExperienceId: Int
-        if (userWantsToCreateANewExperience || oldIdToUse == null) {
+        if (oldIdToUse == null) {
+            val newIdToUse = newExperienceIdToUseFlow.firstOrNull() ?: 1
             val newExperience = Experience(
                 id = newIdToUse,
                 title = enteredTitle,
@@ -291,8 +319,7 @@ class ChooseTimeViewModel @Inject constructor(
             )
             savedExperienceId = oldIdToUse
         }
-        // Keep a lightweight "effects in progress" notification with a quick-note
-        // action so notes can be added from any other app while effects last.
+        // Fork feature: keep an "effects in progress" notification with quick-note access.
         if (userPreferences.isEffectNotificationEnabledFlow.first()) {
             Notifications.showEffectNotification(
                 context = appContext,
@@ -303,20 +330,30 @@ class ChooseTimeViewModel @Inject constructor(
         }
     }
 
-    private suspend fun createNewIngestion(experienceId: Int) = Ingestion(
-        substanceName = substanceName,
-        time = localDateTimeFlow.first().atZone(ZoneId.systemDefault()).toInstant(),
-        administrationRoute = administrationRoute,
-        dose = dose,
-        isDoseAnEstimate = isEstimate,
-        estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
-        units = units,
-        experienceId = experienceId,
-        notes = note,
-        stomachFullness = null, // todo: allow to add real stomach fullness
-        consumerName = consumerName.ifBlank {
-            null
-        },
-        customUnitId = customUnitId
-    )
+    private suspend fun createNewIngestion(experienceId: Int): Ingestion {
+        val time = localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        val ingestionTimePickerOption = ingestionTimePickerOptionFlow.first()
+        val endTime = when (ingestionTimePickerOption) {
+            IngestionTimePickerOption.POINT_IN_TIME -> null
+            IngestionTimePickerOption.TIME_RANGE -> localDateTimeEndFlow.first()
+                .atZone(ZoneId.systemDefault()).toInstant()
+        }
+        return Ingestion(
+            substanceName = substanceName,
+            time = time,
+            endTime = endTime,
+            administrationRoute = administrationRoute,
+            dose = dose,
+            isDoseAnEstimate = isEstimate,
+            estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
+            units = units,
+            experienceId = experienceId,
+            notes = note,
+            stomachFullness = null, // todo: allow to add real stomach fullness
+            consumerName = consumerName.ifBlank {
+                null
+            },
+            customUnitId = customUnitId
+        )
+    }
 }

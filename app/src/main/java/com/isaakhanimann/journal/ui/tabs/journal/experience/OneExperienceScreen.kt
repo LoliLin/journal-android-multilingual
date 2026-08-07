@@ -467,9 +467,9 @@ fun OneExperienceScreen(
                         // empty gap between the title and the curve.
                         val hasFullDuration = ingestionElements.any {
                             it.roaDuration?.onset != null &&
-                                it.roaDuration?.comeup != null &&
-                                it.roaDuration?.peak != null &&
-                                it.roaDuration?.offset != null
+                                it.roaDuration.comeup != null &&
+                                it.roaDuration.peak != null &&
+                                it.roaDuration.offset != null
                         }
                         ExperienceEffectTimelines(
                             ingestionElements = oneExperienceScreenModel.ingestionElements,
