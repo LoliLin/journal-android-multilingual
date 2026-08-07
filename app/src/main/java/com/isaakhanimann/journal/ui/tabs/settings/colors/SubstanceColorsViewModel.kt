@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.settings.colors
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,7 +35,8 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class SubstanceColorsViewModel @Inject constructor(
-    private val experienceRepository: ExperienceRepository
+    private val experienceRepository: ExperienceRepository,
+    val substanceRepository: SubstanceRepository
 ) : ViewModel() {
 
     private val _substanceCompanionsFlow = MutableStateFlow<List<SubstanceCompanion>>(emptyList())

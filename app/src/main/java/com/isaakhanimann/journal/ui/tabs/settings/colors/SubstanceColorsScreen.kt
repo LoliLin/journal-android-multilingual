@@ -56,7 +56,8 @@ fun SubstanceColorsScreen(
         substanceCompanions = viewModel.substanceCompanionsFlow.collectAsState().value,
         updateColor = viewModel::updateColor,
         alreadyUsedColors = viewModel.alreadyUsedColorsFlow.collectAsState().value,
-        otherColors = viewModel.otherColorsFlow.collectAsState().value
+        otherColors = viewModel.otherColorsFlow.collectAsState().value,
+        getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName
     )
 }
 
@@ -77,7 +78,8 @@ fun SubstanceColorsScreenPreview() {
         ),
         updateColor = { _, _ -> },
         alreadyUsedColors = alreadyUsedColors,
-        otherColors = otherColors
+        otherColors = otherColors,
+        getSubstanceDisplayName = { it }
 
     )
 }
@@ -88,7 +90,8 @@ fun SubstanceColorsScreenContent(
     substanceCompanions: List<SubstanceCompanion>,
     updateColor: (color: AdaptiveColor, substanceName: String) -> Unit,
     alreadyUsedColors: List<AdaptiveColor>,
-    otherColors: List<AdaptiveColor>
+    otherColors: List<AdaptiveColor>,
+    getSubstanceDisplayName: (String) -> String
 ) {
     Scaffold(
         topBar = {
@@ -110,7 +113,7 @@ fun SubstanceColorsScreenContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = substanceCompanion.substanceName,
+                        text = getSubstanceDisplayName(substanceCompanion.substanceName),
                         style = MaterialTheme.typography.titleMedium
                     )
                     ColorPicker(
