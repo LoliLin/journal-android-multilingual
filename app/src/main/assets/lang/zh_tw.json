@@ -672,4 +672,6 @@
   "suggestion_enter_dose": "輸入 {unit}",
   "sd_means": "表示：",
   "common_confirm": "確認",
-  "settings_delete_type_confirm": "輸入 \"Delete\" 以確認"}
+  "settings_delete_type_confirm": "輸入 \"Delete\" 以確認",
+  "timeline_screen_no_data": "該記錄人暫無時間線資料"
+}

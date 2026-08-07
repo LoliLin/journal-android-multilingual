@@ -672,4 +672,6 @@
   "suggestion_enter_dose": "Enter {unit}",
   "sd_means": "means:",
   "common_confirm": "Confirm",
-  "settings_delete_type_confirm": "Type \"Delete\" to confirm"}
+  "settings_delete_type_confirm": "Type \"Delete\" to confirm",
+  "timeline_screen_no_data": "No timeline data for this consumer"
+}

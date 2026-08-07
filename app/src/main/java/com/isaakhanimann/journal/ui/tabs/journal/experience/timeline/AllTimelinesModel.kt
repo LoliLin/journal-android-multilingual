@@ -50,8 +50,7 @@ class AllTimelinesModel(
         val ingestionTimes = dataForLines.map { it.startTime }
         val noteTimes = timedNotes.map { it.time }
         val allStartTimeCandidates = ratingTimes + ingestionTimes + noteTimes
-        startTime =
-            allStartTimeCandidates.reduce { acc, date -> if (acc.isBefore(date)) acc else date }
+        startTime = allStartTimeCandidates.minOrNull() ?: Instant.EPOCH
         val roaGroups = dataForLines.groupBy { it.substanceName }
             .flatMap { substanceGroup ->
                 val linesPerSubstance = substanceGroup.value

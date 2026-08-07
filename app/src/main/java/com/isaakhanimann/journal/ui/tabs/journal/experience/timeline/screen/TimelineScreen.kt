@@ -191,6 +191,21 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
             var canvasWidth by remember { mutableFloatStateOf(screenWidth) }
             val isOrientationPortrait =
                 LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT
+            if (timelineScreenModel.ingestionElements.isEmpty() &&
+                timelineScreenModel.ratings.isEmpty() &&
+                timelineScreenModel.timedNotes.isEmpty()
+            ) {
+                Box(
+                    modifier = Modifier.weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = i18n("timeline_screen_no_data"),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
             Box(
                 modifier = Modifier
                     .weight(1f)
@@ -221,6 +236,7 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                         .width(canvasWidth.dp)
                         .padding(horizontal = horizontalPadding)
                 )
+            }
             }
             Slider(
                 value = canvasWidth,
