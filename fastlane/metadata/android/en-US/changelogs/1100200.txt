@@ -1,0 +1,5 @@
+- Substance names now translate in color, dose, time, and custom-unit screens.
+- Fixed a crash opening Timeline with no matching consumer data; shows an empty state.
+- Delete-everything dialog now requires typing "Delete" to confirm.
+- Added end-time ingestions with a range picker, pluralized units, and timeline improvements.
+- Added quick custom-unit entry on the dose screen with live conversion preview.
