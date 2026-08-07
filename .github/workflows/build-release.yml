@@ -13,6 +13,8 @@ on:
         description: 'Release Title'
         required: true
 
+run-name: "Release ${{ inputs.release_name }} (v${{ inputs.version_name }} / build ${{ inputs.version_code }})"
+
 jobs:
   release:
     runs-on: ubuntu-latest
