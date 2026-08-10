@@ -49,6 +49,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -136,7 +137,58 @@ fun StatsAnalysisScreenContent(
     Scaffold(
         topBar = {
             Column {
-                TopAppBar(title = { Text(i18n("stats_analysis_title")) })
+                TopAppBar(
+                    title = { Text(i18n("stats_analysis_title")) },
+                    actions = {
+                        var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
+                        Box {
+                            IconButton(
+                                onClick = { isConsumerDropdownExpanded = true }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Person,
+                                    contentDescription = i18n("stats_analysis_consumer"),
+                                    tint = if (selectedConsumerName != null) {
+                                        MaterialTheme.colorScheme.primary
+                                    } else {
+                                        MaterialTheme.colorScheme.onSurfaceVariant
+                                    }
+                                )
+                            }
+                            DropdownMenu(
+                                expanded = isConsumerDropdownExpanded,
+                                onDismissRequest = { isConsumerDropdownExpanded = false }
+                            ) {
+                                DropdownMenuItem(
+                                    text = { Text(i18n("stats_analysis_all_consumers")) },
+                                    onClick = {
+                                        setSelectedConsumerName(null)
+                                        isConsumerDropdownExpanded = false
+                                    },
+                                    leadingIcon = {
+                                        if (selectedConsumerName == null) {
+                                            Icon(Icons.Filled.Check, contentDescription = null)
+                                        }
+                                    }
+                                )
+                                consumerNames.forEach { consumerName ->
+                                    DropdownMenuItem(
+                                        text = { Text(consumerName) },
+                                        onClick = {
+                                            setSelectedConsumerName(consumerName)
+                                            isConsumerDropdownExpanded = false
+                                        },
+                                        leadingIcon = {
+                                            if (selectedConsumerName == consumerName) {
+                                                Icon(Icons.Filled.Check, contentDescription = null)
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                )
                 SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
                     StatsSection.entries.forEach { section ->
                         Tab(
@@ -163,59 +215,6 @@ fun StatsAnalysisScreenContent(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            CardWithTitle(title = i18n("stats_analysis_consumer")) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
-                ) {
-                    var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
-                    Box {
-                        OutlinedButton(onClick = { isConsumerDropdownExpanded = true }) {
-                            Text(
-                                text = selectedConsumerName ?: i18n("stats_analysis_all_consumers"),
-                                modifier = Modifier.weight(1f)
-                            )
-                            Icon(
-                                imageVector = Icons.Default.ArrowDropDown,
-                                contentDescription = null
-                            )
-                        }
-                        DropdownMenu(
-                            expanded = isConsumerDropdownExpanded,
-                            onDismissRequest = { isConsumerDropdownExpanded = false }
-                        ) {
-                            DropdownMenuItem(
-                                text = { Text(i18n("stats_analysis_all_consumers")) },
-                                onClick = {
-                                    setSelectedConsumerName(null)
-                                    isConsumerDropdownExpanded = false
-                                },
-                                leadingIcon = {
-                                    if (selectedConsumerName == null) {
-                                        Icon(Icons.Filled.Check, contentDescription = null)
-                                    }
-                                }
-                            )
-                            consumerNames.forEach { consumerName ->
-                                DropdownMenuItem(
-                                    text = { Text(consumerName) },
-                                    onClick = {
-                                        setSelectedConsumerName(consumerName)
-                                        isConsumerDropdownExpanded = false
-                                    },
-                                    leadingIcon = {
-                                        if (selectedConsumerName == consumerName) {
-                                            Icon(Icons.Filled.Check, contentDescription = null)
-                                        }
-                                    }
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
             CardWithTitle(title = i18n("stats_analysis_substances")) {
                 Column(
                     modifier = Modifier
@@ -313,8 +312,9 @@ fun StatsAnalysisScreenContent(
                 EmptyAnalysisHint(noData = true)
             } else {
                 SummaryCards(model, getSubstanceDisplayName)
-                DoseFrequencyChart(model)
-                PerDayChart(model)
+                model.perSubstanceCharts.forEach { chart ->
+                    SubstanceChartCard(chart, getSubstanceDisplayName)
+                }
                 IngestionList(model, getSubstanceDisplayName, navigateToSubstanceCompanion)
             }
         }
@@ -420,77 +420,85 @@ private fun SummaryCards(
 }
 
 @Composable
-private fun DoseFrequencyChart(model: StatsAnalysisModel) {
-    val chartColor = model.primaryColor?.getComposeColor(isSystemInDarkTheme())
+private fun SubstanceChartCard(
+    chart: SubstanceChartData,
+    getSubstanceDisplayName: (String) -> String
+) {
+    val chartColor = chart.color?.getComposeColor(isSystemInDarkTheme())
         ?: MaterialTheme.colorScheme.primary
-    CardWithTitle(title = i18n("stats_analysis_dose_frequency")) {
-        Row(
+    CardWithTitle(title = getSubstanceDisplayName(chart.substanceName)) {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-                .padding(horizontal = horizontalPadding, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                .padding(horizontal = horizontalPadding, vertical = 8.dp)
         ) {
-            val maxCount = model.doseFrequency.maxOfOrNull { it.second } ?: 1
-            model.doseFrequency.forEach { (dose, count) ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.width(44.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .height((count.toFloat() / maxCount * 96f).dp)
-                            .fillMaxWidth()
-                            .background(
-                                color = chartColor,
-                                shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
-                            )
-                    )
-                    Text(
-                        text = count.toString(),
-                        style = MaterialTheme.typography.labelSmall
-                    )
-                    Text(
-                        text = dose.toReadableString(),
-                        style = MaterialTheme.typography.labelSmall
-                    )
+            Text(
+                text = i18n("stats_analysis_dose_frequency"),
+                style = MaterialTheme.typography.labelLarge
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                val maxCount = chart.doseFrequency.maxOfOrNull { it.second } ?: 1
+                chart.doseFrequency.forEach { (dose, count) ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.width(44.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .height((count.toFloat() / maxCount * 96f).dp)
+                                .fillMaxWidth()
+                                .background(
+                                    color = chartColor,
+                                    shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
+                                )
+                        )
+                        Text(
+                            text = count.toString(),
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                        Text(
+                            text = dose.toReadableString(),
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun PerDayChart(model: StatsAnalysisModel) {
-    val chartColor = model.primaryColor?.getComposeColor(isSystemInDarkTheme())
-        ?: MaterialTheme.colorScheme.tertiary
-    CardWithTitle(title = i18n("stats_analysis_per_day")) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-                .padding(horizontal = horizontalPadding, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
-        ) {
-            val maxCount = model.perDayCounts.maxOfOrNull { it.second } ?: 1
-            model.perDayCounts.takeLast(60).forEach { (date, count) ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.width(28.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .height((count.toFloat() / maxCount * 64f).dp)
-                            .fillMaxWidth()
-                            .background(
-                                color = chartColor,
-                                shape = RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)
-                            )
-                    )
-                    Text(
-                        text = date.toString(),
-                        style = MaterialTheme.typography.labelSmall
-                    )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = i18n("stats_analysis_per_day"),
+                style = MaterialTheme.typography.labelLarge
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                val maxCount = chart.perDayCounts.maxOfOrNull { it.second } ?: 1
+                chart.perDayCounts.takeLast(60).forEach { (date, count) ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.width(28.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .height((count.toFloat() / maxCount * 64f).dp)
+                                .fillMaxWidth()
+                                .background(
+                                    color = chartColor,
+                                    shape = RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)
+                                )
+                        )
+                        Text(
+                            text = date.toString(),
+                            style = MaterialTheme.typography.labelSmall
+                        )
+                    }
                 }
             }
         }
