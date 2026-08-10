@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -255,16 +256,21 @@ fun IngestionRow(
     }
 }
 
-private data class DailyCount(val date: java.time.LocalDate, val count: Int)
+private data class DailyCount(val date: java.time.LocalDate, val value: Double)
 
 @Composable
-fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Modifier) {
+fun ActivityGrid(
+    ingestionBursts: List<IngestionsBurst>,
+    modifier: Modifier = Modifier,
+    accentColor: Color = Color(0xFF40C463)
+) {
     val now = java.time.LocalDate.now()
     val oneYearAgo = now.minusDays(364)
 
-    // Map ingestion counts by date (past 12 months)
-    val dateCountMap = androidx.compose.runtime.remember(ingestionBursts) {
-        val map = mutableMapOf<java.time.LocalDate, Int>()
+    // Map ingested dose by date (past 12 months); cells are colored by
+    // amount (mg), not by number of ingestions.
+    val dateDoseMap = androidx.compose.runtime.remember(ingestionBursts) {
+        val map = mutableMapOf<java.time.LocalDate, Double>()
         val cutoff = oneYearAgo.minusDays(7)
         for (burst in ingestionBursts) {
             for (item in burst.ingestions) {
@@ -272,19 +278,19 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
                     .atZone(java.time.ZoneId.systemDefault())
                     .toLocalDate()
                 if (date >= cutoff) {
-                    map[date] = (map[date] ?: 0) + 1
+                    map[date] = (map[date] ?: 0.0) + (item.ingestion.dose ?: 0.0)
                 }
             }
         }
         map
     }
 
-    val maxCount = androidx.compose.runtime.remember(dateCountMap) {
-        (dateCountMap.values.maxOrNull() ?: 1).coerceAtLeast(1)
+    val maxDose = androidx.compose.runtime.remember(dateDoseMap) {
+        (dateDoseMap.values.maxOrNull() ?: 1.0).coerceAtLeast(1.0)
     }
 
     // Build weeks FROM this week backward TO one year ago
-    val weeks = androidx.compose.runtime.remember(now, dateCountMap) {
+    val weeks = androidx.compose.runtime.remember(now, dateDoseMap) {
         val result = mutableListOf<List<DailyCount>>()
         // Start from Monday of this week
         var monday = now
@@ -297,7 +303,7 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
         while (current > end) {
             val week = (0..6).map { offset ->
                 val day = current.plusDays(offset.toLong())
-                DailyCount(day, dateCountMap[day] ?: 0)
+                DailyCount(day, dateDoseMap[day] ?: 0.0)
             }
             result.add(week)
             current = current.minusDays(7)

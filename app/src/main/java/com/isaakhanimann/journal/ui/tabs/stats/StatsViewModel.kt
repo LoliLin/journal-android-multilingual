@@ -277,7 +277,7 @@ data class StatsModel(
     val consumerName: String?
 )
 
-data class ColorCount(val color: AdaptiveColor, val count: Int)
+data class ColorCount(val color: AdaptiveColor, val count: Double)
 
 data class StatItem(
     val substanceName: String,
