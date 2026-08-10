@@ -54,6 +54,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
@@ -163,7 +166,8 @@ fun StatsScreen(
     }
     Scaffold(
         topBar = {
-            TopAppBar(
+            Column {
+                TopAppBar(
                 title = {
                     Text(
 
@@ -305,8 +309,7 @@ fun StatsScreen(
                     }
                 }
 
-            ),
-            bottomBar = {
+                )
                 SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
                     StatsSection.entries.forEach { section ->
                         Tab(

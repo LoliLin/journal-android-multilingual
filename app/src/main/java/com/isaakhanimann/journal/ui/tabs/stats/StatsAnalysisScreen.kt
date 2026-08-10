@@ -116,28 +116,26 @@ fun StatsAnalysisScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(i18n("stats_analysis_title")) },
-                bottomBar = {
-                    SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
-                        StatsSection.entries.forEach { section ->
-                            Tab(
-                                text = {
-                                    Text(
-                                        if (section == StatsSection.OVERVIEW) {
-                                            i18n("stats_section_overview")
-                                        } else {
-                                            i18n("stats_section_analysis")
-                                        }
-                                    )
-                                },
-                                selected = selectedSection == section,
-                                onClick = { onSelectSection(section) }
-                            )
-                        }
+            Column {
+                TopAppBar(title = { Text(i18n("stats_analysis_title")) })
+                SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
+                    StatsSection.entries.forEach { section ->
+                        Tab(
+                            text = {
+                                Text(
+                                    if (section == StatsSection.OVERVIEW) {
+                                        i18n("stats_section_overview")
+                                    } else {
+                                        i18n("stats_section_analysis")
+                                    }
+                                )
+                            },
+                            selected = selectedSection == section,
+                            onClick = { onSelectSection(section) }
+                        )
                     }
                 }
-            )
+            }
         }
     ) { padding ->
         Column(
