@@ -24,6 +24,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -38,8 +39,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.outlined.Clear
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -51,6 +58,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -75,11 +85,16 @@ fun StatsAnalysisScreen(
     onSelectSection: (StatsSection) -> Unit = {}
 ) {
     val usedSubstances = viewModel.usedSubstancesFlow.collectAsState().value
+    val consumerNames = viewModel.consumerNamesFlow.collectAsState().value
+    val selectedConsumerName = viewModel.selectedConsumerNameFlow.collectAsState().value
     val model = viewModel.modelFlow.collectAsState().value
     val startDate = viewModel.startDateFlow.collectAsState().value
     val endDate = viewModel.endDateFlow.collectAsState().value
     StatsAnalysisScreenContent(
         usedSubstances = usedSubstances,
+        consumerNames = consumerNames,
+        selectedConsumerName = selectedConsumerName,
+        setSelectedConsumerName = viewModel::setSelectedConsumerName,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
         selectedSubstances = model.selectedSubstances,
         toggleSubstance = viewModel::toggleSubstance,
@@ -100,6 +115,9 @@ fun StatsAnalysisScreen(
 @Composable
 fun StatsAnalysisScreenContent(
     usedSubstances: List<String>,
+    consumerNames: List<String>,
+    selectedConsumerName: String?,
+    setSelectedConsumerName: (String?) -> Unit,
     getSubstanceDisplayName: (String) -> String,
     selectedSubstances: Set<String>,
     toggleSubstance: (String) -> Unit,
@@ -144,6 +162,59 @@ fun StatsAnalysisScreenContent(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
+            CardWithTitle(title = i18n("stats_analysis_consumer")) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
+                ) {
+                    var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
+                    Box {
+                        OutlinedButton(onClick = { isConsumerDropdownExpanded = true }) {
+                            Text(
+                                text = selectedConsumerName ?: i18n("stats_analysis_all_consumers"),
+                                modifier = Modifier.weight(1f)
+                            )
+                            Icon(
+                                imageVector = Icons.Default.ArrowDropDown,
+                                contentDescription = null
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = isConsumerDropdownExpanded,
+                            onDismissRequest = { isConsumerDropdownExpanded = false }
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text(i18n("stats_analysis_all_consumers")) },
+                                onClick = {
+                                    setSelectedConsumerName(null)
+                                    isConsumerDropdownExpanded = false
+                                },
+                                leadingIcon = {
+                                    if (selectedConsumerName == null) {
+                                        Icon(Icons.Filled.Check, contentDescription = null)
+                                    }
+                                }
+                            )
+                            consumerNames.forEach { consumerName ->
+                                DropdownMenuItem(
+                                    text = { Text(consumerName) },
+                                    onClick = {
+                                        setSelectedConsumerName(consumerName)
+                                        isConsumerDropdownExpanded = false
+                                    },
+                                    leadingIcon = {
+                                        if (selectedConsumerName == consumerName) {
+                                            Icon(Icons.Filled.Check, contentDescription = null)
+                                        }
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             CardWithTitle(title = i18n("stats_analysis_substances")) {
                 Column(
                     modifier = Modifier

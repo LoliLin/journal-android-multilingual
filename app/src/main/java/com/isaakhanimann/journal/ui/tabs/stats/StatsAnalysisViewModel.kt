@@ -45,6 +45,7 @@ data class TotalDoseLine(
 
 data class StatsAnalysisModel(
     val selectedSubstances: Set<String>,
+    val selectedConsumerName: String?,
     val startDate: LocalDate?,
     val endDate: LocalDate?,
     val ingestionCount: Int,
@@ -70,6 +71,21 @@ class StatsAnalysisViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    val consumerNamesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
+        list.mapNotNull { it.ingestion.consumerName }.distinct().sorted()
+    }.stateIn(
+        initialValue = emptyList(),
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    private val _selectedConsumerName = MutableStateFlow<String?>(null)
+    val selectedConsumerNameFlow: StateFlow<String?> = _selectedConsumerName.asStateFlow()
+
+    fun setSelectedConsumerName(consumerName: String?) {
+        _selectedConsumerName.value = consumerName
+    }
 
     private val _selectedSubstances = MutableStateFlow<Set<String>>(emptySet())
     val selectedSubstancesFlow: StateFlow<Set<String>> = _selectedSubstances.asStateFlow()
@@ -110,12 +126,16 @@ class StatsAnalysisViewModel @Inject constructor(
     val modelFlow: StateFlow<StatsAnalysisModel> = combine(
         ingestionsFlow,
         _selectedSubstances,
+        _selectedConsumerName,
         _startDate,
         _endDate
-    ) { ingestions, selected, start, end ->
+    ) { ingestions, selected, consumerName, start, end ->
         val zone = ZoneId.systemDefault()
         val filtered = ingestions.filter { ingestionWith ->
             if (ingestionWith.ingestion.substanceName !in selected) {
+                return@filter false
+            }
+            if (consumerName != null && ingestionWith.ingestion.consumerName != consumerName) {
                 return@filter false
             }
             val date = ingestionWith.ingestion.time.atZone(zone).toLocalDate()
@@ -145,6 +165,7 @@ class StatsAnalysisViewModel @Inject constructor(
             .sortedBy { it.first }
         StatsAnalysisModel(
             selectedSubstances = selected,
+            selectedConsumerName = consumerName,
             startDate = start,
             endDate = end,
             ingestionCount = filtered.size,
@@ -156,6 +177,7 @@ class StatsAnalysisViewModel @Inject constructor(
     }.stateIn(
         initialValue = StatsAnalysisModel(
             selectedSubstances = emptySet(),
+            selectedConsumerName = null,
             startDate = null,
             endDate = null,
             ingestionCount = 0,

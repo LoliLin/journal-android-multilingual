@@ -21,10 +21,9 @@ package com.isaakhanimann.journal.ui.main
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -136,11 +135,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             NavHost(
                 navController,
                 startDestination = TabRouter.Journal.route,
-                modifier = Modifier
-                    .fillMaxSize()
-                    // Reserve room so scrolling content clears the floating capsule
-                    // (the system bottom inset is consumed by each tab's own Scaffold).
-                    .padding(bottom = FLOATING_NAV_RESERVED_HEIGHT)
+                modifier = Modifier.fillMaxSize()
             ) {
                 journalGraph(navController)
                 statsGraph(navController)
@@ -198,10 +193,6 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     }
 }
 
-// Height reserved above the system inset for the floating capsule (its
-// measured height plus breathing room); scrolling content gets this padding.
-private val FLOATING_NAV_RESERVED_HEIGHT = 84.dp
-
 @Composable
 private fun FloatingNavItem(
     icon: ImageVector,
@@ -218,12 +209,12 @@ private fun FloatingNavItem(
         },
         modifier = Modifier
             .padding(2.dp)
+            .clip(RoundedCornerShape(20.dp))
             .clickable(onClick = onClick)
-            .animateContentSize()
     ) {
-        Row(
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Box(
+            modifier = Modifier.size(40.dp),
+            contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = icon,
@@ -234,14 +225,6 @@ private fun FloatingNavItem(
                     MaterialTheme.colorScheme.onSurfaceVariant
                 }
             )
-            if (isSelected) {
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(
-                    text = label,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-            }
         }
     }
 }
