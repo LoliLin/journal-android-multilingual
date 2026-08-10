@@ -19,20 +19,22 @@
 package com.isaakhanimann.journal.ui.main
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -147,48 +149,55 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
             val isShowingBottomBar = isKeyboardOpen().value.not()
             if (isShowingBottomBar) {
-                Surface(
-                    shape = RoundedCornerShape(22.dp),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.75f),
-                    tonalElevation = 1.dp,
-                    shadowElevation = 2.dp,
+                // Single background layer (no Surface tonal/shadow compositing —
+                // the translucent fill stays uniform) with a faint border.
+                BoxWithConstraints(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .navigationBarsPadding()
                         .padding(bottom = 10.dp, start = 16.dp, end = 16.dp)
                         .fillMaxWidth()
+                        .height(64.dp)
+                        .clip(RoundedCornerShape(22.dp))
+                        .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.75f))
+                        .border(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f),
+                            shape = RoundedCornerShape(22.dp)
+                        )
                 ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        tabs.forEach { tab ->
-                            val isSelected =
-                                currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                            FloatingNavItem(
-                                icon = if (isSelected) tab.iconSelected else tab.icon,
-                                label = i18n(tab.labelKey),
-                                isSelected = isSelected,
-                                onClick = {
-                                    if (isSelected) {
-                                        val isAlreadyOnTopOfTab = tabs.any {
-                                            it.childRoute == currentDestination.route
+                    // The dock width is split into 8 equal slots; the five items
+                    // occupy the middle five (centers at 1.5/8 .. 5.5/8).
+                    val slotWidth = maxWidth / 8f
+                    tabs.forEachIndexed { index, tab ->
+                        val isSelected =
+                            currentDestination?.hierarchy?.any { it.route == tab.route } == true
+                        FloatingNavItem(
+                            icon = if (isSelected) tab.iconSelected else tab.icon,
+                            label = i18n(tab.labelKey),
+                            isSelected = isSelected,
+                            onClick = {
+                                if (isSelected) {
+                                    val isAlreadyOnTopOfTab = tabs.any {
+                                        it.childRoute == currentDestination.route
+                                    }
+                                    if (!isAlreadyOnTopOfTab) {
+                                        navController.popBackStack()
+                                    }
+                                } else {
+                                    navController.navigate(tab.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
                                         }
-                                        if (!isAlreadyOnTopOfTab) {
-                                            navController.popBackStack()
-                                        }
-                                    } else {
-                                        navController.navigate(tab.route) {
-                                            popUpTo(navController.graph.findStartDestination().id) {
-                                                saveState = true
-                                            }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
                                     }
                                 }
+                            },
+                            modifier = Modifier.offset(
+                                x = slotWidth * (index + 1.5f) - 28.dp
                             )
-                        }
+                        )
                     }
                 }
             }
@@ -201,10 +210,11 @@ private fun FloatingNavItem(
     icon: ImageVector,
     label: String,
     isSelected: Boolean,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(width = 56.dp, height = 48.dp)
             .clip(RoundedCornerShape(20.dp))
             .clickable(onClick = onClick),

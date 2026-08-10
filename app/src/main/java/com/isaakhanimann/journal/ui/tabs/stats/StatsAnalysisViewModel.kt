@@ -43,6 +43,13 @@ data class TotalDoseLine(
     val color: AdaptiveColor?
 )
 
+data class SubstanceChartData(
+    val substanceName: String,
+    val color: AdaptiveColor?,
+    val doseFrequency: List<Pair<Double, Int>>,
+    val perDayCounts: List<Pair<LocalDate, Int>>
+)
+
 data class StatsAnalysisModel(
     val selectedSubstances: Set<String>,
     val selectedConsumerName: String?,
@@ -50,9 +57,7 @@ data class StatsAnalysisModel(
     val endDate: LocalDate?,
     val ingestionCount: Int,
     val totalDoseBySubstance: List<TotalDoseLine>,
-    val doseFrequency: List<Pair<Double, Int>>,
-    val perDayCounts: List<Pair<LocalDate, Int>>,
-    val primaryColor: AdaptiveColor?,
+    val perSubstanceCharts: List<SubstanceChartData>,
     val ingestions: List<IngestionWithCompanionAndCustomUnit>
 )
 
@@ -155,15 +160,24 @@ class StatsAnalysisViewModel @Inject constructor(
                 )
             }
             .sortedBy { it.substanceName }
-        val doseFrequency = filtered
-            .mapNotNull { it.ingestion.dose }
-            .groupBy { it }
-            .map { (dose, list) -> dose to list.size }
-            .sortedBy { it.first }
-        val perDayCounts = filtered
-            .groupBy { it.ingestion.time.atZone(zone).toLocalDate() }
-            .map { (date, list) -> date to list.size }
-            .sortedBy { it.first }
+        val perSubstanceCharts = filtered
+            .groupBy { it.ingestion.substanceName }
+            .map { (name, list) ->
+                SubstanceChartData(
+                    substanceName = name,
+                    color = list.firstOrNull()?.substanceCompanion?.color,
+                    doseFrequency = list
+                        .mapNotNull { it.ingestion.dose }
+                        .groupBy { it }
+                        .map { (dose, doseList) -> dose to doseList.size }
+                        .sortedBy { it.first },
+                    perDayCounts = list
+                        .groupBy { it.ingestion.time.atZone(zone).toLocalDate() }
+                        .map { (date, dateList) -> date to dateList.size }
+                        .sortedBy { it.first }
+                )
+            }
+            .sortedBy { it.substanceName }
         StatsAnalysisModel(
             selectedSubstances = selected,
             selectedConsumerName = consumerName,
@@ -171,9 +185,7 @@ class StatsAnalysisViewModel @Inject constructor(
             endDate = end,
             ingestionCount = filtered.size,
             totalDoseBySubstance = totalDoseBySubstance,
-            doseFrequency = doseFrequency,
-            perDayCounts = perDayCounts,
-            primaryColor = filtered.firstOrNull()?.substanceCompanion?.color,
+            perSubstanceCharts = perSubstanceCharts,
             ingestions = filtered
         )
     }.stateIn(
@@ -184,9 +196,7 @@ class StatsAnalysisViewModel @Inject constructor(
             endDate = null,
             ingestionCount = 0,
             totalDoseBySubstance = emptyList(),
-            doseFrequency = emptyList(),
-            perDayCounts = emptyList(),
-            primaryColor = null,
+            perSubstanceCharts = emptyList(),
             ingestions = emptyList()
         ),
         scope = viewModelScope,
