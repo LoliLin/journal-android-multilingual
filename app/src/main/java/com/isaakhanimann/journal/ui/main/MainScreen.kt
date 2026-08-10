@@ -19,12 +19,19 @@
 package com.isaakhanimann.journal.ui.main
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.clickable
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -35,6 +42,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -110,38 +121,60 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 pendingNav = null
             }
         }
-        Scaffold(
-            bottomBar = {
-                val isShowingBottomBar = isKeyboardOpen().value.not()
-                if (isShowingBottomBar) {
-                    NavigationBar {
-                        val navBackStackEntry by navController.currentBackStackEntryAsState()
-                        val currentDestination = navBackStackEntry?.destination
-                        val tabs = listOf(
-                            TabRouter.Statistics,
-                            TabRouter.Journal,
-                            TabRouter.Substances,
-                            TabRouter.SaferUse,
-                            TabRouter.Settings
-                        )
+        // Floating capsule navigation: the capsule overlays the content and
+        // stays clear of the system gesture area via navigationBarsPadding.
+        Box(modifier = Modifier.fillMaxSize()) {
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentDestination = navBackStackEntry?.destination
+            val tabs = listOf(
+                TabRouter.Statistics,
+                TabRouter.Journal,
+                TabRouter.Substances,
+                TabRouter.SaferUse,
+                TabRouter.Settings
+            )
+            NavHost(
+                navController,
+                startDestination = TabRouter.Journal.route,
+                modifier = Modifier
+                    .fillMaxSize()
+                    // Reserve room so scrolling content clears the floating capsule
+                    // (the system bottom inset is consumed by each tab's own Scaffold).
+                    .padding(bottom = FLOATING_NAV_RESERVED_HEIGHT)
+            ) {
+                journalGraph(navController)
+                statsGraph(navController)
+                searchGraph(navController)
+                saferGraph(navController)
+                settingsGraph(navController)
+            }
+            val isShowingBottomBar = isKeyboardOpen().value.not()
+            if (isShowingBottomBar) {
+                Surface(
+                    shape = RoundedCornerShape(32.dp),
+                    color = MaterialTheme.colorScheme.surfaceContainer,
+                    tonalElevation = 3.dp,
+                    shadowElevation = 8.dp,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .navigationBarsPadding()
+                        .padding(bottom = 10.dp, start = 16.dp, end = 16.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         tabs.forEach { tab ->
                             val isSelected =
                                 currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                            NavigationBarItem(
-                                icon = {
-                                    if (isSelected) {
-                                        Icon(tab.iconSelected, contentDescription = null)
-                                    } else {
-                                        Icon(tab.icon, contentDescription = null)
-                                    }
-                                },
-                                label = { Text(i18n(tab.labelKey)) },
-                                selected = isSelected,
+                            FloatingNavItem(
+                                icon = if (isSelected) tab.iconSelected else tab.icon,
+                                label = i18n(tab.labelKey),
+                                isSelected = isSelected,
                                 onClick = {
                                     if (isSelected) {
                                         val isAlreadyOnTopOfTab = tabs.any {
-                                            it.childRoute ==
-                                                currentDestination.route
+                                            it.childRoute == currentDestination.route
                                         }
                                         if (!isAlreadyOnTopOfTab) {
                                             navController.popBackStack()
@@ -161,18 +194,53 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                     }
                 }
             }
-        ) { innerPadding ->
-            NavHost(
-                navController,
-                startDestination = TabRouter.Journal.route,
-                modifier = Modifier
-                    .padding(bottom = innerPadding.calculateBottomPadding())
-            ) {
-                journalGraph(navController)
-                statsGraph(navController)
-                searchGraph(navController)
-                saferGraph(navController)
-                settingsGraph(navController)
+        }
+    }
+}
+
+// Height reserved above the system inset for the floating capsule (its
+// measured height plus breathing room); scrolling content gets this padding.
+private val FLOATING_NAV_RESERVED_HEIGHT = 84.dp
+
+@Composable
+private fun FloatingNavItem(
+    icon: ImageVector,
+    label: String,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
+    Surface(
+        shape = RoundedCornerShape(20.dp),
+        color = if (isSelected) {
+            MaterialTheme.colorScheme.secondaryContainer
+        } else {
+            Color.Transparent
+        },
+        modifier = Modifier
+            .padding(2.dp)
+            .clickable(onClick = onClick)
+            .animateContentSize()
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                tint = if (isSelected) {
+                    MaterialTheme.colorScheme.onSecondaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                }
+            )
+            if (isSelected) {
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = label,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                )
             }
         }
     }
