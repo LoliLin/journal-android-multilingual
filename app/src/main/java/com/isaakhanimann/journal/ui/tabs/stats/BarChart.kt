@@ -57,7 +57,8 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                     bucket.sumOf { it.count }
                 }
                 val half = maxCount / 2
-                val halfLineHeight = half.toFloat() * canvasHeightOuter / maxCount
+                val halfLineHeight =
+                    (half.toFloat() * canvasHeightOuter / maxCount).toFloat()
                 val halfLabelHeight = labelHeight / 2
                 val maxCountLabel = maxCount.toInt().toString()
                 val numLettersInLabel = maxCountLabel.length
@@ -149,7 +150,8 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                             val xBucket = (((index * 2f) + 1) / 2) * (spaceWidth + bucketWidth)
                             var yStart = canvasHeightInner
                             colorCounts.forEach { colorCount ->
-                                val yLength = colorCount.count * canvasHeightInner / maxCount
+                                val yLength =
+                                    (colorCount.count * canvasHeightInner / maxCount).toFloat()
                                 val yEnd = yStart - yLength
                                 val cornerRadius = bucketWidth / 6
                                 drawRoundRect(
