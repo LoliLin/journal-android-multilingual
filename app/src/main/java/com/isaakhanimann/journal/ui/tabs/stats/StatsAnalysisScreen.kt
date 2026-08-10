@@ -29,6 +29,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -48,6 +50,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -227,11 +230,27 @@ fun StatsAnalysisScreenContent(
                             style = MaterialTheme.typography.bodyMedium
                         )
                     } else {
+                        var substanceSearchText by remember { mutableStateOf("") }
+                        OutlinedTextField(
+                            value = substanceSearchText,
+                            onValueChange = { substanceSearchText = it },
+                            placeholder = { Text(i18n("stats_analysis_search_substances")) },
+                            singleLine = true,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        val filteredSubstances = usedSubstances.filter { substanceName ->
+                            substanceSearchText.isBlank() ||
+                                getSubstanceDisplayName(substanceName).contains(
+                                    substanceSearchText,
+                                    ignoreCase = true
+                                )
+                        }
                         FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            usedSubstances.forEach { substanceName ->
+                            filteredSubstances.forEach { substanceName ->
                                 SubstanceChip(
                                     label = getSubstanceDisplayName(substanceName),
                                     isSelected = substanceName in selectedSubstances,
@@ -404,6 +423,8 @@ private fun SummaryCards(
 
 @Composable
 private fun DoseFrequencyChart(model: StatsAnalysisModel) {
+    val chartColor = model.primaryColor?.getComposeColor(isSystemInDarkTheme())
+        ?: MaterialTheme.colorScheme.primary
     CardWithTitle(title = i18n("stats_analysis_dose_frequency")) {
         Row(
             modifier = Modifier
@@ -423,7 +444,7 @@ private fun DoseFrequencyChart(model: StatsAnalysisModel) {
                             .height((count.toFloat() / maxCount * 96f).dp)
                             .fillMaxWidth()
                             .background(
-                                color = MaterialTheme.colorScheme.primary,
+                                color = chartColor,
                                 shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
                             )
                     )
@@ -443,6 +464,8 @@ private fun DoseFrequencyChart(model: StatsAnalysisModel) {
 
 @Composable
 private fun PerDayChart(model: StatsAnalysisModel) {
+    val chartColor = model.primaryColor?.getComposeColor(isSystemInDarkTheme())
+        ?: MaterialTheme.colorScheme.tertiary
     CardWithTitle(title = i18n("stats_analysis_per_day")) {
         Row(
             modifier = Modifier
@@ -462,7 +485,7 @@ private fun PerDayChart(model: StatsAnalysisModel) {
                             .height((count.toFloat() / maxCount * 64f).dp)
                             .fillMaxWidth()
                             .background(
-                                color = MaterialTheme.colorScheme.tertiary,
+                                color = chartColor,
                                 shape = RoundedCornerShape(topStart = 3.dp, topEnd = 3.dp)
                             )
                     )

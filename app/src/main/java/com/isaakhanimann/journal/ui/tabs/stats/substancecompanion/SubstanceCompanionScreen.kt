@@ -19,7 +19,6 @@
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -309,7 +308,6 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
     val cellSize = 12.dp
     val gap = 3.dp
     val textColor = MaterialTheme.colorScheme.onSurfaceVariant
-    val isDark = isSystemInDarkTheme()
 
     Column(modifier = modifier.padding(4.dp)) {
         // Month labels
@@ -355,33 +353,14 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
                     if (row < week.size) {
                         val cell = week[row]
                         val color = if (cell.date <= now) {
-                            if (cell.count == 0) {
-                                if (isDark) Color(0xFF2D2D2D) else Color(0xFFEBEDF0)
+                            if (cell.value <= 0.0) {
+                                // Day with ingestions but no known dose: faint cell.
+                                accentColor.copy(alpha = 0.08f)
                             } else {
-                                when {
-                                    cell.count == 1 -> if (isDark) {
-                                        Color(
-                                            0xFF1E4529
-                                        )
-                                    } else {
-                                        Color(0xFF9BE9A8)
-                                    }
-                                    cell.count == 2 -> if (isDark) {
-                                        Color(
-                                            0xFF195C2E
-                                        )
-                                    } else {
-                                        Color(0xFF40C463)
-                                    }
-                                    cell.count >= 5 -> if (isDark) {
-                                        Color(
-                                            0xFF0E630F
-                                        )
-                                    } else {
-                                        Color(0xFF196127)
-                                    }
-                                    else -> if (isDark) Color(0xFF0E4429) else Color(0xFF216E39)
-                                }
+                                accentColor.copy(
+                                    alpha = (0.2f + 0.8f * (cell.value / maxDose).toFloat())
+                                        .coerceIn(0.2f, 1f)
+                                )
                             }
                         } else {
                             Color.Transparent

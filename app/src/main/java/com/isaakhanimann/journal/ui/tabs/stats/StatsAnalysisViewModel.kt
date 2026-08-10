@@ -52,6 +52,7 @@ data class StatsAnalysisModel(
     val totalDoseBySubstance: List<TotalDoseLine>,
     val doseFrequency: List<Pair<Double, Int>>,
     val perDayCounts: List<Pair<LocalDate, Int>>,
+    val primaryColor: AdaptiveColor?,
     val ingestions: List<IngestionWithCompanionAndCustomUnit>
 )
 
@@ -172,6 +173,7 @@ class StatsAnalysisViewModel @Inject constructor(
             totalDoseBySubstance = totalDoseBySubstance,
             doseFrequency = doseFrequency,
             perDayCounts = perDayCounts,
+            primaryColor = filtered.firstOrNull()?.substanceCompanion?.color,
             ingestions = filtered
         )
     }.stateIn(
@@ -184,6 +186,7 @@ class StatsAnalysisViewModel @Inject constructor(
             totalDoseBySubstance = emptyList(),
             doseFrequency = emptyList(),
             perDayCounts = emptyList(),
+            primaryColor = null,
             ingestions = emptyList()
         ),
         scope = viewModelScope,

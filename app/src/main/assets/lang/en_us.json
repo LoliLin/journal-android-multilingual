@@ -694,5 +694,6 @@
   "stats_analysis_ingestions": "Ingestions",
   "prelog_90min": "+90 min",
   "prelog_2h": "+2 h",
-  "prelog_3h": "+3 h"
+  "prelog_3h": "+3 h",
+  "stats_analysis_search_substances": "Search substances"
 }

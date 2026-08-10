@@ -577,7 +577,7 @@ fun SettingsScreen(
                             TextButton(
                                 onClick = {
                                     isShowingImportDialog = false
-                                    launcherImport.launch(jsonMIMEType)
+                                    launcherImport.launch("*/*") // .jenc has no registered MIME; the magic-byte sniffer decides
                                 }
                             ) {
                                 Text(i18n("common_import"))

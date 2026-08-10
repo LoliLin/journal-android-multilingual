@@ -694,5 +694,6 @@
   "stats_analysis_ingestions": "攝入明細",
   "prelog_90min": "+90 分鐘",
   "prelog_2h": "+2 小時",
-  "prelog_3h": "+3 小時"
+  "prelog_3h": "+3 小時",
+  "stats_analysis_search_substances": "搜尋物質"
 }

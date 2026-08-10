@@ -34,7 +34,8 @@ fun ExperienceEffectTimelines(
     ingestionElements: List<IngestionElement>,
     dataForRatings: List<DataForOneRating>,
     dataForTimedNotes: List<DataForOneTimedNote>,
-    modifier: Modifier
+    modifier: Modifier,
+    areSubstanceHeightsIndependent: Boolean = false
 ) {
     val effectTimelines = remember(ingestionElements) {
         ingestionElements.map { oneElement ->
@@ -61,12 +62,12 @@ fun ExperienceEffectTimelines(
             )
         }
     }
-    val model = remember(effectTimelines, dataForRatings, dataForTimedNotes) {
+    val model = remember(effectTimelines, dataForRatings, dataForTimedNotes, areSubstanceHeightsIndependent) {
         AllTimelinesModel(
             dataForLines = effectTimelines,
             dataForRatings = dataForRatings,
             timedNotes = dataForTimedNotes,
-            areSubstanceHeightsIndependent = false
+            areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
         )
     }
     AllTimelines(
@@ -74,6 +75,6 @@ fun ExperienceEffectTimelines(
         isShowingCurrentTime = true,
         timeDisplayOption = TimeDisplayOption.REGULAR,
         modifier = modifier,
-        areSubstanceHeightsIndependent = false
+        areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
     )
 }
