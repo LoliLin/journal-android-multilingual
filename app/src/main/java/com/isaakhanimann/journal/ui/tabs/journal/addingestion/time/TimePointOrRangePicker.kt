@@ -32,7 +32,8 @@ fun TimePointOrRangePicker(
     localDateTimeStart: LocalDateTime,
     onChangeStartDateOrTime: (LocalDateTime) -> Unit,
     localDateTimeEnd: LocalDateTime,
-    onChangeEndDateOrTime: (LocalDateTime) -> Unit
+    onChangeEndDateOrTime: (LocalDateTime) -> Unit,
+    showFutureQuickButtons: Boolean = false
 ) {
     SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
         SegmentedButton(
@@ -97,6 +98,28 @@ fun TimePointOrRangePicker(
                         onChangeStartDateOrTime(localDateTimeStart.minusMinutes(30))
                     }) {
                         Text("-30 min")
+                    }
+                }
+                if (showFutureQuickButtons) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        androidx.compose.material3.OutlinedButton(onClick = {
+                            onChangeStartDateOrTime(LocalDateTime.now().plusMinutes(90))
+                        }) {
+                            Text(i18n("prelog_90min"))
+                        }
+                        androidx.compose.material3.OutlinedButton(onClick = {
+                            onChangeStartDateOrTime(LocalDateTime.now().plusHours(2))
+                        }) {
+                            Text(i18n("prelog_2h"))
+                        }
+                        androidx.compose.material3.OutlinedButton(onClick = {
+                            onChangeStartDateOrTime(LocalDateTime.now().plusHours(3))
+                        }) {
+                            Text(i18n("prelog_3h"))
+                        }
                     }
                 }
                 }

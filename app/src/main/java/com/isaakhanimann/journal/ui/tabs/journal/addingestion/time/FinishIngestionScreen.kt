@@ -251,7 +251,8 @@ fun FinishIngestionScreen(
                         localDateTimeStart = localDateTimeStart,
                         onChangeStartDateOrTime = onChangeStartDateOrTime,
                         localDateTimeEnd = localDateTimeEnd,
-                        onChangeEndDateOrTime = onChangeEndDateOrTime
+                        onChangeEndDateOrTime = onChangeEndDateOrTime,
+                        showFutureQuickButtons = true
                     )
                 }
                 CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {

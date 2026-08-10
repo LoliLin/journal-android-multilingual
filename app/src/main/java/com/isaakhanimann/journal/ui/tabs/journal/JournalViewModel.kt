@@ -181,7 +181,8 @@ class JournalViewModel @Inject constructor(
                                     ignoreCase = true
                                 )
                                     ?: false
-                            isSubstanceAMatch || isConsumerAMatch
+                            isSubstanceAMatch || isConsumerAMatch || ingestionWithCompanion.ingestion.notes
+                                ?.contains(other = searchText, ignoreCase = true) == true
                         } || it.experience.text.contains(
                             other = searchText,
                             ignoreCase = true

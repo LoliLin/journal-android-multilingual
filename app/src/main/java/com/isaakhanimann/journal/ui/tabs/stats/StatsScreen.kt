@@ -53,11 +53,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -87,19 +91,53 @@ import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
 import com.isaakhanimann.journal.ui.utils.shareBitmap
 import kotlinx.coroutines.launch
 
+private enum class StatsSection { OVERVIEW, ANALYSIS }
+
 @Composable
 fun StatsScreen(
     viewModel: StatsViewModel = hiltViewModel(),
     navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
 ) {
-    StatsScreen(
-        navigateToSubstanceCompanion = navigateToSubstanceCompanion,
-        onTapOption = viewModel::onTapOption,
-        statsModel = viewModel.statsModelFlow.collectAsState().value,
-        onChangeConsumerName = viewModel::onChangeConsumer,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
-    )
+    var selectedSection by rememberSaveable { mutableStateOf(StatsSection.OVERVIEW) }
+    Column(modifier = Modifier.fillMaxSize()) {
+        // Secondary navigation under the bottom tab bar: Overview keeps the
+        // original statistics (incl. the time-capsule selector), Analysis is
+        // the multi-substance custom-range analysis page.
+        SingleChoiceSegmentedButtonRow(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = horizontalPadding)
+                .padding(top = 8.dp, bottom = 4.dp)
+        ) {
+            SegmentedButton(
+                shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
+                onClick = { selectedSection = StatsSection.OVERVIEW },
+                selected = selectedSection == StatsSection.OVERVIEW
+            ) {
+                Text(i18n("stats_section_overview"))
+            }
+            SegmentedButton(
+                shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
+                onClick = { selectedSection = StatsSection.ANALYSIS },
+                selected = selectedSection == StatsSection.ANALYSIS
+            ) {
+                Text(i18n("stats_section_analysis"))
+            }
+        }
+        when (selectedSection) {
+            StatsSection.OVERVIEW -> StatsScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+                onTapOption = viewModel::onTapOption,
+                statsModel = viewModel.statsModelFlow.collectAsState().value,
+                onChangeConsumerName = viewModel::onChangeConsumer,
+                consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+                ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
+            )
+            StatsSection.ANALYSIS -> StatsAnalysisScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion
+            )
+        }
+    }
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
