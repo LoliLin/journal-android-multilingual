@@ -18,7 +18,6 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.rating
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.ExtendedFloatingActionButton
@@ -31,11 +30,7 @@ import com.isaakhanimann.journal.localization.i18n
 @Composable
 fun FloatingDoneButton(onDone: () -> Unit, modifier: Modifier = Modifier) {
     ExtendedFloatingActionButton(
-        modifier = modifier.then(
-            Modifier.padding(
-                bottom = com.isaakhanimann.journal.ui.tabs.journal.addingestion.FLOATING_DOCK_CLEARANCE
-            )
-        ),
+        modifier = modifier,
         onClick = onDone,
         icon = {
             Icon(

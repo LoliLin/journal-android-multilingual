@@ -285,7 +285,7 @@ fun ChooseDoseScreen(
         floatingActionButton = {
             if (isValidDose) {
                 ExtendedFloatingActionButton(
-                    modifier = Modifier.imePadding().padding(bottom = com.isaakhanimann.journal.ui.tabs.journal.addingestion.FLOATING_DOCK_CLEARANCE),
+                    modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
                     icon = {
                         Icon(

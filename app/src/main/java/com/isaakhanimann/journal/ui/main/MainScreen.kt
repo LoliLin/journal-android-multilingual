@@ -19,22 +19,12 @@
 package com.isaakhanimann.journal.ui.main
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.ui.draw.clip
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -45,10 +35,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -124,22 +110,63 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 pendingNav = null
             }
         }
-        // Floating capsule navigation: the capsule overlays the content and
-        // stays clear of the system gesture area via navigationBarsPadding.
-        Box(modifier = Modifier.fillMaxSize()) {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentDestination = navBackStackEntry?.destination
-            val tabs = listOf(
-                TabRouter.Statistics,
-                TabRouter.Journal,
-                TabRouter.Substances,
-                TabRouter.SaferUse,
-                TabRouter.Settings
-            )
+        Scaffold(
+            bottomBar = {
+                val isShowingBottomBar = isKeyboardOpen().value.not()
+                if (isShowingBottomBar) {
+                    NavigationBar {
+                        val navBackStackEntry by navController.currentBackStackEntryAsState()
+                        val currentDestination = navBackStackEntry?.destination
+                        val tabs = listOf(
+                            TabRouter.Statistics,
+                            TabRouter.Journal,
+                            TabRouter.Substances,
+                            TabRouter.SaferUse,
+                            TabRouter.Settings
+                        )
+                        tabs.forEach { tab ->
+                            val isSelected =
+                                currentDestination?.hierarchy?.any { it.route == tab.route } == true
+                            NavigationBarItem(
+                                icon = {
+                                    if (isSelected) {
+                                        Icon(tab.iconSelected, contentDescription = null)
+                                    } else {
+                                        Icon(tab.icon, contentDescription = null)
+                                    }
+                                },
+                                label = { Text(i18n(tab.labelKey)) },
+                                selected = isSelected,
+                                onClick = {
+                                    if (isSelected) {
+                                        val isAlreadyOnTopOfTab = tabs.any {
+                                            it.childRoute ==
+                                                currentDestination.route
+                                        }
+                                        if (!isAlreadyOnTopOfTab) {
+                                            navController.popBackStack()
+                                        }
+                                    } else {
+                                        navController.navigate(tab.route) {
+                                            popUpTo(navController.graph.findStartDestination().id) {
+                                                saveState = true
+                                            }
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
+            }
+        ) { innerPadding ->
             NavHost(
                 navController,
                 startDestination = TabRouter.Journal.route,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .padding(bottom = innerPadding.calculateBottomPadding())
             ) {
                 journalGraph(navController)
                 statsGraph(navController)
@@ -147,102 +174,6 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 saferGraph(navController)
                 settingsGraph(navController)
             }
-            val isShowingBottomBar = isKeyboardOpen().value.not()
-            if (isShowingBottomBar) {
-                // Single background layer (no Surface tonal/shadow compositing —
-                // the translucent fill stays uniform) with a faint border.
-                BoxWithConstraints(
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .navigationBarsPadding()
-                        .padding(bottom = 10.dp, start = 16.dp, end = 16.dp)
-                        .fillMaxWidth()
-                        .height(64.dp)
-                        .clip(RoundedCornerShape(22.dp))
-                        .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.75f))
-                        .border(
-                            width = 1.dp,
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f),
-                            shape = RoundedCornerShape(22.dp)
-                        )
-                ) {
-                    // The dock width is split into 8 equal slots; the five items
-                    // occupy the middle five (centers at 1.5/8 .. 5.5/8).
-                    val slotWidth = maxWidth / 8f
-                    tabs.forEachIndexed { index, tab ->
-                        val isSelected =
-                            currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                        FloatingNavItem(
-                            icon = if (isSelected) tab.iconSelected else tab.icon,
-                            label = i18n(tab.labelKey),
-                            isSelected = isSelected,
-                            onClick = {
-                                if (isSelected) {
-                                    val isAlreadyOnTopOfTab = tabs.any {
-                                        it.childRoute == currentDestination.route
-                                    }
-                                    if (!isAlreadyOnTopOfTab) {
-                                        navController.popBackStack()
-                                    }
-                                } else {
-                                    navController.navigate(tab.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
-                                            saveState = true
-                                        }
-                                        launchSingleTop = true
-                                        restoreState = true
-                                    }
-                                }
-                            },
-                            modifier = Modifier.offset(
-                                x = slotWidth * (index + 1.5f) - 28.dp
-                            )
-                        )
-                    }
-                }
-            }
         }
-    }
-}
-
-@Composable
-private fun FloatingNavItem(
-    icon: ImageVector,
-    label: String,
-    isSelected: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Box(
-        modifier = modifier
-            .size(width = 56.dp, height = 48.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
-        // Active indicator: a rounded pill behind the icon; the dock itself
-        // stays rectangular-ish so it reads as a dock, not a pill.
-        Box(
-            modifier = Modifier
-                .size(width = 48.dp, height = 40.dp)
-                .background(
-                    color = if (isSelected) {
-                        MaterialTheme.colorScheme.secondaryContainer
-                    } else {
-                        Color.Transparent
-                    },
-                    shape = RoundedCornerShape(20.dp)
-                )
-        )
-        Icon(
-            imageVector = icon,
-            contentDescription = label,
-            tint = if (isSelected) {
-                MaterialTheme.colorScheme.onSecondaryContainer
-            } else {
-                MaterialTheme.colorScheme.onSurfaceVariant
-            },
-            modifier = Modifier.size(24.dp)
-        )
     }
 }

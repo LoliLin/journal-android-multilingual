@@ -86,8 +86,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.IngestionTimePickerOption
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePointOrRangePicker
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.TimePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.JournalTheme
@@ -123,12 +123,8 @@ fun EditIngestionScreen(
             viewModel.onDoneTap()
             navigateBack()
         },
-        localDateTimeStart = viewModel.localDateTimeStartFlow.collectAsState().value,
-        onChangeStartDateOrTime = viewModel::onChangeStartDateOrTime,
-        localDateTimeEnd = viewModel.localDateTimeEndFlow.collectAsState().value,
-        onChangeEndDateOrTime = viewModel::onChangeEndDateOrTime,
-        ingestionTimePickerOption = viewModel.ingestionTimePickerOptionFlow.collectAsState().value,
-        onChangeTimePickerOption = viewModel::onChangeTimePickerOption,
+        localDateTime = viewModel.localDateTimeFlow.collectAsState().value,
+        onTimeChange = viewModel::onChangeTime,
         consumerName = viewModel.consumerName,
         onChangeConsumerName = viewModel::onChangeConsumerName,
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
@@ -162,12 +158,8 @@ fun EditIngestionScreenPreview() {
             navigateBack = {},
             deleteIngestion = {},
             onDone = {},
-            localDateTimeStart = LocalDateTime.now(),
-            onChangeStartDateOrTime = {},
-            localDateTimeEnd = LocalDateTime.now().plusMinutes(30),
-            onChangeEndDateOrTime = {},
-            ingestionTimePickerOption = IngestionTimePickerOption.POINT_IN_TIME,
-            onChangeTimePickerOption = {},
+            localDateTime = LocalDateTime.now(),
+            onTimeChange = {},
             consumerName = "",
             onChangeConsumerName = {},
             consumerNamesSorted = listOf("Dave", "Ali"),
@@ -200,12 +192,8 @@ fun EditIngestionScreen(
     navigateBack: () -> Unit,
     deleteIngestion: () -> Unit,
     onDone: () -> Unit,
-    localDateTimeStart: LocalDateTime,
-    onChangeStartDateOrTime: (LocalDateTime) -> Unit,
-    localDateTimeEnd: LocalDateTime,
-    onChangeEndDateOrTime: (LocalDateTime) -> Unit,
-    ingestionTimePickerOption: IngestionTimePickerOption,
-    onChangeTimePickerOption: (IngestionTimePickerOption) -> Unit,
+    localDateTime: LocalDateTime,
+    onTimeChange: (LocalDateTime) -> Unit,
     consumerName: String,
     onChangeConsumerName: (String) -> Unit,
     consumerNamesSorted: List<String>,
@@ -265,7 +253,6 @@ fun EditIngestionScreen(
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 onClick = onDone,
-                modifier = Modifier.padding(bottom = com.isaakhanimann.journal.ui.tabs.journal.addingestion.FLOATING_DOCK_CLEARANCE),
                 icon = {
                     Icon(
                         Icons.Filled.Done,
@@ -412,13 +399,17 @@ fun EditIngestionScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    TimePointOrRangePicker(
-                        onChangeTimePickerOption = onChangeTimePickerOption,
-                        ingestionTimePickerOption = ingestionTimePickerOption,
-                        localDateTimeStart = localDateTimeStart,
-                        onChangeStartDateOrTime = onChangeStartDateOrTime,
-                        localDateTimeEnd = localDateTimeEnd,
-                        onChangeEndDateOrTime = onChangeEndDateOrTime
+                    DatePickerButton(
+                        localDateTime = localDateTime,
+                        onChange = onTimeChange,
+                        dateString = localDateTime.getStringOfPattern("EEE dd MMM yyyy"),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    TimePickerButton(
+                        localDateTime = localDateTime,
+                        onChange = onTimeChange,
+                        timeString = localDateTime.getStringOfPattern("HH:mm"),
+                        modifier = Modifier.fillMaxWidth()
                     )
                     var isShowingDropDownMenu by remember { mutableStateOf(false) }
                     Box(

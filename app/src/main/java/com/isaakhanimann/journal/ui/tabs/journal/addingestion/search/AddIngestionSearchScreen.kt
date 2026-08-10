@@ -152,10 +152,7 @@ fun AddIngestionSearchScreen(
     Scaffold(
         floatingActionButton = {
             if (!isFocused) {
-                FloatingActionButton(
-                    onClick = { focusRequester.requestFocus() },
-                    modifier = Modifier.padding(bottom = com.isaakhanimann.journal.ui.tabs.journal.addingestion.FLOATING_DOCK_CLEARANCE)
-                ) {
+                FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
                     Icon(
                         Icons.Default.Keyboard,
                         contentDescription = i18n("search_keyboard")

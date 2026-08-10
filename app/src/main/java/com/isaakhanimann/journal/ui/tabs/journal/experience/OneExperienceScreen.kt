@@ -391,7 +391,6 @@ fun OneExperienceScreen(
             if (oneExperienceScreenModel.isCurrentExperience) {
                 ExtendedFloatingActionButton(
                     onClick = addIngestion,
-                    modifier = Modifier.padding(bottom = com.isaakhanimann.journal.ui.tabs.journal.addingestion.FLOATING_DOCK_CLEARANCE),
                     icon = {
                         Icon(
                             Icons.Filled.Add,
