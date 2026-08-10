@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.stats
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,12 +36,19 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
+data class TotalDoseLine(
+    val substanceName: String,
+    val units: String,
+    val totalDose: Double,
+    val color: AdaptiveColor?
+)
+
 data class StatsAnalysisModel(
     val selectedSubstances: Set<String>,
     val startDate: LocalDate?,
     val endDate: LocalDate?,
     val ingestionCount: Int,
-    val totalDoseBySubstance: List<Pair<String, Double>>,
+    val totalDoseBySubstance: List<TotalDoseLine>,
     val doseFrequency: List<Pair<Double, Int>>,
     val perDayCounts: List<Pair<LocalDate, Int>>,
     val ingestions: List<IngestionWithCompanionAndCustomUnit>
@@ -116,9 +124,16 @@ class StatsAnalysisViewModel @Inject constructor(
             isAfterStart && isBeforeEnd
         }
         val totalDoseBySubstance = filtered
-            .groupBy { it.ingestion.substanceName }
-            .map { (name, list) -> name to list.sumOf { it.ingestion.dose ?: 0.0 } }
-            .sortedBy { it.first }
+            .groupBy { it.ingestion.substanceName to (it.ingestion.units ?: "") }
+            .map { (key, list) ->
+                TotalDoseLine(
+                    substanceName = key.first,
+                    units = key.second,
+                    totalDose = list.sumOf { it.ingestion.dose ?: 0.0 },
+                    color = list.firstOrNull()?.substanceCompanion?.color
+                )
+            }
+            .sortedBy { it.substanceName }
         val doseFrequency = filtered
             .mapNotNull { it.ingestion.dose }
             .groupBy { it }

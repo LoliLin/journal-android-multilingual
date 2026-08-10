@@ -51,11 +51,9 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PrimaryTabRow
+import androidx.compose.material3.SecondaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
@@ -91,7 +89,7 @@ import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
 import com.isaakhanimann.journal.ui.utils.shareBitmap
 import kotlinx.coroutines.launch
 
-private enum class StatsSection { OVERVIEW, ANALYSIS }
+enum class StatsSection { OVERVIEW, ANALYSIS }
 
 @Composable
 fun StatsScreen(
@@ -99,44 +97,25 @@ fun StatsScreen(
     navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
 ) {
     var selectedSection by rememberSaveable { mutableStateOf(StatsSection.OVERVIEW) }
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Secondary navigation under the bottom tab bar: Overview keeps the
-        // original statistics (incl. the time-capsule selector), Analysis is
-        // the multi-substance custom-range analysis page.
-        SingleChoiceSegmentedButtonRow(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = horizontalPadding)
-                .padding(top = 8.dp, bottom = 4.dp)
-        ) {
-            SegmentedButton(
-                shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
-                onClick = { selectedSection = StatsSection.OVERVIEW },
-                selected = selectedSection == StatsSection.OVERVIEW
-            ) {
-                Text(i18n("stats_section_overview"))
-            }
-            SegmentedButton(
-                shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
-                onClick = { selectedSection = StatsSection.ANALYSIS },
-                selected = selectedSection == StatsSection.ANALYSIS
-            ) {
-                Text(i18n("stats_section_analysis"))
-            }
-        }
-        when (selectedSection) {
-            StatsSection.OVERVIEW -> StatsScreen(
-                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
-                onTapOption = viewModel::onTapOption,
-                statsModel = viewModel.statsModelFlow.collectAsState().value,
-                onChangeConsumerName = viewModel::onChangeConsumer,
-                consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-                ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
-            )
-            StatsSection.ANALYSIS -> StatsAnalysisScreen(
-                navigateToSubstanceCompanion = navigateToSubstanceCompanion
-            )
-        }
+    // The secondary navigation lives in each section's TopAppBar bottomBar
+    // (Overview keeps the original statistics incl. the time-capsule selector;
+    // Analysis is the multi-substance custom-range page).
+    when (selectedSection) {
+        StatsSection.OVERVIEW -> StatsScreen(
+            navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+            onTapOption = viewModel::onTapOption,
+            statsModel = viewModel.statsModelFlow.collectAsState().value,
+            onChangeConsumerName = viewModel::onChangeConsumer,
+            consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+            ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
+            selectedSection = selectedSection,
+            onSelectSection = { selectedSection = it }
+        )
+        StatsSection.ANALYSIS -> StatsAnalysisScreen(
+            navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+            selectedSection = selectedSection,
+            onSelectSection = { selectedSection = it }
+        )
     }
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -147,7 +126,9 @@ fun StatsScreen(
     statsModel: StatsModel,
     onChangeConsumerName: (String?) -> Unit,
     consumerNamesSorted: List<String>,
-    ownerUserName: String
+    ownerUserName: String,
+    selectedSection: StatsSection = StatsSection.OVERVIEW,
+    onSelectSection: (StatsSection) -> Unit = {}
 ) {
     val currentView = LocalView.current
     val coroutineScope = rememberCoroutineScope()
@@ -324,7 +305,26 @@ fun StatsScreen(
                     }
                 }
 
-            )
+            ),
+            bottomBar = {
+                SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
+                    StatsSection.entries.forEach { section ->
+                        Tab(
+                            text = {
+                                Text(
+                                    if (section == StatsSection.OVERVIEW) {
+                                        i18n("stats_section_overview")
+                                    } else {
+                                        i18n("stats_section_analysis")
+                                    }
+                                )
+                            },
+                            selected = selectedSection == section,
+                            onClick = { onSelectSection(section) }
+                        )
+                    }
+                }
+            }
         },
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
@@ -334,16 +334,15 @@ fun StatsScreen(
             )
         } else {
             Column(modifier = Modifier.padding(padding)) {
-                PrimaryTabRow(
-                    selectedTabIndex = statsModel.selectedOption.tabIndex,
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                ) {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
-                        Tab(
-                            text = { Text(option.displayText) },
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = TimePickerOption.entries.size),
                             selected = statsModel.selectedOption.tabIndex == index,
                             onClick = { onTapOption(option) }
-                        )
+                        ) {
+                            Text(option.displayText)
+                        }
                     }
                 }
                 if (statsModel.statItems.isNotEmpty()) {

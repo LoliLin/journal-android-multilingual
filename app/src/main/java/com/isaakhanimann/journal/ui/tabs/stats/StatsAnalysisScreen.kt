@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -43,11 +44,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
+import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -66,7 +70,9 @@ import java.time.ZoneId
 @Composable
 fun StatsAnalysisScreen(
     viewModel: StatsAnalysisViewModel = hiltViewModel(),
-    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
+    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit,
+    selectedSection: StatsSection = StatsSection.ANALYSIS,
+    onSelectSection: (StatsSection) -> Unit = {}
 ) {
     val usedSubstances = viewModel.usedSubstancesFlow.collectAsState().value
     val model = viewModel.modelFlow.collectAsState().value
@@ -84,7 +90,9 @@ fun StatsAnalysisScreen(
         setEndDate = viewModel::setEndDate,
         clearTimeRange = viewModel::clearTimeRange,
         model = model,
-        navigateToSubstanceCompanion = navigateToSubstanceCompanion
+        navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+        selectedSection = selectedSection,
+        onSelectSection = onSelectSection
     )
 }
 
@@ -102,11 +110,34 @@ fun StatsAnalysisScreenContent(
     setEndDate: (LocalDate?) -> Unit,
     clearTimeRange: () -> Unit,
     model: StatsAnalysisModel,
-    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
+    navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit,
+    selectedSection: StatsSection = StatsSection.ANALYSIS,
+    onSelectSection: (StatsSection) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(i18n("stats_analysis_title")) })
+            TopAppBar(
+                title = { Text(i18n("stats_analysis_title")) },
+                bottomBar = {
+                    SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
+                        StatsSection.entries.forEach { section ->
+                            Tab(
+                                text = {
+                                    Text(
+                                        if (section == StatsSection.OVERVIEW) {
+                                            i18n("stats_section_overview")
+                                        } else {
+                                            i18n("stats_section_analysis")
+                                        }
+                                    )
+                                },
+                                selected = selectedSection == section,
+                                onClick = { onSelectSection(section) }
+                            )
+                        }
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(
@@ -127,7 +158,10 @@ fun StatsAnalysisScreenContent(
                             style = MaterialTheme.typography.bodyMedium
                         )
                     } else {
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        FlowRow(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
                             usedSubstances.forEach { substanceName ->
                                 SubstanceChip(
                                     label = getSubstanceDisplayName(substanceName),
@@ -192,7 +226,7 @@ fun StatsAnalysisScreenContent(
             } else if (model.ingestionCount == 0) {
                 EmptyAnalysisHint(noData = true)
             } else {
-                SummaryCards(model)
+                SummaryCards(model, getSubstanceDisplayName)
                 DoseFrequencyChart(model)
                 PerDayChart(model)
                 IngestionList(model, getSubstanceDisplayName, navigateToSubstanceCompanion)
@@ -251,7 +285,10 @@ private fun EmptyAnalysisHint(noData: Boolean = false) {
 }
 
 @Composable
-private fun SummaryCards(model: StatsAnalysisModel) {
+private fun SummaryCards(
+    model: StatsAnalysisModel,
+    getSubstanceDisplayName: (String) -> String
+) {
     CardWithTitle(title = i18n("stats_analysis_summary")) {
         Column(
             modifier = Modifier
@@ -266,11 +303,31 @@ private fun SummaryCards(model: StatsAnalysisModel) {
                 ),
                 style = MaterialTheme.typography.titleMedium
             )
-            model.totalDoseBySubstance.forEach { (substanceName, totalDose) ->
-                Text(
-                    text = "${totalDose.toReadableString()} $substanceName",
-                    style = MaterialTheme.typography.bodyMedium
-                )
+            val isDarkTheme = isSystemInDarkTheme()
+            model.totalDoseBySubstance.forEach { line ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(12.dp)
+                            .background(
+                                color = line.color?.getComposeColor(isDarkTheme)
+                                    ?: MaterialTheme.colorScheme.surfaceVariant,
+                                shape = RoundedCornerShape(6.dp)
+                            )
+                    )
+                    Text(
+                        text = "${line.totalDose.toReadableString()} ${line.units}".trim(),
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Text(
+                        text = getSubstanceDisplayName(line.substanceName),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
@@ -373,9 +430,18 @@ private fun IngestionList(
                         .clickable {
                             navigateToSubstanceCompanion(ingestion.substanceName, ingestion.consumerName)
                         },
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    Box(
+                        modifier = Modifier
+                            .size(10.dp)
+                            .background(
+                                color = ingestionWith.substanceCompanion?.color?.getComposeColor(isSystemInDarkTheme())
+                                    ?: MaterialTheme.colorScheme.surfaceVariant,
+                                shape = RoundedCornerShape(5.dp)
+                            )
+                    )
                     Text(
                         text = ingestion.time.atZone(ZoneId.systemDefault()).toLocalDate().toString(),
                         style = MaterialTheme.typography.bodySmall,
@@ -383,7 +449,8 @@ private fun IngestionList(
                     )
                     Text(
                         text = "$doseText $unitText",
-                        style = MaterialTheme.typography.bodyMedium
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f)
                     )
                     Text(
                         text = getSubstanceDisplayName(ingestion.substanceName),
