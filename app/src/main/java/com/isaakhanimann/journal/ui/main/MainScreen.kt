@@ -146,17 +146,18 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             val isShowingBottomBar = isKeyboardOpen().value.not()
             if (isShowingBottomBar) {
                 Surface(
-                    shape = RoundedCornerShape(32.dp),
-                    color = MaterialTheme.colorScheme.surfaceContainer,
-                    tonalElevation = 3.dp,
-                    shadowElevation = 8.dp,
+                    shape = RoundedCornerShape(22.dp),
+                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.75f),
+                    tonalElevation = 1.dp,
+                    shadowElevation = 2.dp,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .navigationBarsPadding()
                         .padding(bottom = 10.dp, start = 16.dp, end = 16.dp)
+                        .fillMaxWidth()
                 ) {
                     Row(
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
+                        modifier = Modifier.padding(horizontal = 4.dp, vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         tabs.forEach { tab ->
@@ -200,31 +201,36 @@ private fun FloatingNavItem(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    Surface(
-        shape = RoundedCornerShape(20.dp),
-        color = if (isSelected) {
-            MaterialTheme.colorScheme.secondaryContainer
-        } else {
-            Color.Transparent
-        },
+    Box(
         modifier = Modifier
-            .padding(2.dp)
+            .size(width = 56.dp, height = 48.dp)
             .clip(RoundedCornerShape(20.dp))
-            .clickable(onClick = onClick)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
     ) {
+        // Active indicator: a rounded pill behind the icon; the dock itself
+        // stays rectangular-ish so it reads as a dock, not a pill.
         Box(
-            modifier = Modifier.size(40.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = label,
-                tint = if (isSelected) {
-                    MaterialTheme.colorScheme.onSecondaryContainer
-                } else {
-                    MaterialTheme.colorScheme.onSurfaceVariant
-                }
-            )
-        }
+            modifier = Modifier
+                .size(width = 48.dp, height = 40.dp)
+                .background(
+                    color = if (isSelected) {
+                        MaterialTheme.colorScheme.secondaryContainer
+                    } else {
+                        Color.Transparent
+                    },
+                    shape = RoundedCornerShape(20.dp)
+                )
+        )
+        Icon(
+            imageVector = icon,
+            contentDescription = label,
+            tint = if (isSelected) {
+                MaterialTheme.colorScheme.onSecondaryContainer
+            } else {
+                MaterialTheme.colorScheme.onSurfaceVariant
+            },
+            modifier = Modifier.size(24.dp)
+        )
     }
 }

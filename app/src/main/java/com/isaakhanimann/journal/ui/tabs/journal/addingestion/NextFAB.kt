@@ -20,16 +20,24 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.NavigateNext
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.ui.Modifier
 import androidx.compose.material3.Text
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
 import com.isaakhanimann.journal.localization.i18n
+
+// Vertical space the floating dock occupies above the system inset; FABs
+// float above it.
+val FLOATING_DOCK_CLEARANCE = 74.dp
 
 @Composable
 fun NextFAB(navigateToNext: () -> Unit) {
     ExtendedFloatingActionButton(
         onClick = navigateToNext,
+        modifier = Modifier.padding(bottom = FLOATING_DOCK_CLEARANCE),
         icon = {
             Icon(
                 Icons.AutoMirrored.Filled.NavigateNext,
