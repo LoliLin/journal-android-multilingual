@@ -238,32 +238,21 @@ fun StatsAnalysisScreenContent(
                                         } ?: i18n("stats_analysis_title"),
                                         style = MaterialTheme.typography.titleMedium
                                     )
-                                    model.totalDoseBySubstance
-                                        .sortedWith(
-                                            compareByDescending<TotalDoseLine> { it.relativeTotal }
-                                                .thenBy { it.substanceName }
-                                        )
-                                        .forEach { line ->
-                                            Row(
-                                                modifier = Modifier.padding(vertical = 2.dp),
-                                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                            ) {
-                                                Text(
-                                                    text = if (line.relativeTotal != null) {
-                                                        "${line.relativeTotal.toReadableString()}× " +
-                                                            "(${line.absoluteTotal.toReadableString()} ${line.units})"
-                                                    } else {
-                                                        "${line.absoluteTotal.toReadableString()} ${line.units}"
-                                                    },
-                                                    style = MaterialTheme.typography.bodyMedium
-                                                )
-                                                Text(
-                                                    text = getSubstanceDisplayName(line.substanceName),
-                                                    style = MaterialTheme.typography.bodyMedium,
-                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    if (model.ingestionCount > 0) {
+                                        model.perSubstanceCharts
+                                            .sortedWith(
+                                                compareByDescending<SubstanceChartData> { it.relativeTotal }
+                                                    .thenBy { it.substanceName }
+                                            )
+                                            .forEach { chart ->
+                                                SubstanceChartCard(
+                                                    chart = chart,
+                                                    getSubstanceDisplayName = getSubstanceDisplayName,
+                                                    onClick = {},
+                                                    fitToWidth = true
                                                 )
                                             }
-                                        }
+                                    }
                                 }
                             }
                         }
@@ -764,7 +753,8 @@ private fun SummaryCards(
 private fun SubstanceChartCard(
     chart: SubstanceChartData,
     getSubstanceDisplayName: (String) -> String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    fitToWidth: Boolean = false
 ) {
     val chartColor = chart.color?.getComposeColor(isSystemInDarkTheme())
         ?: MaterialTheme.colorScheme.primary
@@ -806,7 +796,7 @@ private fun SubstanceChartCard(
                 text = i18n("stats_analysis_dose_frequency"),
                 style = MaterialTheme.typography.labelLarge
             )
-            DoseBucketBars(chart, chartColor)
+            DoseBucketBars(chart, chartColor, fitToWidth = fitToWidth)
             if (chart.doseClassCounts.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
@@ -831,18 +821,26 @@ private fun SubstanceChartCard(
 }
 
 @Composable
-private fun DoseBucketBars(chart: SubstanceChartData, color: Color) {
+private fun DoseBucketBars(
+    chart: SubstanceChartData,
+    color: Color,
+    fitToWidth: Boolean = false
+) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState()),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
+        modifier = if (fitToWidth) {
+            Modifier.fillMaxWidth()
+        } else {
+            Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
+        },
+        horizontalArrangement = Arrangement.spacedBy(if (fitToWidth) 4.dp else 10.dp)
     ) {
         val maxCount = chart.doseBuckets.maxOfOrNull { it.second } ?: 1
         chart.doseBuckets.forEach { (bucket, count) ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.width(52.dp)
+                modifier = if (fitToWidth) Modifier.weight(1f) else Modifier.width(52.dp)
             ) {
                 Box(
                     modifier = Modifier
