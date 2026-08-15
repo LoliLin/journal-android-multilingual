@@ -179,11 +179,11 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     }
 
     suspend fun getRoaDurationPreset(roa: AdministrationRoute): Long? =
-        dataStore.data.first()[stringPreferencesKey("key_roa_duration_preset_${roa.name}")]
+        dataStore.data.first()[longPreferencesKey("key_roa_duration_preset_${roa.name}")]
 
     suspend fun saveRoaDurationPreset(roa: AdministrationRoute, minutes: Long) {
         dataStore.edit { preferences ->
-            preferences[stringPreferencesKey("key_roa_duration_preset_${roa.name}")] = minutes
+            preferences[longPreferencesKey("key_roa_duration_preset_${roa.name}")] = minutes
         }
     }
 

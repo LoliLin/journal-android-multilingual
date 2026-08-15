@@ -29,6 +29,7 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddRating
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToNotes
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditExperience
