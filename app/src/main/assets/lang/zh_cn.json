@@ -650,6 +650,8 @@
   "finish_time_start": "开始：",
   "finish_time_end": "结束：",
   "settings_hide_timeline": "隐藏时间线",
+  "settings_midnight_cutoff": "午夜分割体验",
+  "settings_midnight_cutoff_description": "启用后，午夜之后的摄入会新建体验，而不会并入前一天。午夜按本地时区计算。适合把每个自然日视为一次独立体验的使用方式。",
   "settings_independent_substance_heights": "物质时间线高度独立",
   "settings_independent_substance_heights_description": "启用此设置后，不同物质和给药途径（roa）的时间线将彼此独立。不同物质和途径的摄入将始终占满时间线的全部高度。\n\n禁用时，不同物质的时间线高度彼此相对。此时以常见剂量平均值为比较基准。\n例如：口服 MDMA 的常见剂量平均值为 100mg，鼻吸 MDMA 为 50mg，则 100mg 口服 MDMA 的时间线高度与 50mg 鼻吸 MDMA 相同。\n该规则同样跨物质生效。例如口服 2C-B 的常见剂量为 20mg，则 40mg 口服 2C-B 的时间线是 100mg 口服 MDMA 的两倍高。",
   "common_show_more_info": "显示更多信息",

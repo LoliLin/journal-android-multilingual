@@ -274,10 +274,12 @@ class FinishIngestionScreenViewModel @Inject constructor(
         val shouldReRunAutoSelection = !hasMadeExplicitExperienceSelection ||
             (explicitlySelectedExperienceId != null && !isExplicitlySelectedExperienceStillInRange)
         if (shouldReRunAutoSelection) {
+            val enforceDayBoundary = userPreferences.isMidnightCutoffEnabledFlow.first()
             val closestExperience = findClosestExperience(
                 experiences = experiencesInRange,
                 selectedInstant = selectedInstant,
-                zone = ZoneId.systemDefault()
+                zone = ZoneId.systemDefault(),
+                enforceDayBoundary = enforceDayBoundary
             )
             selectedExperienceFlow.emit(closestExperience)
         }
@@ -370,15 +372,18 @@ class FinishIngestionScreenViewModel @Inject constructor(
  * start a new one.
  *
  * An experience matches when [selectedInstant] lies within its session window
- * (first ingestion - 3h .. max(first ingestion + 15h, last ingestion + 3h)) and on one of the
- * calendar days its own ingestions span. The day constraint stops an ingestion added shortly
- * after midnight from silently joining the previous day's experience: a session only continues
- * into the next calendar day if it demonstrably crossed midnight.
+ * (first ingestion - 3h .. max(first ingestion + 15h, last ingestion + 3h)). When
+ * [enforceDayBoundary] is enabled, the instant must additionally fall on one of the calendar
+ * days the experience's own ingestions span, so an ingestion shortly after midnight starts a
+ * new experience instead of joining the previous day's: a session only continues into the next
+ * calendar day if it demonstrably crossed midnight. The day span is treated as a contiguous
+ * range: an experience with ingestions on non-adjacent days also matches a selected day in between.
  */
 internal fun findClosestExperience(
     experiences: List<ExperienceWithIngestions>,
     selectedInstant: Instant,
-    zone: ZoneId
+    zone: ZoneId,
+    enforceDayBoundary: Boolean
 ): ExperienceWithIngestions? {
     return experiences.firstOrNull { experience ->
         val sortedIngestions = experience.ingestions.sortedBy { it.time }
@@ -390,6 +395,9 @@ internal fun findClosestExperience(
             maxOf(upperBoundBasedOnFirstIngestion, upperBoundBasedOnLastIngestion)
         val lowerBound = firstIngestionTime.minus(3, ChronoUnit.HOURS)
         val isWithinSessionWindow = selectedInstant in lowerBound..finalUpperBound
+        if (!enforceDayBoundary) {
+            return@firstOrNull isWithinSessionWindow
+        }
         val selectedDay = selectedInstant.atZone(zone).toLocalDate()
         val firstIngestedDay = firstIngestionTime.atZone(zone).toLocalDate()
         val lastIngestedDay = lastIngestionTime.atZone(zone).toLocalDate()

@@ -153,6 +153,8 @@ fun SettingsScreen(
         saveIsTimelineHidden = viewModel::saveIsTimelineHidden,
         areSubstanceHeightsIndependent = viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value,
         saveAreSubstanceHeightsIndependent = viewModel::saveAreSubstanceHeightsIndependent,
+        isMidnightCutoffEnabled = viewModel.isMidnightCutoffEnabledFlow.collectAsState().value,
+        saveMidnightCutoffEnabled = viewModel::saveMidnightCutoffEnabled,
     )
 }
 
@@ -189,6 +191,8 @@ fun SettingsScreen(
     saveIsTimelineHidden: (Boolean) -> Unit,
     areSubstanceHeightsIndependent: Boolean,
     saveAreSubstanceHeightsIndependent: (Boolean) -> Unit,
+    isMidnightCutoffEnabled: Boolean,
+    saveMidnightCutoffEnabled: (Boolean) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -351,6 +355,27 @@ fun SettingsScreen(
                     Switch(
                         checked = areSubstanceHeightsIndependent,
                         onCheckedChange = saveAreSubstanceHeightsIndependent
+                    )
+                }
+                HorizontalDivider()
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(text = i18n("settings_midnight_cutoff"))
+                        Text(
+                            text = i18n("settings_midnight_cutoff_description"),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Switch(
+                        checked = isMidnightCutoffEnabled,
+                        onCheckedChange = saveMidnightCutoffEnabled
                     )
                 }
             }
