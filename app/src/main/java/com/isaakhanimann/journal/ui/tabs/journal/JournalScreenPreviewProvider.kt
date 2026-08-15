@@ -148,8 +148,8 @@ class JournalScreenPreviewProvider :
                             option = ShulginRatingOption.TWO_PLUS,
                             experienceId = 0
                         )
-                    )
-                ),
+                    ),
+                    timedNotes = emptyList()),
                 ExperienceWithIngestionsCompanionsAndRatings(
                     experience = Experience(
                         id = 0,
@@ -194,8 +194,8 @@ class JournalScreenPreviewProvider :
                             customUnit = null
                         )
                     ),
-                    ratings = listOf()
-                ),
+                    ratings = listOf(),
+                    timedNotes = emptyList()),
                 ExperienceWithIngestionsCompanionsAndRatings(
                     experience = Experience(
                         id = 0,
@@ -275,8 +275,8 @@ class JournalScreenPreviewProvider :
                             option = ShulginRatingOption.TWO_PLUS,
                             experienceId = 0
                         )
-                    )
-                ),
+                    ),
+                    timedNotes = emptyList()),
                 ExperienceWithIngestionsCompanionsAndRatings(
                     experience = Experience(
                         id = 0,
@@ -349,8 +349,8 @@ class JournalScreenPreviewProvider :
                             customUnit = null
                         )
                     ),
-                    ratings = listOf()
-                )
+                    ratings = listOf(),
+                    timedNotes = emptyList())
             )
         )
 }

@@ -133,7 +133,8 @@ class ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider :
                     experienceId = 0
                 )
             )
-        ),
+        ,
+                    timedNotes = emptyList()),
         ExperienceWithIngestionsCompanionsAndRatings(
             experience = Experience(
                 id = 0,
@@ -219,7 +220,8 @@ class ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider :
                     experienceId = 0
                 )
             )
-        ),
+        ,
+                    timedNotes = emptyList()),
         ExperienceWithIngestionsCompanionsAndRatings(
             experience = Experience(
                 id = 0,
@@ -254,6 +256,7 @@ class ExperienceWithIngestionsCompanionsAndRatingsPreviewProvider :
                 ),
             ),
             ratings = emptyList()
-        ),
+        ,
+                    timedNotes = emptyList()),
     )
 }
