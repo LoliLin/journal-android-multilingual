@@ -32,7 +32,8 @@ fun TimePointOrRangePicker(
     localDateTimeStart: LocalDateTime,
     onChangeStartDateOrTime: (LocalDateTime) -> Unit,
     localDateTimeEnd: LocalDateTime,
-    onChangeEndDateOrTime: (LocalDateTime) -> Unit
+    onChangeEndDateOrTime: (LocalDateTime) -> Unit,
+    onSelectDurationPreset: (Long) -> Unit
 ) {
     SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
         SegmentedButton(
@@ -134,6 +135,16 @@ fun TimePointOrRangePicker(
                             modifier = Modifier.weight(1f)
                         )
                     }
+                    // Fork feature: quick duration presets; the last used one is remembered per ROA
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
+                        DURATION_PRESET_MINUTES.forEach { minutes ->
+                            androidx.compose.material3.OutlinedButton(
+                                onClick = { onSelectDurationPreset(minutes) }
+                            ) {
+                                Text(durationPresetLabel(minutes))
+                            }
+                        }
+                    }
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -169,3 +180,8 @@ fun TimePointOrRangePicker(
         }
     }
 }
+
+internal val DURATION_PRESET_MINUTES: List<Long> = listOf(15L, 30L, 45L, 60L, 120L, 240L)
+
+internal fun durationPresetLabel(minutes: Long): String =
+    if (minutes < 60) "${minutes}m" else "${minutes / 60}h"
