@@ -29,7 +29,6 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddRating
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToNotes
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditExperience
@@ -43,7 +42,6 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToURLInJourn
 import com.isaakhanimann.journal.ui.tabs.journal.JournalScreen
 import com.isaakhanimann.journal.ui.tabs.journal.calendar.CalendarJournalScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceScreen
-import com.isaakhanimann.journal.ui.tabs.journal.notes.NotesScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.edit.EditExperienceScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.editingestion.EditIngestionScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add.AddRatingScreen
@@ -70,8 +68,7 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
                 navigateToExperiencePopNothing = navController::navigateToExperience,
                 navigateToAddIngestion = navController::navigateToAddIngestion,
                 navigateToCalendar = navController::navigateToCalendar,
-                navigateToQuickTimedNote = navController::navigateToQuickTimedNote,
-                navigateToNotes = navController::navigateToNotes
+                navigateToQuickTimedNote = navController::navigateToQuickTimedNote
             )
         }
         composableWithTransitions(
@@ -184,11 +181,6 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
         composableWithTransitions(NoArgumentRouter.CalendarRouter.route) {
             CalendarJournalScreen(
                 navigateToExperiencePopNothing = navController::navigateToExperience
-            )
-        }
-        composableWithTransitions(NoArgumentRouter.NotesRouter.route) {
-            NotesScreen(
-                navigateToExperience = navController::navigateToExperience
             )
         }
     }

@@ -172,7 +172,7 @@ class JournalViewModel @Inject constructor(
                     }
 
                     // experience title, text or some consumed substance must contain the search
-                    // string, or the consumer or an ingestion note needs to match
+                    // string, or the consumer, an ingestion note or a timed note needs to match
                     experiencesWithIngestions = experiencesWithIngestions.filter {
                         it.experience.title.contains(
                             other = searchText,
@@ -193,6 +193,11 @@ class JournalViewModel @Inject constructor(
                                 )
                                     ?: false
                             isSubstanceAMatch || isConsumerAMatch || isNotesAMatch
+                        } || it.timedNotes.any { timedNote ->
+                            timedNote.note.contains(
+                                other = searchText,
+                                ignoreCase = true
+                            )
                         } || it.experience.text.contains(
                             other = searchText,
                             ignoreCase = true

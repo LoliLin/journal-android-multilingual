@@ -24,6 +24,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Experience
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import java.time.Instant
 
 data class ExperienceWithIngestionsCompanionsAndRatings(
@@ -37,7 +38,12 @@ data class ExperienceWithIngestionsCompanionsAndRatings(
         entity = ShulginRating::class,
         parentColumn = "id",
         entityColumn = "experienceId"
-    ) val ratings: List<ShulginRating>
+    ) val ratings: List<ShulginRating>,
+    @Relation(
+        entity = TimedNote::class,
+        parentColumn = "id",
+        entityColumn = "experienceId"
+    ) val timedNotes: List<TimedNote>
 ) {
     val sortInstant: Instant get() = ingestionsWithCompanions.firstOrNull()?.ingestion?.time
         ?: experience.creationDate
