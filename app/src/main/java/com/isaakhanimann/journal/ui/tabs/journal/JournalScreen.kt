@@ -38,8 +38,8 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.automirrored.outlined.Notes
 import androidx.compose.material.icons.outlined.EditNote
-import androidx.compose.material.icons.outlined.Notes
 import androidx.compose.material.icons.outlined.SearchOff
 import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material.icons.outlined.Timer
@@ -223,7 +223,7 @@ fun JournalScreen(
                     }
                     IconButton(onClick = navigateToNotes) {
                         Icon(
-                            Icons.Outlined.Notes,
+                            Icons.AutoMirrored.Outlined.Notes,
                             contentDescription = i18n("notes_title")
                         )
                     }
