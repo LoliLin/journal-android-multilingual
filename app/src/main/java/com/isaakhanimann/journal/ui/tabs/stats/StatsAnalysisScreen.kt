@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -37,6 +38,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -44,10 +46,16 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
@@ -57,12 +65,11 @@ import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -72,18 +79,23 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import java.time.LocalDate
 import java.time.ZoneId
@@ -150,15 +162,47 @@ fun StatsAnalysisScreenContent(
 ) {
     Scaffold(
         topBar = {
-            Column {
-                TopAppBar(
-                    title = { Text(i18n("stats_analysis_title")) },
-                    actions = {
-                        var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
-                        Box {
-                            IconButton(
-                                onClick = { isConsumerDropdownExpanded = true }
-                            ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface)
+                    .statusBarsPadding()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 4.dp, top = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = if (selectedConsumerName != null) {
+                            i18n(
+                                "stats_analysis_title_for_consumer",
+                                mapOf("consumer" to selectedConsumerName)
+                            )
+                        } else {
+                            i18n("stats_analysis_title")
+                        },
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.weight(1f)
+                    )
+                    val context = LocalContext.current
+                    val avatarFile = remember(selectedConsumerName) {
+                        selectedConsumerName?.let { AvatarUtil.getUserAvatar(context, it) }
+                    }
+                    var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
+                    Box {
+                        IconButton(onClick = { isConsumerDropdownExpanded = true }) {
+                            if (avatarFile != null) {
+                                AsyncImage(
+                                    model = avatarFile,
+                                    contentDescription = i18n("stats_analysis_consumer"),
+                                    modifier = Modifier
+                                        .size(32.dp)
+                                        .clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            } else {
                                 Icon(
                                     imageVector = Icons.Default.Person,
                                     contentDescription = i18n("stats_analysis_consumer"),
@@ -169,40 +213,40 @@ fun StatsAnalysisScreenContent(
                                     }
                                 )
                             }
-                            DropdownMenu(
-                                expanded = isConsumerDropdownExpanded,
-                                onDismissRequest = { isConsumerDropdownExpanded = false }
-                            ) {
+                        }
+                        DropdownMenu(
+                            expanded = isConsumerDropdownExpanded,
+                            onDismissRequest = { isConsumerDropdownExpanded = false }
+                        ) {
+                            DropdownMenuItem(
+                                text = { Text(i18n("stats_analysis_all_consumers")) },
+                                onClick = {
+                                    setSelectedConsumerName(null)
+                                    isConsumerDropdownExpanded = false
+                                },
+                                leadingIcon = {
+                                    if (selectedConsumerName == null) {
+                                        Icon(Icons.Filled.Check, contentDescription = null)
+                                    }
+                                }
+                            )
+                            consumerNames.forEach { consumerName ->
                                 DropdownMenuItem(
-                                    text = { Text(i18n("stats_analysis_all_consumers")) },
+                                    text = { Text(consumerName) },
                                     onClick = {
-                                        setSelectedConsumerName(null)
+                                        setSelectedConsumerName(consumerName)
                                         isConsumerDropdownExpanded = false
                                     },
                                     leadingIcon = {
-                                        if (selectedConsumerName == null) {
+                                        if (selectedConsumerName == consumerName) {
                                             Icon(Icons.Filled.Check, contentDescription = null)
                                         }
                                     }
                                 )
-                                consumerNames.forEach { consumerName ->
-                                    DropdownMenuItem(
-                                        text = { Text(consumerName) },
-                                        onClick = {
-                                            setSelectedConsumerName(consumerName)
-                                            isConsumerDropdownExpanded = false
-                                        },
-                                        leadingIcon = {
-                                            if (selectedConsumerName == consumerName) {
-                                                Icon(Icons.Filled.Check, contentDescription = null)
-                                            }
-                                        }
-                                    )
-                                }
                             }
                         }
                     }
-                )
+                }
                 StatsSectionTabs(
                     selectedSection = selectedSection,
                     onSelectSection = onSelectSection
@@ -219,28 +263,54 @@ fun StatsAnalysisScreenContent(
                     .fillMaxSize()
             ) {
                 item {
-                    SubstanceSelector(
-                        usedSubstances = usedSubstances,
-                        getSubstanceDisplayName = getSubstanceDisplayName,
-                        selectedSubstances = selectedSubstances,
-                        toggleSubstance = toggleSubstance,
-                        clearSubstances = clearSubstances
-                    )
-                }
-                item {
-                    PeriodPresetSelector(
-                        selectedPreset = selectedPreset,
-                        setPreset = setPreset
-                    )
-                }
-                item {
-                    TimeRangeRow(
-                        startDate = startDate,
-                        endDate = endDate,
-                        setStartDate = setStartDate,
-                        setEndDate = setEndDate,
-                        clearTimeRange = clearTimeRange
-                    )
+                    var filtersExpanded by rememberSaveable { mutableStateOf(true) }
+                    Column {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { filtersExpanded = !filtersExpanded }
+                                .padding(horizontal = horizontalPadding, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(Icons.Default.FilterList, contentDescription = null)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = i18n("stats_analysis_filters"),
+                                style = MaterialTheme.typography.titleMedium,
+                                modifier = Modifier.weight(1f)
+                            )
+                            Icon(
+                                imageVector = if (filtersExpanded) {
+                                    Icons.Filled.ExpandLess
+                                } else {
+                                    Icons.Filled.ExpandMore
+                                },
+                                contentDescription = null
+                            )
+                        }
+                        AnimatedVisibility(visible = filtersExpanded) {
+                            Column {
+                                SubstanceSelector(
+                                    usedSubstances = usedSubstances,
+                                    getSubstanceDisplayName = getSubstanceDisplayName,
+                                    selectedSubstances = selectedSubstances,
+                                    toggleSubstance = toggleSubstance,
+                                    clearSubstances = clearSubstances
+                                )
+                                PeriodPresetSelector(
+                                    selectedPreset = selectedPreset,
+                                    setPreset = setPreset
+                                )
+                                TimeRangeRow(
+                                    startDate = startDate,
+                                    endDate = endDate,
+                                    setStartDate = setStartDate,
+                                    setEndDate = setEndDate,
+                                    clearTimeRange = clearTimeRange
+                                )
+                            }
+                        }
+                    }
                 }
                 if (selectedSubstances.isEmpty()) {
                     item { EmptyAnalysisHint() }
@@ -293,10 +363,26 @@ private fun SubstanceSelector(
                 .padding(horizontal = horizontalPadding, vertical = 8.dp)
         ) {
             var substanceSearchText by rememberSaveable { mutableStateOf("") }
-            OutlinedTextField(
+            TextField(
                 value = substanceSearchText,
                 onValueChange = { substanceSearchText = it },
                 placeholder = { Text(i18n("stats_analysis_search_substances")) },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = i18n("common_search")
+                    )
+                },
+                trailingIcon = {
+                    if (substanceSearchText.isNotEmpty()) {
+                        IconButton(onClick = { substanceSearchText = "" }) {
+                            Icon(
+                                Icons.Default.Close,
+                                contentDescription = i18n("common_close")
+                            )
+                        }
+                    }
+                },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
             )

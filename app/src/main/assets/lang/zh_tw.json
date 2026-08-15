@@ -714,5 +714,7 @@
   "stats_analysis_unknown_doses": "未知劑量：{count}",
   "stats_analysis_showing_first": "僅顯示前 {count} 筆，共 {total} 筆",
   "stats_analysis_invalid_range": "開始日期晚於結束日期",
-  "stats_analysis_relative_total_hint": "總量以常見劑量為基準（× 常見劑量），便於跨物質比較。"
+  "stats_analysis_relative_total_hint": "總量以常見劑量為基準（× 常見劑量），便於跨物質比較。",
+  "stats_analysis_filters": "篩選條件",
+  "stats_analysis_title_for_consumer": "分析：{consumer}"
 }
