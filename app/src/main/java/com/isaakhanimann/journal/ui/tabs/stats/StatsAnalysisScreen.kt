@@ -110,15 +110,19 @@ fun StatsAnalysisScreen(
 ) {
     val usedSubstances = viewModel.usedSubstancesFlow.collectAsState().value
     val consumerNames = viewModel.consumerNamesFlow.collectAsState().value
-    val selectedConsumerName = viewModel.selectedConsumerNameFlow.collectAsState().value
+    val ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value
+    val selectedConsumer = viewModel.selectedConsumerFlow.collectAsState().value
     val model = viewModel.modelFlow.collectAsState().value
     val startDate = viewModel.startDateFlow.collectAsState().value
     val endDate = viewModel.endDateFlow.collectAsState().value
     StatsAnalysisScreenContent(
         usedSubstances = usedSubstances,
         consumerNames = consumerNames,
-        selectedConsumerName = selectedConsumerName,
-        setSelectedConsumerName = viewModel::setSelectedConsumerName,
+        ownerUserName = ownerUserName,
+        selectedConsumer = selectedConsumer,
+        selectAllConsumers = viewModel::selectAllConsumers,
+        selectOwner = viewModel::selectOwner,
+        selectConsumer = viewModel::selectConsumer,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
         selectedSubstances = model.selectedSubstances,
         toggleSubstance = viewModel::toggleSubstance,
@@ -142,8 +146,11 @@ fun StatsAnalysisScreen(
 fun StatsAnalysisScreenContent(
     usedSubstances: List<String>,
     consumerNames: List<String>,
-    selectedConsumerName: String?,
-    setSelectedConsumerName: (String?) -> Unit,
+    ownerUserName: String,
+    selectedConsumer: ConsumerSelection,
+    selectAllConsumers: () -> Unit,
+    selectOwner: () -> Unit,
+    selectConsumer: (String) -> Unit,
     getSubstanceDisplayName: (String) -> String,
     selectedSubstances: Set<String>,
     toggleSubstance: (String) -> Unit,
@@ -174,21 +181,24 @@ fun StatsAnalysisScreenContent(
                         .padding(start = 16.dp, end = 4.dp, top = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    val displayConsumerName = when (selectedConsumer) {
+                        ConsumerSelection.All -> null
+                        ConsumerSelection.Owner -> ownerUserName
+                        is ConsumerSelection.Specific -> selectedConsumer.name
+                    }
                     Text(
-                        text = if (selectedConsumerName != null) {
+                        text = displayConsumerName?.let {
                             i18n(
                                 "stats_analysis_title_for_consumer",
-                                mapOf("consumer" to selectedConsumerName)
+                                mapOf("consumer" to it)
                             )
-                        } else {
-                            i18n("stats_analysis_title")
-                        },
+                        } ?: i18n("stats_analysis_title"),
                         style = MaterialTheme.typography.titleLarge,
                         modifier = Modifier.weight(1f)
                     )
                     val context = LocalContext.current
-                    val avatarFile = remember(selectedConsumerName) {
-                        selectedConsumerName?.let { AvatarUtil.getUserAvatar(context, it) }
+                    val avatarFile = remember(displayConsumerName) {
+                        displayConsumerName?.let { AvatarUtil.getUserAvatar(context, it) }
                     }
                     var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
                     Box {
@@ -206,7 +216,7 @@ fun StatsAnalysisScreenContent(
                                 Icon(
                                     imageVector = Icons.Default.Person,
                                     contentDescription = i18n("stats_analysis_consumer"),
-                                    tint = if (selectedConsumerName != null) {
+                                    tint = if (selectedConsumer != ConsumerSelection.All) {
                                         MaterialTheme.colorScheme.primary
                                     } else {
                                         MaterialTheme.colorScheme.onSurfaceVariant
@@ -221,11 +231,23 @@ fun StatsAnalysisScreenContent(
                             DropdownMenuItem(
                                 text = { Text(i18n("stats_analysis_all_consumers")) },
                                 onClick = {
-                                    setSelectedConsumerName(null)
+                                    selectAllConsumers()
                                     isConsumerDropdownExpanded = false
                                 },
                                 leadingIcon = {
-                                    if (selectedConsumerName == null) {
+                                    if (selectedConsumer == ConsumerSelection.All) {
+                                        Icon(Icons.Filled.Check, contentDescription = null)
+                                    }
+                                }
+                            )
+                            DropdownMenuItem(
+                                text = { Text(ownerUserName) },
+                                onClick = {
+                                    selectOwner()
+                                    isConsumerDropdownExpanded = false
+                                },
+                                leadingIcon = {
+                                    if (selectedConsumer == ConsumerSelection.Owner) {
                                         Icon(Icons.Filled.Check, contentDescription = null)
                                     }
                                 }
@@ -234,11 +256,14 @@ fun StatsAnalysisScreenContent(
                                 DropdownMenuItem(
                                     text = { Text(consumerName) },
                                     onClick = {
-                                        setSelectedConsumerName(consumerName)
+                                        selectConsumer(consumerName)
                                         isConsumerDropdownExpanded = false
                                     },
                                     leadingIcon = {
-                                        if (selectedConsumerName == consumerName) {
+                                        if (
+                                            selectedConsumer is ConsumerSelection.Specific &&
+                                            selectedConsumer.name == consumerName
+                                        ) {
                                             Icon(Icons.Filled.Check, contentDescription = null)
                                         }
                                     }
@@ -335,7 +360,10 @@ fun StatsAnalysisScreenContent(
                             chart = chart,
                             getSubstanceDisplayName = getSubstanceDisplayName,
                             onClick = {
-                                navigateToSubstanceCompanion(chart.substanceName, selectedConsumerName)
+                                navigateToSubstanceCompanion(
+                                    chart.substanceName,
+                                    (selectedConsumer as? ConsumerSelection.Specific)?.name
+                                )
                             }
                         )
                     }

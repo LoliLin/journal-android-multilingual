@@ -22,6 +22,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -60,7 +62,6 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
@@ -195,34 +196,36 @@ fun StatsScreen(
     }
     Scaffold(
         topBar = {
-            Column {
-                TopAppBar(
-                title = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface)
+                    .statusBarsPadding()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 4.dp, top = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
-
-                        if (statsModel.consumerName != null) {
+                        text = if (statsModel.consumerName != null) {
                             i18n(
-
                                 "stats_title_for_consumer",
-
                                 replacements = mapOf("consumer" to statsModel.consumerName)
-
                             )
                         } else if (ownerUserName != "You") {
                             i18n(
-
                                 "stats_title_for_consumer",
-
                                 replacements = mapOf("consumer" to ownerUserName)
-
                             )
                         } else {
                             i18n("stats_title")
-                        }
-
+                        },
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.weight(1f)
                     )
-                },
-                actions = {
+
                     var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
 
                     val context = LocalContext.current
@@ -277,23 +280,15 @@ fun StatsScreen(
                     IconButton(onClick = { isConsumerSelectionExpanded = true }) {
                         if (currentAvatarFile != null) {
                             AsyncImage(
-
                                 model = currentAvatarFile,
-
                                 contentDescription = i18n("stats_consumer"),
-
                                 modifier = Modifier.size(32.dp).clip(CircleShape),
-
                                 contentScale = ContentScale.Crop
-
                             )
                         } else {
                             Icon(
-
                                 Icons.Outlined.Person,
-
                                 contentDescription = i18n("stats_consumer")
-
                             )
                         }
                     }
@@ -337,8 +332,6 @@ fun StatsScreen(
                         }
                     }
                 }
-
-                )
                 StatsSectionTabs(
                     selectedSection = selectedSection,
                     onSelectSection = onSelectSection

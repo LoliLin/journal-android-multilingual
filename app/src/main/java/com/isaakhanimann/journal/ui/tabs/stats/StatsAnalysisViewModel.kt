@@ -26,6 +26,7 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.ZoneId
@@ -41,6 +42,13 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 enum class AnalysisPeriodPreset { ALL_TIME, LAST_30_DAYS, LAST_90_DAYS, THIS_YEAR, LAST_YEAR, CUSTOM }
+
+// null-consumer ingestions belong to the owner; All aggregates everyone
+sealed interface ConsumerSelection {
+    data object All : ConsumerSelection
+    data object Owner : ConsumerSelection
+    data class Specific(val name: String) : ConsumerSelection
+}
 
 data class TotalDoseLine(
     val substanceName: String,
@@ -67,7 +75,7 @@ data class SubstanceChartData(
 
 data class StatsAnalysisModel(
     val selectedSubstances: Set<String>,
-    val selectedConsumerName: String?,
+    val selectedConsumer: ConsumerSelection,
     val selectedPreset: AnalysisPeriodPreset,
     val startDate: LocalDate?,
     val endDate: LocalDate?,
@@ -93,7 +101,8 @@ internal fun commonDoseReference(commonMin: Double?, strongMin: Double?): Double
 @HiltViewModel
 class StatsAnalysisViewModel @Inject constructor(
     experienceRepository: ExperienceRepository,
-    val substanceRepo: SubstanceRepository
+    val substanceRepo: SubstanceRepository,
+    private val userPreferences: UserPreferences
 ) : ViewModel() {
 
     private val ingestionsFlow =
@@ -115,11 +124,25 @@ class StatsAnalysisViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
-    private val _selectedConsumerName = MutableStateFlow<String?>(null)
-    val selectedConsumerNameFlow: StateFlow<String?> = _selectedConsumerName.asStateFlow()
+    val ownerUserNameFlow: StateFlow<String> = userPreferences.ownerUserNameFlow.stateIn(
+        initialValue = "You",
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
 
-    fun setSelectedConsumerName(consumerName: String?) {
-        _selectedConsumerName.value = consumerName
+    private val _selectedConsumer = MutableStateFlow<ConsumerSelection>(ConsumerSelection.All)
+    val selectedConsumerFlow: StateFlow<ConsumerSelection> = _selectedConsumer.asStateFlow()
+
+    fun selectAllConsumers() {
+        _selectedConsumer.value = ConsumerSelection.All
+    }
+
+    fun selectOwner() {
+        _selectedConsumer.value = ConsumerSelection.Owner
+    }
+
+    fun selectConsumer(name: String) {
+        _selectedConsumer.value = ConsumerSelection.Specific(name)
     }
 
     private val _selectedSubstances = MutableStateFlow<Set<String>>(emptySet())
@@ -198,7 +221,7 @@ class StatsAnalysisViewModel @Inject constructor(
 
     private data class AnalysisFilters(
         val selectedSubstances: Set<String>,
-        val consumerName: String?,
+        val consumer: ConsumerSelection,
         val preset: AnalysisPeriodPreset,
         val start: LocalDate?,
         val end: LocalDate?
@@ -206,12 +229,12 @@ class StatsAnalysisViewModel @Inject constructor(
 
     private val filtersFlow: Flow<AnalysisFilters> = combine(
         _selectedSubstances,
-        _selectedConsumerName,
+        _selectedConsumer,
         _selectedPreset,
         _startDate,
         _endDate
-    ) { selected, consumerName, preset, start, end ->
-        AnalysisFilters(selected, consumerName, preset, start, end)
+    ) { selected, consumer, preset, start, end ->
+        AnalysisFilters(selected, consumer, preset, start, end)
     }
 
     val modelFlow: StateFlow<StatsAnalysisModel> = combine(
@@ -219,10 +242,15 @@ class StatsAnalysisViewModel @Inject constructor(
         filtersFlow
     ) { ingestions, filters ->
         val selected = filters.selectedSubstances
-        val consumerName = filters.consumerName
+        val consumerSelection = filters.consumer
         val preset = filters.preset
         val start = filters.start
         val end = filters.end
+        val consumerMatches: (String?) -> Boolean = when (consumerSelection) {
+            ConsumerSelection.All -> { true }
+            ConsumerSelection.Owner -> { it == null }
+            is ConsumerSelection.Specific -> { it == consumerSelection.name }
+        }
         val zone = ZoneId.systemDefault()
         val today = LocalDate.now()
         val (effectiveStart, effectiveEnd) = when (preset) {
@@ -238,7 +266,7 @@ class StatsAnalysisViewModel @Inject constructor(
             if (ingestionWith.ingestion.substanceName !in selected) {
                 return@filter false
             }
-            if (consumerName != null && ingestionWith.ingestion.consumerName != consumerName) {
+            if (!consumerMatches(ingestionWith.ingestion.consumerName)) {
                 return@filter false
             }
             val date = ingestionWith.ingestion.time.atZone(zone).toLocalDate()
@@ -315,7 +343,7 @@ class StatsAnalysisViewModel @Inject constructor(
             .sortedBy { it.substanceName }
         StatsAnalysisModel(
             selectedSubstances = selected,
-            selectedConsumerName = consumerName,
+            selectedConsumer = consumerSelection,
             selectedPreset = preset,
             startDate = start,
             endDate = end,
@@ -329,7 +357,7 @@ class StatsAnalysisViewModel @Inject constructor(
     }.stateIn(
         initialValue = StatsAnalysisModel(
             selectedSubstances = emptySet(),
-            selectedConsumerName = null,
+            selectedConsumer = ConsumerSelection.All,
             selectedPreset = AnalysisPeriodPreset.ALL_TIME,
             startDate = null,
             endDate = null,
