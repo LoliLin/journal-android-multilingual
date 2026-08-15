@@ -34,7 +34,7 @@ fun TimePointOrRangePicker(
     localDateTimeEnd: LocalDateTime,
     onChangeEndDateOrTime: (LocalDateTime) -> Unit,
     showFutureQuickButtons: Boolean = false,
-    onSelectDurationPreset: (Long) -> Unit
+    onSelectDurationPreset: (Long) -> Unit = {}
 ) {
     SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
         SegmentedButton(

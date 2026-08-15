@@ -25,11 +25,13 @@ import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.ZoneId
 import javax.inject.Inject
 import kotlin.math.floor
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -194,14 +196,33 @@ class StatsAnalysisViewModel @Inject constructor(
         return roaDose.getDoseClass(ingestionWith.pureDose, ingestionWith.originalUnit)
     }
 
-    val modelFlow: StateFlow<StatsAnalysisModel> = combine(
-        ingestionsFlow,
+    private data class AnalysisFilters(
+        val selectedSubstances: Set<String>,
+        val consumerName: String?,
+        val preset: AnalysisPeriodPreset,
+        val start: LocalDate?,
+        val end: LocalDate?
+    )
+
+    private val filtersFlow: Flow<AnalysisFilters> = combine(
         _selectedSubstances,
         _selectedConsumerName,
         _selectedPreset,
         _startDate,
         _endDate
-    ) { ingestions, selected, consumerName, preset, start, end ->
+    ) { selected, consumerName, preset, start, end ->
+        AnalysisFilters(selected, consumerName, preset, start, end)
+    }
+
+    val modelFlow: StateFlow<StatsAnalysisModel> = combine(
+        ingestionsFlow,
+        filtersFlow
+    ) { ingestions, filters ->
+        val selected = filters.selectedSubstances
+        val consumerName = filters.consumerName
+        val preset = filters.preset
+        val start = filters.start
+        val end = filters.end
         val zone = ZoneId.systemDefault()
         val today = LocalDate.now()
         val (effectiveStart, effectiveEnd) = when (preset) {

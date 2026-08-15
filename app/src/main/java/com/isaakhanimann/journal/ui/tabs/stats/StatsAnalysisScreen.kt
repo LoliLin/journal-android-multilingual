@@ -39,6 +39,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -365,6 +366,7 @@ private fun PeriodPresetSelector(
     }
 }
 
+@Composable
 private fun presetLabel(preset: AnalysisPeriodPreset): String = when (preset) {
     AnalysisPeriodPreset.ALL_TIME -> i18n("stats_analysis_preset_all_time")
     AnalysisPeriodPreset.LAST_30_DAYS -> i18n("stats_analysis_preset_last_30")
