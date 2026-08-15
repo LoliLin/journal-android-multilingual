@@ -85,6 +85,9 @@ class FinishIngestionScreenViewModel @Inject constructor(
     val ingestionTimePickerOptionFlow = MutableStateFlow(IngestionTimePickerOption.POINT_IN_TIME)
     val experiencesInRangeFlow = MutableStateFlow<List<ExperienceWithIngestions>>(emptyList())
     val selectedExperienceFlow = MutableStateFlow<ExperienceWithIngestions?>(null)
+    // Once the user picks an experience (or "new experience") from the dropdown, time changes
+    // must not silently re-select a different experience.
+    private var hasMadeExplicitExperienceSelection = false
     var enteredTitle by mutableStateOf(LocalDateTime.now().getStringOfPattern("dd MMMM yyyy"))
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
     var consumerName by mutableStateOf("")
@@ -219,6 +222,7 @@ class FinishIngestionScreenViewModel @Inject constructor(
 
     fun onChangeOfSelectedExperience(experienceWithIngestions: ExperienceWithIngestions?) =
         viewModelScope.launch {
+            hasMadeExplicitExperienceSelection = true
             selectedExperienceFlow.emit(experienceWithIngestions)
         }
 
@@ -261,14 +265,24 @@ class FinishIngestionScreenViewModel @Inject constructor(
                 toInstant = toInstant
             )
         experiencesInRangeFlow.emit(experiencesInRange)
-        val enforceDayBoundary = userPreferences.isMidnightCutoffEnabledFlow.first()
-        val closestExperience = findClosestExperience(
-            experiences = experiencesInRange,
-            selectedInstant = selectedInstant,
-            zone = ZoneId.systemDefault(),
-            enforceDayBoundary = enforceDayBoundary
-        )
-        selectedExperienceFlow.emit(closestExperience)
+        val explicitlySelectedExperienceId = selectedExperienceFlow.value?.experience?.id
+        val isExplicitlySelectedExperienceStillInRange =
+            explicitlySelectedExperienceId != null &&
+                experiencesInRange.any { it.experience.id == explicitlySelectedExperienceId }
+        // Re-run auto selection unless the user chose explicitly and that choice is still in
+        // range; an explicit "new experience" choice is always kept.
+        val shouldReRunAutoSelection = !hasMadeExplicitExperienceSelection ||
+            (explicitlySelectedExperienceId != null && !isExplicitlySelectedExperienceStillInRange)
+        if (shouldReRunAutoSelection) {
+            val enforceDayBoundary = userPreferences.isMidnightCutoffEnabledFlow.first()
+            val closestExperience = findClosestExperience(
+                experiences = experiencesInRange,
+                selectedInstant = selectedInstant,
+                zone = ZoneId.systemDefault(),
+                enforceDayBoundary = enforceDayBoundary
+            )
+            selectedExperienceFlow.emit(closestExperience)
+        }
     }
 
     fun createSaveAndDismissAfter(dismiss: () -> Unit) {
@@ -361,7 +375,8 @@ class FinishIngestionScreenViewModel @Inject constructor(
  * (first ingestion - 3h .. max(first ingestion + 15h, last ingestion + 3h)). When
  * [enforceDayBoundary] is enabled, the instant must additionally fall on one of the calendar
  * days the experience's own ingestions span, so an ingestion shortly after midnight starts a
- * new experience instead of joining the previous day's.
+ * new experience instead of joining the previous day's: a session only continues into the next
+ * calendar day if it demonstrably crossed midnight.
  */
 internal fun findClosestExperience(
     experiences: List<ExperienceWithIngestions>,

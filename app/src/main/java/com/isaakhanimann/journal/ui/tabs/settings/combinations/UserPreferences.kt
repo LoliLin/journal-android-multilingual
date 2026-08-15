@@ -167,7 +167,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
 
     val isMidnightCutoffEnabledFlow: Flow<Boolean> = dataStore.data
         .map { preferences ->
-            preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] ?: false
+            preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] ?: true
         }
 
     suspend fun saveMidnightCutoffEnabled(value: Boolean) {
