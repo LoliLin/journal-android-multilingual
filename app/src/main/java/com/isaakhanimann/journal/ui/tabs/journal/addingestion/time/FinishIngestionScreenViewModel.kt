@@ -269,9 +269,8 @@ class FinishIngestionScreenViewModel @Inject constructor(
         val isExplicitlySelectedExperienceStillInRange =
             explicitlySelectedExperienceId != null &&
                 experiencesInRange.any { it.experience.id == explicitlySelectedExperienceId }
-        // Re-run auto selection only when the user has not chosen explicitly yet, or when an
-        // explicitly chosen experience moved out of the time range (stale selection). An explicit
-        // "new experience" choice is always kept, like any concrete choice.
+        // Re-run auto selection unless the user chose explicitly and that choice is still in
+        // range; an explicit "new experience" choice is always kept.
         val shouldReRunAutoSelection = !hasMadeExplicitExperienceSelection ||
             (explicitlySelectedExperienceId != null && !isExplicitlySelectedExperienceStillInRange)
         if (shouldReRunAutoSelection) {
@@ -392,8 +391,8 @@ internal fun findClosestExperience(
         val lowerBound = firstIngestionTime.minus(3, ChronoUnit.HOURS)
         val isWithinSessionWindow = selectedInstant in lowerBound..finalUpperBound
         val selectedDay = selectedInstant.atZone(zone).toLocalDate()
-        val firstIngestedDay = sortedIngestions.first().time.atZone(zone).toLocalDate()
-        val lastIngestedDay = sortedIngestions.last().time.atZone(zone).toLocalDate()
+        val firstIngestedDay = firstIngestionTime.atZone(zone).toLocalDate()
+        val lastIngestedDay = lastIngestionTime.atZone(zone).toLocalDate()
         val isWithinIngestedDays = selectedDay in firstIngestedDay..lastIngestedDay
         isWithinSessionWindow && isWithinIngestedDays
     }
