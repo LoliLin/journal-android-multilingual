@@ -39,6 +39,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.outlined.EditNote
+import androidx.compose.material.icons.outlined.Notes
 import androidx.compose.material.icons.outlined.SearchOff
 import androidx.compose.material.icons.outlined.StarOutline
 import androidx.compose.material.icons.outlined.Timer
@@ -83,6 +84,7 @@ fun JournalScreen(
     navigateToExperiencePopNothing: (experienceId: Int) -> Unit,
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
+    navigateToNotes: () -> Unit,
     navigateToQuickTimedNote: (experienceId: Int) -> Unit,
     viewModel: JournalViewModel = hiltViewModel()
 ) {
@@ -119,6 +121,7 @@ fun JournalScreen(
             navigateToAddIngestion()
         },
         navigateToCalendar = navigateToCalendar,
+        navigateToNotes = navigateToNotes,
         isFavoriteEnabled = viewModel.isFavoriteEnabledFlow.collectAsState().value,
         onChangeIsFavorite = viewModel::onChangeFavorite,
         isTimeRelativeToNow = viewModel.isTimeRelativeToNow.value,
@@ -140,6 +143,7 @@ fun JournalScreen(
     navigateToExperiencePopNothing: (experienceId: Int) -> Unit,
     navigateToAddIngestion: () -> Unit,
     navigateToCalendar: () -> Unit,
+    navigateToNotes: () -> Unit = {},
     isFavoriteEnabled: Boolean,
     onChangeIsFavorite: (Boolean) -> Unit,
     isTimeRelativeToNow: Boolean,
@@ -216,6 +220,12 @@ fun JournalScreen(
                                 contentDescription = i18n("common_search")
                             )
                         }
+                    }
+                    IconButton(onClick = navigateToNotes) {
+                        Icon(
+                            Icons.Outlined.Notes,
+                            contentDescription = i18n("notes_title")
+                        )
                     }
                     IconButton(onClick = navigateToCalendar) {
                         Icon(

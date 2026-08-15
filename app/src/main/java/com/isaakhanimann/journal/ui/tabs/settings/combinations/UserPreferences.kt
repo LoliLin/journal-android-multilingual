@@ -24,11 +24,13 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 @Singleton
@@ -173,6 +175,15 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     suspend fun saveMidnightCutoffEnabled(value: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] = value
+        }
+    }
+
+    suspend fun getRoaDurationPreset(roa: AdministrationRoute): Long? =
+        dataStore.data.first()[stringPreferencesKey("key_roa_duration_preset_${roa.name}")]
+
+    suspend fun saveRoaDurationPreset(roa: AdministrationRoute, minutes: Long) {
+        dataStore.edit { preferences ->
+            preferences[stringPreferencesKey("key_roa_duration_preset_${roa.name}")] = minutes
         }
     }
 

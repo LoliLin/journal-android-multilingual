@@ -96,7 +96,24 @@ class FinishIngestionScreenViewModel @Inject constructor(
     fun onChangeTimePickerOption(ingestionTimePickerOption: IngestionTimePickerOption) =
         viewModelScope.launch {
             ingestionTimePickerOptionFlow.emit(ingestionTimePickerOption)
+            if (ingestionTimePickerOption == IngestionTimePickerOption.TIME_RANGE) {
+                applySavedDurationPresetIfAny()
+            }
         }
+
+    fun onSelectDurationPreset(minutes: Long) = viewModelScope.launch {
+        userPreferences.saveRoaDurationPreset(administrationRoute, minutes)
+        val startTime = localDateTimeStartFlow.first()
+        localDateTimeEndFlow.emit(startTime.plusMinutes(minutes))
+    }
+
+    private suspend fun applySavedDurationPresetIfAny() {
+        val savedMinutes = userPreferences.getRoaDurationPreset(administrationRoute)
+        if (savedMinutes != null) {
+            val startTime = localDateTimeStartFlow.first()
+            localDateTimeEndFlow.emit(startTime.plusMinutes(savedMinutes))
+        }
+    }
 
     private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
 
