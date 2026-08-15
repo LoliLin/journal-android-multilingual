@@ -701,5 +701,18 @@
   "prelog_2h": "+2 小时",
   "prelog_3h": "+3 小时",
   "stats_analysis_search_substances": "搜索物质",
-  "stats_analysis_consumer": "记录人"
+  "stats_analysis_consumer": "记录人",
+  "stats_analysis_all_consumers": "所有记录人",
+  "stats_analysis_period": "周期",
+  "stats_analysis_preset_all_time": "全部时间",
+  "stats_analysis_preset_last_30": "最近 30 天",
+  "stats_analysis_preset_last_90": "最近 90 天",
+  "stats_analysis_preset_this_year": "今年",
+  "stats_analysis_preset_last_year": "去年",
+  "stats_analysis_cumulative": "累计",
+  "stats_analysis_dose_class": "剂量等级",
+  "stats_analysis_unknown_doses": "未知剂量：{count}",
+  "stats_analysis_showing_first": "仅显示前 {count} 条，共 {total} 条",
+  "stats_analysis_invalid_range": "开始日期晚于结束日期",
+  "stats_analysis_relative_total_hint": "总量以常见剂量为基准（× 常见剂量），便于跨物质比较。"
 }

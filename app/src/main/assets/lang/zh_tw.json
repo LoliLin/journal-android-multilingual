@@ -701,5 +701,18 @@
   "prelog_2h": "+2 小時",
   "prelog_3h": "+3 小時",
   "stats_analysis_search_substances": "搜尋物質",
-  "stats_analysis_consumer": "記錄人"
+  "stats_analysis_consumer": "記錄人",
+  "stats_analysis_all_consumers": "所有記錄人",
+  "stats_analysis_period": "週期",
+  "stats_analysis_preset_all_time": "全部時間",
+  "stats_analysis_preset_last_30": "最近 30 天",
+  "stats_analysis_preset_last_90": "最近 90 天",
+  "stats_analysis_preset_this_year": "今年",
+  "stats_analysis_preset_last_year": "去年",
+  "stats_analysis_cumulative": "累計",
+  "stats_analysis_dose_class": "劑量等級",
+  "stats_analysis_unknown_doses": "未知劑量：{count}",
+  "stats_analysis_showing_first": "僅顯示前 {count} 筆，共 {total} 筆",
+  "stats_analysis_invalid_range": "開始日期晚於結束日期",
+  "stats_analysis_relative_total_hint": "總量以常見劑量為基準（× 常見劑量），便於跨物質比較。"
 }

@@ -23,11 +23,13 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
+import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.ZoneId
 import javax.inject.Inject
+import kotlin.math.floor
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -36,30 +38,55 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
+enum class AnalysisPeriodPreset { ALL_TIME, LAST_30_DAYS, LAST_90_DAYS, THIS_YEAR, LAST_YEAR, CUSTOM }
+
 data class TotalDoseLine(
     val substanceName: String,
     val units: String,
-    val totalDose: Double,
-    val color: AdaptiveColor?
+    val color: AdaptiveColor?,
+    val absoluteTotal: Double,
+    val relativeTotal: Double?
 )
 
 data class SubstanceChartData(
     val substanceName: String,
     val color: AdaptiveColor?,
-    val doseFrequency: List<Pair<Double, Int>>,
-    val perDayCounts: List<Pair<LocalDate, Int>>
+    // dose distribution: values are relative doses (x common dose) when relativeDoseData exists,
+    // otherwise raw doses in the substance's unit; labels are derived via bucketLabel
+    val doseBuckets: List<Pair<Double, Int>>,
+    val bucketLabel: (Double) -> String,
+    val doseClassCounts: List<Pair<DoseClass, Int>>,
+    val perDayCumulativeRelative: List<Pair<LocalDate, Double>>,
+    val absoluteTotal: Double,
+    val relativeTotal: Double?,
+    val units: String?,
+    val unknownDoseCount: Int
 )
 
 data class StatsAnalysisModel(
     val selectedSubstances: Set<String>,
     val selectedConsumerName: String?,
+    val selectedPreset: AnalysisPeriodPreset,
     val startDate: LocalDate?,
     val endDate: LocalDate?,
+    val effectiveStart: LocalDate?,
+    val effectiveEnd: LocalDate?,
     val ingestionCount: Int,
     val totalDoseBySubstance: List<TotalDoseLine>,
     val perSubstanceCharts: List<SubstanceChartData>,
     val ingestions: List<IngestionWithCompanionAndCustomUnit>
 )
+
+/**
+ * The reference dose for relative measurements: the midpoint of the common dose range
+ * [commonMin, strongMin), falling back to commonMin when the range has no upper bound.
+ */
+internal fun commonDoseReference(commonMin: Double?, strongMin: Double?): Double? =
+    when {
+        commonMin == null -> null
+        strongMin != null -> (commonMin + strongMin) / 2
+        else -> commonMin
+    }
 
 @HiltViewModel
 class StatsAnalysisViewModel @Inject constructor(
@@ -110,11 +137,25 @@ class StatsAnalysisViewModel @Inject constructor(
         _selectedSubstances.value = emptySet()
     }
 
+    private val _selectedPreset = MutableStateFlow(AnalysisPeriodPreset.ALL_TIME)
+    val selectedPresetFlow: StateFlow<AnalysisPeriodPreset> = _selectedPreset.asStateFlow()
+
+    fun setPreset(preset: AnalysisPeriodPreset) {
+        _selectedPreset.value = preset
+        if (preset != AnalysisPeriodPreset.CUSTOM) {
+            _startDate.value = null
+            _endDate.value = null
+        }
+    }
+
     private val _startDate = MutableStateFlow<LocalDate?>(null)
     val startDateFlow: StateFlow<LocalDate?> = _startDate.asStateFlow()
 
     fun setStartDate(date: LocalDate?) {
         _startDate.value = date
+        if (date != null) {
+            _selectedPreset.value = AnalysisPeriodPreset.CUSTOM
+        }
     }
 
     private val _endDate = MutableStateFlow<LocalDate?>(null)
@@ -122,21 +163,56 @@ class StatsAnalysisViewModel @Inject constructor(
 
     fun setEndDate(date: LocalDate?) {
         _endDate.value = date
+        if (date != null) {
+            _selectedPreset.value = AnalysisPeriodPreset.CUSTOM
+        }
     }
 
     fun clearTimeRange() {
         _startDate.value = null
         _endDate.value = null
+        _selectedPreset.value = AnalysisPeriodPreset.ALL_TIME
+    }
+
+    private fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? {
+        val ingestion = ingestionWith.ingestion
+        val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
+        val roaDose = substance.getRoa(ingestion.administrationRoute)?.roaDose ?: return null
+        val reference = commonDoseReference(roaDose.commonMin, roaDose.strongMin) ?: return null
+        if (reference <= 0) return null
+        // relative dose is only defined when the entry is expressed in the ROA's units
+        val unit = ingestionWith.originalUnit
+        if (unit != null && roaDose.units != unit) return null
+        val pureDose = ingestionWith.pureDose ?: return null
+        return pureDose / reference
+    }
+
+    private fun doseClassOf(ingestionWith: IngestionWithCompanionAndCustomUnit): DoseClass? {
+        val ingestion = ingestionWith.ingestion
+        val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
+        val roaDose = substance.getRoa(ingestion.administrationRoute)?.roaDose ?: return null
+        return roaDose.getDoseClass(ingestionWith.pureDose, ingestionWith.originalUnit)
     }
 
     val modelFlow: StateFlow<StatsAnalysisModel> = combine(
         ingestionsFlow,
         _selectedSubstances,
         _selectedConsumerName,
+        _selectedPreset,
         _startDate,
         _endDate
-    ) { ingestions, selected, consumerName, start, end ->
+    ) { ingestions, selected, consumerName, preset, start, end ->
         val zone = ZoneId.systemDefault()
+        val today = LocalDate.now()
+        val (effectiveStart, effectiveEnd) = when (preset) {
+            AnalysisPeriodPreset.ALL_TIME -> null to null
+            AnalysisPeriodPreset.LAST_30_DAYS -> today.minusDays(30) to today
+            AnalysisPeriodPreset.LAST_90_DAYS -> today.minusDays(90) to today
+            AnalysisPeriodPreset.THIS_YEAR -> LocalDate.of(today.year, 1, 1) to today
+            AnalysisPeriodPreset.LAST_YEAR ->
+                LocalDate.of(today.year - 1, 1, 1) to LocalDate.of(today.year - 1, 12, 31)
+            AnalysisPeriodPreset.CUSTOM -> start to end
+        }
         val filtered = ingestions.filter { ingestionWith ->
             if (ingestionWith.ingestion.substanceName !in selected) {
                 return@filter false
@@ -145,44 +221,85 @@ class StatsAnalysisViewModel @Inject constructor(
                 return@filter false
             }
             val date = ingestionWith.ingestion.time.atZone(zone).toLocalDate()
-            val isAfterStart = start == null || !date.isBefore(start)
-            val isBeforeEnd = end == null || !date.isAfter(end)
+            val isAfterStart = effectiveStart == null || !date.isBefore(effectiveStart)
+            val isBeforeEnd = effectiveEnd == null || !date.isAfter(effectiveEnd)
             isAfterStart && isBeforeEnd
         }
         val totalDoseBySubstance = filtered
             .groupBy { it.ingestion.substanceName to (it.ingestion.units ?: "") }
             .map { (key, list) ->
+                val absoluteTotal = list.sumOf { it.pureDose ?: 0.0 }
+                val relativeValues = list.mapNotNull { relativeDoseOf(it) }
                 TotalDoseLine(
                     substanceName = key.first,
                     units = key.second,
-                    totalDose = list.sumOf { it.ingestion.dose ?: 0.0 },
-                    color = list.firstOrNull()?.substanceCompanion?.color
+                    color = list.firstOrNull()?.substanceCompanion?.color,
+                    absoluteTotal = absoluteTotal,
+                    relativeTotal = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
                 )
             }
             .sortedBy { it.substanceName }
         val perSubstanceCharts = filtered
             .groupBy { it.ingestion.substanceName }
             .map { (name, list) ->
+                val relativeValues = list.mapNotNull { relativeDoseOf(it) }
+                val hasRelativeData = relativeValues.isNotEmpty()
+                val buckets: List<Pair<Double, Int>> = if (hasRelativeData) {
+                    // bucket relative doses in 0.5 steps of the common dose
+                    relativeValues
+                        .groupBy { floor(it * 2) / 2 }
+                        .map { (bucket, bucketList) -> bucket to bucketList.size }
+                        .sortedBy { it.first }
+                } else {
+                    list
+                        .mapNotNull { it.pureDose }
+                        .groupBy { floor(it * 2) / 2 }
+                        .map { (bucket, bucketList) -> bucket to bucketList.size }
+                        .sortedBy { it.first }
+                }
+                val bucketLabel: (Double) -> String = if (hasRelativeData) {
+                    { bucket -> "${bucket.toReadableString()}×" }
+                } else {
+                    { bucket -> bucket.toReadableString() }
+                }
+                val doseClassCounts = list
+                    .mapNotNull { doseClassOf(it) }
+                    .groupBy { it }
+                    .map { (doseClass, classList) -> doseClass to classList.size }
+                    .sortedBy { it.first.ordinal }
+                val cumulativeByDay = list
+                    .groupBy { it.ingestion.time.atZone(zone).toLocalDate() }
+                    .toSortedMap()
+                    .map { (date, dateList) ->
+                        date to dateList.mapNotNull { relativeDoseOf(it) }.sum()
+                    }
+                var runningTotal = 0.0
+                val perDayCumulativeRelative = cumulativeByDay.map { (date, dayRelative) ->
+                    runningTotal += dayRelative
+                    date to runningTotal
+                }
                 SubstanceChartData(
                     substanceName = name,
                     color = list.firstOrNull()?.substanceCompanion?.color,
-                    doseFrequency = list
-                        .mapNotNull { it.ingestion.dose }
-                        .groupBy { it }
-                        .map { (dose, doseList) -> dose to doseList.size }
-                        .sortedBy { it.first },
-                    perDayCounts = list
-                        .groupBy { it.ingestion.time.atZone(zone).toLocalDate() }
-                        .map { (date, dateList) -> date to dateList.size }
-                        .sortedBy { it.first }
+                    doseBuckets = buckets,
+                    bucketLabel = bucketLabel,
+                    doseClassCounts = doseClassCounts,
+                    perDayCumulativeRelative = perDayCumulativeRelative,
+                    absoluteTotal = list.sumOf { it.pureDose ?: 0.0 },
+                    relativeTotal = relativeValues.sum().takeIf { hasRelativeData },
+                    units = list.mapNotNull { it.originalUnit }.firstOrNull(),
+                    unknownDoseCount = list.count { it.pureDose == null }
                 )
             }
             .sortedBy { it.substanceName }
         StatsAnalysisModel(
             selectedSubstances = selected,
             selectedConsumerName = consumerName,
+            selectedPreset = preset,
             startDate = start,
             endDate = end,
+            effectiveStart = effectiveStart,
+            effectiveEnd = effectiveEnd,
             ingestionCount = filtered.size,
             totalDoseBySubstance = totalDoseBySubstance,
             perSubstanceCharts = perSubstanceCharts,
@@ -192,8 +309,11 @@ class StatsAnalysisViewModel @Inject constructor(
         initialValue = StatsAnalysisModel(
             selectedSubstances = emptySet(),
             selectedConsumerName = null,
+            selectedPreset = AnalysisPeriodPreset.ALL_TIME,
             startDate = null,
             endDate = null,
+            effectiveStart = null,
+            effectiveEnd = null,
             ingestionCount = 0,
             totalDoseBySubstance = emptyList(),
             perSubstanceCharts = emptyList(),

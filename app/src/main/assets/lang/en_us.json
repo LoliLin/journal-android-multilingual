@@ -701,5 +701,18 @@
   "prelog_2h": "+2 h",
   "prelog_3h": "+3 h",
   "stats_analysis_search_substances": "Search substances",
-  "stats_analysis_consumer": "Consumer"
+  "stats_analysis_consumer": "Consumer",
+  "stats_analysis_all_consumers": "All consumers",
+  "stats_analysis_period": "Period",
+  "stats_analysis_preset_all_time": "All time",
+  "stats_analysis_preset_last_30": "Last 30 days",
+  "stats_analysis_preset_last_90": "Last 90 days",
+  "stats_analysis_preset_this_year": "This year",
+  "stats_analysis_preset_last_year": "Last year",
+  "stats_analysis_cumulative": "Cumulative",
+  "stats_analysis_dose_class": "Dose class",
+  "stats_analysis_unknown_doses": "Unknown doses: {count}",
+  "stats_analysis_showing_first": "Showing first {count} of {total}",
+  "stats_analysis_invalid_range": "Start date is after end date",
+  "stats_analysis_relative_total_hint": "Totals are relative to the common dose (× common), so substances can be compared."
 }

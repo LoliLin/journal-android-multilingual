@@ -63,6 +63,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -95,30 +96,58 @@ import kotlinx.coroutines.launch
 enum class StatsSection { OVERVIEW, ANALYSIS }
 
 @Composable
+fun StatsSectionTabs(
+    selectedSection: StatsSection,
+    onSelectSection: (StatsSection) -> Unit
+) {
+    SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
+        StatsSection.entries.forEach { section ->
+            Tab(
+                text = {
+                    Text(
+                        if (section == StatsSection.OVERVIEW) {
+                            i18n("stats_section_overview")
+                        } else {
+                            i18n("stats_section_analysis")
+                        }
+                    )
+                },
+                selected = selectedSection == section,
+                onClick = { onSelectSection(section) }
+            )
+        }
+    }
+}
+
+@Composable
 fun StatsScreen(
     viewModel: StatsViewModel = hiltViewModel(),
     navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
 ) {
     var selectedSection by rememberSaveable { mutableStateOf(StatsSection.OVERVIEW) }
-    // The secondary navigation lives in each section's TopAppBar bottomBar
-    // (Overview keeps the original statistics incl. the time-capsule selector;
-    // Analysis is the multi-substance custom-range page).
+    val sectionStateHolder = rememberSaveableStateHolder()
+    // The secondary navigation is shared between both sections; each section keeps its
+    // internal state (search text, scroll position) across tab switches.
     when (selectedSection) {
-        StatsSection.OVERVIEW -> StatsScreen(
-            navigateToSubstanceCompanion = navigateToSubstanceCompanion,
-            onTapOption = viewModel::onTapOption,
-            statsModel = viewModel.statsModelFlow.collectAsState().value,
-            onChangeConsumerName = viewModel::onChangeConsumer,
-            consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-            ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
-            selectedSection = selectedSection,
-            onSelectSection = { selectedSection = it }
-        )
-        StatsSection.ANALYSIS -> StatsAnalysisScreen(
-            navigateToSubstanceCompanion = navigateToSubstanceCompanion,
-            selectedSection = selectedSection,
-            onSelectSection = { selectedSection = it }
-        )
+        StatsSection.OVERVIEW -> sectionStateHolder.SaveableStateProvider(StatsSection.OVERVIEW.name) {
+            StatsScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+                onTapOption = viewModel::onTapOption,
+                statsModel = viewModel.statsModelFlow.collectAsState().value,
+                onChangeConsumerName = viewModel::onChangeConsumer,
+                consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+                ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
+                selectedSection = selectedSection,
+                onSelectSection = { selectedSection = it }
+            )
+        }
+        StatsSection.ANALYSIS -> sectionStateHolder.SaveableStateProvider(StatsSection.ANALYSIS.name) {
+            StatsAnalysisScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+                selectedSection = selectedSection,
+                onSelectSection = { selectedSection = it }
+            )
+        }
     }
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -310,23 +339,10 @@ fun StatsScreen(
                 }
 
                 )
-                SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
-                    StatsSection.entries.forEach { section ->
-                        Tab(
-                            text = {
-                                Text(
-                                    if (section == StatsSection.OVERVIEW) {
-                                        i18n("stats_section_overview")
-                                    } else {
-                                        i18n("stats_section_analysis")
-                                    }
-                                )
-                            },
-                            selected = selectedSection == section,
-                            onClick = { onSelectSection(section) }
-                        )
-                    }
-                }
+                StatsSectionTabs(
+                    selectedSection = selectedSection,
+                    onSelectSection = onSelectSection
+                )
             }
         },
     ) { padding ->
