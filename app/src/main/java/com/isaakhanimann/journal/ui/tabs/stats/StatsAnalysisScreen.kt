@@ -225,6 +225,12 @@ fun StatsAnalysisScreenContent(
                     var isSharing by remember { mutableStateOf(false) }
                     val currentView = LocalView.current
                     val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
+                    // Native-width bars match the on-screen look: widen the canvas so the fixed
+                    // 52dp dose columns never clip in the shared report.
+                    val maxBucketColumns = model.perSubstanceCharts.maxOfOrNull { it.doseBuckets.size } ?: 0
+                    val shareWidthPx = widthPx.coerceAtLeast(
+                        ((56 + maxBucketColumns * 62) * LocalDensity.current.density).toInt()
+                    )
                     val shareAnalysisContent: @Composable () -> Unit = {
                         JournalTheme {
                             Surface(color = MaterialTheme.colorScheme.background) {
@@ -248,8 +254,7 @@ fun StatsAnalysisScreenContent(
                                                 SubstanceChartCard(
                                                     chart = chart,
                                                     getSubstanceDisplayName = getSubstanceDisplayName,
-                                                    onClick = {},
-                                                    fitToWidth = true
+                                                    onClick = {}
                                                 )
                                             }
                                     }
@@ -268,7 +273,7 @@ fun StatsAnalysisScreenContent(
                                             if (activity != null) {
                                                 val bitmap = renderComposeViewToBitmap(
                                                     context = context,
-                                                    widthPx = widthPx,
+                                                    widthPx = shareWidthPx,
                                                     lifecycleView = currentView,
                                                     content = shareAnalysisContent,
                                                     postLayoutDelayMs = 300L
@@ -753,8 +758,7 @@ private fun SummaryCards(
 private fun SubstanceChartCard(
     chart: SubstanceChartData,
     getSubstanceDisplayName: (String) -> String,
-    onClick: () -> Unit,
-    fitToWidth: Boolean = false
+    onClick: () -> Unit
 ) {
     val chartColor = chart.color?.getComposeColor(isSystemInDarkTheme())
         ?: MaterialTheme.colorScheme.primary
@@ -796,7 +800,7 @@ private fun SubstanceChartCard(
                 text = i18n("stats_analysis_dose_frequency"),
                 style = MaterialTheme.typography.labelLarge
             )
-            DoseBucketBars(chart, chartColor, fitToWidth = fitToWidth)
+            DoseBucketBars(chart, chartColor)
             if (chart.doseClassCounts.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
@@ -821,26 +825,18 @@ private fun SubstanceChartCard(
 }
 
 @Composable
-private fun DoseBucketBars(
-    chart: SubstanceChartData,
-    color: Color,
-    fitToWidth: Boolean = false
-) {
+private fun DoseBucketBars(chart: SubstanceChartData, color: Color) {
     Row(
-        modifier = if (fitToWidth) {
-            Modifier.fillMaxWidth()
-        } else {
-            Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState())
-        },
-        horizontalArrangement = Arrangement.spacedBy(if (fitToWidth) 4.dp else 10.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         val maxCount = chart.doseBuckets.maxOfOrNull { it.second } ?: 1
         chart.doseBuckets.forEach { (bucket, count) ->
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = if (fitToWidth) Modifier.weight(1f) else Modifier.width(52.dp)
+                modifier = Modifier.width(52.dp)
             ) {
                 Box(
                     modifier = Modifier
