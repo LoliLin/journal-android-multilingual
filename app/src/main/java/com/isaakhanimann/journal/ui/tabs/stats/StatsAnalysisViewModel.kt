@@ -98,6 +98,26 @@ internal fun commonDoseReference(commonMin: Double?, strongMin: Double?): Double
         else -> commonMin
     }
 
+/**
+ * Relative dose of one ingestion: the pure dose divided by the common dose reference of the
+ * substance's ROA, defined only when the entry is expressed in the ROA's units.
+ */
+internal fun relativeDoseOfIngestion(
+    substanceRepo: SubstanceRepository,
+    ingestionWith: IngestionWithCompanionAndCustomUnit
+): Double? {
+    val ingestion = ingestionWith.ingestion
+    val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
+    val roaDose = substance.getRoa(ingestion.administrationRoute)?.roaDose ?: return null
+    val reference = commonDoseReference(roaDose.commonMin, roaDose.strongMin) ?: return null
+    if (reference <= 0) return null
+    // relative dose is only defined when the entry is expressed in the ROA's units
+    val unit = ingestionWith.originalUnit
+    if (unit != null && roaDose.units != unit) return null
+    val pureDose = ingestionWith.pureDose ?: return null
+    return pureDose / reference
+}
+
 @HiltViewModel
 class StatsAnalysisViewModel @Inject constructor(
     experienceRepository: ExperienceRepository,
@@ -199,18 +219,8 @@ class StatsAnalysisViewModel @Inject constructor(
         _selectedPreset.value = AnalysisPeriodPreset.ALL_TIME
     }
 
-    private fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? {
-        val ingestion = ingestionWith.ingestion
-        val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
-        val roaDose = substance.getRoa(ingestion.administrationRoute)?.roaDose ?: return null
-        val reference = commonDoseReference(roaDose.commonMin, roaDose.strongMin) ?: return null
-        if (reference <= 0) return null
-        // relative dose is only defined when the entry is expressed in the ROA's units
-        val unit = ingestionWith.originalUnit
-        if (unit != null && roaDose.units != unit) return null
-        val pureDose = ingestionWith.pureDose ?: return null
-        return pureDose / reference
-    }
+    private fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? =
+        relativeDoseOfIngestion(substanceRepo, ingestionWith)
 
     private fun doseClassOf(ingestionWith: IngestionWithCompanionAndCustomUnit): DoseClass? {
         val ingestion = ingestionWith.ingestion

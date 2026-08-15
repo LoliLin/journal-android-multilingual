@@ -18,6 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
@@ -56,7 +58,9 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.Clear
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -75,6 +79,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -84,7 +89,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -96,10 +104,14 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerBut
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
+import com.isaakhanimann.journal.ui.utils.shareBitmap
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit
+import kotlinx.coroutines.launch
 
 @Composable
 fun StatsAnalysisScreen(
@@ -208,6 +220,93 @@ fun StatsAnalysisScreenContent(
                     val context = LocalContext.current
                     val avatarFile = remember(displayConsumerName) {
                         displayConsumerName?.let { AvatarUtil.getUserAvatar(context, it) }
+                    }
+                    val coroutineScope = rememberCoroutineScope()
+                    var isSharing by remember { mutableStateOf(false) }
+                    val currentView = LocalView.current
+                    val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
+                    val shareAnalysisContent: @Composable () -> Unit = {
+                        JournalTheme {
+                            Surface(color = MaterialTheme.colorScheme.background) {
+                                Column(modifier = Modifier.padding(12.dp)) {
+                                    Text(
+                                        text = displayConsumerName?.let {
+                                            i18n(
+                                                "stats_analysis_title_for_consumer",
+                                                mapOf("consumer" to it)
+                                            )
+                                        } ?: i18n("stats_analysis_title"),
+                                        style = MaterialTheme.typography.titleMedium
+                                    )
+                                    model.totalDoseBySubstance
+                                        .sortedWith(
+                                            compareByDescending<TotalDoseLine> { it.relativeTotal }
+                                                .thenBy { it.substanceName }
+                                        )
+                                        .forEach { line ->
+                                            Row(
+                                                modifier = Modifier.padding(vertical = 2.dp),
+                                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                            ) {
+                                                Text(
+                                                    text = if (line.relativeTotal != null) {
+                                                        "${line.relativeTotal.toReadableString()}× " +
+                                                            "(${line.absoluteTotal.toReadableString()} ${line.units})"
+                                                    } else {
+                                                        "${line.absoluteTotal.toReadableString()} ${line.units}"
+                                                    },
+                                                    style = MaterialTheme.typography.bodyMedium
+                                                )
+                                                Text(
+                                                    text = getSubstanceDisplayName(line.substanceName),
+                                                    style = MaterialTheme.typography.bodyMedium,
+                                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                )
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                    }
+                    if (model.ingestionCount > 0) {
+                        IconButton(
+                            onClick = {
+                                if (!isSharing) {
+                                    isSharing = true
+                                    coroutineScope.launch {
+                                        try {
+                                            val activity = context as? androidx.activity.ComponentActivity
+                                            if (activity != null) {
+                                                val bitmap = renderComposeViewToBitmap(
+                                                    context = context,
+                                                    widthPx = widthPx,
+                                                    lifecycleView = currentView,
+                                                    content = shareAnalysisContent,
+                                                    postLayoutDelayMs = 300L
+                                                )
+                                                shareBitmap(context, bitmap)
+                                            }
+                                        } catch (e: Exception) {
+                                            Log.e("StatsAnalysisScreen", "error", e)
+                                            Toast.makeText(
+                                                context,
+                                                "${e.localizedMessage}",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } finally {
+                                            isSharing = false
+                                        }
+                                    }
+                                }
+                            },
+                            enabled = !isSharing
+                        ) {
+                            Icon(
+                                Icons.Default.Share,
+                                contentDescription = i18n("common_share"),
+                                modifier = Modifier.size(ButtonDefaults.IconSize)
+                            )
+                        }
                     }
                     var isConsumerDropdownExpanded by remember { mutableStateOf(false) }
                     Box {
