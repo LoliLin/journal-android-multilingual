@@ -1,6 +1,7 @@
 [versions]
 # Gradle 插件
 androidGradlePlugin = "9.3.1"
+fragment = "1.8.5"
 kotlin = "2.4.10"
 ksp = "2.3.11"
 
@@ -114,6 +115,7 @@ kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", ve
 towdium-pinin = { module = "com.github.Towdium:PinIn", version.ref = "pinIn" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxbrowser" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
 androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
 androidx-work = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 

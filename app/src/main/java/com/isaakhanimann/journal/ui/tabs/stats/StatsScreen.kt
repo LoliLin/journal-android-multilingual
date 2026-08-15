@@ -18,10 +18,9 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,6 +33,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -51,13 +51,18 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PrimaryTabRow
+import androidx.compose.material3.SecondaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -71,7 +76,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -80,26 +84,67 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
-import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
-import com.isaakhanimann.journal.ui.utils.shareBitmap
 import kotlinx.coroutines.launch
+
+enum class StatsSection { OVERVIEW, ANALYSIS }
+
+@Composable
+fun StatsSectionTabs(
+    selectedSection: StatsSection,
+    onSelectSection: (StatsSection) -> Unit
+) {
+    SecondaryTabRow(selectedTabIndex = selectedSection.ordinal) {
+        StatsSection.entries.forEach { section ->
+            Tab(
+                text = {
+                    Text(
+                        if (section == StatsSection.OVERVIEW) {
+                            i18n("stats_section_overview")
+                        } else {
+                            i18n("stats_section_analysis")
+                        }
+                    )
+                },
+                selected = selectedSection == section,
+                onClick = { onSelectSection(section) }
+            )
+        }
+    }
+}
 
 @Composable
 fun StatsScreen(
     viewModel: StatsViewModel = hiltViewModel(),
     navigateToSubstanceCompanion: (substanceName: String, consumerName: String?) -> Unit
 ) {
-    StatsScreen(
-        navigateToSubstanceCompanion = navigateToSubstanceCompanion,
-        onTapOption = viewModel::onTapOption,
-        statsModel = viewModel.statsModelFlow.collectAsState().value,
-        onChangeConsumerName = viewModel::onChangeConsumer,
-        consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
-        ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You"
-    )
+    var selectedSection by rememberSaveable { mutableStateOf(StatsSection.OVERVIEW) }
+    val sectionStateHolder = rememberSaveableStateHolder()
+    // The secondary navigation is shared between both sections; each section keeps its
+    // internal state (search text, scroll position) across tab switches.
+    when (selectedSection) {
+        StatsSection.OVERVIEW -> sectionStateHolder.SaveableStateProvider(StatsSection.OVERVIEW.name) {
+            StatsScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+                onTapOption = viewModel::onTapOption,
+                statsModel = viewModel.statsModelFlow.collectAsState().value,
+                onChangeConsumerName = viewModel::onChangeConsumer,
+                consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
+                ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
+                selectedSection = selectedSection,
+                onSelectSection = { selectedSection = it }
+            )
+        }
+        StatsSection.ANALYSIS -> sectionStateHolder.SaveableStateProvider(StatsSection.ANALYSIS.name) {
+            StatsAnalysisScreen(
+                navigateToSubstanceCompanion = navigateToSubstanceCompanion,
+                selectedSection = selectedSection,
+                onSelectSection = { selectedSection = it }
+            )
+        }
+    }
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -109,112 +154,45 @@ fun StatsScreen(
     statsModel: StatsModel,
     onChangeConsumerName: (String?) -> Unit,
     consumerNamesSorted: List<String>,
-    ownerUserName: String
+    ownerUserName: String,
+    selectedSection: StatsSection = StatsSection.OVERVIEW,
+    onSelectSection: (StatsSection) -> Unit = {}
 ) {
-    val currentView = LocalView.current
-    val coroutineScope = rememberCoroutineScope()
-    var isSharing by remember { mutableStateOf(false) }
-    val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
-    val shareStatsContent: @Composable () -> Unit = {
-        JournalTheme {
-            Surface(color = MaterialTheme.colorScheme.background) {
-                Column(
-                    modifier = Modifier.padding(vertical = 12.dp)
-                ) {
-                    Text(
-                        text = i18n(
-                            "stats_experiences_since",
-                            replacements = mapOf("date" to statsModel.startDateText)
-                        ),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(start = 10.dp, top = 5.dp)
-                    )
-                    Text(
-                        text = i18n("stats_substance_counted_once"),
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.padding(start = 10.dp, bottom = 10.dp)
-                    )
-                    BarChart(
-                        buckets = statsModel.chartBuckets,
-                        startDateText = statsModel.startDateText
-                    )
-                }
-            }
-        }
-    }
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface)
+                    .statusBarsPadding()
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 4.dp, top = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
-
-                        if (statsModel.consumerName != null) {
+                        text = if (statsModel.consumerName != null) {
                             i18n(
-
                                 "stats_title_for_consumer",
-
                                 replacements = mapOf("consumer" to statsModel.consumerName)
-
                             )
                         } else if (ownerUserName != "You") {
                             i18n(
-
                                 "stats_title_for_consumer",
-
                                 replacements = mapOf("consumer" to ownerUserName)
-
                             )
                         } else {
                             i18n("stats_title")
-                        }
-
+                        },
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier.weight(1f)
                     )
-                },
-                actions = {
+
                     var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
 
                     val context = LocalContext.current
-
-                    if (statsModel.statItems.isNotEmpty()) {
-                        IconButton(
-                            onClick = {
-                                if (!isSharing) {
-                                    isSharing = true
-                                    coroutineScope.launch {
-                                        try {
-                                            val activity = context as? androidx.activity.ComponentActivity
-                                            if (activity != null) {
-                                                val bitmap = renderComposeViewToBitmap(
-                                                    context = context,
-                                                    widthPx = widthPx,
-                                                    lifecycleView = currentView,
-                                                    content = shareStatsContent,
-                                                    postLayoutDelayMs = 300L
-                                                )
-                                                shareBitmap(context, bitmap)
-                                            }
-                                        } catch (e: Exception) {
-                                            Log.e("StatsScreen", "error", e)
-                                            Toast.makeText(
-                                                context,
-                                                "${e.localizedMessage}",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                        } finally {
-                                            isSharing = false
-                                        }
-                                    }
-                                }
-                            },
-                            enabled = !isSharing
-                        ) {
-                            Icon(
-                                Icons.Outlined.Share,
-                                contentDescription = i18n("common_share"),
-                                modifier = Modifier.size(ButtonDefaults.IconSize)
-                            )
-                        }
-                    }
 
                     val currentConsumerName = statsModel.consumerName ?: ownerUserName
 
@@ -225,23 +203,15 @@ fun StatsScreen(
                     IconButton(onClick = { isConsumerSelectionExpanded = true }) {
                         if (currentAvatarFile != null) {
                             AsyncImage(
-
                                 model = currentAvatarFile,
-
                                 contentDescription = i18n("stats_consumer"),
-
                                 modifier = Modifier.size(32.dp).clip(CircleShape),
-
                                 contentScale = ContentScale.Crop
-
                             )
                         } else {
                             Icon(
-
                                 Icons.Outlined.Person,
-
                                 contentDescription = i18n("stats_consumer")
-
                             )
                         }
                     }
@@ -285,8 +255,11 @@ fun StatsScreen(
                         }
                     }
                 }
-
-            )
+                StatsSectionTabs(
+                    selectedSection = selectedSection,
+                    onSelectSection = onSelectSection
+                )
+            }
         },
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {
@@ -296,16 +269,15 @@ fun StatsScreen(
             )
         } else {
             Column(modifier = Modifier.padding(padding)) {
-                PrimaryTabRow(
-                    selectedTabIndex = statsModel.selectedOption.tabIndex,
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                ) {
+                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
-                        Tab(
-                            text = { Text(option.displayText) },
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = TimePickerOption.entries.size),
                             selected = statsModel.selectedOption.tabIndex == index,
                             onClick = { onTapOption(option) }
-                        )
+                        ) {
+                            Text(option.displayText)
+                        }
                     }
                 }
                 if (statsModel.statItems.isNotEmpty()) {
@@ -396,27 +368,100 @@ fun StatsScreen(
                                         Spacer(modifier = Modifier.weight(1f))
                                         Column(horizontalAlignment = Alignment.End) {
                                             val cumulativeDose = subStat.totalDose
-                                            if (cumulativeDose != null) {
-                                                if (cumulativeDose.isEstimate) {
-                                                    if (cumulativeDose.estimatedDoseStandardDeviation !=
-                                                        null
-                                                    ) {
+                                            val relativeTotal = subStat.relativeTotalDose
+                                            when {
+                                                relativeTotal != null && cumulativeDose != null -> {
+                                                    if (cumulativeDose.isEstimate) {
+                                                        if (cumulativeDose.estimatedDoseStandardDeviation !=
+                                                            null
+                                                        ) {
+                                                            Text(
+                                                                text = i18n(
+                                                                    "stats_total_dose_relative_estimated_sd",
+                                                                    replacements = mapOf(
+                                                                        "dose" to
+                                                                            relativeTotal.toReadableString(),
+                                                                        "sd" to
+                                                                            cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
+                                                                        "absolute" to
+                                                                            cumulativeDose.dose.toReadableString(),
+                                                                        "units" to cumulativeDose.units
+                                                                    )
+                                                                )
+                                                            )
+                                                        } else {
+                                                            Text(
+                                                                text = i18n(
+                                                                    "stats_total_dose_relative_estimated",
+                                                                    replacements = mapOf(
+                                                                        "dose" to
+                                                                            relativeTotal.toReadableString(),
+                                                                        "absolute" to
+                                                                            cumulativeDose.dose.toReadableString(),
+                                                                        "units" to cumulativeDose.units
+                                                                    )
+                                                                )
+                                                            )
+                                                        }
+                                                    } else {
                                                         Text(
                                                             text = i18n(
-                                                                "stats_total_dose_estimated_with_sd",
+                                                                "stats_total_dose_relative",
                                                                 replacements = mapOf(
                                                                     "dose" to
+                                                                        relativeTotal.toReadableString(),
+                                                                    "absolute" to
                                                                         cumulativeDose.dose.toReadableString(),
-                                                                    "sd" to
-                                                                        cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
                                                                     "units" to cumulativeDose.units
                                                                 )
                                                             )
                                                         )
+                                                    }
+                                                }
+                                                relativeTotal != null -> {
+                                                    Text(
+                                                        text = i18n(
+                                                            "stats_total_dose_relative_only",
+                                                            replacements = mapOf(
+                                                                "dose" to
+                                                                    relativeTotal.toReadableString()
+                                                            )
+                                                        )
+                                                    )
+                                                }
+                                                cumulativeDose != null -> {
+                                                    if (cumulativeDose.isEstimate) {
+                                                        if (cumulativeDose.estimatedDoseStandardDeviation !=
+                                                            null
+                                                        ) {
+                                                            Text(
+                                                                text = i18n(
+                                                                    "stats_total_dose_estimated_with_sd",
+                                                                    replacements = mapOf(
+                                                                        "dose" to
+                                                                            cumulativeDose.dose.toReadableString(),
+                                                                        "sd" to
+                                                                            cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
+                                                                        "units" to cumulativeDose.units
+                                                                    )
+                                                                )
+                                                            )
+                                                        } else {
+                                                            Text(
+                                                                text = i18n(
+                                                                    "stats_total_dose_estimated",
+                                                                    replacements = mapOf(
+                                                                        "dose" to
+                                                                            cumulativeDose.dose.toReadableString(),
+                                                                        "units" to cumulativeDose.units
+                                                                    )
+                                                                )
+                                                            )
+                                                        }
                                                     } else {
                                                         Text(
                                                             text = i18n(
-                                                                "stats_total_dose_estimated",
+                                                                "stats_total_dose",
                                                                 replacements = mapOf(
                                                                     "dose" to
                                                                         cumulativeDose.dose.toReadableString(),
@@ -425,20 +470,10 @@ fun StatsScreen(
                                                             )
                                                         )
                                                     }
-                                                } else {
-                                                    Text(
-                                                        text = i18n(
-                                                            "stats_total_dose",
-                                                            replacements = mapOf(
-                                                                "dose" to
-                                                                    cumulativeDose.dose.toReadableString(),
-                                                                "units" to cumulativeDose.units
-                                                            )
-                                                        )
-                                                    )
                                                 }
-                                            } else {
-                                                Text(text = i18n("stats_total_dose_unknown"))
+                                                else -> {
+                                                    Text(text = i18n("stats_total_dose_unknown"))
+                                                }
                                             }
                                             subStat.routeCounts.forEach {
                                                 val routeName = i18nOrDefault(

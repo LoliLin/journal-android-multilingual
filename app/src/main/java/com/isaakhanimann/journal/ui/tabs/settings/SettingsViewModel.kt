@@ -25,6 +25,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -103,6 +104,11 @@ class SettingsViewModel @Inject constructor(
     fun saveEffectNotificationEnabled(value: Boolean) {
         viewModelScope.launch {
             userPreferences.saveEffectNotificationEnabled(value)
+            if (!value) {
+                // Disabling the toggle also dismisses any effect notification
+                // that is still showing.
+                Notifications.cancelAllEffectNotifications(context)
+            }
         }
     }
 

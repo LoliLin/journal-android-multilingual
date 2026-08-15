@@ -13,6 +13,8 @@ import com.isaakhanimann.journal.MainActivity
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.localization.I18n
 import java.time.Instant
+import java.time.temporal.ChronoUnit
+import java.time.Duration
 import java.time.ZoneId
 
 /** Intent extras used by notification taps to steer the app to a target screen. */
@@ -74,7 +76,8 @@ object Notifications {
         context: Context,
         experienceId: Int,
         substanceName: String,
-        ingestionTime: Instant
+        ingestionTime: Instant,
+        effectEndTime: Instant = ingestionTime.plus(6, ChronoUnit.HOURS)
     ) {
         if (!hasNotificationPermission(context)) return
         val timeText = ingestionTime.atZone(ZoneId.systemDefault())
@@ -117,6 +120,13 @@ object Notifications {
             .setContentText(text)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
             .setOngoing(true)
+            // Auto-expire once the effect window is over (API 26+).
+            .setTimeoutAfter(
+                maxOf(
+                    1000L,
+                    Duration.between(Instant.now(), effectEndTime).toMillis()
+                )
+            )
             .setAutoCancel(false)
             .setContentIntent(notePendingIntent)
             .addAction(
@@ -137,6 +147,14 @@ object Notifications {
     fun cancelEffectNotification(context: Context, experienceId: Int) {
         NotificationManagerCompat.from(context)
             .cancel(EFFECT_NOTIFICATION_ID_BASE + experienceId)
+    }
+
+    fun cancelAllEffectNotifications(context: Context) {
+        // Effect notifications cannot be enumerated (id = base + experienceId);
+        // cancel everything shown by the app. This also clears the day's time
+        // capsule notification, which is acceptable when effects are disabled.
+        (context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
+            .cancelAll()
     }
 
     /**

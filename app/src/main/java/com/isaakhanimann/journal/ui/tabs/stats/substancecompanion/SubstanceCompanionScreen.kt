@@ -19,8 +19,8 @@
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -256,16 +256,21 @@ fun IngestionRow(
     }
 }
 
-private data class DailyCount(val date: java.time.LocalDate, val count: Int)
+private data class DailyCount(val date: java.time.LocalDate, val value: Double)
 
 @Composable
-fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Modifier) {
+fun ActivityGrid(
+    ingestionBursts: List<IngestionsBurst>,
+    modifier: Modifier = Modifier,
+    accentColor: Color = Color(0xFF40C463)
+) {
     val now = java.time.LocalDate.now()
     val oneYearAgo = now.minusDays(364)
 
-    // Map ingestion counts by date (past 12 months)
-    val dateCountMap = androidx.compose.runtime.remember(ingestionBursts) {
-        val map = mutableMapOf<java.time.LocalDate, Int>()
+    // Map ingested dose by date (past 12 months); cells are colored by
+    // amount (mg), not by number of ingestions.
+    val dateDoseMap = androidx.compose.runtime.remember(ingestionBursts) {
+        val map = mutableMapOf<java.time.LocalDate, Double>()
         val cutoff = oneYearAgo.minusDays(7)
         for (burst in ingestionBursts) {
             for (item in burst.ingestions) {
@@ -273,19 +278,19 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
                     .atZone(java.time.ZoneId.systemDefault())
                     .toLocalDate()
                 if (date >= cutoff) {
-                    map[date] = (map[date] ?: 0) + 1
+                    map[date] = (map[date] ?: 0.0) + (item.ingestion.dose ?: 0.0)
                 }
             }
         }
         map
     }
 
-    val maxCount = androidx.compose.runtime.remember(dateCountMap) {
-        (dateCountMap.values.maxOrNull() ?: 1).coerceAtLeast(1)
+    val maxDose = androidx.compose.runtime.remember(dateDoseMap) {
+        (dateDoseMap.values.maxOrNull() ?: 1.0).coerceAtLeast(1.0)
     }
 
     // Build weeks FROM this week backward TO one year ago
-    val weeks = androidx.compose.runtime.remember(now, dateCountMap) {
+    val weeks = androidx.compose.runtime.remember(now, dateDoseMap) {
         val result = mutableListOf<List<DailyCount>>()
         // Start from Monday of this week
         var monday = now
@@ -298,7 +303,7 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
         while (current > end) {
             val week = (0..6).map { offset ->
                 val day = current.plusDays(offset.toLong())
-                DailyCount(day, dateCountMap[day] ?: 0)
+                DailyCount(day, dateDoseMap[day] ?: 0.0)
             }
             result.add(week)
             current = current.minusDays(7)
@@ -309,7 +314,6 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
     val cellSize = 12.dp
     val gap = 3.dp
     val textColor = MaterialTheme.colorScheme.onSurfaceVariant
-    val isDark = isSystemInDarkTheme()
 
     Column(modifier = modifier.padding(4.dp)) {
         // Month labels
@@ -355,33 +359,14 @@ fun ActivityGrid(ingestionBursts: List<IngestionsBurst>, modifier: Modifier = Mo
                     if (row < week.size) {
                         val cell = week[row]
                         val color = if (cell.date <= now) {
-                            if (cell.count == 0) {
-                                if (isDark) Color(0xFF2D2D2D) else Color(0xFFEBEDF0)
+                            if (cell.value <= 0.0) {
+                                // Day with ingestions but no known dose: faint cell.
+                                accentColor.copy(alpha = 0.08f)
                             } else {
-                                when {
-                                    cell.count == 1 -> if (isDark) {
-                                        Color(
-                                            0xFF1E4529
-                                        )
-                                    } else {
-                                        Color(0xFF9BE9A8)
-                                    }
-                                    cell.count == 2 -> if (isDark) {
-                                        Color(
-                                            0xFF195C2E
-                                        )
-                                    } else {
-                                        Color(0xFF40C463)
-                                    }
-                                    cell.count >= 5 -> if (isDark) {
-                                        Color(
-                                            0xFF0E630F
-                                        )
-                                    } else {
-                                        Color(0xFF196127)
-                                    }
-                                    else -> if (isDark) Color(0xFF0E4429) else Color(0xFF216E39)
-                                }
+                                accentColor.copy(
+                                    alpha = (0.2f + 0.8f * (cell.value / maxDose).toFloat())
+                                        .coerceIn(0.2f, 1f)
+                                )
                             }
                         } else {
                             Color.Transparent

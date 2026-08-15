@@ -29,6 +29,7 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.INGESTION_ID_KEY
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.IngestionTimePickerOption
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
@@ -62,7 +63,9 @@ class EditIngestionViewModel @Inject constructor(
     var estimatedDoseStandardDeviation by mutableStateOf("")
     var units by mutableStateOf("")
     var experienceId by mutableIntStateOf(1)
-    var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
+    var localDateTimeStartFlow = MutableStateFlow(LocalDateTime.now())
+    var localDateTimeEndFlow = MutableStateFlow(LocalDateTime.now().plusMinutes(30))
+    var ingestionTimePickerOptionFlow = MutableStateFlow(IngestionTimePickerOption.POINT_IN_TIME)
     var consumerName by mutableStateOf("")
     var customUnit: CustomUnit? by mutableStateOf(null)
     val otherCustomUnits = experienceRepo.getAllCustomUnitsFlow().combine(ingestionFlow) {
@@ -107,7 +110,16 @@ class EditIngestionViewModel @Inject constructor(
             isKnown = ing.dose != null
             units = ing.units ?: ""
             consumerName = ing.consumerName ?: ""
-            localDateTimeFlow.emit(ing.time.getLocalDateTime())
+            localDateTimeStartFlow.emit(ing.time.getLocalDateTime())
+            localDateTimeEndFlow.emit(
+                ing.endTime?.getLocalDateTime()
+                    ?: ing.time.getLocalDateTime().plusMinutes(30)
+            )
+            ingestionTimePickerOptionFlow.value = if (ing.endTime != null) {
+                IngestionTimePickerOption.TIME_RANGE
+            } else {
+                IngestionTimePickerOption.POINT_IN_TIME
+            }
             customUnit = ingestionAndCustomUnit.customUnit
         }
     }
@@ -128,10 +140,20 @@ class EditIngestionViewModel @Inject constructor(
         }
     }
 
-    fun onChangeTime(newLocalDateTime: LocalDateTime) {
+    fun onChangeStartDateOrTime(newLocalDateTime: LocalDateTime) {
         viewModelScope.launch {
-            localDateTimeFlow.emit(newLocalDateTime)
+            localDateTimeStartFlow.emit(newLocalDateTime)
         }
+    }
+
+    fun onChangeEndDateOrTime(newLocalDateTime: LocalDateTime) {
+        viewModelScope.launch {
+            localDateTimeEndFlow.emit(newLocalDateTime)
+        }
+    }
+
+    fun onChangeTimePickerOption(option: IngestionTimePickerOption) {
+        ingestionTimePickerOptionFlow.value = option
     }
 
     fun onChangeConsumerName(newName: String) {
@@ -146,7 +168,7 @@ class EditIngestionViewModel @Inject constructor(
         isEstimate = newIsEstimate
     }
 
-    val relevantExperiences: StateFlow<List<ExperienceOption>> = localDateTimeFlow.map {
+    val relevantExperiences: StateFlow<List<ExperienceOption>> = localDateTimeStartFlow.map {
         val selectedInstant = it.getInstant()
         val fromDate = selectedInstant.minus(2, ChronoUnit.DAYS)
         val toDate = selectedInstant.plus(2, ChronoUnit.DAYS)
@@ -164,7 +186,7 @@ class EditIngestionViewModel @Inject constructor(
 
     fun onDoneTap() {
         viewModelScope.launch {
-            val selectedInstant = localDateTimeFlow.firstOrNull()?.getInstant() ?: return@launch
+            val selectedInstant = localDateTimeStartFlow.firstOrNull()?.getInstant() ?: return@launch
             ingestion?.let {
                 it.notes = note
                 it.isDoseAnEstimate = isEstimate
@@ -175,6 +197,11 @@ class EditIngestionViewModel @Inject constructor(
                 it.units = units
                 it.customUnitId = customUnit?.id
                 it.time = selectedInstant
+                it.endTime = if (ingestionTimePickerOptionFlow.value == IngestionTimePickerOption.TIME_RANGE) {
+                    localDateTimeEndFlow.firstOrNull()?.getInstant()
+                } else {
+                    null
+                }
                 it.consumerName = consumerName.ifBlank { null }
                 experienceRepo.update(it)
             }

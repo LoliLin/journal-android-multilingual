@@ -210,6 +210,9 @@ object ExtensionPackLoader {
                 if (!isValidRegisterName(newPack.registerName)) {
                     throw Exception("invalid registerName")
                 }
+                if (newPack.registerName != registerName) {
+                    throw Exception("registerName does not match target dir")
+                }
                 if (oldManifest.exists()) {
                     val oldPack = parseManifest(oldManifest.readText(), backupDir)
                     if (oldPack != null && newPack.versionCode <= oldPack.versionCode) {

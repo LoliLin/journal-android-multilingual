@@ -136,23 +136,29 @@ class StatsViewModel @Inject constructor(
         companions: List<SubstanceCompanion>,
         consumerName: String?
     ): List<ColorCount> {
-        return experiences.map { experience ->
-            experience.ingestionsWithCompanionAndCustomUnit.filter {
-                it.ingestion.consumerName ==
-                    consumerName
-            }
-                .map { it.ingestion.substanceName }.toSet()
-        }.flatten()
-            .groupBy { it }.values.mapNotNull { sameNames ->
-                val name =
-                    sameNames.firstOrNull() ?: return@mapNotNull null
-                val oneCompanion =
-                    companions.firstOrNull { it.substanceName == name } ?: return@mapNotNull null
-                return@mapNotNull ColorCount(
-                    color = oneCompanion.color,
-                    count = sameNames.size
+        // Bars are sized by ingested dose relative to the common dose (sum of x common across
+        // the bucket), so different substances and units are comparable; colored with the
+        // user's custom substance colors.
+        val companionBySubstance = companions.associateBy { it.substanceName }
+        return experiences.flatMap { experience ->
+            experience.ingestionsWithCompanionAndCustomUnit
+                .filter { it.ingestion.consumerName == consumerName }
+                .mapNotNull { ingestionWith ->
+                    val oneCompanion =
+                        companionBySubstance[ingestionWith.ingestion.substanceName]
+                            ?: return@mapNotNull null
+                    oneCompanion.color to (
+                        relativeDoseOfIngestion(substanceRepo, ingestionWith) ?: 0.0
+                        )
+                }
+        }.groupBy { it.first }
+            .map { (color, dosePairs) ->
+                ColorCount(
+                    color = color,
+                    count = dosePairs.sumOf { it.second }
                 )
-            }.sortedByDescending { it.count }
+            }
+            .sortedByDescending { it.count }
     }
 
     private val statsFlowItem: Flow<List<StatItem>> = combine(
@@ -182,6 +188,9 @@ class StatsViewModel @Inject constructor(
             val oneCompanion =
                 companions.firstOrNull { it.substanceName == name } ?: return@mapNotNull null
             val experienceCounts = experienceNamesMap[name]?.size ?: 0
+            val relativeValues = groupedIngestions.mapNotNull {
+                relativeDoseOfIngestion(substanceRepo, it)
+            }
             StatItem(
                 substanceName = name,
                 substanceRepo = substanceRepo,
@@ -189,7 +198,8 @@ class StatsViewModel @Inject constructor(
                 experienceCount = experienceCounts,
                 ingestionCount = groupedIngestions.size,
                 routeCounts = getRouteCounts(groupedIngestions.map { it.ingestion }),
-                totalDose = getTotalDose(groupedIngestions)
+                totalDose = getTotalDose(groupedIngestions),
+                relativeTotalDose = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
             )
         }.sortedByDescending { it.experienceCount }
     }
@@ -274,7 +284,7 @@ data class StatsModel(
     val consumerName: String?
 )
 
-data class ColorCount(val color: AdaptiveColor, val count: Int)
+data class ColorCount(val color: AdaptiveColor, val count: Double)
 
 data class StatItem(
     val substanceName: String,
@@ -283,7 +293,8 @@ data class StatItem(
     val experienceCount: Int,
     val ingestionCount: Int,
     val routeCounts: List<RouteCount>,
-    val totalDose: TotalDose?
+    val totalDose: TotalDose?,
+    val relativeTotalDose: Double?
 )
 
 data class RouteCount(val administrationRoute: AdministrationRoute, val count: Int)

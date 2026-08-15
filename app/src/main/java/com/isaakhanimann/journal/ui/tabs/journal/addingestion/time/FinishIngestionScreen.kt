@@ -254,6 +254,7 @@ fun FinishIngestionScreen(
                         onChangeStartDateOrTime = onChangeStartDateOrTime,
                         localDateTimeEnd = localDateTimeEnd,
                         onChangeEndDateOrTime = onChangeEndDateOrTime,
+                        showFutureQuickButtons = true,
                         onSelectDurationPreset = onSelectDurationPreset
                     )
                 }

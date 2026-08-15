@@ -57,14 +57,22 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                     bucket.sumOf { it.count }
                 }
                 val half = maxCount / 2
-                val halfLineHeight = half.toFloat() * canvasHeightOuter / maxCount
+                val halfLineHeight =
+                    (half.toFloat() * canvasHeightOuter / maxCount).toFloat()
                 val halfLabelHeight = labelHeight / 2
-                val numLettersInLabel = maxCount.toString().length
+                val maxCountLabel = maxCount.toInt().toString()
+                val numLettersInLabel = maxCountLabel.length
                 val labelWidth = (numLettersInLabel + 1) * labelHeight * 0.6f
                 val spaceBetweenLabelAndChart = labelHeight * 0.5f
                 drawContext.canvas.nativeCanvas.apply {
                     drawText(
-                        half.toString(),
+                        maxCountLabel.toDouble().div(2).let { halfLabel ->
+                            if (halfLabel == halfLabel.toLong().toDouble()) {
+                                halfLabel.toLong().toString()
+                            } else {
+                                halfLabel.toString()
+                            }
+                        },
                         labelWidth - spaceBetweenLabelAndChart,
                         canvasHeightOuter - halfLineHeight + halfLabelHeight,
                         Paint().apply {
@@ -74,7 +82,7 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                         }
                     )
                     drawText(
-                        maxCount.toString(),
+                        maxCountLabel,
                         labelWidth - spaceBetweenLabelAndChart,
                         halfLabelHeight,
                         Paint().apply {
@@ -142,7 +150,8 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                             val xBucket = (((index * 2f) + 1) / 2) * (spaceWidth + bucketWidth)
                             var yStart = canvasHeightInner
                             colorCounts.forEach { colorCount ->
-                                val yLength = colorCount.count * canvasHeightInner / maxCount
+                                val yLength =
+                                    (colorCount.count * canvasHeightInner / maxCount).toFloat()
                                 val yEnd = yStart - yLength
                                 val cornerRadius = bucketWidth / 6
                                 drawRoundRect(
