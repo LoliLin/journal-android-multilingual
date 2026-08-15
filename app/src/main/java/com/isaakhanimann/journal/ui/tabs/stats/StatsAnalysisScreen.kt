@@ -146,7 +146,7 @@ fun StatsAnalysisScreen(
 fun StatsAnalysisScreenContent(
     usedSubstances: List<String>,
     consumerNames: List<String>,
-    ownerUserName: String,
+    ownerUserName: String?,
     selectedConsumer: ConsumerSelection,
     selectAllConsumers: () -> Unit,
     selectOwner: () -> Unit,
@@ -241,7 +241,7 @@ fun StatsAnalysisScreenContent(
                                 }
                             )
                             DropdownMenuItem(
-                                text = { Text(ownerUserName) },
+                                text = { Text(ownerUserName ?: "You") },
                                 onClick = {
                                     selectOwner()
                                     isConsumerDropdownExpanded = false

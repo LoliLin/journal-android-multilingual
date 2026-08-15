@@ -124,7 +124,7 @@ class StatsAnalysisViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
-    val ownerUserNameFlow: StateFlow<String> = userPreferences.ownerUserNameFlow.stateIn(
+    val ownerUserNameFlow: StateFlow<String?> = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
@@ -247,9 +247,9 @@ class StatsAnalysisViewModel @Inject constructor(
         val start = filters.start
         val end = filters.end
         val consumerMatches: (String?) -> Boolean = when (consumerSelection) {
-            ConsumerSelection.All -> { true }
-            ConsumerSelection.Owner -> { it == null }
-            is ConsumerSelection.Specific -> { it == consumerSelection.name }
+            ConsumerSelection.All -> { _ -> true }
+            ConsumerSelection.Owner -> { consumer -> consumer == null }
+            is ConsumerSelection.Specific -> { consumer -> consumer == consumerSelection.name }
         }
         val zone = ZoneId.systemDefault()
         val today = LocalDate.now()
