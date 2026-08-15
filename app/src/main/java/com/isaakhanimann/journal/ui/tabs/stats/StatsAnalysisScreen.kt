@@ -181,10 +181,19 @@ fun StatsAnalysisScreenContent(
                         .padding(start = 16.dp, end = 4.dp, top = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val displayConsumerName = when (selectedConsumer) {
+                    // With no named consumers, "All" and "Owner" are equivalent; default to the
+                    // owner profile (title/avatar/check) instead of the generic "All" state.
+                    val effectiveConsumer = if (
+                        selectedConsumer == ConsumerSelection.All && consumerNames.isEmpty()
+                    ) {
+                        ConsumerSelection.Owner
+                    } else {
+                        selectedConsumer
+                    }
+                    val displayConsumerName = when (effectiveConsumer) {
                         ConsumerSelection.All -> null
                         ConsumerSelection.Owner -> ownerUserName
-                        is ConsumerSelection.Specific -> selectedConsumer.name
+                        is ConsumerSelection.Specific -> effectiveConsumer.name
                     }
                     Text(
                         text = displayConsumerName?.let {
@@ -216,7 +225,7 @@ fun StatsAnalysisScreenContent(
                                 Icon(
                                     imageVector = Icons.Default.Person,
                                     contentDescription = i18n("stats_analysis_consumer"),
-                                    tint = if (selectedConsumer != ConsumerSelection.All) {
+                                    tint = if (effectiveConsumer != ConsumerSelection.All) {
                                         MaterialTheme.colorScheme.primary
                                     } else {
                                         MaterialTheme.colorScheme.onSurfaceVariant
@@ -235,7 +244,7 @@ fun StatsAnalysisScreenContent(
                                     isConsumerDropdownExpanded = false
                                 },
                                 leadingIcon = {
-                                    if (selectedConsumer == ConsumerSelection.All) {
+                                    if (effectiveConsumer == ConsumerSelection.All) {
                                         Icon(Icons.Filled.Check, contentDescription = null)
                                     }
                                 }
@@ -247,7 +256,7 @@ fun StatsAnalysisScreenContent(
                                     isConsumerDropdownExpanded = false
                                 },
                                 leadingIcon = {
-                                    if (selectedConsumer == ConsumerSelection.Owner) {
+                                    if (effectiveConsumer == ConsumerSelection.Owner) {
                                         Icon(Icons.Filled.Check, contentDescription = null)
                                     }
                                 }
@@ -261,8 +270,8 @@ fun StatsAnalysisScreenContent(
                                     },
                                     leadingIcon = {
                                         if (
-                                            selectedConsumer is ConsumerSelection.Specific &&
-                                            selectedConsumer.name == consumerName
+                                            effectiveConsumer is ConsumerSelection.Specific &&
+                                            effectiveConsumer.name == consumerName
                                         ) {
                                             Icon(Icons.Filled.Check, contentDescription = null)
                                         }
