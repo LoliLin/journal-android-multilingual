@@ -184,6 +184,31 @@ class TestFindClosestExperience {
     }
 
     @Test
+    fun dayBoundaryIsEvaluatedInTheProvidedZone() {
+        val session = experience(id = 1, ingestionTimes = listOf(instantOf(2026, 8, 14, 23, 30)))
+        val selected = instantOf(2026, 8, 15, 0, 30)
+        // in UTC these are different calendar days, so the session does not continue
+        assertNull(
+            findClosestExperience(
+                experiences = listOf(session),
+                selectedInstant = selected,
+                zone = ZoneId.of("UTC"),
+                enforceDayBoundary = true
+            )
+        )
+        // in America/Los_Angeles both instants fall on Aug 14, so the session continues
+        assertEquals(
+            1,
+            findClosestExperience(
+                experiences = listOf(session),
+                selectedInstant = selected,
+                zone = ZoneId.of("America/Los_Angeles"),
+                enforceDayBoundary = true
+            )?.experience?.id
+        )
+    }
+
+    @Test
     fun experienceWithoutIngestionsNeverMatches() {
         val empty = ExperienceWithIngestions(
             experience = Experience(

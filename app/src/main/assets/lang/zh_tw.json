@@ -651,7 +651,7 @@
   "finish_time_end": "結束：",
   "settings_hide_timeline": "隱藏時間線",
   "settings_midnight_cutoff": "午夜分割體驗",
-  "settings_midnight_cutoff_description": "啟用後，午夜之後的攝入會新建體驗，而不會併入前一天。適合把每個自然日視為一次獨立體驗的使用方式。",
+  "settings_midnight_cutoff_description": "啟用後，午夜之後的攝入會新建體驗，而不會併入前一天。午夜依本地時區計算。適合把每個自然日視為一次獨立體驗的使用方式。",
   "settings_independent_substance_heights": "物質時間線高度獨立",
   "settings_independent_substance_heights_description": "啟用此設定後，不同物質和給藥途徑（roa）的時間線將彼此獨立。不同物質和途徑的攝入將始終佔滿時間線的全部高度。\n\n停用時，不同物質的時間線高度彼此相對。此時以常見劑量平均值為比較基準。\n例如：口服 MDMA 的常見劑量平均值為 100mg，鼻吸 MDMA 為 50mg，則 100mg 口服 MDMA 的時間線高度與 50mg 鼻吸 MDMA 相同。\n該規則同樣跨物質生效。例如口服 2C-B 的常見劑量為 20mg，則 40mg 口服 2C-B 的時間線是 100mg 口服 MDMA 的兩倍高。",
   "common_show_more_info": "顯示更多資訊",

@@ -113,7 +113,7 @@ class SettingsViewModel @Inject constructor(
     )
 
     val isMidnightCutoffEnabledFlow = userPreferences.isMidnightCutoffEnabledFlow.stateIn(
-        initialValue = true,
+        initialValue = false,
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )

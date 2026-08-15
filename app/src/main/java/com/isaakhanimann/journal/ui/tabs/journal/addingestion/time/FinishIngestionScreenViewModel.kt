@@ -376,7 +376,8 @@ class FinishIngestionScreenViewModel @Inject constructor(
  * [enforceDayBoundary] is enabled, the instant must additionally fall on one of the calendar
  * days the experience's own ingestions span, so an ingestion shortly after midnight starts a
  * new experience instead of joining the previous day's: a session only continues into the next
- * calendar day if it demonstrably crossed midnight.
+ * calendar day if it demonstrably crossed midnight. The day span is treated as a contiguous
+ * range: an experience with ingestions on non-adjacent days also matches a selected day in between.
  */
 internal fun findClosestExperience(
     experiences: List<ExperienceWithIngestions>,
