@@ -209,6 +209,23 @@ class TestFindClosestExperience {
     }
 
     @Test
+    fun nonAdjacentDaySpanMatchesIntermediateDay() {
+        // documented assumption: the ingested days form a contiguous span, so a selection on
+        // the day between two non-adjacent ingestions matches
+        val session = experience(
+            id = 1,
+            ingestionTimes = listOf(instantOf(2026, 8, 14, 12), instantOf(2026, 8, 16, 12))
+        )
+        val result = findClosestExperience(
+            experiences = listOf(session),
+            selectedInstant = instantOf(2026, 8, 15, 12),
+            zone = zone,
+            enforceDayBoundary = true
+        )
+        assertEquals(1, result?.experience?.id)
+    }
+
+    @Test
     fun experienceWithoutIngestionsNeverMatches() {
         val empty = ExperienceWithIngestions(
             experience = Experience(
