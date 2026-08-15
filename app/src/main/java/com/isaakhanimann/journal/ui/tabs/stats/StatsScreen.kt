@@ -380,12 +380,12 @@ fun StatsScreen(
                                                                     "stats_total_dose_relative_estimated_sd",
                                                                     replacements = mapOf(
                                                                         "dose" to
-                                                                            relativeTotal.toReadableString(),
+                                                                            cumulativeDose.dose.toReadableString(),
                                                                         "sd" to
                                                                             cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
-                                                                        "absolute" to
-                                                                            cumulativeDose.dose.toReadableString(),
-                                                                        "units" to cumulativeDose.units
+                                                                        "units" to cumulativeDose.units,
+                                                                        "relative" to
+                                                                            relativeTotal.toReadableString()
                                                                     )
                                                                 )
                                                             )
@@ -395,10 +395,10 @@ fun StatsScreen(
                                                                     "stats_total_dose_relative_estimated",
                                                                     replacements = mapOf(
                                                                         "dose" to
-                                                                            relativeTotal.toReadableString(),
-                                                                        "absolute" to
                                                                             cumulativeDose.dose.toReadableString(),
-                                                                        "units" to cumulativeDose.units
+                                                                        "units" to cumulativeDose.units,
+                                                                        "relative" to
+                                                                            relativeTotal.toReadableString()
                                                                     )
                                                                 )
                                                             )
@@ -409,10 +409,10 @@ fun StatsScreen(
                                                                 "stats_total_dose_relative",
                                                                 replacements = mapOf(
                                                                     "dose" to
-                                                                        relativeTotal.toReadableString(),
-                                                                    "absolute" to
                                                                         cumulativeDose.dose.toReadableString(),
-                                                                    "units" to cumulativeDose.units
+                                                                    "units" to cumulativeDose.units,
+                                                                    "relative" to
+                                                                        relativeTotal.toReadableString()
                                                                 )
                                                             )
                                                         )
