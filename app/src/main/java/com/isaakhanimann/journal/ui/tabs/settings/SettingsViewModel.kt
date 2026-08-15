@@ -118,6 +118,18 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val isMidnightCutoffEnabledFlow = userPreferences.isMidnightCutoffEnabledFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveMidnightCutoffEnabled(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.saveMidnightCutoffEnabled(value)
+        }
+    }
+
     val selectedLanguageFlow = userPreferences.selectedLanguageFlow.stateIn(
         initialValue = null,
         scope = viewModelScope,

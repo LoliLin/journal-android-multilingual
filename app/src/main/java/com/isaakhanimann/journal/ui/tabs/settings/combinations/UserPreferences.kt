@@ -24,11 +24,13 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 @Singleton
@@ -52,6 +54,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_EFFECT_NOTIFICATION_ENABLED = booleanPreferencesKey("key_effect_notification_enabled")
         val KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT = booleanPreferencesKey("KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT")
         val KEY_IS_TIMELINE_HIDDEN = booleanPreferencesKey("KEY_IS_TIMELINE_HIDDEN")
+        val KEY_MIDNIGHT_CUTOFF_ENABLED = booleanPreferencesKey("key_midnight_cutoff_enabled")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -161,6 +164,26 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     suspend fun saveIsTimelineHidden(value: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_IS_TIMELINE_HIDDEN] = value
+        }
+    }
+
+    val isMidnightCutoffEnabledFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] ?: false
+        }
+
+    suspend fun saveMidnightCutoffEnabled(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] = value
+        }
+    }
+
+    suspend fun getRoaDurationPreset(roa: AdministrationRoute): Long? =
+        dataStore.data.first()[longPreferencesKey("key_roa_duration_preset_${roa.name}")]
+
+    suspend fun saveRoaDurationPreset(roa: AdministrationRoute, minutes: Long) {
+        dataStore.edit { preferences ->
+            preferences[longPreferencesKey("key_roa_duration_preset_${roa.name}")] = minutes
         }
     }
 

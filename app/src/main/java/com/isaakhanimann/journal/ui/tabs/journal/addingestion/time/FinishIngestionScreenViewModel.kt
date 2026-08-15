@@ -85,6 +85,9 @@ class FinishIngestionScreenViewModel @Inject constructor(
     val ingestionTimePickerOptionFlow = MutableStateFlow(IngestionTimePickerOption.POINT_IN_TIME)
     val experiencesInRangeFlow = MutableStateFlow<List<ExperienceWithIngestions>>(emptyList())
     val selectedExperienceFlow = MutableStateFlow<ExperienceWithIngestions?>(null)
+    // Once the user picks an experience (or "new experience") from the dropdown, time changes
+    // must not silently re-select a different experience.
+    private var hasMadeExplicitExperienceSelection = false
     var enteredTitle by mutableStateOf(LocalDateTime.now().getStringOfPattern("dd MMMM yyyy"))
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
     var consumerName by mutableStateOf("")
@@ -93,7 +96,24 @@ class FinishIngestionScreenViewModel @Inject constructor(
     fun onChangeTimePickerOption(ingestionTimePickerOption: IngestionTimePickerOption) =
         viewModelScope.launch {
             ingestionTimePickerOptionFlow.emit(ingestionTimePickerOption)
+            if (ingestionTimePickerOption == IngestionTimePickerOption.TIME_RANGE) {
+                applySavedDurationPresetIfAny()
+            }
         }
+
+    fun onSelectDurationPreset(minutes: Long) = viewModelScope.launch {
+        userPreferences.saveRoaDurationPreset(administrationRoute, minutes)
+        val startTime = localDateTimeStartFlow.first()
+        localDateTimeEndFlow.emit(startTime.plusMinutes(minutes))
+    }
+
+    private suspend fun applySavedDurationPresetIfAny() {
+        val savedMinutes = userPreferences.getRoaDurationPreset(administrationRoute)
+        if (savedMinutes != null) {
+            val startTime = localDateTimeStartFlow.first()
+            localDateTimeEndFlow.emit(startTime.plusMinutes(savedMinutes))
+        }
+    }
 
     private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
 
@@ -219,6 +239,7 @@ class FinishIngestionScreenViewModel @Inject constructor(
 
     fun onChangeOfSelectedExperience(experienceWithIngestions: ExperienceWithIngestions?) =
         viewModelScope.launch {
+            hasMadeExplicitExperienceSelection = true
             selectedExperienceFlow.emit(experienceWithIngestions)
         }
 
@@ -261,19 +282,24 @@ class FinishIngestionScreenViewModel @Inject constructor(
                 toInstant = toInstant
             )
         experiencesInRangeFlow.emit(experiencesInRange)
-        val closestExperience = experiencesInRange.firstOrNull { experience ->
-            val sortedIngestions = experience.ingestions.sortedBy { it.time }
-            val firstIngestionTime =
-                sortedIngestions.firstOrNull()?.time ?: return@firstOrNull false
-            val upperBoundBasedOnFirstIngestion = firstIngestionTime.plus(15, ChronoUnit.HOURS)
-            val lastIngestionTime = sortedIngestions.lastOrNull()?.time ?: return@firstOrNull false
-            val upperBoundBasedOnLastIngestion = lastIngestionTime.plus(3, ChronoUnit.HOURS)
-            val finalUpperBound =
-                maxOf(upperBoundBasedOnFirstIngestion, upperBoundBasedOnLastIngestion)
-            val lowerBound = firstIngestionTime.minus(3, ChronoUnit.HOURS)
-            return@firstOrNull selectedInstant in lowerBound..finalUpperBound
+        val explicitlySelectedExperienceId = selectedExperienceFlow.value?.experience?.id
+        val isExplicitlySelectedExperienceStillInRange =
+            explicitlySelectedExperienceId != null &&
+                experiencesInRange.any { it.experience.id == explicitlySelectedExperienceId }
+        // Re-run auto selection unless the user chose explicitly and that choice is still in
+        // range; an explicit "new experience" choice is always kept.
+        val shouldReRunAutoSelection = !hasMadeExplicitExperienceSelection ||
+            (explicitlySelectedExperienceId != null && !isExplicitlySelectedExperienceStillInRange)
+        if (shouldReRunAutoSelection) {
+            val enforceDayBoundary = userPreferences.isMidnightCutoffEnabledFlow.first()
+            val closestExperience = findClosestExperience(
+                experiences = experiencesInRange,
+                selectedInstant = selectedInstant,
+                zone = ZoneId.systemDefault(),
+                enforceDayBoundary = enforceDayBoundary
+            )
+            selectedExperienceFlow.emit(closestExperience)
         }
-        selectedExperienceFlow.emit(closestExperience)
     }
 
     fun createSaveAndDismissAfter(dismiss: () -> Unit) {
@@ -355,5 +381,44 @@ class FinishIngestionScreenViewModel @Inject constructor(
             },
             customUnitId = customUnitId
         )
+    }
+}
+
+/**
+ * Picks the experience a new ingestion at [selectedInstant] should join, or null if it should
+ * start a new one.
+ *
+ * An experience matches when [selectedInstant] lies within its session window
+ * (first ingestion - 3h .. max(first ingestion + 15h, last ingestion + 3h)). When
+ * [enforceDayBoundary] is enabled, the instant must additionally fall on one of the calendar
+ * days the experience's own ingestions span, so an ingestion shortly after midnight starts a
+ * new experience instead of joining the previous day's: a session only continues into the next
+ * calendar day if it demonstrably crossed midnight. The day span is treated as a contiguous
+ * range: an experience with ingestions on non-adjacent days also matches a selected day in between.
+ */
+internal fun findClosestExperience(
+    experiences: List<ExperienceWithIngestions>,
+    selectedInstant: Instant,
+    zone: ZoneId,
+    enforceDayBoundary: Boolean
+): ExperienceWithIngestions? {
+    return experiences.firstOrNull { experience ->
+        val sortedIngestions = experience.ingestions.sortedBy { it.time }
+        val firstIngestionTime = sortedIngestions.firstOrNull()?.time ?: return@firstOrNull false
+        val upperBoundBasedOnFirstIngestion = firstIngestionTime.plus(15, ChronoUnit.HOURS)
+        val lastIngestionTime = sortedIngestions.lastOrNull()?.time ?: return@firstOrNull false
+        val upperBoundBasedOnLastIngestion = lastIngestionTime.plus(3, ChronoUnit.HOURS)
+        val finalUpperBound =
+            maxOf(upperBoundBasedOnFirstIngestion, upperBoundBasedOnLastIngestion)
+        val lowerBound = firstIngestionTime.minus(3, ChronoUnit.HOURS)
+        val isWithinSessionWindow = selectedInstant in lowerBound..finalUpperBound
+        if (!enforceDayBoundary) {
+            return@firstOrNull isWithinSessionWindow
+        }
+        val selectedDay = selectedInstant.atZone(zone).toLocalDate()
+        val firstIngestedDay = firstIngestionTime.atZone(zone).toLocalDate()
+        val lastIngestedDay = lastIngestionTime.atZone(zone).toLocalDate()
+        val isWithinIngestedDays = selectedDay in firstIngestedDay..lastIngestedDay
+        isWithinSessionWindow && isWithinIngestedDays
     }
 }

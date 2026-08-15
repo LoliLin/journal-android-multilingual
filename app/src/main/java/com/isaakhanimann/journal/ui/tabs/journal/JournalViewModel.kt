@@ -158,16 +158,21 @@ class JournalViewModel @Inject constructor(
                         experiencesWithIngestions.filter { it.experience.isFavorite }
                 }
                 if (searchText.isNotEmpty()) {
-                    // collect substances with matching names
-                    val matchingSubstances = searchRepository.getMatchingSubstances(
-                        searchText = searchText,
-                        filterCategories = emptyList(),
-                        recentlyUsedSubstanceNamesSorted = emptyList()
-                    ).map { it.substance.name } + customSubstances.map { it.name }.filter {
-                        it.contains(other = searchText, ignoreCase = true)
+                    // collect substances with matching names for each whitespace-separated term,
+                    // so multiple substances can be searched at once
+                    val searchTerms = splitSearchTerms(searchText)
+                    val matchingSubstances = searchTerms.flatMap { term ->
+                        searchRepository.getMatchingSubstances(
+                            searchText = term,
+                            filterCategories = emptyList(),
+                            recentlyUsedSubstanceNamesSorted = emptyList()
+                        ).map { it.substance.name }
+                    }.distinct() + customSubstances.map { it.name }.filter { name ->
+                        searchTerms.any { term -> name.contains(term, ignoreCase = true) }
                     }
 
-                    // experience title, text or some consumed substance must contain search string or the consumer needs to match
+                    // experience title, text or some consumed substance must contain the search
+                    // string, or the consumer or an ingestion note needs to match
                     experiencesWithIngestions = experiencesWithIngestions.filter {
                         it.experience.title.contains(
                             other = searchText,
@@ -181,8 +186,13 @@ class JournalViewModel @Inject constructor(
                                     ignoreCase = true
                                 )
                                     ?: false
-                            isSubstanceAMatch || isConsumerAMatch || ingestionWithCompanion.ingestion.notes
-                                ?.contains(other = searchText, ignoreCase = true) == true
+                            val isNotesAMatch =
+                                ingestionWithCompanion.ingestion.notes?.contains(
+                                    searchText,
+                                    ignoreCase = true
+                                )
+                                    ?: false
+                            isSubstanceAMatch || isConsumerAMatch || isNotesAMatch
                         } || it.experience.text.contains(
                             other = searchText,
                             ignoreCase = true
@@ -197,3 +207,10 @@ class JournalViewModel @Inject constructor(
                 started = SharingStarted.WhileSubscribed(5000)
             )
 }
+
+/**
+ * Splits a search query into individual terms so multiple substances can be searched at once
+ * (e.g. "LSD MDMA" matches experiences containing either substance).
+ */
+internal fun splitSearchTerms(searchText: String): List<String> =
+    searchText.trim().split(Regex("\\s+")).filter { it.isNotBlank() }

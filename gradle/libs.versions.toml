@@ -3,7 +3,7 @@
 androidGradlePlugin = "9.3.1"
 fragment = "1.8.5"
 kotlin = "2.4.10"
-ksp = "2.3.10"
+ksp = "2.3.11"
 
 # AndroidX 核心库
 androidxCore = "1.19.0"

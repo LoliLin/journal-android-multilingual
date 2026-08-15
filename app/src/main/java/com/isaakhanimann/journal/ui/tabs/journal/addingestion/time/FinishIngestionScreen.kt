@@ -102,6 +102,7 @@ fun FinishIngestionScreen(
         localDateTimeStart = localDateTime,
         localDateTimeEnd = viewModel.localDateTimeEndFlow.collectAsState().value,
         onChangeEndDateOrTime = viewModel::onChangeEndDateOrTime,
+        onSelectDurationPreset = viewModel::onSelectDurationPreset,
         isLoadingColor = viewModel.isLoadingColor,
         isShowingColorPicker = viewModel.isShowingColorPicker,
         selectedColor = viewModel.selectedColor,
@@ -176,6 +177,7 @@ fun FinishIngestionScreen(
     onChangeStartDateOrTime: (LocalDateTime) -> Unit,
     localDateTimeStart: LocalDateTime,
     onChangeEndDateOrTime: (LocalDateTime) -> Unit,
+    onSelectDurationPreset: (Long) -> Unit = {},
     localDateTimeEnd: LocalDateTime,
     isLoadingColor: Boolean,
     isShowingColorPicker: Boolean,
@@ -252,7 +254,8 @@ fun FinishIngestionScreen(
                         onChangeStartDateOrTime = onChangeStartDateOrTime,
                         localDateTimeEnd = localDateTimeEnd,
                         onChangeEndDateOrTime = onChangeEndDateOrTime,
-                        showFutureQuickButtons = true
+                        showFutureQuickButtons = true,
+                        onSelectDurationPreset = onSelectDurationPreset
                     )
                 }
                 CardWithTitle(title = i18n("common_experience"), modifier = Modifier.fillMaxWidth()) {
