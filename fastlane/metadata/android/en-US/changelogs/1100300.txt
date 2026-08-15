@@ -1,0 +1,7 @@
+- New stats Analysis: relative-dose charts, per-substance cards, custom ranges, consumer filters.
+- Share a report image from Analysis.
+- Overview stats show relative doses with absolute amounts.
+- Search now matches multiple substances and ingestion notes.
+- New Notes screen to browse all notes.
+- Quick duration presets (15m-4h) when logging; last used is remembered.
+- Optional midnight cutoff starts a new experience after midnight.
