@@ -12,6 +12,6 @@ Licensed, GPLv3-Only
 A mission to bring the FOSS forks of the Journal app back onto par and better than the original. Fuck paywalls. 
 
 
-[从此，获得更多](https://github.com/LoliLin/journal-android-multilingual/releases)  
+[Releases](https://github.com/adderalladmiral/psylogplusplus/releases)  
 
-[拓展包开发模板](https://github.com/LoliLin/journal-android-multilingual-ext_template)
+[Extensions Template](https://github.com/LoliLin/journal-android-multilingual-ext_template)
