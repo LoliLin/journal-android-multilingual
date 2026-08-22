@@ -30,6 +30,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsTimedNotesAndRatings
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getTimeText
 
 /**
  * "This day last year" recap: the experiences recorded exactly one year ago.
@@ -103,7 +104,7 @@ fun TimeCapsuleScreen(
                             .padding(horizontal = 16.dp, vertical = 12.dp)
                     ) {
                         Text(
-                            text = item.experience.sortDate.getStringOfPattern("HH:mm"),
+                            text = item.experience.sortDate.getTimeText(),
                             style = MaterialTheme.typography.labelMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

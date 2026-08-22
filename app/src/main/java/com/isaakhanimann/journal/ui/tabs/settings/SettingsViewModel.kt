@@ -77,6 +77,16 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    fun saveUse24HourClock(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveUse24HourClock(value)
+    }
+
+    val use24HourClockFlow = userPreferences.use24HourClockFlow.stateIn(
+        initialValue = null,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     fun saveOpenLinkInBrowser(value: Boolean) {
         viewModelScope.launch {
             userPreferences.saveOpenLinkInBrowser(value)

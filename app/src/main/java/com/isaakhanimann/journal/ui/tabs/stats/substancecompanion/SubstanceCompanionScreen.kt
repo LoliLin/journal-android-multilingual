@@ -66,6 +66,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getTimeText
 
 @Composable
 fun SubstanceCompanionScreen(
@@ -251,7 +252,7 @@ fun IngestionRow(
             }
         }
         Text(text = text, style = MaterialTheme.typography.titleSmall)
-        val dateString = ingestionAndCustomUnit.ingestion.time.getStringOfPattern("HH:mm")
+        val dateString = ingestionAndCustomUnit.ingestion.time.getTimeText()
         Text(text = dateString)
     }
 }

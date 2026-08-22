@@ -88,17 +88,20 @@ fun ExperienceRow(
         val context = LocalContext.current
         val currentView = LocalView.current
         val coroutineScope = rememberCoroutineScope()
-        val ingestions = experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions.sortedBy { it.ingestion.time }
         val experience = experienceWithIngestionsCompanionsAndRatings.experience
-        val timedNotes = rowViewModel.getTimedNotes(
-            experience.id
-        ).collectAsState(initial = emptyList()).value
+        val ingestions = remember(experienceWithIngestionsCompanionsAndRatings) {
+            experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions.sortedBy { it.ingestion.time }
+        }
+        val timedNotesFlow = remember(experience.id) { rowViewModel.getTimedNotes(experience.id) }
+        val timedNotes = timedNotesFlow.collectAsState(initial = emptyList()).value
         val substanceRepo = rowViewModel.substanceRepo
         val interactionChecker = rowViewModel.interactionChecker
         val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
         val achievements = rowViewModel.achievementsFlow.collectAsState().value
 
-        val cardData = prepareShareableExperienceCardData(
+        // Only needed when the user taps share, so it's built on demand rather than
+        // on every row recomposition (substance/dose lookups + interaction checks are not cheap).
+        fun buildCardData() = prepareShareableExperienceCardData(
             substanceRepo = substanceRepo,
             interactionChecker = interactionChecker,
             ownerUserName = ownerUserName,
@@ -192,6 +195,7 @@ fun ExperienceRow(
                 try {
                     val activity = context as? androidx.activity.ComponentActivity
                     if (activity != null) {
+                        val cardData = buildCardData()
                         val bitmap = renderComposeViewToBitmap(
                             context = context,
                             widthPx = 1080,
