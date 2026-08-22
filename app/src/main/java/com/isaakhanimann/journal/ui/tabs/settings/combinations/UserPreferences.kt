@@ -55,6 +55,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT = booleanPreferencesKey("KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT")
         val KEY_IS_TIMELINE_HIDDEN = booleanPreferencesKey("KEY_IS_TIMELINE_HIDDEN")
         val KEY_MIDNIGHT_CUTOFF_ENABLED = booleanPreferencesKey("key_midnight_cutoff_enabled")
+        val KEY_USE_24_HOUR_CLOCK = booleanPreferencesKey("key_use_24_hour_clock")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -143,6 +144,18 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     val areDosageDotsHiddenFlow: Flow<Boolean> = dataStore.data
         .map { preferences ->
             preferences[PreferencesKeys.KEY_HIDE_DOSAGE_DOTS] ?: false
+        }
+
+    suspend fun saveUse24HourClock(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_USE_24_HOUR_CLOCK] = value
+        }
+    }
+
+    /** Null until the user chooses, in which case the system clock setting is followed. */
+    val use24HourClockFlow: Flow<Boolean?> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_USE_24_HOUR_CLOCK]
         }
 
     suspend fun saveAreSubstanceHeightsIndependent(value: Boolean) {

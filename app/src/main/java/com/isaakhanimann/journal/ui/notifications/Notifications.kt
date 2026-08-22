@@ -81,7 +81,7 @@ object Notifications {
     ) {
         if (!hasNotificationPermission(context)) return
         val timeText = ingestionTime.atZone(ZoneId.systemDefault())
-            .format(java.time.format.DateTimeFormatter.ofPattern("HH:mm"))
+            .format(java.time.format.DateTimeFormatter.ofPattern(com.isaakhanimann.journal.ui.utils.TimeFormat.timePattern))
         val text = I18n.translate(
             context,
             "effect_notification_text",

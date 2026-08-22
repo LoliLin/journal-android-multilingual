@@ -18,27 +18,26 @@
 
 package com.isaakhanimann.journal.ui.utils.keyboard
 
-import android.graphics.Rect
-import android.view.ViewTreeObserver
-import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.ime
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalDensity
 
+/**
+ * WindowInsets.ime reads from the already-tracked IME inset state, so recomposition only
+ * happens when the keyboard's height actually changes. The previous implementation used an
+ * OnGlobalLayoutListener that fired on every layout pass in the window (including every tab
+ * switch and animation frame) and called the IPC-backed getWindowVisibleDisplayFrame() each
+ * time, which was a measurable source of main-thread jank.
+ */
 @Composable
 fun isKeyboardOpen(): State<Boolean> {
-    val keyboardState = remember { mutableStateOf(false) }
-    val view = LocalView.current
-    DisposableEffect(view) {
-        val onGlobalListener = ViewTreeObserver.OnGlobalLayoutListener {
-            val rect = Rect()
-            view.getWindowVisibleDisplayFrame(rect)
-            val screenHeight = view.rootView.height
-            val keypadHeight = screenHeight - rect.bottom
-            keyboardState.value = keypadHeight > screenHeight * 0.15
-        }
-        view.viewTreeObserver.addOnGlobalLayoutListener(onGlobalListener)
-        onDispose {
-            view.viewTreeObserver.removeOnGlobalLayoutListener(onGlobalListener)
-        }
-    }
-    return keyboardState
+    val density = LocalDensity.current
+    val imeVisible = WindowInsets.ime.getBottom(density) > 0
+    val state = remember { mutableStateOf(imeVisible) }
+    state.value = imeVisible
+    return state
 }

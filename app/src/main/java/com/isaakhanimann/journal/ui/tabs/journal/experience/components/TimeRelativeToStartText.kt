@@ -26,6 +26,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.ui.tabs.journal.components.roundToOneDecimal
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getWeekdayTimeText
 import java.time.Duration
 import java.time.Instant
 import java.time.temporal.ChronoUnit
@@ -43,7 +44,7 @@ fun TimeRelativeToStartText(
         duration.toHours() > 1 -> "+ ${roundToOneDecimal(duration.toMinutes().toDouble() / 60.0)} h"
         duration.toMinutes() > 0 -> "+ ${duration.toMinutes()} min"
         duration.toMillis() > 0 -> "+ ${(duration.toMillis() / 1000).toInt()} s"
-        else -> time.getStringOfPattern("EEE HH:mm")
+        else -> time.getWeekdayTimeText()
     }
     Text(
         text = relativeTime,

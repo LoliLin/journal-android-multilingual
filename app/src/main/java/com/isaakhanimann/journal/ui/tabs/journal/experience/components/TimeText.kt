@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getWeekdayTimeText
 import java.time.Instant
 
 @Composable
@@ -33,7 +34,7 @@ fun TimeText(
 ) {
     when (timeDisplayOption) {
         TimeDisplayOption.REGULAR -> {
-            val timeString = time.getStringOfPattern("EEE HH:mm")
+            val timeString = time.getWeekdayTimeText()
             Text(
                 text = timeString,
                 style = style
@@ -53,7 +54,7 @@ fun TimeText(
             )
         }
         TimeDisplayOption.TIME_BETWEEN -> {
-            val timeString = time.getStringOfPattern("EEE HH:mm")
+            val timeString = time.getWeekdayTimeText()
             Text(
                 text = timeString,
                 style = style

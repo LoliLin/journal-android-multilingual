@@ -62,7 +62,9 @@ data class IconOption(
     val label: String,
     val backgroundColor: Color,
     val iconRes: Int,
-    val aliasName: String
+    val aliasName: String,
+    /** True for the alias the manifest ships with android:enabled="true". */
+    val isDefault: Boolean = false
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,7 +88,8 @@ fun IconPickerScreen() {
             label = i18n("settings_icon_springwind"),
             backgroundColor = Color(0xFFFF8C94),
             iconRes = R.drawable.ic_springwind_foreground,
-            aliasName = ".MainActivity_SpringWind"
+            aliasName = ".MainActivity_SpringWind",
+            isDefault = true
         )
     )
 
@@ -98,7 +101,7 @@ fun IconPickerScreen() {
     }
 
     var selectedKey by remember {
-        mutableStateOf(getCurrentIconKey(pm, aliases))
+        mutableStateOf(getCurrentIconKey(pm, iconOptions, aliases))
     }
     var isSwitching by remember { mutableStateOf(false) }
 
@@ -149,7 +152,10 @@ fun IconPickerScreen() {
             }
 
             Text(
-                text = i18n("settings_icon_current", mapOf("name" to selectedKey)),
+                text = i18n(
+                    "settings_icon_current",
+                    mapOf("name" to (iconOptions.first { it.key == selectedKey }.label))
+                ),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -157,16 +163,28 @@ fun IconPickerScreen() {
     }
 }
 
-private fun getCurrentIconKey(pm: PackageManager, aliases: Map<String, ComponentName>): String {
-    aliases.forEach { (key, component) ->
-        try {
-            val state = pm.getComponentEnabledSetting(component)
-            if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
-                return key
-            }
-        } catch (_: Exception) { }
+private fun getCurrentIconKey(
+    pm: PackageManager,
+    options: List<IconOption>,
+    aliases: Map<String, ComponentName>
+): String {
+    val defaultKey = options.first { it.isDefault }.key
+    options.forEach { option ->
+        val component = aliases[option.key] ?: return@forEach
+        val state = try {
+            pm.getComponentEnabledSetting(component)
+        } catch (_: Exception) {
+            return@forEach
+        }
+        when (state) {
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED -> return option.key
+            // Until an alias is explicitly toggled it stays in DEFAULT, which means
+            // "whatever the manifest declares" - only ever true for the default alias.
+            PackageManager.COMPONENT_ENABLED_STATE_DEFAULT ->
+                if (option.isDefault) return option.key
+        }
     }
-    return aliases.keys.first()
+    return defaultKey
 }
 
 private fun switchIcon(
@@ -174,20 +192,24 @@ private fun switchIcon(
     aliases: Map<String, ComponentName>,
     enableKey: String
 ): Boolean {
+    val target = aliases[enableKey] ?: return false
     return try {
-        aliases.values.forEach { component ->
-            pm.setComponentEnabledSetting(
-                component,
-                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                0
-            )
-        }
-        val target = aliases[enableKey] ?: return false
+        // Enable the new alias before disabling the old one, otherwise there is a
+        // moment with no launcher entry at all and some launchers drop the icon for good.
         pm.setComponentEnabledSetting(
             target,
             PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-            0
+            PackageManager.DONT_KILL_APP
         )
+        aliases.forEach { (key, component) ->
+            if (key != enableKey) {
+                pm.setComponentEnabledSetting(
+                    component,
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                    PackageManager.DONT_KILL_APP
+                )
+            }
+        }
         true
     } catch (e: Exception) {
         e.printStackTrace()

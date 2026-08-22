@@ -26,6 +26,12 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
+import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import com.isaakhanimann.journal.ui.utils.TimeFormat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -36,6 +42,11 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
+    @Inject
+    lateinit var userPreferences: UserPreferences
+
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
             .setWorkerFactory(workerFactory)
@@ -43,6 +54,10 @@ class JournalApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        TimeFormat.refreshSystemDefault(this)
+        applicationScope.launch {
+            userPreferences.use24HourClockFlow.collect { TimeFormat.setUserOverride(it) }
+        }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".
         val request = PeriodicWorkRequestBuilder<TimeCapsuleWorker>(1, TimeUnit.DAYS).build()
