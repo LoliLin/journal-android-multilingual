@@ -8,7 +8,7 @@ Copyright (C) 2026 Adderall Admiral.
 
 Licensed, GPLv3-Only
 
-# PsylogPlusPlus
+# Psylog++
 A mission to bring the FOSS forks of the Journal app back onto par and better than the original. Fuck paywalls. 
 
 
