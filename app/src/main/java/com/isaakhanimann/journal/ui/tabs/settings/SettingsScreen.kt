@@ -95,6 +95,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -155,6 +156,9 @@ fun SettingsScreen(
         saveAreSubstanceHeightsIndependent = viewModel::saveAreSubstanceHeightsIndependent,
         isMidnightCutoffEnabled = viewModel.isMidnightCutoffEnabledFlow.collectAsState().value,
         saveMidnightCutoffEnabled = viewModel::saveMidnightCutoffEnabled,
+        use24HourClock = viewModel.use24HourClockFlow.collectAsState().value
+            ?: TimeFormat.systemDefaultIs24Hour(),
+        saveUse24HourClock = viewModel::saveUse24HourClock,
     )
 }
 
@@ -193,6 +197,8 @@ fun SettingsScreen(
     saveAreSubstanceHeightsIndependent: (Boolean) -> Unit,
     isMidnightCutoffEnabled: Boolean,
     saveMidnightCutoffEnabled: (Boolean) -> Unit,
+    use24HourClock: Boolean = true,
+    saveUse24HourClock: (Boolean) -> Unit = {},
 ) {
     Scaffold(
         topBar = {
@@ -268,6 +274,22 @@ fun SettingsScreen(
                     text = i18n("settings_icon_title")
                 ) {
                     navigateToIconPicker()
+                }
+
+                HorizontalDivider()
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(text = i18n("settings_use_24_hour_clock"))
+                    Switch(
+                        checked = use24HourClock,
+                        onCheckedChange = saveUse24HourClock
+                    )
                 }
 
                 HorizontalDivider()

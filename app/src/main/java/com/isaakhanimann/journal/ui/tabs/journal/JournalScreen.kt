@@ -337,7 +337,10 @@ fun JournalScreen(
                                 HorizontalDivider()
                             }
                         }
-                        items(experiences) { experienceWithIngestions ->
+                        items(
+                            experiences,
+                            key = { it.experience.id }
+                        ) { experienceWithIngestions ->
                             ExperienceRow(
                                 experienceWithIngestions,
                                 navigateToExperienceScreen = {

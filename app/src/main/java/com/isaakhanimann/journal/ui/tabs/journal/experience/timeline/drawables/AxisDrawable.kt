@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables
 
+import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Duration
 import java.time.Instant
@@ -48,7 +49,7 @@ data class AxisDrawable(
             val distanceInSec = Duration.between(startTime, it).seconds
             FullHour(
                 distanceFromStart = distanceInSec * pixelsPerSec,
-                label = it.getStringOfPattern("HH")
+                label = it.getStringOfPattern(TimeFormat.hourPattern)
             )
         }
     }

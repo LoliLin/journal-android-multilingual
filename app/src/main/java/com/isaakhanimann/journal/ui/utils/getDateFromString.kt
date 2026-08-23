@@ -18,13 +18,11 @@
 
 package com.isaakhanimann.journal.ui.utils
 
-import java.text.DateFormat
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.YearMonth
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Date
 import java.util.Locale
 
 fun getInstant(year: Int, month: Int, day: Int, hourOfDay: Int, minute: Int): Instant? {
@@ -50,11 +48,14 @@ fun Instant.getShortTimeWithWeekdayText(): String {
     return getShortWeekdayText() + " " + getShortTimeText()
 }
 
-fun Instant.getShortTimeText(): String {
-    val timeFormat: DateFormat = DateFormat.getTimeInstance(DateFormat.SHORT, Locale.getDefault())
-    val date = Date.from(this)
-    return timeFormat.format(date)
-}
+fun Instant.getShortTimeText(): String = getStringOfPattern(TimeFormat.timePattern)
+
+/** Clock time only, honouring the 12/24 hour preference. */
+fun Instant.getTimeText(): String = getStringOfPattern(TimeFormat.timePattern)
+
+/** Weekday plus clock time, honouring the 12/24 hour preference. */
+fun Instant.getWeekdayTimeText(): String =
+    getStringOfPattern("EEE " + TimeFormat.timePattern)
 
 fun LocalDateTime.getStringOfPattern(pattern: String): String {
     val formatter = DateTimeFormatter.ofPattern(pattern)
@@ -65,10 +66,14 @@ fun LocalDateTime.getDateWithWeekdayText(): String {
     return getStringOfPattern("EEE dd MMM yyyy")
 }
 
-fun LocalDateTime.getShortTimeText(): String {
-    val instant = getInstant()
-    return instant.getShortTimeText()
-}
+fun LocalDateTime.getShortTimeText(): String = getStringOfPattern(TimeFormat.timePattern)
+
+/** Clock time only, honouring the 12/24 hour preference. */
+fun LocalDateTime.getTimeText(): String = getStringOfPattern(TimeFormat.timePattern)
+
+/** Weekday plus clock time, honouring the 12/24 hour preference. */
+fun LocalDateTime.getWeekdayTimeText(): String =
+    getStringOfPattern("EEE " + TimeFormat.timePattern)
 
 fun Instant.getLocalDateTime(): LocalDateTime =
     LocalDateTime.ofInstant(this, ZoneId.systemDefault())
