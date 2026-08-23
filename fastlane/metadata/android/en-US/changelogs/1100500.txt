@@ -1,0 +1,6 @@
+- Restored the full adaptive color palette (111 colors).
+- Fixed the icon picker not switching icons.
+- Added a 12/24-hour clock option in Settings.
+- Fixed scrolling jank in the journal.
+- Fixed tab-switching jank.
+- Improved search/filter responsiveness in the journal.
