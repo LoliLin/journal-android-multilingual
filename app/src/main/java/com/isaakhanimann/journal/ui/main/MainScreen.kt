@@ -132,10 +132,11 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         // Scroll-aware bottom bar. Nested-scroll sign convention: consumed.y < 0
         // when content scrolls toward the list end (finger swipe up / "scroll down
         // to see more"). Hide then. consumed.y > 0 when scrolling back toward the
-        // top: show. 40.dp hysteresis so tiny jitter does not flip the bar.
+        // top: show. 12.dp hysteresis (about 1/3 of 40.dp) so a short swipe hides
+        // the bar without flipping on tiny jitter.
         var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
         var scrollAccum by remember { mutableStateOf(0f) }
-        val scrollThreshold = with(LocalDensity.current) { 40.dp.toPx() }
+        val scrollThreshold = with(LocalDensity.current) { 12.dp.toPx() }
         val nestedScrollConnection = remember {
             object : NestedScrollConnection {
                 override fun onPostScroll(
