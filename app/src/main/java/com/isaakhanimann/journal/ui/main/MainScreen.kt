@@ -18,6 +18,9 @@
 
 package com.isaakhanimann.journal.ui.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -33,9 +36,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -56,6 +66,7 @@ import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
+import com.isaakhanimann.journal.ui.main.navigation.routers.isBottomBarHiddenRoute
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
 private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? {
@@ -99,6 +110,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
         val navController = rememberNavController()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+
         LaunchedEffect(pendingNav) {
             pendingNav?.let { (target, experienceId) ->
                 when (target) {
@@ -110,13 +124,48 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 pendingNav = null
             }
         }
+
+        // Scroll-aware bottom bar: swipe up (content scrolls upward) hides it,
+        // swipe down reveals it again, animated via AnimatedVisibility.
+        var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
+        var scrollAccum by remember { mutableStateOf(0f) }
+        val scrollThreshold = with(LocalDensity.current) { 24.dp.toPx() }
+        val nestedScrollConnection = remember {
+            object : NestedScrollConnection {
+                override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                    if (source == NestedScrollSource.UserInput) {
+                        scrollAccum += available.y
+                        // Positive y = content scrolls upward (finger swipes up, scrolling
+                        // toward the list end): hide the bar. Negative y = swipe down: reveal it.
+                        if (scrollAccum > scrollThreshold && !barHiddenByScroll) {
+                            barHiddenByScroll = true
+                            scrollAccum = 0f
+                        } else if (scrollAccum < -scrollThreshold && barHiddenByScroll) {
+                            barHiddenByScroll = false
+                            scrollAccum = 0f
+                        }
+                    }
+                    return Offset.Zero
+                }
+            }
+        }
+        // Reset the scroll-hidden state whenever a new destination is shown.
+        LaunchedEffect(currentDestination) {
+            barHiddenByScroll = false
+        }
+
+        val isKeyboardOpenNow = isKeyboardOpen().value
+        val isBottomBarShown = !isBottomBarHiddenRoute(currentDestination?.route) &&
+            !isKeyboardOpenNow && !barHiddenByScroll
+
         Scaffold(
             bottomBar = {
-                val isShowingBottomBar = isKeyboardOpen().value.not()
-                if (isShowingBottomBar) {
+                AnimatedVisibility(
+                    visible = isBottomBarShown,
+                    enter = slideInVertically { it },
+                    exit = slideOutVertically { it }
+                ) {
                     NavigationBar {
-                        val navBackStackEntry by navController.currentBackStackEntryAsState()
-                        val currentDestination = navBackStackEntry?.destination
                         val tabs = listOf(
                             TabRouter.Statistics,
                             TabRouter.Journal,
@@ -166,6 +215,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 navController,
                 startDestination = TabRouter.Journal.route,
                 modifier = Modifier
+                    .nestedScroll(nestedScrollConnection)
                     .padding(bottom = innerPadding.calculateBottomPadding())
             ) {
                 journalGraph(navController)

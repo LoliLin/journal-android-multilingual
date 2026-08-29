@@ -72,6 +72,44 @@ private const val ROUTE_START_URL = "url/"
 private const val ROUTE_START_JOURNAL_TAB_URL = "journalTabUrl/"
 private const val ROUTE_START_SAFER_TAB_URL = "saferTabUrl/"
 
+// Argument-route patterns (with a trailing "/") on which the bottom navigation
+// bar must never appear. These are the focused add/edit form flows.
+private val bottomBarHiddenRoutePrefixes = listOf(
+    ROUTE_START_EDIT_EXPERIENCE,
+    ROUTE_START_INGESTIONS,
+    ROUTE_START_EDIT_RATING,
+    ROUTE_START_EDIT_TIMED_NOTE,
+    ROUTE_START_EDIT_CUSTOM,
+    ROUTE_START_EDIT_CUSTOM_UNIT,
+    ROUTE_START_ADD_RATING,
+    ROUTE_START_ADD_TIMED_NOTE,
+    ROUTE_START_QUICK_TIMED_NOTE,
+    ROUTE_START_CHECK_INTERACTIONS,
+    ROUTE_START_CHECK_SAFER_USE,
+    ROUTE_START_CHOOSE_DOSE_CUSTOM_UNIT,
+    ROUTE_START_CHOOSE_ROUTE_OF_ADD_INGESTION,
+    ROUTE_START_CHOOSE_ROUTE_CUSTOM,
+    ROUTE_START_CHOOSE_DOSE_CUSTOM,
+    ROUTE_START_CHOOSE_DOSE,
+    ROUTE_START_CHOOSE_TIME,
+    ROUTE_START_OF_ADD_CUSTOM_UNIT,
+    ROUTE_START_FINISH_ADD_CUSTOM_UNIT
+)
+
+// No-argument add-flow routes (exact matches) on which the bar must never appear.
+private val bottomBarHiddenRouteExact = setOf(
+    NoArgumentRouter.AddCustomRouter.route,
+    NoArgumentRouter.AddIngestionSearchRouter.route,
+    NoArgumentRouter.AddIngestionRouter.route,
+    NoArgumentRouter.AddCustomUnitsSearchSubstanceRouter.route,
+    NoArgumentRouter.AddCustomUnitsRouter.route
+)
+
+/** True when the bottom navigation bar should be hidden on the given destination route. */
+fun isBottomBarHiddenRoute(route: String?): Boolean = route != null &&
+    (bottomBarHiddenRouteExact.contains(route) ||
+        bottomBarHiddenRoutePrefixes.any { route.startsWith(it) })
+
 sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>) {
     object ExperienceRouter : ArgumentRouter(
         route = "$ROUTE_START_EXPERIENCES{$EXPERIENCE_ID_KEY}",
