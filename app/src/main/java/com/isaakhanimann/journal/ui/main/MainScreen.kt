@@ -129,23 +129,26 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         }
 
-        // Scroll-aware bottom bar: swiping up (content scrolls upward) slides the bar
-        // out toward the bottom; swiping down slides it back in. Applied only on the
-        // top-level tab roots (the bar does not exist on nested screens at all).
+        // Scroll-aware bottom bar. Nested-scroll sign convention: consumed.y < 0
+        // when content scrolls toward the list end (finger swipe up / "scroll down
+        // to see more"). Hide then. consumed.y > 0 when scrolling back toward the
+        // top: show. 40.dp hysteresis so tiny jitter does not flip the bar.
         var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
         var scrollAccum by remember { mutableStateOf(0f) }
         val scrollThreshold = with(LocalDensity.current) { 40.dp.toPx() }
         val nestedScrollConnection = remember {
             object : NestedScrollConnection {
-                override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                override fun onPostScroll(
+                    consumed: Offset,
+                    available: Offset,
+                    source: NestedScrollSource
+                ): Offset {
                     if (source == NestedScrollSource.UserInput) {
-                        // Positive y = content scrolls upward (finger swipes up): hide the bar.
-                        // Negative y = content scrolls downward (finger swipes down): show it.
-                        scrollAccum += available.y
-                        if (scrollAccum > scrollThreshold && !barHiddenByScroll) {
+                        scrollAccum += consumed.y
+                        if (scrollAccum < -scrollThreshold && !barHiddenByScroll) {
                             barHiddenByScroll = true
                             scrollAccum = 0f
-                        } else if (scrollAccum < -scrollThreshold && barHiddenByScroll) {
+                        } else if (scrollAccum > scrollThreshold && barHiddenByScroll) {
                             barHiddenByScroll = false
                             scrollAccum = 0f
                         }
