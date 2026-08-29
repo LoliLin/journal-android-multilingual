@@ -100,6 +100,7 @@ import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -180,6 +181,7 @@ fun StatsAnalysisScreenContent(
     onSelectSection: (StatsSection) -> Unit = {}
 ) {
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
         topBar = {
             Column(
                 modifier = Modifier

@@ -81,6 +81,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
@@ -159,6 +160,7 @@ fun StatsScreen(
     onSelectSection: (StatsSection) -> Unit = {}
 ) {
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
         topBar = {
             Column(
                 modifier = Modifier

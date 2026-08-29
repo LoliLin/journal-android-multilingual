@@ -74,6 +74,7 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
@@ -157,6 +158,7 @@ fun JournalScreen(
         .firstOrNull { it.ingestionsWithCompanions.isNotEmpty() }
         ?.experience?.id
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
         topBar = {
             TopAppBar(
                 title = { Text(i18n("journal")) },

@@ -54,6 +54,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -70,6 +71,7 @@ fun SearchScreen(
     var isFocused by remember { mutableStateOf(false) }
 
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
         floatingActionButton = {
             if (!isFocused) {
                 FloatingActionButton(onClick = { focusRequester.requestFocus() }) {

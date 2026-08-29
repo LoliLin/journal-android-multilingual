@@ -48,6 +48,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -81,6 +82,7 @@ fun SaferUseScreen(
     navigateToReagentTestingScreen: () -> Unit
 ) {
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
         topBar = {
             TopAppBar(
                 title = { Text(i18n("safer_use_title")) }
