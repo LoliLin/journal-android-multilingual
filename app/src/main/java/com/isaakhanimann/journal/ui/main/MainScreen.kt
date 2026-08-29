@@ -19,6 +19,9 @@
 package com.isaakhanimann.journal.ui.main
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
@@ -38,6 +41,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -66,7 +70,7 @@ import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.isBottomBarHiddenRoute
+import com.isaakhanimann.journal.ui.main.navigation.routers.isMainTabRootRoute
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
 private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? {
@@ -125,8 +129,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         }
 
-        // Scroll-aware bottom bar: swipe up (content scrolls upward) hides it,
-        // swipe down reveals it again, animated via AnimatedVisibility.
+        // Scroll-aware bottom bar: swiping up (content scrolls upward) slides the bar
+        // out toward the bottom; swiping down slides it back in. Applied only on the
+        // top-level tab roots (the bar does not exist on nested screens at all).
         var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
         var scrollAccum by remember { mutableStateOf(0f) }
         val scrollThreshold = with(LocalDensity.current) { 24.dp.toPx() }
@@ -134,9 +139,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             object : NestedScrollConnection {
                 override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
                     if (source == NestedScrollSource.UserInput) {
+                        // Positive y = content scrolls upward (finger swipes up): hide the bar.
+                        // Negative y = content scrolls downward (finger swipes down): show it.
                         scrollAccum += available.y
-                        // Positive y = content scrolls upward (finger swipes up, scrolling
-                        // toward the list end): hide the bar. Negative y = swipe down: reveal it.
                         if (scrollAccum > scrollThreshold && !barHiddenByScroll) {
                             barHiddenByScroll = true
                             scrollAccum = 0f
@@ -149,21 +154,25 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 }
             }
         }
-        // Reset the scroll-hidden state whenever a new destination is shown.
+        // The bar is always shown by default whenever a destination is (re)entered.
         LaunchedEffect(currentDestination) {
             barHiddenByScroll = false
         }
 
         val isKeyboardOpenNow = isKeyboardOpen().value
-        val isBottomBarShown = !isBottomBarHiddenRoute(currentDestination?.route) &&
-            !isKeyboardOpenNow && !barHiddenByScroll
+        val isOnMainTabRoot = isMainTabRootRoute(currentDestination?.route)
+        val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow && !barHiddenByScroll
 
         Scaffold(
             bottomBar = {
+                // Continuous displacement: slide in/out vertically while expanding/
+                // shrinking from the bottom edge, so the bar moves as one smooth unit.
                 AnimatedVisibility(
                     visible = isBottomBarShown,
-                    enter = slideInVertically { it },
-                    exit = slideOutVertically { it }
+                    enter = slideInVertically(tween(durationMillis = 250)) { it } +
+                        expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
+                    exit = slideOutVertically(tween(durationMillis = 250)) { it } +
+                        shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
                 ) {
                     NavigationBar {
                         val tabs = listOf(
