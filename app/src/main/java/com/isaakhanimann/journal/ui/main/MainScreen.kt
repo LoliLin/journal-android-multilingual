@@ -134,7 +134,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         // top-level tab roots (the bar does not exist on nested screens at all).
         var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
         var scrollAccum by remember { mutableStateOf(0f) }
-        val scrollThreshold = with(LocalDensity.current) { 24.dp.toPx() }
+        val scrollThreshold = with(LocalDensity.current) { 40.dp.toPx() }
         val nestedScrollConnection = remember {
             object : NestedScrollConnection {
                 override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
