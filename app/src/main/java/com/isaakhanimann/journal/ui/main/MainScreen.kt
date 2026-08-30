@@ -27,6 +27,8 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -44,12 +46,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.offset
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -78,6 +79,7 @@ private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? 
     return target to intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
@@ -129,48 +131,23 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         }
 
-        // Scroll-aware bottom bar. Nested-scroll sign convention: consumed.y < 0
-        // when content scrolls toward the list end (finger swipe up / "scroll down
-        // to see more"). Hide then. consumed.y > 0 when scrolling back toward the
-        // top: show. 12.dp hysteresis (about 1/3 of 40.dp) so a short swipe hides
-        // the bar without flipping on tiny jitter.
-        var barHiddenByScroll by rememberSaveable { mutableStateOf(false) }
-        var scrollAccum by remember { mutableStateOf(0f) }
-        val scrollThreshold = with(LocalDensity.current) { 12.dp.toPx() }
-        val nestedScrollConnection = remember {
-            object : NestedScrollConnection {
-                override fun onPostScroll(
-                    consumed: Offset,
-                    available: Offset,
-                    source: NestedScrollSource
-                ): Offset {
-                    if (source == NestedScrollSource.UserInput) {
-                        scrollAccum += consumed.y
-                        if (scrollAccum < -scrollThreshold && !barHiddenByScroll) {
-                            barHiddenByScroll = true
-                            scrollAccum = 0f
-                        } else if (scrollAccum > scrollThreshold && barHiddenByScroll) {
-                            barHiddenByScroll = false
-                            scrollAccum = 0f
-                        }
-                    }
-                    return Offset.Zero
-                }
-            }
-        }
-        // The bar is always shown by default whenever a destination is (re)entered.
-        LaunchedEffect(currentDestination) {
-            barHiddenByScroll = false
-        }
-
         val isKeyboardOpenNow = isKeyboardOpen().value
         val isOnMainTabRoot = isMainTabRootRoute(currentDestination?.route)
-        val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow && !barHiddenByScroll
+        val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
+
+        // Material3 official hide-on-scroll: BottomAppBarDefaults.exitAlwaysScrollBehavior.
+        // NavigationBar has no scrollBehavior param; drive translationY from heightOffset.
+        val bottomBarScrollBehavior = BottomAppBarDefaults.exitAlwaysScrollBehavior(
+            canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
+        )
+        LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow) {
+            if (!isOnMainTabRoot || isKeyboardOpenNow) {
+                bottomBarScrollBehavior.state.heightOffset = 0f
+            }
+        }
 
         Scaffold(
             bottomBar = {
-                // Continuous displacement: slide in/out vertically while expanding/
-                // shrinking from the bottom edge, so the bar moves as one smooth unit.
                 AnimatedVisibility(
                     visible = isBottomBarShown,
                     enter = slideInVertically(tween(durationMillis = 250)) { it } +
@@ -178,7 +155,14 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                     exit = slideOutVertically(tween(durationMillis = 250)) { it } +
                         shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
                 ) {
-                    NavigationBar {
+                    NavigationBar(
+                        modifier = Modifier.offset {
+                            IntOffset(
+                                x = 0,
+                                y = -bottomBarScrollBehavior.state.heightOffset.toInt()
+                            )
+                        }
+                    ) {
                         val tabs = listOf(
                             TabRouter.Statistics,
                             TabRouter.Journal,
@@ -225,7 +209,8 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         ) { innerPadding ->
             CompositionLocalProvider(
-                LocalBottomBarNestedScrollConnection provides nestedScrollConnection
+                LocalBottomBarNestedScrollConnection provides
+                    bottomBarScrollBehavior.nestedScrollConnection
             ) {
                 NavHost(
                     navController,
