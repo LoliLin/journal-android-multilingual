@@ -202,9 +202,18 @@ class StatsViewModel @Inject constructor(
         val (experiences, startDate, byIngestionTime) = window
         val nowEndOfDay = Instant.now().getEndOfDay()
         val relevantIngestions = if (byIngestionTime) {
-            experiences.flatMap { it.ingestionsWithCompanionAndCustomUnit }
+            val ingestionsNewestFirst = experiences
+                .asSequence()
+                .flatMap { it.ingestionsWithCompanionAndCustomUnit }
                 .filter { it.ingestion.consumerName == consumerName }
-                .filter { it.ingestion.time <= nowEndOfDay && it.ingestion.time > startDate }
+                .sortedByDescending { it.ingestion.time }
+                .toList()
+            takeItemsInStatsWindow(
+                itemsNewestFirst = ingestionsNewestFirst,
+                instantOf = { it.ingestion.time },
+                nowEndOfDay = nowEndOfDay,
+                startExclusive = startDate
+            )
         } else {
             takeItemsInStatsWindow(
                 itemsNewestFirst = experiences,
@@ -221,16 +230,14 @@ class StatsViewModel @Inject constructor(
             relevantIngestions.groupBy { it.ingestion.substanceName }
                 .mapValues { (_, list) -> list.map { it.ingestion.experienceId }.distinct().size }
         } else {
-            takeItemsInStatsWindow(
-                itemsNewestFirst = experiences,
-                instantOf = { it.sortInstant },
-                nowEndOfDay = nowEndOfDay,
-                startExclusive = startDate
-            ).flatMap { experience ->
-                experience.ingestionsWithCompanionAndCustomUnit.filter {
-                    it.ingestion.consumerName == consumerName
-                }.map { it.ingestion.substanceName }.toSet()
-            }.groupingBy { it }.eachCount()
+            relevantIngestions
+                .groupBy { it.ingestion.experienceId }
+                .values
+                .flatMap { ingestionsInExperience ->
+                    ingestionsInExperience.map { it.ingestion.substanceName }.toSet()
+                }
+                .groupingBy { it }
+                .eachCount()
         }
         val map = relevantIngestions.groupBy { it.ingestion.substanceName }
         map.values.mapNotNull { groupedIngestions ->

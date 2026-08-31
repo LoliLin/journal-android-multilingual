@@ -159,7 +159,7 @@ fun StatsScreen(
     onChangeConsumerName: (String?) -> Unit,
     consumerNamesSorted: List<String>,
     ownerUserName: String,
-    onChangeByIngestionTime: (Boolean) -> Unit = {},
+    onChangeByIngestionTime: (Boolean) -> Unit,
     selectedSection: StatsSection = StatsSection.OVERVIEW,
     onSelectSection: (StatsSection) -> Unit = {}
 ) {

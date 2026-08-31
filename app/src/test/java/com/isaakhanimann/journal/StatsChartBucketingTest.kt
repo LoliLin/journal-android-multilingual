@@ -71,4 +71,32 @@ class StatsChartBucketingTest {
         )
         assertEquals(listOf(inRange), inWindow)
     }
+
+    @Test
+    fun bucketsAreOldestFirstAfterReverse() {
+        val newest = atDay(10)
+        val oldest = atDay(8)
+        val buckets = bucketNewestFirst(
+            listOf(newest, oldest),
+            { it },
+            TimePickerOption.DAYS_7,
+            nowEndOfDay
+        )
+        assertEquals(7, buckets.size)
+        val occupied = buckets.filter { it.isNotEmpty() }
+        assertEquals(listOf(oldest), occupied.first())
+        assertEquals(listOf(newest), occupied.last())
+    }
+
+    @Test
+    fun emptyNewestFirstListYieldsEmptyBuckets() {
+        val buckets = bucketNewestFirst(
+            emptyList<Instant>(),
+            { it },
+            TimePickerOption.DAYS_7,
+            nowEndOfDay
+        )
+        assertEquals(7, buckets.size)
+        assertEquals(true, buckets.all { it.isEmpty() })
+    }
 }
