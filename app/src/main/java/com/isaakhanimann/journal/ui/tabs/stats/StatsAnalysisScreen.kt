@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -101,6 +102,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.DatePickerButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -182,6 +184,7 @@ fun StatsAnalysisScreenContent(
 ) {
     Scaffold(
         modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             Column(
                 modifier = Modifier
@@ -389,7 +392,8 @@ fun StatsAnalysisScreenContent(
             LazyColumn(
                 modifier = Modifier
                     .padding(padding)
-                    .fillMaxSize()
+                    .fillMaxSize(),
+                contentPadding = bottomBarOverlayPadding()
             ) {
                 item {
                     var filtersExpanded by rememberSaveable { mutableStateOf(true) }

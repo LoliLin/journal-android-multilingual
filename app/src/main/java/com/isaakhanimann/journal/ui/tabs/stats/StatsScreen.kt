@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -82,6 +83,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
@@ -161,6 +163,7 @@ fun StatsScreen(
 ) {
     Scaffold(
         modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             Column(
                 modifier = Modifier
@@ -306,7 +309,10 @@ fun StatsScreen(
                             startDateText = statsModel.startDateText
                         )
                         HorizontalDivider()
-                        LazyColumn(modifier = Modifier.weight(1f)) {
+                        LazyColumn(
+                            modifier = Modifier.weight(1f),
+                            contentPadding = bottomBarOverlayPadding()
+                        ) {
                             items(statsModel.statItems) { subStat ->
                                 Column {
                                     Row(

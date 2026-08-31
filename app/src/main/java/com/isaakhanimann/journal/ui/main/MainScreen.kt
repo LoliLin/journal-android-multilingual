@@ -27,13 +27,11 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -52,7 +50,6 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -176,7 +173,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         }
 
-        Scaffold { _ ->
+        Box(modifier = Modifier.fillMaxSize()) {
             val barHeightPx = remember { mutableIntStateOf(0) }
             val heightOffset = bottomBarScrollBehavior.state.heightOffset
             val visibleBarPx = if (isBottomBarShown) {
@@ -184,87 +181,84 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             } else {
                 0
             }
-            Box(modifier = Modifier.fillMaxSize()) {
-                CompositionLocalProvider(
-                    LocalBottomBarNestedScrollConnection provides nestedScrollConnection
+            CompositionLocalProvider(
+                LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
+                LocalBottomBarOverlayInsetPx provides visibleBarPx
+            ) {
+                NavHost(
+                    navController,
+                    startDestination = TabRouter.Journal.route,
+                    modifier = Modifier.fillMaxSize()
                 ) {
-                    NavHost(
-                        navController,
-                        startDestination = TabRouter.Journal.route,
-                        modifier = Modifier.padding(
-                            bottom = with(LocalDensity.current) { visibleBarPx.toDp() }
-                        )
-                    ) {
-                        journalGraph(navController)
-                        statsGraph(navController)
-                        searchGraph(navController)
-                        saferGraph(navController)
-                        settingsGraph(navController)
-                    }
+                    journalGraph(navController)
+                    statsGraph(navController)
+                    searchGraph(navController)
+                    saferGraph(navController)
+                    settingsGraph(navController)
                 }
-                AnimatedVisibility(
-                    visible = isBottomBarShown,
-                    modifier = Modifier.align(Alignment.BottomCenter),
-                    enter = slideInVertically(tween(durationMillis = 250)) { it } +
-                        expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
-                    exit = slideOutVertically(tween(durationMillis = 250)) { it } +
-                        shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
-                ) {
-                    NavigationBar(
-                        modifier = Modifier
-                            .onSizeChanged { size ->
-                                barHeightPx.intValue = size.height
-                                bottomBarScrollBehavior.state.heightOffsetLimit =
-                                    -size.height.toFloat()
-                            }
-                            .offset {
-                                IntOffset(
-                                    x = 0,
-                                    y = -bottomBarScrollBehavior.state.heightOffset.toInt()
-                                )
-                            }
-                    ) {
-                        val tabs = listOf(
-                            TabRouter.Statistics,
-                            TabRouter.Journal,
-                            TabRouter.Substances,
-                            TabRouter.SaferUse,
-                            TabRouter.Settings
-                        )
-                        tabs.forEach { tab ->
-                            val isSelected =
-                                currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                            NavigationBarItem(
-                                icon = {
-                                    if (isSelected) {
-                                        Icon(tab.iconSelected, contentDescription = null)
-                                    } else {
-                                        Icon(tab.icon, contentDescription = null)
-                                    }
-                                },
-                                label = { Text(i18n(tab.labelKey)) },
-                                selected = isSelected,
-                                onClick = {
-                                    if (isSelected) {
-                                        val isAlreadyOnTopOfTab = tabs.any {
-                                            it.childRoute ==
-                                                currentDestination.route
-                                        }
-                                        if (!isAlreadyOnTopOfTab) {
-                                            navController.popBackStack()
-                                        }
-                                    } else {
-                                        navController.navigate(tab.route) {
-                                            popUpTo(navController.graph.findStartDestination().id) {
-                                                saveState = true
-                                            }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
-                                    }
-                                }
+            }
+            AnimatedVisibility(
+                visible = isBottomBarShown,
+                modifier = Modifier.align(Alignment.BottomCenter),
+                enter = slideInVertically(tween(durationMillis = 250)) { it } +
+                    expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
+                exit = slideOutVertically(tween(durationMillis = 250)) { it } +
+                    shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
+            ) {
+                NavigationBar(
+                    modifier = Modifier
+                        .onSizeChanged { size ->
+                            barHeightPx.intValue = size.height
+                            bottomBarScrollBehavior.state.heightOffsetLimit =
+                                -size.height.toFloat()
+                        }
+                        .offset {
+                            IntOffset(
+                                x = 0,
+                                y = -bottomBarScrollBehavior.state.heightOffset.toInt()
                             )
                         }
+                ) {
+                    val tabs = listOf(
+                        TabRouter.Statistics,
+                        TabRouter.Journal,
+                        TabRouter.Substances,
+                        TabRouter.SaferUse,
+                        TabRouter.Settings
+                    )
+                    tabs.forEach { tab ->
+                        val isSelected =
+                            currentDestination?.hierarchy?.any { it.route == tab.route } == true
+                        NavigationBarItem(
+                            icon = {
+                                if (isSelected) {
+                                    Icon(tab.iconSelected, contentDescription = null)
+                                } else {
+                                    Icon(tab.icon, contentDescription = null)
+                                }
+                            },
+                            label = { Text(i18n(tab.labelKey)) },
+                            selected = isSelected,
+                            onClick = {
+                                if (isSelected) {
+                                    val isAlreadyOnTopOfTab = tabs.any {
+                                        it.childRoute ==
+                                            currentDestination.route
+                                    }
+                                    if (!isAlreadyOnTopOfTab) {
+                                        navController.popBackStack()
+                                    }
+                                } else {
+                                    navController.navigate(tab.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+                            }
+                        )
                     }
                 }
             }

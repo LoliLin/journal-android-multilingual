@@ -99,6 +99,7 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
@@ -203,6 +204,7 @@ fun SettingsScreen(
 ) {
     Scaffold(
         modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = { Text(i18n("settings")) }
@@ -214,6 +216,7 @@ fun SettingsScreen(
             modifier = Modifier
                 .padding(padding)
                 .padding(horizontal = horizontalPadding)
+                .padding(bottom = bottomBarOverlayDp())
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {

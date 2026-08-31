@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.search
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -54,8 +55,10 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.categoryNameKey
@@ -72,9 +75,13 @@ fun SearchScreen(
 
     Scaffold(
         modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         floatingActionButton = {
             if (!isFocused) {
-                FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
+                FloatingActionButton(
+                    modifier = Modifier.padding(bottom = bottomBarOverlayDp()),
+                    onClick = { focusRequester.requestFocus() }
+                ) {
                     Icon(Icons.Default.Keyboard, contentDescription = i18n("search_keyboard"))
                 }
             }
@@ -124,7 +131,7 @@ fun SearchScreen(
                     navigateToAddCustomSubstanceScreen = navigateToAddCustomSubstanceScreen
                 )
             } else {
-                LazyColumn {
+                LazyColumn(contentPadding = bottomBarOverlayPadding()) {
                     items(filteredCustomSubstances) { customSubstance ->
                         SubstanceRow(
                             substanceModel = SubstanceModel(
