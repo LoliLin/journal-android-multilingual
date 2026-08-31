@@ -35,6 +35,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.BulletPoints
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
@@ -48,7 +49,7 @@ fun ExplainTimelineScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Timeline info") },
+                title = { Text(i18n("timeline_info_title")) },
             )
         },
     ) { padding ->
@@ -60,58 +61,52 @@ fun ExplainTimelineScreen() {
                 .padding(horizontal = horizontalPadding)
         ) {
             VerticalSpace()
-            CardWithTitle(title = "Simplifying/False assumptions") {
+            CardWithTitle(title = i18n("timeline_simplifying_title")) {
                 val text = buildAnnotatedString {
-                    append("To be able to draw the timeline with the given data multiple ")
+                    append(i18n("timeline_assumptions_intro_before"))
                     withStyle(style = SpanStyle(fontWeight = FontWeight.ExtraBold)) {
-                        append("often false")
+                        append(i18n("timeline_assumptions_intro_bold"))
                     }
-                    append(" simplifying assumptions are made:")
+                    append(i18n("timeline_assumptions_intro_after"))
                 }
                 SectionText(text = text)
                 BulletPoints(
                     points = listOf(
-                        "Taking e.g. x amount now will give the same effect as taking x amount later. There is no immediate tolerance.",
-                        "Taking twice the dose will give twice the effect.",
-                        "Duration ranges from PsychonautWiki can be applied for all kinds of dosages.",
-                        "Oral ingestions are always on an empty stomach and therefore not delayed (by up to 4 hours).",
+                        i18n("timeline_assumption_bullet1"),
+                        i18n("timeline_assumption_bullet2"),
+                        i18n("timeline_assumption_bullet3"),
+                        i18n("timeline_assumption_bullet4"),
                     )
                 )
             }
-            CardWithTitle(title = "Understanding the timeline") {
+            CardWithTitle(title = i18n("timeline_understanding_title")) {
                 BulletPoints(
                     points = listOf(
-                        "The timeline is drawn based on the onset, comeup, peak and offset (and sometimes total) from PsychonautWiki.",
-                        "In the ideal case all 4 durations (onset, comeup, peak and offset) are defined and the full timeline is drawn as averageOnset -> averageComeup -> weightedPeak -> weightedOffset, where \"weighted\" means that the given range has been linearly interpolated with the dose, so if a threshold dose was taken it takes the minimum of the range, if a heavy dose was taken it takes the max and for everything in between it linearly interpolates.",
-                        "The timelines from ingestions with the same substance and administration route where substances have onset, comeup, peak and offset defined are combined into a cumulative timeline by simply putting the individual lines on top of each other. This is not done for ingestions where either the onset, comeup, peak or offset duration is missing.",
-                        "Different administration routes are always drawn as separate timelines even if they are of the same substance. They also take the full height of the canvas, not the height that is proportional to the dose or effect.",
-                        "If any of the 4 durations are missing but the total duration is given, then the first defined durations are drawn and as soon as a missing duration is encountered it uses the total to infer the end of the timeline and draws a dotted line to the end. If the total is not given it just stops drawing the line. So if there is no timeline or part of the timeline is missing that means that the duration is not defined in PsychonautWiki. If you add the missing durations in PsychonautWiki, the full timeline will be shown in the next update.",
-                        "The vertical trajectory of dotted lines is unknown. So if you see a dotted line that means it is not known how the effect develops over that timeframe. The only thing that is known is where the line will end.",
-                        "When a time range is given for the ingestion and all durations are defined for the route of administration then the app assumes the dosage was evenly consumed in that time frame and cumulates the curves of the infinitesimal ingestions using convolution."
+                        i18n("timeline_understanding_bullet1"),
+                        i18n("timeline_understanding_bullet2"),
+                        i18n("timeline_understanding_bullet3"),
+                        i18n("timeline_understanding_bullet4"),
+                        i18n("timeline_understanding_bullet5"),
+                        i18n("timeline_understanding_bullet6"),
+                        i18n("timeline_understanding_bullet7"),
                     )
                 )
             }
-            CardWithTitle(title = "PsychonautWiki durations") {
-                SectionText(
-                    text = "Duration refers to the length of time over which the subjective effects of a psychoactive substance manifest themselves.\n" +
-                            "Duration can be broken down into 6 parts: (1) total duration (2) onset (3) come up (4) peak (5) offset and (6) after effects. Depending upon the substance consumed, each of these occurs in a separate and continuous fashion."
-                )
+            CardWithTitle(title = i18n("timeline_pw_durations_title")) {
+                SectionText(text = i18n("timeline_duration_intro"))
                 val titleStyle = MaterialTheme.typography.titleSmall
-                Text(text = "Total", style = titleStyle)
-                SectionText(text = "The total duration of a substance can be defined as the amount of time it takes for the effects of a substance to completely wear off into sobriety, starting from the moment the substance is first administered.")
-                Text(text = "Onset", style = titleStyle)
-                SectionText(text = "The onset phase can be defined as the period until the very first changes in perception (i.e. \"first alerts\") are able to be detected.")
-                Text(text = "Come up", style = titleStyle)
-                SectionText(text = "The \"come up\" phase can be defined as the period between the first noticeable changes in perception and the point of highest subjective intensity. This is colloquially known as \"coming up.\"")
-                Text(text = "Peak", style = titleStyle)
-                SectionText(text = "The peak phase can be defined as period of time in which the intensity of the substance's effects are at its height.")
-                Text(text = "Offset", style = titleStyle)
-                SectionText(text = "The offset phase can be defined as the amount of time in between the conclusion of the peak and shifting into a sober state. This is colloquially referred to as \"coming down.\"")
-                Text(text = "After effects", style = titleStyle)
-                SectionText(
-                    text = "The after effects can be defined as any residual effects which may remain after the experience has reached its conclusion. This is colloquially known as a \"hangover\" or an \"afterglow\" depending on the substance and usage.\n" +
-                            "The after effects are not included as part of the total duration."
-                )
+                Text(text = i18n("duration_total"), style = titleStyle)
+                SectionText(text = i18n("timeline_total_desc"))
+                Text(text = i18n("duration_onset"), style = titleStyle)
+                SectionText(text = i18n("timeline_onset_desc"))
+                Text(text = i18n("duration_comeup"), style = titleStyle)
+                SectionText(text = i18n("timeline_comeup_desc"))
+                Text(text = i18n("duration_peak"), style = titleStyle)
+                SectionText(text = i18n("timeline_peak_desc"))
+                Text(text = i18n("duration_offset"), style = titleStyle)
+                SectionText(text = i18n("timeline_offset_desc"))
+                Text(text = i18n("duration_after_effects"), style = titleStyle)
+                SectionText(text = i18n("timeline_aftereffects_desc"))
             }
         }
     }
