@@ -1,0 +1,6 @@
+- Added locale picker for calendar dates.
+- Consolidated UI, privacy, language, and icon settings into Preferences.
+- "Open Link in Browser" setting now applies to all links.
+- Stats can now group by actual ingestion time.
+- Fixed search bar status-bar overlap; localized timeline info.
+- Bottom nav hides on nested screens and auto-hides on scroll.
