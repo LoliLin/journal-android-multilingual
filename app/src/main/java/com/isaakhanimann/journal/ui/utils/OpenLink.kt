@@ -1,6 +1,5 @@
 package com.isaakhanimann.journal.ui.utils
 
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -31,12 +30,12 @@ import kotlinx.coroutines.flow.stateIn
  * - on: a real browser activity (Chrome etc.), not a Custom Tab
  * - off: Custom Tabs (in-app browser window)
  */
-fun openLink(
+internal fun openLink(
     context: Context,
     url: String,
     openInBrowser: Boolean,
     toolbarColor: Int? = null,
-    failedMessage: String = "Failed to open"
+    failedMessage: String
 ) {
     if (url.isBlank()) return
     val uri = Uri.parse(url)
@@ -76,9 +75,7 @@ private fun openInExternalBrowser(context: Context, uri: Uri): Boolean {
         .asSequence()
         .map { it.activityInfo }
         .firstOrNull { info ->
-            info.exported &&
-                !info.name.contains("customtab", ignoreCase = true) &&
-                !info.name.contains("CustomTab", ignoreCase = false)
+            info.exported && !info.name.contains("customtab", ignoreCase = true)
         }
     val intent = if (browserActivity != null) {
         Intent(viewIntent).apply {
@@ -94,7 +91,7 @@ private fun openInExternalBrowser(context: Context, uri: Uri): Boolean {
     return try {
         context.startActivity(intent)
         true
-    } catch (_: ActivityNotFoundException) {
+    } catch (_: Exception) {
         false
     }
 }
