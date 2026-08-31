@@ -100,11 +100,6 @@ class StatsViewModel @Inject constructor(
 
     private val isStatsByIngestionTimeFlow = userPreferences.isStatsByIngestionTimeFlow
 
-    fun onChangeStatsByIngestionTime(value: Boolean) {
-        viewModelScope.launch {
-            userPreferences.saveStatsByIngestionTime(value)
-        }
-    }
 
     private val experienceChartBucketsFlow: Flow<List<List<ColorCount>>> =
         combine(

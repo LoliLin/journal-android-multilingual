@@ -140,6 +140,18 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    val isStatsByIngestionTimeFlow = userPreferences.isStatsByIngestionTimeFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveStatsByIngestionTime(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.saveStatsByIngestionTime(value)
+        }
+    }
+
     val selectedLanguageFlow = userPreferences.selectedLanguageFlow.stateIn(
         initialValue = null,
         scope = viewModelScope,

@@ -136,7 +136,6 @@ fun StatsScreen(
                 onChangeConsumerName = viewModel::onChangeConsumer,
                 consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
                 ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
-                onChangeByIngestionTime = viewModel::onChangeStatsByIngestionTime,
                 selectedSection = selectedSection,
                 onSelectSection = { selectedSection = it }
             )
@@ -159,7 +158,6 @@ fun StatsScreen(
     onChangeConsumerName: (String?) -> Unit,
     consumerNamesSorted: List<String>,
     ownerUserName: String,
-    onChangeByIngestionTime: (Boolean) -> Unit,
     selectedSection: StatsSection = StatsSection.OVERVIEW,
     onSelectSection: (StatsSection) -> Unit = {}
 ) {
@@ -285,26 +283,6 @@ fun StatsScreen(
                         ) {
                             Text(option.displayText)
                         }
-                    }
-                }
-                SingleChoiceSegmentedButtonRow(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 8.dp, vertical = 4.dp)
-                ) {
-                    SegmentedButton(
-                        shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
-                        selected = !statsModel.isByIngestionTime,
-                        onClick = { onChangeByIngestionTime(false) }
-                    ) {
-                        Text(i18n("stats_group_by_experience"))
-                    }
-                    SegmentedButton(
-                        shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
-                        selected = statsModel.isByIngestionTime,
-                        onClick = { onChangeByIngestionTime(true) }
-                    ) {
-                        Text(i18n("stats_group_by_ingestion_time"))
                     }
                 }
                 if (statsModel.statItems.isNotEmpty()) {

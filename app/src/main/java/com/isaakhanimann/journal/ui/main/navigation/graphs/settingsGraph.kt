@@ -32,11 +32,13 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditCustom
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExtensionPack
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToFAQ
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIconPicker
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToPreferences
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceColors
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
 import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
 import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
 import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
+import com.isaakhanimann.journal.ui.tabs.settings.PreferencesScreen
 import com.isaakhanimann.journal.ui.tabs.settings.SettingsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.colors.SubstanceColorsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsScreen
@@ -59,11 +61,18 @@ fun NavGraphBuilder.settingsGraph(navController: NavController) {
                 navigateToCustomUnits = navController::navigateToCustomUnits,
                 navigateToDonate = navController::navigateToDonate,
                 navigateToExtensionPack = navController::navigateToExtensionPack,
-                navigateToIconPicker = navController::navigateToIconPicker
+                navigateToIconPicker = navController::navigateToIconPicker,
+                navigateToPreferences = navController::navigateToPreferences
             )
         }
         composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
         composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
+        composableWithTransitions(NoArgumentRouter.PreferencesRouter.route) {
+            PreferencesScreen(
+                navigateBack = navController::popBackStack,
+                navigateToIconPicker = navController::navigateToIconPicker
+            )
+        }
         composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) {
             IconPickerScreen()
         }
