@@ -26,6 +26,7 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,11 +47,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.offset
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -135,11 +137,38 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         val isOnMainTabRoot = isMainTabRootRoute(currentDestination?.route)
         val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
 
-        // Material3 official hide-on-scroll: BottomAppBarDefaults.exitAlwaysScrollBehavior.
-        // NavigationBar has no scrollBehavior param; drive translationY from heightOffset.
+        // Official Material3 hide-on-scroll connection, plus onPreScroll so an
+        // upward swipe at the list top (consumed.y == 0) still reveals the bar.
         val bottomBarScrollBehavior = BottomAppBarDefaults.exitAlwaysScrollBehavior(
             canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
         )
+        val nestedScrollConnection = remember(bottomBarScrollBehavior) {
+            val official = bottomBarScrollBehavior.nestedScrollConnection
+            object : NestedScrollConnection {
+                override fun onPreScroll(
+                    available: Offset,
+                    source: NestedScrollSource
+                ): Offset {
+                    if (available.y > 0f &&
+                        bottomBarScrollBehavior.state.heightOffset < 0f
+                    ) {
+                        val state = bottomBarScrollBehavior.state
+                        val next = (state.heightOffset + available.y)
+                            .coerceIn(state.heightOffsetLimit, 0f)
+                        val consumedY = next - state.heightOffset
+                        state.heightOffset = next
+                        return Offset(0f, consumedY)
+                    }
+                    return Offset.Zero
+                }
+
+                override fun onPostScroll(
+                    consumed: Offset,
+                    available: Offset,
+                    source: NestedScrollSource
+                ): Offset = official.onPostScroll(consumed, available, source)
+            }
+        }
         LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow) {
             if (!isOnMainTabRoot || isKeyboardOpenNow) {
                 bottomBarScrollBehavior.state.heightOffset = 0f
@@ -156,12 +185,17 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                         shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
                 ) {
                     NavigationBar(
-                        modifier = Modifier.offset {
-                            IntOffset(
-                                x = 0,
-                                y = -bottomBarScrollBehavior.state.heightOffset.toInt()
-                            )
-                        }
+                        modifier = Modifier
+                            .onSizeChanged { size ->
+                                bottomBarScrollBehavior.state.heightOffsetLimit =
+                                    -size.height.toFloat()
+                            }
+                            .offset {
+                                IntOffset(
+                                    x = 0,
+                                    y = -bottomBarScrollBehavior.state.heightOffset.toInt()
+                                )
+                            }
                     ) {
                         val tabs = listOf(
                             TabRouter.Statistics,
@@ -209,8 +243,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         ) { innerPadding ->
             CompositionLocalProvider(
-                LocalBottomBarNestedScrollConnection provides
-                    bottomBarScrollBehavior.nestedScrollConnection
+                LocalBottomBarNestedScrollConnection provides nestedScrollConnection
             ) {
                 NavHost(
                     navController,

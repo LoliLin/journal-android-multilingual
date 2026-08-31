@@ -270,7 +270,7 @@ fun StatsScreen(
                 description = i18n("stats_empty_description")
             )
         } else {
-            Column(modifier = Modifier.padding(padding)) {
+            Column(modifier = Modifier.padding(padding).fillMaxSize()) {
                 SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
                         SegmentedButton(
@@ -284,7 +284,7 @@ fun StatsScreen(
                 }
                 if (statsModel.statItems.isNotEmpty()) {
                     val isDarkTheme = isSystemInDarkTheme()
-                    Column {
+                    Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = i18n(
                                 "stats_experiences_since",
@@ -306,7 +306,7 @@ fun StatsScreen(
                             startDateText = statsModel.startDateText
                         )
                         HorizontalDivider()
-                        LazyColumn {
+                        LazyColumn(modifier = Modifier.weight(1f)) {
                             items(statsModel.statItems) { subStat ->
                                 Column {
                                     Row(
