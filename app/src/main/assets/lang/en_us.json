@@ -589,6 +589,7 @@
   "extension_check_update": "Check update",
   "extension_download": "Download",
   "settings_OpenLinkInBrowser": "Open Link in Browser",
+  "open_link_failed": "Failed to open link",
   "substance_activity_title": "Activity",
   "settings_icon_switched": "Icon switched",
   "settings_icon_switch_failed": "Icon switch failed",

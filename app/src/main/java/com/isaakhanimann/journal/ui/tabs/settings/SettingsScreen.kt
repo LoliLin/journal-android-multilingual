@@ -86,7 +86,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -96,11 +95,12 @@ import coil.request.ImageRequest
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.TimeFormat
+import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
 import kotlinx.coroutines.launch
@@ -719,7 +719,7 @@ fun SettingsScreen(
                 }
             }
 
-            val uriHandler = LocalUriHandler.current
+            val openLink = rememberOpenLink()
 
             CardWithTitle(title = i18n("settings_feedback"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
@@ -733,7 +733,7 @@ fun SettingsScreen(
                     imageVector = Icons.AutoMirrored.Outlined.ContactSupport,
                     text = i18n("settings_feedback_button")
                 ) {
-                    uriHandler.openUri(
+                    openLink(
                         "https://github.com/LoliLin/journal-android-multilingual/issues"
                     )
                 }
@@ -750,7 +750,7 @@ fun SettingsScreen(
                     imageVector = Icons.Outlined.Code,
                     text = i18n("settings_source_code")
                 ) {
-                    uriHandler.openUri("https://github.com/LoliLin/journal-android-multilingual")
+                    openLink("https://github.com/LoliLin/journal-android-multilingual")
                 }
                 HorizontalDivider()
                 val context = LocalContext.current

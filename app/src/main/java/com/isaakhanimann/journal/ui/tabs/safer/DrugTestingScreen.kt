@@ -45,7 +45,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
@@ -55,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.minimumTouchTargetHeight
+import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -249,15 +249,14 @@ fun DrugTestingScreen() {
                     url = "https://wearetheloop.org"
                 )
             }
-            val uriHandler = LocalUriHandler.current
+            val openLink = rememberOpenLink()
             val reportServiceText = "Report missing service"
             TextButton(
-                onClick = {
-                    uriHandler.openUri("https://t.me/isaakhanimann")
-                },
+                onClick = { openLink("https://t.me/isaakhanimann") },
                 modifier = Modifier.semantics {
                     contentDescription = reportServiceText
-                }) {
+                }
+            ) {
                 Text(
                     reportServiceText,
                     textDecoration = TextDecoration.Underline
@@ -297,14 +296,12 @@ fun TestingServiceItemPreview() {
 
 @Composable
 fun TestingServiceItem(name: String, city: String, url: String) {
-    val uriHandler = LocalUriHandler.current
+    val openLink = rememberOpenLink()
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(5.dp),
         modifier = Modifier
-            .clickable {
-                uriHandler.openUri(url)
-            }
+            .clickable { openLink(url) }
             .padding(horizontal = horizontalPadding, vertical = 5.dp)
             .heightIn(min = minimumTouchTargetHeight)
             .fillMaxWidth()

@@ -40,7 +40,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -51,6 +50,7 @@ import com.isaakhanimann.journal.data.substances.classes.Interactions
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getInteractionExplanationURLForSubstance
+import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 
 @Preview
 @Composable
@@ -114,19 +114,22 @@ fun InteractionsView(
                 )
             }
         }
-        InteractionExplanationButton(substanceURL = substanceURL)
+        InteractionExplanationButton(
+            substanceURL = substanceURL,
+            navigateToURL = navigateToURL
+        )
     }
 }
 
 @Composable
 fun InteractionExplanationButton(substanceURL: String, navigateToURL: ((url: String) -> Unit)? = null) {
-    val uriHandler = LocalUriHandler.current
+    val openLink = rememberOpenLink()
     TextButton(onClick = {
         val interactionURL = getInteractionExplanationURLForSubstance(substanceURL)
         if (navigateToURL != null) {
             navigateToURL(interactionURL)
         } else {
-            uriHandler.openUri(interactionURL)
+            openLink(interactionURL)
         }
     }) {
         Icon(
