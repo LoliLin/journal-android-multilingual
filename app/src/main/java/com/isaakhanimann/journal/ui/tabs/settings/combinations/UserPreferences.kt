@@ -26,6 +26,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
+import com.isaakhanimann.journal.ui.utils.DateLocaleOption
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -57,6 +58,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_MIDNIGHT_CUTOFF_ENABLED = booleanPreferencesKey("key_midnight_cutoff_enabled")
         val KEY_USE_24_HOUR_CLOCK = booleanPreferencesKey("key_use_24_hour_clock")
         val KEY_STATS_BY_INGESTION_TIME = booleanPreferencesKey("key_stats_by_ingestion_time")
+        val KEY_DATE_LOCALE_OPTION = stringPreferencesKey("key_date_locale_option")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -274,4 +276,18 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_OWNER_USER_NAME] ?: "You"
         }
+
+    val dateLocaleOptionFlow: Flow<DateLocaleOption> = dataStore.data
+        .map { preferences ->
+            val name = preferences[PreferencesKeys.KEY_DATE_LOCALE_OPTION]
+                ?: DateLocaleOption.FOLLOW_LANGUAGE.name
+            runCatching { DateLocaleOption.valueOf(name) }
+                .getOrDefault(DateLocaleOption.FOLLOW_LANGUAGE)
+        }
+
+    suspend fun saveDateLocaleOption(value: DateLocaleOption) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_DATE_LOCALE_OPTION] = value.name
+        }
+    }
 }

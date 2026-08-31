@@ -37,6 +37,7 @@ object I18n {
             preferredLangKey = languageKey?.lowercase()
             loadedLangKey = null
         }
+        com.isaakhanimann.journal.ui.utils.DateFormat.notifyLanguageChanged()
     }
 
     fun getPreferredLanguageKey(): String? = synchronized(lock) { preferredLangKey }

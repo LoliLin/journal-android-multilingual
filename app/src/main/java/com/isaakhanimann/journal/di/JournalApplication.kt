@@ -27,6 +27,7 @@ import androidx.work.WorkManager
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import com.isaakhanimann.journal.ui.utils.DateFormat
 import com.isaakhanimann.journal.ui.utils.TimeFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -57,6 +58,9 @@ class JournalApplication : Application(), Configuration.Provider {
         TimeFormat.refreshSystemDefault(this)
         applicationScope.launch {
             userPreferences.use24HourClockFlow.collect { TimeFormat.setUserOverride(it) }
+        }
+        applicationScope.launch {
+            userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".

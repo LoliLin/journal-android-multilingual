@@ -95,7 +95,7 @@ import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getMediumDateText
 import java.time.Instant
 import kotlinx.coroutines.launch
 
@@ -274,9 +274,7 @@ fun SettingsScreen(
                                 onClick = {
                                     isShowingExportDialog = false
                                     launcherExport.launch(
-                                        "Journal ${Instant.now().getStringOfPattern(
-                                            "dd MMM yyyy"
-                                        )}.${if (exportEncrypt) "jenc" else "json"}"
+                                        "Journal ${Instant.now().getMediumDateText()}.${if (exportEncrypt) "jenc" else "json"}"
                                     )
                                 }
                             ) {
