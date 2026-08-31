@@ -140,6 +140,7 @@ fun PreferencesScreen(
         Column(
             modifier = Modifier
                 .padding(padding)
+                .padding(horizontal = horizontalPadding)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
