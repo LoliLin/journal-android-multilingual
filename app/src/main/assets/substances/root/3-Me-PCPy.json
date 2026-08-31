@@ -1,0 +1,161 @@
+{
+  "name": "3-Me-PCPy",
+  "commonNames": [
+    "3-Me-PCPy",
+    "M3ppy",
+    "3-Methylrolicyclidine",
+    "Tolicyclidine"
+  ],
+  "url": "https://psychonautwiki.org/wiki/3-Me-PCPy",
+  "isApproved": false,
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "crossTolerances": [
+    "dissociatives",
+    "NMDA receptor antagonists",
+    "arylcyclohexylamines"
+  ],
+  "addictionPotential": "high potential for abuse; chronic use can produce psychological dependence",
+  "toxicities": [
+    "The exact toxic dose is unknown.",
+    "Long-term toxicity and health effects have not been studied in humans.",
+    "High doses have been associated with psychosis and mania.",
+    "Compulsive redosing and repeated use may increase the risk of severe adverse effects.",
+    "Nasal administration has been associated with intense burning and nosebleeds."
+  ],
+  "categories": [
+    "dissociative",
+    "stimulant",
+    "arylcyclohexylamine",
+    "research chemical",
+    "habit-forming"
+  ],
+  "summary": "3-Me-PCPy (3-Methylrolicyclidine) is a synthetic arylcyclohexylamine dissociative with an unusual stimulating profile. It acts primarily as an NMDA receptor antagonist and has also been reported to inhibit the reuptake of serotonin, dopamine, and noradrenaline. It is generally described as more stimulating and less immobilizing than dissociatives such as ketamine, but has a relatively high reported propensity for mania, delusions, psychosis, and compulsive redosing.",
+  "effectsSummary": "Stimulation, euphoria, dissociation, sensory enhancement at lower levels, tactile and auditory changes, altered visual perception, increased sociability and disinhibition, followed at higher levels by motor impairment, sensory suppression, cognitive disruption and dissociative anesthesia. Mania, delusions and psychosis have been reported, particularly with higher doses, repeated dosing and sleep deprivation.",
+  "dosageRemark": "PsychonautWiki lists oral and intranasal dosage ranges, but explicitly warns that its dosage information is based on user reports and has not been fully approved. Because 3-Me-PCPy is poorly studied and has an erratic dose-response profile, these values should not be treated as established safe or therapeutic doses.",
+  "generalRisks": "The pharmacology, metabolism and toxicity of 3-Me-PCPy are poorly characterized. Acute risks include dissociation, impaired motor control, dizziness, sensory suppression, confusion, mania, delusions and psychosis. Repeated dosing may produce compulsive use and substantially increase the risk of severe psychiatric effects. Very little reliable human safety data exists, and the exact toxic dose is unknown.",
+  "longtermRisks": "Long-term human toxicity has not been adequately studied. Chronic and repeated use may produce tolerance, psychological dependence and cravings. PsychonautWiki reports that tolerance develops with prolonged and repeated use and that cross-tolerance extends across dissociatives. Frequent multi-day use is associated with greater concern for dependence and severe psychiatric effects.",
+  "saferUse": [
+    "Avoid repeated use on consecutive days.",
+    "Avoid compulsive redosing before the previous dose has fully worn off.",
+    "Because the dose-response relationship can be unpredictable, avoid escalating doses rapidly.",
+    "Avoid combining it with other psychoactive substances, especially substances that may increase stimulation, dissociation or psychosis risk.",
+    "Do not drive or operate machinery while affected.",
+    "Seek medical attention for severe agitation, persistent confusion, psychosis, seizures, loss of consciousness or other serious symptoms."
+  ],
+  "interactions": {
+    "dangerous": [
+      "other dissociatives",
+      "stimulants",
+      "MAOIs",
+      "serotonergic drugs",
+      "other substances that can increase the risk of psychosis or seizures"
+    ],
+    "unsafe": [
+      "alcohol",
+      "benzodiazepines",
+      "opioids",
+      "cannabis",
+      "amphetamines",
+      "cocaine"
+    ],
+    "uncertain": [
+      "SSRIs",
+      "SNRIs",
+      "MDMA",
+      "nitrous oxide",
+      "psychedelics"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 30
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 120,
+          "max": 180,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 4,
+          "max": 8,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 5,
+        "commonMin": 10,
+        "strongMin": 20,
+        "heavyMin": 25
+      },
+      "duration": {
+        "onset": {
+          "min": 5,
+          "max": 30,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 45,
+          "max": 90,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 90,
+          "max": 120,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 45,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 48,
+          "units": "hours"
+        }
+      }
+    }
+  ]
+}
