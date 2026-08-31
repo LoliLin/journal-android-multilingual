@@ -49,6 +49,7 @@ import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.DateLocaleOption
 import com.isaakhanimann.journal.ui.utils.TimeFormat
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +83,8 @@ fun PreferencesScreen(
         saveMidnightCutoffEnabled = viewModel::saveMidnightCutoffEnabled,
         isStatsByIngestionTime = viewModel.isStatsByIngestionTimeFlow.collectAsState().value,
         saveStatsByIngestionTime = viewModel::saveStatsByIngestionTime,
+        dateLocaleOption = viewModel.dateLocaleOptionFlow.collectAsState().value,
+        saveDateLocaleOption = viewModel::saveDateLocaleOption,
         isAppLockEnabled = viewModel.isAppLockEnabledFlow.collectAsState().value,
         saveAppLockEnabled = viewModel::saveAppLockEnabled,
         isEffectNotificationEnabled =
@@ -112,6 +115,8 @@ fun PreferencesScreen(
     saveMidnightCutoffEnabled: (Boolean) -> Unit,
     isStatsByIngestionTime: Boolean,
     saveStatsByIngestionTime: (Boolean) -> Unit,
+    dateLocaleOption: DateLocaleOption,
+    saveDateLocaleOption: (DateLocaleOption) -> Unit,
     isAppLockEnabled: Boolean,
     saveAppLockEnabled: (Boolean) -> Unit,
     isEffectNotificationEnabled: Boolean,
@@ -135,6 +140,7 @@ fun PreferencesScreen(
         Column(
             modifier = Modifier
                 .padding(padding)
+                .padding(horizontal = horizontalPadding)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
@@ -169,6 +175,27 @@ fun PreferencesScreen(
                     text = i18n("settings_icon_title")
                 ) {
                     navigateToIconPicker()
+                }
+                HorizontalDivider()
+                var isDateLocaleDialogVisible by remember { mutableStateOf(false) }
+                SettingsButton(
+                    imageVector = Icons.Outlined.Language,
+                    text = i18n(
+                        "settings_date_locale_with_value",
+                        mapOf("value" to dateLocaleOptionLabel(dateLocaleOption))
+                    )
+                ) {
+                    isDateLocaleDialogVisible = true
+                }
+                if (isDateLocaleDialogVisible) {
+                    DateLocaleSelectionDialog(
+                        selected = dateLocaleOption,
+                        onSelect = {
+                            saveDateLocaleOption(it)
+                            isDateLocaleDialogVisible = false
+                        },
+                        onDismiss = { isDateLocaleDialogVisible = false }
+                    )
                 }
             }
 
@@ -370,4 +397,41 @@ private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () ->
         Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
         Text(label)
     }
+}
+
+@Composable
+private fun dateLocaleOptionLabel(option: DateLocaleOption): String = when (option) {
+    DateLocaleOption.FOLLOW_LANGUAGE -> i18n("settings_date_locale_follow_language")
+    DateLocaleOption.FOLLOW_SYSTEM -> i18n("settings_date_locale_follow_system")
+    DateLocaleOption.EN_US -> i18n("settings_date_locale_en_us")
+    DateLocaleOption.ZH_CN -> i18n("settings_date_locale_zh_cn")
+    DateLocaleOption.ZH_TW -> i18n("settings_date_locale_zh_tw")
+}
+
+@Composable
+private fun DateLocaleSelectionDialog(
+    selected: DateLocaleOption,
+    onSelect: (DateLocaleOption) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_date_locale_title")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                DateLocaleOption.entries.forEach { option ->
+                    LanguageOptionRow(
+                        label = dateLocaleOptionLabel(option),
+                        isSelected = selected == option,
+                        onClick = { onSelect(option) }
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(i18n("common_close"))
+            }
+        }
+    )
 }

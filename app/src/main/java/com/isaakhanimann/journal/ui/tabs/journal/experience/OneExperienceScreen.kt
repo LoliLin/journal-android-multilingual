@@ -88,7 +88,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperience
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 import java.time.Instant
 
 @Composable
@@ -508,9 +508,7 @@ fun OneExperienceScreen(
             if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
                     CardTitle(
-                        title = oneExperienceScreenModel.firstIngestionTime.getStringOfPattern(
-                            "EEE, dd MMM yyyy"
-                        )
+                        title = oneExperienceScreenModel.firstIngestionTime.getDateWithWeekdayText()
                     )
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()

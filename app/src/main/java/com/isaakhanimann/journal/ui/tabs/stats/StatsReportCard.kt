@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getMediumDateText
 import java.time.Instant
 
 /**
@@ -249,7 +249,7 @@ private fun ReportFooter() {
     Text(
         text = i18n(
             "stats_report_generated",
-            mapOf("date" to Instant.now().getStringOfPattern("dd MMM yyyy"))
+            mapOf("date" to Instant.now().getMediumDateText())
         ),
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,

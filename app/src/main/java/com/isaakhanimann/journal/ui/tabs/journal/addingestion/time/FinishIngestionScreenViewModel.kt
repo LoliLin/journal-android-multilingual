@@ -44,7 +44,7 @@ import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getLongDateText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -88,7 +88,7 @@ class FinishIngestionScreenViewModel @Inject constructor(
     // Once the user picks an experience (or "new experience") from the dropdown, time changes
     // must not silently re-select a different experience.
     private var hasMadeExplicitExperienceSelection = false
-    var enteredTitle by mutableStateOf(LocalDateTime.now().getStringOfPattern("dd MMMM yyyy"))
+    var enteredTitle by mutableStateOf(LocalDateTime.now().getLongDateText())
     val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
     var consumerName by mutableStateOf("")
 
@@ -269,7 +269,7 @@ class FinishIngestionScreenViewModel @Inject constructor(
     }
 
     private fun updateTitleBasedOnTime(time: Instant) {
-        enteredTitle = time.getStringOfPattern("dd MMMM yyyy")
+        enteredTitle = time.getLongDateText()
     }
 
     private suspend fun updateExperiencesBasedOnSelectedTime() {

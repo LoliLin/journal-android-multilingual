@@ -29,14 +29,12 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
-import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.Period
-import java.time.ZoneId
 import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -77,9 +75,7 @@ class StatsViewModel @Inject constructor(
     }
 
     private val startDateTextFlow = startDateFlow.map {
-        val dateTime = LocalDateTime.ofInstant(it, ZoneId.systemDefault())
-        val formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy")
-        return@map dateTime.format(formatter)
+        it.getDateWithWeekdayText()
     }
 
     private val allExperiencesSortedFlow: Flow<List<ExperienceWithIngestionsAndCompanions>> =

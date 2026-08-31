@@ -48,7 +48,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneR
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
 import com.isaakhanimann.journal.ui.tabs.settings.OwnerProfileCard
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.getStringOfPattern
+import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 
 @Stable
 class SubstanceDisplayNameProvider(val get: (String) -> String)
@@ -360,9 +360,7 @@ fun ShareableExperienceCard(
             if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                 ElevatedCard(modifier = Modifier.padding(vertical = verticalCardPadding)) {
                     CardTitle(
-                        title = oneExperienceScreenModel.firstIngestionTime.getStringOfPattern(
-                            "EEE, dd MMM yyyy"
-                        )
+                        title = oneExperienceScreenModel.firstIngestionTime.getDateWithWeekdayText()
                     )
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()

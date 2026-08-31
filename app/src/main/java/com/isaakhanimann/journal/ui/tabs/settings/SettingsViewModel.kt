@@ -27,6 +27,7 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import com.isaakhanimann.journal.ui.utils.DateLocaleOption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.FileOutputStream
@@ -157,6 +158,18 @@ class SettingsViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    val dateLocaleOptionFlow = userPreferences.dateLocaleOptionFlow.stateIn(
+        initialValue = DateLocaleOption.FOLLOW_LANGUAGE,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveDateLocaleOption(value: DateLocaleOption) {
+        viewModelScope.launch {
+            userPreferences.saveDateLocaleOption(value)
+        }
+    }
 
     val achievementsFlow = userPreferences.achievementsFlow.stateIn(
         initialValue = emptyList(),
