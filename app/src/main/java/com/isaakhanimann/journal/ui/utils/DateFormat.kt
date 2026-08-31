@@ -78,7 +78,7 @@ object DateFormat {
     internal fun bestPattern(skeleton: String, locale: Locale): String {
         return try {
             android.text.format.DateFormat.getBestDateTimePattern(locale, skeleton)
-        } catch (_: Throwable) {
+        } catch (_: Exception) {
             jvmFallbackPattern(skeleton)
         }
     }

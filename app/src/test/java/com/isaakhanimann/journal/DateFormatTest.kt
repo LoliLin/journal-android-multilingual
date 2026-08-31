@@ -45,10 +45,10 @@ class DateFormatTest {
         DateFormat.setOption(DateLocaleOption.ZH_CN)
         val instant = getInstant(year = 2026, month = 8, day = 8, hourOfDay = 12, minute = 0)!!
         val text = instant.getDateWithWeekdayText()
-        assertTrue(text.contains("2026"))
-        assertTrue(text.contains("8"))
-        assertTrue(text.contains("月") || text.matches(Regex(".*8.*")))
-        assertFalse("English Sat leftover: $text", text.contains("Sat"))
+        assertTrue(text, text.contains("2026"))
+        assertTrue(text, text.contains("月"))
+        assertTrue(text, text.contains("8"))
+        assertFalse("English weekday leftover: $text", text.contains("Sat"))
     }
 
     @Test
