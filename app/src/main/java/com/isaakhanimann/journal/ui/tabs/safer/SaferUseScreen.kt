@@ -44,7 +44,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -54,6 +53,7 @@ import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
 
 @Preview
@@ -101,7 +101,7 @@ fun SaferUseScreen(
             SectionWithTitle(title = i18n("safer_research_title")) {
                 SaferText(text = i18n("safer_research_body"))
             }
-            val uriHandler = LocalUriHandler.current
+            val openLink = rememberOpenLink()
             SectionWithTitle(title = i18n("safer_testing_title")) {
                 SaferText(text = i18n("safer_testing_body"))
                 Button(
@@ -165,9 +165,7 @@ fun SaferUseScreen(
             SectionWithTitle(title = i18n("safer_combinations_title")) {
                 SaferText(text = i18n("safer_combinations_body"))
                 Button(
-                    onClick = {
-                        uriHandler.openUri("https://combi-checker.ch")
-                    },
+                    onClick = { openLink("https://combi-checker.ch") },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
@@ -179,9 +177,7 @@ fun SaferUseScreen(
                     Text(i18n("safer_swiss_combo_checker"))
                 }
                 Button(
-                    onClick = {
-                        uriHandler.openUri("https://combo.tripsit.me")
-                    },
+                    onClick = { openLink("https://combo.tripsit.me") },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(
@@ -198,7 +194,7 @@ fun SaferUseScreen(
                 SaferText(text = i18n("safer_administration_routes_body"))
                 Button(
                     onClick = {
-                        uriHandler.openUri(
+                        openLink(
                             "https://www.youtube.com/watch?v=31fuvYXxeV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
                         )
                     },
@@ -214,7 +210,7 @@ fun SaferUseScreen(
                 }
                 Button(
                     onClick = {
-                        uriHandler.openUri(
+                        openLink(
                             "https://www.youtube.com/watch?v=lBlS2e46CV0&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
                         )
                     },
@@ -230,7 +226,7 @@ fun SaferUseScreen(
                 }
                 Button(
                     onClick = {
-                        uriHandler.openUri(
+                        openLink(
                             "https://www.youtube.com/watch?v=N7HjCPz4A7Y&list=PLkC348-BeCu6Ut-iJy8xp9_LLKXoMMroR"
                         )
                     },
@@ -270,9 +266,7 @@ fun SaferUseScreen(
             SectionWithTitle(title = i18n("safer_recovery_position_title")) {
                 SaferText(text = i18n("safer_recovery_position_body"))
                 Button(
-                    onClick = {
-                        uriHandler.openUri("https://www.youtube.com/watch?v=dv3agW-DZ5I")
-                    },
+                    onClick = { openLink("https://www.youtube.com/watch?v=dv3agW-DZ5I") },
                     modifier = Modifier.padding(horizontal = horizontalPadding)
                 ) {
                     Icon(

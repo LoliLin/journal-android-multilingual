@@ -584,6 +584,7 @@
   "extension_check_update": "檢查更新",
   "extension_download": "下載",
   "settings_OpenLinkInBrowser": "在瀏覽器中開啟連結",
+  "open_link_failed": "無法開啟連結",
   "substance_activity_title": "活動記錄",
   "settings_icon_switched": "圖示已切換",
   "settings_icon_switch_failed": "圖示切換失敗",

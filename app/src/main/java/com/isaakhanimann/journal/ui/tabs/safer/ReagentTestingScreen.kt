@@ -39,13 +39,13 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
@@ -100,14 +100,14 @@ fun ReagentTestingScreen(navigateToReagentTestingArticle: () -> Unit) {
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     HorizontalDivider()
-                    val uriHandler = LocalUriHandler.current
+                    val openLink = rememberOpenLink()
                     TextButton(onClick = {
-                        uriHandler.openUri("https://dancesafe.org/testing-kit-instructions/")
+                        openLink("https://dancesafe.org/testing-kit-instructions/")
                     }) {
                         Text(text = "DanceSafe")
                     }
                     HorizontalDivider()
-                    TextButton(onClick = { uriHandler.openUri("https://bunkpolice.com") }) {
+                    TextButton(onClick = { openLink("https://bunkpolice.com") }) {
                         Text(text = "Bunk Police")
                     }
                 }

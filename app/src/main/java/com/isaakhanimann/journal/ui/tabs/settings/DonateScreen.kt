@@ -44,7 +44,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
@@ -71,7 +70,6 @@ fun DonateScreen() {
             val context = LocalContext.current
             val clipboard = LocalClipboard.current
             val scope = rememberCoroutineScope()
-            val uriHandler = LocalUriHandler.current
 
             val btcAddress = "bc1p7rm6akzl99j6jmht68f962fa4403n6dshlmu8sqpw8n3j6dt92dshr8qs3"
 
