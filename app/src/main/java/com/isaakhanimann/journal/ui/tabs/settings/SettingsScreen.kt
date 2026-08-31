@@ -45,8 +45,6 @@ import androidx.compose.material.icons.outlined.DeleteForever
 import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
-import androidx.compose.material.icons.outlined.Language
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
@@ -62,8 +60,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -73,7 +69,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -94,13 +89,11 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
-import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
@@ -532,56 +525,6 @@ fun SettingsScreen(
     }
 }
 
-@Composable
-internal fun LanguageSelectionDialog(
-    supportedLanguages: Map<String, String>,
-    selectedLanguageKey: String?,
-    onSelectLanguage: (String?) -> Unit,
-    onDismiss: () -> Unit
-) {
-    val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(i18n("settings_language_title")) },
-        text = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                LanguageOptionRow(
-                    label = i18n("settings_language_system"),
-                    isSelected = selectedLanguageKey == null,
-                    onClick = { onSelectLanguage(null) }
-                )
-                sortedLanguages.forEach { (key, label) ->
-                    LanguageOptionRow(
-                        label = label,
-                        isSelected = selectedLanguageKey == key,
-                        onClick = { onSelectLanguage(key) }
-                    )
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(i18n("common_close"))
-            }
-        }
-    )
-}
-
-@Composable
-private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 6.dp)
-            .padding(horizontal = horizontalPadding)
-            .clickable(onClick = onClick),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        RadioButton(selected = isSelected, onClick = onClick)
-        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-        Text(label)
-    }
-}
 
 const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 

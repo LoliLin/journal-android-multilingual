@@ -7,9 +7,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -17,6 +19,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -24,9 +27,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -313,5 +318,56 @@ private fun IndependentHeightsRow(
             Icon(Icons.Outlined.Info, contentDescription = i18n("common_show_more_info"))
         }
         Switch(checked = checked, onCheckedChange = onCheckedChange)
+    }
+}
+
+@Composable
+private fun LanguageSelectionDialog(
+    supportedLanguages: Map<String, String>,
+    selectedLanguageKey: String?,
+    onSelectLanguage: (String?) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_language_title")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                LanguageOptionRow(
+                    label = i18n("settings_language_system"),
+                    isSelected = selectedLanguageKey == null,
+                    onClick = { onSelectLanguage(null) }
+                )
+                sortedLanguages.forEach { (key, label) ->
+                    LanguageOptionRow(
+                        label = label,
+                        isSelected = selectedLanguageKey == key,
+                        onClick = { onSelectLanguage(key) }
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(i18n("common_close"))
+            }
+        }
+    )
+}
+
+@Composable
+private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp)
+            .padding(horizontal = horizontalPadding)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        RadioButton(selected = isSelected, onClick = onClick)
+        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+        Text(label)
     }
 }
