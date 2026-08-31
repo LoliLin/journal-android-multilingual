@@ -72,6 +72,23 @@ private const val ROUTE_START_URL = "url/"
 private const val ROUTE_START_JOURNAL_TAB_URL = "journalTabUrl/"
 private const val ROUTE_START_SAFER_TAB_URL = "saferTabUrl/"
 
+// The root route of each top-level tab. The bottom navigation bar belongs
+// only to these first-level destinations; every nested/detail screen hides it.
+private val mainTabRootRoutes = setOf(
+    NoArgumentRouter.JournalRouter.route,
+    NoArgumentRouter.StatsRouter.route,
+    NoArgumentRouter.SubstancesRouter.route,
+    NoArgumentRouter.SaferRouter.route,
+    NoArgumentRouter.SettingsRouter.route
+)
+
+/**
+ * True when the given destination route is the root of a top-level tab.
+ * The bottom navigation bar is shown only on these routes.
+ */
+fun isMainTabRootRoute(route: String?): Boolean = route != null &&
+    mainTabRootRoutes.contains(route)
+
 sealed class ArgumentRouter(val route: String, val args: List<NamedNavArgument>) {
     object ExperienceRouter : ArgumentRouter(
         route = "$ROUTE_START_EXPERIENCES{$EXPERIENCE_ID_KEY}",

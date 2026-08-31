@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.safer
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -48,6 +49,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -81,6 +84,8 @@ fun SaferUseScreen(
     navigateToReagentTestingScreen: () -> Unit
 ) {
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = { Text(i18n("safer_use_title")) }
@@ -91,6 +96,7 @@ fun SaferUseScreen(
             Modifier
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
+                .padding(bottom = bottomBarOverlayDp())
         ) {
             SectionWithTitle(title = i18n("safer_research_title")) {
                 SaferText(text = i18n("safer_research_body"))

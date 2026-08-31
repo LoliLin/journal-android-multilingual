@@ -18,24 +18,39 @@
 
 package com.isaakhanimann.journal.ui.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.offset
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -56,6 +71,7 @@ import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
 import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
+import com.isaakhanimann.journal.ui.main.navigation.routers.isMainTabRootRoute
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
 private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? {
@@ -63,6 +79,7 @@ private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? 
     return target to intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
@@ -99,6 +116,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
         val navController = rememberNavController()
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+
         LaunchedEffect(pendingNav) {
             pendingNav?.let { (target, experienceId) ->
                 when (target) {
@@ -110,69 +130,137 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                 pendingNav = null
             }
         }
-        Scaffold(
-            bottomBar = {
-                val isShowingBottomBar = isKeyboardOpen().value.not()
-                if (isShowingBottomBar) {
-                    NavigationBar {
-                        val navBackStackEntry by navController.currentBackStackEntryAsState()
-                        val currentDestination = navBackStackEntry?.destination
-                        val tabs = listOf(
-                            TabRouter.Statistics,
-                            TabRouter.Journal,
-                            TabRouter.Substances,
-                            TabRouter.SaferUse,
-                            TabRouter.Settings
-                        )
-                        tabs.forEach { tab ->
-                            val isSelected =
-                                currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                            NavigationBarItem(
-                                icon = {
-                                    if (isSelected) {
-                                        Icon(tab.iconSelected, contentDescription = null)
-                                    } else {
-                                        Icon(tab.icon, contentDescription = null)
-                                    }
-                                },
-                                label = { Text(i18n(tab.labelKey)) },
-                                selected = isSelected,
-                                onClick = {
-                                    if (isSelected) {
-                                        val isAlreadyOnTopOfTab = tabs.any {
-                                            it.childRoute ==
-                                                currentDestination.route
-                                        }
-                                        if (!isAlreadyOnTopOfTab) {
-                                            navController.popBackStack()
-                                        }
-                                    } else {
-                                        navController.navigate(tab.route) {
-                                            popUpTo(navController.graph.findStartDestination().id) {
-                                                saveState = true
-                                            }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
-                                    }
-                                }
-                            )
-                        }
+
+        val isKeyboardOpenNow = isKeyboardOpen().value
+        val isOnMainTabRoot = isMainTabRootRoute(currentDestination?.route)
+        val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
+
+        // Official Material3 hide-on-scroll connection, plus onPreScroll so an
+        // upward swipe at the list top (consumed.y == 0) still reveals the bar.
+        val bottomBarScrollBehavior = BottomAppBarDefaults.exitAlwaysScrollBehavior(
+            canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
+        )
+        val nestedScrollConnection = remember(bottomBarScrollBehavior) {
+            val official = bottomBarScrollBehavior.nestedScrollConnection
+            object : NestedScrollConnection {
+                override fun onPreScroll(
+                    available: Offset,
+                    source: NestedScrollSource
+                ): Offset {
+                    if (available.y > 0f &&
+                        bottomBarScrollBehavior.state.heightOffset < 0f
+                    ) {
+                        val state = bottomBarScrollBehavior.state
+                        val next = (state.heightOffset + available.y)
+                            .coerceIn(state.heightOffsetLimit, 0f)
+                        val consumedY = next - state.heightOffset
+                        state.heightOffset = next
+                        return Offset(0f, consumedY)
                     }
+                    return Offset.Zero
+                }
+
+                override fun onPostScroll(
+                    consumed: Offset,
+                    available: Offset,
+                    source: NestedScrollSource
+                ): Offset = official.onPostScroll(consumed, available, source)
+            }
+        }
+        LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow) {
+            if (!isOnMainTabRoot || isKeyboardOpenNow) {
+                bottomBarScrollBehavior.state.heightOffset = 0f
+            }
+        }
+
+        Box(modifier = Modifier.fillMaxSize()) {
+            val barHeightPx = remember { mutableIntStateOf(0) }
+            val heightOffset = bottomBarScrollBehavior.state.heightOffset
+            val visibleBarPx = if (isBottomBarShown) {
+                (barHeightPx.intValue + heightOffset.toInt()).coerceAtLeast(0)
+            } else {
+                0
+            }
+            CompositionLocalProvider(
+                LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
+                LocalBottomBarOverlayInsetPx provides visibleBarPx
+            ) {
+                NavHost(
+                    navController,
+                    startDestination = TabRouter.Journal.route,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    journalGraph(navController)
+                    statsGraph(navController)
+                    searchGraph(navController)
+                    saferGraph(navController)
+                    settingsGraph(navController)
                 }
             }
-        ) { innerPadding ->
-            NavHost(
-                navController,
-                startDestination = TabRouter.Journal.route,
-                modifier = Modifier
-                    .padding(bottom = innerPadding.calculateBottomPadding())
+            AnimatedVisibility(
+                visible = isBottomBarShown,
+                modifier = Modifier.align(Alignment.BottomCenter),
+                enter = slideInVertically(tween(durationMillis = 250)) { it } +
+                    expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
+                exit = slideOutVertically(tween(durationMillis = 250)) { it } +
+                    shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
             ) {
-                journalGraph(navController)
-                statsGraph(navController)
-                searchGraph(navController)
-                saferGraph(navController)
-                settingsGraph(navController)
+                NavigationBar(
+                    modifier = Modifier
+                        .onSizeChanged { size ->
+                            barHeightPx.intValue = size.height
+                            bottomBarScrollBehavior.state.heightOffsetLimit =
+                                -size.height.toFloat()
+                        }
+                        .offset {
+                            IntOffset(
+                                x = 0,
+                                y = -bottomBarScrollBehavior.state.heightOffset.toInt()
+                            )
+                        }
+                ) {
+                    val tabs = listOf(
+                        TabRouter.Statistics,
+                        TabRouter.Journal,
+                        TabRouter.Substances,
+                        TabRouter.SaferUse,
+                        TabRouter.Settings
+                    )
+                    tabs.forEach { tab ->
+                        val isSelected =
+                            currentDestination?.hierarchy?.any { it.route == tab.route } == true
+                        NavigationBarItem(
+                            icon = {
+                                if (isSelected) {
+                                    Icon(tab.iconSelected, contentDescription = null)
+                                } else {
+                                    Icon(tab.icon, contentDescription = null)
+                                }
+                            },
+                            label = { Text(i18n(tab.labelKey)) },
+                            selected = isSelected,
+                            onClick = {
+                                if (isSelected) {
+                                    val isAlreadyOnTopOfTab = tabs.any {
+                                        it.childRoute ==
+                                            currentDestination.route
+                                    }
+                                    if (!isAlreadyOnTopOfTab) {
+                                        navController.popBackStack()
+                                    }
+                                } else {
+                                    navController.navigate(tab.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+                            }
+                        )
+                    }
+                }
             }
         }
     }

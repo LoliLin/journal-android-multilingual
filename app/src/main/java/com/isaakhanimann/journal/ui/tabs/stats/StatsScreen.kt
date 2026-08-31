@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -81,6 +82,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
@@ -159,6 +162,8 @@ fun StatsScreen(
     onSelectSection: (StatsSection) -> Unit = {}
 ) {
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             Column(
                 modifier = Modifier
@@ -268,7 +273,7 @@ fun StatsScreen(
                 description = i18n("stats_empty_description")
             )
         } else {
-            Column(modifier = Modifier.padding(padding)) {
+            Column(modifier = Modifier.padding(padding).fillMaxSize()) {
                 SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
                         SegmentedButton(
@@ -282,7 +287,7 @@ fun StatsScreen(
                 }
                 if (statsModel.statItems.isNotEmpty()) {
                     val isDarkTheme = isSystemInDarkTheme()
-                    Column {
+                    Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = i18n(
                                 "stats_experiences_since",
@@ -304,7 +309,10 @@ fun StatsScreen(
                             startDateText = statsModel.startDateText
                         )
                         HorizontalDivider()
-                        LazyColumn {
+                        LazyColumn(
+                            modifier = Modifier.weight(1f),
+                            contentPadding = bottomBarOverlayPadding()
+                        ) {
                             items(statsModel.statItems) { subStat ->
                                 Column {
                                     Row(

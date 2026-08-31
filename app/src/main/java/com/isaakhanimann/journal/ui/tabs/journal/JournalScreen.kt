@@ -22,6 +22,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -74,6 +75,9 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
@@ -157,6 +161,8 @@ fun JournalScreen(
         .firstOrNull { it.ingestionsWithCompanions.isNotEmpty() }
         ?.experience?.id
     Scaffold(
+        modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
                 title = { Text(i18n("journal")) },
@@ -229,6 +235,7 @@ fun JournalScreen(
         floatingActionButton = {
             if (!isSearchEnabled) {
                 ExtendedFloatingActionButton(
+                    modifier = Modifier.padding(bottom = bottomBarOverlayDp()),
                     onClick = navigateToAddIngestion,
                     icon = {
                         Icon(
@@ -330,7 +337,8 @@ fun JournalScreen(
                 Box(contentAlignment = Alignment.TopEnd) {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        state = listState
+                        state = listState,
+                        contentPadding = bottomBarOverlayPadding()
                     ) {
                         if (experiences.isNotEmpty()) {
                             item {
