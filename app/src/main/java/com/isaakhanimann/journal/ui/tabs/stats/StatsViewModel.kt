@@ -44,7 +44,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -96,61 +95,93 @@ class StatsViewModel @Inject constructor(
             }
         }
 
-    private val relevantExperiencesSortedFlow: Flow<List<ExperienceWithIngestionsAndCompanions>> =
-        allExperiencesSortedFlow.combine(startDateFlow) { experiences, startDate ->
-            return@combine experiences.dropWhile { it.sortInstant > Instant.now().getEndOfDay() }
-                .takeWhile { it.sortInstant > startDate }
-        }
 
     private val companionFlow = experienceRepo.getAllSubstanceCompanionsFlow()
 
+    private val isStatsByIngestionTimeFlow = userPreferences.isStatsByIngestionTimeFlow
+
+    fun onChangeStatsByIngestionTime(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.saveStatsByIngestionTime(value)
+        }
+    }
+
     private val experienceChartBucketsFlow: Flow<List<List<ColorCount>>> =
-        relevantExperiencesSortedFlow.combine(optionFlow) { sortedExperiences, option ->
-            var remainingExperiences = sortedExperiences
-            val buckets = mutableListOf<List<ExperienceWithIngestionsAndCompanions>>()
-            var startInstant = Instant.now().getEndOfDay()
-            for (i in 0 until option.bucketCount) {
-                startInstant = startInstant.minus(option.oneBucketSize)
-                val experiencesForBucket =
-                    remainingExperiences.takeWhile { it.sortInstant > startInstant }
-                buckets.add(experiencesForBucket)
-                val numExperiences = experiencesForBucket.size
-                remainingExperiences =
-                    remainingExperiences.takeLast(remainingExperiences.size - numExperiences)
+        combine(
+            combine(allExperiencesSortedFlow, optionFlow, startDateFlow) { experiences, option, startDate ->
+                Triple(experiences, option, startDate)
+            },
+            combine(isStatsByIngestionTimeFlow, consumerFlow, companionFlow) { byIngestionTime, consumerName, companions ->
+                Triple(byIngestionTime, consumerName, companions)
             }
-            return@combine buckets
-        }.combine(consumerFlow) { buckets, consumerName ->
-            Pair(buckets, consumerName)
-        }.combine(companionFlow) { pair, companions ->
-            return@combine pair.first.map { experiencesInBucket ->
-                return@map getColorCountsForExperiences(
-                    experiencesInBucket,
-                    companions,
-                    pair.second
+        ) { chartInputs, filters ->
+            val (experiences, option, startDate) = chartInputs
+            val (byIngestionTime, consumerName, companions) = filters
+            val nowEndOfDay = Instant.now().getEndOfDay()
+            if (byIngestionTime) {
+                val ingestionsNewestFirst = experiences
+                    .asSequence()
+                    .flatMap { it.ingestionsWithCompanionAndCustomUnit }
+                    .filter { it.ingestion.consumerName == consumerName }
+                    .sortedByDescending { it.ingestion.time }
+                    .toList()
+                val inWindow = takeItemsInStatsWindow(
+                    itemsNewestFirst = ingestionsNewestFirst,
+                    instantOf = { it.ingestion.time },
+                    nowEndOfDay = nowEndOfDay,
+                    startExclusive = startDate
                 )
-            }.reversed()
+                bucketNewestFirst(
+                    itemsNewestFirst = inWindow,
+                    instantOf = { it.ingestion.time },
+                    option = option,
+                    nowEndOfDay = nowEndOfDay
+                ).map { ingestionsInBucket ->
+                    getColorCountsForIngestions(ingestionsInBucket, companions)
+                }
+            } else {
+                val inWindow = takeItemsInStatsWindow(
+                    itemsNewestFirst = experiences,
+                    instantOf = { it.sortInstant },
+                    nowEndOfDay = nowEndOfDay,
+                    startExclusive = startDate
+                )
+                bucketNewestFirst(
+                    itemsNewestFirst = inWindow,
+                    instantOf = { it.sortInstant },
+                    option = option,
+                    nowEndOfDay = nowEndOfDay
+                ).map { experiencesInBucket ->
+                    getColorCountsForExperiences(experiencesInBucket, companions, consumerName)
+                }
+            }
         }
 
     private fun getColorCountsForExperiences(
         experiences: List<ExperienceWithIngestionsAndCompanions>,
         companions: List<SubstanceCompanion>,
         consumerName: String?
+    ): List<ColorCount> = getColorCountsForIngestions(
+        ingestions = experiences.flatMap { experience ->
+            experience.ingestionsWithCompanionAndCustomUnit.filter {
+                it.ingestion.consumerName == consumerName
+            }
+        },
+        companions = companions
+    )
+
+    private fun getColorCountsForIngestions(
+        ingestions: List<IngestionWithCompanionAndCustomUnit>,
+        companions: List<SubstanceCompanion>
     ): List<ColorCount> {
-        // Bars are sized by ingested dose relative to the common dose (sum of x common across
-        // the bucket), so different substances and units are comparable; colored with the
-        // user's custom substance colors.
         val companionBySubstance = companions.associateBy { it.substanceName }
-        return experiences.flatMap { experience ->
-            experience.ingestionsWithCompanionAndCustomUnit
-                .filter { it.ingestion.consumerName == consumerName }
-                .mapNotNull { ingestionWith ->
-                    val oneCompanion =
-                        companionBySubstance[ingestionWith.ingestion.substanceName]
-                            ?: return@mapNotNull null
-                    oneCompanion.color to (
-                        relativeDoseOfIngestion(substanceRepo, ingestionWith) ?: 0.0
-                        )
-                }
+        return ingestions.mapNotNull { ingestionWith ->
+            val oneCompanion =
+                companionBySubstance[ingestionWith.ingestion.substanceName]
+                    ?: return@mapNotNull null
+            oneCompanion.color to (
+                relativeDoseOfIngestion(substanceRepo, ingestionWith) ?: 0.0
+                )
         }.groupBy { it.first }
             .map { (color, dosePairs) ->
                 ColorCount(
@@ -162,32 +193,58 @@ class StatsViewModel @Inject constructor(
     }
 
     private val statsFlowItem: Flow<List<StatItem>> = combine(
-        relevantExperiencesSortedFlow,
+        combine(allExperiencesSortedFlow, startDateFlow, isStatsByIngestionTimeFlow) { experiences, startDate, byIngestionTime ->
+            Triple(experiences, startDate, byIngestionTime)
+        },
         consumerFlow,
         companionFlow
-    ) { relevantExperiencesSorted, consumerName, companions ->
-        val allIngestions =
-            relevantExperiencesSorted.flatMap { experience ->
+    ) { window, consumerName, companions ->
+        val (experiences, startDate, byIngestionTime) = window
+        val nowEndOfDay = Instant.now().getEndOfDay()
+        val relevantIngestions = if (byIngestionTime) {
+            val ingestionsNewestFirst = experiences
+                .asSequence()
+                .flatMap { it.ingestionsWithCompanionAndCustomUnit }
+                .filter { it.ingestion.consumerName == consumerName }
+                .sortedByDescending { it.ingestion.time }
+                .toList()
+            takeItemsInStatsWindow(
+                itemsNewestFirst = ingestionsNewestFirst,
+                instantOf = { it.ingestion.time },
+                nowEndOfDay = nowEndOfDay,
+                startExclusive = startDate
+            )
+        } else {
+            takeItemsInStatsWindow(
+                itemsNewestFirst = experiences,
+                instantOf = { it.sortInstant },
+                nowEndOfDay = nowEndOfDay,
+                startExclusive = startDate
+            ).flatMap { experience ->
                 experience.ingestionsWithCompanionAndCustomUnit.filter {
-                    it.ingestion.consumerName ==
-                        consumerName
+                    it.ingestion.consumerName == consumerName
                 }
             }
-        val experienceNamesMap =
-            relevantExperiencesSorted.map { experience ->
-                experience.ingestionsWithCompanionAndCustomUnit.filter {
-                    it.ingestion.consumerName ==
-                        consumerName
-                }.map { it.ingestion.substanceName }
-                    .toSet()
-            }.flatten().groupBy { it }
-        val map = allIngestions.groupBy { it.ingestion.substanceName }
-        return@combine map.values.mapNotNull { groupedIngestions ->
+        }
+        val experienceCountsBySubstance = if (byIngestionTime) {
+            relevantIngestions.groupBy { it.ingestion.substanceName }
+                .mapValues { (_, list) -> list.map { it.ingestion.experienceId }.distinct().size }
+        } else {
+            relevantIngestions
+                .groupBy { it.ingestion.experienceId }
+                .values
+                .flatMap { ingestionsInExperience ->
+                    ingestionsInExperience.map { it.ingestion.substanceName }.toSet()
+                }
+                .groupingBy { it }
+                .eachCount()
+        }
+        val map = relevantIngestions.groupBy { it.ingestion.substanceName }
+        map.values.mapNotNull { groupedIngestions ->
             val name =
                 groupedIngestions.firstOrNull()?.ingestion?.substanceName ?: return@mapNotNull null
             val oneCompanion =
                 companions.firstOrNull { it.substanceName == name } ?: return@mapNotNull null
-            val experienceCounts = experienceNamesMap[name]?.size ?: 0
             val relativeValues = groupedIngestions.mapNotNull {
                 relativeDoseOfIngestion(substanceRepo, it)
             }
@@ -195,7 +252,7 @@ class StatsViewModel @Inject constructor(
                 substanceName = name,
                 substanceRepo = substanceRepo,
                 color = oneCompanion.color,
-                experienceCount = experienceCounts,
+                experienceCount = experienceCountsBySubstance[name] ?: 0,
                 ingestionCount = groupedIngestions.size,
                 routeCounts = getRouteCounts(groupedIngestions.map { it.ingestion }),
                 totalDose = getTotalDose(groupedIngestions),
@@ -229,22 +286,25 @@ class StatsViewModel @Inject constructor(
     }
 
     val statsModelFlow: StateFlow<StatsModel> =
-        optionFlow.combine(startDateTextFlow) { option, startDateText ->
-            return@combine Pair(first = option, second = startDateText)
-        }.combine(statsFlowItem) { pair, substanceStats ->
-            return@combine Pair(first = pair, second = substanceStats)
-        }.combine(areThereAnyIngestionsFlow) { pair, areThere ->
-            return@combine Pair(first = pair, second = areThere)
-        }.combine(consumerFlow) { pair, consumerName ->
-            return@combine Pair(first = pair, second = consumerName)
-        }.combine(experienceChartBucketsFlow) { pair, chartBuckets ->
-            return@combine StatsModel(
-                areThereAnyIngestions = pair.first.second,
-                selectedOption = pair.first.first.first.first,
-                startDateText = pair.first.first.first.second,
-                statItems = pair.first.first.second,
+        combine(
+            combine(optionFlow, startDateTextFlow, statsFlowItem) { option, startDateText, substanceStats ->
+                Triple(option, startDateText, substanceStats)
+            },
+            combine(areThereAnyIngestionsFlow, consumerFlow, experienceChartBucketsFlow) { areThere, consumerName, chartBuckets ->
+                Triple(areThere, consumerName, chartBuckets)
+            },
+            isStatsByIngestionTimeFlow
+        ) { summary, extras, byIngestionTime ->
+            val (option, startDateText, substanceStats) = summary
+            val (areThere, consumerName, chartBuckets) = extras
+            StatsModel(
+                areThereAnyIngestions = areThere,
+                selectedOption = option,
+                startDateText = startDateText,
+                statItems = substanceStats,
                 chartBuckets = chartBuckets,
-                consumerName = pair.second
+                consumerName = consumerName,
+                isByIngestionTime = byIngestionTime
             )
         }.stateIn(
             initialValue = StatsModel(
@@ -253,7 +313,8 @@ class StatsViewModel @Inject constructor(
                 startDateText = "",
                 statItems = emptyList(),
                 chartBuckets = emptyList(),
-                consumerName = null
+                consumerName = null,
+                isByIngestionTime = false
             ),
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
@@ -281,7 +342,8 @@ data class StatsModel(
     val startDateText: String,
     val statItems: List<StatItem>,
     val chartBuckets: List<List<ColorCount>>,
-    val consumerName: String?
+    val consumerName: String?,
+    val isByIngestionTime: Boolean = false
 )
 
 data class ColorCount(val color: AdaptiveColor, val count: Double)

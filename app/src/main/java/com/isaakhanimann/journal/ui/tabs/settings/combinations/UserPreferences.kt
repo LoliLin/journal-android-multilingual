@@ -56,6 +56,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_IS_TIMELINE_HIDDEN = booleanPreferencesKey("KEY_IS_TIMELINE_HIDDEN")
         val KEY_MIDNIGHT_CUTOFF_ENABLED = booleanPreferencesKey("key_midnight_cutoff_enabled")
         val KEY_USE_24_HOUR_CLOCK = booleanPreferencesKey("key_use_24_hour_clock")
+        val KEY_STATS_BY_INGESTION_TIME = booleanPreferencesKey("key_stats_by_ingestion_time")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -188,6 +189,17 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     suspend fun saveMidnightCutoffEnabled(value: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED] = value
+        }
+    }
+
+    val isStatsByIngestionTimeFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_STATS_BY_INGESTION_TIME] ?: false
+        }
+
+    suspend fun saveStatsByIngestionTime(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_STATS_BY_INGESTION_TIME] = value
         }
     }
 
