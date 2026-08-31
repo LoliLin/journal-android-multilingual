@@ -37,6 +37,7 @@ sealed class NoArgumentRouter(val route: String) {
         NoArgumentRouter(route = "explainTimelineOnJournalTab")
 
     object SettingsRouter : NoArgumentRouter(route = "settings")
+    object PreferencesRouter : NoArgumentRouter(route = "preferences")
     object DosageExplanationRouterOnSaferTab :
         NoArgumentRouter(route = "dosageExplanationOnSaferTab")
 
@@ -123,6 +124,10 @@ fun NavController.navigateToIconPicker() {
 
 fun NavController.navigateToDonate() {
     navigate(NoArgumentRouter.DonateRouter.route)
+}
+
+fun NavController.navigateToPreferences() {
+    navigate(NoArgumentRouter.PreferencesRouter.route)
 }
 
 fun NavController.navigateToDosageExplanationScreenOnSaferTab() {

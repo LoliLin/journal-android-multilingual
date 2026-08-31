@@ -45,12 +45,11 @@ import androidx.compose.material.icons.outlined.DeleteForever
 import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material.icons.outlined.FileDownload
 import androidx.compose.material.icons.outlined.FileUpload
-import androidx.compose.material.icons.outlined.Language
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.QuestionAnswer
 import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material.icons.outlined.VolunteerActivism
 import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.*
@@ -61,8 +60,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -72,7 +69,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -93,13 +89,11 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
-import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
-import com.isaakhanimann.journal.ui.utils.TimeFormat
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.utils.getStringOfPattern
 import java.time.Instant
@@ -119,12 +113,10 @@ fun SettingsScreen(
     navigateToCustomUnits: () -> Unit,
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
-    navigateToExtensionPack: () -> Unit = {}
+    navigateToExtensionPack: () -> Unit = {},
+    navigateToPreferences: () -> Unit = {}
 ) {
-    val context = LocalContext.current
-    val selectedLanguageKey = viewModel.selectedLanguageFlow.collectAsState().value
     val ownerUserName = viewModel.ownerUserNameFlow.collectAsState(initial = "You").value ?: "You"
-    val supportedLanguages = remember(context) { I18n.getSupportedLanguages(context) }
     SettingsScreen(
         navigateToFAQ = navigateToFAQ,
         navigateToComboSettings = navigateToComboSettings,
@@ -133,34 +125,15 @@ fun SettingsScreen(
         navigateToDonate = navigateToDonate,
         navigateToIconPicker = navigateToIconPicker,
         navigateToExtensionPack = navigateToExtensionPack,
+        navigateToPreferences = navigateToPreferences,
         deleteEverything = viewModel::deleteEverything,
         importFile = viewModel::importFile,
         isImportEncrypted = viewModel::isImportEncrypted,
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
-        areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
-        saveDosageDotsAreHidden = viewModel::saveDosageDotsAreHidden,
-        isOpenLinkInBrowser = viewModel.isOpenLinkInBrowserFlow.collectAsState().value,
-        saveOpenLinkInBrowser = viewModel::saveOpenLinkInBrowser,
-        isAppLockEnabled = viewModel.isAppLockEnabledFlow.collectAsState().value,
-        saveAppLockEnabled = viewModel::saveAppLockEnabled,
-        isEffectNotificationEnabled = viewModel.isEffectNotificationEnabledFlow.collectAsState().value,
-        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled,
-        supportedLanguages = supportedLanguages,
-        selectedLanguageKey = selectedLanguageKey,
-        saveSelectedLanguage = viewModel::saveSelectedLanguage,
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
         achievements = viewModel.achievementsFlow.collectAsState().value,
-        isTimelineHidden = viewModel.isTimelineHiddenFlow.collectAsState().value,
-        saveIsTimelineHidden = viewModel::saveIsTimelineHidden,
-        areSubstanceHeightsIndependent = viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value,
-        saveAreSubstanceHeightsIndependent = viewModel::saveAreSubstanceHeightsIndependent,
-        isMidnightCutoffEnabled = viewModel.isMidnightCutoffEnabledFlow.collectAsState().value,
-        saveMidnightCutoffEnabled = viewModel::saveMidnightCutoffEnabled,
-        use24HourClock = viewModel.use24HourClockFlow.collectAsState().value
-            ?: TimeFormat.systemDefaultIs24Hour(),
-        saveUse24HourClock = viewModel::saveUse24HourClock,
     )
 }
 
@@ -174,33 +147,15 @@ fun SettingsScreen(
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
     navigateToExtensionPack: () -> Unit = {},
+    navigateToPreferences: () -> Unit = {},
     deleteEverything: () -> Unit,
     importFile: (uri: Uri, password: String?) -> Unit,
     isImportEncrypted: (Uri) -> Boolean,
     exportFile: (uri: Uri, password: String?) -> Unit,
     snackbarHostState: SnackbarHostState,
-    areDosageDotsHidden: Boolean,
-    saveDosageDotsAreHidden: (Boolean) -> Unit,
-    isOpenLinkInBrowser: Boolean,
-    saveOpenLinkInBrowser: (Boolean) -> Unit,
-    isAppLockEnabled: Boolean,
-    saveAppLockEnabled: (Boolean) -> Unit,
-    isEffectNotificationEnabled: Boolean,
-    saveEffectNotificationEnabled: (Boolean) -> Unit,
-    supportedLanguages: Map<String, String>,
-    selectedLanguageKey: String?,
-    saveSelectedLanguage: (String?) -> Unit,
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
     saveOwnerUserName: (String?) -> Unit,
-    isTimelineHidden: Boolean,
-    saveIsTimelineHidden: (Boolean) -> Unit,
-    areSubstanceHeightsIndependent: Boolean,
-    saveAreSubstanceHeightsIndependent: (Boolean) -> Unit,
-    isMidnightCutoffEnabled: Boolean,
-    saveMidnightCutoffEnabled: (Boolean) -> Unit,
-    use24HourClock: Boolean = true,
-    saveUse24HourClock: (Boolean) -> Unit = {},
 ) {
     Scaffold(
         modifier = Modifier.bottomBarNestedScroll(),
@@ -228,6 +183,13 @@ fun SettingsScreen(
 
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
+                    imageVector = Icons.Outlined.Tune,
+                    text = i18n("settings_preferences")
+                ) {
+                    navigateToPreferences()
+                }
+                HorizontalDivider()
+                SettingsButton(
                     imageVector = Icons.Outlined.Medication,
                     text = i18n("settings_custom_units")
                 ) {
@@ -246,224 +208,6 @@ fun SettingsScreen(
                     text = i18n("settings_interaction_settings")
                 ) {
                     navigateToComboSettings()
-                }
-                HorizontalDivider()
-                var isLanguageDialogVisible by remember { mutableStateOf(false) }
-                val languageName =
-                    supportedLanguages[selectedLanguageKey] ?: i18n("settings_language_system")
-                SettingsButton(
-                    imageVector = Icons.Outlined.Language,
-                    text = i18n(
-                        "settings_language_with_value",
-                        mapOf("language" to languageName)
-                    )
-                ) {
-                    isLanguageDialogVisible = true
-                }
-                if (isLanguageDialogVisible) {
-                    LanguageSelectionDialog(
-                        supportedLanguages = supportedLanguages,
-                        selectedLanguageKey = selectedLanguageKey,
-                        onSelectLanguage = {
-                            saveSelectedLanguage(it)
-                            I18n.setPreferredLanguageKey(it)
-                            isLanguageDialogVisible = false
-                        },
-                        onDismiss = { isLanguageDialogVisible = false }
-                    )
-                }
-                HorizontalDivider()
-
-                SettingsButton(
-                    imageVector = Icons.Outlined.StarBorder,
-                    text = i18n("settings_icon_title")
-                ) {
-                    navigateToIconPicker()
-                }
-
-                HorizontalDivider()
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = i18n("settings_use_24_hour_clock"))
-                    Switch(
-                        checked = use24HourClock,
-                        onCheckedChange = saveUse24HourClock
-                    )
-                }
-
-                HorizontalDivider()
-
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = i18n("settings_hide_dosage_dots"))
-                    Switch(
-                        checked = areDosageDotsHidden,
-                        onCheckedChange = saveDosageDotsAreHidden
-                    )
-                }
-
-                HorizontalDivider()
-
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = i18n("settings_OpenLinkInBrowser"))
-                    Switch(
-                        checked = isOpenLinkInBrowser,
-                        onCheckedChange = saveOpenLinkInBrowser
-                    )
-                }
-
-                HorizontalDivider()
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = i18n("settings_hide_timeline"))
-                    Switch(
-                        checked = isTimelineHidden,
-                        onCheckedChange = saveIsTimelineHidden
-                    )
-                }
-                HorizontalDivider()
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-                    var showBottomSheet by remember { mutableStateOf(false) }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(5.dp),
-                        modifier = Modifier
-                            .clickable {
-                                showBottomSheet = true
-                            }
-                            .padding(end = ButtonDefaults.IconSpacing)
-                    ) {
-                        Text(text = i18n("settings_independent_substance_heights"))
-                        if (showBottomSheet) {
-                            ModalBottomSheet(
-                                onDismissRequest = {
-                                    showBottomSheet = false
-                                },
-                                sheetState = sheetState
-                            ) {
-                                Text(
-                                    text = i18n("settings_independent_substance_heights_description").trimIndent(),
-                                    modifier = Modifier
-                                        .padding(horizontal = horizontalPadding)
-                                        .padding(bottom = 15.dp)
-                                        .verticalScroll(state = rememberScrollState())
-                                )
-                            }
-                        }
-                        Icon(Icons.Outlined.Info, contentDescription = i18n("common_show_more_info"))
-                    }
-                    Switch(
-                        checked = areSubstanceHeightsIndependent,
-                        onCheckedChange = saveAreSubstanceHeightsIndependent
-                    )
-                }
-                HorizontalDivider()
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(text = i18n("settings_midnight_cutoff"))
-                        Text(
-                            text = i18n("settings_midnight_cutoff_description"),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Switch(
-                        checked = isMidnightCutoffEnabled,
-                        onCheckedChange = saveMidnightCutoffEnabled
-                    )
-                }
-            }
-
-            CardWithTitle(title = i18n("settings_privacy"), innerPaddingHorizontal = 0.dp) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(text = i18n("settings_app_lock"))
-                            Text(
-                                text = i18n("settings_app_lock_description"),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                        Switch(
-                            checked = isAppLockEnabled,
-                            onCheckedChange = saveAppLockEnabled
-                        )
-                    }
-                }
-                HorizontalDivider()
-                val permissionLauncher = rememberLauncherForActivityResult(
-                    contract = ActivityResultContracts.RequestPermission()
-                ) { granted ->
-                    if (!granted) {
-                        saveEffectNotificationEnabled(false)
-                    }
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = horizontalPadding, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(text = i18n("settings_effect_notification"))
-                        Text(
-                            text = i18n("settings_effect_notification_description"),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Switch(
-                        checked = isEffectNotificationEnabled,
-                        onCheckedChange = { enabled ->
-                            saveEffectNotificationEnabled(enabled)
-                            if (enabled && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
-                            }
-                        }
-                    )
                 }
             }
 
@@ -781,56 +525,6 @@ fun SettingsScreen(
     }
 }
 
-@Composable
-private fun LanguageSelectionDialog(
-    supportedLanguages: Map<String, String>,
-    selectedLanguageKey: String?,
-    onSelectLanguage: (String?) -> Unit,
-    onDismiss: () -> Unit
-) {
-    val sortedLanguages = supportedLanguages.entries.sortedBy { it.value }
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(i18n("settings_language_title")) },
-        text = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                LanguageOptionRow(
-                    label = i18n("settings_language_system"),
-                    isSelected = selectedLanguageKey == null,
-                    onClick = { onSelectLanguage(null) }
-                )
-                sortedLanguages.forEach { (key, label) ->
-                    LanguageOptionRow(
-                        label = label,
-                        isSelected = selectedLanguageKey == key,
-                        onClick = { onSelectLanguage(key) }
-                    )
-                }
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(i18n("common_close"))
-            }
-        }
-    )
-}
-
-@Composable
-private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 6.dp)
-            .padding(horizontal = horizontalPadding)
-            .clickable(onClick = onClick),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        RadioButton(selected = isSelected, onClick = onClick)
-        Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-        Text(label)
-    }
-}
 
 const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 
