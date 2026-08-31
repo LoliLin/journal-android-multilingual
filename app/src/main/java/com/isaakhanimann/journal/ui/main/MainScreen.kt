@@ -41,9 +41,9 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,6 +52,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -175,10 +176,35 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
             }
         }
 
-        Scaffold(
-            bottomBar = {
+        Scaffold { _ ->
+            val barHeightPx = remember { mutableIntStateOf(0) }
+            val heightOffset = bottomBarScrollBehavior.state.heightOffset
+            val visibleBarPx = if (isBottomBarShown) {
+                (barHeightPx.intValue + heightOffset.toInt()).coerceAtLeast(0)
+            } else {
+                0
+            }
+            Box(modifier = Modifier.fillMaxSize()) {
+                CompositionLocalProvider(
+                    LocalBottomBarNestedScrollConnection provides nestedScrollConnection
+                ) {
+                    NavHost(
+                        navController,
+                        startDestination = TabRouter.Journal.route,
+                        modifier = Modifier.padding(
+                            bottom = with(LocalDensity.current) { visibleBarPx.toDp() }
+                        )
+                    ) {
+                        journalGraph(navController)
+                        statsGraph(navController)
+                        searchGraph(navController)
+                        saferGraph(navController)
+                        settingsGraph(navController)
+                    }
+                }
                 AnimatedVisibility(
                     visible = isBottomBarShown,
+                    modifier = Modifier.align(Alignment.BottomCenter),
                     enter = slideInVertically(tween(durationMillis = 250)) { it } +
                         expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
                     exit = slideOutVertically(tween(durationMillis = 250)) { it } +
@@ -187,6 +213,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                     NavigationBar(
                         modifier = Modifier
                             .onSizeChanged { size ->
+                                barHeightPx.intValue = size.height
                                 bottomBarScrollBehavior.state.heightOffsetLimit =
                                     -size.height.toFloat()
                             }
@@ -239,23 +266,6 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                             )
                         }
                     }
-                }
-            }
-        ) { innerPadding ->
-            CompositionLocalProvider(
-                LocalBottomBarNestedScrollConnection provides nestedScrollConnection
-            ) {
-                NavHost(
-                    navController,
-                    startDestination = TabRouter.Journal.route,
-                    modifier = Modifier
-                        .padding(bottom = innerPadding.calculateBottomPadding())
-                ) {
-                    journalGraph(navController)
-                    statsGraph(navController)
-                    searchGraph(navController)
-                    saferGraph(navController)
-                    settingsGraph(navController)
                 }
             }
         }
