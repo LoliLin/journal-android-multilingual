@@ -32,7 +32,7 @@ coroutines = "1.11.0"
 serializationJson = "1.11.0"
 
 # Navigation
-navigationCompose = "2.9.8"                # 传统 Navigation Compose
+navigationCompose = "2.10.0"                # 传统 Navigation Compose
 nav3Core = "1.1.4"                         # Navigation3 (预览版)
 lifecycleViewmodelNav3 = "2.11.0"
 
