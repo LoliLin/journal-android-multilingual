@@ -26,6 +26,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
+import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.DateFormat
 import com.isaakhanimann.journal.ui.utils.TimeFormat
@@ -46,6 +47,9 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var userPreferences: UserPreferences
 
+    @Inject
+    lateinit var experienceRepository: ExperienceRepository
+
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     override val workManagerConfiguration: Configuration
@@ -61,6 +65,12 @@ class JournalApplication : Application(), Configuration.Provider {
         }
         applicationScope.launch {
             userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
+        }
+        applicationScope.launch {
+            com.isaakhanimann.journal.ui.widgets.StatsWidgetData.refresh(
+                this@JournalApplication,
+                experienceRepository
+            )
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".

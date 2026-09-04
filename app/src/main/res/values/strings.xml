@@ -23,4 +23,6 @@
     <string name="safer">Safer</string>
     <string name="stats">Stats</string>
     <string name="settings">Settings</string>
+    <string name="widget_quick_add_description">Quickly add an ingestion</string>
+    <string name="widget_stats_description">Show recent ingestion statistics</string>
 </resources>

@@ -110,6 +110,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(libs.androidx.browser)
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.biometric)
     implementation(libs.androidx.work)

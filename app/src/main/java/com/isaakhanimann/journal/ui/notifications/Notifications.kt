@@ -22,6 +22,8 @@ const val EXTRA_NAVIGATE_TO = "navigateTo"
 const val EXTRA_EXPERIENCE_ID = "experienceId"
 const val NAV_QUICK_NOTE = "quick_note"
 const val NAV_TIME_CAPSULE = "time_capsule"
+const val NAV_ADD_INGESTION = "widget_add_ingestion"
+const val NAV_STATS = "widget_stats"
 
 /** Cancels the effect notification for an experience; used by the "End" action. */
 class EffectNotificationReceiver : BroadcastReceiver() {

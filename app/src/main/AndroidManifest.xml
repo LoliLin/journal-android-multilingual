@@ -78,6 +78,28 @@
         <receiver
             android:name=".ui.notifications.EffectNotificationReceiver"
             android:exported="false" />
+        <receiver
+            android:name=".ui.widgets.QuickAddWidgetReceiver"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_quick_add_info" />
+        </receiver>
+        <receiver
+            android:name=".ui.widgets.StatsWidgetReceiver"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stats_info" />
+        </receiver>
         <provider
           android:name="androidx.core.content.FileProvider"
           android:authorities="in.kawaiis.journal.fileprovider" 

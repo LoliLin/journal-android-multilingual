@@ -60,11 +60,14 @@ import androidx.navigation.compose.rememberNavController
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
+import com.isaakhanimann.journal.ui.main.navigation.graphs.navigateToAddIngestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
+import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
+import com.isaakhanimann.journal.ui.notifications.NAV_STATS
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
@@ -126,6 +129,14 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                         navController.navigateToQuickTimedNote(experienceId)
                     }
                     NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
+                    NAV_ADD_INGESTION -> navController.navigateToAddIngestion()
+                    NAV_STATS -> navController.navigate(TabRouter.Statistics.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
                 }
                 pendingNav = null
             }
