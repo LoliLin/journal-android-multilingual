@@ -7,6 +7,7 @@
     android:background="@drawable/widget_stats_bg"
     android:orientation="vertical"
     android:padding="12dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Last 30 days"
+            android:text="All · 30d"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -58,7 +59,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/widget_stats_ingestions"
+                android:id="@+id/widget_stats_ingestions_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -67,6 +68,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/widget_stats_ingestions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/widget_stat_ingestions"
@@ -82,7 +84,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/widget_stats_experiences"
+                android:id="@+id/widget_stats_experiences_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -91,6 +93,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/widget_stats_experiences"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/widget_stat_experiences"
@@ -106,7 +109,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/widget_stats_substances"
+                android:id="@+id/widget_stats_substances_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -115,6 +118,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/widget_stats_substances"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/widget_stat_substances"

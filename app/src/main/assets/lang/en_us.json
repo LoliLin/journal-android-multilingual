@@ -735,5 +735,14 @@
   "stats_analysis_invalid_range": "Start date is after end date",
   "stats_analysis_relative_total_hint": "Totals are relative to the common dose (× common), so substances can be compared.",
   "stats_analysis_filters": "Filters",
-  "stats_analysis_title_for_consumer": "Analysis: {consumer}"
+  "stats_analysis_title_for_consumer": "Analysis: {consumer}",
+  "widget_config_title": "Widget settings",
+  "widget_config_substance": "Substance",
+  "widget_config_all_substances": "All substances",
+  "widget_stats_edit": "Edit widget",
+  "widget_stat_ingestions": "ingestions",
+  "widget_stat_experiences": "experiences",
+  "widget_stat_substances": "substances",
+  "widget_quick_add_description": "Add an ingestion",
+  "common_save": "Save"
 }

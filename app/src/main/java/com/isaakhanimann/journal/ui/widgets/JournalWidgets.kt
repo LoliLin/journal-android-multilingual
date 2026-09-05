@@ -9,19 +9,27 @@ import android.widget.RemoteViews
 import com.isaakhanimann.journal.MainActivity
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
+import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-private fun pendingActivity(context: Context, navTarget: String, requestCode: Int): PendingIntent =
+private fun pendingActivity(
+    context: Context,
+    navTarget: String,
+    requestCode: Int,
+    substanceName: String? = null
+): PendingIntent =
     PendingIntent.getActivity(
         context,
         requestCode,
         Intent(context, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
             putExtra(EXTRA_NAVIGATE_TO, navTarget)
+            substanceName?.let { putExtra(EXTRA_SUBSTANCE_NAME, it) }
         },
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
@@ -66,19 +74,49 @@ class StatsWidgetProvider : AppWidgetProvider() {
     companion object {
         fun render(context: Context, appWidgetId: Int): RemoteViews {
             val summary = StatsWidgetData.readSummary(context, appWidgetId)
+            val app = context.applicationContext as? com.isaakhanimann.journal.di.JournalApplication
+            val localized = { key: String -> com.isaakhanimann.journal.localization.I18n.translate(context, key) }
             val title = if (summary.substanceName != null) {
-                "${summary.substanceName} · ${summary.days}d"
+                val display = app?.substanceRepo?.getDisplayName(summary.substanceName)
+                    ?: summary.substanceName
+                "$display · ${summary.days}d"
             } else {
-                "All · ${summary.days}d"
+                "${localized("widget_config_all_substances")} · ${summary.days}d"
             }
+            // Tapping the card opens the bound substance page; otherwise the Stats tab.
+            val bodyNavTarget = summary.substanceName?.let { NAV_SUBSTANCE } ?: NAV_STATS
             return RemoteViews(context.packageName, R.layout.widget_stats).apply {
                 setTextViewText(R.id.widget_stats_title, title)
-                setTextViewText(R.id.widget_stats_ingestions, summary.ingestionCount.toString())
-                setTextViewText(R.id.widget_stats_experiences, summary.experienceCount.toString())
-                setTextViewText(R.id.widget_stats_substances, summary.substanceCount.toString())
+                setTextViewText(
+                    R.id.widget_stats_ingestions,
+                    localized("widget_stat_ingestions")
+                )
+                setTextViewText(
+                    R.id.widget_stats_experiences,
+                    localized("widget_stat_experiences")
+                )
+                setTextViewText(
+                    R.id.widget_stats_substances,
+                    localized("widget_stat_substances")
+                )
+                // Numbers as separate views so labels localize without string templates.
+                setTextViewText(R.id.widget_stats_ingestions_count, summary.ingestionCount.toString())
+                setTextViewText(
+                    R.id.widget_stats_experiences_count,
+                    summary.experienceCount.toString()
+                )
+                setTextViewText(
+                    R.id.widget_stats_substances_count,
+                    summary.substanceCount.toString()
+                )
                 setOnClickPendingIntent(
                     R.id.widget_stats_root,
-                    pendingActivity(context, NAV_STATS, appWidgetId)
+                    pendingActivity(
+                        context,
+                        bodyNavTarget,
+                        appWidgetId,
+                        summary.substanceName
+                    )
                 )
                 setOnClickPendingIntent(
                     R.id.widget_stats_add,

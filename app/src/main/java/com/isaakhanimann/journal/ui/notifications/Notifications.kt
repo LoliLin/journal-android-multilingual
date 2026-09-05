@@ -20,10 +20,12 @@ import java.time.ZoneId
 /** Intent extras used by notification taps to steer the app to a target screen. */
 const val EXTRA_NAVIGATE_TO = "navigateTo"
 const val EXTRA_EXPERIENCE_ID = "experienceId"
+const val EXTRA_SUBSTANCE_NAME = "substanceName"
 const val NAV_QUICK_NOTE = "quick_note"
 const val NAV_TIME_CAPSULE = "time_capsule"
 const val NAV_ADD_INGESTION = "widget_add_ingestion"
 const val NAV_STATS = "widget_stats"
+const val NAV_SUBSTANCE = "widget_substance"
 
 /** Cancels the effect notification for an experience; used by the "End" action. */
 class EffectNotificationReceiver : BroadcastReceiver() {
