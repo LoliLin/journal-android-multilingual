@@ -112,6 +112,7 @@ jobs:
       - name: Build release APK & AAB (main repo)
         if: github.repository == 'LoliLin/journal-android-multilingual'
         env:
+          ENABLE_SPLITS: "true"
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
