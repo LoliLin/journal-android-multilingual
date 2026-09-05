@@ -735,5 +735,15 @@
   "stats_analysis_invalid_range": "开始日期晚于结束日期",
   "stats_analysis_relative_total_hint": "总量以常见剂量为基准（× 常见剂量），便于跨物质比较。",
   "stats_analysis_filters": "筛选条件",
-  "stats_analysis_title_for_consumer": "分析：{consumer}"
+  "stats_analysis_title_for_consumer": "分析：{consumer}",
+  "widget_config_title": "小组件设置",
+  "widget_config_substance": "物质",
+  "widget_config_all_substances": "全部物质",
+  "widget_config_period": "时间周期",
+  "widget_stats_edit": "编辑小组件",
+  "widget_stat_ingestions": "次摄入",
+  "widget_stat_experiences": "次体验",
+  "widget_stat_substances": "种物质",
+  "widget_quick_add_description": "记录一次摄入",
+  "common_save": "保存"
 }

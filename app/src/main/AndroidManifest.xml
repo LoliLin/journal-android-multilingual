@@ -78,6 +78,22 @@
         <receiver
             android:name=".ui.notifications.EffectNotificationReceiver"
             android:exported="false" />
+        <activity
+            android:name=".ui.widgets.StatsWidgetConfigActivity"
+            android:exported="false"
+            android:theme="@style/Theme.App.Starting" />
+        <receiver
+            android:name=".ui.widgets.StatsWidgetProvider"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_OPTIONS_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stats_info" />
+        </receiver>
         <provider
           android:name="androidx.core.content.FileProvider"
           android:authorities="in.kawaiis.journal.fileprovider" 

@@ -60,11 +60,21 @@ import androidx.navigation.compose.rememberNavController
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
+import com.isaakhanimann.journal.ui.main.navigation.graphs.navigateToAddIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseRouteOfAddIngestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
+import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
 import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
+import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
+import com.isaakhanimann.journal.ui.notifications.NAV_STATS
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
+import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
@@ -74,9 +84,11 @@ import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
 import com.isaakhanimann.journal.ui.main.navigation.routers.isMainTabRootRoute
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
-private fun parseNavIntent(intent: android.content.Intent?): Pair<String, Int>? {
+private fun parseNavIntent(intent: android.content.Intent?): Triple<String, Int, String?>? {
     val target = intent?.getStringExtra(EXTRA_NAVIGATE_TO) ?: return null
-    return target to intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
+    val experienceId = intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
+    val substanceName = intent.getStringExtra(EXTRA_SUBSTANCE_NAME)
+    return Triple(target, experienceId, substanceName)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -91,7 +103,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     // Notification taps can steer the app to a target screen (quick note / time capsule).
     // Tracked above the gate so the intent survives the accept/lock screens and is
     // consumed by the content branch once it composes.
-    var pendingNav by remember { mutableStateOf<Pair<String, Int>?>(null) }
+    var pendingNav by remember { mutableStateOf<Triple<String, Int, String?>?>(null) }
     val activity = LocalContext.current as? androidx.activity.ComponentActivity
     DisposableEffect(activity) {
         val listener = { intent: android.content.Intent ->
@@ -120,12 +132,29 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         val currentDestination = navBackStackEntry?.destination
 
         LaunchedEffect(pendingNav) {
-            pendingNav?.let { (target, experienceId) ->
+            pendingNav?.let { (target, experienceId, substanceName) ->
                 when (target) {
                     NAV_QUICK_NOTE -> if (experienceId > 0) {
                         navController.navigateToQuickTimedNote(experienceId)
                     }
                     NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
+                    NAV_ADD_INGESTION -> navController.navigateToAddIngestion()
+                    NAV_STATS -> navController.navigate(TabRouter.Statistics.route) {
+                        popUpTo(navController.graph.findStartDestination().id) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                    NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) {
+                        navController.navigateToSubstanceScreen(substanceName)
+                    }
+                    NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
+                        navController.navigateToSubstanceCompanionScreen(substanceName, null)
+                    }
+                    NAV_CHOOSE_ROUTE -> if (!substanceName.isNullOrBlank()) {
+                        navController.navigateToChooseRouteOfAddIngestion(substanceName)
+                    }
                 }
                 pendingNav = null
             }

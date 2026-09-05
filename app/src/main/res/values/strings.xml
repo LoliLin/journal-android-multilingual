@@ -23,4 +23,14 @@
     <string name="safer">Safer</string>
     <string name="stats">Stats</string>
     <string name="settings">Settings</string>
+    <string name="widget_quick_add_description">Quickly add an ingestion</string>
+    <string name="widget_quick_add_label">Add</string>
+    <string name="widget_stats_description">Show recent ingestion statistics</string>
+    <string name="widget_stat_ingestions">ingestions</string>
+    <string name="widget_stat_experiences">experiences</string>
+    <string name="widget_stat_substances">substances</string>
+    <string name="widget_stats_edit">Edit widget</string>
+    <string name="widget_config_title">Widget settings</string>
+    <string name="widget_config_substance">Substance</string>
+    <string name="widget_config_all_substances">All substances</string>
 </resources>

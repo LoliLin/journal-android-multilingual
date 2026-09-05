@@ -26,6 +26,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
+import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.DateFormat
 import com.isaakhanimann.journal.ui.utils.TimeFormat
@@ -46,6 +47,12 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var userPreferences: UserPreferences
 
+    @Inject
+    lateinit var experienceRepository: ExperienceRepository
+
+    @Inject
+    lateinit var substanceRepo: com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     override val workManagerConfiguration: Configuration
@@ -61,6 +68,29 @@ class JournalApplication : Application(), Configuration.Provider {
         }
         applicationScope.launch {
             userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
+        }
+        applicationScope.launch {
+            // Keep desktop widgets in sync: an initial pass, then re-render
+            // whenever the ingestion table changes (insert/edit/delete) or the
+            // app language changes (widget labels are localized), so the desktop
+            // never waits for the hourly updatePeriod.
+            com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.observeDataChanges(
+                this@JournalApplication,
+                experienceRepository,
+                applicationScope
+            )
+            launch {
+                userPreferences.selectedLanguageFlow.collect {
+                    com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
+                        this@JournalApplication,
+                        experienceRepository
+                    )
+                }
+            }
+            com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
+                this@JournalApplication,
+                experienceRepository
+            )
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".

@@ -735,5 +735,15 @@
   "stats_analysis_invalid_range": "開始日期晚於結束日期",
   "stats_analysis_relative_total_hint": "總量以常見劑量為基準（× 常見劑量），便於跨物質比較。",
   "stats_analysis_filters": "篩選條件",
-  "stats_analysis_title_for_consumer": "分析：{consumer}"
+  "stats_analysis_title_for_consumer": "分析：{consumer}",
+  "widget_config_title": "小工具設定",
+  "widget_config_substance": "物質",
+  "widget_config_all_substances": "全部物質",
+  "widget_config_period": "時間週期",
+  "widget_stats_edit": "編輯小工具",
+  "widget_stat_ingestions": "次攝入",
+  "widget_stat_experiences": "次體驗",
+  "widget_stat_substances": "種物質",
+  "widget_quick_add_description": "記錄一次攝入",
+  "common_save": "儲存"
 }
