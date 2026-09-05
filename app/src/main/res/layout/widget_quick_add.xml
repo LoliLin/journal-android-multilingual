@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/widget_quick_add_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1B5E20">
+    android:background="@drawable/widget_quick_add_bg"
+    android:gravity="center"
+    android:orientation="horizontal">
 
-    <LinearLayout
+    <ImageView
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:contentDescription="@string/widget_quick_add_description"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="#FFFFFF" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp" />
-    </LinearLayout>
-</FrameLayout>
+        android:layout_marginStart="6dp"
+        android:text="@string/widget_quick_add_label"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</LinearLayout>
