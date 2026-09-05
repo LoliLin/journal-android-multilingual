@@ -67,10 +67,28 @@ class JournalApplication : Application(), Configuration.Provider {
             userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
         }
         applicationScope.launch {
-            com.isaakhanimann.journal.ui.widgets.StatsWidgetData.refresh(
-                this@JournalApplication,
-                experienceRepository
+            // Refresh every placed stats widget so the desktop stays in sync.
+            val manager = android.appwidget.AppWidgetManager.getInstance(this@JournalApplication)
+            val ids = manager.getAppWidgetIds(
+                android.content.ComponentName(
+                    this@JournalApplication,
+                    com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider::class.java
+                )
             )
+            ids.forEach { id ->
+                com.isaakhanimann.journal.ui.widgets.StatsWidgetData.refresh(
+                    this@JournalApplication,
+                    id,
+                    experienceRepository
+                )
+                manager.updateAppWidget(
+                    id,
+                    com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider.render(
+                        this@JournalApplication,
+                        id
+                    )
+                )
+            }
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".

@@ -15,10 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-/**
- * Classic RemoteViews widgets: tap opens the app via MainActivity's intent
- * steering (EXTRA_NAVIGATE_TO), so no custom broadcast receiver is needed.
- */
 private fun pendingActivity(context: Context, navTarget: String, requestCode: Int): PendingIntent =
     PendingIntent.getActivity(
         context,
@@ -30,25 +26,15 @@ private fun pendingActivity(context: Context, navTarget: String, requestCode: In
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
 
-class QuickAddWidgetProvider : AppWidgetProvider() {
-
-    override fun onUpdate(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetIds: IntArray
-    ) {
-        val views = RemoteViews(context.packageName, R.layout.widget_quick_add)
-        views.setOnClickPendingIntent(
-            R.id.widget_quick_add_root,
-            pendingActivity(context, NAV_ADD_INGESTION, REQUEST_CODE_ADD)
-        )
-        appWidgetIds.forEach { appWidgetManager.updateAppWidget(it, views) }
-    }
-
-    companion object {
-        private const val REQUEST_CODE_ADD = 1001
-    }
-}
+private fun pendingConfigure(context: Context, appWidgetId: Int): PendingIntent =
+    PendingIntent.getActivity(
+        context,
+        appWidgetId,
+        Intent(context, StatsWidgetConfigActivity::class.java).apply {
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+        },
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+    )
 
 class StatsWidgetProvider : AppWidgetProvider() {
 
@@ -60,34 +46,49 @@ class StatsWidgetProvider : AppWidgetProvider() {
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Recompute before rendering so the widget always shows current data.
                 val app = context.applicationContext as? com.isaakhanimann.journal.di.JournalApplication
-                if (app != null) {
-                    StatsWidgetData.refresh(context, app.experienceRepository)
+                appWidgetIds.forEach { appWidgetId ->
+                    if (app != null) {
+                        StatsWidgetData.refresh(context, appWidgetId, app.experienceRepository)
+                    }
+                    appWidgetManager.updateAppWidget(appWidgetId, render(context, appWidgetId))
                 }
-                render(context, appWidgetManager, appWidgetIds)
             } finally {
                 pending.finish()
             }
         }
     }
 
-    /** Pushes the stored summary into the widget views. */
-    fun render(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
-        val summary = StatsWidgetData.readFromPreferences(context)
-        val views = RemoteViews(context.packageName, R.layout.widget_stats).apply {
-            setTextViewText(R.id.widget_stats_ingestions, summary.ingestionCount.toString())
-            setTextViewText(R.id.widget_stats_experiences, summary.experienceCount.toString())
-            setTextViewText(R.id.widget_stats_substances, summary.substanceCount.toString())
-            setOnClickPendingIntent(
-                R.id.widget_stats_root,
-                pendingActivity(context, NAV_STATS, REQUEST_CODE_STATS)
-            )
-        }
-        appWidgetIds.forEach { appWidgetManager.updateAppWidget(it, views) }
+    override fun onDeleted(context: Context, appWidgetIds: IntArray) {
+        StatsWidgetData.deleteConfig(context, appWidgetIds)
     }
 
     companion object {
-        private const val REQUEST_CODE_STATS = 1002
+        fun render(context: Context, appWidgetId: Int): RemoteViews {
+            val summary = StatsWidgetData.readSummary(context, appWidgetId)
+            val title = if (summary.substanceName != null) {
+                "${summary.substanceName} · ${summary.days}d"
+            } else {
+                "All · ${summary.days}d"
+            }
+            return RemoteViews(context.packageName, R.layout.widget_stats).apply {
+                setTextViewText(R.id.widget_stats_title, title)
+                setTextViewText(R.id.widget_stats_ingestions, summary.ingestionCount.toString())
+                setTextViewText(R.id.widget_stats_experiences, summary.experienceCount.toString())
+                setTextViewText(R.id.widget_stats_substances, summary.substanceCount.toString())
+                setOnClickPendingIntent(
+                    R.id.widget_stats_root,
+                    pendingActivity(context, NAV_STATS, appWidgetId)
+                )
+                setOnClickPendingIntent(
+                    R.id.widget_stats_add,
+                    pendingActivity(context, NAV_ADD_INGESTION, 100_000 + appWidgetId)
+                )
+                setOnClickPendingIntent(
+                    R.id.widget_stats_settings,
+                    pendingConfigure(context, appWidgetId)
+                )
+            }
+        }
     }
 }

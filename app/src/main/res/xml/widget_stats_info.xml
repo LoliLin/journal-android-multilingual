@@ -7,6 +7,6 @@
     android:updatePeriodMillis="3600000"
     android:initialLayout="@layout/widget_stats"
     android:previewLayout="@layout/widget_stats"
-    android:resizeMode="horizontal|vertical"
+    android:configure="com.isaakhanimann.journal.ui.widgets.StatsWidgetConfigActivity"
     android:widgetCategory="home_screen"
     android:description="@string/widget_stats_description" />
