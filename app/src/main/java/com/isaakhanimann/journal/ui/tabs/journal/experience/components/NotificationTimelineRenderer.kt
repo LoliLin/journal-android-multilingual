@@ -96,9 +96,13 @@ suspend fun renderTimelineBitmapForNotification(
             context = context,
             widthPx = widthPx,
             lifecycleView = lifecycleView,
-            // The established call sites wait a frame after layout before
-            // snapping; without this the bitmap comes out blank.
-            postLayoutDelayMs = 300L,
+            // The timeline canvas needs one full frame after layout before
+            // its draw pass has content; the other offscreen call sites
+            // (TimelineScreen, ExperienceRow) use the same delay.
+            postLayoutDelayMs = 400L,
+            // Draw on the software canvas: hardware layers are not readable
+            // into the bitmap on some devices, producing a blank picture.
+            drawOnSoftwareCanvas = true,
             content = {
                 JournalTheme {
                     ExperienceEffectTimelines(
