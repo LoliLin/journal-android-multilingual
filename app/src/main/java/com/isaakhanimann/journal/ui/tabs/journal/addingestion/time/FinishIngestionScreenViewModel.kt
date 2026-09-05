@@ -302,16 +302,19 @@ class FinishIngestionScreenViewModel @Inject constructor(
         }
     }
 
-    fun createSaveAndDismissAfter(dismiss: () -> Unit) {
+    fun createSaveAndDismissAfter(
+        dismiss: () -> Unit,
+        lifecycleView: android.view.View? = null
+    ) {
         viewModelScope.launch {
-            createAndSaveIngestion()
+            createAndSaveIngestion(lifecycleView)
             withContext(Dispatchers.Main) {
                 dismiss()
             }
         }
     }
 
-    private suspend fun createAndSaveIngestion() {
+    private suspend fun createAndSaveIngestion(lifecycleView: android.view.View?) {
         val substanceCompanion = SubstanceCompanion(
             substanceName,
             color = selectedColor
@@ -347,11 +350,31 @@ class FinishIngestionScreenViewModel @Inject constructor(
         }
         // Fork feature: keep an "effects in progress" notification with quick-note access.
         if (userPreferences.isEffectNotificationEnabledFlow.first()) {
+            // Attach the effect timeline as the notification picture when a view
+            // tree is available (save always runs on-screen, before dismissal).
+            val timelineBitmap = lifecycleView?.let { view ->
+                val experienceId = savedExperienceId
+                val ingestions = experienceRepo
+                    .getIngestionsWithCompanionsFlow(experienceId).first()
+                val ratings = experienceRepo.getRatingsFlow(experienceId).first()
+                val timedNotes = experienceRepo.getTimedNotes(experienceId)
+                com.isaakhanimann.journal.ui.tabs.journal.experience.components
+                    .renderTimelineBitmapForNotification(
+                        context = appContext,
+                        ingestions = ingestions,
+                        ratings = ratings,
+                        timedNotes = timedNotes,
+                        substanceRepo = substanceRepo,
+                        lifecycleView = view,
+                        widthPx = appContext.resources.displayMetrics.widthPixels
+                    )
+            }
             Notifications.showEffectNotification(
                 context = appContext,
                 experienceId = savedExperienceId,
                 substanceName = substanceName,
-                ingestionTime = ingestionTime
+                ingestionTime = ingestionTime,
+                timelineBitmap = timelineBitmap
             )
         }
     }
