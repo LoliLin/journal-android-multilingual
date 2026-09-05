@@ -70,28 +70,27 @@ class JournalApplication : Application(), Configuration.Provider {
             userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
         }
         applicationScope.launch {
-            // Refresh every placed stats widget so the desktop stays in sync.
-            val manager = android.appwidget.AppWidgetManager.getInstance(this@JournalApplication)
-            val ids = manager.getAppWidgetIds(
-                android.content.ComponentName(
-                    this@JournalApplication,
-                    com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider::class.java
-                )
+            // Keep desktop widgets in sync: an initial pass, then re-render
+            // whenever the ingestion table changes (insert/edit/delete) or the
+            // app language changes (widget labels are localized), so the desktop
+            // never waits for the hourly updatePeriod.
+            com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.observeDataChanges(
+                this@JournalApplication,
+                experienceRepository,
+                applicationScope
             )
-            ids.forEach { id ->
-                com.isaakhanimann.journal.ui.widgets.StatsWidgetData.refresh(
-                    this@JournalApplication,
-                    id,
-                    experienceRepository
-                )
-                manager.updateAppWidget(
-                    id,
-                    com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider.render(
+            launch {
+                userPreferences.selectedLanguageFlow.collect {
+                    com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
                         this@JournalApplication,
-                        id
+                        experienceRepository
                     )
-                )
+                }
             }
+            com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
+                this@JournalApplication,
+                experienceRepository
+            )
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".

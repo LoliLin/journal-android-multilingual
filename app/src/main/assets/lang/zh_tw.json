@@ -739,6 +739,7 @@
   "widget_config_title": "小工具設定",
   "widget_config_substance": "物質",
   "widget_config_all_substances": "全部物質",
+  "widget_config_period": "時間週期",
   "widget_stats_edit": "編輯小工具",
   "widget_stat_ingestions": "次攝入",
   "widget_stat_experiences": "次體驗",

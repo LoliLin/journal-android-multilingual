@@ -122,26 +122,29 @@ private fun StatsWidgetConfigContent(
             text = i18n("widget_config_title"),
             style = MaterialTheme.typography.titleLarge
         )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 12.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            listOf(7, 30, 90).forEach { days ->
-                FilterChip(
-                    selected = selectedDays == days,
-                    onClick = { selectedDays = days },
-                    label = { Text("${days}d") }
-                )
-            }
-        }
-        Text(
-            text = i18n("widget_config_substance"),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(top = 16.dp)
-        )
         LazyColumn(modifier = Modifier.weight(1f)) {
+            // Period selection first, directly above "All substances", so it is
+            // always visible without scrolling.
+            item {
+                Text(
+                    text = i18n("widget_config_period"),
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    listOf(7, 30, 90).forEach { days ->
+                        FilterChip(
+                            selected = selectedDays == days,
+                            onClick = { selectedDays = days },
+                            label = { Text("${days}d") }
+                        )
+                    }
+                }
+            }
             item {
                 SubstanceRow(
                     name = i18n("widget_config_all_substances"),

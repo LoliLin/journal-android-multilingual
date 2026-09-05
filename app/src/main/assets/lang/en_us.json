@@ -739,6 +739,7 @@
   "widget_config_title": "Widget settings",
   "widget_config_substance": "Substance",
   "widget_config_all_substances": "All substances",
+  "widget_config_period": "Period",
   "widget_stats_edit": "Edit widget",
   "widget_stat_ingestions": "ingestions",
   "widget_stat_experiences": "experiences",

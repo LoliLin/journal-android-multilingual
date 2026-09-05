@@ -739,6 +739,7 @@
   "widget_config_title": "小组件设置",
   "widget_config_substance": "物质",
   "widget_config_all_substances": "全部物质",
+  "widget_config_period": "时间周期",
   "widget_stats_edit": "编辑小组件",
   "widget_stat_ingestions": "次摄入",
   "widget_stat_experiences": "次体验",
