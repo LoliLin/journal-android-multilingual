@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -122,6 +124,7 @@ private fun StatsWidgetConfigContent(
             text = i18n("widget_config_title"),
             style = MaterialTheme.typography.titleLarge
         )
+        Spacer(modifier = Modifier.height(16.dp))
         LazyColumn(modifier = Modifier.weight(1f)) {
             // Period selection first, directly above "All substances", so it is
             // always visible without scrolling.
