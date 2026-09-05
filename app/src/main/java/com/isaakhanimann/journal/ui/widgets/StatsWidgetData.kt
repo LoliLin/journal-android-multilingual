@@ -10,6 +10,13 @@ private const val KEY_INGESTION = "ingestion_count"
 private const val KEY_EXPERIENCE = "experience_count"
 private const val KEY_SUBSTANCE = "substance_count"
 
+/** Summary shown by [StatsWidgetProvider]: counts over the rolling window. */
+data class StatsWidgetSummary(
+    val ingestionCount: Int,
+    val experienceCount: Int,
+    val substanceCount: Int
+)
+
 /** Rolling 30-day summary persisted for the widget composable. */
 object StatsWidgetData {
 
@@ -30,7 +37,7 @@ object StatsWidgetData {
             .apply()
     }
 
-    /** Synchronous read for the Glance composable; no coroutines on the render thread. */
+    /** Synchronous read for RemoteViews; safe on any thread. */
     fun readFromPreferences(context: Context): StatsWidgetSummary {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return StatsWidgetSummary(

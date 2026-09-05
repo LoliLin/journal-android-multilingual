@@ -1,191 +1,84 @@
 package com.isaakhanimann.journal.ui.widgets
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.glance.GlanceId
-import androidx.glance.GlanceModifier
-import androidx.glance.action.clickable
-import androidx.glance.appwidget.GlanceAppWidget
-import androidx.glance.appwidget.GlanceAppWidgetReceiver
-import androidx.glance.appwidget.action.actionStartActivity
-import androidx.glance.appwidget.cornerRadius
-import androidx.glance.appwidget.provideContent
-import androidx.glance.appwidget.updateAll
-import androidx.glance.background
-import androidx.glance.unit.ColorProvider
-import androidx.glance.layout.Alignment
-import androidx.glance.layout.Box
-import androidx.glance.layout.Column
-import androidx.glance.layout.Row
-import androidx.glance.layout.fillMaxSize
-import androidx.glance.layout.fillMaxWidth
-import androidx.glance.layout.padding
-import androidx.glance.text.FontWeight
-import androidx.glance.text.Text
-import androidx.glance.text.TextStyle
+import android.widget.RemoteViews
 import com.isaakhanimann.journal.MainActivity
-import com.isaakhanimann.journal.di.JournalApplication
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
-import androidx.glance.ExperimentalGlanceApi
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalGlanceApi::class)
-private fun addIngestionIntent(context: Context): Intent =
+/**
+ * Classic RemoteViews widgets (no Glance): tap opens the app via MainActivity's
+ * intent steering (EXTRA_NAVIGATE_TO), so no custom broadcast receiver is needed.
+ */
+private fun openAppIntent(context: Context, navTarget: String): Intent =
     Intent(context, MainActivity::class.java).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        putExtra(EXTRA_NAVIGATE_TO, NAV_ADD_INGESTION)
+        putExtra(EXTRA_NAVIGATE_TO, navTarget)
     }
 
-@OptIn(ExperimentalGlanceApi::class)
-private fun statsIntent(context: Context): Intent =
-    Intent(context, MainActivity::class.java).apply {
-        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        putExtra(EXTRA_NAVIGATE_TO, NAV_STATS)
-    }
+private fun pendingActivity(context: Context, navTarget: String, requestCode: Int): PendingIntent =
+    PendingIntent.getActivity(
+        context,
+        requestCode,
+        openAppIntent(context, navTarget),
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+    )
 
-@OptIn(ExperimentalGlanceApi::class)
-class QuickAddWidget : GlanceAppWidget() {
-
-    override suspend fun provideGlance(context: Context, id: GlanceId) {
-        provideContent { Content() }
-    }
-
-    @Composable
-    private fun Content() {
-        val context = androidx.compose.ui.platform.LocalContext.current
-        Box(
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .cornerRadius(16.dp)
-                .background(ColorProvider(Color(0xFF1B5E20)))
-                .clickable(actionStartActivity(addIngestionIntent(context))),
-            contentAlignment = Alignment.Center
-        ) {
-            Column(
-                modifier = GlanceModifier.padding(8.dp),
-                horizontalAlignment = Alignment.Horizontal.CenterHorizontally
-            ) {
-                Text(
-                    text = "+",
-                    style = TextStyle(
-                        color = ColorProvider(Color.White),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                Text(
-                    text = "Add",
-                    style = TextStyle(
-                        color = ColorProvider(Color.White),
-                        fontSize = 12.sp
-                    )
-                )
-            }
-        }
-    }
-}
-
-class QuickAddWidgetReceiver : GlanceAppWidgetReceiver() {
-    override val glanceAppWidget: GlanceAppWidget = QuickAddWidget()
-}
-
-/** Summary shown by [StatsWidget]: counts over the rolling window. */
-data class StatsWidgetSummary(
-    val ingestionCount: Int,
-    val experienceCount: Int,
-    val substanceCount: Int
-)
-
-/** Home-screen widget with recent ingestion statistics; tap opens the Stats tab. */
-@OptIn(ExperimentalGlanceApi::class)
-class StatsWidget : GlanceAppWidget() {
-
-    override suspend fun provideGlance(context: Context, id: GlanceId) {
-        provideContent { Content() }
-    }
-
-    @Composable
-    private fun Content() {
-        val context = androidx.compose.ui.platform.LocalContext.current
-        val summary = StatsWidgetData.readFromPreferences(context)
-        Column(
-            modifier = GlanceModifier
-                .fillMaxSize()
-                .cornerRadius(16.dp)
-                .background(ColorProvider(Color(0xFF263238)))
-                .clickable(actionStartActivity(statsIntent(context)))
-                .padding(10.dp)
-        ) {
-            Text(
-                text = "Journal",
-                style = TextStyle(
-                    color = ColorProvider(Color.White),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = androidx.glance.text.TextAlign.Center
-                ),
-                modifier = GlanceModifier.fillMaxWidth()
-            )
-            StatCell(value = summary.ingestionCount, label = "ingestions")
-            StatCell(value = summary.experienceCount, label = "experiences")
-            StatCell(value = summary.substanceCount, label = "substances")
-        }
-    }
-}
-
-@Composable
-private fun StatCell(value: Int, label: String) {
-    Row(
-        modifier = GlanceModifier.fillMaxWidth().padding(top = 6.dp),
-        verticalAlignment = Alignment.Vertical.CenterVertically
-    ) {
-        Text(
-            text = value.toString(),
-            style = TextStyle(
-                color = ColorProvider(Color.White),
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold
-            )
-        )
-        Text(
-            text = "  $label",
-            style = TextStyle(
-                color = ColorProvider(Color(0xFFB0BEC5)),
-                fontSize = 12.sp
-            )
-        )
-    }
-}
-
-class StatsWidgetReceiver : GlanceAppWidgetReceiver() {
-    override val glanceAppWidget: GlanceAppWidget = StatsWidget()
+class QuickAddWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        super.onUpdate(context, appWidgetManager, appWidgetIds)
-        val pending = goAsync()
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val app = context.applicationContext as? JournalApplication
-                if (app != null) {
-                    StatsWidgetData.refresh(context, app.experienceRepository)
-                    glanceAppWidget.updateAll(context)
-                }
-            } finally {
-                pending.finish()
-            }
-        }
+        val views = RemoteViews(context.packageName, R.layout.widget_quick_add)
+        views.setOnClickPendingIntent(
+            R.id.widget_quick_add_root,
+            pendingActivity(context, NAV_ADD_INGESTION, REQUEST_CODE_ADD)
+        )
+        appWidgetIds.forEach { appWidgetManager.updateAppWidget(it, views) }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_ADD = 1001
+    }
+}
+
+class StatsWidgetProvider : AppWidgetProvider() {
+
+    override fun onUpdate(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetIds: IntArray
+    ) {
+        val summary = StatsWidgetData.readFromPreferences(context)
+        val views = RemoteViews(context.packageName, R.layout.widget_stats)
+        views.setTextViewText(
+            R.id.widget_stats_ingestions,
+            "${summary.ingestionCount}  ingestions"
+        )
+        views.setTextViewText(
+            R.id.widget_stats_experiences,
+            "${summary.experienceCount}  experiences"
+        )
+        views.setTextViewText(
+            R.id.widget_stats_substances,
+            "${summary.substanceCount}  substances"
+        )
+        views.setOnClickPendingIntent(
+            R.id.widget_stats_root,
+            pendingActivity(context, NAV_STATS, REQUEST_CODE_STATS)
+        )
+        appWidgetIds.forEach { appWidgetManager.updateAppWidget(it, views) }
+    }
+
+    companion object {
+        private const val REQUEST_CODE_STATS = 1002
     }
 }

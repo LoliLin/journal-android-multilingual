@@ -5,8 +5,8 @@
     android:targetCellWidth="2"
     android:targetCellHeight="2"
     android:updatePeriodMillis="3600000"
-    android:initialLayout="@layout/widget_placeholder"
-    android:previewLayout="@layout/widget_stats_preview"
+    android:initialLayout="@layout/widget_stats"
+    android:previewLayout="@layout/widget_stats"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:description="@string/widget_stats_description" />
