@@ -31,9 +31,7 @@
             android:layout_height="26dp"
             android:contentDescription="@string/widget_quick_add_description"
             android:src="@android:drawable/ic_input_add"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            app:tint="#FFFFFF" />
+            android:tint="#FFFFFF" />
 
         <ImageView
             android:id="@+id/widget_stats_settings"
@@ -42,7 +40,7 @@
             android:layout_marginStart="8dp"
             android:contentDescription="@string/widget_stats_edit"
             android:src="@android:drawable/ic_menu_preferences"
-            app:tint="#B0BEC5" />
+            android:tint="#B0BEC5" />
     </LinearLayout>
 
     <LinearLayout
