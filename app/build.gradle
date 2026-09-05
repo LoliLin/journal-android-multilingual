@@ -76,9 +76,11 @@ android {
 
     splits {
         abi {
-            enable false
-            reset()  
-            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64" 
+            // Per-ABI APKs only when the CI sets ENABLE_SPLITS=true; local and
+            // debug builds stay split-free so assembleDebug produces one APK.
+            enable System.getenv("ENABLE_SPLITS") == "true"
+            reset()
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
             universalApk true
         }
     }
