@@ -62,6 +62,7 @@ import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.navigateToAddIngestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
 import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
@@ -71,6 +72,7 @@ import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
 import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
@@ -144,6 +146,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                     }
                     NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) {
                         navController.navigateToSubstanceScreen(substanceName)
+                    }
+                    NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
+                        navController.navigateToSubstanceCompanionScreen(substanceName, null)
                     }
                 }
                 pendingNav = null

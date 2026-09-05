@@ -12,7 +12,7 @@ import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
-import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,7 +37,9 @@ private fun pendingActivity(
 private fun pendingConfigure(context: Context, appWidgetId: Int): PendingIntent =
     PendingIntent.getActivity(
         context,
-        appWidgetId,
+        // Distinct request-code space: PendingIntent collisions silently replace
+        // one another, which made the gear button open the wrong screen.
+        200_000 + appWidgetId,
         Intent(context, StatsWidgetConfigActivity::class.java).apply {
             putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
         },
@@ -83,8 +85,10 @@ class StatsWidgetProvider : AppWidgetProvider() {
             } else {
                 "${localized("widget_config_all_substances")} · ${summary.days}d"
             }
-            // Tapping the card opens the bound substance page; otherwise the Stats tab.
-            val bodyNavTarget = summary.substanceName?.let { NAV_SUBSTANCE } ?: NAV_STATS
+            // Tapping the card opens the bound substance's ingestion (companion)
+            // page; with All substances it opens the Stats tab.
+            val bodyNavTarget =
+                summary.substanceName?.let { NAV_SUBSTANCE_COMPANION } ?: NAV_STATS
             return RemoteViews(context.packageName, R.layout.widget_stats).apply {
                 setTextViewText(R.id.widget_stats_title, title)
                 setTextViewText(
@@ -117,10 +121,6 @@ class StatsWidgetProvider : AppWidgetProvider() {
                         appWidgetId,
                         summary.substanceName
                     )
-                )
-                setOnClickPendingIntent(
-                    R.id.widget_stats_add,
-                    pendingActivity(context, NAV_ADD_INGESTION, 100_000 + appWidgetId)
                 )
                 setOnClickPendingIntent(
                     R.id.widget_stats_settings,

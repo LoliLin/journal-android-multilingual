@@ -26,13 +26,7 @@
             android:textSize="13sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/widget_stats_add"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:contentDescription="@string/widget_quick_add_description"
-            android:src="@android:drawable/ic_input_add"
-            android:tint="#FFFFFF" />
+
 
         <ImageView
             android:id="@+id/widget_stats_settings"

@@ -58,11 +58,15 @@ class StatsWidgetConfigActivity : ComponentActivity() {
                 this@StatsWidgetConfigActivity,
                 app.experienceRepository
             )
+            // Localized display names, keyed by the stored substance name.
+            val displayNames: Map<String, String> = names.associateWith { name ->
+                app.substanceRepo.getDisplayName(name)
+            }
             setContent {
                 JournalTheme {
                     Surface(color = MaterialTheme.colorScheme.background) {
                         StatsWidgetConfigContent(
-                            substanceNames = names,
+                            substanceDisplayNames = displayNames,
                             initialSubstance = config.substanceName,
                             initialDays = config.days,
                             onSave = { substanceName, days ->
@@ -106,7 +110,7 @@ class StatsWidgetConfigActivity : ComponentActivity() {
 
 @Composable
 private fun StatsWidgetConfigContent(
-    substanceNames: List<String>,
+    substanceDisplayNames: Map<String, String>,
     initialSubstance: String?,
     initialDays: Int,
     onSave: (substanceName: String?, days: Int) -> Unit
@@ -145,9 +149,9 @@ private fun StatsWidgetConfigContent(
                     onClick = { selectedSubstance = null }
                 )
             }
-            items(substanceNames) { name ->
+            items(substanceDisplayNames.entries.toList()) { (name, displayName) ->
                 SubstanceRow(
-                    name = name,
+                    name = displayName,
                     isSelected = selectedSubstance == name,
                     onClick = { selectedSubstance = name }
                 )
