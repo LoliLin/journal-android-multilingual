@@ -12,7 +12,7 @@ import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
-import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
+import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -85,10 +85,10 @@ class StatsWidgetProvider : AppWidgetProvider() {
             } else {
                 "${localized("widget_config_all_substances")} · ${summary.days}d"
             }
-            // Tapping the card opens the bound substance's ingestion (companion)
-            // page; with All substances it opens the Stats tab.
+            // Tapping the card opens the "choose administration route" page for
+            // the bound substance (the ingestion flow); All opens the Stats tab.
             val bodyNavTarget =
-                summary.substanceName?.let { NAV_SUBSTANCE_COMPANION } ?: NAV_STATS
+                summary.substanceName?.let { NAV_CHOOSE_ROUTE } ?: NAV_STATS
             return RemoteViews(context.packageName, R.layout.widget_stats).apply {
                 setTextViewText(R.id.widget_stats_title, title)
                 setTextViewText(
@@ -108,6 +108,12 @@ class StatsWidgetProvider : AppWidgetProvider() {
                 setTextViewText(
                     R.id.widget_stats_experiences_count,
                     summary.experienceCount.toString()
+                )
+                // Substance count is meaningless when one substance is bound.
+                setViewVisibility(
+                    R.id.widget_stats_substances_column,
+                    if (summary.substanceName == null) android.view.View.VISIBLE
+                    else android.view.View.GONE
                 )
                 setTextViewText(
                     R.id.widget_stats_substances_count,

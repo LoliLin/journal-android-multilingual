@@ -61,6 +61,7 @@ import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.navigateToAddIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseRouteOfAddIngestion
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
 import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
@@ -72,6 +73,7 @@ import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
 import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
+import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
 import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
@@ -149,6 +151,9 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
                     }
                     NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
                         navController.navigateToSubstanceCompanionScreen(substanceName, null)
+                    }
+                    NAV_CHOOSE_ROUTE -> if (!substanceName.isNullOrBlank()) {
+                        navController.navigateToChooseRouteOfAddIngestion(substanceName)
                     }
                 }
                 pendingNav = null

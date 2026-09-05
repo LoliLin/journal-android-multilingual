@@ -9,5 +9,6 @@
     android:previewLayout="@layout/widget_stats"
     android:previewImage="@drawable/widget_stats_preview"
     android:configure="com.isaakhanimann.journal.ui.widgets.StatsWidgetConfigActivity"
+    android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:description="@string/widget_stats_description" />

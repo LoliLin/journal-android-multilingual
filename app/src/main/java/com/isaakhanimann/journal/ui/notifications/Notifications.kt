@@ -26,6 +26,7 @@ const val NAV_TIME_CAPSULE = "time_capsule"
 const val NAV_ADD_INGESTION = "widget_add_ingestion"
 const val NAV_STATS = "widget_stats"
 const val NAV_SUBSTANCE = "widget_substance"
+const val NAV_CHOOSE_ROUTE = "widget_choose_route"
 const val NAV_SUBSTANCE_COMPANION = "widget_substance_companion"
 
 /** Cancels the effect notification for an experience; used by the "End" action. */
