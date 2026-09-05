@@ -42,6 +42,13 @@ class MainActivity : FragmentActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Screen-on refreshes for the effect-notification timeline register once
+        // here; actual re-renders run through the activity's view tree below.
+        val app = application as com.isaakhanimann.journal.di.JournalApplication
+        com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher.register(
+            this,
+            app.applicationScope
+        )
         setContent {
             JournalTheme {
                 Surface(
@@ -56,6 +63,14 @@ class MainActivity : FragmentActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Foregrounded again: the activity view tree is available, so any
+        // pending (dirty or overdue) timeline refresh can render now.
+        val root = findViewById<android.view.View>(android.R.id.content)
+        com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher.flushIfDue(
+            this,
+            root,
+            force = false
+        )
         // Keep the stats widget in sync after any journal change made in-app.
         val ids = AppWidgetManager.getInstance(this).getAppWidgetIds(
             ComponentName(this, StatsWidgetProvider::class.java)

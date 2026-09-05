@@ -43,14 +43,14 @@ import kotlinx.coroutines.flow.flowOn
 
 @Singleton
 class ExperienceRepository @Inject constructor(private val experienceDao: ExperienceDao) {
-    suspend fun insert(rating: ShulginRating) = experienceDao.insert(rating)
-    suspend fun insert(customUnit: CustomUnit) = experienceDao.insert(customUnit).toInt()
-    suspend fun insert(timedNote: TimedNote) = experienceDao.insert(timedNote)
-    suspend fun update(experience: Experience) = experienceDao.update(experience)
-    suspend fun update(ingestion: Ingestion) = experienceDao.update(ingestion)
-    suspend fun update(rating: ShulginRating) = experienceDao.update(rating)
-    suspend fun update(customUnit: CustomUnit) = experienceDao.update(customUnit)
-    suspend fun update(timedNote: TimedNote) = experienceDao.update(timedNote)
+    suspend fun insert(rating: ShulginRating) = experienceDao.insert(rating).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun insert(customUnit: CustomUnit) = experienceDao.insert(customUnit).also { JournalDataEvents.notifyJournalChanged() }.toInt()
+    suspend fun insert(timedNote: TimedNote) = experienceDao.insert(timedNote).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(experience: Experience) = experienceDao.update(experience).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(ingestion: Ingestion) = experienceDao.update(ingestion).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(rating: ShulginRating) = experienceDao.update(rating).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(customUnit: CustomUnit) = experienceDao.update(customUnit).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(timedNote: TimedNote) = experienceDao.update(timedNote).also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun migrateBenzydamine() = experienceDao.migrateBenzydamine()
     suspend fun migrateCannabisAndMushroomUnits() = experienceDao.migrateCannabisAndMushroomUnits()
@@ -80,17 +80,21 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
 
     suspend fun deleteEverything() = experienceDao.deleteEverything()
 
-    suspend fun delete(ingestion: Ingestion) = experienceDao.delete(ingestion)
-    suspend fun delete(customUnit: CustomUnit) = experienceDao.delete(customUnit)
+    suspend fun delete(ingestion: Ingestion) = experienceDao.delete(ingestion).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun delete(customUnit: CustomUnit) = experienceDao.delete(customUnit).also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun deleteEverythingOfExperience(experienceId: Int) =
         experienceDao.deleteEverythingOfExperience(experienceId)
+            .also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun delete(experience: Experience) = experienceDao.delete(experience)
+        .also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun delete(rating: ShulginRating) = experienceDao.delete(rating)
+        .also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun delete(timedNote: TimedNote) = experienceDao.delete(timedNote)
+        .also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun delete(experienceWithIngestions: ExperienceWithIngestions) =
         experienceDao.deleteExperienceWithIngestions(experienceWithIngestions)

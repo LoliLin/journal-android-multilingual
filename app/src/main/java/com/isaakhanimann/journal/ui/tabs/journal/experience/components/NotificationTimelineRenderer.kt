@@ -6,6 +6,7 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.components
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.util.Log
 import android.view.View
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,10 +36,19 @@ fun buildIngestionElements(
         val ingestion = oneIngestionWithComp.ingestion
         val roa = substanceRepo.getSubstance(ingestion.substanceName)
             ?.getRoa(ingestion.administrationRoute)
-        val numDots = roa?.roaDose?.getNumDots(
-            ingestionDose = ingestion.dose,
-            ingestionUnits = ingestion.units
-        )
+        // Custom-unit doses must resolve through the unit conversion; mirroring
+        // ExperienceViewModel.getIngestionElements.
+        val numDots = if (oneIngestionWithComp.customUnit != null) {
+            roa?.roaDose?.getNumDots(
+                ingestionDose = oneIngestionWithComp.customUnitDose?.calculatedDose,
+                ingestionUnits = oneIngestionWithComp.customUnit?.originalUnit
+            )
+        } else {
+            roa?.roaDose?.getNumDots(
+                ingestionDose = ingestion.dose,
+                ingestionUnits = ingestion.units
+            )
+        }
         IngestionElement(
             ingestionWithCompanionAndCustomUnit = oneIngestionWithComp,
             roaDuration = roa?.roaDuration,
@@ -71,11 +81,24 @@ suspend fun renderTimelineBitmapForNotification(
     val dataForRatings = ratings.mapNotNull {
         it.time?.let { time -> DataForOneRating(time, it.option) }
     }
+    // OneExperienceScreen shrinks the canvas when the substance data lacks a
+    // full onset/comeup/peak/offset; do the same so the picture is not mostly
+    // empty space.
+    val hasFullDuration = ingestionElements.any {
+        it.roaDuration?.onset != null &&
+            it.roaDuration.comeup != null &&
+            it.roaDuration.peak != null &&
+            it.roaDuration.offset != null
+    }
+    val timelineHeight = if (hasFullDuration) 200.dp else 110.dp
     return try {
         renderComposeViewToBitmap(
             context = context,
             widthPx = widthPx,
             lifecycleView = lifecycleView,
+            // The established call sites wait a frame after layout before
+            // snapping; without this the bitmap comes out blank.
+            postLayoutDelayMs = 300L,
             content = {
                 JournalTheme {
                     ExperienceEffectTimelines(
@@ -84,13 +107,16 @@ suspend fun renderTimelineBitmapForNotification(
                         dataForTimedNotes = timedNotesForTimeline(timedNotes),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp),
+                            .height(timelineHeight),
                         areSubstanceHeightsIndependent = false
                     )
                 }
             }
         )
-    } catch (_: Exception) {
+    } catch (e: Exception) {
+        Log.w(TAG, "Timeline notification bitmap failed", e)
         null
     }
 }
+
+private const val TAG = "NotifTimeline"

@@ -369,6 +369,11 @@ class FinishIngestionScreenViewModel @Inject constructor(
                         widthPx = appContext.resources.displayMetrics.widthPixels
                     )
             }
+            // Longest plausible effect window for this substance+route: feeds the
+            // screen-on refresh cadence (total-duration / 30).
+            val totalDuration = substanceRepo.getSubstance(substanceName)
+                ?.getRoa(administrationRoute)?.roaDuration?.total
+                ?.interpolateAtValueInSeconds(1f)?.let { java.time.Duration.ofSeconds(it.toLong()) }
             Notifications.showEffectNotification(
                 context = appContext,
                 experienceId = savedExperienceId,
@@ -376,6 +381,10 @@ class FinishIngestionScreenViewModel @Inject constructor(
                 ingestionTime = ingestionTime,
                 timelineBitmap = timelineBitmap
             )
+            if (timelineBitmap != null) {
+                com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher
+                    .onNotificationRendered(savedExperienceId, ingestionTime, substanceName, totalDuration)
+            }
         }
     }
 

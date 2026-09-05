@@ -53,7 +53,7 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var substanceRepo: com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
-    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+    val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder()
