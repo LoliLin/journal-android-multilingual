@@ -92,9 +92,13 @@ fun FinishIngestionScreen(
     viewModel: FinishIngestionScreenViewModel = hiltViewModel()
 ) {
     val localDateTime = viewModel.localDateTimeStartFlow.collectAsState().value
+    val view = androidx.compose.ui.platform.LocalView.current
     FinishIngestionScreen(
         createSaveAndDismissAfter = {
-            viewModel.createSaveAndDismissAfter(dismiss = dismissAddIngestionScreens)
+            viewModel.createSaveAndDismissAfter(
+                dismiss = dismissAddIngestionScreens,
+                lifecycleView = view
+            )
         },
         ingestionTimePickerOption = viewModel.ingestionTimePickerOptionFlow.collectAsState().value,
         onChangeTimePickerOption = viewModel::onChangeTimePickerOption,
