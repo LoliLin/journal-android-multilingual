@@ -1,22 +1,14 @@
 package com.isaakhanimann.journal.ui.widgets
 
 import android.content.Context
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 
-private val Context.statsDataStore by preferencesDataStore(name = "widget_stats")
-
-private object Keys {
-    val ingestionCount = intPreferencesKey("ingestion_count")
-    val experienceCount = intPreferencesKey("experience_count")
-    val substanceCount = intPreferencesKey("substance_count")
-}
+private const val PREFS_NAME = "widget_stats"
+private const val KEY_INGESTION = "ingestion_count"
+private const val KEY_EXPERIENCE = "experience_count"
+private const val KEY_SUBSTANCE = "substance_count"
 
 /** Rolling 30-day summary persisted for the widget composable. */
 object StatsWidgetData {
@@ -30,23 +22,21 @@ object StatsWidgetData {
             experienceCount = ingestions.map { it.ingestion.experienceId }.distinct().size,
             substanceCount = ingestions.map { it.ingestion.substanceName }.distinct().size
         )
-        context.statsDataStore.edit { prefs ->
-            prefs[Keys.ingestionCount] = summary.ingestionCount
-            prefs[Keys.experienceCount] = summary.experienceCount
-            prefs[Keys.substanceCount] = summary.substanceCount
-        }
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit()
+            .putInt(KEY_INGESTION, summary.ingestionCount)
+            .putInt(KEY_EXPERIENCE, summary.experienceCount)
+            .putInt(KEY_SUBSTANCE, summary.substanceCount)
+            .apply()
     }
 
-    suspend fun read(context: Context): StatsWidgetSummary {
-        val prefs = context.statsDataStore.data.first()
+    /** Synchronous read for the Glance composable; no coroutines on the render thread. */
+    fun readFromPreferences(context: Context): StatsWidgetSummary {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return StatsWidgetSummary(
-            ingestionCount = prefs[Keys.ingestionCount] ?: 0,
-            experienceCount = prefs[Keys.experienceCount] ?: 0,
-            substanceCount = prefs[Keys.substanceCount] ?: 0
+            ingestionCount = prefs.getInt(KEY_INGESTION, 0),
+            experienceCount = prefs.getInt(KEY_EXPERIENCE, 0),
+            substanceCount = prefs.getInt(KEY_SUBSTANCE, 0)
         )
     }
-
-    /** Synchronous read for the Glance composable (runs on a worker thread). */
-    fun readFromPreferences(context: Context): StatsWidgetSummary =
-        runBlocking { read(context) }
 }

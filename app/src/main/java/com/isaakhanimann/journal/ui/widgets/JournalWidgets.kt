@@ -33,23 +33,26 @@ import com.isaakhanimann.journal.di.JournalApplication
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
 import com.isaakhanimann.journal.ui.notifications.NAV_STATS
+import androidx.glance.ExperimentalGlanceApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalGlanceApi::class)
 private fun addIngestionIntent(context: Context): Intent =
     Intent(context, MainActivity::class.java).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         putExtra(EXTRA_NAVIGATE_TO, NAV_ADD_INGESTION)
     }
 
+@OptIn(ExperimentalGlanceApi::class)
 private fun statsIntent(context: Context): Intent =
     Intent(context, MainActivity::class.java).apply {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         putExtra(EXTRA_NAVIGATE_TO, NAV_STATS)
     }
 
-/** Home-screen shortcut that opens the add-ingestion flow. */
+@OptIn(ExperimentalGlanceApi::class)
 class QuickAddWidget : GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
@@ -103,6 +106,7 @@ data class StatsWidgetSummary(
 )
 
 /** Home-screen widget with recent ingestion statistics; tap opens the Stats tab. */
+@OptIn(ExperimentalGlanceApi::class)
 class StatsWidget : GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
