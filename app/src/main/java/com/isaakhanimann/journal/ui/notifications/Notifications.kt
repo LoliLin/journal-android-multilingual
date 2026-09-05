@@ -83,8 +83,7 @@ object Notifications {
         experienceId: Int,
         substanceName: String,
         ingestionTime: Instant,
-        effectEndTime: Instant = ingestionTime.plus(6, ChronoUnit.HOURS),
-        timelineBitmap: android.graphics.Bitmap? = null
+        effectEndTime: Instant = ingestionTime.plus(6, ChronoUnit.HOURS)
     ) {
         if (!hasNotificationPermission(context)) return
         val timeText = ingestionTime.atZone(ZoneId.systemDefault())
@@ -118,15 +117,6 @@ object Notifications {
             stopIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        val style = NotificationCompat.BigTextStyle().bigText(text)
-        if (timelineBitmap != null) {
-            // Timeline image attached: the text becomes the summary line.
-            NotificationCompat.BigPictureStyle()
-                .bigPicture(timelineBitmap)
-                .setSummaryText(text)
-        } else {
-            style
-        }
 
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
@@ -134,7 +124,7 @@ object Notifications {
             .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setContentTitle(I18n.translate(context, "effect_notification_title"))
             .setContentText(text)
-            .setStyle(style)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
             .setOngoing(true)
             // Auto-expire once the effect window is over (API 26+).
             .setTimeoutAfter(
