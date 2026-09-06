@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.isaakhanimann.journal.MainActivity
@@ -50,17 +51,25 @@ object Notifications {
     const val CHANNEL_TIME_CAPSULE = "time_capsule"
     const val EFFECT_NOTIFICATION_ID_BASE = 1000
     const val TIME_CAPSULE_NOTIFICATION_ID = 2001
+    private const val TAG = "Notifications"
     private const val REQUEST_CODE_BASE = 3000
 
     fun createChannels(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        // IMPORTANCE_DEFAULT keeps BigPicture expansion (LOW makes OriginOS and
+        // other skins drop the expand affordance); sound/vibration/lights are
+        // off so updates never become heads-up banners.
         manager.createNotificationChannel(
             NotificationChannel(
                 CHANNEL_EFFECTS,
                 I18n.translate(context, "effect_notification_channel"),
-                NotificationManager.IMPORTANCE_LOW
-            )
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                setSound(null, null)
+                enableVibration(false)
+                enableLights(false)
+            }
         )
         manager.createNotificationChannel(
             NotificationChannel(
@@ -129,6 +138,12 @@ object Notifications {
             } else {
                 NotificationCompat.BigTextStyle().bigText(text)
             }
+        if (timelineBitmap != null) {
+            Log.d(
+                TAG,
+                "Timeline bitmap ${timelineBitmap.width}x${timelineBitmap.height}"
+            )
+        }
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
             // Substance names are sensitive: hide the content on the lock screen.
@@ -137,9 +152,14 @@ object Notifications {
             .setContentText(text)
             .setStyle(style)
             .setOngoing(true)
-            // Refreshes re-post the same notification: never banner again.
+            // DEFAULT keeps BigPicture expandable on OEM skins; all alert
+            // channels are muted on the channel itself and here, and
+            // setOnlyAlertOnce stops repeat banners on refreshes.
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setSound(null)
+            .setVibrate(null)
+            .setDefaults(0)
             .setOnlyAlertOnce(true)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
             // Auto-expire once the effect window is over (API 26+).
             .setTimeoutAfter(
                 maxOf(
