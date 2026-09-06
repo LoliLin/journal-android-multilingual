@@ -361,6 +361,8 @@ class OneExperienceViewModel @Inject constructor(
             experienceRepo.deleteEverythingOfExperience(experienceId = experienceId)
             // The 'effects in progress' notification must not outlive its experience.
             Notifications.cancelEffectNotification(appContext, experienceId)
+            com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher
+                .clear(experienceId)
         }
     }
 

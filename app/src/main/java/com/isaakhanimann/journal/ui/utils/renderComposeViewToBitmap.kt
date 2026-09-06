@@ -36,7 +36,8 @@ suspend fun renderComposeViewToBitmap(
     widthPx: Int,
     lifecycleView: View,
     content: @Composable () -> Unit,
-    postLayoutDelayMs: Long = 0L
+    postLayoutDelayMs: Long = 0L,
+    drawOnSoftwareCanvas: Boolean = false
 ): Bitmap = withContext(Dispatchers.Main) {
     // 1. 获取宿主的顶级 DecorView，确保能真正挂载上屏
     val hostActivityView = lifecycleView.rootView as? ViewGroup
@@ -53,6 +54,12 @@ suspend fun renderComposeViewToBitmap(
     @Suppress("DEPRECATION")
     val composeView = ComposeView(context).apply {
         setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+        // Software layer makes Compose's drawn content readable via
+        // composeView.draw(softwareCanvas); hardware surfaces can come out
+        // blank in the snapshot on some devices.
+        if (drawOnSoftwareCanvas) {
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        }
         setContent {
             // 仅在离屏渲染时禁用硬件位图，确保 Compose 视图能被绘制到软件 Canvas
             val safeImageLoader = remember {
@@ -134,16 +141,15 @@ suspend fun renderComposeViewToBitmap(
 
     composeView.layout(0, 0, measuredWidth, measuredHeight)
 
-    // 6. 咔嚓！绘制位图
-    val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
+    // 6. 咔嚓！绘制位图。Opaque background: an all-transparent snapshot would
+    // render as an invisible (blank-looking) notification picture.
+    val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.RGB_565)
+    bitmap.eraseColor(android.graphics.Color.WHITE)
     val canvas = Canvas(bitmap)
     composeView.draw(canvas)
 
     // 7. 悄悄离场，不留一丝痕迹
-    val safeBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, false)
-    bitmap.recycle()
-
     hostActivityView.removeView(container)
 
-    return@withContext safeBitmap
+    return@withContext bitmap
 }

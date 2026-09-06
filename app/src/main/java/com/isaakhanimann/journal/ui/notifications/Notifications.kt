@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.isaakhanimann.journal.MainActivity
@@ -46,21 +47,32 @@ class EffectNotificationReceiver : BroadcastReceiver() {
  */
 object Notifications {
 
-    const val CHANNEL_EFFECTS = "effects"
+    // v3: channel settings are immutable once created; bumping the id forces
+    // the OS to build a fresh channel with the current importance/sound
+    // instead of serving the cached LOW one from earlier installs.
+    const val CHANNEL_EFFECTS = "effects_status_v3"
     const val CHANNEL_TIME_CAPSULE = "time_capsule"
     const val EFFECT_NOTIFICATION_ID_BASE = 1000
     const val TIME_CAPSULE_NOTIFICATION_ID = 2001
+    private const val TAG = "Notifications"
     private const val REQUEST_CODE_BASE = 3000
 
     fun createChannels(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        // Remove stale channels from earlier installs so Settings doesn't
+        // accumulate dead entries.
+        manager.deleteNotificationChannel("effects")
         manager.createNotificationChannel(
             NotificationChannel(
                 CHANNEL_EFFECTS,
                 I18n.translate(context, "effect_notification_channel"),
-                NotificationManager.IMPORTANCE_LOW
-            )
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                setSound(null, null)
+                enableVibration(false)
+                enableLights(false)
+            }
         )
         manager.createNotificationChannel(
             NotificationChannel(
@@ -83,7 +95,8 @@ object Notifications {
         experienceId: Int,
         substanceName: String,
         ingestionTime: Instant,
-        effectEndTime: Instant = ingestionTime.plus(6, ChronoUnit.HOURS)
+        effectEndTime: Instant = ingestionTime.plus(6, ChronoUnit.HOURS),
+        timelineBitmap: android.graphics.Bitmap? = null
     ) {
         if (!hasNotificationPermission(context)) return
         val timeText = ingestionTime.atZone(ZoneId.systemDefault())
@@ -117,15 +130,39 @@ object Notifications {
             stopIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-
+        val style: NotificationCompat.Style =
+            if (timelineBitmap != null && timelineBitmap.width > 0 && timelineBitmap.height > 0) {
+                // Timeline image attached: the text becomes the summary line and
+                // the expanded view shows the picture instead of a large icon.
+                Log.d(TAG, "Timeline bitmap ${timelineBitmap.width}x${timelineBitmap.height}")
+                NotificationCompat.BigPictureStyle()
+                    .bigPicture(timelineBitmap)
+                    .setSummaryText(text)
+                    .bigLargeIcon(null as android.graphics.Bitmap?)
+            } else {
+                if (timelineBitmap != null) {
+                    Log.e(TAG, "Offscreen render returned invalid bitmap ${timelineBitmap.width}x${timelineBitmap.height}")
+                } else {
+                    Log.d(TAG, "No timeline bitmap (null) - plain text notification")
+                }
+                NotificationCompat.BigTextStyle().bigText(text)
+            }
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
             // Substance names are sensitive: hide the content on the lock screen.
             .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setContentTitle(I18n.translate(context, "effect_notification_title"))
             .setContentText(text)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
+            .setStyle(style)
             .setOngoing(true)
+            // DEFAULT keeps BigPicture expandable on OEM skins; all alert
+            // channels are muted on the channel itself and here, and
+            // setOnlyAlertOnce stops repeat banners on refreshes.
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setSound(null)
+            .setVibrate(null)
+            .setDefaults(0)
+            .setOnlyAlertOnce(true)
             // Auto-expire once the effect window is over (API 26+).
             .setTimeoutAfter(
                 maxOf(
@@ -135,16 +172,6 @@ object Notifications {
             )
             .setAutoCancel(false)
             .setContentIntent(notePendingIntent)
-            .addAction(
-                0,
-                I18n.translate(context, "effect_notification_action_note"),
-                notePendingIntent
-            )
-            .addAction(
-                0,
-                I18n.translate(context, "effect_notification_action_stop"),
-                stopPendingIntent
-            )
             .build()
         NotificationManagerCompat.from(context)
             .notify(EFFECT_NOTIFICATION_ID_BASE + experienceId, notification)
