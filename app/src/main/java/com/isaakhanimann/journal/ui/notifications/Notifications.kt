@@ -47,7 +47,10 @@ class EffectNotificationReceiver : BroadcastReceiver() {
  */
 object Notifications {
 
-    const val CHANNEL_EFFECTS = "effects"
+    // v3: channel settings are immutable once created; bumping the id forces
+    // the OS to build a fresh channel with the current importance/sound
+    // instead of serving the cached LOW one from earlier installs.
+    const val CHANNEL_EFFECTS = "effects_status_v3"
     const val CHANNEL_TIME_CAPSULE = "time_capsule"
     const val EFFECT_NOTIFICATION_ID_BASE = 1000
     const val TIME_CAPSULE_NOTIFICATION_ID = 2001
@@ -57,9 +60,9 @@ object Notifications {
     fun createChannels(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        // IMPORTANCE_DEFAULT keeps BigPicture expansion (LOW makes OriginOS and
-        // other skins drop the expand affordance); sound/vibration/lights are
-        // off so updates never become heads-up banners.
+        // Remove stale channels from earlier installs so Settings doesn't
+        // accumulate dead entries.
+        manager.deleteNotificationChannel("effects")
         manager.createNotificationChannel(
             NotificationChannel(
                 CHANNEL_EFFECTS,
@@ -128,22 +131,22 @@ object Notifications {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         val style: NotificationCompat.Style =
-            if (timelineBitmap != null) {
+            if (timelineBitmap != null && timelineBitmap.width > 0 && timelineBitmap.height > 0) {
                 // Timeline image attached: the text becomes the summary line and
                 // the expanded view shows the picture instead of a large icon.
+                Log.d(TAG, "Timeline bitmap ${timelineBitmap.width}x${timelineBitmap.height}")
                 NotificationCompat.BigPictureStyle()
                     .bigPicture(timelineBitmap)
                     .setSummaryText(text)
                     .bigLargeIcon(null as android.graphics.Bitmap?)
             } else {
+                if (timelineBitmap != null) {
+                    Log.e(TAG, "Offscreen render returned invalid bitmap ${timelineBitmap.width}x${timelineBitmap.height}")
+                } else {
+                    Log.d(TAG, "No timeline bitmap (null) - plain text notification")
+                }
                 NotificationCompat.BigTextStyle().bigText(text)
             }
-        if (timelineBitmap != null) {
-            Log.d(
-                TAG,
-                "Timeline bitmap ${timelineBitmap.width}x${timelineBitmap.height}"
-            )
-        }
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
             // Substance names are sensitive: hide the content on the lock screen.
