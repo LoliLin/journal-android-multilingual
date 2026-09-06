@@ -172,16 +172,6 @@ object Notifications {
             )
             .setAutoCancel(false)
             .setContentIntent(notePendingIntent)
-            .addAction(
-                0,
-                I18n.translate(context, "effect_notification_action_note"),
-                notePendingIntent
-            )
-            .addAction(
-                0,
-                I18n.translate(context, "effect_notification_action_stop"),
-                stopPendingIntent
-            )
             .build()
         NotificationManagerCompat.from(context)
             .notify(EFFECT_NOTIFICATION_ID_BASE + experienceId, notification)
