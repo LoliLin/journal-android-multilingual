@@ -79,7 +79,7 @@ class JournalApplication : Application(), Configuration.Provider {
                 this@JournalApplication,
                 experienceRepository,
                 applicationScope
-            )*/
+            )
             launch {
                 userPreferences.selectedLanguageFlow.collect {
                     com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
@@ -87,7 +87,7 @@ class JournalApplication : Application(), Configuration.Provider {
                         experienceRepository
                     )
                 }
-            }
+            }*/
             com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
                 this@JournalApplication,
                 experienceRepository
