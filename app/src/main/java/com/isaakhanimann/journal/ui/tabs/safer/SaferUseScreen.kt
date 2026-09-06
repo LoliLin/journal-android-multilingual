@@ -42,8 +42,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -83,11 +85,15 @@ fun SaferUseScreen(
     navigateToURL: (url: String) -> Unit,
     navigateToReagentTestingScreen: () -> Unit
 ) {
+    val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
-        modifier = Modifier.bottomBarNestedScroll(),
+        modifier = Modifier
+            .bottomBarNestedScroll()
+            .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
             TopAppBar(
+                scrollBehavior = topBarScrollBehavior,
                 title = { Text(i18n("safer_use_title")) }
             )
         }
