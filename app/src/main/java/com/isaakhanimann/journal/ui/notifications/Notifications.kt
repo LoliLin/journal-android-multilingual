@@ -118,16 +118,17 @@ object Notifications {
             stopIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
-        val style = NotificationCompat.BigTextStyle().bigText(text)
-        if (timelineBitmap != null) {
-            // Timeline image attached: the text becomes the summary line.
-            NotificationCompat.BigPictureStyle()
-                .bigPicture(timelineBitmap)
-                .setSummaryText(text)
-        } else {
-            style
-        }
-
+        val style: NotificationCompat.Style =
+            if (timelineBitmap != null) {
+                // Timeline image attached: the text becomes the summary line and
+                // the expanded view shows the picture instead of a large icon.
+                NotificationCompat.BigPictureStyle()
+                    .bigPicture(timelineBitmap)
+                    .setSummaryText(text)
+                    .bigLargeIcon(null as android.graphics.Bitmap?)
+            } else {
+                NotificationCompat.BigTextStyle().bigText(text)
+            }
         val notification = NotificationCompat.Builder(context, CHANNEL_EFFECTS)
             .setSmallIcon(R.drawable.ic_notification)
             // Substance names are sensitive: hide the content on the lock screen.
@@ -136,6 +137,9 @@ object Notifications {
             .setContentText(text)
             .setStyle(style)
             .setOngoing(true)
+            // Refreshes re-post the same notification: never banner again.
+            .setOnlyAlertOnce(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
             // Auto-expire once the effect window is over (API 26+).
             .setTimeoutAfter(
                 maxOf(
