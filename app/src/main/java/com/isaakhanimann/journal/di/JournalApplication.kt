@@ -87,11 +87,12 @@ class JournalApplication : Application(), Configuration.Provider {
                         experienceRepository
                     )
                 }
-            }*/
+            }
             com.isaakhanimann.journal.ui.widgets.StatsWidgetUpdater.refreshAll(
                 this@JournalApplication,
                 experienceRepository
             )
+            */
         }
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".
