@@ -17,7 +17,7 @@ hilt = "2.60.1"
 androidxHilt = "1.4.0"                     # hilt-lifecycle-viewmodel-compose
 
 # Room
-androidxRoom = "2.8.4"
+androidxRoom = "2.8.5"
 
 # 测试
 androidxTest = "1.7.0"
