@@ -24,23 +24,21 @@ import androidx.work.Configuration
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
-import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
-import com.isaakhanimann.journal.data.room.experiences.JournalDataEvents
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.DateFormat
 import com.isaakhanimann.journal.ui.utils.TimeFormat
-import com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.launch
+import com.isaakhanimann.journal.ui.widgets.StatsWidgetSync
 import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 @HiltAndroidApp
 class JournalApplication : Application(), Configuration.Provider {
@@ -65,7 +63,6 @@ class JournalApplication : Application(), Configuration.Provider {
             .setWorkerFactory(workerFactory)
             .build()
 
-    @OptIn(FlowPreview::class)
     override fun onCreate() {
         super.onCreate()
         TimeFormat.refreshSystemDefault(this)
@@ -75,24 +72,18 @@ class JournalApplication : Application(), Configuration.Provider {
         applicationScope.launch {
             userPreferences.dateLocaleOptionFlow.collect { DateFormat.setOption(it) }
         }
-        applicationScope.launch {
-            // Keep desktop widgets in sync: one pass at startup, then again
-            // whenever journal data changes (JournalDataEvents) or the app
-            // language changes (widget labels are localized), so the desktop
-            // never waits for the hourly updatePeriod. StatsWidgetProvider owns
-            // the rendering; here we only ask AppWidgetManager to re-run it.
-            launch {
-                JournalDataEvents.journalChangeSignal
-                    .debounce(500)
-                    .collect { StatsWidgetProvider.requestUpdate(this@JournalApplication) }
-            }
-            launch {
-                userPreferences.selectedLanguageFlow.collect {
-                    StatsWidgetProvider.requestUpdate(this@JournalApplication)
-                }
-            }
-            StatsWidgetProvider.requestUpdate(this@JournalApplication)
-        }
+        // Keep the desktop stats widget in sync: journal writes, the app language (widget
+        // labels are localized) and extension-pack strings all trigger a refresh, so the
+        // widget never waits for the hourly updatePeriod. Only the wiring lives here —
+        // StatsWidgetSync owns a worker on its own off-main dispatcher, because building a
+        // RemoteViews and calling updateAppWidget on this main-thread scope is exactly what
+        // used to stall recomposition and navigation animations.
+        StatsWidgetSync.start(
+            appContext = this,
+            experienceRepository = experienceRepository,
+            // Any language emission means "the widget labels may be stale".
+            languageChanges = userPreferences.selectedLanguageFlow.map { }
+        )
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".
         val request = PeriodicWorkRequestBuilder<TimeCapsuleWorker>(1, TimeUnit.DAYS).build()

@@ -4,8 +4,6 @@ import android.content.Context
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 private const val PREFS_NAME = "widget_stats"
 private const val KEY_PREFIX = "summary_"
@@ -55,8 +53,6 @@ object StatsWidgetData {
             .map { it.substanceName }
             .sorted()
 
-    /** Recomputes the summary for one widget and stores it. */
-
     fun deleteConfig(context: Context, appWidgetIds: IntArray) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().also { editor ->
@@ -68,16 +64,16 @@ object StatsWidgetData {
     }
 
     /**
-     * Recomputes the summary for one widget and stores it. All work runs on
-     * Dispatchers.Default: callers may be on the main thread (application
-     * scope, activity onResume), and the SQL aggregate does the counting so
-     * no ingestion rows are materialized in Kotlin.
+     * Recomputes the summary for one widget and stores it. The SQL aggregate does the
+     * counting, so no ingestion rows are materialized in Kotlin. Callers must already be
+     * off the main thread — [StatsWidgetSync] owns that — and no extra hop is needed
+     * here: Room dispatches the query itself and the preference write is asynchronous.
      */
     suspend fun refresh(
         context: Context,
         appWidgetId: Int,
         experienceRepository: ExperienceRepository
-    ) = withContext(Dispatchers.Default) {
+    ) {
         val config = readConfig(context, appWidgetId)
         val to = Instant.now()
         val from = to.minus(config.days.toLong(), ChronoUnit.DAYS)

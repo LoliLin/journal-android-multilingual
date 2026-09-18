@@ -19,17 +19,17 @@
 package com.isaakhanimann.journal
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.FragmentActivity
 import com.isaakhanimann.journal.ui.main.MainScreen
 import com.isaakhanimann.journal.ui.theme.JournalTheme
-import com.isaakhanimann.journal.ui.widgets.StatsWidgetProvider
+import com.isaakhanimann.journal.ui.widgets.StatsWidgetSync
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,9 +68,9 @@ class MainActivity : FragmentActivity() {
             root,
             force = false
         )
-        // Keep the stats widget in sync after any journal change made while the
-        // app was closed or in the background: ask the framework to re-run the
-        // provider, which owns the rendering.
-        StatsWidgetProvider.requestUpdate(this)
+        // Keep the stats widget in sync: it may have been placed, reconfigured or left
+        // stale while the app was away. This only enqueues a conflated, off-main refresh
+        // and is a no-op when no widget is placed.
+        StatsWidgetSync.requestRefresh()
     }
 }

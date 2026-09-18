@@ -4,25 +4,48 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import java.util.Locale
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import org.json.JSONObject
 
 object I18n {
+    private const val FALLBACK_LANG_KEY = "en_us"
+
+    // translate() runs on the hot path: `i18n()` is called from composition, so it
+    // must never block. The loaded table is published as one immutable snapshot
+    // through @Volatile fields, which makes the common case a lock-free read; only
+    // the (re)load path takes [loadLock]. Holding a lock across the asset I/O of a
+    // reload is what used to stall recomposition whenever another thread — typically
+    // a stats-widget render — touched I18n at the same time.
+    //
+    // Write order matters: `strings` is published before `loadedLangKey`, and
+    // `needsReload` is cleared last. A reader that observes the new key (or the
+    // cleared flag) is therefore guaranteed to see the matching table.
+    @Volatile
     private var strings: Map<String, String> = emptyMap()
+
+    @Volatile
     private var loadedLangKey: String? = null
 
-    private const val FALLBACK_LANG_KEY = "en_us"
+    @Volatile
     private var preferredLangKey: String? = null
 
+    @Volatile
     private var needsReload = false
 
-    // translate() is called from composition (main thread) while extension-pack
-    // installs can markDirty from any thread; guard all mutable state with one lock.
-    private val lock = Any()
+    /** Only taken while (re)loading; readers do not need it on the common path. */
+    private val loadLock = Any()
+
+    // Emitted when the string table may have changed (language switch, extension-pack
+    // install). The stats-widget sync re-renders on it so widget labels do not stay
+    // stale after a pack adds or overrides them.
+    private val _stringsChanged = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val stringsChanged: SharedFlow<Unit> = _stringsChanged.asSharedFlow()
 
     fun markDirty() {
-        synchronized(lock) {
-            needsReload = true
-        }
+        needsReload = true
+        _stringsChanged.tryEmit(Unit)
     }
 
     fun getCurrentLanguageKey(): String {
@@ -33,25 +56,22 @@ object I18n {
     }
 
     fun setPreferredLanguageKey(languageKey: String?) {
-        synchronized(lock) {
-            preferredLangKey = languageKey?.lowercase()
-            loadedLangKey = null
-        }
+        preferredLangKey = languageKey?.lowercase()
+        loadedLangKey = null
+        _stringsChanged.tryEmit(Unit)
         com.isaakhanimann.journal.ui.utils.DateFormat.notifyLanguageChanged()
     }
 
-    fun getPreferredLanguageKey(): String? = synchronized(lock) { preferredLangKey }
+    fun getPreferredLanguageKey(): String? = preferredLangKey
 
     fun translate(
         context: Context,
         key: String,
         replacements: Map<String, String> = emptyMap()
-    ): String = synchronized(lock) {
-        ensureLoadedLocked(context)
-        val raw = strings[key] ?: strings["missing_key"] ?: key
-        replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{" + entry.key + "}", entry.value)
-        }
+    ): String {
+        val current = stringsFor(context)
+        val raw = current[key] ?: current["missing_key"] ?: key
+        return applyReplacements(raw, replacements)
     }
 
     fun translateOrDefault(
@@ -59,30 +79,48 @@ object I18n {
         key: String,
         fallback: String,
         replacements: Map<String, String> = emptyMap()
-    ): String = synchronized(lock) {
-        ensureLoadedLocked(context)
-        val raw = strings[key] ?: fallback
-        return replacements.entries.fold(raw) { acc, entry ->
-            acc.replace("{" + entry.key + "}", entry.value)
-        }
-    }
+    ): String = applyReplacements(stringsFor(context)[key] ?: fallback, replacements)
 
     fun getSupportedLanguages(context: Context): Map<String, String> =
         loadStringsFile(context, "lang/supported.json")
 
-    private fun ensureLoadedLocked(context: Context) {
-        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
-        if (currentKey == loadedLangKey && strings.isNotEmpty() && !needsReload) return
-
-        val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)
-        val localizedStrings = if (currentKey != FALLBACK_LANG_KEY) {
-            loadLanguageFile(context, currentKey)
-        } else {
-            emptyMap()
+    private fun applyReplacements(raw: String, replacements: Map<String, String>): String =
+        replacements.entries.fold(raw) { acc, entry ->
+            acc.replace("{" + entry.key + "}", entry.value)
         }
-        strings = fallbackStrings + localizedStrings
-        loadedLangKey = currentKey
-        needsReload = false
+
+    /**
+     * The string table for the current language, reloading it when the language
+     * changed or [markDirty] was called.
+     *
+     * Fast path: a lock-free read of the volatile snapshot. Slow path: double-checked
+     * under [loadLock], so concurrent callers load the assets once and every other
+     * reader keeps being served the previous snapshot instead of waiting for the I/O.
+     */
+    private fun stringsFor(context: Context): Map<String, String> {
+        val currentKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
+        val snapshot = strings
+        if (currentKey == loadedLangKey && snapshot.isNotEmpty() && !needsReload) {
+            return snapshot
+        }
+        return synchronized(loadLock) {
+            val recheckedKey = (preferredLangKey ?: getCurrentLanguageKey()).lowercase()
+            if (recheckedKey == loadedLangKey && strings.isNotEmpty() && !needsReload) {
+                strings
+            } else {
+                val fallbackStrings = loadLanguageFile(context, FALLBACK_LANG_KEY)
+                val localizedStrings = if (recheckedKey != FALLBACK_LANG_KEY) {
+                    loadLanguageFile(context, recheckedKey)
+                } else {
+                    emptyMap()
+                }
+                val loaded = fallbackStrings + localizedStrings
+                strings = loaded
+                loadedLangKey = recheckedKey
+                needsReload = false
+                loaded
+            }
+        }
     }
 
     private fun loadLanguageFile(context: Context, langKey: String): Map<String, String> {

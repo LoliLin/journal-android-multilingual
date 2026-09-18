@@ -3,7 +3,6 @@ package com.isaakhanimann.journal.ui.widgets
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
@@ -11,12 +10,8 @@ import com.isaakhanimann.journal.MainActivity
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
-import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
-import com.isaakhanimann.journal.ui.notifications.NAV_STATS
 import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.isaakhanimann.journal.ui.notifications.NAV_STATS
 
 private fun pendingActivity(
     context: Context,
@@ -54,20 +49,12 @@ class StatsWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        // The system asks for an update here (also after a reboot, or when updatePeriod
+        // elapses). Hand it to the single worker instead of rendering on this thread; the
+        // pending result is closed once that pass finishes, so the broadcast still counts
+        // as in-flight while the widgets are being written.
         val pending = goAsync()
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val app = context.applicationContext as? com.isaakhanimann.journal.di.JournalApplication
-                appWidgetIds.forEach { appWidgetId ->
-                    if (app != null) {
-                        StatsWidgetData.refresh(context, appWidgetId, app.experienceRepository)
-                    }
-                    appWidgetManager.updateAppWidget(appWidgetId, render(context, appWidgetId))
-                }
-            } finally {
-                pending.finish()
-            }
-        }
+        StatsWidgetSync.requestRefresh(onComplete = { pending.finish() })
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {
@@ -75,25 +62,6 @@ class StatsWidgetProvider : AppWidgetProvider() {
     }
 
     companion object {
-
-        /**
-         * Asks the framework to re-run [onUpdate] for every placed stats widget.
-         * Rendering lives only in the provider, so callers (data changes, app
-         * start, language changes, config save) just poke AppWidgetManager and
-         * never build RemoteViews themselves. No-op when no widget is placed.
-         */
-        fun requestUpdate(context: Context) {
-            val appContext = context.applicationContext
-            val provider = ComponentName(appContext, StatsWidgetProvider::class.java)
-            val ids = AppWidgetManager.getInstance(appContext).getAppWidgetIds(provider)
-            if (ids.isEmpty()) return
-            appContext.sendBroadcast(
-                Intent(appContext, StatsWidgetProvider::class.java).apply {
-                    action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-                    putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
-                }
-            )
-        }
 
         fun render(context: Context, appWidgetId: Int): RemoteViews {
             val summary = StatsWidgetData.readSummary(context, appWidgetId)
