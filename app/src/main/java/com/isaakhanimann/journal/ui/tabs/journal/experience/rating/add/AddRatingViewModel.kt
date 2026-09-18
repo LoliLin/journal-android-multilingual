@@ -24,10 +24,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
-import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddRatingRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -45,7 +46,7 @@ class AddRatingViewModel @Inject constructor(
 ) : ViewModel() {
     var selectedRating by mutableStateOf(ShulginRatingOption.TWO_PLUS)
     var isThisOverallRating by mutableStateOf(false)
-    val experienceId = state.get<Int>(EXPERIENCE_ID_KEY)!!
+    val experienceId = state.toRoute<AddRatingRoute>().experienceId
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
 
     var isThereAlreadyAnOverallRatingFlow = experienceRepo.getRatingsFlow(

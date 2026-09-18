@@ -21,24 +21,26 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCategoryScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_STATS
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_SUBSTANCE_COMPANION
+import com.isaakhanimann.journal.ui.main.navigation.routes.StatsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.StatsTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceCompanionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToCategoryScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceCompanionScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.stats.StatsScreen
 import com.isaakhanimann.journal.ui.tabs.stats.substancecompanion.SubstanceCompanionScreen
 
 fun NavGraphBuilder.statsGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.StatsRouter.route,
-        route = TabRouter.Statistics.route
+    navigation<StatsTab>(
+        startDestination = StatsRoute
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.StatsRouter.route
+        composableWithTransitions<StatsRoute>(
+            deepLinks = listOf(navDeepLink<StatsRoute>(basePath = DEEP_LINK_STATS))
         ) {
             StatsScreen(
                 navigateToSubstanceCompanion = { substanceName, consumerName ->
@@ -49,9 +51,10 @@ fun NavGraphBuilder.statsGraph(navController: NavController) {
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.SubstanceCompanionRouter.route,
-            arguments = ArgumentRouter.SubstanceCompanionRouter.args
+        composableWithTransitions<SubstanceCompanionRoute>(
+            deepLinks = listOf(
+                navDeepLink<SubstanceCompanionRoute>(basePath = DEEP_LINK_SUBSTANCE_COMPANION)
+            )
         ) {
             SubstanceCompanionScreen(
                 navigateToCategoryScreen = navController::navigateToCategoryScreen,

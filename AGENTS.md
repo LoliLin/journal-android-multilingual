@@ -7,7 +7,7 @@ GPLv3 fork of PsychonautWiki Journal (a substance-use journaling app): single-mo
 ## Architecture & Data Flow
 
 - **Entry**: `MainActivity.kt` (`@AndroidEntryPoint`, splash, edge-to-edge) → `JournalTheme` → `ui/main/MainScreen.kt`: 5-tab NavigationBar (Journal / Statistics / Substances / SaferUse / Settings) + a NavHost; content gated behind a "conditions accepted" DataStore flag.
-- **Navigation**: Navigation Compose with per-tab nested graphs in `ui/main/navigation/graphs/` (`journalGraph.kt`, `settingsGraph.kt`, ...), sealed string-route router objects (`navigation/routers/{TabRouter,NoArgumentRouter,ArgumentRouter}.kt`), and shared slide/fade transitions (`navigation/composableWithTransitions.kt`). `addIngestion` and `addCustomUnit` flows are nested graphs under the journal tab.
+- **Navigation**: Navigation Compose with per-tab nested graphs in `ui/main/navigation/graphs/` (`journalGraph.kt`, `settingsGraph.kt`, ...) and type-safe `@Serializable` route classes in `navigation/routes/` (one file per tab plus `TabRoutes.kt` for the bottom-bar tabs and `NavigateExt.kt` for the `NavController.navigateToXxx()` helpers). Destinations are registered with `composableWithTransitions<T>()`; ViewModels read their arguments with `SavedStateHandle.toRoute<T>()` (no route-string constants). The shared transition in `navigation/composableWithTransitions.kt` is deliberately uniform: one 150 ms cross-fade with no directional movement for all four slots, so pushing, popping, switching tabs and the predictive-back gesture preview all look the same. `addIngestion` and `addCustomUnit` flows are nested graphs; `journal://open/...` deep links are registered per destination and dispatched from `MainScreen`.
 - **Screens/ViewModels**: one `XScreen.kt` + `XViewModel.kt` pair per feature; screens receive the VM as `viewModel: XViewModel = hiltViewModel()`. VMs combine repository Flows into `StateFlow` via `stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000))`.
 - **Data layers**:
   - Room `experiences_db` (v6, 7 entities: Experience, Ingestion, TimedNote, ShulginRating, SubstanceCompanion, CustomUnit, CustomSubstance) via `data/room/AppDatabase.kt`; `ExperienceDao.kt` exposes Flow reads + suspend writes + `@Transaction` multi-entity ops; `ExperienceRepository.kt` wraps it (`flowOn(Dispatchers.IO).conflate()`).
@@ -70,9 +70,9 @@ GPLv3 fork of PsychonautWiki Journal (a substance-use journaling app): single-mo
 |---|---|
 | `app/build.gradle` | All build config: signing, minify, splits, versions (Groovy DSL) |
 | `gradle/libs.versions.toml` | Version catalog — single source of dependency versions |
-| `app/src/main/AndroidManifest.xml` | Entry activity + two launcher aliases (Classic disabled, SpringWind enabled); FileProvider authority `in.kawaiis.journal.fileprovider` |
-| `ui/main/MainScreen.kt` | Tab scaffold, nav host, conditions gate, language push to I18n |
-| `ui/main/navigation/graphs/*` | Route wiring per tab |
+| `app/src/main/AndroidManifest.xml` | Entry activity (`launchMode="singleTop"` + `journal://open` deep-link filter) + two launcher aliases (Classic disabled, SpringWind enabled); FileProvider authority `in.kawaiis.journal.fileprovider` |
+| `ui/main/MainScreen.kt` | Tab scaffold, nav host, bottom-bar wiring, notification/deep-link intent dispatch, conditions gate, language push to I18n |
+| `ui/main/navigation/*` | Type-safe `@Serializable` route classes (`routes/`) + per-tab graph wiring (`graphs/`) |
 | `data/room/AppDatabase.kt` | Schema v6, AutoMigrations, type converters |
 | `data/room/experiences/ExperienceDao.kt` | All journal-data queries/transactions |
 | `data/substances/repositories/SubstanceRepository.kt` | Substance load/merge/cache/reload + searcher swap |

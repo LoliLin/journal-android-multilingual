@@ -21,101 +21,118 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.ui.VOLUMETRIC_DOSE_ARTICLE_URL
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.URL_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddCustom
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCategoryScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToDosageExplanationScreenOnSearchTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditCustomSubstance
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExplainTimelineOnSearchTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSaferHallucinogens
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSaferStimulants
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToURLScreenOnSearchTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToVolumetricDosingScreenOnSearchTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomSubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_CATEGORY
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_SUBSTANCE
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_SUBSTANCES
+import com.isaakhanimann.journal.ui.main.navigation.routes.DosageExplanationOnSubstancesTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomSubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ExplainTimelineOnSubstancesTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensOnSubstancesTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferStimulantsOnSubstancesTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstancesRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstancesTabUrlRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnSubstancesTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddCustomSubstance
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToCategoryScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToDosageExplanationOnSubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToEditCustomSubstance
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToExplainTimelineOnSubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSaferHallucinogensOnSubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSaferStimulantsOnSubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToURLOnSubstancesTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToVolumetricDosingOnSubstancesTab
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ExplainTimelineScreen
+import com.isaakhanimann.journal.ui.tabs.safer.DoseExplanationScreen
+import com.isaakhanimann.journal.ui.tabs.safer.SaferHallucinogensScreen
 import com.isaakhanimann.journal.ui.tabs.safer.VolumetricDosingScreen
 import com.isaakhanimann.journal.ui.tabs.search.SearchScreen
 import com.isaakhanimann.journal.ui.tabs.search.custom.AddCustomSubstance
 import com.isaakhanimann.journal.ui.tabs.search.custom.EditCustomSubstance
+import com.isaakhanimann.journal.ui.tabs.search.substance.SaferStimulantsScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.SubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.category.CategoryScreen
 
 fun NavGraphBuilder.searchGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.SubstancesRouter.route,
-        route = TabRouter.Substances.route
+    navigation<SubstancesTab>(
+        startDestination = SubstancesRoute
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.SubstancesRouter.route
+        composableWithTransitions<SubstancesRoute>(
+            deepLinks = listOf(navDeepLink<SubstancesRoute>(basePath = DEEP_LINK_SUBSTANCES))
         ) {
             SearchScreen(
                 onSubstanceTap = {
                     navController.navigateToSubstanceScreen(substanceName = it.name)
                 },
                 onCustomSubstanceTap = navController::navigateToEditCustomSubstance,
-                navigateToAddCustomSubstanceScreen = navController::navigateToAddCustom
+                navigateToAddCustomSubstanceScreen = navController::navigateToAddCustomSubstance
             )
         }
-        composableWithTransitions(
-            route = ArgumentRouter.SubstanceRouter.route,
-            arguments = ArgumentRouter.SubstanceRouter.args
+        composableWithTransitions<SubstanceRoute>(
+            deepLinks = listOf(navDeepLink<SubstanceRoute>(basePath = DEEP_LINK_SUBSTANCE))
         ) {
             SubstanceScreen(
-                navigateToDosageExplanationScreen = navController::navigateToDosageExplanationScreenOnSearchTab,
-                navigateToSaferHallucinogensScreen = navController::navigateToSaferHallucinogens,
-                navigateToSaferStimulantsScreen = navController::navigateToSaferStimulants,
-                navigateToExplainTimeline = navController::navigateToExplainTimelineOnSearchTab,
+                navigateToDosageExplanationScreen = navController::navigateToDosageExplanationOnSubstancesTab,
+                navigateToSaferHallucinogensScreen = navController::navigateToSaferHallucinogensOnSubstancesTab,
+                navigateToSaferStimulantsScreen = navController::navigateToSaferStimulantsOnSubstancesTab,
+                navigateToExplainTimeline = navController::navigateToExplainTimelineOnSubstancesTab,
                 navigateToCategoryScreen = navController::navigateToCategoryScreen,
-                navigateToVolumetricDosingScreen = navController::navigateToVolumetricDosingScreenOnSearchTab,
-                navigateToArticle = navController::navigateToURLScreenOnSearchTab,
+                navigateToVolumetricDosingScreen = navController::navigateToVolumetricDosingOnSubstancesTab,
+                navigateToArticle = navController::navigateToURLOnSubstancesTab,
                 navigateToSubstanceScreen = navController::navigateToSubstanceScreen
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.URLRouterOnSearchTab.route,
-            arguments = ArgumentRouter.URLRouterOnSearchTab.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val url = args.getString(URL_KEY)!!
-            UrlScreen(url = url, onHandled = navController::popBackStack)
+        composableWithTransitions<SubstancesTabUrlRoute> { backStackEntry ->
+            UrlScreen(
+                url = backStackEntry.toRoute<SubstancesTabUrlRoute>().url,
+                onHandled = navController::popBackStack
+            )
         }
-        composableWithTransitions(
-            ArgumentRouter.CategoryRouter.route,
-            arguments = ArgumentRouter.CategoryRouter.args
+        composableWithTransitions<CategoryRoute>(
+            deepLinks = listOf(navDeepLink<CategoryRoute>(basePath = DEEP_LINK_CATEGORY))
         ) {
             CategoryScreen(
-                navigateToURL = navController::navigateToURLScreenOnSearchTab,
+                navigateToURL = navController::navigateToURLOnSubstancesTab,
                 onSubstanceTap = {
                     navController.navigateToSubstanceScreen(substanceName = it.name)
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.EditCustomRouter.route,
-            arguments = ArgumentRouter.EditCustomRouter.args
-        ) {
+        composableWithTransitions<EditCustomSubstanceRoute> {
             EditCustomSubstance(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(NoArgumentRouter.AddCustomRouter.route) {
+        composableWithTransitions<AddCustomSubstanceRoute> {
             AddCustomSubstance(
                 navigateBack = navController::popBackStack
             )
         }
-        composableWithTransitions(NoArgumentRouter.VolumetricDosingOnSearchTabRouter.route) {
+        composableWithTransitions<VolumetricDosingOnSubstancesTabRoute> {
             VolumetricDosingScreen(navigateToVolumetricLiquidDosingArticle = {
-                navController.navigateToURLScreenOnSearchTab(
+                navController.navigateToURLOnSubstancesTab(
                     VOLUMETRIC_DOSE_ARTICLE_URL
                 )
             })
         }
-        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnSearchTabRouter.route) {
+        composableWithTransitions<ExplainTimelineOnSubstancesTabRoute> {
             ExplainTimelineScreen()
+        }
+        composableWithTransitions<DosageExplanationOnSubstancesTabRoute> {
+            DoseExplanationScreen()
+        }
+        composableWithTransitions<SaferHallucinogensOnSubstancesTabRoute> {
+            SaferHallucinogensScreen()
+        }
+        composableWithTransitions<SaferStimulantsOnSubstancesTabRoute> {
+            SaferStimulantsScreen()
         }
     }
 }

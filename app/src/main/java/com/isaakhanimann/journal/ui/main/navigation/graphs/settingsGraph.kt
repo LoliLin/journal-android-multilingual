@@ -21,19 +21,32 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToComboSettings
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToCustomUnits
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToDonate
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditCustomUnit
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExtensionPack
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToFAQ
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIconPicker
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToPreferences
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceColors
+import com.isaakhanimann.journal.ui.main.navigation.routes.CombinationSettingsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CustomUnitArchiveRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CustomUnitsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_SETTINGS
+import com.isaakhanimann.journal.ui.main.navigation.routes.DonateRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomUnitRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ExtensionPackRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.FAQRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.IconPickerRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.PreferencesRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SettingsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SettingsTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceColorsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddCustomUnits
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToComboSettings
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToCustomUnitArchive
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToCustomUnits
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToDonate
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToEditCustomUnit
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToExtensionPack
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToFAQ
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToIconPicker
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToPreferences
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceColors
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
 import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
 import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
@@ -47,12 +60,11 @@ import com.isaakhanimann.journal.ui.tabs.settings.customunits.archive.CustomUnit
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.edit.EditCustomUnitScreen
 
 fun NavGraphBuilder.settingsGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.SettingsRouter.route,
-        route = TabRouter.Settings.route
+    navigation<SettingsTab>(
+        startDestination = SettingsRoute
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.SettingsRouter.route
+        composableWithTransitions<SettingsRoute>(
+            deepLinks = listOf(navDeepLink<SettingsRoute>(basePath = DEEP_LINK_SETTINGS))
         ) {
             SettingsScreen(
                 navigateToFAQ = navController::navigateToFAQ,
@@ -65,44 +77,41 @@ fun NavGraphBuilder.settingsGraph(navController: NavController) {
                 navigateToPreferences = navController::navigateToPreferences
             )
         }
-        composableWithTransitions(NoArgumentRouter.FAQRouter.route) { FAQScreen() }
-        composableWithTransitions(NoArgumentRouter.DonateRouter.route) { DonateScreen() }
-        composableWithTransitions(NoArgumentRouter.PreferencesRouter.route) {
+        composableWithTransitions<FAQRoute> { FAQScreen() }
+        composableWithTransitions<DonateRoute> { DonateScreen() }
+        composableWithTransitions<PreferencesRoute> {
             PreferencesScreen(
                 navigateBack = navController::popBackStack,
                 navigateToIconPicker = navController::navigateToIconPicker
             )
         }
-        composableWithTransitions(NoArgumentRouter.IconPickerRouter.route) {
+        composableWithTransitions<IconPickerRoute> {
             IconPickerScreen()
         }
-        composableWithTransitions(NoArgumentRouter.ExtensionPackRouter.route) {
+        composableWithTransitions<ExtensionPackRoute> {
             ExtensionPackScreen()
         }
-        composableWithTransitions(NoArgumentRouter.CombinationSettingsRouter.route) {
+        composableWithTransitions<CombinationSettingsRoute> {
             CombinationSettingsScreen()
         }
-        composableWithTransitions(NoArgumentRouter.SubstanceColorsRouter.route) {
+        composableWithTransitions<SubstanceColorsRoute> {
             SubstanceColorsScreen()
         }
-        composableWithTransitions(NoArgumentRouter.CustomUnitArchiveRouter.route) {
+        composableWithTransitions<CustomUnitArchiveRoute> {
             CustomUnitArchiveScreen(
                 navigateToEditCustomUnit = navController::navigateToEditCustomUnit
             )
         }
-        addCustomUnitGraph(navController)
-        composableWithTransitions(NoArgumentRouter.CustomUnitsRouter.route) {
+        composableWithTransitions<CustomUnitsRoute> {
             CustomUnitsScreen(
                 navigateToAddCustomUnit = navController::navigateToAddCustomUnits,
                 navigateToEditCustomUnit = navController::navigateToEditCustomUnit,
                 navigateToCustomUnitArchive = navController::navigateToCustomUnitArchive
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.EditCustomUnitRouter.route,
-            arguments = ArgumentRouter.EditCustomUnitRouter.args
-        ) {
+        composableWithTransitions<EditCustomUnitRoute> {
             EditCustomUnitScreen(navigateBack = navController::popBackStack)
         }
+        addCustomUnitGraph(navController)
     }
 }

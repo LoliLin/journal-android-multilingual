@@ -32,9 +32,7 @@ coroutines = "1.11.0"
 serializationJson = "1.11.0"
 
 # Navigation
-navigationCompose = "2.10.1"                # 传统 Navigation Compose
-nav3Core = "1.1.4"                         # Navigation3 (预览版)
-lifecycleViewmodelNav3 = "2.11.0"
+navigationCompose = "2.10.1"
 
 # 其他 AndroidX
 hiltNavigationCompose = "1.4.0"
@@ -76,7 +74,6 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
-androidx-lifecycle-viewmodel-navigation3 = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
 
 # Hilt (Dagger)
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
@@ -93,10 +90,8 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidxRoom" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidxRoom" }
 
-# Navigation (传统 Compose 和 Navigation3 预览版)
+# Navigation
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
-androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
-androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "nav3Core" }
 
 # DataStore
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }

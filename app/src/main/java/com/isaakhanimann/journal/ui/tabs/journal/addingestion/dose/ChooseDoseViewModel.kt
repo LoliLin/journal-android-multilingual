@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -31,8 +32,7 @@ import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -56,7 +56,8 @@ class ChooseDoseViewModel @Inject constructor(
     var units by mutableStateOf("")
 
     // --- Quick custom unit support ---
-    private val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
+    private val route = state.toRoute<ChooseDoseRoute>()
+    private val substanceName = route.substanceName
 
     val customUnitsFlow = experienceRepo.getUnArchivedCustomUnitsFlow(substanceName).stateIn(
         initialValue = emptyList(),
@@ -152,9 +153,8 @@ class ChooseDoseViewModel @Inject constructor(
     }
 
     init {
-        substance = repository.getSubstance(state.get<String>(SUBSTANCE_NAME_KEY)!!)!!
-        val routeString = state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
-        administrationRoute = AdministrationRoute.valueOf(routeString)
+        substance = repository.getSubstance(route.substanceName)!!
+        administrationRoute = route.administrationRoute
         roaDose = substance.getRoa(administrationRoute)?.roaDose
         units = roaDose?.units ?: ""
     }

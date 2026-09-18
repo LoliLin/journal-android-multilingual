@@ -18,81 +18,49 @@
 
 package com.isaakhanimann.journal.ui.main.navigation
 
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
-import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavDeepLink
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
-fun NavGraphBuilder.composableWithTransitions(
-    route: String,
-    arguments: List<NamedNavArgument> = emptyList(),
-    content: @Composable (AnimatedVisibilityScope.(NavBackStackEntry) -> Unit)
+/** Duration of the app-wide navigation cross-fade. */
+@PublishedApi
+internal const val NAVIGATION_FADE_MS = 150
+
+@PublishedApi
+internal val navigationEnterTransition: EnterTransition = fadeIn(tween(NAVIGATION_FADE_MS))
+
+@PublishedApi
+internal val navigationExitTransition: ExitTransition = fadeOut(tween(NAVIGATION_FADE_MS))
+
+/**
+ * Registers [T] as a destination with the app-wide transition.
+ *
+ * All navigation uses one minimal cross-fade with no directional movement: pushing into a tab,
+ * going back, switching bottom-bar tabs, and the system predictive-back preview. Keeping all four
+ * transition slots on the same animation is what makes the back-gesture preview look identical
+ * whether the user is leaving a detail screen inside the current tab or crossing to another tab.
+ *
+ * The transitions must stay non-null: predictive back only animates its preview when the
+ * destination defines enter/exit transitions.
+ */
+inline fun <reified T : Any> NavGraphBuilder.composableWithTransitions(
+    deepLinks: List<NavDeepLink> = emptyList(),
+    noinline content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit
 ) {
-    val withinTabTransitionTimeInMs = 300
-    val tabSwitchTimeInMs = 200
-    composable(
-        route = route,
-        arguments = arguments,
-        exitTransition = {
-            if (isChangingTab()) {
-                fadeOut(animationSpec = tween(tabSwitchTimeInMs))
-            } else {
-                slideOutHorizontally(
-                    targetOffsetX = { -300 },
-                    animationSpec = tween(withinTabTransitionTimeInMs)
-                ) + fadeOut(animationSpec = tween(withinTabTransitionTimeInMs))
-            }
-        },
-        popEnterTransition = {
-            if (isChangingTab()) {
-                fadeIn(animationSpec = tween(tabSwitchTimeInMs))
-            } else {
-                slideInHorizontally(
-                    initialOffsetX = { -300 },
-                    animationSpec = tween(withinTabTransitionTimeInMs)
-                ) + fadeIn(animationSpec = tween(withinTabTransitionTimeInMs))
-            }
-        },
-        enterTransition = {
-            if (isChangingTab()) {
-                fadeIn(animationSpec = tween(tabSwitchTimeInMs))
-            } else {
-                slideInHorizontally(
-                    initialOffsetX = { 300 },
-                    animationSpec = tween(withinTabTransitionTimeInMs)
-                ) + fadeIn(animationSpec = tween(withinTabTransitionTimeInMs))
-            }
-        },
-        popExitTransition = {
-            if (isChangingTab()) {
-                fadeOut(animationSpec = tween(tabSwitchTimeInMs))
-            } else {
-                slideOutHorizontally(
-                    targetOffsetX = { 300 },
-                    animationSpec = tween(withinTabTransitionTimeInMs)
-                ) + fadeOut(animationSpec = tween(withinTabTransitionTimeInMs))
-            }
-        },
+    composable<T>(
+        deepLinks = deepLinks,
+        enterTransition = { navigationEnterTransition },
+        exitTransition = { navigationExitTransition },
+        popEnterTransition = { navigationEnterTransition },
+        popExitTransition = { navigationExitTransition },
         content = content
     )
-}
-
-fun AnimatedContentTransitionScope<NavBackStackEntry>.isChangingTab(): Boolean {
-    // check grandparents because in a tab graph there can be another nested graph such as addIngestion
-    val initialParent = initialState.destination.parent
-    val initialGrandParent = initialParent?.parent
-    val targetParent = targetState.destination.parent
-    val targetGrandParent = targetParent?.parent
-    return (initialGrandParent?.route ?: initialParent?.route) != (
-        targetGrandParent?.route
-            ?: targetParent?.route
-        )
 }

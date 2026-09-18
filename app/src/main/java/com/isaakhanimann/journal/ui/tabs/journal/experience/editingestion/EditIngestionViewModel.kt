@@ -25,14 +25,15 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.INGESTION_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.RELEASE_FORM_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.IngestionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.RELEASE_FORM_HANDLE_KEY
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.IngestionTimePickerOption
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
@@ -71,7 +72,7 @@ class EditIngestionViewModel @Inject constructor(
 
     fun changeReleaseForm(form: ReleaseForm?) {
         releaseForm = form
-        state[RELEASE_FORM_KEY] = form?.name
+        state[RELEASE_FORM_HANDLE_KEY] = form
     }
     var isEstimate by mutableStateOf(false)
     var isKnown by mutableStateOf(true)
@@ -110,15 +111,15 @@ class EditIngestionViewModel @Inject constructor(
     }
 
     init {
-        val id = state.get<Int>(INGESTION_ID_KEY)!!
+        val id = state.toRoute<IngestionRoute>().ingestionId
         viewModelScope.launch {
             val ingestionAndCustomUnit =
                 experienceRepo.getIngestionFlow(id = id).first() ?: return@launch
             val ing = ingestionAndCustomUnit.ingestion
             ingestionFlow.emit(ing)
             ingestion = ing
-            releaseForm = if (state.contains(RELEASE_FORM_KEY)) {
-                ReleaseForm.fromName(state.get<String>(RELEASE_FORM_KEY))
+            releaseForm = if (state.contains(RELEASE_FORM_HANDLE_KEY)) {
+                state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY)
             } else {
                 ing.releaseForm
             }

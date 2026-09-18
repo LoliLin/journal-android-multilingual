@@ -20,35 +20,34 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.navigation
+import androidx.navigation.compose.navigation
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseRouteOfAddCustomUnit
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToFinishAddCustomUnit
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsSearchSubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseRouteOfAddCustomUnitRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.dismissAddCustomUnits
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToChooseRouteOfAddCustomUnit
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToFinishAddCustomUnit
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.ChooseRouteDuringAddCustomUnitScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.ChooseSubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.FinishAddCustomUnitScreen
 
 fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.AddCustomUnitsSearchSubstanceRouter.route,
-        route = NoArgumentRouter.AddCustomUnitsRouter.route
+    navigation<AddCustomUnitsRoute>(
+        startDestination = AddCustomUnitsSearchSubstanceRoute
     ) {
-        composableWithTransitions(NoArgumentRouter.AddCustomUnitsSearchSubstanceRouter.route) {
+        composableWithTransitions<AddCustomUnitsSearchSubstanceRoute> {
             ChooseSubstanceScreen(
                 navigateToChooseRoute = { substanceName ->
                     navController.navigateToChooseRouteOfAddCustomUnit(substanceName)
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.ChooseRouteOfAddCustomUnitRouter.route,
-            arguments = ArgumentRouter.ChooseRouteOfAddCustomUnitRouter.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val substanceName = args.getString(SUBSTANCE_NAME_KEY)!!
+        composableWithTransitions<ChooseRouteOfAddCustomUnitRoute> { backStackEntry ->
+            val substanceName =
+                backStackEntry.toRoute<ChooseRouteOfAddCustomUnitRoute>().substanceName
             ChooseRouteDuringAddCustomUnitScreen(
                 onRouteChosen = { administrationRoute ->
                     navController.navigateToFinishAddCustomUnit(
@@ -58,24 +57,10 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.FinishAddCustomUnitRouter.route,
-            arguments = ArgumentRouter.FinishAddCustomUnitRouter.args
-        ) {
+        composableWithTransitions<FinishAddCustomUnitRoute> {
             FinishAddCustomUnitScreen(
                 dismissAddCustomUnit = { navController.dismissAddCustomUnits() }
             )
         }
     }
-}
-
-fun NavController.navigateToAddCustomUnits() {
-    navigate(NoArgumentRouter.AddCustomUnitsRouter.route)
-}
-fun NavController.navigateToCustomUnitArchive() {
-    navigate(NoArgumentRouter.CustomUnitArchiveRouter.route)
-}
-
-fun NavController.dismissAddCustomUnits() {
-    popBackStack(route = NoArgumentRouter.AddCustomUnitsRouter.route, inclusive = true)
 }

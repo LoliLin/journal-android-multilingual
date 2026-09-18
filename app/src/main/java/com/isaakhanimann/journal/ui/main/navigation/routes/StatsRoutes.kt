@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023. Isaak Hanimann.
+ * Copyright (c) 2022-2023. Isaak Hanimann.
  * This file is part of PsychonautWiki Journal.
  *
  * PsychonautWiki Journal is free software: you can redistribute it and/or modify
@@ -16,21 +16,16 @@
  * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
-package com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse
+package com.isaakhanimann.journal.ui.main.navigation.routes
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.navigation.toRoute
-import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routes.CheckSaferUseRoute
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import kotlinx.serialization.Serializable
 
-@HiltViewModel
-class SaferUseViewModel @Inject constructor(
-    substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
-) : ViewModel() {
-    val substanceName = state.toRoute<CheckSaferUseRoute>().substanceName
-    val substance = substanceRepo.getSubstance(substanceName)!!
-}
+/** Start destination of the statistics tab. */
+@Serializable
+data object StatsRoute
+
+/**
+ * Per-substance statistics. [consumerName] is optional and therefore becomes a query argument.
+ */
+@Serializable
+data class SubstanceCompanionRoute(val substanceName: String, val consumerName: String? = null)

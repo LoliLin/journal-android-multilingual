@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
@@ -34,14 +35,8 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.DOSE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.ESTIMATED_DOSE_STANDARD_DEVIATION_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.IS_ESTIMATE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.RELEASE_FORM_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.UNITS_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseTimeRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.RELEASE_FORM_HANDLE_KEY
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
@@ -82,8 +77,9 @@ class FinishIngestionScreenViewModel @Inject constructor(
     @ApplicationContext private val appContext: Context,
     private val state: SavedStateHandle
 ) : ViewModel() {
+    private val route = state.toRoute<ChooseTimeRoute>()
     var substanceName by mutableStateOf("")
-    var releaseForm by mutableStateOf(ReleaseForm.fromName(state.get<String>(RELEASE_FORM_KEY)))
+    var releaseForm by mutableStateOf(state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY))
         private set
     val availableReleaseForms: List<ReleaseForm>
         get() = substanceRepo.getSubstance(
@@ -92,7 +88,7 @@ class FinishIngestionScreenViewModel @Inject constructor(
 
     fun changeReleaseForm(form: ReleaseForm?) {
         releaseForm = form
-        state[RELEASE_FORM_KEY] = form?.name
+        state[RELEASE_FORM_HANDLE_KEY] = form
     }
     val localDateTimeStartFlow = MutableStateFlow(LocalDateTime.now())
     val localDateTimeEndFlow = MutableStateFlow(LocalDateTime.now().plusMinutes(30))
@@ -200,23 +196,13 @@ class FinishIngestionScreenViewModel @Inject constructor(
     }
 
     init {
-        // Fork navigation passes string-route arguments via SavedStateHandle (no type-safe routes).
-        substanceName = state.get<String>(SUBSTANCE_NAME_KEY) ?: ""
-        administrationRoute = AdministrationRoute.valueOf(
-            state.get<String>(ADMINISTRATION_ROUTE_KEY)!!
-        )
-        dose = state.get<String>(DOSE_KEY)?.toDoubleOrNull()
-        estimatedDoseStandardDeviation =
-            state.get<String>(ESTIMATED_DOSE_STANDARD_DEVIATION_KEY)?.toDoubleOrNull()
-        customUnitId = state.get<String>(CUSTOM_UNIT_ID_KEY)?.toIntOrNull()
-        units = state.get<String>(UNITS_KEY)?.let {
-            if (it == "null") {
-                null
-            } else {
-                it
-            }
-        }
-        isEstimate = state.get<Boolean>(IS_ESTIMATE_KEY)!!
+        substanceName = route.substanceName ?: ""
+        administrationRoute = route.administrationRoute
+        dose = route.dose
+        estimatedDoseStandardDeviation = route.estimatedDoseStandardDeviation
+        customUnitId = route.customUnitId
+        units = route.units
+        isEstimate = route.isEstimate
         viewModelScope.launch {
             val lastIngestionTimeOfExperience =
                 userPreferences.lastIngestionTimeOfExperienceFlow.first()

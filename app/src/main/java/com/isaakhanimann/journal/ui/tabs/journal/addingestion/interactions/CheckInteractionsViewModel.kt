@@ -24,12 +24,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.I18nText
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.CheckInteractionsRoute
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,7 +48,7 @@ class CheckInteractionsViewModel @Inject constructor(
     private val interactionChecker: InteractionChecker,
     state: SavedStateHandle
 ) : ViewModel() {
-    val substanceName = state.get<String>(SUBSTANCE_NAME_KEY)!!
+    val substanceName = state.toRoute<CheckInteractionsRoute>().substanceName
     val substance = substanceRepo.getSubstance(substanceName)!!
     val dangerousInteractions = substance.interactions?.dangerous ?: emptyList()
     val unsafeInteractions = substance.interactions?.unsafe ?: emptyList()

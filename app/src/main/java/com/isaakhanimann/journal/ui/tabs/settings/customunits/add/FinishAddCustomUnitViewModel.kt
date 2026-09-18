@@ -24,14 +24,13 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
-import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.ADMINISTRATION_ROUTE_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.SUBSTANCE_NAME_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -44,9 +43,9 @@ class FinishAddCustomUnitViewModel @Inject constructor(
     val substanceRepository: SubstanceRepository,
     state: SavedStateHandle
 ) : ViewModel() {
+    private val route = state.toRoute<FinishAddCustomUnitRoute>()
     var substanceName by mutableStateOf("")
-    val administrationRoute =
-        AdministrationRoute.valueOf(state.get<String>(ADMINISTRATION_ROUTE_KEY)!!)
+    val administrationRoute = route.administrationRoute
 
     var substance by mutableStateOf<Substance?>(null)
     val roaDose get() = substance?.getRoa(administrationRoute)?.roaDose
@@ -115,7 +114,7 @@ class FinishAddCustomUnitViewModel @Inject constructor(
     init {
         originalUnit = roaDose?.units ?: ""
         viewModelScope.launch {
-            substanceName = state.get<String>(SUBSTANCE_NAME_KEY) ?: ""
+            substanceName = route.substanceName
             substance = substanceRepository.getSubstance(substanceName)
             originalUnit = roaDose?.units ?: "mg"
             isUnitsFieldShown = roaDose?.units?.isBlank() ?: true

@@ -21,79 +21,107 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.ui.VOLUMETRIC_DOSE_ARTICLE_URL
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.*
-import com.isaakhanimann.journal.ui.tabs.safer.*
+import com.isaakhanimann.journal.ui.main.navigation.routes.AdministrationRouteExplanationRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_SAFER
+import com.isaakhanimann.journal.ui.main.navigation.routes.DosageExplanationOnSaferTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DosageGuideRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DrugTestingRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ReagentTestingRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferStimulantsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferTabUrlRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnSaferTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAdministrationRouteExplanation
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToDosageExplanationOnSaferTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToDosageGuide
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToDrugTesting
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToReagentTesting
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSaferHallucinogens
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToURLOnSaferTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToVolumetricDosingOnSaferTab
+import com.isaakhanimann.journal.ui.tabs.safer.DoseExplanationScreen
+import com.isaakhanimann.journal.ui.tabs.safer.DoseGuideScreen
+import com.isaakhanimann.journal.ui.tabs.safer.DrugTestingScreen
+import com.isaakhanimann.journal.ui.tabs.safer.ReagentTestingScreen
+import com.isaakhanimann.journal.ui.tabs.safer.RouteExplanationScreen
+import com.isaakhanimann.journal.ui.tabs.safer.SaferHallucinogensScreen
+import com.isaakhanimann.journal.ui.tabs.safer.SaferUseScreen
+import com.isaakhanimann.journal.ui.tabs.safer.VolumetricDosingScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.SaferStimulantsScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 
 fun NavGraphBuilder.saferGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.SaferRouter.route,
-        route = TabRouter.SaferUse.route
+    navigation<SaferTab>(
+        startDestination = SaferRoute
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.SaferRouter.route
+        composableWithTransitions<SaferRoute>(
+            deepLinks = listOf(navDeepLink<SaferRoute>(basePath = DEEP_LINK_SAFER))
         ) {
             SaferUseScreen(
-                navigateToDrugTestingScreen = navController::navigateToDrugTestingScreen,
+                navigateToDrugTestingScreen = navController::navigateToDrugTesting,
                 navigateToSaferHallucinogensScreen = navController::navigateToSaferHallucinogens,
-                navigateToVolumetricDosingScreen = navController::navigateToVolumetricDosingScreenOnSaferTab,
-                navigateToDosageGuideScreen = navController::navigateToDosageGuideScreen,
-                navigateToDosageClassificationScreen = navController::navigateToDosageExplanationScreenOnSaferTab,
-                navigateToRouteExplanationScreen = navController::navigateToAdministrationRouteExplanationScreen,
-                navigateToURL = navController::navigateToURLInSaferTab,
+                navigateToVolumetricDosingScreen = navController::navigateToVolumetricDosingOnSaferTab,
+                navigateToDosageGuideScreen = navController::navigateToDosageGuide,
+                navigateToDosageClassificationScreen = navController::navigateToDosageExplanationOnSaferTab,
+                navigateToRouteExplanationScreen = navController::navigateToAdministrationRouteExplanation,
+                navigateToURL = navController::navigateToURLOnSaferTab,
                 navigateToReagentTestingScreen = navController::navigateToReagentTesting
             )
         }
-        composableWithTransitions(NoArgumentRouter.SaferHallucinogens.route) {
+        composableWithTransitions<SaferHallucinogensRoute> {
             SaferHallucinogensScreen()
         }
-        composableWithTransitions(NoArgumentRouter.SaferStimulants.route) {
+        composableWithTransitions<SaferStimulantsRoute> {
+            // Kept for parity with SaferHallucinogensRoute above: the safer-use tab's own copy of the
+            // screen. The substances tab has a separate destination for the same screen, which is
+            // what SubstanceScreen links to.
             SaferStimulantsScreen()
         }
-        composableWithTransitions(NoArgumentRouter.DosageExplanationRouterOnSaferTab.route) {
+        composableWithTransitions<DosageExplanationOnSaferTabRoute> {
             DoseExplanationScreen()
         }
-        composableWithTransitions(NoArgumentRouter.AdministrationRouteExplanationRouter.route) {
+        composableWithTransitions<AdministrationRouteExplanationRoute> {
             RouteExplanationScreen(
-                navigateToURL = navController::navigateToURLInSaferTab
+                navigateToURL = navController::navigateToURLOnSaferTab
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.URLRouterOnSaferTab.route,
-            arguments = ArgumentRouter.URLRouterOnSaferTab.args
-        ) { backStackEntry ->
-            val args = backStackEntry.arguments!!
-            val url = args.getString(URL_KEY)!!
-            UrlScreen(url = url, onHandled = navController::popBackStack)
+        composableWithTransitions<SaferTabUrlRoute> { backStackEntry ->
+            UrlScreen(
+                url = backStackEntry.toRoute<SaferTabUrlRoute>().url,
+                onHandled = navController::popBackStack
+            )
         }
-        composableWithTransitions(NoArgumentRouter.DrugTestingRouter.route) { DrugTestingScreen() }
-        composableWithTransitions(NoArgumentRouter.DosageGuideRouter.route) {
+        composableWithTransitions<DrugTestingRoute> { DrugTestingScreen() }
+        composableWithTransitions<DosageGuideRoute> {
             DoseGuideScreen(
-                navigateToDoseClassification = navController::navigateToDosageExplanationScreenOnSaferTab,
-                navigateToVolumetricDosing = navController::navigateToVolumetricDosingScreenOnSaferTab,
+                navigateToDoseClassification = navController::navigateToDosageExplanationOnSaferTab,
+                navigateToVolumetricDosing = navController::navigateToVolumetricDosingOnSaferTab,
                 navigateToPWDosageArticle = {
-                    navController.navigateToURLInSaferTab(
+                    navController.navigateToURLOnSaferTab(
                         url = "https://psychonautwiki.org/wiki/Dosage"
                     )
                 }
             )
         }
-        composableWithTransitions(NoArgumentRouter.VolumetricDosingOnSaferTabRouter.route) {
+        composableWithTransitions<VolumetricDosingOnSaferTabRoute> {
             VolumetricDosingScreen(
                 navigateToVolumetricLiquidDosingArticle = {
-                    navController.navigateToURLInSaferTab(
+                    navController.navigateToURLOnSaferTab(
                         VOLUMETRIC_DOSE_ARTICLE_URL
                     )
                 }
             )
         }
-        composableWithTransitions(NoArgumentRouter.ReagentTestingRouter.route) {
+        composableWithTransitions<ReagentTestingRoute> {
             ReagentTestingScreen(
                 navigateToReagentTestingArticle = {
-                    navController.navigateToURLInSaferTab(
+                    navController.navigateToURLOnSaferTab(
                         "https://psychonautwiki.org/wiki/Reagent_testing_kits"
                     )
                 }

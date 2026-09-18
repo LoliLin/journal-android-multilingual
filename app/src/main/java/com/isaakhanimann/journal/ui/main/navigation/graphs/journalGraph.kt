@@ -21,24 +21,45 @@ package com.isaakhanimann.journal.ui.main.navigation.graphs
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.navigation
+import androidx.navigation.navDeepLink
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.ui.VOLUMETRIC_DOSE_ARTICLE_URL
 import com.isaakhanimann.journal.ui.main.navigation.composableWithTransitions
-import com.isaakhanimann.journal.ui.main.navigation.routers.ArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.NoArgumentRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddRating
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToAddTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditExperience
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditRating
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToEditTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExperience
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToExplainTimelineOnJournalTab
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimelineScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToURLInJournalTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddRatingRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddTimedNoteRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CalendarRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_EXPERIENCE
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_JOURNAL
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_QUICK_NOTE
+import com.isaakhanimann.journal.ui.main.navigation.routes.DEEP_LINK_TIME_CAPSULE
+import com.isaakhanimann.journal.ui.main.navigation.routes.DosageExplanationOnJournalTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditExperienceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditRatingRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditTimedNoteRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ExperienceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ExplainTimelineOnJournalTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.IngestionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.JournalRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.JournalTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.JournalTabUrlRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.QuickTimedNoteRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SaferSniffingOnJournalTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.TimeCapsuleRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.TimelineScreenRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnJournalTabRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddRating
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToCalendar
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToEditExperience
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToEditRating
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToEditTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToExperience
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToExplainTimelineOnJournalTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToTimelineScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToURLInJournalTab
 import com.isaakhanimann.journal.ui.tabs.journal.JournalScreen
 import com.isaakhanimann.journal.ui.tabs.journal.calendar.CalendarJournalScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceScreen
@@ -48,21 +69,21 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add.AddRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.edit.EditRatingScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.AddTimedNoteScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.QuickTimedNoteScreen
-import com.isaakhanimann.journal.ui.tabs.journal.timecapsule.TimeCapsuleScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit.EditTimedNoteScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ExplainTimelineScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen.TimelineScreen
+import com.isaakhanimann.journal.ui.tabs.journal.timecapsule.TimeCapsuleScreen
 import com.isaakhanimann.journal.ui.tabs.safer.DoseExplanationScreen
 import com.isaakhanimann.journal.ui.tabs.safer.VolumetricDosingScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.SaferSniffingScreen
+import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 
 fun NavGraphBuilder.journalGraph(navController: NavController) {
-    navigation(
-        startDestination = NoArgumentRouter.JournalRouter.route,
-        route = TabRouter.Journal.route
+    navigation<JournalTab>(
+        startDestination = JournalRoute
     ) {
-        composableWithTransitions(
-            route = NoArgumentRouter.JournalRouter.route
+        composableWithTransitions<JournalRoute>(
+            deepLinks = listOf(navDeepLink<JournalRoute>(basePath = DEEP_LINK_JOURNAL))
         ) {
             JournalScreen(
                 navigateToExperiencePopNothing = navController::navigateToExperience,
@@ -71,68 +92,48 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
                 navigateToQuickTimedNote = navController::navigateToQuickTimedNote
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.EditExperienceRouter.route,
-            arguments = ArgumentRouter.EditExperienceRouter.args
-        ) {
+        composableWithTransitions<EditExperienceRoute> {
             EditExperienceScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.AddRatingRouter.route,
-            arguments = ArgumentRouter.AddRatingRouter.args
-        ) {
+        composableWithTransitions<AddRatingRoute> {
             AddRatingScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.AddTimedNoteRouter.route,
-            arguments = ArgumentRouter.AddTimedNoteRouter.args
-        ) {
+        composableWithTransitions<AddTimedNoteRoute> {
             AddTimedNoteScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.QuickTimedNoteRouter.route,
-            arguments = ArgumentRouter.QuickTimedNoteRouter.args
+        composableWithTransitions<QuickTimedNoteRoute>(
+            deepLinks = listOf(navDeepLink<QuickTimedNoteRoute>(basePath = DEEP_LINK_QUICK_NOTE))
         ) {
             QuickTimedNoteScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.TimeCapsuleRouter.route
+        composableWithTransitions<TimeCapsuleRoute>(
+            deepLinks = listOf(navDeepLink<TimeCapsuleRoute>(basePath = DEEP_LINK_TIME_CAPSULE))
         ) {
             TimeCapsuleScreen(
                 navigateBack = navController::popBackStack,
                 navigateToExperience = navController::navigateToExperience
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.EditRatingRouter.route,
-            arguments = ArgumentRouter.EditRatingRouter.args
-        ) {
+        composableWithTransitions<EditRatingRoute> {
             EditRatingScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.EditTimedNoteRouter.route,
-            arguments = ArgumentRouter.EditTimedNoteRouter.args
-        ) {
+        composableWithTransitions<EditTimedNoteRoute> {
             EditTimedNoteScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions(
-            ArgumentRouter.TimelineScreenRouter.route,
-            arguments = ArgumentRouter.TimelineScreenRouter.args
-        ) {
+        composableWithTransitions<TimelineScreenRoute> {
             TimelineScreen()
         }
-        composableWithTransitions(NoArgumentRouter.VolumetricDosingOnJournalTabRouter.route) {
+        composableWithTransitions<VolumetricDosingOnJournalTabRoute> {
             VolumetricDosingScreen(
                 navigateToVolumetricLiquidDosingArticle = {
                     navController.navigateToURLInJournalTab(url = VOLUMETRIC_DOSE_ARTICLE_URL)
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.ExperienceRouter.route,
-            arguments = ArgumentRouter.ExperienceRouter.args
-        ) {
-            val experienceId = it.arguments!!.getInt(EXPERIENCE_ID_KEY)
+        composableWithTransitions<ExperienceRoute>(
+            deepLinks = listOf(navDeepLink<ExperienceRoute>(basePath = DEEP_LINK_EXPERIENCE))
+        ) { backStackEntry ->
+            val experienceId = backStackEntry.toRoute<ExperienceRoute>().experienceId
             OneExperienceScreen(
                 navigateToAddIngestionSearch = navController::navigateToAddIngestion,
                 navigateToExplainTimeline = navController::navigateToExplainTimelineOnJournalTab,
@@ -162,26 +163,33 @@ fun NavGraphBuilder.journalGraph(navController: NavController) {
                 }
             )
         }
-        composableWithTransitions(
-            ArgumentRouter.IngestionRouter.route,
-            arguments = ArgumentRouter.IngestionRouter.args
-        ) {
+        composableWithTransitions<IngestionRoute> {
             EditIngestionScreen(navigateBack = navController::popBackStack)
         }
-        addIngestionGraph(navController)
-        composableWithTransitions(NoArgumentRouter.ExplainTimelineOnJournalTabRouter.route) {
+        // Article viewer of the journal tab. Registered here rather than inside addIngestionGraph:
+        // the add-ingestion screens open articles too, and a destination may only exist once per
+        // graph hierarchy, so the flow links to this sibling (same as the explain/safer screens
+        // below).
+        composableWithTransitions<JournalTabUrlRoute> { backStackEntry ->
+            UrlScreen(
+                url = backStackEntry.toRoute<JournalTabUrlRoute>().url,
+                onHandled = navController::popBackStack
+            )
+        }
+        composableWithTransitions<ExplainTimelineOnJournalTabRoute> {
             ExplainTimelineScreen()
         }
-        composableWithTransitions(NoArgumentRouter.DosageExplanationRouterOnSearchTab.route) {
+        composableWithTransitions<DosageExplanationOnJournalTabRoute> {
             DoseExplanationScreen()
         }
-        composableWithTransitions(NoArgumentRouter.SaferSniffingOnJournalTab.route) {
+        composableWithTransitions<SaferSniffingOnJournalTabRoute> {
             SaferSniffingScreen()
         }
-        composableWithTransitions(NoArgumentRouter.CalendarRouter.route) {
+        composableWithTransitions<CalendarRoute> {
             CalendarJournalScreen(
                 navigateToExperiencePopNothing = navController::navigateToExperience
             )
         }
+        addIngestionGraph(navController)
     }
 }

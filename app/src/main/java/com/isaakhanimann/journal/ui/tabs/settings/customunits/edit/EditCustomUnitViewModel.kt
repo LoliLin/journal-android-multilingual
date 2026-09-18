@@ -24,13 +24,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.CUSTOM_UNIT_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomUnitRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -47,7 +48,7 @@ class EditCustomUnitViewModel @Inject constructor(
 
     private var customUnit: CustomUnit? = null
     init {
-        val customUnitId = state.get<Int>(CUSTOM_UNIT_ID_KEY)!!
+        val customUnitId = state.toRoute<EditCustomUnitRoute>().customUnitId
         viewModelScope.launch {
             val customUnitWithIngestions = experienceRepo.getCustomUnitWithIngestions(customUnitId)
             val customUnit = customUnitWithIngestions?.customUnit

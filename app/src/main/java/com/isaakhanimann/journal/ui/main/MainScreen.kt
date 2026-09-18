@@ -18,78 +18,62 @@
 
 package com.isaakhanimann.journal.ui.main
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.shrinkVertically
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import android.content.Intent
+import android.util.Log
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
-import androidx.compose.ui.input.nestedscroll.NestedScrollSource
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.IntOffset
+import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.isaakhanimann.journal.localization.I18n
-import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
-import com.isaakhanimann.journal.ui.main.navigation.graphs.navigateToAddIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToChooseRouteOfAddIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToQuickTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceCompanionScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToSubstanceScreen
-import com.isaakhanimann.journal.ui.main.navigation.routers.navigateToTimeCapsule
-import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
-import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
-import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
-import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
-import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
-import com.isaakhanimann.journal.ui.notifications.NAV_STATS
-import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
-import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
-import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
-import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
 import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
-import com.isaakhanimann.journal.ui.main.navigation.routers.TabRouter
-import com.isaakhanimann.journal.ui.main.navigation.routers.isMainTabRootRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.JournalTab
+import com.isaakhanimann.journal.ui.main.navigation.routes.TopLevelDestinations
+import com.isaakhanimann.journal.ui.main.navigation.routes.isTopLevelDestinationRoot
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToChooseRouteOfAddIngestion
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToQuickTimedNote
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceCompanionScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceScreen
+import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToTimeCapsule
+import com.isaakhanimann.journal.ui.main.navigation.routes.popToTopLevelDestinationRoot
+import com.isaakhanimann.journal.ui.main.navigation.routes.switchToTopLevelDestination
+import com.isaakhanimann.journal.ui.main.navigation.routes.topLevelDestinationOrNull
+import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
+import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
+import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
+import com.isaakhanimann.journal.ui.notifications.NAV_ADD_INGESTION
+import com.isaakhanimann.journal.ui.notifications.NAV_CHOOSE_ROUTE
+import com.isaakhanimann.journal.ui.notifications.NAV_QUICK_NOTE
+import com.isaakhanimann.journal.ui.notifications.NAV_STATS
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
+import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
+import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
 
-private fun parseNavIntent(intent: android.content.Intent?): Triple<String, Int, String?>? {
-    val target = intent?.getStringExtra(EXTRA_NAVIGATE_TO) ?: return null
-    val experienceId = intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
-    val substanceName = intent.getStringExtra(EXTRA_SUBSTANCE_NAME)
-    return Triple(target, experienceId, substanceName)
-}
+private const val TAG = "MainScreen"
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -99,24 +83,11 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
         I18n.setPreferredLanguageKey(selectedLanguageKey)
     }
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
-    val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
 
-    // Notification taps can steer the app to a target screen (quick note / time capsule).
-    // Tracked above the gate so the intent survives the accept/lock screens and is
-    // consumed by the content branch once it composes.
-    var pendingNav by remember { mutableStateOf<Triple<String, Int, String?>?>(null) }
-    val activity = LocalContext.current as? androidx.activity.ComponentActivity
-    DisposableEffect(activity) {
-        val listener = { intent: android.content.Intent ->
-            parseNavIntent(intent)?.let { pendingNav = it }
-            Unit
-        }
-        activity?.addOnNewIntentListener(listener)
-        onDispose { activity?.removeOnNewIntentListener(listener) }
-    }
-    LaunchedEffect(Unit) {
-        parseNavIntent(activity?.intent)?.let { pendingNav = it }
-    }
+    // Notification taps and journal:// deep links steer the app to a screen. Tracked above the gate
+    // so the intent survives the accept-conditions and app-lock screens and is consumed by the
+    // content branch once the navigation graph exists.
+    val pendingIntent = rememberPendingNavigationIntent()
 
     if (isAccepted == null) {
         // DataStore value not read yet: show nothing instead of flashing content.
@@ -128,183 +99,164 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     ) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
-        val navController = rememberNavController()
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentDestination = navBackStackEntry?.destination
+        MainScreenContent(viewModel = viewModel, pendingIntent = pendingIntent)
+    }
+}
 
-        LaunchedEffect(pendingNav) {
-            pendingNav?.let { (target, experienceId, substanceName) ->
-                when (target) {
-                    NAV_QUICK_NOTE -> if (experienceId > 0) {
-                        navController.navigateToQuickTimedNote(experienceId)
-                    }
-                    NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
-                    NAV_ADD_INGESTION -> navController.navigateToAddIngestion()
-                    NAV_STATS -> navController.navigate(TabRouter.Statistics.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                    NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) {
-                        navController.navigateToSubstanceScreen(substanceName)
-                    }
-                    NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
-                        navController.navigateToSubstanceCompanionScreen(substanceName, null)
-                    }
-                    NAV_CHOOSE_ROUTE -> if (!substanceName.isNullOrBlank()) {
-                        navController.navigateToChooseRouteOfAddIngestion(substanceName)
-                    }
-                }
-                pendingNav = null
-            }
+/**
+ * The activity intent that should steer navigation, delivered both for the launching intent and
+ * for later taps while the activity already exists.
+ *
+ * `MainActivity` is `singleTop`, so a notification or widget tap reaches an existing instance
+ * through `onNewIntent` instead of recreating it and dropping the whole navigation stack.
+ */
+@Composable
+private fun rememberPendingNavigationIntent(): MutableState<Intent?> {
+    val pending = remember { mutableStateOf<Intent?>(null) }
+    val activity = LocalContext.current as? ComponentActivity
+    DisposableEffect(activity) {
+        val listener = Consumer<Intent> { intent -> pending.value = intent }
+        activity?.addOnNewIntentListener(listener)
+        onDispose { activity?.removeOnNewIntentListener(listener) }
+    }
+    LaunchedEffect(activity) {
+        activity?.intent?.let { pending.value = it }
+    }
+    return pending
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun MainScreenContent(
+    viewModel: MainScreenViewModel,
+    pendingIntent: MutableState<Intent?>
+) {
+    val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
+    val navController = rememberNavController()
+    val currentDestination = navController.currentBackStackEntryAsState().value?.destination
+    // Both lookups compare the destination against the five tab routes, so they are memoised per
+    // destination instead of re-resolving the route classes on every recomposition.
+    val selectedDestination = remember(currentDestination) {
+        currentDestination?.topLevelDestinationOrNull()
+    }
+    val isOnMainTabRoot = remember(currentDestination) {
+        currentDestination?.isTopLevelDestinationRoot() == true
+    }
+
+    val pendingIntentValue = pendingIntent.value
+    LaunchedEffect(pendingIntentValue) {
+        pendingIntentValue?.let { intent ->
+            handleNavigationIntent(navController, intent)
+            pendingIntent.value = null
         }
+    }
 
-        val isKeyboardOpenNow = isKeyboardOpen().value
-        val isOnMainTabRoot = isMainTabRootRoute(currentDestination?.route)
-        val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
-        // Official Material3 hide-on-scroll connection, plus onPreScroll so an
-        // upward swipe at the list top (consumed.y == 0) still reveals the bar.
-        // When the user pins the bar (issue #144) no connection is provided at
-        // all: lists scroll normally and the bar never moves.
-        val bottomBarScrollBehavior = BottomAppBarDefaults.exitAlwaysScrollBehavior(
-            canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
-        )
-        val nestedScrollConnection = if (isBottomBarPinned) {
-            null
+    val isKeyboardOpenNow = isKeyboardOpen().value
+    val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
+    // When the user pins the bar (issue #144) no scroll connection is provided at all: lists scroll
+    // normally and the bar never moves.
+    val bottomBarScrollBehavior = rememberBottomBarScrollBehavior(
+        canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
+    )
+    val nestedScrollConnection = if (isBottomBarPinned) {
+        null
+    } else {
+        remember(bottomBarScrollBehavior) {
+            bottomBarNestedScrollConnection(bottomBarScrollBehavior)
+        }
+    }
+    LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow, isBottomBarPinned) {
+        if (!isOnMainTabRoot || isKeyboardOpenNow || isBottomBarPinned) {
+            bottomBarScrollBehavior.state.heightOffset = 0f
+        }
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        val barHeightPx = remember { mutableIntStateOf(0) }
+        val heightOffset = if (isBottomBarPinned) {
+            0f
         } else {
-            remember(bottomBarScrollBehavior) {
-                val official = bottomBarScrollBehavior.nestedScrollConnection
-                object : NestedScrollConnection {
-                    override fun onPreScroll(
-                        available: Offset,
-                        source: NestedScrollSource
-                    ): Offset {
-                        if (available.y > 0f &&
-                            bottomBarScrollBehavior.state.heightOffset < 0f
-                        ) {
-                            val state = bottomBarScrollBehavior.state
-                            val next = (state.heightOffset + available.y)
-                                .coerceIn(state.heightOffsetLimit, 0f)
-                            val consumedY = next - state.heightOffset
-                            state.heightOffset = next
-                            return Offset(0f, consumedY)
-                        }
-                        return Offset.Zero
-                    }
-
-                    override fun onPostScroll(
-                        consumed: Offset,
-                        available: Offset,
-                        source: NestedScrollSource
-                    ): Offset = official.onPostScroll(consumed, available, source)
-                }
+            bottomBarScrollBehavior.state.heightOffset
+        }
+        val visibleBarPx = if (isBottomBarShown) {
+            (barHeightPx.intValue + heightOffset.toInt()).coerceAtLeast(0)
+        } else {
+            0
+        }
+        CompositionLocalProvider(
+            LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
+            LocalBottomBarOverlayInsetPx provides visibleBarPx
+        ) {
+            NavHost(
+                navController,
+                startDestination = JournalTab,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                journalGraph(navController)
+                statsGraph(navController)
+                searchGraph(navController)
+                saferGraph(navController)
+                settingsGraph(navController)
             }
         }
-        LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow, isBottomBarPinned) {
-            if (!isOnMainTabRoot || isKeyboardOpenNow || isBottomBarPinned) {
-                bottomBarScrollBehavior.state.heightOffset = 0f
-            }
-        }
-
-        Box(modifier = Modifier.fillMaxSize()) {
-            val barHeightPx = remember { mutableIntStateOf(0) }
-            val heightOffset = if (isBottomBarPinned) {
-                0f
-            } else {
-                bottomBarScrollBehavior.state.heightOffset
-            }
-            val visibleBarPx = if (isBottomBarShown) {
-                (barHeightPx.intValue + heightOffset.toInt()).coerceAtLeast(0)
-            } else {
-                0
-            }
-            CompositionLocalProvider(
-                LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
-                LocalBottomBarOverlayInsetPx provides visibleBarPx
-            ) {
-                NavHost(
-                    navController,
-                    startDestination = TabRouter.Journal.route,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    journalGraph(navController)
-                    statsGraph(navController)
-                    searchGraph(navController)
-                    saferGraph(navController)
-                    settingsGraph(navController)
-                }
-            }
-            AnimatedVisibility(
-                visible = isBottomBarShown,
-                modifier = Modifier.align(Alignment.BottomCenter),
-                enter = slideInVertically(tween(durationMillis = 250)) { it } +
-                    expandVertically(tween(durationMillis = 250), expandFrom = Alignment.Bottom),
-                exit = slideOutVertically(tween(durationMillis = 250)) { it } +
-                    shrinkVertically(tween(durationMillis = 250), shrinkTowards = Alignment.Bottom)
-            ) {
-                NavigationBar(
-                    modifier = Modifier
-                        .onSizeChanged { size ->
-                            barHeightPx.intValue = size.height
-                            bottomBarScrollBehavior.state.heightOffsetLimit =
-                                -size.height.toFloat()
-                        }
-                        .offset {
-                            IntOffset(
-                                x = 0,
-                                y = if (isBottomBarPinned) {
-                                    0
-                                } else {
-                                    -bottomBarScrollBehavior.state.heightOffset.toInt()
-                                }
-                            )
-                        }
-                ) {
-                    val tabs = listOf(
-                        TabRouter.Statistics,
-                        TabRouter.Journal,
-                        TabRouter.Substances,
-                        TabRouter.SaferUse,
-                        TabRouter.Settings
-                    )
-                    tabs.forEach { tab ->
-                        val isSelected =
-                            currentDestination?.hierarchy?.any { it.route == tab.route } == true
-                        NavigationBarItem(
-                            icon = {
-                                if (isSelected) {
-                                    Icon(tab.iconSelected, contentDescription = null)
-                                } else {
-                                    Icon(tab.icon, contentDescription = null)
-                                }
-                            },
-                            label = { Text(i18n(tab.labelKey)) },
-                            selected = isSelected,
-                            onClick = {
-                                if (isSelected) {
-                                    val isAlreadyOnTopOfTab = tabs.any {
-                                        it.childRoute ==
-                                            currentDestination.route
-                                    }
-                                    if (!isAlreadyOnTopOfTab) {
-                                        navController.popBackStack()
-                                    }
-                                } else {
-                                    navController.navigate(tab.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
-                                            saveState = true
-                                        }
-                                        launchSingleTop = true
-                                        restoreState = true
-                                    }
-                                }
-                            }
-                        )
+        BottomNavigationBar(
+            visible = isBottomBarShown,
+            selectedDestination = selectedDestination,
+            scrollBehavior = bottomBarScrollBehavior,
+            isPinned = isBottomBarPinned,
+            onTabSelected = { destination ->
+                if (destination == selectedDestination) {
+                    // Re-tapping the selected tab returns to its root instead of popping a single
+                    // screen, which is what the platform convention expects.
+                    if (!isOnMainTabRoot) {
+                        navController.popToTopLevelDestinationRoot(destination)
                     }
+                } else {
+                    navController.switchToTopLevelDestination(destination)
                 }
-            }
+            },
+            onMeasuredHeightChanged = { barHeightPx.intValue = it },
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+}
+
+/**
+ * Routes an incoming intent, preferring the registered `journal://` deep links and falling back to
+ * the `EXTRA_NAVIGATE_TO` contract used by notifications and the stats widget.
+ */
+private fun handleNavigationIntent(navController: NavController, intent: Intent) {
+    val wasHandledByDeepLink = try {
+        navController.handleDeepLink(intent)
+    } catch (e: IllegalStateException) {
+        // Thrown when a deep link cannot be reached from the current destination; the app should
+        // stay where it is rather than crash.
+        Log.w(TAG, "Deep link could not be handled from the current destination", e)
+        false
+    }
+    if (wasHandledByDeepLink) return
+    handleLegacyNavigationIntent(navController, intent)
+}
+
+private fun handleLegacyNavigationIntent(navController: NavController, intent: Intent) {
+    val target = intent.getStringExtra(EXTRA_NAVIGATE_TO) ?: return
+    val experienceId = intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
+    val substanceName = intent.getStringExtra(EXTRA_SUBSTANCE_NAME)
+    when (target) {
+        NAV_QUICK_NOTE -> if (experienceId > 0) {
+            navController.navigateToQuickTimedNote(experienceId)
+        }
+        NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
+        NAV_ADD_INGESTION -> navController.navigateToAddIngestion()
+        NAV_STATS -> navController.switchToTopLevelDestination(TopLevelDestinations.Stats)
+        NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) {
+            navController.navigateToSubstanceScreen(substanceName)
+        }
+        NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
+            navController.navigateToSubstanceCompanionScreen(substanceName, null)
+        }
+        NAV_CHOOSE_ROUTE -> if (!substanceName.isNullOrBlank()) {
+            navController.navigateToChooseRouteOfAddIngestion(substanceName)
         }
     }
 }

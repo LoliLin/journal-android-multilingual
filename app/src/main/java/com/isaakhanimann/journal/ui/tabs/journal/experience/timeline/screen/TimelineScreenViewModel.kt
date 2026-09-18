@@ -21,13 +21,13 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routers.CONSUMER_NAME_KEY
-import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.TimelineScreenRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -46,8 +46,9 @@ class TimelineScreenViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-    private val experienceID = state.get<Int>(EXPERIENCE_ID_KEY)!!
-    val consumerName = state.get<String>(CONSUMER_NAME_KEY)!!
+    private val route = state.toRoute<TimelineScreenRoute>()
+    private val experienceID = route.experienceId
+    val consumerName = route.consumerName
 
     val ownerUserNameFlow = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",

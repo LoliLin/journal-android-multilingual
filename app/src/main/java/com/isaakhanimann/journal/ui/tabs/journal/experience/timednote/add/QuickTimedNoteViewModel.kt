@@ -6,10 +6,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routers.EXPERIENCE_ID_KEY
+import com.isaakhanimann.journal.ui.main.navigation.routes.QuickTimedNoteRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
 import javax.inject.Inject
@@ -28,7 +29,9 @@ class QuickTimedNoteViewModel @Inject constructor(
         private set
     // Null-safe: a missing/unsurvivable navigation argument must not crash the app
     // (e.g. process death while the route was being rebuilt).
-    val experienceId: Int? = state.get<Int>(EXPERIENCE_ID_KEY)
+    val experienceId: Int? = runCatching {
+        state.toRoute<QuickTimedNoteRoute>().experienceId
+    }.getOrNull()
 
     fun onChangeNote(newNote: String) {
         note = newNote
