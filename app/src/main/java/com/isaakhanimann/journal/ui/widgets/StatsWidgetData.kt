@@ -4,6 +4,8 @@ import android.content.Context
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import java.time.Instant
 import java.time.temporal.ChronoUnit
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 private const val PREFS_NAME = "widget_stats"
 private const val KEY_PREFIX = "summary_"
@@ -64,16 +66,19 @@ object StatsWidgetData {
     }
 
     /**
-     * Recomputes the summary for one widget and stores it. The SQL aggregate does the
-     * counting, so no ingestion rows are materialized in Kotlin. Callers must already be
-     * off the main thread — [StatsWidgetSync] owns that — and no extra hop is needed
-     * here: Room dispatches the query itself and the preference write is asynchronous.
+     * Recomputes the summary for one widget and stores it.
+     *
+     * Hops to [Dispatchers.IO] itself instead of trusting the caller: this is a suspend function
+     * reachable from anywhere, and only the DAO query inside happens to be dispatched by Room.
+     * The SharedPreferences read/write below runs on the caller's dispatcher, so calling this
+     * from the main thread would drop frames. The count itself comes from the SQL aggregate, so
+     * no ingestion rows are materialized in Kotlin.
      */
     suspend fun refresh(
         context: Context,
         appWidgetId: Int,
         experienceRepository: ExperienceRepository
-    ) {
+    ) = withContext(Dispatchers.IO) {
         val config = readConfig(context, appWidgetId)
         val to = Instant.now()
         val from = to.minus(config.days.toLong(), ChronoUnit.DAYS)

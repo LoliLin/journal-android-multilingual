@@ -23,6 +23,16 @@ private const val TAG = "StatsWidgetSync"
 private const val JOURNAL_SETTLE_MS = 500L
 
 /**
+ * Everything one refresh pass has to cover, claimed atomically so the pending-result callbacks
+ * always belong to the pass that actually ran.
+ */
+private class RefreshTargets(
+    val allWidgets: Boolean,
+    val widgetIds: List<Int>,
+    val completions: List<() -> Unit>
+)
+
+/**
  * Single owner of the stats-widget refresh chain.
  *
  * Every reason a widget can go stale funnels into [requestRefresh]: journal writes, the app
@@ -39,6 +49,10 @@ private const val JOURNAL_SETTLE_MS = 500L
  * The worker is dispatched to [Dispatchers.IO] rather than the application's main-thread scope.
  * Refreshes are serialized because a conflated [Channel] has exactly one consumer coroutine, not
  * because of the dispatcher: a coroutine is never resumed concurrently with itself.
+ *
+ * Pending work lives in fields rather than in the channel payload, so a request arriving while a
+ * pass is running is guaranteed to be picked up by the next pass instead of depending on channel
+ * buffering.
  */
 object StatsWidgetSync {
 
@@ -46,10 +60,12 @@ object StatsWidgetSync {
 
     private val requests = Channel<Unit>(Channel.CONFLATED)
 
-    private val completionLock = Any()
-    private val completions = mutableListOf<() -> Unit>()
-
+    /** Guards every field below. */
+    private val lock = Any()
     private var started = false
+    private var allWidgetsRequested = false
+    private val explicitWidgetIds = mutableSetOf<Int>()
+    private val completions = mutableListOf<() -> Unit>()
 
     /**
      * Starts the worker and wires every trigger. Called once from
@@ -62,29 +78,24 @@ object StatsWidgetSync {
         languageChanges: Flow<Unit>
     ) {
         val context = appContext.applicationContext
-        synchronized(completionLock) {
+        synchronized(lock) {
             if (started) return
             started = true
         }
         scope.launch {
             for (ignored in requests) {
-                // Claim the completions that belong to this pass. Anything registered while
-                // the pass is running belongs to the next one, which is already queued.
-                val pending = claimCompletions()
+                val targets = claimTargets()
                 try {
-                    refreshAll(context, experienceRepository)
+                    refreshAll(context, experienceRepository, targets)
                 } catch (e: CancellationException) {
                     throw e
                 } catch (e: Exception) {
                     // A widget refresh must never take the whole app process down.
                     Log.w(TAG, "Stats widget refresh failed", e)
-                }
-                pending.forEach { callback ->
-                    try {
-                        callback()
-                    } catch (e: Exception) {
-                        Log.w(TAG, "Stats widget refresh completion failed", e)
-                    }
+                } finally {
+                    // Must run even if the pass was cancelled: a broadcast receiver that never
+                    // calls PendingResult.finish() trips the system's ANR watchdog.
+                    invokeCompletions(targets.completions)
                 }
             }
         }
@@ -101,36 +112,79 @@ object StatsWidgetSync {
     }
 
     /**
-     * Schedules a refresh. Safe from any thread and never blocking; a refresh already queued
-     * absorbs this request. [onComplete] runs after the pass that covers this request finishes,
-     * which is how a broadcast's `goAsync` pending result is closed.
+     * Schedules a refresh. Safe from any thread and never blocking; a pass already queued absorbs
+     * this request.
+     *
+     * [appWidgetIds] narrows the pass to the set the system asked for in an update broadcast.
+     * Passing null means "every placed widget", which is what the data, language and foreground
+     * triggers mean. [onComplete] runs after the pass that covers this request finishes, which is
+     * how a broadcast's `goAsync` pending result is closed.
+     *
+     * Calling this before [start] is fine: the request is buffered until the worker launches.
      */
-    fun requestRefresh(onComplete: (() -> Unit)? = null) {
-        if (onComplete != null) {
-            synchronized(completionLock) { completions.add(onComplete) }
+    fun requestRefresh(
+        appWidgetIds: IntArray? = null,
+        onComplete: (() -> Unit)? = null
+    ) {
+        synchronized(lock) {
+            if (appWidgetIds == null) {
+                // Data, language and foreground changes can affect what every widget shows.
+                allWidgetsRequested = true
+            } else {
+                explicitWidgetIds.addAll(appWidgetIds.toList())
+            }
+            if (onComplete != null) completions.add(onComplete)
         }
         requests.trySend(Unit)
     }
 
-    private fun claimCompletions(): List<() -> Unit> = synchronized(completionLock) {
-        if (completions.isEmpty()) {
-            emptyList()
-        } else {
-            completions.toList().also { completions.clear() }
+    /** Takes ownership of all pending work; anything registered after this belongs to the next pass. */
+    private fun claimTargets(): RefreshTargets = synchronized(lock) {
+        val claimed = RefreshTargets(
+            allWidgets = allWidgetsRequested,
+            widgetIds = explicitWidgetIds.toList(),
+            completions = completions.toList()
+        )
+        allWidgetsRequested = false
+        explicitWidgetIds.clear()
+        completions.clear()
+        claimed
+    }
+
+    private fun invokeCompletions(pending: List<() -> Unit>) {
+        pending.forEach { callback ->
+            try {
+                callback()
+            } catch (e: Exception) {
+                Log.w(TAG, "Stats widget refresh completion failed", e)
+            }
         }
     }
 
-    private suspend fun refreshAll(context: Context, experienceRepository: ExperienceRepository) {
-        val manager = AppWidgetManager.getInstance(context)
-        val ids = manager.getAppWidgetIds(
-            ComponentName(context, StatsWidgetProvider::class.java)
-        )
-        // No widget placed: nothing to compute. This is what keeps the chain free when
-        // the widget is not in use.
+    private suspend fun refreshAll(
+        context: Context,
+        experienceRepository: ExperienceRepository,
+        targets: RefreshTargets
+    ) {
+        val ids = if (targets.allWidgets) {
+            placedWidgetIds(context)
+        } else {
+            // Prefer the ids the system handed us in the update broadcast: getAppWidgetIds can
+            // still be missing a widget that was just placed, which would drop that update.
+            targets.widgetIds
+        }
+        // No widget placed: nothing to compute. This is what keeps the chain free when the
+        // widget is not in use.
         if (ids.isEmpty()) return
+        val manager = AppWidgetManager.getInstance(context)
         ids.forEach { appWidgetId ->
             StatsWidgetData.refresh(context, appWidgetId, experienceRepository)
             manager.updateAppWidget(appWidgetId, StatsWidgetProvider.render(context, appWidgetId))
         }
     }
+
+    private fun placedWidgetIds(context: Context): List<Int> =
+        AppWidgetManager.getInstance(context)
+            .getAppWidgetIds(ComponentName(context, StatsWidgetProvider::class.java))
+            .toList()
 }

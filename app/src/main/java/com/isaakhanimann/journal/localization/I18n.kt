@@ -39,8 +39,9 @@ object I18n {
 
     // Emitted when the string table may have changed (language switch, extension-pack
     // install). The stats-widget sync re-renders on it so widget labels do not stay
-    // stale after a pack adds or overrides them.
-    private val _stringsChanged = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    // stale after a pack adds or overrides them. replay = 1 so a markDirty() that lands
+    // before the consumer has subscribed is not lost.
+    private val _stringsChanged = MutableSharedFlow<Unit>(replay = 1, extraBufferCapacity = 1)
     val stringsChanged: SharedFlow<Unit> = _stringsChanged.asSharedFlow()
 
     fun markDirty() {

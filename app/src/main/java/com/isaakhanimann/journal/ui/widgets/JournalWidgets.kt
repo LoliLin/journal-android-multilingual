@@ -50,11 +50,15 @@ class StatsWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray
     ) {
         // The system asks for an update here (also after a reboot, or when updatePeriod
-        // elapses). Hand it to the single worker instead of rendering on this thread; the
-        // pending result is closed once that pass finishes, so the broadcast still counts
+        // elapses). Hand it to the single worker instead of rendering on this thread, and pass
+        // the ids it gave us: getAppWidgetIds can still be missing a widget that was just
+        // placed. The pending result is closed once that pass finishes, so the broadcast counts
         // as in-flight while the widgets are being written.
         val pending = goAsync()
-        StatsWidgetSync.requestRefresh(onComplete = { pending.finish() })
+        StatsWidgetSync.requestRefresh(
+            appWidgetIds = appWidgetIds,
+            onComplete = { pending.finish() }
+        )
     }
 
     override fun onDeleted(context: Context, appWidgetIds: IntArray) {

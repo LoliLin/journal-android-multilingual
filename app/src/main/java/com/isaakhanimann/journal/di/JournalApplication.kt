@@ -82,7 +82,7 @@ class JournalApplication : Application(), Configuration.Provider {
             appContext = this,
             experienceRepository = experienceRepository,
             // Any language emission means "the widget labels may be stale".
-            languageChanges = userPreferences.selectedLanguageFlow.map { }
+            languageChanges = userPreferences.selectedLanguageFlow.map { Unit }
         )
         Notifications.createChannels(this)
         // Daily time-capsule check: "this day last year".
