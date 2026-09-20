@@ -217,7 +217,7 @@ fun AddIngestionSearchScreen(
                 }
                 itemsIndexed(
                     items = substanceRouteSuggestions,
-                    key = { _, it -> "${it.substanceName}_${it.route}_${it.customSubstanceId}" }
+                    key = { index, it -> "${it.substanceName}_${it.route}_${it.customSubstanceId ?: "predefined"}_$index" }
                 ) { index, substanceRow ->
                     SuggestionRow(
                         substanceRouteSuggestion = substanceRow,

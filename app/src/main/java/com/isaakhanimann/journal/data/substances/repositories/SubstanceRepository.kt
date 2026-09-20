@@ -261,13 +261,41 @@ class SubstanceRepository @Inject constructor(
         return merged
     }
 
-    private fun mergeJsonObjects(base: JSONObject, overlay: JSONObject): JSONObject {
-        val result = JSONObject()
-        val baseKeys = base.keys()
-        while (baseKeys.hasNext()) {
-            val key = baseKeys.next()
-            result.put(key, base.get(key))
+    private fun deepCopyJson(obj: JSONObject): JSONObject {
+        val copy = JSONObject()
+        val keys = obj.keys()
+        while (keys.hasNext()) {
+            val key = keys.next()
+            val value = obj.get(key)
+            copy.put(
+                key,
+                when (value) {
+                    is JSONObject -> deepCopyJson(value)
+                    is JSONArray -> deepCopyJson(value)
+                    else -> value
+                }
+            )
         }
+        return copy
+    }
+
+    private fun deepCopyJson(arr: JSONArray): JSONArray {
+        val copy = JSONArray()
+        for (i in 0 until arr.length()) {
+            val value = arr.get(i)
+            copy.put(
+                when (value) {
+                    is JSONObject -> deepCopyJson(value)
+                    is JSONArray -> deepCopyJson(value)
+                    else -> value
+                }
+            )
+        }
+        return copy
+    }
+
+    private fun mergeJsonObjects(base: JSONObject, overlay: JSONObject): JSONObject {
+        val result = deepCopyJson(base)
         val keys = overlay.keys()
         while (keys.hasNext()) {
             val key = keys.next()
@@ -275,6 +303,10 @@ class SubstanceRepository @Inject constructor(
             val baseValue = result.opt(key)
             val mergedValue = if (overlayValue is JSONObject && baseValue is JSONObject) {
                 mergeJsonObjects(baseValue, overlayValue)
+            } else if (overlayValue is JSONObject) {
+                deepCopyJson(overlayValue)
+            } else if (overlayValue is JSONArray) {
+                deepCopyJson(overlayValue)
             } else {
                 overlayValue
             }

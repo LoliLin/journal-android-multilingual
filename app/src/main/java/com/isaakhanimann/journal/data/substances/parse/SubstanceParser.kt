@@ -107,11 +107,12 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
     }
 
     private fun parseSubstanceInternal(jsonSubstance: JSONObject): Substance {
-        val name = jsonSubstance.optString("name", "")
+        val name = jsonSubstance.getOptionalString("name")?.takeIf { it.isNotBlank() }
+            ?: throw org.json.JSONException("Missing or blank substance name")
         val localizedName = jsonSubstance.getOptionalString("localizedName")
         val jsonCommonNames = jsonSubstance.getOptionalJSONArray("commonNames")
         val commonNames = parseCommonNames(jsonCommonNames, removeName = name)
-        val url = jsonSubstance.optString("url", "")
+        val url = jsonSubstance.getOptionalString("url") ?: ""
         val isApproved = jsonSubstance.getOptionalBoolean("isApproved") ?: false
         val jsonTolerance = jsonSubstance.getOptionalJSONObject("tolerance")
         val tolerance = parseTolerance(jsonTolerance)
@@ -256,7 +257,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
 
     private fun parseRoaDose(jsonDose: JSONObject?): RoaDose? {
         if (jsonDose == null) return null
-        val units = jsonDose.optString("units", "")
+        val units = jsonDose.getOptionalString("units")?.takeIf { it.isNotBlank() } ?: return null
         val lightMin = jsonDose.getOptionalDouble("lightMin")
         val commonMin = jsonDose.getOptionalDouble("commonMin")
         val strongMin = jsonDose.getOptionalDouble("strongMin")

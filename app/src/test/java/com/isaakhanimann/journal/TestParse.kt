@@ -20,7 +20,13 @@ package com.isaakhanimann.journal
 
 import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.data.substances.parse.SubstanceParser
+import com.isaakhanimann.journal.data.substances.parse.getOptionalBoolean
+import com.isaakhanimann.journal.data.substances.parse.getOptionalDouble
+import com.isaakhanimann.journal.data.substances.parse.getOptionalLong
+import com.isaakhanimann.journal.data.substances.parse.getOptionalString
+import org.json.JSONObject
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -104,5 +110,56 @@ class TestParse {
         )
         assertTrue(categories.size == 1)
         assertTrue(categories.first().name == "test")
+    }
+
+    @Test
+    fun parserRejectsSubstanceWithMissingOrBlankName() {
+        assertNull(parser.parseSubstance("""{"url": "https://example.com"}"""))
+        assertNull(parser.parseSubstance("""{"name": ""}"""))
+        assertNull(parser.parseSubstance("""{"name": "   "}"""))
+    }
+
+    @Test
+    fun parserExtensionsStrictTypes() {
+        val json = JSONObject(
+            """
+            {
+                "validLong": 42,
+                "stringLong": "100",
+                "invalidLong": "not_a_number",
+                "validBool": true,
+                "stringBool": "true",
+                "invalidBool": "maybe",
+                "validString": "hello",
+                "validNumberString": 123,
+                "objectString": {"nested": "value"},
+                "validDouble": 3.14,
+                "invalidDouble": "not_double"
+            }
+            """.trimIndent()
+        )
+
+        // getOptionalLong
+        assertEquals(42L, json.getOptionalLong("validLong"))
+        assertEquals(100L, json.getOptionalLong("stringLong"))
+        assertNull(json.getOptionalLong("invalidLong"))
+        assertNull(json.getOptionalLong("missingKey"))
+
+        // getOptionalBoolean
+        assertEquals(true, json.getOptionalBoolean("validBool"))
+        assertEquals(true, json.getOptionalBoolean("stringBool"))
+        assertNull(json.getOptionalBoolean("invalidBool"))
+        assertNull(json.getOptionalBoolean("missingKey"))
+
+        // getOptionalString
+        assertEquals("hello", json.getOptionalString("validString"))
+        assertEquals("123", json.getOptionalString("validNumberString"))
+        assertNull(json.getOptionalString("objectString"))
+        assertNull(json.getOptionalString("missingKey"))
+
+        // getOptionalDouble
+        assertEquals(3.14, json.getOptionalDouble("validDouble")!!, 0.001)
+        assertNull(json.getOptionalDouble("invalidDouble"))
+        assertNull(json.getOptionalDouble("missingKey"))
     }
 }

@@ -60,35 +60,41 @@ class SearchRepository @Inject constructor(val substanceRepo: SubstanceRepositor
         return matches.mapNotNull { substanceByName[it.name] }
     }
 
-    private fun getSubstancesSorted(
+    internal fun getSubstancesSorted(
         prefilteredSubstances: List<SubstanceWithCategories>,
         recentlyUsedSubstanceNamesSorted: List<String>
-    ): List<SubstanceWithCategories> {
-        if (prefilteredSubstances.isEmpty()) return emptyList()
+    ): List<SubstanceWithCategories> =
+        sortSubstancesWithRecents(prefilteredSubstances, recentlyUsedSubstanceNamesSorted)
+}
 
-        val prefilteredByName = prefilteredSubstances.associateBy { it.substance.name }
-        val result = ArrayList<SubstanceWithCategories>(prefilteredSubstances.size)
-        val seen = HashSet<String>(prefilteredSubstances.size)
+internal fun sortSubstancesWithRecents(
+    prefilteredSubstances: List<SubstanceWithCategories>,
+    recentlyUsedSubstanceNamesSorted: List<String>
+): List<SubstanceWithCategories> {
+    if (prefilteredSubstances.isEmpty()) return emptyList()
 
-        for (name in recentlyUsedSubstanceNamesSorted) {
-            val match = prefilteredByName[name]
-            if (match != null && seen.add(match.substance.name)) {
-                result.add(match)
-            }
+    val prefilteredByName = prefilteredSubstances.associateBy { it.substance.name }
+    val result = ArrayList<SubstanceWithCategories>(prefilteredSubstances.size)
+    val seen = HashSet<String>(prefilteredSubstances.size)
+
+    for (name in recentlyUsedSubstanceNamesSorted) {
+        val match = prefilteredByName[name]
+        if (match != null && seen.add(match.substance.name)) {
+            result.add(match)
         }
-
-        for (sub in prefilteredSubstances) {
-            if (sub.categories.any { it.name == "common" } && seen.add(sub.substance.name)) {
-                result.add(sub)
-            }
-        }
-
-        for (sub in prefilteredSubstances) {
-            if (seen.add(sub.substance.name)) {
-                result.add(sub)
-            }
-        }
-
-        return result
     }
+
+    for (sub in prefilteredSubstances) {
+        if (sub.categories.any { it.name == "common" } && seen.add(sub.substance.name)) {
+            result.add(sub)
+        }
+    }
+
+    for (sub in prefilteredSubstances) {
+        if (seen.add(sub.substance.name)) {
+            result.add(sub)
+        }
+    }
+
+    return result
 }

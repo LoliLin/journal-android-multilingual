@@ -23,3 +23,15 @@ import com.isaakhanimann.journal.data.substances.classes.Substance
 interface SubstanceSearcher {
     fun search(word: String, sources: List<Substance>): List<Substance>
 }
+
+internal fun cleanSearchTerm(s: String): String {
+    if (s.indexOf('-') == -1 && s.indexOf(' ') == -1) return s
+    val sb = StringBuilder(s.length)
+    for (i in 0 until s.length) {
+        val c = s[i]
+        if (c != '-' && c != ' ') {
+            sb.append(c)
+        }
+    }
+    return sb.toString()
+}

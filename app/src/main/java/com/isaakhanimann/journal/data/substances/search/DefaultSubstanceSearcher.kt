@@ -25,19 +25,19 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
         if (word.isBlank()) {
             return sources
         }
-        val searchString = clean(word)
+        val searchString = cleanSearchTerm(word)
         val mainPrefixMatches = mutableListOf<Substance>()
         val prefixMatches = mutableListOf<Substance>()
         val substringMatches = mutableListOf<Substance>()
 
         for (substance in sources) {
-            val cleanedName = clean(substance.name)
+            val cleanedName = cleanSearchTerm(substance.name)
             if (cleanedName.startsWith(searchString, ignoreCase = true)) {
                 mainPrefixMatches.add(substance)
                 continue
             }
 
-            val cleanedLocalized = substance.localizedName?.let { clean(it) }
+            val cleanedLocalized = substance.localizedName?.let { cleanSearchTerm(it) }
             if (cleanedLocalized != null && cleanedLocalized.startsWith(searchString, ignoreCase = true)) {
                 prefixMatches.add(substance)
                 continue
@@ -45,7 +45,7 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
 
             var matchedPrefix = false
             for (commonName in substance.commonNames) {
-                if (clean(commonName).startsWith(searchString, ignoreCase = true)) {
+                if (cleanSearchTerm(commonName).startsWith(searchString, ignoreCase = true)) {
                     prefixMatches.add(substance)
                     matchedPrefix = true
                     break
@@ -55,25 +55,13 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
 
             if (cleanedName.contains(searchString, ignoreCase = true) ||
                 (cleanedLocalized != null && cleanedLocalized.contains(searchString, ignoreCase = true)) ||
-                substance.commonNames.any { clean(it).contains(searchString, ignoreCase = true) }
+                substance.commonNames.any { cleanSearchTerm(it).contains(searchString, ignoreCase = true) }
             ) {
                 substringMatches.add(substance)
             }
         }
 
         return mainPrefixMatches + prefixMatches + substringMatches
-    }
-
-    private fun clean(s: String): String {
-        if (s.indexOf('-') == -1 && s.indexOf(' ') == -1) return s
-        val sb = StringBuilder(s.length)
-        for (i in 0 until s.length) {
-            val c = s[i]
-            if (c != '-' && c != ' ') {
-                sb.append(c)
-            }
-        }
-        return sb.toString()
     }
 }
 

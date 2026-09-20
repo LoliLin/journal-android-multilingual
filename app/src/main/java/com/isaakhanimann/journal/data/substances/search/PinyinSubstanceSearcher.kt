@@ -35,7 +35,7 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
     override fun search(word: String, sources: List<Substance>): List<Substance> {
         if (word.isBlank()) return sources
 
-        val searchString = clean(word).lowercase()
+        val searchString = cleanSearchTerm(word).lowercase()
         val firstSearchChar = searchString.firstOrNull()?.toString()
 
         val mainPrefixMatches = mutableListOf<Substance>()
@@ -43,8 +43,8 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
         val substringMatches = mutableListOf<Substance>()
 
         for (substance in sources) {
-            val cleanedName = clean(substance.name)
-            val cleanedLocalized = substance.localizedName?.let { clean(it) }
+            val cleanedName = cleanSearchTerm(substance.name)
+            val cleanedLocalized = substance.localizedName?.let { cleanSearchTerm(it) }
 
             // 1. Main prefix match (substance name or localizedName)
             if (isPrefixMatch(cleanedName, searchString, firstSearchChar) ||
@@ -57,7 +57,7 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
             // 2. Secondary prefix match (commonNames)
             var matchedPrefix = false
             for (commonName in substance.commonNames) {
-                val cleanedCommon = clean(commonName)
+                val cleanedCommon = cleanSearchTerm(commonName)
                 if (isPrefixMatch(cleanedCommon, searchString, firstSearchChar)) {
                     prefixMatches.add(substance)
                     matchedPrefix = true
@@ -69,7 +69,7 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
             // 3. Substring / pinyin contains match
             if (isSubstringMatch(cleanedName, searchString) ||
                 (cleanedLocalized != null && isSubstringMatch(cleanedLocalized, searchString)) ||
-                substance.commonNames.any { isSubstringMatch(clean(it), searchString) }
+                substance.commonNames.any { isSubstringMatch(cleanSearchTerm(it), searchString) }
             ) {
                 substringMatches.add(substance)
             }
@@ -94,17 +94,5 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
         if (cleanedText.contains(searchString, ignoreCase = true)) return true
         val lowerText = cleanedText.lowercase()
         return pinIn.contains(cleanedText, searchString) || pinIn.contains(lowerText, searchString)
-    }
-
-    private fun clean(s: String): String {
-        if (s.indexOf('-') == -1 && s.indexOf(' ') == -1) return s
-        val sb = StringBuilder(s.length)
-        for (i in 0 until s.length) {
-            val c = s[i]
-            if (c != '-' && c != ' ') {
-                sb.append(c)
-            }
-        }
-        return sb.toString()
     }
 }

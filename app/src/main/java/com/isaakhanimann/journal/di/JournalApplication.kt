@@ -50,11 +50,11 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var userPreferences: UserPreferences
 
-    /** Used by widgets, notifications, and config activity. */
+    /** Used by widgets, notifications, and config activity to resolve localized substance names. */
     @Inject
     lateinit var substanceRepo: SubstanceRepository
 
-    /** Used by the stats widget path (provider refresh + config activity). */
+    /** Used by the stats widget path (sync worker and config activity) to query ingestion counts. */
     @Inject
     lateinit var experienceRepository: ExperienceRepository
 

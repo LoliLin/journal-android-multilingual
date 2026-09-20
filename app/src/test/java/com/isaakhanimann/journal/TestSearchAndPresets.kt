@@ -18,7 +18,11 @@
 
 package com.isaakhanimann.journal
 
+import androidx.compose.ui.graphics.Color
+import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.Substance
+import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
+import com.isaakhanimann.journal.data.substances.repositories.sortSubstancesWithRecents
 import com.isaakhanimann.journal.data.substances.search.DefaultSubstanceSearcher
 import com.isaakhanimann.journal.data.substances.search.PinyinSubstanceSearcher
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.durationPresetLabel
@@ -76,19 +80,53 @@ class TestSearchAndPresets {
 
     @Test
     fun pinyinSubstanceSearcherMatchesPinyinAndLocalizedName() {
-        val mdma = dummySubstance("MDMA", localizedName = "氯胺酮", commonNames = listOf("K粉"))
+        val ketamine = dummySubstance("Ketamine", localizedName = "氯胺酮", commonNames = listOf("K粉"))
         val lsd = dummySubstance("LSD", localizedName = "麦角酸二乙酰胺", commonNames = listOf("Acid"))
-        val sources = listOf(mdma, lsd)
+        val sources = listOf(ketamine, lsd)
 
         val searcher = PinyinSubstanceSearcher()
 
         // Pinyin search for localizedName prefix "lv" / "lu"
         val matchPinyin = searcher.search("lv", sources)
-        assertEquals(listOf(mdma), matchPinyin)
+        assertEquals(listOf(ketamine), matchPinyin)
 
         // Pinyin search for commonNames "kf"
         val matchCommonPinyin = searcher.search("kf", sources)
-        assertEquals(listOf(mdma), matchCommonPinyin)
+        assertEquals(listOf(ketamine), matchCommonPinyin)
+    }
+
+    @Test
+    fun sortSubstancesWithRecentsPrioritizesRecentsThenCommonThenRestAndFiltersNonMatchingRecents() {
+        val commonCategory = Category("common", "Common substances", null, Color.Black)
+        val otherCategory = Category("psychedelic", "Psychedelics", null, Color.Black)
+
+        val lsd = SubstanceWithCategories(
+            substance = dummySubstance("LSD"),
+            categories = listOf(commonCategory, otherCategory)
+        )
+        val dmt = SubstanceWithCategories(
+            substance = dummySubstance("DMT"),
+            categories = listOf(otherCategory)
+        )
+        val psilocybin = SubstanceWithCategories(
+            substance = dummySubstance("Psilocybin"),
+            categories = listOf(otherCategory)
+        )
+
+        // Prefiltered list contains DMT, Psilocybin, LSD
+        val prefiltered = listOf(dmt, psilocybin, lsd)
+
+        // Recents contains Psilocybin, Ketamine (not in prefiltered), LSD
+        val recents = listOf("Psilocybin", "Ketamine", "LSD")
+
+        val sorted = sortSubstancesWithRecents(prefiltered, recents)
+
+        // Expected order:
+        // 1. Psilocybin (recent and prefiltered)
+        // 2. LSD (recent and prefiltered)
+        // (Ketamine dropped because it's not in prefiltered)
+        // 3. DMT (remaining prefiltered)
+        assertEquals(listOf(psilocybin, lsd, dmt), sorted)
     }
 
     private fun dummySubstance(
