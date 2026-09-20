@@ -67,8 +67,11 @@ class StatsWidgetProvider : AppWidgetProvider() {
 
     companion object {
 
-        fun render(context: Context, appWidgetId: Int): RemoteViews {
-            val summary = StatsWidgetData.readSummary(context, appWidgetId)
+        fun render(
+            context: Context,
+            appWidgetId: Int,
+            summary: StatsWidgetSummary = StatsWidgetData.readSummary(context, appWidgetId)
+        ): RemoteViews {
             val app = context.applicationContext as? com.isaakhanimann.journal.di.JournalApplication
             val localized = { key: String -> com.isaakhanimann.journal.localization.I18n.translate(context, key) }
             val title = if (summary.substanceName != null) {

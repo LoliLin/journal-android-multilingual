@@ -178,8 +178,8 @@ object StatsWidgetSync {
         if (ids.isEmpty()) return
         val manager = AppWidgetManager.getInstance(context)
         ids.forEach { appWidgetId ->
-            StatsWidgetData.refresh(context, appWidgetId, experienceRepository)
-            manager.updateAppWidget(appWidgetId, StatsWidgetProvider.render(context, appWidgetId))
+            val summary = StatsWidgetData.refresh(context, appWidgetId, experienceRepository)
+            manager.updateAppWidget(appWidgetId, StatsWidgetProvider.render(context, appWidgetId, summary))
         }
     }
 

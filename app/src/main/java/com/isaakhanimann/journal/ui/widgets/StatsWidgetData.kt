@@ -78,7 +78,7 @@ object StatsWidgetData {
         context: Context,
         appWidgetId: Int,
         experienceRepository: ExperienceRepository
-    ) = withContext(Dispatchers.IO) {
+    ): StatsWidgetSummary = withContext(Dispatchers.IO) {
         val config = readConfig(context, appWidgetId)
         val to = Instant.now()
         val from = to.minus(config.days.toLong(), ChronoUnit.DAYS)
@@ -93,6 +93,13 @@ object StatsWidgetData {
             .putInt(configKey(appWidgetId, "sum_experiences"), counts.experienceCount)
             .putInt(configKey(appWidgetId, "sum_substances"), counts.substanceCount)
             .apply()
+        StatsWidgetSummary(
+            substanceName = config.substanceName,
+            days = config.days,
+            ingestionCount = counts.ingestionCount,
+            experienceCount = counts.experienceCount,
+            substanceCount = counts.substanceCount
+        )
     }
 
     fun readSummary(context: Context, appWidgetId: Int): StatsWidgetSummary {

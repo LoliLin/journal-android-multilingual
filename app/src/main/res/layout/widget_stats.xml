@@ -30,9 +30,10 @@
 
         <ImageView
             android:id="@+id/widget_stats_settings"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4dp"
+            android:padding="7dp"
             android:contentDescription="@string/widget_stats_edit"
             android:src="@android:drawable/ic_menu_preferences"
             android:tint="#B0BEC5" />
