@@ -25,6 +25,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.notifications.Notifications
 import com.isaakhanimann.journal.ui.notifications.TimeCapsuleWorker
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
@@ -49,12 +50,13 @@ class JournalApplication : Application(), Configuration.Provider {
     @Inject
     lateinit var userPreferences: UserPreferences
 
+    /** Used by widgets, notifications, and config activity. */
+    @Inject
+    lateinit var substanceRepo: SubstanceRepository
+
     /** Used by the stats widget path (provider refresh + config activity). */
     @Inject
     lateinit var experienceRepository: ExperienceRepository
-
-    @Inject
-    lateinit var substanceRepo: com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 
     val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 

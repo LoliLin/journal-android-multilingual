@@ -35,45 +35,76 @@ class PinyinSubstanceSearcher : SubstanceSearcher {
     override fun search(word: String, sources: List<Substance>): List<Substance> {
         if (word.isBlank()) return sources
 
-        // 统一过滤掉连字符和空格
-        val searchString = word.replace(Regex("[- ]"), "").lowercase()
+        val searchString = clean(word).lowercase()
+        val firstSearchChar = searchString.firstOrNull()?.toString()
 
-        val mainPrefixMatches = sources.filter { substance ->
-            val cleanedName = substance.name.replace(Regex("[- ]"), "")
+        val mainPrefixMatches = mutableListOf<Substance>()
+        val prefixMatches = mutableListOf<Substance>()
+        val substringMatches = mutableListOf<Substance>()
 
-            if (cleanedName.startsWith(searchString, ignoreCase = true)) return@filter true
+        for (substance in sources) {
+            val cleanedName = clean(substance.name)
+            val cleanedLocalized = substance.localizedName?.let { clean(it) }
 
-            if (cleanedName.isNotEmpty() && searchString.isNotEmpty()) {
-                val firstCharMatch = pinIn.contains(
-                    cleanedName.first().toString(),
-                    searchString.first().toString()
-                )
-                firstCharMatch && pinIn.contains(cleanedName, searchString)
-            } else {
-                false
+            // 1. Main prefix match (substance name or localizedName)
+            if (isPrefixMatch(cleanedName, searchString, firstSearchChar) ||
+                (cleanedLocalized != null && isPrefixMatch(cleanedLocalized, searchString, firstSearchChar))
+            ) {
+                mainPrefixMatches.add(substance)
+                continue
+            }
+
+            // 2. Secondary prefix match (commonNames)
+            var matchedPrefix = false
+            for (commonName in substance.commonNames) {
+                val cleanedCommon = clean(commonName)
+                if (isPrefixMatch(cleanedCommon, searchString, firstSearchChar)) {
+                    prefixMatches.add(substance)
+                    matchedPrefix = true
+                    break
+                }
+            }
+            if (matchedPrefix) continue
+
+            // 3. Substring / pinyin contains match
+            if (isSubstringMatch(cleanedName, searchString) ||
+                (cleanedLocalized != null && isSubstringMatch(cleanedLocalized, searchString)) ||
+                substance.commonNames.any { isSubstringMatch(clean(it), searchString) }
+            ) {
+                substringMatches.add(substance)
             }
         }
 
-        val prefixMatches = sources.filter { substance ->
-            val allNames =
-                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            allNames.any { name ->
-                val cleanedName = name.replace(Regex("[- ]"), "")
-                cleanedName.startsWith(searchString, ignoreCase = true)
+        return mainPrefixMatches + prefixMatches + substringMatches
+    }
+
+    private fun isPrefixMatch(cleanedText: String, searchString: String, firstSearchChar: String?): Boolean {
+        if (cleanedText.startsWith(searchString, ignoreCase = true)) return true
+        if (cleanedText.isNotEmpty() && firstSearchChar != null) {
+            val firstChar = cleanedText.first().toString()
+            val firstCharMatch = firstChar.equals(firstSearchChar, ignoreCase = true) ||
+                pinIn.contains(firstChar, firstSearchChar)
+            val lowerText = cleanedText.lowercase()
+            return firstCharMatch && (pinIn.contains(cleanedText, searchString) || pinIn.contains(lowerText, searchString))
+        }
+        return false
+    }
+
+    private fun isSubstringMatch(cleanedText: String, searchString: String): Boolean {
+        if (cleanedText.contains(searchString, ignoreCase = true)) return true
+        val lowerText = cleanedText.lowercase()
+        return pinIn.contains(cleanedText, searchString) || pinIn.contains(lowerText, searchString)
+    }
+
+    private fun clean(s: String): String {
+        if (s.indexOf('-') == -1 && s.indexOf(' ') == -1) return s
+        val sb = StringBuilder(s.length)
+        for (i in 0 until s.length) {
+            val c = s[i]
+            if (c != '-' && c != ' ') {
+                sb.append(c)
             }
         }
-
-        val matches = sources.filter { substance ->
-            val allNames =
-                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            allNames.any { name ->
-                val cleanedName = name.replace(Regex("[- ]"), "")
-
-                pinIn.contains(cleanedName, searchString) ||
-                    cleanedName.contains(searchString, ignoreCase = true)
-            }
-        }
-
-        return (mainPrefixMatches + prefixMatches + matches).distinctBy { it.name }
+        return sb.toString()
     }
 }

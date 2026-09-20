@@ -163,14 +163,22 @@ class JournalViewModel @Inject constructor(
                     // collect substances with matching names for each whitespace-separated term,
                     // so multiple substances can be searched at once
                     val searchTerms = splitSearchTerms(searchText)
-                    val matchingSubstances = searchTerms.flatMap { term ->
-                        searchRepository.getMatchingSubstances(
-                            searchText = term,
-                            filterCategories = emptyList(),
-                            recentlyUsedSubstanceNamesSorted = emptyList()
-                        ).map { it.substance.name }
-                    }.distinct() + customSubstances.map { it.name }.filter { name ->
-                        searchTerms.any { term -> name.contains(term, ignoreCase = true) }
+                    val matchingSubstances = buildSet {
+                        for (term in searchTerms) {
+                            val matches = searchRepository.getMatchingSubstances(
+                                searchText = term,
+                                filterCategories = emptyList(),
+                                recentlyUsedSubstanceNamesSorted = emptyList()
+                            )
+                            for (match in matches) {
+                                add(match.substance.name)
+                            }
+                        }
+                        for (custom in customSubstances) {
+                            if (searchTerms.any { term -> custom.name.contains(term, ignoreCase = true) }) {
+                                add(custom.name)
+                            }
+                        }
                     }
 
                     // experience title, text or some consumed substance must contain the search
@@ -181,7 +189,7 @@ class JournalViewModel @Inject constructor(
                             ignoreCase = true
                         ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
                             val isSubstanceAMatch =
-                                matchingSubstances.any { name -> name == ingestionWithCompanion.substanceCompanion?.substanceName }
+                                ingestionWithCompanion.substanceCompanion?.substanceName in matchingSubstances
                             val isConsumerAMatch =
                                 ingestionWithCompanion.ingestion.consumerName?.contains(
                                     searchText,

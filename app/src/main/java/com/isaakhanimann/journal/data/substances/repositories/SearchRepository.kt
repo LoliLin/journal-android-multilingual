@@ -64,22 +64,31 @@ class SearchRepository @Inject constructor(val substanceRepo: SubstanceRepositor
         prefilteredSubstances: List<SubstanceWithCategories>,
         recentlyUsedSubstanceNamesSorted: List<String>
     ): List<SubstanceWithCategories> {
-        val recentNames = recentlyUsedSubstanceNamesSorted.distinct()
-        val recentlyUsedMatches =
-            recentNames.filter { recent ->
-                prefilteredSubstances.any { it.substance.name == recent }
+        if (prefilteredSubstances.isEmpty()) return emptyList()
+
+        val prefilteredByName = prefilteredSubstances.associateBy { it.substance.name }
+        val result = ArrayList<SubstanceWithCategories>(prefilteredSubstances.size)
+        val seen = HashSet<String>(prefilteredSubstances.size)
+
+        for (name in recentlyUsedSubstanceNamesSorted) {
+            val match = prefilteredByName[name]
+            if (match != null && seen.add(match.substance.name)) {
+                result.add(match)
             }
-                .mapNotNull {
-                    substanceRepo.getSubstanceWithCategories(
-                        substanceName = it
-                    )
-                }
-        val commonSubstanceMatches =
-            prefilteredSubstances.filter { sub ->
-                sub.categories.any { cat -> cat.name == "common" }
-            }
-        return (recentlyUsedMatches + commonSubstanceMatches + prefilteredSubstances).distinctBy {
-            it.substance.name
         }
+
+        for (sub in prefilteredSubstances) {
+            if (sub.categories.any { it.name == "common" } && seen.add(sub.substance.name)) {
+                result.add(sub)
+            }
+        }
+
+        for (sub in prefilteredSubstances) {
+            if (seen.add(sub.substance.name)) {
+                result.add(sub)
+            }
+        }
+
+        return result
     }
 }

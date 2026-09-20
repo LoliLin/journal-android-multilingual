@@ -133,7 +133,7 @@ fun SearchScreen(
                 )
             } else {
                 LazyColumn(contentPadding = bottomBarOverlayPadding()) {
-                    items(filteredCustomSubstances) { customSubstance ->
+                    items(filteredCustomSubstances, key = { "custom_${it.id}" }) { customSubstance ->
                         SubstanceRow(
                             substanceModel = SubstanceModel(
                                 name = customSubstance.name,
@@ -150,7 +150,7 @@ fun SearchScreen(
                         HorizontalDivider()
                     }
 
-                    items(filteredSubstances) { substance ->
+                    items(filteredSubstances, key = { it.name }) { substance ->
                         SubstanceRow(substanceModel = substance, onTap = {
                             onSubstanceTap(substance)
                         })

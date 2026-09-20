@@ -262,7 +262,12 @@ class SubstanceRepository @Inject constructor(
     }
 
     private fun mergeJsonObjects(base: JSONObject, overlay: JSONObject): JSONObject {
-        val result = JSONObject(base.toString())
+        val result = JSONObject()
+        val baseKeys = base.keys()
+        while (baseKeys.hasNext()) {
+            val key = baseKeys.next()
+            result.put(key, base.get(key))
+        }
         val keys = overlay.keys()
         while (keys.hasNext()) {
             val key = keys.next()
@@ -284,7 +289,7 @@ class SubstanceRepository @Inject constructor(
         if (!json.has("name")) {
             json.put("name", key)
         }
-        substanceParser.parseSubstance(json.toString())
+        substanceParser.parseSubstance(json)
     }
 
     override fun getAllSubstances(): List<Substance> {
@@ -294,12 +299,11 @@ class SubstanceRepository @Inject constructor(
 
     override fun getAllSubstancesWithCategories(): List<SubstanceWithCategories> {
         ensureLanguageLoaded()
+        val categoryByName = substanceFile.categories.associateBy { it.name }
         return substanceFile.substances.map { substance ->
             SubstanceWithCategories(
                 substance = substance,
-                categories = substanceFile.categories.filter { category ->
-                    substance.categories.contains(category.name)
-                }
+                categories = substance.categories.mapNotNull { categoryByName[it] }
             )
         }
     }
@@ -321,11 +325,11 @@ class SubstanceRepository @Inject constructor(
 
     override fun getSubstanceWithCategories(substanceName: String): SubstanceWithCategories? {
         ensureLanguageLoaded()
-        val substance =
-            substanceFile.substances.firstOrNull { it.name == substanceName } ?: return null
+        val substance = substanceFile.substancesMap[substanceName] ?: return null
+        val categoryByName = substanceFile.categories.associateBy { it.name }
         return SubstanceWithCategories(
             substance = substance,
-            categories = substanceFile.categories.filter { substance.categories.contains(it.name) }
+            categories = substance.categories.mapNotNull { categoryByName[it] }
         )
     }
 }

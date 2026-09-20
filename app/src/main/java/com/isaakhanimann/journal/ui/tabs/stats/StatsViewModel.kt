@@ -109,6 +109,7 @@ class StatsViewModel @Inject constructor(
             val (experiences, option, startDate) = chartInputs
             val (byIngestionTime, consumerName, companions) = filters
             val nowEndOfDay = Instant.now().getEndOfDay()
+            val companionBySubstance = companions.associateBy { it.substanceName }
             if (byIngestionTime) {
                 val ingestionsNewestFirst = experiences
                     .asSequence()
@@ -128,7 +129,7 @@ class StatsViewModel @Inject constructor(
                     option = option,
                     nowEndOfDay = nowEndOfDay
                 ).map { ingestionsInBucket ->
-                    getColorCountsForIngestions(ingestionsInBucket, companions)
+                    getColorCountsForIngestions(ingestionsInBucket, companionBySubstance)
                 }
             } else {
                 val inWindow = takeItemsInStatsWindow(
@@ -143,14 +144,14 @@ class StatsViewModel @Inject constructor(
                     option = option,
                     nowEndOfDay = nowEndOfDay
                 ).map { experiencesInBucket ->
-                    getColorCountsForExperiences(experiencesInBucket, companions, consumerName)
+                    getColorCountsForExperiences(experiencesInBucket, companionBySubstance, consumerName)
                 }
             }
         }
 
     private fun getColorCountsForExperiences(
         experiences: List<ExperienceWithIngestionsAndCompanions>,
-        companions: List<SubstanceCompanion>,
+        companionBySubstance: Map<String, SubstanceCompanion>,
         consumerName: String?
     ): List<ColorCount> = getColorCountsForIngestions(
         ingestions = experiences.flatMap { experience ->
@@ -158,14 +159,13 @@ class StatsViewModel @Inject constructor(
                 it.ingestion.consumerName == consumerName
             }
         },
-        companions = companions
+        companionBySubstance = companionBySubstance
     )
 
     private fun getColorCountsForIngestions(
         ingestions: List<IngestionWithCompanionAndCustomUnit>,
-        companions: List<SubstanceCompanion>
+        companionBySubstance: Map<String, SubstanceCompanion>
     ): List<ColorCount> {
-        val companionBySubstance = companions.associateBy { it.substanceName }
         return ingestions.mapNotNull { ingestionWith ->
             val oneCompanion =
                 companionBySubstance[ingestionWith.ingestion.substanceName]

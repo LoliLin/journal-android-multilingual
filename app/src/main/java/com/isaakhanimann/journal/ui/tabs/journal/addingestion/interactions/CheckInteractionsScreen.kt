@@ -70,7 +70,7 @@ fun CheckInteractionsScreen(
 ) {
     CheckInteractionsScreen(
         substanceName = viewModel.substanceName,
-        substanceUrl = viewModel.substance.url,
+        substanceUrl = viewModel.substance?.url ?: "",
         isSearchingForInteractions = viewModel.isSearchingForInteractions,
         dangerousInteractions = viewModel.dangerousInteractions,
         unsafeInteractions = viewModel.unsafeInteractions,

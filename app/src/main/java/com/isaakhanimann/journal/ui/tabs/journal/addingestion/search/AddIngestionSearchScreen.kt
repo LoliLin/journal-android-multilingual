@@ -215,7 +215,10 @@ fun AddIngestionSearchScreen(
                         SectionHeader(title = i18n("search_quick_logging"))
                     }
                 }
-                itemsIndexed(substanceRouteSuggestions) { index, substanceRow ->
+                itemsIndexed(
+                    items = substanceRouteSuggestions,
+                    key = { _, it -> "${it.substanceName}_${it.route}_${it.customSubstanceId}" }
+                ) { index, substanceRow ->
                     SuggestionRow(
                         substanceRouteSuggestion = substanceRow,
                         navigateToDose = navigateToDose,
@@ -233,7 +236,10 @@ fun AddIngestionSearchScreen(
                         SectionHeader(title = i18n("search_custom_substances"))
                     }
                 }
-                itemsIndexed(filteredCustomSubstances) { index, customSubstance ->
+                itemsIndexed(
+                    items = filteredCustomSubstances,
+                    key = { _, it -> "custom_${it.id}" }
+                ) { index, customSubstance ->
                     SubstanceRowAddIngestion(
                         substanceModel = SubstanceModel(
                             name = customSubstance.name,
@@ -256,7 +262,10 @@ fun AddIngestionSearchScreen(
                         SectionHeader(title = i18n("search_custom_units"))
                     }
                 }
-                itemsIndexed(filteredCustomUnits) { index, customUnit ->
+                itemsIndexed(
+                    items = filteredCustomUnits,
+                    key = { _, it -> "unit_${it.id}" }
+                ) { index, customUnit ->
                     CustomUnitRowAddIngestion(
                         customUnit = customUnit,
                         navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
@@ -271,7 +280,10 @@ fun AddIngestionSearchScreen(
                         SectionHeader(title = i18n("substances"))
                     }
                 }
-                itemsIndexed(filteredSubstances) { index, substance ->
+                itemsIndexed(
+                    items = filteredSubstances,
+                    key = { _, it -> it.name }
+                ) { index, substance ->
                     SubstanceRowAddIngestion(substanceModel = substance, onTap = {
                         if (substance.hasSaferUse) {
                             navigateToCheckSaferUse(substance.name)

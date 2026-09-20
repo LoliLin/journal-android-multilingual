@@ -27,4 +27,5 @@ interface SubstanceParserInterface {
     fun extractSubstanceString(string: String): String?
     fun parseCategories(string: String): List<Category>
     fun parseSubstance(string: String): Substance?
+    fun parseSubstance(json: org.json.JSONObject): Substance?
 }

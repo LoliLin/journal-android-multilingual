@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
+import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -31,11 +32,13 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -64,11 +67,13 @@ class AddIngestionSearchViewModel @Inject constructor(
             filterCategories = emptyList(),
             recentlyUsedSubstanceNamesSorted = recents
         ).map { it.toSubstanceModel() }
-    }.stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
+    }
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     private val customUnitsFlow = experienceRepo.getCustomUnitsFlow(false)
 
@@ -77,8 +82,9 @@ class AddIngestionSearchViewModel @Inject constructor(
         filteredSubstancesFlow,
         searchTextFlow
     ) { customUnit, filteredSubstances, searchText ->
+        val matchingNames = filteredSubstances.map { it.name }.toSet()
         customUnit.filter { custom ->
-            filteredSubstances.any { it.name == custom.substanceName } ||
+            custom.substanceName in matchingNames ||
                 custom.name.contains(
                     other = searchText,
                     ignoreCase = true
@@ -93,11 +99,13 @@ class AddIngestionSearchViewModel @Inject constructor(
                 ) ||
                 custom.note.contains(other = searchText, ignoreCase = true)
         }
-    }.stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
+    }
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     private val customSubstancesFlow = experienceRepo.getCustomSubstancesFlow()
 
@@ -116,25 +124,30 @@ class AddIngestionSearchViewModel @Inject constructor(
         experienceRepo.getSortedIngestionsWithSubstanceCompanionsFlow(limit = 150),
         customSubstancesFlow,
         filteredSubstancesFlow,
+        filteredCustomUnitsFlow,
         searchTextFlow
-    ) { ingestions, customSubstances, filteredSubstances, searchText ->
-        val suggestions = getSubstanceSuggestions(ingestions, customSubstances)
+    ) { ingestions, customSubstances, filteredSubstances, customUnits, searchText ->
+        val suggestions = getSubstanceSuggestions(ingestions, customSubstances, customUnits)
+        val matchingNames = filteredSubstances.map { it.name }.toSet()
         return@combine suggestions.filter { sug ->
-            filteredSubstances.any { it.name == sug.substanceName } ||
+            sug.substanceName in matchingNames ||
                 sug.substanceName.contains(
                     other = searchText,
                     ignoreCase = true
                 )
         }
-    }.stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
+    }
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     private fun getSubstanceSuggestions(
         ingestions: List<IngestionWithCompanionAndCustomUnit>,
-        customSubstances: List<CustomSubstance>
+        customSubstances: List<CustomSubstance>,
+        availableCustomUnits: List<CustomUnit>
     ): List<SubstanceRouteSuggestion> {
         val grouped = ingestions.groupBy { it.ingestion.substanceName }
         return grouped.flatMap { entry ->
@@ -183,7 +196,7 @@ class AddIngestionSearchViewModel @Inject constructor(
                             }
                         }
                     }.distinct().take(6)
-                    val customUnits = filteredCustomUnitsFlow.value.filter {
+                    val customUnits = availableCustomUnits.filter {
                         it.substanceName ==
                             substanceName &&
                             it.administrationRoute == routeEntry.key

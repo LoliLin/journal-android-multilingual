@@ -92,24 +92,10 @@ fun ExperienceRow(
         val ingestions = remember(experienceWithIngestionsCompanionsAndRatings) {
             experienceWithIngestionsCompanionsAndRatings.ingestionsWithCompanions.sortedBy { it.ingestion.time }
         }
-        val timedNotesFlow = remember(experience.id) { rowViewModel.getTimedNotes(experience.id) }
-        val timedNotes = timedNotesFlow.collectAsState(initial = emptyList()).value
         val substanceRepo = rowViewModel.substanceRepo
         val interactionChecker = rowViewModel.interactionChecker
         val getSubstanceDisplayName = rowViewModel.substanceRepo::getDisplayName
         val achievements = rowViewModel.achievementsFlow.collectAsState().value
-
-        // Only needed when the user taps share, so it's built on demand rather than
-        // on every row recomposition (substance/dose lookups + interaction checks are not cheap).
-        fun buildCardData() = prepareShareableExperienceCardData(
-            substanceRepo = substanceRepo,
-            interactionChecker = interactionChecker,
-            ownerUserName = ownerUserName,
-            getSubstanceDisplayName = getSubstanceDisplayName,
-            timedNotes = timedNotes,
-            achievements = achievements,
-            experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
-        )
 
         ColorRectangle(ingestions = ingestions)
         Column(modifier = Modifier.weight(1f)) {
@@ -195,7 +181,16 @@ fun ExperienceRow(
                 try {
                     val activity = context as? androidx.activity.ComponentActivity
                     if (activity != null) {
-                        val cardData = buildCardData()
+                        val timedNotes = rowViewModel.experienceRepo.getTimedNotes(experience.id)
+                        val cardData = prepareShareableExperienceCardData(
+                            substanceRepo = substanceRepo,
+                            interactionChecker = interactionChecker,
+                            ownerUserName = ownerUserName,
+                            getSubstanceDisplayName = getSubstanceDisplayName,
+                            timedNotes = timedNotes,
+                            achievements = achievements,
+                            experienceWithIngestionsCompanionsAndRatings = experienceWithIngestionsCompanionsAndRatings
+                        )
                         val bitmap = renderComposeViewToBitmap(
                             context = context,
                             widthPx = 1080,
@@ -217,7 +212,7 @@ fun ExperienceRow(
         }) {
             Icon(
                 Icons.Outlined.Share,
-                contentDescription = "分享卡片",
+                contentDescription = i18n("common_share"),
                 modifier = Modifier.size(ButtonDefaults.IconSize)
             )
         }

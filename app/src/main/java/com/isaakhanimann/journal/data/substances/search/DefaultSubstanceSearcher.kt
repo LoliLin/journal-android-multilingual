@@ -25,33 +25,55 @@ class DefaultSubstanceSearcher : SubstanceSearcher {
         if (word.isBlank()) {
             return sources
         }
-        val searchString = word.replace(Regex("[- ]"), "")
-        val mainPrefixMatches = sources.filter { substance ->
-            substance.name.replace(Regex("[- ]"), "").startsWith(
-                prefix = searchString,
-                ignoreCase = true
-            )
-        }
-        val prefixMatches = sources.filter { substance ->
-            val allNames =
-                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            allNames.any { name ->
-                name.replace(Regex("[- ]"), "").startsWith(
-                    prefix = searchString,
-                    ignoreCase = true
-                )
+        val searchString = clean(word)
+        val mainPrefixMatches = mutableListOf<Substance>()
+        val prefixMatches = mutableListOf<Substance>()
+        val substringMatches = mutableListOf<Substance>()
+
+        for (substance in sources) {
+            val cleanedName = clean(substance.name)
+            if (cleanedName.startsWith(searchString, ignoreCase = true)) {
+                mainPrefixMatches.add(substance)
+                continue
+            }
+
+            val cleanedLocalized = substance.localizedName?.let { clean(it) }
+            if (cleanedLocalized != null && cleanedLocalized.startsWith(searchString, ignoreCase = true)) {
+                prefixMatches.add(substance)
+                continue
+            }
+
+            var matchedPrefix = false
+            for (commonName in substance.commonNames) {
+                if (clean(commonName).startsWith(searchString, ignoreCase = true)) {
+                    prefixMatches.add(substance)
+                    matchedPrefix = true
+                    break
+                }
+            }
+            if (matchedPrefix) continue
+
+            if (cleanedName.contains(searchString, ignoreCase = true) ||
+                (cleanedLocalized != null && cleanedLocalized.contains(searchString, ignoreCase = true)) ||
+                substance.commonNames.any { clean(it).contains(searchString, ignoreCase = true) }
+            ) {
+                substringMatches.add(substance)
             }
         }
-        val matches = sources.filter { substance ->
-            val allNames =
-                substance.commonNames + listOfNotNull(substance.name, substance.localizedName)
-            allNames.any { name ->
-                name.replace(Regex("[- ]"), "").contains(
-                    other = searchString,
-                    ignoreCase = true
-                )
+
+        return mainPrefixMatches + prefixMatches + substringMatches
+    }
+
+    private fun clean(s: String): String {
+        if (s.indexOf('-') == -1 && s.indexOf(' ') == -1) return s
+        val sb = StringBuilder(s.length)
+        for (i in 0 until s.length) {
+            val c = s[i]
+            if (c != '-' && c != ' ') {
+                sb.append(c)
             }
         }
-        return (mainPrefixMatches + prefixMatches + matches).distinctBy { it.name }
+        return sb.toString()
     }
 }
+

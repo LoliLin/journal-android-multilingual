@@ -26,6 +26,7 @@ import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -104,11 +105,13 @@ class SearchViewModel @Inject constructor(
         ).map {
             it.toSubstanceModel()
         }
-    }.stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
+    }
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     fun filterSubstances(searchText: String) {
         viewModelScope.launch {

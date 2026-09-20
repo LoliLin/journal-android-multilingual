@@ -153,7 +153,8 @@ class InteractionChecker @Inject constructor(private val substanceRepo: Substanc
 
     private fun isWildcardMatch(interactions: List<String>, substanceName: String): Boolean {
         val extendedInteractions = extendAndCleanInteractions(interactions)
-        return extendedInteractions.map { interaction ->
+        return extendedInteractions.any { interaction ->
+            if (!interaction.contains('x', ignoreCase = true)) return@any false
             Regex(
                 pattern = interaction.replace(
                     oldValue = "x",
@@ -162,7 +163,7 @@ class InteractionChecker @Inject constructor(private val substanceRepo: Substanc
                 ),
                 option = RegexOption.IGNORE_CASE
             ).matches(substanceName)
-        }.any { it }
+        }
     }
 
     private fun isDirectMatch(interactions: List<String>, substanceName: String): Boolean {

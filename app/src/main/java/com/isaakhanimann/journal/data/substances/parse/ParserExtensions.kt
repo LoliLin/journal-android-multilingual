@@ -21,66 +21,28 @@ package com.isaakhanimann.journal.data.substances.parse
 import org.json.JSONArray
 import org.json.JSONObject
 
-fun JSONObject.getOptionalJSONObject(name: String): JSONObject? = try {
-    getJSONObject(name)
-} catch (e: Exception) {
-    null
-}
+fun JSONObject.getOptionalJSONObject(name: String): JSONObject? = optJSONObject(name)
 
-fun JSONObject.getOptionalString(name: String): String? = try {
-    if (isNull(name)) {
-        null
+fun JSONObject.getOptionalString(name: String): String? =
+    if (has(name) && !isNull(name)) optString(name) else null
+
+fun JSONObject.getOptionalBoolean(name: String): Boolean? =
+    if (has(name) && !isNull(name)) optBoolean(name) else null
+
+fun JSONObject.getOptionalLong(name: String): Long? =
+    if (has(name) && !isNull(name)) optLong(name) else null
+
+fun JSONObject.getOptionalJSONArray(name: String): JSONArray? = optJSONArray(name)
+
+fun JSONObject.getOptionalDouble(name: String): Double? =
+    if (has(name) && !isNull(name)) {
+        val d = optDouble(name)
+        if (d.isNaN()) null else d
     } else {
-        getString(name)
-    }
-} catch (e: Exception) {
-    null
-}
-
-fun JSONObject.getOptionalBoolean(name: String): Boolean? = try {
-    if (isNull(name)) {
         null
-    } else {
-        getBoolean(name)
     }
-} catch (e: Exception) {
-    null
-}
 
-fun JSONObject.getOptionalLong(name: String): Long? = try {
-    if (isNull(name)) {
-        null
-    } else {
-        getLong(name)
-    }
-} catch (e: Exception) {
-    null
-}
+fun JSONArray.getOptionalString(index: Int): String? =
+    if (index in 0 until length() && !isNull(index)) optString(index) else null
 
-fun JSONObject.getOptionalJSONArray(name: String): JSONArray? = try {
-    getJSONArray(name)
-} catch (e: Exception) {
-    null
-}
-
-fun JSONObject.getOptionalDouble(name: String): Double? = try {
-    getDouble(name)
-} catch (e: Exception) {
-    null
-}
-
-fun JSONArray.getOptionalString(index: Int): String? = try {
-    if (isNull(index)) {
-        null
-    } else {
-        getString(index)
-    }
-} catch (e: Exception) {
-    null
-}
-
-fun JSONArray.getOptionalJSONObject(index: Int): JSONObject? = try {
-    getJSONObject(index)
-} catch (e: Exception) {
-    null
-}
+fun JSONArray.getOptionalJSONObject(index: Int): JSONObject? = optJSONObject(index)

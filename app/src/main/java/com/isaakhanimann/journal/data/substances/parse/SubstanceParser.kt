@@ -69,6 +69,12 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         null
     }
 
+    override fun parseSubstance(json: JSONObject): Substance? = try {
+        parseSubstanceInternal(json)
+    } catch (e: Exception) {
+        null
+    }
+
     private fun parseCategoriesArray(jsonCategories: JSONArray?): List<Category> {
         if (jsonCategories == null) return emptyList()
         val categories: MutableList<Category> = mutableListOf()
@@ -85,7 +91,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         val substances: MutableList<Substance> = mutableListOf()
         for (i in 0 until jsonSubstances.length()) {
             val jsonCategory = jsonSubstances.getOptionalJSONObject(i) ?: continue
-            val newSubstance = parseSubstance(jsonCategory)
+            val newSubstance = parseSubstance(jsonCategory) ?: continue
             substances.add(newSubstance)
         }
         return substances
@@ -100,12 +106,12 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
         return Category(name, description, url, color)
     }
 
-    private fun parseSubstance(jsonSubstance: JSONObject): Substance {
-        val name = jsonSubstance.getString("name")
+    private fun parseSubstanceInternal(jsonSubstance: JSONObject): Substance {
+        val name = jsonSubstance.optString("name", "")
         val localizedName = jsonSubstance.getOptionalString("localizedName")
         val jsonCommonNames = jsonSubstance.getOptionalJSONArray("commonNames")
         val commonNames = parseCommonNames(jsonCommonNames, removeName = name)
-        val url = jsonSubstance.getString("url")
+        val url = jsonSubstance.optString("url", "")
         val isApproved = jsonSubstance.getOptionalBoolean("isApproved") ?: false
         val jsonTolerance = jsonSubstance.getOptionalJSONObject("tolerance")
         val tolerance = parseTolerance(jsonTolerance)
@@ -250,7 +256,7 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
 
     private fun parseRoaDose(jsonDose: JSONObject?): RoaDose? {
         if (jsonDose == null) return null
-        val units = jsonDose.getString("units")
+        val units = jsonDose.optString("units", "")
         val lightMin = jsonDose.getOptionalDouble("lightMin")
         val commonMin = jsonDose.getOptionalDouble("commonMin")
         val strongMin = jsonDose.getOptionalDouble("strongMin")
