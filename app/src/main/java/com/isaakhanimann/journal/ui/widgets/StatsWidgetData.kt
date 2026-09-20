@@ -78,28 +78,30 @@ object StatsWidgetData {
         context: Context,
         appWidgetId: Int,
         experienceRepository: ExperienceRepository
-    ): StatsWidgetSummary = withContext(Dispatchers.IO) {
-        val config = readConfig(context, appWidgetId)
-        val to = Instant.now()
-        val from = to.minus(config.days.toLong(), ChronoUnit.DAYS)
-        val counts = experienceRepository.getIngestionWindowCounts(
-            from,
-            to,
-            config.substanceName
-        )
-        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            .edit()
-            .putInt(configKey(appWidgetId, "sum_ingestions"), counts.ingestionCount)
-            .putInt(configKey(appWidgetId, "sum_experiences"), counts.experienceCount)
-            .putInt(configKey(appWidgetId, "sum_substances"), counts.substanceCount)
-            .apply()
-        StatsWidgetSummary(
-            substanceName = config.substanceName,
-            days = config.days,
-            ingestionCount = counts.ingestionCount,
-            experienceCount = counts.experienceCount,
-            substanceCount = counts.substanceCount
-        )
+    ): StatsWidgetSummary {
+        return withContext(Dispatchers.IO) {
+            val config = readConfig(context, appWidgetId)
+            val to = Instant.now()
+            val from = to.minus(config.days.toLong(), ChronoUnit.DAYS)
+            val counts = experienceRepository.getIngestionWindowCounts(
+                from,
+                to,
+                config.substanceName
+            )
+            context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .edit()
+                .putInt(configKey(appWidgetId, "sum_ingestions"), counts.ingestionCount)
+                .putInt(configKey(appWidgetId, "sum_experiences"), counts.experienceCount)
+                .putInt(configKey(appWidgetId, "sum_substances"), counts.substanceCount)
+                .apply()
+            StatsWidgetSummary(
+                substanceName = config.substanceName,
+                days = config.days,
+                ingestionCount = counts.ingestionCount,
+                experienceCount = counts.experienceCount,
+                substanceCount = counts.substanceCount
+            )
+        }
     }
 
     fun readSummary(context: Context, appWidgetId: Int): StatsWidgetSummary {

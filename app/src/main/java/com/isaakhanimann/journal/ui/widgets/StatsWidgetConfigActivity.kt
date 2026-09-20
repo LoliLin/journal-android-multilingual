@@ -40,7 +40,10 @@ import com.isaakhanimann.journal.di.JournalApplication
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import java.text.Collator
+import java.util.Locale
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * Per-widget configuration: pick a substance (or all) and a rolling window.
@@ -63,15 +66,17 @@ class StatsWidgetConfigActivity : ComponentActivity() {
         val config = StatsWidgetData.readConfig(this, appWidgetId)
 
         lifecycleScope.launch {
-            val names = StatsWidgetData.readConfiguredSubstanceNames(
-                this@StatsWidgetConfigActivity,
-                app.experienceRepository
-            )
-            // Localized display names, sorted naturally according to current locale (pinyin/alphabetical).
-            val collator = Collator.getInstance()
-            val sortedSubstances: List<Pair<String, String>> = names.map { name ->
-                name to app.substanceRepo.getDisplayName(name)
-            }.sortedWith { a, b -> collator.compare(a.second, b.second) }
+            val sortedSubstances: List<Pair<String, String>> = withContext(Dispatchers.Default) {
+                val names = StatsWidgetData.readConfiguredSubstanceNames(
+                    this@StatsWidgetConfigActivity,
+                    app.experienceRepository
+                )
+                // Localized display names, sorted naturally according to current locale (pinyin/alphabetical).
+                val collator = Collator.getInstance(Locale.getDefault())
+                names.map { name ->
+                    name to app.substanceRepo.getDisplayName(name)
+                }.sortedWith { a, b -> collator.compare(a.second, b.second) }
+            }
 
             setContent {
                 JournalTheme {
@@ -115,6 +120,7 @@ private fun StatsWidgetConfigContent(
     var selectedSubstance by remember { mutableStateOf(initialSubstance) }
     var selectedDays by remember { mutableStateOf(initialDays) }
     var searchText by remember { mutableStateOf("") }
+    val allSubstancesLabel = i18n("widget_config_all_substances")
 
     val filteredSubstances = remember(substances, searchText) {
         if (searchText.isBlank()) {
@@ -188,10 +194,10 @@ private fun StatsWidgetConfigContent(
                 }
             }
 
-            if (searchText.isBlank()) {
+            if (searchText.isBlank() || allSubstancesLabel.contains(searchText, ignoreCase = true)) {
                 item(key = "all_substances") {
                     SubstanceRow(
-                        name = i18n("widget_config_all_substances"),
+                        name = allSubstancesLabel,
                         isSelected = selectedSubstance == null,
                         onClick = { selectedSubstance = null }
                     )
@@ -233,4 +239,3 @@ private fun SubstanceRow(name: String, isSelected: Boolean, onClick: () -> Unit)
         )
     }
 }
-

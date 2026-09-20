@@ -70,7 +70,7 @@ class StatsWidgetProvider : AppWidgetProvider() {
         fun render(
             context: Context,
             appWidgetId: Int,
-            summary: StatsWidgetSummary = StatsWidgetData.readSummary(context, appWidgetId)
+            summary: StatsWidgetSummary
         ): RemoteViews {
             val app = context.applicationContext as? com.isaakhanimann.journal.di.JournalApplication
             val localized = { key: String -> com.isaakhanimann.journal.localization.I18n.translate(context, key) }
