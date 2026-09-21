@@ -1,0 +1,6 @@
+- Rebuilt navigation: smoother transitions and new deep links
+- New "Keep bottom menu visible" setting under Preferences > UI
+- Top bars now hide while scrolling on Journal, Settings and Safer Use
+- Stats widget: search/sort substances, 7/30/90-day window, localized labels
+- Performance improvements for search, journal lists and widgets
+- Expanded substance catalog with better Chinese names
