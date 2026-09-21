@@ -1,13 +1,14 @@
 package com.isaakhanimann.journal.ui.main.navigation
 
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import com.isaakhanimann.journal.ui.VOLUMETRIC_DOSE_ARTICLE_URL
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomSubstanceRoute
-import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsSearchSubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddRatingRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddTimedNoteRoute
-import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionSearchRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.AdministrationRouteExplanationRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CalendarRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
@@ -56,9 +57,9 @@ import com.isaakhanimann.journal.ui.main.navigation.routes.SaferStimulantsRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferTabUrlRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SettingsRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.StatsRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceColorsRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceCompanionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceRoute
-import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceColorsRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SubstancesRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SubstancesTabUrlRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.TimeCapsuleRoute
@@ -67,17 +68,42 @@ import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnJou
 import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnSaferTabRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.VolumetricDosingOnSubstancesTabRoute
 import com.isaakhanimann.journal.ui.tabs.journal.JournalScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChooseDoseScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChooseDoseViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstance.CustomChooseDose
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstance.CustomChooseDoseViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.ChooseDoseCustomUnitScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.ChooseDoseCustomUnitViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.CheckInteractionsScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.CheckInteractionsViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomSubstanceChooseRouteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse.CheckSaferUseScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse.SaferUseViewModel
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.FinishIngestionScreen
+import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.FinishIngestionScreenViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.calendar.CalendarJournalScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.OneExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.edit.EditExperienceScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.edit.EditExperienceViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.editingestion.EditIngestionScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.editingestion.EditIngestionViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add.AddRatingScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add.AddRatingViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.edit.EditRatingScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.edit.EditRatingViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.AddTimedNoteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.AddTimedNoteViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.QuickTimedNoteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add.QuickTimedNoteViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit.EditTimedNoteScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit.EditTimedNoteViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.ExplainTimelineScreen
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen.TimelineScreen
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen.TimelineScreenViewModel
 import com.isaakhanimann.journal.ui.tabs.journal.timecapsule.TimeCapsuleScreen
 import com.isaakhanimann.journal.ui.tabs.safer.DoseExplanationScreen
 import com.isaakhanimann.journal.ui.tabs.safer.DoseGuideScreen
@@ -90,11 +116,14 @@ import com.isaakhanimann.journal.ui.tabs.safer.VolumetricDosingScreen
 import com.isaakhanimann.journal.ui.tabs.search.SearchScreen
 import com.isaakhanimann.journal.ui.tabs.search.custom.AddCustomSubstance
 import com.isaakhanimann.journal.ui.tabs.search.custom.EditCustomSubstance
-import com.isaakhanimann.journal.ui.tabs.search.substance.SaferStimulantsScreen
+import com.isaakhanimann.journal.ui.tabs.search.custom.EditCustomSubstanceViewModel
 import com.isaakhanimann.journal.ui.tabs.search.substance.SaferSniffingScreen
+import com.isaakhanimann.journal.ui.tabs.search.substance.SaferStimulantsScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.SubstanceScreen
+import com.isaakhanimann.journal.ui.tabs.search.substance.SubstanceViewModel
 import com.isaakhanimann.journal.ui.tabs.search.substance.UrlScreen
 import com.isaakhanimann.journal.ui.tabs.search.substance.category.CategoryScreen
+import com.isaakhanimann.journal.ui.tabs.search.substance.category.CategoryViewModel
 import com.isaakhanimann.journal.ui.tabs.settings.DonateScreen
 import com.isaakhanimann.journal.ui.tabs.settings.ExtensionPackScreen
 import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
@@ -107,41 +136,91 @@ import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.ChooseRouteDuringAddCustomUnitScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.ChooseSubstanceScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.FinishAddCustomUnitScreen
+import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.FinishAddCustomUnitViewModel
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.archive.CustomUnitArchiveScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.edit.EditCustomUnitScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChooseDoseScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubstance.CustomChooseDose
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit.ChooseDoseCustomUnitScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.CheckInteractionsScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.CustomSubstanceChooseRouteScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse.CheckSaferUseScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen
-import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.FinishIngestionScreen
+import com.isaakhanimann.journal.ui.tabs.settings.customunits.edit.EditCustomUnitViewModel
+import com.isaakhanimann.journal.ui.tabs.stats.StatsScreen
+import com.isaakhanimann.journal.ui.tabs.stats.substancecompanion.SubstanceCompanionScreen
+import com.isaakhanimann.journal.ui.tabs.stats.substancecompanion.SubstanceCompanionViewModel
 
-/** Registers every app destination with Nav3's key-to-content provider. */
-fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
+/**
+ * Registers every app destination with Nav3's key-to-content provider.
+ *
+ * A destination whose ViewModel needs its navigation argument receives the key through the
+ * ViewModel's assisted factory; the `NavEntryDecorator`s in `Nav3TabManager.decoratedEntries`
+ * scope the resulting ViewModel to the entry it was created for.
+ */
+fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
     entry<JournalRoute> {
         JournalScreen(
             navigateToExperiencePopNothing = { manager.navigate(ExperienceRoute(it)) },
-            navigateToAddIngestion = { manager.navigate(com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute) },
+            navigateToAddIngestion = { manager.navigate(AddIngestionRoute) },
             navigateToCalendar = { manager.navigate(CalendarRoute) },
             navigateToQuickTimedNote = { manager.navigate(QuickTimedNoteRoute(it)) }
         )
     }
-    entry<EditExperienceRoute> { EditExperienceScreen(navigateBack = { manager.pop() }) }
-    entry<AddRatingRoute> { AddRatingScreen(navigateBack = { manager.pop() }) }
-    entry<AddTimedNoteRoute> { AddTimedNoteScreen(navigateBack = { manager.pop() }) }
-    entry<QuickTimedNoteRoute> { route -> QuickTimedNoteScreen(navigateBack = { manager.pop() }) }
+    entry<EditExperienceRoute> { route ->
+        EditExperienceScreen(
+            navigateBack = { manager.pop() },
+            viewModel = hiltViewModel<EditExperienceViewModel, EditExperienceViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
+    }
+    entry<AddRatingRoute> { route ->
+        AddRatingScreen(
+            viewModel = hiltViewModel<AddRatingViewModel, AddRatingViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
+    entry<AddTimedNoteRoute> { route ->
+        AddTimedNoteScreen(
+            viewModel = hiltViewModel<AddTimedNoteViewModel, AddTimedNoteViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
+    entry<QuickTimedNoteRoute> { route ->
+        QuickTimedNoteScreen(
+            viewModel = hiltViewModel<QuickTimedNoteViewModel, QuickTimedNoteViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
     entry<TimeCapsuleRoute> {
         TimeCapsuleScreen(
             navigateBack = { manager.pop() },
             navigateToExperience = { manager.navigate(ExperienceRoute(it)) }
         )
     }
-    entry<EditRatingRoute> { EditRatingScreen(navigateBack = { manager.pop() }) }
-    entry<EditTimedNoteRoute> { EditTimedNoteScreen(navigateBack = { manager.pop() }) }
-    entry<TimelineScreenRoute> { TimelineScreen() }
+    entry<EditRatingRoute> { route ->
+        EditRatingScreen(
+            viewModel = hiltViewModel<EditRatingViewModel, EditRatingViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
+    entry<EditTimedNoteRoute> { route ->
+        EditTimedNoteScreen(
+            viewModel = hiltViewModel<EditTimedNoteViewModel, EditTimedNoteViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
+    entry<TimelineScreenRoute> { route ->
+        TimelineScreen(
+            viewModel = hiltViewModel<TimelineScreenViewModel, TimelineScreenViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
+    }
     entry<VolumetricDosingOnJournalTabRoute> {
         VolumetricDosingScreen {
             manager.navigate(JournalTabUrlRoute(VOLUMETRIC_DOSE_ARTICLE_URL))
@@ -149,7 +228,10 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
     }
     entry<ExperienceRoute> { route ->
         OneExperienceScreen(
-            navigateToAddIngestionSearch = { manager.navigate(com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute) },
+            viewModel = hiltViewModel<OneExperienceViewModel, OneExperienceViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateToAddIngestionSearch = { manager.navigate(AddIngestionRoute) },
             navigateToExplainTimeline = { manager.navigate(ExplainTimelineOnJournalTabRoute) },
             navigateToEditExperienceScreen = { manager.navigate(EditExperienceRoute(route.experienceId)) },
             navigateToIngestionScreen = { manager.navigate(IngestionRoute(it)) },
@@ -164,14 +246,22 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
             }
         )
     }
-    entry<IngestionRoute> { EditIngestionScreen(navigateBack = { manager.pop() }) }
+    entry<IngestionRoute> { route ->
+        EditIngestionScreen(
+            viewModel = hiltViewModel<EditIngestionViewModel, EditIngestionViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            ),
+            navigateBack = { manager.pop() }
+        )
+    }
     entry<JournalTabUrlRoute> { route -> UrlScreen(url = route.url, onHandled = { manager.pop() }) }
     entry<ExplainTimelineOnJournalTabRoute> { ExplainTimelineScreen() }
     entry<DosageExplanationOnJournalTabRoute> { DoseExplanationScreen() }
     entry<SaferSniffingOnJournalTabRoute> { SaferSniffingScreen() }
     entry<CalendarRoute> { CalendarJournalScreen { manager.navigate(ExperienceRoute(it)) } }
+
     entry<AddIngestionRoute> {
-        com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen(
+        AddIngestionSearchScreen(
             navigateToCheckInteractions = { manager.navigate(CheckInteractionsRoute(it)) },
             navigateToCheckSaferUse = { manager.navigate(CheckSaferUseRoute(it)) },
             navigateToCustomSubstanceChooseRoute = {
@@ -193,47 +283,41 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
             navigateToCustomUnitChooseDose = { manager.navigate(ChooseDoseCustomUnitRoute(it)) }
         )
     }
-
-    entry<AddIngestionSearchRoute> {
-        com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.AddIngestionSearchScreen(
-            navigateToCheckInteractions = { manager.navigate(CheckInteractionsRoute(it)) },
-            navigateToCheckSaferUse = { manager.navigate(CheckSaferUseRoute(it)) },
-            navigateToCustomSubstanceChooseRoute = {
-                manager.navigate(CustomChooseRouteRoute(it))
-            },
-            navigateToChooseTime = { substanceName, route, dose, units, estimate, sd, customUnit, releaseForm ->
-                manager.navigate(
-                    ChooseTimeRoute(route, estimate, units, dose, sd, substanceName, customUnit, releaseForm = releaseForm)
-                )
-            },
-            navigateToCustomDose = { customSubstanceId, route ->
-                manager.navigate(CustomChooseDoseRoute(customSubstanceId, route))
-            },
-            navigateToDose = { substanceName, route -> manager.navigate(ChooseDoseRoute(substanceName, route)) },
-            navigateToChooseRoute = { manager.navigate(ChooseRouteOfAddIngestionRoute(it)) },
-            navigateToAddCustomSubstanceScreen = { manager.navigate(AddCustomSubstanceRoute) },
-            navigateToCustomUnitChooseDose = { manager.navigate(ChooseDoseCustomUnitRoute(it)) }
-        )
-    }
     entry<CheckInteractionsRoute> { route ->
         CheckInteractionsScreen(
             navigateToNext = { manager.navigate(ChooseRouteOfAddIngestionRoute(route.substanceName)) },
-            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) }
+            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) },
+            viewModel = hiltViewModel<CheckInteractionsViewModel, CheckInteractionsViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
     entry<CheckSaferUseRoute> { route ->
-        CheckSaferUseScreen { manager.navigate(CheckInteractionsRoute(route.substanceName)) }
+        CheckSaferUseScreen(
+            navigateToNext = { manager.navigate(CheckInteractionsRoute(route.substanceName)) },
+            viewModel = hiltViewModel<SaferUseViewModel, SaferUseViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
     }
-    entry<ChooseDoseCustomUnitRoute> {
-        ChooseDoseCustomUnitScreen { administrationRoute, units, estimate, dose, sd, substanceName, customUnitId ->
-            manager.navigate(ChooseTimeRoute(administrationRoute, estimate, units, dose, sd, substanceName, customUnitId = customUnitId))
-        }
+    entry<ChooseDoseCustomUnitRoute> { route ->
+        ChooseDoseCustomUnitScreen(
+            navigateToChooseTimeAndMaybeColor = { administrationRoute, units, estimate, dose, sd, substanceName, customUnitId ->
+                manager.navigate(ChooseTimeRoute(administrationRoute, estimate, units, dose, sd, substanceName, customUnitId = customUnitId))
+            },
+            viewModel = hiltViewModel<ChooseDoseCustomUnitViewModel, ChooseDoseCustomUnitViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
     }
     entry<ChooseRouteOfAddIngestionRoute> { route ->
         ChooseRouteScreen(
             navigateToChooseDose = { manager.navigate(ChooseDoseRoute(route.substanceName, it)) },
             navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) },
-            navigateToRouteExplanationScreen = { manager.navigate(AdministrationRouteExplanationRoute) }
+            navigateToRouteExplanationScreen = { manager.navigate(AdministrationRouteExplanationRoute) },
+            viewModel = hiltViewModel<ChooseRouteViewModel, ChooseRouteViewModel.Factory>(
+                creationCallback = { it.create(route.substanceName) }
+            )
         )
     }
     entry<CustomChooseRouteRoute> { route ->
@@ -245,7 +329,10 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
                 manager.navigate(ChooseTimeRoute(route.administrationRoute, estimate, units, dose, sd, customSubstanceId = route.customSubstanceId))
             },
             navigateToSaferSniffingScreen = { manager.navigate(SaferSniffingOnJournalTabRoute) },
-            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) }
+            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) },
+            viewModel = hiltViewModel<CustomChooseDoseViewModel, CustomChooseDoseViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
     entry<ChooseDoseRoute> { route ->
@@ -255,21 +342,36 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
             },
             navigateToVolumetricDosingScreenOnJournalTab = { manager.navigate(VolumetricDosingOnJournalTabRoute) },
             navigateToSaferSniffingScreen = { manager.navigate(SaferSniffingOnJournalTabRoute) },
-            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) }
+            navigateToURL = { manager.navigate(JournalTabUrlRoute(it)) },
+            viewModel = hiltViewModel<ChooseDoseViewModel, ChooseDoseViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
-    entry<ChooseTimeRoute> { FinishIngestionScreen { manager.dismissAddIngestionScreens() } }
+    entry<ChooseTimeRoute> { route ->
+        FinishIngestionScreen(
+            dismissAddIngestionScreens = { manager.dismissFlow(AddIngestionRoute) },
+            viewModel = hiltViewModel<FinishIngestionScreenViewModel, FinishIngestionScreenViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
+    }
 
     entry<StatsRoute> {
-        StatsScreen { substanceName, consumerName ->
-            manager.navigate(SubstanceCompanionRoute(substanceName, consumerName))
-        }
+        StatsScreen(
+            navigateToSubstanceCompanion = { substanceName, consumerName ->
+                manager.navigate(SubstanceCompanionRoute(substanceName, consumerName))
+            }
+        )
     }
-    entry<SubstanceCompanionRoute> {
+    entry<SubstanceCompanionRoute> { route ->
         SubstanceCompanionScreen(
             navigateToCategoryScreen = { manager.navigate(CategoryRoute(it)) },
             navigateToSubstanceScreen = { manager.navigate(SubstanceRoute(it)) },
-            navigateToIngestion = { manager.navigate(IngestionRoute(it)) }
+            navigateToIngestion = { manager.navigate(IngestionRoute(it)) },
+            viewModel = hiltViewModel<SubstanceCompanionViewModel, SubstanceCompanionViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
 
@@ -280,7 +382,7 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
             navigateToAddCustomSubstanceScreen = { manager.navigate(AddCustomSubstanceRoute) }
         )
     }
-    entry<SubstanceRoute> {
+    entry<SubstanceRoute> { route ->
         SubstanceScreen(
             navigateToDosageExplanationScreen = { manager.navigate(DosageExplanationOnSubstancesTabRoute) },
             navigateToSaferHallucinogensScreen = { manager.navigate(SaferHallucinogensOnSubstancesTabRoute) },
@@ -289,18 +391,31 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
             navigateToCategoryScreen = { manager.navigate(CategoryRoute(it)) },
             navigateToVolumetricDosingScreen = { manager.navigate(VolumetricDosingOnSubstancesTabRoute) },
             navigateToArticle = { manager.navigate(SubstancesTabUrlRoute(it)) },
-            navigateToSubstanceScreen = { manager.navigate(SubstanceRoute(it)) }
+            navigateToSubstanceScreen = { manager.navigate(SubstanceRoute(it)) },
+            viewModel = hiltViewModel<SubstanceViewModel, SubstanceViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
     entry<SubstancesTabUrlRoute> { route -> UrlScreen(route.url) { manager.pop() } }
-    entry<CategoryRoute> {
+    entry<CategoryRoute> { route ->
         CategoryScreen(
             navigateToURL = { manager.navigate(SubstancesTabUrlRoute(it)) },
-            onSubstanceTap = { manager.navigate(SubstanceRoute(it.name)) }
+            onSubstanceTap = { manager.navigate(SubstanceRoute(it.name)) },
+            viewModel = hiltViewModel<CategoryViewModel, CategoryViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
         )
     }
-    entry<EditCustomSubstanceRoute> { EditCustomSubstance { manager.pop() } }
-    entry<AddCustomSubstanceRoute> { AddCustomSubstance { manager.pop() } }
+    entry<EditCustomSubstanceRoute> { route ->
+        EditCustomSubstance(
+            navigateBack = { manager.pop() },
+            viewModel = hiltViewModel<EditCustomSubstanceViewModel, EditCustomSubstanceViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
+    }
+    entry<AddCustomSubstanceRoute> { AddCustomSubstance(navigateBack = { manager.pop() }) }
     entry<VolumetricDosingOnSubstancesTabRoute> {
         VolumetricDosingScreen { manager.navigate(SubstancesTabUrlRoute(VOLUMETRIC_DOSE_ARTICLE_URL)) }
     }
@@ -366,32 +481,46 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<Any> {
         )
     }
     entry<IconPickerRoute> { IconPickerScreen() }
-    entry<com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsRoute> {
-        ChooseSubstanceScreen {
-            manager.navigate(ChooseRouteOfAddCustomUnitRoute(it))
-        }
+    entry<AddCustomUnitsRoute> {
+        ChooseSubstanceScreen(
+            navigateToChooseRoute = { manager.navigate(ChooseRouteOfAddCustomUnitRoute(it)) }
+        )
     }
     entry<ExtensionPackRoute> { ExtensionPackScreen() }
     entry<CombinationSettingsRoute> { CombinationSettingsScreen() }
     entry<SubstanceColorsRoute> { SubstanceColorsScreen() }
     entry<CustomUnitArchiveRoute> {
-        CustomUnitArchiveScreen { manager.navigate(EditCustomUnitRoute(it)) }
+        CustomUnitArchiveScreen(navigateToEditCustomUnit = { manager.navigate(EditCustomUnitRoute(it)) })
     }
     entry<CustomUnitsRoute> {
         CustomUnitsScreen(
-            navigateToAddCustomUnit = { manager.navigate(com.isaakhanimann.journal.ui.main.navigation.routes.AddCustomUnitsRoute) },
+            navigateToAddCustomUnit = { manager.navigate(AddCustomUnitsRoute) },
             navigateToEditCustomUnit = { manager.navigate(EditCustomUnitRoute(it)) },
             navigateToCustomUnitArchive = { manager.navigate(CustomUnitArchiveRoute) }
         )
     }
-    entry<EditCustomUnitRoute> { EditCustomUnitScreen { manager.pop() } }
-    entry<AddCustomUnitsSearchSubstanceRoute> {
-        ChooseSubstanceScreen { manager.navigate(ChooseRouteOfAddCustomUnitRoute(it)) }
+    entry<EditCustomUnitRoute> { route ->
+        EditCustomUnitScreen(
+            navigateBack = { manager.pop() },
+            viewModel = hiltViewModel<EditCustomUnitViewModel, EditCustomUnitViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
     }
     entry<ChooseRouteOfAddCustomUnitRoute> { route ->
-        ChooseRouteDuringAddCustomUnitScreen {
-            manager.navigate(FinishAddCustomUnitRoute(route.substanceName, it))
-        }
+        ChooseRouteDuringAddCustomUnitScreen(
+            onRouteChosen = { manager.navigate(FinishAddCustomUnitRoute(route.substanceName, it)) },
+            viewModel = hiltViewModel<ChooseRouteViewModel, ChooseRouteViewModel.Factory>(
+                creationCallback = { it.create(route.substanceName) }
+            )
+        )
     }
-    entry<FinishAddCustomUnitRoute> { FinishAddCustomUnitScreen { manager.dismissAddCustomUnits() } }
+    entry<FinishAddCustomUnitRoute> { route ->
+        FinishAddCustomUnitScreen(
+            dismissAddCustomUnit = { manager.dismissFlow(AddCustomUnitsRoute) },
+            viewModel = hiltViewModel<FinishAddCustomUnitViewModel, FinishAddCustomUnitViewModel.Factory>(
+                creationCallback = { it.create(route) }
+            )
+        )
+    }
 }

@@ -21,22 +21,22 @@ package com.isaakhanimann.journal.ui.tabs.search.custom
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomSubstanceRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class EditCustomSubstanceViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditCustomSubstanceViewModel.Factory::class)
+class EditCustomSubstanceViewModel @AssistedInject constructor(
     val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: EditCustomSubstanceRoute
 ) : ViewModel() {
 
     var id = 0
@@ -47,7 +47,7 @@ class EditCustomSubstanceViewModel @Inject constructor(
     val isValid get() = name.isNotBlank() && units.isNotBlank()
 
     init {
-        val customSubstanceId = state.toRoute<EditCustomSubstanceRoute>().customSubstanceId
+        val customSubstanceId = route.customSubstanceId
         viewModelScope.launch {
             val customSubstance =
                 experienceRepo.getCustomSubstanceFlow(customSubstanceId).firstOrNull()
@@ -75,5 +75,10 @@ class EditCustomSubstanceViewModel @Inject constructor(
         viewModelScope.launch {
             experienceRepo.delete(CustomSubstance(id, name, units, description))
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: EditCustomSubstanceRoute): EditCustomSubstanceViewModel
     }
 }

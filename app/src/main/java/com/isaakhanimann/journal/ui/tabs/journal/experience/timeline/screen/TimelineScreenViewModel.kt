@@ -18,10 +18,8 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.screen
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -30,23 +28,24 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.ui.main.navigation.routes.TimelineScreenRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-@HiltViewModel
-class TimelineScreenViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = TimelineScreenViewModel.Factory::class)
+class TimelineScreenViewModel @AssistedInject constructor(
     experienceRepo: ExperienceRepository,
     private val substanceRepo: SubstanceRepository,
-    state: SavedStateHandle,
-    private val userPreferences: UserPreferences
+    private val userPreferences: UserPreferences,
+    @Assisted val route: TimelineScreenRoute
 ) : ViewModel() {
 
-    private val route = state.toRoute<TimelineScreenRoute>()
     private val experienceID = route.experienceId
     val consumerName = route.consumerName
 
@@ -144,5 +143,10 @@ class TimelineScreenViewModel @Inject constructor(
             roaDuration = ingestionWith.roaDuration,
             numDots = numDots
         )
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: TimelineScreenRoute): TimelineScreenViewModel
     }
 }

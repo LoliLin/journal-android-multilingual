@@ -25,7 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
@@ -39,10 +38,12 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -53,12 +54,13 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class EditIngestionViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditIngestionViewModel.Factory::class)
+class EditIngestionViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
     private val state: SavedStateHandle,
     private val userPreferences: UserPreferences,
-    private val substanceRepo: SubstanceRepository
+    private val substanceRepo: SubstanceRepository,
+    @Assisted val route: IngestionRoute
 ) : ViewModel() {
     private var ingestionFlow: MutableStateFlow<Ingestion?> = MutableStateFlow(null)
     var ingestion by mutableStateOf<Ingestion?>(null)
@@ -111,7 +113,7 @@ class EditIngestionViewModel @Inject constructor(
     }
 
     init {
-        val id = state.toRoute<IngestionRoute>().ingestionId
+        val id = route.ingestionId
         viewModelScope.launch {
             val ingestionAndCustomUnit =
                 experienceRepo.getIngestionFlow(id = id).first() ?: return@launch
@@ -244,6 +246,11 @@ class EditIngestionViewModel @Inject constructor(
                 experienceRepo.delete(ingestion = it)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: IngestionRoute): EditIngestionViewModel
     }
 }
 

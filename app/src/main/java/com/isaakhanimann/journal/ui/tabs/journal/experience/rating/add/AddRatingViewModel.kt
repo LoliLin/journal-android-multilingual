@@ -21,32 +21,32 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.rating.add
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddRatingRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class AddRatingViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = AddRatingViewModel.Factory::class)
+class AddRatingViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: AddRatingRoute
 ) : ViewModel() {
     var selectedRating by mutableStateOf(ShulginRatingOption.TWO_PLUS)
     var isThisOverallRating by mutableStateOf(false)
-    val experienceId = state.toRoute<AddRatingRoute>().experienceId
+    val experienceId = route.experienceId
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
 
     var isThereAlreadyAnOverallRatingFlow = experienceRepo.getRatingsFlow(
@@ -96,5 +96,10 @@ class AddRatingViewModel @Inject constructor(
             )
             experienceRepo.insert(newRating)
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: AddRatingRoute): AddRatingViewModel
     }
 }

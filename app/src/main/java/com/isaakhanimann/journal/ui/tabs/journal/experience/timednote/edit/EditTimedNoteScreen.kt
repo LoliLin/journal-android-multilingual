@@ -31,14 +31,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNoteScreenContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditTimedNoteScreen(
-    viewModel: EditTimedNoteViewModel = hiltViewModel(),
+    viewModel: EditTimedNoteViewModel,
     navigateBack: () -> Unit
 ) {
     Scaffold(

@@ -25,7 +25,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
@@ -42,6 +41,9 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import com.isaakhanimann.journal.ui.utils.getLongDateText
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.Duration
@@ -49,7 +51,6 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -69,17 +70,17 @@ enum class IngestionTimePickerOption {
     TIME_RANGE
 }
 
-@HiltViewModel
-class FinishIngestionScreenViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = FinishIngestionScreenViewModel.Factory::class)
+class FinishIngestionScreenViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
     private val userPreferences: UserPreferences,
     val substanceRepo: SubstanceRepository,
     @ApplicationContext private val appContext: Context,
-    private val state: SavedStateHandle
+    private val state: SavedStateHandle,
+    @Assisted val route: ChooseTimeRoute
 ) : ViewModel() {
-    private val route = state.toRoute<ChooseTimeRoute>()
     var substanceName by mutableStateOf("")
-    var releaseForm by mutableStateOf(state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY))
+    var releaseForm by mutableStateOf(if (state.contains(RELEASE_FORM_HANDLE_KEY)) state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY) else route.releaseForm)
         private set
     val availableReleaseForms: List<ReleaseForm>
         get() = substanceRepo.getSubstance(
@@ -423,6 +424,11 @@ class FinishIngestionScreenViewModel @Inject constructor(
             customUnitId = customUnitId,
             releaseForm = releaseForm.takeIf { administrationRoute == AdministrationRoute.ORAL }
         )
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: ChooseTimeRoute): FinishIngestionScreenViewModel
     }
 }
 

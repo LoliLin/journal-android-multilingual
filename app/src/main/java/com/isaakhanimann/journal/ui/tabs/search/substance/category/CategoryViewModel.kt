@@ -18,27 +18,32 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance.category
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class CategoryViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = CategoryViewModel.Factory::class)
+class CategoryViewModel @AssistedInject constructor(
     substanceRepo: SubstanceRepository,
-    state: SavedStateHandle,
+    @Assisted val route: CategoryRoute,
     searchRepository: SearchRepository
 ) : ViewModel() {
-    private val categoryName = state.toRoute<CategoryRoute>().categoryName
+    private val categoryName = route.categoryName
     val category = substanceRepo.getCategory(categoryName)
 
     val substanceModels = searchRepository.getSubstancesMatchingCategories(
         filterCategories = listOf(categoryName)
     ).map {
         it.toSubstanceModel()
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: CategoryRoute): CategoryViewModel
     }
 }

@@ -21,10 +21,8 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
@@ -32,15 +30,17 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseDoseCustomUnitRoute
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.CustomUnitDose
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class ChooseDoseCustomUnitViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = ChooseDoseCustomUnitViewModel.Factory::class)
+class ChooseDoseCustomUnitViewModel @AssistedInject constructor(
     experienceRepo: ExperienceRepository,
     val substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val route: ChooseDoseCustomUnitRoute
 ) : ViewModel() {
 
     var customUnit: CustomUnit? by mutableStateOf(null)
@@ -48,7 +48,7 @@ class ChooseDoseCustomUnitViewModel @Inject constructor(
     var roaDose: RoaDose? = null
 
     init {
-        val customUnitId = state.toRoute<ChooseDoseCustomUnitRoute>().customUnitId
+        val customUnitId = route.customUnitId
         viewModelScope.launch {
             val customUnit = experienceRepo.getCustomUnit(customUnitId)
             this@ChooseDoseCustomUnitViewModel.customUnit = customUnit
@@ -95,5 +95,10 @@ class ChooseDoseCustomUnitViewModel @Inject constructor(
     )
     val customUnitCalculationText: String? get() {
         return customUnitDose?.calculatedDoseDescription
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: ChooseDoseCustomUnitRoute): ChooseDoseCustomUnitViewModel
     }
 }

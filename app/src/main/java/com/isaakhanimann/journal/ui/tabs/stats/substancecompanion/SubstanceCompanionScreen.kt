@@ -55,7 +55,6 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -73,7 +72,7 @@ fun SubstanceCompanionScreen(
     navigateToCategoryScreen: (categoryName: String) -> Unit,
     navigateToSubstanceScreen: (substanceName: String) -> Unit,
     navigateToIngestion: (ingestionId: Int) -> Unit,
-    viewModel: SubstanceCompanionViewModel = hiltViewModel()
+    viewModel: SubstanceCompanionViewModel
 ) {
     val companion = viewModel.thisCompanionFlow.collectAsState().value
     if (companion == null) {

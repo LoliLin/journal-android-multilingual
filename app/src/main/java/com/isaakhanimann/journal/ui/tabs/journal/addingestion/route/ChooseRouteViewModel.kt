@@ -21,21 +21,19 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.route
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseRouteOfAddIngestionRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class ChooseRouteViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = ChooseRouteViewModel.Factory::class)
+class ChooseRouteViewModel @AssistedInject constructor(
     val substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val substanceName: String
 ) : ViewModel() {
-    val substanceName = state.toRoute<ChooseRouteOfAddIngestionRoute>().substanceName
     val substance = substanceRepo.getSubstance(substanceName)
 
     var showOtherRoutes by mutableStateOf(false)
@@ -47,4 +45,9 @@ class ChooseRouteViewModel @Inject constructor(
 
     var isShowingInjectionDialog by mutableStateOf(false)
     var currentRoute by mutableStateOf(AdministrationRoute.INTRAVENOUS)
+
+    @AssistedFactory
+    interface Factory {
+        fun create(substanceName: String): ChooseRouteViewModel
+    }
 }

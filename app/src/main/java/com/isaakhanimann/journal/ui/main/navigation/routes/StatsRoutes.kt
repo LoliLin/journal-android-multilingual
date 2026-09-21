@@ -18,14 +18,15 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routes
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 /** Start destination of the statistics tab. */
 @Serializable
-data object StatsRoute
+data object StatsRoute : NavKey
 
 /**
  * Per-substance statistics. [consumerName] is optional and therefore becomes a query argument.
  */
 @Serializable
-data class SubstanceCompanionRoute(val substanceName: String, val consumerName: String? = null)
+data class SubstanceCompanionRoute(val substanceName: String, val consumerName: String? = null) : NavKey

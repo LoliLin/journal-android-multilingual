@@ -61,7 +61,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
@@ -73,7 +72,7 @@ import com.isaakhanimann.journal.ui.utils.shareBitmap
 import kotlinx.coroutines.launch
 
 @Composable
-fun TimelineScreen(viewModel: TimelineScreenViewModel = hiltViewModel()) {
+fun TimelineScreen(viewModel: TimelineScreenViewModel) {
     val timelineScreenModel = TimelineScreenModel(
         title = viewModel.consumerName,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,

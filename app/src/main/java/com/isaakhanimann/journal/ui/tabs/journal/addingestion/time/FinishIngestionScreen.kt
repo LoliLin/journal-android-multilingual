@@ -75,7 +75,6 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.substances.ReleaseForm
@@ -90,7 +89,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun FinishIngestionScreen(
     dismissAddIngestionScreens: () -> Unit,
-    viewModel: FinishIngestionScreenViewModel = hiltViewModel()
+    viewModel: FinishIngestionScreenViewModel
 ) {
     val localDateTime = viewModel.localDateTimeStartFlow.collectAsState().value
     val view = androidx.compose.ui.platform.LocalView.current

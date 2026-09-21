@@ -61,7 +61,6 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
@@ -81,7 +80,7 @@ fun CustomChooseDose(
     ) -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
     navigateToURL: (url: String) -> Unit,
-    viewModel: CustomChooseDoseViewModel = hiltViewModel()
+    viewModel: CustomChooseDoseViewModel
 ) {
     CustomChooseDose(
         navigateToSaferSniffingScreen = navigateToSaferSniffingScreen,

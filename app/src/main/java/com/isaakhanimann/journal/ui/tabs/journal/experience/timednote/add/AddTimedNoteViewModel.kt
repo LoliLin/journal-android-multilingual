@@ -21,33 +21,33 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddTimedNoteRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class AddTimedNoteViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = AddTimedNoteViewModel.Factory::class)
+class AddTimedNoteViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: AddTimedNoteRoute
 ) : ViewModel() {
     var note by mutableStateOf("")
     var color by mutableStateOf(AdaptiveColor.BLUE)
     var isPartOfTimeline by mutableStateOf(true)
-    val experienceId = state.toRoute<AddTimedNoteRoute>().experienceId
+    val experienceId = route.experienceId
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
     var alreadyUsedColors by mutableStateOf(emptyList<AdaptiveColor>())
     var otherColors by mutableStateOf(emptyList<AdaptiveColor>())
@@ -106,5 +106,10 @@ class AddTimedNoteViewModel @Inject constructor(
                 experienceRepo.insert(newTimedNote)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: AddTimedNoteRoute): AddTimedNoteViewModel
     }
 }

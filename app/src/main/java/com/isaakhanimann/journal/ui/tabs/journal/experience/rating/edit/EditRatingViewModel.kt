@@ -21,27 +21,27 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.rating.edit
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditRatingRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class EditRatingViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditRatingViewModel.Factory::class)
+class EditRatingViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: EditRatingRoute
 ) : ViewModel() {
     private val ratingId: Int
     var selectedRatingOption by mutableStateOf(ShulginRatingOption.TWO_PLUS)
@@ -50,7 +50,7 @@ class EditRatingViewModel @Inject constructor(
     var isOverallRatingFlow = MutableStateFlow(false)
 
     init {
-        val ratingId = state.toRoute<EditRatingRoute>().ratingId
+        val ratingId = route.ratingId
         this.ratingId = ratingId
         viewModelScope.launch {
             val loadedRating = experienceRepo.getRating(id = ratingId) ?: return@launch
@@ -91,5 +91,10 @@ class EditRatingViewModel @Inject constructor(
                 experienceRepo.update(it)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: EditRatingRoute): EditRatingViewModel
     }
 }

@@ -18,60 +18,57 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routes
 
+import androidx.navigation3.runtime.NavKey
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import kotlinx.serialization.Serializable
 
 /** Start destination of the settings tab. */
 @Serializable
-data object SettingsRoute
+data object SettingsRoute : NavKey
 
 @Serializable
-data object FAQRoute
+data object FAQRoute : NavKey
 
 @Serializable
-data object DonateRoute
+data object DonateRoute : NavKey
 
 @Serializable
-data object PreferencesRoute
+data object PreferencesRoute : NavKey
 
 @Serializable
-data object IconPickerRoute
+data object IconPickerRoute : NavKey
 
 @Serializable
-data object ExtensionPackRoute
+data object ExtensionPackRoute : NavKey
 
 @Serializable
-data object CombinationSettingsRoute
+data object CombinationSettingsRoute : NavKey
 
 @Serializable
-data object SubstanceColorsRoute
+data object SubstanceColorsRoute : NavKey
 
 @Serializable
-data object CustomUnitsRoute
+data object CustomUnitsRoute : NavKey
 
 @Serializable
-data object CustomUnitArchiveRoute
+data object CustomUnitArchiveRoute : NavKey
 
 @Serializable
-data class EditCustomUnitRoute(val customUnitId: Int)
+data class EditCustomUnitRoute(val customUnitId: Int) : NavKey
 
 // ---------------------------------------------------------------------------------------------
-// Add-custom-unit flow: a nested graph on the settings tab
+// Add-custom-unit flow: screens the settings tab pushes on top of its root
 // ---------------------------------------------------------------------------------------------
 
-/** Route of the nested add-custom-unit graph; navigating here starts the flow. */
+/** First screen of the add-custom-unit flow; navigating here starts the flow. */
 @Serializable
-data object AddCustomUnitsRoute
-
-/** Start destination of the add-custom-unit flow. */
-@Serializable
-data object AddCustomUnitsSearchSubstanceRoute
+data object AddCustomUnitsRoute : NavKey
 
 @Serializable
-data class ChooseRouteOfAddCustomUnitRoute(val substanceName: String)
+data class ChooseRouteOfAddCustomUnitRoute(val substanceName: String) : NavKey
 
 @Serializable
 data class FinishAddCustomUnitRoute(
     val substanceName: String,
     val administrationRoute: AdministrationRoute
-)
+) : NavKey

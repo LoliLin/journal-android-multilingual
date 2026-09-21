@@ -21,10 +21,8 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -34,17 +32,19 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class ChooseDoseViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = ChooseDoseViewModel.Factory::class)
+class ChooseDoseViewModel @AssistedInject constructor(
     val repository: SubstanceRepository,
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: ChooseDoseRoute
 ) : ViewModel() {
     val substance: Substance
     val administrationRoute: AdministrationRoute
@@ -56,7 +56,6 @@ class ChooseDoseViewModel @Inject constructor(
     var units by mutableStateOf("")
 
     // --- Quick custom unit support ---
-    private val route = state.toRoute<ChooseDoseRoute>()
     private val substanceName = route.substanceName
 
     val customUnitsFlow = experienceRepo.getUnArchivedCustomUnitsFlow(substanceName).stateIn(
@@ -157,5 +156,10 @@ class ChooseDoseViewModel @Inject constructor(
         administrationRoute = route.administrationRoute
         roaDose = substance.getRoa(administrationRoute)?.roaDose
         units = roaDose?.units ?: ""
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: ChooseDoseRoute): ChooseDoseViewModel
     }
 }

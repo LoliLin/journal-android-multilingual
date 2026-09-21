@@ -19,10 +19,8 @@
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
 import android.content.Context
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
@@ -33,9 +31,11 @@ import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceCompanionRou
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.CustomUnitDose
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
-import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
@@ -45,11 +45,11 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-@HiltViewModel
-class SubstanceCompanionViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = SubstanceCompanionViewModel.Factory::class)
+class SubstanceCompanionViewModel @AssistedInject constructor(
     experienceRepo: ExperienceRepository,
     val substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val route: SubstanceCompanionRoute
 ) : ViewModel() {
 
     private val currentTimeFlow: Flow<Instant> = flow {
@@ -59,7 +59,6 @@ class SubstanceCompanionViewModel @Inject constructor(
         }
     }
 
-    private val route = state.toRoute<SubstanceCompanionRoute>()
     private val substanceName = route.substanceName
     val consumerName = route.consumerName
 
@@ -111,6 +110,11 @@ class SubstanceCompanionViewModel @Inject constructor(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5000)
             )
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: SubstanceCompanionRoute): SubstanceCompanionViewModel
+    }
 }
 
 data class IngestionsBurst(

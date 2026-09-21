@@ -1,3 +1,21 @@
+/*
+ * Copyright (c) 2022-2023. Isaak Hanimann.
+ * This file is part of PsychonautWiki Journal.
+ *
+ * PsychonautWiki Journal is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ *
+ * PsychonautWiki Journal is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
+ */
+
 package com.isaakhanimann.journal.ui.main
 
 import android.app.Activity
@@ -23,14 +41,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
-import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
+import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.minimalNavTransitionSpec
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
 import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.rememberNav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseRouteOfAddIngestionRoute
@@ -91,8 +109,9 @@ private fun rememberPendingNavigationIntent(): MutableState<Intent?> {
 @Composable
 private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: MutableState<Intent?>) {
     val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
-    val manager = remember { Nav3TabManager() }
+    val manager = rememberNav3TabManager()
     val entryProvider = remember(manager) { nav3EntryProvider(manager) }
+    val entries = manager.decoratedEntries(entryProvider)
     val selectedDestination = manager.selectedTab
     val isOnMainTabRoot = manager.isAtRoot()
     val activity = LocalContext.current as? Activity
@@ -132,16 +151,11 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
             LocalBottomBarOverlayInsetPx provides visibleBarPx
         ) {
             NavDisplay(
-                backStack = manager.currentBackStack,
+                entries = entries,
                 onBack = { if (!manager.pop()) activity?.finish() },
-                entryDecorators = listOf(
-                    rememberSaveableStateHolderNavEntryDecorator(),
-                    rememberViewModelStoreNavEntryDecorator()
-                ),
                 transitionSpec = minimalNavTransitionSpec,
                 popTransitionSpec = minimalNavTransitionSpec,
                 predictivePopTransitionSpec = predictivePopTransitionSpec,
-                entryProvider = entryProvider,
                 modifier = Modifier.fillMaxSize()
             )
         }

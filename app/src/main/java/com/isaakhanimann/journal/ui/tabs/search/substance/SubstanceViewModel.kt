@@ -18,26 +18,26 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 
-@HiltViewModel
-class SubstanceViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = SubstanceViewModel.Factory::class)
+class SubstanceViewModel @AssistedInject constructor(
     val substanceRepo: SubstanceRepository,
     experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: SubstanceRoute
 ) : ViewModel() {
 
-    val substanceName = state.toRoute<SubstanceRoute>().substanceName
+    val substanceName = route.substanceName
 
     val substanceWithCategories = substanceRepo.getSubstanceWithCategories(substanceName)!!
     val interactionNameLookup = substanceRepo.getAllSubstances().associate { substance ->
@@ -49,4 +49,9 @@ class SubstanceViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: SubstanceRoute): SubstanceViewModel
+    }
 }

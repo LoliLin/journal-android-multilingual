@@ -82,7 +82,6 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.ReleaseForm
@@ -99,7 +98,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun EditIngestionScreen(
-    viewModel: EditIngestionViewModel = hiltViewModel(),
+    viewModel: EditIngestionViewModel,
     navigateBack: () -> Unit
 ) {
     EditIngestionScreen(
