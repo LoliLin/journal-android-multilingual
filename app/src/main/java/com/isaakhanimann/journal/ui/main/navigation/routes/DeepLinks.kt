@@ -21,10 +21,8 @@ package com.isaakhanimann.journal.ui.main.navigation.routes
 /**
  * Base paths for the externally reachable `journal://` deep links.
  *
- * Every path is registered on exactly one destination through `navDeepLink<T>(basePath)`; the
- * matching `<intent-filter>` lives in AndroidManifest.xml. Arguments are appended to the base path
- * from the destination's route class, so both the URI pattern and the parsed arguments stay in sync
- * with the route definitions.
+ * Navigation 3 matches these intents in MainScreen and converts the path segments to route keys.
+ * Keeping the constants beside the route definitions avoids duplicating the public URI contract.
  */
 private const val DEEP_LINK_ROOT = "journal://open"
 

@@ -11,9 +11,8 @@ import androidx.compose.ui.platform.LocalDensity
 
 /**
  * Nested-scroll connection owned by [MainScreen] so the bottom bar can hide/show
- * with tab-root content. Each tab Scaffold must attach this; a connection on
- * [androidx.navigation.compose.NavHost] does not receive descendant LazyColumn
- * / verticalScroll events through Navigation Compose.
+ * with tab-root content. Navigation 3 renders entries outside the scroll hierarchy, so a connection
+ * on the navigation container does not receive descendant LazyColumn / verticalScroll events.
  */
 val LocalBottomBarNestedScrollConnection =
     compositionLocalOf<NestedScrollConnection?> { null }

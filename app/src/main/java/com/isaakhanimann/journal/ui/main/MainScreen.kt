@@ -1,24 +1,8 @@
-/*
- * Copyright (c) 2022-2023. Isaak Hanimann.
- * This file is part of PsychonautWiki Journal.
- *
- * PsychonautWiki Journal is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or (at
- * your option) any later version.
- *
- * PsychonautWiki Journal is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
- */
-
 package com.isaakhanimann.journal.ui.main
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Box
@@ -39,28 +23,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
-import com.isaakhanimann.journal.ui.main.navigation.graphs.journalGraph
-import com.isaakhanimann.journal.ui.main.navigation.graphs.saferGraph
-import com.isaakhanimann.journal.ui.main.navigation.graphs.searchGraph
-import com.isaakhanimann.journal.ui.main.navigation.graphs.settingsGraph
-import com.isaakhanimann.journal.ui.main.navigation.graphs.statsGraph
-import com.isaakhanimann.journal.ui.main.navigation.routes.JournalTab
+import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
+import com.isaakhanimann.journal.ui.main.navigation.minimalNavTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
+import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseRouteOfAddIngestionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.ExperienceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.QuickTimedNoteRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceCompanionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.SubstanceRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.TimeCapsuleRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.TopLevelDestinations
-import com.isaakhanimann.journal.ui.main.navigation.routes.isTopLevelDestinationRoot
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToAddIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToChooseRouteOfAddIngestion
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToQuickTimedNote
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceCompanionScreen
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToSubstanceScreen
-import com.isaakhanimann.journal.ui.main.navigation.routes.navigateToTimeCapsule
-import com.isaakhanimann.journal.ui.main.navigation.routes.popToTopLevelDestinationRoot
-import com.isaakhanimann.journal.ui.main.navigation.routes.switchToTopLevelDestination
-import com.isaakhanimann.journal.ui.main.navigation.routes.topLevelDestinationOrNull
 import com.isaakhanimann.journal.ui.notifications.EXTRA_EXPERIENCE_ID
 import com.isaakhanimann.journal.ui.notifications.EXTRA_NAVIGATE_TO
 import com.isaakhanimann.journal.ui.notifications.EXTRA_SUBSTANCE_NAME
@@ -79,18 +58,10 @@ private const val TAG = "MainScreen"
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
-    LaunchedEffect(selectedLanguageKey) {
-        I18n.setPreferredLanguageKey(selectedLanguageKey)
-    }
+    LaunchedEffect(selectedLanguageKey) { I18n.setPreferredLanguageKey(selectedLanguageKey) }
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
-
-    // Notification taps and journal:// deep links steer the app to a screen. Tracked above the gate
-    // so the intent survives the accept-conditions and app-lock screens and is consumed by the
-    // content branch once the navigation graph exists.
     val pendingIntent = rememberPendingNavigationIntent()
-
     if (isAccepted == null) {
-        // DataStore value not read yet: show nothing instead of flashing content.
         Box(modifier = Modifier.fillMaxSize())
     } else if (!isAccepted) {
         AcceptConditionsScreen(onTapAccept = viewModel::accept)
@@ -99,71 +70,48 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     ) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
-        MainScreenContent(viewModel = viewModel, pendingIntent = pendingIntent)
+        MainScreenContent(viewModel, pendingIntent)
     }
 }
 
-/**
- * The activity intent that should steer navigation, delivered both for the launching intent and
- * for later taps while the activity already exists.
- *
- * `MainActivity` is `singleTop`, so a notification or widget tap reaches an existing instance
- * through `onNewIntent` instead of recreating it and dropping the whole navigation stack.
- */
 @Composable
 private fun rememberPendingNavigationIntent(): MutableState<Intent?> {
     val pending = remember { mutableStateOf<Intent?>(null) }
     val activity = LocalContext.current as? ComponentActivity
     DisposableEffect(activity) {
-        val listener = Consumer<Intent> { intent -> pending.value = intent }
+        val listener = Consumer<Intent> { pending.value = it }
         activity?.addOnNewIntentListener(listener)
         onDispose { activity?.removeOnNewIntentListener(listener) }
     }
-    LaunchedEffect(activity) {
-        activity?.intent?.let { pending.value = it }
-    }
+    LaunchedEffect(activity) { activity?.intent?.let { pending.value = it } }
     return pending
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MainScreenContent(
-    viewModel: MainScreenViewModel,
-    pendingIntent: MutableState<Intent?>
-) {
+private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: MutableState<Intent?>) {
     val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
-    val navController = rememberNavController()
-    val currentDestination = navController.currentBackStackEntryAsState().value?.destination
-    // Both lookups compare the destination against the five tab routes, so they are memoised per
-    // destination instead of re-resolving the route classes on every recomposition.
-    val selectedDestination = remember(currentDestination) {
-        currentDestination?.topLevelDestinationOrNull()
-    }
-    val isOnMainTabRoot = remember(currentDestination) {
-        currentDestination?.isTopLevelDestinationRoot() == true
-    }
+    val manager = remember { Nav3TabManager() }
+    val entryProvider = remember(manager) { nav3EntryProvider(manager) }
+    val selectedDestination = manager.selectedTab
+    val isOnMainTabRoot = manager.isAtRoot()
+    val activity = LocalContext.current as? Activity
 
     val pendingIntentValue = pendingIntent.value
     LaunchedEffect(pendingIntentValue) {
-        pendingIntentValue?.let { intent ->
-            handleNavigationIntent(navController, intent)
+        pendingIntentValue?.let {
+            handleNavigationIntent(manager, it)
             pendingIntent.value = null
         }
     }
 
     val isKeyboardOpenNow = isKeyboardOpen().value
     val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
-    // When the user pins the bar (issue #144) no scroll connection is provided at all: lists scroll
-    // normally and the bar never moves.
-    val bottomBarScrollBehavior = rememberBottomBarScrollBehavior(
-        canScroll = { isOnMainTabRoot && !isKeyboardOpenNow }
-    )
-    val nestedScrollConnection = if (isBottomBarPinned) {
-        null
-    } else {
-        remember(bottomBarScrollBehavior) {
-            bottomBarNestedScrollConnection(bottomBarScrollBehavior)
-        }
+    val bottomBarScrollBehavior = rememberBottomBarScrollBehavior {
+        isOnMainTabRoot && !isKeyboardOpenNow
+    }
+    val nestedScrollConnection = if (isBottomBarPinned) null else remember(bottomBarScrollBehavior) {
+        bottomBarNestedScrollConnection(bottomBarScrollBehavior)
     }
     LaunchedEffect(isOnMainTabRoot, isKeyboardOpenNow, isBottomBarPinned) {
         if (!isOnMainTabRoot || isKeyboardOpenNow || isBottomBarPinned) {
@@ -173,11 +121,7 @@ private fun MainScreenContent(
 
     Box(modifier = Modifier.fillMaxSize()) {
         val barHeightPx = remember { mutableIntStateOf(0) }
-        val heightOffset = if (isBottomBarPinned) {
-            0f
-        } else {
-            bottomBarScrollBehavior.state.heightOffset
-        }
+        val heightOffset = if (isBottomBarPinned) 0f else bottomBarScrollBehavior.state.heightOffset
         val visibleBarPx = if (isBottomBarShown) {
             (barHeightPx.intValue + heightOffset.toInt()).coerceAtLeast(0)
         } else {
@@ -187,17 +131,19 @@ private fun MainScreenContent(
             LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
             LocalBottomBarOverlayInsetPx provides visibleBarPx
         ) {
-            NavHost(
-                navController,
-                startDestination = JournalTab,
+            NavDisplay(
+                backStack = manager.currentBackStack,
+                onBack = { if (!manager.pop()) activity?.finish() },
+                entryDecorators = listOf(
+                    rememberSaveableStateHolderNavEntryDecorator(),
+                    rememberViewModelStoreNavEntryDecorator()
+                ),
+                transitionSpec = minimalNavTransitionSpec,
+                popTransitionSpec = minimalNavTransitionSpec,
+                predictivePopTransitionSpec = predictivePopTransitionSpec,
+                entryProvider = entryProvider,
                 modifier = Modifier.fillMaxSize()
-            ) {
-                journalGraph(navController)
-                statsGraph(navController)
-                searchGraph(navController)
-                saferGraph(navController)
-                settingsGraph(navController)
-            }
+            )
         }
         BottomNavigationBar(
             visible = isBottomBarShown,
@@ -205,15 +151,8 @@ private fun MainScreenContent(
             scrollBehavior = bottomBarScrollBehavior,
             isPinned = isBottomBarPinned,
             onTabSelected = { destination ->
-                if (destination == selectedDestination) {
-                    // Re-tapping the selected tab returns to its root instead of popping a single
-                    // screen, which is what the platform convention expects.
-                    if (!isOnMainTabRoot) {
-                        navController.popToTopLevelDestinationRoot(destination)
-                    }
-                } else {
-                    navController.switchToTopLevelDestination(destination)
-                }
+                if (destination == selectedDestination) manager.popToRoot(destination)
+                else manager.switchToTab(destination)
             },
             onMeasuredHeightChanged = { barHeightPx.intValue = it },
             modifier = Modifier.align(Alignment.BottomCenter)
@@ -221,42 +160,51 @@ private fun MainScreenContent(
     }
 }
 
-/**
- * Routes an incoming intent, preferring the registered `journal://` deep links and falling back to
- * the `EXTRA_NAVIGATE_TO` contract used by notifications and the stats widget.
- */
-private fun handleNavigationIntent(navController: NavController, intent: Intent) {
-    val wasHandledByDeepLink = try {
-        navController.handleDeepLink(intent)
-    } catch (e: IllegalStateException) {
-        // Thrown when a deep link cannot be reached from the current destination; the app should
-        // stay where it is rather than crash.
-        Log.w(TAG, "Deep link could not be handled from the current destination", e)
-        false
-    }
-    if (wasHandledByDeepLink) return
-    handleLegacyNavigationIntent(navController, intent)
-}
-
-private fun handleLegacyNavigationIntent(navController: NavController, intent: Intent) {
+private fun handleNavigationIntent(manager: Nav3TabManager, intent: Intent) {
+    if (handleDeepLink(manager, intent.data)) return
     val target = intent.getStringExtra(EXTRA_NAVIGATE_TO) ?: return
     val experienceId = intent.getIntExtra(EXTRA_EXPERIENCE_ID, -1)
     val substanceName = intent.getStringExtra(EXTRA_SUBSTANCE_NAME)
     when (target) {
-        NAV_QUICK_NOTE -> if (experienceId > 0) {
-            navController.navigateToQuickTimedNote(experienceId)
-        }
-        NAV_TIME_CAPSULE -> navController.navigateToTimeCapsule()
-        NAV_ADD_INGESTION -> navController.navigateToAddIngestion()
-        NAV_STATS -> navController.switchToTopLevelDestination(TopLevelDestinations.Stats)
-        NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) {
-            navController.navigateToSubstanceScreen(substanceName)
-        }
+        NAV_QUICK_NOTE -> if (experienceId > 0) manager.navigate(QuickTimedNoteRoute(experienceId))
+        NAV_TIME_CAPSULE -> manager.navigate(TimeCapsuleRoute)
+        NAV_ADD_INGESTION -> manager.navigate(AddIngestionRoute)
+        NAV_STATS -> manager.switchToTab(TopLevelDestinations.Stats)
+        NAV_SUBSTANCE -> if (!substanceName.isNullOrBlank()) manager.navigate(SubstanceRoute(substanceName))
         NAV_SUBSTANCE_COMPANION -> if (!substanceName.isNullOrBlank()) {
-            navController.navigateToSubstanceCompanionScreen(substanceName, null)
+            manager.navigate(SubstanceCompanionRoute(substanceName, null))
         }
         NAV_CHOOSE_ROUTE -> if (!substanceName.isNullOrBlank()) {
-            navController.navigateToChooseRouteOfAddIngestion(substanceName)
+            manager.navigate(ChooseRouteOfAddIngestionRoute(substanceName))
         }
     }
+}
+
+private fun handleDeepLink(manager: Nav3TabManager, uri: Uri?): Boolean {
+    if (uri?.scheme != "journal" || uri.host != "open") return false
+    val segments = uri.pathSegments
+    val route = segments.firstOrNull() ?: return false
+    fun segment(index: Int): String? = segments.getOrNull(index)
+    when (route) {
+        "journal" -> manager.switchToTab(TopLevelDestinations.Journal)
+        "stats" -> manager.switchToTab(TopLevelDestinations.Stats)
+        "substances" -> manager.switchToTab(TopLevelDestinations.Substances)
+        "safer" -> manager.switchToTab(TopLevelDestinations.Safer)
+        "settings" -> manager.switchToTab(TopLevelDestinations.Settings)
+        "substance" -> segment(1)?.let { manager.navigate(SubstanceRoute(it)) }
+        "category" -> segment(1)?.let { manager.navigate(CategoryRoute(it)) }
+        "experience" -> segment(1)?.toIntOrNull()?.let { manager.navigate(ExperienceRoute(it)) }
+        "quick-note" -> segment(1)?.toIntOrNull()?.let { manager.navigate(QuickTimedNoteRoute(it)) }
+        "time-capsule" -> manager.navigate(TimeCapsuleRoute)
+        "add-ingestion" -> manager.navigate(AddIngestionRoute)
+        "choose-route" -> segment(1)?.let { manager.navigate(ChooseRouteOfAddIngestionRoute(it)) }
+        "substance-companion" -> segment(1)?.let {
+            manager.navigate(SubstanceCompanionRoute(it, uri.getQueryParameter("consumerName")))
+        }
+        else -> {
+            Log.w(TAG, "Ignoring unknown deep link: $uri")
+            return false
+        }
+    }
+    return true
 }
