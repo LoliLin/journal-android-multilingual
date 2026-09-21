@@ -95,7 +95,16 @@ jobs:
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
 
-      - name: Build release APK & AAB (main repo)
+      - name: Build release APK (main repo)
+        if: github.repository == 'LoliLin/journal-android-multilingual'
+        env:
+          ENABLE_SPLITS: "true"
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --stacktrace
+      - name: Build release AAB (main repo)
         if: github.repository == 'LoliLin/journal-android-multilingual'
         env:
           ENABLE_SPLITS: "false"
@@ -103,8 +112,7 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease bundleRelease --stacktrace
-
+        run: ./gradlew bundleRelease --stacktrace
 
       - name: Build debug APK (forks)
         if: github.repository != 'LoliLin/journal-android-multilingual'
@@ -227,7 +235,7 @@ jobs:
           python3 -c "import json;json.load(open('google-play-api.json'))" \
             || { echo "::error::GOOGLE_PLAY_API 既不是合法 JSON 也不是合法 base64。"; exit 1; }
 
-          AAB="app/build/outputs/bundle/release/app-release.aab"
+          AAB=$(find downloads -name "*.aab" | head -n 1)
           if [ ! -f "$AAB" ]; then
             echo "::error::$AAB 不存在（需要签名配置，见仓库 Settings 里的 KEYSTORE_* secrets）。"
             exit 1
