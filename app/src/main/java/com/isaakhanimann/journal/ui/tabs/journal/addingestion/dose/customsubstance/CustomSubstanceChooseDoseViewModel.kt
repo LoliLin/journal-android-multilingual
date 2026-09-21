@@ -21,23 +21,23 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customsubsta
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CustomChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class CustomChooseDoseViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = CustomChooseDoseViewModel.Factory::class)
+class CustomChooseDoseViewModel @AssistedInject constructor(
     experienceRepository: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: CustomChooseDoseRoute
 ) : ViewModel() {
     var substanceName by mutableStateOf("")
     val administrationRoute: AdministrationRoute
@@ -80,7 +80,6 @@ class CustomChooseDoseViewModel @Inject constructor(
     }
 
     init {
-        val route = state.toRoute<CustomChooseDoseRoute>()
         val customSubstanceId = route.customSubstanceId
         administrationRoute = route.administrationRoute
         viewModelScope.launch {
@@ -90,5 +89,10 @@ class CustomChooseDoseViewModel @Inject constructor(
             substanceName = customSubstance.name
             units = customSubstance.units
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: CustomChooseDoseRoute): CustomChooseDoseViewModel
     }
 }

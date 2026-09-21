@@ -42,7 +42,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
@@ -68,7 +67,7 @@ fun AddRatingScreenPreview() {
 }
 
 @Composable
-fun AddRatingScreen(viewModel: AddRatingViewModel = hiltViewModel(), navigateBack: () -> Unit) {
+fun AddRatingScreen(viewModel: AddRatingViewModel, navigateBack: () -> Unit) {
     AddRatingScreen(
         onDone = {
             viewModel.onDoneTap()

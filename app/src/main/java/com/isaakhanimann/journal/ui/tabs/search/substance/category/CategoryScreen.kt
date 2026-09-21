@@ -34,7 +34,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
@@ -46,7 +45,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun CategoryScreen(
     navigateToURL: (url: String) -> Unit,
     onSubstanceTap: (substanceModel: SubstanceModel) -> Unit,
-    viewModel: CategoryViewModel = hiltViewModel()
+    viewModel: CategoryViewModel
 ) {
     CategoryScreen(
         category = viewModel.category,

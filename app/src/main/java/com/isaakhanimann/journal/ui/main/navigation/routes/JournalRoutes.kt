@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routes
 
+import androidx.navigation3.runtime.NavKey
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.ReleaseForm
 import kotlinx.serialization.Serializable
@@ -28,53 +29,53 @@ import kotlinx.serialization.Serializable
 
 /** Start destination of the journal tab. */
 @Serializable
-data object JournalRoute
+data object JournalRoute : NavKey
 
 @Serializable
-data object CalendarRoute
+data object CalendarRoute : NavKey
 
 @Serializable
-data class ExperienceRoute(val experienceId: Int)
+data class ExperienceRoute(val experienceId: Int) : NavKey
 
 @Serializable
-data class EditExperienceRoute(val experienceId: Int)
+data class EditExperienceRoute(val experienceId: Int) : NavKey
 
 @Serializable
-data class IngestionRoute(val ingestionId: Int)
+data class IngestionRoute(val ingestionId: Int) : NavKey
 
 @Serializable
-data class AddRatingRoute(val experienceId: Int)
+data class AddRatingRoute(val experienceId: Int) : NavKey
 
 @Serializable
-data class EditRatingRoute(val ratingId: Int)
+data class EditRatingRoute(val ratingId: Int) : NavKey
 
 @Serializable
-data class AddTimedNoteRoute(val experienceId: Int)
+data class AddTimedNoteRoute(val experienceId: Int) : NavKey
 
 @Serializable
-data class EditTimedNoteRoute(val timedNoteId: Int, val experienceId: Int)
+data class EditTimedNoteRoute(val timedNoteId: Int, val experienceId: Int) : NavKey
 
 @Serializable
-data class QuickTimedNoteRoute(val experienceId: Int)
+data class QuickTimedNoteRoute(val experienceId: Int) : NavKey
 
 @Serializable
-data class TimelineScreenRoute(val consumerName: String, val experienceId: Int)
+data class TimelineScreenRoute(val consumerName: String, val experienceId: Int) : NavKey
 
 /** Daily "one year ago" recap. */
 @Serializable
-data object TimeCapsuleRoute
+data object TimeCapsuleRoute : NavKey
 
 @Serializable
-data object ExplainTimelineOnJournalTabRoute
+data object ExplainTimelineOnJournalTabRoute : NavKey
 
 @Serializable
-data object DosageExplanationOnJournalTabRoute
+data object DosageExplanationOnJournalTabRoute : NavKey
 
 @Serializable
-data object SaferSniffingOnJournalTabRoute
+data object SaferSniffingOnJournalTabRoute : NavKey
 
 @Serializable
-data object VolumetricDosingOnJournalTabRoute
+data object VolumetricDosingOnJournalTabRoute : NavKey
 
 /**
  * In-app article viewer on the journal tab.
@@ -83,46 +84,42 @@ data object VolumetricDosingOnJournalTabRoute
  * so sharing one class between two graphs would create two destinations with the same route.
  */
 @Serializable
-data class JournalTabUrlRoute(val url: String)
+data class JournalTabUrlRoute(val url: String) : NavKey
 
 // ---------------------------------------------------------------------------------------------
-// Add-ingestion flow: a nested graph on the journal tab
+// Add-ingestion flow: screens the journal tab pushes on top of its root
 // ---------------------------------------------------------------------------------------------
 
-/** Route of the nested add-ingestion graph; navigating here starts the flow. */
+/** First screen of the add-ingestion flow; navigating here starts the flow. */
 @Serializable
-data object AddIngestionRoute
-
-/** Start destination of the add-ingestion flow. */
-@Serializable
-data object AddIngestionSearchRoute
+data object AddIngestionRoute : NavKey
 
 @Serializable
-data class CheckInteractionsRoute(val substanceName: String)
+data class CheckInteractionsRoute(val substanceName: String) : NavKey
 
 @Serializable
-data class CheckSaferUseRoute(val substanceName: String)
+data class CheckSaferUseRoute(val substanceName: String) : NavKey
 
 @Serializable
-data class ChooseRouteOfAddIngestionRoute(val substanceName: String)
+data class ChooseRouteOfAddIngestionRoute(val substanceName: String) : NavKey
 
 @Serializable
 data class ChooseDoseRoute(
     val substanceName: String,
     val administrationRoute: AdministrationRoute
-)
+) : NavKey
 
 @Serializable
-data class ChooseDoseCustomUnitRoute(val customUnitId: Int)
+data class ChooseDoseCustomUnitRoute(val customUnitId: Int) : NavKey
 
 @Serializable
-data class CustomChooseRouteRoute(val customSubstanceId: Int)
+data class CustomChooseRouteRoute(val customSubstanceId: Int) : NavKey
 
 @Serializable
 data class CustomChooseDoseRoute(
     val customSubstanceId: Int,
     val administrationRoute: AdministrationRoute
-)
+) : NavKey
 
 /**
  * Final step of the add-ingestion flow.
@@ -141,7 +138,7 @@ data class ChooseTimeRoute(
     val customUnitId: Int? = null,
     val customSubstanceId: Int? = null,
     val releaseForm: ReleaseForm? = null
-)
+) : NavKey
 
 /**
  * `SavedStateHandle` key holding the selected release form.

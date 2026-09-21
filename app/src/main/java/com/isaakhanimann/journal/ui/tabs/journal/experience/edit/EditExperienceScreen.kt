@@ -43,13 +43,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 
 @Composable
 fun EditExperienceScreen(
     navigateBack: () -> Unit,
-    viewModel: EditExperienceViewModel = hiltViewModel()
+    viewModel: EditExperienceViewModel
 ) {
     EditExperienceScreen(
         enteredTitle = viewModel.enteredTitle,

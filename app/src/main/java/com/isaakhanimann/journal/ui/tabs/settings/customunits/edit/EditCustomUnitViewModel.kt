@@ -21,10 +21,8 @@ package com.isaakhanimann.journal.ui.tabs.settings.customunits.edit
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -33,22 +31,24 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomUnitRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@HiltViewModel
-class EditCustomUnitViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditCustomUnitViewModel.Factory::class)
+class EditCustomUnitViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
     val substanceRepository: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val route: EditCustomUnitRoute
 ) : ViewModel() {
 
     private var customUnit: CustomUnit? = null
     init {
-        val customUnitId = state.toRoute<EditCustomUnitRoute>().customUnitId
+        val customUnitId = route.customUnitId
         viewModelScope.launch {
             val customUnitWithIngestions = experienceRepo.getCustomUnitWithIngestions(customUnitId)
             val customUnit = customUnitWithIngestions?.customUnit
@@ -166,4 +166,8 @@ class EditCustomUnitViewModel @Inject constructor(
         }
     }
 
+    @AssistedFactory
+    interface Factory {
+        fun create(route: EditCustomUnitRoute): EditCustomUnitViewModel
+    }
 }

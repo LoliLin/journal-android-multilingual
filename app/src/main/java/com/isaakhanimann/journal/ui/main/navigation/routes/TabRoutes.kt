@@ -30,115 +30,58 @@ import androidx.compose.material.icons.outlined.HealthAndSafety
 import androidx.compose.material.icons.outlined.Medication
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NavDestination
-import androidx.navigation.NavDestination.Companion.hasRoute
-import androidx.navigation.NavDestination.Companion.hierarchy
-import kotlin.reflect.KClass
-import kotlinx.serialization.Serializable
-
-/**
- * Type-safe route of the root graph of each bottom-bar tab.
- *
- * The graphs themselves carry no arguments; the destination each graph starts on is declared in the
- * tab's own screen file and referenced by [TopLevelDestination.startRoute].
- */
-@Serializable
-data object JournalTab
-
-@Serializable
-data object StatsTab
-
-@Serializable
-data object SubstancesTab
-
-@Serializable
-data object SaferTab
-
-@Serializable
-data object SettingsTab
+import androidx.navigation3.runtime.NavKey
 
 /**
  * One entry of the bottom navigation bar.
  *
- * [graphRoute] identifies the tab's nested graph and drives which tab is highlighted; [startRoute]
- * identifies the graph's start destination and drives both "am I on a tab root" (the bar is only
- * shown there) and re-tapping the selected tab (pop back to that root).
- *
- * Both are typed as [Any] because the bar iterates a homogeneous list, while the route class is
- * still recovered at runtime by [NavDestination.hasRouteOf].
+ * [startRoute] is the root of the tab's back stack: it identifies the tab, drives which bar item is
+ * selected and marks the destinations where the bar is shown. [labelKey] is the i18n key of the
+ * label and doubles as the stable id used to persist the selected tab.
  */
 data class TopLevelDestination(
-    val graphRoute: Any,
-    val startRoute: Any,
+    val startRoute: NavKey,
     val labelKey: String,
     val icon: ImageVector,
     val iconSelected: ImageVector
 )
 
-/** The five bottom-bar tabs, in the order they appear in the navigation bar. */
 object TopLevelDestinations {
-
     val Stats = TopLevelDestination(
-        graphRoute = StatsTab,
         startRoute = StatsRoute,
         labelKey = "stats",
         icon = Icons.Outlined.BarChart,
         iconSelected = Icons.Filled.BarChart
     )
-
     val Journal = TopLevelDestination(
-        graphRoute = JournalTab,
         startRoute = JournalRoute,
         labelKey = "journal",
         icon = Icons.Outlined.Book,
         iconSelected = Icons.Filled.Book
     )
-
     val Substances = TopLevelDestination(
-        graphRoute = SubstancesTab,
         startRoute = SubstancesRoute,
         labelKey = "substances",
         icon = Icons.Outlined.Medication,
         iconSelected = Icons.Filled.Medication
     )
-
     val Safer = TopLevelDestination(
-        graphRoute = SaferTab,
         startRoute = SaferRoute,
         labelKey = "safer",
         icon = Icons.Outlined.HealthAndSafety,
         iconSelected = Icons.Filled.HealthAndSafety
     )
-
     val Settings = TopLevelDestination(
-        graphRoute = SettingsTab,
         startRoute = SettingsRoute,
         labelKey = "settings",
         icon = Icons.Outlined.Settings,
         iconSelected = Icons.Filled.Settings
     )
 
+    /** The five bottom-bar tabs, in the order they appear in the navigation bar. */
     val all = listOf(Stats, Journal, Substances, Safer, Settings)
+
+    /** The tab previously persisted under [labelKey], or the journal tab when it is unknown. */
+    fun forLabelKey(labelKey: String): TopLevelDestination =
+        all.firstOrNull { it.labelKey == labelKey } ?: Journal
 }
-
-@Suppress("UNCHECKED_CAST")
-private fun NavDestination.hasRouteOf(route: Any): Boolean =
-    hasRoute(route::class as KClass<Any>)
-
-/**
- * True when this destination is the root of a bottom-bar tab.
- *
- * The bottom navigation bar is only shown on these destinations; every nested/detail screen hides
- * it. This replaces the previously hand-maintained set of tab-root route strings: the hierarchy is
- * walked instead, so the check also works for destinations inside nested graphs.
- */
-fun NavDestination.isTopLevelDestinationRoot(): Boolean =
-    TopLevelDestinations.all.any { destination ->
-        hierarchy.any { it.hasRouteOf(destination.startRoute) }
-    }
-
-/** The tab this destination belongs to, or null when it is outside every tab graph. */
-fun NavDestination.topLevelDestinationOrNull(): TopLevelDestination? =
-    TopLevelDestinations.all.firstOrNull { destination ->
-        hierarchy.any { it.hasRouteOf(destination.graphRoute) }
-    }

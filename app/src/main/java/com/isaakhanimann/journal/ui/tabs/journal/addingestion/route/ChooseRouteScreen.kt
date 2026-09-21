@@ -53,7 +53,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
@@ -65,7 +64,7 @@ fun ChooseRouteScreen(
     navigateToChooseDose: (administrationRoute: AdministrationRoute) -> Unit,
     navigateToURL: (url: String) -> Unit,
     navigateToRouteExplanationScreen: () -> Unit,
-    viewModel: ChooseRouteViewModel = hiltViewModel()
+    viewModel: ChooseRouteViewModel
 ) {
     ChooseRouteScreen(
         showOtherRoutes = viewModel.showOtherRoutes,

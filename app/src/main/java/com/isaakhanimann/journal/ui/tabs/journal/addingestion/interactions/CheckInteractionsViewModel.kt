@@ -21,10 +21,8 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
@@ -33,22 +31,24 @@ import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.ui.main.navigation.routes.CheckInteractionsRoute
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class CheckInteractionsViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = CheckInteractionsViewModel.Factory::class)
+class CheckInteractionsViewModel @AssistedInject constructor(
     val substanceRepo: SubstanceRepository,
     private val experienceRepo: ExperienceRepository,
     private val combinationSettingsStorage: CombinationSettingsStorage,
     private val interactionChecker: InteractionChecker,
-    state: SavedStateHandle
+    @Assisted val route: CheckInteractionsRoute
 ) : ViewModel() {
-    val substanceName = state.toRoute<CheckInteractionsRoute>().substanceName
+    val substanceName = route.substanceName
     val substance = substanceRepo.getSubstance(substanceName)
     val dangerousInteractions = substance?.interactions?.dangerous ?: emptyList()
     val unsafeInteractions = substance?.interactions?.unsafe ?: emptyList()
@@ -198,4 +198,9 @@ class CheckInteractionsViewModel @Inject constructor(
     }
 
     data class IngestionInteraction(val ingestion: Ingestion, val interactionType: InteractionType)
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: CheckInteractionsRoute): CheckInteractionsViewModel
+    }
 }

@@ -30,7 +30,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.AdministrationRoutePicker
@@ -40,7 +39,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteV
 @Composable
 fun ChooseRouteDuringAddCustomUnitScreen(
     onRouteChosen: (administrationRoute: AdministrationRoute) -> Unit,
-    viewModel: ChooseRouteViewModel = hiltViewModel()
+    viewModel: ChooseRouteViewModel
 ) {
     Scaffold(
         topBar = {

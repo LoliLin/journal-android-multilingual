@@ -38,13 +38,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditCustomSubstanceScreen(
     navigateBack: () -> Unit,
-    viewModel: EditCustomSubstanceViewModel = hiltViewModel()
+    viewModel: EditCustomSubstanceViewModel
 ) {
     Scaffold(
         topBar = {

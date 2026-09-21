@@ -38,7 +38,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -50,7 +49,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.customunits.add.EditCustomUnit
 @Composable
 fun EditCustomUnitScreen(
     navigateBack: () -> Unit,
-    viewModel: EditCustomUnitViewModel = hiltViewModel()
+    viewModel: EditCustomUnitViewModel
 ) {
     EditCustomUnitScreenContent(
         substanceName = viewModel.substanceName,

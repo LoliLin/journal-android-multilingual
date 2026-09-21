@@ -19,10 +19,8 @@
 package com.isaakhanimann.journal.ui.tabs.journal.experience
 
 import android.content.Context
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -41,11 +39,13 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElem
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.InteractionExplanation
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -59,15 +59,15 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class OneExperienceViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = OneExperienceViewModel.Factory::class)
+class OneExperienceViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
     val substanceRepo: SubstanceRepository,
     private val interactionChecker: InteractionChecker,
     private val userPreferences: UserPreferences,
     @ApplicationContext private val appContext: Context,
     combinationSettingsStorage: CombinationSettingsStorage,
-    state: SavedStateHandle
+    @Assisted val route: ExperienceRoute
 ) : ViewModel() {
 
     fun saveTimeDisplayOption(savedTimeDisplayOption: SavedTimeDisplayOption) {
@@ -111,7 +111,7 @@ class OneExperienceViewModel @Inject constructor(
     )
 
     init {
-        val expId = state.toRoute<ExperienceRoute>().experienceId
+        val expId = route.experienceId
         experienceId = expId
         viewModelScope.launch {
             val experience = experienceRepo.getExperience(expId)
@@ -445,5 +445,10 @@ class OneExperienceViewModel @Inject constructor(
                         cumulativeDose.cumulativeRouteAndDose.any { it.hasMoreThanOneIngestion }
                 }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: ExperienceRoute): OneExperienceViewModel
     }
 }

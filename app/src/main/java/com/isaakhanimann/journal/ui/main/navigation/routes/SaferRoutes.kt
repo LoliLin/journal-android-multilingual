@@ -18,35 +18,36 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routes
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 /** Start destination of the safer-use tab. */
 @Serializable
-data object SaferRoute
+data object SaferRoute : NavKey
 
 @Serializable
-data object SaferHallucinogensRoute
+data object SaferHallucinogensRoute : NavKey
 
 @Serializable
-data object SaferStimulantsRoute
+data object SaferStimulantsRoute : NavKey
 
 @Serializable
-data object DosageExplanationOnSaferTabRoute
+data object DosageExplanationOnSaferTabRoute : NavKey
 
 @Serializable
-data object AdministrationRouteExplanationRoute
+data object AdministrationRouteExplanationRoute : NavKey
 
 @Serializable
-data object DrugTestingRoute
+data object DrugTestingRoute : NavKey
 
 @Serializable
-data object DosageGuideRoute
+data object DosageGuideRoute : NavKey
 
 @Serializable
-data object VolumetricDosingOnSaferTabRoute
+data object VolumetricDosingOnSaferTabRoute : NavKey
 
 @Serializable
-data object ReagentTestingRoute
+data object ReagentTestingRoute : NavKey
 
 @Serializable
-data class SaferTabUrlRoute(val url: String)
+data class SaferTabUrlRoute(val url: String) : NavKey

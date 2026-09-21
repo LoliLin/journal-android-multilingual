@@ -58,7 +58,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
@@ -81,7 +80,7 @@ import java.time.Instant
 @Composable
 fun FinishAddCustomUnitScreen(
     dismissAddCustomUnit: (customUnitId: Int) -> Unit,
-    viewModel: FinishAddCustomUnitViewModel = hiltViewModel()
+    viewModel: FinishAddCustomUnitViewModel
 ) {
     FinishAddCustomUnitScreenContent(
         substanceName = viewModel.substanceName,

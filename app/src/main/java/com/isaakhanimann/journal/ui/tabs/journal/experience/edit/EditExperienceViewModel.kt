@@ -21,25 +21,25 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.edit
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
 import com.isaakhanimann.journal.data.room.experiences.entities.Location
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditExperienceRoute
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class EditExperienceViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditExperienceViewModel.Factory::class)
+class EditExperienceViewModel @AssistedInject constructor(
     private val repository: ExperienceRepository,
-    state: SavedStateHandle,
+    @Assisted val route: EditExperienceRoute,
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
@@ -58,7 +58,7 @@ class EditExperienceViewModel @Inject constructor(
     )
 
     init {
-        val id = state.toRoute<EditExperienceRoute>().experienceId
+        val id = route.experienceId
         viewModelScope.launch {
             experience = repository.getExperience(id = id)!!
             enteredTitle = experience!!.title
@@ -87,5 +87,10 @@ class EditExperienceViewModel @Inject constructor(
                 repository.update(experience = experience!!)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: EditExperienceRoute): EditExperienceViewModel
     }
 }

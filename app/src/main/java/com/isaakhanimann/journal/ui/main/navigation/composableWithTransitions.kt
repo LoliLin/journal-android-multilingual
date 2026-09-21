@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022. Isaak Hanimann.
+ * Copyright (c) 2022-2023. Isaak Hanimann.
  * This file is part of PsychonautWiki Journal.
  *
  * PsychonautWiki Journal is free software: you can redistribute it and/or modify
@@ -18,49 +18,29 @@
 
 package com.isaakhanimann.journal.ui.main.navigation
 
-import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.ContentTransform
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.runtime.Composable
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavDeepLink
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.compose.composable
+import androidx.compose.animation.togetherWith
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.scene.Scene
 
-/** Duration of the app-wide navigation cross-fade. */
-@PublishedApi
-internal const val NAVIGATION_FADE_MS = 150
-
-@PublishedApi
-internal val navigationEnterTransition: EnterTransition = fadeIn(tween(NAVIGATION_FADE_MS))
-
-@PublishedApi
-internal val navigationExitTransition: ExitTransition = fadeOut(tween(NAVIGATION_FADE_MS))
+private const val NAVIGATION_FADE_MS = 90
 
 /**
- * Registers [T] as a destination with the app-wide transition.
+ * The transition every navigation uses.
  *
- * All navigation uses one minimal cross-fade with no directional movement: pushing into a tab,
- * going back, switching bottom-bar tabs, and the system predictive-back preview. Keeping all four
- * transition slots on the same animation is what makes the back-gesture preview look identical
- * whether the user is leaving a detail screen inside the current tab or crossing to another tab.
- *
- * The transitions must stay non-null: predictive back only animates its preview when the
- * destination defines enter/exit transitions.
+ * Deliberately uniform — one cross-fade with no directional movement — so that pushing, popping,
+ * switching tabs and the predictive-back gesture preview all look the same.
  */
-inline fun <reified T : Any> NavGraphBuilder.composableWithTransitions(
-    deepLinks: List<NavDeepLink> = emptyList(),
-    noinline content: @Composable AnimatedContentScope.(NavBackStackEntry) -> Unit
-) {
-    composable<T>(
-        deepLinks = deepLinks,
-        enterTransition = { navigationEnterTransition },
-        exitTransition = { navigationExitTransition },
-        popEnterTransition = { navigationEnterTransition },
-        popExitTransition = { navigationExitTransition },
-        content = content
-    )
+val minimalNavTransitionSpec:
+    AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
+    fadeIn(tween(NAVIGATION_FADE_MS)) togetherWith fadeOut(tween(NAVIGATION_FADE_MS))
+}
+
+val predictivePopTransitionSpec:
+    AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
+    fadeIn(tween(NAVIGATION_FADE_MS)) togetherWith fadeOut(tween(NAVIGATION_FADE_MS))
 }

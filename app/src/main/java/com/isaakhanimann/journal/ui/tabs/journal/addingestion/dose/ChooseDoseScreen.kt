@@ -71,7 +71,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
@@ -96,7 +95,7 @@ fun ChooseDoseScreen(
     navigateToVolumetricDosingScreenOnJournalTab: () -> Unit,
     navigateToURL: (url: String) -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
-    viewModel: ChooseDoseViewModel = hiltViewModel()
+    viewModel: ChooseDoseViewModel
 ) {
     ChooseDoseScreen(
         navigateToVolumetricDosingScreen = navigateToVolumetricDosingScreenOnJournalTab,

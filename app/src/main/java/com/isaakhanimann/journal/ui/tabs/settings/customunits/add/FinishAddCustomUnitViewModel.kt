@@ -21,29 +21,28 @@ package com.isaakhanimann.journal.ui.tabs.settings.customunits.add
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-@HiltViewModel
-class FinishAddCustomUnitViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = FinishAddCustomUnitViewModel.Factory::class)
+class FinishAddCustomUnitViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
     val substanceRepository: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val route: FinishAddCustomUnitRoute
 ) : ViewModel() {
-    private val route = state.toRoute<FinishAddCustomUnitRoute>()
     var substanceName by mutableStateOf("")
     val administrationRoute = route.administrationRoute
 
@@ -148,5 +147,10 @@ class FinishAddCustomUnitViewModel @Inject constructor(
                 dismiss(customUnitId)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: FinishAddCustomUnitRoute): FinishAddCustomUnitViewModel
     }
 }

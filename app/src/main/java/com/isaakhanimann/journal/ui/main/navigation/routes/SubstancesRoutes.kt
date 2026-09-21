@@ -18,40 +18,41 @@
 
 package com.isaakhanimann.journal.ui.main.navigation.routes
 
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 /** Start destination of the substances tab. */
 @Serializable
-data object SubstancesRoute
+data object SubstancesRoute : NavKey
 
 @Serializable
-data class SubstanceRoute(val substanceName: String)
+data class SubstanceRoute(val substanceName: String) : NavKey
 
 @Serializable
-data class CategoryRoute(val categoryName: String)
+data class CategoryRoute(val categoryName: String) : NavKey
 
 @Serializable
-data class EditCustomSubstanceRoute(val customSubstanceId: Int)
+data class EditCustomSubstanceRoute(val customSubstanceId: Int) : NavKey
 
 @Serializable
-data object AddCustomSubstanceRoute
+data object AddCustomSubstanceRoute : NavKey
 
 @Serializable
-data object ExplainTimelineOnSubstancesTabRoute
+data object ExplainTimelineOnSubstancesTabRoute : NavKey
 
 @Serializable
-data object DosageExplanationOnSubstancesTabRoute
+data object DosageExplanationOnSubstancesTabRoute : NavKey
 
 @Serializable
-data object VolumetricDosingOnSubstancesTabRoute
+data object VolumetricDosingOnSubstancesTabRoute : NavKey
 
 // The safer-use articles are reachable from both the substances tab and the safer tab. Each tab
 // needs its own destination class, because the route string is derived from the class name.
 @Serializable
-data object SaferHallucinogensOnSubstancesTabRoute
+data object SaferHallucinogensOnSubstancesTabRoute : NavKey
 
 @Serializable
-data object SaferStimulantsOnSubstancesTabRoute
+data object SaferStimulantsOnSubstancesTabRoute : NavKey
 
 @Serializable
-data class SubstancesTabUrlRoute(val url: String)
+data class SubstancesTabUrlRoute(val url: String) : NavKey

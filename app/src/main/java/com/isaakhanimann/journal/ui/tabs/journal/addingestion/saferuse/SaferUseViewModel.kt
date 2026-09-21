@@ -18,19 +18,24 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.CheckSaferUseRoute
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class SaferUseViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = SaferUseViewModel.Factory::class)
+class SaferUseViewModel @AssistedInject constructor(
     substanceRepo: SubstanceRepository,
-    state: SavedStateHandle
+    @Assisted val route: CheckSaferUseRoute
 ) : ViewModel() {
-    val substanceName = state.toRoute<CheckSaferUseRoute>().substanceName
+    val substanceName = route.substanceName
     val substance = substanceRepo.getSubstance(substanceName)!!
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: CheckSaferUseRoute): SaferUseViewModel
+    }
 }

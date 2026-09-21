@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 
 /**
@@ -29,7 +28,7 @@ import com.isaakhanimann.journal.localization.i18n
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuickTimedNoteScreen(
-    viewModel: QuickTimedNoteViewModel = hiltViewModel(),
+    viewModel: QuickTimedNoteViewModel,
     navigateBack: () -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }

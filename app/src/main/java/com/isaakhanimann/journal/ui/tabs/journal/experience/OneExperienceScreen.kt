@@ -71,7 +71,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
@@ -93,7 +92,7 @@ import java.time.Instant
 
 @Composable
 fun OneExperienceScreen(
-    viewModel: OneExperienceViewModel = hiltViewModel(),
+    viewModel: OneExperienceViewModel,
     navigateToAddIngestionSearch: () -> Unit,
     navigateToEditExperienceScreen: () -> Unit,
     navigateToExplainTimeline: () -> Unit,

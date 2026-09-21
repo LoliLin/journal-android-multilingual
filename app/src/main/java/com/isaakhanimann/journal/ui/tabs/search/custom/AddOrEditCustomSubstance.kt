@@ -98,7 +98,7 @@ fun AddCustomSubstance(
 @Composable
 fun EditCustomSubstance(
     navigateBack: () -> Unit,
-    viewModel: EditCustomSubstanceViewModel = hiltViewModel()
+    viewModel: EditCustomSubstanceViewModel
 ) {
     AddOrEditCustomSubstance(
         name = viewModel.name,

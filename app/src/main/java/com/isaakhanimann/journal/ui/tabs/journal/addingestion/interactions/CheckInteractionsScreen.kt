@@ -54,7 +54,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.localization.I18nText
 import com.isaakhanimann.journal.localization.i18n
@@ -66,7 +65,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun CheckInteractionsScreen(
     navigateToNext: () -> Unit,
     navigateToURL: (url: String) -> Unit,
-    viewModel: CheckInteractionsViewModel = hiltViewModel()
+    viewModel: CheckInteractionsViewModel
 ) {
     CheckInteractionsScreen(
         substanceName = viewModel.substanceName,

@@ -21,19 +21,19 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditTimedNoteRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
-import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -43,22 +43,22 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-@HiltViewModel
-class EditTimedNoteViewModel @Inject constructor(
+@HiltViewModel(assistedFactory = EditTimedNoteViewModel.Factory::class)
+class EditTimedNoteViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    state: SavedStateHandle
+    @Assisted val route: EditTimedNoteRoute
 ) : ViewModel() {
     var note by mutableStateOf("")
     var color by mutableStateOf(AdaptiveColor.BLUE)
     var isPartOfTimeline by mutableStateOf(true)
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
     private var timedNote: TimedNote? = null
-    val experienceId = state.toRoute<EditTimedNoteRoute>().experienceId
+    val experienceId = route.experienceId
 
     private val timedNoteId: Int
 
     init {
-        val timedNoteId = state.toRoute<EditTimedNoteRoute>().timedNoteId
+        val timedNoteId = route.timedNoteId
         this.timedNoteId = timedNoteId
         viewModelScope.launch {
             val loadedNote = experienceRepo.getTimedNote(id = timedNoteId) ?: return@launch
@@ -134,5 +134,10 @@ class EditTimedNoteViewModel @Inject constructor(
                 experienceRepo.update(it)
             }
         }
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(route: EditTimedNoteRoute): EditTimedNoteViewModel
     }
 }

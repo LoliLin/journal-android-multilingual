@@ -58,7 +58,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
@@ -81,7 +80,7 @@ fun ChooseDoseCustomUnitScreen(
         substanceName: String,
         customUnitId: Int?
     ) -> Unit,
-    viewModel: ChooseDoseCustomUnitViewModel = hiltViewModel()
+    viewModel: ChooseDoseCustomUnitViewModel
 ) {
     viewModel.customUnit?.let { customUnitUnwrapped ->
         ChooseDoseCustomUnitScreen(
