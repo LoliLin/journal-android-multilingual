@@ -24,11 +24,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -42,13 +40,12 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.outlined.BarChart
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Share
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -59,7 +56,6 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -68,15 +64,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -89,8 +82,6 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.AvatarUtil
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
-import com.isaakhanimann.journal.ui.utils.renderComposeViewToBitmap
-import kotlinx.coroutines.launch
 
 enum class StatsSection { OVERVIEW, ANALYSIS }
 
@@ -274,7 +265,11 @@ fun StatsScreen(
             )
         } else {
             Column(modifier = Modifier.padding(padding).fillMaxSize()) {
-                SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                SingleChoiceSegmentedButtonRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
+                ) {
                     TimePickerOption.entries.forEachIndexed { index, option ->
                         SegmentedButton(
                             shape = SegmentedButtonDefaults.itemShape(index = index, count = TimePickerOption.entries.size),
@@ -288,70 +283,94 @@ fun StatsScreen(
                 if (statsModel.statItems.isNotEmpty()) {
                     val isDarkTheme = isSystemInDarkTheme()
                     Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = i18n(
-                                if (statsModel.isByIngestionTime) {
-                                    "stats_ingestions_since"
-                                } else {
-                                    "stats_experiences_since"
-                                },
-                                replacements = mapOf("date" to statsModel.startDateText)
-                            ),
-                            style = MaterialTheme.typography.titleMedium,
-                            modifier = Modifier.padding(start = 10.dp, top = 5.dp)
-                        )
-                        Text(
-                            text = i18n(
-                                if (statsModel.isByIngestionTime) {
-                                    "stats_chart_by_ingestion_time"
-                                } else {
-                                    "stats_substance_counted_once"
-                                }
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            modifier = Modifier.padding(
-                                start = 10.dp,
-                                bottom = 10.dp
-                            )
-                        )
-                        BarChart(
-                            buckets = statsModel.chartBuckets,
-                            startDateText = statsModel.startDateText
-                        )
-                        HorizontalDivider()
+                        Surface(
+                            shape = RoundedCornerShape(16.dp),
+                            color = MaterialTheme.colorScheme.surfaceContainerLow,
+                            modifier = Modifier
+                                .padding(horizontal = horizontalPadding)
+                                .padding(bottom = 8.dp)
+                        ) {
+                            Column {
+                                Text(
+                                    text = i18n(
+                                        if (statsModel.isByIngestionTime) {
+                                            "stats_ingestions_since"
+                                        } else {
+                                            "stats_experiences_since"
+                                        },
+                                        replacements = mapOf("date" to statsModel.startDateText)
+                                    ),
+                                    style = MaterialTheme.typography.titleSmall,
+                                    modifier = Modifier.padding(
+                                        start = 16.dp,
+                                        top = 12.dp,
+                                        end = 16.dp
+                                    )
+                                )
+                                Text(
+                                    text = i18n(
+                                        if (statsModel.isByIngestionTime) {
+                                            "stats_chart_by_ingestion_time"
+                                        } else {
+                                            "stats_substance_counted_once"
+                                        }
+                                    ),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.padding(
+                                        start = 16.dp,
+                                        end = 16.dp,
+                                        bottom = 8.dp
+                                    )
+                                )
+                                BarChart(
+                                    buckets = statsModel.chartBuckets,
+                                    startDateText = statsModel.startDateText
+                                )
+                            }
+                        }
                         LazyColumn(
                             modifier = Modifier.weight(1f),
                             contentPadding = bottomBarOverlayPadding()
                         ) {
                             items(statsModel.statItems) { subStat ->
-                                Column {
+                                Surface(
+                                    shape = RoundedCornerShape(12.dp),
+                                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(
+                                            horizontal = horizontalPadding,
+                                            vertical = 4.dp
+                                        )
+                                        .clickable {
+                                            navigateToSubstanceCompanion(
+                                                subStat.substanceName,
+                                                statsModel.consumerName
+                                            )
+                                        }
+                                ) {
                                     Row(
                                         verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(10.dp),
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .height(intrinsicSize = IntrinsicSize.Min)
-                                            .clickable {
-                                                navigateToSubstanceCompanion(
-                                                    subStat.substanceName,
-                                                    statsModel.consumerName
-                                                )
-                                            }
                                             .padding(
-                                                horizontal = horizontalPadding,
-                                                vertical = 5.dp
+                                                horizontal = 14.dp,
+                                                vertical = 12.dp
                                             )
                                     ) {
-                                        Surface(
-                                            shape = RoundedCornerShape(3.dp),
-                                            color = subStat.color.getComposeColor(
-                                                isDarkTheme
-                                            ),
+                                        Box(
                                             modifier = Modifier
-                                                .width(11.dp)
-                                                .fillMaxHeight()
-                                        ) {}
-                                        Column {
+                                                .size(14.dp)
+                                                .background(
+                                                    color = subStat.color.getComposeColor(
+                                                        isDarkTheme
+                                                    ),
+                                                    shape = CircleShape
+                                                )
+                                        )
+                                        Spacer(modifier = Modifier.width(12.dp))
+                                        Column(modifier = Modifier.weight(1f)) {
                                             Text(
                                                 text = (
                                                     subStat.substanceRepo?.getDisplayName(
@@ -380,10 +399,12 @@ fun StatsScreen(
                                                     )
                                                 }
                                             Text(
-                                                text = experienceCountText
+                                                text = experienceCountText,
+                                                style = MaterialTheme.typography.bodySmall,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant
                                             )
                                         }
-                                        Spacer(modifier = Modifier.weight(1f))
+                                        Spacer(modifier = Modifier.width(12.dp))
                                         Column(horizontalAlignment = Alignment.End) {
                                             val cumulativeDose = subStat.totalDose
                                             val relativeTotal = subStat.relativeTotalDose
@@ -405,7 +426,8 @@ fun StatsScreen(
                                                                         "relative" to
                                                                             relativeTotal.toReadableString()
                                                                     )
-                                                                )
+                                                                ),
+                                                                style = MaterialTheme.typography.bodyMedium
                                                             )
                                                         } else {
                                                             Text(
@@ -418,7 +440,8 @@ fun StatsScreen(
                                                                         "relative" to
                                                                             relativeTotal.toReadableString()
                                                                     )
-                                                                )
+                                                                ),
+                                                                style = MaterialTheme.typography.bodyMedium
                                                             )
                                                         }
                                                     } else {
@@ -432,7 +455,8 @@ fun StatsScreen(
                                                                     "relative" to
                                                                         relativeTotal.toReadableString()
                                                                 )
-                                                            )
+                                                            ),
+                                                            style = MaterialTheme.typography.bodyMedium
                                                         )
                                                     }
                                                 }
@@ -444,7 +468,8 @@ fun StatsScreen(
                                                                 "dose" to
                                                                     relativeTotal.toReadableString()
                                                             )
-                                                        )
+                                                        ),
+                                                        style = MaterialTheme.typography.bodyMedium
                                                     )
                                                 }
                                                 cumulativeDose != null -> {
@@ -462,7 +487,8 @@ fun StatsScreen(
                                                                             cumulativeDose.estimatedDoseStandardDeviation.toReadableString(),
                                                                         "units" to cumulativeDose.units
                                                                     )
-                                                                )
+                                                                ),
+                                                                style = MaterialTheme.typography.bodyMedium
                                                             )
                                                         } else {
                                                             Text(
@@ -473,7 +499,8 @@ fun StatsScreen(
                                                                             cumulativeDose.dose.toReadableString(),
                                                                         "units" to cumulativeDose.units
                                                                     )
-                                                                )
+                                                                ),
+                                                                style = MaterialTheme.typography.bodyMedium
                                                             )
                                                         }
                                                     } else {
@@ -485,26 +512,45 @@ fun StatsScreen(
                                                                         cumulativeDose.dose.toReadableString(),
                                                                     "units" to cumulativeDose.units
                                                                 )
-                                                            )
+                                                            ),
+                                                            style = MaterialTheme.typography.bodyMedium
                                                         )
                                                     }
                                                 }
                                                 else -> {
-                                                    Text(text = i18n("stats_total_dose_unknown"))
+                                                    Text(
+                                                        text = i18n("stats_total_dose_unknown"),
+                                                        style = MaterialTheme.typography.bodyMedium,
+                                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                                    )
                                                 }
                                             }
-                                            subStat.routeCounts.forEach {
-                                                val routeName = i18nOrDefault(
-                                                    administrationRouteKey(it.administrationRoute),
-                                                    it.administrationRoute.displayText
-                                                ).lowercase()
-                                                Text(
-                                                    text = "$routeName ${it.count}x "
-                                                )
+                                            Row(
+                                                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                                            ) {
+                                                subStat.routeCounts.forEach {
+                                                    val routeName = i18nOrDefault(
+                                                        administrationRouteKey(it.administrationRoute),
+                                                        it.administrationRoute.displayText
+                                                    ).lowercase()
+                                                    Text(
+                                                        text = "$routeName ${it.count}×",
+                                                        style = MaterialTheme.typography.labelSmall,
+                                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                        modifier = Modifier
+                                                            .background(
+                                                                color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                                                shape = RoundedCornerShape(6.dp)
+                                                            )
+                                                            .padding(
+                                                                horizontal = 6.dp,
+                                                                vertical = 2.dp
+                                                            )
+                                                    )
+                                                }
                                             }
                                         }
                                     }
-                                    HorizontalDivider()
                                 }
                             }
                         }
@@ -532,18 +578,28 @@ fun EmptyScreenDisclaimer(title: String, description: String) {
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 20.dp),
+            modifier = Modifier.padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Icon(
+                imageVector = Icons.Outlined.BarChart,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = title,
-                style = MaterialTheme.typography.headlineSmall,
-                textAlign = TextAlign.Center
+                style = MaterialTheme.typography.titleMedium,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface
             )
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = description,
-                textAlign = TextAlign.Center
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
