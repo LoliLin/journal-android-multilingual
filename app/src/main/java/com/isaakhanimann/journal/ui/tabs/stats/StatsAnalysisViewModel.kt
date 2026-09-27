@@ -184,6 +184,24 @@ class StatsAnalysisViewModel @Inject constructor(
         _selectedSubstances.value = emptySet()
     }
 
+    fun setSelectedSubstances(substances: Set<String>) {
+        _selectedSubstances.value = substances
+    }
+
+    fun syncConsumer(consumerName: String?) {
+        _selectedConsumer.value = if (consumerName == null) {
+            ConsumerSelection.Owner
+        } else {
+            ConsumerSelection.Specific(consumerName)
+        }
+    }
+
+    fun syncDateRange(start: LocalDate?, end: LocalDate?) {
+        _startDate.value = start
+        _endDate.value = end
+        _selectedPreset.value = AnalysisPeriodPreset.CUSTOM
+    }
+
     private val _selectedPreset = MutableStateFlow(AnalysisPeriodPreset.ALL_TIME)
     val selectedPresetFlow: StateFlow<AnalysisPeriodPreset> = _selectedPreset.asStateFlow()
 
