@@ -36,10 +36,21 @@ import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18n
 
+/**
+ * @param highlightedColor When non-null, only bars whose color matches this value are drawn at
+ *   full opacity; all other substance bars are drawn at [dimAlpha]. This lets the user "focus"
+ *   a substance by long-pressing its row in the list below the chart.
+ */
 @Composable
-fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
+fun BarChart(
+    buckets: List<List<ColorCount>>,
+    startDateText: String,
+    highlightedColor: AdaptiveColor? = null,
+    dimAlpha: Float = 0.18f,
+) {
     Column {
         val isDarkTheme = isSystemInDarkTheme()
         val tickColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.20f)
@@ -154,8 +165,17 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                                     (colorCount.count * canvasHeightInner / maxCount).toFloat()
                                 val yEnd = yStart - yLength
                                 val cornerRadius = bucketWidth / 6
+                                // Apply dimming when a substance is focused
+                                val barAlpha = if (highlightedColor != null &&
+                                    colorCount.color != highlightedColor
+                                ) {
+                                    dimAlpha
+                                } else {
+                                    1f
+                                }
                                 drawRoundRect(
-                                    color = colorCount.color.getComposeColor(isDarkTheme),
+                                    color = colorCount.color.getComposeColor(isDarkTheme)
+                                        .copy(alpha = barAlpha),
                                     topLeft = Offset(x = xBucket - (bucketWidth / 2), y = yEnd),
                                     size = Size(width = bucketWidth, height = yLength),
                                     cornerRadius = CornerRadius(
