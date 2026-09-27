@@ -137,12 +137,12 @@ jobs:
 
             # AAB: signed bundle for Google Play upload
             AAB_PATH="app/build/outputs/bundle/release/app-release.aab"
-            if [ -f "$AAB_PATH" ]; then
-              cp "$AAB_PATH" "downloads/journal-android-multilingual-${V_NAME}.aab"
-              echo "AAB copied: downloads/journal-android-multilingual-${V_NAME}.aab"
-            else
-              echo "Warning: AAB file not found at $AAB_PATH"
+            if [ ! -f "$AAB_PATH" ]; then
+              echo "::error::AAB 未生成：$AAB_PATH。请检查 bundleRelease 任务输出。"
+              exit 1
             fi
+            cp "$AAB_PATH" "downloads/journal-android-multilingual-${V_NAME}.aab"
+            echo "AAB copied: downloads/journal-android-multilingual-${V_NAME}.aab"
           else
             # Fork repositories: debug APK only
             find app/build/outputs/apk/debug/ -name "*.apk" -print0 | while IFS= read -r -d '' apk; do
@@ -205,6 +205,7 @@ jobs:
           GOOGLE_PLAY_API: ${{ secrets.GOOGLE_PLAY_API }}
           PLAY_TRACK: ${{ github.event.inputs.play_track }}
           PLAY_RELEASE_STATUS: ${{ github.event.inputs.play_release_status }}
+          PLAY_AAB_PATH: app/build/outputs/bundle/release/app-release.aab
         run: |
           set -euo pipefail
 
@@ -222,8 +223,8 @@ jobs:
           fi
 
           if [ -z "${GOOGLE_PLAY_API:-}" ]; then
-            echo "::warning::未配置 GOOGLE_PLAY_API secret，跳过 Google Play 上传。"
-            exit 0
+            echo "::error::未配置 GOOGLE_PLAY_API secret，无法发布到 Google Play。"
+            exit 1
           fi
 
           # secret 里可能是原始 JSON，也可能是 base64（与 KEYSTORE_BASE64 一致的习惯）
@@ -235,9 +236,10 @@ jobs:
           python3 -c "import json;json.load(open('google-play-api.json'))" \
             || { echo "::error::GOOGLE_PLAY_API 既不是合法 JSON 也不是合法 base64。"; exit 1; }
 
-          AAB=$(find downloads -name "*.aab" | head -n 1)
-          if [ ! -f "$AAB" ]; then
-            echo "::error::$AAB 不存在（需要签名配置，见仓库 Settings 里的 KEYSTORE_* secrets）。"
+          if [ ! -f "$PLAY_AAB_PATH" ]; then
+            echo "::error::Google Play AAB 不存在：$PLAY_AAB_PATH"
+            echo "::error::构建输出目录内容："
+            find app/build/outputs/bundle -maxdepth 4 -type f -print 2>/dev/null || true
             exit 1
           fi
 
