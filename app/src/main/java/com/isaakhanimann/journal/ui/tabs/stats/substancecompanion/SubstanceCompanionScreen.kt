@@ -34,10 +34,17 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -45,16 +52,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.times
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
@@ -85,17 +91,11 @@ fun SubstanceCompanionScreen(
             navigateToCategoryScreen = navigateToCategoryScreen,
             navigateToSubstanceScreen = navigateToSubstanceScreen,
             navigateToIngestion = navigateToIngestion,
-
             substanceCompanion = companion,
-
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
-
             tolerance = viewModel.tolerance,
-
             crossTolerances = viewModel.crossTolerances,
-
             consumerName = viewModel.consumerName,
-
             substanceRepo = viewModel.substanceRepo
         )
     }
@@ -114,15 +114,34 @@ fun SubstanceCompanionScreen(
     consumerName: String? = null,
     substanceRepo: SubstanceRepository
 ) {
-    Scaffold(
+    val isDarkTheme = isSystemInDarkTheme()
+    val substanceColor = substanceCompanion.color.getComposeColor(isDarkTheme)
+    val displayName = substanceRepo.getDisplayName(substanceCompanion.substanceName)
 
+    Scaffold(
         topBar = {
-            val title = if (consumerName == null) {
-                substanceRepo.getDisplayName(substanceCompanion.substanceName)
-            } else {
-                "${substanceRepo.getDisplayName(substanceCompanion.substanceName)} ($consumerName)"
-            }
-            TopAppBar(title = { Text(title) })
+            TopAppBar(
+                title = {
+                    Column {
+                        Text(displayName, style = MaterialTheme.typography.titleLarge)
+                        if (consumerName != null) {
+                            Text(
+                                text = consumerName,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { navigateToSubstanceScreen(substanceCompanion.substanceName) }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = i18n("substance_more_info")
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         LazyColumn(
@@ -132,6 +151,22 @@ fun SubstanceCompanionScreen(
                 .padding(horizontal = horizontalPadding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            // ── Substance Hero Card ───────────────────────────────────────────
+            item {
+                SubstanceHeroCard(
+                    substanceName = substanceCompanion.substanceName,
+                    displayName = displayName,
+                    consumerName = consumerName,
+                    accentColor = substanceColor,
+                    experienceCount = ingestionBursts.size,
+                    ingestionCount = ingestionBursts.sumOf { it.ingestions.size },
+                    latestDateText = ingestionBursts.firstOrNull()?.experience?.sortDate?.getDateWithWeekdayText(),
+                    onWikiClick = { navigateToSubstanceScreen(substanceCompanion.substanceName) }
+                )
+                Spacer(Modifier.height(8.dp))
+            }
+
+            // ── Tolerance Section ─────────────────────────────────────────────
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
                     CardWithTitle(
@@ -139,13 +174,9 @@ fun SubstanceCompanionScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         val context = LocalContext.current
-
                         ToleranceSection(
-
                             tolerance = tolerance,
-
                             crossTolerances = crossTolerances,
-
                             isSubstance = substanceRepo::isSubstance,
                             isCategory = substanceRepo::isCategory,
                             getSubstanceDisplayName = substanceRepo::getSubstanceDisplayName,
@@ -156,45 +187,82 @@ fun SubstanceCompanionScreen(
                             navToSubstance = navigateToSubstanceScreen
                         )
                     }
-
-                    Spacer(Modifier.height(12.dp))
+                    Spacer(Modifier.height(8.dp))
                 }
+            }
 
+            // ── Activity Heatmap Grid ─────────────────────────────────────────
+            item {
                 CardWithTitle(
                     title = i18n("substance_activity_title"),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     ActivityGrid(
                         ingestionBursts = ingestionBursts,
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        accentColor = substanceColor
                     )
                 }
-
                 Spacer(Modifier.height(16.dp))
 
-                Text(text = i18n("time_now_label"))
+                // Modern "Now" timeline start badge
+                Surface(
+                    shape = CircleShape,
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                ) {
+                    Text(
+                        text = i18n("time_now_label"),
+                        style = MaterialTheme.typography.labelMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 5.dp)
+                    )
+                }
             }
-            items(ingestionBursts) { burst ->
+
+            // ── Timeline Experiences & Ingestions ─────────────────────────────
+            items(ingestionBursts, key = { it.experience.id }) { burst ->
                 TimeArrowUp(timeText = burst.timeUntil)
-                ElevatedCard(modifier = Modifier.padding(vertical = 5.dp)) {
-                    Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
+
+                Card(
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp)
+                ) {
+                    Column(modifier = Modifier.padding(14.dp)) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 5.dp)
+                            modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
                                 text = burst.experience.title,
-                                style = MaterialTheme.typography.titleMedium
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.SemiBold,
+                                modifier = Modifier.weight(1f, fill = false)
                             )
-                            Text(
-                                text = burst.experience.sortDate.getDateWithWeekdayText(),
-                                style = MaterialTheme.typography.titleMedium
-                            )
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                modifier = Modifier.padding(start = 8.dp)
+                            ) {
+                                Text(
+                                    text = burst.experience.sortDate.getDateWithWeekdayText(),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                )
+                            }
                         }
-                        HorizontalDivider()
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 10.dp),
+                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)
+                        )
+
                         burst.ingestions.forEachIndexed { index, ingestion ->
                             IngestionRow(
                                 ingestionAndCustomUnit = ingestion,
@@ -203,7 +271,10 @@ fun SubstanceCompanionScreen(
                                 }
                             )
                             if (index < burst.ingestions.size - 1) {
-                                HorizontalDivider()
+                                HorizontalDivider(
+                                    modifier = Modifier.padding(vertical = 6.dp),
+                                    color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.2f)
+                                )
                             }
                         }
                     }
@@ -213,6 +284,137 @@ fun SubstanceCompanionScreen(
     }
 }
 
+// ---------------------------------------------------------------------------
+// Hero Card with key metrics
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun SubstanceHeroCard(
+    substanceName: String,
+    displayName: String,
+    consumerName: String?,
+    accentColor: Color,
+    experienceCount: Int,
+    ingestionCount: Int,
+    latestDateText: String?,
+    onWikiClick: () -> Unit
+) {
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(16.dp)
+                            .background(accentColor, CircleShape)
+                    )
+                    Column {
+                        Text(
+                            text = displayName,
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Bold
+                        )
+                        if (displayName != substanceName) {
+                            Text(
+                                text = substanceName,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+
+                if (consumerName != null) {
+                    Surface(
+                        shape = RoundedCornerShape(8.dp),
+                        color = MaterialTheme.colorScheme.secondaryContainer
+                    ) {
+                        Text(
+                            text = consumerName,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(14.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.3f))
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Metrics row
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                MetricColumn(
+                    value = experienceCount.toString(),
+                    label = i18n("stats_report_experiences")
+                )
+                Box(
+                    modifier = Modifier
+                        .height(28.dp)
+                        .width(1.dp)
+                        .background(MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))
+                )
+                MetricColumn(
+                    value = ingestionCount.toString(),
+                    label = i18n("stats_analysis_ingestions")
+                )
+                if (latestDateText != null) {
+                    Box(
+                        modifier = Modifier
+                            .height(28.dp)
+                            .width(1.dp)
+                            .background(MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))
+                    )
+                    MetricColumn(
+                        value = latestDateText,
+                        label = i18nOrDefault("stats_latest", "Latest")
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun MetricColumn(value: String, label: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+        Text(
+            text = label,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Ingestion row with clean route badge and chevron
+// ---------------------------------------------------------------------------
+
 @Composable
 fun IngestionRow(
     ingestionAndCustomUnit: IngestionsBurst.IngestionAndCustomUnit,
@@ -221,38 +423,76 @@ fun IngestionRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(8.dp))
             .clickable(enabled = onClick != null) { onClick?.invoke() }
-            .padding(vertical = 4.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+            .padding(vertical = 6.dp, horizontal = 2.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         val routeName = i18nOrDefault(
             administrationRouteKey(ingestionAndCustomUnit.ingestion.administrationRoute),
             ingestionAndCustomUnit.ingestion.administrationRoute.displayText
         ).lowercase()
-        val text = buildAnnotatedString {
-            append(
-                ingestionAndCustomUnit.getDoseDescription(
-                    androidx.compose.ui.platform.LocalContext.current
-                )
-            )
-            withStyle(
-                style = SpanStyle(
-                    color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray
-                )
+
+        Column(modifier = Modifier.weight(1f)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                if (ingestionAndCustomUnit.customUnit == null) {
-                    append(" $routeName")
+                Surface(
+                    shape = RoundedCornerShape(6.dp),
+                    color = MaterialTheme.colorScheme.surfaceContainerHighest
+                ) {
+                    Text(
+                        text = routeName,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                    )
                 }
-                ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                    append(" = $it $routeName")
-                }
+
+                val doseText = ingestionAndCustomUnit.getDoseDescription(
+                    LocalContext.current
+                )
+                Text(
+                    text = doseText,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+
+            ingestionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let { calculated ->
+                Text(
+                    text = "= $calculated $routeName",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 2.dp)
+                )
             }
         }
-        Text(text = text, style = MaterialTheme.typography.titleSmall)
-        val dateString = ingestionAndCustomUnit.ingestion.time.getTimeText()
-        Text(text = dateString)
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = ingestionAndCustomUnit.ingestion.time.getTimeText(),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Icon(
+                imageVector = Icons.Default.ChevronRight,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                modifier = Modifier.size(16.dp)
+            )
+        }
     }
 }
+
+// ---------------------------------------------------------------------------
+// Activity Heatmap Grid with substance accent color
+// ---------------------------------------------------------------------------
 
 private data class DailyCount(val date: java.time.LocalDate, val value: Double)
 
@@ -260,14 +500,12 @@ private data class DailyCount(val date: java.time.LocalDate, val value: Double)
 fun ActivityGrid(
     ingestionBursts: List<IngestionsBurst>,
     modifier: Modifier = Modifier,
-    accentColor: Color = Color(0xFF40C463)
+    accentColor: Color = MaterialTheme.colorScheme.primary
 ) {
     val now = java.time.LocalDate.now()
     val oneYearAgo = now.minusDays(364)
 
-    // Map ingested dose by date (past 12 months); cells are colored by
-    // amount (mg), not by number of ingestions.
-    val dateDoseMap = androidx.compose.runtime.remember(ingestionBursts) {
+    val dateDoseMap = remember(ingestionBursts) {
         val map = mutableMapOf<java.time.LocalDate, Double>()
         val cutoff = oneYearAgo.minusDays(7)
         for (burst in ingestionBursts) {
@@ -283,19 +521,16 @@ fun ActivityGrid(
         map
     }
 
-    val maxDose = androidx.compose.runtime.remember(dateDoseMap) {
+    val maxDose = remember(dateDoseMap) {
         (dateDoseMap.values.maxOrNull() ?: 1.0).coerceAtLeast(1.0)
     }
 
-    // Build weeks FROM this week backward TO one year ago
-    val weeks = androidx.compose.runtime.remember(now, dateDoseMap) {
+    val weeks = remember(now, dateDoseMap) {
         val result = mutableListOf<List<DailyCount>>()
-        // Start from Monday of this week
         var monday = now
         while (monday.dayOfWeek != java.time.DayOfWeek.MONDAY) {
             monday = monday.minusDays(1)
         }
-        // Go backward week by week
         var current = monday
         val end = oneYearAgo.minusDays(7)
         while (current > end) {
@@ -312,10 +547,11 @@ fun ActivityGrid(
     val cellSize = 12.dp
     val gap = 3.dp
     val textColor = MaterialTheme.colorScheme.onSurfaceVariant
+    val emptyCellColor = MaterialTheme.colorScheme.surfaceContainerHighest.copy(alpha = 0.45f)
 
-    Column(modifier = modifier.padding(4.dp)) {
+    Column(modifier = modifier.padding(vertical = 4.dp)) {
         // Month labels
-        Row(modifier = Modifier.fillMaxWidth().padding(start = 28.dp)) {
+        Row(modifier = Modifier.fillMaxWidth().padding(start = 28.dp, bottom = 4.dp)) {
             var lastMonth = -1
             weeks.forEachIndexed { col, week ->
                 val mid = week[3]
@@ -339,6 +575,7 @@ fun ActivityGrid(
                 }
             }
         }
+
         // Grid rows
         val dayAbbr = listOf("Mon", "", "Wed", "", "Fri", "", "")
         dayAbbr.forEachIndexed { row, label ->
@@ -358,21 +595,20 @@ fun ActivityGrid(
                         val cell = week[row]
                         val color = if (cell.date <= now) {
                             if (cell.value <= 0.0) {
-                                // Day with ingestions but no known dose: faint cell.
-                                accentColor.copy(alpha = 0.08f)
+                                emptyCellColor
                             } else {
                                 accentColor.copy(
-                                    alpha = (0.2f + 0.8f * (cell.value / maxDose).toFloat())
-                                        .coerceIn(0.2f, 1f)
+                                    alpha = (0.25f + 0.75f * (cell.value / maxDose).toFloat())
+                                        .coerceIn(0.25f, 1f)
                                 )
                             }
                         } else {
                             Color.Transparent
                         }
                         Box(
-                            modifier = Modifier.size(
-                                cellSize
-                            ).background(color, RoundedCornerShape(2.dp))
+                            modifier = Modifier
+                                .size(cellSize)
+                                .background(color, RoundedCornerShape(3.dp))
                         )
                         Spacer(Modifier.width(gap))
                     }
