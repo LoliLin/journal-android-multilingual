@@ -57,16 +57,15 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -367,26 +366,12 @@ private fun MergedStatsScreen(
                     .fillMaxSize(),
                 contentPadding = bottomBarOverlayPadding()
             ) {
-                // ── Time range picker ─────────────────────────────────────────
+                // ── Time range picker (modern pill switcher) ──────────────────
                 item {
-                    SingleChoiceSegmentedButtonRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = horizontalPadding, vertical = 8.dp)
-                    ) {
-                        TimePickerOption.entries.forEachIndexed { index, option ->
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(
-                                    index = index,
-                                    count = TimePickerOption.entries.size
-                                ),
-                                selected = statsModel.selectedOption.tabIndex == index,
-                                onClick = { onTapOption(option) }
-                            ) {
-                                Text(option.displayText)
-                            }
-                        }
-                    }
+                    StatsTimePicker(
+                        selectedOption = statsModel.selectedOption,
+                        onSelectOption = onTapOption
+                    )
                 }
 
                 if (statsModel.statItems.isEmpty()) {
@@ -578,6 +563,61 @@ private fun MergedStatsScreen(
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Fluid pill time range picker
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun StatsTimePicker(
+    selectedOption: TimePickerOption,
+    onSelectOption: (TimePickerOption) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Surface(
+        shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.surfaceContainerLow,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = horizontalPadding, vertical = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            TimePickerOption.entries.forEach { option ->
+                val isSelected = selectedOption == option
+                val animatedBgColor by animateColorAsState(
+                    targetValue = if (isSelected) MaterialTheme.colorScheme.primaryContainer else Color.Transparent,
+                    label = "timePickerBg"
+                )
+                val animatedTextColor by animateColorAsState(
+                    targetValue = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant,
+                    label = "timePickerText"
+                )
+
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(36.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(animatedBgColor)
+                        .clickable { onSelectOption(option) },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = option.displayText,
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                        color = animatedTextColor
+                    )
                 }
             }
         }

@@ -18,19 +18,27 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats.substancecompanion
 
-import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -41,56 +49,50 @@ fun TimeArrowUpPreview() {
 }
 
 @Composable
-fun TimeArrowUp(timeText: String) {
-    val color = MaterialTheme.colorScheme.onBackground
-    val strokeWidth = 4f
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Canvas(
+fun TimeArrowUp(timeText: String, modifier: Modifier = Modifier) {
+    val lineColor = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.padding(vertical = 2.dp)
+    ) {
+        // Upper connecting line
+        Box(
             modifier = Modifier
-                .width(6.dp)
-                .height(20.dp)
-                .background(Color.Red.copy(alpha = 0f)) // needed for fixing preview
+                .width(2.dp)
+                .height(12.dp)
+                .background(lineColor, RoundedCornerShape(1.dp))
+        )
+        // Time badge
+        Surface(
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)),
+            modifier = Modifier.padding(vertical = 2.dp)
         ) {
-            val canvasWidth = size.width
-            val canvasHeight = size.height
-            drawLine(
-                start = Offset(x = canvasWidth / 2, y = 0f),
-                end = Offset(x = canvasWidth / 2, y = canvasHeight),
-                strokeWidth = strokeWidth,
-                color = color,
-                cap = StrokeCap.Round
-            )
-            drawLine(
-                start = Offset(x = canvasWidth / 2, y = 0f),
-                end = Offset(x = 0f, y = canvasHeight / 4),
-                strokeWidth = strokeWidth,
-                color = color,
-                cap = StrokeCap.Round
-            )
-            drawLine(
-                start = Offset(x = canvasWidth / 2, y = 0f),
-                end = Offset(x = canvasWidth, y = canvasHeight / 4),
-                strokeWidth = strokeWidth,
-                color = color,
-                cap = StrokeCap.Round
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 3.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.History,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(12.dp)
+                )
+                Text(
+                    text = timeText,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
-        Text(text = timeText)
-        Canvas(
+        // Lower connecting line
+        Box(
             modifier = Modifier
-                .width(6.dp)
-                .height(20.dp)
-                .background(Color.Red.copy(alpha = 0f)) // needed for fixing preview
-        ) {
-            val canvasWidth = size.width
-            val canvasHeight = size.height
-            drawLine(
-                start = Offset(x = canvasWidth / 2, y = 0f),
-                end = Offset(x = canvasWidth / 2, y = canvasHeight),
-                strokeWidth = strokeWidth,
-                color = color,
-                cap = StrokeCap.Round
-            )
-        }
+                .width(2.dp)
+                .height(12.dp)
+                .background(lineColor, RoundedCornerShape(1.dp))
+        )
     }
 }
