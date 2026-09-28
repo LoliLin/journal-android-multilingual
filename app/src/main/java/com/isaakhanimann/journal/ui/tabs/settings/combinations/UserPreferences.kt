@@ -33,6 +33,7 @@ import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.Serializable
 
 @Singleton
 class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
@@ -300,6 +301,58 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     suspend fun saveDateLocaleOption(value: DateLocaleOption) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_DATE_LOCALE_OPTION] = value.name
+        }
+    }
+
+    suspend fun exportForBackup(): UserPreferencesBackup {
+        val booleanValues = linkedMapOf<String, Boolean>()
+        val longValues = linkedMapOf<String, Long>()
+        val stringValues = linkedMapOf<String, String>()
+
+        dataStore.data.first().asMap().forEach { (key, value) ->
+            when (value) {
+                is Boolean -> booleanValues[key.name] = value
+                is Long -> longValues[key.name] = value
+                is String -> stringValues[key.name] = value
+                else -> error("Unsupported preference value for ${key.name}: ${value::class}")
+            }
+        }
+
+        return UserPreferencesBackup(
+            booleanValues = booleanValues,
+            longValues = longValues,
+            stringValues = stringValues
+        )
+    }
+
+    suspend fun restoreFromBackup(backup: UserPreferencesBackup) {
+        backup.validate()
+        dataStore.edit { preferences ->
+            preferences.clear()
+            backup.booleanValues.forEach { (key, value) ->
+                preferences[booleanPreferencesKey(key)] = value
+            }
+            backup.longValues.forEach { (key, value) ->
+                preferences[longPreferencesKey(key)] = value
+            }
+            backup.stringValues.forEach { (key, value) ->
+                preferences[stringPreferencesKey(key)] = value
+            }
+        }
+    }
+}
+
+@Serializable
+data class UserPreferencesBackup(
+    val booleanValues: Map<String, Boolean> = emptyMap(),
+    val longValues: Map<String, Long> = emptyMap(),
+    val stringValues: Map<String, String> = emptyMap()
+) {
+    fun validate() {
+        val keys = booleanValues.keys + longValues.keys + stringValues.keys
+        val entryCount = booleanValues.size + longValues.size + stringValues.size
+        require(keys.size == entryCount) {
+            "Preference key has conflicting value types"
         }
     }
 }
