@@ -12,16 +12,36 @@ default_platform(:android)
 platform :android do
   desc "上传签名 AAB 与上架文案到 Google Play（PLAY_TRACK 默认 internal）"
   lane :deploy do
-    aab = ENV["PLAY_AAB_PATH"].to_s.strip
-    aab = "app/build/outputs/bundle/release/app-release.aab" if aab.empty?
+    requested_aab = ENV["PLAY_AAB_PATH"].to_s.strip
+    project_root = File.expand_path("..", __dir__)
+    aab_candidates = []
+    unless requested_aab.empty?
+      aab_candidates << File.expand_path(requested_aab, project_root)
+    end
+    aab_candidates.concat(Dir.glob(File.join(project_root, "downloads", "*.aab")).sort)
+    aab_candidates.concat(
+      Dir.glob(File.join(project_root, "app", "build", "outputs", "bundle", "**", "*.aab")).sort
+    )
+    aab = aab_candidates.uniq.find { |candidate| File.file?(candidate) }
+    unless aab
+      available_aabs = Dir.glob(File.join(project_root, "downloads", "*.aab")).sort +
+        Dir.glob(File.join(project_root, "app", "build", "outputs", "bundle", "**", "*.aab")).sort
+      available_text = available_aabs.empty? ? "(none)" : available_aabs.join(", ")
+      requested_text = requested_aab.empty? ? "(not set)" : requested_aab
+      UI.user_error!(
+        "找不到 AAB：PLAY_AAB_PATH=#{requested_text}；已搜索 downloads/*.aab 与 " \
+        "app/build/outputs/bundle/**/*.aab；找到：#{available_text}"
+      )
+    end
+
     track = ENV["PLAY_TRACK"].to_s.strip
     track = "internal" if track.empty?
+
     release_status = ENV["PLAY_RELEASE_STATUS"].to_s.strip
     release_status = "completed" if release_status.empty?
+
     json_key = ENV["SUPPLY_JSON_KEY"].to_s.strip
     json_key = "google-play-api.json" if json_key.empty?
-
-    UI.user_error!("找不到 AAB：#{aab}（先跑 ./gradlew bundleRelease）") unless File.exist?(aab)
     UI.message("上传 #{aab} 到 #{track} 轨道（release_status=#{release_status}）")
 
     supply(
