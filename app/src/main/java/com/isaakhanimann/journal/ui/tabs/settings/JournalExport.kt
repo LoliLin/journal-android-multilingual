@@ -41,11 +41,43 @@ val journalImportJson = Json {
 }
 
 @Serializable
+data class UserPreferencesBackup(
+    val booleanValues: Map<String, Boolean> = emptyMap(),
+    val byteArrayValues: Map<String, String> = emptyMap(),
+    val doubleValues: Map<String, String> = emptyMap(),
+    val floatValues: Map<String, String> = emptyMap(),
+    val intValues: Map<String, Int> = emptyMap(),
+    val longValues: Map<String, Long> = emptyMap(),
+    val stringValues: Map<String, String> = emptyMap(),
+    val stringSetValues: Map<String, Set<String>> = emptyMap()
+) {
+    fun validate() {
+        val seen = mutableSetOf<String>()
+        listOf(
+            booleanValues.keys,
+            byteArrayValues.keys,
+            doubleValues.keys,
+            floatValues.keys,
+            intValues.keys,
+            longValues.keys,
+            stringValues.keys,
+            stringSetValues.keys
+        ).forEach { keys ->
+            val duplicate = keys.firstOrNull { !seen.add(it) }
+            require(duplicate == null) {
+                "Preference '$duplicate' has conflicting value types"
+            }
+        }
+    }
+}
+
+@Serializable
 data class JournalExport(
     val experiences: List<ExperienceSerializable> = emptyList(),
     val substanceCompanions: List<SubstanceCompanion> = emptyList(),
     val customSubstances: List<CustomSubstance> = emptyList(),
     val customUnits: List<CustomUnitSerializable> = emptyList(),
+    val preferences: UserPreferencesBackup? = null,
     val avatars: Map<String, String> = emptyMap()
 )
 

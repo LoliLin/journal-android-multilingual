@@ -30,7 +30,11 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.DateLocaleOption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.firstOrNull
@@ -240,6 +244,7 @@ class SettingsViewModel @Inject constructor(
                     duration = SnackbarDuration.Short
                 )
             } else {
+                val stagedAvatars = mutableListOf<Pair<File, File>>()
                 try {
                     val text = if (ExportEncryption.isEncryptedExport(bytes)) {
                         if (password == null) {
@@ -262,28 +267,45 @@ class SettingsViewModel @Inject constructor(
                         bytes.toString(Charsets.UTF_8)
                     }
                     val journalExport = journalImportJson.decodeFromString<JournalExport>(text)
-                    // Decode all avatars up front: an invalid base64 payload aborts the
-                    // import before the database is replaced, leaving no partial state.
+                    journalExport.preferences?.let { UserPreferences.validateBackup(it) }
                     val decodedAvatars = journalExport.avatars.map { (userName, base64) ->
                         userName to java.util.Base64.getDecoder().decode(base64)
                     }
-                    experienceRepository.replaceEverything(journalExport)
                     decodedAvatars.forEach { (userName, decoded) ->
-                        try {
-                            val avatarFile = AvatarUtil.getAvatarFile(context, userName)
-                            avatarFile.parentFile?.mkdirs()
-                            FileOutputStream(avatarFile).use { it.write(decoded) }
-                        } catch (_: Exception) { }
+                        val targetFile = AvatarUtil.getAvatarFile(context, userName)
+                        val directory = targetFile.parentFile
+                            ?: throw IOException("Avatar destination has no parent directory")
+                        if (!directory.isDirectory && !directory.mkdirs()) {
+                            throw IOException("Could not create avatar directory")
+                        }
+                        val stagedFile =
+                            File.createTempFile("${targetFile.name}.", ".restore", directory)
+                        stagedAvatars.add(stagedFile to targetFile)
+                        FileOutputStream(stagedFile).use { it.write(decoded) }
+                    }
+                    experienceRepository.replaceEverything(journalExport)
+                    journalExport.preferences?.let {
+                        userPreferences.restoreValidatedBackup(it)
+                    }
+                    stagedAvatars.forEach { (stagedFile, targetFile) ->
+                        Files.move(
+                            stagedFile.toPath(),
+                            targetFile.toPath(),
+                            StandardCopyOption.REPLACE_EXISTING,
+                            StandardCopyOption.ATOMIC_MOVE
+                        )
                     }
                     snackbarHostState.showSnackbar(
                         message = "Import successful",
                         duration = SnackbarDuration.Short
                     )
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     snackbarHostState.showSnackbar(
-                        message = "Decoding file failed",
+                        message = "Import failed",
                         duration = SnackbarDuration.Short
                     )
+                } finally {
+                    stagedAvatars.forEach { (stagedFile, _) -> stagedFile.delete() }
                 }
             }
         }
@@ -349,6 +371,7 @@ class SettingsViewModel @Inject constructor(
                 )
             }
             val ownerUserName = userPreferences.ownerUserNameFlow.firstOrNull() ?: "You"
+            val userPreferencesBackup = userPreferences.exportForBackup()
             val avatarFile = AvatarUtil.getUserAvatar(context, ownerUserName)
             val avatars = if (avatarFile != null && avatarFile.exists()) {
                 val bytes = avatarFile.readBytes()
@@ -361,6 +384,7 @@ class SettingsViewModel @Inject constructor(
                 substanceCompanions = experienceRepository.getAllSubstanceCompanions(),
                 customSubstances = experienceRepository.getAllCustomSubstances(),
                 customUnits = customUnitsSerializable,
+                preferences = userPreferencesBackup,
                 avatars = avatars
             )
             try {
