@@ -19,13 +19,20 @@
 package com.isaakhanimann.journal.ui.tabs.settings.combinations
 
 import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.MutablePreferences
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.byteArrayPreferencesKey
+import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
+import com.isaakhanimann.journal.ui.tabs.settings.UserPreferencesBackup
 import com.isaakhanimann.journal.ui.utils.DateLocaleOption
 import java.time.Instant
 import javax.inject.Inject
@@ -33,7 +40,6 @@ import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.serialization.Serializable
 
 @Singleton
 class UserPreferences @Inject constructor(private val dataStore: DataStore<Preferences>) {
@@ -304,55 +310,162 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    suspend fun exportForBackup(): UserPreferencesBackup {
-        val booleanValues = linkedMapOf<String, Boolean>()
-        val longValues = linkedMapOf<String, Long>()
-        val stringValues = linkedMapOf<String, String>()
+    suspend fun exportForBackup(): UserPreferencesBackup =
+        createBackup(dataStore.data.first())
 
-        dataStore.data.first().asMap().forEach { (key, value) ->
-            when (value) {
-                is Boolean -> booleanValues[key.name] = value
-                is Long -> longValues[key.name] = value
-                is String -> stringValues[key.name] = value
-                else -> error("Unsupported preference value for ${key.name}: ${value::class}")
+    internal suspend fun restoreValidatedBackup(backup: UserPreferencesBackup) {
+        dataStore.edit { preferences ->
+            restoreValidatedBackupInto(preferences, backup)
+        }
+    }
+
+    companion object {
+        internal fun createBackup(source: Preferences): UserPreferencesBackup {
+            val booleanValues = linkedMapOf<String, Boolean>()
+            val byteArrayValues = linkedMapOf<String, String>()
+            val doubleValues = linkedMapOf<String, String>()
+            val floatValues = linkedMapOf<String, String>()
+            val intValues = linkedMapOf<String, Int>()
+            val longValues = linkedMapOf<String, Long>()
+            val stringValues = linkedMapOf<String, String>()
+            val stringSetValues = linkedMapOf<String, Set<String>>()
+
+            source.asMap().forEach { (key, value) ->
+                when (value) {
+                    is Boolean -> booleanValues[key.name] = value
+                    is ByteArray -> byteArrayValues[key.name] =
+                        java.util.Base64.getEncoder().encodeToString(value)
+                    is Double -> doubleValues[key.name] = value.toString()
+                    is Float -> floatValues[key.name] = value.toString()
+                    is Int -> intValues[key.name] = value
+                    is Long -> longValues[key.name] = value
+                    is String -> stringValues[key.name] = value
+                    is Set<*> -> {
+                        val stringSet = value.filterIsInstance<String>()
+                        check(stringSet.size == value.size) {
+                            "Non-string value in preference set ${key.name}"
+                        }
+                        stringSetValues[key.name] = stringSet.toSet()
+                    }
+                    else -> error("Unsupported preference value for ${key.name}: ${value::class}")
+                }
+            }
+
+            return UserPreferencesBackup(
+                booleanValues = booleanValues,
+                byteArrayValues = byteArrayValues,
+                doubleValues = doubleValues,
+                floatValues = floatValues,
+                intValues = intValues,
+                longValues = longValues,
+                stringValues = stringValues,
+                stringSetValues = stringSetValues
+            )
+        }
+
+        internal fun validateBackup(backup: UserPreferencesBackup) {
+            backup.validate()
+            backup.byteArrayValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.BYTE_ARRAY) {
+                    java.util.Base64.getDecoder().decode(value)
+                }
+            }
+            backup.doubleValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.DOUBLE) value.toDouble()
+            }
+            backup.floatValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.FLOAT) value.toFloat()
             }
         }
 
-        return UserPreferencesBackup(
-            booleanValues = booleanValues,
-            longValues = longValues,
-            stringValues = stringValues
-        )
-    }
-
-    suspend fun restoreFromBackup(backup: UserPreferencesBackup) {
-        backup.validate()
-        dataStore.edit { preferences ->
-            preferences.clear()
+        internal fun restoreValidatedBackupInto(
+            preferences: MutablePreferences,
+            backup: UserPreferencesBackup?
+        ) {
+            if (backup == null) return
             backup.booleanValues.forEach { (key, value) ->
-                preferences[booleanPreferencesKey(key)] = value
+                if (preferenceType(key) == BackupPreferenceType.BOOLEAN) {
+                    preferences[booleanPreferencesKey(key)] = value
+                }
+            }
+            backup.byteArrayValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.BYTE_ARRAY) {
+                    preferences[byteArrayPreferencesKey(key)] =
+                        java.util.Base64.getDecoder().decode(value)
+                }
+            }
+            backup.doubleValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.DOUBLE) {
+                    preferences[doublePreferencesKey(key)] = value.toDouble()
+                }
+            }
+            backup.floatValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.FLOAT) {
+                    preferences[floatPreferencesKey(key)] = value.toFloat()
+                }
+            }
+            backup.intValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.INT) {
+                    preferences[intPreferencesKey(key)] = value
+                }
             }
             backup.longValues.forEach { (key, value) ->
-                preferences[longPreferencesKey(key)] = value
+                if (preferenceType(key) == BackupPreferenceType.LONG) {
+                    preferences[longPreferencesKey(key)] = value
+                }
             }
             backup.stringValues.forEach { (key, value) ->
-                preferences[stringPreferencesKey(key)] = value
+                if (preferenceType(key) == BackupPreferenceType.STRING) {
+                    preferences[stringPreferencesKey(key)] = value
+                }
+            }
+            backup.stringSetValues.forEach { (key, value) ->
+                if (preferenceType(key) == BackupPreferenceType.STRING_SET) {
+                    preferences[stringSetPreferencesKey(key)] = value
+                }
+            }
+        }
+
+        // Do not restore app/migration state; apply only keys whose type this version knows.
+        // Update this list when adding a user preference to avoid restoring it under a wrong type.
+        private fun preferenceType(key: String): BackupPreferenceType? = when (key) {
+            PreferencesKeys.KEY_TIME_DISPLAY_OPTION.name,
+            PreferencesKeys.KEY_SELECTED_LANGUAGE.name,
+            PreferencesKeys.KEY_OWNER_USER_NAME.name,
+            PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT.name,
+            PreferencesKeys.KEY_DATE_LOCALE_OPTION.name -> BackupPreferenceType.STRING
+
+            PreferencesKeys.KEY_HIDE_ORAL_DISCLAIMER.name,
+            PreferencesKeys.KEY_HIDE_DOSAGE_DOTS.name,
+            PreferencesKeys.KEY_OPEN_LINK_IN_BROWSER.name,
+            PreferencesKeys.KEY_APP_LOCK_ENABLED.name,
+            PreferencesKeys.KEY_EFFECT_NOTIFICATION_ENABLED.name,
+            PreferencesKeys.KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT.name,
+            PreferencesKeys.KEY_IS_BOTTOM_BAR_PINNED.name,
+            PreferencesKeys.KEY_IS_TIMELINE_HIDDEN.name,
+            PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED.name,
+            PreferencesKeys.KEY_USE_24_HOUR_CLOCK.name,
+            PreferencesKeys.KEY_STATS_BY_INGESTION_TIME.name -> BackupPreferenceType.BOOLEAN
+
+            "substanceInteractions" -> BackupPreferenceType.STRING_SET
+            PreferencesKeys.KEY_LAST_INGESTION_OF_EXPERIENCE.name,
+            PreferencesKeys.KEY_CLONED_INGESTION_TIME.name -> BackupPreferenceType.LONG
+            else -> if (key.startsWith("key_roa_duration_preset_")) {
+                BackupPreferenceType.LONG
+            } else {
+                null
             }
         }
     }
 }
 
-@Serializable
-data class UserPreferencesBackup(
-    val booleanValues: Map<String, Boolean> = emptyMap(),
-    val longValues: Map<String, Long> = emptyMap(),
-    val stringValues: Map<String, String> = emptyMap()
-) {
-    fun validate() {
-        val keys = booleanValues.keys + longValues.keys + stringValues.keys
-        val entryCount = booleanValues.size + longValues.size + stringValues.size
-        require(keys.size == entryCount) {
-            "Preference key has conflicting value types"
-        }
-    }
+private enum class BackupPreferenceType {
+    BOOLEAN,
+    BYTE_ARRAY,
+    DOUBLE,
+    FLOAT,
+    INT,
+    LONG,
+    STRING,
+    STRING_SET
 }

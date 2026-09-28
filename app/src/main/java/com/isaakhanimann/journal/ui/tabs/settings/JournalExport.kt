@@ -26,7 +26,6 @@ import com.isaakhanimann.journal.data.room.experiences.entities.StomachFullness
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.ReleaseForm
-import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferencesBackup
 import java.time.Instant
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -39,6 +38,37 @@ import kotlinx.serialization.json.Json
 val journalImportJson = Json {
     ignoreUnknownKeys = true
     coerceInputValues = true
+}
+
+@Serializable
+data class UserPreferencesBackup(
+    val booleanValues: Map<String, Boolean> = emptyMap(),
+    val byteArrayValues: Map<String, String> = emptyMap(),
+    val doubleValues: Map<String, String> = emptyMap(),
+    val floatValues: Map<String, String> = emptyMap(),
+    val intValues: Map<String, Int> = emptyMap(),
+    val longValues: Map<String, Long> = emptyMap(),
+    val stringValues: Map<String, String> = emptyMap(),
+    val stringSetValues: Map<String, Set<String>> = emptyMap()
+) {
+    fun validate() {
+        val seen = mutableSetOf<String>()
+        listOf(
+            booleanValues.keys,
+            byteArrayValues.keys,
+            doubleValues.keys,
+            floatValues.keys,
+            intValues.keys,
+            longValues.keys,
+            stringValues.keys,
+            stringSetValues.keys
+        ).forEach { keys ->
+            val duplicate = keys.firstOrNull { !seen.add(it) }
+            require(duplicate == null) {
+                "Preference '$duplicate' has conflicting value types"
+            }
+        }
+    }
 }
 
 @Serializable
