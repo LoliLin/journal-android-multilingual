@@ -306,47 +306,49 @@ private fun MergedStatsScreen(
                     val currentAvatarFile = remember(currentConsumerName) {
                         AvatarUtil.getUserAvatar(context, currentConsumerName)
                     }
-                    IconButton(onClick = { isConsumerSelectionExpanded = true }) {
-                        if (currentAvatarFile != null) {
-                            AsyncImage(
-                                model = currentAvatarFile,
-                                contentDescription = i18n("stats_consumer"),
-                                modifier = Modifier.size(32.dp).clip(CircleShape),
-                                contentScale = ContentScale.Crop
-                            )
-                        } else {
-                            Icon(Icons.Outlined.Person, contentDescription = i18n("stats_consumer"))
-                        }
-                    }
-                    DropdownMenu(
-                        expanded = isConsumerSelectionExpanded,
-                        onDismissRequest = { isConsumerSelectionExpanded = false }
-                    ) {
-                        DropdownMenuItem(
-                            text = { Text(ownerUserName) },
-                            onClick = {
-                                onChangeConsumerName(null)
-                                isConsumerSelectionExpanded = false
-                            },
-                            leadingIcon = {
-                                if (overviewConsumerName == null) {
-                                    Icon(Icons.Filled.Check, null, Modifier.size(ButtonDefaults.IconSize))
-                                }
+                    Box {
+                        IconButton(onClick = { isConsumerSelectionExpanded = true }) {
+                            if (currentAvatarFile != null) {
+                                AsyncImage(
+                                    model = currentAvatarFile,
+                                    contentDescription = i18n("stats_consumer"),
+                                    modifier = Modifier.size(32.dp).clip(CircleShape),
+                                    contentScale = ContentScale.Crop
+                                )
+                            } else {
+                                Icon(Icons.Outlined.Person, contentDescription = i18n("stats_consumer"))
                             }
-                        )
-                        consumerNamesSorted.forEach { consumerName ->
+                        }
+                        DropdownMenu(
+                            expanded = isConsumerSelectionExpanded,
+                            onDismissRequest = { isConsumerSelectionExpanded = false }
+                        ) {
                             DropdownMenuItem(
-                                text = { Text(consumerName) },
+                                text = { Text(ownerUserName) },
                                 onClick = {
-                                    onChangeConsumerName(consumerName)
+                                    onChangeConsumerName(null)
                                     isConsumerSelectionExpanded = false
                                 },
                                 leadingIcon = {
-                                    if (overviewConsumerName == consumerName) {
+                                    if (overviewConsumerName == null) {
                                         Icon(Icons.Filled.Check, null, Modifier.size(ButtonDefaults.IconSize))
                                     }
                                 }
                             )
+                            consumerNamesSorted.forEach { consumerName ->
+                                DropdownMenuItem(
+                                    text = { Text(consumerName) },
+                                    onClick = {
+                                        onChangeConsumerName(consumerName)
+                                        isConsumerSelectionExpanded = false
+                                    },
+                                    leadingIcon = {
+                                        if (overviewConsumerName == consumerName) {
+                                            Icon(Icons.Filled.Check, null, Modifier.size(ButtonDefaults.IconSize))
+                                        }
+                                    }
+                                )
+                            }
                         }
                     }
                 }
