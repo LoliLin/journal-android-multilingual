@@ -135,14 +135,19 @@ jobs:
               cp "$apk" "downloads/journal-android-multilingual-${V_NAME}-${abi}.apk"
             done
 
-            # AAB: signed bundle for Google Play upload
-            AAB_PATH="app/build/outputs/bundle/release/app-release.aab"
-            if [ ! -f "$AAB_PATH" ]; then
-              echo "::error::AAB 未生成：$AAB_PATH。请检查 bundleRelease 任务输出。"
+            # Select the actual bundle output instead of assuming a single AGP path.
+            mapfile -t AAB_FILES < <(
+              find app/build/outputs/bundle -type f -name "*.aab" -print 2>/dev/null
+            )
+            if [ "${#AAB_FILES[@]}" -ne 1 ]; then
+              echo "::error::预期找到一个 release AAB，实际找到 ${#AAB_FILES[@]} 个。"
+              find app/build/outputs/bundle -maxdepth 5 -type f -print 2>/dev/null || true
               exit 1
             fi
-            cp "$AAB_PATH" "downloads/journal-android-multilingual-${V_NAME}.aab"
-            echo "AAB copied: downloads/journal-android-multilingual-${V_NAME}.aab"
+            AAB_PATH="${AAB_FILES[0]}"
+            AAB_ARTIFACT="downloads/journal-android-multilingual-${V_NAME}.aab"
+            cp "$AAB_PATH" "$AAB_ARTIFACT"
+            echo "AAB copied from $AAB_PATH to $AAB_ARTIFACT"
           else
             # Fork repositories: debug APK only
             find app/build/outputs/apk/debug/ -name "*.apk" -print0 | while IFS= read -r -d '' apk; do
@@ -205,7 +210,7 @@ jobs:
           GOOGLE_PLAY_API: ${{ secrets.GOOGLE_PLAY_API }}
           PLAY_TRACK: ${{ github.event.inputs.play_track }}
           PLAY_RELEASE_STATUS: ${{ github.event.inputs.play_release_status }}
-          PLAY_AAB_PATH: app/build/outputs/bundle/release/app-release.aab
+          PLAY_AAB_PATH: downloads/journal-android-multilingual-${{ github.event.inputs.version_name }}.aab
         run: |
           set -euo pipefail
 
@@ -238,8 +243,8 @@ jobs:
 
           if [ ! -f "$PLAY_AAB_PATH" ]; then
             echo "::error::Google Play AAB 不存在：$PLAY_AAB_PATH"
-            echo "::error::构建输出目录内容："
-            find app/build/outputs/bundle -maxdepth 4 -type f -print 2>/dev/null || true
+            echo "::error::构建产物目录内容："
+            find app/build/outputs/bundle downloads -maxdepth 5 -type f -name "*.aab" -print 2>/dev/null || true
             exit 1
           fi
 
