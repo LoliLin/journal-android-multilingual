@@ -1,7 +1,7 @@
 [versions]
 # Gradle 插件
 androidGradlePlugin = "9.4.1"
-fragment = "1.9.0"
+fragment = "1.9.1"
 kotlin = "2.4.20"
 ksp = "2.3.12"
 
