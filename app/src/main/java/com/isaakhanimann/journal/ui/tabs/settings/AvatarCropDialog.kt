@@ -54,6 +54,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -83,8 +84,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
- * 全屏头像裁剪对话框。
- * 支持单指拖动平移、双指捏合缩放、滑动条缩放、90度旋转、重置以及重新选择图片。
+ * Full-screen avatar cropping dialog.
+ * Supports pan, pinch-to-zoom, slider zoom, 90-degree rotation, reset, and image re-selection.
  */
 @Composable
 fun AvatarCropDialog(
@@ -112,7 +113,7 @@ fun AvatarCropDialog(
         var scale by remember { mutableFloatStateOf(1f) }
         var offsetX by remember { mutableFloatStateOf(0f) }
         var offsetY by remember { mutableFloatStateOf(0f) }
-        var cropSizePx by remember { mutableFloatStateOf(400f) }
+        var cropSizePx by remember { mutableFloatStateOf(0f) }
         var isSaving by remember { mutableStateOf(false) }
         val saveFailedMessage = i18n("crop_save_failed")
 
@@ -124,7 +125,7 @@ fun AvatarCropDialog(
             }
         }
 
-        // 加载当前选中的图片
+        // Load currently selected image
         LaunchedEffect(currentUri) {
             isLoading = true
             hasError = false
@@ -151,7 +152,7 @@ fun AvatarCropDialog(
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
-                // 顶部工具栏
+                // Top toolbar
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -219,7 +220,7 @@ fun AvatarCropDialog(
                     }
                 }
 
-                // 中间裁切视口
+                // Center crop viewport
                 BoxWithConstraints(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -270,14 +271,14 @@ fun AvatarCropDialog(
                         val minScale = AvatarCropMath.calculateMinScale(effectiveWidth, effectiveHeight, currentCropSize)
                         val maxScale = AvatarCropMath.calculateMaxScale(minScale)
 
-                        // 初始缩放或旋转后保证覆盖裁切圆
+                        // Guarantee image covers crop circle initially and after rotation
                         LaunchedEffect(minScale) {
                             if (scale < minScale) {
                                 scale = minScale
                             }
                         }
 
-                        // 限制平移范围
+                        // Constrain pan within bounds
                         val bounds = AvatarCropMath.calculatePanBounds(effectiveWidth, effectiveHeight, scale, currentCropSize)
                         LaunchedEffect(bounds) {
                             offsetX = offsetX.coerceIn(-bounds.maxOffsetX, bounds.maxOffsetX)
@@ -286,25 +287,32 @@ fun AvatarCropDialog(
 
                         val imageBitmap = remember(currentBitmap) { currentBitmap.asImageBitmap() }
 
+                        val currentMinScale by rememberUpdatedState(minScale)
+                        val currentMaxScale by rememberUpdatedState(maxScale)
+                        val currentEffectiveWidth by rememberUpdatedState(effectiveWidth)
+                        val currentEffectiveHeight by rememberUpdatedState(effectiveHeight)
+                        val currentCropCenter by rememberUpdatedState(cropCenter)
+                        val currentCropSizeState by rememberUpdatedState(currentCropSize)
+
                         Canvas(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .pointerInput(currentCropSize, minScale, maxScale, effectiveWidth, effectiveHeight, rotationDegrees) {
+                                .pointerInput(Unit) {
                                     // Gesture rotation is intentionally ignored; discrete 90-degree rotation is provided via the toolbar.
                                     detectTransformGestures { centroid, pan, zoom, _ ->
                                         val oldScale = scale
-                                        val newScale = (oldScale * zoom).coerceIn(minScale, maxScale)
+                                        val newScale = (oldScale * zoom).coerceIn(currentMinScale, currentMaxScale)
                                         val zoomFactor = if (oldScale > 0f) newScale / oldScale else 1f
 
-                                        val imageCenter = cropCenter + Offset(offsetX, offsetY)
+                                        val imageCenter = currentCropCenter + Offset(offsetX, offsetY)
                                         val newImageCenter = centroid + (imageCenter - centroid) * zoomFactor + pan
-                                        val newOffset = newImageCenter - cropCenter
+                                        val newOffset = newImageCenter - currentCropCenter
 
                                         val curBounds = AvatarCropMath.calculatePanBounds(
-                                            effectiveWidth = effectiveWidth,
-                                            effectiveHeight = effectiveHeight,
+                                            effectiveWidth = currentEffectiveWidth,
+                                            effectiveHeight = currentEffectiveHeight,
                                             scale = newScale,
-                                            cropSizePx = currentCropSize
+                                            cropSizePx = currentCropSizeState
                                         )
 
                                         scale = newScale
@@ -313,7 +321,7 @@ fun AvatarCropDialog(
                                     }
                                 }
                         ) {
-                            // 1. 绘制变换后的图像
+                            // 1. Draw transformed image
                             withTransform({
                                 translate(cropCenter.x + offsetX, cropCenter.y + offsetY)
                                 rotate(rotationDegrees.toFloat())
@@ -323,7 +331,7 @@ fun AvatarCropDialog(
                                 drawImage(imageBitmap, Offset.Zero)
                             }
 
-                            // 2. 裁切区域外暗化遮罩（使用 EvenOdd 路径镂空圆形）
+                            // 2. Dim background outside circular crop area (EvenOdd mask)
                             val overlayPath = Path().apply {
                                 fillType = PathFillType.EvenOdd
                                 addRect(Rect(0f, 0f, size.width, size.height))
@@ -331,7 +339,7 @@ fun AvatarCropDialog(
                             }
                             drawPath(overlayPath, color = Color.Black.copy(alpha = 0.72f))
 
-                            // 3. 裁切圆形边框
+                            // 3. Circular crop outline
                             drawCircle(
                                 color = Color.White.copy(alpha = 0.85f),
                                 radius = cropRadiusPx,
@@ -339,7 +347,7 @@ fun AvatarCropDialog(
                                 style = Stroke(width = 2.dp.toPx())
                             )
 
-                            // 4. 九宫格辅助线（限制在圆形裁切框内部）
+                            // 4. Rule-of-thirds grid lines (clipped inside circular crop)
                             clipPath(Path().apply { addOval(Rect(cropCenter, cropRadiusPx)) }) {
                                 val oneThird = cropRadiusPx * 2f / 3f
                                 val leftX = cropCenter.x - cropRadiusPx + oneThird
@@ -358,15 +366,15 @@ fun AvatarCropDialog(
                     }
                 }
 
-                // 底部缩放控制条
+                // Bottom zoom controls
                 val activeBitmap = bitmap
-                val (sliderMin, sliderMax) = if (activeBitmap != null) {
-                    val (w, h) = AvatarCropMath.calculateEffectiveDimensions(
+                val (sliderMin, sliderMax) = if (activeBitmap != null && cropSizePx > 0f) {
+                    val dims = AvatarCropMath.calculateEffectiveDimensions(
                         activeBitmap.width,
                         activeBitmap.height,
                         rotationDegrees
                     )
-                    val minS = AvatarCropMath.calculateMinScale(w, h, cropSizePx)
+                    val minS = AvatarCropMath.calculateMinScale(dims.width, dims.height, cropSizePx)
                     Pair(minS, AvatarCropMath.calculateMaxScale(minS))
                 } else {
                     Pair(1f, 5f)
@@ -380,9 +388,10 @@ fun AvatarCropDialog(
                 ) {
                     IconButton(
                         onClick = {
-                            scale = (scale / 1.25f).coerceIn(sliderMin, sliderMax)
+                            val newScale = (scale / 1.15f).coerceIn(sliderMin, sliderMax)
+                            scale = newScale
                         },
-                        enabled = !isSaving && activeBitmap != null
+                        enabled = !isSaving && bitmap != null
                     ) {
                         Icon(
                             imageVector = Icons.Default.ZoomOut,
@@ -393,24 +402,25 @@ fun AvatarCropDialog(
 
                     Slider(
                         value = scale.coerceIn(sliderMin, sliderMax),
-                        onValueChange = { newScale ->
-                            scale = newScale.coerceIn(sliderMin, sliderMax)
-                        },
-                        valueRange = if (sliderMax > sliderMin) sliderMin..sliderMax else sliderMin..(sliderMin + 0.001f),
-                        modifier = Modifier.weight(1f),
-                        enabled = !isSaving && activeBitmap != null,
+                        onValueChange = { scale = it },
+                        valueRange = sliderMin..sliderMax,
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(horizontal = 8.dp),
+                        enabled = !isSaving && bitmap != null,
                         colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.primary,
+                            thumbColor = Color.White,
                             activeTrackColor = MaterialTheme.colorScheme.primary,
-                            inactiveTrackColor = Color.White.copy(alpha = 0.25f)
+                            inactiveTrackColor = Color.White.copy(alpha = 0.3f)
                         )
                     )
 
                     IconButton(
                         onClick = {
-                            scale = (scale * 1.25f).coerceIn(sliderMin, sliderMax)
+                            val newScale = (scale * 1.15f).coerceIn(sliderMin, sliderMax)
+                            scale = newScale
                         },
-                        enabled = !isSaving && activeBitmap != null
+                        enabled = !isSaving && bitmap != null
                     ) {
                         Icon(
                             imageVector = Icons.Default.ZoomIn,
@@ -420,12 +430,11 @@ fun AvatarCropDialog(
                     }
                 }
 
-                // 底部确认与取消按钮
+                // Bottom action buttons
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 24.dp)
-                        .padding(bottom = 20.dp),
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -459,8 +468,9 @@ fun AvatarCropDialog(
                                     AvatarUtil.saveAvatarBitmap(context, userName, cropped)
                                     onAvatarCroppedAndSaved()
                                 } catch (e: Exception) {
-                                    isSaving = false
                                     Toast.makeText(context, saveFailedMessage, Toast.LENGTH_SHORT).show()
+                                } finally {
+                                    isSaving = false
                                 }
                             }
                         },
@@ -490,7 +500,7 @@ fun AvatarCropDialog(
 }
 
 /**
- * 根据裁切参数生成 512x512 的高质量正方形位图（其中内切圆内容与屏幕预览一致）。
+ * Produces a square [outputSizePx]x[outputSizePx] bitmap whose inscribed circle matches the preview.
  */
 suspend fun cropBitmap(
     sourceBitmap: Bitmap,
@@ -513,13 +523,13 @@ suspend fun cropBitmap(
     val canvas = Canvas(outputBitmap)
     val matrix = Matrix()
 
-    // 1. 将源图像中心移动到原点
+    // 1. Center the source bitmap at origin
     matrix.postTranslate(-sourceBitmap.width / 2f, -sourceBitmap.height / 2f)
-    // 2. 绕原点旋转
+    // 2. Rotate around origin
     matrix.postRotate(params.rotationDegrees.toFloat())
-    // 3. 缩放到目标画布比例
+    // 3. Scale to output canvas ratio
     matrix.postScale(params.scaleInOutput, params.scaleInOutput)
-    // 4. 平移至目标画布中心及相应偏移
+    // 4. Translate to destination canvas center with offset
     matrix.postTranslate(params.destCenterX, params.destCenterY)
 
     val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG or Paint.DITHER_FLAG)
@@ -528,7 +538,11 @@ suspend fun cropBitmap(
 }
 
 /**
- * 健壮地从 Uri 解码出位图，自动处理 EXIF 旋转和高分辨率降采样。
+ * Decodes a bitmap from the given [uri], downsampling high-resolution images
+ * to 1024px (2x target avatar resolution) to keep memory usage low while handling EXIF orientation.
+ *
+ * Coil's default decoder handles EXIF orientation automatically. The fallback decoding path
+ * also explicitly handles EXIF orientation so portrait/landscape images remain consistent.
  */
 private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = withContext(Dispatchers.IO) {
     try {
@@ -536,7 +550,7 @@ private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = with
         val request = ImageRequest.Builder(context)
             .data(uri)
             .allowHardware(false)
-            .size(2048)
+            .size(1024)
             .build()
         val result = imageLoader.execute(request)
         if (result is SuccessResult) {
@@ -553,7 +567,7 @@ private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = with
             return@withContext bm
         }
     } catch (_: Exception) {
-        // 尝试降级处理
+        // Fallback to manual BitmapFactory decoding
     }
 
     try {
@@ -563,7 +577,7 @@ private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = with
         }
         val maxDim = max(boundsOptions.outWidth, boundsOptions.outHeight)
         var sampleSize = 1
-        while (maxDim / (sampleSize * 2) >= 2048) {
+        while (maxDim / (sampleSize * 2) >= 1024) {
             sampleSize *= 2
         }
         val decodeOptions = BitmapFactory.Options().apply {

@@ -134,4 +134,29 @@ class TestAvatarCropMath {
         assertEquals(256f, params.destCenterX, 0.001f)
         assertEquals(256f, params.destCenterY, 0.001f)
     }
+
+    @Test
+    fun outputMatrixMapsCenterPointConsistentlyWithPreview() {
+        val cropSize = 360f
+        val outputSize = 512
+        val scale = 1.25f
+        val offsetX = 40f
+        val offsetY = -30f
+        val rotation = 180
+
+        val params = AvatarCropMath.calculateOutputMatrixParams(
+            cropSizePx = cropSize,
+            outputSizePx = outputSize,
+            scale = scale,
+            offsetX = offsetX,
+            offsetY = offsetY,
+            rotationDegrees = rotation
+        )
+
+        val ratio = outputSize.toFloat() / cropSize
+        assertEquals(outputSize / 2f + offsetX * ratio, params.destCenterX, 0.001f)
+        assertEquals(outputSize / 2f + offsetY * ratio, params.destCenterY, 0.001f)
+        assertEquals(scale * ratio, params.scaleInOutput, 0.001f)
+        assertEquals(rotation, params.rotationDegrees)
+    }
 }

@@ -5,6 +5,12 @@ import kotlin.math.min
 
 object AvatarCropMath {
 
+    /**
+     * Minimum crop circle diameter in pixels, avoiding an unworkably small viewport
+     * while guaranteeing it never exceeds [containerWidth] and [containerHeight].
+     */
+    const val MIN_CROP_SIZE_PX = 100f
+
     data class PanBounds(
         val maxOffsetX: Float,
         val maxOffsetY: Float
@@ -22,6 +28,9 @@ object AvatarCropMath {
         val rotationDegrees: Int
     )
 
+    /**
+     * Computes the visible width and height after taking 90/270-degree rotation into account.
+     */
     fun calculateEffectiveDimensions(
         bitmapWidth: Int,
         bitmapHeight: Int,
@@ -34,6 +43,10 @@ object AvatarCropMath {
         return EffectiveDimensions(effectiveWidth, effectiveHeight)
     }
 
+    /**
+     * Calculates the diameter of the circular crop viewport within container bounds,
+     * maintaining padding margin and clamping between [MIN_CROP_SIZE_PX] and minimum container dimension.
+     */
     fun calculateCropSize(
         containerWidth: Float,
         containerHeight: Float,
@@ -42,9 +55,12 @@ object AvatarCropMath {
         val minDim = min(containerWidth, containerHeight)
         if (minDim <= 0f) return 0f
         val desired = minDim - marginPx
-        return desired.coerceIn(min(100f, minDim), minDim)
+        return desired.coerceIn(min(MIN_CROP_SIZE_PX, minDim), minDim)
     }
 
+    /**
+     * Minimum scale required so that the rotated image completely covers the crop circle.
+     */
     fun calculateMinScale(
         effectiveWidth: Float,
         effectiveHeight: Float,
@@ -54,10 +70,16 @@ object AvatarCropMath {
         return max(cropSizePx / effectiveWidth, cropSizePx / effectiveHeight)
     }
 
+    /**
+     * Upper bound for user zoom.
+     */
     fun calculateMaxScale(minScale: Float, factor: Float = 5f): Float {
         return minScale * factor
     }
 
+    /**
+     * Bounds for panning so that image boundaries never leave the crop circle.
+     */
     fun calculatePanBounds(
         effectiveWidth: Float,
         effectiveHeight: Float,
@@ -69,6 +91,9 @@ object AvatarCropMath {
         return PanBounds(maxOffsetX, maxOffsetY)
     }
 
+    /**
+     * Maps preview transformation (scale, pan offset, rotation) into output canvas coordinates.
+     */
     fun calculateOutputMatrixParams(
         cropSizePx: Float,
         outputSizePx: Int,
