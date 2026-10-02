@@ -18,7 +18,13 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,24 +38,15 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.Timer
-import androidx.compose.material.icons.outlined.EditNote
-import androidx.compose.material.icons.outlined.SearchOff
-import androidx.compose.material.icons.outlined.StarOutline
-import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -61,11 +58,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -77,6 +77,7 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
+import com.isaakhanimann.journal.ui.tabs.journal.components.JournalSatelliteFab
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
@@ -162,6 +163,12 @@ fun JournalScreen(
     val latestExperienceId = experiences
         .firstOrNull { it.ingestionsWithCompanions.isNotEmpty() }
         ?.experience?.id
+    var isSatelliteExpanded by rememberSaveable { mutableStateOf(false) }
+
+    BackHandler(enabled = isSatelliteExpanded) {
+        isSatelliteExpanded = false
+    }
+
     val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier
@@ -173,62 +180,6 @@ fun JournalScreen(
                 scrollBehavior = topBarScrollBehavior,
                 title = { Text(i18n("journal")) },
                 actions = {
-                    IconToggleButton(
-                        checked = isTimeRelativeToNow,
-                        onCheckedChange = onChangeIsRelative
-                    ) {
-                        if (isTimeRelativeToNow) {
-                            Icon(
-                                Icons.Filled.Timer,
-                                contentDescription = i18n("journal_regular_time")
-                            )
-                        } else {
-                            Icon(
-                                Icons.Outlined.Timer,
-                                contentDescription = i18n("journal_time_relative_to_now")
-                            )
-                        }
-                    }
-                    if (latestExperienceId != null) {
-                        IconButton(onClick = { navigateToQuickTimedNote(latestExperienceId) }) {
-                            Icon(
-                                Icons.Outlined.EditNote,
-                                contentDescription = i18n("quick_note_title")
-                            )
-                        }
-                    }
-                    IconToggleButton(
-                        checked = isFavoriteEnabled,
-                        onCheckedChange = onChangeIsFavorite
-                    ) {
-                        if (isFavoriteEnabled) {
-                            Icon(
-                                Icons.Filled.Star,
-                                contentDescription = i18n("journal_is_favorite")
-                            )
-                        } else {
-                            Icon(
-                                Icons.Outlined.StarOutline,
-                                contentDescription = i18n("journal_is_not_favorite")
-                            )
-                        }
-                    }
-                    IconToggleButton(
-                        checked = isSearchEnabled,
-                        onCheckedChange = onChangeIsSearchEnabled
-                    ) {
-                        if (isSearchEnabled) {
-                            Icon(
-                                Icons.Outlined.SearchOff,
-                                contentDescription = i18n("journal_search_off")
-                            )
-                        } else {
-                            Icon(
-                                Icons.Filled.Search,
-                                contentDescription = i18n("common_search")
-                            )
-                        }
-                    }
                     IconButton(onClick = navigateToCalendar) {
                         Icon(
                             Icons.Default.CalendarMonth,
@@ -239,19 +190,19 @@ fun JournalScreen(
             )
         },
         floatingActionButton = {
-            if (!isSearchEnabled) {
-                ExtendedFloatingActionButton(
-                    modifier = Modifier.padding(bottom = bottomBarOverlayDp()),
-                    onClick = navigateToAddIngestion,
-                    icon = {
-                        Icon(
-                            Icons.Filled.Add,
-                            contentDescription = i18n("common_add")
-                        )
-                    },
-                    text = { Text(i18n("journal_ingestion")) }
-                )
-            }
+            JournalSatelliteFab(
+                isExpanded = isSatelliteExpanded,
+                onExpandedChange = { isSatelliteExpanded = it },
+                onSingleClick = navigateToAddIngestion,
+                isTimeRelativeToNow = isTimeRelativeToNow,
+                onChangeIsRelative = onChangeIsRelative,
+                isFavoriteEnabled = isFavoriteEnabled,
+                onChangeIsFavorite = onChangeIsFavorite,
+                isSearchEnabled = isSearchEnabled,
+                onChangeIsSearchEnabled = onChangeIsSearchEnabled,
+                latestExperienceId = latestExperienceId,
+                navigateToQuickTimedNote = navigateToQuickTimedNote
+            )
         }
     ) { padding ->
         Box(
@@ -281,17 +232,23 @@ fun JournalScreen(
                                 )
                             },
                             trailingIcon = {
-                                if (searchText != "") {
-                                    IconButton(
-                                        onClick = {
+                                IconButton(
+                                    onClick = {
+                                        if (searchText.isNotEmpty()) {
                                             onChangeSearchText("")
+                                        } else {
+                                            onChangeIsSearchEnabled(false)
                                         }
-                                    ) {
-                                        Icon(
-                                            Icons.Default.Close,
-                                            contentDescription = i18n("common_close")
-                                        )
                                     }
+                                ) {
+                                    Icon(
+                                        Icons.Default.Close,
+                                        contentDescription = if (searchText.isNotEmpty()) {
+                                            i18n("common_close")
+                                        } else {
+                                            i18n("journal_search_off")
+                                        }
+                                    )
                                 }
                             },
                             label = { Text(text = i18n("journal_search_by_title_or_substance")) },
@@ -395,6 +352,23 @@ fun JournalScreen(
                         description = i18n("journal_empty_description")
                     )
                 }
+            }
+            AnimatedVisibility(
+                visible = isSatelliteExpanded,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.32f))
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {
+                            isSatelliteExpanded = false
+                        }
+                )
             }
         }
     }
