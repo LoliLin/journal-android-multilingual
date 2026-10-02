@@ -108,6 +108,8 @@
   "journal_time_relative_to_now": "相對於現在的時間",
   "journal_is_favorite": "已收藏",
   "journal_is_not_favorite": "未收藏",
+  "journal_satellite_time": "按時間",
+  "journal_satellite_favorites": "收藏",
   "journal_search_off": "關閉搜尋",
   "journal_calendar_title": "Journal 日曆",
   "journal_navigate_to_calendar": "前往日曆",
