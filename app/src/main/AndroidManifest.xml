@@ -100,8 +100,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.widgets.StatsWidgetConfigActivity"
-            android:exported="false"
-            android:theme="@style/Theme.App.Starting" />
+            android:exported="true"
+            android:theme="@style/Theme.Journal">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <receiver
             android:name=".ui.widgets.StatsWidgetProvider"
             android:exported="true"
