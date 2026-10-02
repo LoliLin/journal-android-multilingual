@@ -1,11 +1,15 @@
 package com.isaakhanimann.journal.ui.tabs.settings
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import java.io.File
 import java.io.FileOutputStream
 
@@ -32,8 +36,8 @@ object AvatarUtil {
         getAvatarFile(context, userName).takeIf { it.exists() }
 
     /**
-     * 生成一个用于触发“选择并保存头像”的 Composable 工具。
-     * @return 一个 lambda，调用它会打开系统图片选择器，选中后自动保存为 Avatars/Username.png。
+     * 生成一个用于触发“选择并裁切头像”的 Composable 工具。
+     * @return 一个 lambda，调用它会打开系统图片选择器，选中后弹出自定义裁切界面，裁切确认后自动保存为 Avatars/Username.png。
      */
     @Composable
     fun acquireUserAvatar(
@@ -41,13 +45,27 @@ object AvatarUtil {
         userName: String,
         onAvatarSaved: () -> Unit = {}
     ): () -> Unit {
+        var pendingCropUri by remember { mutableStateOf<Uri?>(null) }
         val launcher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.GetContent()
         ) { uri: Uri? ->
-            uri?.let { safeUri ->
-                saveAvatarFromUri(context, userName, safeUri)
-                onAvatarSaved()
+            if (uri != null) {
+                pendingCropUri = uri
             }
+        }
+
+        if (pendingCropUri != null) {
+            AvatarCropDialog(
+                imageUri = pendingCropUri!!,
+                userName = userName,
+                onDismiss = {
+                    pendingCropUri = null
+                },
+                onAvatarCroppedAndSaved = {
+                    pendingCropUri = null
+                    onAvatarSaved()
+                }
+            )
         }
 
         // 返回可以触发选择器的 lambda
@@ -56,7 +74,7 @@ object AvatarUtil {
         }
     }
 
-    // --------------- 内部实现 ---------------
+    // --------------- 内部与保存实现 ---------------
 
     /**
      * 根据用户名构造目标文件路径：/data/data/.../files/Avatars/Username.png
@@ -72,12 +90,34 @@ object AvatarUtil {
     }
 
     /**
-     * 将用户选中的图片从 URI 复制到内部存储，固定命名为 Username.png。
+     * 将裁切好的 Bitmap 保存至内部存储，固定命名为 Username.png。
+     * 采用临时文件写入后重命名的方式确保原子性。
+     */
+    fun saveAvatarBitmap(context: Context, userName: String, bitmap: Bitmap) {
+        val targetFile = getAvatarFile(context, userName)
+        val parent = targetFile.parentFile
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs()
+        }
+        val tempFile = File(parent ?: context.filesDir, "${targetFile.name}.tmp")
+        FileOutputStream(tempFile).use { outputStream ->
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream.flush()
+        }
+        if (tempFile.exists()) {
+            if (targetFile.exists()) {
+                targetFile.delete()
+            }
+            tempFile.renameTo(targetFile)
+        }
+    }
+
+    /**
+     * 将用户选中的原始图片从 URI 复制到内部存储，固定命名为 Username.png。
      * 如果目录不存在会自动创建，原有头像会被覆盖。
      */
-    private fun saveAvatarFromUri(context: Context, userName: String, uri: Uri) {
+    fun saveAvatarFromUri(context: Context, userName: String, uri: Uri) {
         val targetFile = getAvatarFile(context, userName)
-        // 确保目录存在
         targetFile.parentFile?.mkdirs()
 
         context.contentResolver.openInputStream(uri)?.use { inputStream ->
