@@ -101,9 +101,10 @@ fun CategoryScreen(
             description = i18n("category_error")
         )
     } else {
+        val context = LocalContext.current
+
         Scaffold(
             topBar = {
-                val context = LocalContext.current
                 val displayName = category.getLocalizedName(context)
 
                 TopAppBar(
@@ -182,11 +183,11 @@ fun CategoryScreen(
                             }),
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Text,
-                                capitalization = KeyboardCapitalization.Sentences
+                                capitalization = KeyboardCapitalization.None
                             ),
                             singleLine = true
                         )
-                        if (substanceModels.isEmpty() && isSearchEnabled && searchText.isNotEmpty()) {
+                        if (substanceModels.isEmpty() && searchText.trim().isNotEmpty()) {
                             Column(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -203,18 +204,18 @@ fun CategoryScreen(
 
                 LazyColumn(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .weight(1f)
+                        .fillMaxWidth()
                         .padding(horizontal = horizontalPadding, vertical = 10.dp)
                 ) {
-                    if (!isSearchEnabled || searchText.isEmpty()) {
-                        item {
-                            val context = LocalContext.current
+                    if (!isSearchEnabled || searchText.trim().isEmpty()) {
+                        item(key = "category_description") {
                             Text(
                                 text = category.getLocalizedDescription(context),
                                 textAlign = TextAlign.Left
                             )
                         }
-                        item {
+                        item(key = "description_divider") {
                             HorizontalDivider()
                         }
                     }

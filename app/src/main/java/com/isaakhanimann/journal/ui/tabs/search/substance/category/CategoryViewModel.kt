@@ -35,7 +35,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 
 @HiltViewModel(assistedFactory = CategoryViewModel.Factory::class)
 class CategoryViewModel @AssistedInject constructor(
@@ -49,21 +48,17 @@ class CategoryViewModel @AssistedInject constructor(
     val isSearchEnabledFlow = MutableStateFlow(false)
 
     fun toggleIsSearchEnabled() {
-        viewModelScope.launch {
-            val isEnabled = isSearchEnabledFlow.value.not()
-            isSearchEnabledFlow.emit(isEnabled)
-            if (!isEnabled) {
-                searchTextFlow.emit("")
-            }
+        val isEnabled = !isSearchEnabledFlow.value
+        isSearchEnabledFlow.value = isEnabled
+        if (!isEnabled) {
+            searchTextFlow.value = ""
         }
     }
 
     val searchTextFlow = MutableStateFlow("")
 
     fun search(newSearchText: String) {
-        viewModelScope.launch {
-            searchTextFlow.emit(newSearchText)
-        }
+        searchTextFlow.value = newSearchText
     }
 
     val substanceModelsFlow: StateFlow<List<SubstanceModel>> = searchTextFlow
@@ -84,12 +79,8 @@ class CategoryViewModel @AssistedInject constructor(
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = searchRepository.getSubstancesMatchingCategories(listOf(categoryName))
-                .map { it.toSubstanceModel() }
+            initialValue = emptyList()
         )
-
-    val substanceModels: List<SubstanceModel>
-        get() = substanceModelsFlow.value
 
     @AssistedFactory
     interface Factory {
