@@ -10,6 +10,11 @@ object AvatarCropMath {
         val maxOffsetY: Float
     )
 
+    data class EffectiveDimensions(
+        val width: Float,
+        val height: Float
+    )
+
     data class CropMatrixParams(
         val scaleInOutput: Float,
         val destCenterX: Float,
@@ -21,12 +26,12 @@ object AvatarCropMath {
         bitmapWidth: Int,
         bitmapHeight: Int,
         rotationDegrees: Int
-    ): Pair<Float, Float> {
+    ): EffectiveDimensions {
         val normalizedDegrees = ((rotationDegrees % 360) + 360) % 360
         val isSwapped = (normalizedDegrees == 90 || normalizedDegrees == 270)
         val effectiveWidth = if (isSwapped) bitmapHeight.toFloat() else bitmapWidth.toFloat()
         val effectiveHeight = if (isSwapped) bitmapWidth.toFloat() else bitmapHeight.toFloat()
-        return Pair(effectiveWidth, effectiveHeight)
+        return EffectiveDimensions(effectiveWidth, effectiveHeight)
     }
 
     fun calculateCropSize(
@@ -35,7 +40,9 @@ object AvatarCropMath {
         marginPx: Float = 64f
     ): Float {
         val minDim = min(containerWidth, containerHeight)
-        return max(100f, minDim - marginPx)
+        if (minDim <= 0f) return 0f
+        val desired = minDim - marginPx
+        return desired.coerceIn(min(100f, minDim), minDim)
     }
 
     fun calculateMinScale(

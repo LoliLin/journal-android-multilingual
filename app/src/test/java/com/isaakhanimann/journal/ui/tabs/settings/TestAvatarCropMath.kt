@@ -96,4 +96,42 @@ class TestAvatarCropMath {
         assertEquals(256f - 50f * expectedRatio, params.destCenterY, 0.001f)
         assertEquals(90, params.rotationDegrees)
     }
+
+    @Test
+    fun calculateCropSizeHandlesSmallContainersSafely() {
+        // Container smaller than margin (64px)
+        val tiny = AvatarCropMath.calculateCropSize(50f, 50f, marginPx = 64f)
+        assertEquals(50f, tiny, 0.001f)
+
+        // Zero or negative container
+        val zero = AvatarCropMath.calculateCropSize(0f, 100f)
+        assertEquals(0f, zero, 0.001f)
+
+        // Normal viewport (400 x 800) with 64px margin
+        val normal = AvatarCropMath.calculateCropSize(400f, 800f, marginPx = 64f)
+        assertEquals(336f, normal, 0.001f)
+    }
+
+    @Test
+    fun calculateMinScaleHandlesZeroOrNegativeInputs() {
+        assertEquals(1f, AvatarCropMath.calculateMinScale(0f, 500f, 400f), 0.001f)
+        assertEquals(1f, AvatarCropMath.calculateMinScale(500f, 0f, 400f), 0.001f)
+        assertEquals(1f, AvatarCropMath.calculateMinScale(500f, 500f, 0f), 0.001f)
+        assertEquals(1f, AvatarCropMath.calculateMinScale(-100f, 500f, 400f), 0.001f)
+    }
+
+    @Test
+    fun calculateOutputMatrixParamsHandlesZeroCropSize() {
+        val params = AvatarCropMath.calculateOutputMatrixParams(
+            cropSizePx = 0f,
+            outputSizePx = 512,
+            scale = 1f,
+            offsetX = 0f,
+            offsetY = 0f,
+            rotationDegrees = 0
+        )
+        assertEquals(1f, params.scaleInOutput, 0.001f)
+        assertEquals(256f, params.destCenterX, 0.001f)
+        assertEquals(256f, params.destCenterY, 0.001f)
+    }
 }

@@ -73,7 +73,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import coil.ImageLoader
+import coil.imageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.isaakhanimann.journal.localization.i18n
@@ -114,6 +114,7 @@ fun AvatarCropDialog(
         var offsetY by remember { mutableFloatStateOf(0f) }
         var cropSizePx by remember { mutableFloatStateOf(400f) }
         var isSaving by remember { mutableStateOf(false) }
+        val saveFailedMessage = i18n("crop_save_failed")
 
         val reselectLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.GetContent()
@@ -289,6 +290,7 @@ fun AvatarCropDialog(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .pointerInput(currentCropSize, minScale, maxScale, effectiveWidth, effectiveHeight, rotationDegrees) {
+                                    // Gesture rotation is intentionally ignored; discrete 90-degree rotation is provided via the toolbar.
                                     detectTransformGestures { centroid, pan, zoom, _ ->
                                         val oldScale = scale
                                         val newScale = (oldScale * zoom).coerceIn(minScale, maxScale)
@@ -384,7 +386,7 @@ fun AvatarCropDialog(
                     ) {
                         Icon(
                             imageVector = Icons.Default.ZoomOut,
-                            contentDescription = "Zoom out",
+                            contentDescription = i18n("crop_zoom_out"),
                             tint = Color.White.copy(alpha = 0.8f)
                         )
                     }
@@ -412,7 +414,7 @@ fun AvatarCropDialog(
                     ) {
                         Icon(
                             imageVector = Icons.Default.ZoomIn,
-                            contentDescription = "Zoom in",
+                            contentDescription = i18n("crop_zoom_in"),
                             tint = Color.White.copy(alpha = 0.8f)
                         )
                     }
@@ -440,11 +442,11 @@ fun AvatarCropDialog(
 
                     Button(
                         onClick = {
-                            if (isSaving || bitmap == null) return@Button
+                            val currentBm = bitmap ?: return@Button
+                            if (isSaving) return@Button
                             isSaving = true
                             coroutineScope.launch {
                                 try {
-                                    val currentBm = bitmap!!
                                     val cropped = cropBitmap(
                                         sourceBitmap = currentBm,
                                         rotationDegrees = rotationDegrees,
@@ -452,13 +454,13 @@ fun AvatarCropDialog(
                                         offsetX = offsetX,
                                         offsetY = offsetY,
                                         cropSizePx = cropSizePx,
-                                        outputSizePx = 512
+                                        outputSizePx = AvatarUtil.AVATAR_OUTPUT_SIZE
                                     )
                                     AvatarUtil.saveAvatarBitmap(context, userName, cropped)
                                     onAvatarCroppedAndSaved()
                                 } catch (e: Exception) {
                                     isSaving = false
-                                    Toast.makeText(context, e.message ?: "Save error", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, saveFailedMessage, Toast.LENGTH_SHORT).show()
                                 }
                             }
                         },
@@ -497,7 +499,7 @@ suspend fun cropBitmap(
     offsetX: Float,
     offsetY: Float,
     cropSizePx: Float,
-    outputSizePx: Int = 512
+    outputSizePx: Int = AvatarUtil.AVATAR_OUTPUT_SIZE
 ): Bitmap = withContext(Dispatchers.Default) {
     val params = AvatarCropMath.calculateOutputMatrixParams(
         cropSizePx = cropSizePx,
@@ -526,11 +528,11 @@ suspend fun cropBitmap(
 }
 
 /**
- * 健壮地从 Uri 解码出可编辑的 Bitmap，自动处理 EXIF 旋转和高分辨率降采样。
+ * 健壮地从 Uri 解码出位图，自动处理 EXIF 旋转和高分辨率降采样。
  */
 private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = withContext(Dispatchers.IO) {
     try {
-        val imageLoader = ImageLoader(context)
+        val imageLoader = context.imageLoader
         val request = ImageRequest.Builder(context)
             .data(uri)
             .allowHardware(false)
@@ -540,7 +542,7 @@ private suspend fun loadBitmapSafely(context: Context, uri: Uri): Bitmap? = with
         if (result is SuccessResult) {
             val drawable = result.drawable
             if (drawable is BitmapDrawable && drawable.bitmap != null) {
-                return@withContext drawable.bitmap.copy(Bitmap.Config.ARGB_8888, true) ?: drawable.bitmap
+                return@withContext drawable.bitmap
             }
             val w = drawable.intrinsicWidth.coerceAtLeast(1)
             val h = drawable.intrinsicHeight.coerceAtLeast(1)

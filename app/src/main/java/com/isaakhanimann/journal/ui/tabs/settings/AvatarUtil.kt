@@ -12,6 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import java.io.File
 import java.io.FileOutputStream
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 object AvatarUtil {
 
@@ -20,6 +22,8 @@ object AvatarUtil {
 
     // 文件后缀（统一使用 png）
     private const val EXTENSION = ".png"
+
+    const val AVATAR_OUTPUT_SIZE = 512
 
     // --------------- 公开 API ---------------
 
@@ -100,15 +104,31 @@ object AvatarUtil {
             parent.mkdirs()
         }
         val tempFile = File(parent ?: context.filesDir, "${targetFile.name}.tmp")
-        FileOutputStream(tempFile).use { outputStream ->
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-            outputStream.flush()
-        }
-        if (tempFile.exists()) {
-            if (targetFile.exists()) {
-                targetFile.delete()
+        try {
+            FileOutputStream(tempFile).use { outputStream ->
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                outputStream.flush()
             }
-            tempFile.renameTo(targetFile)
+            if (tempFile.exists()) {
+                try {
+                    Files.move(
+                        tempFile.toPath(),
+                        targetFile.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.ATOMIC_MOVE
+                    )
+                } catch (_: Exception) {
+                    Files.move(
+                        tempFile.toPath(),
+                        targetFile.toPath(),
+                        StandardCopyOption.REPLACE_EXISTING
+                    )
+                }
+            }
+        } finally {
+            if (tempFile.exists()) {
+                tempFile.delete()
+            }
         }
     }
 
@@ -116,7 +136,7 @@ object AvatarUtil {
      * 将用户选中的原始图片从 URI 复制到内部存储，固定命名为 Username.png。
      * 如果目录不存在会自动创建，原有头像会被覆盖。
      */
-    fun saveAvatarFromUri(context: Context, userName: String, uri: Uri) {
+    private fun saveAvatarFromUri(context: Context, userName: String, uri: Uri) {
         val targetFile = getAvatarFile(context, userName)
         targetFile.parentFile?.mkdirs()
 
