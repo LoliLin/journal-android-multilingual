@@ -64,12 +64,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.ChasingTheDragonText
@@ -138,9 +140,38 @@ fun SubstanceScreen(
     substanceRepo: SubstanceRepository
 ) {
     val substance = substanceWithCategories.substance
+    val currentLang = I18n.getPreferredLanguageKey() ?: I18n.getCurrentLanguageKey()
+    val isNonEnUs = !currentLang.equals("en_us", ignoreCase = true)
+    val showBilingual = isNonEnUs && (substance.displayName != substance.name)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(substance.displayName) })
+            TopAppBar(
+                title = {
+                    if (showBilingual) {
+                        Column {
+                            Text(
+                                text = substance.displayName,
+                                style = MaterialTheme.typography.titleLarge,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = substance.name,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    } else {
+                        Text(
+                            text = substance.displayName,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            )
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
