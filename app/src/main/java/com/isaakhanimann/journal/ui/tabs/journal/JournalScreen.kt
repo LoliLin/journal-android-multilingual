@@ -61,6 +61,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -162,7 +163,7 @@ fun JournalScreen(
     val latestExperienceId = experiences
         .firstOrNull { it.ingestionsWithCompanions.isNotEmpty() }
         ?.experience?.id
-    var isSatelliteExpanded by remember { mutableStateOf(false) }
+    var isSatelliteExpanded by rememberSaveable { mutableStateOf(false) }
 
     BackHandler(enabled = isSatelliteExpanded) {
         isSatelliteExpanded = false
@@ -242,7 +243,11 @@ fun JournalScreen(
                                 ) {
                                     Icon(
                                         Icons.Default.Close,
-                                        contentDescription = i18n("common_close")
+                                        contentDescription = if (searchText.isNotEmpty()) {
+                                            i18n("common_close")
+                                        } else {
+                                            i18n("journal_search_off")
+                                        }
                                     )
                                 }
                             },
