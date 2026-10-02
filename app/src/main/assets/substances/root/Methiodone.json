@@ -1,11 +1,164 @@
 {
   "name": "Methiodone",
   "url": "https://tripsit.me/factsheets/?name=ic-26&p=substance",
+  "commonNames": [
+    "Methiodone",
+    "WIN-1161-3",
+    "WIN 1161-3",
+    "IC-26",
+    "美沙酮砜",
+    "美沙酮碸",
+    "甲碘酮",
+    "Ethyl 1,1-diphenyl-3-dimethylaminobutyl sulfone"
+  ],
   "categories": [
     "opioid",
     "habit-forming",
-    "depressant"
+    "depressant",
+    "research-chemical",
+    "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "addictionPotential": "highly addictive with a high potential for abuse",
+  "toxicities": [
+    "moderate to high toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+  ],
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "crossTolerances": ["opioid"],
+  "interactions": {
+    "dangerous": [
+      "SNRIs",
+      "Alcohol",
+      "benzodiazepine",
+      "Dextromethorphan",
+      "GHB",
+      "GBL",
+      "Ketamine",
+      "Methoxetamine",
+      "Tramadol",
+      "Grapefruit",
+      "maoi",
+      "Serotonin releasers",
+      "ssri",
+      "5-Hydroxytryptophan"
+    ],
+    "unsafe": [],
+    "uncertain": ["maoi", "Nitrous oxide", "PCP", "stimulant"]
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 30,
+        "strongMin": 80,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 120,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 6,
+          "max": 12,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 15,
+        "commonMin": 40,
+        "strongMin": 80,
+        "heavyMin": 120
+      },
+      "duration": {
+        "onset": {
+          "min": 10,
+          "max": 30,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 10,
+          "units": "hours"
+        },
+        "total": {
+          "min": 6,
+          "max": 16,
+          "units": "hours"
+        }
+      }
+    },
+    {
+      "name": "rectal",
+      "dose": {
+        "units": "mg",
+        "lightMin": 8,
+        "commonMin": 25,
+        "strongMin": 70,
+        "heavyMin": 120
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 45,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 5,
+          "max": 10,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 20,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "summary": "A synthetic opioid analgesic and structural analogue of methadone, in which the ketone group is replaced by an ethyl sulfone group. It acts as a μ-opioid receptor agonist with potency approximately 0.5–1.0x that of methadone.",
+  "effectsSummary": "Effects develop slowly and produce a warm, sedation-heavy maintenance-like opioid feeling rather than acute euphoria.",
+  "dosageRemark": "The powder can be caustic and irritating to mucous membranes; oral ingestion via capsule or dilute solution is strongly recommended over nasal administration. Sensitivity varies significantly between individuals, so always begin with an allergy test and low dose.",
+  "generalRisks": "As a potent opioid depressant, high doses carry severe risks of fatal respiratory depression. Accumulates in the body with consecutive daily use; wait at least 12 hours before re-dosing. Potential risk of QT interval prolongation similar to methadone.",
+  "saferUse": [
+    "Never combine with alcohol, benzodiazepines, GHB, or other CNS depressants due to fatal respiratory depression risk.",
+    "Potent opioids carry extreme addiction and physical dependence risks; avoid frequent or continuous daily use.",
+    "Has a long elimination half-life and accumulates in the body; wait at least 12 hours between doses.",
+    "Keep naloxone accessible when researching or using novel opioids."
+  ],
+  "metabolism": "Human metabolism has not yet been formally established in modern clinical trials. As a sulfone bioisostere of methadone, hepatic clearance and CYP enzymes are presumed to be involved. Consecutive daily dosing leads to accumulation due to a prolonged half-life."
 }

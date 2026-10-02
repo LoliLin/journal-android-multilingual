@@ -1,0 +1,26 @@
+{
+  "localizedName": "Methiodone",
+  "summary": "A synthetic opioid analgesic and structural analogue of methadone, in which the ketone group is replaced by an ethyl sulfone group. It acts as a μ-opioid receptor agonist with potency approximately 0.5–1.0x that of methadone.",
+  "effectsSummary": "Effects develop slowly and produce a warm, sedation-heavy maintenance-like opioid feeling rather than acute euphoria.",
+  "dosageRemark": "The powder can be caustic and irritating to mucous membranes; oral ingestion via capsule or dilute solution is strongly recommended over nasal administration. Sensitivity varies significantly between individuals, so always begin with an allergy test and low dose.",
+  "generalRisks": "As a potent opioid depressant, high doses carry severe risks of fatal respiratory depression. Accumulates in the body with consecutive daily use; wait at least 12 hours before re-dosing. Potential risk of QT interval prolongation similar to methadone.",
+  "saferUse": [
+    "Never combine with alcohol, benzodiazepines, GHB, or other CNS depressants due to fatal respiratory depression risk.",
+    "Potent opioids carry extreme addiction and physical dependence risks; avoid frequent or continuous daily use.",
+    "Has a long elimination half-life and accumulates in the body; wait at least 12 hours between doses.",
+    "Keep naloxone accessible when researching or using novel opioids."
+  ],
+  "tolerance": {
+    "full": "develops with prolonged and repeated use",
+    "half": "3 - 7 days",
+    "zero": "1 - 2 weeks",
+    "halfToleranceInHours": 120,
+    "zeroToleranceInHours": 252
+  },
+  "addictionPotential": "highly addictive with a high potential for abuse",
+  "toxicities": [
+    "moderate to high toxicity",
+    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+  ],
+  "metabolism": "Human metabolism has not yet been formally established in modern clinical trials. As a sulfone bioisostere of methadone, hepatic clearance and CYP enzymes are presumed to be involved. Consecutive daily dosing leads to accumulation due to a prolonged half-life."
+}
