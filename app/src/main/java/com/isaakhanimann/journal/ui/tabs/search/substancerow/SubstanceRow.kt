@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -65,7 +66,8 @@ fun SubstanceRow(substanceModel: SubstanceModel, onTap: (substanceName: String) 
     ) {
         Text(
             text = substanceModel.displayName,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.SemiBold
         )
         if (substanceModel.commonNames.isNotEmpty()) {
             val commaSeparatedNames = substanceModel.commonNames.joinToString(separator = ", ")

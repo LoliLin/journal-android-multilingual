@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ElevatedCard
@@ -25,24 +26,32 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
 
 @Composable
 fun SectionWithTitle(title: String, content: @Composable () -> Unit) {
-    ElevatedCard(
-        modifier = Modifier.padding(
-            horizontal = horizontalPadding,
-            vertical = verticalPaddingCards
-        ).fillMaxWidth()
+    Column(
+        modifier = Modifier
+            .padding(
+                horizontal = horizontalPadding,
+                vertical = verticalPaddingCards
+            )
+            .fillMaxWidth()
     ) {
-        Text(
-            color = MaterialTheme.colorScheme.onSurface,
-            text = title,
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 8.dp)
-        )
-        content()
+        if (title.isNotBlank()) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 4.dp, top = 6.dp, bottom = 4.dp)
+            )
+        }
+        ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+            content()
+        }
     }
 }

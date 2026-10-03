@@ -27,11 +27,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
-import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CardWithTitle(
@@ -40,16 +40,24 @@ fun CardWithTitle(
     innerPaddingHorizontal: Dp = 10.dp,
     content: @Composable (ColumnScope.() -> Unit)
 ) {
-    ElevatedCard(modifier = modifier.padding(vertical = 5.dp)) {
-        Column(modifier = Modifier.padding(bottom = 5.dp)) {
+    Column(modifier = modifier.padding(vertical = 4.dp)) {
+        if (title.isNotBlank()) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(vertical = 3.dp, horizontal = horizontalPadding)
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(start = 4.dp, top = 6.dp, bottom = 4.dp)
             )
+        }
+        ElevatedCard(modifier = Modifier.fillMaxWidth()) {
             Column(
                 Modifier
-                    .padding(horizontal = innerPaddingHorizontal)
+                    .fillMaxWidth()
+                    .padding(
+                        horizontal = innerPaddingHorizontal,
+                        vertical = if (innerPaddingHorizontal > 0.dp) 6.dp else 0.dp
+                    )
             ) {
                 content()
             }

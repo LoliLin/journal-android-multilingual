@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -105,7 +106,8 @@ fun ExperienceRow(
             ) {
                 Text(
                     text = experience.title,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold
                 )
                 if (experience.isFavorite) {
                     Icon(
@@ -125,15 +127,16 @@ fun ExperienceRow(
                         .joinToString(separator = ", ")
                 }
                 if (substanceNames.isNotEmpty()) {
-                    Text(text = substanceNames)
+                    Text(text = substanceNames, style = MaterialTheme.typography.bodyMedium)
                 } else {
                     Text(
-                        text = i18n("no_substance_yet")
+                        text = i18n("no_substance_yet"),
+                        style = MaterialTheme.typography.bodyMedium
                     )
                 }
                 val rating = experienceWithIngestionsCompanionsAndRatings.rating?.sign
                 if (rating != null) {
-                    Text(text = rating)
+                    Text(text = rating, style = MaterialTheme.typography.bodyMedium)
                 }
             }
             val consumerNames = remember(ingestions, ownerUserName) {
@@ -153,7 +156,7 @@ fun ExperienceRow(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                val timeStyle = MaterialTheme.typography.labelMedium
+                val timeStyle = MaterialTheme.typography.labelSmall
                 if (isTimeRelativeToNow) {
                     RelativeDateTextNew(
                         dateTime = experienceWithIngestionsCompanionsAndRatings.sortInstant,
@@ -170,7 +173,7 @@ fun ExperienceRow(
                 if (location != null) {
                     Text(
                         text = location.name,
-                        style = MaterialTheme.typography.labelMedium,
+                        style = MaterialTheme.typography.labelSmall,
                         textAlign = TextAlign.End
                     )
                 }
