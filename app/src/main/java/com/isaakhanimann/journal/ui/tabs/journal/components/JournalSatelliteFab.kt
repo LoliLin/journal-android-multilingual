@@ -81,6 +81,7 @@ private val SATELLITE_CONTAINER_SIZE = 216.dp
 private val SATELLITE_RADIUS = 100.dp
 private val SATELLITE_ITEM_WIDTH = 56.dp
 private val SATELLITE_ITEM_HEIGHT = 64.dp
+private val SATELLITE_ICON_SIZE = 44.dp
 
 private data class SatelliteActionItem(
     val id: String,
@@ -114,8 +115,8 @@ fun JournalSatelliteFab(
     val animProgress by animateFloatAsState(
         targetValue = if (isExpanded) 1f else 0f,
         animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMediumLow
+            dampingRatio = if (isExpanded) Spring.DampingRatioLowBouncy else Spring.DampingRatioNoBouncy,
+            stiffness = if (isExpanded) Spring.StiffnessMediumLow else Spring.StiffnessMedium
         ),
         label = "satellite_anim_progress"
     )
@@ -123,8 +124,8 @@ fun JournalSatelliteFab(
     val fabRotation by animateFloatAsState(
         targetValue = if (isExpanded) 45f else 0f,
         animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMediumLow
+            dampingRatio = if (isExpanded) Spring.DampingRatioLowBouncy else Spring.DampingRatioNoBouncy,
+            stiffness = if (isExpanded) Spring.StiffnessMediumLow else Spring.StiffnessMedium
         ),
         label = "fab_rotation"
     )
@@ -234,14 +235,14 @@ fun JournalSatelliteFab(
         )
     }
 
-    val isMenuVisible = isExpanded || animProgress > 0.01f
+    val isMenuVisible = isExpanded || animProgress > 0.005f
     val containerSize = if (isMenuVisible) SATELLITE_CONTAINER_SIZE else FAB_SIZE
 
-    // Center coordinates of the FAB anchored at Alignment.BottomEnd inside the container
+    // Center coordinates of the FAB inside the container (anchored at Alignment.BottomEnd)
     val fabCenterXPx = with(density) { (SATELLITE_CONTAINER_SIZE - FAB_SIZE / 2).toPx() }
     val fabCenterYPx = with(density) { (SATELLITE_CONTAINER_SIZE - FAB_SIZE / 2).toPx() }
     val halfItemWidthPx = with(density) { (SATELLITE_ITEM_WIDTH / 2).toPx() }
-    val halfItemHeightPx = with(density) { (SATELLITE_ITEM_HEIGHT / 2).toPx() }
+    val itemIconCenterYPx = with(density) { (SATELLITE_ICON_SIZE / 2).toPx() }
     val radiusPx = with(density) { SATELLITE_RADIUS.toPx() }
 
     Box(
@@ -264,26 +265,28 @@ fun JournalSatelliteFab(
     ) {
         if (isMenuVisible) {
             val totalItems = satelliteItems.size
-            val sweepAngleDeg = 90f
-            val angleStepDeg = if (totalItems > 1) sweepAngleDeg / (totalItems - 1) else 0f
+            val sweepStartAngleDeg = 90f
+            val sweepEndAngleDeg = 15f
+            val angleStepDeg = if (totalItems > 1) (sweepStartAngleDeg - sweepEndAngleDeg) / (totalItems - 1) else 0f
 
             satelliteItems.forEachIndexed { index, item ->
-                val angleDeg = 90f - index * angleStepDeg
+                val angleDeg = sweepStartAngleDeg - index * angleStepDeg
                 val angleRad = angleDeg * (PI.toFloat() / 180f)
                 val dxPx = -radiusPx * cos(angleRad)
                 val dyPx = -radiusPx * sin(angleRad)
 
                 Box(
                     modifier = Modifier
+                        .align(Alignment.TopStart)
                         .offset {
                             IntOffset(
                                 x = (fabCenterXPx + dxPx * animProgress - halfItemWidthPx).roundToInt(),
-                                y = (fabCenterYPx + dyPx * animProgress - halfItemHeightPx).roundToInt()
+                                y = (fabCenterYPx + dyPx * animProgress - itemIconCenterYPx).roundToInt()
                             )
                         }
                         .graphicsLayer(
-                            scaleX = animProgress,
-                            scaleY = animProgress,
+                            scaleX = animProgress.coerceAtLeast(0f),
+                            scaleY = animProgress.coerceAtLeast(0f),
                             alpha = animProgress.coerceIn(0f, 1f)
                         )
                 ) {
@@ -293,11 +296,10 @@ fun JournalSatelliteFab(
                             .width(SATELLITE_ITEM_WIDTH)
                             .alpha(if (item.isEnabled) 1f else 0.38f)
                             .clickable(
-                                enabled = item.isEnabled,
+                                enabled = item.isEnabled && isExpanded,
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = null,
                                 onClick = {
-                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                                     item.onClick()
                                 }
                             )
@@ -309,6 +311,8 @@ fun JournalSatelliteFab(
                             shape = CircleShape,
                             color = if (item.isActive) {
                                 MaterialTheme.colorScheme.primary
+                            } else if (!item.isEnabled) {
+                                MaterialTheme.colorScheme.surfaceContainer
                             } else {
                                 MaterialTheme.colorScheme.surfaceContainerHigh
                             },
@@ -318,7 +322,7 @@ fun JournalSatelliteFab(
                                 MaterialTheme.colorScheme.onSurface
                             },
                             shadowElevation = 4.dp,
-                            modifier = Modifier.size(44.dp)
+                            modifier = Modifier.size(SATELLITE_ICON_SIZE)
                         ) {
                             Box(
                                 contentAlignment = Alignment.Center,
@@ -357,6 +361,7 @@ fun JournalSatelliteFab(
             contentColor = fabContentColor,
             shadowElevation = 6.dp,
             modifier = Modifier
+                .align(Alignment.BottomEnd)
                 .size(FAB_SIZE)
                 .combinedClickable(
                     onClickLabel = if (isExpanded) i18n("common_close") else i18n("journal_ingestion"),

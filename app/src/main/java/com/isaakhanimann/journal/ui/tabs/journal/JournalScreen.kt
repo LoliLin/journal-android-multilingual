@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.journal
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
@@ -355,13 +356,13 @@ fun JournalScreen(
             }
             AnimatedVisibility(
                 visible = isSatelliteExpanded,
-                enter = fadeIn(),
-                exit = fadeOut()
+                enter = fadeIn(animationSpec = tween(durationMillis = 180)),
+                exit = fadeOut(animationSpec = tween(durationMillis = 150))
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.Black.copy(alpha = 0.32f))
+                        .background(Color.Black.copy(alpha = 0.24f))
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null
