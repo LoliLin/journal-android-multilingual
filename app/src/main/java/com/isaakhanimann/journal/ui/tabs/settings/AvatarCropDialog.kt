@@ -64,10 +64,9 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.graphics.drawscope.withTransform
+import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -285,7 +284,9 @@ fun AvatarCropDialog(
                             offsetY = offsetY.coerceIn(-bounds.maxOffsetY, bounds.maxOffsetY)
                         }
 
-                        val imageBitmap = remember(currentBitmap) { currentBitmap.asImageBitmap() }
+                        val previewPaint = remember {
+                            Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG or Paint.DITHER_FLAG)
+                        }
 
                         val currentMinScale by rememberUpdatedState(minScale)
                         val currentMaxScale by rememberUpdatedState(maxScale)
@@ -321,15 +322,16 @@ fun AvatarCropDialog(
                                     }
                                 }
                         ) {
-                            // 1. Draw transformed image
-                            withTransform({
-                                translate(cropCenter.x + offsetX, cropCenter.y + offsetY)
-                                rotate(rotationDegrees.toFloat())
-                                scale(scale, scale)
-                                translate(-currentBitmap.width / 2f, -currentBitmap.height / 2f)
-                            }) {
-                                drawImage(imageBitmap, Offset.Zero)
-                            }
+                            // 1. Draw transformed image using identical matrix transformation as cropBitmap
+                            val matrix = buildCropMatrix(
+                                bitmapWidth = currentBitmap.width,
+                                bitmapHeight = currentBitmap.height,
+                                rotationDegrees = rotationDegrees,
+                                scale = scale,
+                                centerX = cropCenter.x + offsetX,
+                                centerY = cropCenter.y + offsetY
+                            )
+                            drawContext.canvas.nativeCanvas.drawBitmap(currentBitmap, matrix, previewPaint)
 
                             // 2. Dim background outside circular crop area (EvenOdd mask)
                             val overlayPath = Path().apply {
@@ -500,6 +502,29 @@ fun AvatarCropDialog(
 }
 
 /**
+ * Constructs an [android.graphics.Matrix] centering the source bitmap at origin,
+ * applying rotation and uniform scale, then translating to the target center.
+ *
+ * Used identically for both the interactive UI preview canvas and [cropBitmap] output,
+ * ensuring 100% visual consistency without coordinate or pivot discrepancies.
+ */
+internal fun buildCropMatrix(
+    bitmapWidth: Int,
+    bitmapHeight: Int,
+    rotationDegrees: Int,
+    scale: Float,
+    centerX: Float,
+    centerY: Float
+): Matrix {
+    val matrix = Matrix()
+    matrix.postTranslate(-bitmapWidth / 2f, -bitmapHeight / 2f)
+    matrix.postRotate(rotationDegrees.toFloat())
+    matrix.postScale(scale, scale)
+    matrix.postTranslate(centerX, centerY)
+    return matrix
+}
+
+/**
  * Produces a square [outputSizePx]x[outputSizePx] bitmap whose inscribed circle matches the preview.
  */
 suspend fun cropBitmap(
@@ -521,17 +546,14 @@ suspend fun cropBitmap(
     )
     val outputBitmap = Bitmap.createBitmap(outputSizePx, outputSizePx, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(outputBitmap)
-    val matrix = Matrix()
-
-    // 1. Center the source bitmap at origin
-    matrix.postTranslate(-sourceBitmap.width / 2f, -sourceBitmap.height / 2f)
-    // 2. Rotate around origin
-    matrix.postRotate(params.rotationDegrees.toFloat())
-    // 3. Scale to output canvas ratio
-    matrix.postScale(params.scaleInOutput, params.scaleInOutput)
-    // 4. Translate to destination canvas center with offset
-    matrix.postTranslate(params.destCenterX, params.destCenterY)
-
+    val matrix = buildCropMatrix(
+        bitmapWidth = sourceBitmap.width,
+        bitmapHeight = sourceBitmap.height,
+        rotationDegrees = params.rotationDegrees,
+        scale = params.scaleInOutput,
+        centerX = params.destCenterX,
+        centerY = params.destCenterY
+    )
     val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG or Paint.DITHER_FLAG)
     canvas.drawBitmap(sourceBitmap, matrix, paint)
     outputBitmap

@@ -27,16 +27,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
@@ -50,7 +45,6 @@ import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -62,10 +56,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
@@ -78,14 +68,12 @@ import kotlin.math.sin
 
 private val FAB_SIZE = 56.dp
 private val SATELLITE_CONTAINER_SIZE = 216.dp
-private val SATELLITE_RADIUS = 100.dp
-private val SATELLITE_ITEM_WIDTH = 56.dp
-private val SATELLITE_ITEM_HEIGHT = 64.dp
+private val SATELLITE_RADIUS = 135.dp
+private val SATELLITE_ICON_SIZE = 44.dp
 
 private data class SatelliteActionItem(
     val id: String,
     val icon: ImageVector,
-    val label: String,
     val contentDescription: String,
     val isActive: Boolean = false,
     val isEnabled: Boolean = true,
@@ -114,8 +102,8 @@ fun JournalSatelliteFab(
     val animProgress by animateFloatAsState(
         targetValue = if (isExpanded) 1f else 0f,
         animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMediumLow
+            dampingRatio = if (isExpanded) Spring.DampingRatioLowBouncy else Spring.DampingRatioNoBouncy,
+            stiffness = if (isExpanded) Spring.StiffnessMediumLow else Spring.StiffnessMedium
         ),
         label = "satellite_anim_progress"
     )
@@ -123,8 +111,8 @@ fun JournalSatelliteFab(
     val fabRotation by animateFloatAsState(
         targetValue = if (isExpanded) 45f else 0f,
         animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMediumLow
+            dampingRatio = if (isExpanded) Spring.DampingRatioLowBouncy else Spring.DampingRatioNoBouncy,
+            stiffness = if (isExpanded) Spring.StiffnessMediumLow else Spring.StiffnessMedium
         ),
         label = "fab_rotation"
     )
@@ -147,32 +135,24 @@ fun JournalSatelliteFab(
         label = "fab_content_color"
     )
 
-    val quickNoteLabel = i18nOrDefault("quick_note_title", "Quick note")
-    val quickNoteDesc = i18n("quick_note_title")
-    val timeLabel = i18nOrDefault("journal_satellite_time", "By time")
-    val regularTimeDesc = i18n("journal_regular_time")
-    val relativeTimeDesc = i18n("journal_time_relative_to_now")
-    val searchLabel = i18nOrDefault("common_search", "Search")
-    val searchOffDesc = i18n("journal_search_off")
-    val searchDesc = i18n("common_search")
-    val favoriteLabel = i18nOrDefault("journal_satellite_favorites", "Favorites")
-    val favoriteDesc = i18n("journal_is_favorite")
-    val notFavoriteDesc = i18n("journal_is_not_favorite")
+    val quickNoteDesc = i18nOrDefault("quick_note_title", "Quick note")
+    val regularTimeDesc = i18nOrDefault("journal_regular_time", "Regular time")
+    val relativeTimeDesc = i18nOrDefault("journal_time_relative_to_now", "Time relative to now")
+    val searchOffDesc = i18nOrDefault("journal_search_off", "Turn off search")
+    val searchDesc = i18nOrDefault("common_search", "Search")
+    val favoriteDesc = i18nOrDefault("journal_is_favorite", "Remove favorite filter")
+    val notFavoriteDesc = i18nOrDefault("journal_is_not_favorite", "Show only favorites")
 
     val satelliteItems = remember(
         isTimeRelativeToNow,
         isFavoriteEnabled,
         isSearchEnabled,
         latestExperienceId,
-        quickNoteLabel,
         quickNoteDesc,
-        timeLabel,
         regularTimeDesc,
         relativeTimeDesc,
-        searchLabel,
         searchOffDesc,
         searchDesc,
-        favoriteLabel,
         favoriteDesc,
         notFavoriteDesc
     ) {
@@ -180,7 +160,6 @@ fun JournalSatelliteFab(
             SatelliteActionItem(
                 id = "quick_note",
                 icon = Icons.Outlined.EditNote,
-                label = quickNoteLabel,
                 contentDescription = quickNoteDesc,
                 isActive = false,
                 isEnabled = latestExperienceId != null,
@@ -194,12 +173,7 @@ fun JournalSatelliteFab(
             SatelliteActionItem(
                 id = "time",
                 icon = if (isTimeRelativeToNow) Icons.Filled.Timer else Icons.Outlined.Timer,
-                label = timeLabel,
-                contentDescription = if (isTimeRelativeToNow) {
-                    regularTimeDesc
-                } else {
-                    relativeTimeDesc
-                },
+                contentDescription = if (isTimeRelativeToNow) regularTimeDesc else relativeTimeDesc,
                 isActive = isTimeRelativeToNow,
                 isEnabled = true,
                 onClick = {
@@ -210,7 +184,6 @@ fun JournalSatelliteFab(
             SatelliteActionItem(
                 id = "search",
                 icon = if (isSearchEnabled) Icons.Outlined.SearchOff else Icons.Filled.Search,
-                label = searchLabel,
                 contentDescription = if (isSearchEnabled) searchOffDesc else searchDesc,
                 isActive = isSearchEnabled,
                 isEnabled = true,
@@ -222,7 +195,6 @@ fun JournalSatelliteFab(
             SatelliteActionItem(
                 id = "favorite",
                 icon = if (isFavoriteEnabled) Icons.Filled.Star else Icons.Outlined.StarOutline,
-                label = favoriteLabel,
                 contentDescription = if (isFavoriteEnabled) favoriteDesc else notFavoriteDesc,
                 isActive = isFavoriteEnabled,
                 isEnabled = true,
@@ -234,116 +206,79 @@ fun JournalSatelliteFab(
         )
     }
 
-    val isMenuVisible = isExpanded || animProgress > 0.01f
+    val isMenuVisible = isExpanded || animProgress > 0.005f
     val containerSize = if (isMenuVisible) SATELLITE_CONTAINER_SIZE else FAB_SIZE
 
-    // Center coordinates of the FAB anchored at Alignment.BottomEnd inside the container
+    // Center coordinates of the FAB inside the container (anchored at Alignment.BottomEnd)
     val fabCenterXPx = with(density) { (SATELLITE_CONTAINER_SIZE - FAB_SIZE / 2).toPx() }
     val fabCenterYPx = with(density) { (SATELLITE_CONTAINER_SIZE - FAB_SIZE / 2).toPx() }
-    val halfItemWidthPx = with(density) { (SATELLITE_ITEM_WIDTH / 2).toPx() }
-    val halfItemHeightPx = with(density) { (SATELLITE_ITEM_HEIGHT / 2).toPx() }
+    val halfIconSizePx = with(density) { (SATELLITE_ICON_SIZE / 2).toPx() }
     val radiusPx = with(density) { SATELLITE_RADIUS.toPx() }
 
     Box(
         modifier = modifier
             .padding(bottom = bottomBarOverlayDp())
-            .size(containerSize)
-            .then(
-                if (isMenuVisible) {
-                    Modifier.clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null
-                    ) {
-                        onExpandedChange(false)
-                    }
-                } else {
-                    Modifier
-                }
-            ),
+            .size(containerSize),
         contentAlignment = Alignment.BottomEnd
     ) {
         if (isMenuVisible) {
             val totalItems = satelliteItems.size
-            val sweepAngleDeg = 90f
-            val angleStepDeg = if (totalItems > 1) sweepAngleDeg / (totalItems - 1) else 0f
+            val sweepStartAngleDeg = 90f
+            val sweepEndAngleDeg = 0f
+            val angleStepDeg = if (totalItems > 1) (sweepStartAngleDeg - sweepEndAngleDeg) / (totalItems - 1) else 0f
 
             satelliteItems.forEachIndexed { index, item ->
-                val angleDeg = 90f - index * angleStepDeg
+                val angleDeg = sweepStartAngleDeg - index * angleStepDeg
                 val angleRad = angleDeg * (PI.toFloat() / 180f)
                 val dxPx = -radiusPx * cos(angleRad)
                 val dyPx = -radiusPx * sin(angleRad)
 
                 Box(
                     modifier = Modifier
+                        .align(Alignment.TopStart)
                         .offset {
                             IntOffset(
-                                x = (fabCenterXPx + dxPx * animProgress - halfItemWidthPx).roundToInt(),
-                                y = (fabCenterYPx + dyPx * animProgress - halfItemHeightPx).roundToInt()
+                                x = (fabCenterXPx + dxPx * animProgress - halfIconSizePx).roundToInt(),
+                                y = (fabCenterYPx + dyPx * animProgress - halfIconSizePx).roundToInt()
                             )
                         }
                         .graphicsLayer(
-                            scaleX = animProgress,
-                            scaleY = animProgress,
+                            scaleX = animProgress.coerceAtLeast(0f),
+                            scaleY = animProgress.coerceAtLeast(0f),
                             alpha = animProgress.coerceIn(0f, 1f)
                         )
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
+                    Surface(
+                        onClick = { item.onClick() },
+                        enabled = item.isEnabled && isExpanded,
+                        shape = CircleShape,
+                        color = if (item.isActive) {
+                            MaterialTheme.colorScheme.primary
+                        } else if (!item.isEnabled) {
+                            MaterialTheme.colorScheme.surfaceContainer
+                        } else {
+                            MaterialTheme.colorScheme.surfaceContainerHigh
+                        },
+                        contentColor = if (item.isActive) {
+                            MaterialTheme.colorScheme.onPrimary
+                        } else if (!item.isEnabled) {
+                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                        } else {
+                            MaterialTheme.colorScheme.onSurface
+                        },
+                        shadowElevation = if (item.isEnabled) 4.dp else 1.dp,
                         modifier = Modifier
-                            .width(SATELLITE_ITEM_WIDTH)
+                            .size(SATELLITE_ICON_SIZE)
                             .alpha(if (item.isEnabled) 1f else 0.38f)
-                            .clickable(
-                                enabled = item.isEnabled,
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null,
-                                onClick = {
-                                    hapticFeedback.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    item.onClick()
-                                }
-                            )
-                            .semantics(mergeDescendants = true) {
-                                role = Role.Button
-                            }
                     ) {
-                        Surface(
-                            shape = CircleShape,
-                            color = if (item.isActive) {
-                                MaterialTheme.colorScheme.primary
-                            } else {
-                                MaterialTheme.colorScheme.surfaceContainerHigh
-                            },
-                            contentColor = if (item.isActive) {
-                                MaterialTheme.colorScheme.onPrimary
-                            } else {
-                                MaterialTheme.colorScheme.onSurface
-                            },
-                            shadowElevation = 4.dp,
-                            modifier = Modifier.size(44.dp)
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxSize()
                         ) {
-                            Box(
-                                contentAlignment = Alignment.Center,
-                                modifier = Modifier.fillMaxSize()
-                            ) {
-                                Icon(
-                                    imageVector = item.icon,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(22.dp)
-                                )
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(2.dp))
-                        Surface(
-                            shape = RoundedCornerShape(4.dp),
-                            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.92f),
-                            shadowElevation = 1.dp
-                        ) {
-                            Text(
-                                text = item.label,
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurface,
-                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp),
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
+                            Icon(
+                                imageVector = item.icon,
+                                contentDescription = item.contentDescription,
+                                modifier = Modifier.size(22.dp)
                             )
                         }
                     }
@@ -357,6 +292,7 @@ fun JournalSatelliteFab(
             contentColor = fabContentColor,
             shadowElevation = 6.dp,
             modifier = Modifier
+                .align(Alignment.BottomEnd)
                 .size(FAB_SIZE)
                 .combinedClickable(
                     onClickLabel = if (isExpanded) i18n("common_close") else i18n("journal_ingestion"),

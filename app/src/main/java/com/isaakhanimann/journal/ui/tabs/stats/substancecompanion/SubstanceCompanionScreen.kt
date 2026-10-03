@@ -26,11 +26,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -49,7 +51,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -66,6 +67,8 @@ import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -119,40 +122,20 @@ fun SubstanceCompanionScreen(
     val displayName = substanceRepo.getDisplayName(substanceCompanion.substanceName)
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column {
-                        Text(displayName, style = MaterialTheme.typography.titleLarge)
-                        if (consumerName != null) {
-                            Text(
-                                text = consumerName,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { navigateToSubstanceScreen(substanceCompanion.substanceName) }) {
-                        Icon(
-                            imageVector = Icons.Outlined.Info,
-                            contentDescription = i18n("substance_more_info")
-                        )
-                    }
-                }
-            )
-        }
+        modifier = Modifier.bottomBarNestedScroll(),
+        contentWindowInsets = WindowInsets.statusBars
     ) { padding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(horizontal = horizontalPadding),
+            contentPadding = bottomBarOverlayPadding(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // ── Substance Hero Card ───────────────────────────────────────────
             item {
+                Spacer(Modifier.height(8.dp))
                 SubstanceHeroCard(
                     substanceName = substanceCompanion.substanceName,
                     displayName = displayName,
@@ -338,16 +321,29 @@ private fun SubstanceHeroCard(
                     }
                 }
 
-                if (consumerName != null) {
-                    Surface(
-                        shape = RoundedCornerShape(8.dp),
-                        color = MaterialTheme.colorScheme.secondaryContainer
-                    ) {
-                        Text(
-                            text = consumerName,
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSecondaryContainer,
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    if (consumerName != null) {
+                        Surface(
+                            shape = RoundedCornerShape(8.dp),
+                            color = MaterialTheme.colorScheme.secondaryContainer
+                        ) {
+                            Text(
+                                text = consumerName,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            )
+                        }
+                    }
+
+                    IconButton(onClick = onWikiClick) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = i18n("substance_more_info"),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
