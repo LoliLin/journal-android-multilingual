@@ -173,6 +173,16 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val themePaletteFlow = userPreferences.themePaletteFlow.stateIn(
+        initialValue = null,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveThemePalette(value: String?) {
+        viewModelScope.launch { userPreferences.saveThemePalette(value) }
+    }
+
     val dateLocaleOptionFlow = userPreferences.dateLocaleOptionFlow.stateIn(
         initialValue = DateLocaleOption.FOLLOW_LANGUAGE,
         scope = viewModelScope,

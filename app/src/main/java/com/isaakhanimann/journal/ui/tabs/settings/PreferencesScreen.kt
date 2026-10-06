@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -91,7 +95,9 @@ fun PreferencesScreen(
         saveAppLockEnabled = viewModel::saveAppLockEnabled,
         isEffectNotificationEnabled =
             viewModel.isEffectNotificationEnabledFlow.collectAsState().value,
-        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled
+        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled,
+        themePalette = viewModel.themePaletteFlow.collectAsState().value,
+        saveThemePalette = viewModel::saveThemePalette
     )
 }
 
@@ -124,7 +130,9 @@ fun PreferencesScreen(
     isAppLockEnabled: Boolean,
     saveAppLockEnabled: (Boolean) -> Unit,
     isEffectNotificationEnabled: Boolean,
-    saveEffectNotificationEnabled: (Boolean) -> Unit
+    saveEffectNotificationEnabled: (Boolean) -> Unit,
+    themePalette: String? = null,
+    saveThemePalette: (String?) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -172,6 +180,23 @@ fun PreferencesScreen(
                         },
                         onDismiss = { isLanguageDialogVisible = false }
                     )
+                }
+                Text(i18n("settings_theme_palette"), modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 8.dp), style = MaterialTheme.typography.titleSmall)
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    item {
+                        ThemePaletteSwatch(null, i18n("settings_theme_dynamic"), themePalette == null) {
+                            saveThemePalette(null)
+                        }
+                    }
+                    items(themePalettes) { palette ->
+                        ThemePaletteSwatch(palette.hex, i18n(palette.nameKey), themePalette == palette.hex) {
+                            saveThemePalette(palette.hex)
+                        }
+                    }
                 }
                 HorizontalDivider()
                 SettingsButton(
@@ -445,4 +470,31 @@ private fun DateLocaleSelectionDialog(
             }
         }
     )
+}
+
+private data class ThemePalette(val nameKey: String, val hex: String)
+
+private val themePalettes = listOf(
+    ThemePalette("settings_palette_midnight", "#1A237E"),
+    ThemePalette("settings_palette_nordic", "#546E7A"),
+    ThemePalette("settings_palette_forest", "#2E7D32"),
+    ThemePalette("settings_palette_sunset", "#E65100"),
+    ThemePalette("settings_palette_rose", "#AD1457"),
+    ThemePalette("settings_palette_lavender", "#7B1FA2"),
+    ThemePalette("settings_palette_slate", "#455A64"),
+    ThemePalette("settings_palette_ocean", "#0277BD")
+)
+
+@Composable
+private fun ThemePaletteSwatch(seed: String?, label: String, selected: Boolean, onClick: () -> Unit) {
+    val color = if (seed == null) MaterialTheme.colorScheme.primary else androidx.compose.ui.graphics.Color(android.graphics.Color.parseColor(seed))
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(68.dp).clickable(onClick = onClick).padding(4.dp)
+    ) {
+        androidx.compose.foundation.layout.Box(Modifier.size(36.dp).background(color, androidx.compose.foundation.shape.CircleShape), contentAlignment = Alignment.Center) {
+            if (selected) Text("✓", color = androidx.compose.ui.graphics.Color.White)
+        }
+        Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1)
+    }
 }

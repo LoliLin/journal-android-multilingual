@@ -18,8 +18,13 @@
 
 package com.isaakhanimann.journal.ui.theme
 
-import android.os.Build
+import android.provider.Settings
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
@@ -117,16 +122,89 @@ val horizontalPadding = 10.dp
 val verticalPaddingCards = 4.dp
 val minimumTouchTargetHeight = 48.dp
 
-@Composable
-fun JournalTheme(content: @Composable () -> Unit) {
-    val isDarkTheme = isSystemInDarkTheme()
-    val useDynamic = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
-    val colorScheme = if (useDynamic) {
-        val context = LocalContext.current
-        if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-    } else {
-        if (isDarkTheme) DarkColors else LightColors
+private fun seedColorScheme(seed: Color, darkTheme: Boolean): ColorScheme {
+    val hsl = FloatArray(3)
+    androidx.core.graphics.ColorUtils.colorToHSL(seed.toArgb(), hsl)
+    fun tone(lightness: Float, hueOffset: Float = 0f, saturationScale: Float = 1f): Color {
+        val color = androidx.core.graphics.ColorUtils.HSLToColor(
+            floatArrayOf((hsl[0] + hueOffset + 360f) % 360f, (hsl[1] * saturationScale).coerceIn(0f, 1f), lightness)
+        )
+        return Color(color)
     }
+    return if (darkTheme) {
+        androidx.compose.material3.darkColorScheme(
+            primary = tone(0.80f), onPrimary = tone(0.20f), primaryContainer = tone(0.30f), onPrimaryContainer = tone(0.90f),
+            secondary = tone(0.80f, 25f, 0.65f), onSecondary = tone(0.20f), secondaryContainer = tone(0.30f, 25f, 0.65f), onSecondaryContainer = tone(0.90f, 25f, 0.65f),
+            tertiary = tone(0.80f, -25f, 0.7f), onTertiary = tone(0.20f), tertiaryContainer = tone(0.30f, -25f, 0.7f), onTertiaryContainer = tone(0.90f, -25f, 0.7f)
+        )
+    } else {
+        androidx.compose.material3.lightColorScheme(
+            primary = tone(0.40f), onPrimary = tone(1f, saturationScale = 0f), primaryContainer = tone(0.90f), onPrimaryContainer = tone(0.10f),
+            secondary = tone(0.40f, 25f, 0.65f), onSecondary = tone(1f, saturationScale = 0f), secondaryContainer = tone(0.90f, 25f, 0.65f), onSecondaryContainer = tone(0.10f, 25f, 0.65f),
+            tertiary = tone(0.40f, -25f, 0.7f), onTertiary = tone(1f, saturationScale = 0f), tertiaryContainer = tone(0.90f, -25f, 0.7f), onTertiaryContainer = tone(0.10f, -25f, 0.7f)
+        )
+    }
+}
+
+@Composable
+private fun animateColorScheme(target: ColorScheme, enabled: Boolean): ColorScheme {
+    val durationMillis = if (enabled) 300 else 0
+    @Composable
+    fun animate(color: androidx.compose.ui.graphics.Color) =
+        animateColorAsState(color, tween(durationMillis), label = "theme color").value
+
+    return target.copy(
+        primary = animate(target.primary),
+        onPrimary = animate(target.onPrimary),
+        primaryContainer = animate(target.primaryContainer),
+        onPrimaryContainer = animate(target.onPrimaryContainer),
+        inversePrimary = animate(target.inversePrimary),
+        secondary = animate(target.secondary),
+        onSecondary = animate(target.onSecondary),
+        secondaryContainer = animate(target.secondaryContainer),
+        onSecondaryContainer = animate(target.onSecondaryContainer),
+        tertiary = animate(target.tertiary),
+        onTertiary = animate(target.onTertiary),
+        tertiaryContainer = animate(target.tertiaryContainer),
+        onTertiaryContainer = animate(target.onTertiaryContainer),
+        background = animate(target.background),
+        onBackground = animate(target.onBackground),
+        surface = animate(target.surface),
+        onSurface = animate(target.onSurface),
+        surfaceVariant = animate(target.surfaceVariant),
+        onSurfaceVariant = animate(target.onSurfaceVariant),
+        surfaceTint = animate(target.surfaceTint),
+        inverseSurface = animate(target.inverseSurface),
+        inverseOnSurface = animate(target.inverseOnSurface),
+        error = animate(target.error),
+        onError = animate(target.onError),
+        errorContainer = animate(target.errorContainer),
+        onErrorContainer = animate(target.onErrorContainer),
+        outline = animate(target.outline),
+        outlineVariant = animate(target.outlineVariant),
+        scrim = animate(target.scrim)
+    )
+}
+
+@Composable
+fun JournalTheme(themePalette: String? = null, content: @Composable () -> Unit) {
+    val isDarkTheme = isSystemInDarkTheme()
+    val context = LocalContext.current
+    val targetColorScheme = if (themePalette != null) {
+        val seed = runCatching { Color(android.graphics.Color.parseColor(themePalette)) }
+            .getOrDefault(md_theme_light_primary)
+        seedColorScheme(seed, isDarkTheme)
+    } else if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+        if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    } else if (isDarkTheme) DarkColors else LightColors
+    val animatorScale = runCatching {
+        Settings.Global.getFloat(
+            context.contentResolver,
+            Settings.Global.ANIMATOR_DURATION_SCALE,
+            1f
+        )
+    }.getOrDefault(1f)
+    val colorScheme = animateColorScheme(targetColorScheme, animatorScale > 0f)
     MaterialTheme(
         colorScheme = colorScheme,
         typography = JournalTypography,
