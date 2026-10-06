@@ -23,6 +23,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -172,7 +173,10 @@ fun JournalScreen(
     }
 
     val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-    Scaffold(
+    Box(modifier = Modifier.fillMaxSize()) {
+        com.isaakhanimann.journal.ui.utils.JournalAmbientBackground()
+        Scaffold(
+        containerColor = Color.Transparent,
         modifier = Modifier
             .bottomBarNestedScroll()
             .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
@@ -375,6 +379,7 @@ fun JournalScreen(
                         }
                 )
             }
+        }
         }
     }
 }

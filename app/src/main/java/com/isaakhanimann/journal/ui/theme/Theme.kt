@@ -48,10 +48,10 @@ private val JournalShapes = Shapes(
 )
 
 private val JournalTypography = Typography().copy(
-    headlineSmall = Typography().headlineSmall.copy(fontWeight = FontWeight.SemiBold),
-    titleLarge = Typography().titleLarge.copy(fontWeight = FontWeight.SemiBold),
+    headlineSmall = Typography().headlineSmall.copy(fontWeight = FontWeight.Medium),
+    titleLarge = Typography().titleLarge.copy(fontWeight = FontWeight.Medium),
     titleMedium = Typography().titleMedium.copy(fontWeight = FontWeight.Medium),
-    labelLarge = Typography().labelLarge.copy(fontWeight = FontWeight.SemiBold, letterSpacing = 0.1.sp)
+    labelLarge = Typography().labelLarge.copy(fontWeight = FontWeight.Medium, letterSpacing = 0.1.sp)
 )
 
 private val LightColors = lightColorScheme(

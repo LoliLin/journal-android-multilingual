@@ -14,8 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -181,22 +179,22 @@ fun PreferencesScreen(
                         onDismiss = { isLanguageDialogVisible = false }
                     )
                 }
-                Text(i18n("settings_theme_palette"), modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 8.dp), style = MaterialTheme.typography.titleSmall)
-                LazyRow(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                var isThemePaletteDialogVisible by remember { mutableStateOf(false) }
+                SettingsButton(
+                    imageVector = Icons.Outlined.Info,
+                    text = i18n("settings_theme_palette")
                 ) {
-                    item {
-                        ThemePaletteSwatch(null, i18n("settings_theme_dynamic"), themePalette == null) {
-                            saveThemePalette(null)
-                        }
-                    }
-                    items(themePalettes) { palette ->
-                        ThemePaletteSwatch(palette.hex, i18n(palette.nameKey), themePalette == palette.hex) {
-                            saveThemePalette(palette.hex)
-                        }
-                    }
+                    isThemePaletteDialogVisible = true
+                }
+                if (isThemePaletteDialogVisible) {
+                    ThemePaletteDialog(
+                        selectedPalette = themePalette,
+                        onSelect = {
+                            saveThemePalette(it)
+                            isThemePaletteDialogVisible = false
+                        },
+                        onDismiss = { isThemePaletteDialogVisible = false }
+                    )
                 }
                 HorizontalDivider()
                 SettingsButton(
@@ -486,15 +484,51 @@ private val themePalettes = listOf(
 )
 
 @Composable
-private fun ThemePaletteSwatch(seed: String?, label: String, selected: Boolean, onClick: () -> Unit) {
-    val color = if (seed == null) MaterialTheme.colorScheme.primary else androidx.compose.ui.graphics.Color(android.graphics.Color.parseColor(seed))
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.width(68.dp).clickable(onClick = onClick).padding(4.dp)
-    ) {
-        androidx.compose.foundation.layout.Box(Modifier.size(36.dp).background(color, androidx.compose.foundation.shape.CircleShape), contentAlignment = Alignment.Center) {
-            if (selected) Text("✓", color = androidx.compose.ui.graphics.Color.White)
+private fun ThemePaletteDialog(
+    selectedPalette: String?,
+    onSelect: (String?) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_theme_palette")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                LanguageOptionRow(
+                    label = i18n("settings_theme_dynamic"),
+                    isSelected = selectedPalette == null,
+                    onClick = { onSelect(null) }
+                )
+                themePalettes.forEach { palette ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onSelect(palette.hex) }
+                            .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        androidx.compose.foundation.layout.Box(
+                            Modifier
+                                .size(24.dp)
+                                .background(
+                                    androidx.compose.ui.graphics.Color(android.graphics.Color.parseColor(palette.hex)),
+                                    androidx.compose.foundation.shape.CircleShape
+                                )
+                        )
+                        Text(
+                            text = i18n(palette.nameKey),
+                            modifier = Modifier.weight(1f).padding(start = 12.dp)
+                        )
+                        RadioButton(
+                            selected = selectedPalette == palette.hex,
+                            onClick = { onSelect(palette.hex) }
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(i18n("common_close")) }
         }
-        Text(label, style = MaterialTheme.typography.labelSmall, maxLines = 1)
-    }
+    )
 }
