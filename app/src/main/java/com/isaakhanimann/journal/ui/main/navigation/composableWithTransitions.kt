@@ -20,27 +20,65 @@ package com.isaakhanimann.journal.ui.main.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ContentTransform
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.unit.IntOffset
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.scene.Scene
 
-private const val NAVIGATION_FADE_MS = 90
+private const val NAVIGATION_TRANSITION_MS = 300
+private const val NAVIGATION_START_SCALE = 0.94f
 
-/**
- * The transition every navigation uses.
- *
- * Deliberately uniform — one cross-fade with no directional movement — so that pushing, popping,
- * switching tabs and the predictive-back gesture preview all look the same.
- */
+private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
+    enteringFrom: (Int) -> Int,
+    exitingTo: (Int) -> Int,
+): ContentTransform {
+    val spatialSpring = spring<Float>(
+        dampingRatio = Spring.DampingRatioLowBouncy,
+        stiffness = Spring.StiffnessLow
+    )
+    val offsetSpring = spring<IntOffset>(
+        dampingRatio = Spring.DampingRatioLowBouncy,
+        stiffness = Spring.StiffnessLow
+    )
+    return (slideInHorizontally(offsetSpring, initialOffsetX = enteringFrom) +
+        fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
+        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
+        (slideOutHorizontally(offsetSpring, targetOffsetX = exitingTo) +
+            fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
+            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
+}
+
+/** Directional navigation for pushing a destination onto the current tab stack. */
 val minimalNavTransitionSpec:
     AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
-    fadeIn(tween(NAVIGATION_FADE_MS)) togetherWith fadeOut(tween(NAVIGATION_FADE_MS))
+    directionalTransition(
+        enteringFrom = { width -> width * 3 / 4 },
+        exitingTo = { width -> -width / 4 },
+    )
+}
+
+/** Reverse directional navigation when popping a destination from the current tab stack. */
+val popNavTransitionSpec:
+    AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
+    directionalTransition(
+        enteringFrom = { width -> -width * 3 / 4 },
+        exitingTo = { width -> width / 4 },
+    )
 }
 
 val predictivePopTransitionSpec:
     AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
-    fadeIn(tween(NAVIGATION_FADE_MS)) togetherWith fadeOut(tween(NAVIGATION_FADE_MS))
-}
+        directionalTransition(
+            enteringFrom = { width -> -width * 3 / 4 },
+            exitingTo = { width -> width / 4 },
+        )
+    }

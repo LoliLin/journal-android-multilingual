@@ -535,7 +535,12 @@ fun SettingsScreen(
 const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 
 @Composable
-fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) {
+fun SettingsButton(
+    imageVector: ImageVector,
+    text: String,
+    iconTint: androidx.compose.ui.graphics.Color = androidx.compose.material3.LocalContentColor.current,
+    onClick: () -> Unit
+) {
     TextButton(
         onClick = onClick,
         modifier = Modifier.padding(horizontal = 2.dp)
@@ -543,7 +548,8 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
         Icon(
             imageVector,
             contentDescription = imageVector.name,
-            modifier = Modifier.size(ButtonDefaults.IconSize)
+            modifier = Modifier.size(ButtonDefaults.IconSize),
+            tint = iconTint
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(text)

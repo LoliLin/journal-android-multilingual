@@ -18,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.outlined.ColorLens
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.StarBorder
@@ -179,10 +180,12 @@ fun PreferencesScreen(
                         onDismiss = { isLanguageDialogVisible = false }
                     )
                 }
+                HorizontalDivider()
                 var isThemePaletteDialogVisible by remember { mutableStateOf(false) }
                 SettingsButton(
-                    imageVector = Icons.Outlined.Info,
-                    text = i18n("settings_theme_palette")
+                    imageVector = Icons.Outlined.ColorLens,
+                    text = i18n("settings_theme_palette"),
+                    iconTint = MaterialTheme.colorScheme.primary
                 ) {
                     isThemePaletteDialogVisible = true
                 }

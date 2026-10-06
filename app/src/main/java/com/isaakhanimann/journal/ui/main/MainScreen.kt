@@ -23,6 +23,8 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,12 +41,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
+import com.isaakhanimann.journal.ui.main.navigation.popNavTransitionSpec
 import com.isaakhanimann.journal.ui.main.navigation.minimalNavTransitionSpec
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
 import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
@@ -125,6 +130,7 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
     }
 
     val isKeyboardOpenNow = isKeyboardOpen().value
+    val rootTabSwipeThresholdPx = with(LocalDensity.current) { 48.dp.toPx() }
     val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
     val bottomBarScrollBehavior = rememberBottomBarScrollBehavior {
         isOnMainTabRoot && !isKeyboardOpenNow
@@ -154,9 +160,32 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
                 entries = entries,
                 onBack = { if (!manager.pop()) activity?.finish() },
                 transitionSpec = minimalNavTransitionSpec,
-                popTransitionSpec = minimalNavTransitionSpec,
+                popTransitionSpec = popNavTransitionSpec,
                 predictivePopTransitionSpec = predictivePopTransitionSpec,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .pointerInput(manager, selectedDestination, isOnMainTabRoot, isKeyboardOpenNow) {
+                        if (isOnMainTabRoot && !isKeyboardOpenNow) {
+                            var horizontalDrag = 0f
+                            detectHorizontalDragGestures(
+                                onDragStart = { horizontalDrag = 0f },
+                                onHorizontalDrag = { _, dragAmount ->
+                                    horizontalDrag += dragAmount
+                                },
+                                onDragEnd = {
+                                    val tabs = TopLevelDestinations.all
+                                    val currentIndex = tabs.indexOf(selectedDestination)
+                                    when {
+                                        horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
+                                            manager.switchToTab(tabs[currentIndex + 1])
+                                        horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
+                                            manager.switchToTab(tabs[currentIndex - 1])
+                                    }
+                                },
+                                onDragCancel = { horizontalDrag = 0f }
+                            )
+                        }
+                    }
             )
         }
         BottomNavigationBar(

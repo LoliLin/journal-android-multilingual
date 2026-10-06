@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -75,6 +77,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.isaakhanimann.journal.ui.tabs.settings.SettingsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWindowCounts
 import com.isaakhanimann.journal.di.JournalApplication
 import com.isaakhanimann.journal.localization.i18n
@@ -98,6 +103,7 @@ data class WidgetSubstanceItem(
  * Per-widget configuration: pick a substance (or all) and a rolling window.
  * Reached from the widget's gear button and from the launcher configure step.
  */
+@AndroidEntryPoint
 class StatsWidgetConfigActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -137,7 +143,9 @@ class StatsWidgetConfigActivity : ComponentActivity() {
             }
 
             setContent {
-                JournalTheme {
+                val settingsViewModel: SettingsViewModel = hiltViewModel()
+                val themePalette by settingsViewModel.themePaletteFlow.collectAsState()
+                JournalTheme(themePalette = themePalette) {
                     StatsWidgetConfigScreen(
                         substances = sortedSubstances,
                         initialSubstance = config.substanceName,
