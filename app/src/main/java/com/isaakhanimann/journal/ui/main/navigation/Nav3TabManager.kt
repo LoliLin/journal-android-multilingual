@@ -2,6 +2,7 @@ package com.isaakhanimann.journal.ui.main.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -65,6 +66,9 @@ class Nav3TabManager(
     initialTab: TopLevelDestination,
     private val onTabSelected: (TopLevelDestination) -> Unit = {},
 ) {
+    var navigationDirection by mutableIntStateOf(1)
+        private set
+
     var selectedTab by mutableStateOf(initialTab)
         private set
 
@@ -74,6 +78,11 @@ class Nav3TabManager(
     fun backStack(tab: TopLevelDestination): NavBackStack<NavKey> = backStacks.getValue(tab)
 
     fun switchToTab(tab: TopLevelDestination) {
+        if (tab != selectedTab) {
+            val currentIndex = TopLevelDestinations.all.indexOf(selectedTab)
+            val targetIndex = TopLevelDestinations.all.indexOf(tab)
+            navigationDirection = if (targetIndex > currentIndex) 1 else -1
+        }
         selectedTab = tab
         onTabSelected(tab)
     }
@@ -82,7 +91,10 @@ class Nav3TabManager(
     fun navigate(key: NavKey) {
         tabFor(key)?.let(::switchToTab)
         val stack = currentBackStack
-        if (stack.lastOrNull() != key) stack.add(key)
+        if (stack.lastOrNull() != key) {
+            navigationDirection = 1
+            stack.add(key)
+        }
     }
 
     /**

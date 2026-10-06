@@ -68,6 +68,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_STATS_BY_INGESTION_TIME = booleanPreferencesKey("key_stats_by_ingestion_time")
         val KEY_DATE_LOCALE_OPTION = stringPreferencesKey("key_date_locale_option")
         val KEY_THEME_PALETTE = stringPreferencesKey("key_theme_palette")
+        val KEY_ROOT_TAB_TRANSITIONS_ENABLED = booleanPreferencesKey("key_root_tab_transitions_enabled")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -296,6 +297,15 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         .map { preferences ->
             preferences[PreferencesKeys.KEY_OWNER_USER_NAME] ?: "You"
         }
+
+    val isRootTabTransitionsEnabledFlow: Flow<Boolean> = dataStore.data
+        .map { preferences -> preferences[PreferencesKeys.KEY_ROOT_TAB_TRANSITIONS_ENABLED] ?: true }
+
+    suspend fun saveRootTabTransitionsEnabled(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_ROOT_TAB_TRANSITIONS_ENABLED] = value
+        }
+    }
 
     val themePaletteFlow: Flow<String?> = dataStore.data.map { preferences ->
         preferences[PreferencesKeys.KEY_THEME_PALETTE]

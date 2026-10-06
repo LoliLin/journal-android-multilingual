@@ -66,6 +66,13 @@ class MainScreenViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val isRootTabTransitionsEnabledFlow: StateFlow<Boolean> =
+        userPreferences.isRootTabTransitionsEnabledFlow.stateIn(
+            initialValue = true,
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
+
     val isBottomBarPinnedFlow: StateFlow<Boolean> =
         userPreferences.isBottomBarPinnedFlow.stateIn(
             initialValue = false,

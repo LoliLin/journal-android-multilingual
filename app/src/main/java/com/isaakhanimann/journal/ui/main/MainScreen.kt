@@ -50,7 +50,7 @@ import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.popNavTransitionSpec
-import com.isaakhanimann.journal.ui.main.navigation.minimalNavTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
 import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
 import com.isaakhanimann.journal.ui.main.navigation.rememberNav3TabManager
@@ -82,6 +82,7 @@ private const val TAG = "MainScreen"
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
     LaunchedEffect(selectedLanguageKey) { I18n.setPreferredLanguageKey(selectedLanguageKey) }
+    val rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
     val pendingIntent = rememberPendingNavigationIntent()
     if (isAccepted == null) {
@@ -93,7 +94,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     ) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
-        MainScreenContent(viewModel, pendingIntent)
+        MainScreenContent(viewModel, pendingIntent, rootTabTransitionsEnabled)
     }
 }
 
@@ -112,7 +113,11 @@ private fun rememberPendingNavigationIntent(): MutableState<Intent?> {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: MutableState<Intent?>) {
+private fun MainScreenContent(
+    viewModel: MainScreenViewModel,
+    pendingIntent: MutableState<Intent?>,
+    rootTabTransitionsEnabled: Boolean
+) {
     val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
     val manager = rememberNav3TabManager()
     val entryProvider = remember(manager) { nav3EntryProvider(manager) }
@@ -159,7 +164,10 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
             NavDisplay(
                 entries = entries,
                 onBack = { if (!manager.pop()) activity?.finish() },
-                transitionSpec = minimalNavTransitionSpec,
+                transitionSpec = navTransitionSpecForDirection(
+                    manager.navigationDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
                 popTransitionSpec = popNavTransitionSpec,
                 predictivePopTransitionSpec = predictivePopTransitionSpec,
                 modifier = Modifier

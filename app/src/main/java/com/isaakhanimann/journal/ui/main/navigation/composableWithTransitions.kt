@@ -56,15 +56,25 @@ private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
             fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
             scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
 }
+fun navTransitionSpecForDirection(
+    direction: Int,
+    agoraStyle: Boolean = true
+): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
+    val horizontalDirection = if (direction < 0) -1 else 1
+    val enteringFrom: (Int) -> Int = { width -> width * 3 / 4 * horizontalDirection }
+    val exitingTo: (Int) -> Int = { width -> -width / 4 * horizontalDirection }
+    if (agoraStyle) {
+        directionalTransition(enteringFrom, exitingTo)
+    } else {
+        (slideInHorizontally(tween(NAVIGATION_TRANSITION_MS), initialOffsetX = enteringFrom) +
+            fadeIn(tween(NAVIGATION_TRANSITION_MS))) togetherWith
+            (slideOutHorizontally(tween(NAVIGATION_TRANSITION_MS), targetOffsetX = exitingTo) +
+                fadeOut(tween(NAVIGATION_TRANSITION_MS)))
+    }
+}
 
 /** Directional navigation for pushing a destination onto the current tab stack. */
-val minimalNavTransitionSpec:
-    AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
-    directionalTransition(
-        enteringFrom = { width -> width * 3 / 4 },
-        exitingTo = { width -> -width / 4 },
-    )
-}
+val minimalNavTransitionSpec = navTransitionSpecForDirection(1)
 
 /** Reverse directional navigation when popping a destination from the current tab stack. */
 val popNavTransitionSpec:
