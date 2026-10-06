@@ -204,12 +204,7 @@ fun PreferencesScreen(
                     )
                 }
                 HorizontalDivider()
-                PreferenceSwitchRow(
-                    title = i18n("settings_root_tab_transitions"),
-                    checked = rootTabTransitionsEnabled,
-                    onCheckedChange = saveRootTabTransitionsEnabled
-                )
-                HorizontalDivider()
+               
                 SettingsButton(
                     imageVector = Icons.Outlined.StarBorder,
                     text = i18n("settings_icon_title")
@@ -240,6 +235,12 @@ fun PreferencesScreen(
             }
 
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
+                PreferenceSwitchRow(
+                    title = i18n("settings_root_tab_transitions"),
+                    checked = rootTabTransitionsEnabled,
+                    onCheckedChange = saveRootTabTransitionsEnabled
+                )
+                HorizontalDivider()
                 PreferenceSwitchRow(
                     title = i18n("settings_use_24_hour_clock"),
                     checked = use24HourClock,
