@@ -15,6 +15,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,6 +26,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.main.navigation.routes.TopLevelDestination
 import com.isaakhanimann.journal.ui.main.navigation.routes.TopLevelDestinations
@@ -113,7 +116,10 @@ fun BottomNavigationBar(
                         x = 0,
                         y = if (isPinned) 0 else -scrollBehavior.state.heightOffset.toInt()
                     )
-                }
+                },
+            containerColor = MaterialTheme.colorScheme.surface,
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            tonalElevation = 3.dp
         ) {
             TopLevelDestinations.all.forEach { destination ->
                 val isSelected = destination == selectedDestination
@@ -130,7 +136,10 @@ fun BottomNavigationBar(
                     },
                     label = { Text(i18n(destination.labelKey)) },
                     selected = isSelected,
-                    onClick = { onTabSelected(destination) }
+                    onClick = { onTabSelected(destination) },
+                    colors = NavigationBarItemDefaults.colors(
+                        indicatorColor = MaterialTheme.colorScheme.secondaryContainer
+                    )
                 )
             }
         }

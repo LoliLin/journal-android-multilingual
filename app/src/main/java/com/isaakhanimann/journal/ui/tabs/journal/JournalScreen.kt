@@ -71,6 +71,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.achievement.AchievementEvaluator
 import com.isaakhanimann.journal.data.achievement.AchievementGetToast
@@ -253,7 +254,10 @@ fun JournalScreen(
                                 }
                             },
                             label = { Text(text = i18n("journal_search_by_title_or_substance")) },
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                            shape = MaterialTheme.shapes.large,
                             keyboardActions = KeyboardActions(onDone = {
                                 focusManager.clearFocus()
                             }),
