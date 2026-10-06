@@ -49,10 +49,10 @@ import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
-import com.isaakhanimann.journal.ui.main.navigation.popNavTransitionSpec
 import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
-import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.popNavTransitionSpecForDirection
+import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.rememberNav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
@@ -168,8 +168,14 @@ private fun MainScreenContent(
                     manager.navigationDirection,
                     agoraStyle = rootTabTransitionsEnabled
                 ),
-                popTransitionSpec = popNavTransitionSpec,
-                predictivePopTransitionSpec = predictivePopTransitionSpec,
+                popTransitionSpec = popNavTransitionSpecForDirection(
+                    manager.popDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
+                predictivePopTransitionSpec = predictivePopTransitionSpecForDirection(
+                    manager.predictivePopDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
                 modifier = Modifier
                     .fillMaxSize()
                     .pointerInput(manager, selectedDestination, isOnMainTabRoot, isKeyboardOpenNow) {

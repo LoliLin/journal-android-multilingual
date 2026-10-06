@@ -68,6 +68,17 @@ class Nav3TabManager(
 ) {
     var navigationDirection by mutableIntStateOf(1)
         private set
+    var popDirection by mutableIntStateOf(-1)
+        private set
+
+    val predictivePopDirection: Int
+        get() = if (isAtRoot() && selectedTab != TopLevelDestinations.Journal) {
+            val currentIndex = TopLevelDestinations.all.indexOf(selectedTab)
+            val journalIndex = TopLevelDestinations.all.indexOf(TopLevelDestinations.Journal)
+            if (journalIndex > currentIndex) 1 else -1
+        } else {
+            -1
+        }
 
     var selectedTab by mutableStateOf(initialTab)
         private set
@@ -82,6 +93,7 @@ class Nav3TabManager(
             val currentIndex = TopLevelDestinations.all.indexOf(selectedTab)
             val targetIndex = TopLevelDestinations.all.indexOf(tab)
             navigationDirection = if (targetIndex > currentIndex) 1 else -1
+            popDirection = navigationDirection
         }
         selectedTab = tab
         onTabSelected(tab)
@@ -104,6 +116,7 @@ class Nav3TabManager(
     fun pop(): Boolean {
         val stack = currentBackStack
         if (stack.size > 1) {
+            popDirection = -1
             stack.removeAt(stack.lastIndex)
             return true
         }
@@ -113,12 +126,11 @@ class Nav3TabManager(
         }
         return false
     }
-
     fun popToRoot(tab: TopLevelDestination = selectedTab) {
         val stack = backStacks.getValue(tab)
+        if (stack.size > 1) popDirection = -1
         while (stack.size > 1) stack.removeAt(stack.lastIndex)
     }
-
     /**
      * Removes [root] and everything above it, ending a multi-screen flow. The tab root itself is
      * never removed: a flow that was somehow pushed as the only entry degrades to [popToRoot].
@@ -127,6 +139,7 @@ class Nav3TabManager(
         val stack = currentBackStack
         val index = stack.indexOfLast { it == root }
         if (index < 0) return false
+        popDirection = -1
         while (stack.size > index.coerceAtLeast(1)) stack.removeAt(stack.lastIndex)
         return true
     }

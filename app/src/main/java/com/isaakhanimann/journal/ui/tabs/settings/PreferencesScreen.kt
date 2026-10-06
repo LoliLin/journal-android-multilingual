@@ -96,7 +96,9 @@ fun PreferencesScreen(
             viewModel.isEffectNotificationEnabledFlow.collectAsState().value,
         saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled,
         themePalette = viewModel.themePaletteFlow.collectAsState().value,
-        saveThemePalette = viewModel::saveThemePalette
+        saveThemePalette = viewModel::saveThemePalette,
+        rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value,
+        saveRootTabTransitionsEnabled = viewModel::saveRootTabTransitionsEnabled
     )
 }
 
@@ -131,7 +133,9 @@ fun PreferencesScreen(
     isEffectNotificationEnabled: Boolean,
     saveEffectNotificationEnabled: (Boolean) -> Unit,
     themePalette: String? = null,
-    saveThemePalette: (String?) -> Unit = {}
+    saveThemePalette: (String?) -> Unit = {},
+    rootTabTransitionsEnabled: Boolean = true,
+    saveRootTabTransitionsEnabled: (Boolean) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -199,6 +203,12 @@ fun PreferencesScreen(
                         onDismiss = { isThemePaletteDialogVisible = false }
                     )
                 }
+                HorizontalDivider()
+                PreferenceSwitchRow(
+                    title = i18n("settings_root_tab_transitions"),
+                    checked = rootTabTransitionsEnabled,
+                    onCheckedChange = saveRootTabTransitionsEnabled
+                )
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.StarBorder,

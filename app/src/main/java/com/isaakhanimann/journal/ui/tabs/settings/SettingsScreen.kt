@@ -138,8 +138,6 @@ fun SettingsScreen(
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
         achievements = viewModel.achievementsFlow.collectAsState().value,
-        rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value,
-        saveRootTabTransitionsEnabled = viewModel::saveRootTabTransitionsEnabled,
     )
 }
 
@@ -162,8 +160,6 @@ fun SettingsScreen(
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
     saveOwnerUserName: (String?) -> Unit,
-    rootTabTransitionsEnabled: Boolean = true,
-    saveRootTabTransitionsEnabled: (Boolean) -> Unit = {}
 ) {
     val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
@@ -194,21 +190,6 @@ fun SettingsScreen(
             )
 
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { saveRootTabTransitionsEnabled(!rootTabTransitionsEnabled) }
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = i18n("settings_root_tab_transitions"))
-                    Switch(
-                        checked = rootTabTransitionsEnabled,
-                        onCheckedChange = saveRootTabTransitionsEnabled
-                    )
-                }
-                HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.Tune,
                     text = i18n("settings_preferences")

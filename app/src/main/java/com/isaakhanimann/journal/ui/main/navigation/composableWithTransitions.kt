@@ -34,61 +34,60 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.scene.Scene
 
-private const val NAVIGATION_TRANSITION_MS = 300
-private const val NAVIGATION_START_SCALE = 0.94f
+private const val NAVIGATION_TRANSITION_MS = 280
+private const val REDUCED_TRANSITION_MS = 140
+private const val NAVIGATION_START_SCALE = 0.98f
 
 private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
-    enteringFrom: (Int) -> Int,
-    exitingTo: (Int) -> Int,
+    direction: Int,
 ): ContentTransform {
+    val horizontalDirection = if (direction < 0) -1 else 1
     val spatialSpring = spring<Float>(
-        dampingRatio = Spring.DampingRatioLowBouncy,
-        stiffness = Spring.StiffnessLow
+        dampingRatio = 0.9f,
+        stiffness = Spring.StiffnessMediumLow
     )
     val offsetSpring = spring<IntOffset>(
-        dampingRatio = Spring.DampingRatioLowBouncy,
-        stiffness = Spring.StiffnessLow
+        dampingRatio = 0.9f,
+        stiffness = Spring.StiffnessMediumLow
     )
-    return (slideInHorizontally(offsetSpring, initialOffsetX = enteringFrom) +
-        fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
+    return (slideInHorizontally(
+        offsetSpring,
+        initialOffsetX = { width -> width * 38 / 100 * horizontalDirection }
+    ) + fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
         scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
-        (slideOutHorizontally(offsetSpring, targetOffsetX = exitingTo) +
-            fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
+        (slideOutHorizontally(
+            offsetSpring,
+            targetOffsetX = { width -> -width * 12 / 100 * horizontalDirection }
+        ) + fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
             scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
 }
+
 fun navTransitionSpecForDirection(
     direction: Int,
     agoraStyle: Boolean = true
 ): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
-    val horizontalDirection = if (direction < 0) -1 else 1
-    val enteringFrom: (Int) -> Int = { width -> width * 3 / 4 * horizontalDirection }
-    val exitingTo: (Int) -> Int = { width -> -width / 4 * horizontalDirection }
     if (agoraStyle) {
-        directionalTransition(enteringFrom, exitingTo)
+        directionalTransition(direction)
     } else {
-        (slideInHorizontally(tween(NAVIGATION_TRANSITION_MS), initialOffsetX = enteringFrom) +
-            fadeIn(tween(NAVIGATION_TRANSITION_MS))) togetherWith
-            (slideOutHorizontally(tween(NAVIGATION_TRANSITION_MS), targetOffsetX = exitingTo) +
-                fadeOut(tween(NAVIGATION_TRANSITION_MS)))
+        fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
     }
 }
 
 /** Directional navigation for pushing a destination onto the current tab stack. */
 val minimalNavTransitionSpec = navTransitionSpecForDirection(1)
 
-/** Reverse directional navigation when popping a destination from the current tab stack. */
-val popNavTransitionSpec:
-    AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
-    directionalTransition(
-        enteringFrom = { width -> -width * 3 / 4 },
-        exitingTo = { width -> width / 4 },
-    )
+fun popNavTransitionSpecForDirection(
+    direction: Int,
+    agoraStyle: Boolean = true,
+): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
+    if (agoraStyle) directionalTransition(direction)
+    else fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
 }
 
-val predictivePopTransitionSpec:
-    AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
-        directionalTransition(
-            enteringFrom = { width -> -width * 3 / 4 },
-            exitingTo = { width -> width / 4 },
-        )
-    }
+fun predictivePopTransitionSpecForDirection(
+    direction: Int,
+    agoraStyle: Boolean = true,
+): AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
+    if (agoraStyle) directionalTransition(direction)
+    else fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
+}
