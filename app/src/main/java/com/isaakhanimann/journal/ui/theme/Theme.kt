@@ -37,6 +37,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.materialkolor.hct.Hct
+import com.materialkolor.scheme.SchemeTonalSpot
+import com.materialkolor.toColorScheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 
 private val JournalShapes = Shapes(
@@ -121,30 +124,11 @@ private val DarkColors = darkColorScheme(
 val horizontalPadding = 10.dp
 val verticalPaddingCards = 4.dp
 val minimumTouchTargetHeight = 48.dp
+val mainTabHorizontalPadding = 16.dp
+val mainTabContentSpacing = 8.dp
 
-private fun seedColorScheme(seed: Color, darkTheme: Boolean): ColorScheme {
-    val hsl = FloatArray(3)
-    androidx.core.graphics.ColorUtils.colorToHSL(seed.toArgb(), hsl)
-    fun tone(lightness: Float, hueOffset: Float = 0f, saturationScale: Float = 1f): Color {
-        val color = androidx.core.graphics.ColorUtils.HSLToColor(
-            floatArrayOf((hsl[0] + hueOffset + 360f) % 360f, (hsl[1] * saturationScale).coerceIn(0f, 1f), lightness)
-        )
-        return Color(color)
-    }
-    return if (darkTheme) {
-        androidx.compose.material3.darkColorScheme(
-            primary = tone(0.80f), onPrimary = tone(0.20f), primaryContainer = tone(0.30f), onPrimaryContainer = tone(0.90f),
-            secondary = tone(0.80f, 25f, 0.65f), onSecondary = tone(0.20f), secondaryContainer = tone(0.30f, 25f, 0.65f), onSecondaryContainer = tone(0.90f, 25f, 0.65f),
-            tertiary = tone(0.80f, -25f, 0.7f), onTertiary = tone(0.20f), tertiaryContainer = tone(0.30f, -25f, 0.7f), onTertiaryContainer = tone(0.90f, -25f, 0.7f)
-        )
-    } else {
-        androidx.compose.material3.lightColorScheme(
-            primary = tone(0.40f), onPrimary = tone(1f, saturationScale = 0f), primaryContainer = tone(0.90f), onPrimaryContainer = tone(0.10f),
-            secondary = tone(0.40f, 25f, 0.65f), onSecondary = tone(1f, saturationScale = 0f), secondaryContainer = tone(0.90f, 25f, 0.65f), onSecondaryContainer = tone(0.10f, 25f, 0.65f),
-            tertiary = tone(0.40f, -25f, 0.7f), onTertiary = tone(1f, saturationScale = 0f), tertiaryContainer = tone(0.90f, -25f, 0.7f), onTertiaryContainer = tone(0.10f, -25f, 0.7f)
-        )
-    }
-}
+private fun seedColorScheme(seed: androidx.compose.ui.graphics.Color, darkTheme: Boolean): ColorScheme =
+    SchemeTonalSpot(Hct.fromInt(seed.toArgb()), darkTheme, 0.0).toColorScheme()
 
 @Composable
 private fun animateColorScheme(target: ColorScheme, enabled: Boolean): ColorScheme {
@@ -172,6 +156,25 @@ private fun animateColorScheme(target: ColorScheme, enabled: Boolean): ColorSche
         surface = animate(target.surface),
         onSurface = animate(target.onSurface),
         surfaceVariant = animate(target.surfaceVariant),
+        surfaceDim = animate(target.surfaceDim),
+        surfaceBright = animate(target.surfaceBright),
+        surfaceContainerLowest = animate(target.surfaceContainerLowest),
+        surfaceContainerLow = animate(target.surfaceContainerLow),
+        surfaceContainer = animate(target.surfaceContainer),
+        surfaceContainerHigh = animate(target.surfaceContainerHigh),
+        surfaceContainerHighest = animate(target.surfaceContainerHighest),
+        primaryFixed = animate(target.primaryFixed),
+        primaryFixedDim = animate(target.primaryFixedDim),
+        onPrimaryFixed = animate(target.onPrimaryFixed),
+        onPrimaryFixedVariant = animate(target.onPrimaryFixedVariant),
+        secondaryFixed = animate(target.secondaryFixed),
+        secondaryFixedDim = animate(target.secondaryFixedDim),
+        onSecondaryFixed = animate(target.onSecondaryFixed),
+        onSecondaryFixedVariant = animate(target.onSecondaryFixedVariant),
+        tertiaryFixed = animate(target.tertiaryFixed),
+        tertiaryFixedDim = animate(target.tertiaryFixedDim),
+        onTertiaryFixed = animate(target.onTertiaryFixed),
+        onTertiaryFixedVariant = animate(target.onTertiaryFixedVariant),
         onSurfaceVariant = animate(target.onSurfaceVariant),
         surfaceTint = animate(target.surfaceTint),
         inverseSurface = animate(target.inverseSurface),

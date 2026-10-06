@@ -75,8 +75,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -93,7 +95,9 @@ import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
+import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
+
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -233,35 +237,23 @@ private fun MergedStatsScreen(
         }
     }
 
+    val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
-        modifier = Modifier.bottomBarNestedScroll(),
+        modifier = Modifier
+            .bottomBarNestedScroll()
+            .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surface)
-                    .statusBarsPadding()
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 16.dp, end = 4.dp, top = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = if (overviewConsumerName != null) {
-                            i18n("stats_title_for_consumer", replacements = mapOf("consumer" to overviewConsumerName))
-                        } else if (ownerUserName != "You") {
-                            i18n("stats_title_for_consumer", replacements = mapOf("consumer" to ownerUserName))
-                        } else {
-                            i18n("stats_title")
-                        },
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.weight(1f)
-                    )
-
-                    // Share analysis report button
+            MainTabTopAppBar(
+                title = if (overviewConsumerName != null) {
+                    i18n("stats_title_for_consumer", replacements = mapOf("consumer" to overviewConsumerName))
+                } else if (ownerUserName != "You") {
+                    i18n("stats_title_for_consumer", replacements = mapOf("consumer" to ownerUserName))
+                } else {
+                    i18n("stats_title")
+                },
+                scrollBehavior = topBarScrollBehavior,
+                actions = {
                     if (analysisModel.ingestionCount > 0) {
                         IconButton(
                             onClick = {
@@ -299,7 +291,6 @@ private fun MergedStatsScreen(
                         }
                     }
 
-                    // Single unified consumer selector
                     var isConsumerSelectionExpanded by remember { mutableStateOf(false) }
                     val currentConsumerName = overviewConsumerName ?: ownerUserName
                     val currentAvatarFile = remember(currentConsumerName) {
@@ -351,7 +342,7 @@ private fun MergedStatsScreen(
                         }
                     }
                 }
-            }
+            )
         }
     ) { padding ->
         if (!statsModel.areThereAnyIngestions) {

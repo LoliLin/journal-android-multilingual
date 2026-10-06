@@ -81,6 +81,7 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.journal.components.JournalSatelliteFab
+import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
@@ -182,9 +183,9 @@ fun JournalScreen(
             .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
-            TopAppBar(
+            MainTabTopAppBar(
+                title = i18n("journal"),
                 scrollBehavior = topBarScrollBehavior,
-                title = { Text(i18n("journal")) },
                 actions = {
                     IconButton(onClick = navigateToCalendar) {
                         Icon(
