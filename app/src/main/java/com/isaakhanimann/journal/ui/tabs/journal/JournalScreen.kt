@@ -23,6 +23,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -71,6 +72,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.achievement.AchievementEvaluator
 import com.isaakhanimann.journal.data.achievement.AchievementGetToast
@@ -79,6 +81,7 @@ import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepositor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.journal.components.JournalSatelliteFab
+import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
@@ -171,15 +174,18 @@ fun JournalScreen(
     }
 
     val topBarScrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-    Scaffold(
+    Box(modifier = Modifier.fillMaxSize()) {
+        com.isaakhanimann.journal.ui.utils.JournalAmbientBackground()
+        Scaffold(
+        containerColor = Color.Transparent,
         modifier = Modifier
             .bottomBarNestedScroll()
             .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
-            TopAppBar(
+            MainTabTopAppBar(
+                title = i18n("journal"),
                 scrollBehavior = topBarScrollBehavior,
-                title = { Text(i18n("journal")) },
                 actions = {
                     IconButton(onClick = navigateToCalendar) {
                         Icon(
@@ -253,7 +259,10 @@ fun JournalScreen(
                                 }
                             },
                             label = { Text(text = i18n("journal_search_by_title_or_substance")) },
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                            shape = MaterialTheme.shapes.large,
                             keyboardActions = KeyboardActions(onDone = {
                                 focusManager.clearFocus()
                             }),
@@ -371,6 +380,7 @@ fun JournalScreen(
                         }
                 )
             }
+        }
         }
     }
 }

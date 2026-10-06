@@ -2,6 +2,7 @@ package com.isaakhanimann.journal.ui.main.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -65,6 +66,20 @@ class Nav3TabManager(
     initialTab: TopLevelDestination,
     private val onTabSelected: (TopLevelDestination) -> Unit = {},
 ) {
+    var navigationDirection by mutableIntStateOf(1)
+        private set
+    var popDirection by mutableIntStateOf(-1)
+        private set
+
+    val predictivePopDirection: Int
+        get() = if (isAtRoot() && selectedTab != TopLevelDestinations.Journal) {
+            val currentIndex = TopLevelDestinations.all.indexOf(selectedTab)
+            val journalIndex = TopLevelDestinations.all.indexOf(TopLevelDestinations.Journal)
+            if (journalIndex > currentIndex) 1 else -1
+        } else {
+            -1
+        }
+
     var selectedTab by mutableStateOf(initialTab)
         private set
 
@@ -74,6 +89,12 @@ class Nav3TabManager(
     fun backStack(tab: TopLevelDestination): NavBackStack<NavKey> = backStacks.getValue(tab)
 
     fun switchToTab(tab: TopLevelDestination) {
+        if (tab != selectedTab) {
+            val currentIndex = TopLevelDestinations.all.indexOf(selectedTab)
+            val targetIndex = TopLevelDestinations.all.indexOf(tab)
+            navigationDirection = if (targetIndex > currentIndex) 1 else -1
+            popDirection = navigationDirection
+        }
         selectedTab = tab
         onTabSelected(tab)
     }
@@ -82,7 +103,10 @@ class Nav3TabManager(
     fun navigate(key: NavKey) {
         tabFor(key)?.let(::switchToTab)
         val stack = currentBackStack
-        if (stack.lastOrNull() != key) stack.add(key)
+        if (stack.lastOrNull() != key) {
+            navigationDirection = 1
+            stack.add(key)
+        }
     }
 
     /**
@@ -92,6 +116,7 @@ class Nav3TabManager(
     fun pop(): Boolean {
         val stack = currentBackStack
         if (stack.size > 1) {
+            popDirection = -1
             stack.removeAt(stack.lastIndex)
             return true
         }
@@ -101,12 +126,11 @@ class Nav3TabManager(
         }
         return false
     }
-
     fun popToRoot(tab: TopLevelDestination = selectedTab) {
         val stack = backStacks.getValue(tab)
+        if (stack.size > 1) popDirection = -1
         while (stack.size > 1) stack.removeAt(stack.lastIndex)
     }
-
     /**
      * Removes [root] and everything above it, ending a multi-screen flow. The tab root itself is
      * never removed: a flow that was somehow pushed as the only entry degrades to [popToRoot].
@@ -115,6 +139,7 @@ class Nav3TabManager(
         val stack = currentBackStack
         val index = stack.indexOfLast { it == root }
         if (index < 0) return false
+        popDirection = -1
         while (stack.size > index.coerceAtLeast(1)) stack.removeAt(stack.lastIndex)
         return true
     }

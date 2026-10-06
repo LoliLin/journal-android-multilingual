@@ -50,11 +50,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
+import com.isaakhanimann.journal.ui.theme.mainTabContentSpacing
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+
+
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.theme.verticalPaddingCards
 
@@ -92,9 +96,9 @@ fun SaferUseScreen(
             .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
-            TopAppBar(
-                scrollBehavior = topBarScrollBehavior,
-                title = { Text(i18n("safer_use_title")) }
+            MainTabTopAppBar(
+                title = i18n("safer_use_title"),
+                scrollBehavior = topBarScrollBehavior
             )
         }
     ) { padding ->
@@ -319,6 +323,6 @@ fun SaferText(text: String) {
         textAlign = TextAlign.Left,
         modifier = Modifier
             .padding(horizontal = horizontalPadding)
-            .padding(bottom = 10.dp)
+            .padding(bottom = mainTabContentSpacing)
     )
 }

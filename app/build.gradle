@@ -137,6 +137,8 @@ dependencies {
     implementation(libs.accompanist.webview)
     implementation(libs.kizitonwose.calendar.compose)
     implementation(libs.towdium.pinin)
+    implementation(libs.material.kolor)
+    implementation(libs.material.color.utilities)
     implementation(libs.coil.compose)
 
     testImplementation(libs.junit)

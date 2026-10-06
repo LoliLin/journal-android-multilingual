@@ -67,6 +67,8 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_USE_24_HOUR_CLOCK = booleanPreferencesKey("key_use_24_hour_clock")
         val KEY_STATS_BY_INGESTION_TIME = booleanPreferencesKey("key_stats_by_ingestion_time")
         val KEY_DATE_LOCALE_OPTION = stringPreferencesKey("key_date_locale_option")
+        val KEY_THEME_PALETTE = stringPreferencesKey("key_theme_palette")
+        val KEY_ROOT_TAB_TRANSITIONS_ENABLED = booleanPreferencesKey("key_root_tab_transitions_enabled")
     }
 
     suspend fun saveTimeDisplayOption(value: SavedTimeDisplayOption) {
@@ -296,6 +298,26 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
             preferences[PreferencesKeys.KEY_OWNER_USER_NAME] ?: "You"
         }
 
+    val isRootTabTransitionsEnabledFlow: Flow<Boolean> = dataStore.data
+        .map { preferences -> preferences[PreferencesKeys.KEY_ROOT_TAB_TRANSITIONS_ENABLED] ?: true }
+
+    suspend fun saveRootTabTransitionsEnabled(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_ROOT_TAB_TRANSITIONS_ENABLED] = value
+        }
+    }
+
+    val themePaletteFlow: Flow<String?> = dataStore.data.map { preferences ->
+        preferences[PreferencesKeys.KEY_THEME_PALETTE]
+    }
+
+    suspend fun saveThemePalette(value: String?) {
+        dataStore.edit { preferences ->
+            if (value == null) preferences.remove(PreferencesKeys.KEY_THEME_PALETTE)
+            else preferences[PreferencesKeys.KEY_THEME_PALETTE] = value
+        }
+    }
+
     val dateLocaleOptionFlow: Flow<DateLocaleOption> = dataStore.data
         .map { preferences ->
             val name = preferences[PreferencesKeys.KEY_DATE_LOCALE_OPTION]
@@ -433,7 +455,8 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
             PreferencesKeys.KEY_SELECTED_LANGUAGE.name,
             PreferencesKeys.KEY_OWNER_USER_NAME.name,
             PreferencesKeys.KEY_OWNER_USER_ACHIEVEMENT.name,
-            PreferencesKeys.KEY_DATE_LOCALE_OPTION.name -> BackupPreferenceType.STRING
+            PreferencesKeys.KEY_DATE_LOCALE_OPTION.name,
+            PreferencesKeys.KEY_THEME_PALETTE.name -> BackupPreferenceType.STRING
 
             PreferencesKeys.KEY_HIDE_ORAL_DISCLAIMER.name,
             PreferencesKeys.KEY_HIDE_DOSAGE_DOTS.name,

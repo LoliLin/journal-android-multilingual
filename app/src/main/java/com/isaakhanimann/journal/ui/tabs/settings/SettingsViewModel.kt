@@ -52,6 +52,16 @@ class SettingsViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
+    val isRootTabTransitionsEnabledFlow = userPreferences.isRootTabTransitionsEnabledFlow.stateIn(
+        initialValue = true,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveRootTabTransitionsEnabled(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveRootTabTransitionsEnabled(value)
+    }
+
     fun saveDosageDotsAreHidden(value: Boolean) = viewModelScope.launch {
         userPreferences.saveDosageDotsAreHidden(value)
     }
@@ -172,6 +182,16 @@ class SettingsViewModel @Inject constructor(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
     )
+
+    val themePaletteFlow = userPreferences.themePaletteFlow.stateIn(
+        initialValue = null,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveThemePalette(value: String?) {
+        viewModelScope.launch { userPreferences.saveThemePalette(value) }
+    }
 
     val dateLocaleOptionFlow = userPreferences.dateLocaleOptionFlow.stateIn(
         initialValue = DateLocaleOption.FOLLOW_LANGUAGE,

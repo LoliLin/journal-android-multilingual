@@ -22,9 +22,13 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.isaakhanimann.journal.ui.tabs.settings.SettingsViewModel
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
 import com.isaakhanimann.journal.ui.main.MainScreen
@@ -47,7 +51,9 @@ class MainActivity : FragmentActivity() {
             app.applicationScope
         )
         setContent {
-            JournalTheme {
+            val settingsViewModel: SettingsViewModel = hiltViewModel()
+            val themePalette by settingsViewModel.themePaletteFlow.collectAsState()
+            JournalTheme(themePalette = themePalette) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

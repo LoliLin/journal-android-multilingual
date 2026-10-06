@@ -93,9 +93,11 @@ import coil.request.ImageRequest
 import com.isaakhanimann.journal.data.achievement.AchievementLogoButton
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
+import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
 import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
-import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.theme.mainTabHorizontalPadding
+
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 import com.isaakhanimann.journal.ui.utils.getMediumDateText
 import java.time.Instant
@@ -166,9 +168,9 @@ fun SettingsScreen(
             .nestedScroll(topBarScrollBehavior.nestedScrollConnection),
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         topBar = {
-            TopAppBar(
-                scrollBehavior = topBarScrollBehavior,
-                title = { Text(i18n("settings")) }
+            MainTabTopAppBar(
+                title = i18n("settings"),
+                scrollBehavior = topBarScrollBehavior
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
@@ -176,7 +178,7 @@ fun SettingsScreen(
         Column(
             modifier = Modifier
                 .padding(padding)
-                .padding(horizontal = horizontalPadding)
+                .padding(horizontal = mainTabHorizontalPadding)
                 .padding(bottom = bottomBarOverlayDp())
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
@@ -533,7 +535,12 @@ fun SettingsScreen(
 const val SHARE_APP_URL = "https://github.com/LoliLin/journal-android-multilingual"
 
 @Composable
-fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) {
+fun SettingsButton(
+    imageVector: ImageVector,
+    text: String,
+    iconTint: androidx.compose.ui.graphics.Color = androidx.compose.material3.LocalContentColor.current,
+    onClick: () -> Unit
+) {
     TextButton(
         onClick = onClick,
         modifier = Modifier.padding(horizontal = 2.dp)
@@ -541,7 +548,8 @@ fun SettingsButton(imageVector: ImageVector, text: String, onClick: () -> Unit) 
         Icon(
             imageVector,
             contentDescription = imageVector.name,
-            modifier = Modifier.size(ButtonDefaults.IconSize)
+            modifier = Modifier.size(ButtonDefaults.IconSize),
+            tint = iconTint
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         Text(text)

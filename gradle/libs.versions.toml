@@ -45,6 +45,7 @@ accompanist = "0.36.0"
 calendar = "2.10.1"
 pinIn = "1.6.0"
 coil = "2.7.0"
+materialKolor = "4.1.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -108,6 +109,8 @@ accompanist-webview = { module = "com.google.accompanist:accompanist-webview", v
 kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", version.ref = "calendar" }
 towdium-pinin = { module = "com.github.Towdium:PinIn", version.ref = "pinIn" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+material-kolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
+material-color-utilities = { module = "com.materialkolor:material-color-utilities", version.ref = "materialKolor" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxbrowser" }
 androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
 androidx-biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }

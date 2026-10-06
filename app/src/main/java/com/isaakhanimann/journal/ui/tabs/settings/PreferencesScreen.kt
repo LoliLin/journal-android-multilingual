@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,10 +13,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.outlined.ColorLens
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.StarBorder
@@ -91,7 +94,11 @@ fun PreferencesScreen(
         saveAppLockEnabled = viewModel::saveAppLockEnabled,
         isEffectNotificationEnabled =
             viewModel.isEffectNotificationEnabledFlow.collectAsState().value,
-        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled
+        saveEffectNotificationEnabled = viewModel::saveEffectNotificationEnabled,
+        themePalette = viewModel.themePaletteFlow.collectAsState().value,
+        saveThemePalette = viewModel::saveThemePalette,
+        rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value,
+        saveRootTabTransitionsEnabled = viewModel::saveRootTabTransitionsEnabled
     )
 }
 
@@ -124,7 +131,11 @@ fun PreferencesScreen(
     isAppLockEnabled: Boolean,
     saveAppLockEnabled: (Boolean) -> Unit,
     isEffectNotificationEnabled: Boolean,
-    saveEffectNotificationEnabled: (Boolean) -> Unit
+    saveEffectNotificationEnabled: (Boolean) -> Unit,
+    themePalette: String? = null,
+    saveThemePalette: (String?) -> Unit = {},
+    rootTabTransitionsEnabled: Boolean = true,
+    saveRootTabTransitionsEnabled: (Boolean) -> Unit = {}
 ) {
     Scaffold(
         topBar = {
@@ -173,6 +184,31 @@ fun PreferencesScreen(
                         onDismiss = { isLanguageDialogVisible = false }
                     )
                 }
+                HorizontalDivider()
+                var isThemePaletteDialogVisible by remember { mutableStateOf(false) }
+                SettingsButton(
+                    imageVector = Icons.Outlined.ColorLens,
+                    text = i18n("settings_theme_palette"),
+                    iconTint = MaterialTheme.colorScheme.primary
+                ) {
+                    isThemePaletteDialogVisible = true
+                }
+                if (isThemePaletteDialogVisible) {
+                    ThemePaletteDialog(
+                        selectedPalette = themePalette,
+                        onSelect = {
+                            saveThemePalette(it)
+                            isThemePaletteDialogVisible = false
+                        },
+                        onDismiss = { isThemePaletteDialogVisible = false }
+                    )
+                }
+                HorizontalDivider()
+                PreferenceSwitchRow(
+                    title = i18n("settings_root_tab_transitions"),
+                    checked = rootTabTransitionsEnabled,
+                    onCheckedChange = saveRootTabTransitionsEnabled
+                )
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.StarBorder,
@@ -443,6 +479,69 @@ private fun DateLocaleSelectionDialog(
             TextButton(onClick = onDismiss) {
                 Text(i18n("common_close"))
             }
+        }
+    )
+}
+
+private data class ThemePalette(val nameKey: String, val hex: String)
+
+private val themePalettes = listOf(
+    ThemePalette("settings_palette_midnight", "#1A237E"),
+    ThemePalette("settings_palette_nordic", "#546E7A"),
+    ThemePalette("settings_palette_forest", "#2E7D32"),
+    ThemePalette("settings_palette_sunset", "#E65100"),
+    ThemePalette("settings_palette_rose", "#AD1457"),
+    ThemePalette("settings_palette_lavender", "#7B1FA2"),
+    ThemePalette("settings_palette_slate", "#455A64"),
+    ThemePalette("settings_palette_ocean", "#0277BD")
+)
+
+@Composable
+private fun ThemePaletteDialog(
+    selectedPalette: String?,
+    onSelect: (String?) -> Unit,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(i18n("settings_theme_palette")) },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                LanguageOptionRow(
+                    label = i18n("settings_theme_dynamic"),
+                    isSelected = selectedPalette == null,
+                    onClick = { onSelect(null) }
+                )
+                themePalettes.forEach { palette ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onSelect(palette.hex) }
+                            .padding(horizontal = horizontalPadding, vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        androidx.compose.foundation.layout.Box(
+                            Modifier
+                                .size(24.dp)
+                                .background(
+                                    androidx.compose.ui.graphics.Color(android.graphics.Color.parseColor(palette.hex)),
+                                    androidx.compose.foundation.shape.CircleShape
+                                )
+                        )
+                        Text(
+                            text = i18n(palette.nameKey),
+                            modifier = Modifier.weight(1f).padding(start = 12.dp)
+                        )
+                        RadioButton(
+                            selected = selectedPalette == palette.hex,
+                            onClick = { onSelect(palette.hex) }
+                        )
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(i18n("common_close")) }
         }
     )
 }

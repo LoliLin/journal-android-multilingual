@@ -23,6 +23,8 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,15 +41,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
 import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
-import com.isaakhanimann.journal.ui.main.navigation.minimalNavTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
-import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpec
+import com.isaakhanimann.journal.ui.main.navigation.popNavTransitionSpecForDirection
+import com.isaakhanimann.journal.ui.main.navigation.predictivePopTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.rememberNav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
@@ -77,6 +82,7 @@ private const val TAG = "MainScreen"
 fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     val selectedLanguageKey by viewModel.selectedLanguageFlow.collectAsState()
     LaunchedEffect(selectedLanguageKey) { I18n.setPreferredLanguageKey(selectedLanguageKey) }
+    val rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
     val pendingIntent = rememberPendingNavigationIntent()
     if (isAccepted == null) {
@@ -88,7 +94,7 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     ) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
-        MainScreenContent(viewModel, pendingIntent)
+        MainScreenContent(viewModel, pendingIntent, rootTabTransitionsEnabled)
     }
 }
 
@@ -107,7 +113,11 @@ private fun rememberPendingNavigationIntent(): MutableState<Intent?> {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: MutableState<Intent?>) {
+private fun MainScreenContent(
+    viewModel: MainScreenViewModel,
+    pendingIntent: MutableState<Intent?>,
+    rootTabTransitionsEnabled: Boolean
+) {
     val isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value
     val manager = rememberNav3TabManager()
     val entryProvider = remember(manager) { nav3EntryProvider(manager) }
@@ -125,6 +135,7 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
     }
 
     val isKeyboardOpenNow = isKeyboardOpen().value
+    val rootTabSwipeThresholdPx = with(LocalDensity.current) { 48.dp.toPx() }
     val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
     val bottomBarScrollBehavior = rememberBottomBarScrollBehavior {
         isOnMainTabRoot && !isKeyboardOpenNow
@@ -153,10 +164,42 @@ private fun MainScreenContent(viewModel: MainScreenViewModel, pendingIntent: Mut
             NavDisplay(
                 entries = entries,
                 onBack = { if (!manager.pop()) activity?.finish() },
-                transitionSpec = minimalNavTransitionSpec,
-                popTransitionSpec = minimalNavTransitionSpec,
-                predictivePopTransitionSpec = predictivePopTransitionSpec,
-                modifier = Modifier.fillMaxSize()
+                transitionSpec = navTransitionSpecForDirection(
+                    manager.navigationDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
+                popTransitionSpec = popNavTransitionSpecForDirection(
+                    manager.popDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
+                predictivePopTransitionSpec = predictivePopTransitionSpecForDirection(
+                    manager.predictivePopDirection,
+                    agoraStyle = rootTabTransitionsEnabled
+                ),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .pointerInput(manager, selectedDestination, isOnMainTabRoot, isKeyboardOpenNow) {
+                        if (isOnMainTabRoot && !isKeyboardOpenNow) {
+                            var horizontalDrag = 0f
+                            detectHorizontalDragGestures(
+                                onDragStart = { horizontalDrag = 0f },
+                                onHorizontalDrag = { _, dragAmount ->
+                                    horizontalDrag += dragAmount
+                                },
+                                onDragEnd = {
+                                    val tabs = TopLevelDestinations.all
+                                    val currentIndex = tabs.indexOf(selectedDestination)
+                                    when {
+                                        horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
+                                            manager.switchToTab(tabs[currentIndex + 1])
+                                        horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
+                                            manager.switchToTab(tabs[currentIndex - 1])
+                                    }
+                                },
+                                onDragCancel = { horizontalDrag = 0f }
+                            )
+                        }
+                    }
             )
         }
         BottomNavigationBar(
