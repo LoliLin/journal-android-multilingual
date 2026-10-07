@@ -15,5 +15,6 @@
   "metabolism": "Direct glucuronide conjugation forms a major inactive metabolite that is excreted in urine. It does not require conversion to another active benzodiazepine before this elimination step.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=67f821fa-5663-4d69-82c9-5ee13a09f324"
-  ]
+  ],
+  "summary": "Oxazepam is a short-to-intermediate-acting benzodiazepine used to treat anxiety and insomnia and to control alcohol withdrawal symptoms. It is also an active metabolite of several other benzodiazepines."
 }

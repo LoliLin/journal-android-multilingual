@@ -8,5 +8,6 @@
   "metabolism": "CYP3A4 is the main CYP pathway, with smaller CYP2C19/CYP2D6 contributions and additional non-CYP metabolism. Only small amounts are eliminated unchanged in urine or feces.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f917f30d-f2a7-43eb-836f-53eaa2a31cb0"
-  ]
+  ],
+  "summary": "Vilazodone is an oral serotonin-modulating medication used to treat major depressive disorder. It is thought to act both as a selective serotonin reuptake inhibitor and as a 5-HT1A receptor agonist."
 }

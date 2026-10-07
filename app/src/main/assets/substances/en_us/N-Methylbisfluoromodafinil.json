@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "mildly addictive with a low potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "Modafiendz (N-methylbisfluoromodafinil) is a wakefulness-promoting agent related to modafinil that was never marketed. It is sold online for non-medical use as a nootropic.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "N-Methylbisfluoromodafinil"
 }

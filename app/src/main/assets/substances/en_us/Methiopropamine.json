@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "Methiopropamine (MPA) is a stimulant compound structurally related to methamphetamine. First reported in 1942, it appeared for public sale in the United Kingdom as a research chemical in 2010.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "Methiopropamine"
 }

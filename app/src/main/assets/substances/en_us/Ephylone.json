@@ -3,7 +3,8 @@
     "full": "develops with prolonged and repeated use"
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "Ephylone, also known as N-ethylpentylone, is a substituted cathinone stimulant developed in the 1960s. It has been reported as a designer drug in several countries.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "Ephylone"
 }

@@ -9,5 +9,6 @@
   "metabolism": "CYP1A2 mediates N-dealkylation and hydroxylation, producing aminoindan derivatives. Subsequent glucuronidation and urinary excretion are major clearance steps.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9bf059f4-4da8-48fe-aacb-c50717d36606"
-  ]
+  ],
+  "summary": "Rasagiline is an oral selective monoamine oxidase B inhibitor used to treat Parkinson's disease, either alone in early disease or as add-on therapy in more advanced cases."
 }

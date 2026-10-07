@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "STS-135 (5F-APICA) is a designer synthetic cannabinoid and a terminally fluorinated analogue of SDB-001. It acts as a potent cannabinoid receptor agonist in vitro and was first detected in 2013.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "STS-135"
 }

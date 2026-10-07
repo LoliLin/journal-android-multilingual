@@ -6,5 +6,6 @@
     "anxiolytic",
     "benzodiazepine"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Tofisopam is a 2,3-benzodiazepine marketed as an anxiolytic. Unlike many other benzodiazepines, it does not have significant sedative, anticonvulsant, or muscle-relaxant effects."
 }

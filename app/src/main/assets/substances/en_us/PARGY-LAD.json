@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "PARGY-LAD (6-propynyl-6-nor-LSD) is a psychedelic lysergamide related to lysergic acid diethylamide (LSD).",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "localizedName": "PARGY-LAD"
 }

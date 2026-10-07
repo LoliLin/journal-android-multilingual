@@ -1,11 +1,19 @@
 {
   "name": "Desomorphine",
-  "commonNames": ["Desomorphine", "Krokodil", "Krok"],
+  "commonNames": [
+    "Desomorphine",
+    "Krokodil",
+    "Krok"
+  ],
   "url": "https://psychonautwiki.org/wiki/Desomorphine",
   "isApproved": true,
-  "crossTolerances": ["opioid"],
+  "crossTolerances": [
+    "opioid"
+  ],
   "toxicities": [],
-  "categories": ["opioid"],
+  "categories": [
+    "opioid"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -24,5 +32,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Desomorphine is a semi-synthetic opioid derived from morphine, with fast-acting sedative and analgesic effects. The name krokodil is also used for an illicit, typically impure product based on desomorphine."
 }

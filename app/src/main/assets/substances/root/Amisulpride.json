@@ -8,5 +8,6 @@
   "metabolism": "Metabolism is limited. Much of the absorbed drug is eliminated unchanged by the kidneys; oxidative CYP metabolism is not its principal elimination route.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/102319/smpc"
-  ]
+  ],
+  "summary": "Amisulpride is an atypical antipsychotic used to treat schizophrenia and psychotic episodes; it is also used for depression and postoperative nausea and vomiting in some settings. It blocks dopamine D2 receptors and can raise prolactin levels."
 }

@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "βk-2C-B (bk-2C-B) is a psychedelic phenethylamine in the 2C family and the β-keto derivative of 2C-B. It was first described in scientific literature in 2004 and was identified as a designer drug in Europe in 2013.",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "localizedName": "Βk-2C-B"
 }

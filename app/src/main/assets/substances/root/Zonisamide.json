@@ -8,5 +8,6 @@
   "metabolism": "Undergoes N-acetylation and CYP3A4-mediated reduction to SMAP, followed by glucuronidation. Urinary elimination includes unchanged zonisamide and its metabolites.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40094d96-e979-4b3e-840f-a96677480f96"
-  ]
+  ],
+  "summary": "Zonisamide is a sulfonamide medication used mainly as an antiseizure treatment for focal or generalized epilepsy. It is also used to treat symptoms of Parkinson's disease."
 }

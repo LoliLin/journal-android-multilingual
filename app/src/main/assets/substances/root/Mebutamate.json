@@ -5,5 +5,6 @@
   "categories": [
     "anxiolytic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Mebutamate is a carbamate-class anxiolytic and sedative with antihypertensive effects. It acts at GABA-A receptors and has effects described as similar to barbiturates."
 }

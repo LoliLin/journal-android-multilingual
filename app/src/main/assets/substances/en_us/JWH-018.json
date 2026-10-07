@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "JWH-018 is a synthetic cannabinoid in the naphthoylindole family that fully activates CB1 and CB2 receptors. It has been used in synthetic cannabinoid products sold in some countries as incense blends.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "JWH-018"
 }

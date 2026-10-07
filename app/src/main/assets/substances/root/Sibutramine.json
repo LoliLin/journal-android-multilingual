@@ -5,5 +5,6 @@
   "categories": [
     "centrally-acting-medication"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Sibutramine is an appetite suppressant formerly used with diet and exercise to treat obesity. It was withdrawn from many markets after a study associated it with an increased risk of heart attack and ischemic stroke."
 }

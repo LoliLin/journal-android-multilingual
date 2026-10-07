@@ -15,5 +15,6 @@
   "metabolism": "Rapidly metabolized, producing long-lived N-desalkylflurazepam and hydroxyethyl derivatives. Urinary elimination is mainly through conjugated metabolites rather than unchanged flurazepam.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8f476891-1346-4e8c-ac1b-f8cbdc64f5a1"
-  ]
+  ],
+  "summary": "Flurazepam is a benzodiazepine derivative with anxiolytic, anticonvulsant, hypnotic, sedative, and muscle-relaxant properties. It produces a long-lived metabolite that may remain in the bloodstream for days."
 }

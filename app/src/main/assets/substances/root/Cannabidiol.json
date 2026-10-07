@@ -1,12 +1,20 @@
 {
   "name": "Cannabidiol",
-  "commonNames": ["Cannabidiol", "CBD", "Epidiolex"],
+  "commonNames": [
+    "Cannabidiol",
+    "CBD",
+    "Epidiolex"
+  ],
   "url": "https://psychonautwiki.org/wiki/Cannabidiol",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "low abuse potential",
-  "toxicities": ["well-tolerated and shows little to no toxicity"],
-  "categories": ["cannabinoid"],
+  "toxicities": [
+    "well-tolerated and shows little to no toxicity"
+  ],
+  "categories": [
+    "cannabinoid"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -35,5 +43,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Cannabidiol (CBD) is a phytocannabinoid found in Cannabis. It is an anticonvulsant used to treat two rare forms of childhood epilepsy, while evidence for other proposed medical uses remains insufficient."
 }

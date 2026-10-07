@@ -8,5 +8,6 @@
   "metabolism": "CYP2D6 forms active mesoridazine, which is further converted to sulforidazine. Enzyme activity affects parent and active-metabolite exposure.",
   "metabolismSources": [
     "https://www.ncbi.nlm.nih.gov/books/NBK424018/"
-  ]
+  ],
+  "summary": "Thioridazine is a first-generation phenothiazine antipsychotic formerly used for schizophrenia and psychosis. Its branded product was withdrawn worldwide in 2005 because of severe cardiac arrhythmias, though generic versions remain available in the United States."
 }

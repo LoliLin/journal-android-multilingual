@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Methylpropyltryptamine (MPT; N-methyl-N-propyltryptamine) is a psychedelic drug in the tryptamine family and a homologue of methylethyltryptamine.",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "localizedName": "MPT"
 }

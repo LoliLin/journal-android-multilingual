@@ -1,6 +1,7 @@
 {
   "addictionPotential": "low abuse potential",
-  "toxicities": ["well-tolerated and shows little to no toxicity"],
-  "summary": "Cannabidiol (CBD) is a phytocannabinoid found in Cannabis. It is an anticonvulsant used to treat two rare forms of childhood epilepsy, while evidence for other proposed medical uses remains insufficient.",
+  "toxicities": [
+    "well-tolerated and shows little to no toxicity"
+  ],
   "localizedName": "Cannabidiol"
 }

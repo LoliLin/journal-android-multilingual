@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "non-addictive with a low abuse potential",
-  "toxicities": ["extremely low toxicity relative to dose"],
-  "summary": "1V-LSD, also called 1-valeryl-LSD, is a lysergamide psychedelic related to LSD. It is thought to act as an LSD prodrug and has been encountered as a designer drug.",
+  "toxicities": [
+    "extremely low toxicity relative to dose"
+  ],
   "localizedName": "1V-LSD"
 }

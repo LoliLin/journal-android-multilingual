@@ -1,6 +1,7 @@
 {
   "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
-  "summary": "Galantamine is an acetylcholinesterase inhibitor used to treat early-stage Alzheimer's disease and memory impairment. It is an alkaloid found in several plants in the Amaryllidaceae family and can also be produced synthetically.",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
   "localizedName": "Galantamine"
 }

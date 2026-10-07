@@ -5,5 +5,6 @@
   "categories": [
     "antidepressant"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Pivagabine is an antidepressant and anxiolytic introduced in Italy in 1997 and later discontinued there. It was initially thought to act as a GABA prodrug, but is now believed to act through modulation of corticotropin-releasing factor."
 }

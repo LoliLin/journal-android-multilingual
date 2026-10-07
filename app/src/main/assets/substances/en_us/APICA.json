@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "APICA (2NE1, SDB-001) is an indole-based synthetic cannabinoid that acts as an agonist at cannabinoid receptors. It was identified in synthetic cannabis blends in Japan in 2012.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "APICA"
 }

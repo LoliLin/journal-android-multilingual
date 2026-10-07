@@ -5,5 +5,6 @@
   "categories": [
     "opioid"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Meptazinol is an opioid analgesic used for moderate to severe pain, including pain during childbirth. It is a partial mu-opioid receptor agonist with a relatively rapid onset and short duration of action."
 }

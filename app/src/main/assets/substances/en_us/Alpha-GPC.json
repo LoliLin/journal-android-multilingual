@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
-  "summary": "Alpha-GPC is a natural choline compound found in the brain and a precursor of acetylcholine. It has been investigated for potential use in treating Alzheimer's disease and other dementias.",
+  "toxicities": [
+    "extremely low toxicity"
+  ],
   "localizedName": "Alpha-GPC"
 }

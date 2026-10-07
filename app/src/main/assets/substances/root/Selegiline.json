@@ -9,5 +9,6 @@
   "metabolism": "Extensive presystemic metabolism forms N-desmethylselegiline, L-methamphetamine and L-amphetamine. These products have their own activity; their contribution to the clinical effect is not fully established.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=040a97e5-efd1-4a2f-b737-2f13e5366d70"
-  ]
+  ],
+  "summary": "Selegiline, also known as L-deprenyl, is a monoamine oxidase inhibitor used to treat Parkinson's disease and major depressive disorder. It is the purified levorotatory enantiomer of racemic deprenyl."
 }

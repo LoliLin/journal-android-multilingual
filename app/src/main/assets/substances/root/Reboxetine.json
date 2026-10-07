@@ -8,5 +8,6 @@
   "metabolism": "Mainly metabolized by CYP3A4, including O-desethylation. CYP2D6 is not a major metabolic route; urinary elimination includes drug-related metabolites.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/1578/smpc"
-  ]
+  ],
+  "summary": "Reboxetine is a selective norepinephrine reuptake inhibitor marketed in many countries as an antidepressant for major depressive disorder. It is not approved for use in the United States."
 }

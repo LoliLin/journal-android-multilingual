@@ -15,5 +15,6 @@
   "metabolism": "CYP3A hydroxylation forms 1-hydroxytriazolam and 4-hydroxytriazolam. Subsequent glucuronidation produces conjugates eliminated mainly in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5add318e-11b9-42f8-b052-0d8cebb32fcf"
-  ]
+  ],
+  "summary": "Triazolam is a triazolobenzodiazepine central nervous system depressant used as a sedative for severe insomnia."
 }

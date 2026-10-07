@@ -2,7 +2,7 @@
 
 ## 审查范围与结论
 
-以更新后的 `main`（`186386f3`）为准，逐条检查 `app/src/main/assets/substances/root/*.json`，并对照应用解析器、加载合并代码和格式文档。没有修改物质记录，也没有核查外部医学事实。CSV 按文件名排序，覆盖全部记录。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
+字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工来源核验将 689 条已有英文摘要移入 root 默认层，并清理重复的 `en_us` 摘要；逐条 CSV 已同步当前 root 摘要状态。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
 
 | 检查项 | 结果 |
 |---|---:|
@@ -43,7 +43,7 @@
 | `toxicities` | 232 | 750 |
 | `interactions` | 218 | 764 |
 | `roas` | 293 | 689 |
-| `summary` | 219 | 763 |
+| `summary` | 908 | 74 |
 | `effectsSummary` | 58 | 924 |
 | `dosageRemark` | 38 | 944 |
 | `generalRisks` | 57 | 925 |
@@ -61,78 +61,78 @@
 
 | 物质 | 文件 | 状态 | 同时缺少的重点字段 |
 |---|---|---|---|
-| 4-BMC | `app/src/main/assets/substances/root/4-BMC.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| 4-CA | `app/src/main/assets/substances/root/4-CA.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Amanita citrina | `app/src/main/assets/substances/root/Amanita citrina.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Amanita muscaria | `app/src/main/assets/substances/root/Amanita muscaria.json` | missing | roas,toxicities,interactions,summary,saferUse |
-| Amanita pantherina | `app/src/main/assets/substances/root/Amanita pantherina.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Argyreia nervosa | `app/src/main/assets/substances/root/Argyreia nervosa.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Banisteriopsis caapi | `app/src/main/assets/substances/root/Banisteriopsis caapi.json` | missing | roas,toxicities,interactions,summary,saferUse |
-| Blue Lotus | `app/src/main/assets/substances/root/Blue Lotus.json` | empty | toxicities,interactions,summary,saferUse,metabolism |
-| Cathinone | `app/src/main/assets/substances/root/Cathinone.json` | missing | roas,toxicities,interactions,summary,saferUse |
-| Coca | `app/src/main/assets/substances/root/Coca.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Cocoa | `app/src/main/assets/substances/root/Cocoa.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Datura (botany) | `app/src/main/assets/substances/root/Datura (botany).json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Echinopsis lageniformis | `app/src/main/assets/substances/root/Echinopsis lageniformis.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Echinopsis pachanoi | `app/src/main/assets/substances/root/Echinopsis pachanoi.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Echinopsis peruviana | `app/src/main/assets/substances/root/Echinopsis peruviana.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Flumazenil | `app/src/main/assets/substances/root/Flumazenil.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Hyoscyamus niger (botany) | `app/src/main/assets/substances/root/Hyoscyamus niger (botany).json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| IHCH-7113 | `app/src/main/assets/substances/root/IHCH-7113.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Loperamide | `app/src/main/assets/substances/root/Loperamide.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Lophophora diffusa | `app/src/main/assets/substances/root/Lophophora diffusa.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Lophophora fricii | `app/src/main/assets/substances/root/Lophophora fricii.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Magnesium threonate | `app/src/main/assets/substances/root/Magnesium threonate.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Magnesium | `app/src/main/assets/substances/root/Magnesium.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Mandragora officinarum (botany) | `app/src/main/assets/substances/root/Mandragora officinarum (botany).json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Mandragora | `app/src/main/assets/substances/root/Mandragora.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| MDNEB | `app/src/main/assets/substances/root/MDNEB.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| MDNEP | `app/src/main/assets/substances/root/MDNEP.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| MDNMB | `app/src/main/assets/substances/root/MDNMB.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| MDNMP | `app/src/main/assets/substances/root/MDNMP.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Mimosa tenuiflora | `app/src/main/assets/substances/root/Mimosa tenuiflora.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| MMDA | `app/src/main/assets/substances/root/MMDA.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Morning glory | `app/src/main/assets/substances/root/Morning glory.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
+| 4-BMC | `app/src/main/assets/substances/root/4-BMC.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| 4-CA | `app/src/main/assets/substances/root/4-CA.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Amanita citrina | `app/src/main/assets/substances/root/Amanita citrina.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Amanita muscaria | `app/src/main/assets/substances/root/Amanita muscaria.json` | missing | roas,toxicities,interactions,saferUse |
+| Amanita pantherina | `app/src/main/assets/substances/root/Amanita pantherina.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Argyreia nervosa | `app/src/main/assets/substances/root/Argyreia nervosa.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Banisteriopsis caapi | `app/src/main/assets/substances/root/Banisteriopsis caapi.json` | missing | roas,toxicities,interactions,saferUse |
+| Blue Lotus | `app/src/main/assets/substances/root/Blue Lotus.json` | empty | toxicities,interactions,saferUse,metabolism |
+| Cathinone | `app/src/main/assets/substances/root/Cathinone.json` | missing | roas,toxicities,interactions,saferUse |
+| Coca | `app/src/main/assets/substances/root/Coca.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Cocoa | `app/src/main/assets/substances/root/Cocoa.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Datura (botany) | `app/src/main/assets/substances/root/Datura (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Echinopsis lageniformis | `app/src/main/assets/substances/root/Echinopsis lageniformis.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Echinopsis pachanoi | `app/src/main/assets/substances/root/Echinopsis pachanoi.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Echinopsis peruviana | `app/src/main/assets/substances/root/Echinopsis peruviana.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Flumazenil | `app/src/main/assets/substances/root/Flumazenil.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Hyoscyamus niger (botany) | `app/src/main/assets/substances/root/Hyoscyamus niger (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| IHCH-7113 | `app/src/main/assets/substances/root/IHCH-7113.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Loperamide | `app/src/main/assets/substances/root/Loperamide.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Lophophora diffusa | `app/src/main/assets/substances/root/Lophophora diffusa.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Lophophora fricii | `app/src/main/assets/substances/root/Lophophora fricii.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Magnesium threonate | `app/src/main/assets/substances/root/Magnesium threonate.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Magnesium | `app/src/main/assets/substances/root/Magnesium.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Mandragora officinarum (botany) | `app/src/main/assets/substances/root/Mandragora officinarum (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Mandragora | `app/src/main/assets/substances/root/Mandragora.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| MDNEB | `app/src/main/assets/substances/root/MDNEB.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| MDNEP | `app/src/main/assets/substances/root/MDNEP.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| MDNMB | `app/src/main/assets/substances/root/MDNMB.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| MDNMP | `app/src/main/assets/substances/root/MDNMP.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Mimosa tenuiflora | `app/src/main/assets/substances/root/Mimosa tenuiflora.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| MMDA | `app/src/main/assets/substances/root/MMDA.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Morning glory | `app/src/main/assets/substances/root/Morning glory.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | N-(2C)-fentanyl | `app/src/main/assets/substances/root/N-(2C)-fentanyl.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
 | N-Methylcyclazodone | `app/src/main/assets/substances/root/N-Methylcyclazodone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
 | N-Methylhexedrone | `app/src/main/assets/substances/root/N-Methylhexedrone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Nitromethaqualone | `app/src/main/assets/substances/root/Nitromethaqualone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Oxymorphazone | `app/src/main/assets/substances/root/Oxymorphazone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Peganum harmala | `app/src/main/assets/substances/root/Peganum harmala.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Phalaris aquatica | `app/src/main/assets/substances/root/Phalaris aquatica.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Piper nigrum (botany) | `app/src/main/assets/substances/root/Piper nigrum (botany).json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Poppers | `app/src/main/assets/substances/root/Poppers.json` | empty | roas,toxicities,interactions,summary,metabolism |
-| Psilocybe cubensis | `app/src/main/assets/substances/root/Psilocybe cubensis.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Psilocybe cyanescens | `app/src/main/assets/substances/root/Psilocybe cyanescens.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Psilocybe mexicana | `app/src/main/assets/substances/root/Psilocybe mexicana.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Psilocybe subaeruginosa | `app/src/main/assets/substances/root/Psilocybe subaeruginosa.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Psychotria viridis | `app/src/main/assets/substances/root/Psychotria viridis.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| RGPU-95 | `app/src/main/assets/substances/root/RGPU-95.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Semax | `app/src/main/assets/substances/root/Semax.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Serotonin | `app/src/main/assets/substances/root/Serotonin.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| SR-17018 | `app/src/main/assets/substances/root/SR-17018.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tabernanthe iboga (botany) | `app/src/main/assets/substances/root/Tabernanthe iboga (botany).json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tetrahydrocannabihexol | `app/src/main/assets/substances/root/Tetrahydrocannabihexol.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tetrahydrocannabinol | `app/src/main/assets/substances/root/Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tetrahydrocannabiphorol | `app/src/main/assets/substances/root/Tetrahydrocannabiphorol.json` | missing | roas,toxicities,interactions,summary,saferUse |
-| Tetrahydrocannabutol | `app/src/main/assets/substances/root/Tetrahydrocannabutol.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Thujone | `app/src/main/assets/substances/root/Thujone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tobacco | `app/src/main/assets/substances/root/Tobacco.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Tryptamine | `app/src/main/assets/substances/root/Tryptamine.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Yohimbine | `app/src/main/assets/substances/root/Yohimbine.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Δ-10-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-10-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Δ-11-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-11-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| Δ-8-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-8-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,summary,saferUse |
+| Nitromethaqualone | `app/src/main/assets/substances/root/Nitromethaqualone.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Oxymorphazone | `app/src/main/assets/substances/root/Oxymorphazone.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Peganum harmala | `app/src/main/assets/substances/root/Peganum harmala.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Phalaris aquatica | `app/src/main/assets/substances/root/Phalaris aquatica.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Piper nigrum (botany) | `app/src/main/assets/substances/root/Piper nigrum (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Poppers | `app/src/main/assets/substances/root/Poppers.json` | empty | roas,toxicities,interactions,metabolism |
+| Psilocybe cubensis | `app/src/main/assets/substances/root/Psilocybe cubensis.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Psilocybe cyanescens | `app/src/main/assets/substances/root/Psilocybe cyanescens.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Psilocybe mexicana | `app/src/main/assets/substances/root/Psilocybe mexicana.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Psilocybe subaeruginosa | `app/src/main/assets/substances/root/Psilocybe subaeruginosa.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Psychotria viridis | `app/src/main/assets/substances/root/Psychotria viridis.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| RGPU-95 | `app/src/main/assets/substances/root/RGPU-95.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Semax | `app/src/main/assets/substances/root/Semax.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Serotonin | `app/src/main/assets/substances/root/Serotonin.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| SR-17018 | `app/src/main/assets/substances/root/SR-17018.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tabernanthe iboga (botany) | `app/src/main/assets/substances/root/Tabernanthe iboga (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tetrahydrocannabihexol | `app/src/main/assets/substances/root/Tetrahydrocannabihexol.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tetrahydrocannabinol | `app/src/main/assets/substances/root/Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tetrahydrocannabiphorol | `app/src/main/assets/substances/root/Tetrahydrocannabiphorol.json` | missing | roas,toxicities,interactions,saferUse |
+| Tetrahydrocannabutol | `app/src/main/assets/substances/root/Tetrahydrocannabutol.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Thujone | `app/src/main/assets/substances/root/Thujone.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tobacco | `app/src/main/assets/substances/root/Tobacco.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Tryptamine | `app/src/main/assets/substances/root/Tryptamine.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Yohimbine | `app/src/main/assets/substances/root/Yohimbine.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Δ-10-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-10-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Δ-11-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-11-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+| Δ-8-Tetrahydrocannabinol | `app/src/main/assets/substances/root/Δ-8-Tetrahydrocannabinol.json` | missing | roas,toxicities,interactions,saferUse |
 
 ## 多语言覆盖
 
 | 目录 | 覆盖物质数 | 缺少覆盖文件 | 无非空 `localizedName` |
 |---|---:|---:|---:|
 | `en_us/` | 292 | 690 | 690 |
-| `zh_cn/` | 937 | 45 | 206 |
+| `zh_cn/` | 958 | 24 | 206 |
 | `zh_tw/` | 937 | 45 | 206 |
 
-简体与繁体各缺 45 个覆盖文件；各有 161 个现有覆盖文件未提供非空 `localizedName`，共 206 条显示名回退到英文 `name`。这可能是没有可靠中文译名，不自动判为错误。合并后有 `summary` 的记录数：`en_us` 219、`zh_cn` 357、`zh_tw` 328。三个语言目录都没有 `_categories.json`，分类文案回退到 root。
+简体缺 24 个、繁体缺 45 个覆盖文件；现有覆盖文件中，简体有 182 个、繁体有 161 个未提供非空 `localizedName`。两种语言各有 206 条显示名回退到英文 `name`。当前合并后有 `summary` 的记录数：`en_us` 908、`zh_cn` 911、`zh_tw` 911。
 
 ## 文档与台账差异
 
@@ -146,7 +146,7 @@
 - 这是结构与字段覆盖清单，不是安全性或医学事实判断；缺少剂量、相互作用字段只说明当前未记录。
 - `roas`、`toxicities`、`interactions` 等可选字段应按条目查证后再补，不能因缺失而推断或填造。
 - 建议顺序：先核实分类候选；再统一 `localizedName` 文档口径与耐受小时字段是否纳入模型；随后按来源台账核对过期名称。
-- 本次没有改物质数据、解析器或现有协议文档。
+- 摘要迁移只重定位已人工核验并有来源记录的英文文本；未改解析器或现有翻译协议。
 
 ## 逐条表格
 

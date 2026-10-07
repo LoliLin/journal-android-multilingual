@@ -11,5 +11,6 @@
     "opioid"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Pentazocine is an opioid analgesic used to treat moderate to severe pain. It activates kappa and mu opioid receptors and has a ceiling effect for pain relief."
 }

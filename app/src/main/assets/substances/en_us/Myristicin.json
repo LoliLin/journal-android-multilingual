@@ -1,6 +1,8 @@
 {
   "addictionPotential": "is not known to be addictive",
-  "toxicities": ["is neurotoxic", "can be fatal in extremely high doses"],
-  "summary": "Myristicin is a naturally occurring allylbenzene found in herbs and spices such as nutmeg. At high doses, it may produce hallucinogenic effects.",
+  "toxicities": [
+    "is neurotoxic",
+    "can be fatal in extremely high doses"
+  ],
   "localizedName": "Myristicin"
 }

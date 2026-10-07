@@ -15,5 +15,6 @@
   "metabolism": "CYP2C19 and CYP3A4 mediate N-demethylation to demethylcitalopram, followed by further metabolism. Metabolites are substantially less potent than the parent; unchanged drug and metabolites contribute to urinary elimination.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=625a78b2-4751-4ca5-91b6-7c85fd9f8c2e"
-  ]
+  ],
+  "summary": "Citalopram is a selective serotonin reuptake inhibitor (SSRI) antidepressant used to treat major depressive disorder, obsessive-compulsive disorder, panic disorder, and social anxiety disorder."
 }

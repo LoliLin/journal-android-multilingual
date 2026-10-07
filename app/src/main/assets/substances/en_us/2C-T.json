@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["no negative health effects attributed to trying this drug"],
-  "summary": "A very rare psychedelic phenylethylamine.",
+  "toxicities": [
+    "no negative health effects attributed to trying this drug"
+  ],
   "localizedName": "2C-T"
 }

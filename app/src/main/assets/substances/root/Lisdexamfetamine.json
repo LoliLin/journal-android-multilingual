@@ -92,5 +92,6 @@
   "metabolism": "A prodrug hydrolyzed mainly by red blood cells into active dextroamphetamine and L-lysine. This conversion does not rely on CYP enzymes; dextroamphetamine then has its own metabolic and renal elimination pathways.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c11cb3b6-3dff-477b-a249-b4c3118edc5f"
-  ]
+  ],
+  "summary": "Lisdexamfetamine is an oral prodrug of dextroamphetamine used as a stimulant medication for ADHD and moderate-to-severe binge-eating disorder in adults."
 }
