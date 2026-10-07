@@ -126,6 +126,10 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
     }
   ],
   "metabolism": "Primarily hydrolyzed by de-esterification to ritalinic acid (PPAA), which has little or no activity. Metabolites account for most urinary elimination.",

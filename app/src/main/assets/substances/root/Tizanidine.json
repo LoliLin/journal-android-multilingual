@@ -8,7 +8,9 @@
   "interactions": {
     "dangerous": [
       "depressant",
-      "dissociative"
+      "dissociative",
+      "fluvoxamine",
+      "ciprofloxacin"
     ],
     "uncertain": [
       "stimulant"

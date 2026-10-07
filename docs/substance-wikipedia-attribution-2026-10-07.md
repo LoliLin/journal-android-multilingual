@@ -2,7 +2,7 @@
 
 检索日期：2026-10-07（Asia/Shanghai）
 
-以下 `en_us` 与 `zh_cn` 覆盖层中的摘要由项目维护者逐条核对文章标题与导语后手写改述或翻译，属于对 Wikipedia 内容的修改，不是逐字复制。原文由 Wikipedia 贡献者提供，许可为 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)；这些改述继续按 CC BY-SA 4.0 共享。Wikipedia 与其贡献者未认可本项目。
+以下 root 英文默认摘要及少数语言覆盖层中的摘要由项目维护者逐条核对文章标题与导语后手写改述或翻译，属于对 Wikipedia 内容的修改，不是逐字复制。原文由 Wikipedia 贡献者提供，许可为 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)；这些改述继续按 CC BY-SA 4.0 共享。Wikipedia 与其贡献者未认可本项目。
 
 
 | 项目字段 | Wikipedia 页面与修订 | 匹配依据 |
@@ -701,6 +701,10 @@
 | `Cyclopentyl-Fentanyl` — `root/Cyclopentyl-Fentanyl.json#summary`; `zh_cn/Cyclopentyl-Fentanyl.json#summary` | [Cyclopentylfentanyl，修订 1310628805](https://en.wikipedia.org/w/index.php?title=Cyclopentylfentanyl&oldid=1310628805) | 页面导语直接对应该芬太尼类似物；root commonNames 含 CPF |
 
 | `Truffles` — `root/Truffles.json#summary`; `zh_cn/Truffles.json#summary` | [Magic truffle，修订 1323695718](https://en.wikipedia.org/w/index.php?title=Magic_truffle&oldid=1323695718) | 页面说明迷幻松露是裸盖菇蘑菇的菌核，覆盖词条的迷幻用途 |
+
+| `4-FPP` — `root/4-FPP.json#summary`, `root/4-FPP.json#commonNames`; `zh_cn/4-FPP.json#summary` | [para-Fluorophenylpiperazine，修订 1338076095](https://en.wikipedia.org/w/index.php?title=Para-Fluorophenylpiperazine&oldid=1338076095) | 导语与信息框明确列出 4-FPP、pFPP、Fluoperazine、Flipiperazine 等名称，并概述其类别与报告效应 |
+| `4-HO-MCPT` — `root/4-HO-MCPT.json#summary`, `root/4-HO-MCPT.json#commonNames`; `zh_cn/4-HO-MCPT.json#summary` | [4-HO-McPT，修订 1357166248](https://en.wikipedia.org/w/index.php?title=4-HO-McPT&oldid=1357166248) | 导语直接给出全名与色胺类别，并记载其作为设计药物出现及法证识别时间 |
+| `5-MeO-PYR-T` — `root/5-MeO-PYR-T.json#summary`, `root/5-MeO-PYR-T.json#commonNames`; `zh_cn/5-MeO-PYR-T.json#summary` | [5-MeO-pyr-T，修订 1368494919](https://en.wikipedia.org/w/index.php?title=5-MeO-pyr-T&oldid=1368494919) | 页面标题与物质名一致；信息框列出别名，导语和后文概述色胺类别、受体作用及可变的不良反应 |
 
 Wikipedia contributors, the pages linked above, licensed under CC BY-SA 4.0. The project summaries are shortened paraphrases; wording and selection were changed. This attribution record identifies the source revisions and the affected fields.
 

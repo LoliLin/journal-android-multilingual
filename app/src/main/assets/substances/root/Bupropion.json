@@ -135,6 +135,10 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
     }
   ],
   "metabolism": "CYP2B6 forms active hydroxybupropion. Carbonyl reduction forms active threo- and erythrohydrobupropion through non-CYP pathways. Further metabolites are eliminated predominantly in urine.",

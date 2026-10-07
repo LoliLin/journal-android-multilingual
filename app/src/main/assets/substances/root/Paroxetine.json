@@ -19,5 +19,15 @@
     "IMMEDIATE_RELEASE",
     "EXTENDED_RELEASE"
   ],
-  "summary": "Paroxetine is a selective serotonin reuptake inhibitor used to treat major depression and several anxiety-related disorders."
+  "summary": "Paroxetine is a selective serotonin reuptake inhibitor used to treat major depression and several anxiety-related disorders.",
+  "roas": [
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
+    },
+    {
+      "name": "oral",
+      "releaseForm": "IMMEDIATE_RELEASE"
+    }
+  ]
 }

@@ -58,6 +58,10 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
     }
   ],
   "metabolism": "Partly metabolized in the liver; a substantial fraction is excreted unchanged in urine. The reviewed label does not identify a single dominant metabolic enzyme.",

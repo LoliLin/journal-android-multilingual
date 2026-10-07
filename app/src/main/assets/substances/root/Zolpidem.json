@@ -63,6 +63,10 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
     }
   ],
   "metabolism": "Converted to inactive metabolites, which are eliminated mainly by the kidneys. The reviewed product label does not quantify each enzyme's contribution.",

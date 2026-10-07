@@ -2,7 +2,7 @@
 
 ## 审查范围与结论
 
-字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工来源核验将 689 条已有英文摘要移入 root 默认层，并清理重复的 `en_us` 摘要；逐条 CSV 已同步当前 root 摘要状态。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
+字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工核验已将 689 条已有英文摘要移入 root 默认层，并新增 3 条有来源的摘要和别名；另为 13 条有口服释药形式的记录补了 18 条有标签依据的 route/form 行。本轮又逐条核对 FreeODwiki 快照：为 4C-D、MDNMB、Pybromazolam、N-Methylhexedrone 补入有来源和证据边界说明的结构化剂量、时长及风险字段；为 Loperamide 补入口服 route、时长和关键风险字段，因来源警告未转录非医疗剂量分档；并为 N-Ethylhexedrone、NEP 补入来源明确标记为抽吸的 route 行。逐条 CSV 已同步当前状态。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
 
 | 检查项 | 结果 |
 |---|---:|
@@ -11,7 +11,7 @@
 | 解析错误 | 0 |
 | `name` 非空且与文件名一致 | 982 / 982 |
 | 非空 HTTP(S) `url` | 982 / 982 |
-| `categories` 缺失或空 | 62 |
+| `categories` 缺失或空 | 59 |
 | 含未映射耐受小时字段 | 227 |
 | 未知顶层字段 | 0（无） |
 
@@ -31,31 +31,34 @@
 
 ## root 字段覆盖统计
 
-“缺失/空”合并统计缺失键、空列表/对象和空字符串；逐条 CSV 保留各状态。
+“缺失/空”合并统计缺失键、空列表/对象和空字符串；逐条 CSV 保留各状态。`roas` 只按是否存在途径记录计数，剂量阈值、时长范围和释药形式另行统计；一条 route/form 记录不等同于有剂量或时长数据。
 
 | 字段 | 有数据的记录 | 缺失/空 |
 |---|---:|---:|
-| `commonNames` | 466 | 516 |
-| `categories` | 920 | 62 |
-| `tolerance` | 235 | 747 |
-| `crossTolerances` | 221 | 761 |
-| `addictionPotential` | 253 | 729 |
-| `toxicities` | 232 | 750 |
-| `interactions` | 218 | 764 |
-| `roas` | 293 | 689 |
-| `summary` | 908 | 74 |
+| `commonNames` | 473 | 509 |
+| `categories` | 923 | 59 |
+| `tolerance` | 240 | 742 |
+| `crossTolerances` | 226 | 756 |
+| `addictionPotential` | 258 | 724 |
+| `toxicities` | 236 | 746 |
+| `interactions` | 222 | 760 |
+| `roas` | 304 | 678 |
+| `roas[].dose` thresholds | 289 | 693 |
+| `roas[].duration` ranges | 291 | 691 |
+| `roas[].releaseForm` | 13 | 969 |
+| `summary` | 912 | 70 |
 | `effectsSummary` | 58 | 924 |
-| `dosageRemark` | 38 | 944 |
-| `generalRisks` | 57 | 925 |
-| `longtermRisks` | 52 | 930 |
-| `saferUse` | 57 | 925 |
+| `dosageRemark` | 45 | 937 |
+| `generalRisks` | 62 | 920 |
+| `longtermRisks` | 54 | 928 |
+| `saferUse` | 60 | 922 |
 | `metabolism` | 590 | 392 |
 | `metabolismSources` | 141 | 841 |
 | `oralReleaseForms` | 13 | 969 |
 
-其中 `interactions` 有 218 个对象，部分对象缺少分组键：3-Cl-PCP（缺 unsafe,uncertain）、Changa（缺 unsafe,uncertain）、Grayanotoxin（缺 uncertain）、Kava（缺 unsafe）、Mushrooms（缺 dangerous）、Tizanidine（缺 unsafe）。
+其中 `interactions` 有 222 个对象，部分对象缺少分组键：3-Cl-PCP（缺 unsafe,uncertain）、Changa（缺 unsafe,uncertain）、Grayanotoxin（缺 uncertain）、Kava（缺 unsafe）、Mushrooms（缺 dangerous）、Tizanidine（缺 unsafe）。
 
-## 分类缺口候选（62 条）
+## 分类缺口候选（59 条）
 
 以下记录的 `categories` 键缺失或为空，是结构覆盖待核验项；未凭空补分类。其他字段状态可在逐条 CSV 中筛选。
 
@@ -79,7 +82,7 @@
 | Flumazenil | `app/src/main/assets/substances/root/Flumazenil.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Hyoscyamus niger (botany) | `app/src/main/assets/substances/root/Hyoscyamus niger (botany).json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | IHCH-7113 | `app/src/main/assets/substances/root/IHCH-7113.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
-| Loperamide | `app/src/main/assets/substances/root/Loperamide.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+
 | Lophophora diffusa | `app/src/main/assets/substances/root/Lophophora diffusa.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Lophophora fricii | `app/src/main/assets/substances/root/Lophophora fricii.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Magnesium threonate | `app/src/main/assets/substances/root/Magnesium threonate.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
@@ -88,14 +91,14 @@
 | Mandragora | `app/src/main/assets/substances/root/Mandragora.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | MDNEB | `app/src/main/assets/substances/root/MDNEB.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | MDNEP | `app/src/main/assets/substances/root/MDNEP.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
-| MDNMB | `app/src/main/assets/substances/root/MDNMB.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
+
 | MDNMP | `app/src/main/assets/substances/root/MDNMP.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Mimosa tenuiflora | `app/src/main/assets/substances/root/Mimosa tenuiflora.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | MMDA | `app/src/main/assets/substances/root/MMDA.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Morning glory | `app/src/main/assets/substances/root/Morning glory.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | N-(2C)-fentanyl | `app/src/main/assets/substances/root/N-(2C)-fentanyl.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
 | N-Methylcyclazodone | `app/src/main/assets/substances/root/N-Methylcyclazodone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
-| N-Methylhexedrone | `app/src/main/assets/substances/root/N-Methylhexedrone.json` | missing | roas,toxicities,interactions,summary,saferUse,metabolism |
+
 | Nitromethaqualone | `app/src/main/assets/substances/root/Nitromethaqualone.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Oxymorphazone | `app/src/main/assets/substances/root/Oxymorphazone.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
 | Peganum harmala | `app/src/main/assets/substances/root/Peganum harmala.json` | missing | roas,toxicities,interactions,saferUse,metabolism |
@@ -132,7 +135,7 @@
 | `zh_cn/` | 958 | 24 | 206 |
 | `zh_tw/` | 937 | 45 | 206 |
 
-简体缺 24 个、繁体缺 45 个覆盖文件；现有覆盖文件中，简体有 182 个、繁体有 161 个未提供非空 `localizedName`。两种语言各有 206 条显示名回退到英文 `name`。当前合并后有 `summary` 的记录数：`en_us` 908、`zh_cn` 911、`zh_tw` 911。
+简体缺 24 个、繁体缺 45 个覆盖文件；现有覆盖文件中，简体有 182 个、繁体有 161 个未提供非空 `localizedName`。两种语言各有 206 条显示名回退到英文 `name`。当前合并后有 `summary` 的记录数：`en_us` 911、`zh_cn` 914、`zh_tw` 914。
 
 ## 文档与台账差异
 
@@ -146,7 +149,7 @@
 - 这是结构与字段覆盖清单，不是安全性或医学事实判断；缺少剂量、相互作用字段只说明当前未记录。
 - `roas`、`toxicities`、`interactions` 等可选字段应按条目查证后再补，不能因缺失而推断或填造。
 - 建议顺序：先核实分类候选；再统一 `localizedName` 文档口径与耐受小时字段是否纳入模型；随后按来源台账核对过期名称。
-- 摘要迁移只重定位已人工核验并有来源记录的英文文本；未改解析器或现有翻译协议。
+- 摘要工作包括将 689 条已核验英文摘要迁入 root，以及新增 3 条有来源的摘要与简中翻译；释药形式工作新增 18 条有标签依据的口服 route/form 记录。随后又人工核对 7 条 FreeODwiki 记录，补入 5 条记录的结构化 ROA/时长/风险数据和 2 条明确区分的抽吸 route；其中 6 条记录有来源剂量分档（包括两条抽吸 route），Loperamide 因来源警告未转录非医疗剂量数据，逐项来源与证据说明见 attribution 台账。
 
 ## 逐条表格
 
