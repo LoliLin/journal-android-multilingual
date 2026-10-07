@@ -8,5 +8,6 @@
   "metabolism": "CYP2D6-mediated hydroxylation contributes substantially to clearance.",
   "metabolismSources": [
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"
-  ]
+  ],
+  "summary": "Desipramine is a tricyclic antidepressant used to treat depression. It acts primarily as a norepinephrine reuptake inhibitor and is generally not considered a first-line antidepressant."
 }

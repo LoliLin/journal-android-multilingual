@@ -7,5 +7,6 @@
     "research-chemical"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "5-Bromo-DMT is a brominated indole alkaloid and psychedelic tryptamine related to dimethyltryptamine. It is the 5-bromo derivative of DMT and occurs naturally in several marine sponges."
 }

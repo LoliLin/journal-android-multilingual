@@ -138,5 +138,6 @@
       }
     }
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Methoxetamine (MXE) is a dissociative hallucinogen in the arylcyclohexylamine family that has been sold as a designer drug. It acts mainly as an NMDA receptor antagonist."
 }

@@ -1,6 +1,10 @@
 {
   "name": "Βk-2C-B",
-  "commonNames": ["βk-2C-B", "beta-keto 2C-B", "bk-2C-B"],
+  "commonNames": [
+    "βk-2C-B",
+    "beta-keto 2C-B",
+    "bk-2C-B"
+  ],
   "url": "https://psychonautwiki.org/wiki/%CE%92k-2C-B",
   "isApproved": true,
   "tolerance": {
@@ -10,10 +14,16 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
+  "crossTolerances": [
+    "psychedelic"
+  ],
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "categories": ["psychedelic"],
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
+  "categories": [
+    "psychedelic"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -37,5 +47,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "βk-2C-B (bk-2C-B) is a psychedelic phenethylamine in the 2C family and the β-keto derivative of 2C-B. It was first described in scientific literature in 2004 and was identified as a designer drug in Europe in 2013."
 }

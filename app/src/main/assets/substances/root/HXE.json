@@ -1,6 +1,8 @@
 {
   "name": "HXE",
-  "commonNames": ["HXE"],
+  "commonNames": [
+    "HXE"
+  ],
   "url": "https://psychonautwiki.org/wiki/HXE",
   "isApproved": true,
   "tolerance": {
@@ -10,10 +12,14 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["dissociative"],
+  "crossTolerances": [
+    "dissociative"
+  ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [],
-  "categories": ["dissociative"],
+  "categories": [
+    "dissociative"
+  ],
   "roas": [
     {
       "name": "insufflated",
@@ -141,5 +147,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Hydroxetamine (HXE) is a dissociative designer drug in the arylcyclohexylamine family. It is an active metabolite of methoxetamine and has also been sold in its own right since 2019."
 }

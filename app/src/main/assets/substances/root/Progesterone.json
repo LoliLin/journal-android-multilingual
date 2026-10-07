@@ -5,7 +5,9 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": ["depressant"],
+  "categories": [
+    "depressant"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -56,5 +58,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Progesterone is an endogenous steroid hormone involved in the menstrual cycle and pregnancy. It is also used as a medication, including in contraception and hormone replacement therapy."
 }

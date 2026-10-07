@@ -8,5 +8,6 @@
   "metabolism": "Hepatic CYP2C9 and, to a lesser extent, CYP2C19 generate inactive metabolites. Metabolites pass through bile and/or renal excretion; metabolic capacity can become saturated.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=46d5c0d1-a97b-46d9-8cf4-994780673337"
-  ]
+  ],
+  "summary": "Phenytoin is an antiseizure medication used to prevent tonic-clonic and focal seizures, but not absence seizures. It is taken orally or intravenously."
 }

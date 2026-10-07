@@ -44,5 +44,6 @@
   "metabolism": "CYP2D6 forms O-desmethylgalantamine and CYP3A4 forms galantamine N-oxide. Glucuronidation and urinary excretion of unchanged drug also contribute.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=261889d3-41c8-4655-98f7-41317778e7a1"
-  ]
+  ],
+  "summary": "Galantamine is an acetylcholinesterase inhibitor used to treat early-stage Alzheimer's disease and memory impairment. It is an alkaloid found in several plants in the Amaryllidaceae family and can also be produced synthetically."
 }

@@ -8,5 +8,6 @@
   "metabolism": "Extensively processed in the liver with numerous metabolites. Metabolite excretion is much slower than the initial decline of chlorpromazine itself; a single CYP does not describe the complete pathway.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/3476/smpc"
-  ]
+  ],
+  "summary": "Chlorpromazine is a typical antipsychotic of the phenothiazine class, used primarily to treat psychotic disorders such as schizophrenia."
 }

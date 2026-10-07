@@ -8,5 +8,6 @@
   "metabolism": "A prodrug converted to active galantamine. Galantamine subsequently undergoes CYP2D6/CYP3A4 metabolism and glucuronidation; clearance also includes unchanged galantamine in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=af47bf67-1f07-4650-8064-24c38afc4656"
-  ]
+  ],
+  "summary": "Benzgalantamine is a galantamine prodrug and cholinesterase inhibitor used to treat mild to moderate dementia of the Alzheimer's type. It was approved for medical use in the United States in 2024."
 }

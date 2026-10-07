@@ -8,5 +8,6 @@
   "metabolism": "Metabolized mainly by CYP3A4 and less by CYP2D6 to active desmethylcariprazine (DCAR) and didesmethylcariprazine (DDCAR). DDCAR undergoes further CYP3A4 hydroxylation. Little parent drug is excreted unchanged in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4b5f7c65-aa2d-452a-b3db-bc85c06ff12f"
-  ]
+  ],
+  "summary": "Cariprazine is an oral atypical antipsychotic used to treat schizophrenia and bipolar disorder. It is also prescribed as an add-on treatment for bipolar depression and major depressive disorder."
 }

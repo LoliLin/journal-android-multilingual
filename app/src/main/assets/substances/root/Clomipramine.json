@@ -8,5 +8,6 @@
   "metabolism": "CYP2C19-mediated demethylation and CYP2D6-mediated hydroxylation contribute to parent/metabolite clearance.",
   "metabolismSources": [
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"
-  ]
+  ],
+  "summary": "Clomipramine is a tricyclic antidepressant used primarily to treat obsessive-compulsive disorder, as well as several other conditions including depression and panic disorder."
 }

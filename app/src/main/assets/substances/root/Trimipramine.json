@@ -8,5 +8,6 @@
   "metabolism": "CYP2C19 demethylation and CYP2D6 hydroxylation participate in metabolism.",
   "metabolismSources": [
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"
-  ]
+  ],
+  "summary": "Trimipramine is a tricyclic antidepressant used to treat depression. It has also been used for insomnia, anxiety disorders, and psychosis because of its sedative, anxiolytic, and weak antipsychotic effects."
 }

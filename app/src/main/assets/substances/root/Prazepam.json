@@ -20,5 +20,6 @@
     "habit-forming"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Prazepam is a benzodiazepine with anxiolytic, anticonvulsant, sedative, and muscle-relaxant properties. It is a prodrug whose therapeutic effects are attributed to nordazepam."
 }

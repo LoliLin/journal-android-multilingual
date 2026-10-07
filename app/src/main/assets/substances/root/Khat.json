@@ -6,5 +6,6 @@
     "stimulant"
   ],
   "isApproved": false,
-  "metabolism": "This material contains multiple constituents and has no single ingredient-level metabolic pathway. Composition and constituent-specific metabolism must be distinguished; this entry does not yet provide a verified constituent-by-constituent account."
+  "metabolism": "This material contains multiple constituents and has no single ingredient-level metabolic pathway. Composition and constituent-specific metabolism must be distinguished; this entry does not yet provide a verified constituent-by-constituent account.",
+  "summary": "Khat (Catha edulis) is a flowering shrub whose leaves are chewed as a stimulant. Its main stimulant alkaloid is cathinone."
 }
