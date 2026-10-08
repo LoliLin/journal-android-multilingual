@@ -189,7 +189,7 @@ class JournalViewModel @Inject constructor(
                             ignoreCase = true
                         ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
                             val isSubstanceAMatch =
-                                ingestionWithCompanion.substanceCompanion?.substanceName in matchingSubstances
+                                ingestionWithCompanion.ingestion.substanceName in matchingSubstances
                             val isConsumerAMatch =
                                 ingestionWithCompanion.ingestion.consumerName?.contains(
                                     searchText,
@@ -224,9 +224,11 @@ class JournalViewModel @Inject constructor(
             )
 }
 
+private val WHITESPACE_REGEX = Regex("\\s+")
+
 /**
  * Splits a search query into individual terms so multiple substances can be searched at once
  * (e.g. "LSD MDMA" matches experiences containing either substance).
  */
 internal fun splitSearchTerms(searchText: String): List<String> =
-    searchText.trim().split(Regex("\\s+")).filter { it.isNotBlank() }
+    searchText.trim().split(WHITESPACE_REGEX).filter { it.isNotBlank() }

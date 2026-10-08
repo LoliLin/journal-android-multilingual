@@ -85,9 +85,11 @@ object AvatarUtil {
         val dir = File(context.filesDir, AVATAR_DIR)
         // Whitelist approach: keep only letters/digits (incl. Unicode) and - _ so a
         // user-supplied (or imported) name can never escape the Avatars directory.
-        val safeName = userName.map { c ->
-            if (c.isLetterOrDigit() || c == '-' || c == '_') c else '_'
-        }.joinToString("")
+        val safeName = buildString(userName.length) {
+            for (c in userName) {
+                append(if (c.isLetterOrDigit() || c == '-' || c == '_') c else '_')
+            }
+        }.ifEmpty { "default" }
         return File(dir, "$safeName$EXTENSION")
     }
 

@@ -79,6 +79,7 @@ import com.isaakhanimann.journal.data.achievement.AchievementGetToast
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
+import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
 import com.isaakhanimann.journal.ui.tabs.journal.components.JournalSatelliteFab
 import com.isaakhanimann.journal.ui.main.MainTabTopAppBar
@@ -345,7 +346,7 @@ fun JournalScreen(
                                     listState.scrollToItem(index = 0)
                                 }
                             }) {
-                            Icon(Icons.Default.ArrowUpward, contentDescription = "Scroll to top")
+                            Icon(Icons.Default.ArrowUpward, contentDescription = i18nOrDefault("scroll_to_top", "Scroll to top"))
                         }
                     }
                 }

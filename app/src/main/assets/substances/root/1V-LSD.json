@@ -15,9 +15,9 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "The archived page says there are no formal studies and infers low addiction potential by analogy with LSD; this is not established for 1V-LSD.",
   "toxicities": [
-    "extremely low toxicity relative to dose"
+    "Recreational toxicity and long-term health effects have not been studied, and the toxic dose is unknown. The archived toxicity section is explicitly marked as a stub that may contain dangerous errors; its low-toxicity claim is not treated as established."
   ],
   "categories": [
     "psychedelic"
@@ -39,7 +39,7 @@
       "name": "oral",
       "dose": {
         "units": "µg",
-        "lightMin": 15,
+        "lightMin": 25,
         "commonMin": 75,
         "strongMin": 150,
         "heavyMin": 300
@@ -78,5 +78,12 @@
       }
     }
   ],
-  "summary": "1V-LSD, also called 1-valeryl-LSD, is a lysergamide psychedelic related to LSD. It is thought to act as an LSD prodrug and has been encountered as a designer drug."
+  "dosageRemark": "The archived oral dose and duration table is based on user reports, is for educational purposes rather than use advice, and warns that individual responses vary. Its threshold is 15 µg; the data model has no threshold field, so this value is recorded here.",
+  "generalRisks": "The archived page says recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as a stub that may contain dangerous errors, so claims of very low toxicity are not established. The page warns of possible psychiatric triggering in susceptible people; evidence specific to 1V-LSD is limited. Its interaction warnings are based on assumptions about similarity to LSD and may be incomplete.",
+  "saferUse": "The archived page recommends starting low because individual responses vary, doing independent research and using harm-reduction measures. It advises people with a personal or family history of mental illness to avoid use, especially outside medical supervision; this warning comes from the page's stub toxicity section. Interaction information is extrapolated from LSD.",
+  "metabolism": "The archived page reports that human-serum research demonstrated deacylation of 1V-LSD to LSD. This supports a prodrug hypothesis, but the page gives limited study details and this alone does not establish the full in-vivo pharmacokinetics or that all psychoactive effects are due to LSD.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/1V-LSD"
+  ],
+  "summary": "1V-LSD, also called 1-valeryl-LSD, is a lysergamide psychedelic related to LSD. The archived page reports that it may be converted to LSD and that user reports describe similar effects, while noting that pharmacological, toxicity and metabolism data are limited."
 }

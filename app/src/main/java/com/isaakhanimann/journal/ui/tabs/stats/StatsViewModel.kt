@@ -36,12 +36,14 @@ import java.time.LocalTime
 import java.time.Period
 import java.time.ZoneOffset
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -147,7 +149,7 @@ class StatsViewModel @Inject constructor(
                     getColorCountsForExperiences(experiencesInBucket, companionBySubstance, consumerName)
                 }
             }
-        }
+        }.flowOn(Dispatchers.Default)
 
     private fun getColorCountsForExperiences(
         experiences: List<ExperienceWithIngestionsAndCompanions>,
@@ -230,12 +232,13 @@ class StatsViewModel @Inject constructor(
                 .groupingBy { it }
                 .eachCount()
         }
+        val companionBySubstance = companions.associateBy { it.substanceName }
         val map = relevantIngestions.groupBy { it.ingestion.substanceName }
         map.values.mapNotNull { groupedIngestions ->
             val name =
                 groupedIngestions.firstOrNull()?.ingestion?.substanceName ?: return@mapNotNull null
             val oneCompanion =
-                companions.firstOrNull { it.substanceName == name } ?: return@mapNotNull null
+                companionBySubstance[name] ?: return@mapNotNull null
             val relativeValues = groupedIngestions.mapNotNull {
                 relativeDoseOfIngestion(substanceRepo, it)
             }
@@ -250,7 +253,7 @@ class StatsViewModel @Inject constructor(
                 relativeTotalDose = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
             )
         }.sortedByDescending { it.experienceCount }
-    }
+    }.flowOn(Dispatchers.Default)
 
     private fun getRouteCounts(groupedIngestions: List<Ingestion>): List<RouteCount> {
         val routeMap = groupedIngestions.groupBy { it.administrationRoute }

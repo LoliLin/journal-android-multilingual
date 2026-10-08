@@ -292,13 +292,6 @@ object ExtensionPackLoader {
         }
         return count
     }
-
-    fun getExtensionSubstanceDir(context: Context): File? {
-        val dir = File(context.filesDir, EXT_DIR)
-        if (!dir.exists()) return null
-        val substancesDir = File(dir, "substances")
-        return substancesDir.takeIf { it.exists() }
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

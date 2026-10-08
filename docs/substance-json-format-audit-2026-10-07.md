@@ -2,7 +2,7 @@
 
 ## 审查范围与结论
 
-字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工核验已将 689 条已有英文摘要移入 root 默认层，并新增 3 条有来源的摘要和别名；另为 13 条有口服释药形式的记录补了 18 条有标签依据的 route/form 行。本轮又逐条核对 FreeODwiki 快照：为 4C-D、MDNMB、Pybromazolam、N-Methylhexedrone 补入有来源和证据边界说明的结构化剂量、时长及风险字段；为 Loperamide 补入口服 route、时长和关键风险字段，因来源警告未转录非医疗剂量分档；并为 N-Ethylhexedrone、NEP 补入来源明确标记为抽吸的 route 行。逐条 CSV 已同步当前状态。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
+字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工核验已将 689 条已有英文摘要移入 root 默认层，并新增 3 条有来源的摘要和别名；另为 13 条有口服释药形式的记录补了 18 条有标签依据的 route/form 行。本轮又逐条核对 FreeODwiki 快照：为 4C-D、MDNMB、Pybromazolam、N-Methylhexedrone 补入有来源和证据边界说明的结构化剂量、时长及风险字段；为 Loperamide 补入口服 route、时长和关键风险字段，因来源警告未转录非医疗剂量分档；并为 N-Ethylhexedrone、NEP 补入来源明确标记为抽吸的 route 行。逐条 CSV 已同步当前状态；截至 2026-10-08，又核对 31 条 FreeODwiki 记录，补充来源支持的结构化数据并更新剂量边界、风险、减害与联用证据说明。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
 
 | 检查项 | 结果 |
 |---|---:|
@@ -35,28 +35,28 @@
 
 | 字段 | 有数据的记录 | 缺失/空 |
 |---|---:|---:|
-| `commonNames` | 473 | 509 |
+| `commonNames` | 475 | 507 |
 | `categories` | 923 | 59 |
-| `tolerance` | 240 | 742 |
-| `crossTolerances` | 226 | 756 |
-| `addictionPotential` | 258 | 724 |
-| `toxicities` | 236 | 746 |
-| `interactions` | 222 | 760 |
-| `roas` | 304 | 678 |
-| `roas[].dose` thresholds | 289 | 693 |
-| `roas[].duration` ranges | 291 | 691 |
+| `tolerance` | 241 | 741 |
+| `crossTolerances` | 227 | 755 |
+| `addictionPotential` | 261 | 721 |
+| `toxicities` | 242 | 740 |
+| `interactions` | 225 | 757 |
+| `roas` | 308 | 674 |
+| `roas[].dose` thresholds | 290 | 692 |
+| `roas[].duration` ranges | 292 | 690 |
 | `roas[].releaseForm` | 13 | 969 |
-| `summary` | 912 | 70 |
-| `effectsSummary` | 58 | 924 |
-| `dosageRemark` | 45 | 937 |
-| `generalRisks` | 62 | 920 |
-| `longtermRisks` | 54 | 928 |
-| `saferUse` | 60 | 922 |
-| `metabolism` | 590 | 392 |
-| `metabolismSources` | 141 | 841 |
+| `summary` | 914 | 68 |
+| `effectsSummary` | 77 | 905 |
+| `dosageRemark` | 70 | 912 |
+| `generalRisks` | 87 | 895 |
+| `longtermRisks` | 69 | 913 |
+| `saferUse` | 84 | 898 |
+| `metabolism` | 606 | 376 |
+| `metabolismSources` | 158 | 824 |
 | `oralReleaseForms` | 13 | 969 |
 
-其中 `interactions` 有 222 个对象，部分对象缺少分组键：3-Cl-PCP（缺 unsafe,uncertain）、Changa（缺 unsafe,uncertain）、Grayanotoxin（缺 uncertain）、Kava（缺 unsafe）、Mushrooms（缺 dangerous）、Tizanidine（缺 unsafe）。
+其中 `interactions` 有 225 个对象，部分对象缺少分组键：2C-EF（缺 unsafe,uncertain）、2C-T-2（缺 unsafe,uncertain）、2C-T-7（缺 unsafe,uncertain）、3-Cl-PCP（缺 uncertain）、Changa（缺 unsafe,uncertain）、Grayanotoxin（缺 uncertain）、Kava（缺 unsafe）、Mushrooms（缺 dangerous）、Tizanidine（缺 unsafe）。
 
 ## 分类缺口候选（59 条）
 
@@ -135,21 +135,21 @@
 | `zh_cn/` | 958 | 24 | 206 |
 | `zh_tw/` | 937 | 45 | 206 |
 
-简体缺 24 个、繁体缺 45 个覆盖文件；现有覆盖文件中，简体有 182 个、繁体有 161 个未提供非空 `localizedName`。两种语言各有 206 条显示名回退到英文 `name`。当前合并后有 `summary` 的记录数：`en_us` 911、`zh_cn` 914、`zh_tw` 914。
+简体缺 24 个、繁体缺 45 个覆盖文件；现有覆盖文件中，简体有 182 个、繁体有 161 个未提供非空 `localizedName`。两种语言各有 206 条显示名回退到英文 `name`。当前合并后有 `summary` 的记录数：`en_us` 914、`zh_cn` 916、`zh_tw` 916。
 
 ## 文档与台账差异
 
 - `docs/substances-translation-protocol.md` 称 root 必须包含 `localizedName`；当前 982 条 root 记录都没有该字段。实际值放在语言覆盖层，应用也会回退到 `name`，因此这是文档与数据布局不一致。
 - 227 条 root 记录在 `tolerance` 中含 `halfToleranceInHours` 和/或 `zeroToleranceInHours`；Kotlin `Tolerance` 只解析 `full`、`half`、`zero`，这些数值目前会被忽略。逐条 CSV 标出了未映射键。
 - `docs/substance-catalog-expansion.md` 标注 2026-09-12、记录 1063 条；当前 main 的 root 为 982 条，文档快照与现状计数不一致。
-- `docs/substance-metabolism-sources.json` 的 `checkedOn` 为 `2026-09-08`，含 148 个 reviewed、455 个 notYetVerified 名称；root 当前有 590 条 metabolism、141 条来源。台账中 7 个 reviewed、21 个 notYetVerified 名称已不在 root；root 另有 433 条通用“尚未核实”文本、15 条多成分材料说明。合并或改名可能造成台账漂移，需先按别名核对。
+- `docs/substance-metabolism-sources.json` 的 `checkedOn` 为 `2026-09-08`，含 148 个 reviewed、455 个 notYetVerified 名称；root 当前有 592 条 metabolism、144 条来源。台账中 7 个 reviewed、21 个 notYetVerified 名称已不在 root；root 另有 433 条通用“尚未核实”文本、15 条多成分材料说明。合并或改名可能造成台账漂移，需先按别名核对。
 
 ## 审查边界与建议
 
 - 这是结构与字段覆盖清单，不是安全性或医学事实判断；缺少剂量、相互作用字段只说明当前未记录。
 - `roas`、`toxicities`、`interactions` 等可选字段应按条目查证后再补，不能因缺失而推断或填造。
 - 建议顺序：先核实分类候选；再统一 `localizedName` 文档口径与耐受小时字段是否纳入模型；随后按来源台账核对过期名称。
-- 摘要工作包括将 689 条已核验英文摘要迁入 root，以及新增 3 条有来源的摘要与简中翻译；释药形式工作新增 18 条有标签依据的口服 route/form 记录。随后又人工核对 7 条 FreeODwiki 记录，补入 5 条记录的结构化 ROA/时长/风险数据和 2 条明确区分的抽吸 route；其中 6 条记录有来源剂量分档（包括两条抽吸 route），Loperamide 因来源警告未转录非医疗剂量数据，逐项来源与证据说明见 attribution 台账。
+- 摘要工作包括将 689 条已核验英文摘要迁入 root，以及新增 5 条有来源的摘要与简中翻译；释药形式工作新增 18 条有标签依据的口服 route/form 记录。随后又人工核对 26 条 FreeODwiki 记录，按证据逐条更新 route、剂量/时长边界、风险、相互作用与减害字段；23 条记录实际录入了来源剂量分档，并为 N-Ethylhexedrone、NEP 另记录来源明确标记的抽吸 route。Loperamide 因来源警告未转录非医疗剂量数据；3-CMC 仅记录来源支持的途径和风险，未转录其用户报告剂量分档，因为同页报告已确认死亡并强烈建议避免高剂量及鼻吸。2-MMC 的 FreeODwiki 页面标为未经审核且警告可能有危险错误；保留低置信度提示，因剂量分档重叠而不转录其数值剂量/时长。1B-LSD 对照口服剂量/时长表修正轻微剂量下界，记录代谢研究并明确人体药代局限；1cP-AL-LAD 核对口服剂量/时长，修正轻微剂量下界并保留 20 µg 阈值差异；将 AL-LAD 前药关系标为未证实假设，并记录毒性、长期效应和代谢资料缺口；1cP-LSD 核对口服阈值、剂量和时长，修正 lightMin；按来源仅记录人体血清孵育形成 LSD 的观察，不外推整体药代动力学，并保留毒性章节存根警告；2-FA 核对口服剂量/时长、阈值和路线警告，修正轻微剂量下界，并仅记录无剂量/时长数据的鼻吸和吸入路线；2-FEA 核对鼻吸剂量/时长表，修正 lightMin 并将阈值留在 dosageRemark；页面未提供代谢资料，因此保留代谢缺口；2-FMA 核对口服/鼻吸剂量与时长表，补充效应、风险和代谢证据缺口；来源关于雾化分解风险的机制仅作为警告记录并标注尚未验证；3-FA 核对口服剂量/时长表，修正 lightMin 并把 10 mg 阈值留在说明字段；将来源的药理描述限定为临床前证据；3-FEA 对照口服/鼻吸剂量表修正两路线 lightMin，保留鼻吸中等/强烈分档重叠和人体代谢、毒性证据不足；3-MMC 核对口服、鼻吸和静脉剂量/时长并修正前两路线 lightMin；将阈值记录于说明，并遵从来源的剂量表与毒性章节警告；4-FA 核对口服阈值、剂量和时长，记录急性心血管风险报告并保留因果不确定性；长期毒性与代谢仍为研究缺口；4-FMA 核对口服剂量/时长和阈值，修正 lightMin 并保留来源剂量区间空档；将 4-FA 类比与 4-FMA 的直接报告分开，未把 CYP450 推测写成已确立代谢机制；3-Cl-PCP 补充来源明确的相互作用级别、风险和减害字段，长期泌尿风险保留为来源未经证实的类似物类比。2C-E 核对两路线剂量/时长、数据缺口、效应概述和减害信息，并修正口服轻微剂量下界；2C-T-2 记录毒理与长期健康数据缺口、来源剂量阈值和两路线分档，并披露严重剂量分级与模型边界重叠；2C-T-7 对照两路线剂量/时长表修正轻微剂量下界，说明未建模的剂量阈值，并保留鼻吸死亡与联用警告。另依据 PsychonautWiki 为 2C-H 补入口服 route（页面剂量与时长均标未知）、风险说明和减害提示；为 25B-NBOH 补入舌下 route、主观效应概述、严重伤害风险警告、减害和证据限制说明。2C-EF 则依据 FreeODwiki 归档补入口服剂量/时长表、耐受、联用、风险、减害等字段，并保留来源的用户报告免责声明与未知剂量边界。逐条来源与证据说明见 attribution 台账。
 
 ## 逐条表格
 

@@ -65,10 +65,15 @@ object DateFormat {
         }
     }
 
+    private val formatterCache = java.util.concurrent.ConcurrentHashMap<Pair<String, Locale>, DateTimeFormatter>()
+
     fun format(temporal: TemporalAccessor, skeleton: String): String {
         val loc = locale()
-        val pattern = bestPattern(skeleton, loc)
-        return DateTimeFormatter.ofPattern(pattern, loc).format(temporal)
+        val formatter = formatterCache.computeIfAbsent(skeleton to loc) { (skel, l) ->
+            val pattern = bestPattern(skel, l)
+            DateTimeFormatter.ofPattern(pattern, l)
+        }
+        return formatter.format(temporal)
     }
 
     /**

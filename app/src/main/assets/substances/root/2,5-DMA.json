@@ -16,7 +16,7 @@
   "crossTolerances": [
     "psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "The archived page says there are no formal studies; it infers low habit-forming potential by analogy with psychedelics but also notes that stimulant effects may carry some addiction risk. This remains uncertain for 2,5-DMA.",
   "toxicities": [
     "toxic dose is unknown"
   ],
@@ -26,7 +26,8 @@
   ],
   "interactions": {
     "dangerous": [
-      "Lithium"
+      "Lithium",
+      "maoi"
     ],
     "unsafe": [
       "Tramadol"
@@ -55,5 +56,12 @@
       }
     }
   ],
-  "summary": "2,5-DMA (2,5-dimethoxyamphetamine), also known as DMA-4 or DOH, is a psychoactive member of the phenethylamine and amphetamine families. It is the parent compound of the DOx series of psychedelic drugs and is taken orally."
+  "summary": "2,5-DMA (2,5-dimethoxyamphetamine), also known as DMA-4 or DOH, is a psychoactive member of the phenethylamine and amphetamine families. It is the parent compound of the DOx series of psychedelic drugs and is taken orally.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and other resources for educational purposes, not as advice; the page says to verify its accuracy against other sources.",
+  "generalRisks": "The archived page reports no human trial data and very limited pharmacology, metabolism and toxicity information; recreational and long-term toxicity have not been studied, and the toxic dose is unknown. It specifically warns against combining 2,5-DMA with monoamine oxidase inhibitors (MAOIs).",
+  "saferUse": "The archived page recommends starting at a low dose, independently checking combinations and using harm-reduction measures. It specifically mentions liquid volumetric measurement for accurate dosing; its dose table is user-sourced educational information and should be checked against other sources.",
+  "metabolism": "The archived page says data on 2,5-DMA metabolism are very limited and provides no specific metabolic pathway or human metabolic study. Its metabolism should be considered unknown from this source.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2%2C5-DMA"
+  ]
 }

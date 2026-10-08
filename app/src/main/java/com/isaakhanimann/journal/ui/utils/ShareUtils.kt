@@ -18,11 +18,10 @@ suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = n
                 cachePath.mkdirs()
             }
             val file = File(cachePath, "experience_share_${System.currentTimeMillis()}.png")
-            val stream = FileOutputStream(file)
-
-            // 压缩并写入磁盘
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-            stream.close()
+            FileOutputStream(file).use { stream ->
+                // 压缩并写入磁盘
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            }
 
             // 2. 使用 FileProvider 生成安全的 content:// URI
             // ⚠️ 注意：这里的 "${context.packageName}.fileprovider" 必须和你的 AndroidManifest.xml 里的配置完全一致
@@ -46,7 +45,7 @@ suspend fun shareBitmap(context: Context, bitmap: Bitmap, extraText: String? = n
 
             // 4. 切回主线程调起系统分享选择器
             withContext(Dispatchers.Main) {
-                context.startActivity(Intent.createChooser(shareIntent, "分享到"))
+                context.startActivity(Intent.createChooser(shareIntent, null))
             }
         } catch (e: Exception) {
             // 哪怕由于奇奇怪怪的原因失败了，也只是打印日志，绝对不会让 App 闪退

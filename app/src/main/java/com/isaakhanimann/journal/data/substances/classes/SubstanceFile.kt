@@ -19,13 +19,16 @@
 package com.isaakhanimann.journal.data.substances.classes
 
 class SubstanceFile(categories: List<Category>, substances: List<Substance>) {
-    val categories: List<Category>
-    val substances: List<Substance>
-    val substancesMap: Map<String, Substance>
-
-    init {
-        this.categories = categories
-        this.substances = substances
-        this.substancesMap = substances.associateBy { it.name }
+    val categories: List<Category> = categories
+    val substances: List<Substance> = substances
+    val substancesMap: Map<String, Substance> = substances.associateBy { it.name }
+    val categoriesMap: Map<String, Category> = categories.associateBy { it.name }
+    val allSubstancesWithCategories: List<SubstanceWithCategories> by lazy {
+        substances.map { substance ->
+            SubstanceWithCategories(
+                substance = substance,
+                categories = substance.categories.mapNotNull { categoriesMap[it] }
+            )
+        }
     }
 }

@@ -1,5 +1,9 @@
 {
   "name": "2-MMC",
+  "commonNames": [
+    "Orthophedrone",
+    "Ortho"
+  ],
   "url": "https://tripsit.me/factsheets/?name=2-mmc&p=substance",
   "categories": [
     "stimulant",
@@ -8,6 +12,16 @@
     "research-chemical"
   ],
   "isApproved": false,
+  "addictionPotential": "FreeODwiki describes 2-MMC as highly addictive, but the page is explicitly unreviewed; treat this as a low-confidence source claim rather than established clinical evidence.",
+  "toxicities": [
+    "The archived page marks its toxicity section as an unreviewed stub and provides no validated toxic-dose information."
+  ],
+  "effectsSummary": "The page's subjective-effects section is based on anonymous user reports. It describes stimulation, euphoria, sociability or empathy, muscle relaxation and compulsive redosing, along with possible high-dose overheating, seizures, confusion and psychosis. These are reported effects, not incidence estimates.",
+  "dosageRemark": "Although the archive lists insufflated and intravenous dose and duration tables, it explicitly warns that they may contain dangerous errors. The insufflated dose bands overlap (moderate 40–80 mg; strong 50–100 mg), so the numerical dose and duration data were not transferred. The page says its tables are user/resource reports for education, not recommendations.",
+  "generalRisks": "The archive labels the page unreviewed and warns that toxicity and risk information may contain dangerous errors. Its anecdotal text mentions high-dose or repeated-use risks including overheating, cardiovascular strain, seizures, psychosis, serious injury or death; it does not establish incidence or reliable risk estimates.",
+  "saferUse": [
+    "The page recommends independent research and harm-reduction measures, while warning that its own information may contain dangerous errors. Treat its advice as unverified and check reliable independent sources."
+  ],
   "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
   "summary": "2-MMC is a synthetic cathinone described as a stimulant and entactogen. Its pharmacology is not well characterized."
 }

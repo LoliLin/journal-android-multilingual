@@ -1,4 +1,14 @@
 {
   "summary": "2C-H 是一种取代苯乙胺，也是 2C 家族中最简单的成员，主要用作合成其他 2C 类化合物的前体；其显著致幻活性尚未得到确立。",
-  "localizedName": "2,5-二甲氧基苯乙胺"
+  "localizedName": "2,5-二甲氧基苯乙胺",
+  "addictionPotential": "来源称尚无正式研究；根据经典致幻剂的一般情况，可能不易形成习惯，但其兴奋剂性质仍可能带来成瘾风险。",
+  "metabolism": "人体代谢途径尚未确立。PsychonautWiki 转述一种假说，认为单胺氧化酶可能会使其快速分解；这一点尚未在人类中得到证实。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-H"
+  ],
+  "dosageRemark": "PsychonautWiki 将口服剂量和总时长列为未知；页面没有给出已确立的剂量数据。",
+  "generalRisks": "PsychonautWiki 称，娱乐性使用的毒性及长期健康影响尚未在科学研究中得到考察，确切毒性剂量未知；人体使用史和药理资料都很有限。",
+  "saferUse": [
+    "PsychonautWiki 建议采取减害措施并准确计量；页面未给出已确立的剂量。"
+  ]
 }

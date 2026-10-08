@@ -2,8 +2,80 @@
   "name": "2C-EF",
   "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/2C-EF.md",
+  "commonNames": [
+    "2C-EF"
+  ],
   "categories": [
     "psychedelic"
+  ],
+  "tolerance": {
+    "full": "almost immediately after ingestion",
+    "half": "1-2 days",
+    "zero": "2-4 days"
+  },
+  "crossTolerances": [
+    "psychedelic"
+  ],
+  "addictionPotential": "No formal studies are reported. The source suggests it may be non-habit-forming based on psychedelics generally, while noting that no conclusion is established.",
+  "toxicities": [
+    "The exact toxic dose is unknown."
+  ],
+  "effectsSummary": "FreeODwiki's subjective user reports describe strong visual effects, stimulation and sometimes uncomfortable body load, including nausea and physical discomfort. The page warns that effects are unpredictable and dose-sensitive; these reports are anecdotal.",
+  "dosageRemark": "FreeODwiki says its dose and duration data are aggregated from user reports/resources for education, not recommendations, and should be independently verified. It lists a 1 mg threshold, light from 3 mg, common from 6 mg and strong from 12 mg; strong/heavy upper limits are unknown.",
+  "generalRisks": "FreeODwiki says pharmacology, metabolism and toxicity data are very limited and human-use history is limited. It warns that adverse effects at higher doses may include addiction, serious injury or death; the exact toxic dose is unknown.",
+  "longtermRisks": "The source says long-term health effects have not been studied scientifically; they remain unknown.",
+  "saferUse": [
+    "The source advises independent research and harm-reduction practices, including accurate volumetric measurement; it does not guarantee safety."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium",
+      "Cannabis",
+      "stimulant",
+      "Tramadol"
+    ]
+  },
+  "metabolism": "The source says metabolic data are very limited and establishes no human metabolic pathway. This is an evidence gap, not evidence that no metabolism occurs.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2C-EF.md"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 3,
+        "commonMin": 6,
+        "strongMin": 12
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 2,
+          "max": 3,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2.5,
+          "max": 3.5,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
   ],
   "summary": "2C-EF is a substituted phenethylamine in the 2C family. Available information about its pharmacology and toxicity is limited."
 }

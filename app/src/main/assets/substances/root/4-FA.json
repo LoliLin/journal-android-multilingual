@@ -20,7 +20,9 @@
     "stimulant"
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
+  "toxicities": [
+    "Severe acute cardiovascular events, including cardiac arrest and stroke, have been reported; causality and mechanism remain uncertain."
+  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -28,7 +30,7 @@
     "habit-forming",
     "common"
   ],
-  "summary": "An empathogen commonly used in place of MDMA, having a similar duration of empathogenic effects. This drug, however, has a longer stimulant \"tail,\" during which effects are more like those of amphetamines. Not to be confused with 4-FMA, which has a similar potency, but is not particularly empathogenic.",
+  "summary": "4-FA is a fluorinated amphetamine reported to produce an early empathogenic phase followed by longer-lasting stimulant effects. FreeODwiki says human-use toxicity and metabolism data remain limited.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -99,5 +101,16 @@
         }
       }
     }
+  ],
+  "effectsSummary": "FreeODwiki describes reported empathogenic effects resembling a milder MDMA-like phase followed by amphetamine-like stimulation. Reported effects include euphoria, increased empathy, heart rate and blood pressure changes, overheating, dehydration and possible seizures; the page warns that subjective effects are anecdotal and unpredictable.",
+  "dosageRemark": "The archived oral dose table lists threshold 40 mg, light 40–100 mg, common 100–130 mg, strong 130–150 mg and severe 150 mg+. The model has no thresholdMin field, so the 40 mg threshold is recorded here; it coincides with the listed lightMin. The page states dose information is collected from users and resources for education, not recommendation, and should be independently verified.",
+  "generalRisks": "FreeODwiki reports serious acute cardiovascular events associated with 4-FA use, including cardiac arrest and stroke with severe brain injury after reported moderate doses; causality and mechanism are uncertain. The page also describes tachycardia, hypertension, chest pain, arrhythmias, overheating and seizures. Severe headache or neurological symptoms after use are treated by the source as urgent warning signs.",
+  "longtermRisks": "The page says research on recreational toxicity and long-term effects is limited because human-use history is short. Long-term outcomes remain uncertain; reported acute cardiovascular events do not establish a specific chronic effect.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm-reduction measures. It advises against nasal use because of reported corrosive injury to the nose and throat; the archived dose table is educational and not a recommendation."
+  ],
+  "metabolism": "FreeODwiki says human metabolism data for 4-FA are very limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 4-FA is not metabolized.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FA.md"
   ]
 }

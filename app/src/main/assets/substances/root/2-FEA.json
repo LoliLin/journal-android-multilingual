@@ -26,7 +26,7 @@
     "tentative",
     "research-chemical"
   ],
-  "summary": "Stimulant closely related to 2-FMA. Presumably slightly less potent than the prior. Toxicology and the likes are pretty much completely unknown. Tread with caution.",
+  "summary": "2-FEA is the N-ethylated analogue of 2-FA. FreeODwiki reports that its exact effects are poorly characterized and that formal pharmacological and toxicity research is lacking; reported activity and possible serotonergic effects are anecdotal and uncertain.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -53,7 +53,7 @@
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 15,
+        "lightMin": 20,
         "commonMin": 30,
         "strongMin": 40,
         "heavyMin": 60
@@ -91,5 +91,12 @@
         }
       }
     }
+  ],
+  "effectsSummary": "FreeODwiki describes typical stimulant effects such as stimulation, focus and euphoria, but says the profile is poorly characterized. User reports conflict: some describe weak or subtle activity, while others report more physical adverse effects or possible serotonergic effects. The page cautions that these are anecdotal and uncertain.",
+  "dosageRemark": "The archived insufflated dose table is based on user reports and resources for education, not a recommendation, and should be independently verified. It lists a 15 mg threshold, light 20–30 mg, common 30–40 mg, strong 40–60 mg and severe 60 mg+. The model has no thresholdMin field, so the threshold is recorded here rather than mapped to lightMin.",
+  "generalRisks": "FreeODwiki says 2-FEA toxicity has not been studied scientifically and the exact toxic dose is unknown. Reports about low or moderate use cannot establish safety; the page notes that user accounts are limited and inconsistent.",
+  "longtermRisks": "The page states that long-term health effects have not been studied in a scientific setting; 2-FEA-specific long-term risks remain unknown.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm-reduction measures. Its dose table is educational user-report information, not a recommendation."
   ]
 }

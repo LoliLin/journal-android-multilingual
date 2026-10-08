@@ -88,26 +88,26 @@ fun SearchScreen(
             }
         },
     ) { padding ->
+        val searchText by searchViewModel.searchTextFlow.collectAsState()
+        val chipCategories by searchViewModel.chipCategoriesFlow.collectAsState()
+        val filteredSubstances by searchViewModel.filteredSubstancesFlow.collectAsState()
+        val filteredCustomSubstances by searchViewModel.filteredCustomSubstancesFlow.collectAsState()
+        val activeFilters = remember(chipCategories) { chipCategories.filter { it.isActive } }
+        val onFilterTapped = searchViewModel::onFilterTapped
+        val customColor = searchViewModel.customColor
+
         Column(modifier = Modifier.padding(padding)) {
             SearchField(
                 modifier = Modifier
                     .fillMaxWidth()
                     .focusRequester(focusRequester)
                     .onFocusChanged { focusState -> isFocused = focusState.isFocused },
-                searchText = searchViewModel.searchTextFlow.collectAsState().value,
+                searchText = searchText,
                 onChange = { searchViewModel.filterSubstances(searchText = it) },
-                categories = searchViewModel.chipCategoriesFlow.collectAsState().value,
-                onFilterTapped = searchViewModel::onFilterTapped,
+                categories = chipCategories,
+                onFilterTapped = onFilterTapped,
                 isShowingFilter = true
             )
-
-            val activeFilters = searchViewModel.chipCategoriesFlow.collectAsState().value.filter {
-                it.isActive
-            }
-            val onFilterTapped = searchViewModel::onFilterTapped
-            val filteredSubstances = searchViewModel.filteredSubstancesFlow.collectAsState().value
-            val filteredCustomSubstances = searchViewModel.filteredCustomSubstancesFlow.collectAsState().value
-            val customColor = searchViewModel.customColor
 
 
             if (activeFilters.isNotEmpty()) {

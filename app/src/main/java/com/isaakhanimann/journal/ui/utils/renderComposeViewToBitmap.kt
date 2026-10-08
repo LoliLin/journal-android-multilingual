@@ -86,70 +86,72 @@ suspend fun renderComposeViewToBitmap(
     container.addView(composeView)
     hostActivityView.addView(container)
 
-    // 3. 完美拷贝宿主环境生命周期与 Hilt 上下文
-    container.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
-    container.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
-    container.setViewTreeSavedStateRegistryOwner(
-        lifecycleView.findViewTreeSavedStateRegistryOwner()
-    )
+    try {
+        // 3. 完美拷贝宿主环境生命周期与 Hilt 上下文
+        container.setViewTreeLifecycleOwner(lifecycleView.findViewTreeLifecycleOwner())
+        container.setViewTreeViewModelStoreOwner(lifecycleView.findViewTreeViewModelStoreOwner())
+        container.setViewTreeSavedStateRegistryOwner(
+            lifecycleView.findViewTreeSavedStateRegistryOwner()
+        )
 
-    // 4. 双重异步唤醒锁（原生监听 + 定时器保底）
-    suspendCancellableCoroutine<Unit> { continuation ->
-        val mainHandler = Handler(Looper.getMainLooper())
+        // 4. 双重异步唤醒锁（原生监听 + 定时器保底）
+        suspendCancellableCoroutine<Unit> { continuation ->
+            val mainHandler = Handler(Looper.getMainLooper())
 
-        // 核心锁 A：监听系统真实的排版布局完成信号
-        val layoutListener = object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                if (composeView.height > 0) {
-                    composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    mainHandler.removeCallbacksAndMessages(null) // 取消保底定时器
-                    if (continuation.isActive) continuation.resume(Unit)
+            // 核心锁 A：监听系统真实的排版布局完成信号
+            val layoutListener = object : android.view.ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    if (composeView.height > 0) {
+                        composeView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        mainHandler.removeCallbacksAndMessages(null) // 取消保底定时器
+                        if (continuation.isActive) continuation.resume(Unit)
+                    }
                 }
             }
-        }
-        composeView.viewTreeObserver.addOnGlobalLayoutListener(layoutListener)
+            composeView.viewTreeObserver.addOnGlobalLayoutListener(layoutListener)
 
-        // 核心锁 B：50ms 强行自我唤醒保底（防止部分魔改系统不触发 OnGlobalLayout）
-        val timeoutRunnable = Runnable {
-            composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
-            if (continuation.isActive) continuation.resume(Unit)
-        }
-        mainHandler.postDelayed(timeoutRunnable, 50)
+            // 核心锁 B：50ms 强行自我唤醒保底（防止部分魔改系统不触发 OnGlobalLayout）
+            val timeoutRunnable = Runnable {
+                composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
+                if (continuation.isActive) continuation.resume(Unit)
+            }
+            mainHandler.postDelayed(timeoutRunnable, 50)
 
-        // 强推系统一把，激活 Layout 信号
-        composeView.requestLayout()
+            // 强推系统一把，激活 Layout 信号
+            composeView.requestLayout()
 
-        // 严谨防泄漏：如果协程中途取消，拔掉所有异步桩
-        continuation.invokeOnCancellation {
-            composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
-            mainHandler.removeCallbacksAndMessages(null)
+            // 严谨防泄漏：如果协程中途取消，拔掉所有异步桩
+            continuation.invokeOnCancellation {
+                composeView.viewTreeObserver.removeOnGlobalLayoutListener(layoutListener)
+                mainHandler.removeCallbacksAndMessages(null)
+            }
         }
+
+        if (postLayoutDelayMs > 0) {
+            delay(postLayoutDelayMs)
+        }
+
+        // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
+        val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        composeView.measure(widthSpec, heightSpec)
+
+        val measuredWidth = composeView.measuredWidth
+        // 终极硬化保底：确保高度绝对不为 0，彻底绝育 createBitmap 的闪退风险
+        val measuredHeight = composeView.measuredHeight.coerceAtLeast(100)
+
+        composeView.layout(0, 0, measuredWidth, measuredHeight)
+
+        // 6. 咔嚓！绘制位图。Opaque background: an all-transparent snapshot would
+        // render as an invisible (blank-looking) notification picture.
+        val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.RGB_565)
+        bitmap.eraseColor(android.graphics.Color.WHITE)
+        val canvas = Canvas(bitmap)
+        composeView.draw(canvas)
+
+        return@withContext bitmap
+    } finally {
+        // 7. 悄悄离场，不留一丝痕迹
+        hostActivityView.removeView(container)
     }
-
-    if (postLayoutDelayMs > 0) {
-        delay(postLayoutDelayMs)
-    }
-
-    // 5. 放心收网：此时不管是哪个锁醒来的，宽高都已经准备就绪
-    val widthSpec = View.MeasureSpec.makeMeasureSpec(widthPx, View.MeasureSpec.EXACTLY)
-    val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-    composeView.measure(widthSpec, heightSpec)
-
-    val measuredWidth = composeView.measuredWidth
-    // 终极硬化保底：确保高度绝对不为 0，彻底绝育 createBitmap 的闪退风险
-    val measuredHeight = composeView.measuredHeight.coerceAtLeast(100)
-
-    composeView.layout(0, 0, measuredWidth, measuredHeight)
-
-    // 6. 咔嚓！绘制位图。Opaque background: an all-transparent snapshot would
-    // render as an invisible (blank-looking) notification picture.
-    val bitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.RGB_565)
-    bitmap.eraseColor(android.graphics.Color.WHITE)
-    val canvas = Canvas(bitmap)
-    composeView.draw(canvas)
-
-    // 7. 悄悄离场，不留一丝痕迹
-    hostActivityView.removeView(container)
-
-    return@withContext bitmap
 }
