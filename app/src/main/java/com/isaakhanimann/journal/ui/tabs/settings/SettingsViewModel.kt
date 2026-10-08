@@ -408,7 +408,7 @@ class SettingsViewModel @Inject constructor(
                 avatars = avatars
             )
             try {
-                val jsonList = Json.encodeToString(journalExport)
+                val jsonList = journalExportJson.encodeToString(journalExport)
                 if (password == null) {
                     fileSystemConnection.saveTextInUri(uri, text = jsonList)
                 } else {
