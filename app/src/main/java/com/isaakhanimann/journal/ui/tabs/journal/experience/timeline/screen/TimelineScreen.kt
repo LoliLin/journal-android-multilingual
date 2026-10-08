@@ -77,7 +77,9 @@ fun TimelineScreen(viewModel: TimelineScreenViewModel) {
         title = viewModel.consumerName,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
         ratings = viewModel.ratingsFlow.collectAsState().value,
-        timedNotes = viewModel.timedNotesFlow.collectAsState().value
+        timedNotes = viewModel.timedNotesFlow.collectAsState().value,
+        areSubstanceHeightsIndependent =
+            viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value
     )
     TimelineScreen(timelineScreenModel)
 }
@@ -125,7 +127,9 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                             },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(320.dp)
+                            .height(320.dp),
+                        areSubstanceHeightsIndependent =
+                            timelineScreenModel.areSubstanceHeightsIndependent
                     )
                 }
             }
@@ -233,7 +237,9 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                     modifier = Modifier
                         .fillMaxHeight(if (isOrientationPortrait) 0.5f else 1f)
                         .width(canvasWidth.dp)
-                        .padding(horizontal = horizontalPadding)
+                        .padding(horizontal = horizontalPadding),
+                    areSubstanceHeightsIndependent =
+                        timelineScreenModel.areSubstanceHeightsIndependent
                 )
             }
             }
