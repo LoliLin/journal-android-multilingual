@@ -27,7 +27,7 @@
     },
     {
       "registerName": "local_brewery",
-      "iconPath": "chicken_amantadine.jpg",
+      "iconPath": "local_brewery.png",
       "condition": {
         "type": "manual"
       }
