@@ -38,6 +38,8 @@ sealed class AchievementCondition {
     data class OwnerNameEquals(
         val value: String
     ) : AchievementCondition()
+
+    object Manual : AchievementCondition()
 }
 
 data class AchievementDefinition(
@@ -59,6 +61,7 @@ object AchievementEvaluator {
         is AchievementCondition.SubstanceUsed -> ingestions
             .any { it.substanceName == condition.substanceName && (it.dose ?: 0.0) > 0 }
         is AchievementCondition.OwnerNameEquals -> ownerUserName == condition.value
+        AchievementCondition.Manual -> false
     }
 }
 
@@ -103,6 +106,7 @@ class AchievementDefinitionsLoader @Inject constructor(
             "ownerNameEquals" -> AchievementCondition.OwnerNameEquals(
                 value = json.getString("value")
             )
+            "manual" -> AchievementCondition.Manual
             else -> throw IllegalArgumentException(
                 "Unknown achievement condition type: ${json.getString("type")}"
             )
