@@ -80,15 +80,20 @@ object I18n {
         key: String,
         fallback: String,
         replacements: Map<String, String> = emptyMap()
-    ): String = applyReplacements(stringsFor(context)[key] ?: fallback, replacements)
+    ): String {
+        val value = stringsFor(context)[key] ?: fallback
+        return if (replacements.isEmpty()) value else applyReplacements(value, replacements)
+    }
 
     fun getSupportedLanguages(context: Context): Map<String, String> =
         loadStringsFile(context, "lang/supported.json")
 
-    private fun applyReplacements(raw: String, replacements: Map<String, String>): String =
-        replacements.entries.fold(raw) { acc, entry ->
+    private fun applyReplacements(raw: String, replacements: Map<String, String>): String {
+        if (replacements.isEmpty()) return raw
+        return replacements.entries.fold(raw) { acc, entry ->
             acc.replace("{" + entry.key + "}", entry.value)
         }
+    }
 
     /**
      * The string table for the current language, reloading it when the language

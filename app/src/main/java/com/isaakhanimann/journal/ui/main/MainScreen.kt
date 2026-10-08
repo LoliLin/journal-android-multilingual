@@ -84,14 +84,14 @@ fun MainScreen(viewModel: MainScreenViewModel = hiltViewModel()) {
     LaunchedEffect(selectedLanguageKey) { I18n.setPreferredLanguageKey(selectedLanguageKey) }
     val rootTabTransitionsEnabled = viewModel.isRootTabTransitionsEnabledFlow.collectAsState().value
     val isAccepted = viewModel.isAcceptedFlow.collectAsState().value
+    val isAppLockEnabled = viewModel.isAppLockEnabledFlow.collectAsState().value
+    val isUnlocked = viewModel.isUnlockedFlow.collectAsState().value
     val pendingIntent = rememberPendingNavigationIntent()
     if (isAccepted == null) {
         Box(modifier = Modifier.fillMaxSize())
     } else if (!isAccepted) {
         AcceptConditionsScreen(onTapAccept = viewModel::accept)
-    } else if (viewModel.isAppLockEnabledFlow.collectAsState().value &&
-        !viewModel.isUnlockedFlow.collectAsState().value
-    ) {
+    } else if (isAppLockEnabled && !isUnlocked) {
         AppLockScreen(onUnlocked = viewModel::markUnlocked)
     } else {
         MainScreenContent(viewModel, pendingIntent, rootTabTransitionsEnabled)

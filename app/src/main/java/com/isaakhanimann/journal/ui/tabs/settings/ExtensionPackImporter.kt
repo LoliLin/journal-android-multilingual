@@ -23,7 +23,7 @@ object ExtensionPackImporter {
                     while (entries.hasMoreElements()) {
                         val entry = entries.nextElement()
                         if (entry.name == "manifest.json") {
-                            manifestContent = zipFile.getInputStream(entry).bufferedReader().readText()
+                            manifestContent = zipFile.getInputStream(entry).use { it.bufferedReader().readText() }
                             break
                         }
                     }
