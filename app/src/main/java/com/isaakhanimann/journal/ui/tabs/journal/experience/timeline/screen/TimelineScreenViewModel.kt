@@ -55,6 +55,12 @@ class TimelineScreenViewModel @AssistedInject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val areSubstanceHeightsIndependentFlow = userPreferences.areSubstanceHeightsIndependentFlow.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = false
+    )
+
     val isOwnerUser = ownerUserNameFlow.map { it == consumerName }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
