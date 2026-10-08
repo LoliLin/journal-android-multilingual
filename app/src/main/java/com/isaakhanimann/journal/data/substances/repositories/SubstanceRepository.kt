@@ -331,13 +331,7 @@ class SubstanceRepository @Inject constructor(
 
     override fun getAllSubstancesWithCategories(): List<SubstanceWithCategories> {
         ensureLanguageLoaded()
-        val categoryByName = substanceFile.categories.associateBy { it.name }
-        return substanceFile.substances.map { substance ->
-            SubstanceWithCategories(
-                substance = substance,
-                categories = substance.categories.mapNotNull { categoryByName[it] }
-            )
-        }
+        return substanceFile.allSubstancesWithCategories
     }
 
     override fun getAllCategories(): List<Category> {
@@ -352,16 +346,15 @@ class SubstanceRepository @Inject constructor(
 
     override fun getCategory(categoryName: String): Category? {
         ensureLanguageLoaded()
-        return substanceFile.categories.firstOrNull { it.name == categoryName }
+        return substanceFile.categoriesMap[categoryName]
     }
 
     override fun getSubstanceWithCategories(substanceName: String): SubstanceWithCategories? {
         ensureLanguageLoaded()
         val substance = substanceFile.substancesMap[substanceName] ?: return null
-        val categoryByName = substanceFile.categories.associateBy { it.name }
         return SubstanceWithCategories(
             substance = substance,
-            categories = substance.categories.mapNotNull { categoryByName[it] }
+            categories = substance.categories.mapNotNull { substanceFile.categoriesMap[it] }
         )
     }
 }
