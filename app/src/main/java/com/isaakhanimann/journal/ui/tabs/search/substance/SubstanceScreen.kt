@@ -695,7 +695,7 @@ fun CategoryChipFromSubstanceScreen(
             .height(48.dp)
             .padding(horizontal = 12.dp)
     ) {
-        Text(text = displayName)
+        Text(text = displayName, maxLines = 1, softWrap = false)
         Spacer(modifier = Modifier.width(3.dp))
         Icon(
             imageVector = Icons.Default.ChevronRight,

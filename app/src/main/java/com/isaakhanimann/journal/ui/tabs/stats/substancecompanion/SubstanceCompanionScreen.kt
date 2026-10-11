@@ -559,6 +559,8 @@ fun ActivityGrid(
                         style = MaterialTheme.typography.labelSmall,
                         color = textColor,
                         fontSize = 10.sp,
+                        maxLines = 1,
+                        softWrap = false,
                         modifier = Modifier.padding(
                             start = if (lastMonth == -1) {
                                 0.dp
