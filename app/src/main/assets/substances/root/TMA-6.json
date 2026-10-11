@@ -19,13 +19,11 @@
   "toxicities": [
     "toxic dose is unknown"
   ],
-  "categories": [
-    "psychedelic",
-    "stimulant",
-    "research-chemical",
-    "tentative"
+  "dosageRemark": "Archived oral table: threshold 5 mg; light 10-20 mg; moderate 20-35 mg; strong 35-50 mg; heavy 50 mg+. Source duration phases: total 10-16 h; onset 30-90 min; comeup 1.5-3 h; peak 5-8 h; offset 3-5 h; afterglow 6-18 h. User/resource educational compilation, not a recommendation. lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "FreeODwiki presents subjective effects based on user reports and notes effects may be unpredictable; adverse effects may become more likely as dose increases.",
+  "saferUse": [
+    "FreeODwiki dose information is educational user/resource material, not a recommendation; cross-check independently."
   ],
-  "summary": "A rarely seen Psychedelic Amphetamine and Mescaline analogue. First synthesised by Alexander Shulgin, who descrived it as  \"one of the most rewarding and pleasurable of the methoxylated amphetamines.\"",
   "interactions": {
     "dangerous": [
       "SNRIs",
@@ -37,12 +35,19 @@
     "unsafe": [],
     "uncertain": []
   },
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "A rarely seen Psychedelic Amphetamine and Mescaline analogue. First synthesised by Alexander Shulgin, who descrived it as  \"one of the most rewarding and pleasurable of the methoxylated amphetamines.\"",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 10,
         "commonMin": 20,
         "strongMin": 35,
         "heavyMin": 50

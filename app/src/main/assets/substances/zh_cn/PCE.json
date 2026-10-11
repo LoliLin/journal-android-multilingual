@@ -7,7 +7,16 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "高度成瘾，且极易引发精神病等不良副作用",
-  "toxicities": [],
-  "summary": "乙环利定（PCE）是一种具有致幻作用的分离性麻醉剂，其效力略强于苯环利定。",
-  "localizedName": "PCE"
+  "toxicities": [
+    "FreeODwiki 警告高剂量可能造成混乱和躁狂；不良反应及精神病风险随剂量上升。剂量数据来自用户/资源报告。"
+  ],
+  "dosageRemark": "归档表列出口服、鼻吸和吸入阈值均为 1 mg；轻微 2-4 mg；中等 4-8 mg；强烈 8-12 mg；严重 12 mg 以上（吸入表列 12 mg）。严重剂量可能导致混乱和躁狂。口服总时长 4-8 小时；吸入/鼻吸总时长 4-6 小时，阶段估计按路线分别记录。用户/资源教育资料，不是建议。合并重复 inhaled/smoked 行；lightMin 已从阈值改为来源轻微下界。",
+  "generalRisks": "FreeODwiki 强烈不建议高剂量或连续多日使用，并警告严重剂量可能导致混乱和躁狂。",
+  "longtermRisks": "来源建议不要连续多日使用，但没有提供可靠的长期风险定量估计。",
+  "saferUse": [
+    "FreeODwiki 强烈不建议高剂量或连续多日使用；剂量表是教育用途用户/资源资料。"
+  ],
+  "summary": "PCE 是一种解离剂，剂量与时长估计因路线而异。FreeODwiki 警告避免高剂量和连续多日使用。",
+  "localizedName": "PCE",
+  "roas": []
 }

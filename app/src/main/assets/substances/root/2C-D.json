@@ -81,5 +81,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki advises starting low, recommends independent research and harm-reduction measures, and says its dose information is educational rather than a recommendation. Anecdotal reports do not establish safety."
+  ],
+  "metabolism": "The reviewed archived page provides no specific human metabolic findings or metabolic pathway; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-D"
   ]
 }

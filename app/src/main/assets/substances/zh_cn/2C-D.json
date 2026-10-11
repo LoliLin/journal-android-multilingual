@@ -9,5 +9,12 @@
   "addictionPotential": "无成瘾性",
   "toxicities": ["毒性剂量未知"],
   "summary": "一种相当普通的迷幻药，因可作为“迷幻豆腐”使用而闻名。本身没什么特色，但混合使用时效果宜人。",
+  "saferUse": [
+    "PsychonautWiki 建议从低剂量开始、独立查证并采取减害措施；页面说明剂量资料仅供教育参考，并非建议。轶闻报告不能证明安全。"
+  ],
+  "metabolism": "归档页面未提供具体的人体代谢发现或代谢途径；不根据类似物推断。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-D"
+  ],
   "localizedName": "2C-D"
 }

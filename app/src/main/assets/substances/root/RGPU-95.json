@@ -1,6 +1,15 @@
 {
   "name": "RGPU-95",
-  "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/RGPU-95.md",
-  "summary": "RGPU-95, also known as p-chlorophenylpiracetam, is a racetam derived from phenylpiracetam. It has been investigated as a potential antidepressant and anxiolytic, but human data are limited."
+  "isApproved": false,
+  "toxicities": [
+    "The unapproved page warns toxicity and other risk information may be incorrect; no human toxicology conclusions are imported from it."
+  ],
+  "effectsSummary": "The archived RGPU-95 page is not fully approved and warns that dose, duration, subjective effects, toxicity and other risks may be incorrect.",
+  "dosageRemark": "The page contains dose and animal-study claims but explicitly warns it has not been fully approved and may contain incorrect information, especially dosage and risks. Do not import its numbers into structured dose fields pending independent corroboration.",
+  "generalRisks": "FreeODwiki has not fully approved this page and warns that dosage, duration, effects, toxicity and other risk claims may be incorrect.",
+  "saferUse": [
+    "Treat the unapproved page as provisional and independently verify claims before structured use."
+  ],
+  "summary": "RGPU-95 is a racetam-related compound. Its available FreeODwiki page is unapproved and warns that dose and risk claims may be incorrect."
 }

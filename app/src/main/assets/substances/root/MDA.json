@@ -20,28 +20,16 @@
     "stimulant"
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
-  "categories": [
-    "psychedelic",
-    "entactogen",
-    "stimulant",
-    "habit-forming",
-    "common"
+  "toxicities": [
+    "FreeODwiki describes MDA as more neurotoxic than MDMA or MDEA. As a serotonin releaser it can cause sustained core/body temperature elevation; excessive doses may cause serotonin syndrome, potentially fatal if untreated."
   ],
-  "summary": "A stimulant and empathogen. Similar to MDMA but typically produces more visuals than MDMA. Known to be more neurotoxic than MDMA, and is a minor metabolite of MDMA. Duration and onset similar to MDMA. The common Marquis reagent test cannot differentiate MDA and MDMA.",
   "effectsSummary": "MDA is closely related to MDMA. It differs mainly in how well one's own feelings are perceived (entactogenic effect), how strong empathic understanding (empathic effect) and hallucinogenic effects occur.",
-  "dosageRemark": "1.3 mg per kg body weight (1.3 mg x 80 kg = 100 mg)",
-  "generalRisks": "Nausea to nausea, dry mouth, cramping of the jaw muscles, sweating, coordination disorders, sleep disorders and trembling.",
-  "longtermRisks": "MDA is both neurotoxic (damaging to the nerves) and hepatotoxic (damaging to the liver); regular use can lead to schizophrenia-like symptoms.",
+  "dosageRemark": "The archived oral table lists threshold 20 mg, light 40-60 mg, moderate 60-100 mg, strong 100-145 mg, heavy 145 mg+; total 5-8 h, onset 30-90 min, comeup 15-45 min, peak 2.5-4 h, offset 2-3 h and afterglow 4-48 h. User/resource educational compilation, not a recommendation. The page describes MDA as more potent and longer-lasting than MDMA and reports greater neurotoxicity; lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "FreeODwiki warns of increased body temperature, serotonin syndrome at excessive doses, dehydration and water intoxication from overdrinking. It says MDA has greater neurotoxicity than MDMA/MDEA and recommends harm reduction.",
+  "longtermRisks": "The source describes greater neurotoxicity than MDMA or MDEA and advises allowing one to three months between uses to support serotonin recovery and reduce toxicity.",
   "saferUse": [
-    "First test a third or half a pill.",
-    "Wait two hours for the effect to take effect before adding more.",
-    "With MDA, topping up is pointless, as it is effective for a long time even in small doses.",
-    "Refrain from mixed consumption.",
-    "Avoid alcohol, drink enough non-alcoholic beverages (0.3-0.5 L per hour).",
-    "Take breaks from dancing at parties and get some fresh air in between.",
-    "Take regular breaks from consumption. The body needs time to recover.",
-    "People taking medication are advised to inform themselves about interactions."
+    "FreeODwiki strongly recommends harm reduction; avoid excessive doses and repeated redosing because they are considered to substantially increase toxicity.",
+    "It advises small sips rather than excessive water intake, particularly during dancing/heat, and says one to three months between uses is commonly recommended."
   ],
   "interactions": {
     "dangerous": [
@@ -65,12 +53,20 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "entactogen",
+    "stimulant",
+    "habit-forming",
+    "common"
+  ],
+  "summary": "A stimulant and empathogen. Similar to MDMA but typically produces more visuals than MDMA. Known to be more neurotoxic than MDMA, and is a minor metabolite of MDMA. Duration and onset similar to MDMA. The common Marquis reagent test cannot differentiate MDA and MDMA.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 20,
+        "lightMin": 40,
         "commonMin": 60,
         "strongMin": 100,
         "heavyMin": 145

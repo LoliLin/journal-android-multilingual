@@ -17,13 +17,15 @@
     "dissociative"
   ],
   "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
-  "toxicities": [],
-  "categories": [
-    "dissociative",
-    "tentative",
-    "habit-forming"
+  "toxicities": [
+    "FreeODwiki warns heavy doses may cause confusion and mania; adverse effects and psychosis risk rise with dose. Dose data are user/resource reports."
   ],
-  "summary": "Eticyclidine (PCE) is a Dissociative anesthetic that has hallucinogenic effects. Slightly more potent than Phencyclidine.",
+  "dosageRemark": "Archived tables list threshold 1 mg for oral, insufflated and inhaled routes; light 2-4 mg insufflated/inhaled and 2-4 mg oral; moderate 4-8 mg insufflated/inhaled, 4-8 mg oral; strong 8-12 mg; heavy 12 mg+ (inhaled table gives 12 mg). Severe doses may cause confusion and mania. Oral total 4-8 h; inhaled/insufflated total 4-6 h, with route-specific phase estimates. User/resource educational information, not a recommendation. Duplicate inhaled/smoked rows consolidated; lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "FreeODwiki strongly discourages high-dose or multi-day use and warns severe doses may cause confusion and mania.",
+  "longtermRisks": "The source recommends against repeated multi-day use; it provides no reliable quantified long-term risk estimate.",
+  "saferUse": [
+    "FreeODwiki strongly discourages high-dose or consecutive multi-day use; dose tables are educational user/resource material."
+  ],
   "interactions": {
     "dangerous": [
       "stimulant",
@@ -32,12 +34,18 @@
     "unsafe": [],
     "uncertain": []
   },
+  "categories": [
+    "dissociative",
+    "tentative",
+    "habit-forming"
+  ],
+  "summary": "PCE is a dissociative with route-dependent user-reported dose and duration estimates. FreeODwiki warns against high-dose and multi-day use.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 4,
         "strongMin": 8,
         "heavyMin": 15
@@ -79,7 +87,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 5,
         "strongMin": 10,
         "heavyMin": 15
@@ -121,51 +129,10 @@
       "name": "inhaled",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 4,
         "strongMin": 8,
         "heavyMin": 12
-      },
-      "duration": {
-        "onset": {
-          "min": 2,
-          "max": 20,
-          "units": "minutes"
-        },
-        "comeup": {
-          "min": 20,
-          "max": 40,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 2,
-          "max": 3,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "total": {
-          "min": 4,
-          "max": 6,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 4,
-          "max": 48,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "smoked",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 4,
-        "strongMin": 8
       },
       "duration": {
         "onset": {

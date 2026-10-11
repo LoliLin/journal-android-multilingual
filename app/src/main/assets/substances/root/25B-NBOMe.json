@@ -99,5 +99,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki strongly recommends harm-reduction measures and describes the dose-response as highly sensitive and unpredictable."
+  ],
+  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It identifies no specific metabolic enzymes, metabolites or pathway, so metabolism remains undocumented in this source; no route is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25B-NBOMe"
   ]
 }

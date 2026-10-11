@@ -90,5 +90,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki strongly recommends harm-reduction measures and extra caution while assessing individual responses. It reports severe flu-like aftereffects in some users and warns against combining 3-FPM with 25x-NBOMe/NBOH, depressants, or other listed risky combinations."
+  ],
+  "metabolism": "The archived page says data on human pharmacology, metabolism and toxicity are very limited. It provides no specific human metabolic findings or pathway; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-FPM"
   ]
 }

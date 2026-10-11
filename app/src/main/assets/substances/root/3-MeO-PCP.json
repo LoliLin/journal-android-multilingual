@@ -18,7 +18,30 @@
   ],
   "addictionPotential": "produces dependence with chronic use and has a high potential for abuse",
   "toxicities": [
-    "toxic dosage is unknown"
+    "FreeODwiki reports many experience reports describing states of psychotic delirium, amnesia, mania and other severe consequences after 3-MeO-PCP abuse, leading in some cases to hospitalisation and at times a week or longer to resolve.",
+    "FreeODwiki says long-term, heavy and repeated use appears to produce bladder and urinary tract problems similar to ketamine but milder, possibly because 3-MeO-PCP is far more potent and much less needs to be consumed. It lists urinary frequency, urinary pressure, and pelvic and bladder pain, and notes ketamine-induced cystitis symptoms can become extremely severe. The urinary tract claims carry a source-request marker and are not established 3-MeO-PCP-specific findings."
+  ],
+  "effectsSummary": "FreeODwiki's subjective-effects section is a long experiential index. It describes 3-MeO-PCP as producing dissociative effects that can build toward a hole-like state of emptiness, space and void, along with visual separation and dissociation of consciousness. Effects come from anecdotal user reports, and higher doses are more likely to produce a full spectrum along with adverse effects.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists thresholds of 2 mg both insufflated and oral, a light range of 5-10 mg insufflated and 4-8 mg oral, moderate of 10-20 mg and 8-15 mg, strong of 20-25 mg and 15-25 mg, and heavy of 25 mg or more; the model does not represent a threshold band separately, so the 2 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page warns that severe doses may cause psychosis and mania.",
+  "generalRisks": "FreeODwiki reports many experience reports of psychotic delirium, amnesia, mania and other severe consequences after abuse, leading in some cases to hospitalisation and sometimes taking a week or longer to resolve. It warns that serious doses may cause psychosis and mania, and that onset, weight, tolerance, metabolism and individual sensitivity differ, so doses must be started lower and increased as slowly as possible.",
+  "longtermRisks": "FreeODwiki says long-term, heavy and repeated use appears to produce bladder and urinary tract problems similar to ketamine but milder, possibly because 3-MeO-PCP is far more potent and much less needs to be consumed. It lists urinary frequency, urinary pressure, and pelvic and bladder pain, noting ketamine-induced cystitis symptoms can become extremely severe, and says these effects compound with substances such as amphetamine even without use on the same day. It suggests avoiding regular daily or weekly use and manually limiting quantities. The urinary tract claims carry a source-request marker and are not established 3-MeO-PCP-specific findings.",
+  "saferUse": [
+    "Because of psychosis risk, FreeODwiki does not recommend combining 3-MeO-PCP with other substances, especially stimulants, psychedelics or other dissociatives such as MXE, and advises independent research before any combination.",
+    "It advises starting low, increasing as slowly as possible, and using liquid volumetric dosing since most milligram scales cannot accurately weigh doses below 10-15 mg for a potent substance.",
+    "It advises against redosing before being fully sober, which can lead to excessively high doses."
+  ],
+  "interactions": {
+    "dangerous": [
+      "stimulant",
+      "depressant",
+      "MAOI",
+      "dissociative",
+      "psychedelic"
+    ]
+  },
+  "metabolism": "The archived page gives no specific human metabolic finding or pathway for 3-MeO-PCP and describes its pharmacology as incomplete.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-MeO-PCP"
   ],
   "categories": [
     "dissociative",
@@ -26,21 +49,13 @@
     "habit-forming",
     "common"
   ],
-  "summary": "A potent dissociative often compared to MXE but with a longer duration, much less sedating effects and causing an overall different experience. Users have reported effects as being similar to PCP. Roughtly ten times more potent than 4-MeO-PCP.",
-  "interactions": {
-    "dangerous": [
-      "stimulant",
-      "depressant"
-    ],
-    "unsafe": [],
-    "uncertain": []
-  },
+  "summary": "3-MeO-PCP is a potent dissociative arylcyclohexylamine. Abuse is widely reported to produce psychotic delirium, amnesia and mania requiring hospitalisation, and long-term heavy use is reported to affect the bladder and urinary tract; it should not be combined with stimulants, psychedelics or other dissociatives.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 5,
         "commonMin": 5,
         "strongMin": 10,
         "heavyMin": 15
@@ -82,7 +97,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 2,
+        "lightMin": 4,
         "commonMin": 8,
         "strongMin": 15,
         "heavyMin": 25

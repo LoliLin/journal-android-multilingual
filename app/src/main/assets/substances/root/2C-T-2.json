@@ -1,6 +1,9 @@
 {
   "name": "2C-T-2",
-  "commonNames": ["2C-T-2", "Rosy"],
+  "commonNames": [
+    "2C-T-2",
+    "Rosy"
+  ],
   "url": "https://psychonautwiki.org/wiki/2C-T-2",
   "isApproved": true,
   "tolerance": {
@@ -10,7 +13,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
+  "crossTolerances": [
+    "psychedelic"
+  ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "FreeODwiki says recreational toxicity and long-term health effects have not been studied scientifically and the exact toxic dose is unknown. It cites anecdotal reports that trying the drug caused no negative health effects, but says safety cannot be guaranteed."
@@ -27,9 +32,14 @@
       "MAOI",
       "stimulant",
       "monoamine releaser"
-    ]
+    ],
+    "unsafe": [],
+    "uncertain": []
   },
-  "categories": ["psychedelic", "research-chemical"],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
   "summary": "An unusual psychedelic in the 2C family with dose-sensitive, potentially intense effects. FreeODwiki says evidence on recreational toxicity and long-term health effects is very limited; possible MAO-A inhibition is unconfirmed.",
   "roas": [
     {

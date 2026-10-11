@@ -18,7 +18,27 @@
   ],
   "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
   "toxicities": [
-    "toxic dosage is unknown"
+    "FreeODwiki reports that 3-MeO-PCE causes psychosis, delusions and mania at a markedly higher rate than other dissociatives such as ketamine, diphenhydramine or MXE, and that many experience reports online describe states of psychosis, amnesia, mania and other severe consequences after abuse. It says the exact toxic dose is unknown."
+  ],
+  "effectsSummary": "FreeODwiki says 3-MeO-PCE has very similar properties to 3-MeO-PCP, but with a higher degree of euphoric stimulation and a possible compulsion to redose, so the risk of manic, delusional and potentially psychotic states may be higher; past a certain dose point, where dissociative effects dominate, its effects largely converge on 3-MeO-PCP. Its effects index is built on anecdotal user reports and contributor analysis, and mania, delusions and psychosis are reported as more common than on most other dissociatives, usually in the offset phase.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists oral with a threshold of 2 mg, light of 4-8 mg, moderate of 8-15 mg, strong of 15-25 mg, heavy of 25 mg or more and a total duration of 4-8 hours; and insufflated with a threshold of 1 mg, light of 3-6 mg, moderate of 6-12 mg, strong of 12-20 mg, heavy of 20 mg or more and a total duration of 3-5 hours. The model does not represent a threshold band separately, so the 2 mg and 1 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page warns that severe doses may cause psychosis and mania.",
+  "generalRisks": "FreeODwiki says data on 3-MeO-PCE's pharmacological properties, metabolism and toxicity is very little and its history of human use is short, and strongly recommends harm reduction. It reports that psychosis, delusions and mania occur at a markedly higher rate than with other dissociatives, and that many experience reports describe psychosis, amnesia, mania and other severe consequences after abuse. It strongly advises against high doses, against multi-day use, and against combining with other substances known to raise psychosis risk.",
+  "longtermRisks": "The archived page reports long-term effects similar to those found with ketamine, MXE and other arylcyclohexylamines, but potentially more severe because 3-MeO-PCE is said to be 50% less potent than ketamine, so more of it must be consumed to reach the same effect.",
+  "saferUse": [
+    "FreeODwiki strongly advises against high doses and against multi-day use.",
+    "It strongly advises against combining 3-MeO-PCE with other substances known to increase psychosis risk, and recommends harm reduction."
+  ],
+  "interactions": {
+    "dangerous": [
+      "stimulant",
+      "depressant",
+      "dissociative",
+      "MAOI"
+    ]
+  },
+  "metabolism": "FreeODwiki says data on 3-MeO-PCE's pharmacology, metabolism and toxicity is very little and provides no specific human metabolic finding or pathway.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-MeO-PCE"
   ],
   "categories": [
     "dissociative",
@@ -26,21 +46,13 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "3-MeO-PCP with a change of a ring replacement. Slightly more potent than 3-MeO-PCP.",
-  "interactions": {
-    "dangerous": [
-      "stimulant",
-      "depressant"
-    ],
-    "unsafe": [],
-    "uncertain": []
-  },
+  "summary": "3-MeO-PCE is a dissociative arylcyclohexylamine whose properties resemble 3-MeO-PCP but with stronger euphoric stimulation. The archived page reports psychosis, delusions and mania at a markedly higher rate than with other dissociatives, and advises against high doses, multi-day use and combinations.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 3,
         "commonMin": 6,
         "strongMin": 12,
         "heavyMin": 20
@@ -82,7 +94,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 2,
+        "lightMin": 4,
         "commonMin": 8,
         "strongMin": 15,
         "heavyMin": 25

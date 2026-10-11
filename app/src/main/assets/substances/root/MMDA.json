@@ -1,6 +1,15 @@
 {
   "name": "MMDA",
-  "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/MMDA.md",
-  "summary": "MMDA, also known as 3-methoxy-4,5-methylenedioxyamphetamine or 5-methoxy-MDA, is a psychedelic and entactogen of the amphetamine family."
+  "isApproved": false,
+  "toxicities": [
+    "The unreviewed page warns toxicity and other risk information may be incorrect; no toxicology claims are structured from this page."
+  ],
+  "effectsSummary": "The archived FreeODwiki page is not fully reviewed and warns its dosage, duration, subjective effects, toxicity and other risks may be incorrect.",
+  "dosageRemark": "The page contains oral dose/duration tables but explicitly warns it is not fully reviewed and may be incorrect, especially these fields. Do not transfer the table into structured dose data without independent corroboration.",
+  "generalRisks": "The archived MMDA page is unreviewed and warns that dosage, duration, subjective effects, toxicity and other risks may be incorrect.",
+  "saferUse": [
+    "Treat this unreviewed page as provisional; independently verify dose and risk claims before structured use."
+  ],
+  "summary": "MMDA is a psychoactive substance. The available FreeODwiki page is unreviewed and warns that its dose and risk information may be incorrect."
 }

@@ -28,18 +28,10 @@
     "Compulsive redosing and repeated use may increase the risk of severe adverse effects.",
     "Nasal administration has been associated with intense burning and nosebleeds."
   ],
-  "categories": [
-    "dissociative",
-    "stimulant",
-    "arylcyclohexylamine",
-    "research-chemical",
-    "habit-forming"
-  ],
-  "summary": "3-Me-PCPy (3-Methylrolicyclidine) is a synthetic arylcyclohexylamine dissociative with an unusual stimulating profile. It acts primarily as an NMDA receptor antagonist and has also been reported to inhibit the reuptake of serotonin, dopamine, and noradrenaline. It is generally described as more stimulating and less immobilizing than dissociatives such as ketamine, but has a relatively high reported propensity for mania, delusions, psychosis, and compulsive redosing.",
   "effectsSummary": "Stimulation, euphoria, dissociation, sensory enhancement at lower levels, tactile and auditory changes, altered visual perception, increased sociability and disinhibition, followed at higher levels by motor impairment, sensory suppression, cognitive disruption and dissociative anesthesia. Mania, delusions and psychosis have been reported, particularly with higher doses, repeated dosing and sleep deprivation.",
-  "dosageRemark": "PsychonautWiki lists oral and intranasal dosage ranges, but explicitly warns that its dosage information is based on user reports and has not been fully approved. Because 3-Me-PCPy is poorly studied and has an erratic dose-response profile, these values should not be treated as established safe or therapeutic doses.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists three routes: insufflated with a threshold of 2 mg, light of 5-10 mg, moderate of 10-20 mg, strong of 20-25 mg, heavy of 25 mg or more and a total duration of 45-120 minutes; oral with a threshold of 5 mg, light of 5-10 mg, moderate of 10-20 mg, strong of 20-30 mg, heavy of 30 mg or more and a total duration of 4-8 hours; and a further oral listing with a threshold of 5 mg and a total duration of 3-5 hours. The model does not represent a threshold band separately, so the 2 mg and 5 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page warns that severe doses may cause psychosis and mania.",
   "generalRisks": "The pharmacology, metabolism and toxicity of 3-Me-PCPy are poorly characterized. Acute risks include dissociation, impaired motor control, dizziness, sensory suppression, confusion, mania, delusions and psychosis. Repeated dosing may produce compulsive use and substantially increase the risk of severe psychiatric effects. Very little reliable human safety data exists, and the exact toxic dose is unknown.",
-  "longtermRisks": "Long-term human toxicity has not been adequately studied. Chronic and repeated use may produce tolerance, psychological dependence and cravings. PsychonautWiki reports that tolerance develops with prolonged and repeated use and that cross-tolerance extends across dissociatives. Frequent multi-day use is associated with greater concern for dependence and severe psychiatric effects.",
+  "longtermRisks": "The archived page states that long-term toxicity and health effects have not been studied in humans, and that compulsive redosing and repeated use may increase the risk of severe adverse effects.",
   "saferUse": [
     "Avoid repeated use on consecutive days.",
     "Avoid compulsive redosing before the previous dose has fully worn off.",
@@ -72,6 +64,18 @@
       "psychedelic"
     ]
   },
+  "metabolism": "The archived page does not provide a specific human metabolic finding or pathway for 3-Me-PCPy.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-Me-PCPy"
+  ],
+  "categories": [
+    "dissociative",
+    "stimulant",
+    "arylcyclohexylamine",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "3-Me-PCPy (3-Methylrolicyclidine) is a synthetic arylcyclohexylamine dissociative with an unusual stimulating profile. It acts primarily as an NMDA receptor antagonist and has also been reported to inhibit the reuptake of serotonin, dopamine, and noradrenaline. It is generally described as more stimulating and less immobilizing than dissociatives such as ketamine, but has a relatively high reported propensity for mania, delusions, psychosis, and compulsive redosing.",
   "roas": [
     {
       "name": "oral",

@@ -133,5 +133,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki strongly recommends harm-reduction measures and advises against insufflation, vaporization and tinctures because of difficult dose measurement and reported fatal overdoses. It also says to seek medical help for a suspected overdose."
+  ],
+  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It provides no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25I-NBOMe"
   ]
 }

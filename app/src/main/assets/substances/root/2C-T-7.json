@@ -1,6 +1,11 @@
 {
   "name": "2C-T-7",
-  "commonNames": ["2C-T-7", "Beautiful", "Blue Mystic", "7th Heaven"],
+  "commonNames": [
+    "2C-T-7",
+    "Beautiful",
+    "Blue Mystic",
+    "7th Heaven"
+  ],
   "url": "https://psychonautwiki.org/wiki/2C-T-7",
   "isApproved": true,
   "tolerance": {
@@ -10,7 +15,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
+  "crossTolerances": [
+    "psychedelic"
+  ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
     "FreeODwiki reports at least three deaths associated with 2C-T-7 as of August 2007; the reports involved insufflated doses of 30 mg or more or stimulant co-use, and do not establish an isolated causal dose."
@@ -27,9 +34,15 @@
       "RIMA",
       "stimulant",
       "serotonergic releaser"
-    ]
+    ],
+    "unsafe": [],
+    "uncertain": []
   },
-  "categories": ["psychedelic", "research-chemical", "entactogen"],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "entactogen"
+  ],
   "summary": "2C-T-7 is a relatively uncommon psychedelic phenethylamine with a long duration and an unpredictable dose response. Possible MAOI activity has not been established; the source warns against insufflation and combining it with other substances.",
   "roas": [
     {

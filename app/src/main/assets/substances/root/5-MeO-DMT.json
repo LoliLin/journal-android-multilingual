@@ -18,25 +18,16 @@
   "crossTolerances": [],
   "addictionPotential": "non-addictive with a low abuse potential",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki marks its toxicity and harm section as under construction, possibly containing incomplete and even dangerously wrong information. It says the toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context and the exact toxic dose is unknown, because its history of human use is limited. Anecdotal evidence suggests trying it alone at low to moderate doses and using it sparingly is unlikely to produce negative health effects, though this cannot be fully guaranteed."
   ],
-  "categories": [
-    "psychedelic",
-    "research-chemical"
-  ],
-  "summary": "A powerful psychedelic tryptamine found in many species of plants and some toad venom, with a history of use by native South Americans spanning thousands of years. Has similar qualities to DMT and related tryptamines. Very potent. Orally active in combination with an MAOI.",
-  "effectsSummary": "The effect depends very much on the set and the setting. Blood pressure and pulse increase, pupils dilate. Detachment of the body from the mind and ego dissolution are common, near-death experiences also occur relatively often, especially when high doses are consumed. The perception of time changes greatly during intoxication. A few minutes can be perceived as very long and intense. In addition, different feelings such as fear, euphoria, etc. can be experienced within a short period of time. Consumers report immersion in very \"bizarre\" worlds in which connections between being, environment and matter arise. Physical perception can also be influenced, in that one feels weightless or thinks one is falling.\nWith 5-MeO-DMT, the potential effect is greater, but less optical than with DMT.",
-  "dosageRemark": "MeO-DMT must be dosed very carefully, as even a few milligrams more can cause a very intense and unpleasant effect, which can result in psychological and mental problems lasting several weeks.",
-  "generalRisks": "The risk associated with the use of 5-MeO-DMT is mainly psychological and depends on the personality structure of the user. The perceptual changes during a trip can be so intense that especially inexperienced users feel overwhelmed by the flood of impressions. The perception of sudden emotional outbursts can also be perceived as rather disturbing and overwhelming. At high doses, such psychological side effects can be felt for days to weeks. If the rules of the set and setting are not followed, there can be false reactions, loss of orientation, panic, paranoia and horror trips. Physical side effects include nausea, vomiting, increase in heart rate, slightly accelerated breathing, increased blood pressure, pupil dilation, increased salivation, tremors, restlessness, headaches and movement disorders.",
-  "longtermRisks": "Permanent disturbances in self- and reality recognition are possible. The view of the world can be permanently called into question, which can make it difficult to cope with everyday life. Latent (hidden) psychoses can be triggered.",
+  "effectsSummary": "FreeODwiki describes 5-MeO-DMT as a naturally occurring tryptamine psychedelic, structurally related to DMT and 5-HO-DMT (bufotenin) and believed to produce the most powerful and overwhelming psychedelic state in that class. It reports proportionally overwhelming somatic effects compared with usually mild accompanying cognitive and visual effects, whose components can be interpreted as extremely pleasurable and euphoric or extremely uncomfortable and dysphoric. Adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and resources for education, not recommendations. The page lists smoked or vaporized with a threshold of 1 mg, light of 3-6 mg, moderate of 6-12 mg, strong of 12-20 mg and heavy of 20 mg or more, with a total duration of 20-40 minutes; insufflated with a threshold of 3 mg, light of 5-8 mg, moderate of 8-15 mg, strong of 15-25 mg and heavy of 25 mg or more. The model does not represent a threshold band separately, so the 1 mg and 3 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page also states the substance is active at doses as low as 2 mg vaporized and reportedly roughly 4-5 times more potent than DMT, and that insufflation is possible though discouraged.",
+  "generalRisks": "FreeODwiki marks its toxicity section as under construction and possibly dangerously wrong, says toxicity and long-term effects appear unresearched with unknown toxic dose, and warns that anecdotal reports suggest the substance is only appropriate for users experienced with powerful psychedelics such as DMT, ayahuasca and DPT who have training in safe use.",
+  "longtermRisks": "The archived page says the toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context.",
   "saferUse": [
-    "Only consume when you feel good. If you are afraid of the strong effects, do not use. Do not use if you are afraid of the substance.",
-    "Do not use 5-MeO-DMT alone! Take it in a safe atmosphere and together with experienced people you trust.",
-    "Take 5-MeO-DMT while sitting or lying down, as physical perception and ability to move are impaired during intoxication.",
-    "Dose carefully at first. If there is no effect, increase the dose the next time. Do not add more on the same day.",
-    "The consumption of MAO-inhibiting foods such as matured cheese, smoked fish or meat, sauerkraut, tofu, chocolate etc. should be avoided before and after consumption.",
-    "People with high blood pressure should not consume 5-MeO-DMT.",
-    "A trip with 5-MeO-DMT should remain an exceptional experience. Make sure you take long breaks from using 5-MeO-DMT and talk to others about your experience so that it can be processed."
+    "FreeODwiki strongly recommends harm reduction, and advises independent research before consumption to make sure combinations of two or more substances are safe.",
+    "It states the substance is only appropriate for users with extensive experience of powerful psychedelics and training in safe use, and that insufflation is discouraged.",
+    "It warns the combination with MAOIs tends to be extremely unpleasant, with strong body load, hypertension symptoms and risk of serotonin syndrome, and is strongly discouraged."
   ],
   "interactions": {
     "dangerous": [
@@ -60,6 +51,15 @@
       "NBOMe"
     ]
   },
+  "metabolism": "FreeODwiki says 5-MeO-DMT produces effects by binding to serotonin receptors in the brain, though its exact mechanism is unclear; other mechanisms such as reuptake inhibition of serotonin, noradrenaline and dopamine are believed to play a part. It notes the substance may cause serotonin toxicity when combined with MAOIs or RIMAs and may have cardiotoxic properties; this is the page's pharmacological discussion rather than an established human metabolic pathway.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/5-MeO-DMT"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical"
+  ],
+  "summary": "5-MeO-DMT is a naturally occurring tryptamine psychedelic found in plants and the venom of the Colorado River toad, believed to produce the most overwhelming psychedelic state in its class, with brief duration and proportionally extreme somatic effects.",
   "roas": [
     {
       "name": "insufflated",
@@ -95,90 +95,6 @@
           "min": 1,
           "max": 3,
           "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 6,
-        "strongMin": 12,
-        "heavyMin": 20
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 60,
-          "units": "seconds"
-        },
-        "comeup": {
-          "min": 30,
-          "max": 60,
-          "units": "seconds"
-        },
-        "peak": {
-          "min": 5,
-          "max": 15,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 10,
-          "max": 20,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 20,
-          "max": 40,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 15,
-          "max": 60,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 6,
-        "strongMin": 12,
-        "heavyMin": 20
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 60,
-          "units": "seconds"
-        },
-        "comeup": {
-          "min": 30,
-          "max": 60,
-          "units": "seconds"
-        },
-        "peak": {
-          "min": 5,
-          "max": 15,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 10,
-          "max": 20,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 20,
-          "max": 40,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 15,
-          "max": 60,
-          "units": "minutes"
         }
       }
     }

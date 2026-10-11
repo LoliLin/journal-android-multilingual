@@ -33,7 +33,9 @@
       "Cannabis",
       "stimulant",
       "Tramadol"
-    ]
+    ],
+    "unsafe": [],
+    "uncertain": []
   },
   "metabolism": "The source says metabolic data are very limited and establishes no human metabolic pathway. This is an evidence gap, not evidence that no metabolism occurs.",
   "metabolismSources": [

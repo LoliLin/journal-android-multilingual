@@ -12,42 +12,54 @@
   "tolerance": {
     "full": "almost immediately after ingestion",
     "zero": "7 days",
-    "zeroToleranceInHours": 168
+    "zeroToleranceInHours": 168,
+    "half": "unknown"
   },
   "crossTolerances": [
     "psychedelic"
   ],
   "addictionPotential": "non-addictive with low potential for abuse",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says 4-AcO-DMT's toxicity and long-term health effects have not been researched and the toxic dose is unknown, partly because it is a research chemical with a very short history of human use. It notes that a safety profile similar to psilocybin mushrooms is assumed on the basis of chemical similarity, but no data currently support that."
+  ],
+  "effectsSummary": "FreeODwiki lists geometric visual effects, distorted time perception, enhanced introspection, physical euphoria and ego loss, and notes many users find 4-AcO-DMT almost identical to psilocybin with only subtle differences. It notes a theory that it is metabolised to psilocin like psilocybin. Effects come from a subjective-effects index built on anecdotal reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 7.5-15 mg, moderate of 15-25 mg, strong of 25-45 mg and heavy of 45 mg or more; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range. It also lists a second, higher set of bands with a light range of 10-15 mg and heavy of 50 mg or more. The archived page provides no insufflated dose or duration table, so no insufflated route is transcribed. The page warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
+  "generalRisks": "FreeODwiki says data on 4-AcO-DMT's pharmacology, metabolism and toxicity is still very little, and that although it is generally believed its toxicity risk is comparable to psilocybin mushrooms, i.e. physiologically essentially non-toxic, no firm data support that. It strongly recommends harm reduction if the substance is tried.",
+  "longtermRisks": "The archived page says 4-AcO-DMT's toxicity and long-term health effects have not been researched.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction and advises starting at low doses, since onset, weight, tolerance, metabolism and individual sensitivity all differ between people.",
+    "It recommends using in an environment where temperature can be controlled, because 4-AcO-DMT causes internal temperature sense fluctuations with sudden uncomfortable cold or warmth."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cannabis",
+      "stimulant",
+      "MDMA"
+    ]
+  },
+  "metabolism": "FreeODwiki says that once inside the body O-acetylpsilocin is deacetylated to psilocin by deacetylases / acetyltransferases during first-pass metabolism and subsequently in the liver, and presents this as a theory for why 4-AcO-DMT resembles psilocybin. This is the page's stated account rather than an established finding in controlled human studies.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-AcO-DMT"
   ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "A prodrug for Psilocin with extremely similar effects as Mushrooms.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-AcO-DMT is a relatively novel and niche tryptamine psychedelic known as psilacetin, often sold as synthetic mushrooms. It is thought to be deacetylated to psilocin, though data on its pharmacology, metabolism and toxicity is still very little.",
   "roas": [
     {
-      "name": "insufflated",
+      "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 7.5,
         "commonMin": 15,
         "strongMin": 25,
-        "heavyMin": 50
+        "heavyMin": 45
       },
       "duration": {
         "onset": {
@@ -77,48 +89,6 @@
         },
         "afterglow": {
           "min": 2,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "oral",
-      "dose": {
-        "units": "mg",
-        "lightMin": 5,
-        "commonMin": 15,
-        "strongMin": 25,
-        "heavyMin": 45
-      },
-      "duration": {
-        "onset": {
-          "min": 15,
-          "max": 40,
-          "units": "minutes"
-        },
-        "comeup": {
-          "min": 30,
-          "max": 75,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 2,
-          "max": 3.5,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "total": {
-          "min": 4,
-          "max": 7,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 4,
-          "max": 48,
           "units": "hours"
         }
       }

@@ -1,13 +1,37 @@
 {
   "tolerance": {
     "full": "摄入后几乎立即",
-    "half": "3天",
+    "half": "未知",
     "zero": "7天",
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": ["毒性剂量未知"],
-  "summary": "一种罕见的色胺类药物，可与裸盖菇素相媲美。预计会迅速水解为游离酚类化合物4-HO-DET。",
+  "toxicities": [
+    "FreeODwiki 称关于 4-AcO-DET 的人体药理学或毒性数据非常少，尽管已经开发了用于检测它的分析方法。页面未给出确切中毒剂量。"
+  ],
+  "effectsSummary": "FreeODwiki 将 4-AcO-DET 描述为鲜为人知的新型致幻性色胺类物质，与赛洛辛在化学上相关，属于包含 4-AcO-MET 和 4-AcO-DMT 在内的取代色胺系列。如今它作为研究用化学品用于娱乐目的或作为宗教致幻剂使用，通常通过在线研究用化学品供应商获得。",
+  "dosageRemark": "归档口服剂量表来自用户报告和网络资料，仅供教育用途，不是用量建议。页面列出阈值 5 mg、轻微 10-15 mg、中等 15-20 mg、强烈 20-35 mg、严重 35 mg 以上；数据模型不单独表示阈值区间，因此 5 mg 阈值保存在此，lightMin 取来源轻微区间下界。页面同时警告起效、体重、耐受、代谢和个人敏感性都有差异，务必从低剂量开始。",
+  "generalRisks": "FreeODwiki 称关于 4-AcO-DET 的人体药理学或毒性数据非常少，它相对罕见，几乎没有人类使用史。若使用该物质，强烈建议采取伤害减少措施。",
+  "longtermRisks": "归档页面未提供已确立的长期研究结果，只说明其人类使用历史几乎不存在。",
+  "saferUse": [
+    "由于人体药理学和毒性资料非常少且几乎没有人类使用史，FreeODwiki 强烈建议采取伤害减少措施。",
+    "页面警告起效、体重、耐受、代谢和个人敏感性都有差异，务必从低剂量开始。"
+  ],
+  "interactions": {
+    "dangerous": [
+      "锂盐",
+      "曲马多"
+    ],
+    "unsafe": [
+      "大麻",
+      "兴奋剂"
+    ]
+  },
+  "metabolism": "FreeODwiki 称关于 4-AcO-DET 的药理学、代谢和毒性的数据非常少，未提供具体的人体代谢发现或途径。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-AcO-DET"
+  ],
+  "summary": "4-AcO-DET 是一种鲜为人知的取代色胺类致幻剂，作为研究用化学品用于娱乐或宗教致幻目的。其人体药理学与毒性数据非常少，人类使用史很短。",
   "localizedName": "4-乙酰氧基-N,N-二乙基色胺"
 }

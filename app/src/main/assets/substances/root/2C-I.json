@@ -92,5 +92,9 @@
         }
       }
     }
+  ],
+  "metabolism": "The archived page says data on human pharmacology, metabolism and toxicity are severely limited. It gives no specific metabolic findings or pathway; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-I"
   ]
 }

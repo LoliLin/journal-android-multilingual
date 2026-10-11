@@ -9,5 +9,12 @@
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
   "toxicities": ["确切的中毒剂量未知"],
   "summary": "苯丙胺类兴奋剂药物",
+  "saferUse": [
+    "PsychonautWiki 建议独立查证并采取减害措施。其毒性章节标为可能包含严重错误的存根；剂量表汇集自用户报告，仅供教育用途，并非建议。"
+  ],
+  "metabolism": "归档页面未提供具体的人体代谢发现或途径；不根据类似物推断。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-FMA"
+  ],
   "localizedName": "3-FMA"
 }

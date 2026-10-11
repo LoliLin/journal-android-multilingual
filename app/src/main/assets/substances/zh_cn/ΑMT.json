@@ -8,8 +8,49 @@
   },
   "addictionPotential": "中度成瘾性",
   "toxicities": [
-    "毒性剂量未知"
+    "FreeODwiki 称 alpha-MT 药理、代谢和毒性资料有限，非医疗人体使用史较短。页面引用超过 60 mg 的少数未经证实住院报告，以及 2012 至 2015 年初英格兰和威尔士 22 起与 alpha-MT 有关的死亡；这些是来源报告的关联，不能据此证明因果。"
   ],
+  "effectsSummary": "归档页面引用用户/资源资料列出 alpha-MT 娱乐性剂量与时长；药理、代谢和毒性资料有限，非医疗人体使用史较短。",
+  "dosageRemark": "归档口服表：阈值 5 mg、轻微 10-25 mg、中等 25-40 mg、强烈 40-60 mg、严重 60-80 mg；总时长 13-15 小时、发作 60-180 分钟。用户/资源教育资料，不是建议。来源提到超过 60 mg 的少数未经证实住院报告，以及 2012 至 2015 年初英格兰和威尔士 22 起与 alpha-MT 有关的死亡；关联不等于因果。lightMin 已从阈值改为 10 mg。",
+  "generalRisks": "来源建议采取伤害减少措施，并称不良反应可能随剂量增加；主观效应报告属轶闻且可能不可预测。",
+  "saferUse": [
+    "因人体安全证据有限，FreeODwiki 强烈建议采取伤害减少措施。",
+    "不要把来源所述死亡关联当作因果证明，也不要将来源剂量分档理解为安全界限。"
+  ],
+  "summary": "Alpha-MT 是一种色胺类迷幻剂，人体药理与毒性资料有限。FreeODwiki 报告其口服时长较长，并提及历史死亡关联，同时保留证据局限。",
   "localizedName": "ΑMT",
-  "summary": "α-甲基色胺（α-Methyltryptamine，也称为 Indopan，通常简称为 αMT 或 aMT）是色胺类物质类别中一种较不为人知的共情剂。\n\nαMT 最初是由 Upjohn 公司在 1960 年代开发的。它曾在苏联作为抗抑郁药短暂使用，商品名为 Indopan。Indopan 的处方剂量通常在 5-10 mg 之间，这比用于娱乐用途的剂量要低得多。"
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 25,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 180,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "total": {
+          "min": 13,
+          "max": 15,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 5,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

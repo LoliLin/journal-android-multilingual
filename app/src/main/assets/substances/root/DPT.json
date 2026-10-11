@@ -10,19 +10,26 @@
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says recreational toxicity and long-term health effects of DPT appear not to have been studied and exact toxic dose is unknown."
+  ],
+  "effectsSummary": "FreeODwiki describes DPT as a psychedelic tryptamine with reported bodily euphoria and psychedelic effects; reports and dose information are anecdotal.",
+  "dosageRemark": "The archive gives three route tables: insufflated threshold 10 mg, light 15-20 mg, moderate 20-50 mg, strong 50-100 mg, heavy 100 mg+; oral threshold 50 mg, light 75-150 mg, moderate 150-250 mg, strong 250-350 mg, heavy 350 mg+; smoked threshold 5 mg, light 20-50 mg, moderate 50-100 mg, strong 100-200 mg, heavy 200 mg+. Times vary by route as stated in the archive. User/resource educational tables, not recommendations. Duplicate inhaled/smoked rows were consolidated as smoked; lightMin follows each source light lower bound.",
+  "generalRisks": "The archived page says toxicity and long-term health effects appear unstudied and exact toxic dose unknown; its dosage information is user/resource material and should be cross-checked.",
+  "longtermRisks": "The archived page says recreational toxicity and long-term health effects of DPT appear not to have been studied.",
+  "saferUse": [
+    "FreeODwiki recommends harm reduction and cross-checking its user/resource dose information with other sources."
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "N,N-Dipropyltryptamine, a psychedelic tryptamine compound and lesser-known analogue of DMT, with similar psychedelic effects. Like DMT it is a partial serotonin receptor agonist.",
+  "summary": "DPT is a psychedelic tryptamine with route-dependent dose and duration reports; FreeODwiki says its toxicity and long-term health effects are unstudied.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 15,
         "commonMin": 50,
         "strongMin": 100,
         "heavyMin": 200
@@ -54,7 +61,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 50,
+        "lightMin": 75,
         "commonMin": 150,
         "strongMin": 250,
         "heavyMin": 350
@@ -78,41 +85,29 @@
       }
     },
     {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 10,
-        "commonMin": 20,
-        "strongMin": 50,
-        "heavyMin": 100
-      },
-      "duration": {
-        "total": {
-          "min": 30,
-          "max": 90,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 2,
-          "max": 4,
-          "units": "hours"
-        }
-      }
-    },
-    {
       "name": "smoked",
       "dose": {
         "units": "mg",
-        "lightMin": 10,
-        "commonMin": 20,
-        "strongMin": 50,
-        "heavyMin": 100
+        "lightMin": 20,
+        "commonMin": 50,
+        "strongMin": 100,
+        "heavyMin": 200
       },
       "duration": {
-        "total": {
-          "min": 30,
-          "max": 90,
+        "onset": {
+          "min": 5,
+          "max": 20,
           "units": "minutes"
+        },
+        "peak": {
+          "min": 30,
+          "max": 45,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
         },
         "afterglow": {
           "min": 2,

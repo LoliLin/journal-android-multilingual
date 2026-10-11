@@ -18,15 +18,15 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says scientific data on O-PCE, especially human toxicity, addiction and abuse potential, are nearly absent; exact toxic dose is unknown. It warns that potency and stimulation may facilitate overdose through frequent redosing."
   ],
-  "categories": [
-    "dissociative",
-    "research-chemical",
-    "habit-forming",
-    "tentative"
+  "dosageRemark": "Archived table: oral threshold 2 mg, light 3-6 mg, moderate 6-12 mg, strong 12-20 mg, heavy 20 mg+; insufflated threshold 1 mg, light 3-5 mg, moderate 5-15 mg, strong 15-25 mg, heavy 25 mg+. Oral total 3-6 h/onset 20-40 min/afterglow 4-48 h; insufflated total 3-5 h/onset 2-5 min/afterglow 2-12 h. The archive says scientific literature, human toxicity, dependence and abuse potential are almost absent; potent/stimulating effects may encourage frequent redosing and overdose. Educational user reports, not a recommendation; lightMin corrected to source light lower bounds.",
+  "generalRisks": "The source says O-PCE is potent and stimulating, with very short human-use history and almost no scientific literature; it warns frequent redosing may lead to overdose. Possible antibacterial properties are explicitly described as unconfirmed speculation.",
+  "longtermRisks": "FreeODwiki says long-term health/immune effects are uncertain; antibacterial activity is only a concern raised by analogy and is not established for O-PCE.",
+  "saferUse": [
+    "FreeODwiki urges extreme caution, avoiding frequent redosing and using harm-reduction practices because human evidence is sparse and overdose can occur.",
+    "Treat the proposed antibacterial concern as unconfirmed, not an established property."
   ],
-  "summary": "Dissociative of the Arylcyclohexylamine class. Structurally related to Deschloroketamine.",
   "interactions": {
     "dangerous": [
       "stimulant",
@@ -35,12 +35,19 @@
     "unsafe": [],
     "uncertain": []
   },
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "O-PCE is a potent, stimulating dissociative with very limited human evidence. FreeODwiki warns about overdose from frequent redosing and says long-term toxicity is poorly understood.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 2,
+        "lightMin": 3,
         "commonMin": 6,
         "strongMin": 12,
         "heavyMin": 20
@@ -67,7 +74,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 3,
         "commonMin": 5,
         "strongMin": 15,
         "heavyMin": 25

@@ -1,8 +1,8 @@
-# Substance JSON 格式与不完备记录审查（2026-10-07）
+﻿# Substance JSON 格式与不完备记录审查（2026-10-07）
 
 ## 审查范围与结论
 
-字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工核验已将 689 条已有英文摘要移入 root 默认层，并新增 3 条有来源的摘要和别名；另为 13 条有口服释药形式的记录补了 18 条有标签依据的 route/form 行。本轮又逐条核对 FreeODwiki 快照：为 4C-D、MDNMB、Pybromazolam、N-Methylhexedrone 补入有来源和证据边界说明的结构化剂量、时长及风险字段；为 Loperamide 补入口服 route、时长和关键风险字段，因来源警告未转录非医疗剂量分档；并为 N-Ethylhexedrone、NEP 补入来源明确标记为抽吸的 route 行。逐条 CSV 已同步当前状态；截至 2026-10-08，又核对 31 条 FreeODwiki 记录，补充来源支持的结构化数据并更新剂量边界、风险、减害与联用证据说明。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
+字段审查基于更新后的 `main`（`186386f3`）及 982 条 root 记录。后续人工核验已将 689 条已有英文摘要移入 root 默认层，并新增 3 条有来源的摘要和别名；另为 13 条有口服释药形式的记录补了 18 条有标签依据的 route/form 行。本轮又逐条核对 FreeODwiki 快照：为 4C-D、MDNMB、Pybromazolam、N-Methylhexedrone 补入有来源和证据边界说明的结构化剂量、时长及风险字段；为 Loperamide 补入口服 route、时长和关键风险字段，因来源警告未转录非医疗剂量分档；并为 N-Ethylhexedrone、NEP 补入来源明确标记为抽吸的 route 行。逐条 CSV 已同步当前状态；截至 2026-10-09，又核对 75 条 FreeODwiki 记录，补充来源支持的结构化数据并更新剂量边界、风险、减害与联用证据说明。缺字段表示“当前未记录”，不代表信息不存在、物质安全，或字段必然适用。
 
 | 检查项 | 结果 |
 |---|---:|
@@ -40,23 +40,21 @@
 | `tolerance` | 241 | 741 |
 | `crossTolerances` | 227 | 755 |
 | `addictionPotential` | 261 | 721 |
-| `toxicities` | 242 | 740 |
-| `interactions` | 225 | 757 |
+| `toxicities` | 265 | 717 |
+| `interactions` | 229 | 753 |
 | `roas` | 308 | 674 |
 | `roas[].dose` thresholds | 290 | 692 |
 | `roas[].duration` ranges | 292 | 690 |
 | `roas[].releaseForm` | 13 | 969 |
 | `summary` | 914 | 68 |
 | `effectsSummary` | 77 | 905 |
-| `dosageRemark` | 70 | 912 |
-| `generalRisks` | 87 | 895 |
-| `longtermRisks` | 69 | 913 |
-| `saferUse` | 84 | 898 |
-| `metabolism` | 606 | 376 |
-| `metabolismSources` | 158 | 824 |
+| `dosageRemark` | 153 | 829 |
+| `generalRisks` | 164 | 818 |
+| `longtermRisks` | 130 | 852 |
+| `saferUse` | 177 | 805 |
+| `metabolism` | 653 | 329 |
+| `metabolismSources` | 206 | 776 |
 | `oralReleaseForms` | 13 | 969 |
-
-其中 `interactions` 有 225 个对象，部分对象缺少分组键：2C-EF（缺 unsafe,uncertain）、2C-T-2（缺 unsafe,uncertain）、2C-T-7（缺 unsafe,uncertain）、3-Cl-PCP（缺 uncertain）、Changa（缺 unsafe,uncertain）、Grayanotoxin（缺 uncertain）、Kava（缺 unsafe）、Mushrooms（缺 dangerous）、Tizanidine（缺 unsafe）。
 
 ## 分类缺口候选（59 条）
 

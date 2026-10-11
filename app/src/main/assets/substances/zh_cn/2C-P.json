@@ -9,5 +9,12 @@
   "addictionPotential": "滥用和依赖的可能性较低",
   "toxicities": ["毒性剂量未知"],
   "summary": "一种合成苯乙胺，其效果有时被比作2C-E，但持续时间更长，且身体负担更为显著。它是2C-X系列中效力最强的化合物之一。",
+  "saferUse": [
+    "PsychonautWiki 强烈警告不要在3小时内补服，并建议首次使用不超过中等剂量类别。页面建议准确容量计量、避免目测和非口服途径，并采取减害措施；剂量表仅供教育参考，并非建议。"
+  ],
+  "metabolism": "归档页面称其人体药理、代谢和毒性数据很少，未提供具体代谢途径或人体代谢发现；不根据类似物推断。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-P"
+  ],
   "localizedName": "2C-P"
 }

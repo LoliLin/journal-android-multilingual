@@ -10,7 +10,7 @@
   "isApproved": true,
   "tolerance": {
     "full": "almost immediately after ingestion",
-    "half": "3 days",
+    "half": "unknown",
     "zero": "7 days",
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
@@ -20,14 +20,16 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says data on 4-HO-MET's pharmacological properties, metabolism and toxicity is very little, and that a risk and toxicity profile similar to psilocin and 4-AcO-DMT is assumed without data supporting it."
   ],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "common"
+  "effectsSummary": "FreeODwiki notes that many anecdotal reports indicate active doses may vary considerably: some users report very intense experiences at doses as low as 17 mg, while others report mild experiences at doses as high as 30 mg. It suggests possible reasons include individual neurochemical and metabolic differences, and batch quality and physical form such as hydrochloride versus fumarate.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists insufflated with a threshold of 5 mg, light of 10-25 mg, moderate of 25-35 mg, strong of 35-60 mg, heavy of 60 mg or more and a total duration of 25-45 minutes; oral with a threshold of 5 mg, light of 5-15 mg, moderate of 15-25 mg, strong of 25-45 mg, heavy of 45 mg or more and a total duration of 4-6 hours. The model does not represent a threshold band separately, so the 5 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page also reports widely varying active doses between users, so these bands should not be read as reliable individual predictions.",
+  "generalRisks": "FreeODwiki says data on 4-HO-MET's pharmacological properties, metabolism and toxicity is very little, and that a risk and toxicity profile similar to psilocin and 4-AcO-DMT is assumed without data supporting it. It strongly recommends harm reduction if the substance is used.",
+  "longtermRisks": "The archived page provides no established long-term findings and states only that data on its pharmacology, metabolism and toxicity is very little.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction if the substance is used, since a risk profile similar to psilocin and 4-AcO-DMT is assumed without supporting data.",
+    "It reports that active doses vary widely between users, attributing possible causes to individual neurochemical and metabolic differences and to batch quality and physical form such as hydrochloride versus fumarate."
   ],
-  "summary": "A lesser known psychedelic tryptamine. Functional analogue of Psilocin. Very poorly soluble in water and alcohol.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -40,6 +42,16 @@
       "stimulant"
     ]
   },
+  "metabolism": "FreeODwiki says data on 4-HO-MET's pharmacology, metabolism and toxicity is very little and provides no specific human metabolic finding or pathway. It notes that individual metabolic differences may contribute to the wide variation in reported active doses.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-HO-MET"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "common"
+  ],
+  "summary": "4-HO-MET is a tryptamine psychedelic for which very little pharmacology, metabolism and toxicity data exists, and for which a risk profile similar to psilocin and 4-AcO-DMT is only assumed. Reported active doses vary widely between users.",
   "roas": [
     {
       "name": "oral",
@@ -84,29 +96,7 @@
       }
     },
     {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 5,
-        "commonMin": 25,
-        "strongMin": 35,
-        "heavyMin": 60
-      },
-      "duration": {
-        "onset": {
-          "min": 15,
-          "max": 120,
-          "units": "seconds"
-        },
-        "total": {
-          "min": 25,
-          "max": 45,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
+      "name": "insufflated",
       "dose": {
         "units": "mg",
         "lightMin": 5,

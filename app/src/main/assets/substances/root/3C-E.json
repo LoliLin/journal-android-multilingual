@@ -113,5 +113,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki recommends independent research and harm-reduction measures, advises starting low, and says its dose table is user/resource material for education rather than a recommendation. The toxicity section is marked as a stub that may contain dangerous errors."
+  ],
+  "metabolism": "The reviewed archived page provides no specific human metabolic findings or pathway; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3C-E"
   ]
 }

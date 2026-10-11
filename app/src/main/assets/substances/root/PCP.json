@@ -25,12 +25,15 @@
     "dissociative"
   ],
   "addictionPotential": "highly addictive with a high potential for adverse side effects such as psychosis",
-  "toxicities": [],
-  "categories": [
-    "dissociative",
-    "habit-forming"
+  "toxicities": [
+    "FreeODwiki warns severe PCP doses may cause psychosis and mania; high-dose or multi-day use is strongly discouraged."
   ],
-  "summary": "A strong dissociative drug.  PCP works primarily as an NMDA receptor antagonist. Also referred to as \"wet\" or \"angel dust\". Best known for stories of the strange and sometimes violent behaviour of those under its influence, though it is likely these are only in overdose cases.",
+  "dosageRemark": "Archived tables list threshold 1 mg for oral, insufflated and inhaled routes; light 2-4 mg, moderate 4-8 mg, strong 8-12 mg, heavy 12 mg+. Severe doses may cause psychosis and mania. Oral total 4-8 h; insufflated/inhaled total 4-6 h, with route-specific phase estimates. Educational user/resource information, not a recommendation. Duplicate inhaled/smoked records consolidated; lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "The archived page warns of severe psychological and behavioral effects at high doses and strongly discourages high-dose or consecutive multi-day use.",
+  "longtermRisks": "The source discourages consecutive multi-day use; reliable quantitative long-term risk estimates are not provided.",
+  "saferUse": [
+    "FreeODwiki strongly discourages high-dose or consecutive multi-day use; dose data are user/resource educational material."
+  ],
   "interactions": {
     "dangerous": [
       "2C-T-x",
@@ -57,12 +60,17 @@
       "opioid"
     ]
   },
+  "categories": [
+    "dissociative",
+    "habit-forming"
+  ],
+  "summary": "PCP is a dissociative with user-reported route-dependent dose estimates. FreeODwiki warns severe doses may cause psychosis or mania and strongly discourages high-dose/multi-day use.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 4,
         "strongMin": 8,
         "heavyMin": 15
@@ -104,7 +112,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 5,
         "strongMin": 10,
         "heavyMin": 15
@@ -146,51 +154,10 @@
       "name": "inhaled",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 4,
         "strongMin": 8,
         "heavyMin": 12
-      },
-      "duration": {
-        "onset": {
-          "min": 2,
-          "max": 20,
-          "units": "minutes"
-        },
-        "comeup": {
-          "min": 20,
-          "max": 40,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 2,
-          "max": 3,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "total": {
-          "min": 4,
-          "max": 6,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 4,
-          "max": 48,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "smoked",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 4,
-        "strongMin": 8
       },
       "duration": {
         "onset": {

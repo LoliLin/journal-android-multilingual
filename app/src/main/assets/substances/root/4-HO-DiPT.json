@@ -18,25 +18,34 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says 4-HO-DiPT's toxicity and long-term health effects have not been researched and the exact toxic dose is unknown, because it is a research chemical with a very short history of human use. Anecdotal reports from people who have tried it suggest that low to moderate doses used very occasionally show no negative health effects attributed to the substance itself, though nothing can be guaranteed."
+  ],
+  "effectsSummary": "FreeODwiki's subjective-effects section is a subjective-effects index built on anecdotal user reports and contributor analysis, to be taken with healthy skepticism. It notes that effects may not occur in a predictable or reliable way, that higher doses are more likely to produce the full spectrum, and that adverse effects become more likely as dose increases, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not medical advice. The page lists a threshold of 3 mg, a light range of 3-10 mg, moderate of 10-20 mg, strong of 20-30 mg and heavy of 30 mg or more; the model does not represent a threshold band separately, so the 3 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page warns that differences in weight, tolerance, metabolism and individual sensitivity mean doses must be started lower.",
+  "generalRisks": "FreeODwiki reports anecdotal evidence that low to moderate doses of 4-HO-DiPT used very occasionally show no negative health effects attributed to the substance itself, though nothing can be guaranteed. It advises independent research before ingestion to make sure combinations of two or more substances are safe, and strongly recommends harm reduction.",
+  "longtermRisks": "The archived page says 4-HO-DiPT's toxicity and long-term health effects have not been researched.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction, and advises conducting independent research before ingestion to ensure combinations of two or more substances are safe.",
+    "It warns that differences in weight, tolerance, metabolism and individual sensitivity mean doses must be started lower."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cannabis",
+      "stimulant"
+    ]
+  },
+  "metabolism": "The archived page does not provide a specific human metabolic finding or pathway for 4-HO-DiPT.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-HO-DiPT"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A psychedelic tryptamine also known as iprocin. A homologue of psilocin, this drug likely has similar effects to psychedelic mushrooms. Said to have a rapid onset and relatively short duration for a drug of its class.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-HO-DiPT is a tryptamine psychedelic used as a research chemical with a very short history of human use. Its toxicity and long-term health effects have not been researched.",
   "roas": [
     {
       "name": "oral",

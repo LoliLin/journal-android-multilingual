@@ -79,5 +79,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki recommends harm-reduction measures and independent research. Its dose table is compiled from user reports and resources for education, not medical advice; anecdotal reports of low-to-moderate occasional use do not establish safety."
+  ],
+  "metabolism": "The archived page says data on human pharmacology, metabolism and toxicity are very limited. It gives no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-B-FLY"
   ]
 }

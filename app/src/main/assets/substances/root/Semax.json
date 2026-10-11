@@ -1,6 +1,15 @@
 {
   "name": "Semax",
-  "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/Semax.md",
-  "summary": "Semax is a synthetic peptide analogue of an ACTH fragment used as a medication in Eastern Europe, particularly Russia. It is also marketed online as a purported nootropic; its mechanism of action remains unknown and it has not been evaluated or approved in most countries."
+  "isApproved": false,
+  "toxicities": [
+    "The unapproved page warns toxicity and other risk information may be inaccurate; no toxicology conclusions are imported from this source."
+  ],
+  "effectsSummary": "The archived Semax page is not fully approved and warns that dosage, duration, subjective effects, toxicity and other risks may be inaccurate.",
+  "dosageRemark": "The page contains dose/duration tables but explicitly warns it has not been fully approved and may be inaccurate, especially these fields. Do not import its numeric table into structured dose fields without independent corroboration.",
+  "generalRisks": "FreeODwiki has not fully approved the page and warns its dosage, duration, effects, toxicity and other risk information may be inaccurate.",
+  "saferUse": [
+    "Treat the unapproved page as provisional and independently verify claims before structured use."
+  ],
+  "summary": "Semax is a peptide discussed in the FreeODwiki archive. Its available page is unapproved and warns that dose and risk information may be inaccurate."
 }

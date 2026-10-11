@@ -18,16 +18,16 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says toxicity and long-term health effects of recreational 6-APDB appear not to have been studied and exact toxic dose is unknown because its human-use history is short."
   ],
-  "categories": [
-    "entactogen",
-    "stimulant",
-    "psychedelic",
-    "research-chemical",
-    "habit-forming"
+  "effectsSummary": "FreeODwiki describes 6-APDB as a benzofuran empathogen related to 6-APB and reports empathogenic, stimulant and mild psychedelic effects; its effects index is based on anecdotal reports.",
+  "dosageRemark": "The archived oral dose table lists threshold 20 mg, light 30-70 mg, moderate 70-100 mg, strong 100-130 mg and heavy 130 mg+; total duration 6-8 h, onset and comeup 30-60 min, peak 2-3 h and offset 2-3 h. Educational user/resource compilation, not a recommendation. The model does not represent the threshold separately, so 20 mg is preserved here and lightMin follows the source light range lower bound.",
+  "generalRisks": "FreeODwiki says recreational toxicity and long-term health effects appear unstudied and the exact toxic dose is unknown; it advises starting lower because of individual differences in weight, tolerance, metabolism and sensitivity.",
+  "longtermRisks": "The archived page says long-term health effects of recreational 6-APDB appear not to have been studied.",
+  "saferUse": [
+    "FreeODwiki advises starting lower due to differences in weight, tolerance, metabolism and individual sensitivity.",
+    "It recommends independent research and harm reduction because toxicity and long-term effects are poorly characterized."
   ],
-  "summary": "A stimulant and entactogen related to MDMA and an analogue of MDA. Reported as being fairly psychedlic at higher doses. It is a triple monoamine reuptake inhibitor. Potent full agonist of serotonin 2B receptors.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -50,12 +50,20 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "psychedelic",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A stimulant and entactogen related to MDMA and an analogue of MDA. Reported as being fairly psychedlic at higher doses. It is a triple monoamine reuptake inhibitor. Potent full agonist of serotonin 2B receptors.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 20,
+        "lightMin": 30,
         "commonMin": 70,
         "strongMin": 100,
         "heavyMin": 130

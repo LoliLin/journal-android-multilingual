@@ -18,7 +18,35 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says recreational toxicity and long-term health effects of 5-MAPB appear not to have been studied in any scientific context and the exact toxic dose is unknown, because 5-MAPB has a very limited history of human use. Anecdotal evidence from the community suggests that trying it only at low to moderate doses and using it occasionally does not appear to bring notable negative health effects, though this cannot be fully guaranteed."
+  ],
+  "effectsSummary": "FreeODwiki says 5-MAPB is the N-methylated form of 5-APB, in the same relation MDMA has to MDA, and shares many effects with 5-APB. It reports that its cognitive effects are largely comparable to MDMA but lack the usual physical and mental stimulation, concentrating more on serotonergic activity and bringing more noticeable empathy, euphoria and an overall relaxed mood state; at higher doses this becomes less apparent as physical and cognitive side effects start and may lead to more confusion and restlessness than MDMA. Its effects index is built on anecdotal user reports, and adverse effects become more likely as dose increases.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not a recommendation. The page lists a threshold of 20 mg, a light range of 40-60 mg, moderate of 60-80 mg, strong of 80-100 mg and heavy of 100 mg or more, with a total duration of 5-8 hours; the model does not represent a threshold band separately, so the 20 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page warns that onset, weight, tolerance, metabolism and individual sensitivity may all differ, so doses must be started lower.",
+  "generalRisks": "FreeODwiki says recreational toxicity and long-term health effects appear not to have been studied in any scientific context. It warns that onset, weight, tolerance, metabolism and individual sensitivity may differ, so doses must be started lower.",
+  "longtermRisks": "The archived page says recreational toxicity and long-term health effects of 5-MAPB appear not to have been studied in any scientific context.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction, since toxicity and long-term health effects have not been studied and human use history is very limited.",
+    "It warns that onset, weight, tolerance, metabolism and individual sensitivity may all differ, so doses must be started lower."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Alcohol",
+      "Dextromethorphan",
+      "MDMA",
+      "stimulant",
+      "25x-NBOMe",
+      "25x-NBOH",
+      "Tramadol",
+      "MAOI",
+      "SNRI",
+      "serotonergic releaser",
+      "SSRI",
+      "5-HTP"
+    ]
+  },
+  "metabolism": "FreeODwiki does not provide a specific human metabolic finding or pathway for 5-MAPB.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/5-MAPB"
   ],
   "categories": [
     "entactogen",
@@ -27,35 +55,13 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "An empathogen structurally similar to MDMA. Typically more visual than MDMA. Often reported to be much less stimulating and more relaxing than most other stimulating empathogens. Less psychedelic than 6-APB. Much longer lasting than MDMA.",
-  "interactions": {
-    "dangerous": [
-      "25x-NBOMe",
-      "25x-NBOH",
-      "Tramadol",
-      "maoi",
-      "SNRIs",
-      "Serotonin releasers",
-      "ssri",
-      "5-Hydroxytryptophan"
-    ],
-    "unsafe": [
-      "Dextromethorphan",
-      "MDMA",
-      "stimulant"
-    ],
-    "uncertain": [
-      "Alcohol",
-      "Methoxetamine",
-      "dissociative"
-    ]
-  },
+  "summary": "5-MAPB is the N-methylated form of 5-APB, in the same relation MDMA has to MDA. Its cognitive effects are comparable to MDMA but concentrate more on serotonergic activity, bringing more empathy and euphoria with less physical stimulation.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 20,
+        "lightMin": 40,
         "commonMin": 60,
         "strongMin": 80,
         "heavyMin": 100

@@ -1,12 +1,22 @@
 {
   "name": "AB-CHMINACA",
   "url": "https://tripsit.me/factsheets/?name=ab-chminaca&p=substance",
+  "isApproved": false,
+  "toxicities": [
+    "The source entry is an unpublished discussion draft, not fully reviewed by site administrators; it explicitly warns that toxicity and other information may be incorrect. It says long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects/toxicity than cannabis, but this draft status requires caution."
+  ],
+  "effectsSummary": "The archived FreeODwiki entry is an unpublished discussion-space draft. Its page states it has not received full administrator review and may contain incorrect information, especially dosage, duration, subjective effects and toxicity. It describes AB-CHMINACA as a synthetic cannabinoid but its claims should be treated cautiously.",
+  "dosageRemark": "The discussion draft includes an inhaled dose table (threshold <0.2 mg; light 0.2-0.4 mg; moderate 0.4-0.6 mg; strong 0.6-0.8 mg; heavy 0.8 mg+), total duration 1-2 hours, onset 0-5 minutes and afterglow 2-4 hours. The same page explicitly warns it has not received full administrator review and may contain incorrect information, especially dosage and duration. These numbers are therefore not imported into structured dosage fields; they are recorded here with the source warning for traceability.",
+  "generalRisks": "The source is an unpublished, unreviewed discussion draft. It claims long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects and toxicity than cannabis, and advises strongly against prolonged or high-dose use; these claims carry the page's explicit warning that information may be incorrect.",
+  "longtermRisks": "The discussion draft claims long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects/toxicity than cannabis, while explicitly warning it has not been fully reviewed and may be incorrect.",
+  "saferUse": [
+    "The draft advises against prolonged or high-dose use and warns the page has not received full administrator review; its dose, duration and risk information may be incorrect."
+  ],
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
   "categories": [
     "research-chemical",
     "habit-forming",
     "tentative"
   ],
-  "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
   "summary": "AB-CHMINACA is an indazole-based synthetic cannabinoid and a potent agonist of the CB1 and CB2 receptors."
 }

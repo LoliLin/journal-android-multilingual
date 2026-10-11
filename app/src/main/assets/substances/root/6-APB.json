@@ -19,16 +19,16 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says toxicity data are very limited due to short human-use history. Repeated or high-dose 6-APB is likely to have some form of neurotoxicity and cardiotoxicity given its similarity to MDMA. Its potent 5-HT2B agonism may cause cardiotoxicity with long-term or chronic use, including valvular heart disease."
   ],
-  "categories": [
-    "psychedelic",
-    "entactogen",
-    "stimulant",
-    "research-chemical",
-    "habit-forming"
+  "effectsSummary": "FreeODwiki describes 6-APB as a benzofuran empathogen and stimulant. Its pharmacology, metabolism and toxicity data are very limited; 5-HT2B agonism raises concern for cardiotoxicity with long-term or chronic use. The effects index is based on anecdotal reports.",
+  "dosageRemark": "The archived oral dose table lists threshold 15 mg, light 30-60 mg, moderate 60-90 mg, strong 90-120 mg and heavy 120 mg+; total duration 7-10 h, onset 30-60 min, comeup 60-120 min, peak 3-4 h, offset 2-3 h and afterglow 6-48 h. Educational user/resource compilation, not a recommendation. The model does not represent the threshold separately, so 15 mg is preserved here and lightMin follows the source light range lower bound.",
+  "generalRisks": "FreeODwiki says 6-APB has a short human-use history and toxicity data are sparse. Repeated/high-dose exposure may be neurotoxic and cardiotoxic; chronic use may cause valvular heart disease through 5-HT2B agonism.",
+  "longtermRisks": "FreeODwiki warns long-term or chronic 6-APB use may be cardiotoxic and cause valvular heart disease due to significant 5-HT2B receptor affinity.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction given the limited pharmacology, metabolism and toxicity data.",
+    "It warns against repeated or high-dose use because of likely neurotoxicity and cardiotoxicity, including possible valvular disease with chronic exposure."
   ],
-  "summary": "A stimulant, empathogen and analog of MDA. Typically more visual than MDMA or MDA, as well as having a much longer onset and duration. Users often report a slightly more psychedelic headspace as well. Commonly sold as an alternative to MDMA and MDA.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -51,12 +51,20 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "entactogen",
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "A stimulant, empathogen and analog of MDA. Typically more visual than MDMA or MDA, as well as having a much longer onset and duration. Users often report a slightly more psychedelic headspace as well. Commonly sold as an alternative to MDMA and MDA.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 15,
+        "lightMin": 30,
         "commonMin": 60,
         "strongMin": 90,
         "heavyMin": 120

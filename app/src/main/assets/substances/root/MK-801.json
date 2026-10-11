@@ -1,18 +1,73 @@
 {
   "name": "MK-801",
-  "url": "https://tripsit.me/factsheets/?name=mk-801&p=substance",
   "commonNames": [
     "MK-801",
     "dizocilpine",
     "mk801"
   ],
+  "url": "https://tripsit.me/factsheets/?name=mk-801&p=substance",
+  "isApproved": false,
+  "toxicities": [
+    "FreeODwiki says recreational human toxicity and long-term effects are scarcely studied. Animal studies show neurotoxicity risk including Olney's lesions; slight dose increases may cause severe confusion, delirium, movement impairment and dangerous behavior. Exact toxic and lethal doses are unknown; potency and duration make misuse/overdose serious risks."
+  ],
+  "effectsSummary": "FreeODwiki describes MK-801 as a highly potent, long-lasting NMDA antagonist used in experimental neuroscience, with anecdotal human effects and serious confusion, delirium, motor impairment and dangerous behavior possible at slightly higher doses.",
+  "dosageRemark": "The archived oral table lists threshold 200 µg, light 200-300 µg, moderate 300-700 µg, strong 700-1500 µg, heavy 1.5 mg+; total 8-24 h, onset 30-90 min, comeup 1-2 h, peak 3-8 h, offset 4-12 h and afterglow 8-72 h. User/resource educational compilation, not a recommendation. The page emphasizes very high potency, long duration, unknown toxic/lethal doses and animal neurotoxicity findings; these ranges must not be interpreted as safe limits.",
+  "generalRisks": "FreeODwiki says slight dose increases may produce severe confusion, delirium, movement impairment and dangerous behavior; exact toxic/lethal dose is unknown. Animal neurotoxicity findings and extremely long NMDA blockade add serious uncertainty.",
+  "longtermRisks": "The source says recreational human long-term effects are scarcely studied; frequent/long-term use may cause persistent tolerance, cognitive decline, mood problems or psychosis-like symptoms. Animal studies show neurotoxicity risk.",
+  "saferUse": [
+    "FreeODwiki advises independent research and avoiding dangerous drug combinations; interaction information is very limited.",
+    "It discourages repeated or long-term use due to very high potency, duration, neurotoxicity concerns and cumulative cognitive effects."
+  ],
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
   "categories": [
     "dissociative",
     "research-chemical",
     "tentative",
     "habit-forming"
   ],
-  "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
-  "summary": "Dizocilpine (MK-801) is a pore blocker of the NMDA receptor with potent anticonvulsant and dissociative effects. It is not used clinically because of its adverse safety profile and remains a research tool."
+  "summary": "MK-801 is an exceptionally potent, long-acting NMDA antagonist with animal neurotoxicity findings and very limited human safety data. Small dose increases may cause severe confusion and dangerous behavior.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 200,
+        "commonMin": 300,
+        "strongMin": 700,
+        "heavyMin": 1500
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 90,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1,
+          "max": 2,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 4,
+          "max": 12,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 24,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 8,
+          "max": 72,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

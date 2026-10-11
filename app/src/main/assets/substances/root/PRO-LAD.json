@@ -17,13 +17,16 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says pharmacology, metabolism and toxicity data for PRO-LAD are very limited and human-use history short; exact toxic dose is unknown."
   ],
-  "categories": [
-    "psychedelic",
-    "tentative"
+  "effectsSummary": "FreeODwiki describes PRO-LAD as an LSD-like psychedelic, with reported potency comparable to LSD and effects reported around 100-200 µg. Human pharmacology, metabolism and toxicity data are very limited; the effects section is marked as a stub.",
+  "dosageRemark": "Archived oral table: threshold 20 µg, light 50-100 µg, moderate 100-200 µg, strong 200-350 µg, heavy 350 µg+; total 6-8 h, onset 30-45 min. User/resource educational information, not a recommendation. Human data are sparse and the subjective-effects section is a stub; lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "The source says PRO-LAD has sparse human data and recommends harm reduction. Subjective effects may be incomplete because that section is marked as a stub.",
+  "longtermRisks": "FreeODwiki provides very limited pharmacology, metabolism and toxicity information and no established long-term human findings.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction because human evidence is limited.",
+    "Treat subjective-effect details cautiously; the source marks that section as a stub."
   ],
-  "summary": "A very rare lysergamide that is slightly less potent than LSD, yet with a shorter duration of action.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -36,12 +39,17 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "tentative"
+  ],
+  "summary": "PRO-LAD is an LSD-like lysergamide with very limited human safety data. FreeODwiki reports a 6-8 hour oral duration and marks its subjective-effects section as a stub.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "µg",
-        "lightMin": 20,
+        "lightMin": 50,
         "commonMin": 100,
         "strongMin": 200,
         "heavyMin": 350

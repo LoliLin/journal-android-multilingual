@@ -17,17 +17,23 @@
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "extremely low toxicity"
+    "FreeODwiki says Alpha-GPC is non-addictive, not considered harmful and has extremely low toxicity relative to dose. Studies cited on the page report no negative cognitive, psychiatric or toxic physical consequences at reasonable doses in specific contexts."
+  ],
+  "effectsSummary": "FreeODwiki reports no anecdotal effects indexed for Alpha-GPC and notes that acute choline exposure generally has relatively few physical side effects at reasonable doses in specific contexts.",
+  "dosageRemark": "The archived oral table lists threshold 50 mg, light 100-300 mg, moderate 300-500 mg, strong 500-1000 mg, heavy 1000 mg+; total duration 4-8 h and onset 45-75 min. Educational compilation from user and online sources, not medical advice. The model has no separate threshold band, so 50 mg is preserved here and lightMin follows the source light band lower bound.",
+  "saferUse": [
+    "FreeODwiki recommends becoming familiar with and using harm-reduction practices despite describing low toxicity at reasonable doses."
   ],
   "categories": [
     "nootropic"
   ],
+  "summary": "Alpha-GPC is a choline-containing supplement/nootropic with low toxicity reported at reasonable doses in specific contexts. FreeODwiki notes no anecdotal effects are indexed.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 50,
+        "lightMin": 100,
         "commonMin": 300,
         "strongMin": 500,
         "heavyMin": 1000
@@ -45,6 +51,5 @@
         }
       }
     }
-  ],
-  "summary": "Alpha-GPC is a natural choline compound found in the brain and a precursor of acetylcholine. It has been investigated for potential use in treating Alzheimer's disease and other dementias."
+  ]
 }

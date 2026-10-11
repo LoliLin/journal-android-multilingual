@@ -1,6 +1,17 @@
 {
   "name": "SR-17018",
-  "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/SR-17018.md",
-  "summary": "SR-17018 is an atypical opioid receptor modulator and biased partial agonist at the μ-opioid receptor. Findings on tolerance and respiratory effects are mixed, and it has not been formally studied in humans."
+  "isApproved": false,
+  "toxicities": [
+    "The archive reports one death from accidental overdose after opioid tolerance decreased during SR-17018 use; this is an anecdote, not incidence data. Long-term human safety is unknown, and the page is not a medical source."
+  ],
+  "effectsSummary": "The archived page is an informal, non-clinical discussion of SR-17018 for opioid withdrawal/tolerance management, not a validated medical source. It contains self-experiment claims and a reported death after reduced opioid tolerance; no dosing protocol is transcribed.",
+  "dosageRemark": "The page includes detailed opioid-transition and titration instructions, but these are unsupported self-experiment advice, not a validated clinical protocol. They are deliberately not copied into structured dose data. The source itself reports a fatal overdose after tolerance fell and says long-term safety is unknown.",
+  "generalRisks": "Using an unvalidated opioid to manage withdrawal or reduce tolerance can create overdose risk as tolerance changes. The archive's detailed switching/titration text is not independently validated; this record does not reproduce it.",
+  "longtermRisks": "The source states long-term effects are unknown and human brain effects are not fully understood.",
+  "saferUse": [
+    "Do not treat the archived self-experiment protocol as medical advice or a validated opioid substitution plan.",
+    "The page reports fatal overdose after lowered tolerance and recommends naloxone accompaniment; this record does not reproduce its dosing instructions."
+  ],
+  "summary": "SR-17018 is an investigational biased opioid-receptor agonist discussed in an informal self-experiment page. Human long-term safety is unknown; the archive reports fatal overdose after opioid tolerance fell, and its transition protocol is not validated."
 }

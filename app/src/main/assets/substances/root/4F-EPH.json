@@ -21,12 +21,16 @@
     "stimulant"
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
-  "categories": [
-    "stimulant",
-    "research-chemical",
-    "habit-forming",
-    "tentative"
+  "toxicities": [
+    "FreeODwiki notes that because of 4F-EPH's potent and long-lasting stimulant effects, its habit-forming potential and its unknown short- and long-term toxicity profile, appropriate harm reduction is strongly recommended."
+  ],
+  "effectsSummary": "FreeODwiki describes 4F-EPH as mildly to moderately stimulating in a way considered unusual for a dopaminergic stimulant, likely due to activity beyond dopamine and norepinephrine reuptake inhibition; even at high doses it is far less stimulating and distinctly different from the closely related 4F-MPH, with a smooth, mild-to-moderate push. It reports relatively mild dehydration if adequate water is spaced slowly, moderate heart rate effect, mild to moderate blood pressure elevation usually only reaching problematic levels at very excessive doses, and vasoconstriction milder than most dopaminergic stimulants at peak but potentially rapid and dangerous in the offset at very high doses or in people with circulation problems, warning that blue or dark purple and shrivelling extremities that do not quickly resolve is a medical emergency. Its effects index is built on anecdotal user reports.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not dosing advice. The page lists a threshold of below 5 mg, a light range of 5-10 mg, moderate of 10-15 mg, strong of 15-30 mg and heavy of 30 mg or more, with a total duration of 5-6 hours, onset of 10-25 minutes and afterglow of 4-12 hours. The model does not represent a threshold band separately and the source states the threshold as a bound rather than a value, so lightMin follows the lower bound of the source light range. The page provides no peak, offset or comeup values and no insufflated route.",
+  "generalRisks": "FreeODwiki notes that because of 4F-EPH's potent and long-lasting stimulant effects, its habit-forming potential and its unknown short- and long-term toxicity profile, appropriate harm reduction is strongly recommended. It warns that onset, weight, tolerance, metabolism and individual sensitivity differ, so doses must be started lower.",
+  "longtermRisks": "The archived page states that the short- and long-term toxicity profile of 4F-EPH is unknown.",
+  "saferUse": [
+    "FreeODwiki strongly recommends appropriate harm reduction, given the potent and long-lasting stimulant effects, habit-forming potential and unknown toxicity profile.",
+    "It advises spacing out slow small sips of water to avoid water intoxication, and warns that blue or dark purple shrivelling extremities that do not quickly resolve is a medical emergency for which a warm bath of the hands and feet may help."
   ],
   "interactions": {
     "dangerous": [
@@ -46,6 +50,17 @@
       "dissociative"
     ]
   },
+  "metabolism": "FreeODwiki does not provide a specific human metabolic finding or pathway for 4F-EPH.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4F-EPH"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "4F-EPH is a fluorinated ephedrine stimulant described as mildly to moderately stimulating and less forceful than related stimulants, with an unknown short- and long-term toxicity profile.",
   "roas": [
     {
       "name": "oral",
@@ -74,6 +89,5 @@
         }
       }
     }
-  ],
-  "summary": "4F-EPH (4-fluoroethylphenidate) is a stimulant designer drug from the phenidate family. It was first identified in France in 2016 and has also been used as a nootropic."
+  ]
 }

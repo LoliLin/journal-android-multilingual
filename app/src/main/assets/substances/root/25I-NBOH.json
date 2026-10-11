@@ -81,5 +81,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki recommends independent research and harm-reduction measures, warns against high doses and insufflation because of the compound's potency, and marks its toxicity section as a stub that may contain dangerous errors."
+  ],
+  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It provides no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25I-NBOH"
   ]
 }

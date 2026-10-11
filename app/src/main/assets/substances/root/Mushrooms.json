@@ -37,7 +37,8 @@
       "Cannabis",
       "Amphetamines",
       "Cocaine"
-    ]
+    ],
+    "dangerous": []
   },
   "roas": [
     {

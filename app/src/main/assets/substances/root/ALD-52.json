@@ -21,15 +21,16 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown",
-    "extremely low toxicity"
+    "FreeODwiki says ALD-52 is not considered addictive or toxic by the scientific community, while noting unpredictable adverse reactions such as anxiety, paranoia, delusions and psychosis, especially in people predisposed to mental illness. Even experienced users may have spontaneous adverse reactions."
   ],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "tentative"
+  "effectsSummary": "FreeODwiki reports anecdotal claims that ALD-52 may feel slightly weaker and less visual than LSD, with a gentler state and less anxiety for some users, but this distinction reportedly diminishes as dose rises. Its subjective effects index is based on anecdotal reports.",
+  "dosageRemark": "The archived oral table lists threshold 30 µg, light 30-100 µg, moderate 100-175 µg, strong 175-325 µg, heavy 325 µg+; total duration 8-14 h, onset 20-40 min, comeup 1-2 h, peak 3-5 h, offset 3-5 h and afterglow 4-24 h. Educational compilation, not a recommendation. The model does not represent the threshold separately; lightMin already matches the source lower bound.",
+  "generalRisks": "FreeODwiki describes possible unpredictable anxiety, paranoia, delusions and psychosis, especially for people predisposed to mental illness; these reactions may occur even in experienced users. It recommends preparation and harm reduction for this potent, long-lasting psychedelic.",
+  "longtermRisks": "The archived page gives no specific established long-term harm findings; it says ALD-52 is not considered toxic by the scientific community, while unpredictable acute psychological adverse reactions remain possible.",
+  "saferUse": [
+    "FreeODwiki strongly recommends preparation and harm reduction for this potent, long-lasting psychedelic.",
+    "It notes adverse psychological reactions can occur unpredictably even in experienced users, especially those predisposed to mental illness."
   ],
-  "summary": "ALD-52, or N-acetyl-LSD is a less common chemical analogue of LSD, first synthesised by Albert Hoffman. It was famously implicated in the 'Orange Sunshine' trial. A psychedelic lysergamide, this compound exhibits similar properties to LSD, and is thought to be a pro-drug for LSD.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -42,6 +43,12 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "ALD-52 is a long-acting lysergamide psychedelic. Anecdotal users sometimes describe it as gentler than LSD, but the source says adverse psychological reactions remain unpredictable and recommends preparation and harm reduction.",
   "roas": [
     {
       "name": "oral",

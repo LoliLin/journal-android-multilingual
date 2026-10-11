@@ -17,14 +17,16 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says pharmacology, metabolism and toxicity data for LSM-775 are very limited and human-use history is very limited; it notes lower cardiovascular stimulation and peripheral toxicity signs than LSD, but this is not evidence of safety."
   ],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "tentative"
+  "effectsSummary": "FreeODwiki describes LSM-775 as a weak lysergamide with reported LSD-like effects at doses above 75 µg, shorter duration, and reportedly fewer signs of cardiovascular stimulation and peripheral toxicity than LSD. The page notes the evidence is sparse and effects anecdotal.",
+  "dosageRemark": "The archived oral table lists threshold 250 µg, light 500-750 µg, moderate 750-1250 µg, strong 1250-1500 µg, heavy 1500 µg+; duration 6-10 h and onset 10-30 min. The page notes contradictory historical estimates (75 µg vs 350-700 µg) and says the latter better reflects human potency, roughly one-tenth that of LSD; pharmacology, metabolism and toxicity data are sparse. Educational reports, not a recommendation; lightMin corrected to the source light lower bound.",
+  "generalRisks": "The page says LSM-775 is poorly studied with very limited human-use history and strongly recommends precautions and harm reduction. Reported interactions with dissociatives and MDMA may be unpredictable and potentially neurotoxic.",
+  "longtermRisks": "FreeODwiki says pharmacology, metabolism and toxicity data are very limited; no established long-term findings are provided.",
+  "saferUse": [
+    "FreeODwiki strongly recommends precautions and harm reduction for this poorly studied psychedelic.",
+    "It describes combinations with dissociatives or MDMA as unpredictable and potentially neurotoxic; reports should be treated cautiously."
   ],
-  "summary": "Psychedelic of the lysergamide class, less potent by weight and produces a rather mild, dreamy and even sedating trip compared to its bigger brother LSD.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -37,12 +39,18 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "LSM-775 is a weak lysergamide with sparse human data. FreeODwiki describes reported LSD-like effects at higher doses, shorter duration and uncertain combination risks.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "µg",
-        "lightMin": 250,
+        "lightMin": 500,
         "commonMin": 750,
         "strongMin": 1250,
         "heavyMin": 1500

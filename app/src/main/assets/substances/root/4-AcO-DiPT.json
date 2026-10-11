@@ -20,31 +20,42 @@
   ],
   "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "FreeODwiki says recreational toxicity and long-term health effects of 4-AcO-DiPT appear not to have been studied in any scientific context and that the toxic dose is unknown, because it is a research chemical with very little history of human use. Anecdotal evidence from the psychedelic community suggests that trying only low to moderate doses and using it sparingly has no attributed negative health effects, though nothing can be guaranteed."
+  ],
+  "effectsSummary": "FreeODwiki describes 4-AcO-DiPT as producing a distinctive mixed effect of physical euphoria, stimulation and atypically minimal visuals and introspection. Its effects section is a subjective-effects index built on anecdotal user reports and contributor analysis, to be taken with healthy skepticism. Reports say its visuals are very mild even at high doses and that it produces no geometric or hallucinatory states, unlike 4-AcO-DMT or 4-AcO-MET, and that its empathy and sociability enhancement is more frequent and consistent than in most other substituted tryptamines. Higher doses make adverse effects more likely, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a threshold of 3 mg, a light range of 5-15 mg, moderate of 15-30 mg, strong of 30-45 mg and heavy of 45 mg or more; the model does not represent a threshold band separately, so the 3 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page also warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
+  "generalRisks": "FreeODwiki says data on 4-AcO-DiPT's pharmacological properties, metabolism and toxicity is very little, and advises caution when choosing to use the substance. Anecdotal evidence suggests trying only low to moderate doses and using it sparingly has no attributed negative health effects, though nothing can be guaranteed.",
+  "longtermRisks": "The archived page says long-term health effects of recreational 4-AcO-DiPT use appear not to have been studied in any scientific context.",
+  "saferUse": [
+    "FreeODwiki advises conducting independent research before consuming, to make sure combinations of two or more substances are safe, and strongly recommends harm reduction.",
+    "It warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cannabis",
+      "stimulant",
+      "benzodiazepine"
+    ]
+  },
+  "metabolism": "FreeODwiki says data on 4-AcO-DiPT's pharmacology, metabolism and toxicity is very little. The page presents 4-AcO-DiPT as mainly thought to be a prodrug of 4-HO-DiPT, which is the page's stated view rather than an established finding in controlled human studies.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-AcO-DiPT"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "An uncommon psychedelic tryptamine with a short history of human use, also known as Ipracetin. Possibly first synthesised by Alexander Shulgin. Some reports of heavy nausea, with effects comparable to 2c-b and mushrooms.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-AcO-DiPT is a little-known synthetic tryptamine psychedelic also known as ipracetin. It is described as producing physical euphoria and stimulation with unusually minimal visuals, and data on its pharmacology, metabolism and toxicity is very little.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 3,
+        "lightMin": 5,
         "commonMin": 15,
         "strongMin": 30,
         "heavyMin": 45

@@ -85,5 +85,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "PsychonautWiki strongly recommends precautions and harm-reduction measures. Its dose information is based on user reports and external resources for education, not a recommendation; limited reports of low or moderate occasional use do not establish safety."
+  ],
+  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It provides no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25N-NBOMe"
   ]
 }

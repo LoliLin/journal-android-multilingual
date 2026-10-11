@@ -182,5 +182,9 @@
         }
       }
     }
+  ],
+  "metabolism": "The reviewed archived page provides no specific human metabolic findings or pathway; this record does not infer metabolism from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-B"
   ]
 }

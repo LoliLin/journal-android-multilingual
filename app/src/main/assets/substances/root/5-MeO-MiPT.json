@@ -17,25 +17,22 @@
     "psychedelic"
   ],
   "addictionPotential": "not habit-forming",
-  "toxicities": [],
-  "categories": [
-    "psychedelic",
-    "entactogen",
-    "research-chemical",
-    "common"
+  "toxicities": [
+    "FreeODwiki says almost nothing is known about the long-term effects of 5-MeO-MiPT and the exact toxic dose is unknown, because it is a research chemical with a very short history of human use.",
+    "FreeODwiki reports a preliminary mouse study in which a normal dose of 5-MeO-MiPT (0.27 mg/kg) produced no measurable toxic effects, while a far higher dose (2.7 mg/kg) caused cytotoxicity by triggering programmed cell death in the brain, liver and kidneys; the extent of damage, whether it also occurs in other body tissues and how it is caused remain unclear."
   ],
-  "summary": "A potent, stimulating psychedelic tryptamine, sometimes compared to 5-MeO-DiPT.  Has an unusually strong body component and weak visual effects. Often said to be very empathogenic.",
+  "effectsSummary": "FreeODwiki's effects index is built on anecdotal user reports and contributor analysis, to be taken with healthy skepticism, and notes that adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and resources for education, not recommendations. The page lists smoked/vaporized with a threshold of 5 mg, light of 5-10 mg, moderate of 10-15 mg, strong of 15-20 mg and heavy of 20 mg or more, with a total duration of 5-8 hours; oral with a threshold of 3 mg, light of 3-7 mg, moderate of 7-15 mg, strong of 15-20 mg and heavy of 20 mg or more, with a total duration of 5-8 hours. The model does not represent a threshold band separately, so the 5 mg and 3 mg thresholds are preserved here and lightMin follows the lower bound of each source light range.",
+  "generalRisks": "FreeODwiki says almost nothing is known about long-term effects and the exact toxic dose is unknown. It reports the mouse cytotoxicity findings and notes anecdotal evidence that trying it only at low to moderate doses and using it sparingly shows no attributed negative health effects, though nothing can be fully guaranteed.",
+  "longtermRisks": "The archived page says almost nothing is known about the long-term effects of 5-MeO-MiPT, and that a far-above-normal mouse dose caused cytotoxicity via programmed cell death in brain, liver and kidneys, with the extent and mechanism of damage unclear; this is an animal finding at doses far outside the reported human range.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction, and advises independent research before consumption to make sure combinations of two or more substances are safe."
+  ],
   "interactions": {
     "dangerous": [
-      "ΑMT",
-      "maoi",
-      "PCP"
-    ],
-    "unsafe": [
-      "Amphetamines",
-      "Cocaine",
-      "Dextromethorphan",
-      "Tramadol"
+      "MAOI",
+      "Tramadol",
+      "aMT"
     ],
     "uncertain": [
       "2C-T-x",
@@ -47,6 +44,17 @@
       "NBOMe"
     ]
   },
+  "metabolism": "The archived page does not provide a specific human metabolic finding or pathway for 5-MeO-MiPT.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/5-MeO-MiPT"
+  ],
+  "categories": [
+    "psychedelic",
+    "entactogen",
+    "research-chemical",
+    "common"
+  ],
+  "summary": "5-MeO-MiPT is a research-chemical tryptamine about whose long-term effects almost nothing is known. A mouse study found cytotoxicity only at doses far above the normal range.",
   "roas": [
     {
       "name": "oral",
@@ -91,44 +99,7 @@
       }
     },
     {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 5,
-        "commonMin": 10,
-        "strongMin": 15,
-        "heavyMin": 20
-      },
-      "duration": {
-        "onset": {
-          "min": 20,
-          "max": 60,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "total": {
-          "min": 5,
-          "max": 8,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 1,
-          "max": 3,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "smoked",
+      "name": "insufflated",
       "dose": {
         "units": "mg",
         "lightMin": 5,

@@ -21,26 +21,15 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says pharmacology, metabolism and toxicity data for MDEA are almost nonexistent. As a serotonin releaser, excessive doses may cause serotonin syndrome, potentially fatal if untreated."
   ],
-  "categories": [
-    "entactogen",
-    "stimulant",
-    "tentative"
-  ],
-  "summary": "A quite rare empathogen closely related to MDMA. Yet is less potent than the prior.",
   "effectsSummary": "MDEA is closely related to MDMA. It differs mainly in how well one's own feelings are perceived (entactogenic effect), how strong empathic understanding (empathic effect) and hallucinogenic effects occur.",
-  "dosageRemark": "1.3 mg per kg body weight (1.3 mg x 80 kg = 100 mg)",
-  "generalRisks": "Nausea to nausea, dry mouth, cramping of the jaw muscles, sweating, coordination disorders, sleep disorders and trembling.",
-  "longtermRisks": "MDA is both neurotoxic (damaging to the nerves) and hepatotoxic (damaging to the liver); regular use can lead to schizophrenia-like symptoms.",
+  "dosageRemark": "The archived oral table lists threshold 40 mg, light 70-120 mg, moderate 120-180 mg, strong 180-225 mg, heavy 225 mg+; total 3-6 h, onset 20-60 min, comeup 15-30 min, peak 1.5-2 h, offset 1-2 h, afterglow 12-48 h. Educational user/resource compilation, not a recommendation. The page says pharmacology, metabolism and toxicity data are almost nonexistent; lightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "The page describes MDEA as potentially habit-forming and urges caution and harm reduction. It notes sustained temperature elevation and serotonin syndrome risk at excessive doses.",
+  "longtermRisks": "The archived page says pharmacology, metabolism and toxicity data are almost nonexistent and identifies MDEA as potentially habit-forming.",
   "saferUse": [
-    "First test a third or half a pill.",
-    "Wait two hours for the effect to take effect before adding more.",
-    "Refrain from mixed consumption.",
-    "Avoid alcohol, drink enough non-alcoholic beverages (0.3-0.5 L per hour).",
-    "Take breaks from dancing at parties and get some fresh air in between.",
-    "Take regular breaks from consumption. The body needs time to recover.",
-    "People taking medication are advised to inform themselves about interactions."
+    "FreeODwiki urges caution and harm reduction because MDEA may be habit-forming and its pharmacology, metabolism and toxicity data are nearly absent.",
+    "The page warns excessive doses may cause serotonin syndrome and sustained body-temperature elevation."
   ],
   "interactions": {
     "dangerous": [
@@ -66,12 +55,18 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "tentative"
+  ],
+  "summary": "A quite rare empathogen closely related to MDMA. Yet is less potent than the prior.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 40,
+        "lightMin": 70,
         "commonMin": 120,
         "strongMin": 180,
         "heavyMin": 225

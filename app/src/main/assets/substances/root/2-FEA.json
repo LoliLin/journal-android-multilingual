@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "2-FEA",
   "commonNames": [
     "2-FEA"
@@ -98,5 +98,9 @@
   "longtermRisks": "The page states that long-term health effects have not been studied in a scientific setting; 2-FEA-specific long-term risks remain unknown.",
   "saferUse": [
     "FreeODwiki strongly recommends harm-reduction measures. Its dose table is educational user-report information, not a recommendation."
+  ],
+  "metabolism": "The archived page says formal research on 2-FEA is lacking and that metabolism data are very limited. It provides no specific metabolic pathway or human metabolic study; no 2-FEA metabolic route can be established from this source.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2-FEA"
   ]
 }

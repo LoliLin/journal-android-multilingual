@@ -9,5 +9,9 @@
   "saferUse": [
     "页面建议独立查证并采取减害措施，包括准确的容量计量；考虑到个体差异，建议从低剂量开始。剂量表来自用户/资料来源，仅供教育用途，不是建议。"
   ],
+  "metabolism": "归档页面称其人体药理、代谢和毒性数据很少，未提供具体代谢途径或人体代谢发现；不根据类似物推断。",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-E"
+  ],
   "localizedName": "2C-E"
 }

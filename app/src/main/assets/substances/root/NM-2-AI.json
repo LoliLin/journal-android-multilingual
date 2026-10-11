@@ -16,13 +16,16 @@
   ],
   "addictionPotential": "moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "FreeODwiki says human effects, pharmacology and toxicity data are sparse and exact toxic dose is unknown."
   ],
-  "categories": [
-    "stimulant",
-    "entactogen"
+  "effectsSummary": "FreeODwiki says effects, pharmacology and toxicity data for NM-2-AI are very limited; the dose table has a marked gap between its 5 mg threshold and 50 mg light band.",
+  "dosageRemark": "The archived oral table lists threshold 5 mg but light 50-100 mg, leaving a large source gap from 5 to 50 mg; moderate 100-150 mg, strong 150-200 mg, heavy 200 mg+; total 2-4 h and onset 30-60 min. Preserve the source discrepancy without interpolation. User/web educational data, not a recommendation. Human effects, pharmacology and toxicity data are very limited.",
+  "generalRisks": "The archived dose table has a 5-50 mg gap between threshold and light band; the page says effects and toxicity data are sparse.",
+  "longtermRisks": "FreeODwiki provides very limited pharmacology and toxicity information and no established long-term findings.",
+  "saferUse": [
+    "FreeODwiki strongly recommends harm reduction due to sparse data.",
+    "Do not interpolate the 5-50 mg gap in the source table; dose information is educational user/web material, not a recommendation."
   ],
-  "summary": "Stimulant that is in the aminoindane class. Is it quite close to it's bigger brother 2-AI. Yet this has a lower potency, has a longer duration though.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -41,12 +44,17 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "stimulant",
+    "entactogen"
+  ],
+  "summary": "NM-2-AI is a poorly studied stimulant with sparse effect and toxicity data. Its archived dose table leaves a large gap between threshold and light ranges.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 50,
         "commonMin": 100,
         "strongMin": 150,
         "heavyMin": 200
