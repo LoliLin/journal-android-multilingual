@@ -53,6 +53,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.Category
 import com.isaakhanimann.journal.localization.i18n
@@ -164,11 +165,7 @@ fun CategoryScreen(
                             },
                             trailingIcon = {
                                 if (searchText.isNotEmpty()) {
-                                    IconButton(
-                                        onClick = {
-                                            onChangeSearchText("")
-                                        }
-                                    ) {
+                                    IconButton(onClick = { onChangeSearchText("") }) {
                                         Icon(
                                             Icons.Default.Close,
                                             contentDescription = i18n("common_close")
@@ -229,4 +226,20 @@ fun CategoryScreen(
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun CategoryScreenPreview() {
+    CategoryScreen(
+        category = Category(
+            name = "stimulants",
+            description = "Substances that increase alertness and energy.",
+            url = "https://psychonautwiki.org/wiki/Stimulant",
+            color = MaterialTheme.colorScheme.primary
+        ),
+        navigateToURL = {},
+        substanceModels = emptyList(),
+        onSubstanceTap = {}
+    )
 }

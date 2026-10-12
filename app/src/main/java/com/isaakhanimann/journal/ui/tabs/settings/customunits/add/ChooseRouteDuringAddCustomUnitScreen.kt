@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.AdministrationRoutePicker
@@ -41,24 +42,38 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     onRouteChosen: (administrationRoute: AdministrationRoute) -> Unit,
     viewModel: ChooseRouteViewModel
 ) {
+    ChooseRouteDuringAddCustomUnitContent(
+        title = i18n(
+            "substances_route",
+            replacements = mapOf(
+                "substance" to viewModel.substanceRepo.getDisplayName(viewModel.substanceName)
+            )
+        ),
+        showOtherRoutes = viewModel.showOtherRoutes,
+        onChangeOfShowOtherRoutes = { viewModel.showOtherRoutes = it },
+        pwRoutes = viewModel.pwRoutes,
+        otherRoutesChunked = viewModel.otherRoutesChunked,
+        onRouteChosen = onRouteChosen
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ChooseRouteDuringAddCustomUnitContent(
+    title: String,
+    showOtherRoutes: Boolean,
+    onChangeOfShowOtherRoutes: (Boolean) -> Unit,
+    pwRoutes: List<AdministrationRoute>,
+    otherRoutesChunked: List<List<AdministrationRoute>>,
+    onRouteChosen: (AdministrationRoute) -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {
-                    Text(
-                        i18n(
-                            "substances_route",
-                            replacements = mapOf(
-                                "substance" to viewModel.substanceRepo.getDisplayName(
-                                    viewModel.substanceName
-                                )
-                            )
-                        )
-                    )
-                },
+                title = { Text(title) },
                 navigationIcon = {
-                    if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
-                        IconButton(onClick = { viewModel.showOtherRoutes = false }) {
+                    if (showOtherRoutes && pwRoutes.isNotEmpty()) {
+                        IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = i18n("back")
@@ -71,16 +86,28 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {
             AdministrationRoutePicker(
-                showOtherRoutes = viewModel.showOtherRoutes,
-                onChangeOfShowOtherRoutes = {
-                    viewModel.showOtherRoutes = it
-                },
-                pwRoutes = viewModel.pwRoutes,
-                otherRoutesChunked = viewModel.otherRoutesChunked,
-                onRouteTapped = {
-                    onRouteChosen(it)
-                }
+                showOtherRoutes = showOtherRoutes,
+                onChangeOfShowOtherRoutes = onChangeOfShowOtherRoutes,
+                pwRoutes = pwRoutes,
+                otherRoutesChunked = otherRoutesChunked,
+                onRouteTapped = onRouteChosen
             )
         }
     }
+}
+
+@Preview
+@Composable
+private fun ChooseRouteDuringAddCustomUnitScreenPreview() {
+    val pwRoutes = listOf(AdministrationRoute.INSUFFLATED, AdministrationRoute.ORAL)
+    val otherRoutes = AdministrationRoute.entries.filterNot { it in pwRoutes }
+
+    ChooseRouteDuringAddCustomUnitContent(
+        title = "Route for Caffeine",
+        showOtherRoutes = false,
+        onChangeOfShowOtherRoutes = {},
+        pwRoutes = pwRoutes,
+        otherRoutesChunked = otherRoutes.chunked(2),
+        onRouteChosen = {}
+    )
 }

@@ -354,3 +354,26 @@ fun ColorCircle(adaptiveColor: AdaptiveColor) {
         modifier = Modifier.size(25.dp)
     ) {}
 }
+
+@Preview(showBackground = true)
+@Composable
+private fun AddIngestionSearchScreenPreview() {
+    AddIngestionSearchScreen(
+        navigateToCheckInteractions = {},
+        navigateToChooseRoute = {},
+        navigateToCheckSaferUse = {},
+        navigateToDose = { _, _ -> },
+        navigateToCustomDose = { _, _ -> },
+        navigateToChooseTime = { _, _, _, _, _, _, _, _ -> },
+        navigateToCustomSubstanceChooseRoute = {},
+        navigateToAddCustomSubstanceScreen = {},
+        navigateToCustomUnitChooseDose = {},
+        substanceRouteSuggestions = emptyList(),
+        searchText = "MDMA",
+        onChangeSearchText = {},
+        filteredSubstances = emptyList(),
+        filteredCustomUnits = emptyList(),
+        filteredCustomSubstances = emptyList(),
+        getSubstanceDisplayName = { it }
+    )
+}

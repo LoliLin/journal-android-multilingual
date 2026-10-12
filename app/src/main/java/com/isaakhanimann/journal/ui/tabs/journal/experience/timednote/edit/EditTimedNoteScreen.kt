@@ -31,8 +31,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNoteScreenContent
+import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,6 +84,30 @@ fun EditTimedNoteScreen(
             otherColors = viewModel.otherColorsFlow.collectAsState().value,
             isPartOfTimeline = viewModel.isPartOfTimeline,
             onChangeOfIsPartOfTimeline = viewModel::onChangeIsPartOfTimeline
+        )
+    }
+}
+
+
+@Preview
+@Composable
+private fun EditTimedNoteScreenPreview() {
+    Scaffold(
+        topBar = { TopAppBar(title = { Text(i18n("edit_timed_note")) }) }
+    ) { padding ->
+        val alreadyUsedColors = listOf(AdaptiveColor.BLUE, AdaptiveColor.PINK)
+        TimedNoteScreenContent(
+            selectedTime = LocalDateTime.of(2026, 10, 12, 14, 30),
+            onTimeChange = {},
+            note = "A calm afternoon",
+            onNoteChange = {},
+            color = AdaptiveColor.PURPLE,
+            onColorChange = {},
+            modifier = Modifier.padding(padding),
+            alreadyUsedColors = alreadyUsedColors,
+            otherColors = AdaptiveColor.entries.filterNot { it in alreadyUsedColors },
+            isPartOfTimeline = true,
+            onChangeOfIsPartOfTimeline = {}
         )
     }
 }

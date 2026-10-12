@@ -30,6 +30,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -71,9 +72,26 @@ fun AddCustomSubstanceAndContinueScreen(
             name = viewModel.name,
             units = viewModel.units,
             description = viewModel.description,
-            onNameChange = { viewModel.name = it },
-            onUnitsChange = { viewModel.units = it },
             onDescriptionChange = { viewModel.description = it },
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun AddCustomSubstanceAndContinueScreenPreview() {
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("Add custom substance") }) }
+    ) { padding ->
+        AddOrEditCustomSubstanceContent(
+            padding = padding,
+            name = "Medication",
+            units = "mg",
+            description = "My medication",
+            onNameChange = {},
+            onUnitsChange = {},
+            onDescriptionChange = {}
         )
     }
 }

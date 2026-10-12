@@ -6,14 +6,6 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or (at
  * your option) any later version.
- *
- * PsychonautWiki Journal is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
  */
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.saferuse
@@ -30,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
@@ -42,17 +35,25 @@ fun CheckSaferUseScreen(
     navigateToNext: () -> Unit,
     viewModel: SaferUseViewModel
 ) {
+    CheckSaferUseScreenContent(
+        substanceName = viewModel.substance.displayName,
+        saferUse = viewModel.substance.saferUse,
+        navigateToNext = navigateToNext
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CheckSaferUseScreenContent(
+    substanceName: String,
+    saferUse: List<String>,
+    navigateToNext: () -> Unit
+) {
     Scaffold(
         topBar = {
-            TopAppBar(title = {
-                Text(
-                    "${viewModel.substance.displayName}" + i18n("safer_use_title")
-                )
-            })
+            TopAppBar(title = { Text("$substanceName${i18n("safer_use_title")}") })
         },
-        floatingActionButton = {
-            NextFAB(navigateToNext)
-        }
+        floatingActionButton = { NextFAB(navigateToNext) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -60,10 +61,23 @@ fun CheckSaferUseScreen(
                 .padding(padding)
         ) {
             BulletPoints(
-                points = viewModel.substance.saferUse,
+                points = saferUse,
                 modifier = Modifier.padding(horizontal = horizontalPadding)
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CheckSaferUseScreenPreview() {
+    CheckSaferUseScreenContent(
+        substanceName = "MDMA",
+        saferUse = listOf(
+            "Start with a low dose and avoid redosing.",
+            "Stay cool, take breaks, and sip water regularly."
+        ),
+        navigateToNext = {}
+    )
 }

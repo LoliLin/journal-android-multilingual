@@ -52,6 +52,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
@@ -83,6 +84,26 @@ fun CheckInteractionsScreen(
         alertMessages = viewModel.alertMessages,
         getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
         navigateToURL = navigateToURL
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CheckInteractionsScreenPreview() {
+    CheckInteractionsScreen(
+        substanceName = "mdma",
+        substanceUrl = "",
+        isSearchingForInteractions = false,
+        isShowingAlert = false,
+        dismissAlert = {},
+        alertInteractionType = null,
+        alertMessages = emptyList(),
+        dangerousInteractions = listOf("tramadol"),
+        unsafeInteractions = listOf("mda"),
+        uncertainInteractions = listOf("caffeine"),
+        navigateToNext = {},
+        getSubstanceDisplayName = { it.replaceFirstChar(Char::uppercase) },
+        navigateToURL = {}
     )
 }
 

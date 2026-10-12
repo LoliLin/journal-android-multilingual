@@ -60,6 +60,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
@@ -71,6 +72,7 @@ import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
@@ -622,4 +624,28 @@ private fun firstColIndexOfMonth(weeks: List<List<DailyCount>>, targetMonth: Int
         if (week[3].date.monthValue == targetMonth) return i
     }
     return 0
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SubstanceCompanionScreenPreview() {
+    JournalTheme {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            SubstanceHeroCard(
+                substanceName = "caffeine",
+                displayName = "Caffeine",
+                consumerName = "Alex",
+                accentColor = MaterialTheme.colorScheme.tertiary,
+                experienceCount = 8,
+                ingestionCount = 14,
+                latestDateText = "Monday, October 12, 2026",
+                onWikiClick = {}
+            )
+        }
+    }
 }

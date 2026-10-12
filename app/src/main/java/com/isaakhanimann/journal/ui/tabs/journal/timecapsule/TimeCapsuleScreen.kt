@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsTimedNotesAndRatings
@@ -49,6 +50,22 @@ fun TimeCapsuleScreen(
         isLoading = false
     }
 
+    TimeCapsuleContent(
+        experiences = experiences,
+        isLoading = isLoading,
+        navigateBack = navigateBack,
+        navigateToExperience = navigateToExperience
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun TimeCapsuleContent(
+    experiences: List<ExperienceWithIngestionsTimedNotesAndRatings>,
+    isLoading: Boolean,
+    navigateBack: () -> Unit,
+    navigateToExperience: (experienceId: Int) -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -132,4 +149,15 @@ fun TimeCapsuleScreen(
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TimeCapsuleContentPreview() {
+    TimeCapsuleContent(
+        experiences = emptyList(),
+        isLoading = false,
+        navigateBack = {},
+        navigateToExperience = {}
+    )
 }
