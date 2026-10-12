@@ -6,5 +6,6 @@
     "antiepileptic",
     "barbiturate"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Methylphenobarbital, also known as mephobarbital, is a barbiturate derivative used primarily as an anticonvulsant and also as a sedative and anxiolytic."
 }

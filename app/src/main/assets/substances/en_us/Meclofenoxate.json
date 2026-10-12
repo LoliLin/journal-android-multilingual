@@ -1,4 +1,6 @@
 {
-  "toxicities": ["extremely low toxicity"],
+  "toxicities": [
+    "extremely low toxicity"
+  ],
   "localizedName": "Meclofenoxate"
 }

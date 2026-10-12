@@ -1,12 +1,18 @@
 {
   "name": "Naloxone",
-  "commonNames": ["Naloxone", "Narcan", "Evzio"],
+  "commonNames": [
+    "Naloxone",
+    "Narcan",
+    "Evzio"
+  ],
   "url": "https://psychonautwiki.org/wiki/Naloxone",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
   "toxicities": [],
-  "categories": ["opioid"],
+  "categories": [
+    "opioid"
+  ],
   "roas": [
     {
       "name": "insufflated",
@@ -110,5 +116,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Naloxone is an opioid antagonist medication used to reverse or reduce opioid effects, including the respiratory depression caused by overdose."
 }

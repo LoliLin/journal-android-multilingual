@@ -13,5 +13,6 @@
   "metabolism": "CYP2D6 forms active 4-hydroxyatomoxetine, which is rapidly glucuronidated. CYP2C19 and other enzymes form the less active N-desmethyl metabolite. Elimination is predominantly urinary as metabolites.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ab8d905-e890-4e91-a730-3e5d12f5c23f"
-  ]
+  ],
+  "summary": "Atomoxetine is a selective norepinephrine reuptake inhibitor used to treat attention deficit hyperactivity disorder (ADHD). It can be used alone or with a psychostimulant; reported serious adverse effects include liver and cardiovascular problems and suicidal thoughts."
 }

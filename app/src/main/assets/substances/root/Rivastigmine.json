@@ -8,5 +8,6 @@
   "metabolism": "Cholinesterase-mediated hydrolysis produces a decarbamylated metabolite. CYP enzymes contribute minimally; metabolites are subsequently eliminated mainly in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2bb5e0d6-f677-4021-9888-3ff90979ef7d"
-  ]
+  ],
+  "summary": "Rivastigmine is an acetylcholinesterase inhibitor used for dementia associated with Alzheimer's or Parkinson's disease. It is given orally or as a transdermal patch."
 }

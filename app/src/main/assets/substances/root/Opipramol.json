@@ -5,5 +5,6 @@
   "categories": [
     "antidepressant"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Opipramol is an anxiolytic and tricyclic antidepressant used in Europe. Despite its chemical structure, it does not act like most tricyclic antidepressants as a monoamine reuptake inhibitor; it primarily acts as a sigma-1 receptor agonist."
 }

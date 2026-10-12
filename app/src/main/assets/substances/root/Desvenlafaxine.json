@@ -8,5 +8,6 @@
   "metabolism": "A large fraction is excreted unchanged in urine. The metabolized fraction mainly undergoes UGT conjugation; CYP3A4 contributes minor N-demethylation. CYP2D6 is not part of its metabolic pathway.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ff837eb1-24c3-4c63-9b4b-c6b5935a9b47"
-  ]
+  ],
+  "summary": "Desvenlafaxine is a serotonin-norepinephrine reuptake inhibitor (SNRI) medication used to treat major depressive disorder."
 }

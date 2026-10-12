@@ -17,5 +17,6 @@
   "metabolism": "Rapidly converted to active nordazepam, which undergoes hepatic hydroxylation to oxazepam and further conjugation. Elimination is mainly urinary as conjugated metabolites.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=11b72861-64c9-4cdc-9289-c7fa9ea23bf6"
-  ]
+  ],
+  "summary": "Clorazepate is a long-acting benzodiazepine that acts as a prodrug for desmethyldiazepam, an active metabolite responsible for most of its therapeutic effects."
 }

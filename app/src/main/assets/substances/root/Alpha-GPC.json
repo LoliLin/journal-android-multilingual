@@ -16,8 +16,12 @@
   },
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
-  "categories": ["nootropic"],
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "nootropic"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -41,5 +45,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Alpha-GPC is a natural choline compound found in the brain and a precursor of acetylcholine. It has been investigated for potential use in treating Alzheimer's disease and other dementias."
 }

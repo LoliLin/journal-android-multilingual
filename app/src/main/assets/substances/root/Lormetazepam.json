@@ -12,5 +12,6 @@
     "hypnotic"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Lormetazepam is a short- to intermediate-acting benzodiazepine derivative used for short-term treatment of moderately severe insomnia. It has hypnotic, anxiolytic, anticonvulsant, sedative, and muscle-relaxant properties."
 }

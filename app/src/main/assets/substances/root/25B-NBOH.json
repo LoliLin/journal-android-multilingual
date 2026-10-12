@@ -38,5 +38,6 @@
       "stimulant"
     ]
   },
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "25B-NBOH is a synthetic phenethylamine in the NBOH family, chemically related to 25B-NBOMe. Human pharmacology and toxicity data are limited."
 }

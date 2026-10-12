@@ -9,5 +9,6 @@
   "metabolism": "Oxidation, mainly of the morpholine portion, precedes renal elimination of metabolites. CYP2C19 phenotype influences exposure; little drug is excreted unchanged.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/7295/smpc"
-  ]
+  ],
+  "summary": "Moclobemide is a reversible, selective monoamine oxidase A inhibitor used primarily to treat depression and social anxiety. Its interactions with serotonergic and sympathomimetic medicines can be clinically important."
 }

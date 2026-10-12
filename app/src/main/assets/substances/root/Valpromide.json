@@ -5,5 +5,6 @@
   "categories": [
     "antiepileptic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Valpromide is a carboxamide derivative of valproic acid used to treat epilepsy and some affective disorders. It has anticonvulsant activity and is rapidly metabolized to valproic acid."
 }

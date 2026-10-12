@@ -6,5 +6,6 @@
     "antidepressant",
     "maoi"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Isocarboxazid is a non-selective, irreversible monoamine oxidase inhibitor of the hydrazine class, used primarily to treat treatment-resistant depression."
 }

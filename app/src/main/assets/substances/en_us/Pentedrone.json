@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "A potent NDRI cathinone-type stimulant with more-ish effects but not thought to be especially enjoyable.",
+  "toxicities": [
+    "exact toxic dosage is unknown"
+  ],
   "localizedName": "Pentedrone"
 }

@@ -7,7 +7,8 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Mescaline analogue with a much lower dose, that seems to rely heavily on colours.",
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "localizedName": "Allylescaline"
 }

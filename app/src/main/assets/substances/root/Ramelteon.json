@@ -8,5 +8,6 @@
   "metabolism": "Mainly oxidized by CYP1A2, with minor CYP2C/CYP3A4 contributions, followed by glucuronidation. Metabolites account for almost all elimination, predominantly through urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5a3cf917-3569-4fc1-8b81-ffecfd2de005"
-  ]
+  ],
+  "summary": "Ramelteon is an oral melatonin-receptor agonist used for insomnia characterized by difficulty falling asleep. It can be used long term, though the clinical benefit in reducing time to sleep is small."
 }

@@ -7,6 +7,8 @@
     "zeroToleranceInHours": 204
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
+  "toxicities": [
+    "toxic dose is unknown"
+  ],
   "localizedName": "2,5-DMA"
 }

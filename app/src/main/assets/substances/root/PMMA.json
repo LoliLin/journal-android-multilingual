@@ -1,6 +1,8 @@
 {
   "name": "PMMA",
-  "commonNames": ["PMMA"],
+  "commonNames": [
+    "PMMA"
+  ],
   "url": "https://psychonautwiki.org/wiki/PMMA",
   "isApproved": true,
   "crossTolerances": [],
@@ -8,7 +10,9 @@
     "can be considered extremely toxic when compared to other substances such as Methamphetamine or MDMA",
     "Ingestion of PMMA has been associated with severe tachycardia (abnormally high heart rate), seizures, hyperthermia, and death"
   ],
-  "categories": ["entactogen"],
+  "categories": [
+    "entactogen"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -18,5 +22,6 @@
         "strongMin": 120
       }
     }
-  ]
+  ],
+  "summary": "Para-methoxymethamphetamine (PMMA) is a serotonergic amphetamine-family drug related to PMA and the 4-methoxy analogue of methamphetamine. Its pharmacology and toxicity are not well understood, and deaths have been linked to tablets misrepresented as MDMA."
 }

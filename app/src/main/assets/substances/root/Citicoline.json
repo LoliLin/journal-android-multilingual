@@ -1,12 +1,18 @@
 {
   "name": "Citicoline",
-  "commonNames": ["Citicoline"],
+  "commonNames": [
+    "Citicoline"
+  ],
   "url": "https://psychonautwiki.org/wiki/Citicoline",
   "isApproved": true,
   "crossTolerances": [],
   "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
-  "categories": ["nootropic"],
+  "toxicities": [
+    "extremely low toxicity"
+  ],
+  "categories": [
+    "nootropic"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -50,5 +56,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Citicoline, also known as CDP-choline, is an intermediate in the production of phosphatidylcholine and occurs naturally in human and animal tissues."
 }
