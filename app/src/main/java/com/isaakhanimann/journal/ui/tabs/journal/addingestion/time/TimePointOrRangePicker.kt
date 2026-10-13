@@ -164,7 +164,7 @@ fun TimePointOrRangePicker(
                             androidx.compose.material3.OutlinedButton(
                                 onClick = { onSelectDurationPreset(minutes) }
                             ) {
-                                Text(durationPresetLabel(minutes))
+                                Text(minutes.toString())
                             }
                         }
                     }

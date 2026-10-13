@@ -69,6 +69,7 @@ fun QuickTimedNoteScreen(
 
 @Preview
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun QuickTimedNoteScreenPreview() {
     Scaffold(
         topBar = { TopAppBar(title = { Text(i18n("quick_note_title")) }) }

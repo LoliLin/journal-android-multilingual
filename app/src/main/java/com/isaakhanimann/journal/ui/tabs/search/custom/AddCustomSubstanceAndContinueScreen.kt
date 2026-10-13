@@ -70,7 +70,9 @@ fun AddCustomSubstanceAndContinueScreen(
         AddOrEditCustomSubstanceContent(
             padding = padding,
             name = viewModel.name,
+            onNameChange = { viewModel.name = it },
             units = viewModel.units,
+            onUnitsChange = { viewModel.units = it },
             description = viewModel.description,
             onDescriptionChange = { viewModel.description = it },
         )

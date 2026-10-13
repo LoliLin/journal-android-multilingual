@@ -709,6 +709,7 @@ fun CategoryChipFromSubstanceScreen(
 
 @Preview
 @Composable
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 private fun SubstanceScreenPreview(
     @PreviewParameter(SubstanceWithCategoriesPreviewProvider::class)
     substanceWithCategories: SubstanceWithCategories

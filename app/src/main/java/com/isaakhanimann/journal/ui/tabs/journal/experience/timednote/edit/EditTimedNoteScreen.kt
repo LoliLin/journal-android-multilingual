@@ -91,6 +91,7 @@ fun EditTimedNoteScreen(
 
 @Preview
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun EditTimedNoteScreenPreview() {
     Scaffold(
         topBar = { TopAppBar(title = { Text(i18n("edit_timed_note")) }) }
