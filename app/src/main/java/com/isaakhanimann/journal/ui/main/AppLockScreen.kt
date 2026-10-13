@@ -32,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
@@ -193,6 +194,27 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
         }
     }
 
+    AppLockContent(
+        title = titleText,
+        message = errorMessage ?: i18n("app_lock_hint"),
+        unlockLabel = i18n("app_lock_unlock"),
+        devicePasswordLabel = i18n("app_lock_use_password"),
+        hasError = errorMessage != null,
+        onUnlock = promptAuthenticate,
+        onUseDevicePassword = useDevicePassword
+    )
+}
+
+@Composable
+private fun AppLockContent(
+    title: String,
+    message: String,
+    unlockLabel: String,
+    devicePasswordLabel: String,
+    hasError: Boolean,
+    onUnlock: () -> Unit,
+    onUseDevicePassword: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -207,29 +229,43 @@ fun AppLockScreen(onUnlocked: () -> Unit) {
             tint = MaterialTheme.colorScheme.primary
         )
         Text(
-            text = titleText,
+            text = title,
             style = MaterialTheme.typography.headlineSmall
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = errorMessage ?: i18n("app_lock_hint"),
+            text = message,
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
-            color = if (errorMessage != null) {
+            color = if (hasError) {
                 MaterialTheme.colorScheme.error
             } else {
                 MaterialTheme.colorScheme.onSurfaceVariant
             }
         )
         Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = { promptAuthenticate() }) {
-            Text(text = i18n("app_lock_unlock"))
+        Button(onClick = onUnlock) {
+            Text(text = unlockLabel)
         }
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = { useDevicePassword() }) {
-            Text(text = i18n("app_lock_use_password"))
+        TextButton(onClick = onUseDevicePassword) {
+            Text(text = devicePasswordLabel)
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AppLockContentPreview() {
+    AppLockContent(
+        title = "Unlock Journal",
+        message = "Use your fingerprint or device password to continue.",
+        unlockLabel = "Unlock",
+        devicePasswordLabel = "Use device password",
+        hasError = false,
+        onUnlock = {},
+        onUseDevicePassword = {}
+    )
 }
 
 private const val TAG = "AppLockScreen"

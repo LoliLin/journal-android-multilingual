@@ -206,5 +206,20 @@ fun TimePointOrRangePicker(
 
 internal val DURATION_PRESET_MINUTES: List<Long> = listOf(15L, 30L, 45L, 60L, 120L, 240L)
 
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun TimePointOrRangePickerPreview() {
+    val now = LocalDateTime.of(2026, 10, 12, 14, 30)
+    TimePointOrRangePicker(
+        onChangeTimePickerOption = {},
+        ingestionTimePickerOption = IngestionTimePickerOption.TIME_RANGE,
+        localDateTimeStart = now.minusHours(1),
+        onChangeStartDateOrTime = {},
+        localDateTimeEnd = now,
+        onChangeEndDateOrTime = {},
+        showFutureQuickButtons = true
+    )
+}
+
 internal fun durationPresetLabel(minutes: Long): String =
     if (minutes < 60) "${minutes}m" else "${minutes / 60}h"
