@@ -164,7 +164,7 @@ fun TimePointOrRangePicker(
                             androidx.compose.material3.OutlinedButton(
                                 onClick = { onSelectDurationPreset(minutes) }
                             ) {
-                                Text(minutes.toString())
+                                Text(durationPresetLabel(minutes))
                             }
                         }
                     }
@@ -220,3 +220,6 @@ private fun TimePointOrRangePickerPreview() {
         showFutureQuickButtons = true
     )
 }
+
+internal fun durationPresetLabel(minutes: Long): String =
+    if (minutes < 60) "${minutes}m" else "${minutes / 60}h"
