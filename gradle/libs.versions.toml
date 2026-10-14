@@ -2,7 +2,7 @@
 # Gradle 插件
 androidGradlePlugin = "9.4.1"
 fragment = "1.9.1"
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 ksp = "2.3.12"
 
 # AndroidX 核心库
