@@ -1,0 +1,8 @@
+- New Local Brewery achievement badge
+- Redesigned Material 3 themes and smoother tab navigation
+- Settings: crop your avatar with pinch-zoom and rotation
+- Search substances directly from category screens
+- Stats: unified scrollable screen; long-press to pin substances
+- Journal backups now include preferences and avatar
+- Added Methiodone catalog entry with dosing and safety info
+- Fixed bottom bar placement, label wrapping, and export fields
