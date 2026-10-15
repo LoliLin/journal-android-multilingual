@@ -52,6 +52,7 @@ fun buildIngestionElements(
         IngestionElement(
             ingestionWithCompanionAndCustomUnit = oneIngestionWithComp,
             roaDuration = roa?.roaDuration,
+            roaDose = roa?.roaDose,
             numDots = numDots
         )
     }

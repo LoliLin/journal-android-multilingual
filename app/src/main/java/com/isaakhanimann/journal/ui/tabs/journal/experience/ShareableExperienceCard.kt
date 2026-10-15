@@ -100,6 +100,7 @@ fun prepareShareableExperienceCardData(
             IngestionElement(
                 ingestionWithCompanionAndCustomUnit = oneIngestionWithComp,
                 roaDuration = roa?.roaDuration,
+                roaDose = roa?.roaDose,
                 numDots = numDots
             ),
             roa?.roaDose
