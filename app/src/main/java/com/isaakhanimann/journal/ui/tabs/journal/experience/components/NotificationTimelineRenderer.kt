@@ -111,8 +111,7 @@ suspend fun renderTimelineBitmapForNotification(
                         dataForTimedNotes = timedNotesForTimeline(timedNotes),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(timelineHeight),
-                        areSubstanceHeightsIndependent = false
+                            .height(timelineHeight)
                     )
                 }
             }

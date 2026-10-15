@@ -74,7 +74,6 @@ fun ExperienceEffectTimelines(
         model = model,
         isShowingCurrentTime = true,
         timeDisplayOption = TimeDisplayOption.REGULAR,
-        modifier = modifier,
-        areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
+        modifier = modifier
     )
 }

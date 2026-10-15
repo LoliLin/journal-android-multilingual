@@ -76,7 +76,6 @@ fun AllTimelinesPreview(
     ) dataForEffectLines: List<DataForOneEffectLine>
 ) {
     AllTimelines(
-        areSubstanceHeightsIndependent = false,
         model = AllTimelinesModel(
             dataForLines = dataForEffectLines,
             dataForRatings = listOf(
@@ -123,10 +122,6 @@ fun AllTimelines(
     isShowingCurrentTime: Boolean,
     timeDisplayOption: TimeDisplayOption,
     modifier: Modifier = Modifier,
-    // Fork-compat parameter (fork's AllTimelines had per-substance independent
-    // heights); defaulted so both 4-arg and 5-arg callers compile. The upstream
-    // rendering logic does not use it yet.
-    areSubstanceHeightsIndependent: Boolean = false,
 ) {
     val isDarkTheme = isSystemInDarkTheme()
     val density = LocalDensity.current
