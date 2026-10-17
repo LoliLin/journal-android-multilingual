@@ -136,7 +136,7 @@ private fun MainScreenContent(
 
     val isKeyboardOpenNow = isKeyboardOpen().value
     val rootTabSwipeThresholdPx = with(LocalDensity.current) { 48.dp.toPx() }
-    val isBottomBarShown = (isOnMainTabRoot || isBottomBarPinned) && !isKeyboardOpenNow
+    val isBottomBarShown = isOnMainTabRoot && !isKeyboardOpenNow
     val bottomBarScrollBehavior = rememberBottomBarScrollBehavior {
         isOnMainTabRoot && !isKeyboardOpenNow
     }
