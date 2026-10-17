@@ -318,6 +318,7 @@ class OneExperienceViewModel @AssistedInject constructor(
         IngestionElement(
             ingestionWithCompanionAndCustomUnit = ingestionWith.ingestionWithCompanionAndCustomUnit,
             roaDuration = ingestionWith.roaDuration,
+            roaDose = ingestionWith.roaDose,
             numDots = numDots
         )
     }

@@ -493,8 +493,7 @@ fun SubstanceScreen(
                             timeDisplayOption = TimeDisplayOption.REGULAR,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(200.dp),
-                            areSubstanceHeightsIndependent = false
+                                .height(200.dp)
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         HorizontalDivider()

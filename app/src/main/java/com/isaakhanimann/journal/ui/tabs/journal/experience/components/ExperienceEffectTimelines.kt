@@ -37,7 +37,7 @@ fun ExperienceEffectTimelines(
     modifier: Modifier,
     areSubstanceHeightsIndependent: Boolean = false
 ) {
-    val effectTimelines = remember(ingestionElements) {
+    val effectTimelines = remember(ingestionElements, areSubstanceHeightsIndependent) {
         ingestionElements.map { oneElement ->
             val horizontalWeight = if (oneElement.numDots == null) {
                 0.5f
@@ -46,14 +46,23 @@ fun ExperienceEffectTimelines(
             } else {
                 oneElement.numDots.toFloat() / 4f
             }
+            val allIngestions = ingestionElements.map { it.ingestionWithCompanionAndCustomUnit }
             return@map DataForOneEffectLine(
                 substanceName = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.substanceName,
                 route = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute,
                 roaDuration = oneElement.roaDuration,
-                height = getHeightBetween0And1(
-                    ingestion = oneElement.ingestionWithCompanionAndCustomUnit,
-                    allIngestions = ingestionElements.map { it.ingestionWithCompanionAndCustomUnit }
-                ),
+                height = if (areSubstanceHeightsIndependent) {
+                    getHeightBetween0And1(
+                        ingestion = oneElement.ingestionWithCompanionAndCustomUnit,
+                        allIngestions = allIngestions
+                    )
+                } else {
+                    getStrengthRelativeToCommonDose(
+                        ingestion = oneElement.ingestionWithCompanionAndCustomUnit,
+                        allIngestions = allIngestions,
+                        roaDose = oneElement.roaDose
+                    )
+                },
                 horizontalWeight = horizontalWeight,
                 color = oneElement.ingestionWithCompanionAndCustomUnit.substanceCompanion?.color
                     ?: AdaptiveColor.RED,
@@ -74,7 +83,6 @@ fun ExperienceEffectTimelines(
         model = model,
         isShowingCurrentTime = true,
         timeDisplayOption = TimeDisplayOption.REGULAR,
-        modifier = modifier,
-        areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
+        modifier = modifier
     )
 }
