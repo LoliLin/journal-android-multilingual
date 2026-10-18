@@ -116,13 +116,14 @@ fun EditIngestionScreen(
         onUnitsChange = { viewModel.units = it },
         experiences = viewModel.relevantExperiences.collectAsState().value,
         selectedExperienceId = viewModel.experienceId,
-        onChangeId = { viewModel.experienceId = it },
+        isCreatingNewExperience = viewModel.isCreatingNewExperience,
+        newExperienceTitle = viewModel.newExperienceTitle,
+        onChangeNewExperienceTitle = viewModel::onChangeNewExperienceTitle,
+        onSelectNewExperience = viewModel::onSelectNewExperience,
+        onChangeId = viewModel::onSelectExistingExperience,
         navigateBack = navigateBack,
         deleteIngestion = viewModel::deleteIngestion,
-        onDone = {
-            viewModel.onDoneTap()
-            navigateBack()
-        },
+        onDone = { viewModel.onDoneTap(navigateBack) },
         localDateTimeStart = viewModel.localDateTimeStartFlow.collectAsState().value,
         onChangeStartDateOrTime = viewModel::onChangeStartDateOrTime,
         localDateTimeEnd = viewModel.localDateTimeEndFlow.collectAsState().value,
@@ -161,6 +162,10 @@ fun EditIngestionScreenPreview() {
             onUnitsChange = {},
             experiences = emptyList(),
             selectedExperienceId = 2,
+            isCreatingNewExperience = false,
+            newExperienceTitle = "Day at the Lake",
+            onChangeNewExperienceTitle = {},
+            onSelectNewExperience = {},
             onChangeId = {},
             navigateBack = {},
             deleteIngestion = {},
@@ -199,6 +204,10 @@ fun EditIngestionScreen(
     onUnitsChange: (String) -> Unit,
     experiences: List<ExperienceOption>,
     selectedExperienceId: Int,
+    isCreatingNewExperience: Boolean,
+    newExperienceTitle: String,
+    onChangeNewExperienceTitle: (String) -> Unit,
+    onSelectNewExperience: () -> Unit,
     onChangeId: (Int) -> Unit,
     navigateBack: () -> Unit,
     deleteIngestion: () -> Unit,
@@ -438,9 +447,9 @@ fun EditIngestionScreen(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                text = if (selectedOption?.title !=
-                                    null
-                                ) {
+                                text = if (isCreatingNewExperience) {
+                                    i18n("finish_new_experience")
+                                } else if (selectedOption != null) {
                                     "Part of " + selectedOption.title
                                 } else {
                                     "Part of unknown experience"
@@ -460,7 +469,29 @@ fun EditIngestionScreen(
                                     }
                                 )
                             }
+                            DropdownMenuItem(
+                                text = { Text(i18n("finish_new_experience")) },
+                                onClick = {
+                                    onSelectNewExperience()
+                                    isShowingDropDownMenu = false
+                                }
+                            )
                         }
+                    }
+                    AnimatedVisibility(visible = isCreatingNewExperience) {
+                        OutlinedTextField(
+                            value = newExperienceTitle,
+                            onValueChange = onChangeNewExperienceTitle,
+                            label = { Text(i18n("common_new_experience_title")) },
+                            modifier = Modifier.fillMaxWidth(),
+                            singleLine = true,
+                            keyboardActions = KeyboardActions(onDone = {
+                                focusManager.clearFocus()
+                            }),
+                            keyboardOptions = KeyboardOptions(
+                                capitalization = KeyboardCapitalization.Sentences
+                            )
+                        )
                     }
                 }
             }

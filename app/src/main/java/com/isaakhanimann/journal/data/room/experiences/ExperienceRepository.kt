@@ -65,6 +65,10 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         substanceCompanion
     ).also { JournalDataEvents.notifyJournalChanged() }
 
+    suspend fun insertExperienceAndUpdateIngestion(title: String, ingestion: Ingestion) =
+        experienceDao.insertExperienceAndUpdateIngestion(title, ingestion)
+            .also { JournalDataEvents.notifyJournalChanged() }
+
     suspend fun insertEverything(journalExport: JournalExport) =
         experienceDao.insertEverything(journalExport)
             .also { JournalDataEvents.notifyJournalChanged() }
