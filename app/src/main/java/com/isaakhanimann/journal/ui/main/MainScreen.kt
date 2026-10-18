@@ -53,7 +53,7 @@ import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
-import com.isaakhanimann.journal.ui.main.navigation.NAVIGATION_TRANSITION_MS
+import com.isaakhanimann.journal.ui.main.navigation.ROOT_TAB_INPUT_LOCK_MS
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
@@ -182,7 +182,7 @@ private fun MainScreenContent(
                         rootTabInputLock.snapTo(latestTransitionDistancePx.value)
                         rootTabInputLock.animateTo(
                             targetValue = 0f,
-                            animationSpec = tween(NAVIGATION_TRANSITION_MS)
+                            animationSpec = tween(ROOT_TAB_INPUT_LOCK_MS)
                         )
                         settledTabSelectionRevision.intValue = tabSelectionRevision
                     }
