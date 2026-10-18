@@ -35,7 +35,7 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.scene.Scene
 
 private const val NAVIGATION_TRANSITION_MS = 280
-private const val REDUCED_TRANSITION_MS = 140
+const val REDUCED_TRANSITION_MS = 140
 private const val NAVIGATION_START_SCALE = 0.98f
 
 private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(

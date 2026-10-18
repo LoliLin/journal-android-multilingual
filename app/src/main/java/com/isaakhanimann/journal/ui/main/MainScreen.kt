@@ -23,9 +23,17 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.consume
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
@@ -48,6 +56,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
+import com.isaakhanimann.journal.ui.main.navigation.REDUCED_TRANSITION_MS
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
@@ -123,6 +132,10 @@ private fun MainScreenContent(
     val entryProvider = remember(manager) { nav3EntryProvider(manager) }
     val entries = manager.decoratedEntries(entryProvider)
     val selectedDestination = manager.selectedTab
+    val settledTabSelectionRevision = remember(manager) {
+        mutableIntStateOf(manager.tabSelectionRevision)
+    }
+    val rootTabInputLock = remember(manager) { Animatable(0f) }
     val isOnMainTabRoot = manager.isAtRoot()
     val activity = LocalContext.current as? Activity
 
@@ -161,46 +174,104 @@ private fun MainScreenContent(
             LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
             LocalBottomBarOverlayInsetPx provides visibleBarPx
         ) {
-            NavDisplay(
-                entries = entries,
-                onBack = { if (!manager.pop()) activity?.finish() },
-                transitionSpec = navTransitionSpecForDirection(
-                    manager.navigationDirection,
-                    agoraStyle = rootTabTransitionsEnabled
-                ),
-                popTransitionSpec = popNavTransitionSpecForDirection(
-                    manager.popDirection,
-                    agoraStyle = rootTabTransitionsEnabled
-                ),
-                predictivePopTransitionSpec = predictivePopTransitionSpecForDirection(
-                    manager.predictivePopDirection,
-                    agoraStyle = rootTabTransitionsEnabled
-                ),
-                modifier = Modifier
-                    .fillMaxSize()
-                    .pointerInput(manager, selectedDestination, isOnMainTabRoot, isKeyboardOpenNow) {
-                        if (isOnMainTabRoot && !isKeyboardOpenNow) {
-                            var horizontalDrag = 0f
-                            detectHorizontalDragGestures(
-                                onDragStart = { horizontalDrag = 0f },
-                                onHorizontalDrag = { _, dragAmount ->
-                                    horizontalDrag += dragAmount
-                                },
-                                onDragEnd = {
-                                    val tabs = TopLevelDestinations.all
-                                    val currentIndex = tabs.indexOf(selectedDestination)
-                                    when {
-                                        horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
-                                            manager.switchToTab(tabs[currentIndex + 1])
-                                        horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
-                                            manager.switchToTab(tabs[currentIndex - 1])
-                                    }
-                                },
-                                onDragCancel = { horizontalDrag = 0f }
+            BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                val rootTabTransitionDistancePx =
+                    with(LocalDensity.current) { maxWidth.toPx() * 0.38f }
+                val tabSelectionRevision = manager.tabSelectionRevision
+                LaunchedEffect(
+                    manager,
+                    tabSelectionRevision,
+                    rootTabTransitionsEnabled,
+                    rootTabTransitionDistancePx
+                ) {
+                    if (settledTabSelectionRevision.intValue != tabSelectionRevision) {
+                        rootTabInputLock.snapTo(rootTabTransitionDistancePx)
+                        if (rootTabTransitionsEnabled) {
+                            rootTabInputLock.animateTo(
+                                targetValue = 0f,
+                                animationSpec = spring(
+                                    dampingRatio = 0.9f,
+                                    stiffness = Spring.StiffnessMediumLow,
+                                    visibilityThreshold = 1f
+                                )
+                            )
+                        } else {
+                            rootTabInputLock.animateTo(
+                                targetValue = 0f,
+                                animationSpec = tween(REDUCED_TRANSITION_MS)
                             )
                         }
+                        settledTabSelectionRevision.intValue = tabSelectionRevision
                     }
-            )
+                }
+                val isRootTabTransitionRunning =
+                    settledTabSelectionRevision.intValue != tabSelectionRevision ||
+                        rootTabInputLock.isRunning
+
+                NavDisplay(
+                    entries = entries,
+                    onBack = { if (!manager.pop()) activity?.finish() },
+                    transitionSpec = navTransitionSpecForDirection(
+                        manager.navigationDirection,
+                        agoraStyle = rootTabTransitionsEnabled
+                    ),
+                    popTransitionSpec = popNavTransitionSpecForDirection(
+                        manager.popDirection,
+                        agoraStyle = rootTabTransitionsEnabled
+                    ),
+                    predictivePopTransitionSpec = predictivePopTransitionSpecForDirection(
+                        manager.predictivePopDirection,
+                        agoraStyle = rootTabTransitionsEnabled
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .pointerInput(
+                            manager,
+                            selectedDestination,
+                            isOnMainTabRoot,
+                            isKeyboardOpenNow,
+                            isRootTabTransitionRunning
+                        ) {
+                            if (isOnMainTabRoot && !isKeyboardOpenNow && !isRootTabTransitionRunning) {
+                                var horizontalDrag = 0f
+                                detectHorizontalDragGestures(
+                                    onDragStart = { horizontalDrag = 0f },
+                                    onHorizontalDrag = { _, dragAmount ->
+                                        horizontalDrag += dragAmount
+                                    },
+                                    onDragEnd = {
+                                        val tabs = TopLevelDestinations.all
+                                        val currentIndex = tabs.indexOf(selectedDestination)
+                                        when {
+                                            horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
+                                                manager.switchToTab(tabs[currentIndex + 1])
+                                            horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
+                                                manager.switchToTab(tabs[currentIndex - 1])
+                                        }
+                                    },
+                                    onDragCancel = { horizontalDrag = 0f }
+                                )
+                            }
+                        }
+                )
+                if (isRootTabTransitionRunning) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .pointerInput(tabSelectionRevision) {
+                                awaitEachGesture {
+                                    awaitPointerEventScope {
+                                        awaitFirstDown(requireUnconsumed = false).consume()
+                                        do {
+                                            val event = awaitPointerEvent()
+                                            event.changes.forEach { it.consume() }
+                                        } while (event.changes.any { it.pressed })
+                                    }
+                                }
+                            }
+                    )
+                }
+            }
         }
         BottomNavigationBar(
             visible = isBottomBarShown,
