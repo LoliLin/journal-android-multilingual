@@ -266,24 +266,26 @@ interface ExperienceDao {
     )
     suspend fun migrateMushroomsCustomUnits()
 
-    @Query("SELECT COALESCE(MAX(id), 0) FROM experience")
-    suspend fun getMaxExperienceId(): Int
-
     @Transaction
-    suspend fun insertExperienceAndUpdateIngestion(title: String, ingestion: Ingestion): Int {
-        val newExperienceId = getMaxExperienceId() + 1
-        insert(
+    suspend fun insertExperienceAndUpdateIngestion(
+        title: String,
+        ingestion: Ingestion
+    ): Int {
+        val newExperienceId = insert(
             Experience(
-                id = newExperienceId,
+                id = 0,
                 title = title,
                 text = "",
                 sortDate = ingestion.time,
                 location = null
             )
-        )
+        ).toInt()
+
         update(ingestion.copy(experienceId = newExperienceId))
+
         return newExperienceId
     }
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(experience: Experience): Long
