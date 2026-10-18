@@ -24,8 +24,6 @@ import android.net.Uri
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -55,9 +53,8 @@ import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
-import com.isaakhanimann.journal.ui.main.navigation.DIRECTIONAL_NAVIGATION_FADE_MS
+import com.isaakhanimann.journal.ui.main.navigation.NAVIGATION_TRANSITION_MS
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
-import com.isaakhanimann.journal.ui.main.navigation.SIMPLE_NAVIGATION_TRANSITION_MS
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
@@ -84,9 +81,6 @@ import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
 import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 private const val TAG = "MainScreen"
 
@@ -183,37 +177,13 @@ private fun MainScreenContent(
                     with(LocalDensity.current) { maxWidth.toPx() * 0.38f }
                 val tabSelectionRevision = manager.tabSelectionRevision
                 val latestTransitionDistancePx = rememberUpdatedState(rootTabTransitionDistancePx)
-                LaunchedEffect(
-                    manager,
-                    tabSelectionRevision,
-                    rootTabTransitionsEnabled
-                ) {
+                LaunchedEffect(manager, tabSelectionRevision) {
                     if (settledTabSelectionRevision.intValue != tabSelectionRevision) {
                         rootTabInputLock.snapTo(latestTransitionDistancePx.value)
-                        if (rootTabTransitionsEnabled) {
-                            coroutineScope {
-                                val springAnimation = launch {
-                                    rootTabInputLock.animateTo(
-                                        targetValue = 0f,
-                                        animationSpec = spring(
-                                            dampingRatio = 0.9f,
-                                            stiffness = Spring.StiffnessMediumLow,
-                                            visibilityThreshold = 1f
-                                        )
-                                    )
-                                }
-                                val fadeAnimation = launch {
-                                    delay(DIRECTIONAL_NAVIGATION_FADE_MS.toLong())
-                                }
-                                springAnimation.join()
-                                fadeAnimation.join()
-                            }
-                        } else {
-                            rootTabInputLock.animateTo(
-                                targetValue = 0f,
-                                animationSpec = tween(SIMPLE_NAVIGATION_TRANSITION_MS)
-                            )
-                        }
+                        rootTabInputLock.animateTo(
+                            targetValue = 0f,
+                            animationSpec = tween(NAVIGATION_TRANSITION_MS)
+                        )
                         settledTabSelectionRevision.intValue = tabSelectionRevision
                     }
                 }

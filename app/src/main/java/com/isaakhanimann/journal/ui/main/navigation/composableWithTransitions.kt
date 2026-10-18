@@ -27,8 +27,6 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.ui.unit.IntOffset
 import androidx.navigation3.runtime.NavKey
@@ -40,24 +38,18 @@ private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
     direction: Int,
 ): ContentTransform {
     val horizontalDirection = if (direction < 0) -1 else 1
-    val spatialSpring = spring<Float>(
-        dampingRatio = 0.9f,
-        stiffness = Spring.StiffnessMediumLow
-    )
-    val offsetSpring = spring<IntOffset>(
-        dampingRatio = 0.9f,
-        stiffness = Spring.StiffnessMediumLow
-    )
+    val motionSpec = tween<Float>(durationMillis = NAVIGATION_TRANSITION_MS)
+    val offsetSpec = tween<IntOffset>(durationMillis = NAVIGATION_TRANSITION_MS)
     return (slideInHorizontally(
-        offsetSpring,
+        offsetSpec,
         initialOffsetX = { width -> width * 38 / 100 * horizontalDirection }
-    ) + fadeIn(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
-        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
+    ) + fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
+        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = motionSpec)) togetherWith
         (slideOutHorizontally(
-            offsetSpring,
+            offsetSpec,
             targetOffsetX = { width -> -width * 12 / 100 * horizontalDirection }
-        ) + fadeOut(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
-            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
+        ) + fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
+            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = motionSpec))
 }
 
 fun navTransitionSpecForDirection(
@@ -67,7 +59,7 @@ fun navTransitionSpecForDirection(
     if (agoraStyle) {
         directionalTransition(direction)
     } else {
-        fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
+        fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
     }
 }
 
@@ -79,7 +71,7 @@ fun popNavTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
+    else fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
 }
 
 fun predictivePopTransitionSpecForDirection(
@@ -87,5 +79,5 @@ fun predictivePopTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
+    else fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
 }
