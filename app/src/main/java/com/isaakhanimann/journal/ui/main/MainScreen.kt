@@ -30,7 +30,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
-import androidx.compose.ui.input.pointer.consume
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -281,13 +280,11 @@ private fun MainScreenContent(
                             .fillMaxSize()
                             .pointerInput(tabSelectionRevision) {
                                 awaitEachGesture {
-                                    awaitPointerEventScope {
-                                        awaitFirstDown(requireUnconsumed = false).consume()
-                                        do {
-                                            val event = awaitPointerEvent()
-                                            event.changes.forEach { it.consume() }
-                                        } while (event.changes.any { it.pressed })
-                                    }
+                                    awaitFirstDown(requireUnconsumed = false).consume()
+                                    do {
+                                        val event = awaitPointerEvent()
+                                        event.changes.forEach { it.consume() }
+                                    } while (event.changes.any { it.pressed })
                                 }
                             }
                     )
