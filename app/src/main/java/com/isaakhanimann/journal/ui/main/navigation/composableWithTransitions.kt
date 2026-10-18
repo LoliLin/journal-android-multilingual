@@ -43,13 +43,13 @@ private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
     return (slideInHorizontally(
         offsetSpec,
         initialOffsetX = { width -> width * 38 / 100 * horizontalDirection }
-    ) + fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
-        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = motionSpec)) togetherWith
+    ) + fadeIn(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
+        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
         (slideOutHorizontally(
             offsetSpec,
             targetOffsetX = { width -> -width * 12 / 100 * horizontalDirection }
-        ) + fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
-            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = motionSpec))
+        ) + fadeOut(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
+            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
 }
 
 fun navTransitionSpecForDirection(
@@ -59,7 +59,7 @@ fun navTransitionSpecForDirection(
     if (agoraStyle) {
         directionalTransition(direction)
     } else {
-        fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
+        fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
     }
 }
 
@@ -71,7 +71,7 @@ fun popNavTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
+    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
 }
 
 fun predictivePopTransitionSpecForDirection(
@@ -79,5 +79,5 @@ fun predictivePopTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(NAVIGATION_TRANSITION_MS))
+    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
 }
