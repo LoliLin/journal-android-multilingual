@@ -34,8 +34,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.scene.Scene
 
-private const val NAVIGATION_TRANSITION_MS = 280
-const val REDUCED_TRANSITION_MS = 140
 private const val NAVIGATION_START_SCALE = 0.98f
 
 private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
@@ -53,12 +51,12 @@ private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
     return (slideInHorizontally(
         offsetSpring,
         initialOffsetX = { width -> width * 38 / 100 * horizontalDirection }
-    ) + fadeIn(tween(NAVIGATION_TRANSITION_MS)) +
+    ) + fadeIn(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
         scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
         (slideOutHorizontally(
             offsetSpring,
             targetOffsetX = { width -> -width * 12 / 100 * horizontalDirection }
-        ) + fadeOut(tween(NAVIGATION_TRANSITION_MS)) +
+        ) + fadeOut(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
             scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
 }
 
@@ -69,7 +67,7 @@ fun navTransitionSpecForDirection(
     if (agoraStyle) {
         directionalTransition(direction)
     } else {
-        fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
+        fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
     }
 }
 
@@ -81,7 +79,7 @@ fun popNavTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.() -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
+    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
 }
 
 fun predictivePopTransitionSpecForDirection(
@@ -89,5 +87,5 @@ fun predictivePopTransitionSpecForDirection(
     agoraStyle: Boolean = true,
 ): AnimatedContentTransitionScope<Scene<NavKey>>.(Int) -> ContentTransform = {
     if (agoraStyle) directionalTransition(direction)
-    else fadeIn(tween(REDUCED_TRANSITION_MS)) togetherWith fadeOut(tween(REDUCED_TRANSITION_MS))
+    else fadeIn(tween(SIMPLE_NAVIGATION_TRANSITION_MS)) togetherWith fadeOut(tween(SIMPLE_NAVIGATION_TRANSITION_MS))
 }

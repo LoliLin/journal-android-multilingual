@@ -46,6 +46,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -55,8 +56,9 @@ import androidx.core.util.Consumer
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation3.ui.NavDisplay
 import com.isaakhanimann.journal.localization.I18n
+import com.isaakhanimann.journal.ui.main.navigation.DIRECTIONAL_NAVIGATION_FADE_MS
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
-import com.isaakhanimann.journal.ui.main.navigation.REDUCED_TRANSITION_MS
+import com.isaakhanimann.journal.ui.main.navigation.SIMPLE_NAVIGATION_TRANSITION_MS
 import com.isaakhanimann.journal.ui.main.navigation.decoratedEntries
 import com.isaakhanimann.journal.ui.main.navigation.navTransitionSpecForDirection
 import com.isaakhanimann.journal.ui.main.navigation.nav3EntryProvider
@@ -83,6 +85,9 @@ import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE
 import com.isaakhanimann.journal.ui.notifications.NAV_SUBSTANCE_COMPANION
 import com.isaakhanimann.journal.ui.notifications.NAV_TIME_CAPSULE
 import com.isaakhanimann.journal.ui.utils.keyboard.isKeyboardOpen
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private const val TAG = "MainScreen"
 
@@ -178,27 +183,36 @@ private fun MainScreenContent(
                 val rootTabTransitionDistancePx =
                     with(LocalDensity.current) { maxWidth.toPx() * 0.38f }
                 val tabSelectionRevision = manager.tabSelectionRevision
+                val latestTransitionDistancePx = rememberUpdatedState(rootTabTransitionDistancePx)
                 LaunchedEffect(
                     manager,
                     tabSelectionRevision,
-                    rootTabTransitionsEnabled,
-                    rootTabTransitionDistancePx
+                    rootTabTransitionsEnabled
                 ) {
                     if (settledTabSelectionRevision.intValue != tabSelectionRevision) {
-                        rootTabInputLock.snapTo(rootTabTransitionDistancePx)
+                        rootTabInputLock.snapTo(latestTransitionDistancePx.value)
                         if (rootTabTransitionsEnabled) {
-                            rootTabInputLock.animateTo(
-                                targetValue = 0f,
-                                animationSpec = spring(
-                                    dampingRatio = 0.9f,
-                                    stiffness = Spring.StiffnessMediumLow,
-                                    visibilityThreshold = 1f
-                                )
-                            )
+                            coroutineScope {
+                                val springAnimation = launch {
+                                    rootTabInputLock.animateTo(
+                                        targetValue = 0f,
+                                        animationSpec = spring(
+                                            dampingRatio = 0.9f,
+                                            stiffness = Spring.StiffnessMediumLow,
+                                            visibilityThreshold = 1f
+                                        )
+                                    )
+                                }
+                                val fadeAnimation = launch {
+                                    delay(DIRECTIONAL_NAVIGATION_FADE_MS.toLong())
+                                }
+                                springAnimation.join()
+                                fadeAnimation.join()
+                            }
                         } else {
                             rootTabInputLock.animateTo(
                                 targetValue = 0f,
-                                animationSpec = tween(REDUCED_TRANSITION_MS)
+                                animationSpec = tween(SIMPLE_NAVIGATION_TRANSITION_MS)
                             )
                         }
                         settledTabSelectionRevision.intValue = tabSelectionRevision
@@ -225,6 +239,7 @@ private fun MainScreenContent(
                     ),
                     modifier = Modifier
                         .fillMaxSize()
+                        // Cancel an in-flight root swipe as soon as a tab transition starts.
                         .pointerInput(
                             manager,
                             selectedDestination,
@@ -240,13 +255,18 @@ private fun MainScreenContent(
                                         horizontalDrag += dragAmount
                                     },
                                     onDragEnd = {
-                                        val tabs = TopLevelDestinations.all
-                                        val currentIndex = tabs.indexOf(selectedDestination)
-                                        when {
-                                            horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
-                                                manager.switchToTab(tabs[currentIndex + 1])
-                                            horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
-                                                manager.switchToTab(tabs[currentIndex - 1])
+                                        val tabTransitionSettled =
+                                            settledTabSelectionRevision.intValue == manager.tabSelectionRevision &&
+                                                !rootTabInputLock.isRunning
+                                        if (tabTransitionSettled) {
+                                            val tabs = TopLevelDestinations.all
+                                            val currentIndex = tabs.indexOf(selectedDestination)
+                                            when {
+                                                horizontalDrag < -rootTabSwipeThresholdPx && currentIndex < tabs.lastIndex ->
+                                                    manager.switchToTab(tabs[currentIndex + 1])
+                                                horizontalDrag > rootTabSwipeThresholdPx && currentIndex > 0 ->
+                                                    manager.switchToTab(tabs[currentIndex - 1])
+                                            }
                                         }
                                     },
                                     onDragCancel = { horizontalDrag = 0f }
@@ -254,6 +274,7 @@ private fun MainScreenContent(
                             }
                         }
                 )
+                // Block Compose page input while scenes move; system back remains system-owned.
                 if (isRootTabTransitionRunning) {
                     Box(
                         modifier = Modifier
