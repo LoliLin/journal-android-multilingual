@@ -38,18 +38,18 @@ private fun AnimatedContentTransitionScope<Scene<NavKey>>.directionalTransition(
     direction: Int,
 ): ContentTransform {
     val horizontalDirection = if (direction < 0) -1 else 1
-    val motionSpec = tween<Float>(durationMillis = NAVIGATION_TRANSITION_MS)
-    val offsetSpec = tween<IntOffset>(durationMillis = NAVIGATION_TRANSITION_MS)
+    val motionSpec = tween<Float>(durationMillis = DIRECTIONAL_NAVIGATION_FADE_MS)
+    val offsetSpec = tween<IntOffset>(durationMillis = DIRECTIONAL_NAVIGATION_FADE_MS)
     return (slideInHorizontally(
         offsetSpec,
         initialOffsetX = { width -> width * 38 / 100 * horizontalDirection }
     ) + fadeIn(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
-        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring)) togetherWith
+        scaleIn(initialScale = NAVIGATION_START_SCALE, animationSpec = motionSpec)) togetherWith
         (slideOutHorizontally(
             offsetSpec,
             targetOffsetX = { width -> -width * 12 / 100 * horizontalDirection }
         ) + fadeOut(tween(DIRECTIONAL_NAVIGATION_FADE_MS)) +
-            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = spatialSpring))
+            scaleOut(targetScale = NAVIGATION_START_SCALE, animationSpec = motionSpec))
 }
 
 fun navTransitionSpecForDirection(
