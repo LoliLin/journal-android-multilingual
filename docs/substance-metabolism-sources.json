@@ -341,12 +341,22 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Droperidol",
+      "sources": ["https://www.medicines.org.uk/emc/product/7310/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Duloxetine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00628e5e-4c5b-2573-e063-6294a90a0e3b"
       ],
       "evidence": "product-information",
       "labelDate": "20260820"
+    },
+    {
+      "name": "Ephedrine",
+      "sources": ["https://www.medicines.org.uk/emc/product/9291/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Escitalopram",
@@ -1384,7 +1394,6 @@
     "Dizocilpine",
     "Doxefazepam",
     "Doxylamine",
-    "Droperidol",
     "Emylcamate",
     "Etallobarbital",
     "Ethadione",

@@ -5,6 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Droperidol is extensively metabolised in the liver, undergoing oxidation, dealkylation, demethylation and hydroxylation by cytochrome P450 isoenzymes 1A2 and 3A4, and to a lesser extent by 2C19. The metabolites are devoid of neuroleptic activity. Elimination occurs mainly through metabolism; 75% is excreted via the kidneys, only 1% of the active substance is excreted unchanged in urine and 11% in faeces. Plasma clearance is 0.8 (0.4-1.8) l/min and the elimination half-life is 134 +/- 13 min. Plasma concentrations fall rapidly during the first 15 minutes after intravenous administration; this is a metabolism-independent redistribution, and plasma protein binding is 85-90%.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/7310/smpc"
+  ],
   "summary": "Droperidol is an antidopaminergic medication used to prevent or treat nausea and as an antipsychotic. It is also used for rapid sedation in intensive-care settings and severe agitation."
 }
