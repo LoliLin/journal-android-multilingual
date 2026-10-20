@@ -54,5 +54,7 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Phenobarbital Thornton & Ross 15 mg/5 ml oral elixir. Oral absorption is complete but slow. About 25% is eliminated by pH-dependent renal excretion; the remainder is inactivated by hepatic microsomal enzymes. The major metabolite is the inactive para-hydroxyphenyl derivative, excreted in urine partly as a sulphate conjugate. Plasma half-life is up to about 75 hours in children and 100 hours in adults, and is increased in older people, overdose, and renal or hepatic disease. The label reports about 40% binding to plasma proteins and a similar extent of tissue binding.",
+  "metabolismSources": ["https://www.medicines.org.uk/emc/product/4920/smpc"]
 }
