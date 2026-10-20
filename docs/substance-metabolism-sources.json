@@ -257,6 +257,11 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Cyclizine",
+      "sources": ["https://www.medicines.org.uk/emc/product/4318/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Cyclobenzaprine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34e57aff-dc4b-4631-9d57-31020244835d"
@@ -321,6 +326,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260818"
+    },
+    {
+      "name": "Dosulepin",
+      "sources": ["https://www.medicines.org.uk/emc/product/101606/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Doxepin",
@@ -1337,7 +1347,6 @@
     "Cloxazolam",
     "Coronaridine",
     "Cyamemazine",
-    "Cyclizine",
     "Cyclo-Methiodrone",
     "Cyclobarbital",
     "Cyclopentyl-Fentanyl",
@@ -1373,7 +1382,6 @@
     "Disulfiram",
     "Dixyrazine",
     "Dizocilpine",
-    "Dosulepin",
     "Doxefazepam",
     "Doxylamine",
     "Droperidol",
