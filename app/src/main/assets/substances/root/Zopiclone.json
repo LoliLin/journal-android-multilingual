@@ -16,6 +16,16 @@
   ],
   "categories": ["hallucinogen", "depressant", "habit-forming", "common"],
   "summary": "A nonbenzodiazepine sedative sleep aid (Z-drug), which can have hallucinogenic effects if taken while awake. Often causes users to have a metallic taste in the mouth for ~12h. Has been reported in some cases to cause certain users to black out, redose excessively and undertake dangerous activities such as driving.",
+  "interactions": {
+    "dangerous": [],
+    "unsafe": ["Alcohol", "depressant"],
+    "uncertain": []
+  },
+  "saferUse": [
+    "The cited SmPC limits treatment to the shortest useful duration (single course no longer than 4 weeks including tapering) and warns that both dependence and withdrawal reactions can occur even with short-term use at recommended doses.",
+    "Avoid alcohol and other CNS depressants; the label reports additive CNS depression. Do not drive or operate machinery within 12 hours of taking zopiclone, and do not re-dose during the same night. Take it only when a full night's sleep (about 7-8 hours) is possible, because anterograde amnesia and complex sleep behaviours (sleep walking, sleep driving) have been reported.",
+    "CYP3A4 inhibitors (erythromycin, clarithromycin, ketoconazole, itraconazole, ritonavir) raise zopiclone exposure; CYP3A4 inducers (rifampicin, carbamazepine, phenobarbital, phenytoin, St John's wort) lower it. The label says co-administration with CYP3A4 inhibitors should be avoided in the elderly."
+  ],
   "roas": [
     {
       "name": "oral",
@@ -44,5 +54,9 @@
         }
       }
     }
+  ],
+  "metabolism": "The main metabolites are the N-oxide derivative (pharmacologically active in animals) and the N-desmethyl metabolite (pharmacologically inactive in animals). An in-vitro study indicates CYP3A4 is the major isoenzyme forming both metabolites, and CYP2C8 also contributes to N-desmethyl zopiclone formation. Clearance is mainly metabolic: about 80% is eliminated in urine as free metabolites (N-oxide and N-desmethyl derivatives) and about 16% in faeces.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/101311/smpc"
   ]
 }

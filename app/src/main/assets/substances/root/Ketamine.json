@@ -23,7 +23,10 @@
     "dissociative"
   ],
   "addictionPotential": "moderate to high abuse potential and produces psychological dependence with chronic use",
-  "toxicities": [],
+  "toxicities": [
+    "The cited KETALAR (ketamine hydrochloride injection) label carries no boxed warning, but lists transient and minimal respiratory depression, hemodynamic instability requiring monitoring of vital signs and cardiac function, and emergence reactions (postoperative confusional states) among its warnings and precautions.",
+    "The label states that abuse and misuse can produce a variety of symptoms and that ketamine is a controlled substance; urinary tract complications (cystitis, reduced bladder capacity, ureteral stenosis and obstruction, hydronephrosis) have been reported with long-term use or abuse."
+  ],
   "categories": [
     "dissociative",
     "habit-forming",
@@ -155,5 +158,9 @@
         "max": 29
       }
     }
+  ],
+  "metabolism": "N-dealkylation to the active metabolite norketamine, primarily by CYP2B6 and CYP3A4 and to a lesser extent by other CYP enzymes. Norketamine is hydroxylated to hydroxynorketamine compounds, which are conjugated with glucuronic acid and then dehydrated to dehydroxynorketamine. Hepatic biotransformation together with redistribution out of the CNS accounts for the decline in ketamine concentrations.",
+  "metabolismSources": [
+    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14e8f864-8b8a-4e7e-8439-e510d3107063"
   ]
 }

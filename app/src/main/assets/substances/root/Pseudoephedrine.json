@@ -85,5 +85,9 @@
         }
       }
     }
+  ],
+  "metabolism": "Rapidly and completely absorbed after oral administration. The only metabolism is N-demethylation, which occurs to only a small extent; excretion is mainly via the urine, largely as unchanged drug. The plasma half-life is about 5.5 hours and is prolonged in alkaline urine and shortened in acid urine.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/6199/smpc"
   ]
 }

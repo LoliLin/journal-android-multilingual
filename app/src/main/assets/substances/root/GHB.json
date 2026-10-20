@@ -94,5 +94,9 @@
         }
       }
     }
+  ],
+  "metabolism": "Metabolism is the major elimination pathway, producing carbon dioxide and water via the Krebs cycle and secondarily by beta-oxidation. GHB dehydrogenase forms succinic semialdehyde, which succinic semialdehyde dehydrogenase converts to succinic acid; a mitochondrial transhydrogenase can also catalyse the first step. No active metabolites have been identified. Clearance is almost entirely by biotransformation: less than 5% of unchanged drug appears in urine, and the elimination half-life is 0.5 to 1 hour.",
+  "metabolismSources": [
+    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=926eb076-a4a8-45e4-91ef-411f0aa4f3ca"
   ]
 }

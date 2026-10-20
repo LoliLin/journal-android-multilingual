@@ -208,5 +208,9 @@
         }
       }
     }
+  ],
+  "metabolism": "Extensively metabolized by multiple pathways to noroxycodone, oxymorphone and noroxymorphone, which are subsequently glucuronidated. CYP3A-mediated N-demethylation to noroxycodone is the primary pathway, with a lower contribution from CYP2D6-mediated O-demethylation to oxymorphone. Noroxycodone and noroxymorphone are the major circulating metabolites.",
+  "metabolismSources": [
+    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bfdfe235-d717-4855-a3c8-a13d26dadede"
   ]
 }
