@@ -86,6 +86,11 @@
       "labelDate": "20260818"
     },
     {
+      "name": "Atropine",
+      "sources": ["https://www.medicines.org.uk/emc/product/12547/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Baclofen",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4e2cd27d-91c7-4f15-96cc-3971769dbeaa"
@@ -147,6 +152,11 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Caffeine",
+      "sources": ["https://www.medicines.org.uk/emc/product/5146/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Carbamazepine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5f9535b1-ff6a-41b3-bbb2-efcf8fbacf4c"
@@ -169,6 +179,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250825"
+    },
+    {
+      "name": "Chloral hydrate",
+      "sources": ["https://www.medicines.org.uk/emc/product/13223/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Chlordiazepoxide",
@@ -295,6 +310,11 @@
       "labelDate": "20260811"
     },
     {
+      "name": "Dihydrocodeine",
+      "sources": ["https://www.medicines.org.uk/emc/product/15263/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Donepezil",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0516d548-db9b-410a-aec9-79aedbc3f6e9"
@@ -401,6 +421,13 @@
       "labelDate": "20260218"
     },
     {
+      "name": "GHB",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=926eb076-a4a8-45e4-91ef-411f0aa4f3ca"
+      ],
+      "evidence": "product-information"
+    },
+    {
       "name": "Gabapentin",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d35cd5ac-5ed6-2405-e053-2995a90a6946"
@@ -464,6 +491,13 @@
       "evidence": "human-material-study"
     },
     {
+      "name": "Hydrocodone",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b7d23ac2-e776-9f62-3290-c64c2d6eb353"
+      ],
+      "evidence": "product-information"
+    },
+    {
       "name": "Hydroxyzine",
       "sources": ["https://www.medicines.org.uk/emc/product/101010/smpc"],
       "evidence": "product-information-or-guideline"
@@ -485,6 +519,13 @@
       "name": "Isotonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38582802/"],
       "evidence": "human-material-study"
+    },
+    {
+      "name": "Ketamine",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14e8f864-8b8a-4e7e-8439-e510d3107063"
+      ],
+      "evidence": "product-information"
     },
     {
       "name": "Lacosamide",
@@ -662,6 +703,13 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Morphine",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c354b3bf-86c0-4bb8-8b1f-be2164942698"
+      ],
+      "evidence": "product-information"
+    },
+    {
       "name": "Nalmefene",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a59a5847-9fe4-4341-a203-be0a5e6d3e36"
@@ -721,6 +769,13 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260826"
+    },
+    {
+      "name": "Oxycodone",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bfdfe235-d717-4855-a3c8-a13d26dadede"
+      ],
+      "evidence": "product-information"
     },
     {
       "name": "Paliperidone",
@@ -814,6 +869,11 @@
       "name": "Protonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38679851/"],
       "evidence": "human-material-study"
+    },
+    {
+      "name": "Pseudoephedrine",
+      "sources": ["https://www.medicines.org.uk/emc/product/6199/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Quazepam",
@@ -1099,6 +1159,11 @@
       "labelDate": "20260818"
     },
     {
+      "name": "Zopiclone",
+      "sources": ["https://www.medicines.org.uk/emc/product/101311/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Zuranolone",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f18e53b0-d0bb-422d-8de7-ab64b7292b29"
@@ -1257,7 +1322,6 @@
     "Cathinone",
     "Changa",
     "Chloral betaine",
-    "Chloral hydrate",
     "Chloralodol",
     "Chloroform",
     "Chlorproethazine",
