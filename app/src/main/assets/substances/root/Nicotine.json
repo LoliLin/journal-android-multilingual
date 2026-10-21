@@ -209,5 +209,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Boots NicAssist 1 mg compressed lozenges. The absorbed amount depends on the amount released into the mouth and absorbed through the buccal mucosa; the main part is absorbed through the buccal mucosa, while a proportion reaches the stomach and intestine via swallowing of nicotine-containing saliva and is inactivated there. Because of the first-pass effect in the liver, systemic bioavailability of nicotine is low. The volume of distribution after intravenous administration is approximately 2-3 l/kg and the half-life is 2 hours. Nicotine is metabolised principally in the liver and also in the kidney and lungs, with plasma clearance of approximately 1.2 l/min. More than 20 metabolites have been identified, all believed to be less active than nicotine; the main metabolite is cotinine, with a half-life of 15-20 hours and a plasma concentration about 10 times that of nicotine. Nicotine's plasma-protein binding is less than 5%. The main metabolites in urine are cotinine (15% of the dose) and trans-3-hydroxy cotinine (45% of the dose). About 10% of the nicotine is excreted unchanged, and up to 30% may be excreted in urine with increased diuresis and acidity below pH 5.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8534/smpc"]
 }

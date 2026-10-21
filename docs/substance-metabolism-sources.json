@@ -824,6 +824,11 @@
       "labelDate": "20250904"
     },
     {
+      "name": "Nicotine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8534/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Nitrazepam",
       "sources": ["https://www.medicines.org.uk/emc/product/3901/smpc"],
       "evidence": "product-information"
@@ -881,6 +886,11 @@
       "labelDate": "20260728"
     },
     {
+      "name": "Paracetamol",
+      "sources": ["https://www.medicines.org.uk/emc/product/100694/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Paroxetine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=598ece4d-0ac4-993b-e063-6294a90a1d34"
@@ -903,6 +913,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260827"
+    },
+    {
+      "name": "Pethidine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8941/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Phenelzine",
@@ -940,6 +955,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260710"
+    },
+    {
+      "name": "Piracetam",
+      "sources": ["https://www.medicines.org.uk/emc/product/101129/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Pregabalin",

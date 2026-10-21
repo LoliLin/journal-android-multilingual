@@ -83,5 +83,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Pethidine 50 mg/ml and 100 mg/2 ml solution for injection. Pethidine is rapidly absorbed after intramuscular or subcutaneous injection, with wide inter-individual variation. It is widely distributed in the tissues with a volume of distribution of 200-300 litres and is extensively protein bound (60-80%). Pethidine is metabolised in the liver, mainly by hydrolysis to pethidinic acid or by N-demethylation to norpethidine, followed by hydrolysis to norpethidinic acid; subsequent partial conjugation with glucuronic acid may also occur. It is excreted via the urine (70% in 24 hours). One metabolite, norpethidine, is pharmacologically active and its accumulation can result in toxicity. Urinary excretion is pH-dependent, the lower the pH the greater the clearance, and at normal urinary pH only a small amount of pethidine is excreted unchanged. Pethidine has a plasma elimination half-life of about 3 to 6 hours; norpethidine is eliminated more slowly, with a half-life of up to 20 hours, and may accumulate with chronic use, especially with renal impairment. Pethidine crosses the placenta and is excreted in breast milk.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8941/smpc"]
 }
