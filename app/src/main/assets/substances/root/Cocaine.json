@@ -270,5 +270,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Cocaine Hydrochloride Solution 10% w/v (topical use in the nose or pharynx). Cocaine is metabolised in humans by two major pathways. The first accounts for over 90% of the transformation and involves various hydrolytic reactions catalysed by serum and liver pseudocholinesterase, producing ecgonine methyl ester, benzoylecgonine and ecgonine. The second is an oxidative process, apparently responsible for the hepatotoxicity: cocaine is N-demethylated to norcocaine, which is rapidly oxidised to N-hydroxynorcocaine and then further metabolised to norcocaine nitroxide, believed to be ultimately responsible for the hepatotoxicity. Absorption from mucous membranes is delayed by vasoconstriction; peak plasma concentrations of up to 474 ng/ml were obtained 15-120 minutes after applying doses of 1.5-2 mg per kg bodyweight to the nasal mucosa as a 10% w/v solution, and cocaine applied to mucous membranes may be detectable for as long as three hours. A true biological half-life is difficult to ascertain because serum concentrations reflect a dynamic balance between absorption and degradation and blood cholinesterase varies between individuals. On oral ingestion the gastrointestinal absorption is delayed but at least 30% is estimated to be absorbed and bioavailable.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/3692/smpc"]
 }

@@ -87,5 +87,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Amantadine Hydrochloride 100 mg capsules (oral). Amantadine is absorbed slowly but almost completely, with peak plasma concentrations of about 250 ng/ml after 100 mg and 500 ng/ml after 200 mg, attained 3-4 hours after a single oral dose; steady state settles at 300 ng/ml within 3 days on 200 mg daily. In vitro 67% is bound to plasma proteins, with a substantial amount bound to red blood cells, whose concentration in erythrocytes is 2.66 times the plasma concentration. The apparent volume of distribution is 5 to 10 L/kg, suggesting extensive tissue binding. Amantadine is metabolised to a minor extent, principally by N-acetylation. In healthy young adults the mean plasma elimination half-life is 15 hours (10-31 hours) and total plasma clearance is about the same as renal clearance (250 ml/min); renal clearance far exceeds creatinine clearance, suggesting renal tubular secretion. After 4-5 days 90% of the dose appears unchanged in urine, and the rate is considerably influenced by urinary pH, a rise in pH bringing about a fall in excretion.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/100952/smpc"]
 }

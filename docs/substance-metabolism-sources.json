@@ -36,6 +36,11 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Amantadine",
+      "sources": ["https://www.medicines.org.uk/emc/product/100952/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Amisulpride",
       "sources": ["https://www.medicines.org.uk/emc/product/102319/smpc"],
       "evidence": "product-information-or-guideline"
@@ -249,6 +254,11 @@
       "labelDate": "20260511"
     },
     {
+      "name": "Cocaine",
+      "sources": ["https://www.medicines.org.uk/emc/product/3692/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Codeine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40d4a71e-341e-48b3-b925-ba35b7910dff"
@@ -305,6 +315,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260701"
+    },
+    {
+      "name": "Dextromethorphan",
+      "sources": ["https://www.medicines.org.uk/emc/product/1477/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Diazepam",
