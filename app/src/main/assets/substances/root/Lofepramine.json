@@ -5,6 +5,9 @@
   "categories": [
     "antidepressant"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Lofepramine 70 mg/5 ml oral suspension. Lofepramine is rapidly absorbed, with peak plasma concentration reached within 1 hour and a plasma half-life of 5 hours, and like imipramine it appears to undergo significant presystemic metabolism. Plasma protein binding is approximately 99%. Almost all the drug is metabolised before excretion, which is mainly in the urine and in faeces. Lofepramine is metabolised by N-dealkylation, hydroxylation and glucuronidation, and is extensively metabolised to its principal metabolite desmethylimipramine on first pass through the liver; during chronic administration the plasma level of desmethylimipramine is typically three times greater than that of lofepramine, except in the first few hours after each dose. Desipramine, which is also an antidepressant, is converted to 2-hydroxydesipramine in the liver. Both compounds are excreted mainly in the urine as glucuronides, and also by biliary excretion in the faeces. Less than 5% is excreted unchanged in the urine over 24 hours. Elimination may be reduced and bioavailability increased in hepatic disease.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/13878/smpc"
+  ],
   "summary": "Lofepramine is a tricyclic antidepressant used to treat depression. It is considered relatively safer in overdose and has milder, less frequent side effects than many other tricyclic antidepressants."
 }

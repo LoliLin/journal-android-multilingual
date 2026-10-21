@@ -146,5 +146,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Abstral 100 microgram sublingual tablets. Fentanyl is a highly lipophilic drug absorbed very rapidly through the oral mucosa and more slowly through the gastrointestinal tract; orally administered fentanyl undergoes pronounced hepatic and intestinal first-pass effects. Abstral is a quick-dissolving sublingual tablet, with rapid absorption over about 30 minutes and an absolute bioavailability calculated at 54%. About 80-85% of fentanyl is bound by plasma proteins, mainly alpha1-glycoprotein, and the steady-state volume of distribution is about 3-6 l/kg. Fentanyl is metabolised primarily via CYP3A4 to a number of pharmacologically inactive metabolites, including norfentanyl. Within 72 hours of intravenous fentanyl administration around 75% of the dose is excreted into the urine, mostly as metabolites, with less than 10% as unchanged drug; about 9% is recovered in the faeces, primarily as metabolites. Total plasma clearance is about 0.5 l/h/kg. After Abstral administration the main elimination half-life is about 7 hours (range 3-12.5 hours) and the terminal half-life about 20 hours (range 11.5-25 hours).",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/15130/smpc"]
 }

@@ -56,5 +56,6 @@
         "min": 15
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Adaflex 1 mg tablets (oral). Melatonin is mainly eliminated by hydroxylation to 6-hydroxymelatonin in the liver, primarily mediated by CYP1A2 and to a lesser extent by CYP1A1. Quantitatively less important O-demethylation to N-acetyl-5-hydroxytryptamine is mediated by CYP2C19. Melatonin metabolites are mainly eliminated by the urine, about 90% as sulphate and glucuronide conjugates of 6-hydroxymelatonin; less than about 1% of a melatonin dose is excreted unchanged in urine. The plasma elimination half-life is about 45 minutes (normal range about 30-60 minutes) in healthy adults. Plasma protein binding in vitro is about 60%, and the distribution volume during the terminal elimination phase averages just over 1 L/kg. Absolute bioavailability averages 13% via solution and 14-16% via tablet, with maximum concentration 15-90 minutes after oral administration (median Tmax 52 minutes).",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/13628/smpc"]
 }

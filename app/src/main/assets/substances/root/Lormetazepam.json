@@ -12,6 +12,9 @@
     "hypnotic"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Lormetazepam Tablets 1 mg (oral). Lormetazepam is rapidly absorbed from the gastrointestinal tract and is metabolised by a simple one-step process to a pharmacologically inactive glucuronide. There are no major metabolites and little risk of accumulation. Lormetazepam has a terminal phase half-life of about 11 hours.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/5270/smpc"
+  ],
   "summary": "Lormetazepam is a short- to intermediate-acting benzodiazepine derivative used for short-term treatment of moderately severe insomnia. It has hypnotic, anxiolytic, anticonvulsant, sedative, and muscle-relaxant properties."
 }
