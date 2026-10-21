@@ -93,5 +93,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from Ationdo SR 100 mg prolonged-release tablets. Mean absolute bioavailability after a single dose is approximately 32% because of extensive first-pass metabolism. In humans the metabolism of tapentadol is extensive: about 97% of the parent compound is metabolised. The major pathway is conjugation with glucuronic acid to produce glucuronides, with uridine diphosphate glucuronyl transferase (mainly UGT1A6, UGT1A9 and UGT2B7) as the primary enzyme. Tapentadol is additionally metabolised to N-desmethyl tapentadol (13%) by CYP2C9 and CYP2C19, and to hydroxy tapentadol (2%) by CYP2D6, which are further metabolised by conjugation. After oral administration about 70% of the dose is excreted in urine as conjugated forms (55% glucuronide and 15% sulfate), and 3% is excreted unchanged in urine.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/12658/smpc"]
 }

@@ -420,6 +420,11 @@
       "labelDate": "20260820"
     },
     {
+      "name": "Flupentixol",
+      "sources": ["https://www.medicines.org.uk/emc/product/996/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Flurazepam",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8f476891-1346-4e8c-ac1b-f8cbdc64f5a1"
@@ -515,6 +520,11 @@
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b7d23ac2-e776-9f62-3290-c64c2d6eb353"
       ],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Hydromorphone",
+      "sources": ["https://www.medicines.org.uk/emc/product/7686/smpc"],
       "evidence": "product-information"
     },
     {
@@ -752,6 +762,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250904"
+    },
+    {
+      "name": "Nitrazepam",
+      "sources": ["https://www.medicines.org.uk/emc/product/3901/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Nortriptyline",
@@ -1020,6 +1035,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250310"
+    },
+    {
+      "name": "Tapentadol",
+      "sources": ["https://www.medicines.org.uk/emc/product/12658/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Tasimelteon",
@@ -1421,7 +1441,6 @@
     "Fluclotizolam",
     "Fludiazepam",
     "Fluorolintane",
-    "Flupentixol",
     "Fluphenazine",
     "Fluspirilene",
     "Flutazolam",
@@ -1528,7 +1547,6 @@
     "Nimetazepam",
     "Nitemazepam",
     "Nitracaine",
-    "Nitrazepam",
     "Nitrazolam",
     "Nizofenone",
     "Nomifensine",

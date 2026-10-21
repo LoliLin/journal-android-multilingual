@@ -27,6 +27,9 @@
     "hypnotic"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Mogadon 5 mg tablets (oral). The main metabolic pathway consists of reduction and further acetylation of the 7-nitro group, giving the metabolites 7-aminonitrazepam and 7-acetamidonitrazepam, both clinically inactive. CYP3A4 and CYP2D6 are involved in the metabolism of nitrazepam, which is neither an inducer nor an inhibitor of metabolic enzymes. The plasma half-life averages 30 hours, rising to 40 hours in elderly patients. Nitrazepam is mainly excreted as urinary metabolites, about 60% of which are conjugated, and steady-state levels are reached within 5 days. Protein binding is about 85-88%.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/3901/smpc"
+  ],
   "summary": "Nitrazepam is a benzodiazepine hypnotic used for short-term relief of severe, disabling insomnia. It also has sedative, anticonvulsant, and skeletal muscle-relaxant effects."
 }
