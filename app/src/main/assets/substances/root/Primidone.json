@@ -6,6 +6,9 @@
     "antiepileptic",
     "barbiturate"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Enodama 250 mg tablets (oral). Primidone is absorbed rapidly from the gastrointestinal tract, with peak plasma levels attained approximately 3 hours after ingestion and therapeutic blood concentrations of 5 to 10 mg/ml. It is well distributed in all organs and tissues, crosses the blood-brain and placental barriers and is excreted in breast milk. It is only partially bound to plasma proteins, about 35%, whereas approximately half of phenobarbital is bound. Primidone is partially metabolised in the liver into phenobarbital and phenylethylmalonamide (PEMA), its major metabolites, both of which have anticonvulsant activity. Primidone, like other anticonvulsants, can induce liver enzymes. Its elimination half-life is approximately 10 hours, considerably shorter than those of its principal metabolites: PEMA 10-25 hours and phenobarbital 50-160 hours. Elimination is mainly urinary, with 40% as unchanged drug and 28% as PEMA.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/14779/smpc"
+  ],
   "summary": "Primidone is a barbiturate medication used to treat focal and generalized seizures and essential tremor. Its active metabolite phenobarbital contributes to its long-term antiseizure effect."
 }

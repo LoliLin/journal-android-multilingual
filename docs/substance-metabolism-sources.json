@@ -970,6 +970,11 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Primidone",
+      "sources": ["https://www.medicines.org.uk/emc/product/14779/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Promazine",
       "sources": ["https://www.medicines.org.uk/emc/product/101928/smpc"],
       "evidence": "product-information"
@@ -1109,6 +1114,11 @@
       "labelDate": "20260427"
     },
     {
+      "name": "Sufentanil",
+      "sources": ["https://www.medicines.org.uk/emc/product/13984/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Sulpiride",
       "sources": ["https://www.medicines.org.uk/emc/product/2430/smpc"],
       "evidence": "product-information-or-guideline"
@@ -1141,6 +1151,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260810"
+    },
+    {
+      "name": "Thiopental",
+      "sources": ["https://www.medicines.org.uk/emc/product/665/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Thioridazine",
@@ -1178,6 +1193,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260901"
+    },
+    {
+      "name": "Tranylcypromine",
+      "sources": ["https://www.medicines.org.uk/emc/product/14428/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Trazodone",
@@ -1681,7 +1701,6 @@
     "Piritramide",
     "Pivagabine",
     "Prazepam",
-    "Primidone",
     "Procyclidine",
     "Profenamine",
     "Progabide",
@@ -1717,7 +1736,6 @@
     "Tetrahydrofuran-Fentanyl",
     "Tetrazepam",
     "Theobromine",
-    "Thiopental",
     "Thiopropamine",
     "Thiopropazate",
     "Thioproperazine",
@@ -1729,7 +1747,6 @@
     "Tolibut",
     "Tolonidine",
     "Toloxatone",
-    "Tranylcypromine",
     "Triclofos",
     "Trifluperidol",
     "Triflupromazine",

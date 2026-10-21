@@ -7,6 +7,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Thiopental 0.5 g and 1 g powder for solution for injection. Thiopental is almost completely metabolised. It is extremely fat soluble and is largely metabolised in the liver, but is slowly excreted from lipid depots and is very slowly transformed; during one hour 10-15% is metabolised, mainly in the liver. Only approximately 0.3% is excreted unchanged in the urine. The half-life of the distribution phase after a single intravenous dose is 2-4 hours and the half-life of the elimination phase is 9-11 hours. The plasma protein binding is 80-90% at therapeutic concentration levels. Rapid uptake occurs into most vascular areas of the brain followed by redistribution into other tissues.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/665/smpc"
+  ],
   "summary": "Thiopental, commonly administered as sodium thiopental, is a rapid-onset, short-acting barbiturate general anesthetic."
 }
