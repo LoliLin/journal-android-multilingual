@@ -590,6 +590,11 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Levomepromazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/11912/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Levomilnacipran",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f371258d-91b3-4b6a-ac99-434a1964c3af"
@@ -890,6 +895,11 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Promazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/101928/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Propofol",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=28d7ba00-f824-4e55-139a-03f509c099db"
@@ -1111,6 +1121,11 @@
       "labelDate": "20260710"
     },
     {
+      "name": "Trifluoperazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/101101/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Trimipramine",
       "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"],
       "evidence": "product-information-or-guideline"
@@ -1206,6 +1221,11 @@
     {
       "name": "Zopiclone",
       "sources": ["https://www.medicines.org.uk/emc/product/101311/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Zuclopenthixol",
+      "sources": ["https://www.medicines.org.uk/emc/product/11789/smpc"],
       "evidence": "product-information"
     },
     {
@@ -1482,7 +1502,6 @@
     "Khat",
     "Lavender oil",
     "Levacetylmethadol",
-    "Levomepromazine",
     "Levomethadone",
     "Levosulpiride",
     "Linopirdine",
@@ -1596,7 +1615,6 @@
     "Procyclidine",
     "Profenamine",
     "Progabide",
-    "Promazine",
     "Propentofylline",
     "Propiomazine",
     "Propylphenidate",
@@ -1643,7 +1661,6 @@
     "Toloxatone",
     "Tranylcypromine",
     "Triclofos",
-    "Trifluoperazine",
     "Trifluperidol",
     "Triflupromazine",
     "Trimethadione",
@@ -1664,7 +1681,6 @@
     "Zimeldine",
     "Zolazepam",
     "Zotepine",
-    "Zuclopenthixol",
     "Βk-2C-I",
     "Βk-IVP"
   ]

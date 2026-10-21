@@ -5,6 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Levomepromazine Maleate 25 mg tablets (oral). On average 50% of an orally administered dose reached the general circulation as unchanged levomepromazine. The apparent volume of distribution was 23 to 42 L/kg and the biologic half-life 15 to 30 hours. A human study after oral administration found glucuronides, sulfoxide and possibly non-oxidised drug in the urine and non-oxidised drug in the faeces. CYP3A4 is the main isoform responsible for levomepromazine 5-sulfoxidation (72%) and N-demethylation (78%) at a therapeutic concentration of 10 micromolar, with CYP1A2 contributing 20% to 5-sulfoxidation. Excretion is slow, with a half-life of about 30 hours, mainly via urine and faeces; metabolites are eliminated mainly in the urine, and an average 10% of the daily dose was eliminated in urine as levomepromazine sulfoxide.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/11912/smpc"
+  ],
   "summary": "Levomepromazine, also known as methotrimeprazine, is a phenothiazine neuroleptic and low-potency antipsychotic. Its analgesic, hypnotic, and antiemetic properties are used mainly in palliative care."
 }

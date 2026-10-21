@@ -5,6 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Promazine Hydrochloride 25 mg/5 ml oral syrup. Promazine is readily absorbed from the gastrointestinal tract but is subject to considerable first-pass metabolism in the gut wall, so oral plasma concentrations are much lower than after intramuscular administration, with very wide intersubject variation. Paths of metabolism include hydroxylation and conjugation with glucuronic acid, N-oxidation, oxidation of a sulphur atom, and dealkylation. It is extensively metabolised in the liver and excreted in urine and faeces as numerous active and inactive metabolites, with evidence of enterohepatic recycling. It is very extensively bound to plasma proteins, is widely distributed, crosses the blood-brain barrier to reach higher brain than plasma concentrations, and crosses the placental barrier and is excreted in milk.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/101928/smpc"
+  ],
   "summary": "Promazine is used short term as an add-on treatment for psychomotor agitation. It has weak antipsychotic effects and is generally not used to treat psychosis."
 }

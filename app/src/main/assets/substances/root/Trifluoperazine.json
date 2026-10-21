@@ -5,6 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from Trifluoperazine 1 mg tablets (oral). Trifluoperazine is well absorbed from the gastrointestinal tract but undergoes considerable first-pass metabolism in the gut wall, so oral plasma concentrations are much lower than after intramuscular injection, with very wide intersubject variation. Paths of metabolism include hydroxylation and conjugation with glucuronic acid, N-oxidation, oxidation of a sulphur atom, and dealkylation. It is extensively metabolised in the liver and excreted in urine and faeces as numerous active and inactive metabolites, with evidence of enterohepatic recycling. It is extensively bound to plasma proteins, is widely distributed, crosses the blood-brain barrier to reach higher brain than plasma concentrations, and crosses the placental barrier and is excreted in milk.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/101101/smpc"
+  ],
   "summary": "Trifluoperazine is a phenothiazine typical antipsychotic used primarily to treat schizophrenia. It may also be used short term for generalized anxiety disorder."
 }
