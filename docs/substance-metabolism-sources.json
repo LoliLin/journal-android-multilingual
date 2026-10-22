@@ -1056,6 +1056,11 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Protodesnitazene",
+      "sources": ["https://europepmc.org/article/PMC/11169013"],
+      "evidence": "literature"
+    },
+    {
       "name": "Protonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38679851/"],
       "evidence": "human-material-study"
@@ -1289,6 +1294,11 @@
       "name": "Trimipramine",
       "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"],
       "evidence": "product-information-or-guideline"
+    },
+    {
+      "name": "U-47700",
+      "sources": ["https://europepmc.org/article/PMC/10053220"],
+      "evidence": "literature"
     },
     {
       "name": "Valproic acid",

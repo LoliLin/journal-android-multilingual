@@ -94,5 +94,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed forensic toxicology study of the metabolic evaluation of synthetic opioids using U-47700 (Toxics 2023, PMID 36976985). To date no detailed pharmacokinetic studies have been performed on U-47700, and the available data come from autopsy material analysis and laboratory experiments. Four metabolites were identified in in vitro studies using human liver microsomes: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The basic reactions occurring during metabolic transformations of U-47700 are demethylation and hydroxylation; it is not yet known which cytochrome isoforms are responsible, and phase II metabolism has not yet been studied.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
 }
