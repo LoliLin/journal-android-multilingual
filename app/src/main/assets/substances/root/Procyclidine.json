@@ -5,6 +5,7 @@
   "categories": [
     "antiparkinsonian"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
-  "summary": "Procyclidine is an anticholinergic used for drug-induced parkinsonism, akathisia, acute dystonia, Parkinson's disease, and other forms of dystonia."
+  "metabolism": "Evidence is from Procyclidine Hydrochloride 5 mg tablets (oral). Procyclidine is adequately absorbed from the gastrointestinal tract with a bioavailability of 75% and disappears rapidly from the tissues. The label states that no detailed information is available on the metabolic fate of procyclidine, but very little of the parent compound is excreted in the urine unchanged. When given orally, about one fifth of the dose is known to be metabolised in the liver, principally by cytochrome P450 and then conjugated with glucuronic acid; this conjugate has been detected in the urine. The relatively low clearance of 68 ml/min represents a predominantly metabolic change with a small first-pass effect, and the mean plasma elimination half-life after oral administration is approximately 12 hours.",
+  "summary": "Procyclidine is an anticholinergic used for drug-induced parkinsonism, akathisia, acute dystonia, Parkinson's disease, and other forms of dystonia.",
+  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8488/smpc"]
 }

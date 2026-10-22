@@ -230,6 +230,11 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Clonazolam",
+      "sources": ["https://europepmc.org/article/PMC/9397074"],
+      "evidence": "literature"
+    },
+    {
       "name": "Clonidine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=826de1dc-378e-4c90-86d1-e33f7a4248cd"
@@ -975,6 +980,11 @@
       "evidence": "product-information"
     },
     {
+      "name": "Procyclidine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8488/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Promazine",
       "sources": ["https://www.medicines.org.uk/emc/product/101928/smpc"],
       "evidence": "product-information"
@@ -1701,7 +1711,6 @@
     "Piritramide",
     "Pivagabine",
     "Prazepam",
-    "Procyclidine",
     "Profenamine",
     "Progabide",
     "Propentofylline",
