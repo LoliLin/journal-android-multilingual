@@ -24,7 +24,7 @@
   "generalRisks": "MiPLA is poorly studied with limited pharmacology, metabolism and toxicity data; subjective effects are anecdotal and may be unpredictable.",
   "longtermRisks": "Very limited pharmacology, metabolism and toxicity data and provides no established long-term findings.",
   "saferUse": [
-    "FreeODwiki recommends harm reduction because evidence is sparse.",
+    "Harm reduction is recommended, because the evidence is sparse.",
     "The archived dosage bands leave a 250-300 µg gap; it is retained rather than inferred."
   ],
   "interactions": {

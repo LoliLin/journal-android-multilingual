@@ -11,7 +11,7 @@
   "dosageRemark": "Archived oral table: threshold 15 mg; light 20-50 mg; moderate 50-120 mg; strong 120-150 mg; heavy 150 mg+. Onset 20-60 min, comeup 20-60 min, peak 2-4 h, offset 3-8 h (no total duration given). User/resource educational data, not a recommendation. Toxicity section is explicitly a stub that may contain incomplete or dangerous errors; lightMin corrected to source light lower bound.",
   "generalRisks": "CYP2D6 inhibitors can increase mCPP serum concentrations and names ciprofloxacin, bupropion, fluoxetine and grapefruit juice. MCPP may appear as an adulterant in street MDMA. Its toxicity section is a stub that may contain dangerous errors.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm reduction and independent research; its toxicity subsection is explicitly an unreliable stub.",
+    "Harm reduction and independent research are strongly recommended; the toxicity subsection is explicitly an unreliable stub.",
     "CYP2D6 inhibition may raise mCPP concentrations; it does not quantify the resulting risk."
   ],
   "interactions": {

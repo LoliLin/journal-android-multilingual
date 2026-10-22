@@ -24,7 +24,7 @@
   "generalRisks": "Pharmacology, metabolism and toxicity data for MDAI are sparse and human-use history limited. The toxicity section is a stub; cardiovascular toxicity has not been tested. The page mentions overheating, dehydration and water intoxication risk in its effects/harm content.",
   "longtermRisks": "Data are sparse and notes tolerance develops with long-term/repeated use; cardiovascular toxicity has not been tested and the toxicity subsection is explicitly incomplete.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm reduction and independent research because human evidence is limited.",
+    "Harm reduction and independent research are strongly recommended, because human evidence is limited.",
     "Treat the toxicity subsection cautiously: it is marked as a stub that may be incomplete or seriously inaccurate; cardiovascular toxicity has not been tested.",
     "The page cautions against excessive water intake while avoiding dehydration."
   ],

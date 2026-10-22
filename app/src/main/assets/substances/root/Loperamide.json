@@ -29,10 +29,10 @@
   "saferUse": [
     "Avoid high-dose or nonmedical use: the source describes potentially fatal cardiac complications, including arrhythmia and cardiac arrest.",
     "Do not combine with depressants or other opioids; the source warns of potentially fatal respiratory depression.",
-    "The source also warns about combining with stimulants because of added cardiovascular strain, and with CYP3A4 or CYP2C8 inhibitors that may raise loperamide exposure.",
-    "The source's toxicity section is marked as incomplete and potentially containing dangerous errors; independently verify safety information with authoritative medical sources."
+    "Combining with stimulants is also warned about, because of the added strain on the cardiovascular system, as is combining with CYP3A4 or CYP2C8 inhibitors, which may raise loperamide levels in the body.",
+    "The toxicity section is marked as incomplete and may contain dangerous errors. Check safety information against authoritative medical sources."
   ],
-  "addictionPotential": "The source describes low overall abuse potential, but notes that physical dependence and withdrawal may occur after long-term use.",
+  "addictionPotential": "Overall abuse potential is described as low, but physical dependence and withdrawal may occur after long-term use.",
   "tolerance": {
     "full": "Tolerance to many effects can develop with prolonged or repeated use; tolerance to constipation is described as developing particularly slowly.",
     "half": "About 3–7 days",
