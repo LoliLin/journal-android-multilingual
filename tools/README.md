@@ -96,6 +96,43 @@ python tools/show-hits.py emc-out.txt Diazepam    # print one drug's fetched sec
 python tools/summarize.py emc-out.txt             # which drugs had hits, and what are they?
 ```
 
+### `scan_jargon.py` / `scan-changed.py` — wording check
+
+```bash
+python tools/scan_jargon.py                       # every record: boilerplate and jargon
+python tools/scan-changed.py                      # only the fields this branch changed
+```
+
+The first flags fields that open by talking about the source ("Evidence is
+from ...") or that use clinical vocabulary. The second compares against the
+merge base, so it only reports what this branch actually introduced.
+
+The boilerplate patterns are matched with `re.match`, not `re.search`: `^` in
+a searched pattern still matches anywhere, which made the scan report every
+mention of a wiki name rather than only the ones opening a field.
+
+### `check-keys.py` — no field lost
+
+```bash
+python tools/check-keys.py
+```
+
+Compares every changed record against the baseline and reports dropped
+top-level keys, fields that were emptied, and lists that got shorter. Run
+this before committing a bulk edit.
+
+### `rewrite-src.py` — the hand-written rewrite table
+
+```bash
+python tools/rewrite-src.py
+```
+
+Holds the plain-language rewrites for the fields whose wording had to be
+judged one by one. The table is keyed by `record::field` or
+`record::field[index]`. Edit the table and re-run to apply it; the script
+refuses to touch a record whose current text does not match what it
+expects, so a stale table cannot silently overwrite something else.
+
 ## Conventions
 
 - `metabolism` goes in the language overlay, `metabolismSources` stays in the
@@ -106,3 +143,12 @@ python tools/summarize.py emc-out.txt             # which drugs had hits, and wh
   population the label describes.
 - Root records use CRLF and no BOM. Write through the file tools, not through
   a shell pipeline, so non-ASCII text survives.
+- Write plain language. The provenance lives in `metabolismSources` and in the
+  evidence ledger, so the text does not need to say where it came from. Keep
+  enzyme names, metabolite names, numbers and units -- those are what a reader
+  looks up. Drop the clinical framing around them: "volume of distribution"
+  is "how much the drug spreads through the body", "clearance" is "how fast
+  the body clears it", and "metabolised" is "broken down".
+- When a field says nothing was found, say so plainly ("nothing is known
+  about how this is broken down in people") rather than describing the
+  source.

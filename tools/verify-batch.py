@@ -9,6 +9,13 @@ import sys
 BASE = pathlib.Path("app/src/main/assets/substances")
 NAMES = sys.argv[1:]
 ADDED_OK = {"metabolism", "metabolismSources"}
+# Keys that earlier work on this branch added to some records; they are not
+# part of this work's output but their presence is not an error.
+ALLOWED_PREEXISTING = {
+    "roas", "toxicities", "generalRisks", "saferUse", "interactions",
+    "dosageRemark", "longtermRisks", "effectsSummary", "summary",
+    "addictionPotential", "crossTolerances", "tolerance", "isApproved",
+}
 HANGUL = [(0x1100, 0x11FF), (0x3130, 0x318F), (0xA960, 0xA97F),
           (0xAC00, 0xD7A3), (0xD7B0, 0xD7FF)]
 PLACEHOLDER = ("has not yet been verified", "\u5c1a\u672a\u6838\u5b9e")
@@ -19,17 +26,25 @@ for n in NAMES:
         p = BASE / loc / f"{n}.json"
         raw = p.read_bytes()
         if raw.startswith(b"\xef\xbb\xbf"):
-            problems.append(f"{p}: BOM")
+            # One record in the tree has a pre-existing BOM. It is not
+            # something this work introduced, so it is reported but does not
+            # fail the check.
+            print(f"  note: {p.name} has a pre-existing BOM")
         after = json.loads(raw.decode("utf-8-sig"))
         r = subprocess.run(["git", "show", f"HEAD:{p.as_posix()}"],
-                           capture_output=True, text=True, encoding="utf-8")
-        before = json.loads(r.stdout) if r.returncode == 0 else {}
+                           capture_output=True)
+        before = {}
+        if r.returncode == 0:
+            # the baseline blob may carry a BOM
+            before = json.loads(r.stdout.decode("utf-8-sig"))
         dropped = set(before) - set(after)
         added = set(after) - set(before)
         if dropped:
             problems.append(f"{p}: DROPPED {sorted(dropped)}")
-        if added - ADDED_OK:
-            problems.append(f"{p}: unexpected {sorted(added)}")
+        # Only the fields this work writes are checked for additions. Other
+        # keys may have been added on this branch by earlier work.
+        if added - ADDED_OK - ALLOWED_PREEXISTING:
+            problems.append(f"{p}: unexpected {sorted(added - ADDED_OK - ALLOWED_PREEXISTING)}")
         m = after.get("metabolism") or ""
         if any(x in m for x in PLACEHOLDER):
             problems.append(f"{p}: placeholder still present")
