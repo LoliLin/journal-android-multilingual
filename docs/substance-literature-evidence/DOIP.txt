@@ -1,0 +1,7 @@
+##### DOIP
+# hits: 5
+
+=== In situ product removal using a crystallization loop in asymmetric reduction of 4-oxoisophorone by Saccharomyces cerevisiae.
+    Buque-Taboada EM, Straathof AJ, Heijnen JJ, van der Wielen LA.
+    ? 2004 | PMID 15162455 | DOI 10.1002/bit.20093
+    - In the integrated process, most of the product was recovered as pure crystals; this may already minimize, if not eliminate, the need for organic solvents in the final purification steps.

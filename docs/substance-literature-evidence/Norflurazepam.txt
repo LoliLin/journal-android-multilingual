@@ -1,0 +1,14 @@
+##### Norflurazepam
+# hits: 5
+
+=== The Evolution Toward Designer Benzodiazepines in Drug-Facilitated Sexual Assault Cases.
+    Pérez Orts M, van Asten A, Kohler I.
+    ? 2023 | PMID 35294022 | PMCID PMC9942444 | DOI 10.1093/jat/bkac017
+    https://europepmc.org/article/PMC/9942444
+    - DBZDs include short-acting drugs, such as clonazolam or etizolam with an elimination half-life of approximately 3–7 h but also long-acting drugs such as diclazepam (46 h), meclonazepam (80 h) or flubromazepam (106 h). Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40–250 h vs. 2–3 h for the parent compound. Other parameters related to the elimination half-life such as protein binding, volume of distribution and lipophilicity are described by Manchester et al. ( 42 ). DBZDs are relatively lipophilic, ranging from phenazepam (highest lipophilicity) to pyrazolam (lowest lipophilicity). Furthermore, similar to conventional BZDs, they exhibit a high degree of plasma protein binding (90% on average), with the exception of pyrazolam (78%).
+
+=== Characterization and in vitro phase I microsomal metabolism of designer benzodiazepines: An update comprising flunitrazolam, norflurazepam, and 4'-chlorodiazepam (Ro5-4864).
+    Moosmann B, Bisel P, Westphal F, Wilde M, Kempf J, Angerer V, Auwärter V.
+    ? 2019 | PMID 30578721 | DOI 10.1002/dta.2561
+    - The metabolic steps of flunitrazolam were monohydroxylation, dihydroxylation, and reduction of the nitro function.
+    - The detected in vitro phase I metabolites of norflurazepam were hydroxynorflurazepam and dihydroxynorflurazepam. 4'-Chlorodiazepam biotransformation consisted of N-dealkylation and hydroxylation.

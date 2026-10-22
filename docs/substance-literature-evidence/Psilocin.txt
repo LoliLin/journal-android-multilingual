@@ -1,0 +1,20 @@
+##### Psilocin
+# hits: 314
+
+=== Short- and Long-Acting Psychedelics: Structure-Activity Relationships, Pharmacology, and Implications for Neuropsychiatric Therapeutics.
+    Bhat A, Zolali E, Sakib MA, Rahimian M, McMahon LR, German N, Obeng S.
+    ? 2026 | PMID 42257400 | PMCID PMC13281395 | DOI 10.1021/acschemneuro.6c00202
+    https://europepmc.org/article/PMC/13281395
+    - The rapid hydrolysis of the prodrugs RE-104 and RE-109 results in the formation of their active hydroxytryptamine counterparts, leading to a relatively short half-life and duration of action (t 1/2 = 35 min; duration = 2–3 h), in contrast to the slower conversion of psilocybin to psilocin (t 1/2 = 1.5–2 h; duration = 6–8 h). , The primary metabolites of these prodrugs are their active 4-hydroxy derivatives, followed by oxidative metabolism and N-dealkylation to produce indoleacetic acid (IAA), which is subsequently cleared via glucuronidation by UGT1A10 and UGT1A9 ( Figure ). , CYP2D6/CYP3A4 mediate minor oxidative routes and MAO-A produces only small amounts of deaminated metabolites; human CYP isoforms for RE-104 remain insufficiently defined. ,
+    - After rapid dephosphorylation of psilocybin to psilocin, the primary metabolic pathway involves glucuronidation, followed by oxidative metabolism via MAO, similar to other tryptamines.
+    - Psilocybin acts as a prodrug and its plasma exposure is driven by psilocin; intact psilocybin is usually undetectable in plasma. , Psilocin’s typical human half-life is 2–3 h (e.g., 2 h in pooled analyses; 3 h in a clinical PK study), while subjective effects last 5–7 h after oral dosing. ,, After dephosphorylation, psilocin is primarily cleared by O-glucuronidation. UGT1A10 is the principal isoform responsible for psilocin O-glucuronidation, with UGT1A9 playing a secondary role. Oxidative metabolism by CYP2D6 (forming norpsilocin/oxidized psilocin) and CYP3A4, together with limited MAO-A deamination, occurs only to a minor extent, whereas in vivo clearance is dominated by UGT-mediated O-glucuronidation.
+
+=== A randomized crossover trial comparing the acute physiological and psychological effects of botanical formulations of oral psilocybin, oral psilocin, and sublingual psilocin.
+    Tai ML, Szigeti B, Downey AE, Aday JS, Fredenburg L, Sakai K, Molina C, Fernandes-Osterhold G, Bradley ER, Pantoni M, Moss R, Lightburn B, Plessow F, O'Donovan A, Woolley JD.
+    ? 2026 | PMID 42668404 | DOI 10.1177/02698811261478603
+    -  Background Psilocybin, a serotonergic psychedelic found in hallucinogenic mushrooms, is metabolized to psilocin, the compound responsible for its psychoactive effects.
+
+=== Psilocybin, From Ancestral Use to Therapeutic Potential: A Multidimensional Review of Its Pharmacological Basis and Current Perspectives.
+    Vásquez-Bonilla JN.
+    ? 2026 | PMID 42693701 | DOI 10.1002/hup.70063
+    - Results Psilocybin is metabolized into psilocin, which predominantly interacts with serotonin (5-hydroxytryptamine, 5-HT) receptors.

@@ -1,0 +1,8 @@
+##### Protodesnitazene
+# hits: 2
+
+=== Human metabolism of four synthetic benzimidazole opioids: isotonitazene, metonitazene, etodesnitazene, and metodesnitazene.
+    Taoussi O, Berardinelli D, Zaami S, Tavoletta F, Basile G, Kronstrand R, Auwärter V, Busardò FP, Carlier J.
+    ? 2024 | PMID 38582802 | PMCID PMC11169013 | DOI 10.1007/s00204-024-03735-0
+    https://europepmc.org/article/PMC/11169013
+    - In urine, O -dealkyl and N -deethyl- O -dealkyl metabolites and glucuronides were predominant. Isotonitazene and metonitazene O -dealkyl metabolites were the same molecules and are also likely produced through the metabolization of structural analogues such as etonitazene, protonitazene, or butonitazene, whose only difference from isotonitazene and metonitazene is the composition of the alkoxy side chain. Similarly, etodesnitazene and metodesnitazene O -dealkyl metabolites were also the same molecules and might be produced through isotodesnitazene or protodesnitazene metabolization. Therefore, considering the intensity of metonitazene and etodesnitazene in postmortem samples, the parent drug should be detected to attempt to prove consumption, along with O -dealkyl and N -deethyl- O -dealkyl metabolite biomarkers after glucuronide hydrolysis to increase the detection capabilities of phase I metabolites. Alternatively, considering that hydrolysis conditions in routine toxicological screenings are not always suitable and can rarely be optimized in targeted analytical methods in the absence of reference standards, the phase II conjugates of O -dealkyl and N -deethyl- O -dealkyl metabolites are suitable additional targets for proving consumption without glucuronide hydrolysis in urine.

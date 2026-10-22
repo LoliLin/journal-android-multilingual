@@ -1,0 +1,16 @@
+##### TMA-2
+# hits: 48
+
+=== 2,5-Dimethoxyamphetamine-derived designer drugs: studies on the identification of cytochrome P450 (CYP) isoenzymes involved in formation of their main metabolites and on their capability to inhibit CYP2D6.
+    Ewald AH, Maurer HH.
+    ? 2008 | PMID 18938231 | DOI 10.1016/j.toxlet.2008.09.014
+    - These drugs are mainly metabolized by O-demethylation or in case of DOM by hydroxylation of the methyl moiety.
+    - In an initial activity screening using microsomes of insect cells heterologously expressing human CYPs, CYP2D6 was found to be the only CYP isoenzyme involved in the above-mentioned main metabolic steps whereas the amounts of metabolites formed were very small.
+    - As inhibition of CYP2D6 by other amphetamines had been described, the inhibitory effects of the 2,5-dimethoxyamphetamine derivatives were studied using insect cell microsomes with heterologously expressed human CYP2D6 and pooled human liver microsomes (HLM) as enzyme sources and dextromethorphan O-demethylation as probe reaction.
+
+=== Designer drug 2,4,5-trimethoxyamphetamine (TMA-2): studies on its metabolism and toxicological detection in rat urine using gas chromatographic/mass spectrometric techniques.
+    Ewald AH, Fritschi G, Maurer HH.
+    ? 2006 | PMID 16810708 | DOI 10.1002/jms.1059
+    - Studies are described on the metabolism and the toxicological detection of the amphetamine-derived designer drug 2,4,5-trimethoxyamphetamine (TMA-2) in rat urine using gas chromatographic/mass spectrometric (GC/MS) techniques.
+    - The identified metabolites indicated that TMA-2 was metabolized by oxidative deamination to the corresponding ketone followed by reduction to the corresponding alcohol, O-demethylation followed by oxidative deamination, and finally O,O-bis-demethylation.
+    - All metabolites carrying hydroxy groups were found to be partly excreted in urine as glucuronides and/or sulfates.

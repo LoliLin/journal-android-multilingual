@@ -1,0 +1,14 @@
+##### Meclofenoxate
+# hits: 17
+
+=== Focus on Cognitive Enhancement: A Narrative Overview of Nootropics and "Smart Drug" Use and Misuse.
+    Schifano F, Bonaccorso S, Arillotta D, Corkery JM, Floresta G, Papanti Pelletier GD, Guirguis A.
+    ? 2025 | PMID 41007388 | PMCID PMC12466949 | DOI 10.3390/biology14091244
+    https://europepmc.org/article/PMC/12466949
+    - These compounds include (for an overview, see Malík and Tlustoš [ 15 ]; Mondadori [ 31 ]) a range of synthetic compounds that have been explored for their cognitive-enhancing properties, many of which act on cholinergic pathways or cerebral metabolism. For instance, deanol (DMAE) and meclofenoxate serve as choline precursors, supporting acetylcholine synthesis and potentially improving learning and memory, with suggested daily intakes ranging from 500 to 2000 mg. Nicergoline, an ergot derivative, is thought to improve cognitive function, mood, and alertness and is typically administered at 30–60 mg/day. Piracetam, a well-known nootropic, modulates calcium and potassium ion channel activity, enhancing neuronal excitability; it is used acutely at 4–8 g/day, with maintenance doses between 2 and 4 g/day. Pyritinol, a derivative of vitamin B6, may enhance choline acetyltransferase activity and is administered at a minimum of 300 mg/day, though higher doses ( 600 mg/day) are often used clinically.
+
+=== Annual Banned-Substance Review 17th Edition-Analytical Approaches in Human Sports Drug Testing 2023/2024.
+    Thevis M, Kuuranne T, Geyer H.
+    ? 2025 | PMID 39731401 | PMCID PMC12319490 | DOI 10.1002/dta.3835
+    https://europepmc.org/article/PMC/12319490
+    - In addition, Lu et al. reiterated on the fact that chlorphenesin can be present as preservative in a variety of cosmetics, and a survey of products available in Taiwan was found to adhere to applicable regulations (i.e. the content was below 3 mg/g) [ 92 ]. Since it was shown to metabolize into 4‐chlorphenoxyacetic acid, a marker monitored in routine doping controls to detect the misuse of meclofenoxate, concerns have been reported regarding the possibility that AAFs are the result of the use of chlorphenesin‐containing products, but the concomitant screening for diagnostic chlorphenesin‐specific metabolites has been shown to eliminate the issue.

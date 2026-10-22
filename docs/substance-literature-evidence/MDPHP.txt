@@ -1,0 +1,13 @@
+##### MDPHP
+# hits: 16
+
+=== Comprehensive metabolic profiling of the new designer stimulant MDPiHP-in vitro and in vivo identification of potential biomarkers for detection in human samples.
+    Balloni A, Kutzler J, Basile G, Busardò FP, Carlier J, Auwärter V.
+    ? 2026 | PMID 41817723 | DOI 10.1007/s00216-026-06417-1
+    - In this study, we report the first investigation of MDPiHP metabolism, combining in vitro pooled human liver microsome (pHLM) experiments and the analysis of authentic human biological samples, including urine, blood, serum, and plasma.
+    - The most abundant were dihydro-MDPiHP (M1.2) and M3, generated through pyrrolidine ring hydroxylation followed by ring opening and terminal carboxylation.
+
+=== Synthetic cannabinoids in human post-mortem samples - ADB-BUTINACA and metabolites in three fatalities.
+    Zschiesche A, Köpfler S, Wunder C, Keiler AM, Görg J, Walz CP, Fliss B, Germerott T, Auwärter V, Huppertz LM.
+    ? 2026 | PMID 42212046 | DOI 10.3389/ftox.2026.1826767
+    - The elevated levels in these organs likely reflect their lipophilicity as well as their involvement in absorption (lungs) and metabolism/excretion processes (liver and kidneys).

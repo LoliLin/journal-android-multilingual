@@ -1,0 +1,22 @@
+##### Pyrazolam
+# hits: 18
+
+=== The Evolution Toward Designer Benzodiazepines in Drug-Facilitated Sexual Assault Cases.
+    Pérez Orts M, van Asten A, Kohler I.
+    ? 2023 | PMID 35294022 | PMCID PMC9942444 | DOI 10.1093/jat/bkac017
+    https://europepmc.org/article/PMC/9942444
+    - DBZDs include short-acting drugs, such as clonazolam or etizolam with an elimination half-life of approximately 3–7 h but also long-acting drugs such as diclazepam (46 h), meclonazepam (80 h) or flubromazepam (106 h). Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40–250 h vs. 2–3 h for the parent compound. Other parameters related to the elimination half-life such as protein binding, volume of distribution and lipophilicity are described by Manchester et al. ( 42 ). DBZDs are relatively lipophilic, ranging from phenazepam (highest lipophilicity) to pyrazolam (lowest lipophilicity). Furthermore, similar to conventional BZDs, they exhibit a high degree of plasma protein binding (90% on average), with the exception of pyrazolam (78%).
+    - Information on excretion is detailed in Table VI . This information has been compiled from large cohort studies based on urine collection or from self-administration studies. The parent compound is typically detected in small traces in urine, except for pyrazolam, which is mostly excreted in its parent form.
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.
+
+=== 'New/Designer Benzodiazepines': An Analysis of the Literature and Psychonauts' Trip Reports.
+    Orsolini L, Corkery JM, Chiappini S, Guirguis A, Vento A, De Berardis D, Papanti D, Schifano F.
+    ? 2020 | PMID 31933443 | PMCID PMC7569319 | DOI 10.2174/1570159x18666200110121333
+    https://europepmc.org/article/PMC/7569319
+    - Pyrazolam is a triazolo-BZD with apparently very little information, structurally similar to alprazolam but is brominated rather than chlorinated and contains a pyridinyl group instead of a phenyl group. It was first developed and patented by Hoffman-La Roche in 1979 in a patent [ 63 ]. However, pyrazolam is the first BZD on the NPS market that is not marketed anywhere in the world by a pharmaceutical company for medical purposes [ 63 ]. It has been sold as tablets that contain 0.5 mg of active compound per tablet. From a pharmacological point of view, pyrazolam is generally more potent than diazepam (12-fold) and has an elimination half-life of around 6 hours after ingestion [ 63 ]. There are no further data about clinical, pharmacological or toxicological properties. Pyrazolam is not currently controlled under the 1971 United Nations Convention on Psychotropic Substances or the 1961 Single Convention on Narcotic Drugs.
+    - Flubromazepam is a long-lasting BZD, structurally similar to phenazepam, from which it differs due to substitution of a fluorine atom instead of a chlorine atom, and to triazolam and pyrazolam. It does not appear to be licensed for medical use. Flubromazepam was first described in 1962 when it was noted to be several times more potent than chlordiazepoxide, the reference substance used in several assays [ 65 ]. Derivatives of this substance may be used as antivirals [ 66 ]. Pharmacokinetic data suggest an elimination half-life of about 100 hours and anticonvulsant properties [ 63 ]. Published literature described a fatal case of poisoning by the synthetic opioid U-47700 in combination with flubromazepam in a 24-year-old man [ 67 ]. Furthermore, three hospitalizations from acute exposure have been reported in the US and 33 in Sweden between 2012-2017 [ 63 , 68 - 71 ]. There are no further data about clinical, pharmacological or toxicological properties. Flubromazepam is not currently controlled under the 1971 United Nations Convention on Psychotropic Substances or the 1961 Single Convention on Narcotic Drugs.

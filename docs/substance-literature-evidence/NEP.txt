@@ -1,0 +1,19 @@
+##### NEP
+# hits: 1120
+
+=== N-Ethylpentedrone: first hair detection and human metabolic profiling across multiple biological matrices using UHPLC-HRMS, molecular networking and in silico prediction.
+    Pasquet A, Pelletier R, Rouah R, Panter T, Loiseau M, Porée FH, Gicquel T, Guerard P.
+    ? 2026 | PMID 42228133 | DOI 10.1007/s00204-026-04412-0
+    - Predominant metabolic pathways involved keto-reduction, N-dealkylation, hydroxylation, and oxidation, while no Phase II metabolites were detected under the applied analytical conditions.
+
+=== Epigenetic regulators polyphenols in neurodegenerative diseases: a promising intervention strategy.
+    Li LH, Huang Y, Wang XX, Xu CC, Wu L, He KL, Han DX, Chang Z, Wang JQ, Ma RJ.
+    ? 2026 | PMID 41918250 | PMCID PMC13045177 | DOI 10.1080/07853890.2026.2634566
+    https://europepmc.org/article/PMC/13045177
+    - Based on current clinical and translational evidence, future research on polyphenols in the context of neurodegenerative diseases should prioritize directions that are feasible in the short term and exhibit clear biological target specificity [ 269 ]. Rather than broadly investigating various epigenetic mechanisms, emphasis should first be placed on identifying the primary epigenetic targets of individual polyphenols. For example, studies on resveratrol could focus on its role in SIRT1-mediated deacetylation pathways, particularly the synergistic interactions between this pathway, DNA methylation, and inflammation-related transcriptional programs, in order to elucidate its critical functions in suppressing neuroinflammation and modulating neuronal aging [ 162 , 164–167 , 229 ]. EGCG offers a unique opportunity to explore its dual functionality as both a histone deacetylase (HDAC) inhibitor and a modulator of protein misfolding. Future research should dissect its mechanistic roles in regulating neprilysin (NEP) expression, facilitating Aβ clearance, and modulating the interplay between oxidative stress and inflammatory signaling [ 147 , 156–158 ]. In the case of curcumin, its bidirectional capacity to modulate HAT/HDAC balance and influence DNA methylation patterns suggests it may epigenetically regulate the expression of neurotrophic factors, neuroinflammatory transcriptional networks, and genes involved in neurogenesis [ 151–153 , 194 ].
+
+=== Characterization of the myocardial and renal renin-angiotensin system in normal cats and cats with hypertrophic cardiomyopathy.
+    Wood JE, Ames MK, Kaplan JL, Rivas V, Wilson MD, Domenig O, Stern JA.
+    ? 2026 | PMID 42105302 | PMCID PMC13156941 | DOI 10.1093/jvimsj/aalag078
+    https://europepmc.org/article/PMC/13156941
+    - Angiotensin peptide metabolism, including Ang peptides AngI-IV, Ang1-7, and Ang1-5 and their catalysts. Abbreviations: ACE = angiotensin-converting enzyme; ACE2 = angiotensin-converting enzyme 2; Ang = angiotensin; AP = aminopeptidase; NEP = neprilysin; PEP = prolyl-endopeptidase.

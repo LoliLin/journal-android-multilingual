@@ -1,0 +1,22 @@
+##### Clomethiazole
+# hits: 132
+
+=== Many human pharmaceuticals are weak inhibitors of the cytochrome P450 system in rainbow trout (<i>Oncorhynchus mykiss</i>) liver S9 fractions.
+    Pihlaja T, Oksanen T, Vinkvist N, Sikanen T.
+    ? 2024 | PMID 39077557 | DOI 10.3389/ftox.2024.1406942
+    - In the present study, we assessed the correlation of the substrate selectivities of rainbow trout CYP1A and CYP3A homologues with those of human, through determination of the half-maximal inhibitory concentrations (IC 50 ) of a total sixteen human pharmaceuticals toward CYP1A-like ethoxyresorufin O-deethylase (EROD) and CYP3A-like 7-benzyloxy-4-trifluoromethylcoumarin O-debenzylase (BFCOD) in rainbow trout ( Oncorhynchus mykiss ) liver S9 fractions (RT-S9).
+    - Results Most test pharmaceuticals were moderate to weak inhibitors of both EROD and BFCOD activity in RT-S9, even if most are noninhibitors of human CYP1A or CYP3A.
+    - Discussion The results indicate that the P450 interactions in RT-S9 cannot be explicitly predicted based on human data, but the in vitro data reported herein can shed light on the substrate selectivity of rainbow trout CYP1A1 and CYP3A27 in comparison to their human homologues.
+
+=== <i>In vitro</i> differences in toddalolactone metabolism in various species and its effect on cytochrome P450 expression.
+    Shan L, Shi X, Hu T, Hu J, Guo Z, Song Y, Su D, Zhang X.
+    ? 2022 | PMID 35944298 | PMCID PMC9367672 | DOI 10.1080/13880209.2022.2108062
+    https://europepmc.org/article/PMC/9367672
+    - Specific inhibitors for P450 isoforms were used to explore the contribution of CYP isoforms to the biotransformation of toddalolactone. The specific inhibitors for CYP2C9, CYP1A2, CYP2C19, CYP2D6, CYP2E1 and CYP3A were sulphaphenazole (10 μM), furafylline (10 μM), omeprazole (20 μM), quinidine (10 μM), clomethiazole (50 μM) and ketoconazole (1 μM) (Shi et al. 2019 ). Clobetasol propionate inhibited CYP3A5 with an IC50 of 0.32 μM (Wang et al. 2021 ). At 1.8 μM, clobetasol propionate inhibited CYP3A5 by 90% (Wright et al. 2020 ). We chose clobetasol propionate (1.8 μM) as the selective inhibitor of CYP3A5. In brief, toddalolactone was incubated with HLMs and an NADPH-generating system in the presence and absence (control) of the aforementioned specific inhibitors.
+
+=== The role of cytochrome P4502E1 in ethanol mediated diseases: a narrative update.
+    Zakhari S, Neuman M, Seitz HK.
+    ? 2025 | PMID 40192654 | DOI 10.1093/alcalc/agaf014
+    - Cytochrome P450 (CYPs) superfamily of enzymes metabolize thousands of endogenous and exogenous substrates including ethanol.
+    - Results: Cytochrome P4502E1 (CYP2E1) is involved in ethanol metabolism as part of the so-called microsomal ethanol metabolizing system, in the metabolism of fatty acids and some drugs such as acetaminophen and isoniazid, and in the activation of a variety of procarcinogens (PCs).
+    - Chronic ethanol consumption induces CYP2E1 which may result in an enhanced metabolism of these drugs to their toxic intermediates, and in the generation of carcinogens.

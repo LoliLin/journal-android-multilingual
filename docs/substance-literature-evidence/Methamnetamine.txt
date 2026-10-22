@@ -1,0 +1,9 @@
+##### Methamnetamine
+# hits: 2
+
+=== Characterization of in vitro phase I metabolites of methamnetamine in human liver microsomes by liquid chromatography-quadrupole time-of-flight mass spectrometry.
+    Hong YK, Kim YH, Lee JM, Yoo HH, Choi SO, Kang MS.
+    ? 2021 | PMID 33928430 | DOI 10.1007/s00414-021-02594-z
+    - It is not regulated as a controlled substance in most countries, and there are no studies on its metabolism.
+    - In this study, in vitro phase I metabolism of methamnetamine in human liver microsomes (HLM) and flavin-containing monooxygenase (FMO) was investigated by liquid chromatography-quadrupole time-of-flight mass spectrometry (LC-Q-TOF/MS).
+    - The identified metabolic processes include N-demethylation, N-hydroxylation, aromatic hydroxylation, and a combination of these processes.

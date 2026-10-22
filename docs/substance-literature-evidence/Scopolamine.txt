@@ -1,0 +1,20 @@
+##### Scopolamine
+# hits: 1975
+
+=== A versatile yeast platform for N-demethylation of therapeutic alkaloids.
+    Yaw DJ, Li X, Kampmann KB, Lam KWL, Xue S, Hansen J, Bowser TA, Kentish SE, Gras SL.
+    ? 2026 | PMID 42477771 | DOI 10.1186/s13036-026-00729-7
+    - Alkaloid N-demethylation is a critical step in the production of many semi-synthetic alkaloid therapeutics and has traditionally relied on synthetic chemical routes.
+    - This work demonstrated a greener N-demethylation platform applicable to morphinan and tropine alkaloid classes, employing an engineered yeast expressing a cytochrome P450 enzyme with N-demethylase activity, a cytochrome P450 oxidoreductase and purine permeases as transporters.
+    - This platform enabled the N-demethylation of the morphinan alkaloids, oripavine and thebaine with high activity, and the tropane alkaloids, atropine and scopolamine with moderate activity.
+
+=== A Comprehensive Review on the Biosynthesis of Tropane Alkaloids.
+    Wan S, Zhang Y, Yang S, Liao Z, Qiu F.
+    ? 2026 | PMID 42738612 | DOI 10.3390/molecules31172951
+    - By providing a comprehensive synthesis of recent progress and critical perspectives on unresolved questions, this review offers an updated framework for understanding TA biosynthesis and supports future research in plant specialized metabolism, synthetic biology, and natural product engineering.
+
+=== Ameliorative Effects of a Naphthoquinone Derivative With β-Amyloid Aggregation Inhibitory Activity on Cognitive Impairment and Metabolite Analysis of the Blood and Brains of Mice.
+    Oh JM, Jeong WK, Son HJ, Kim SY, Oh TW, Ji M, Nam JW, Baek M, Park JH, Shin WH, Kim HJ, Choi B, Paik MJ, Kim H.
+    ? 2026 | PMID 42438228 | DOI 10.1002/ddr.70345
+    - TPN treatment attenuated Aβ-related protein expression, inflammatory responses, oxidative stress-related changes, and apoptosis-related alterations, while preserving hippocampal pyramidal neurons and their typical morphology.
+    - In metabolite profiling, TPN modulated a narrower set of pathways mainly related to amino acid and kynurenine metabolism, whereas donepezil induced broader adjustments involving amino acid, mitochondrial/energy, and lipid-related pathways compared to those in the serum and cortex of the SCO group, in contrast to those in the hippocampus.

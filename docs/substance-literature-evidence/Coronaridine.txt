@@ -1,0 +1,22 @@
+##### Coronaridine
+# hits: 28
+
+=== Oxidation of four monoterpenoid indole alkaloid classes by three cytochrome P450 monooxygenases from Tabernaemontana litoralis.
+    Mai Z, Kim K, Richardson MB, Deschênes DAR, Garza-Garcia JJO, Shahsavarani M, Perley JO, Njoku DI, Deslongchamps G, De Luca V, Qu Y.
+    ? 2024 | PMID 39569755 | DOI 10.1111/tpj.17145
+    - Cytochrome P450 monooxygenases (CYPs) are well known for their ability to catalyze diverse oxidation reactions, playing a significant role in the biosynthesis of various natural products.
+    - In the realm of monoterpenoid indole alkaloids (MIAs), one of the largest groups of alkaloids in nature, CYPs are integral to reactions such as hydroxylation, epoxidation, ring opening, ring rearrangement, and aromatization, contributing to the extensive diversification of these compounds.
+    - Alongside known pseudoaspidosperma biosynthetic genes, we identify and characterize three new CYPs that facilitate regio- and stereospecific oxidation of four MIA skeletons: iboga, aspidosperma, pseudoaspidosperma, and quebrachamine.
+
+=== Oxidation of Four Monoterpenoid Indole Alkaloid Classes by Three Cytochrome P450 Monooxygenases from  <i>Tabernaemontana litoralis</i>
+    Mai Z, Kim K, Richardson MB, Deschênes DAR, Garza-Garcia JJO, Shahsavarani M, Perley JO, Njoku DI, Deslongchamps G, De Luca V, Qu Y.
+    ? 2024 | PMID - | DOI 10.1101/2024.07.29.605674
+    - Cytochrome P450 monooxygenases (CYPs) are well known for their ability to catalyze diverse oxidation reactions, playing a significant role in the biosynthesis of various natural products.
+    - In the realm of monoterpenoid indole alkaloids (MIAs), one of the largest groups of alkaloids in nature, CYPs are integral to reactions such as hydroxylation, epoxidation, ring opening, ring rearrangement, and aromatization, contributing to the extensive diversification of these compounds.
+    - Alongside known pseudoaspidosperma biosynthetic genes, we identify and characterize three new CYPs that facilitate regio- and stereospecific oxidation of four MIA skeletons: iboga, aspidosperma, pseudoaspidosperma, and quebrachamine.
+
+=== Ibogaine: Therapeutic Potential, Cardiac Safety, and Translational Perspectives in the Treatment of Substance Use Disorders-A Scoping Review.
+    Esperança MP, Gomes NGM, Campos MG.
+    ? 2026 | PMID 41683522 | PMCID PMC12899015 | DOI 10.3390/molecules31030545
+    https://europepmc.org/article/PMC/12899015
+    - Structural congeners, including 18-methoxycoronaridine ( Figure 2 ) and oxa-iboga derivatives, have been developed to retain anti-addictive efficacy while exhibiting more favourable cardiac safety profiles in preclinical models [ 27 ]. Moreover, variability in ibogaine metabolism to noribogaine, largely driven by cytochrome P450 2D6 (CYP2D6) polymorphisms, contributes to clinically relevant inter-individual differences in exposure and toxicity [ 28 ].

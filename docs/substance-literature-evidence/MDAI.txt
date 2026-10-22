@@ -1,0 +1,22 @@
+##### MDAI
+# hits: 38
+
+=== Electronic Properties of Small Psychotropic Substances in WaterPhenylamines.
+    Boča R, Štofko J, Rajnák C.
+    ? 2025 | PMID 40893248 | DOI 10.1021/acsomega.5c03078
+    - Each of the 9 studied species (phenethylamine, amphetamine, ephedrine, pseudoephedrine, methamphetamine, MDMA, MDEA, MDA, MDAI) was considered in three oxidation states: neutral molecule, molecular cation, and molecular anion.
+    - This allows, after full geometry optimization followed by vibrational analysis, the evaluation of global adiabatic electronic properties such as ionization energy, electron affinity, molecular electronegativity, chemical hardness, electrophilicity index, and absolute oxidation and reduction potentials.
+    - Several correlations were found between molecular descriptors, e.g., molar-mass-dependent properties (dipole polarizability and zero-point vibration energy) vs molar mass, absolute oxidation potential vs adiabatic ionization energy, absolute reduction potential vs electrophilicity index, and 13 C NMR shielding constants vs atomic charges.
+
+=== Ethylene-driven enhancement of bioactive metabolites and in vitro functionality in soybean (Glycine max (L.) Merr.) and mung bean (Vigna radiata (L.) Wilczek) leaves grown in vertical farms: a comparative study.
+    Jang MY, Cho DY, Lee HY, Jeong JB, Kim DH, Bang DY, Kim HR, Jeong YR, Lee JH, Cho KM.
+    ? 2026 | PMID 42056867 | PMCID PMC13274195 | DOI 10.1186/s12870-026-08829-8
+    https://europepmc.org/article/PMC/13274195
+    - The chemical structures and typical HPLC chromatograms of 12 isoflavone derivatives. A Chemical structures of the identified isoflavone derivatives, including glycoside, malonyl-glycoside, and aglycone forms of daidzein, genistein, and glycitein, as well as their 2'-hydroxylated derivatives. B SL-CTL, control soybean leaves (untreated); C SL-ETL, ethylene-treated soybean leaves; D ML-CTL, control mung bean leaves (untreated); E ML-ETL, ethylene-treated mung bean leaves. 12 Chemicals: 1, 2'-hydroxydaidzein-4',7-O-diglucoside (2HDAEDG); 2, daidzein-4',7-O-diglucoside (DAEDG); 3, 2'-hydroxydaidzin (2HDAI); 4, daidzin (DAI); 5, glycitin (GLI); 6, genistin (GEI); 7, Malonyldaidzin (MDAI); 8, 2'-hydroxydaidzein (2HDAE); 9, Malonylgenistin (MGEI); 10, daidzein (DAE); 11, glycitein (GLE); 12, genistein (GEE)
+
+=== Study on the metabolism of 5,6-methylenedioxy-2-aminoindane (MDAI) in rats: identification of urinary metabolites.
+    Židková M, Linhart I, Balíková M, Himl M, Váňa L, Vetýška M, Páleníček T, Lhotková E, Dušek M.
+    ? 2017 | PMID 27401914 | DOI 10.1080/00498254.2016.1199919
+    - Metabolism of MDAI, which has been hitherto unexplored, was studied in rats dosed with a subcutaneous dose of 20 mg MDAI.HCl/kg body weight.
+    - The main metabolic pathways proceeding in parallel were found to be oxidative demethylenation followed by O-methylation and N-acetylation.
+    - These pathways gave rise to five metabolites, namely, 5,6-dihydroxy-2-aminoindane, 5-hydroxy-6-methoxy-2-aminoindane, N-acetyl-5,6-methylenedioxy-2-aminoindane, N-acetyl-5,6-dihydroxy-2-aminoindane and N-acetyl-5-hydroxy-6-methoxy-2-aminoindane, which were found predominantly in the form of corresponding glucuronides and sulphates.

@@ -1,0 +1,9 @@
+##### Nitracaine
+# hits: 1
+
+=== Identification of in vitro and in vivo human metabolites of the new psychoactive substance nitracaine by liquid chromatography coupled to quadrupole time-of-flight mass spectrometry.
+    Negreira N, Kinyua J, De Brabanter N, Maudens K, van Nuijs AL.
+    ? 2016 | PMID 27185541 | DOI 10.1007/s00216-016-9616-7
+    - The purpose of this work was to investigate the in vitro metabolism of nitracaine, a new psychoactive substance, using human liver microsome incubations, to evaluate the cytochrome P450 (CYP) enzyme isoforms responsible for the phase-I metabolism and to compare the information from the in vitro experiments with data resulting from an authentic user's urine sample.
+    - The observed phase-I metabolites were formed through N-deethylation, N,N-deethylation, N-hydroxylation, and de-esterification, with CYP2B6 and CYP2C19 being the main enzymes catalyzing their formation.
+    - One glucuronidated product was identified in the phase-II metabolism experiments.

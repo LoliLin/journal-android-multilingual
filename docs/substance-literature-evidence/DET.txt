@@ -1,0 +1,19 @@
+##### DET
+# hits: 922
+
+=== Axial ligand substitution in a microperoxidase-derived peptide enables P450-like electrocatalysis.
+    Nakano K, Uezato S, Nagadome H.
+    ? 2026 | PMID 42582977 | PMCID PMC13459061 | DOI 10.1039/d6ra04712b
+    https://europepmc.org/article/PMC/13459061
+    - As shown in Fig. 3 , the voltammetric response retained the characteristic current plateau observed in the absence of substrate; however, the current magnitude increased progressively with EFC concentration. This substrate-dependent enhancement was evident at sub-millimolar concentrations and culminated in a peak-shaped response at millimolar concentrations. Such behaviour is consistent with a regenerative electrocatalytic mechanism in which MO17 is reduced via DET, reacts with EFC, and is subsequently re-oxidised. At higher substrate concentrations, the interfacial electron transfer rate becomes limiting, preventing the attainment of a well-defined saturation current. Post-electrolysis HPLC analysis confirmed HFC formation, complemented by the detection of its characteristic fluorescence (Fig. S5 and S6). Although EFC is not selective for a single CYP isoform, formation of HFC is nevertheless consistent with P450-like oxidative chemistry.
+
+=== Nanoconfinement Enhances Electrochemical Oxidation in Saline Wastewater Treatment.
+    Zheng W, Fu H, Huang Z, Guan X, Luo X, Feng C.
+    ? 2026 | PMID 41677470 | DOI 10.1021/acs.est.5c14298
+    - Electrochemical oxidation (EO) is a promising technology for saline wastewater treatment, but its application is hindered by limited efficiency and the generation of toxic chlorinated byproducts.
+
+=== TET CpG sequence-context-specific DNA demethylation shapes progression of IDH-mutant gliomas.
+    Hoogstrate Y, Ghisai SA, van Hijfte L, Head R, de Heer I, Padovan M, de Wit M, Vallentgoed WR, Dipasquale A, Wijnenga MMJ, Weenink B, Luning R, Maas SLN, Brzobohata A, Weller M, Weiss T, Mair MJ, Berghoff AS, Wöhrer A, Jeltsch A, Koekkoek JAF, Hazelbag HM, Kouwenhoven MCM, Kim Y, Westerman BA, Ylstra B, Niers AM, Johnson KC, Varn FS, Verhaak RGW, Khasraw M, van den Bent MJ, Wesseling P, French PJ.
+    ? 2026 | PMID 41850239 | PMCID PMC13006442 | DOI 10.1016/j.xcrm.2026.102682
+    https://europepmc.org/article/PMC/13006442
+    - Although we demonstrate that changes in DNA methylation were associated with patient prognosis, it remains to be determined whether this is causal or the effect of tumor progression. The DNA demethylation exhibited CpG specificity between the different oligodendroglioma and astrocytoma datasets. The demethylation is sequence context specific and correlated with TET enzyme flanking sequence preferences. This may be an indication for an active, TET-mediated form of demethylation as the underlying process to IDH-mutant glioma malignant transformation. However, the correlation with Ki-67 and association with solo-WCGW indicated a link with increased proliferation and may reflect a more general mechanism of tumor aggressiveness. 66 Additional research is needed to determine whether the changes result from passive or active enzymatic DNA demethylation and to what extent this occurs during cell cycling.

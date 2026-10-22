@@ -1,0 +1,8 @@
+##### PiPT
+# hits: 16
+
+=== Phosphate availability and ectomycorrhizal symbiosis with Pinus sylvestris have independent effects on the Paxillus involutus transcriptome.
+    Paparokidou C, Leake JR, Beerling DJ, Rolfe SA.
+    ? 2021 | PMID 33200348 | PMCID PMC7782400 | DOI 10.1007/s00572-020-01001-6
+    https://europepmc.org/article/PMC/7782400
+    - Seven putative PiPT genes were identified within the P. involutus ATCC 200175 genome (Supporting Table S3 ) that encode Pi transporter proteins (PiPTs). PiPT1-7 belongs to the major facilitator superfamily (MFS) of transporters. The MFS family of transporters includes single-polypeptide secondary carriers capable of ion and small solute transport across cell membranes. MFS transporters generally depend on chemiosmotic gradients across cell membranes and are described as secondary rather than primary transporters activated by ATP hydrolysis (Pao et al. 1998 ). External Pi uptake has been traditionally attributed to the MFS transporters such as the Pht1 family of plant Pi transporters. Plant Pht1 transporters have been identified by their similarity to the Saccharomyces cerevisiae high-affinity Pi transporter, ScPho84, which mediates external Pi uptake across the plasma membrane via H + symport activity (Remy et al. 2012 ). Similarly, in EM fungi such as Hebeloma cylindrosporum , high-affinity Pi transporters were identified and functionally characterized, demonstrating a high similarity to ScPho84 and exhibiting Pi: H + symporter activity (Tatry et al. 2009 ).

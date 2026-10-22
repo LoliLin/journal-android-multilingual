@@ -1,0 +1,15 @@
+##### AL-LAD
+# hits: 14
+
+=== Analytical profile, in vitro metabolism and behavioral properties of the lysergamide 1P-AL-LAD.
+    Brandt SD, Kavanagh PV, Westphal F, Pulver B, Schwelm HM, Whitelock K, Stratford A, Auwärter V, Halberstadt AL.
+    ? 2022 | PMID 35524430 | DOI 10.1002/dta.3281
+    - In vitro metabolism studies using pooled human liver microsomes (pHLM) confirmed that 1P-AL-LAD converted to AL-LAD as the most abundant metabolite consistent with the hypothesis that 1P-AL-LAD may act as a prodrug.
+    - Fourteen metabolites were detected in total; metabolic reactions included hydroxylation of the core lysergamide ring structure or the N 6 -allyl group, formation of dihydrodiol metabolites, N-dealkylation, N 1 -deacylation, dehydrogenation, and combinations thereof.
+    - Previous studies have shown that N 1 -substitution disrupts the ability of lysergamides to activate the 5-HT 2A receptor; based on the in vitro metabolism data, 1P-AL-LAD may induce the HTR because it acts as a prodrug and is metabolized to AL-LAD after administration to mice.
+
+=== &lt;sup&gt;1&lt;/sup&gt;H Nuclear Magnetic Resonance: A Future Approach to the Metabolic Profiling of Psychedelics in Human Biofluids?
+    Vilca-Melendez S, Uthaug MV, Griffin JL.
+    ? 2021 | PMID 34966300 | PMCID PMC8710695 | DOI 10.3389/fpsyt.2021.742856
+    https://europepmc.org/article/PMC/8710695
+    - This is organised in order of publication date, from newest to oldest. 5-MeO-DMT, 5-methoxy-N-N-Dimetyltryptamine; 1 H NMR, proton nuclear magnetic resonance; HPLC, high performance liquid chromatography; ECPLA, N-ethyl-N-cyclopropyl lysergamide; LSD, lysergic acid diethylamide; MS, mass spectroscopy; LC, liquid chromatography; GC, gas chromatography; GC-sIR, gas chromatography-condensed-phase infrared spectroscopy; DMT, dimetyltryptamine; 13 C NMR, carbon-13 nuclear magnetic resonance; 1CP-LSD, 1-cyclopropanoyl-d-lysergic acid diethylamide; GC-IR, gas chromatography-infrared spectroscopy; 1B-LSD, 1-butanoyl-d-lysergic acid diethylamide; HRMS, high resolution mass spectroscopy; PsiP, psilocybe cubensis phosphatase; PsiL, psilocybe cubensis laccatase; LSD-775, lysergic acid morpholide; ETH-LAD, N 6 -ethyl-6-norlysergic acid diethylamide; 1P-ETH-LAD, 1-propionyl-N 6 -ethyl-6-norlysergic acid diethylamide; AL-LAD, N 6 -alyll-6-norlysergic acid diethylamide; LSZ, (2'S,4'S)-lysergic acid 2,4-dimethylazetidide; 1P LSD, 1-propionyl-d-lysergic acid diethylamide; PCG, psilocin glucuronide; 31 P NMR, phosphorous-31 nuclear magnetic resonance .

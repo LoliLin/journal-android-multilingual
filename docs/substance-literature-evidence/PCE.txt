@@ -1,0 +1,14 @@
+##### PCE
+# hits: 1104
+
+=== Metabolic patterns of new psychoactive substances: Methyl-ketamine and 2-oxo-PCE in rats using UHPLC-QTOF analysis.
+    Cai YG, Wang YJ, Wu YF, Feng JY, Mo Y, Wang QH, Dai Y.
+    ? 2025 | PMID 40697759 | DOI 10.1016/j.fsisyn.2025.100623
+    - Methyl-ketamine primarily underwent cyclohexanone hydroxylation, dehydration, N-demethylation, cyclohexanone carbonyl hydrogenation, and glucuronidation, with N-dealkylation as the dominant process.
+    - In contrast, 2-oxo-PCE metabolism involved carbonyl hydrogenation of cyclohexanone, N-diethylation, deamination, hydroxylation, dehydration, and glucuronidation.
+    - This hindered the carbonyl hydrogenation of cyclohexanone observed in 2-oxo-PCE, while promoting hydroxylation/dehydration reactions in methyl-ketamine.
+
+=== Genotoxicity of Carbohydrate Derived Fulvic Acid.
+    Clark SJ, Graz M.
+    ? 2026 | PMID 42383226 | DOI 10.1016/j.toxrep.2026.102298
+    - To overcome compositional variability and avoid environmental contaminants, carbohydrate-derived fulvic acid (CHD-FA) was developed by wet oxidation of sucrose using only molecular oxygen and water, and is manufactured under GMP via a patented process.

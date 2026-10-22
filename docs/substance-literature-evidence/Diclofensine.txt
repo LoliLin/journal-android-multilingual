@@ -1,0 +1,7 @@
+##### Diclofensine
+# hits: 18
+
+=== Determination of diclofensine, an antidepressant agent, and its major metabolites in human plasma by high-performance liquid chromatography with fluorometric detection.
+    Strojny N, de Silva JA.
+    ? 1985 | PMID 4030982 | DOI 10.1016/s0378-4347(00)84045-1
+    - The assay involves deproteinization of plasma, overnight Glusulase incubation to hydrolyze the major metabolite (I-B-glucuronide), extraction of the parent compound and its deconjugated metabolites (I-A, I-B and I-C) from the alkalinized aqueous phase into diethyl ether-ethanol (95:5), the residue of which (containing compounds I, I-A, I-B and I-C) is alkylated with 2-iodopropane dissolved in acetone, using solid potassium hydroxide as a catalyst.

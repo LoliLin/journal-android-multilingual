@@ -1,0 +1,15 @@
+##### Methedrone
+# hits: 37
+
+=== An Update on the Implications of New Psychoactive Substances in Public Health.
+    Simão AY, Antunes M, Cabral E, Oliveira P, Rosendo LM, Brinca AT, Alves E, Marques H, Rosado T, Passarinha LA, Andraus M, Barroso M, Gallardo E.
+    ? 2022 | PMID 35457736 | PMCID PMC9028227 | DOI 10.3390/ijerph19084869
+    https://europepmc.org/article/PMC/9028227
+    - In 2015, Negreira et al. using microsomes of human liver concluded that methedrone is metabolized via N -demethylation, O -demethylation, and hydroxylation of the aliphatic side chain, as well as reduction of the β-ketone moiety [ 135 ]. Kamata et al. reported metabolic pathways for methylone in both humans and rats, in which the β-ketone moiety reduction was not observed. The authors reported that, although a percentage of the dose was excreted unchanged, processes of N -demethylation and demethylenation, followed by O -methylation occurred. The most common metabolites in urine were 3′-hydroxy-4′-methoxymethcathinone and 4′-hydroxy-3′-methoxymethcathinone. Židková et al. reported for the same compound the metabolites 3′-hydroxy-4′-methoxycathinone and 4′-hydroxy-3′-methoxycathinone in rat urine [ 136 ].
+
+=== In vitro Phase I and Phase II metabolism of α-pyrrolidinovalerophenone (α-PVP), methylenedioxypyrovalerone (MDPV) and methedrone by human liver microsomes and human liver cytosol.
+    Negreira N, Erratico C, Kosjek T, van Nuijs AL, Heath E, Neels H, Covaci A.
+    ? 2015 | PMID 26014283 | DOI 10.1007/s00216-015-8763-6
+    - Six Phase I metabolites of α-PVP were identified, which were formed involving reduction, hydroxylation, and pyrrolidine ring opening reactions.
+    - Two glucuronidated metabolites of α-PVP, not reported in previous in vitro studies, were further identified.
+    - MDPV was transformed into 10 Phase I metabolites involving reduction, hydroxylation, and loss of the pyrrolidine ring.

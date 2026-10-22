@@ -1,0 +1,16 @@
+##### Bromo-DragonFLY
+# hits: 18
+
+=== ADME of Bromo-DragonFLY as an example of a new psychoactive substance (NPS) - application of in Silico methods for prediction: absorption, distribution, metabolism and excretion.
+    Noga M, Jurowski K.
+    ? 2025 | PMID 40594888 | DOI 10.1038/s41598-025-06453-4
+    - This study predicts the absorption, distribution, metabolism, and excretion (ADME) of Bromo-DragonFLY using in silico methods.
+    - The compound shows significant plasma protein binding and involves multiple cytochrome P450 isoenzymes in its metabolism, with variability in phase I and II reactions.
+    - Predicted metabolites form through epoxidation, quinone formation, UGT conjugation, and N-dealkylation, exhibiting reactivity with proteins, DNA, and glutathione, contributing to its toxicological profile.
+
+=== Bromo-dragonfly, a psychoactive benzodifuran, is resistant to hepatic metabolism and potently inhibits monoamine oxidase A.
+    Noble C, Holm NB, Mardal M, Linnet K.
+    ? 2018 | PMID 30036687 | DOI 10.1016/j.toxlet.2018.07.018
+    - Little is known about the metabolism of bromo-dragonfly.
+    - The aims of this study were to investigate the pharmacokinetics of bromo-dragonfly, determine the plasma protein binding, examine the human hepatic metabolism in vitro, and compare with those of its close analogue, 2C-B-fly.
+    - Additionally, we assayed the inhibition potency of both compounds on the monoamine oxidase (MAO) A- and B-mediated oxidative deamination of serotonin (5-HT) and dopamine, respectively.

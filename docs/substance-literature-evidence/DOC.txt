@@ -1,0 +1,21 @@
+##### DOC
+# hits: 6953
+
+=== Biochar mitigates dimethylarsenate-stimulated methane emissions mediated by DOM-microbe interactions in paddy soils.
+    Kang Y, Jin L, Du J, Lv J, Tang Y, Zhou J, Liu J, Yang Y, Jia Y.
+    ? 2026 | PMID 42827498 | DOI 10.3389/fmicb.2026.1958612
+    - DMAs markedly increased mcrA gene abundance by 4.2-7.6 times with negligible change in pmoA , confirming stimulated methanogenesis rather than suppressed oxidation.
+    - Furthermore, biochar suppressed mcrA gene abundances by 12.7-81.3%, while increased that of pmoA gene by 7.1-7.5 times, as well as increased porewater As(V) and enriched ammonia-oxidizing Candidatus_Nitrosopelagicus to potentially or indirectly stimulate anaerobic CH₄ oxidation.
+
+=== Short- and Long-Acting Psychedelics: Structure-Activity Relationships, Pharmacology, and Implications for Neuropsychiatric Therapeutics.
+    Bhat A, Zolali E, Sakib MA, Rahimian M, McMahon LR, German N, Obeng S.
+    ? 2026 | PMID 42257400 | PMCID PMC13281395 | DOI 10.1021/acschemneuro.6c00202
+    https://europepmc.org/article/PMC/13281395
+    - DOX compounds, or 4-substituted-2,5-dimethoxyamphetamines, such as DOC, DOI, DOB, DOM (STP), and DOET, are long-acting phenethylamine psychedelics, with durations of actions in humans of 12–24 h (DOC), 16–30 h (DOI), 18–30 h (DOB), 8–20 h (DOM), and 5–20 h (DOET). − Across the DOX series (DOC, DOI, DOB, DOM, DOET), in vitro and urine-metabolite studies indicate that the primary biotransformation is O-demethylation (with DOM additionally undergoing benzylic side-chain methyl hydroxylation), mediated predominantly by CYP2D6.
+
+=== Assessing the role of iodination degree on biodegradation kinetics and transformation pathways of iodinated contrast media and derivatives.
+    Bartels Y, Jekel M, Putschew A.
+    ? 2025 | PMID 41275471 | PMCID PMC12641039 | DOI 10.1007/s10532-025-10213-6
+    https://europepmc.org/article/PMC/12641039
+    - IOP, DTZ, ATIA, and their diiodinated, monoiodinated, and deiodinated derivatives were analyzed by liquid chromatography coupled to positive electrospray ionization mass spectrometry (LC–pos–ESI–MS; HP 1100, Agilent, Waldbronn, Germany; Quattro Micro, Waters, USA) operated in scan mode (m/z 80–900). LC–neg–ESI–MS in selective ion monitoring (SIM) mode for m/z 127 (iodide), combined with in-source fragmentation, was used to verify iodinated TPs by comparing retention times in LC–pos–ESI–MS and LC–neg–ESI–MS chromatograms (Putschew and Jekel 2003 ; Hütteroth et al. 2007 ). All operational parameters are given in Table A.2.1. High-performance liquid chromatography with UV detection (HPLC–UV; Agilent 1200 Series) was used for the quantification of aniline (Appendix A.3). The concentration of DOC was quantified using varioTOC Cube (elementar Analysensysteme, Germany). Sulphate and Nitrate were quantified by ion chromatography (IC, 930 Compact IC FLEX, Metrohm, Filderstadt, Germany), manganese and iron were quantified by flame atom absorption spectroscopy (AAS). All samples were filtered (0.45 µm) immediately after sampling for analysis, with AAS samples further acidified. The f OC of the aquifer material was determined by CNS-Analyser Vario EL III (Elementar, Langenselbold, Germany).
+    - In general, the tested compounds IOP, IOP–1I, IOP–2I, and IOP–3I were primarily degraded within a similar time range following a distinct lag phase (Table C.2.2). The DT 50 values in the suspensions using aquifer material S1 exhibited greater variability between duplicates (23.9–74.4 d) compared to S2 (38.7–42.3 d). λ ranged from 12.5 to 76.8 d in S1 and from 32.5 to 38.9 d in S2. Compared to the results of the ZWTs, these values are considerably higher (Table 1 ), indicating a significantly slower transformation of the IOP derivatives in the aquifer material–water tests under nitrate-reducing conditions, as well as a pronounced adaptation period. This extended lag phase may also be related to the presence of biodegradable DOC in the pore water (Table B.1.1), which may have been preferentially metabolized by the microbial community prior to IOP.

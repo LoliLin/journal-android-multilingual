@@ -1,0 +1,21 @@
+##### Phenazepam
+# hits: 47
+
+=== The Evolution Toward Designer Benzodiazepines in Drug-Facilitated Sexual Assault Cases.
+    Pérez Orts M, van Asten A, Kohler I.
+    ? 2023 | PMID 35294022 | PMCID PMC9942444 | DOI 10.1093/jat/bkac017
+    https://europepmc.org/article/PMC/9942444
+    - DBZDs include short-acting drugs, such as clonazolam or etizolam with an elimination half-life of approximately 3–7 h but also long-acting drugs such as diclazepam (46 h), meclonazepam (80 h) or flubromazepam (106 h). Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40–250 h vs. 2–3 h for the parent compound. Other parameters related to the elimination half-life such as protein binding, volume of distribution and lipophilicity are described by Manchester et al. ( 42 ). DBZDs are relatively lipophilic, ranging from phenazepam (highest lipophilicity) to pyrazolam (lowest lipophilicity). Furthermore, similar to conventional BZDs, they exhibit a high degree of plasma protein binding (90% on average), with the exception of pyrazolam (78%).
+
+=== Influence of Plasma Concentration of Hsa-Mir-370-3p and Cyp2d6*4 On Equilibrium Concentration of Phenazepam in Patients with Recurrent Depressive Disorder.
+    Zastrozhin MS, Efimova AV, Skryabin V, Smirnov VV, Petukhov AE, Pankratenko EP, Pozdniakov SA, Kaverina EV, Klepikov DA, Grishina EA, Ryzhikova KA, Bure IV, Bryun EA, Sychev DA.
+    ? 2021 | PMID 34887601 | DOI 10.64719/pb.4420
+    - Previous studies showed that CYP2D6 IS involved in the biotransformation of phenazepam, the activity of which is highly dependent on the polymorphism of the gene encoding it.
+    - The objective of the study was to evaluate the impact of 1846G>A polymorphism of the CYP2D6 gene on the concentration/dose indicator of phenazepam, using findings on enzymatic activity of CYP2D6 (as evaluated by the 6M-THBC/pinoline ratio measurement) and on CYP2D6 expression level obtained by measuring the hsa-miR-370-3p plasma concentration levels in patients suffering from major depressive disorder.
+    - The activity of CYP2D6 was evaluated using the HPLC-MS/MS method by the content of the endogenous substrate of given isoenzyme and its metabolite in urine (6M-THBC/pinoline).
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.

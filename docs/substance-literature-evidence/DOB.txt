@@ -1,0 +1,19 @@
+##### DOB
+# hits: 407
+
+=== Effect of Low-Dose Vonoprazan on Hepatic Cytochrome P450 Activity By 13C-Aminopyrine Breath Test in Healthy Subjects.
+    Takahashi S, Yamade M, Furuta T, Higuchi T, Shimizu M, Inagaki K, Sugiura K, Matsuura T, Ishida N, Yamada T, Iwaizumi M, Hamaya Y, Sugimoto K, Osawa S.
+    ? 2026 | PMID 42427013 | DOI 10.12659/msm.953332
+    - BACKGROUND Proton pump inhibitors (PPIs) affect hepatic drug metabolism via cytochrome P450 (CYP) enzymes, but the impact of potassium-competitive acid blockers (P-CABs), such as vonoprazan (VPZ), is not fully understood.
+    - CONCLUSIONS Administration of 10 mg of VPZ did not significantly affect hepatic CYP activity as assessed by the 13C-ABT, suggesting that VPZ at a maintenance dose has minimal effect on hepatic drug metabolism and drug-drug interactions.
+
+=== Short- and Long-Acting Psychedelics: Structure-Activity Relationships, Pharmacology, and Implications for Neuropsychiatric Therapeutics.
+    Bhat A, Zolali E, Sakib MA, Rahimian M, McMahon LR, German N, Obeng S.
+    ? 2026 | PMID 42257400 | PMCID PMC13281395 | DOI 10.1021/acschemneuro.6c00202
+    https://europepmc.org/article/PMC/13281395
+    - DOX compounds, or 4-substituted-2,5-dimethoxyamphetamines, such as DOC, DOI, DOB, DOM (STP), and DOET, are long-acting phenethylamine psychedelics, with durations of actions in humans of 12–24 h (DOC), 16–30 h (DOI), 18–30 h (DOB), 8–20 h (DOM), and 5–20 h (DOET). − Across the DOX series (DOC, DOI, DOB, DOM, DOET), in vitro and urine-metabolite studies indicate that the primary biotransformation is O-demethylation (with DOM additionally undergoing benzylic side-chain methyl hydroxylation), mediated predominantly by CYP2D6.
+
+=== Elevated carbon dioxide in exhaled breath induces false-positive DOB results during Helicobacter pylori detection with ¹³C-urea breath test using infrared spectroscopy.
+    Fan W, Tao Y, Shi J, Huang Z, Chen M, Zhang G, Hao B, Ye F.
+    ? 2026 | PMID 42897461 | DOI 10.1186/s12876-026-05169-7
+    -  Background The urea breath test (UBT) detects Helicobacter pylori (H. pylori) by measuring 13 CO₂ in exhaled air after the ingestion of a 13 C-urea metabolized by bacterial urease.

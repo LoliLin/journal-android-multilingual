@@ -1,0 +1,21 @@
+##### AM-2201
+# hits: 72
+
+=== Enzymatic defluorination of a terminally monofluorinated pentyl moiety: oxidative or hydrolytic mechanism?
+    Haschimi B, Willecke F, Mundinger S, Hüttel W, Jessen H, Müller M, Auwärter V.
+    ? 2024 | PMID 38408868 | DOI 10.1124/dmd.123.001501
+    - While oxidative and reductive defluorination have been shown to be responsible for the metabolic degradation of organofluorine compounds, the involvement of hydrolytic mechanisms catalyzed by human enzymes has not been reported so far.
+    - In contrast, formation of 5-HPM by pHLM was observed independently of the presence of atmospheric oxygen or co-factors regenerating the redox system. pHLM incubation of d 2 -AM-2201 confirmed the hypothesis of a non-oxidative mechanism involved in the defluorination of the 5-fluoropentyl moiety.
+    - However, our study provides evidence for the involvement of a non-oxidative mechanism catalyzed by human liver enzymes.
+
+=== Structure-activity relationship of prevalent synthetic cannabinoid metabolites on hCB&lt;sub&gt;1&lt;/sub&gt; in vitro and in silico dynamics.
+    Åstrand A, Laudadio E, Gameli PS, Martin L, Carlier J, Busardò FP, Dahlén J, Wu X, Konradsson P, Vikingsson S, Kronstrand R, Gréen H.
+    ? 2026 | PMID 41184621 | DOI 10.1038/s41401-025-01678-5
+    - Synthetic cannabinoids (SC) target the human cannabinoid receptor 1 (hCB 1 ) and are extensively metabolized, but the metabolite activity on the hCB 1 receptor after a SC intake is largely unknown.
+
+=== Phase I-metabolism studies of the synthetic cannabinoids PX-1 and PX-2 using three different in vitro models.
+    Dahm P, Thomas A, Rothschild MA, Thevis M, Mercer-Chalmers-Bender K.
+    ? 2022 | PMID 36454402 | DOI 10.1007/s11419-021-00606-6
+    -  Purpose Synthetic cannabinoids (SCs), highly metabolized substances, are rarely found unmodified in urine samples.
+    - Urine screening relies on SC metabolite detection, requiring metabolism knowledge.
+    - Metabolism data can be acquired via in vitro assays, e.g., human hepatocytes, pooled human liver microsomes (pHLM), cytochrome P450 isoforms and a fungal model; or in vivo by screening, e.g., authentic human samples or rat urine.

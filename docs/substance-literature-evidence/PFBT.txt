@@ -1,0 +1,20 @@
+##### PFBT
+# hits: 21
+
+=== The Role of Stabilizing Copolymer in Determining the Physicochemical Properties of Conjugated Polymer Nanoparticles and Their Nanomedical Applications.
+    Zhao M, Zhao M, Uzunoff A, Green M, Rakovich A.
+    ? 2023 | PMID 37177088 | PMCID PMC10180373 | DOI 10.3390/nano13091543
+    https://europepmc.org/article/PMC/10180373
+    - Other common PEG derivatives employed for the purposes of CPN solubilization include PS-PEG-COOH. Similarly to DSPE-PEG-Mal, PS-PEG-COOH can also be modified with Tat through a covalent link. Zhou et al. developed multiple wavelength emission CPNs with different fluorene derivatives as a core and PS-PEG-COOH as an encapsulation matrix. To perform the biological applications, CPNs were further modified with Tat and successfully employed in fluorescence imaging of A549 cells [ 55 ]. Wu et al. demonstrated bioconjugation of ultrabright Pdots for specific cellular targeting [ 30 ]. They encapsulated PFBT in the PS-PEG-COOH matrix, and then further functionalized their Pdots with streptavidin via the EDC coupling reaction. The developed Pdots and the anti-EpCAM primary antibody were then sequentially incubated in MCF-7 cultures, to achieve effective and specific cell targeting.
+
+=== Overcoming Biophysical Barriers in Melanoma Photomedicine: From Photodynamic Therapy to Smart Nanodelivery and Photoimmunotherapy.
+    Russano F, Dall'Olmo L, Brugnolo D, Callegarin F, Mazza M, Del Fiore P, Caminiti R, Rastrelli M, Mocellin S.
+    ? 2026 | PMID 42794589 | PMCID PMC13607553 | DOI 10.3390/ijms27188156
+    https://europepmc.org/article/PMC/13607553
+    - Organic Heterojunction Nanoparticles (PP NPs): To completely circumvent the oxygen-dependent triplet-state limitations of traditional Type II PS, Jin et al. developed organic heterojunction nanoparticles composed of the conjugated polymer donor PFBT and the electron acceptor PCBM (PP NPs) [ 29 ]. Under light irradiation, the PP NPs exhibited an ultra-efficient photoinduced charge transfer (97.7%), generating long-lived radical species, PCB Mullet − , that initiated direct electron and hole transfer reactions [ 29 ]. This Type I-dominated process produced massive quantities of superoxide and hydroxyl radicals while alleviating the strict oxygen requirement of conventional PDT [ 29 ]. Remarkably, rather than acting as a physical shield, endogenous melanin acted as a photocatalytic accelerator in this system, donating electrons to fill the oxidative holes of the PP heterojunction, thereby sustaining a continuous, amplified redox cycle that achieved a 90% tumor growth inhibition rate in preclinical in vivo B16F10 murine models [ 29 ].
+
+=== European guideline on indications, performance and clinical impact of <sup>13</sup> C-breath tests in adult and pediatric patients: An EAGEN, ESNM, and ESPGHAN consensus, supported by EPC.
+    Keller J, Hammer HF, Afolabi PR, Benninga M, Borrelli O, Dominguez-Munoz E, Dumitrascu D, Goetze O, Haas SL, Hauser B, Pohl D, Salvatore S, Sonyi M, Thapar N, Verbeke K, Fox MR, European 13C-breath test group.
+    ? 2021 | PMID 34128346 | PMCID PMC8259225 | DOI 10.1002/ueg2.12099
+    https://europepmc.org/article/PMC/8259225
+    - General principle, performance and clinical role of 13 C‐breath tests used in gastroenterology. 13 C‐urea used for detection of H. pylori ( 13 C‐UBT, marked in green) is metabolized by bacterial urease to produce 13 CO 2, which is absorbed, transported to the lung (broken green arrow) and exhaled. For 13 C‐gastric emptying breath tests ( 13 C‐GEBT, marked in red), 13 C‐pancreatic function breath test ( 13 C‐PFBT, marked in brown), and 13 C‐liver function breath tests ( 13 C‐LFBT, marked in blue), orally applied substrates or their metabolites are absorbed in the small intestine. Subsequently, they are transported to the liver where they undergo further metabolization with production of 13 CO 2 , which is transported to the lung and exhaled[Corrections added on June 28, 2021 after first online publication: Figure 3 (image and caption) has been revised.]
