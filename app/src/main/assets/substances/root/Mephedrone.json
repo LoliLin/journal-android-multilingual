@@ -149,5 +149,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed narrative review of mephedrone and its metabolites (Int J Mol Sci 2025, PMID 40806784). Phase II metabolism involves conjugation reactions leading to metabolites such as N-succinyl-normephedrone and N-glutaryl-normephedrone, which further complicate its metabolic profile.",  "metabolismSources": ["https://europepmc.org/article/MED/40806784"]
 }

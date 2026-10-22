@@ -81,5 +81,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed review of postmortem toxicology of new synthetic opioids (Front Pharmacol 2018, PMID 30416445). The metabolism of MDPV, which contains a pyrrolidine group, has been investigated in vitro. The major phase I metabolites include catecholpyrovalerone and methylcatecholpyrovalerone, produced by opening of the methylenedioxy ring followed by demethylation to form catechol, and subsequent methylation by catechol-O-methyltransferase. In phase II metabolism, MDPV metabolites undergo conjugation with glucuronic acid and sulphate, with approximately 40% and 50% of metabolites being excreted in these forms respectively.",  "metabolismSources": ["https://europepmc.org/article/PMC/6212520"]
 }

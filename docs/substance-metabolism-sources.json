@@ -744,6 +744,11 @@
       "labelDate": "20260901"
     },
     {
+      "name": "MDPV",
+      "sources": ["https://europepmc.org/article/PMC/6212520"],
+      "evidence": "literature"
+    },
+    {
       "name": "Melatonin",
       "sources": ["https://www.medicines.org.uk/emc/product/13628/smpc"],
       "evidence": "product-information"
@@ -755,6 +760,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260901"
+    },
+    {
+      "name": "Mephedrone",
+      "sources": ["https://europepmc.org/article/MED/40806784"],
+      "evidence": "literature"
     },
     {
       "name": "Methadone",
