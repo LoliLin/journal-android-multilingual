@@ -24,7 +24,7 @@
     "stimulant",
     "habit-forming"
   ],
-  "summary": "3-MMC is a synthetic cathinone reported to produce stimulant and empathogenic effects similar to 4-MMC. Its pharmacology, toxicity and metabolism data are limited, so specific mechanisms and long-term effects remain uncertain.",
+  "summary": "3-MMC is a synthetic cathinone reported to produce stimulant and empathogenic effects similar to 4-MMC. Its pharmacology, toxicity and what is known about the breakdown is limited, so specific mechanisms and long-term effects remain uncertain.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -182,7 +182,7 @@
   "saferUse": [
     "Harm-reduction measures are strongly recommended, and the dose tables are unverified educational information, not a recommendation."
   ],
-  "metabolism": "Data on 3-MMC pharmacology and metabolism are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-MMC is not metabolized.",
+  "metabolism": "Data on 3-MMC pharmacology and metabolism are limited and does not establish how it is broken down in people. This is a knowledge gap, not evidence that 3-MMC is not broken down.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-MMC.md"
   ]

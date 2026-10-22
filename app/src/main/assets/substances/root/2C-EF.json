@@ -37,7 +37,7 @@
     "unsafe": [],
     "uncertain": []
   },
-  "metabolism": "Metabolic data are very limited and establishes no human metabolic pathway. This is an evidence gap, not evidence that no metabolism occurs.",
+  "metabolism": "Metabolic data are very limited and establishes no human route through the body. This is an evidence gap, not evidence that no metabolism occurs.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2C-EF.md"
   ],

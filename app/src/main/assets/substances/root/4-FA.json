@@ -107,9 +107,9 @@
   "generalRisks": "Serious acute cardiovascular events associated with 4-FA use, including cardiac arrest and stroke with severe brain injury after reported moderate doses; causality and mechanism are uncertain. The page also describes tachycardia, hypertension, chest pain, arrhythmias, overheating and seizures. Severe headache or neurological symptoms after use are treated by the source as urgent warning signs.",
   "longtermRisks": "Research on recreational toxicity and long-term effects is limited because human-use history is short. Long-term outcomes remain uncertain; reported acute cardiovascular events do not establish a specific chronic effect.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm-reduction measures. It advises against nasal use because of reported corrosive injury to the nose and throat; the archived dose table is educational and not a recommendation."
+    "Harm-reduction measures are strongly recommended. Nasal use is advised against, because of reported corrosive injury to the nose and throat, and the dose table is educational, not a recommendation."
   ],
-  "metabolism": "Human metabolism data for 4-FA are very limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 4-FA is not metabolized.",
+  "metabolism": "How the body breaks it down data for 4-FA are very limited and does not establish how it is broken down in people. This is a knowledge gap, not evidence that 4-FA is not broken down.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FA.md"
   ]

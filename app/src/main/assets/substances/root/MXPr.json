@@ -7,7 +7,7 @@
   ],
   "effectsSummary": "The available FreeODwiki page is not fully approved and warns that dosage, duration, subjective effects, toxicity and other risks may be incorrect.",
   "dosageRemark": "The unapproved archived page contains dose tables but explicitly warns they may be incorrect, especially dosage and duration. Do not structure its numeric values pending independent corroboration.",
-  "generalRisks": "FreeODwiki has not fully approved the MXPr page and warns its dose and risk information may be incorrect.",
+  "generalRisks": "The MXPr page has not been fully approved, and its dose and risk information is warned as possibly incorrect.",
   "saferUse": [
     "Treat the page as provisional and verify claims independently before structured use."
   ],

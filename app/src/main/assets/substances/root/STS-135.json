@@ -17,12 +17,12 @@
   ],
   "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki provides little human toxicology information and lists the exact toxic dose as unknown; dose information is user/resource based."
+    "There is little human toxicology information, the exact toxic dose is listed as unknown, and the dose information comes from user and resource reports."
   ],
   "dosageRemark": "The archived table lists threshold <0.5 mg, light 0.5-1.5 mg, moderate 1.5-2 mg, strong 2-4 mg, heavy 4 mg+; total 30-60 min, onset 10-45 sec, comeup 10-45 min, peak 10-30 min, offset 5-10 min, afterglow 15-45 min. Educational user/resource compilation, not a recommendation. Source provides little human toxicology; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated.",
   "generalRisks": "The archived dose table is anecdotal/user-resource information; exact toxic dose is unknown and should not be inferred from dose bands.",
   "saferUse": [
-    "FreeODwiki dose data are educational and should be cross-checked; exact toxic dose is unknown."
+    "The dose data are educational and should be cross-checked; the exact toxic dose is unknown."
   ],
   "interactions": {
     "dangerous": [

@@ -149,7 +149,7 @@
   "saferUse": [
     "Starting low is advised, and harm-reduction measures are strongly recommended. The dose tables are source-reported information, not a recommendation."
   ],
-  "metabolism": "Human pharmacology and metabolism data for 3-FEA are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-FEA is not metabolized.",
+  "metabolism": "Human pharmacology and metabolism data for 3-FEA are limited and does not establish how it is broken down in people. This is a knowledge gap, not evidence that 3-FEA is not broken down.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-FEA.md"
   ]

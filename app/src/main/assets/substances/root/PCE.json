@@ -21,10 +21,10 @@
     "Heavy doses may cause confusion and mania; adverse effects and psychosis risk rise with dose. Dose data are user/resource reports."
   ],
   "dosageRemark": "Archived tables list threshold 1 mg for oral, insufflated and inhaled routes; light 2-4 mg insufflated/inhaled and 2-4 mg oral; moderate 4-8 mg insufflated/inhaled, 4-8 mg oral; strong 8-12 mg; heavy 12 mg+ (inhaled table gives 12 mg). Severe doses may cause confusion and mania. Oral total 4-8 h; inhaled/insufflated total 4-6 h, with route-specific phase estimates. User/resource educational information, not a recommendation. Duplicate inhaled/smoked rows consolidated; lightMin corrected from threshold to source light lower bound.",
-  "generalRisks": "FreeODwiki strongly discourages high-dose or multi-day use and warns severe doses may cause confusion and mania.",
-  "longtermRisks": "The source recommends against repeated multi-day use; it provides no reliable quantified long-term risk estimate.",
+  "generalRisks": "High-dose or multi-day use is strongly discouraged, and severe doses are warned about as possibly causing confusion and mania.",
+  "longtermRisks": "Repeated multi-day use is advised against, and no reliable quantified long-term risk estimate is provided.",
   "saferUse": [
-    "FreeODwiki strongly discourages high-dose or consecutive multi-day use; dose tables are educational user/resource material."
+    "High-dose or consecutive multi-day use is strongly discouraged, and the dose tables are educational user and resource material."
   ],
   "interactions": {
     "dangerous": [

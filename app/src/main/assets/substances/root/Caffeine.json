@@ -205,7 +205,7 @@
       }
     }
   ],
-  "metabolism": "After administration caffeine is rapidly distributed into the brain; in adults the mean in-vitro plasma protein binding is about 36%. Metabolism is very limited in preterm newborns because their hepatic enzyme systems are immature, so most of the dose is eliminated in urine; hepatic cytochrome P450 1A2 (CYP1A2) is involved in caffeine biotransformation in older individuals. In newborn infants clearance is almost entirely renal, with an elimination half-life of about 3 to 4 days and about 86% excreted unchanged in urine within 6 days; both fall as gestational/postmenstrual age increases. Inter-conversion between caffeine and theophylline has been reported in preterm newborns.",
+  "metabolism": "after being given caffeine is rapidly distributed into the brain; in adults the mean in-vitro plasma protein binding is about 36%. Metabolism is very limited in preterm newborns because their hepatic enzyme systems are immature, so most of the dose is eliminated in urine; hepatic cytochrome P450 1A2 (CYP1A2) is involved in caffeine breakdown in older individuals. In newborn infants the body clears it at almost entirely renal, with an time in the body of about 3 to 4 days and about 86% excreted unchanged in urine within 6 days; both fall as gestational/postmenstrual age increases. Inter-conversion between caffeine and theophylline has been reported in preterm newborns.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/5146/smpc"
   ]

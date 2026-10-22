@@ -6,7 +6,7 @@
   "saferUse": [
     "Never combine with alcohol, benzodiazepines, GHB, or other CNS depressants due to fatal respiratory depression risk.",
     "Potent opioids carry extreme addiction and physical dependence risks; avoid frequent or continuous daily use.",
-    "Has a long elimination half-life and accumulates in the body; wait at least 12 hours between doses.",
+    "Has a long time in the body and accumulates in the body; wait at least 12 hours between doses.",
     "Keep naloxone accessible when researching or using novel opioids."
   ],
   "tolerance": {
@@ -21,5 +21,5 @@
     "Moderate to high toxicity",
     "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
-  "metabolism": "Human metabolism has not yet been formally established in modern clinical trials. As a sulfone bioisostere of methadone, hepatic clearance and CYP enzymes are presumed to be involved. Consecutive daily dosing leads to accumulation due to a prolonged half-life."
+  "metabolism": "How the body breaks it down has not yet been formally established in modern clinical trials. As a sulfone bioisostere of methadone, hepatic how fast the body clears it and CYP enzymes are presumed to be involved. Consecutive daily dosing leads to accumulation due to a prolonged time in the body."
 }

@@ -27,7 +27,7 @@
     "hypnotic"
   ],
   "isApproved": false,
-  "metabolism": "The main metabolic pathway consists of reduction and further acetylation of the 7-nitro group, giving the metabolites 7-aminonitrazepam and 7-acetamidonitrazepam, both clinically inactive. CYP3A4 and CYP2D6 are involved in the metabolism of nitrazepam, which is neither an inducer nor an inhibitor of metabolic enzymes. The plasma half-life averages 30 hours, rising to 40 hours in elderly patients. Nitrazepam is mainly excreted as urinary metabolites, about 60% of which are conjugated, and steady-state levels are reached within 5 days. Protein binding is about 85-88%.",
+  "metabolism": "The main route through the body consists of reduction and further acetylation of the 7-nitro group, giving the metabolites 7-aminonitrazepam and 7-acetamidonitrazepam, both clinically inactive. CYP3A4 and CYP2D6 are involved in the metabolism of nitrazepam, which is neither an inducer nor an inhibitor of the enzymes involved. The plasma time in the body averages 30 hours, rising to 40 hours in elderly patients. Nitrazepam is mainly excreted as urinary metabolites, about 60% of which are conjugated, and steady-state levels are reached within 5 days. Protein binding is about 85-88%.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/3901/smpc"
   ],

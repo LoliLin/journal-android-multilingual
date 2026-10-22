@@ -20,9 +20,9 @@
     "Toxic dose is unknown"
   ],
   "dosageRemark": "Archived oral table: threshold 5 mg; light 10-20 mg; moderate 20-40 mg; strong 40-60 mg; heavy 60 mg+. Source duration phases: total 8-12 h; onset 20-120 min; comeup 1.5-3 h; peak 4-6 h; offset 2-4 h; afterglow 4-24 h. User/resource educational compilation, not a recommendation. LightMin corrected from threshold to source light lower bound.",
-  "generalRisks": "FreeODwiki presents subjective effects based on user reports and notes effects may be unpredictable; adverse effects may become more likely as dose increases.",
+  "generalRisks": "Subjective effects are presented as coming from user reports, and effects may be unpredictable; adverse effects may become more likely as the dose increases.",
   "saferUse": [
-    "FreeODwiki dose information is educational user/resource material, not a recommendation; cross-check independently."
+    "The dose information is educational user and resource material, not a recommendation; check it independently."
   ],
   "categories": [
     "psychedelic",

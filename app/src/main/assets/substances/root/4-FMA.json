@@ -103,9 +103,9 @@
   "generalRisks": "4-FMA toxicity has not been studied scientifically and its exact toxic dose is unknown. Headache and cardiovascular adverse effects. The page's stroke and severe cardiovascular warning is partly extrapolated from 4-FA; it explicitly does not establish causality or prove the same outcomes for 4-FMA.",
   "longtermRisks": "Recreational toxicity and long-term health effects of 4-FMA have not been studied scientifically. Long-term organ and neurological risks therefore remain unknown; claims about harm are not established clinical findings.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm-reduction measures. Reported corrosivity may injure the nose and throat if insufflated; the oral dose table is unverified and not a recommendation."
+    "Harm-reduction measures are strongly recommended. Reported corrosivity may injure the nose and throat if the substance is insufflated, and the oral dose table is unverified, not a recommendation."
   ],
-  "metabolism": "4-FMA metabolism data are very limited and provides no established human metabolic pathway. Its CYP450 inhibition claim is not accompanied on the page by human pathway evidence and is not recorded here as established metabolism. This is a knowledge gap, not evidence that 4-FMA is not metabolized.",
+  "metabolism": "4-FMA what is known about the breakdown is very limited and provides no established human route through the body. Its CYP450 inhibition claim is not accompanied on the page by human pathway evidence and is not recorded here as established metabolism. This is a knowledge gap, not evidence that 4-FMA is not broken down.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FMA.md"
   ]

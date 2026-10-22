@@ -78,7 +78,7 @@
       }
     }
   ],
-  "summary": "1cP-AL-LAD is a lysergamide psychedelic related to AL-LAD. It is suspected, but not established, to be an AL-LAD prodrug; human pharmacology, toxicity and metabolism data are limited.",
+  "summary": "1cP-AL-LAD is a lysergamide psychedelic related to AL-LAD. It is suspected, but not established, to be an AL-LAD prodrug; human pharmacology, toxicity and what is known about the breakdown is limited.",
   "effectsSummary": "Anecdotal effects resembling AL-LAD, including visual changes and a comparatively clear, manageable mental state; reports also describe a shorter duration than LSD. These similarities and subjective reports do not establish equivalent pharmacology.",
   "dosageRemark": "The archived oral table lists threshold 20 µg, light 50–100 µg, common 100–225 µg, strong 225–350 µg and severe 350 µg+. The model has no thresholdMin field, so 20 µg is recorded here; it is below the listed lightMin. Dose information is user/resource-derived, educational, not a recommendation, and should be independently verified.",
   "generalRisks": "The toxic dose is unknown. Reported acute adverse psychological reactions, especially at higher doses, include anxiety, delusions and panic; seizures are described as rarer. A possible risk of triggering symptoms in people with underlying mental illness. These claims are limited by sparse data and anecdotal reports.",
@@ -86,7 +86,7 @@
   "saferUse": [
     "Precautions and harm-reduction measures are strongly recommended for this potent psychedelic. Effects and toxicity are poorly characterized, and combination risks should be checked. The dose table is educational, not a recommendation."
   ],
-  "metabolism": "Metabolism data are sparse and only suspects that 1cP-AL-LAD may be a prodrug of AL-LAD; this has not been confirmed. The source's proposed relationship is not an established human metabolic pathway.",
+  "metabolism": "What is known about the breakdown is sparse and only suspects that 1cP-AL-LAD may be a prodrug of AL-LAD; this has not been confirmed. The source's proposed relationship is not an established human route through the body.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/1cP-AL-LAD.md"
   ]

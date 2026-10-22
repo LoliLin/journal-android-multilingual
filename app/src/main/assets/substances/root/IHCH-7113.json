@@ -2,12 +2,12 @@
   "name": "IHCH-7113",
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/IHCH-7113.md",
   "isApproved": false,
-  "effectsSummary": "FreeODwiki's effects index is based on anecdotal user reports and contributor analysis and should be treated skeptically; it warns effects may be unpredictable and adverse effects more likely at higher doses.",
+  "effectsSummary": "The effects index is based on anecdotal user reports and contributor analysis and should be treated skeptically. Effects may be unpredictable, and adverse effects are more likely at higher doses.",
   "dosageRemark": "The archived table lists threshold 2 mg, light 2-5 mg, moderate 5-20 mg, while strong and heavy ranges are explicitly marked 'to be determined'; total 8-24 h, onset 1-3 h, comeup 0.5-1 h, peak 2-4 h, offset 2-6 h and afterglow 6-24 h. User/resource educational material, not a recommendation. Strong/heavy dose bands are not inferred or filled.",
-  "generalRisks": "The archived page's subjective effects are anecdotal and may be unpredictable; adverse effects become more likely at higher doses. Strong/heavy dose ranges remain undetermined in the source.",
+  "generalRisks": "Subjective effects are anecdotal and may be unpredictable, and adverse effects become more likely at higher doses. Strong and heavy dose ranges remain undetermined.",
   "saferUse": [
-    "FreeODwiki dose information is collected from user and web resources for education and should be verified elsewhere.",
-    "The source leaves strong and heavy dose bands undetermined; do not infer those ranges."
+    "The dose information is collected from user and web resources for education and should be verified elsewhere.",
+    "Strong and heavy dose bands are left undetermined, and those ranges are not inferred."
   ],
   "summary": "IHCH-7113 is a psychoactive substance for which FreeODwiki provides only partial user-reported dose bands; strong and heavy ranges are explicitly undetermined."
 }

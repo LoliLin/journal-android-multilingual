@@ -22,9 +22,9 @@
   "effectsSummary": "HXE as a dissociative with mild stimulation/social facilitation at lower levels and more sedation at higher doses; indexed effects are anecdotal.",
   "dosageRemark": "The archived table gives two routes: oral threshold 30 mg, light 30-60 mg, moderate 60-100 mg, strong 100-130 mg, heavy 130 mg+; insufflated threshold 20 mg, light 20-40 mg, moderate 40-70 mg, strong 70-120 mg, heavy 120 mg+. Oral total 3-8 h; insufflated 3-6 h, with other route phases as listed in the archive. Educational user/resource information, not a recommendation. Both lightMin values match their source light lower bounds.",
   "generalRisks": "Human pharmacology, metabolism and toxicity data are very limited and human-use history is short; it strongly recommends harm reduction.",
-  "longtermRisks": "The archived page provides no established long-term findings and says human use history is short with very limited pharmacology, metabolism and toxicity data.",
+  "longtermRisks": "No established long-term findings are available, and the history of human use is short with very limited data on pharmacology, metabolism and toxicity.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm reduction given limited human-use history and sparse human data."
+    "Harm reduction is strongly recommended, given the limited history of human use and the sparse human data."
   ],
   "categories": [
     "dissociative"

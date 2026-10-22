@@ -60,7 +60,7 @@
   "dosageRemark": "The archived oral dose table is compiled from user reports and other resources for educational purposes, not as advice; the page says to verify its accuracy against other sources.",
   "generalRisks": "No human trial data and very limited pharmacology, metabolism and toxicity information; recreational and long-term toxicity have not been studied, and the dose that causes poisoning is unknown. It specifically warns against combining 2,5-DMA with monoamine oxidase inhibitors (MAOIs).",
   "saferUse": "Starting at a low dose, independently checking combinations and using harm-reduction measures are recommended. Liquid volumetric measurement is specifically mentioned for accurate dosing, and the dose table is user-sourced educational information that should be checked against other sources.",
-  "metabolism": "Data on 2,5-DMA metabolism are very limited and provides no specific metabolic pathway or human metabolic study. Its metabolism should be considered unknown from this source.",
+  "metabolism": "Data on 2,5-DMA metabolism are very limited and provides no specific route through the body or human metabolic study. Its metabolism should be considered unknown from this source.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/2%2C5-DMA"
   ]

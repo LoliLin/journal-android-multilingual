@@ -6,7 +6,7 @@
     "deliriant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified.",
+  "metabolism": "How the body breaks it down has not yet been verified for this entry. No enzymes, breakdown products or elimination routes are specified.",
   "summary": "Doxylamine is an antihistamine used to treat insomnia and allergies. In combination with pyridoxine (vitamin B6), it is also used to treat morning sickness.",
   "toxicities": [
     "The oral sleep-aid label warns that drowsiness may occur and that driving or operating machinery is prohibited while using the product. It directs users to seek immediate medical help or contact Poison Control in overdose, and does not specify overdose manifestations."
@@ -34,5 +34,5 @@
       "name": "oral"
     }
   ],
-  "dosageRemark": "The cited DailyMed product is an OTC oral sleep aid. Its product directions are for occasional sleeplessness and are not recreational dose guidance; no recreational threshold or duration is established here."
+  "dosageRemark": "Its product directions are for occasional sleeplessness and are not recreational dose guidance; no recreational threshold or duration is established here. (This record is for an OTC oral sleep aid.)"
 }

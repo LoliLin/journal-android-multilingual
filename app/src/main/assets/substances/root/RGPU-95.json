@@ -7,7 +7,7 @@
   ],
   "effectsSummary": "The archived RGPU-95 page is not fully approved and warns that dose, duration, subjective effects, toxicity and other risks may be incorrect.",
   "dosageRemark": "The page contains dose and animal-study claims but explicitly warns it has not been fully approved and may contain incorrect information, especially dosage and risks. Do not import its numbers into structured dose fields pending independent corroboration.",
-  "generalRisks": "FreeODwiki has not fully approved this page and warns that dosage, duration, effects, toxicity and other risk claims may be incorrect.",
+  "generalRisks": "This page has not been fully approved, and its dosage, duration, effects, toxicity and other risk claims are warned as possibly incorrect.",
   "saferUse": [
     "Treat the unapproved page as provisional and independently verify claims before structured use."
   ],

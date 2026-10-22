@@ -28,7 +28,7 @@
     "depressant",
     "common"
   ],
-  "summary": "A synthetic opioid drug used as an analgesic and is often used in detoxification off of other opioids. As it has a much longer half-life.",
+  "summary": "A synthetic opioid drug used as an analgesic and is often used in detoxification off of other opioids. As it has a much longer time in the body.",
   "interactions": {
     "dangerous": [
       "SNRIs",
@@ -108,5 +108,5 @@
     "QT prolongation and torsades de pointes have occurred. Seek clinical review for cardiac rhythm risk or medicines affecting cardiac conduction. CYP inhibitors or stopping CYP inducers can raise methadone exposure and cause potentially fatal respiratory depression.",
     "Discuss access to an opioid overdose reversal agent with a clinician/caregiver; suspected overdose requires emergency response."
   ],
-  "generalRisks": "The cited evidence is for prescription methadone hydrochloride oral concentrate used in opioid-dependence treatment (DailyMed label updated 2026-07-29; relevant warning sections revised 2025-12). Methadone has delayed and prolonged respiratory-depressant effects, can accumulate with repeated use, and has a narrow therapeutic index. The label warns of fatal respiratory depression, QT prolongation/torsades, fatal accidental ingestion, and potentially fatal exposure increases from CYP interactions. Benzodiazepines, alcohol, and other CNS depressants increase sedation and respiratory-depression risk."
+  "generalRisks": "Methadone has delayed and prolonged respiratory-depressant effects, can accumulate with repeated use, and has a narrow therapeutic index. The label warns of fatal respiratory depression, QT prolongation and torsades, fatal accidental ingestion, and potentially fatal exposure increases from CYP interactions. Benzodiazepines, alcohol and other central nervous system depressants increase sedation and respiratory-depression risk. (This record is for prescription methadone hydrochloride oral concentrate used in opioid-dependence treatment.)"
 }

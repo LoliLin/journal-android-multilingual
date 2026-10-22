@@ -25,9 +25,9 @@
   "generalRisks": "Unusually strong respiratory depression, potentially fatal interactions with depressants, rapid dependence, and sharply increased overdose risk after tolerance falls. Deaths involving fentanyl and other overdose cases; these are source-reported observations.",
   "longtermRisks": "Long-term opioid effects may include reduced libido, apathy and memory impairment; U-47700-specific long-term human evidence is limited.",
   "saferUse": [
-    "FreeODwiki strongly urges harm reduction and extreme caution; it warns against combining U-47700 with other substances, especially at moderate to heavy levels.",
+    "Harm reduction and extreme caution are strongly urged, and combining U-47700 with other substances is warned against, especially at moderate to heavy levels.",
     "Injection may cause serious corrosive tissue injury; this is a source warning, not a quantified comparative risk.",
-    "The source warns overdose risk rises after a break in use as tolerance falls."
+    "The risk of overdose rises after a break in use, as tolerance falls."
   ],
   "interactions": {
     "dangerous": [
@@ -95,5 +95,5 @@
       }
     }
   ],
-  "metabolism": "No detailed study of how the body handles U-47700 has been done; what is known comes from post-mortem cases and lab work. In the lab, using human liver microsomes, four breakdown products turned up: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The two basic reactions are taking the methyl group off and adding a hydroxyl group. Which enzymes do the work is not known yet, and the second stage of breakdown has not been looked at.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
+  "metabolism": "No detailed study of how the body handles U-47700 has been done; what is known comes from after death cases and lab work. In the lab, using human liver microsomes, four breakdown products turned up: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The two basic reactions are taking the methyl group off and adding a hydroxyl group. Which enzymes do the work is not known yet, and the second stage of breakdown has not been looked at.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
 }

@@ -22,7 +22,7 @@
   "dosageRemark": "Archived inhaled table: threshold <0.5 mg; light 0.5-1 mg; moderate 1-2 mg; strong 2-5 mg; heavy 5 mg+. Total 1-2 h; onset 5-10 min; peak 30-45 min; offset sudden min; afterglow 60-90 min. Educational user/resource information, not a recommendation; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated. Source notes oral activity in lipids but provides no oral dose table.",
   "generalRisks": "Oral activity after dissolution in lipids and potentially longer duration, but gives no oral dose table; exact toxic dose is unknown.",
   "saferUse": [
-    "FreeODwiki dose data are educational user/resource material, not a recommendation; exact toxic dose is unknown.",
+    "The dose data are educational user and resource material, not a recommendation, and the exact toxic dose is unknown.",
     "No oral dose is inferred because the archive provides no oral dosage table."
   ],
   "interactions": {

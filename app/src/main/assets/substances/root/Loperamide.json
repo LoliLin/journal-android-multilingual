@@ -24,7 +24,7 @@
   ],
   "summary": "An opioid receptor agonist medication used to reduce diarrhea by slowing intestinal contractions. High doses have been associated with life-threatening cardiac complications and death.",
   "dosageRemark": "The archived FreeODwiki page contains a nonmedical dose table, but its toxicity and harm-reduction section is explicitly marked as an incomplete stub that may contain dangerous errors. Those dose bands are therefore not transcribed here. The page warns that high-dose use can cause QT/QRS prolongation, serious arrhythmia, cardiac arrest, and death. This is a risk note, not dosing guidance.",
-  "generalRisks": "The source warns that high-dose or otherwise supratherapeutic use has been associated with QT and QRS prolongation, ventricular arrhythmias, syncope, cardiac arrest, and death. Opioid-type respiratory depression may also occur. The source's toxicity section is explicitly marked as incomplete and potentially dangerous; treat its details cautiously.",
+  "generalRisks": "High-dose or otherwise supratherapeutic use has been associated with QT and QRS prolongation, ventricular arrhythmias, syncope, cardiac arrest and death. Opioid-type respiratory depression may also occur. The toxicity information is explicitly marked as incomplete and potentially dangerous, so its details should be treated with caution.",
   "longtermRisks": "Repeated use can produce tolerance. Possible physical dependence and opioid-like withdrawal after long-term use, though it characterizes the overall abuse potential as low. Constipation is a common opioid-type effect.",
   "saferUse": [
     "Avoid high-dose or nonmedical use: the source describes potentially fatal cardiac complications, including arrhythmia and cardiac arrest.",

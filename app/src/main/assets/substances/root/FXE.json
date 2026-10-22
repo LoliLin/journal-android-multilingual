@@ -3,10 +3,10 @@
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/FXE.md",
   "isApproved": false,
   "toxicities": [
-    "The source page is not fully approved and explicitly warns that toxicity and other risk information may be inaccurate; no structured toxicology claims are added from this provisional page."
+    "The information is not fully approved and explicitly warns that toxicity and other risk information may be inaccurate, so no structured toxicology claims are drawn from this provisional page."
   ],
   "effectsSummary": "The archived FreeODwiki entry is not fully approved by site administrators and warns that dosage, duration, subjective effects, toxicity and other risks may be inaccurate. Its content should be treated as provisional.",
-  "dosageRemark": "The archived page contains a dose table but explicitly says it has not been fully approved and may be inaccurate, especially dosage and duration. The numbers are not imported into structured ROA data; retain only this source-quality warning pending independent corroboration.",
+  "dosageRemark": "A dose table is present, but it is explicitly stated to be not fully approved and possibly inaccurate, especially about dosage and duration. The numbers are not imported into structured ROA data; only this source-quality warning is kept pending independent corroboration.",
   "generalRisks": "The FreeODwiki entry is unapproved and warns its dosage, duration, subjective effects, toxicity and other risks may be inaccurate.",
   "saferUse": [
     "Treat the unapproved archive entry as provisional; its dosage and risk information require independent corroboration before structured use."

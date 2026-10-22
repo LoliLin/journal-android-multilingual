@@ -93,7 +93,7 @@
       }
     }
   ],
-  "metabolism": "Data on human pharmacology, metabolism and toxicity are severely limited. No metabolic enzymes, metabolites or pathway have been identified.",
+  "metabolism": "Data on human pharmacology, metabolism and toxicity are severely limited. No the enzymes involved, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/2C-I"
   ]
