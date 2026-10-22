@@ -133,6 +133,53 @@ judged one by one. The table is keyed by `record::field` or
 refuses to touch a record whose current text does not match what it
 expects, so a stale table cannot silently overwrite something else.
 
+It has two sections. `BY_TEXT` is keyed by the current wording and applies
+wherever that wording appears, which is what the repeated sentences across
+records needed. `EDITS` is keyed by record and field.
+
+### `rewrite-zh.py` — the Chinese overlays
+
+```bash
+python tools/rewrite-zh.py
+```
+
+The same pass for the Chinese records, done in Chinese rather than by
+translating the English. The source name and its 的 go, and the sentence
+starts with the substance. Where the source name carried a real
+limitation -- that the record is for a prescription product or a
+particular formulation -- the limitation moves to the end of the sentence
+as a note.
+
+### `de-jargon.py` — the clinical vocabulary
+
+```bash
+python tools/de-jargon.py [--dry]
+```
+
+Replaces clearance, volume of distribution, half-life, bioavailability,
+pharmacokinetics and first-pass effect with plain wording. The names of the
+metabolic reactions -- hydroxylation, demethylation, glucuronidation,
+dealkylation, conjugation, sulfation -- are left alone: that is how a
+pathway is written down, and there is no everyday word for them.
+
+The replacements are phrases, not single words, so the sentence stays
+grammatical. Only the fields this branch changed are rewritten.
+
+### `check-broken.py` — did a substitution break a sentence?
+
+```bash
+python tools/check-broken.py
+```
+
+Replacing a noun with a clause does not always fit the sentence it lands
+in. "the volume of distribution is 3.3-6.8 l/kg" becomes "the how much it
+spreads through the body is 3.3-6.8 l/kg". This looks for the shapes that
+come out of such a substitution, so they can be rewritten by hand.
+
+Run it after `de-jargon.py`. It reports the whole tree, not just the
+branch, because a substitution can land in a record the branch never
+touched.
+
 ## Conventions
 
 - `metabolism` goes in the language overlay, `metabolismSources` stays in the
@@ -152,3 +199,6 @@ expects, so a stale table cannot silently overwrite something else.
 - When a field says nothing was found, say so plainly ("nothing is known
   about how this is broken down in people") rather than describing the
   source.
+- A source reference that carries a real limitation stays, but as a note at
+  the end of the sentence: "this record is for a prescription product" is
+  information; "the label says" is not.
