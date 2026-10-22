@@ -98,5 +98,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed review of new fentanyl analogues (Gill et al., Front Pharmacol 2019, PMID 31024296). In general acetylfentanyl is metabolized in a similar way to fentanyl. It has a major primarily inactive metabolite, acetyl norfentanyl, produced by N-dealkylation via CYP450 enzymes. Besides the proposed main metabolite acetyl norfentanyl and the deacetylated acetylfentanyl metabolite (4-ANPP), primarily hydroxylated acetylfentanyl metabolites and their phase II conjugates were detected in urine samples from fatal intoxication cases, and hydroxylated metabolites were also identified after incubation with human hepatocytes.",  "metabolismSources": ["https://europepmc.org/article/PMC/6461066"]
 }

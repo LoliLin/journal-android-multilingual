@@ -14,6 +14,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from a peer-reviewed review of new fentanyl analogues (Gill et al., Front Pharmacol 2019, PMID 31024296). Four metabolites of furanylfentanyl were identified in 500 urine samples from opioid intoxication cases. The most pronounced metabolite, detected in 42 of 51 cases positive for furanylfentanyl, was the hydrolysis product 4-ANPP and its sulfate conjugate; a metabolite formed by dihydrodiol formation of the heterocyclic furanyl moiety was detected in 86% of cases. The N-dealkylated metabolite norfuranylfentanyl was detected in only four of the positive cases, indicating that substitution of the amide-linked moiety with a furanyl-carboxamide shifts the metabolic profile toward hydrolysis. Metabolic profiling identified seven metabolites in vitro with pooled human liver microsomes, one of the major ones being nortetrahydrofuranylfentanyl formed by N-dealkylation, which is an applicable biomarker for furanylfentanyl ingestion in biological samples; the hydroxylated species were also prominently detected in post-mortem blood and urine samples.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6461066"
+  ],
   "summary": "Furanylfentanyl is a fentanyl analogue and opioid analgesic that has been sold as a designer drug."
 }

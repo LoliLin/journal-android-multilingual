@@ -21,6 +21,16 @@
       "labelDate": "20260714"
     },
     {
+      "name": "Acetylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Acrylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
+    },
+    {
       "name": "Agomelatine",
       "sources": [
         "https://www.ema.europa.eu/en/documents/product-information/valdoxan-epar-product-information_en.pdf"
@@ -479,6 +489,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260218"
+    },
+    {
+      "name": "Furanylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
     },
     {
       "name": "GHB",
@@ -1436,7 +1451,6 @@
     "Acetophenazine",
     "Acetylcarnitine",
     "Acetylglycinamide chloral hydrate",
-    "Acrylfentanyl",
     "Adinazolam",
     "Afloqualone",
     "Alaproclate",
@@ -1569,7 +1583,6 @@
     "Fluspirilene",
     "Flutazolam",
     "Flutoprazepam",
-    "Furanylfentanyl",
     "G-130",
     "GABA",
     "Gedocarnil",
