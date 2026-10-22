@@ -749,6 +749,11 @@
       "evidence": "literature"
     },
     {
+      "name": "Meclonazepam",
+      "sources": ["https://europepmc.org/article/PMC/9397074"],
+      "evidence": "literature"
+    },
+    {
       "name": "Melatonin",
       "sources": ["https://www.medicines.org.uk/emc/product/13628/smpc"],
       "evidence": "product-information"
@@ -1059,6 +1064,11 @@
       "name": "Pseudoephedrine",
       "sources": ["https://www.medicines.org.uk/emc/product/6199/smpc"],
       "evidence": "product-information"
+    },
+    {
+      "name": "Psilocin",
+      "sources": ["https://europepmc.org/article/PMC/13281395"],
+      "evidence": "literature"
     },
     {
       "name": "Quazepam",
@@ -1662,7 +1672,6 @@
     "Mazindol",
     "Mebroqualone",
     "Mebutamate",
-    "Meclonazepam",
     "Medazepam",
     "Medifoxamine",
     "Mefenorex",

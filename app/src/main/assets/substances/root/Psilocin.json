@@ -65,5 +65,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed review of psilocin pharmacology (ACS Chem Neurosci 2026, PMID 42257400). After rapid dephosphorylation of psilocybin to psilocin, the primary metabolic pathway involves glucuronidation, followed by oxidative metabolism via monoamine oxidase, similar to other tryptamines. Psilocin is primarily cleared by O-glucuronidation, with UGT1A10 the principal isoform responsible and UGT1A9 playing a secondary role. Its typical human half-life is 2-3 hours, while subjective effects last 5-7 hours after oral dosing.",  "metabolismSources": ["https://europepmc.org/article/PMC/13281395"]
 }

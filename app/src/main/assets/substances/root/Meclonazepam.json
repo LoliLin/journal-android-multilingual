@@ -8,6 +8,9 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from a peer-reviewed review of designer benzodiazepines (Edinoff et al., Neurol Int 2022, PMID 35997362). A study investigating meclonazepam metabolism in both in vitro and in vivo trials identified two major metabolites suitable as biomarkers: amino-meclonazepam and acetamido-meclonazepam.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/9397074"
+  ],
   "summary": "Meclonazepam is a benzodiazepine derivative structurally similar to clonazepam. It was never used as a medicine and has appeared online as a designer drug."
 }
