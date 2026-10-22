@@ -138,6 +138,9 @@
       }
     }
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from a peer-reviewed review of new psychoactive substances in public health (PMID 35457736). The metabolism of methoxetamine is not completely known, but it appears that CYP2B6 and CYP3A4 are involved.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/9028227"
+  ],
   "summary": "Methoxetamine (MXE) is a dissociative hallucinogen in the arylcyclohexylamine family that has been sold as a designer drug. It acts mainly as an NMDA receptor antagonist."
 }

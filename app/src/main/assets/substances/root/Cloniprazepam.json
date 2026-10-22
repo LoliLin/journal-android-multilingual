@@ -8,6 +8,9 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from a peer-reviewed study of designer benzodiazepine metabolism (PMID 28127407). Hydroxy-cloniprazepam, dihydroxy-cloniprazepam, 3-keto-cloniprazepam, 7-amino-cloniprazepam, hydroxy-clonazepam, 7-amino-clonazepam and 3-hydroxy-7-amino-clonazepam were formed through oxidation, hydroxylation, and/or reduction of the nitro group.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/5214877"
+  ],
   "summary": "Cloniprazepam is a benzodiazepine derivative and prodrug of clonazepam and other metabolites. It has also been sold as a designer drug."
 }

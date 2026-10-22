@@ -253,6 +253,11 @@
       "labelDate": "20260812"
     },
     {
+      "name": "Cloniprazepam",
+      "sources": ["https://europepmc.org/article/PMC/5214877"],
+      "evidence": "literature"
+    },
+    {
       "name": "Clorazepate",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=11b72861-64c9-4cdc-9289-c7fa9ea23bf6"
@@ -306,6 +311,11 @@
       "name": "Desipramine",
       "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"],
       "evidence": "product-information-or-guideline"
+    },
+    {
+      "name": "Desmethylflunitrazepam",
+      "sources": ["https://europepmc.org/article/MED/28403803"],
+      "evidence": "literature"
     },
     {
       "name": "Desvenlafaxine",
@@ -455,6 +465,11 @@
       "name": "Fentanyl",
       "sources": ["https://www.medicines.org.uk/emc/product/15130/smpc"],
       "evidence": "product-information"
+    },
+    {
+      "name": "Flunitrazolam",
+      "sources": ["https://europepmc.org/article/MED/30109775"],
+      "evidence": "literature"
     },
     {
       "name": "Fluoxetine",
@@ -756,6 +771,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260727"
+    },
+    {
+      "name": "Methoxetamine",
+      "sources": ["https://europepmc.org/article/PMC/9028227"],
+      "evidence": "literature"
     },
     {
       "name": "Methylphenidate",
@@ -1513,7 +1533,6 @@
     "Cinolazepam",
     "Clobenzorex",
     "Clomethiazole",
-    "Cloniprazepam",
     "Clonitazene",
     "Clopenthixol",
     "Clotiapine",
@@ -1537,7 +1556,6 @@
     "Delorazepam",
     "Delta-8-THC",
     "Deoxymethoxetamine",
-    "Desmethylflunitrazepam",
     "Dexetimide",
     "Dexfenfluramine",
     "Dextromoramide",
