@@ -8,5 +8,8 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Evidence is from a peer-reviewed review of novel synthetic opioids (Drug Test Anal 2019, PMID 31304442). There is little information available about the biotransformation or in vivo clearance of the U-47700 series compounds; based on the chemistry of the compounds, putative pathways for metabolism include N-dealkylation and hydroxylation of the cyclohexyl ring. A study regarding the metabolism of U-49900 concluded that N-desethyl-U-49900 was the primary metabolite following microsomal incubations, while N,N-didesethyl-N-desmethyl-U-49900 was the most abundant species in a urine specimen. U-47700 and U-49900 appear to undergo similar metabolic pathways, resulting in common metabolite and isomeric species: N,N-didesmethyl-U-47700 and N,N-didesethyl-U-49900, which are similar in formula and structure and yield a common metabolite 3,4-dichloro-N-(2-aminocyclohexyl)-N-methylbenzamide.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6609355"
+  ]
 }

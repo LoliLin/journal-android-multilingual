@@ -1331,6 +1331,11 @@
       "evidence": "literature"
     },
     {
+      "name": "U-49900",
+      "sources": ["https://europepmc.org/article/PMC/6609355"],
+      "evidence": "literature"
+    },
+    {
       "name": "Valproic acid",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1edd220d-d151-4177-9a29-9fee36489fb7"
@@ -1849,7 +1854,6 @@
     "Troparil",
     "Tropatepine",
     "Tryptophan",
-    "U-49900",
     "U-51754",
     "Valerian",
     "Valerylfentanyl",
