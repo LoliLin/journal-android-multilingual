@@ -14,6 +14,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Evidence is from a peer-reviewed review of postmortem toxicology of new synthetic opioids (Front Pharmacol 2018, PMID 30416445). In the case of butyrfentanyl, hydroxylation of the butanamide side chain followed by subsequent oxidation to the carboxylic acid represented the major metabolic step. Although norbutyrfentanyl was not among the most abundant metabolites in human samples in the study concerned, it was suggested as a recommended target analyte because it showed a high intensity.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6212520"
+  ],
   "summary": "Butyrfentanyl is a short-acting synthetic opioid analgesic and fentanyl analogue that acts at μ-opioid receptors. It has been sold as a designer drug."
 }

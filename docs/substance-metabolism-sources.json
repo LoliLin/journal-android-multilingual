@@ -13,6 +13,11 @@
       "evidence": "human-material-study"
     },
     {
+      "name": "AH-7921",
+      "sources": ["https://europepmc.org/article/PMC/6193107"],
+      "evidence": "literature"
+    },
+    {
       "name": "Acamprosate",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1cfe4675-766f-4f1a-b1a8-96bbdacfcfa5"
@@ -167,9 +172,19 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Butyrfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6212520"],
+      "evidence": "literature"
+    },
+    {
       "name": "Caffeine",
       "sources": ["https://www.medicines.org.uk/emc/product/5146/smpc"],
       "evidence": "product-information"
+    },
+    {
+      "name": "Camazepam",
+      "sources": ["https://europepmc.org/article/MED/2868575"],
+      "evidence": "literature"
     },
     {
       "name": "Carbamazepine",
@@ -801,6 +816,11 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Metizolam",
+      "sources": ["https://europepmc.org/article/MED/27671107"],
+      "evidence": "literature"
+    },
+    {
       "name": "Metonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38582802/"],
       "evidence": "human-material-study"
@@ -884,9 +904,19 @@
       "evidence": "product-information"
     },
     {
+      "name": "Nifoxipam",
+      "sources": ["https://europepmc.org/article/MED/27071765"],
+      "evidence": "literature"
+    },
+    {
       "name": "Nitrazepam",
       "sources": ["https://www.medicines.org.uk/emc/product/3901/smpc"],
       "evidence": "product-information"
+    },
+    {
+      "name": "Norflurazepam",
+      "sources": ["https://europepmc.org/article/MED/30578721"],
+      "evidence": "literature"
     },
     {
       "name": "Nortriptyline",
@@ -1494,7 +1524,6 @@
     "A-PVT",
     "AB-CHMINACA",
     "AET",
-    "AH-7921",
     "ALEPH-2",
     "AM-2201",
     "Acepromazine",
@@ -1544,11 +1573,9 @@
     "Butobarbital",
     "Butorphanol",
     "Butriptyline",
-    "Butyrfentanyl",
     "CRL-40-940",
     "CRL-40-941",
     "Calcium carbimide",
-    "Camazepam",
     "Captodiame",
     "Carbromal",
     "Carisbamate",
@@ -1730,7 +1757,6 @@
     "Nizofenone",
     "Nomifensine",
     "Nordazepam",
-    "Norflurazepam",
     "Ondelopran",
     "Opipramol",
     "Opium",

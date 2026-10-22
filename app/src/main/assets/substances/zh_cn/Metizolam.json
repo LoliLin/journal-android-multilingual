@@ -9,5 +9,6 @@
   "addictionPotential": "极易上瘾",
   "toxicities": ["较大的治疗指数和安全范围"],
   "summary": "亦称为去甲基依替唑仑，是一种噻吩并二氮杂䓬类化合物，其效果与结构均与依替唑仑相似，但药效约为其一半，半衰期则延长约60%。作为一种镇静催眠药，过量使用可能导致失忆和抑制力下降。",
-  "localizedName": "美替唑仑"
+  "localizedName": "美替唑仑",
+  "metabolism": "证据来自一项关于检测尿液中设计者苯二氮卓类 metizolam 及其代谢初步数据的同行评议研究（Drug Test Anal 2017，PMID 27671107）。生成了三种单羟基化代谢物，其中包括metizolam 2-乙基位点羟基化的化合物（M1，为量上最主要的代谢物）和 N-羟基 metizolam（M2）。"
 }

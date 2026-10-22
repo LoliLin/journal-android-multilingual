@@ -45,5 +45,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Evidence is from a peer-reviewed study identifying the main human urinary metabolites of the designer nitrobenzodiazepines clonazolam, meclonazepam and nifoxipam (Anal Bioanal Chem 2016, PMID 27071765). Nifoxipam was extensively metabolized, but instead mainly excreted as the acetamino metabolite and a glucuronic acid conjugate of the parent. Nifoxipam is the 3-hydroxy-desmethylflunitrazepam metabolite of flunitrazepam, formed by in vivo demethylation of the parent followed by 3-hydroxylation of the benzodiazepine ring.",  "metabolismSources": ["https://europepmc.org/article/MED/27071765"]
 }
