@@ -16,10 +16,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "highly addictive with a high potential for abuse",
+  "addictionPotential": "Highly addictive with a high potential for abuse",
   "toxicities": [
-    "moderate to high toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "Moderate to high toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "metabolism": "Human metabolism has not yet been formally established in modern clinical trials. As a sulfone bioisostere of methadone, hepatic clearance and CYP enzymes are presumed to be involved. Consecutive daily dosing leads to accumulation due to a prolonged half-life."
 }

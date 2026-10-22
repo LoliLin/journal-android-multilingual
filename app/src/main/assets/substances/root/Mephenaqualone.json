@@ -10,9 +10,9 @@
   },
   "crossTolerances": [
     "GABA|gabaergic",
-    "depressants"
+    "Depressants"
   ],
-  "addictionPotential": "highly addictive",
+  "addictionPotential": "Highly addictive",
   "toxicities": [],
   "categories": [
     "depressant"

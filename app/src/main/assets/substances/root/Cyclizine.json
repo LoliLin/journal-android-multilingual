@@ -5,7 +5,7 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Cyclizine is well absorbed from the gastrointestinal tract; after oral administration effects develop within 30 minutes, are maximal within 1-2 hours and last 4-6 hours. A single 50 mg oral dose in healthy adult volunteers gave a peak plasma concentration of about 70 ng/mL at about two hours, with a plasma elimination half-life of about 20 hours. The N-demethylated derivative norcyclizine is a metabolite (with little H1-antihistaminic activity compared with cyclizine, a half-life of about 20 hours, and wide tissue distribution). In one adult male volunteer, urine collected over 24 hours after a single 50 mg dose contained less than 1% of the dose.",
+  "metabolism": "Absorbed well from the gut. Taken by mouth it starts working within 30 minutes, is at its strongest after 1-2 hours, and lasts 4-6 hours. A single 50 mg oral dose in healthy adult volunteers gave a peak blood level of about 70 ng/mL at around two hours, and it stayed in the body for about 20 hours. The main breakdown product is norcyclizine, the version with the methyl group taken off; it does much less to block histamine than cyclizine does, it also stays about 20 hours, and it spreads widely through the tissues. In one adult man who took a single 50 mg dose, less than 1% of it came out in his urine over the following 24 hours.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/4318/smpc"
   ],

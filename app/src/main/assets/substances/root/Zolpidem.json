@@ -9,10 +9,10 @@
   "url": "https://psychonautwiki.org/wiki/Zolpidem",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "moderately addictive",
+  "addictionPotential": "Moderately addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": [
     "hallucinogen",
@@ -76,5 +76,20 @@
   "oralReleaseForms": [
     "IMMEDIATE_RELEASE",
     "EXTENDED_RELEASE"
-  ]
+  ],
+  "generalRisks": "The DailyMed immediate-release label carries a boxed warning for complex sleep behaviors, including sleep-walking, sleep-driving, and other activities while not fully awake; serious injury or death has occurred. Other risks include additive CNS depression and next-day psychomotor impairment with alcohol or other CNS depressants, increased respiratory risk with opioids or impaired respiration, abnormal behavior, and withdrawal signs after rapid dose reduction or abrupt discontinuation.",
+  "saferUse": [
+    "The label advises allowing a full 7-8 hours for sleep and avoiding driving or hazardous activity when alertness may be impaired.",
+    "Avoid combining with alcohol or other CNS depressants. Stop and contact a healthcare professional if complex sleep behavior occurs; do not restart after such an event without medical direction."
+  ],
+  "interactions": {
+    "dangerous": [
+      "opioid"
+    ],
+    "unsafe": [
+      "Alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  }
 }

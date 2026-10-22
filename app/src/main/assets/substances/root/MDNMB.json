@@ -8,7 +8,7 @@
     "beta-keto-N-methylbenzodioxolylbutanamine"
   ],
   "categories": [
-    "stimulant",
+    "Stimulant",
     "entactogen",
     "research-chemical"
   ],
@@ -16,14 +16,14 @@
     "The exact toxic dose is unknown; recreational toxicity has not been studied in a scientific setting."
   ],
   "dosageRemark": "The oral dose bands and duration ranges are transcribed from FreeODwiki. Its page says the exact toxic dose is unknown and human-use history is short; treat these community-derived figures as low-confidence reference data, not recommendations.",
-  "generalRisks": "FreeODwiki reports that recreational toxicity and long-term health effects have not been studied in a scientific setting, the exact toxic dose is unknown, and human-use history is short. It also describes high abuse potential and possible psychological dependence with long-term use.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific setting, the exact toxic dose is unknown, and human-use history is short. It also describes high abuse potential and possible psychological dependence with long-term use.",
   "addictionPotential": "The source describes moderate addictive potential and high abuse potential, with possible psychological dependence after long-term use.",
   "tolerance": {
     "half": "About 3 - 7 days",
     "zero": "About 1 - 2 weeks"
   },
   "crossTolerances": [
-    "stimulant"
+    "Stimulant"
   ],
   "saferUse": [
     "The source advises avoiding both dehydration and excessive water intake; it recommends small sips rather than drinking a large amount at once."

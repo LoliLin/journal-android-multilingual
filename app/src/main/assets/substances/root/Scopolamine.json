@@ -7,6 +7,32 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
-  "summary": "Scopolamine, also known as hyoscine, is a muscarinic antagonist used for motion sickness and postoperative nausea and vomiting. It is available in oral, injectable, and transdermal forms."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified.",
+  "summary": "Scopolamine, also known as hyoscine, is a muscarinic antagonist used for motion sickness and postoperative nausea and vomiting. It is available in oral, injectable, and transdermal forms.",
+  "toxicities": [
+    "Common label-reported effects include dry mouth, drowsiness, blurred vision, dizziness, pupil dilation, agitation, and confusion.",
+    "Serious risks include acute angle-closure glaucoma, seizures, psychiatric/cognitive reactions, urinary retention, reduced gastrointestinal motility, and potentially fatal hyperthermia. Withdrawal symptoms may begin 24 hours or more after patch removal following several days of use.",
+    "Overdose can cause severe anticholinergic toxicity, including agitation, confusion, hallucinations, seizures, coma, hyperthermia, tachyarrhythmias, urinary retention, and visual disturbance."
+  ],
+  "generalRisks": "The label for the transdermal system contraindicates use in angle-closure glaucoma and warns of cognitive and psychiatric effects, seizures, impaired driving, urinary retention, reduced gastrointestinal motility, and potentially fatal hyperthermia, especially with heat exposure. Withdrawal symptoms can occur a day or more after removal following several days of use. Overdose can cause severe central and peripheral anticholinergic toxicity.",
+  "saferUse": [
+    "Use only the labeled transdermal system: wear one at a time and do not cut it. Wash hands after applying or removing it and prevent accidental contact or ingestion.",
+    "Avoid driving and hazardous activities until effects are known; alcohol, sedatives, opioids, and other anticholinergic drugs may intensify cognitive and CNS effects.",
+    "Remove the system and seek medical advice for overheating, reduced sweating, acute eye pain/halos, confusion, seizure, or difficulty urinating. After several days of use, watch for withdrawal symptoms after removal."
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [
+      "alcohol",
+      "depressant",
+      "anticholinergic"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "transdermal"
+    }
+  ],
+  "dosageRemark": "The label is for prescription transdermal prevention of motion sickness or postoperative nausea. The labeled system delivers 1 mg over 3 days; this therapeutic specification is not recreational dose guidance, and no recreational thresholds are established here."
 }

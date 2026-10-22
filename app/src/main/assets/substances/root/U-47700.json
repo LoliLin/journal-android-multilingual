@@ -13,20 +13,20 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki says U-47700 has high dose-relative toxicity due to potency, with poorly characterized human toxicology. It reports respiratory depression, overdose, coma and death risk, tissue corrosiveness (particularly with injection), and deaths associated with use.",
-    "The source reports dependence can develop rapidly and withdrawal may begin within 2-4 hours after last use; these are archive statements, not incidence estimates."
+    "U-47700 has high dose-relative toxicity due to potency, with poorly characterized human toxicology. Respiratory depression, overdose, coma and death risk, tissue corrosiveness (particularly with injection), and deaths associated with use.",
+    "Dependence can develop rapidly and withdrawal may begin within 2-4 hours after last use; these are archive statements, not incidence estimates."
   ],
-  "effectsSummary": "FreeODwiki describes U-47700 as a highly potent opioid with a short human-use history and little known toxicity. Anecdotal reports suggest respiratory depression may be stronger than that of more familiar opioids at comparable doses; the source says this has not been formally studied.",
-  "dosageRemark": "Archived insufflated table: threshold 1 mg, light 4-6 mg, moderate 6-8 mg, strong 8-10 mg, heavy 10 mg+; total 2-3 h, onset 5-10 min. User/resource educational information, not a recommendation. Human toxicology is poorly characterized and use history is short; source reports corrosive tissue injury, especially with injection, and warns of unusually strong respiratory depression, fatal overdose and dependence. lightMin corrected from threshold to source light lower bound.",
-  "generalRisks": "The source reports unusually strong respiratory depression, potentially fatal interactions with depressants, rapid dependence, and sharply increased overdose risk after tolerance falls. It reports deaths involving fentanyl and other overdose cases; these are source-reported observations.",
-  "longtermRisks": "FreeODwiki says long-term opioid effects may include reduced libido, apathy and memory impairment; U-47700-specific long-term human evidence is limited.",
+  "effectsSummary": "U-47700 as a highly potent opioid with a short human-use history and little known toxicity. Anecdotal reports suggest respiratory depression may be stronger than that of more familiar opioids at comparable doses; the source says this has not been formally studied.",
+  "dosageRemark": "Archived insufflated table: threshold 1 mg, light 4-6 mg, moderate 6-8 mg, strong 8-10 mg, heavy 10 mg+; total 2-3 h, onset 5-10 min. User/resource educational information, not a recommendation. Human toxicology is poorly characterized and use history is short; source reports corrosive tissue injury, especially with injection, and warns of unusually strong respiratory depression, fatal overdose and dependence. LightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "Unusually strong respiratory depression, potentially fatal interactions with depressants, rapid dependence, and sharply increased overdose risk after tolerance falls. Deaths involving fentanyl and other overdose cases; these are source-reported observations.",
+  "longtermRisks": "Long-term opioid effects may include reduced libido, apathy and memory impairment; U-47700-specific long-term human evidence is limited.",
   "saferUse": [
     "FreeODwiki strongly urges harm reduction and extreme caution; it warns against combining U-47700 with other substances, especially at moderate to heavy levels.",
-    "The source says injection may cause serious corrosive tissue injury; this is a source warning, not a quantified comparative risk.",
+    "Injection may cause serious corrosive tissue injury; this is a source warning, not a quantified comparative risk.",
     "The source warns overdose risk rises after a break in use as tolerance falls."
   ],
   "interactions": {
@@ -95,5 +95,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed forensic toxicology study of the metabolic evaluation of synthetic opioids using U-47700 (Toxics 2023, PMID 36976985). To date no detailed pharmacokinetic studies have been performed on U-47700, and the available data come from autopsy material analysis and laboratory experiments. Four metabolites were identified in in vitro studies using human liver microsomes: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The basic reactions occurring during metabolic transformations of U-47700 are demethylation and hydroxylation; it is not yet known which cytochrome isoforms are responsible, and phase II metabolism has not yet been studied.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
+  "metabolism": "No detailed study of how the body handles U-47700 has been done; what is known comes from post-mortem cases and lab work. In the lab, using human liver microsomes, four breakdown products turned up: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The two basic reactions are taking the methyl group off and adding a hydroxyl group. Which enzymes do the work is not known yet, and the second stage of breakdown has not been looked at.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
 }

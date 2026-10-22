@@ -17,12 +17,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "high toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "High toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -84,5 +84,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from Pethidine 50 mg/ml and 100 mg/2 ml solution for injection. Pethidine is rapidly absorbed after intramuscular or subcutaneous injection, with wide inter-individual variation. It is widely distributed in the tissues with a volume of distribution of 200-300 litres and is extensively protein bound (60-80%). Pethidine is metabolised in the liver, mainly by hydrolysis to pethidinic acid or by N-demethylation to norpethidine, followed by hydrolysis to norpethidinic acid; subsequent partial conjugation with glucuronic acid may also occur. It is excreted via the urine (70% in 24 hours). One metabolite, norpethidine, is pharmacologically active and its accumulation can result in toxicity. Urinary excretion is pH-dependent, the lower the pH the greater the clearance, and at normal urinary pH only a small amount of pethidine is excreted unchanged. Pethidine has a plasma elimination half-life of about 3 to 6 hours; norpethidine is eliminated more slowly, with a half-life of up to 20 hours, and may accumulate with chronic use, especially with renal impairment. Pethidine crosses the placenta and is excreted in breast milk.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8941/smpc"]
+  "metabolism": "Absorbed quickly after a muscle or under-the-skin injection, though people differ a lot. It spreads through the tissues at 200-300 litres and sticks to protein 60-80%. It is broken down in the liver, mainly by hydrolysis to pethidinic acid or by N-demethylation to norpethidine, which is then hydrolysed to norpethidinic acid; some is also joined to glucuronic acid afterwards. It comes out through the urine, 70% within 24 hours. One of the breakdown products, norpethidine, is itself active, and it can build up and cause poisoning. How much comes out in the urine depends on how acid it is: the more acidic, the more comes out. At a normal urine pH only a little pethidine leaves unchanged. Pethidine itself stays in the body 3 to 6 hours, while norpethidine stays longer, up to 20 hours, and can build up with long-term use, especially if the kidneys are not working well. It passes into the placenta and into breast milk.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8941/smpc"]
 }

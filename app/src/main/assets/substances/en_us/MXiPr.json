@@ -6,9 +6,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "toxic dosage is unknown"
+    "Toxic dosage is unknown"
   ],
   "localizedName": "MXiPr"
 }

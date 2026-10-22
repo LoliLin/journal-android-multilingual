@@ -14,16 +14,16 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki says recreational toxicity and long-term health effects appear unstudied and exact toxic dose is unknown. Informal experiments reportedly found overdose can cause discomfort at doses far below lethal levels, including palpitations, dizziness and sedation, often with substantial anxiety or sleep."
+    "Recreational toxicity and long-term health effects appear unstudied and exact toxic dose is unknown. Informal experiments reportedly found overdose can cause discomfort at doses far below lethal levels, including palpitations, dizziness and sedation, often with substantial anxiety or sleep."
   ],
-  "effectsSummary": "FreeODwiki says the reported subjective effects resemble cannabis but are shorter-lived and emphasize intense bodily sensations; its effects index is based on anecdotal reports and should be treated skeptically.",
+  "effectsSummary": "The reported subjective effects resemble cannabis but are shorter-lived and emphasize intense bodily sensations; its effects index is based on anecdotal reports and should be treated skeptically.",
   "dosageRemark": "Archived inhaled dose table: threshold 0.5 mg; light 0.5-1 mg, moderate 1-2 mg, strong 2-4 mg, heavy 4 mg+; total duration 30-60 minutes. Compiled from users/resources for education, not a recommendation. The table gives no separate oral dose values; oral activity in lipids is noted but no route-specific dosage is provided.",
-  "generalRisks": "FreeODwiki says chronic synthetic cannabinoid misuse has been associated with multiple serious injuries and deaths and more dangerous adverse effects/toxicity than cannabis. It notes long-term use may increase risk of mental illness/psychotic disorders, especially with personal or family risk factors; overdose discomfort may occur far below lethal dose.",
-  "longtermRisks": "FreeODwiki says long-term health effects have not been studied; it notes chronic synthetic cannabinoid use may increase vulnerability to mental illness and psychotic disorders, especially in those with personal or family risk factors.",
+  "generalRisks": "Chronic synthetic cannabinoid misuse has been associated with multiple serious injuries and deaths and more dangerous adverse effects/toxicity than cannabis. Long-term use may increase risk of mental illness/psychotic disorders, especially with personal or family risk factors; overdose discomfort may occur far below lethal dose.",
+  "longtermRisks": "Long-term health effects have not been studied; it notes chronic synthetic cannabinoid use may increase vulnerability to mental illness and psychotic disorders, especially in those with personal or family risk factors.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction; it emphasizes careful dose measurement because synthetic cannabinoids are active in the milligram range.",
     "It advises against prolonged or high-dose use and cautions people with severe mental illness risk factors."
@@ -54,7 +54,7 @@
     "tentative",
     "habit-forming"
   ],
-  "summary": "5F-AKB48 is a synthetic cannabinoid reported to produce cannabis-like but shorter-lived effects with intense bodily sensations. The source says toxicity is poorly studied and overdose effects may occur far below lethal doses.",
+  "summary": "5F-AKB48 is a synthetic cannabinoid reported to produce cannabis-like but shorter-lived effects with intense bodily sensations. Toxicity is poorly studied and overdose effects may occur far below lethal doses.",
   "roas": [
     {
       "name": "inhaled",

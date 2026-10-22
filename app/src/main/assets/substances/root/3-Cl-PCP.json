@@ -6,7 +6,7 @@
     "3-Cl-PCP"
   ],
   "categories": [
-    "dissociative"
+    "Dissociative"
   ],
   "tolerance": {
     "full": "with prolonged and repeated use",
@@ -14,14 +14,14 @@
     "zero": "1 - 2 weeks"
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for adverse side effects such as psychosis",
+  "addictionPotential": "Moderately addictive with a high potential for adverse side effects such as psychosis",
   "toxicities": [
-    "toxic dosage is unknown"
+    "Toxic dosage is unknown"
   ],
   "effectsSummary": "FreeODwiki's anecdotal reports describe predominantly sedating dissociation, sometimes with stimulation, and possible motor impairment, cardiovascular activation, compulsive redosing and psychosis. The page labels its subjective-effects section incomplete and warns that reports are not reliable predictions.",
-  "dosageRemark": "The page's general dosing disclaimer says user- and resource-derived dose information is educational, not a recommendation, and should be verified independently. It gives no route-specific 3-Cl-PCP dose figures, so none are recorded.",
+  "dosageRemark": "The page's general dosing disclaimer says user- and resource-derived dose information is educational, not a recommendation, and should be verified independently. No route-specific 3-Cl-PCP dose figures, so none are recorded.",
   "interactions": {
     "dangerous": [
       "depressant"
@@ -33,11 +33,11 @@
     ],
     "uncertain": []
   },
-  "generalRisks": "FreeODwiki says recreational toxicity and long-term health effects have not been studied scientifically; the exact toxic dose is unknown. It warns that dose-related adverse effects may include serious injury or death. User reports mention muscle pain, cardiovascular activation and flu-like symptoms, but the source cautions that its subjective-effects section is incomplete and may be unreliable.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied scientifically; the exact toxic dose is unknown. Dose-related adverse effects may include serious injury or death. User reports mention muscle pain, cardiovascular activation and flu-like symptoms, but the source cautions that its subjective-effects section is incomplete and may be unreliable.",
   "longtermRisks": "Long-term health effects are unstudied. FreeODwiki speculates that chronic excessive use could cause bladder or urinary-tract problems resembling ketamine-related effects; this is an unverified analogy, not an established 3-Cl-PCP outcome.",
   "saferUse": [
     "The page advises extreme caution and harm-reduction measures; avoid use on consecutive days, redosing before fully sober, and combining it with other substances, especially stimulants, psychedelics or other dissociatives. It recommends accurate volumetric measurement."
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified.",
   "summary": "3-Cl-PCP, or 3-chlorophencyclidine, is an arylcyclohexylamine dissociative. Its pharmacology, metabolism, and toxicity are poorly characterized."
 }

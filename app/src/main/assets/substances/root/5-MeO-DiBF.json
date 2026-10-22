@@ -13,15 +13,15 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little, and because of its extreme novelty and unknown toxicity profile it strongly recommends harm reduction."
+    "Data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little, and because of its extreme novelty and unknown toxicity profile it strongly recommends harm reduction."
   ],
-  "effectsSummary": "FreeODwiki describes 5-MeO-DiBF as a synthetic heterocyclic alkaloid whose benzofuran group is structurally closely related to the indole found in tryptamines, making it a benzofuran analogue of 5-MeO-DiPT. It was released on the research-chemical market in September 2015 with almost no history of human use before that.",
+  "effectsSummary": "5-MeO-DiBF as a synthetic heterocyclic alkaloid whose benzofuran group is structurally closely related to the indole found in tryptamines, making it a benzofuran analogue of 5-MeO-DiPT. It was released on the research-chemical market in September 2015 with almost no history of human use before that.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation. The page lists a threshold of 20 mg, a light range of 50-80 mg, moderate of 80-110 mg, strong of 110-140 mg and heavy of 140 mg or more, with a total duration of 4-6 hours and peak of 30-60 minutes; the model does not represent a threshold band separately, so the 20 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page provides no onset, comeup, offset or afterglow values and no other routes.",
-  "generalRisks": "FreeODwiki says data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little, and that because of its extreme novelty and unknown toxicity profile, appropriate harm reduction should be strongly considered if the substance is used.",
+  "generalRisks": "Data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little, and that because of its extreme novelty and unknown toxicity profile, appropriate harm reduction should be strongly considered if the substance is used.",
   "longtermRisks": "The archived page gives no established long-term findings and states only that its toxicity profile is unknown and its human use history almost absent before 2015.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction given the substance's extreme novelty and unknown toxicity profile.",
@@ -39,7 +39,7 @@
       "stimulant"
     ]
   },
-  "metabolism": "FreeODwiki says data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little. It suggests the compound may act as a serotonin partial agonist with hallucinogenic effects thought to come from efficacy at the 5-HT1A and 5-HT2 receptor families, and notes its potency as a serotonin agonist is several times lower than 5-MeO-DiPT; this is the page's pharmacological discussion rather than an established human metabolic pathway.",
+  "metabolism": "Data on 5-MeO-DiBF's pharmacological properties, metabolism and toxicity is very little. It suggests the compound may act as a serotonin partial agonist with hallucinogenic effects thought to come from efficacy at the 5-HT1A and 5-HT2 receptor families, and notes its potency as a serotonin agonist is several times lower than 5-MeO-DiPT; this is the page's pharmacological discussion rather than an established human metabolic pathway.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/5-MeO-DiBF"
   ],

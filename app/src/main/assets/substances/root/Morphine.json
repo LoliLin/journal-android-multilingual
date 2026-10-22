@@ -11,11 +11,11 @@
   "url": "https://psychonautwiki.org/wiki/Morphine",
   "isApproved": true,
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
   "toxicities": [
-    "The cited DailyMed boxed warning for single-ingredient oral extended-release morphine capsules describes addiction, abuse, misuse, overdose, and death risk, including serious or fatal respiratory depression and fatal accidental ingestion, especially by children.",
-    "The label warns that alcohol co-ingestion can produce fatal morphine levels and that benzodiazepines or other CNS depressants can cause profound sedation, respiratory depression, coma, and death.",
+    "A boxed warning for single-ingredient oral extended-release morphine describes addiction, abuse, misuse, overdose and death risk, including serious or fatal respiratory depression and fatal accidental ingestion, especially by children.",
+    "Alcohol taken together with morphine can produce fatal morphine levels, and benzodiazepines or other central nervous system depressants can cause profound sedation, respiratory depression, coma and death.",
     "Potential opioid overdose is a medical emergency; naloxone availability and prompt emergency response are addressed in the product labeling."
   ],
   "categories": [
@@ -24,8 +24,8 @@
     "common",
     "depressant"
   ],
-  "summary": "The prototypical opioid drug, a powerful analgesic with euphoric qualities, found in the seeds and wax of the plant papaver somniferum (opium poppy).  First isolated by Friedrich Sertürner in 1805, named for its sleep-inducing qualities. Do not combine with other depressants, may cause dangerous respiratory depression in overdose.",
-  "effectsSummary": "Due to its strong analgesic, antitussive and psychotropic properties, morphine is used to treat severe pain in emergency and palliative care.\nDue to its depressant and sedative effect, the active substance is also misused as a euphoric intoxicant. In the context of opioid agonist therapy, morphine is used as a substitute for opiate/heroin addiction.",
+  "summary": "The prototypical opioid drug, a powerful analgesic with euphoric qualities, found in the seeds and wax of the plant papaver somniferum (opium poppy). First isolated by Friedrich Sertürner in 1805, named for its sleep-inducing qualities. Do not combine with other depressants, may cause dangerous respiratory depression in overdose.",
+  "effectsSummary": "Due to its strong analgesic, antitussive and psychotropic properties, morphine is used to treat severe pain in emergency and palliative care. Due to its depressant and sedative effect, the active substance is also misused as a euphoric intoxicant. In the context of opioid agonist therapy, morphine is used as a substitute for opiate/heroin addiction.",
   "dosageRemark": "When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
   "generalRisks": "This evidence is specific to oral morphine sulfate extended-release capsules (DailyMed updated 2025-11-28). The boxed warning covers addiction/abuse/misuse, fatal respiratory depression, accidental ingestion, alcohol, and combined CNS depressants. Do not crush, chew, cut, or dissolve the extended-release pellets; this can release a potentially fatal dose.",
   "longtermRisks": "The consumption of morphine can lead to physical and psychological dependence after only a short time. Tolerance builds up quickly, which is why higher and higher doses have to be consumed. Strong withdrawal symptoms such as restlessness, irritability, depression, insomnia, sweating, cold shivers, vomiting, diarrhoea and painful cramps may occur. Like all opiates, morphine can lead to chronic constipation.",

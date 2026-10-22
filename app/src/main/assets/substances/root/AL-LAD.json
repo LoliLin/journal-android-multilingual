@@ -14,16 +14,16 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown",
-    "extremely low toxicity"
+    "Toxic dose is unknown",
+    "Extremely low toxicity"
   ],
-  "effectsSummary": "FreeODwiki says users generally consider AL-LAD more recreational and less threatening than LSD, but stresses it is a potent psychedelic and recommends appropriate precautions and harm reduction. The effects index is based on anecdotal reports and may be unpredictable.",
+  "effectsSummary": "Users generally consider AL-LAD more recreational and less threatening than LSD, but stresses it is a potent psychedelic and recommends appropriate precautions and harm reduction. The effects index is based on anecdotal reports and may be unpredictable.",
   "dosageRemark": "The archived oral table lists threshold 20 µg, light 50-100 µg, moderate 100-225 µg, strong 225-350 µg, heavy 350 µg+; total duration 7-10 h, onset 20-60 min, comeup 30-60 min, peak 2.5-5 h, offset 2-3 h and afterglow 2-18 h. Educational user/resource compilation, not a recommendation. The model has no separate threshold band, so 20 µg is preserved here and lightMin is the lower bound of the source light band.",
-  "generalRisks": "FreeODwiki says pharmacological, metabolic and toxicity data for AL-LAD are very limited. Despite users commonly considering it more recreational and less threatening than LSD, it is a potent psychedelic and appropriate precautions are strongly recommended.",
+  "generalRisks": "Pharmacological, metabolic and toxicity data for AL-LAD are very limited. Despite users commonly considering it more recreational and less threatening than LSD, it is a potent psychedelic and appropriate precautions are strongly recommended.",
   "saferUse": [
     "FreeODwiki strongly recommends precautions and harm reduction for this potent psychedelic.",
     "Effects are based on anecdotal reports, may be unpredictable, and adverse effects become more likely at higher doses."
@@ -44,7 +44,7 @@
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "AL-LAD is a potent lysergamide psychedelic. FreeODwiki describes it as commonly viewed by users as more recreational and less threatening than LSD, while emphasizing sparse safety data and harm reduction.",
+  "summary": "AL-LAD is a potent lysergamide psychedelic. It as commonly viewed by users as more recreational and less threatening than LSD, while emphasizing sparse safety data and harm reduction.",
   "roas": [
     {
       "name": "oral",

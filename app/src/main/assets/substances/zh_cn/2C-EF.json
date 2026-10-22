@@ -1,18 +1,18 @@
 {
   "summary": "2C-EF 是 2C 系列中的一种取代苯乙胺类物质，现有药理和毒理资料有限。",
   "localizedName": "4-氟乙基-2,5-二甲氧基苯乙胺",
-  "addictionPotential": "来源称尚无正式研究；依据迷幻剂的一般情况推测其可能不易形成习惯，但这一结论尚未确立。",
+  "addictionPotential": "尚无正式研究；依据迷幻剂的一般情况推测其可能不易形成习惯，但这一结论尚未确立。",
   "toxicities": [
     "确切毒性剂量未知。"
   ],
   "effectsSummary": "FreeODwiki 的主观用户报告描述了强烈视觉效应、兴奋感，有时伴随不适的躯体负担、恶心和身体不适。页面提醒效应不可预测且对剂量敏感；这些内容属于轶闻报告。",
   "dosageRemark": "FreeODwiki 说明剂量和时长数据来自用户报告及其他资料，仅供教育用途，不是建议，应独立核实。页面列出 1 mg 阈值、3 mg 起为轻微、6 mg 起为中等、12 mg 起为强烈；强烈和严重剂量上限未知。",
-  "generalRisks": "FreeODwiki 称药理、代谢和毒性资料极少，人体使用史有限；页面警告高剂量不良反应可能包括成瘾、严重伤害或死亡。确切毒性剂量未知。",
-  "longtermRisks": "来源称长期健康影响尚未经过科学研究，仍属未知。",
+  "generalRisks": "药理、代谢和毒性资料极少，人体使用史有限；页面警告高剂量不良反应可能包括成瘾、严重伤害或死亡。确切毒性剂量未知。",
+  "longtermRisks": "长期健康影响尚未经过科学研究，仍属未知。",
   "saferUse": [
     "来源建议独立查证并采取减害措施，包括准确的容量计量；页面不保证安全。"
   ],
-  "metabolism": "来源称代谢资料极少，未确立人体代谢途径。这是证据缺口，不代表该物质不发生代谢。",
+  "metabolism": "代谢资料极少，未确立人体代谢途径。这是证据缺口，不代表该物质不发生代谢。",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2C-EF.md"
   ]

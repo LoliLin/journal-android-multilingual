@@ -1,11 +1,14 @@
 {
   "name": "Dimdazenil",
   "url": "https://en.wikipedia.org/wiki/Dimdazenil",
-  "isApproved": false,
+  "isApproved": true,
   "categories": [
     "hypnotic",
     "benzodiazepine"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
-  "summary": "Dimdazenil is a benzodiazepine derivative used to treat insomnia in China. It is a partial positive allosteric modulator of GABA-A receptors."
+  "metabolism": "Human phase I pharmacokinetic studies measured dimdazenil and the circulating metabolites Ro46-1927 and Ro18-5,528; Ro46-1927 is pharmacologically active.",
+  "summary": "Dimdazenil (EVT201) is a benzodiazepine-derived partial positive allosteric modulator of GABA-A receptors, approved in China for short-term treatment of adult insomnia.",
+  "metabolismSources": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432719/"
+  ]
 }

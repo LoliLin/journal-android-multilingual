@@ -1,7 +1,7 @@
 {
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "localizedName": "DPT"
 }

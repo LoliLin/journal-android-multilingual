@@ -15,11 +15,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "dopamine"
+    "Dopamine"
   ],
-  "addictionPotential": "mildly habit forming",
+  "addictionPotential": "Mildly habit forming",
   "toxicities": [
-    "extremely low toxicity"
+    "Extremely low toxicity"
   ],
   "categories": [
     "stimulant"

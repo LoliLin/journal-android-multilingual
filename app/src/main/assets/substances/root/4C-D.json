@@ -10,22 +10,22 @@
     "BL-3912"
   ],
   "categories": [
-    "psychedelic"
+    "Psychedelic"
   ],
   "toxicities": [
     "The exact toxic dose is unknown; recreational toxicity has not been studied in a scientific setting."
   ],
   "dosageRemark": "The listed dose bands and duration ranges are transcribed from FreeODwiki. Its page says the dose classification is not fully clear and draws partly on anecdotal reports; treat these as low-confidence reference data, not recommendations.",
-  "generalRisks": "The source reports that recreational toxicity and long-term health effects have not been studied in a scientific setting, human-use history is very limited, and the exact toxic dose is unknown.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific setting, human-use history is very limited, and the exact toxic dose is unknown.",
   "longtermRisks": "Long-term health effects have not been established; the source says they have not been studied in a scientific setting.",
-  "addictionPotential": "FreeODwiki describes 4C-D as not readily habit-forming and possibly self-regulating, but this is based on limited anecdotal information.",
+  "addictionPotential": "4C-D as not readily habit-forming and possibly self-regulating, but this is based on limited anecdotal information.",
   "tolerance": {
     "full": "Tolerance is reported to develop almost immediately after ingestion.",
     "half": "About 3 days",
     "zero": "About 7 days"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
   "interactions": {
     "dangerous": [

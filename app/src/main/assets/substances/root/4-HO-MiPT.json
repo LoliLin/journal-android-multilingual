@@ -14,16 +14,16 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says the toxicity and long-term health effects of 4-HO-MiPT have not been researched and the exact toxic dose is unknown, because its history of human use is very short. Anecdotal evidence from the community suggests that trying it only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed."
+    "The toxicity and long-term health effects of 4-HO-MiPT have not been researched and the exact toxic dose is unknown, because its history of human use is very short. Anecdotal evidence from the community suggests that trying it only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed."
   ],
-  "effectsSummary": "FreeODwiki describes 4-HO-MiPT as having contradictory properties: relaxing, dulling and mildly sedating while also producing a distinct bodily stimulation, which distinguishes it from psilocybin mushrooms or 4-AcO-DMT. Its body high is a pleasant, warm, soft and encompassing tingling that builds after onset and peaks at the peak of the experience, and it causes internal temperature sense fluctuations with sudden chills or fever. Its effects index is built on anecdotal user reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "effectsSummary": "4-HO-MiPT as having contradictory properties: relaxing, dulling and mildly sedating while also producing a distinct bodily stimulation, which distinguishes it from psilocybin mushrooms or 4-AcO-DMT. Its body high is a pleasant, warm, soft and encompassing tingling that builds after onset and peaks at the peak of the experience, and it causes internal temperature sense fluctuations with sudden chills or fever. Its effects index is built on anecdotal user reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 10-15 mg, moderate of 15-25 mg, strong of 25-35 mg and heavy of 35 mg or more, with a total duration of 4-6 hours; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range.",
-  "generalRisks": "FreeODwiki reports anecdotal evidence from the community that trying 4-HO-MiPT only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed. It advises independent research before ingestion to ensure combinations are safe, and strongly recommends harm reduction.",
-  "longtermRisks": "The archived page says the toxicity and long-term health effects of 4-HO-MiPT have not been researched.",
+  "generalRisks": "Anecdotal evidence from the community that trying 4-HO-MiPT only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed. It advises independent research before ingestion to ensure combinations are safe, and strongly recommends harm reduction.",
+  "longtermRisks": "The toxicity and long-term health effects of 4-HO-MiPT have not been researched.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction, and advises independent research before ingestion to make sure combinations of two or more substances are safe.",
     "It strongly advises travelling in an environment where temperature can be controlled, because 4-HO-MiPT causes internal temperature sense fluctuations with sudden chills or fever."
@@ -37,9 +37,10 @@
     ],
     "unsafe": [
       "benzodiazepine"
-    ]
+    ],
+    "uncertain": []
   },
-  "metabolism": "The archived page does not provide a specific human metabolic finding or pathway for 4-HO-MiPT.",
+  "metabolism": "Nothing is known about how 4-HO-MiPT is broken down in people. No specific metabolic finding or pathway has been described.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/4-HO-MiPT"
   ],

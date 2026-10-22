@@ -6,10 +6,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "moderate toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "Moderate toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "localizedName": "Methadone"
 }

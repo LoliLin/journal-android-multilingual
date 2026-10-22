@@ -14,11 +14,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
@@ -83,9 +83,9 @@
     }
   ],
   "saferUse": [
-    "PsychonautWiki recommends independent research and harm-reduction measures, warns against high doses and insufflation because of the compound's potency, and marks its toxicity section as a stub that may contain dangerous errors."
+    "Independent research and harm-reduction measures are recommended, and high doses and insufflation are warned against because of the compound's potency. The toxicity section is a stub that may contain dangerous errors."
   ],
-  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It provides no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolism": "Nothing is known about how the body handles this. No metabolic enzymes, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/25I-NBOH"
   ]

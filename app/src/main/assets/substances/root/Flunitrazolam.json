@@ -8,11 +8,11 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["benzodiazepine"],
-  "addictionPotential": "extremely physically and psychologically addictive",
+  "crossTolerances": ["Benzodiazepine"],
+  "addictionPotential": "Extremely physically and psychologically addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "categories": ["depressant", "benzodiazepine", "habit-forming", "tentative"],
   "summary": "A very potent hypnotic Benzodiazepine. Triazolo version of Flunitrazepam.",
@@ -55,5 +55,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed study on detection of the designer benzodiazepine flunitrazolam in urine and preliminary data on its metabolism (PMID 30109775). The metabolic steps of flunitrazolam were monohydroxylation, dihydroxylation, and reduction of the nitro function. A later in vitro microsomal study (PMID 30578721) characterised phase I metabolism of flunitrazolam alongside norflurazepam and 4'-chlorodiazepam.",  "metabolismSources": ["https://europepmc.org/article/MED/30109775"]
+  "metabolism": "The metabolic steps of flunitrazolam were monohydroxylation, dihydroxylation, and reduction of the nitro function. A later in vitro microsomal study (PMID 30578721) characterised phase I metabolism of flunitrazolam alongside norflurazepam and 4'-chlorodiazepam.",  "metabolismSources": ["https://europepmc.org/article/MED/30109775"]
 }

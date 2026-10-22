@@ -6,9 +6,9 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "localizedName": "PRO-LAD"
 }

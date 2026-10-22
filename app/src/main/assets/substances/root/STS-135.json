@@ -13,9 +13,9 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
     "FreeODwiki provides little human toxicology information and lists the exact toxic dose as unknown; dose information is user/resource based."
   ],

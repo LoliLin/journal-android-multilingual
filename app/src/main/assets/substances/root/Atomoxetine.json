@@ -10,9 +10,38 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "CYP2D6 forms active 4-hydroxyatomoxetine, which is rapidly glucuronidated. CYP2C19 and other enzymes form the less active N-desmethyl metabolite. Elimination is predominantly urinary as metabolites.",
+  "metabolism": "CYP2D6 turns it into 4-hydroxyatomoxetine, which is active but is quickly joined to glucuronic acid and so does not last. CYP2C19 and other enzymes make the less active N-desmethyl form. It leaves the body mainly in the urine, as breakdown products.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ab8d905-e890-4e91-a730-3e5d12f5c23f"
   ],
-  "summary": "Atomoxetine is a selective norepinephrine reuptake inhibitor used to treat attention deficit hyperactivity disorder (ADHD). It can be used alone or with a psychostimulant; reported serious adverse effects include liver and cardiovascular problems and suicidal thoughts."
+  "summary": "Atomoxetine is a selective norepinephrine reuptake inhibitor used to treat attention deficit hyperactivity disorder (ADHD). It can be used alone or with a psychostimulant; reported serious adverse effects include liver and cardiovascular problems and suicidal thoughts.",
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "toxicities": [
+    "Carries a boxed warning for suicidal ideation in children and adolescents. Of severe liver injury, sudden death, stroke or myocardial infarction in association with treatment, increased heart rate and blood pressure, orthostatic hypotension and syncope, psychotic or manic symptoms, aggression or hostility, urinary retention and priapism.",
+    "Common adverse reactions include nausea, vomiting, fatigue, decreased appetite, abdominal pain and somnolence in children/adolescents; constipation, dry mouth, nausea, decreased appetite, dizziness, erectile dysfunction and urinary hesitation in adults."
+  ],
+  "generalRisks": "It is not a stimulant, but it does carry noradrenergic cardiovascular risks and a boxed warning for suicidal ideation in children and adolescents. Severe liver injury, psychiatric symptoms, urinary retention and priapism are also warned about. MAOIs, narrow-angle glaucoma, pheochromocytoma and severe cardiovascular disorders are contraindications.",
+  "saferUse": [
+    "Monitor children and adolescents for suicidal ideation and unusual behavior; monitor blood pressure and heart rate. Seek prompt evaluation for chest pain, fainting, jaundice, psychotic/manic symptoms, urinary retention, or a prolonged painful erection.",
+    "Do not combine with MAOIs or use within the label’s two-week separation period. Check before combining with potent CYP2D6 inhibitors, blood-pressure medicines/pressor agents, or beta-2 agonists such as albuterol.",
+    "Suspected overdose warrants urgent medical assessment; the cited capsule label contains an overdose section but no recreational-use safety threshold."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI"
+    ],
+    "unsafe": [
+      "CYP2D6 inhibitor",
+      "antihypertensive",
+      "pressor agent",
+      "albuterol",
+      "beta-2 agonist"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is a prescription oral capsule label for ADHD. Its therapeutic regimen is not recreational dose guidance; no recreational threshold or duration is established here."
 }

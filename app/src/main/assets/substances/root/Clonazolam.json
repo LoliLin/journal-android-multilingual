@@ -14,12 +14,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "benzodiazepine"
+    "Benzodiazepine"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
+  "addictionPotential": "Extremely physically and psychologically addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal"
+    "Low toxicity",
+    "Potentially lethal"
   ],
   "categories": [
     "depressant",
@@ -63,6 +63,6 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed review of designer benzodiazepines (Edinoff et al., Neurol Int 2022, PMID 35997362). Clonazolam has a half-life of about 3.6 hours and is extensively metabolized, being mainly excreted as its amino and acetamino metabolites. The main metabolites are 7-aminoclonazolam, hydroxyclonazolam and 7-acetaminoclonazolam, all of which are eliminated in the urine. Its volume of distribution is reported as unknown.",
+  "metabolism": "Stays in the body for about 3.6 hours and is broken down extensively, coming out mainly as the amino and acetamino forms. The main breakdown products are 7-aminoclonazolam, hydroxyclonazolam and 7-acetaminoclonazolam, and all of them leave in the urine. How much of it spreads through the body is not known.",
   "metabolismSources": ["https://europepmc.org/article/PMC/9397074"]
 }

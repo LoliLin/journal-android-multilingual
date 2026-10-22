@@ -12,7 +12,7 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from a peer-reviewed review of drug interactions with new synthetic opioids (Front Pharmacol 2018, PMID 30364252). Non-fentanyl new synthetic opioid analogues such as AH-7921 follow demethylation, as U-47700, for which N-desmethyl, N,N-didesmethyl, desmethylhydroxy and N,N-didesmethylhydroxy metabolites in urine have been detected.",
+  "metabolism": "Non-fentanyl new synthetic opioid analogues such as AH-7921 follow demethylation, as U-47700, for which N-desmethyl, N,N-didesmethyl, desmethylhydroxy and N,N-didesmethylhydroxy metabolites in urine have been detected.",
   "metabolismSources": [
     "https://europepmc.org/article/PMC/6193107"
   ],

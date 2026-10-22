@@ -8,8 +8,8 @@
     "research-chemical"
   ],
   "dosageRemark": "The oral dose bands and duration are transcribed from FreeODwiki. The page labels its toxicity section a stub that may contain dangerous errors, so these community-derived figures and risk descriptions are low-confidence reference data, not recommendations.",
-  "generalRisks": "FreeODwiki warns that combining benzodiazepines with opioids, alcohol, or other depressants may cause fatal overdose. It also warns that abrupt withdrawal after regular use may be life-threatening. The page marks its toxicity section as incomplete.",
-  "addictionPotential": "FreeODwiki describes strong physical and psychological dependence potential; the page's toxicity section is marked as an incomplete stub, so treat this as low-confidence source information.",
+  "generalRisks": "Combining benzodiazepines with opioids, alcohol, or other depressants may cause fatal overdose. It also warns that abrupt withdrawal after regular use may be life-threatening. The page marks its toxicity section as incomplete.",
+  "addictionPotential": "Strong physical and psychological dependence potential; the page's toxicity section is marked as an incomplete stub, so treat this as low-confidence source information.",
   "toxicities": [
     "Combining with opioids, alcohol, or other depressants may cause life-threatening respiratory depression.",
     "Abrupt withdrawal after regular use may cause seizures or death."
@@ -19,10 +19,10 @@
     "zero": "7 - 14 days after stopping"
   },
   "crossTolerances": [
-    "benzodiazepine"
+    "Benzodiazepine"
   ],
   "saferUse": [
-    "FreeODwiki warns that regular users should not stop suddenly; gradual dose reduction may be needed."
+    "Regular users should not stop suddenly; gradual dose reduction may be needed."
   ],
   "interactions": {
     "dangerous": [

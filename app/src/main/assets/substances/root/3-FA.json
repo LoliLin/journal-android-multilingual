@@ -14,12 +14,12 @@
     "zeroToleranceInHours": 132
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
@@ -27,7 +27,7 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "3-FA is a fluorinated amphetamine. FreeODwiki describes stimulant effects and cites preclinical findings consistent with monoamine release and apparent dopamine/noradrenaline selectivity; human pharmacology, toxicity and metabolism remain poorly studied.",
+  "summary": "3-FA is a fluorinated amphetamine. Stimulant effects and cites preclinical findings consistent with monoamine release and apparent dopamine/noradrenaline selectivity; human pharmacology, toxicity and metabolism remain poorly studied.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -99,14 +99,14 @@
       }
     }
   ],
-  "effectsSummary": "FreeODwiki reports strong stimulant effects, euphoria, focus and motivation, with possible empathogenic qualities. The page says user reports do not consistently describe it as a productivity aid and cautions that subjective effects are anecdotal and unpredictable.",
+  "effectsSummary": "Strong stimulant effects, euphoria, focus and motivation, with possible empathogenic qualities. The page says user reports do not consistently describe it as a productivity aid and cautions that subjective effects are anecdotal and unpredictable.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation, and should be independently verified. It lists a 10 mg threshold, light 20–30 mg, common 30–50 mg, strong 50–70 mg and severe 70 mg+. The model has no thresholdMin field, so the threshold is recorded here rather than mapped to lightMin.",
-  "generalRisks": "FreeODwiki says 3-FA toxicity has not been studied scientifically and its exact toxic dose is unknown. The page reports that very high doses may sharply increase cardiovascular adverse effects; user accounts at low or moderate levels do not establish safety. Claims of potency close to methamphetamine and selectivity are not established human clinical findings.",
-  "longtermRisks": "The page says recreational toxicity and long-term health effects have not been studied scientifically because human-use history is limited; 3-FA-specific long-term risks remain unknown.",
+  "generalRisks": "3-FA toxicity has not been studied scientifically and its exact toxic dose is unknown. The page reports that very high doses may sharply increase cardiovascular adverse effects; user accounts at low or moderate levels do not establish safety. Claims of potency close to methamphetamine and selectivity are not established human clinical findings.",
+  "longtermRisks": "Recreational toxicity and long-term health effects have not been studied scientifically because human-use history is limited; 3-FA-specific long-term risks remain unknown.",
   "saferUse": [
-    "FreeODwiki recommends starting low and strongly recommends harm-reduction measures. Its dose table is educational user-report information, not a recommendation."
+    "Starting low is recommended, and harm-reduction measures are strongly recommended. The dose table is educational user-report information, not a recommendation."
   ],
-  "metabolism": "FreeODwiki says data on 3-FA metabolism are very limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-FA is not metabolized.",
+  "metabolism": "Data on 3-FA metabolism are very limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-FA is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-FA.md"
   ]

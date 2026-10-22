@@ -16,14 +16,14 @@
     "zeroToleranceInHours": 2
   },
   "crossTolerances": [],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "Non-addictive with a low abuse potential",
   "toxicities": [
-    "FreeODwiki marks its toxicity and harm section as under construction, possibly containing incomplete and even dangerously wrong information. It says the toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context and the exact toxic dose is unknown, because its history of human use is limited. Anecdotal evidence suggests trying it alone at low to moderate doses and using it sparingly is unlikely to produce negative health effects, though this cannot be fully guaranteed."
+    "FreeODwiki marks its toxicity and harm section as under construction, possibly containing incomplete and even dangerously wrong information. The toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context and the exact toxic dose is unknown, because its history of human use is limited. Anecdotal evidence suggests trying it alone at low to moderate doses and using it sparingly is unlikely to produce negative health effects, though this cannot be fully guaranteed."
   ],
-  "effectsSummary": "FreeODwiki describes 5-MeO-DMT as a naturally occurring tryptamine psychedelic, structurally related to DMT and 5-HO-DMT (bufotenin) and believed to produce the most powerful and overwhelming psychedelic state in that class. It reports proportionally overwhelming somatic effects compared with usually mild accompanying cognitive and visual effects, whose components can be interpreted as extremely pleasurable and euphoric or extremely uncomfortable and dysphoric. Adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "effectsSummary": "5-MeO-DMT as a naturally occurring tryptamine psychedelic, structurally related to DMT and 5-HO-DMT (bufotenin) and believed to produce the most powerful and overwhelming psychedelic state in that class. Proportionally overwhelming somatic effects compared with usually mild accompanying cognitive and visual effects, whose components can be interpreted as extremely pleasurable and euphoric or extremely uncomfortable and dysphoric. Adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
   "dosageRemark": "The archived dose tables are compiled from user reports and resources for education, not recommendations. The page lists smoked or vaporized with a threshold of 1 mg, light of 3-6 mg, moderate of 6-12 mg, strong of 12-20 mg and heavy of 20 mg or more, with a total duration of 20-40 minutes; insufflated with a threshold of 3 mg, light of 5-8 mg, moderate of 8-15 mg, strong of 15-25 mg and heavy of 25 mg or more. The model does not represent a threshold band separately, so the 1 mg and 3 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page also states the substance is active at doses as low as 2 mg vaporized and reportedly roughly 4-5 times more potent than DMT, and that insufflation is possible though discouraged.",
   "generalRisks": "FreeODwiki marks its toxicity section as under construction and possibly dangerously wrong, says toxicity and long-term effects appear unresearched with unknown toxic dose, and warns that anecdotal reports suggest the substance is only appropriate for users experienced with powerful psychedelics such as DMT, ayahuasca and DPT who have training in safe use.",
-  "longtermRisks": "The archived page says the toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context.",
+  "longtermRisks": "The toxicity and long-term health effects of recreational 5-MeO-DMT appear not to have been researched in any scientific context.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction, and advises independent research before consumption to make sure combinations of two or more substances are safe.",
     "It states the substance is only appropriate for users with extensive experience of powerful psychedelics and training in safe use, and that insufflation is discouraged.",
@@ -51,7 +51,7 @@
       "NBOMe"
     ]
   },
-  "metabolism": "FreeODwiki says 5-MeO-DMT produces effects by binding to serotonin receptors in the brain, though its exact mechanism is unclear; other mechanisms such as reuptake inhibition of serotonin, noradrenaline and dopamine are believed to play a part. It notes the substance may cause serotonin toxicity when combined with MAOIs or RIMAs and may have cardiotoxic properties; this is the page's pharmacological discussion rather than an established human metabolic pathway.",
+  "metabolism": "5-MeO-DMT produces effects by binding to serotonin receptors in the brain, though its exact mechanism is unclear; other mechanisms such as reuptake inhibition of serotonin, noradrenaline and dopamine are believed to play a part. The substance may cause serotonin toxicity when combined with MAOIs or RIMAs and may have cardiotoxic properties; this is the page's pharmacological discussion rather than an established human metabolic pathway.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/5-MeO-DMT"
   ],

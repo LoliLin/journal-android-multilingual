@@ -13,12 +13,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -26,7 +26,7 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "4-FMA is a fluorinated methamphetamine analogue reported to have both stimulant and empathogenic effects. FreeODwiki says its pharmacology, toxicity and metabolism are poorly characterized; reported similarity to 4-FA or MDMA does not establish equivalent effects or risks.",
+  "summary": "4-FMA is a fluorinated methamphetamine analogue reported to have both stimulant and empathogenic effects. Its pharmacology, toxicity and metabolism are poorly characterized; reported similarity to 4-FA or MDMA does not establish equivalent effects or risks.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -98,14 +98,14 @@
       }
     }
   ],
-  "effectsSummary": "FreeODwiki reports a mixed stimulant and empathogenic profile. It describes headache and cardiovascular adverse effects as more frequently reported than with related fluorinated amphetamines, but these accounts are anecdotal and the page says human pharmacology is poorly studied.",
+  "effectsSummary": "A mixed stimulant and empathogenic profile. It describes headache and cardiovascular adverse effects as more frequently reported than with related fluorinated amphetamines, but these accounts are anecdotal and the page says human pharmacology is poorly studied.",
   "dosageRemark": "The archived oral dose table lists threshold 10 mg, light 25–50 mg, common 50–75 mg, strong 100–125 mg and severe 125 mg+. The source leaves a gap between the common and strong bands; it is preserved rather than filled. The model has no thresholdMin field, so the threshold is recorded here. The page says these user/resource-derived values are for education, not recommendation, and should be verified independently.",
-  "generalRisks": "FreeODwiki says 4-FMA toxicity has not been studied scientifically and its exact toxic dose is unknown. It reports headache and cardiovascular adverse effects. The page's stroke and severe cardiovascular warning is partly extrapolated from 4-FA; it explicitly does not establish causality or prove the same outcomes for 4-FMA.",
-  "longtermRisks": "The page says recreational toxicity and long-term health effects of 4-FMA have not been studied scientifically. Long-term organ and neurological risks therefore remain unknown; claims about harm are not established clinical findings.",
+  "generalRisks": "4-FMA toxicity has not been studied scientifically and its exact toxic dose is unknown. Headache and cardiovascular adverse effects. The page's stroke and severe cardiovascular warning is partly extrapolated from 4-FA; it explicitly does not establish causality or prove the same outcomes for 4-FMA.",
+  "longtermRisks": "Recreational toxicity and long-term health effects of 4-FMA have not been studied scientifically. Long-term organ and neurological risks therefore remain unknown; claims about harm are not established clinical findings.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm-reduction measures. It warns that reported corrosivity may injure the nose and throat if insufflated; the oral dose table is unverified and not a recommendation."
+    "FreeODwiki strongly recommends harm-reduction measures. Reported corrosivity may injure the nose and throat if insufflated; the oral dose table is unverified and not a recommendation."
   ],
-  "metabolism": "FreeODwiki says 4-FMA metabolism data are very limited and provides no established human metabolic pathway. Its CYP450 inhibition claim is not accompanied on the page by human pathway evidence and is not recorded here as established metabolism. This is a knowledge gap, not evidence that 4-FMA is not metabolized.",
+  "metabolism": "4-FMA metabolism data are very limited and provides no established human metabolic pathway. Its CYP450 inhibition claim is not accompanied on the page by human pathway evidence and is not recorded here as established metabolism. This is a knowledge gap, not evidence that 4-FMA is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FMA.md"
   ]

@@ -15,7 +15,7 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from a peer-reviewed study of species differences in the disposition and metabolism of camazepam (Xenobiotica 1985, PMID 2868575). Camazepam was metabolized extensively in all species investigated to more than 10 metabolites, which were desmethyl, descarbamoyl and/or hydroxy products.",
+  "metabolism": "Camazepam was metabolized extensively in all species investigated to more than 10 metabolites, which were desmethyl, descarbamoyl and/or hydroxy products.",
   "metabolismSources": [
     "https://europepmc.org/article/MED/2868575"
   ],

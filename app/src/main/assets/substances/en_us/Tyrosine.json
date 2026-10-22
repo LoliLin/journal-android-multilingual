@@ -6,9 +6,9 @@
     "halfToleranceInHours": 168,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "mildly habit forming",
+  "addictionPotential": "Mildly habit forming",
   "toxicities": [
-    "extremely low toxicity"
+    "Extremely low toxicity"
   ],
   "localizedName": "Tyrosine"
 }

@@ -14,11 +14,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a moderate potential for adverse side effects such as psychosis",
+  "addictionPotential": "Moderately addictive with a moderate potential for adverse side effects such as psychosis",
   "toxicities": [
-    "The archived page says the exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied. Its toxicity section is flagged as a stub that may contain extremely inaccurate information."
+    "The exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied. Its toxicity section is flagged as a stub that may contain extremely inaccurate information."
   ],
   "categories": [
     "dissociative",
@@ -55,12 +55,12 @@
     }
   ],
   "dosageRemark": "The archived oral dose table is compiled from user reports and resources for educational purposes only, is not a recommendation, and should be checked against other sources. Its 5 mg threshold and open-ended severe category at 25 mg and above are not fully represented by the route dose model.",
-  "generalRisks": "The archived page reports no independent laboratory analysis of grey-market samples. It discusses possible μ-opioid receptor affinity by analogy with 3-HO-PCP, but says this remains debated; opioid activity in humans is unconfirmed.",
-  "longtermRisks": "The archived page says long-term health effects have not been scientifically studied. Possible bladder and urinary problems are presented as an unverified analogy with ketamine, not as established 3-HO-PCE findings.",
+  "generalRisks": "No independent laboratory analysis of grey-market samples. It discusses possible μ-opioid receptor affinity by analogy with 3-HO-PCP, but says this remains debated; opioid activity in humans is unconfirmed.",
+  "longtermRisks": "Long-term health effects have not been scientifically studied. Possible bladder and urinary problems are presented as an unverified analogy with ketamine, not as established 3-HO-PCE findings.",
   "saferUse": [
-    "The archived page strongly recommends harm-reduction measures, starting at a very low dose, and using accurate volumetric measurement because of the substance's potency. It advises against multi-day use and redosing before fully sober, warns against exceeding the listed dose ranges, and discourages combining it with depressants while urging caution with stimulants, psychedelics, and other dissociatives."
+    "Harm-reduction measures, starting at a very low dose, and accurate volumetric measurement are strongly recommended, because of the substance's potency. Multi-day use and redosing before being fully sober are advised against, exceeding the listed dose ranges is warned against, and combining it with depressants is discouraged; caution is urged with stimulants, psychedelics and other dissociatives."
   ],
-  "metabolism": "The archived page says data on the pharmacology, metabolism, and toxicity of 3-HO-PCE are lacking; it gives no specific metabolic findings or pathway.",
+  "metabolism": "Data on the pharmacology, metabolism, and toxicity of 3-HO-PCE are lacking; No metabolic enzymes, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3-HO-PCE"
   ]

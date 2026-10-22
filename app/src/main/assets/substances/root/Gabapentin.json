@@ -15,7 +15,9 @@
   },
   "crossTolerances": [],
   "toxicities": [
-    "low toxicity"
+    "Label-reported effects include somnolence, dizziness, ataxia, fatigue, and altered mental status.",
+    "Serious risks include potentially fatal respiratory depression, including in overdose alone or with CNS depressants; DRESS, anaphylaxis/angioedema, and suicidal thoughts or behavior have also been reported.",
+    "Abrupt discontinuation can increase seizure frequency; rare withdrawal symptoms have been reported after stopping higher-than-recommended use."
   ],
   "categories": [
     "depressant",
@@ -66,5 +68,11 @@
   "metabolism": "Does not undergo appreciable metabolism in humans. It is eliminated by the kidneys as unchanged gabapentin; hepatic CYP metabolism is not a major clearance pathway.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d35cd5ac-5ed6-2405-e053-2995a90a6946"
+  ],
+  "generalRisks": "The DailyMed label associates gabapentin with serious, life-threatening, or fatal respiratory depression when combined with CNS depressants, including opioids, or in people with respiratory impairment. It also warns about sedation/dizziness and impaired driving, DRESS, anaphylaxis/angioedema, suicidal thoughts or behavior, and increased seizure frequency after abrupt discontinuation.",
+  "saferUse": [
+    "Avoid driving or operating complex machinery until the effect on alertness and coordination is known.",
+    "Use caution with opioids or other CNS depressants and respiratory impairment; the label advises monitoring for sedation and respiratory depression.",
+    "Do not stop abruptly; discuss gradual discontinuation with the prescriber. Seek immediate care for breathing difficulty or swelling of the lips, tongue, throat, or face, and promptly report fever/rash or emerging suicidal thoughts."
   ]
 }

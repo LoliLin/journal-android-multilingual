@@ -7,9 +7,9 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [
-    "FreeODwiki describes PMA as extremely toxic, associated with severe tachycardia, seizures, hyperthermia and death; even moderate doses may cause life-threatening hyperthermia and serotonin syndrome. It strongly advises against use."
+    "PMA as extremely toxic, associated with severe tachycardia, seizures, hyperthermia and death; even moderate doses may cause life-threatening hyperthermia and serotonin syndrome. It strongly advises against use."
   ],
-  "dosageRemark": "The archived oral table lists threshold <10 mg, light 20-40 mg and moderate 40-60 mg; the strong band has no numeric range and instead warns higher doses may cause fatal hyperthermia. Duration is described only as 'short'; no numeric phases are inferred. The source strongly advises against use and notes PMA may be sold as MDMA adulterant. lightMin corrected to source light lower bound.",
+  "dosageRemark": "The archived oral table lists threshold <10 mg, light 20-40 mg and moderate 40-60 mg; the strong band has no numeric range and instead warns higher doses may cause fatal hyperthermia. Duration is described only as 'short'; no numeric phases are inferred. The source strongly advises against use and notes PMA may be sold as MDMA adulterant. LightMin corrected to source light lower bound.",
   "generalRisks": "The source warns PMA may have weak/easily missed subjective effects, encouraging redosing; it can cause dangerous temperature and blood-pressure elevation, abnormal heart rhythm, dehydration, seizures and death. It may occur as an MDMA adulterant.",
   "saferUse": [
     "FreeODwiki strongly advises avoiding PMA; it recommends reagent testing MDMA samples because PMA may occur as an adulterant.",

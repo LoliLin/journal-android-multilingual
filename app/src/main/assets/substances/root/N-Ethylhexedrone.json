@@ -20,13 +20,13 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "norepinephrine|noradrenergic",
-    "dopamine",
-    "stimulant"
+    "Norepinephrine|noradrenergic",
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",

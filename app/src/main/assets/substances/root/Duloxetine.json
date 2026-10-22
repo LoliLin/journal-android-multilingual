@@ -9,5 +9,45 @@
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00628e5e-4c5b-2573-e063-6294a90a0e3b"
   ],
-  "summary": "Duloxetine is a serotonin-norepinephrine reuptake inhibitor (SNRI) used to treat major depressive disorder, generalized anxiety disorder, fibromyalgia, neuropathic pain, and other chronic pain conditions."
+  "summary": "Duloxetine is a serotonin-norepinephrine reuptake inhibitor (SNRI) used to treat major depressive disorder, generalized anxiety disorder, fibromyalgia, neuropathic pain, and other chronic pain conditions.",
+  "roas": [
+    {
+      "name": "oral",
+      "releaseForm": "DELAYED_RELEASE"
+    }
+  ],
+  "toxicities": [
+    "DailyMed warnings include suicidal thoughts/behavior, potentially fatal liver injury, serotonin syndrome, bleeding, orthostatic hypotension/falls/syncope, blood-pressure increases, hyponatremia, seizures, mania/hypomania, severe skin reactions, and discontinuation symptoms.",
+    "Common adverse reactions in adults include nausea, dry mouth, somnolence, constipation, decreased appetite, and sweating."
+  ],
+  "generalRisks": "The label is for oral delayed-release capsules (updated 2025-08-29). About hepatotoxicity (including hepatic failure), serotonin syndrome, bleeding, falls/syncope, increased blood pressure, hyponatremia, seizures, mania/hypomania and discontinuation symptoms. The label advises avoiding use with substantial alcohol use or chronic liver disease.",
+  "saferUse": [
+    "Avoid use with substantial alcohol use or chronic liver disease as specified by the label; seek medical evaluation for jaundice or other signs of liver injury.",
+    "Monitor blood pressure during prescribed use. Seek urgent care for severe fainting, seizure, severe rash/blistering, or suspected serotonin syndrome.",
+    "Do not stop abruptly; gradually reduce under clinical guidance. Check before combining with serotonergic agents, MAOIs, CYP1A2 inhibitors, thioridazine, antiplatelet drugs, or anticoagulants."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "linezolid",
+      "methylene blue",
+      "thioridazine"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "triptan",
+      "tricyclic antidepressant",
+      "fentanyl",
+      "lithium",
+      "tramadol",
+      "buspirone",
+      "amphetamine",
+      "St. John’s Wort",
+      "CYP1A2 inhibitor",
+      "antiplatelet",
+      "anticoagulant"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is a prescription oral delayed-release capsule label. Its therapeutic regimen is not recreational dose guidance; no recreational threshold or duration is established here."
 }

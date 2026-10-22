@@ -14,7 +14,9 @@
   },
   "crossTolerances": [],
   "toxicities": [
-    "low toxicity"
+    "Common label-reported effects include dizziness, somnolence, dry mouth, peripheral edema, blurred vision, weight gain, and difficulty with concentration or attention.",
+    "Serious risks include life-threatening respiratory depression with CNS depressants or respiratory impairment, angioedema with respiratory compromise, and suicidal thoughts or behavior.",
+    "Abrupt or rapid discontinuation may increase seizure frequency and cause withdrawal symptoms; suicidal behavior or ideation has also been reported after discontinuation."
   ],
   "categories": [
     "depressant",
@@ -23,7 +25,10 @@
   ],
   "summary": "Pregabalin (Lyrica) is a GABA derivative that is used to treat neuropathic pain and seizures, as well as anxiety.",
   "interactions": {
-    "dangerous": [],
+    "dangerous": [
+      "opioid",
+      "depressant"
+    ],
     "unsafe": [],
     "uncertain": [
       "Oxycodone",
@@ -123,5 +128,11 @@
   "metabolism": "Undergoes negligible human metabolism. Elimination is primarily renal as unchanged pregabalin, so CYP biotransformation does not explain its clearance.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e897d7e8-2743-4512-8417-375cb11ceec6"
+  ],
+  "generalRisks": "The DailyMed label warns that pregabalin may cause serious, life-threatening, or fatal respiratory depression with CNS depressants, including opioids, or with underlying respiratory impairment. Other warnings include dizziness and somnolence with driving impairment, angioedema/hypersensitivity, suicidal thoughts or behavior, edema and weight gain, and increased seizure frequency or withdrawal symptoms after abrupt cessation.",
+  "saferUse": [
+    "Avoid driving or hazardous machinery until the effect on alertness and coordination is known.",
+    "Use caution with opioids or other CNS depressants and respiratory impairment; seek immediate care for slowed breathing or swelling of the face, mouth, tongue, or throat.",
+    "Do not stop suddenly; the label advises gradual tapering over at least one week. Monitor for mood changes or suicidal thoughts, including after discontinuation."
   ]
 }

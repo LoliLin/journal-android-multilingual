@@ -7,7 +7,7 @@
     "DMPEA"
   ],
   "categories": [
-    "psychedelic",
+    "Psychedelic",
     "stimulant"
   ],
   "tolerance": {
@@ -16,16 +16,16 @@
     "zero": "7-10 days"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
   "addictionPotential": "No formal studies are reported. PsychonautWiki suggests it may be non-habit-forming based on psychedelics generally, while noting that its stimulant properties could still pose an addiction risk.",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
-  "dosageRemark": "PsychonautWiki lists oral dosage and total duration as unknown; it reports no established dose data.",
-  "generalRisks": "PsychonautWiki says recreational toxicity and long-term health effects have not been studied in a scientific context, and the exact toxic dose is unknown. Human-use history and pharmacological data are very limited.",
+  "dosageRemark": "Oral dosage and total duration are unknown, and no established dose data are available.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific context, and the exact toxic dose is unknown. Human-use history and pharmacological data are very limited.",
   "saferUse": [
-    "PsychonautWiki advises using harm-reduction practices and accurate measurement; its page does not establish a dose."
+    "Harm-reduction practices and accurate measurement are advised. No dose is established."
   ],
   "interactions": {
     "dangerous": [

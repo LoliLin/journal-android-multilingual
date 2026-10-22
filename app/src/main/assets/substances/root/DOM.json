@@ -14,16 +14,16 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says recreational toxicity and long-term health effects of DOM appear not to have been studied and exact toxic dose is unknown. It describes a sensitive dose-response and warns of overdose, especially in sensitive individuals or with stimulants/MAOIs; reported severe effects include psychosis, panic, seizures, cardiovascular strain and vasoconstriction."
+    "Recreational toxicity and long-term health effects of DOM appear not to have been studied and exact toxic dose is unknown. It describes a sensitive dose-response and warns of overdose, especially in sensitive individuals or with stimulants/MAOIs; reported severe effects include psychosis, panic, seizures, cardiovascular strain and vasoconstriction."
   ],
   "effectsSummary": "At the beginning, typical effects of amphetamine unfold, such as increased alertness, accelerated pulse, slight euphoria, increased self-confidence and urge to talk. Afterwards, the effect changes: one often feels a strong urge to move, sensory perception, feelings and empathy are heightened, colours are perceived more distinctly. With DOB and DOI, coloured, superimposed, pulsating patterns are perceived. This effect is weaker with DOM.",
-  "dosageRemark": "The archived oral table lists threshold 0.5 mg, light 1-3 mg, moderate 3-5 mg, strong 5-10 mg, heavy 10 mg+; total 12-16 h, onset 1-2 h, comeup 2-3 h, peak 6-8 h, offset 3-5 h, afterglow 4-16 h. Educational user/resource compilation, not a recommendation. lightMin matches the source light lower bound.",
-  "generalRisks": "FreeODwiki warns of DOM's dose-sensitive, long duration and overdose risk, especially in sensitive people or when combined with stimulants or MAOIs. Severe overdose may involve delusions, amnesia, confusion, agitation, psychosis, panic, seizures, tachycardia, hypertension and vasoconstriction; some details carry source-request markers.",
-  "longtermRisks": "The archived page says recreational toxicity and long-term health effects appear not to have been studied; exact toxic dose is unknown.",
+  "dosageRemark": "The archived oral table lists threshold 0.5 mg, light 1-3 mg, moderate 3-5 mg, strong 5-10 mg, heavy 10 mg+; total 12-16 h, onset 1-2 h, comeup 2-3 h, peak 6-8 h, offset 3-5 h, afterglow 4-16 h. Educational user/resource compilation, not a recommendation. LightMin matches the source light lower bound.",
+  "generalRisks": "Of DOM's dose-sensitive, long duration and overdose risk, especially in sensitive people or when combined with stimulants or MAOIs. Severe overdose may involve delusions, amnesia, confusion, agitation, psychosis, panic, seizures, tachycardia, hypertension and vasoconstriction; some details carry source-request markers.",
+  "longtermRisks": "Recreational toxicity and long-term health effects appear not to have been studied; exact toxic dose is unknown.",
   "saferUse": [
     "FreeODwiki advises starting low due to individual differences and recommends harm reduction for this long-acting psychedelic.",
     "It warns of higher overdose risk in sensitive people and with stimulants or MAOIs; some overdose details carry source-request markers."

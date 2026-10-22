@@ -14,9 +14,9 @@
     "zeroToleranceInHours": 2
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic"

@@ -14,17 +14,17 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [],
   "categories": [
     "entactogen",
     "stimulant",
     "habit-forming"
   ],
-  "summary": "3-MMC is a synthetic cathinone reported to produce stimulant and empathogenic effects similar to 4-MMC. FreeODwiki says its pharmacology, toxicity and metabolism data are limited, so specific mechanisms and long-term effects remain uncertain.",
+  "summary": "3-MMC is a synthetic cathinone reported to produce stimulant and empathogenic effects similar to 4-MMC. Its pharmacology, toxicity and metabolism data are limited, so specific mechanisms and long-term effects remain uncertain.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -175,14 +175,14 @@
       }
     }
   ],
-  "effectsSummary": "FreeODwiki describes reported stimulant effects such as euphoria, energy and increased sociability or empathy. It also reports compulsive redosing and adverse effects including increased heart rate, overheating, dehydration and, rarely, seizures. The page marks its effects as anecdotal and unpredictable.",
+  "effectsSummary": "Reported stimulant effects such as euphoria, energy and increased sociability or empathy. It also reports compulsive redosing and adverse effects including increased heart rate, overheating, dehydration and, rarely, seizures. The page marks its effects as anecdotal and unpredictable.",
   "dosageRemark": "The archived dose tables explicitly say their information is collected from users and resources for education, not recommendation, and should be independently verified. They list oral threshold 25 mg and light 50–150 mg; insufflated threshold 10 mg and light 20–40 mg; intravenous threshold below 10 mg and light 10–25 mg. Thresholds cannot be represented separately by the data model and are recorded here. The toxicity section is marked by the source as incomplete and potentially extremely erroneous.",
-  "generalRisks": "FreeODwiki states that 3-MMC pharmacology, toxicity and long-term effects are poorly characterized and warns that its toxicity section may be incomplete or extremely erroneous. Its effects list includes cardiovascular strain, overheating, dehydration and seizure reports, but does not establish rates or reliable dose relationships. The page also describes strong compulsive redosing and dependence concerns.",
-  "longtermRisks": "The page says long-term effects are insufficiently studied. It mentions preliminary concern for possible neurotoxicity and cardiotoxicity with prolonged or repeated high-dose use, but these risks are not established for 3-MMC.",
+  "generalRisks": "3-MMC pharmacology, toxicity and long-term effects are poorly characterized and warns that its toxicity section may be incomplete or extremely erroneous. Its effects list includes cardiovascular strain, overheating, dehydration and seizure reports, but does not establish rates or reliable dose relationships. The page also describes strong compulsive redosing and dependence concerns.",
+  "longtermRisks": "Long-term effects are insufficiently studied. Preliminary concern for possible neurotoxicity and cardiotoxicity with prolonged or repeated high-dose use, but these risks are not established for 3-MMC.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm-reduction measures and warns that its dose tables are unverified educational information, not a recommendation."
+    "Harm-reduction measures are strongly recommended, and the dose tables are unverified educational information, not a recommendation."
   ],
-  "metabolism": "FreeODwiki says data on 3-MMC pharmacology and metabolism are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-MMC is not metabolized.",
+  "metabolism": "Data on 3-MMC pharmacology and metabolism are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-MMC is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-MMC.md"
   ]

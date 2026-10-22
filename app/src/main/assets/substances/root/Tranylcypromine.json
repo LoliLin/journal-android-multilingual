@@ -6,7 +6,7 @@
     "antidepressant",
     "maoi"
   ],
-  "metabolism": "Evidence is from Tranylcypromine 10 mg film-coated tablets (oral). Tranylcypromine is well and rapidly absorbed after oral administration, with peak plasma levels reached after about 2.5 hours and a half-life of the order of 2 hours. It undergoes considerable metabolism, including breakdown of the side chain and probably conjugation. Its main action is irreversible inhibition of MAO, both MAO-A and MAO-B; this lasts for some time and is clinically considered to have reversed within 14 days. Excretion is pH dependent.",
+  "metabolism": "Absorbed quickly and well after a dose by mouth, with peak blood levels at about 2.5 hours and a half-life of roughly 2 hours. It is broken down a good deal, including the side chain coming apart and probably some joining to small molecules. What it mainly does is block MAO, both MAO-A and MAO-B, and it blocks them permanently; that wears off slowly, and in clinical terms it is treated as reversed within 14 days. How much comes out in the urine depends on how acid the urine is.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/14428/smpc"
   ],

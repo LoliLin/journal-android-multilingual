@@ -6,10 +6,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "localizedName": "Dihydrocodeine"
 }

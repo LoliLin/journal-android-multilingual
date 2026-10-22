@@ -7,7 +7,7 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [
-    "The archived page states that the exact toxic dose is unknown. Its toxicity section is flagged as a stub that may contain dangerous errors."
+    "The exact toxic dose is unknown. Its toxicity section is flagged as a stub that may contain dangerous errors."
   ],
   "categories": [
     "stimulant",
@@ -63,12 +63,12 @@
     }
   ],
   "dosageRemark": "The archived dose table is based on user reports and resources, is for educational purposes only, and should be independently verified. The model has no thresholdMin field for the source threshold below 2 mg or a representation for the open-ended severe category at 8 mg and above.",
-  "generalRisks": "The archived page reports a very short human-use history and says recreational toxicity has not been scientifically studied. It discusses possible cardiovascular concerns, but these are source-reported concerns rather than established clinical outcomes for this substance.",
-  "longtermRisks": "The archived page says long-term health effects have not been studied; it raises cardiovascular concerns based on reported 5-HT2B agonism, without establishing substance-specific long-term outcomes.",
+  "generalRisks": "A very short human-use history and says recreational toxicity has not been scientifically studied. It discusses possible cardiovascular concerns, but these are source-reported concerns rather than established clinical outcomes for this substance.",
+  "longtermRisks": "Long-term health effects have not been studied; it raises cardiovascular concerns based on reported 5-HT2B agonism, without establishing substance-specific long-term outcomes.",
   "saferUse": [
     "The archived page recommends starting low, independent research, and harm-reduction measures. It advises people with cardiovascular disease not to use the substance, cautions that prolonged stimulation may outlast subjective effects, and strongly discourages insufflation because of painful irritation and delayed absorption reported by users."
   ],
-  "metabolism": "The archived page provides no specific human metabolic findings or pathway; no pathway is inferred from related compounds.",
+  "metabolism": "Nothing is known about how this is broken down in people. No specific metabolic findings or pathway have been described.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3%2C4-CTMP"
   ]

@@ -6,10 +6,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "extremely addictive",
+  "addictionPotential": "Extremely addictive",
   "toxicities": [
-    "doses of over 300mg can be dangerous for first time users",
-    "safe at appropriate dosages"
+    "Doses of over 300mg can be dangerous for first time users",
+    "Safe at appropriate dosages"
   ],
   "localizedName": "Methaqualone"
 }

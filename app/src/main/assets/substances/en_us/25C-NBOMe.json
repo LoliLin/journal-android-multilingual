@@ -6,9 +6,9 @@
     "halfToleranceInHours": 168,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "fatal at heavy dosages"
+    "Fatal at heavy dosages"
   ],
   "localizedName": "25C-NBOMe"
 }

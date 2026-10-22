@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
@@ -103,7 +103,7 @@
   "saferUse": [
     "PsychonautWiki strongly recommends harm-reduction measures and describes the dose-response as highly sensitive and unpredictable."
   ],
-  "metabolism": "The archived page says little is known about human pharmacology, metabolism and toxicity. It identifies no specific metabolic enzymes, metabolites or pathway, so metabolism remains undocumented in this source; no route is inferred from related compounds.",
+  "metabolism": "Nothing is known about how the body handles this. No metabolic enzymes, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/25B-NBOMe"
   ]

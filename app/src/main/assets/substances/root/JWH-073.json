@@ -14,15 +14,15 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki says exact toxic dose is unknown; the page warns long-term synthetic cannabinoid misuse is associated with serious adverse effects and deaths."
+    "Exact toxic dose is unknown; the page warns long-term synthetic cannabinoid misuse is associated with serious adverse effects and deaths."
   ],
-  "dosageRemark": "Archived table lists threshold <3 mg; light 3-5 mg; moderate 5-10 mg; strong 10-15 mg; heavy 15 mg+. Total duration 1-2 h, onset 5-10 min, peak 60-90 min, offset 5-10 min, afterglow 60-90 min. Educational user/resource information, not a recommendation. The source says oral activity may occur when dissolved in lipids but gives no oral dose table.",
-  "generalRisks": "long-term synthetic cannabinoid misuse is linked to deaths and more dangerous adverse effects/toxicity than cannabis. Oral activity when dissolved in lipids is noted, with longer duration; no oral dose table is supplied.",
-  "longtermRisks": "FreeODwiki warns long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects and toxicity than cannabis.",
+  "dosageRemark": "Archived table lists threshold <3 mg; light 3-5 mg; moderate 5-10 mg; strong 10-15 mg; heavy 15 mg+. Total duration 1-2 h, onset 5-10 min, peak 60-90 min, offset 5-10 min, afterglow 60-90 min. Educational user/resource information, not a recommendation. Oral activity may occur when dissolved in lipids but gives no oral dose table.",
+  "generalRisks": "Long-term synthetic cannabinoid misuse is linked to deaths and more dangerous adverse effects/toxicity than cannabis. Oral activity when dissolved in lipids is noted, with longer duration; no oral dose table is supplied.",
+  "longtermRisks": "Long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects and toxicity than cannabis.",
   "saferUse": [
     "FreeODwiki strongly advises against prolonged or high-dose use of synthetic cannabinoids and recommends harm reduction.",
     "The dose table is an educational user/resource compilation, not a recommendation; the source provides no oral dosage table."

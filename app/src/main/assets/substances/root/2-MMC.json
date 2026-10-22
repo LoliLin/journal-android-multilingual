@@ -12,7 +12,7 @@
     "research-chemical"
   ],
   "isApproved": false,
-  "addictionPotential": "FreeODwiki describes 2-MMC as highly addictive, but the page is explicitly unreviewed; treat this as a low-confidence source claim rather than established clinical evidence.",
+  "addictionPotential": "2-MMC as highly addictive, but the page is explicitly unreviewed; treat this as a low-confidence source claim rather than established clinical evidence.",
   "toxicities": [
     "The archived page marks its toxicity section as an unreviewed stub and provides no validated toxic-dose information."
   ],
@@ -22,6 +22,6 @@
   "saferUse": [
     "The page recommends independent research and harm-reduction measures, while warning that its own information may contain dangerous errors. Treat its advice as unverified and check reliable independent sources."
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified.",
   "summary": "2-MMC is a synthetic cathinone described as a stimulant and entactogen. Its pharmacology is not well characterized."
 }

@@ -16,11 +16,11 @@
   },
   "crossTolerances": [
     "GABA",
-    "depressants"
+    "Depressants"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "depressant",
@@ -70,7 +70,7 @@
   "saferUse": [
     "PsychonautWiki strongly warns that combining 2M2B with other depressants, including alcohol, opioids, benzodiazepines, barbiturates, gabapentinoids or GHB/GBL, can cause fatal overdose. It recommends starting low and using harm-reduction measures; its dose table is educational, not a recommendation."
   ],
-  "metabolism": "The archived page asserts that this tertiary alcohol is not metabolized to an aldehyde by alcohol dehydrogenase as ethanol is, and links this claim to a longer duration. The page provides no specific human metabolic study; treat the mechanism as a source claim, not established clinical evidence.",
+  "metabolism": "The archived page asserts that this tertiary alcohol is not broken down to an aldehyde by alcohol dehydrogenase as ethanol is, and links this claim to a longer duration. The page provides no specific human metabolic study; treat the mechanism as a source claim, not established clinical evidence.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/2M2B"
   ]

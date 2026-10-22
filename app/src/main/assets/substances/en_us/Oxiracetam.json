@@ -6,10 +6,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "non-addictive with a low potential for abuse",
+  "addictionPotential": "Non-addictive with a low potential for abuse",
   "toxicities": [
-    "safe even when high doses are consumed for a long period of time",
-    "exact toxic dosage is unknown"
+    "Safe even when high doses are consumed for a long period of time",
+    "Exact toxic dosage is unknown"
   ],
   "localizedName": "Oxiracetam"
 }

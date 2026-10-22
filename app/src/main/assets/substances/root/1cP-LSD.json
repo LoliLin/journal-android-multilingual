@@ -13,9 +13,9 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "Non-addictive with a low abuse potential",
   "toxicities": [],
   "categories": [
     "psychedelic"
@@ -78,14 +78,14 @@
   ],
   "summary": "1cP-LSD is an acylated lysergamide related to LSD. Human serum incubation has reportedly produced LSD, supporting but not proving a prodrug hypothesis; pharmacology, toxicity and metabolism data remain limited.",
   "toxicities": [
-    "The source labels its toxicity section an incomplete stub that may contain dangerous errors; it provides no reliable toxic-dose determination."
+    "The toxicity section is an incomplete stub that may contain dangerous errors, and gives no reliable toxic-dose figure."
   ],
-  "effectsSummary": "FreeODwiki reports LSD-like subjective effects, including visual changes, time distortion, conceptual thinking, introspection and euphoria; users describe a slower come-up and somewhat milder cognitive and physical effects. These are anecdotal reports and do not establish equivalent effects or risk.",
+  "effectsSummary": "LSD-like subjective effects, including visual changes, time distortion, conceptual thinking, introspection and euphoria; users describe a slower come-up and somewhat milder cognitive and physical effects. These are anecdotal reports and do not establish equivalent effects or risk.",
   "dosageRemark": "The archived oral table lists threshold 15 µg, light 25–75 µg, common 75–150 µg, strong 150–300 µg and severe 300 µg+. The model has no thresholdMin field, so the 15 µg threshold is recorded here, below lightMin. The page says these user/resource-derived values are educational, not a recommendation, and should be independently verified.",
-  "generalRisks": "FreeODwiki says recreational toxicity and long-term health effects have not been studied. It notes that high doses may increase anxiety, delusions and panic, and that psychedelics may trigger symptoms in people with underlying mental illness. Its toxicity section is explicitly marked as an incomplete stub that may contain dangerous errors; substance-specific toxic-dose claims are therefore not treated as reliable.",
-  "longtermRisks": "The page says there is no research on recreational toxicity or long-term health effects of 1cP-LSD. Outcomes remain unknown; similarity to LSD does not establish the same long-term safety profile.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied. High doses may increase anxiety, delusions and panic, and that psychedelics may trigger symptoms in people with underlying mental illness. Its toxicity section is explicitly marked as an incomplete stub that may contain dangerous errors; substance-specific toxic-dose claims are therefore not treated as reliable.",
+  "longtermRisks": "There is no research on recreational toxicity or long-term health effects of 1cP-LSD. Outcomes remain unknown; similarity to LSD does not establish the same long-term safety profile.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm-reduction measures and independent research. It warns that the substance is poorly studied, flags risks for people with underlying mental illness, and cautions that the toxicity section may contain dangerous errors. The archived dose table is educational, not a recommendation."
+    "Harm-reduction measures and independent research are strongly recommended. The substance is poorly studied, there are risks for people with underlying mental illness, and the toxicity section may contain dangerous errors. The dose table is educational, not a recommendation."
   ],
   "metabolism": "A study cited by FreeODwiki reportedly found LSD formation after incubating 1cP-LSD with human serum. This supports a possible conversion to LSD but does not establish whole-body human pharmacokinetics or prove that all effects are mediated by LSD.",
   "metabolismSources": [

@@ -13,9 +13,9 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "The archived page says there are no formal studies and infers low addiction potential by analogy with LSD; this has not been established for 1P-LSD.",
+  "addictionPotential": "There are no formal studies and infers low addiction potential by analogy with LSD; this has not been established for 1P-LSD.",
   "toxicities": [
     "Recreational toxicity and long-term health effects have not been studied, and the toxic dose is unknown. The archived toxicity section is explicitly marked as an incomplete draft that may contain dangerous errors; its claims of very low toxicity and few acute physical effects are not treated as established."
   ],
@@ -25,8 +25,8 @@
   ],
   "summary": "1P-LSD is a propionyl-substituted lysergamide psychedelic related to LSD. User reports describe effects as similar to LSD, but its toxicity and long-term effects have not been established. Animal, in-vitro and limited human pharmacokinetic findings support conversion to LSD; they do not establish that all effects are due to LSD.",
   "dosageRemark": "The archived dose and duration table is based on user reports, is for educational purposes rather than use advice, and carries the source warning to start low because individual responses vary. Its threshold is 15 µg; the data model has no threshold field, so this value is recorded here.",
-  "generalRisks": "The archived page says recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as an incomplete draft that may contain dangerous errors. The page warns of possible psychiatric triggering in susceptible people; this is not established by compound-specific evidence. Its interaction warnings are largely extrapolated from LSD and may be incomplete.",
-  "saferUse": "The archived page recommends independent research and harm-reduction measures, and warns that individual sensitivity varies. It advises people with a personal or family history of mental illness to avoid use, particularly outside medical supervision; this warning comes from an unreviewed toxicity section. Interaction information is extrapolated from LSD and may not cover 1P-LSD-specific risks.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as an incomplete draft that may contain dangerous errors. The page warns of possible psychiatric triggering in susceptible people; this is not established by compound-specific evidence. Its interaction warnings are largely extrapolated from LSD and may be incomplete.",
+  "saferUse": "Independent research and harm-reduction measures are recommended, and individual sensitivity varies. People with a personal or family history of mental illness are advised to avoid use, particularly outside medical supervision; that warning comes from an unreviewed toxicity section. Interaction information is extrapolated from LSD and may not cover 1P-LSD-specific risks.",
   "metabolism": "In a human pharmacokinetic study of two male volunteers, serum 1P-LSD declined rapidly during the first hour after oral administration while LSD remained detectable. This supports conversion of 1P-LSD to LSD, alongside animal and in-vitro findings, but does not establish that all psychoactive effects are caused by LSD.",
   "metabolismSources": [
     "https://doi.org/10.1002/dta.2821",

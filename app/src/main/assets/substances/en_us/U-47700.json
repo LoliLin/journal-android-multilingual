@@ -6,10 +6,10 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "high toxicity relative to its dose due to its extreme potency",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "High toxicity relative to its dose due to its extreme potency",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "localizedName": "U-47700"
 }

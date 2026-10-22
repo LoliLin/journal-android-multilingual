@@ -14,13 +14,13 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [],
-  "addictionPotential": "moderately to highly physically and moderately psychologically addictive",
+  "addictionPotential": "Moderately to highly physically and moderately psychologically addictive",
   "toxicities": [
-    "FreeODwiki warns GHB combined with opioids, benzodiazepines, barbiturates, gabapentinoids, thienodiazepines or alcohol may cause fatal overdose, strongly advising against these combinations especially at moderate to heavy doses. It states doses above 10 g carry risk of death and describes higher doses as potentially causing convulsions, unconsciousness/coma and vomiting."
+    "GHB combined with opioids, benzodiazepines, barbiturates, gabapentinoids, thienodiazepines or alcohol may cause fatal overdose, strongly advising against these combinations especially at moderate to heavy doses. Doses above 10 g carry risk of death and describes higher doses as potentially causing convulsions, unconsciousness/coma and vomiting."
   ],
   "effectsSummary": "The effect is extremely dose-dependent and varies greatly from individual to individual. It also depends on the purity of the substance. The spectrum of effects ranges from euphoria, relaxation, disinhibition, intensification of perception, urge to talk (babble flash), slight dizziness and drowsiness to deep (coma-like) sleep or unconsciousness.",
   "dosageRemark": "The archived oral table lists threshold 0.5 g, light 0.5-1 g, moderate 1-2.5 g, strong 2.5-4 g, heavy 4 g+; it warns >10 g carries risk of death. Total 1.5-2.5 h, onset 5-30 min, comeup 10-20 min, peak 45-90 min, offset 15-30 min and afterglow 2-4 h. User/resource educational compilation, not a recommendation. The page stresses not confusing grams with millilitres and warns the concentration of prepared liquids may be unknown.",
-  "generalRisks": "The archived page warns prepared liquid GHB concentration may be unknown and grams must not be confused with millilitres. It says 2.5-5 g may cause sleep and 5-10 g may cause convulsions, unconsciousness and vomiting; >10 g carries risk of death. Combining with other depressants can be fatal.",
+  "generalRisks": "Prepared liquid GHB concentration may be unknown and grams must not be confused with millilitres. 2.5-5 g may cause sleep and 5-10 g may cause convulsions, unconsciousness and vomiting; >10 g carries risk of death. Combining with other depressants can be fatal.",
   "longtermRisks": "Regular use of GHB/GBL can lead to sleep disorders, anxiety and tremors; there is a risk of dependence with psychological and physical symptoms. In the case of chronic high-dose consumption (several doses daily), severe physical withdrawal symptoms such as sweating, muscle cramps or epileptic seizures occur upon discontinuation.",
   "saferUse": [
     "FreeODwiki strongly advises never combining GHB with alcohol, opioids, benzodiazepines or other depressants due to fatal overdose risk.",
@@ -95,7 +95,7 @@
       }
     }
   ],
-  "metabolism": "Metabolism is the major elimination pathway, producing carbon dioxide and water via the Krebs cycle and secondarily by beta-oxidation. GHB dehydrogenase forms succinic semialdehyde, which succinic semialdehyde dehydrogenase converts to succinic acid; a mitochondrial transhydrogenase can also catalyse the first step. No active metabolites have been identified. Clearance is almost entirely by biotransformation: less than 5% of unchanged drug appears in urine, and the elimination half-life is 0.5 to 1 hour.",
+  "metabolism": "Broken down mainly through the Krebs cycle, and secondarily by beta-oxidation, which produces carbon dioxide and water. GHB dehydrogenase turns GHB into succinic semialdehyde, and succinic semialdehyde dehydrogenase turns that into succinic acid, which goes on into the Krebs cycle. There are no active breakdown products, and under 5% of it leaves the body unchanged in the urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=926eb076-a4a8-45e4-91ef-411f0aa4f3ca"
   ]

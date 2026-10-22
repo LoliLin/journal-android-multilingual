@@ -11,18 +11,18 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki says the toxicity and long-term health effects of 3-MeO-PCMo have not been studied in any scientific context and the exact toxic dose is unknown, because its history of human use is very short. Anecdotal evidence from people who have tried it suggests that trying only low to moderate doses and using it rarely has no negative health effects, though nothing can be guaranteed."
+    "The toxicity and long-term health effects of 3-MeO-PCMo have not been studied in any scientific context and the exact toxic dose is unknown, because its history of human use is very short. Anecdotal evidence from people who have tried it suggests that trying only low to moderate doses and using it rarely has no negative health effects, though nothing can be guaranteed."
   ],
-  "effectsSummary": "FreeODwiki says that because the substance is barely researched, all discussion of its pharmacology rests purely on its structure and subjective-effect similarity to other arylcyclohexylamine dissociatives such as 3-MeO-PCP, PCP and MXE, and on that basis it is considered an NMDA receptor antagonist. It reports loss of gross and fine motor control, balance and coordination, especially strong at high doses, and a floating weightless body sensation at low to moderate doses. Its effects index is built on anecdotal user reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "effectsSummary": "Because the substance is barely researched, all discussion of its pharmacology rests purely on its structure and subjective-effect similarity to other arylcyclohexylamine dissociatives such as 3-MeO-PCP, PCP and MXE, and on that basis it is considered an NMDA receptor antagonist. Loss of gross and fine motor control, balance and coordination, especially strong at high doses, and a floating weightless body sensation at low to moderate doses. Its effects index is built on anecdotal user reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a light range of 100-200 mg, moderate of 200-300 mg, strong of 300-400 mg and heavy of 400 mg or more, with a total duration of 5-6 hours, onset of 1-2 hours, peak of 2-3 hours, offset of 1-2 hours and afterglow of 2-3 hours. The page lists no threshold band and no insufflated route. The page warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
-  "generalRisks": "FreeODwiki says long-term use can be regarded as moderately addictive with a high potential for abuse and can lead to psychological dependence in some users, with craving and withdrawal if use is stopped suddenly. It also reports marked loss of gross and fine motor control and of balance and coordination, especially strong at high doses, and advises sitting down before onset unless experienced to avoid falling and injury.",
-  "longtermRisks": "FreeODwiki reports that long-term, heavy and repeated use appears to produce bladder and urinary tract problems almost identical to those found with ketamine, MXE and other arylcyclohexylamines, but potentially more severe because 3-MeO-PCMo is said to be 50% less potent than ketamine, so more must be consumed to reach the same effect.",
+  "generalRisks": "Long-term use can be regarded as moderately addictive with a high potential for abuse and can lead to psychological dependence in some users, with craving and withdrawal if use is stopped suddenly. It also reports marked loss of gross and fine motor control and of balance and coordination, especially strong at high doses, and advises sitting down before onset unless experienced to avoid falling and injury.",
+  "longtermRisks": "Long-term, heavy and repeated use appears to produce bladder and urinary tract problems almost identical to those found with ketamine, MXE and other arylcyclohexylamines, but potentially more severe because 3-MeO-PCMo is said to be 50% less potent than ketamine, so more must be consumed to reach the same effect.",
   "saferUse": [
-    "FreeODwiki strongly recommends harm reduction to ensure the intended dose is ingested.",
+    "Harm reduction is strongly recommended, to make sure the intended dose is what actually gets taken.",
     "It advises independent research before combining two or more substances, and sitting down before onset unless experienced to avoid falling and injury."
   ],
   "interactions": {
@@ -33,7 +33,7 @@
     "unsafe": [],
     "uncertain": []
   },
-  "metabolism": "The archived page says research on the substance is lacking and provides no specific human metabolic finding or pathway; its pharmacology discussion is based only on structure and subjective-effect similarity to other arylcyclohexylamine dissociatives.",
+  "metabolism": "Research on the substance is lacking and provides no specific human metabolic finding or pathway; its pharmacology discussion is based only on structure and subjective-effect similarity to other arylcyclohexylamine dissociatives.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3-MeO-PCMo"
   ],

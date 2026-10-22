@@ -12,7 +12,7 @@
     "habit-forming"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from a peer-reviewed in vitro phase I microsomal metabolism study of designer benzodiazepines (J Forensic Sci 2019, PMID 30578721). The detected in vitro phase I metabolites of norflurazepam were hydroxynorflurazepam and dihydroxynorflurazepam. Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40-250 hours against 2-3 hours for the parent compound.",
+  "metabolism": "The detected in vitro phase I metabolites of norflurazepam were hydroxynorflurazepam and dihydroxynorflurazepam. Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40-250 hours against 2-3 hours for the parent compound.",
   "metabolismSources": [
     "https://europepmc.org/article/MED/30578721"
   ],

@@ -18,5 +18,20 @@
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34e57aff-dc4b-4631-9d57-31020244835d"
   ],
-  "summary": "Cyclobenzaprine is a muscle relaxant used for acute muscle spasms associated with musculoskeletal conditions. Chemically, it is similar to tricyclic antidepressants."
+  "summary": "Cyclobenzaprine is a muscle relaxant used for acute muscle spasms associated with musculoskeletal conditions. Chemically, it is similar to tricyclic antidepressants.",
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The label covers prescription tablets for acute painful musculoskeletal spasm and limits treatment to short periods (up to 2-3 weeks). It provides no recreational dose bands or duration table; no recreational dose or duration is encoded here.",
+  "toxicities": [
+    "The label lists drowsiness, dry mouth, and fatigue among common adverse reactions; dizziness, constipation, nausea, and reduced mental acuity are also reported. Of potentially life-threatening serotonin syndrome with serotonergic co-medications, and reports rare arrhythmia, hallucinations, and other serious tricyclic-like CNS or cardiac reactions.",
+    "Overdose can be fatal. The label notes that signs may develop rapidly and that multiple-drug ingestion, including alcohol, is common in deliberate overdoses."
+  ],
+  "generalRisks": "Cyclobenzaprine is contraindicated with MAO inhibitors or within 14 days of stopping them; reported reactions included hyperpyretic crisis, seizures, and deaths. Serotonin syndrome, potentially life-threatening, has been reported with SSRIs, SNRIs, TCAs, tramadol, bupropion, meperidine, verapamil, or MAO inhibitors. Alcohol, barbiturates, and other CNS depressants can intensify impairment and sedation. The label also contraindicates use in acute recovery after myocardial infarction, arrhythmias, heart block or conduction disturbances, congestive heart failure, and hyperthyroidism; elderly people and people with hepatic impairment may have higher exposure.",
+  "saferUse": [
+    "The label limits use to short periods of up to 2-3 weeks because evidence for longer treatment is inadequate.",
+    "Avoid driving or hazardous activities if alertness is impaired, especially with alcohol or other CNS depressants. Seek urgent medical care for possible serotonin-syndrome symptoms after combination with serotonergic medicines; the label describes mental-status, autonomic, neuromuscular, and gastrointestinal signs."
+  ]
 }

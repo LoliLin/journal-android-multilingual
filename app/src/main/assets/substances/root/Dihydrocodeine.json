@@ -13,12 +13,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -65,7 +65,7 @@
       }
     }
   ],
-  "metabolism": "Dihydrocodeine is well absorbed from the gastrointestinal tract, and plasma levels are maintained throughout the twelve-hour dosing interval of the prolonged-release tablets. Like other phenanthrene derivatives it is mainly metabolised in the liver, and the resulting metabolites are excreted mainly in the urine. Metabolism includes O-demethylation, N-demethylation and 6-keto reduction.",
+  "metabolism": "Dihydrocodeine is well absorbed from the gastrointestinal tract, and plasma levels are maintained throughout the twelve-hour dosing interval of the prolonged-release tablets. Like other phenanthrene derivatives it is mainly broken down in the liver, and the resulting metabolites are excreted mainly in the urine. Metabolism includes O-demethylation, N-demethylation and 6-keto reduction.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/15263/smpc"
   ]

@@ -13,18 +13,18 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "The archived page infers low dependence potential from LSD; formal studies of 1B-LSD dependence are lacking.",
+  "addictionPotential": "Dependence potential is inferred to be low from LSD, but no formal study of 1B-LSD dependence has been done.",
   "toxicities": [
-    "The archived page says recreational toxicity and long-term effects are unstudied. Its low-toxicity comparison with LSD is an inference from similarity, not an established 1B-LSD finding."
+    "Recreational toxicity and long-term effects are unstudied. Its low-toxicity comparison with LSD is an inference from similarity, not an established 1B-LSD finding."
   ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "1B-LSD is a lysergamide closely related to LSD and 1P-LSD. FreeODwiki reports in-vitro deacylation to LSD, while its human pharmacology, recreational toxicity and long-term effects remain poorly characterized.",
+  "summary": "1B-LSD is a lysergamide closely related to LSD and 1P-LSD. In-vitro deacylation to LSD, while its human pharmacology, recreational toxicity and long-term effects remain poorly characterized.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -81,10 +81,10 @@
       }
     }
   ],
-  "effectsSummary": "The archived page describes anecdotal reports of LSD-like visual, cognitive and stimulating effects. Its subjective-effects material is based on user reports and should be treated cautiously; it also notes that effects may be unpredictable and high doses can increase adverse psychological reactions.",
+  "effectsSummary": "Anecdotal reports of LSD-like visual, cognitive and stimulating effects. Its subjective-effects material is based on user reports and should be treated cautiously; it also notes that effects may be unpredictable and high doses can increase adverse psychological reactions.",
   "dosageRemark": "The archived oral dose table is user/resource information for education, not a recommendation, and should be independently checked. It lists a 15 µg threshold, light 25–75 µg, common 75–150 µg, strong 150–300 µg and severe 300 µg+. The model has no thresholdMin field, so the threshold is recorded here rather than mapped to lightMin.",
-  "generalRisks": "The archived page says recreational toxicity has not been studied and warns that high doses can increase anxiety, paranoia, panic and, rarely, seizures. It also warns of possible psychological destabilization in people with personal or family histories of mental illness. The source notes that these risks are based on limited evidence and does not establish incidence.",
-  "longtermRisks": "The archived page says long-term health effects of recreational 1B-LSD use have not been studied; they remain unknown.",
+  "generalRisks": "Recreational toxicity has not been studied and warns that high doses can increase anxiety, paranoia, panic and, rarely, seizures. It also warns of possible psychological destabilization in people with personal or family histories of mental illness. These risks are based on limited evidence and does not establish incidence.",
+  "longtermRisks": "Long-term health effects of recreational 1B-LSD use have not been studied; they remain unknown.",
   "saferUse": [
     "The page recommends independent research and harm-reduction measures. It advises people with a personal or family history of mental illness to avoid use, particularly without professional medical supervision; this is the source's caution, not a substitute for clinical advice."
   ],

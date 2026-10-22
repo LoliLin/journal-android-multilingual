@@ -16,11 +16,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "fatal at heavy dosages"
+    "Fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
@@ -90,9 +90,9 @@
     }
   ],
   "saferUse": [
-    "PsychonautWiki strongly recommends harm-reduction measures and says to avoid insufflation, vaporization and tinctures because dose measurement is difficult and these routes are associated with overdose deaths."
+    "Harm-reduction measures are strongly recommended, and insufflation, vaporization and tinctures are to be avoided because dose measurement is difficult and these routes are associated with overdose deaths."
   ],
-  "metabolism": "The archived page says little is known about the human pharmacology, metabolism and toxicity of 25C-NBOMe. It provides no specific metabolic pathway or human metabolic study; no route is inferred from related compounds.",
+  "metabolism": "Nothing is known about how the body handles this. No metabolic pathway or human metabolic study is described. And no route is assumed from similar compounds.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/25C-NBOMe"
   ]

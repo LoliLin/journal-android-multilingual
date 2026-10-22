@@ -16,16 +16,16 @@
     "half": "unknown"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "non-addictive with low potential for abuse",
+  "addictionPotential": "Non-addictive with low potential for abuse",
   "toxicities": [
-    "FreeODwiki says 4-AcO-DMT's toxicity and long-term health effects have not been researched and the toxic dose is unknown, partly because it is a research chemical with a very short history of human use. It notes that a safety profile similar to psilocybin mushrooms is assumed on the basis of chemical similarity, but no data currently support that."
+    "4-AcO-DMT's toxicity and long-term health effects have not been researched and the toxic dose is unknown, partly because it is a research chemical with a very short history of human use. A safety profile similar to psilocybin mushrooms is assumed on the basis of chemical similarity, but no data currently support that."
   ],
-  "effectsSummary": "FreeODwiki lists geometric visual effects, distorted time perception, enhanced introspection, physical euphoria and ego loss, and notes many users find 4-AcO-DMT almost identical to psilocybin with only subtle differences. It notes a theory that it is metabolised to psilocin like psilocybin. Effects come from a subjective-effects index built on anecdotal reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "effectsSummary": "Geometric visual effects, distorted time perception, enhanced introspection, physical euphoria and ego loss, and notes many users find 4-AcO-DMT almost identical to psilocybin with only subtle differences. A theory that it is metabolised to psilocin like psilocybin. Effects come from a subjective-effects index built on anecdotal reports, and adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 7.5-15 mg, moderate of 15-25 mg, strong of 25-45 mg and heavy of 45 mg or more; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range. It also lists a second, higher set of bands with a light range of 10-15 mg and heavy of 50 mg or more. The archived page provides no insufflated dose or duration table, so no insufflated route is transcribed. The page warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
-  "generalRisks": "FreeODwiki says data on 4-AcO-DMT's pharmacology, metabolism and toxicity is still very little, and that although it is generally believed its toxicity risk is comparable to psilocybin mushrooms, i.e. physiologically essentially non-toxic, no firm data support that. It strongly recommends harm reduction if the substance is tried.",
-  "longtermRisks": "The archived page says 4-AcO-DMT's toxicity and long-term health effects have not been researched.",
+  "generalRisks": "Data on 4-AcO-DMT's pharmacology, metabolism and toxicity is still very little, and that although it is generally believed its toxicity risk is comparable to psilocybin mushrooms, i. E. Physiologically essentially non-toxic, no firm data support that. It strongly recommends harm reduction if the substance is tried.",
+  "longtermRisks": "4-AcO-DMT's toxicity and long-term health effects have not been researched.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction and advises starting at low doses, since onset, weight, tolerance, metabolism and individual sensitivity all differ between people.",
     "It recommends using in an environment where temperature can be controlled, because 4-AcO-DMT causes internal temperature sense fluctuations with sudden uncomfortable cold or warmth."
@@ -39,9 +39,10 @@
       "Cannabis",
       "stimulant",
       "MDMA"
-    ]
+    ],
+    "uncertain": []
   },
-  "metabolism": "FreeODwiki says that once inside the body O-acetylpsilocin is deacetylated to psilocin by deacetylases / acetyltransferases during first-pass metabolism and subsequently in the liver, and presents this as a theory for why 4-AcO-DMT resembles psilocybin. This is the page's stated account rather than an established finding in controlled human studies.",
+  "metabolism": "That once inside the body O-acetylpsilocin is deacetylated to psilocin by deacetylases / acetyltransferases during first-pass metabolism and subsequently in the liver, and presents this as a theory for why 4-AcO-DMT resembles psilocybin. This is the page's stated account rather than an established finding in controlled human studies.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/4-AcO-DMT"
   ],

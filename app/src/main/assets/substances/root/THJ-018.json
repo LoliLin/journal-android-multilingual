@@ -13,14 +13,14 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "dosageRemark": "Archived inhaled table: threshold <1 mg; light 1-2 mg; moderate 2-3 mg; strong 3-5 mg; heavy 5 mg+. Total 2-3 h; onset 5-10 min; peak 60-90 min; offset 5-10 min; afterglow 60-90 min. Educational user/resource information, not a recommendation; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated. Source notes oral activity in lipids but provides no oral dose table.",
-  "generalRisks": "FreeODwiki notes oral activity after dissolution in lipids and potentially longer duration, but gives no oral dose table; exact toxic dose is unknown.",
+  "generalRisks": "Oral activity after dissolution in lipids and potentially longer duration, but gives no oral dose table; exact toxic dose is unknown.",
   "saferUse": [
     "FreeODwiki dose data are educational user/resource material, not a recommendation; exact toxic dose is unknown.",
     "No oral dose is inferred because the archive provides no oral dosage table."

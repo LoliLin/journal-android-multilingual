@@ -19,12 +19,12 @@
     "zeroToleranceInHours": 96
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "mildly addictive with a comparatively low potential for abuse",
+  "addictionPotential": "Mildly addictive with a comparatively low potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",

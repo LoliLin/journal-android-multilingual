@@ -7,8 +7,8 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [
-    "can have serious side effects at higher dosages",
-    "risk of having severe extrapyramidal symptoms and muscle rigidity"
+    "Can have serious side effects at higher dosages",
+    "Risk of having severe extrapyramidal symptoms and muscle rigidity"
   ],
   "categories": [
     "antipsychotic"

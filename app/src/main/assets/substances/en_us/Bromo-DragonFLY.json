@@ -6,11 +6,11 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "extreme vasoconstrictive effects",
-    "one can easily overdose if this substance is not measured correctly",
-    "toxic dose is unknown"
+    "Extreme vasoconstrictive effects",
+    "One can easily overdose if this substance is not measured correctly",
+    "Toxic dose is unknown"
   ],
   "localizedName": "Bromo-DragonFLY"
 }

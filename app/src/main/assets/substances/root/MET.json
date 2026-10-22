@@ -1,14 +1,139 @@
 {
+  "name": "MET",
+  "url": "https://psychonautwiki.org/wiki/MET",
   "addictionPotential": "无成瘾性",
   "toxicities": [
-    "FreeODwiki 称 MET 娱乐性毒性和长期影响似乎未在科学背景下研究，因人类使用史短而确切毒性剂量未知；页面建议采取伤害减少措施。"
+    "MET 娱乐性毒性和长期影响似乎未在科学背景下研究，因人类使用史短而确切毒性剂量未知；页面建议采取伤害减少措施。"
   ],
-  "dosageRemark": "归档路线表列出鼻吸阈值 5 mg、轻微 10-20 mg、中等 20-25 mg、强烈 25-35 mg、严重 35 mg 以上；口服阈值 40 mg、轻微 60-120 mg、中等 120-150 mg、强烈 150-200 mg、严重 200 mg 以上；汽化/吸入阈值 10 mg、轻微 20-40 mg、中等 40-60 mg、强烈 60-90 mg、严重 90 mg 以上。路线时长依来源表。页面称人体药理/毒性资料稀少、确切毒性剂量未知且人类使用史短。用户/资源教育表，不是建议。归并重复 inhaled/smoked 行，lightMin 已校正至各路线来源轻微区间下界。",
-  "generalRisks": "FreeODwiki 称 MET 研究不足、人类使用史短，可能出现不可预测的不良效应；确切毒性剂量未知。",
-  "longtermRisks": "归档页面称 MET 娱乐性使用的毒性和长期健康影响尚未在科学背景下研究。",
+  "dosageRemark": "FreeODwiki's user/resource table lists thresholds of 10 mg smoked, 40 mg oral, and 5 mg insufflated; light bands begin at 20 mg, 60 mg, and 10 mg respectively. Freebase and fumarate reports differ: the page says fumarate smoked/vaporized 15-65 mg and oral 80-110 mg may produce effects. Human pharmacology/toxicity data are very limited; figures are educational reports, not dosing advice.",
+  "generalRisks": "MET 研究不足、人类使用史短，可能出现不可预测的不良效应；确切毒性剂量未知。",
+  "longtermRisks": "MET 娱乐性使用的毒性和长期健康影响尚未在科学背景下研究。",
   "saferUse": [
     "FreeODwiki 强烈建议对这种研究不足的物质采取预防和伤害减少措施；剂量表是教育用途用户/资源资料，应交叉核实。"
   ],
-  "summary": "MET 是短效色胺类迷幻剂，剂量报告因给药途径而异。FreeODwiki 称毒性和长期影响尚未研究，并建议采取伤害减少措施。",
-  "localizedName": "MET"
+  "summary": "MET (N-ethyl-N-methyltryptamine) is a tryptamine psychedelic. Short-lived effects and reports smoked, oral, and insufflated user-dose tables, while emphasizing that human pharmacology and toxicity data are very limited.",
+  "localizedName": "MET",
+  "roas": [
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 40,
+        "strongMin": 60,
+        "heavyMin": 90
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 30,
+          "max": 75,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 60,
+        "commonMin": 120,
+        "strongMin": 150,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 90,
+          "max": 150,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 180,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 360,
+          "max": 1440,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 240,
+          "max": 360,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "insufflated",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 20,
+        "strongMin": 25,
+        "heavyMin": 35
+      },
+      "duration": {
+        "onset": {
+          "min": 2,
+          "max": 5,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 90,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 150,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 240,
+          "max": 720,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 120,
+          "max": 240,
+          "units": "minutes"
+        }
+      }
+    }
+  ]
 }

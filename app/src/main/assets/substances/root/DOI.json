@@ -13,16 +13,16 @@
     "zeroToleranceInHours": 288
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
-  "effectsSummary": "FreeODwiki says DOI is often compared with LSD but is more stimulating and physically demanding, with a less complex headspace and much longer duration; residual stimulation and insomnia may last days depending on dose and timing. These are anecdotal reports.",
+  "effectsSummary": "DOI is often compared with LSD but is more stimulating and physically demanding, with a less complex headspace and much longer duration; residual stimulation and insomnia may last days depending on dose and timing. These are anecdotal reports.",
   "dosageRemark": "The archived dose table lists threshold 0.5 mg, light 0.5-1 mg, moderate 1-2 mg, strong 2-3 mg, heavy 3 mg+; total duration 16-24 h and onset 1-2 h, comeup 1.5-3 h. User/resource educational compilation, not a recommendation. The page warns effects are dose-sensitive, unusually long, stimulating and physically demanding, with lingering stimulation and insomnia sometimes lasting days; it may be difficult to use safely without psychedelic experience.",
   "generalRisks": "The page warns DOI has a highly sensitive dose-response and unusually long duration, and may be difficult to use safely for people without psychedelic experience. Overdose risks increase with severe doses, sensitivity and combinations, particularly stimulants or MAOIs; reported effects include confusion, agitation, seizures and vasoconstriction.",
-  "longtermRisks": "The archived page says toxicity and long-term health effects appear unstudied and exact toxic dose is unknown.",
+  "longtermRisks": "Toxicity and long-term health effects appear unstudied and exact toxic dose is unknown.",
   "saferUse": [
     "FreeODwiki strongly recommends adequate preparation and harm reduction for this potent, dose-sensitive, long-lasting psychedelic.",
     "It warns against use by people with little psychedelic experience and notes residual stimulation and insomnia can last days."

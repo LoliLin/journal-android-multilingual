@@ -16,8 +16,9 @@
   ],
   "addictionPotential": "moderately physically and psychologically addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids"
+    "potentially lethal when mixed with depressants like alcohol, benzodiazepines or opioids",
+    "The current U.S. oral-solution label reports drowsiness/sedation, dizziness, weakness, nausea, confusion and hypotension; overdose can cause respiratory depression, seizures, coma or loss of consciousness.",
+    "Abrupt withdrawal has caused hallucinations, seizures, high fever, altered mental status and severe rebound spasticity; rare cases progressed to rhabdomyolysis, multiple-organ failure and death."
   ],
   "categories": [
     "depressant",
@@ -87,5 +88,10 @@
   "metabolism": "Eliminated primarily by the kidneys as unchanged baclofen. Hepatic conversion is not the main determinant of clearance.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4e2cd27d-91c7-4f15-96cc-3971769dbeaa"
+  ],
+  "generalRisks": "The official label warns that baclofen causes CNS depression and that sedation may add to alcohol or other CNS depressants. Abrupt discontinuation can cause hallucinations, seizures, high fever, confusion, severe rebound spasticity and, rarely, rhabdomyolysis, multiple-organ failure or death. Use caution in psychotic disorders, schizophrenia, confusional states, epilepsy, stroke history, autonomic dysreflexia and renal impairment.",
+  "saferUse": [
+    "Do not abruptly stop baclofen; the label advises gradual dose reduction with a healthcare provider because withdrawal can be severe or life-threatening.",
+    "The label advises avoiding driving or hazardous activities when starting or increasing baclofen until its effects are known; alcohol and other CNS depressants can worsen drowsiness."
   ]
 }

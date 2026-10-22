@@ -17,11 +17,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -138,7 +138,7 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed review of new psychoactive substances in public health (PMID 35457736). The metabolism of methoxetamine is not completely known, but it appears that CYP2B6 and CYP3A4 are involved.",
+  "metabolism": "The metabolism of methoxetamine is not completely known, but it appears that CYP2B6 and CYP3A4 are involved.",
   "metabolismSources": [
     "https://europepmc.org/article/PMC/9028227"
   ],

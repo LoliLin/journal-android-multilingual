@@ -24,17 +24,17 @@
     "zeroToleranceInHours": 1800
   },
   "crossTolerances": [
-    "dopaminergic",
-    "serotonergic",
-    "stimulant"
+    "Dopaminergic",
+    "Serotonergic",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "effectsSummary": "MDMA mainly causes an increased release of the body's own messenger substance serotonin. At the recommended dosage, about 80% of the available serotonin at that time is released. This release triggers a feeling of euphoria, lightness and light-heartedness. Sight and hearing change, touch and music are felt more intensely, inhibitions are reduced and the need for contact is increased. The effect is described as empathogenic (triggering a feeling of closeness and connection to other people) and entactogenic (touching the inner self, intensifying emotional perception). The simultaneous release of the neurotransmitters noradrenalin and dopamine has a stimulating effect. This reduces the feeling of hunger and thirst as well as tiredness and increases alertness. Body temperature and blood pressure also rise.",
   "dosageRemark": "The archived oral table lists threshold 20 mg, light 20-80 mg, moderate 80-120 mg, strong 120-150 mg, heavy 150 mg+; total 3-6 h, onset 30-45 min, comeup 15-30 min, peak 1.5-2.5 h, offset 1-1.5 h and afterglow 12-48 h. User/resource educational compilation, not a recommendation. The page advises one to three months between uses and strongly discourages high doses or repeated redosing because they may substantially increase toxicity.",
-  "generalRisks": "FreeODwiki warns high doses and repeated redosing may substantially increase MDMA toxicity; it recommends one to three months between uses to allow serotonin recovery and reduce toxicity. The source discusses overheating, dehydration and water intoxication risk.",
+  "generalRisks": "High doses and repeated redosing may substantially increase MDMA toxicity; it recommends one to three months between uses to allow serotonin recovery and reduce toxicity. The source discusses overheating, dehydration and water intoxication risk.",
   "longtermRisks": "After a consumption experience, the body needs at least 4 weeks to regenerate the serotonin balance. If one does not allow oneself this break in the long term and consumes repeatedly after short breaks, the probability of a permanent restriction of spatial awareness increases. This risk also exists after repeated high doses. Intense and prolonged use of ecstasy can also lead to a change in the serotonin system. A form of dependence with psychological symptoms can develop, especially if ecstasy use is linked to a certain activity, for example if it is always used at parties and partying without ecstasy afterwards is no longer possible. In the case of snorting, the nasal mucous membranes and the nasal wall are damaged. Rectal use can cause irritation in the rectum.",
   "saferUse": [
     "FreeODwiki strongly discourages high doses and repeated redosing and suggests one to three months between uses.",

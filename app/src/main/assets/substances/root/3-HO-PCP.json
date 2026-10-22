@@ -14,11 +14,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for adverse side effects such as psychosis",
+  "addictionPotential": "Moderately addictive with a high potential for adverse side effects such as psychosis",
   "toxicities": [
-    "The archived page says the exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied. Its toxicity section is flagged as a stub that may contain extremely inaccurate information."
+    "The exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied. Its toxicity section is flagged as a stub that may contain extremely inaccurate information."
   ],
   "categories": [
     "dissociative",
@@ -60,12 +60,12 @@
     }
   ],
   "dosageRemark": "The archived oral dose table is compiled from user reports and resources for educational purposes only, is not a recommendation, and should be checked against other sources. The source threshold is 1 mg while the light category begins at 2 mg; the route model has no thresholdMin field. The severe category is open-ended at 8 mg and above.",
-  "generalRisks": "The archived page reports anecdotal intense muscle tension and flu-like symptoms during or shortly after use, while emphasizing that human toxicity data are scarce. μ-opioid activity in humans is not established.",
-  "longtermRisks": "The archived page says long-term health effects have not been scientifically studied. Possible urinary and bladder effects are presented as a possible dissociative-class analogy, not as established 3-HO-PCP-specific findings.",
+  "generalRisks": "Anecdotal intense muscle tension and flu-like symptoms during or shortly after use, while emphasizing that human toxicity data are scarce. μ-opioid activity in humans is not established.",
+  "longtermRisks": "Long-term health effects have not been scientifically studied. Possible urinary and bladder effects are presented as a possible dissociative-class analogy, not as established 3-HO-PCP-specific findings.",
   "saferUse": [
-    "The archived page recommends very low initial doses, accurate volumetric measurement, and harm-reduction measures. It advises against multi-day use and redosing before fully sober, warns against exceeding the listed dose range, and discourages combining with other substances, especially depressants, stimulants, psychedelics, and other dissociatives."
+    "Very low initial doses, accurate volumetric measurement and harm-reduction measures are recommended. Multi-day use and redosing before being fully sober are advised against, exceeding the listed dose range is warned against, and combining with other substances, especially depressants, stimulants, psychedelics and other dissociatives, is discouraged."
   ],
-  "metabolism": "The archived page says human pharmacology and metabolism are poorly characterized and provides no specific metabolic findings or pathway.",
+  "metabolism": "Human pharmacology and metabolism are poorly characterized and provides no specific metabolic findings or pathway.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3-HO-PCP"
   ]

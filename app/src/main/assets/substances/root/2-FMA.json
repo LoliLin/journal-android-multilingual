@@ -13,19 +13,19 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "2-FMA is an N-methylated analogue of 2-FA. FreeODwiki says formal pharmacology, metabolism and toxicity data are limited. Effects, comparisons with lisdexamfetamine and use as a productivity aid are based on reports; high-dose risks and evidence gaps remain.",
+  "summary": "2-FMA is an N-methylated analogue of 2-FA. Formal pharmacology, metabolism and toxicity data are limited. Effects, comparisons with lisdexamfetamine and use as a productivity aid are based on reports; high-dose risks and evidence gaps remain.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -139,14 +139,14 @@
       }
     }
   ],
-  "effectsSummary": "FreeODwiki reports stimulation, focus, motivation, increased libido, appetite suppression and euphoria. Users describe it as functional at lower reported levels, while higher levels may reduce productivity and increase distracting euphoria; reports also describe stronger cardiovascular adverse effects at very high levels. The page warns that subjective effects are anecdotal and not reliably predictable.",
+  "effectsSummary": "Stimulation, focus, motivation, increased libido, appetite suppression and euphoria. Users describe it as functional at lower reported levels, while higher levels may reduce productivity and increase distracting euphoria; reports also describe stronger cardiovascular adverse effects at very high levels. The page warns that subjective effects are anecdotal and not reliably predictable.",
   "dosageRemark": "The archived oral and insufflated dose tables are compiled from user reports and resources for education, not a recommendation, and should be independently verified. Both list a 5 mg threshold, light 5–15 mg, common 15–30 mg, strong 30–50 mg and severe 50 mg+. The threshold coincides with the model's lightMin and cannot be represented separately.",
-  "generalRisks": "FreeODwiki says 2-FMA pharmacology and toxicity data are sparse and its exact toxic dose is unknown. The page reports that blood pressure and heart-rate adverse effects rise at very high levels. It warns against vaporization, claiming heating may release toxic products; this mechanism is a source warning and is not established here as a verified 2-FMA-specific finding.",
-  "longtermRisks": "The page says recreational toxicity and long-term health effects have not been studied scientifically because human-use history is limited; 2-FMA-specific long-term risks remain unknown.",
+  "generalRisks": "2-FMA pharmacology and toxicity data are sparse and its exact toxic dose is unknown. The page reports that blood pressure and heart-rate adverse effects rise at very high levels. Against vaporization, claiming heating may release toxic products; this mechanism is a source warning and is not established here as a verified 2-FMA-specific finding.",
+  "longtermRisks": "Recreational toxicity and long-term health effects have not been studied scientifically because human-use history is limited; 2-FMA-specific long-term risks remain unknown.",
   "saferUse": [
     "FreeODwiki strongly recommends harm-reduction measures and warns against vaporizing 2-FMA. The dose tables are educational user-report information, not a recommendation."
   ],
-  "metabolism": "FreeODwiki says data on 2-FMA metabolism are very limited and does not establish a metabolic pathway. This is a knowledge gap, not evidence that 2-FMA is not metabolized.",
+  "metabolism": "Data on 2-FMA metabolism are very limited and does not establish a metabolic pathway. This is a knowledge gap, not evidence that 2-FMA is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2-FMA.md"
   ]

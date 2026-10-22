@@ -13,9 +13,9 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "The archived page infers low addiction potential by analogy with LSD but notes that this has not been formally studied; this is not established for 1cP-MiPLA.",
+  "addictionPotential": "Addiction potential is inferred to be low by analogy with LSD, but this has not been formally studied and is not established for 1cP-MiPLA.",
   "toxicities": [
     "Human toxicity data are very limited and the toxic dose is unknown. The archived toxicity section is explicitly marked as a draft that may contain dangerous errors; its claims of low toxicity and low acute physical, cognitive, or psychiatric harm are not treated as established."
   ],
@@ -73,7 +73,7 @@
       }
     }
   ],
-  "summary": "1cP-MiPLA is a presumed psychedelic lysergamide and the 1-cyclopropanoyl derivative of MiPLA. The archived page describes it as a suspected MiPLA prodrug but says evidence is insufficient to establish this; it also reports its appearance on research chemical markets around 2020–2021, while warning that the page has not been fully reviewed.",
-  "dosageRemark": "The archived page explicitly warns that its user-reported dose and duration information may be inaccurate and is for educational purposes, not use advice. Verify against independent sources; the page itself is not fully reviewed.",
-  "generalRisks": "The archived page says human toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as a draft that may contain dangerous errors; anecdotal claims of low toxicity or low acute harm are not established evidence. The page also warns that psychedelics may trigger psychiatric symptoms in susceptible people; compound-specific evidence is limited."
+  "summary": "1cP-MiPLA is a presumed psychedelic lysergamide and the 1-cyclopropanoyl derivative of MiPLA. It as a suspected MiPLA prodrug but says evidence is insufficient to establish this; it also reports its appearance on research chemical markets around 2020–2021, while warning that the page has not been fully reviewed.",
+  "dosageRemark": "The user-reported dose and duration figures may be inaccurate and are for educational purposes, not use advice. Verify against independent sources; the information itself is not fully reviewed.",
+  "generalRisks": "Human toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as a draft that may contain dangerous errors; anecdotal claims of low toxicity or low acute harm are not established evidence. The page also warns that psychedelics may trigger psychiatric symptoms in susceptible people; compound-specific evidence is limited."
 }

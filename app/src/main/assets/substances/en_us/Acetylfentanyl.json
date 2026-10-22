@@ -6,11 +6,11 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "potentially fatal at heavy dosages",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines",
-    "unintentionally spilling a very small amount of acetylfentanyl on one's skin could result in a fatal overdose."
+    "Potentially fatal at heavy dosages",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines",
+    "Unintentionally spilling a very small amount of acetylfentanyl on one's skin could result in a fatal overdose."
   ],
   "localizedName": "Acetylfentanyl"
 }

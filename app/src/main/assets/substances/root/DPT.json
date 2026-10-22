@@ -8,14 +8,14 @@
   "url": "https://psychonautwiki.org/wiki/DPT",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says recreational toxicity and long-term health effects of DPT appear not to have been studied and exact toxic dose is unknown."
+    "Recreational toxicity and long-term health effects of DPT appear not to have been studied and exact toxic dose is unknown."
   ],
-  "effectsSummary": "FreeODwiki describes DPT as a psychedelic tryptamine with reported bodily euphoria and psychedelic effects; reports and dose information are anecdotal.",
+  "effectsSummary": "DPT as a psychedelic tryptamine with reported bodily euphoria and psychedelic effects; reports and dose information are anecdotal.",
   "dosageRemark": "The archive gives three route tables: insufflated threshold 10 mg, light 15-20 mg, moderate 20-50 mg, strong 50-100 mg, heavy 100 mg+; oral threshold 50 mg, light 75-150 mg, moderate 150-250 mg, strong 250-350 mg, heavy 350 mg+; smoked threshold 5 mg, light 20-50 mg, moderate 50-100 mg, strong 100-200 mg, heavy 200 mg+. Times vary by route as stated in the archive. User/resource educational tables, not recommendations. Duplicate inhaled/smoked rows were consolidated as smoked; lightMin follows each source light lower bound.",
-  "generalRisks": "The archived page says toxicity and long-term health effects appear unstudied and exact toxic dose unknown; its dosage information is user/resource material and should be cross-checked.",
-  "longtermRisks": "The archived page says recreational toxicity and long-term health effects of DPT appear not to have been studied.",
+  "generalRisks": "Toxicity and long-term health effects appear unstudied and exact toxic dose unknown; its dosage information is user/resource material and should be cross-checked.",
+  "longtermRisks": "Recreational toxicity and long-term health effects of DPT appear not to have been studied.",
   "saferUse": [
     "FreeODwiki recommends harm reduction and cross-checking its user/resource dose information with other sources."
   ],
@@ -23,7 +23,7 @@
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "DPT is a psychedelic tryptamine with route-dependent dose and duration reports; FreeODwiki says its toxicity and long-term health effects are unstudied.",
+  "summary": "DPT is a psychedelic tryptamine with route-dependent dose and duration reports; its toxicity and long-term health effects are unstudied.",
   "roas": [
     {
       "name": "insufflated",

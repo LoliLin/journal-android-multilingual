@@ -13,18 +13,18 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "tentative"
   ],
-  "summary": "A phenethylamine psychedelic and stimulant derivative of 2C-C, this compound is related and has  similar effects to 25c-NBOMe. It is significantly more potent than 2C-C but less potent than 25c-NBOMe. Overdoses of NBOH compounds may cause dangerous vasoconstriction. May induce uncomfortable body load.",
+  "summary": "A phenethylamine psychedelic and stimulant derivative of 2C-C, this compound is related and has similar effects to 25c-NBOMe. It is significantly more potent than 2C-C but less potent than 25c-NBOMe. Overdoses of NBOH compounds may cause dangerous vasoconstriction. May induce uncomfortable body load.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -72,9 +72,9 @@
     }
   ],
   "saferUse": [
-    "PsychonautWiki advises independent research and harm-reduction measures, warns against insufflation because of the compound's high potency, and marks its toxicity section as a stub that may contain dangerous errors."
+    "Independent research and harm-reduction measures are advised, and insufflation is warned against because of the compound's high potency. The toxicity section is a stub that may contain dangerous errors."
   ],
-  "metabolism": "The archived page says human pharmacology, metabolism and toxicity are poorly understood. It gives no specific metabolic pathway or human metabolic findings; no route is inferred from related compounds.",
+  "metabolism": "How the body handles this is poorly understood. No metabolic enzymes, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/25C-NBOH"
   ]

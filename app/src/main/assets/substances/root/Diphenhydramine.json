@@ -16,11 +16,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "deliriant"
+    "Deliriant"
   ],
-  "addictionPotential": "produces dependence with chronic use",
+  "addictionPotential": "Produces dependence with chronic use",
   "toxicities": [
-    "fatal at amounts close to or exceeding 2 grams"
+    "Fatal at amounts close to or exceeding 2 grams"
   ],
   "categories": [
     "deliriant",
@@ -75,7 +75,7 @@
   "saferUse": [
     "Avoid alcohol and do not drive or operate machinery after use.",
     "Do not combine with other diphenhydramine-containing products, including topical products; ask a clinician before combining with sedatives or tranquilizers.",
-    "The cited OTC label says not to use under age 12 and to seek medical advice if sleeplessness lasts more than two weeks. In overdose, contact emergency medical help or Poison Control immediately."
+    "Not to be used under age 12, and medical advice should be sought if sleeplessness lasts more than two weeks. In overdose, contact emergency medical help or Poison Control immediately."
   ],
   "interactions": {
     "dangerous": [],
@@ -87,5 +87,5 @@
     ],
     "uncertain": []
   },
-  "metabolism": "Evidence is from Benylin Chesty Coughs (Original), which contains diphenhydramine with menthol. Diphenhydramine and menthol are well absorbed from the gut after oral administration, with peak serum levels of diphenhydramine reached between 2 and 2.5 hours after a 50 mg oral dose. It is widely distributed throughout the body, including the CNS; the volume of distribution after 50 mg orally is 3.3-6.8 l/kg and it is some 78% bound to plasma proteins. Diphenhydramine undergoes extensive first-pass metabolism: two successive N-demethylations occur, with the resultant amine then oxidised to a carboxylic acid. Plasma clearance of a 50 mg oral dose lies in the range 600-1300 ml/min and the terminal elimination half-life in the range 3.4-9.3 hours. Little unchanged drug is excreted in the urine.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/1476/smpc"]
+  "metabolism": "Diphenhydramine and menthol are well absorbed from the gut after oral administration, with peak serum levels of diphenhydramine reached between 2 and 2.5 hours after a 50 mg oral dose. It is widely distributed throughout the body, including the CNS; the volume of distribution after 50 mg orally is 3.3-6.8 l/kg and it is some 78% bound to plasma proteins. Diphenhydramine undergoes extensive first-pass metabolism: two successive N-demethylations occur, with the resultant amine then oxidised to a carboxylic acid. Plasma clearance of a 50 mg oral dose lies in the range 600-1300 ml/min and the terminal elimination half-life in the range 3.4-9.3 hours. Little unchanged drug is excreted in the urine.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/1476/smpc"]
 }

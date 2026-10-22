@@ -13,13 +13,13 @@
     "zeroToleranceInHours": 120
   },
   "crossTolerances": [
-    "dopamine",
-    "serotonin|serotonergic",
-    "stimulant"
+    "Dopamine",
+    "Serotonin|serotonergic",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -28,7 +28,7 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "3-FEA is a fluorinated amphetamine with reported mixed empathogenic and stimulant effects. FreeODwiki says human pharmacology, toxicity and subjective effects have not been studied in depth; its proposed serotonergic profile is based mainly on user reports and remains uncertain.",
+  "summary": "3-FEA is a fluorinated amphetamine with reported mixed empathogenic and stimulant effects. Human pharmacology, toxicity and subjective effects have not been studied in depth; its proposed serotonergic profile is based mainly on user reports and remains uncertain.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -142,14 +142,14 @@
       }
     }
   ],
-  "effectsSummary": "FreeODwiki says 3-FEA may produce a moderate, serotonin-weighted empathogenic effect with mild stimulation, based on user reports. The page describes the human evidence as limited and reports vary; the subjective profile is not established or predictable.",
+  "effectsSummary": "3-FEA may produce a moderate, serotonin-weighted empathogenic effect with mild stimulation, based on user reports. The page describes the human evidence as limited and reports vary; the subjective profile is not established or predictable.",
   "dosageRemark": "The archived oral table lists threshold 15 mg, light 20–35 mg, common 35–70 mg, strong 70–90 mg and severe 90 mg+. The insufflated table lists threshold 15 mg, light 20–35 mg, common 35–60 mg, strong 50–60 mg and severe 60 mg+. The insufflated common and strong bands overlap as written in the source. The model has no thresholdMin field, so both thresholds are recorded here. These archived values are unverified and should not be treated as dosing advice.",
-  "generalRisks": "FreeODwiki says 3-FEA toxicity has not been studied scientifically and the exact toxic dose is unknown. Early reports of no clear harm at low or moderate levels do not establish safety. The page's concern about possible serotonergic cardiac toxicity at long-term or high exposure is a hypothesis, not a confirmed 3-FEA outcome.",
-  "longtermRisks": "The page says human toxicology and long-term health effects have not been investigated scientifically. It raises possible cardiac toxicity from sustained or high serotonergic exposure as a concern, but does not establish this outcome for 3-FEA.",
+  "generalRisks": "3-FEA toxicity has not been studied scientifically and the exact toxic dose is unknown. Early reports of no clear harm at low or moderate levels do not establish safety. The page's concern about possible serotonergic cardiac toxicity at long-term or high exposure is a hypothesis, not a confirmed 3-FEA outcome.",
+  "longtermRisks": "Human toxicology and long-term health effects have not been investigated scientifically. It raises possible cardiac toxicity from sustained or high serotonergic exposure as a concern, but does not establish this outcome for 3-FEA.",
   "saferUse": [
-    "FreeODwiki advises starting low and strongly recommends harm-reduction measures. Its dose tables are source-reported information, not a recommendation."
+    "Starting low is advised, and harm-reduction measures are strongly recommended. The dose tables are source-reported information, not a recommendation."
   ],
-  "metabolism": "FreeODwiki says human pharmacology and metabolism data for 3-FEA are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-FEA is not metabolized.",
+  "metabolism": "Human pharmacology and metabolism data for 3-FEA are limited and does not establish a human metabolic pathway. This is a knowledge gap, not evidence that 3-FEA is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-FEA.md"
   ]

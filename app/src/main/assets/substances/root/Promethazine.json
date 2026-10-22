@@ -1,11 +1,22 @@
 {
   "name": "Promethazine",
-  "commonNames": ["Phenergan", "Lergigan"],
+  "commonNames": [
+    "Phenergan",
+    "Lergigan"
+  ],
   "url": "https://psychonautwiki.org/wiki/Promethazine",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
-  "categories": ["deliriant", "depressant", "common"],
+  "toxicities": [
+    "Prominent drowsiness/somnolence, dizziness, blurred vision, confusion or disorientation, incoordination, extrapyramidal reactions, hallucinations, and seizures are reported.",
+    "Respiratory depression and apnea can be potentially fatal; neuroleptic malignant syndrome has also been reported.",
+    "Overdose can cause central nervous system and cardiovascular depression, profound hypotension, respiratory depression, unconsciousness, and sudden death."
+  ],
+  "categories": [
+    "deliriant",
+    "depressant",
+    "common"
+  ],
   "summary": "A first generation antihistamine,  which also possesses anticholinergic, strong sedative and antipsychotic properties. Once commonly used as a treatment for psychosis, it is now more commonly seen as a component of codeine cough syrups as an anti-nausea agent.",
   "roas": [
     {
@@ -49,5 +60,21 @@
         }
       }
     }
-  ]
+  ],
+  "generalRisks": "The DailyMed tablet label warns that promethazine can cause potentially fatal respiratory depression; use should be avoided with compromised respiratory function such as COPD or sleep apnea. Sedation and impairment can be amplified by alcohol, opioids, sedatives, hypnotics, and other CNS depressants. The drug may lower seizure threshold, and neuroleptic malignant syndrome has been reported. The label contraindicates use in children younger than 2 years because of fatal respiratory-depression risk.",
+  "saferUse": [
+    "Avoid combining with alcohol, opioids, sedatives, hypnotics, or other CNS depressants because impairment and respiratory depression can be amplified.",
+    "Do not drive or operate machinery while drowsy or impaired; avoid use with compromised respiratory function.",
+    "Promethazine is contraindicated for children younger than 2 years; overdose or slowed/difficult breathing requires urgent medical care."
+  ],
+  "interactions": {
+    "dangerous": [
+      "opioid"
+    ],
+    "unsafe": [
+      "alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  }
 }

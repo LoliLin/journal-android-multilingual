@@ -18,16 +18,25 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Somnolence, dizziness, increased appetite, weight gain, and dry mouth are common label-reported adverse effects; somnolence occurred in 54% of patients in controlled studies.",
+    "Serious reported risks include serotonin syndrome, QT prolongation and torsades de pointes (mainly reported with overdose or other risk factors), agranulocytosis, severe skin reactions including DRESS, hyponatremia, seizures, and orthostatic hypotension.",
+    "Abrupt discontinuation or dose reduction can cause dizziness, abnormal dreams, sensory symptoms, agitation, anxiety, fatigue, confusion, headache, tremor, nausea, vomiting, and sweating."
+  ],
   "categories": [
     "deliriant",
     "depressant",
     "antidepressant"
   ],
   "interactions": {
-    "dangerous": [],
-    "unsafe": [],
+    "dangerous": [
+      "MAOI"
+    ],
+    "unsafe": [
+      "alcohol",
+      "benzodiazepine"
+    ],
     "uncertain": [
       "antidepressant"
     ]
@@ -70,5 +79,11 @@
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d6fbe837-988a-7c75-e053-2995a90a599a"
   ],
-  "summary": "Mirtazapine is an atypical tetracyclic antidepressant used primarily to treat depression. It may also be used when depression is accompanied by anxiety or insomnia."
+  "summary": "Mirtazapine is an atypical tetracyclic antidepressant used primarily to treat depression. It may also be used when depression is accompanied by anxiety or insomnia.",
+  "generalRisks": "The label carries a suicidality warning for pediatric and young adult patients and recommends monitoring for clinical worsening. It also warns of potentially life-threatening serotonin syndrome, marked somnolence and impaired performance, QT prolongation/torsades reports especially with overdose or other risk factors, agranulocytosis, severe skin reactions including DRESS, hyponatremia, seizures, and discontinuation symptoms. Abrupt cessation should be avoided when possible.",
+  "saferUse": [
+    "Avoid alcohol and benzodiazepines as directed by the label; do not drive or operate hazardous machinery until the sedating effect is known.",
+    "Seek urgent medical help for possible serotonin syndrome, severe rash with fever or swelling, signs of infection such as fever or sore throat, fainting/palpitations, or emergent suicidal thoughts.",
+    "Do not stop abruptly when avoidable; discuss gradual dose reduction with the prescriber."
+  ]
 }

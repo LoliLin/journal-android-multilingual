@@ -15,12 +15,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "modafanil",
-    "analog"
+    "Modafanil",
+    "Analog"
   ],
-  "addictionPotential": "mildly addictive with a low potential for abuse",
+  "addictionPotential": "Mildly addictive with a low potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",

@@ -5,7 +5,7 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Evidence is from Promazine Hydrochloride 25 mg/5 ml oral syrup. Promazine is readily absorbed from the gastrointestinal tract but is subject to considerable first-pass metabolism in the gut wall, so oral plasma concentrations are much lower than after intramuscular administration, with very wide intersubject variation. Paths of metabolism include hydroxylation and conjugation with glucuronic acid, N-oxidation, oxidation of a sulphur atom, and dealkylation. It is extensively metabolised in the liver and excreted in urine and faeces as numerous active and inactive metabolites, with evidence of enterohepatic recycling. It is very extensively bound to plasma proteins, is widely distributed, crosses the blood-brain barrier to reach higher brain than plasma concentrations, and crosses the placental barrier and is excreted in milk.",
+  "metabolism": "Absorbed quickly from the gut, but the gut wall breaks down a lot of it before it reaches the blood, so a dose by mouth leaves much less in the blood than the same dose by injection, and people differ a lot. It is broken down by hydroxylation and joining glucuronic acid, by N-oxidation, by oxidising a sulphur atom, and by dealkylation. The liver does most of this, and it leaves in the urine and faeces as a great many breakdown products, some still active, with evidence that it passes back and forth between the gut and the liver. It sticks very heavily to blood proteins, spreads widely, gets into the brain more readily than into the rest of the body, crosses the placenta and passes into breast milk.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/101928/smpc"
   ],

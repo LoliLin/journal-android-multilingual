@@ -15,7 +15,7 @@
     "zeroToleranceInHours": 0
   },
   "crossTolerances": [],
-  "addictionPotential": "no addictive potential; not habit-forming",
+  "addictionPotential": "No addictive potential; not habit-forming",
   "toxicities": [
     "Lithium has a narrow therapeutic window (0.6-1.2 mM blood concentration). Toxicity occurs above 1.5 mM. Symptoms: nausea, vomiting, tremor, confusion, seizures, coma, death. Chronic toxicity: kidney damage, thyroid dysfunction."
   ],

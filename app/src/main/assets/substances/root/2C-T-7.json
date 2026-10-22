@@ -16,15 +16,15 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki reports at least three deaths associated with 2C-T-7 as of August 2007; the reports involved insufflated doses of 30 mg or more or stimulant co-use, and do not establish an isolated causal dose."
+    "At least three deaths associated with 2C-T-7 as of August 2007; the reports involved insufflated doses of 30 mg or more or stimulant co-use, and do not establish an isolated causal dose."
   ],
   "effectsSummary": "FreeODwiki's incomplete subjective-effects section lists anecdotal psychedelic effects and describes a long-lasting, unpredictable experience with potentially intense body load. The page warns that these reports may be unreliable.",
   "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists thresholds of 3 mg orally and 1 mg insufflated; the model does not represent thresholdMin, so those values are preserved here. It strongly advises against insufflation, non-oral use, visual dose estimation and combinations with other substances; reports include deaths involving insufflated doses of 30 mg or more.",
-  "generalRisks": "FreeODwiki warns that 2C-T-7 has an unpredictable, dose-sensitive response and may cause severe body load, serious injury or death. It reports at least three deaths associated with use as of August 2007, involving insufflated doses of 30 mg or more or stimulant co-use; the cases do not establish a standalone causal dose. A possible MAOI effect is not established.",
+  "generalRisks": "2C-T-7 has an unpredictable, dose-sensitive response and may cause severe body load, serious injury or death. At least three deaths associated with use as of August 2007, involving insufflated doses of 30 mg or more or stimulant co-use; the cases do not establish a standalone causal dose. A possible MAOI effect is not established.",
   "saferUse": [
     "The page strongly advises against insufflation and other non-oral routes, visual dose estimation and mixing with other substances. It recommends independent research and accurate volumetric measurement; its dose tables are educational user/resource reports, not recommendations."
   ],

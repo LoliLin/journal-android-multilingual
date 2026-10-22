@@ -1,7 +1,7 @@
 {
-  "addictionPotential": "unknown",
+  "addictionPotential": "Unknown",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "localizedName": "Memantine"
 }

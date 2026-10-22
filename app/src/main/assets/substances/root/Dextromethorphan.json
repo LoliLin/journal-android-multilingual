@@ -20,11 +20,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "produces dependence with chronic use and has moderate abuse potential",
+  "addictionPotential": "Produces dependence with chronic use and has moderate abuse potential",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -112,5 +112,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from Benylin Dry Coughs (Original). Dextromethorphan is extensively metabolised, and the main determinant of its pharmacokinetics in human volunteers is the oxidative process that forms dextrorphan; it appears there are distinct phenotypes for this oxidation, resulting in highly variable pharmacokinetics between subjects. Unmetabolised dextromethorphan, together with the three demethylated morphinan metabolites dextrorphan (3-hydroxy-N-methylmorphinan), 3-hydroxymorphinan and 3-methoxymorphinan, have been identified as conjugated products in the urine. Dextrorphan, which also has antitussive action, is the main metabolite. In some individuals metabolism proceeds more slowly and unchanged dextromethorphan predominates in blood and urine. Dextromethorphan is primarily excreted via the kidney as unchanged parent drug and its active metabolite dextrorphan; dextrorphan and 3-hydroxymorphinan are further metabolised by glucuronidation and eliminated via the kidneys. The elimination half-life of the parent compound is between 1.4 and 3.9 hours and dextrorphan between 3.4 and 5.6 hours; in poor metabolisers the half-life of dextromethorphan is extremely prolonged, in the range of 45 hours.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/1477/smpc"]
+  "metabolism": "Broken down extensively, and what decides how fast is the oxidation that produces dextrorphan. People differ in how well they carry out that oxidation, so the way dextromethorphan behaves varies a lot from one person to the next. Unchanged dextromethorphan, together with three demethylated morphinans -- dextrorphan (3-hydroxy-N-methylmorphinan), 3-hydroxymorphinan and 3-methoxymorphinan -- turn up in the urine as conjugates. Dextrorphan, which also calms coughs, is the main one. In some people the breakdown runs slower and unchanged dextromethorphan dominates in blood and urine. It leaves the body mainly through the kidneys, as unchanged drug and as dextrorphan; dextrorphan and 3-hydroxymorphinan are then joined to glucuronic acid and leave the same way. The parent drug stays in the body for 1.4 to 3.9 hours and dextrorphan for 3.4 to 5.6 hours. In people who break it down slowly, dextromethorphan stays far longer, around 45 hours.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/1477/smpc"]
 }

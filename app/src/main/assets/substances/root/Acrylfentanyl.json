@@ -9,7 +9,7 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from a peer-reviewed review of new fentanyl analogues (Gill et al., Front Pharmacol 2019, PMID 31024296). The metabolic pathway of acryloylfentanyl shows similarity with the pathways of fentanyl and acetylfentanyl. Overall, 14 biotransformation products were identified, including the major metabolites of acryloylfentanyl detected in human urine after hydrolysis, by human hepatocytes in vitro and in a few fatalities caused by acryloylfentanyl.",
+  "metabolism": "Broken down much the way fentanyl and acetylfentanyl are. In all, 14 breakdown products were found -- in human urine after hydrolysis, in liver-cell incubations, and in a few people who died after taking it.",
   "metabolismSources": [
     "https://europepmc.org/article/PMC/6461066"
   ],

@@ -6,7 +6,7 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderate addictive potential; can cause psychological dependence",
+  "addictionPotential": "Moderate addictive potential; can cause psychological dependence",
   "toxicities": [
     "LD50 in rats is 1,674 mg/kg orally. Overdose may cause severe hypertension, cardiac arrhythmia, stroke, and seizures."
   ],

@@ -9,11 +9,11 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [
-    "FreeODwiki reports 107 non-fatal poisonings and 99 analytically confirmed MDPV-related deaths across nine EU countries from 2009-2013. Exact lethal dose and human neurotoxicity are unknown; long-term use or a single overdose may trigger psychosis, and the source describes high dependence/compulsive redosing risk."
+    "107 non-fatal poisonings and 99 analytically confirmed MDPV-related deaths across nine EU countries from 2009-2013. Exact lethal dose and human neurotoxicity are unknown; long-term use or a single overdose may trigger psychosis, and the source describes high dependence/compulsive redosing risk."
   ],
-  "dosageRemark": "The archived oral table lists threshold 2 mg, light 4-8 mg, moderate 8-14 mg, strong 14-25 mg, heavy 25 mg+; total 2-7 h, onset 15-30 min, peak 1-4 h, offset 0.5-2 h and afterglow 2-48 h. The source reports EU data from 2009-2013: 107 non-fatal poisonings and 99 analytically confirmed deaths across nine countries. Exact fatal dose is unknown; the source says one post-mortem estimate is too variable to be useful. Educational user/resource data, not a recommendation. lightMin corrected from threshold to source light lower bound.",
-  "generalRisks": "FreeODwiki says MDPV is highly potent, long-lasting and compulsive, and strongly warns against high-dose misuse, multi-day use and combinations with drugs that increase psychosis risk. It reports 107 non-fatal poisonings and 99 confirmed deaths in nine EU countries during 2009-2013; psychosis, mania, aggression and severe anxiety are described.",
-  "longtermRisks": "The source reports persistent psychosis case studies after long-term MDPV use, says human neurotoxicity is not established, and describes high addiction/abuse potential and psychological dependence.",
+  "dosageRemark": "The archived oral table lists threshold 2 mg, light 4-8 mg, moderate 8-14 mg, strong 14-25 mg, heavy 25 mg+; total 2-7 h, onset 15-30 min, peak 1-4 h, offset 0.5-2 h and afterglow 2-48 h. EU data from 2009-2013: 107 non-fatal poisonings and 99 analytically confirmed deaths across nine countries. Exact fatal dose is unknown; the source says one post-mortem estimate is too variable to be useful. Educational user/resource data, not a recommendation. LightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "MDPV is highly potent, long-lasting and compulsive, and strongly warns against high-dose misuse, multi-day use and combinations with drugs that increase psychosis risk. 107 non-fatal poisonings and 99 confirmed deaths in nine EU countries during 2009-2013; psychosis, mania, aggression and severe anxiety are described.",
+  "longtermRisks": "Persistent psychosis case studies after long-term MDPV use, says human neurotoxicity is not established, and describes high addiction/abuse potential and psychological dependence.",
   "saferUse": [
     "FreeODwiki strongly discourages high doses, use over consecutive days and combinations with substances known to increase psychosis risk.",
     "It describes compulsive redosing, severe comedown, psychosis and dependence risks; dose figures are educational user/resource data, not recommendations."
@@ -42,7 +42,7 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "MDPV is a potent, long-lasting synthetic stimulant with high compulsive-use and psychosis risks. FreeODwiki reports numerous poisonings and deaths and strongly warns against high-dose or multi-day use.",
+  "summary": "MDPV is a potent, long-lasting synthetic stimulant with high compulsive-use and psychosis risks. Numerous poisonings and deaths and strongly warns against high-dose or multi-day use.",
   "roas": [
     {
       "name": "oral",
@@ -82,5 +82,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed review of postmortem toxicology of new synthetic opioids (Front Pharmacol 2018, PMID 30416445). The metabolism of MDPV, which contains a pyrrolidine group, has been investigated in vitro. The major phase I metabolites include catecholpyrovalerone and methylcatecholpyrovalerone, produced by opening of the methylenedioxy ring followed by demethylation to form catechol, and subsequent methylation by catechol-O-methyltransferase. In phase II metabolism, MDPV metabolites undergo conjugation with glucuronic acid and sulphate, with approximately 40% and 50% of metabolites being excreted in these forms respectively.",  "metabolismSources": ["https://europepmc.org/article/PMC/6212520"]
+  "metabolism": "MDPV has a pyrrolidine ring, and how it is broken down has been studied in the lab. The main first-stage products are catecholpyrovalerone and methylcatecholpyrovalerone. They form when the methylenedioxy ring opens, the catechol that results is demethylated, and catechol-O-methyltransferase then methylates it again. In the second stage the products are joined to glucuronic acid and sulphate, and about 40% and 50% of them respectively leave the body in those forms.",  "metabolismSources": ["https://europepmc.org/article/PMC/6212520"]
 }

@@ -13,16 +13,16 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says toxicity and long-term health effects have not been studied in any scientific context and exact toxic dose is unknown because DiPT has limited human-use history."
+    "Toxicity and long-term health effects have not been studied in any scientific context and exact toxic dose is unknown because DiPT has limited human-use history."
   ],
-  "effectsSummary": "FreeODwiki says DiPT's reported effects are primarily auditory rather than visual, including downward pitch shifts and other unusual distortions; anecdotal effects also include bodily euphoria, moderate euphoria, mild visuals, dizziness and nausea. Effects are unpredictable and based on anecdotal reports.",
-  "dosageRemark": "The archived oral dose table lists a 15 mg threshold; source-listed light/moderate/strong/heavy ranges and durations are user-report material and should be treated cautiously. The page warns its pharmacological, metabolic and toxicity data are very limited. lightMin is set to 20 mg, the lower bound of the source's light band, distinct from the 15 mg threshold.",
-  "generalRisks": "FreeODwiki says DiPT's pharmacology, metabolism and toxicity data are very limited and human-use history is limited; harm reduction is strongly recommended.",
-  "longtermRisks": "The archived page says toxicity and long-term health effects of DiPT have not been studied.",
+  "effectsSummary": "DiPT's reported effects are primarily auditory rather than visual, including downward pitch shifts and other unusual distortions; anecdotal effects also include bodily euphoria, moderate euphoria, mild visuals, dizziness and nausea. Effects are unpredictable and based on anecdotal reports.",
+  "dosageRemark": "The archived oral dose table lists a 15 mg threshold; source-listed light/moderate/strong/heavy ranges and durations are user-report material and should be treated cautiously. The page warns its pharmacological, metabolic and toxicity data are very limited. LightMin is set to 20 mg, the lower bound of the source's light band, distinct from the 15 mg threshold.",
+  "generalRisks": "DiPT's pharmacology, metabolism and toxicity data are very limited and human-use history is limited; harm reduction is strongly recommended.",
+  "longtermRisks": "Toxicity and long-term health effects of DiPT have not been studied.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction given limited human-use history and sparse pharmacology, metabolism and toxicity data."
   ],

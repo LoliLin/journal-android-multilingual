@@ -13,9 +13,9 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "extremely low toxicity"
+    "Extremely low toxicity"
   ],
   "categories": [
     "nootropic"

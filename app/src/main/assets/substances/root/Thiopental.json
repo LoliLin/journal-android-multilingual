@@ -7,7 +7,7 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from Thiopental 0.5 g and 1 g powder for solution for injection. Thiopental is almost completely metabolised. It is extremely fat soluble and is largely metabolised in the liver, but is slowly excreted from lipid depots and is very slowly transformed; during one hour 10-15% is metabolised, mainly in the liver. Only approximately 0.3% is excreted unchanged in the urine. The half-life of the distribution phase after a single intravenous dose is 2-4 hours and the half-life of the elimination phase is 9-11 hours. The plasma protein binding is 80-90% at therapeutic concentration levels. Rapid uptake occurs into most vascular areas of the brain followed by redistribution into other tissues.",
+  "metabolism": "Almost completely broken down. It is extremely fat soluble and most of the breaking down happens in the liver, but it is released slowly from the fat stores it settles into and is turned over very slowly: in one hour only 10-15% is broken down, mostly in the liver. Only about 0.3% comes out unchanged in the urine. After a single intravenous dose it spreads out over 2-4 hours and is then cleared over 9-11 hours. At a therapeutic level 80-90% is bound to blood proteins. It reaches the blood-rich parts of the brain very quickly, then spreads out to the other tissues.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/665/smpc"
   ],

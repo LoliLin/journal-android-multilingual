@@ -101,5 +101,12 @@
   "metabolism": "N-demethylation forms inactive EDDP. CYP2B6 and other CYP enzymes contribute; the label lists several enzymes rather than one exclusive pathway. Subsequent elimination is renal and fecal.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=544483e6-6f9d-4371-9e93-313e54e0ea05"
-  ]
+  ],
+  "saferUse": [
+    "Keep methadone in child-resistant packaging and out of children's reach; accidental ingestion can be fatal. The cited oral concentrate label warns that the respiratory-depressant effect peaks later and lasts longer than the apparent drug effect, and methadone accumulates with repeated dosing.",
+    "Avoid alcohol and do not combine with benzodiazepines or other CNS depressants unless specifically managed by a clinician; profound sedation, respiratory depression, and death can result.",
+    "QT prolongation and torsades de pointes have occurred. Seek clinical review for cardiac rhythm risk or medicines affecting cardiac conduction. CYP inhibitors or stopping CYP inducers can raise methadone exposure and cause potentially fatal respiratory depression.",
+    "Discuss access to an opioid overdose reversal agent with a clinician/caregiver; suspected overdose requires emergency response."
+  ],
+  "generalRisks": "The cited evidence is for prescription methadone hydrochloride oral concentrate used in opioid-dependence treatment (DailyMed label updated 2026-07-29; relevant warning sections revised 2025-12). Methadone has delayed and prolonged respiratory-depressant effects, can accumulate with repeated use, and has a narrow therapeutic index. The label warns of fatal respiratory depression, QT prolongation/torsades, fatal accidental ingestion, and potentially fatal exposure increases from CYP interactions. Benzodiazepines, alcohol, and other CNS depressants increase sedation and respiratory-depression risk."
 }

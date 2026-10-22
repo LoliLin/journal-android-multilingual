@@ -10,8 +10,8 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["racetam", "nootropic"],
-  "addictionPotential": "not addictive with a low potential for abuse",
+  "crossTolerances": ["Racetam", "Nootropic"],
+  "addictionPotential": "Not addictive with a low potential for abuse",
   "toxicities": [],
   "categories": ["nootropic"],
   "summary": "A racetam nootropic claimed by many to have cognitive benefits however this has never been strongly supported in healthy individuals. Prescribed in the UK as a treatment for myoclonus. Potentially an ampakine. One of the first popular 'nootropics.'",
@@ -39,5 +39,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from Nootropil 800 mg film-coated tablets (oral). Piracetam is rapidly and almost completely absorbed, with peak plasma levels reached within 1.5 hours and oral bioavailability close to 100% for capsules, tablets and solution. The volume of distribution is 0.7 L/kg, and piracetam crosses the blood-brain and placental barriers. Up to now, no metabolite of piracetam has been found. Piracetam is excreted almost completely in the urine, and the fraction of the dose excreted in urine is independent of the dose given. The plasma half-life is 5.0 hours in young adult men, and clearance depends on renal creatinine clearance, so it would be expected to diminish with renal insufficiency.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/101129/smpc"]
+  "metabolism": "Absorbed quickly and almost completely, with peak blood levels within 1.5 hours and about 100% of an oral dose reaching the blood whether it is given as capsules, tablets or solution. It spreads through the body at 0.7 L/kg and passes into the brain and across the placenta. No breakdown product of piracetam has ever been found. It comes out almost entirely in the urine, and the fraction that comes out does not depend on the dose. In young adult men it stays in the body for 5.0 hours, and the kidneys clear it, so renal impairment means it stays longer.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/101129/smpc"]
 }

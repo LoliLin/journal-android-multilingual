@@ -14,15 +14,15 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "low potential for abuse and dependence",
+  "addictionPotential": "Low potential for abuse and dependence",
   "toxicities": [
-    "FreeODwiki says pharmacology, metabolism and toxicity data for MiPLA are very limited and recommends harm reduction; exact toxic dose is unknown."
+    "Pharmacology, metabolism and toxicity data for MiPLA are very limited and recommends harm reduction; exact toxic dose is unknown."
   ],
   "dosageRemark": "The archived oral table lists threshold 50 µg, light 100-150 µg, moderate 150-200 µg, strong 200-250 µg, heavy 300 µg+; source leaves a 250-300 µg gap, which is not filled. Total 4-6 h, onset 20-40 min, comeup 45-90 min, peak 1-2 h, offset 1-2 h. Educational user/resource information, not a recommendation. Human pharmacology, metabolism and toxicity data are very limited; lightMin corrected to source light lower bound.",
-  "generalRisks": "The source says MiPLA is poorly studied with limited pharmacology, metabolism and toxicity data; subjective effects are anecdotal and may be unpredictable.",
-  "longtermRisks": "The archived page reports very limited pharmacology, metabolism and toxicity data and provides no established long-term findings.",
+  "generalRisks": "MiPLA is poorly studied with limited pharmacology, metabolism and toxicity data; subjective effects are anecdotal and may be unpredictable.",
+  "longtermRisks": "Very limited pharmacology, metabolism and toxicity data and provides no established long-term findings.",
   "saferUse": [
     "FreeODwiki recommends harm reduction because evidence is sparse.",
     "The archived dosage bands leave a 250-300 µg gap; it is retained rather than inferred."

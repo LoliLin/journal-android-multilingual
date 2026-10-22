@@ -1,8 +1,8 @@
 {
-  "addictionPotential": "moderately addictive",
+  "addictionPotential": "Moderately addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or opioids"
   ],
   "localizedName": "Zolpidem"
 }

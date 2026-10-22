@@ -10,9 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["thienzodiazepines", "benzodiazepine"],
-  "addictionPotential": "extremely addictive",
-  "toxicities": ["large therapeutic index and margin of safety"],
+  "crossTolerances": ["Thienzodiazepines", "Benzodiazepine"],
+  "addictionPotential": "Extremely addictive",
+  "toxicities": ["Large therapeutic index and margin of safety"],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -50,5 +50,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from a peer-reviewed study on detection of the designer benzodiazepine metizolam in urine and preliminary data on its metabolism (Drug Test Anal 2017, PMID 27671107). Three mono-hydroxylated metabolites were produced, including a hydroxylation compound at the 2-ethyl moiety of metizolam (M1) as the quantitatively main metabolite, and N-hydroxymetizolam (M2).",  "metabolismSources": ["https://europepmc.org/article/MED/27671107"]
+  "metabolism": "Three products form, each with a single hydroxyl group added: one where the 2-ethyl side is hydroxylated (M1), which is the main one by quantity, and N-hydroxymetizolam (M2).",  "metabolismSources": ["https://europepmc.org/article/MED/27671107"]
 }

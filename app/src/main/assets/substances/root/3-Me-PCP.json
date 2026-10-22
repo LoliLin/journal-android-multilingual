@@ -15,15 +15,15 @@
     "uncertain": []
   },
   "toxicities": [
-    "The archived page says the exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied."
+    "The exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied."
   ],
-  "dosageRemark": "The archived page explicitly warns that it is not fully approved and may be inaccurate, especially regarding doses, durations, subjective effects, toxicity, and other risks. Its numerical route tables are not transcribed as structured dose data.",
+  "dosageRemark": "The information is not fully approved and may be inaccurate, especially regarding doses, durations, subjective effects, toxicity and other risks. Its numerical route tables are not transcribed as structured dose data.",
   "generalRisks": "The unapproved archived page reports possible mania, psychosis, intense muscle tension, and other adverse effects, but warns that these claims may be inaccurate. Treat them as unverified reports, not established incidence estimates.",
-  "longtermRisks": "The archived page says long-term health effects have not been scientifically studied. Its urinary and bladder concerns are presented as arylcyclohexylamine/ketamine-like reports and are not established 3-Me-PCP-specific findings.",
+  "longtermRisks": "Long-term health effects have not been scientifically studied. Its urinary and bladder concerns are presented as arylcyclohexylamine/ketamine-like reports and are not established 3-Me-PCP-specific findings.",
   "saferUse": [
     "The unapproved archived page advises very low initial doses, accurate volumetric measurement, avoiding multi-day use, and not redosing before fully sober. It discourages combining the substance with other drugs, especially stimulants and depressants. The page warns that its advice and risk descriptions may be inaccurate, so its numerical dosing tables are not treated as verified guidance."
   ],
-  "metabolism": "The archived page says information on metabolism is limited and provides no specific human metabolic findings or pathway.",
+  "metabolism": "Information on metabolism is limited and provides no specific human metabolic findings or pathway.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3-Me-PCP"
   ]

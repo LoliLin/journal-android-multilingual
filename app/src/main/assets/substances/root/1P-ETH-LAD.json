@@ -14,22 +14,22 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "The archived page describes it as non-addictive, but it also says pharmacological, toxicity and human-use data are very limited; this claim is not established by strong compound-specific evidence.",
+  "addictionPotential": "It as non-addictive, but it also says pharmacological, toxicity and human-use data are very limited; this claim is not established by strong compound-specific evidence.",
   "toxicities": [
-    "The toxic dose is unknown. The archived page says recreational toxicity and long-term health effects have not been studied."
+    "The toxic dose is unknown. Recreational toxicity and long-term health effects have not been studied."
   ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "1P-ETH-LAD is a lysergamide psychedelic and an ETH-LAD analogue. The archived page reports ETH-LAD formation when 1P-ETH-LAD is incubated in human serum, supporting a prodrug hypothesis, while also noting that the compound may be active itself. Pharmacological and toxicity data remain limited.",
+  "summary": "1P-ETH-LAD is a lysergamide psychedelic and an ETH-LAD analogue. ETH-LAD formation when 1P-ETH-LAD is incubated in human serum, supporting a prodrug hypothesis, while also noting that the compound may be active itself. Pharmacological and toxicity data remain limited.",
   "dosageRemark": "The archived oral dose table is based on user reports, is educational rather than use advice, and recommends starting low because individual responses vary. Its threshold is 25 µg; the data model has no threshold field, so this is recorded here.",
-  "generalRisks": "The archived page says recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. It reports anxiety, thought loops, nausea and other uncomfortable effects anecdotally. Interaction classifications and harm claims come from limited evidence.",
-  "saferUse": "The archived page recommends starting low, checking combinations independently and using harm-reduction measures. It warns that individual sensitivity varies and its dose table is user-reported educational information, not advice.",
-  "metabolism": "The archived page reports that 1P-ETH-LAD forms ETH-LAD when incubated in human serum. This supports a prodrug hypothesis but does not establish in-vivo conversion or exclude activity of 1P-ETH-LAD itself.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. Anxiety, thought loops, nausea and other uncomfortable effects anecdotally. Interaction classifications and harm claims come from limited evidence.",
+  "saferUse": "Starting low, checking combinations independently and using harm-reduction measures are recommended. Individual sensitivity varies, and the dose table is user-reported educational information, not advice.",
+  "metabolism": "1P-ETH-LAD forms ETH-LAD when incubated in human serum. This supports a prodrug hypothesis but does not establish in-vivo conversion or exclude activity of 1P-ETH-LAD itself.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/1P-ETH-LAD"
   ],

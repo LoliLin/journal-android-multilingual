@@ -14,7 +14,7 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Evidence is from a peer-reviewed review of postmortem toxicology of new synthetic opioids (Front Pharmacol 2018, PMID 30416445). In the case of butyrfentanyl, hydroxylation of the butanamide side chain followed by subsequent oxidation to the carboxylic acid represented the major metabolic step. Although norbutyrfentanyl was not among the most abundant metabolites in human samples in the study concerned, it was suggested as a recommended target analyte because it showed a high intensity.",
+  "metabolism": "The main way it is broken down is by adding a hydroxyl group to the butanamide side chain and then oxidising that to a carboxylic acid. The version with the alkyl group taken off, norbutyrfentanyl, was not among the most plentiful products in human samples, but it was suggested as a good one to look for because it gives a strong signal.",
   "metabolismSources": [
     "https://europepmc.org/article/PMC/6212520"
   ],

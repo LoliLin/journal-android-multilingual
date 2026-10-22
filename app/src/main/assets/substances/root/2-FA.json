@@ -13,19 +13,19 @@
     "zeroToleranceInHours": 132
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "FreeODwiki describes moderate dependence potential and high abuse potential; this is a source characterization, not a quantified clinical risk estimate.",
+  "addictionPotential": "Moderate dependence potential and high abuse potential; this is a source characterization, not a quantified clinical risk estimate.",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "2-FA is a fluorinated amphetamine stimulant. FreeODwiki says its pharmacology, metabolism and toxicity are poorly studied; reported effects are anecdotal, and claims comparing its subjective profile with dextroamphetamine remain uncertain.",
+  "summary": "2-FA is a fluorinated amphetamine stimulant. Its pharmacology, metabolism and toxicity are poorly studied; reported effects are anecdotal, and claims comparing its subjective profile with dextroamphetamine remain uncertain.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -98,14 +98,14 @@
       "name": "inhaled"
     }
   ],
-  "effectsSummary": "FreeODwiki describes amphetamine-like stimulation and reports of euphoria, increased productivity and reduced empathogenic effects compared with 4-FA. It notes that higher doses may instead produce overstimulation, insomnia and distraction. The page says these effects are anecdotal and not reliably predictable.",
+  "effectsSummary": "Amphetamine-like stimulation and reports of euphoria, increased productivity and reduced empathogenic effects compared with 4-FA. Higher doses may instead produce overstimulation, insomnia and distraction. The page says these effects are anecdotal and not reliably predictable.",
   "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation, and should be independently verified. It lists a 5 mg threshold, light 15–30 mg, common 30–50 mg, strong 50–60 mg and severe 60 mg+. The model has no thresholdMin field, so the threshold is recorded here rather than mapped to lightMin.",
-  "generalRisks": "FreeODwiki says 2-FA pharmacology and toxicity data are sparse. Its effects section lists possible tachycardia, hypertension, seizures, dehydration, insomnia and psychosis during stimulant use; many risk descriptions are anecdotal or extrapolated from amphetamines and are not quantified for 2-FA.",
-  "longtermRisks": "The page says little is known about long-term toxicology, including repeated use as a substitute for prescription stimulants; 2-FA-specific long-term effects remain unestablished.",
+  "generalRisks": "2-FA pharmacology and toxicity data are sparse. Its effects section lists possible tachycardia, hypertension, seizures, dehydration, insomnia and psychosis during stimulant use; many risk descriptions are anecdotal or extrapolated from amphetamines and are not quantified for 2-FA.",
+  "longtermRisks": "Little is known about long-term toxicology, including repeated use as a substitute for prescription stimulants; 2-FA-specific long-term effects remain unestablished.",
   "saferUse": [
-    "The page recommends harm-reduction measures and independent research. It says insufflation and vaporization are reportedly harsher and potentially harmful compared with oral use, and does not recommend those routes."
+    "The page recommends harm-reduction measures and independent research. Insufflation and vaporization are reportedly harsher and potentially harmful compared with oral use, and does not recommend those routes."
   ],
-  "metabolism": "The archived page says data on 2-FA metabolism are very limited and does not establish a metabolic pathway. This is a knowledge gap, not evidence that 2-FA is not metabolized.",
+  "metabolism": "Data on 2-FA metabolism are very limited and does not establish a metabolic pathway. This is a knowledge gap, not evidence that 2-FA is not metabolized.",
   "metabolismSources": [
     "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2-FA.md"
   ]

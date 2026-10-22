@@ -17,12 +17,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -94,5 +94,5 @@
       }
     }
   ],
-  "metabolism": "Evidence is from Ationdo SR 100 mg prolonged-release tablets. Mean absolute bioavailability after a single dose is approximately 32% because of extensive first-pass metabolism. In humans the metabolism of tapentadol is extensive: about 97% of the parent compound is metabolised. The major pathway is conjugation with glucuronic acid to produce glucuronides, with uridine diphosphate glucuronyl transferase (mainly UGT1A6, UGT1A9 and UGT2B7) as the primary enzyme. Tapentadol is additionally metabolised to N-desmethyl tapentadol (13%) by CYP2C9 and CYP2C19, and to hydroxy tapentadol (2%) by CYP2D6, which are further metabolised by conjugation. After oral administration about 70% of the dose is excreted in urine as conjugated forms (55% glucuronide and 15% sulfate), and 3% is excreted unchanged in urine.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/12658/smpc"]
+  "metabolism": "Only about 32% of a single dose reaches the blood, because the liver breaks down a lot of it on the way. In people almost all of it is broken down, around 97% of the dose. The main way is glucuronic acid being joined onto it, and the enzyme that does this is mainly UGT1A6, UGT1A9 and UGT2B7. Some is also turned into N-desmethyl tapentadol (13%) by CYP2C9 and CYP2C19, and into hydroxy tapentadol (2%) by CYP2D6, and those are broken down further in the same way. About 70% of an oral dose comes out in the urine as the joined-up forms (55% as glucuronide and 15% as sulphate), and 3% comes out unchanged.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/12658/smpc"]
 }

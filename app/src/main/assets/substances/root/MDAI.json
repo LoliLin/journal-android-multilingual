@@ -13,16 +13,16 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "entactogen"
+    "Entactogen"
   ],
-  "addictionPotential": "somewhat habit-forming with a low potential for abuse",
+  "addictionPotential": "Somewhat habit-forming with a low potential for abuse",
   "toxicities": [
-    "The archived toxicity subsection is explicitly marked as a stub that may be incomplete or seriously inaccurate. It says no cardiovascular toxicity testing has been conducted; do not interpret claimed non-neurotoxicity as established human safety."
+    "The archived toxicity subsection is explicitly marked as a stub that may be incomplete or seriously inaccurate. No cardiovascular toxicity testing has been conducted; do not interpret claimed non-neurotoxicity as established human safety."
   ],
-  "effectsSummary": "FreeODwiki describes MDAI as a selective serotonin releasing agent with anecdotal MDMA-like empathogenic effects and little dopamine/norepinephrine activity; the page says more research is needed and its toxicity subsection is explicitly marked as a stub that may be incomplete or seriously inaccurate.",
+  "effectsSummary": "MDAI as a selective serotonin releasing agent with anecdotal MDMA-like empathogenic effects and little dopamine/norepinephrine activity; the page says more research is needed and its toxicity subsection is explicitly marked as a stub that may be incomplete or seriously inaccurate.",
   "dosageRemark": "The archived oral table lists threshold 40 mg, light 40-100 mg, moderate 100-175 mg, strong 175-300 mg and heavy 300 mg+; total 4-6 h, onset 20-40 min, comeup 30-60 min, peak 2-2.5 h, offset 1-2 h, afterglow 1-6 h. Educational user/resource compilation, not a recommendation. Toxicity section is marked as a stub and may be incomplete or seriously inaccurate.",
-  "generalRisks": "FreeODwiki says pharmacology, metabolism and toxicity data for MDAI are sparse and human-use history limited. The toxicity section is a stub; it notes cardiovascular toxicity has not been tested. The page mentions overheating, dehydration and water intoxication risk in its effects/harm content.",
-  "longtermRisks": "The source says data are sparse and notes tolerance develops with long-term/repeated use; cardiovascular toxicity has not been tested and the toxicity subsection is explicitly incomplete.",
+  "generalRisks": "Pharmacology, metabolism and toxicity data for MDAI are sparse and human-use history limited. The toxicity section is a stub; cardiovascular toxicity has not been tested. The page mentions overheating, dehydration and water intoxication risk in its effects/harm content.",
+  "longtermRisks": "Data are sparse and notes tolerance develops with long-term/repeated use; cardiovascular toxicity has not been tested and the toxicity subsection is explicitly incomplete.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction and independent research because human evidence is limited.",
     "Treat the toxicity subsection cautiously: it is marked as a stub that may be incomplete or seriously inaccurate; cardiovascular toxicity has not been tested.",

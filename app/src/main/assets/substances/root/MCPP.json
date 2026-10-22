@@ -7,12 +7,12 @@
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "effectsSummary": "FreeODwiki describes mCPP as often unpleasant, with anxiety, migraine and severe headache reported; effects are based on user reports and should be treated cautiously.",
+  "effectsSummary": "MCPP as often unpleasant, with anxiety, migraine and severe headache reported; effects are based on user reports and should be treated cautiously.",
   "dosageRemark": "Archived oral table: threshold 15 mg; light 20-50 mg; moderate 50-120 mg; strong 120-150 mg; heavy 150 mg+. Onset 20-60 min, comeup 20-60 min, peak 2-4 h, offset 3-8 h (no total duration given). User/resource educational data, not a recommendation. Toxicity section is explicitly a stub that may contain incomplete or dangerous errors; lightMin corrected to source light lower bound.",
-  "generalRisks": "The source says CYP2D6 inhibitors can increase mCPP serum concentrations and names ciprofloxacin, bupropion, fluoxetine and grapefruit juice. It also notes mCPP may appear as an adulterant in street MDMA. Its toxicity section is a stub that may contain dangerous errors.",
+  "generalRisks": "CYP2D6 inhibitors can increase mCPP serum concentrations and names ciprofloxacin, bupropion, fluoxetine and grapefruit juice. MCPP may appear as an adulterant in street MDMA. Its toxicity section is a stub that may contain dangerous errors.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction and independent research; its toxicity subsection is explicitly an unreliable stub.",
-    "The source reports CYP2D6 inhibition may raise mCPP concentrations; it does not quantify the resulting risk."
+    "CYP2D6 inhibition may raise mCPP concentrations; it does not quantify the resulting risk."
   ],
   "interactions": {
     "dangerous": [
@@ -42,7 +42,7 @@
     "research-chemical",
     "tentative"
   ],
-  "summary": "mCPP is a phenylpiperazine stimulant often described as unpleasant, with anxiety, migraine and severe headache reported. FreeODwiki marks its toxicity section as an unreliable stub and notes CYP2D6 inhibitors may raise concentrations.",
+  "summary": "MCPP is a phenylpiperazine stimulant often described as unpleasant, with anxiety, migraine and severe headache reported. FreeODwiki marks its toxicity section as an unreliable stub and notes CYP2D6 inhibitors may raise concentrations.",
   "roas": [
     {
       "name": "oral",

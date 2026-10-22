@@ -6,9 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "no negative health effects attributed to trying this drug"
+    "No negative health effects attributed to trying this drug"
   ],
   "localizedName": "Proscaline"
 }

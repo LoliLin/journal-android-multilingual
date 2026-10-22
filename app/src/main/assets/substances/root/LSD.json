@@ -18,15 +18,15 @@
     "zeroToleranceInHours": 120
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "Non-addictive with a low abuse potential",
   "toxicities": [
-    "extremely low toxicity relative to dose"
+    "Extremely low toxicity relative to dose"
   ],
-  "effectsSummary": "FreeODwiki describes LSD as a long-acting psychedelic with effects that may be unpredictable; severe acute psychological reactions such as anxiety, paranoia, delusions and psychosis are possible, especially in people predisposed to mental disorders.",
-  "dosageRemark": "The archived table lists threshold 15 µg, light 15-75 µg, moderate 75-150 µg, strong 150-300 µg, heavy 300 µg+; total 8-12 h, onset 15-30 min, comeup 45-90 min, peak 3-5 h, offset 3-5 h and afterglow 12-48 h. Educational user/resource information, not a recommendation. lightMin matches the source lower bound; the threshold is separately described here because the model has no threshold band.",
-  "generalRisks": "The archived page says severe psychological adverse reactions including anxiety, paranoia, delusions and psychosis are possible, especially in people predisposed to mental disorders, and recommends harm reduction.",
+  "effectsSummary": "LSD as a long-acting psychedelic with effects that may be unpredictable; severe acute psychological reactions such as anxiety, paranoia, delusions and psychosis are possible, especially in people predisposed to mental disorders.",
+  "dosageRemark": "The archived table lists threshold 15 µg, light 15-75 µg, moderate 75-150 µg, strong 150-300 µg, heavy 300 µg+; total 8-12 h, onset 15-30 min, comeup 45-90 min, peak 3-5 h, offset 3-5 h and afterglow 12-48 h. Educational user/resource information, not a recommendation. LightMin matches the source lower bound; the threshold is separately described here because the model has no threshold band.",
+  "generalRisks": "Severe psychological adverse reactions including anxiety, paranoia, delusions and psychosis are possible, especially in people predisposed to mental disorders, and recommends harm reduction.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction; effects can be unpredictable and severe psychological reactions are possible."
   ],

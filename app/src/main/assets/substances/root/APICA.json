@@ -15,16 +15,16 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki says recreational toxicity and long-term health effects appear unstudied and the exact toxic dose is unknown due to limited human use. It reports overdose discomfort far below dangerous doses, including arrhythmia, dizziness, sedation, intense anxiety or paranoia, or falling asleep."
+    "Recreational toxicity and long-term health effects appear unstudied and the exact toxic dose is unknown due to limited human use. Overdose discomfort far below dangerous doses, including arrhythmia, dizziness, sedation, intense anxiety or paranoia, or falling asleep."
   ],
-  "effectsSummary": "FreeODwiki describes APICA as a synthetic cannabinoid with anecdotal subjective effects; its effect index warns reports may be unpredictable. No reliable route data is given for oral use; lipid-soluble oral activity is an expectation by analogy, not a measured dose table.",
+  "effectsSummary": "APICA as a synthetic cannabinoid with anecdotal subjective effects; its effect index warns reports may be unpredictable. No reliable route data is given for oral use; lipid-soluble oral activity is an expectation by analogy, not a measured dose table.",
   "dosageRemark": "The archived inhaled table lists threshold below 0.5 mg, light 0.5-1.5 mg, moderate 1.5-2 mg, strong 2-4 mg and heavy 4 mg+; total duration 30-60 min, onset 0-20 sec, peak 10-30 min, offset 5-10 min and afterglow 15-35 min. Educational user/resource compilation, not a recommendation. The page says oral activity in lipids is expected by analogy with other cannabinoids but gives no oral dose table.",
-  "generalRisks": "FreeODwiki warns long-term synthetic cannabinoid use may increase mental illness/psychosis risk, especially with personal or family risk factors. It says overdose discomfort may occur far below dangerous levels and stresses careful milligram-range measurement; prolonged or high-dose use is strongly discouraged.",
-  "longtermRisks": "The archived page says recreational toxicity and long-term health effects appear unstudied. It warns long-term synthetic cannabinoid use may increase mental illness and psychosis risk, especially in people with personal or family risk factors.",
+  "generalRisks": "Long-term synthetic cannabinoid use may increase mental illness/psychosis risk, especially with personal or family risk factors. Overdose discomfort may occur far below dangerous levels and stresses careful milligram-range measurement; prolonged or high-dose use is strongly discouraged.",
+  "longtermRisks": "Recreational toxicity and long-term health effects appear unstudied. Long-term synthetic cannabinoid use may increase mental illness and psychosis risk, especially in people with personal or family risk factors.",
   "saferUse": [
     "FreeODwiki strongly recommends independent research and harm reduction, and advises against prolonged or high-dose use.",
     "It stresses careful measurement because synthetic cannabinoids are active in the milligram range, and cautions people with serious mental health or psychosis risk factors."
@@ -32,7 +32,7 @@
   "categories": [
     "cannabinoid"
   ],
-  "summary": "APICA is a synthetic cannabinoid with limited human-use history and poorly characterized toxicity. FreeODwiki reports overdose discomfort at doses far below dangerous levels and warns about chronic-use mental health risks.",
+  "summary": "APICA is a synthetic cannabinoid with limited human-use history and poorly characterized toxicity. Overdose discomfort at doses far below dangerous levels and warns about chronic-use mental health risks.",
   "roas": [
     {
       "name": "inhaled",

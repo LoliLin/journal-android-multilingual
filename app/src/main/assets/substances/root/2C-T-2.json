@@ -14,16 +14,16 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "FreeODwiki says recreational toxicity and long-term health effects have not been studied scientifically and the exact toxic dose is unknown. It cites anecdotal reports that trying the drug caused no negative health effects, but says safety cannot be guaranteed."
+    "Recreational toxicity and long-term health effects have not been studied scientifically and the exact toxic dose is unknown. It cites anecdotal reports that trying the drug caused no negative health effects, but says safety cannot be guaranteed."
   ],
   "effectsSummary": "FreeODwiki's subjective-effects section lists anecdotal reports of dose-sensitive psychedelic effects, including intense or uncomfortable body load and nausea. The page cautions that the reports are not necessarily predictable or reliable.",
   "dosageRemark": "The archived tables are aggregated from user reports and resources for education, not recommendations, and should be independently verified. Thresholds are 3 mg orally and 1 mg insufflated; the model has no thresholdMin field, so they are noted here. The oral table lists strong effects at 20–30 mg and severe at 25–30 mg+, overlapping ranges that the model cannot represent; heavyMin is set to 25 mg to preserve the lower severe boundary.",
-  "generalRisks": "The page says recreational toxicity has not been scientifically studied and the exact toxic dose is unknown. It describes dose-sensitive effects and reports of intense body load; its subjective-effects section warns that higher-dose adverse effects could include serious injury or death, but these are anecdotal warnings rather than established incidence data. Possible MAO-A inhibition is unconfirmed.",
-  "longtermRisks": "FreeODwiki says long-term health effects have not been studied scientifically and remain unknown.",
+  "generalRisks": "Recreational toxicity has not been scientifically studied and the exact toxic dose is unknown. It describes dose-sensitive effects and reports of intense body load; its subjective-effects section warns that higher-dose adverse effects could include serious injury or death, but these are anecdotal warnings rather than established incidence data. Possible MAO-A inhibition is unconfirmed.",
+  "longtermRisks": "Long-term health effects have not been studied scientifically and remain unknown.",
   "saferUse": [
     "The page recommends independent research and harm-reduction measures, and advises starting with a low dose because of individual variability. Its dose tables are user/resource reports for education, not recommendations."
   ],
@@ -40,7 +40,7 @@
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "An unusual psychedelic in the 2C family with dose-sensitive, potentially intense effects. FreeODwiki says evidence on recreational toxicity and long-term health effects is very limited; possible MAO-A inhibition is unconfirmed.",
+  "summary": "An unusual psychedelic in the 2C family with dose-sensitive, potentially intense effects. Evidence on recreational toxicity and long-term health effects is very limited; possible MAO-A inhibition is unconfirmed.",
   "roas": [
     {
       "name": "insufflated",

@@ -13,13 +13,13 @@
     "zeroToleranceInHours": 132
   },
   "crossTolerances": [
-    "dopamine",
-    "serotonin|serotonergic",
-    "stimulant"
+    "Dopamine",
+    "Serotonin|serotonergic",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -100,9 +100,9 @@
     }
   ],
   "saferUse": [
-    "PsychonautWiki recommends independent research and harm-reduction measures. Its toxicity section is marked as a stub that may contain highly inaccurate information; the dose table is user-reported educational material, not a recommendation."
+    "Independent research and harm-reduction measures are recommended. The toxicity section is marked as a stub that may contain highly inaccurate information, and the dose table is user-reported educational material, not a recommendation."
   ],
-  "metabolism": "The archived page provides no specific human metabolic findings or pathway; no pathway is inferred from related compounds.",
+  "metabolism": "No specific human metabolic findings or pathway are described, and no pathway is assumed from similar compounds.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/3-FMA"
   ]

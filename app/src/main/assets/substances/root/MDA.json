@@ -16,16 +16,16 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic",
-    "stimulant"
+    "Psychedelic",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "FreeODwiki describes MDA as more neurotoxic than MDMA or MDEA. As a serotonin releaser it can cause sustained core/body temperature elevation; excessive doses may cause serotonin syndrome, potentially fatal if untreated."
+    "MDA as more neurotoxic than MDMA or MDEA. As a serotonin releaser it can cause sustained core/body temperature elevation; excessive doses may cause serotonin syndrome, potentially fatal if untreated."
   ],
   "effectsSummary": "MDA is closely related to MDMA. It differs mainly in how well one's own feelings are perceived (entactogenic effect), how strong empathic understanding (empathic effect) and hallucinogenic effects occur.",
   "dosageRemark": "The archived oral table lists threshold 20 mg, light 40-60 mg, moderate 60-100 mg, strong 100-145 mg, heavy 145 mg+; total 5-8 h, onset 30-90 min, comeup 15-45 min, peak 2.5-4 h, offset 2-3 h and afterglow 4-48 h. User/resource educational compilation, not a recommendation. The page describes MDA as more potent and longer-lasting than MDMA and reports greater neurotoxicity; lightMin corrected from threshold to source light lower bound.",
-  "generalRisks": "FreeODwiki warns of increased body temperature, serotonin syndrome at excessive doses, dehydration and water intoxication from overdrinking. It says MDA has greater neurotoxicity than MDMA/MDEA and recommends harm reduction.",
+  "generalRisks": "Of increased body temperature, serotonin syndrome at excessive doses, dehydration and water intoxication from overdrinking. MDA has greater neurotoxicity than MDMA/MDEA and recommends harm reduction.",
   "longtermRisks": "The source describes greater neurotoxicity than MDMA or MDEA and advises allowing one to three months between uses to support serotonin recovery and reduce toxicity.",
   "saferUse": [
     "FreeODwiki strongly recommends harm reduction; avoid excessive doses and repeated redosing because they are considered to substantially increase toxicity.",

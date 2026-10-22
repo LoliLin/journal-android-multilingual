@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "low potential for abuse and dependence",
+  "addictionPotential": "Low potential for abuse and dependence",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -83,7 +83,7 @@
   "saferUse": [
     "PsychonautWiki strongly warns against redosing within 3 hours and advises first-time users to stay at or below the moderate category. It recommends accurate volumetric measurement, avoiding visual estimation and non-oral routes, and using harm-reduction measures. Its dose table is educational, not a recommendation."
   ],
-  "metabolism": "The archived page says data on human pharmacology, metabolism and toxicity are very limited. It gives no specific metabolic pathway or human metabolic findings; no pathway is inferred from related compounds.",
+  "metabolism": "What is known about how the body handles this is very limited. No metabolic enzymes, metabolites or pathway have been identified.",
   "metabolismSources": [
     "https://psychonautwiki.org/wiki/2C-P"
   ]

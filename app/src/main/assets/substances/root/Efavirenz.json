@@ -7,10 +7,10 @@
   "url": "https://psychonautwiki.org/wiki/Efavirenz",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not known to be habit-forming",
+  "addictionPotential": "Not known to be habit-forming",
   "toxicities": [
-    "low toxicity",
-    "may cause liver toxicity at high doses or after chronic use"
+    "Low toxicity",
+    "May cause liver toxicity at high doses or after chronic use"
   ],
   "categories": [
     "psychedelic"

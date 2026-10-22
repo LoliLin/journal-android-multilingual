@@ -23,5 +23,40 @@
       "name": "oral",
       "releaseForm": "IMMEDIATE_RELEASE"
     }
-  ]
+  ],
+  "toxicities": [
+    "DailyMed label warnings include potentially life-threatening serotonin syndrome, elevated blood pressure (including sustained hypertension), increased bleeding risk, hyponatremia, seizures, and suicidal thoughts or behaviors, with increased risk in adolescents and young adults.",
+    "Abrupt discontinuation or dose reduction can produce dizziness, sensory disturbances, agitation, anxiety, insomnia, nausea, vomiting, sweating, and other symptoms; serious and protracted cases have been reported.",
+    "Other label warnings include mania/hypomania activation and angle-closure glaucoma in susceptible people."
+  ],
+  "generalRisks": "The label is for prescription extended-release capsules. About suicidality (especially through age 24), potentially life-threatening serotonin syndrome, elevated blood pressure, bleeding, hyponatremia, seizures, mania/hypomania, angle-closure glaucoma, and significant discontinuation symptoms. MAOI use is contraindicated; co-use with other serotonergic medicines can increase serotonin-syndrome risk.",
+  "saferUse": [
+    "Monitor for worsening mood or suicidal thoughts, especially early in treatment and after dose changes; seek urgent care for severe agitation with fever, sweating, tremor, rigidity, confusion, or seizure.",
+    "Check blood pressure during prescribed treatment and seek medical advice for a sustained increase.",
+    "Do not stop abruptly; the label recommends gradual reduction with clinical supervision. Check before combining with serotonergic drugs, NSAIDs, aspirin, warfarin, or other anticoagulants."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "linezolid",
+      "methylene blue"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "triptan",
+      "tricyclic antidepressant",
+      "fentanyl",
+      "lithium",
+      "tramadol",
+      "buspirone",
+      "amphetamine",
+      "St. John's Wort",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "anticoagulant"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is for prescription extended-release capsules. Prescription dosing is not recreational dose guidance; recreational thresholds and durations are not established here."
 }
