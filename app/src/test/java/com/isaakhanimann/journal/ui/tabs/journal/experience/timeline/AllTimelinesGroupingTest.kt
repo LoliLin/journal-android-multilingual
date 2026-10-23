@@ -129,7 +129,7 @@ class AllTimelinesGroupingTest {
     }
 
     @Test
-    fun nullAndTwoEquivalentKnownDurationsKeepSeparateBucketsWithinOneSubstance() {
+    fun nullDurationFormsOwnBucketAndEquivalentKnownDurationsCombine() {
         val unknown = line(firstTime, null)
         val knownFirst = line(firstTime.plusSeconds(10), immediateDuration)
         val knownSecond = line(secondTime, immediateDuration.copy())
@@ -147,6 +147,14 @@ class AllTimelinesGroupingTest {
             groupEffectLinesByProfile(
                 listOf(unknown, otherSubstance, knownFirst, knownSecond)
             )
+        )
+    }
+
+    @Test
+    fun emptyInputProducesNoGroups() {
+        assertEquals(
+            emptyList<List<DataForOneEffectLine>>(),
+            groupEffectLinesByProfile(emptyList())
         )
     }
 
