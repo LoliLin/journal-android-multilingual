@@ -5,12 +5,28 @@ Helper scripts for filling in the safety fields of the substance records in
 single substance is: find a source, extract the relevant section, write the
 root record and the `zh_cn` overlay, register the source, verify.
 
+These used to sit in `tools/` at the repository root, next to the Gradle
+build. They were moved here because they are editing aids, not part of the
+build: nothing runs them during a build, and having a second top-level
+script directory made the project look like it shipped Python. The scripts
+find the records relative to the current directory, so run them from the
+repository root:
+
+```bash
+python docs/scripts/check-keys.py
+```
+
+The hand-written rewrite tables -- `rewrite-src.py`, `rewrite-zh.py`,
+`restore-facts.py`, `zh-restore.py` -- double as the record of what was
+changed and why. Each is applied by exact text match, so running one again
+skips anything whose text has already moved on instead of overwriting it.
+
 ## Sources
 
 ### `emc-fetch.mjs` — UK eMC product information
 
 ```bash
-node tools/emc-fetch.mjs drugs.txt emc-out.txt 3
+node docs/scripts/emc-fetch.mjs drugs.txt emc-out.txt 3
 ```
 
 Searches medicines.org.uk for each drug name, follows the matching product
@@ -30,7 +46,7 @@ responds.
 ### `epmc-batch.mjs` — peer-reviewed literature
 
 ```bash
-node tools/epmc-batch.mjs drugs.txt epmc-out 3
+node docs/scripts/epmc-batch.mjs drugs.txt epmc-out 3
 ```
 
 Searches EuropePMC for papers mentioning each drug together with metabolic
@@ -47,7 +63,7 @@ it is written into a record.
 ### `epmc-pmc.mjs` — one article's full text
 
 ```bash
-node tools/epmc-pmc.mjs PMC6461066 acetylfentanyl furanylfentanyl
+node docs/scripts/epmc-pmc.mjs PMC6461066 acetylfentanyl furanylfentanyl
 ```
 
 Fetches the JATS XML of one open-access article and prints every paragraph
@@ -58,7 +74,7 @@ mentioning the given drugs.
 ### `verify-batch.py` — integrity gate
 
 ```bash
-python tools/verify-batch.py Diazepam Zolpidem
+python docs/scripts/verify-batch.py Diazepam Zolpidem
 ```
 
 Checks that no top-level key was lost, that no placeholder text survived, that
@@ -73,8 +89,8 @@ ideographs and flags every Chinese character as mojibake.
 ### `register-ledger.py` — evidence ledger
 
 ```bash
-python tools/register-ledger.py "Diazepam|https://www.medicines.org.uk/emc/product/101913/smpc"
-python tools/register-ledger.py --lit "MDPV|https://europepmc.org/article/PMC/6212520"
+python docs/scripts/register-ledger.py "Diazepam|https://www.medicines.org.uk/emc/product/101913/smpc"
+python docs/scripts/register-ledger.py --lit "MDPV|https://europepmc.org/article/PMC/6212520"
 ```
 
 Inserts into `docs/substance-metabolism-sources.json` with a minimal diff that
@@ -91,16 +107,16 @@ research-chemical and tentative records, where literature is the only route.
 ### `check-names.py` / `show-hits.py` / `summarize.py` — inspection
 
 ```bash
-python tools/check-names.py Diazepam Zolpidem     # is it a gap, and is zh_cn present?
-python tools/show-hits.py emc-out.txt Diazepam    # print one drug's fetched section
-python tools/summarize.py emc-out.txt             # which drugs had hits, and what are they?
+python docs/scripts/check-names.py Diazepam Zolpidem     # is it a gap, and is zh_cn present?
+python docs/scripts/show-hits.py emc-out.txt Diazepam    # print one drug's fetched section
+python docs/scripts/summarize.py emc-out.txt             # which drugs had hits, and what are they?
 ```
 
 ### `scan_jargon.py` / `scan-changed.py` — wording check
 
 ```bash
-python tools/scan_jargon.py                       # every record: boilerplate and jargon
-python tools/scan-changed.py                      # only the fields this branch changed
+python docs/scripts/scan_jargon.py                       # every record: boilerplate and jargon
+python docs/scripts/scan-changed.py                      # only the fields this branch changed
 ```
 
 The first flags fields that open by talking about the source ("Evidence is
@@ -114,7 +130,7 @@ mention of a wiki name rather than only the ones opening a field.
 ### `check-keys.py` — no field lost
 
 ```bash
-python tools/check-keys.py
+python docs/scripts/check-keys.py
 ```
 
 Compares every changed record against the baseline and reports dropped
@@ -124,7 +140,7 @@ this before committing a bulk edit.
 ### `rewrite-src.py` — the hand-written rewrite table
 
 ```bash
-python tools/rewrite-src.py
+python docs/scripts/rewrite-src.py
 ```
 
 Holds the plain-language rewrites for the fields whose wording had to be
@@ -140,7 +156,7 @@ records needed. `EDITS` is keyed by record and field.
 ### `rewrite-zh.py` — the Chinese overlays
 
 ```bash
-python tools/rewrite-zh.py
+python docs/scripts/rewrite-zh.py
 ```
 
 The same pass for the Chinese records, done in Chinese rather than by
@@ -153,7 +169,7 @@ as a note.
 ### `de-jargon.py` — the clinical vocabulary
 
 ```bash
-python tools/de-jargon.py [--dry]
+python docs/scripts/de-jargon.py [--dry]
 ```
 
 Replaces clearance, volume of distribution, half-life, bioavailability,
@@ -168,7 +184,7 @@ grammatical. Only the fields this branch changed are rewritten.
 ### `check-broken.py` — did a substitution break a sentence?
 
 ```bash
-python tools/check-broken.py
+python docs/scripts/check-broken.py
 ```
 
 Replacing a noun with a clause does not always fit the sentence it lands

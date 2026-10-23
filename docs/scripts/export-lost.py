@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Export the fields where the rewrite dropped something, for hand repair.
 
-Usage: python tools/export-lost.py <ref> [out-file]
+Usage: python docs/scripts/export-lost.py <ref> [out-file]
 """
 import io
 import json

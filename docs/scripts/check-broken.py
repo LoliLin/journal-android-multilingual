@@ -10,7 +10,7 @@ oral dose" became "the body clears it at a 50 mg oral dose".
 This looks for the shapes that come out of such a substitution, so they
 can be rewritten by hand.
 
-Usage: python tools/check-broken.py
+Usage: python docs/scripts/check-broken.py
 """
 import json
 import pathlib

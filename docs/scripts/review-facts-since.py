@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Review only what the last commits changed.
 
-Usage: python tools/review-facts-since.py <ref>
+Usage: python docs/scripts/review-facts-since.py <ref>
 """
 import io
 import json

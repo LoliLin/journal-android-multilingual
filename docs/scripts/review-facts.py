@@ -7,7 +7,7 @@ checks that every number, unit, metabolite name, enzyme name and drug name
 survived. A rewrite that drops "24%" or "norfentanyl" is a rewrite that
 changed the record, not just its wording.
 
-Usage: python tools/review-facts.py [base-ref] [--all]
+Usage: python docs/scripts/review-facts.py [base-ref] [--all]
 """
 import io
 import json

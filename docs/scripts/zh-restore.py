@@ -10,7 +10,7 @@ the two are the same record in two languages.
 Each entry is keyed by record and field, and applied by exact match against
 the current text, so a stale table cannot silently overwrite something else.
 
-Usage: python tools/zh-restore.py [--dry]
+Usage: python docs/scripts/zh-restore.py [--dry]
 """
 import json
 import pathlib

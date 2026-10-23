@@ -14,7 +14,7 @@ So the original content comes back, said in plain language and without the
 self-referential framing. Nothing that was in the old text is dropped, and
 nothing new is claimed.
 
-Usage: python tools/restore-facts.py [--dry]
+Usage: python docs/scripts/restore-facts.py [--dry]
 """
 import json
 import pathlib

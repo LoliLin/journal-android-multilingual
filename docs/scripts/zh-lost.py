@@ -5,7 +5,7 @@
 For each one, print the record, the field, and both texts, so the Chinese can
 be brought back in line with the English by hand.
 
-Usage: python tools/zh-lost.py [out-file]
+Usage: python docs/scripts/zh-lost.py [out-file]
 """
 import io
 import json
