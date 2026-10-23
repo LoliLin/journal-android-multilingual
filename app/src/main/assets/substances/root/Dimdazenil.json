@@ -1,10 +1,39 @@
 {
   "name": "Dimdazenil",
+  "commonNames": [
+    "EVT-201",
+    "EVT201",
+    "Junoenil",
+    "京诺宁",
+    "京諾寧",
+    "地达西尼",
+    "地達西尼"
+  ],
   "url": "https://en.wikipedia.org/wiki/Dimdazenil",
   "isApproved": false,
   "categories": [
+    "depressant",
     "hypnotic",
-    "benzodiazepine"
+    "benzodiazepine",
+    "habit-forming"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "summary": "Dimdazenil (EVT-201, marketed as Junoenil in China) is a benzodiazepine-family hypnotic approved in China for the short-term treatment of insomnia. It is a partial positive allosteric modulator of GABA-A receptors, with a preference for receptors containing the alpha-1 subunit.",
+  "effectsSummary": "Clinical trials found improvements in falling asleep and staying asleep. Dimdazenil enhances inhibitory GABA-A receptor signaling, producing hypnotic and sedative effects. These findings do not mean that next-day impairment or dependence is impossible.",
+  "dosageRemark": "The approved Chinese capsule label specifies 2.5 mg by mouth at bedtime and generally limits treatment to no more than four weeks, including tapering. This is prescribing information, not a recreational dose range; use only as directed by a clinician.",
+  "generalRisks": "Dizziness is a commonly reported adverse reaction; fatigue, headache, restlessness and sleep-related breathing problems have also been reported. Chinese product information lists contraindications including severe sleep apnea, severe respiratory impairment, myasthenia gravis, hypersensitivity, and prior complex sleep behaviors after taking this medicine. Combining benzodiazepine-class medicines with opioids can be dangerous.",
+  "longtermRisks": "The approved product information warns that abuse and dependence risks increase with longer treatment. Do not extend treatment or stop a regularly used prescription abruptly without medical advice. Long-term safety and withdrawal risks should not be assumed to be absent because the drug is a partial receptor modulator.",
+  "saferUse": [
+    "Use only as prescribed, and do not increase the dose or duration without reassessment by a clinician.",
+    "Avoid alcohol and combining with opioids or other sedating medicines unless a clinician has specifically assessed the risks.",
+    "Avoid driving or operating machinery if sleepy or impaired; seek medical advice immediately if complex sleep behaviors or breathing problems occur."
+  ],
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "metabolism": "Chinese product information identifies flavin-containing monooxygenases, primarily FMO3, as the main enzymes involved in human metabolism. The cited source does not establish specific metabolites or excretion routes, so none are inferred here.",
+  "metabolismSources": [
+    "https://www.nhsa.gov.cn/attach/Ypsn2024/YPSW202400333/YPSW202400333.pdf"
+  ]
 }
