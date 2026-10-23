@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "There are no formal studies and infers low addiction potential by analogy with LSD; this is not established for 1V-LSD.",
   "toxicities": [
-    "extremely low toxicity relative to dose"
+    "Recreational toxicity and long-term health effects have not been studied, and the toxic dose is unknown. The archived toxicity section is explicitly marked as a stub that may contain dangerous errors; its low-toxicity claim is not treated as established."
   ],
   "categories": [
     "psychedelic"
@@ -39,7 +39,7 @@
       "name": "oral",
       "dose": {
         "units": "µg",
-        "lightMin": 15,
+        "lightMin": 25,
         "commonMin": 75,
         "strongMin": 150,
         "heavyMin": 300
@@ -77,5 +77,13 @@
         }
       }
     }
-  ]
+  ],
+  "dosageRemark": "The archived oral dose and duration table is based on user reports, is for educational purposes rather than use advice, and warns that individual responses vary. Its threshold is 15 µg; the data model has no threshold field, so this value is recorded here.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied and the toxic dose is unknown. Its toxicity section is marked as a stub that may contain dangerous errors, so claims of very low toxicity are not established. The page warns of possible psychiatric triggering in susceptible people; evidence specific to 1V-LSD is limited. Its interaction warnings are based on assumptions about similarity to LSD and may be incomplete.",
+  "saferUse": "Starting low, because individual responses vary, is recommended, as are independent research and harm-reduction measures. People with a personal or family history of mental illness are advised to avoid use, especially outside medical supervision; that warning comes from a stub toxicity section. Interaction information is extrapolated from LSD.",
+  "metabolism": "That human-serum research demonstrated deacylation of 1V-LSD to LSD. This supports a prodrug hypothesis, but the page gives limited study details and this alone does not establish the full in-vivo how the body handles the drug or that all psychoactive effects are due to LSD.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/1V-LSD"
+  ],
+  "summary": "1V-LSD, also called 1-valeryl-LSD, is a lysergamide psychedelic related to LSD. It may be converted to LSD and that user reports describe similar effects, while noting that pharmacological, toxicity and what is known about the breakdown is limited."
 }

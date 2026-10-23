@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "A rare psychedelic tryptamine which is thought to be metabolised into 4-HO-MET. Onset and duration, intensity will vary but effect profile is largely the same.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "4-AcO-MET"
 }

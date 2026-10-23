@@ -13,19 +13,19 @@
     "zeroToleranceInHours": 132
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderate dependence potential and high abuse potential; this is a source characterization, not a quantified clinical risk estimate.",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "Stimulant drug of the amphetamine family. Reported as having effects similar to those of Dextroamphetamine, but with a milder euphoria and a comparatively smoother comedown. Has a shorter duration and less empathogenic effect-profile as compared with 4-FA. Thought to produce less neurotoxic metabolites compared to amphetamine.",
+  "summary": "2-FA is a fluorinated amphetamine stimulant. Its effects are reported to be similar to those of dextroamphetamine, but with a milder euphoria and a comparatively smoother comedown. It has a shorter duration and less empathogenic effect profile compared with 4-FA, and is thought to produce fewer neurotoxic breakdown products than amphetamine. Its pharmacology, metabolism and toxicity are poorly studied, and the reports are anecdotal.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -58,7 +58,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 15,
         "commonMin": 30,
         "strongMin": 50,
         "heavyMin": 60
@@ -90,6 +90,23 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "insufflated"
+    },
+    {
+      "name": "inhaled"
     }
+  ],
+  "effectsSummary": "Amphetamine-like stimulation and reports of euphoria, increased productivity and reduced empathogenic effects compared with 4-FA. Higher doses may instead produce overstimulation, insomnia and distraction. The page says these effects are anecdotal and not reliably predictable.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation, and should be independently verified. It lists a 5 mg threshold, light 15–30 mg, common 30–50 mg, strong 50–60 mg and severe 60 mg+. The model has no thresholdMin field, so the threshold is recorded here rather than mapped to lightMin.",
+  "generalRisks": "2-FA pharmacology and toxicity data are sparse. Its effects section lists possible tachycardia, hypertension, seizures, dehydration, insomnia and psychosis during stimulant use; many risk descriptions are anecdotal or extrapolated from amphetamines and are not quantified for 2-FA.",
+  "longtermRisks": "Little is known about long-term toxicology, including repeated use as a substitute for prescription stimulants; 2-FA-specific long-term effects remain unestablished.",
+  "saferUse": [
+    "The page recommends harm-reduction measures and independent research. Insufflation and vaporization are reportedly harsher and potentially harmful compared with oral use, and does not recommend those routes."
+  ],
+  "metabolism": "What is known about how 2-FA is broken down is very limited and does not establish how it is broken down. This is a knowledge gap, not evidence that 2-FA is not broken down.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/2-FA.md"
   ]
 }

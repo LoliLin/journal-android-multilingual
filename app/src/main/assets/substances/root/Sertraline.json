@@ -14,5 +14,46 @@
   "metabolism": "Initial N-demethylation forms less active N-desmethylsertraline. Further deamination, reduction, hydroxylation and glucuronidation precede elimination in urine and feces. Multiple enzymes participate; the reviewed label does not identify one exclusive CYP pathway.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7d598f1a-6c76-458a-a155-7a6a0743a2d3"
-  ]
+  ],
+  "summary": "Sertraline is a selective serotonin reuptake inhibitor used to treat major depression and several anxiety-related disorders.",
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "toxicities": [
+    "Warns about suicidal thoughts and behaviour in pediatric and young adult patients, serotonin syndrome, increased bleeding, QTc prolongation, hyponatremia, seizures, mania and hypomania, and discontinuation syndrome.",
+    "Common adverse reactions listed for sertraline include nausea, diarrhea/loose stool, tremor, dyspepsia, decreased appetite, sweating, and sexual dysfunction."
+  ],
+  "generalRisks": "The label is specifically oral sertraline capsules (revised 2026-01); available capsule strengths are 150 mg and 200 mg and the label does not cover every sertraline product’s initiation/titration instructions. About suicidality, serotonin syndrome, bleeding, QTc prolongation, hyponatremia, seizures, mania/hypomania and withdrawal symptoms.",
+  "saferUse": [
+    "Monitor for worsening mood or suicidal thoughts, especially in younger people and after changes. Seek urgent care for suspected serotonin syndrome or seizure.",
+    "Do not stop suddenly; the label advises gradual dose reduction and monitoring for discontinuation symptoms.",
+    "Do not combine with MAOIs or pimozide. Check with a clinician before combining with serotonergic medicines, QT-prolonging medicines, NSAIDs, aspirin, warfarin, or other anticoagulants."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "pimozide"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "triptan",
+      "tricyclic antidepressant",
+      "fentanyl",
+      "lithium",
+      "tramadol",
+      "buspirone",
+      "amphetamine",
+      "St. John’s Wort",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "anticoagulant"
+    ],
+    "uncertain": [
+      "QT-prolonging medicine"
+    ]
+  },
+  "dosageRemark": "The label is a prescription oral capsule label and specifies capsule strengths of 150 mg and 200 mg; these therapeutic instructions are not recreational dose guidance. Do not transfer them to other sertraline formulations."
 }

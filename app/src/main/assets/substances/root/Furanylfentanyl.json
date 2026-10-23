@@ -14,5 +14,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Four breakdown products were found in 500 urine samples from people who had taken opioids. The strongest signal came from the hydrolysis product 4-ANPP and its sulphate form, found in 42 of the 51 samples that were positive for furanylfentanyl; a product formed when the furanyl ring picks up two extra hydrogens turned up in 86% of cases. The version with the alkyl group taken off, norfuranylfentanyl, was found in only four positive cases, which suggests that swapping the amide-linked group for a furanyl carboxamide pushes the breakdown towards hydrolysis. Lab work with human liver microsomes found seven products; one of the main ones, nortetrahydrofuranylfentanyl, comes from taking the alkyl group off and works well as a marker that furanylfentanyl was taken. The hydroxylated forms were also found in plenty of blood and urine samples taken after death.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6461066"
+  ],
+  "summary": "Furanylfentanyl is a fentanyl analogue and opioid analgesic that has been sold as a designer drug."
 }

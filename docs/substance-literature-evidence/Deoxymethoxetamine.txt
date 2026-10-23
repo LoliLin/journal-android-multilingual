@@ -1,0 +1,7 @@
+##### Deoxymethoxetamine
+# hits: 1
+
+=== Derivatives of methoxetamine and major methoxetamine metabolites potently block NMDA receptors.
+    Irie T, Yanase Y, Demizu Y, Usami M, Kikura-Hanajiri R.
+    ? 2022 | PMID 36344045 | DOI 10.1016/j.jphs.2022.09.005
+    - N-Desethyl methoxetamine and O-desmethyl methoxetamine may cause several adverse effects when methoxetamine is metabolized.

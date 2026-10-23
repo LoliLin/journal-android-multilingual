@@ -19,11 +19,14 @@
   ],
   "addictionPotential": "moderately habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Data on the pharmacology, metabolism and toxicity of alpha-MT is limited and the history of non-medical human use is short. A few unverified hospitalisation reports above 60 mg are cited, along with 22 deaths associated with alpha-MT in England and Wales from 2012 to early 2015; these are reported associations, not proof of causation."
   ],
-  "categories": [
-    "psychedelic",
-    "entactogen"
+  "effectsSummary": "Dose and duration for alpha-MT come from user and resource material; data on the pharmacology, metabolism and toxicity is limited and the history of non-medical human use is short.",
+  "dosageRemark": "Archived oral table: threshold 5 mg; light 10-25 mg; moderate 25-40 mg; strong 40-60 mg; severe 60-80 mg; total 13-15 h, onset 60-180 min. User/resource educational data, not a recommendation. The source mentions a few unverified hospitalization reports above 60 mg and 22 deaths associated with alpha-MT in England and Wales during 2012-early 2015; association does not establish causation. lightMin corrected from threshold to 10 mg.",
+  "generalRisks": "Harm reduction is recommended, and adverse effects may become more likely as the dose increases; subjective reports are anecdotal and unpredictable.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, because the human safety evidence is limited.",
+    "Do not interpret the reported death association as proof of causation or the listed bands as safe limits."
   ],
   "interactions": {
     "dangerous": [
@@ -50,12 +53,17 @@
       "Cannabis"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "entactogen"
+  ],
+  "summary": "Alpha-MT is a psychedelic tryptamine with limited human pharmacology and toxicity data. FreeODwiki reports long oral duration and historical deaths associated with use, while noting evidence limitations.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 10,
         "commonMin": 25,
         "strongMin": 40,
         "heavyMin": 60

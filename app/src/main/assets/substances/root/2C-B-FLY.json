@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -79,5 +79,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Harm-reduction measures and independent research are recommended. The dose table is compiled from user reports and resources for education, not medical advice, and anecdotal reports of low-to-moderate occasional use do not establish safety."
+  ],
+  "metabolism": "What is known about how the body handles this is very limited. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-B-FLY"
   ]
 }

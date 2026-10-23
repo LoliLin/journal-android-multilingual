@@ -13,14 +13,17 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
-  "categories": [
-    "cannabinoid"
+  "dosageRemark": "Archived inhaled table: threshold <0.5 mg; light 0.5-1 mg; moderate 1-2 mg; strong 2-5 mg; heavy 5 mg+. Total 1-2 h; onset 5-10 min; peak 30-45 min; offset sudden min; afterglow 60-90 min. Educational user/resource information, not a recommendation; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated. Source notes oral activity in lipids but provides no oral dose table.",
+  "generalRisks": "Oral activity after dissolution in lipids and potentially longer duration, but gives no oral dose table; exact toxic dose is unknown.",
+  "saferUse": [
+    "The dose data are educational user and resource material, not a recommendation, and the exact toxic dose is unknown.",
+    "No oral dose is inferred because the archive provides no oral dosage table."
   ],
   "interactions": {
     "dangerous": [
@@ -42,46 +45,13 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid"
+  ],
+  "summary": "THJ-2201 is an indazole-based synthetic cannabinoid sold online as a designer drug. It is a structural analogue of AM-2201 in which the indole ring is replaced by indazole; it is presumed to act as a potent CB1 receptor agonist.",
   "roas": [
     {
       "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 0.5,
-        "commonMin": 1,
-        "strongMin": 2,
-        "heavyMin": 5
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 30,
-          "max": 45,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 0,
-          "max": 0,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
       "dose": {
         "units": "mg",
         "lightMin": 0.5,

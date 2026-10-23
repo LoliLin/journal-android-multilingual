@@ -10,9 +10,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["thienzodiazepines", "benzodiazepine"],
-  "addictionPotential": "extremely addictive",
-  "toxicities": ["large therapeutic index and margin of safety"],
+  "crossTolerances": ["Thienzodiazepines", "Benzodiazepine"],
+  "addictionPotential": "Extremely addictive",
+  "toxicities": ["Large therapeutic index and margin of safety"],
   "categories": [
     "depressant",
     "benzodiazepine",
@@ -20,7 +20,7 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "Also known as desmethyletizolam, a thienodiazepine similar in effects and structure to etizolam, but around half as potent and with around a 60% longer half-life. A sedative, and hypnotic, it may cause amnesia and lowered inhibitions in excess.",
+  "summary": "Also known as desmethyletizolam, a thienodiazepine similar in effects and structure to etizolam, but around half as potent and with around a 60% longer time in the body. A sedative, and hypnotic, it may cause amnesia and lowered inhibitions in excess.",
   "roas": [
     {
       "name": "oral",
@@ -49,5 +49,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Three products form, each with a single hydroxyl group added: one where the 2-ethyl side is hydroxylated (M1), which is the main one by quantity, and N-hydroxymetizolam (M2).",  "metabolismSources": ["https://europepmc.org/article/MED/27671107"]
 }

@@ -5,5 +5,6 @@
   "categories": [
     "centrally-acting-medication"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Lorcaserin was a weight-loss medication that reduced appetite by activating serotonin 5-HT2C receptors. It was removed from the United States market in 2020 after an increased cancer risk was detected among users."
 }

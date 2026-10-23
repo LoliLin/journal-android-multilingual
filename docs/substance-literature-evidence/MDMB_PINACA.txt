@@ -1,0 +1,20 @@
+##### MDMB-PINACA
+# hits: 32
+
+=== Metabolite-targeted LC-HRMS quantification of emerging indazole-based synthetic cannabinoids in urine samples from an addiction treatment cohort.
+    Eroglu Icli H, Arslan Z, Yener Orum TG, Bulut C, Kazdal FS, Civek S, Umut G, Elci A, Turkmen Z.
+    ? 2026 | PMID 42843294 | DOI 10.1016/j.jchromb.2026.125320
+    - The continuous emergence of structurally diverse indazole-based synthetic cannabinoids (SCs) challenges routine analytical detection because parent compounds are rapidly metabolized and often absent in urine.
+
+=== Intraperitoneal injection of MDMB-4en-PINACA mixed with clozapine: Biochemical, Behavioral and Histopathological assessment
+    Hassan DAE, Ghaleb SS, Abdalla AGS, Sharkawi SM, Abdelghany AK, Hassan RM, Ahmad MA.
+    ? 2023 | PMID - | DOI 10.21203/rs.3.rs-2369310/v1
+    - MDMB-4en-PINACA is extensively metabolized as many other synthetic cannabinoids.
+    - In our study we assessed this mixture for its abuse liability by an assessment of oxidative stress markers, histopathological and behavioral changes.
+
+=== Transesterification of Indazole-3-carboxamide Synthetic Cannabinoids: Identification of Metabolite Biomarkers for Diagnosing Co-abuse of 5F-MDMB-PINACA and Alcohol.
+    Wang Z, Fong CY, Goh EML, Moy HY, Chan ECY.
+    ? 2023 | PMID 34918103 | DOI 10.1093/jat/bkab121
+    - Formation of transesterified metabolite, hydrolyzed metabolite, and several oxidative metabolites in HLM in the presence of alcohol was further determined for each parent SC and the respective ethyl ester analog, 5F-EDMB-PINACA, 5F-EMB-PINACA, and EMB-FUBINACA, to quantitatively elucidate transesterification and hydrolysis activities.
+    - Each ethyl ester metabolite was sequentially and readily metabolized to novel oxidative metabolites with the intact ethyl ester moiety and the same hydrolyzed metabolite as derived from its parent SC.
+    - Notably, we proposed 5F-EDMB-PINACA oxidative defluorination metabolite as the biomarker for diagnosing the potential co-abuse of 5F-MDMB-PINACA and alcohol.

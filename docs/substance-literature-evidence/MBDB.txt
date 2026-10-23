@@ -1,0 +1,9 @@
+##### MBDB
+# hits: 41
+
+=== Stereoselective differences in the cytochrome P450-dependent dealkylation and demethylenation of N-methyl-benzodioxolyl-butanamine (MBDB, Eden) enantiomers.
+    Meyer MR, Peters FT, Maurer HH.
+    ? 2009 | PMID 19428327 | DOI 10.1016/j.bcp.2009.03.001
+    - In the present study, cytochrome P450 isozymes (P450) involved in the stereoselective metabolism of the designer drug N-methyl-benzodioxolyl-butanamine (MBDB, Eden) were identified for the first time.
+    - Demethylenation and N-demethylation of racemic MBDB as well as its single enantiomers were investigated using cDNA-expressed insect cell microsomes.
+    - Dealkylation was mainly catalyzed by CYP2B6 and CYP2C19, demethylenation was additionally catalyzed by CYP1A2, CYP2D6, and CYP3A4.

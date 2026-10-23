@@ -14,12 +14,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "benzodiazepine"
+    "Benzodiazepine"
   ],
-  "addictionPotential": "extremely physically and psychologically addictive",
+  "addictionPotential": "Extremely physically and psychologically addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal"
+    "Low toxicity",
+    "Potentially lethal"
   ],
   "categories": [
     "depressant",
@@ -28,7 +28,7 @@
     "habit-forming",
     "common"
   ],
-  "summary": "A long lasting benzodiazepine with heavily hypnotic effects. The safety profile is not well established, and there have been reports that people taking it three days in a row have had a seizure. Most comparable to Triazolam, but with a much longer half-life.",
+  "summary": "A long lasting benzodiazepine with heavily hypnotic effects. The safety profile is not well established, and there have been reports that people taking it three days in a row have had a seizure. Most comparable to Triazolam, but with a much longer time in the body.",
   "interactions": {
     "dangerous": [
       "depressant",
@@ -62,5 +62,7 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Stays in the body for about 3.6 hours and is broken down extensively, coming out mainly as the amino and acetamino forms. The main breakdown products are 7-aminoclonazolam, hydroxyclonazolam and 7-acetaminoclonazolam, and all of them leave in the urine. How much of it spreads through the body is not known.",
+  "metabolismSources": ["https://europepmc.org/article/PMC/9397074"]
 }

@@ -1,0 +1,13 @@
+##### Methyprylon
+# hits: 28
+
+=== Biologic Stress, Oxidative Stress, and Resistance to Drugs: What Is Hidden Behind.
+    Pantelidou M, Tsiakitzis K, Rekka EA, Kourounakis PN.
+    ? 2017 | PMID 28218677 | PMCID PMC6155817 | DOI 10.3390/molecules22020307
+    https://europepmc.org/article/PMC/6155817
+    - According to [ 21 ], the produced stress and the accompanying increased resistance to the toxicant were clear. However, the effect that some steroids had on the plasma concentrations, as well as on the drug excreted in urine was only moderately explained. Therefore, a more detailed research on the molecular mechanism of the increased resistance of the stressed animals has been performed. One of the characteristic manifestations of biologic stress is the great increase of corticosterone plasma concentrations in rats. Thus, corticosterone was administered to rats once, 4 h before the experiment, or once per day for three days, as a simulation of the plasma situation in stressed animals, reducing the response to zoxazolamine, methyprylon, and tetraethylammonium bromide from 16% to 39%. Plasma concentrations of zoxazolamine, methyprylon, and tetraethylammonium bromide after the short treatment were slightly reduced (9%–24%) and this has been attributed to the increased hepatic drug metabolic activity, as shown in the in vitro metabolic experiments, using zoxazolamine, ethylmorphine, hexobarbital, and aniline as substrates [ 9 ].
+
+=== A comparison of the inductive effects of phenobarbital, methaqualone, and methyprylon on hepatic mixed function oxidase enzymes in the rat.
+    Reinke LA, O'Connor MF, Piepho RW, Stohs SJ.
+    ? 1975 | PMID 239443 | DOI -
+    - After 5 days of pretreatment, phenobarbital and methyprylon significantly increased aminopyrine demethylation, aniline hydroxylation, and cytochrome P-450 content in hepatic microsomes.

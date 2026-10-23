@@ -4,8 +4,11 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderately physically and psychologically addictive",
-  "toxicities": ["low toxicity"],
-  "summary": "An atypical antipsychotic medication under the brand name Seroquel. Also used to treat insomnia and mood swings. This drug is very sedating and can stop/slow down psychedelic drug trips. Infrequently abused.",
+  "addictionPotential": "Moderately physically and psychologically addictive",
+  "toxicities": [
+    "Common label-reported effects include somnolence, dizziness, dry mouth, constipation, weight gain, and postural hypotension.",
+    "Serious label warnings include neuroleptic malignant syndrome, tardive dyskinesia, severe hyperglycemia, agranulocytosis, seizures, and QT prolongation reported after overdose or with additional risk factors.",
+    "Somnolence, postural hypotension, and motor or sensory instability can lead to falls, fractures, or other injury; abrupt discontinuation may cause withdrawal symptoms."
+  ],
   "localizedName": "Quetiapine"
 }

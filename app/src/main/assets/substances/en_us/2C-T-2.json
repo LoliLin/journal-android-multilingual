@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["no negative health effects attributed to trying this drug"],
-  "summary": "An unusual psychedelic with similar effects to 2C-B and a slightly longer duration, but maligned because of some deaths in the 2000s. Also similar to 2c-t-7, but with a shorter duration. Potentially unsafe with stimulants and empathogens.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "No negative health effects attributed to trying this drug"
+  ],
   "localizedName": "2C-T-2"
 }

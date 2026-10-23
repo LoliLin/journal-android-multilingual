@@ -1,0 +1,20 @@
+##### Aminorex
+# hits: 87
+
+=== Synthesis and characterization of barbarin, a possible source of unexplained aminorex identifications in forensic science.
+    Machin J, Childers T, Kudrimoti S, Eisenberg R, Fenger C, Hartmann P, Maylin G, Shults T, Tobin T.
+    ? 2020 | PMID 32567235 | DOI 10.1002/dta.2883
+    - Glucobarbarin, found in plants of the Brassicaceae family, has been suggested as a potential proximate chemical source by being metabolized in the plant or the horse to aminorex.
+
+=== Worsening of the Toxic Effects of (±)<i>Cis</i>-4,4'-DMAR Following Its Co-Administration with (±)<i>Trans</i>-4,4'-DMAR: Neuro-Behavioural, Physiological, Immunohistochemical and Metabolic Studies in Mice.
+    Tirri M, Frisoni P, Bilel S, Arfè R, Trapella C, Fantinati A, Corli G, Marchetti B, De-Giorgio F, Camuto C, Mazzarino M, Gaudio RM, Serpelloni G, Schifano F, Botrè F, Marti M.
+    ? 2021 | PMID 34445476 | DOI 10.3390/ijms22168771
+    - Moreover, we investigated the effect of 4,4'-DMAR on the expression of markers of oxidative/nitrosative stress (8-OHdG, iNOS, NT and NOX2), apoptosis (Smac/DIABLO and NF-κB), and heat shock proteins (HSP27, HSP70, HSP90) in the cerebral cortex.
+    - Finally, we investigated the potentially toxic effects of stereoisomer co-administration by studying urinary excretion.
+    - The excretion study showed that the (±) trans stereoisomer reduced the metabolism of the (±) cis form and increased its amount in the urine, possibly reflecting its increased plasma levels and, therefore, the worsening of its toxicity.
+
+=== Effects of cocaine and levamisole (as adulterant) on the isolated perfused Langendorff heart.
+    Gartz A, Pawlik E, Eckhardt J, Ritz-Timme S, Huhn R, Mayer F.
+    ? 2020 | PMID 32377925 | PMCID PMC7417403 | DOI 10.1007/s00414-020-02300-5
+    https://europepmc.org/article/PMC/7417403
+    - Limitations of our study are the rather small number of examined hearts, due to ethical considerations, and the uncertainty regarding the metabolism and the effects of levamisole/aminorex.

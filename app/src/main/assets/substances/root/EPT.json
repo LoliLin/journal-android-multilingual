@@ -1,6 +1,8 @@
 {
   "name": "EPT",
-  "commonNames": ["EPT"],
+  "commonNames": [
+    "EPT"
+  ],
   "url": "https://psychonautwiki.org/wiki/EPT",
   "isApproved": true,
   "tolerance": {
@@ -10,10 +12,26 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "does not produce dependence and has low abuse potential",
-  "toxicities": ["toxic dose is unknown"],
-  "categories": ["psychedelic", "tentative", "research-chemical"],
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Does not produce dependence and has low abuse potential",
+  "toxicities": [
+    "Pharmacological, metabolic and toxicity data for EPT are almost nonexistent."
+  ],
+  "effectsSummary": "EPT effects have not been studied as extensively as many tryptamines and the indexed reports are based on a relatively limited sample; its effects should be treated skeptically.",
+  "dosageRemark": "The archived insufflated table lists no threshold value; light 20-40 mg, moderate 40-80 mg, strong 80-110 mg, heavy 110 mg+; total 2-4 h, onset 5-20 min and afterglow 1-3 h. Educational user/resource compilation, not a recommendation. The page says pharmacological, metabolic and toxicity data are almost nonexistent and effects are based on a relatively limited sample.",
+  "generalRisks": "EPT effects are poorly studied, with limited sample size, and pharmacological, metabolic and toxicity data are almost nonexistent.",
+  "longtermRisks": "Pharmacological, metabolic and toxicity data are almost nonexistent; it provides no established long-term findings.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, given how little is known about the pharmacology, metabolism and toxicity.",
+    "It notes the effect reports are based on a relatively limited sample and may not be predictable."
+  ],
+  "categories": [
+    "psychedelic",
+    "tentative",
+    "research-chemical"
+  ],
   "summary": "Ethylpropyltryptamine a novel tryptamine, that is the structural homologue of DMT.",
   "roas": [
     {

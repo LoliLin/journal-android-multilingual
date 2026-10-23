@@ -14,19 +14,20 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Recreational toxicity and long-term health effects appear unstudied and exact toxic dose is unknown. Informal experiments reportedly found overdose can cause discomfort at doses far below lethal levels, including palpitations, dizziness and sedation, often with substantial anxiety or sleep."
   ],
-  "categories": [
-    "cannabinoid",
-    "research-chemical",
-    "tentative",
-    "habit-forming"
+  "effectsSummary": "The reported subjective effects resemble cannabis but are shorter-lived and emphasize intense bodily sensations; its effects index is based on anecdotal reports and should be treated skeptically.",
+  "dosageRemark": "Archived inhaled dose table: threshold 0.5 mg; light 0.5-1 mg, moderate 1-2 mg, strong 2-4 mg, heavy 4 mg+; total duration 30-60 minutes. Compiled from users/resources for education, not a recommendation. The table gives no separate oral dose values; oral activity in lipids is noted but no route-specific dosage is provided.",
+  "generalRisks": "Chronic synthetic cannabinoid misuse has been associated with multiple serious injuries and deaths and more dangerous adverse effects/toxicity than cannabis. Long-term use may increase risk of mental illness/psychotic disorders, especially with personal or family risk factors; overdose discomfort may occur far below lethal dose.",
+  "longtermRisks": "Long-term health effects have not been studied; it notes chronic synthetic cannabinoid use may increase vulnerability to mental illness and psychotic disorders, especially in those with personal or family risk factors.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, and careful dose measurement is emphasised, because synthetic cannabinoids are active in the milligram range.",
+    "It advises against prolonged or high-dose use and cautions people with severe mental illness risk factors."
   ],
-  "summary": "A synthetic cannabanoid that is a Indazole. Produces subjective effects somehwat similar to that of Cannabis, yet with a very short duration. Analogue of STS-135, in which the core indole structure is subbed with an indazole base.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -47,46 +48,16 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid",
+    "research-chemical",
+    "tentative",
+    "habit-forming"
+  ],
+  "summary": "5F-AKB48 is a synthetic cannabinoid of the indazole class, an analogue of STS-135 in which the core indole structure is replaced with an indazole base. It produces subjective effects somewhat similar to those of cannabis, yet with a very short duration and intense bodily sensations. Toxicity is poorly studied and overdose effects may occur far below lethal doses.",
   "roas": [
     {
       "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 0.5,
-        "commonMin": 1,
-        "strongMin": 2,
-        "heavyMin": 4
-      },
-      "duration": {
-        "onset": {
-          "min": 0,
-          "max": 20,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 10,
-          "max": 30,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 30,
-          "max": 60,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 15,
-          "max": 30,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
       "dose": {
         "units": "mg",
         "lightMin": 0.5,

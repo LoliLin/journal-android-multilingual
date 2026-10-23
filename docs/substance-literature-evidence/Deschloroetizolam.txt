@@ -1,0 +1,14 @@
+##### Deschloroetizolam
+# hits: 9
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.
+
+=== Novel Designer Benzodiazepines: Comprehensive Review of Evolving Clinical and Adverse Effects.
+    Edinoff AN, Nix CA, Odisho AS, Babin CP, Derouen AG, Lutfallah SC, Cornett EM, Murnane KS, Kaye AM, Kaye AD.
+    ? 2022 | PMID 35997362 | PMCID PMC9397074 | DOI 10.3390/neurolint14030053
+    https://europepmc.org/article/PMC/9397074
+    - Deschloroetizolam (2-Ethyl-9-methyl-4-phenyl-6H-thieno[3,2-f][1,2,4]triazolo[4,3-a][1,4]diazepine) is part of the thienodiazepine drug class, which, like benzodiazepines, stimulates GABA-A receptors [ 87 ]. Deschloroetizolam has a rapid onset of action but is thought to be half as potent as its parent compound etizolam with a direction of action that is twice as long [ 89 ]. Although it is used recreationally, very little is known regarding the characteristics of deschloroetizolam aside from what was previously stated in the last sentence. Much of what we know has been gathered from in vitro analyses, recreational user reporting, and autopsies of those who use this drug. An in vitro study was performed to determine metabolites of eight different DBZs and their close relatives, including deschloroetizolam [ 90 ]. The substances were incubated with human liver microsomes and then analyzed using mass spectrometry [ 90 ]. Deschloroetizolam yielded three different metabolites: 2 monohydroxylated metabolites and 1 dihydroxylated metabolite [ 90 ].

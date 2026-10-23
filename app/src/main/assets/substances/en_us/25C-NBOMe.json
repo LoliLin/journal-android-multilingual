@@ -6,8 +6,9 @@
     "halfToleranceInHours": 168,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["fatal at heavy dosages"],
-  "summary": "A relatively new and popular research chemical. A short acting psychedelic related to 2C-C with similar effects to LSD, though more visual with less of a 'head-trip.' Frequently mis-sold as LSD. Causes an uncomfortable body load and has caused several deaths even within regular dose ranges.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Fatal at heavy dosages"
+  ],
   "localizedName": "25C-NBOMe"
 }

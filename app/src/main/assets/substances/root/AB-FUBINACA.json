@@ -13,20 +13,21 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Recreational toxicity and long-term health effects appear unstudied and exact toxic dose is unknown due to very limited human use. Overdose discomfort at doses far below dangerous levels, including palpitations, dizziness, sedation and substantial anxiety or sleep, and notes multiple hospitalisations and deaths associated with use."
   ],
-  "categories": [
-    "cannabinoid",
-    "research-chemical",
-    "habit-forming",
-    "tentative",
-    "common"
+  "effectsSummary": "AB-FUBINACA as a synthetic cannabinoid with cannabis-like effects; the effects index is based on anecdotal reports. Long-term synthetic cannabinoid misuse is associated with more dangerous adverse effects and deaths than cannabis.",
+  "dosageRemark": "The archived inhaled dose table lists threshold below 1 mg; light 1-2 mg, moderate 2-3 mg, strong 3-5 mg, heavy 5 mg+; total 1-2 h, onset 0-20 min, peak 30-60 min, offset 10-20 min, afterglow 15-30 min. Educational user/resource compilation, not a recommendation. Oral activity is mentioned when dissolved in lipids, but no oral dosage table is supplied.",
+  "generalRisks": "Multiple hospitalisations and deaths associated with AB-FUBINACA use. Overdose discomfort may occur far below dangerous doses. Long-term synthetic cannabinoid use may increase mental illness and psychosis risk, especially with personal or family risk factors, and strongly advises against prolonged or high-dose use.",
+  "longtermRisks": "Toxicity and long-term health effects have not been studied. Long-term synthetic cannabinoid use may increase mental illness and psychosis risk, especially with personal/family risk factors; the class is associated with multiple deaths and more dangerous toxicity than cannabis.",
+  "saferUse": [
+    "Harm reduction and independent research are strongly recommended.",
+    "It emphasizes careful measurement because synthetic cannabinoids are active in the milligram range, and advises against prolonged or high-dose use.",
+    "It cautions people with serious mental health conditions or psychosis risk factors."
   ],
-  "summary": "Arguably the most common synthetic cannabinoid, AB-FUBINACA was originally developed by Pfizer as an analgesic, but has since abandoned for medical use. It has since found a following in the RC community, however it's extremely high potency and inclusion in synthetic blends makes it dangerous, and it has killed in overdose. Exercise caution.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -47,6 +48,14 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid",
+    "research-chemical",
+    "habit-forming",
+    "tentative",
+    "common"
+  ],
+  "summary": "AB-FUBINACA is a synthetic cannabinoid with toxicity and long-term effects that FreeODwiki says are unstudied. The page reports hospitalisations and deaths associated with use and warns against prolonged or high-dose exposure.",
   "roas": [
     {
       "name": "inhaled",

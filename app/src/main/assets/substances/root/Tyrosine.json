@@ -15,11 +15,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "dopamine"
+    "Dopamine"
   ],
-  "addictionPotential": "mildly habit forming",
+  "addictionPotential": "Mildly habit forming",
   "toxicities": [
-    "extremely low toxicity"
+    "Extremely low toxicity"
   ],
   "categories": [
     "stimulant"
@@ -75,5 +75,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Tyrosine is one of the 20 standard amino acids used by cells to synthesize proteins. It is a conditionally essential amino acid with a polar side group."
 }

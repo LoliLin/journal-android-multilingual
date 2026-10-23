@@ -1,0 +1,21 @@
+##### Desmethylflunitrazepam
+# hits: 21
+
+=== Differentiation of Therapeutic and Illicit Drug Use via Metabolite Profiling.
+    Stoeva-Grigorova S, Hvarchanova N, Gancheva S, Eftimov M, Georgiev KD, Radeva-Ilieva M.
+    ? 2025 | PMID 41295330 | PMCID PMC12654502 | DOI 10.3390/metabo15110745
+    https://europepmc.org/article/PMC/12654502
+    - Flunitrazepam undergoes metabolic processes of reduction, hydroxylation and N-demethylation yielding 7-aminoflunitrazepam, 3-hydroxyflunitrazepam and N-desmethylflunitrazepam, respectively. The major metabolite, 7-aminoflunitrazepam remains a key biomarker for both therapeutic and illicit use. The detection of 7-aminoflunitrazepam without parent compound indicates prior ingestion, while coexistence of unchanged flunitrazepam implies recent use. Because of its metabolic stability 7-aminoflunitrazepam persists in urine longer than other benzodiazepine metabolites, extending interpretive windows up to several days. It should be noted that genetic polymorphism, drug–drug interactions as well as stability of flunitrazepam during storage may result in large interindividual variability in the toxicological results [ 222 , 223 ]. Additionally, in case of suspicion of a crime, flunitrazepam and 7-aminoflunitrazepam may be detected in hair samples more than 6 months later [ 221 ]. Moreover, knowing the concentration of flunitrazepam and 7-aminoflunitrazepam as well as its parent-to-metabolite concentration ratios in hair samples may be useful for the differentiation of therapeutic drug intake from random ingestion [ 224 ].
+
+=== Metabolites replace the parent drug in the drug arena. The cases of fonazepam and nifoxipam.
+    Katselou M, Papoutsis I, Nikolaou P, Spiliopoulou C, Athanaselis S.
+    ? 2017 | PMID 28127407 | PMCID PMC5214877 | DOI 10.1007/s11419-016-0338-5
+    https://europepmc.org/article/PMC/5214877
+    - Fonazepam (desmethylflunitrazepam) and nifoxipam (3-hydroxy-desmethylflunitrazepam) are two of the metabolites of flunitrazepam that result from the in vivo demethylation of the parent compound followed by 3-hydroxylation of the benzodiazepine ring in the case of nifoxipam [ 9 , 11 – 13 ]. Taking into consideration the structure of nifoxipam, we can also assume that it could be the 3-hydroxy metabolite of fonazepam. Fonazepam can also be a photodecomposition product of flunitrazepam [ 14 ].
+
+=== Metabolic Profile of Flunitrazepam: Clinical and Forensic Toxicological Aspects.
+    Dinis-Oliveira RJ.
+    ? 2017 | PMID 28403803 | DOI 10.2174/1872312811666170407164216
+    - Objective In this work the metabolism of FNZ, and pharmacological- and toxicological-related effects, were fully reviewed.
+    - Methods FNZ and related known metabolizing enzymes and metabolites were searched in books and in PubMed (U.S.
+    - Results Major metabolic pathways include N-demethylation, 3-hydroxylation, nitro-reduction, and further N-acetylation of the amino group, yielding N-desmethylflunitrazepam, 3-hydroxy-flunitrazepam, 7-aminoflunitrazepam, and 7-acetamidoflunitrazepam, respectively.

@@ -1,49 +1,42 @@
 {
   "name": "4-HO-MPT",
-  "commonNames": [
-    "4-HO-MPT",
-    "Meprocin"
-  ],
   "url": "https://psychonautwiki.org/wiki/4-HO-MPT",
-  "isApproved": true,
-  "tolerance": {
-    "full": "almost immediately after ingestion",
-    "half": "3 days",
-    "zero": "7 days",
-    "halfToleranceInHours": 72,
-    "zeroToleranceInHours": 168
-  },
-  "crossTolerances": [
-    "psychedelic"
-  ],
-  "addictionPotential": "not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "The toxicity and long-term health effects of 4-HO-MPT have not been researched and the exact toxic dose is unknown, because its history of human use is very short. Anecdotal evidence from the community suggests that trying it only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed."
+  ],
+  "effectsSummary": "4-HO-MPT within a subjective-effects index built on anecdotal user reports and contributor analysis, to be taken with healthy skepticism, and notes that effects may not occur in a predictable or reliable way, that higher doses are more likely to produce the full spectrum, and that adverse effects become more likely at higher doses, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 10-20 mg, moderate of 20-30 mg, strong of 30-50 mg and heavy of 50 mg or more, with a total duration of 5-7 hours, onset of 20-60 minutes, comeup of 1-2 hours, peak of 2-3 hours, offset of 1-2 hours and afterglow of 2-12 hours; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range.",
+  "generalRisks": "Anecdotal evidence from the community that trying 4-HO-MPT only at low to moderate doses and using it sparingly has no negative health effects, though nothing can be fully guaranteed. It advises independent research before ingestion to make sure combinations of two or more substances are safe, and strongly recommends harm reduction.",
+  "longtermRisks": "The toxicity and long-term health effects of 4-HO-MPT have not been researched.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, as is independent research before ingestion to make sure combinations of two or more substances are safe."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Cannabis",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "stimulant"
+    ],
+    "uncertain": []
+  },
+  "metabolism": "Nothing is known about how 4-HO-MPT is broken down in people. No specific metabolic finding or pathway has been described.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-HO-MPT"
   ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "Psychedelic drug of the tryptamine class. Higher homologue of Psilocin, and is the 4-hydroxy analogue of N-Methyl-N-Propyltryptamine.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-HO-MPT is a psychedelic drug of the tryptamine class, the 4-hydroxy analogue of N-Methyl-N-Propyltryptamine and a higher homologue of psilocin. It has a very short history of human use, and its toxicity and long-term health effects have not been researched. Cannabis may combine with it in unexpectedly strong and unpredictable ways.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 10,
         "commonMin": 20,
         "strongMin": 30,
         "heavyMin": 50

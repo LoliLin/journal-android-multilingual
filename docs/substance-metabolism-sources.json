@@ -13,12 +13,27 @@
       "evidence": "human-material-study"
     },
     {
+      "name": "AH-7921",
+      "sources": ["https://europepmc.org/article/PMC/6193107"],
+      "evidence": "literature"
+    },
+    {
       "name": "Acamprosate",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1cfe4675-766f-4f1a-b1a8-96bbdacfcfa5"
       ],
       "evidence": "product-information",
       "labelDate": "20260714"
+    },
+    {
+      "name": "Acetylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Acrylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
     },
     {
       "name": "Agomelatine",
@@ -34,6 +49,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260827"
+    },
+    {
+      "name": "Amantadine",
+      "sources": ["https://www.medicines.org.uk/emc/product/100952/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Amisulpride",
@@ -84,6 +104,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260818"
+    },
+    {
+      "name": "Atropine",
+      "sources": ["https://www.medicines.org.uk/emc/product/12547/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Baclofen",
@@ -147,6 +172,21 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Butyrfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6212520"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Caffeine",
+      "sources": ["https://www.medicines.org.uk/emc/product/5146/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Camazepam",
+      "sources": ["https://europepmc.org/article/MED/2868575"],
+      "evidence": "literature"
+    },
+    {
       "name": "Carbamazepine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5f9535b1-ff6a-41b3-bbb2-efcf8fbacf4c"
@@ -169,6 +209,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250825"
+    },
+    {
+      "name": "Chloral hydrate",
+      "sources": ["https://www.medicines.org.uk/emc/product/13223/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Chlordiazepoxide",
@@ -210,12 +255,22 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Clonazolam",
+      "sources": ["https://europepmc.org/article/PMC/9397074"],
+      "evidence": "literature"
+    },
+    {
       "name": "Clonidine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=826de1dc-378e-4c90-86d1-e33f7a4248cd"
       ],
       "evidence": "product-information",
       "labelDate": "20260812"
+    },
+    {
+      "name": "Cloniprazepam",
+      "sources": ["https://europepmc.org/article/PMC/5214877"],
+      "evidence": "literature"
     },
     {
       "name": "Clorazepate",
@@ -234,12 +289,22 @@
       "labelDate": "20260511"
     },
     {
+      "name": "Cocaine",
+      "sources": ["https://www.medicines.org.uk/emc/product/3692/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Codeine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40d4a71e-341e-48b3-b925-ba35b7910dff"
       ],
       "evidence": "product-information",
       "labelDate": "20260827"
+    },
+    {
+      "name": "Cyclizine",
+      "sources": ["https://www.medicines.org.uk/emc/product/4318/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Cyclobenzaprine",
@@ -261,6 +326,11 @@
       "name": "Desipramine",
       "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"],
       "evidence": "product-information-or-guideline"
+    },
+    {
+      "name": "Desmethylflunitrazepam",
+      "sources": ["https://europepmc.org/article/MED/28403803"],
+      "evidence": "literature"
     },
     {
       "name": "Desvenlafaxine",
@@ -287,12 +357,27 @@
       "labelDate": "20260701"
     },
     {
+      "name": "Dextromethorphan",
+      "sources": ["https://www.medicines.org.uk/emc/product/1477/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Diazepam",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=260e2041-2bb3-482f-850e-b5d47a7bdbe6"
       ],
       "evidence": "product-information",
       "labelDate": "20260811"
+    },
+    {
+      "name": "Dihydrocodeine",
+      "sources": ["https://www.medicines.org.uk/emc/product/15263/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Diphenhydramine",
+      "sources": ["https://www.medicines.org.uk/emc/product/1476/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Donepezil",
@@ -303,6 +388,11 @@
       "labelDate": "20260818"
     },
     {
+      "name": "Dosulepin",
+      "sources": ["https://www.medicines.org.uk/emc/product/101606/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Doxepin",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=21dc77be-23af-4a1f-b189-dfee8ae2f894"
@@ -311,12 +401,22 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Droperidol",
+      "sources": ["https://www.medicines.org.uk/emc/product/7310/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Duloxetine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00628e5e-4c5b-2573-e063-6294a90a0e3b"
       ],
       "evidence": "product-information",
       "labelDate": "20260820"
+    },
+    {
+      "name": "Ephedrine",
+      "sources": ["https://www.medicines.org.uk/emc/product/9291/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Escitalopram",
@@ -359,6 +459,11 @@
       "labelDate": "20260901"
     },
     {
+      "name": "Ethosuximide",
+      "sources": ["https://www.medicines.org.uk/emc/product/13263/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Etodesnitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38582802/"],
       "evidence": "human-material-study"
@@ -372,12 +477,27 @@
       "labelDate": "20260714"
     },
     {
+      "name": "Fentanyl",
+      "sources": ["https://www.medicines.org.uk/emc/product/15130/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Flunitrazolam",
+      "sources": ["https://europepmc.org/article/MED/30109775"],
+      "evidence": "literature"
+    },
+    {
       "name": "Fluoxetine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=23899405-007b-48d9-82a9-a530b8e90784"
       ],
       "evidence": "product-information",
       "labelDate": "20260820"
+    },
+    {
+      "name": "Flupentixol",
+      "sources": ["https://www.medicines.org.uk/emc/product/996/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Flurazepam",
@@ -399,6 +519,18 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260218"
+    },
+    {
+      "name": "Furanylfentanyl",
+      "sources": ["https://europepmc.org/article/PMC/6461066"],
+      "evidence": "literature"
+    },
+    {
+      "name": "GHB",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=926eb076-a4a8-45e4-91ef-411f0aa4f3ca"
+      ],
+      "evidence": "product-information"
     },
     {
       "name": "Gabapentin",
@@ -464,9 +596,26 @@
       "evidence": "human-material-study"
     },
     {
+      "name": "Hydrocodone",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b7d23ac2-e776-9f62-3290-c64c2d6eb353"
+      ],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Hydromorphone",
+      "sources": ["https://www.medicines.org.uk/emc/product/7686/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Hydroxyzine",
       "sources": ["https://www.medicines.org.uk/emc/product/101010/smpc"],
       "evidence": "product-information-or-guideline"
+    },
+    {
+      "name": "Idebenone",
+      "sources": ["https://www.medicines.org.uk/emc/product/2269/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Iloperidone",
@@ -482,9 +631,21 @@
       "evidence": "product-information-or-guideline"
     },
     {
+      "name": "Isocarboxazid",
+      "sources": ["https://www.medicines.org.uk/emc/product/3731/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Isotonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38582802/"],
       "evidence": "human-material-study"
+    },
+    {
+      "name": "Ketamine",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14e8f864-8b8a-4e7e-8439-e510d3107063"
+      ],
+      "evidence": "product-information"
     },
     {
       "name": "Lacosamide",
@@ -519,6 +680,11 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Levomepromazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/11912/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Levomilnacipran",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f371258d-91b3-4b6a-ac99-434a1964c3af"
@@ -543,6 +709,11 @@
       "labelDate": "20260831"
     },
     {
+      "name": "Lofepramine",
+      "sources": ["https://www.medicines.org.uk/emc/product/13878/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Lofexidine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=77367dfa-434f-4d61-95fe-f0f1628457d1"
@@ -557,6 +728,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260903"
+    },
+    {
+      "name": "Lormetazepam",
+      "sources": ["https://www.medicines.org.uk/emc/product/5270/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Loxapine",
@@ -583,12 +759,32 @@
       "labelDate": "20260901"
     },
     {
+      "name": "MDPV",
+      "sources": ["https://europepmc.org/article/PMC/6212520"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Meclonazepam",
+      "sources": ["https://europepmc.org/article/PMC/9397074"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Melatonin",
+      "sources": ["https://www.medicines.org.uk/emc/product/13628/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Memantine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=007d4cb9-3fa9-40f3-b5ca-4083eccd6038"
       ],
       "evidence": "product-information",
       "labelDate": "20260901"
+    },
+    {
+      "name": "Mephedrone",
+      "sources": ["https://europepmc.org/article/MED/40806784"],
+      "evidence": "literature"
     },
     {
       "name": "Methadone",
@@ -607,12 +803,22 @@
       "labelDate": "20260727"
     },
     {
+      "name": "Methoxetamine",
+      "sources": ["https://europepmc.org/article/PMC/9028227"],
+      "evidence": "literature"
+    },
+    {
       "name": "Methylphenidate",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=768bf181-d0d8-49e5-9c87-cacbb069e0b2"
       ],
       "evidence": "product-information",
       "labelDate": "20260827"
+    },
+    {
+      "name": "Metizolam",
+      "sources": ["https://europepmc.org/article/MED/27671107"],
+      "evidence": "literature"
     },
     {
       "name": "Metonitazene",
@@ -662,6 +868,13 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Morphine",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c354b3bf-86c0-4bb8-8b1f-be2164942698"
+      ],
+      "evidence": "product-information"
+    },
+    {
       "name": "Nalmefene",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a59a5847-9fe4-4341-a203-be0a5e6d3e36"
@@ -684,6 +897,26 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250904"
+    },
+    {
+      "name": "Nicotine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8534/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Nifoxipam",
+      "sources": ["https://europepmc.org/article/MED/27071765"],
+      "evidence": "literature"
+    },
+    {
+      "name": "Nitrazepam",
+      "sources": ["https://www.medicines.org.uk/emc/product/3901/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Norflurazepam",
+      "sources": ["https://europepmc.org/article/MED/30578721"],
+      "evidence": "literature"
     },
     {
       "name": "Nortriptyline",
@@ -723,12 +956,24 @@
       "labelDate": "20260826"
     },
     {
+      "name": "Oxycodone",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bfdfe235-d717-4855-a3c8-a13d26dadede"
+      ],
+      "evidence": "product-information"
+    },
+    {
       "name": "Paliperidone",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bbbaa057-f587-4eb9-a0d2-463dbcd57661"
       ],
       "evidence": "product-information",
       "labelDate": "20260728"
+    },
+    {
+      "name": "Paracetamol",
+      "sources": ["https://www.medicines.org.uk/emc/product/100694/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Paroxetine",
@@ -755,12 +1000,22 @@
       "labelDate": "20260827"
     },
     {
+      "name": "Pethidine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8941/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Phenelzine",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fa041652-fdde-4794-a8d2-279dd309e075"
       ],
       "evidence": "product-information",
       "labelDate": "20260521"
+    },
+    {
+      "name": "Phenobarbital",
+      "sources": ["https://www.medicines.org.uk/emc/product/4920/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Phenytoin",
@@ -787,12 +1042,32 @@
       "labelDate": "20260710"
     },
     {
+      "name": "Piracetam",
+      "sources": ["https://www.medicines.org.uk/emc/product/101129/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Pregabalin",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e897d7e8-2743-4512-8417-375cb11ceec6"
       ],
       "evidence": "product-information",
       "labelDate": "20260903"
+    },
+    {
+      "name": "Primidone",
+      "sources": ["https://www.medicines.org.uk/emc/product/14779/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Procyclidine",
+      "sources": ["https://www.medicines.org.uk/emc/product/8488/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Promazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/101928/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Propofol",
@@ -811,9 +1086,24 @@
       "labelDate": "20260903"
     },
     {
+      "name": "Protodesnitazene",
+      "sources": ["https://europepmc.org/article/PMC/11169013"],
+      "evidence": "literature"
+    },
+    {
       "name": "Protonitazene",
       "sources": ["https://pubmed.ncbi.nlm.nih.gov/38679851/"],
       "evidence": "human-material-study"
+    },
+    {
+      "name": "Pseudoephedrine",
+      "sources": ["https://www.medicines.org.uk/emc/product/6199/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Psilocin",
+      "sources": ["https://europepmc.org/article/PMC/13281395"],
+      "evidence": "literature"
     },
     {
       "name": "Quazepam",
@@ -924,6 +1214,11 @@
       "labelDate": "20260427"
     },
     {
+      "name": "Sufentanil",
+      "sources": ["https://www.medicines.org.uk/emc/product/13984/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Sulpiride",
       "sources": ["https://www.medicines.org.uk/emc/product/2430/smpc"],
       "evidence": "product-information-or-guideline"
@@ -935,6 +1230,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20250310"
+    },
+    {
+      "name": "Tapentadol",
+      "sources": ["https://www.medicines.org.uk/emc/product/12658/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Tasimelteon",
@@ -951,6 +1251,11 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260810"
+    },
+    {
+      "name": "Thiopental",
+      "sources": ["https://www.medicines.org.uk/emc/product/665/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Thioridazine",
@@ -990,6 +1295,11 @@
       "labelDate": "20260901"
     },
     {
+      "name": "Tranylcypromine",
+      "sources": ["https://www.medicines.org.uk/emc/product/14428/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Trazodone",
       "sources": [
         "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4672f8af-93e6-469a-a7b7-41cee7d4d193"
@@ -1006,9 +1316,24 @@
       "labelDate": "20260710"
     },
     {
+      "name": "Trifluoperazine",
+      "sources": ["https://www.medicines.org.uk/emc/product/101101/smpc"],
+      "evidence": "product-information"
+    },
+    {
       "name": "Trimipramine",
       "sources": ["https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"],
       "evidence": "product-information-or-guideline"
+    },
+    {
+      "name": "U-47700",
+      "sources": ["https://europepmc.org/article/PMC/10053220"],
+      "evidence": "literature"
+    },
+    {
+      "name": "U-49900",
+      "sources": ["https://europepmc.org/article/PMC/6609355"],
+      "evidence": "literature"
     },
     {
       "name": "Valproic acid",
@@ -1097,6 +1422,16 @@
       ],
       "evidence": "product-information",
       "labelDate": "20260818"
+    },
+    {
+      "name": "Zopiclone",
+      "sources": ["https://www.medicines.org.uk/emc/product/101311/smpc"],
+      "evidence": "product-information"
+    },
+    {
+      "name": "Zuclopenthixol",
+      "sources": ["https://www.medicines.org.uk/emc/product/11789/smpc"],
+      "evidence": "product-information"
     },
     {
       "name": "Zuranolone",
@@ -1194,14 +1529,12 @@
     "A-PVT",
     "AB-CHMINACA",
     "AET",
-    "AH-7921",
     "ALEPH-2",
     "AM-2201",
     "Acepromazine",
     "Acetophenazine",
     "Acetylcarnitine",
     "Acetylglycinamide chloral hydrate",
-    "Acrylfentanyl",
     "Adinazolam",
     "Afloqualone",
     "Alaproclate",
@@ -1245,11 +1578,9 @@
     "Butobarbital",
     "Butorphanol",
     "Butriptyline",
-    "Butyrfentanyl",
     "CRL-40-940",
     "CRL-40-941",
     "Calcium carbimide",
-    "Camazepam",
     "Captodiame",
     "Carbromal",
     "Carisbamate",
@@ -1257,7 +1588,6 @@
     "Cathinone",
     "Changa",
     "Chloral betaine",
-    "Chloral hydrate",
     "Chloralodol",
     "Chloroform",
     "Chlorproethazine",
@@ -1265,7 +1595,6 @@
     "Cinolazepam",
     "Clobenzorex",
     "Clomethiazole",
-    "Cloniprazepam",
     "Clonitazene",
     "Clopenthixol",
     "Clotiapine",
@@ -1273,7 +1602,6 @@
     "Cloxazolam",
     "Coronaridine",
     "Cyamemazine",
-    "Cyclizine",
     "Cyclo-Methiodrone",
     "Cyclobarbital",
     "Cyclopentyl-Fentanyl",
@@ -1290,7 +1618,6 @@
     "Delorazepam",
     "Delta-8-THC",
     "Deoxymethoxetamine",
-    "Desmethylflunitrazepam",
     "Dexetimide",
     "Dexfenfluramine",
     "Dextromoramide",
@@ -1309,17 +1636,14 @@
     "Disulfiram",
     "Dixyrazine",
     "Dizocilpine",
-    "Dosulepin",
     "Doxefazepam",
     "Doxylamine",
-    "Droperidol",
     "Emylcamate",
     "Etallobarbital",
     "Ethadione",
     "Ethaqualone",
     "Ethchlorvynol",
     "Ethketamine",
-    "Ethosuximide",
     "Ethotoin",
     "Ethyl loflazepate",
     "Ethylamphetamine",
@@ -1335,12 +1659,10 @@
     "Fluclotizolam",
     "Fludiazepam",
     "Fluorolintane",
-    "Flupentixol",
     "Fluphenazine",
     "Fluspirilene",
     "Flutazolam",
     "Flutoprazepam",
-    "Furanylfentanyl",
     "G-130",
     "GABA",
     "Gedocarnil",
@@ -1358,7 +1680,6 @@
     "Huperzine A",
     "Hydromethylthionine",
     "Ibotenic acid",
-    "Idebenone",
     "Imipramine oxide",
     "Indapex",
     "Indapyrophenidone",
@@ -1366,7 +1687,6 @@
     "Iprindole",
     "Iproclozide",
     "Iproniazide",
-    "Isocarboxazid",
     "Isomethadone",
     "Isophenmetrazine",
     "Isoproscaline",
@@ -1377,14 +1697,11 @@
     "Khat",
     "Lavender oil",
     "Levacetylmethadol",
-    "Levomepromazine",
     "Levomethadone",
     "Levosulpiride",
     "Linopirdine",
-    "Lofepramine",
     "Loprazolam",
     "Lorcaserin",
-    "Lormetazepam",
     "MBDB",
     "MBZP",
     "MDOH",
@@ -1397,7 +1714,6 @@
     "Mazindol",
     "Mebroqualone",
     "Mebutamate",
-    "Meclonazepam",
     "Medazepam",
     "Medifoxamine",
     "Mefenorex",
@@ -1442,12 +1758,10 @@
     "Nimetazepam",
     "Nitemazepam",
     "Nitracaine",
-    "Nitrazepam",
     "Nitrazolam",
     "Nizofenone",
     "Nomifensine",
     "Nordazepam",
-    "Norflurazepam",
     "Ondelopran",
     "Opipramol",
     "Opium",
@@ -1488,11 +1802,8 @@
     "Piritramide",
     "Pivagabine",
     "Prazepam",
-    "Primidone",
-    "Procyclidine",
     "Profenamine",
     "Progabide",
-    "Promazine",
     "Propentofylline",
     "Propiomazine",
     "Propylphenidate",
@@ -1525,7 +1836,6 @@
     "Tetrahydrofuran-Fentanyl",
     "Tetrazepam",
     "Theobromine",
-    "Thiopental",
     "Thiopropamine",
     "Thiopropazate",
     "Thioproperazine",
@@ -1537,16 +1847,13 @@
     "Tolibut",
     "Tolonidine",
     "Toloxatone",
-    "Tranylcypromine",
     "Triclofos",
-    "Trifluoperazine",
     "Trifluperidol",
     "Triflupromazine",
     "Trimethadione",
     "Troparil",
     "Tropatepine",
     "Tryptophan",
-    "U-49900",
     "U-51754",
     "Valerian",
     "Valerylfentanyl",
@@ -1560,7 +1867,6 @@
     "Zimeldine",
     "Zolazepam",
     "Zotepine",
-    "Zuclopenthixol",
     "Βk-2C-I",
     "Βk-IVP"
   ]

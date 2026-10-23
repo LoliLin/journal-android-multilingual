@@ -25,13 +25,13 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "potentially fatal at heavy dosages",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines",
-    "unintentionally transporting the substance from the skin by touching the mouth, nose or eyes is dangerous"
+    "Potentially fatal at heavy dosages",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines",
+    "Unintentionally transporting the substance from the skin by touching the mouth, nose or eyes is dangerous"
   ],
   "categories": [
     "opioid",
@@ -39,10 +39,10 @@
     "depressant",
     "common"
   ],
-  "summary": "Fentanyl is a synthetic opiate analgesic with a rapid onset and short duration of action. It is a strong agonist at the μ-opioid receptors and is historically used to treat breakthrough pain. Fentanyl is approximately 100 times more potent than Morphine, and is commonly used as a patch. Sometimes used as an adulterant for heroin, which has led to many overdose deaths.",
+  "summary": "Fentanyl is a synthetic opiate analgesic with a rapid onset and short duration of action. It is a strong agonist at the μ-opioid receptors and is historically used to treat breakthrough pain. Fentanyl is about 100 times more potent than Morphine, and is commonly used as a patch. Sometimes used as an adulterant for heroin, which has led to many overdose deaths.",
   "effectsSummary": "Fentanyl has a strong analgesic and sedative effect and is effective in the smallest doses. However, its euphoric effect is less pronounced than that of other opioids. It is used in emergency medicine for surgical procedures and anesthesia, and for breakthrough pain in cancer patients. For chronic pain, fentanyl patches are used, which release the active ingredient slowly. Due to its opioid properties, fentanyl rapidly leads to dependence when taken over a long period of time and should not be discontinued abruptly and only under medical supervision.",
   "dosageRemark": "Fentanyl is extremely potent and therefore very difficult to dose. Therefore, overdoses can easily occur. When consuming for the first time, low doses should be used, as the risk of respiratory arrest is increased.",
-  "generalRisks": "The side effects are strongly dose-dependent. As the dose increases, the side effects also become more pronounced. At the beginning there is often drowsiness, dizziness, dizziness, pupil constriction, slowed heartbeat, drop in blood pressure, nausea and vomiting.\nExcessive sweating, rashes, itching, central dullness, confusion, visual disturbances, cardiac arrhythmias, respiratory reflex depression and urinary retention may also occur.\nOverdoses with fentanyl are life-threatening because the substance, like all opioids, slows down breathing, even to the point of respiratory arrest and coma.",
+  "generalRisks": "The side effects are strongly dose-dependent. As the dose increases, the side effects also become more pronounced. At the beginning there is often drowsiness, dizziness, dizziness, pupil constriction, slowed heartbeat, drop in blood pressure, nausea and vomiting. Excessive sweating, rashes, itching, central dullness, confusion, visual disturbances, cardiac arrhythmias, respiratory reflex depression and urinary retention may also occur. Overdoses with fentanyl are life-threatening because the substance, like all opioids, slows down breathing, even to the point of respiratory arrest and coma.",
   "longtermRisks": "Regular, abusive use of fentanyl can lead to dependence with severe withdrawal symptoms such as seizures, sleep disorders and depression. Withdrawal, as with all opioids, should not be abrupt and should only take place under medical supervision.",
   "saferUse": [
     "Opioids are highly effective drugs that should only be used for a limited time and at best under medical supervision.",
@@ -146,5 +146,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Very fat soluble, and absorbed very fast through the lining of the mouth and more slowly through the gut; swallowed fentanyl is broken down heavily by the liver and the gut on the way. The Abstral tablet dissolves quickly under the tongue, with most of the absorption done in about 30 minutes, and 54% of the dose reaches the blood. About 80-85% of fentanyl sticks to blood proteins, mainly alpha1-glycoprotein, and it spreads through the body at 3-6 l/kg. CYP3A4 does most of the breaking down, producing a number of breakdown products with no effect, among them norfentanyl. After a fentanyl injection, around 75% of the dose comes out in the urine within 72 hours, mostly as breakdown products, with under 10% unchanged; about 9% comes out in the faeces, also mostly as breakdown products. The body clears it at about 0.5 l/h/kg. After an Abstral tablet it stays in the body for about 7 hours (3-12.5 hours), and the tail end lasts about 20 hours (11.5-25 hours).",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/15130/smpc"]
 }

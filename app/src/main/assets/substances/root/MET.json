@@ -1,28 +1,103 @@
 {
   "name": "MET",
-  "commonNames": [
-    "MET",
-    "Methylethyltryptamine"
-  ],
   "url": "https://psychonautwiki.org/wiki/MET",
-  "isApproved": true,
-  "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "无成瘾性",
   "toxicities": [
-    "toxic dose is unknown"
+    "MET 娱乐性毒性和长期影响似乎未在科学背景下研究，因人类使用史短而确切毒性剂量未知；页面建议采取伤害减少措施。"
   ],
-  "categories": [
-    "psychedelic",
-    "research-chemical",
-    "tentative"
+  "dosageRemark": "The user and resource table lists thresholds of 10 mg smoked, 40 mg oral, and 5 mg insufflated; the light bands begin at 20 mg, 60 mg and 10 mg respectively. Freebase and fumarate reports differ: fumarate smoked or vaporized at 15-65 mg and oral at 80-110 mg are said to produce effects. Data on human pharmacology and toxicity are very limited, and these figures are educational reports, not dosing advice.",
+  "generalRisks": "MET 研究不足、人类使用史短，可能出现不可预测的不良效应；确切毒性剂量未知。",
+  "longtermRisks": "MET 娱乐性使用的毒性和长期健康影响尚未在科学背景下研究。",
+  "saferUse": [
+    "Precautions and harm reduction are strongly recommended for this poorly studied substance. The dose table is educational user and resource material and should be checked against other sources."
   ],
-  "summary": "A rare psychedelic tryptamine, related to DMT and DET. Little information exists about the effects or pharmacology of this drug.",
+  "summary": "MET (N-ethyl-N-methyltryptamine) is a tryptamine psychedelic. Short-lived effects and reports smoked, oral, and insufflated user-dose tables, while emphasizing that human pharmacology and toxicity data are very limited.",
+  "localizedName": "MET",
   "roas": [
+    {
+      "name": "smoked",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 40,
+        "strongMin": 60,
+        "heavyMin": 90
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "seconds"
+        },
+        "peak": {
+          "min": 10,
+          "max": 20,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 20,
+          "max": 40,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 30,
+          "max": 75,
+          "units": "minutes"
+        }
+      }
+    },
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 60,
+        "commonMin": 120,
+        "strongMin": 150,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 90,
+          "max": 150,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 180,
+          "units": "minutes"
+        },
+        "afterglow": {
+          "min": 360,
+          "max": 1440,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 240,
+          "max": 360,
+          "units": "minutes"
+        }
+      }
+    },
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 10,
         "commonMin": 20,
         "strongMin": 25,
         "heavyMin": 35
@@ -39,139 +114,23 @@
           "units": "minutes"
         },
         "peak": {
-          "min": 1,
-          "max": 1.5,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 2.5,
-          "units": "hours"
-        },
-        "total": {
-          "min": 2,
-          "max": 4,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 4,
-          "max": 12,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "oral",
-      "dose": {
-        "units": "mg",
-        "lightMin": 40,
-        "commonMin": 120,
-        "strongMin": 150,
-        "heavyMin": 200
-      },
-      "duration": {
-        "onset": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "comeup": {
-          "min": 30,
-          "max": 60,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 1.5,
-          "max": 2.5,
-          "units": "hours"
-        },
-        "offset": {
-          "min": 1,
-          "max": 3,
-          "units": "hours"
-        },
-        "total": {
-          "min": 4,
-          "max": 6,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 6,
-          "max": 24,
-          "units": "hours"
-        }
-      }
-    },
-    {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 10,
-        "commonMin": 40,
-        "strongMin": 60,
-        "heavyMin": 90
-      },
-      "duration": {
-        "onset": {
-          "min": 30,
-          "max": 60,
-          "units": "seconds"
-        },
-        "peak": {
-          "min": 10,
-          "max": 20,
+          "min": 60,
+          "max": 90,
           "units": "minutes"
         },
         "offset": {
-          "min": 20,
-          "max": 40,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 30,
-          "max": 75,
+          "min": 60,
+          "max": 150,
           "units": "minutes"
         },
         "afterglow": {
-          "min": 20,
-          "max": 60,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
-      "dose": {
-        "units": "mg",
-        "lightMin": 10,
-        "commonMin": 40,
-        "strongMin": 60,
-        "heavyMin": 90
-      },
-      "duration": {
-        "onset": {
-          "min": 30,
-          "max": 60,
-          "units": "seconds"
-        },
-        "peak": {
-          "min": 10,
-          "max": 20,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 20,
-          "max": 40,
+          "min": 240,
+          "max": 720,
           "units": "minutes"
         },
         "total": {
-          "min": 30,
-          "max": 75,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 20,
-          "max": 60,
+          "min": 120,
+          "max": 240,
           "units": "minutes"
         }
       }

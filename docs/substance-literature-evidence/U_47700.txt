@@ -1,0 +1,21 @@
+##### U-47700
+# hits: 58
+
+=== Metabolic Evaluation of Synthetic Opioids on the Example of U-47700 with the Use of In Vitro and In Vivo Methods for Forensic Toxicology Application.
+    Rojek S, Poljańska E, Chaim W, Maciów-Głąb M, Bystrowska B.
+    ? 2023 | PMID 36976985 | PMCID PMC10053220 | DOI 10.3390/toxics11030220
+    https://europepmc.org/article/PMC/10053220
+    - To date, no detailed pharmacokinetic studies have been performed on U-47700, and the only available data come from the analysis of autopsy material and laboratory experiments. Four metabolites were identified in in vitro studies using human liver microsomes: N -desmethyl-U-47700 (M1), N , N -didesmethyl-U-47700 (M2), hydroxy- N -desmethyl-U-47700 (M3), and hydroxy- N , N -didesmethyl-U-47700 (M4). When comparing the results obtained with urine samples from poisoning victims, all of the metabolites (M1–M4) were observed, although only M1 and M2 were quantified (due to the lack of commercial standards of hydroxylation products) [ 8 ]. Recently, an in vivo study was also attempted in rats, again demonstrating the presence of U-47700 and its metabolites M1 and M2. The rats were administered three doses (0.3, 1 and 3.0 mg/kg) of U-47700. The dose and time-dependent concentration of metabolites were as follows: U-47700 dominated in the initial phase of the experiment and then decreased, inversely proportional to the concentration of metabolites. Halfway through the experiment’s duration (t = 480 min), N -desmethyl derivatives dominated; thus, at the end of the provided time, the concentration of the N , N -didesmethyl derivative increased [ 6 ].
+    - On the basis of the above experiences and observations, it can be seen that the basic reactions occurring during metabolic transformations of U-47700 are demethylation and hydroxylation; however, it is not known yet which cytochrome isoforms are responsible for these transformations, and phase II metabolism has not yet been studied.
+    - The in silico evaluation included data analysis using the ADMET predictor (version 10.4.0.5; Simulations Plus, Inc.; Lancaster, CA, USA) software. Figure 1 shows the proposed U-47700 biotransformation pathways along with the percentage indicated by the program for a specific metabolite. An in silico study was performed as an introductory study for the actual U-47700 biotransformation study using microsomes, S9 fractions and hepatocytes. The ADMET Predictor program was used to determine the pathway of the first phase of the U-47700 metabolism.
+
+=== Intoxications involving methoxyacetylfentanyl and U-47700: a study of 3 polydrug fatalities.
+    Giorgetti A, Große Perdekamp M, Franchetti G, Pircher R, Pollak S, Pelotti S, Auwärter V.
+    ? 2024 | PMID 38831139 | PMCID PMC11306479 | DOI 10.1007/s00414-024-03263-7
+    https://europepmc.org/article/PMC/11306479
+    - Given the availability of samples collected at the hospital, it was possible to estimate that U-47700 decreased to half of the initial concentration within 5.5 h, showing a serum to urine ratio of 2:1. An elimination half-life of 5.5 h is close to the finding in another case-report, where a half-life of 6 h was reported [ 17 ]. Nevertheless, poor hepatic and renal function, as shown by blood test and by post-mortem findings (signs of chronic kidney failure) might have influenced the elimination in our case. For what concerns the detection of U-47700 in post-mortem blood 9 days after the consumption (considering the 7 days of hospitalization + 2 days post-mortem interval), poor clearance, enterohepatic circulation and/or accumulation in tissues, e.g. fat tissue, as observed in pig models [ 34 ], with later redistribution to the vascular compartments are conceivable. However, the storage of the body in a refrigerated environment could also have prolonged the detection time of the NSO, since U-47700 appears rather stable up to 10 days under refrigeration [ 35 ].
+
+=== Development of a vaccine against the synthetic opioid U-47700.
+    Park H, Lin M, Zhou J, Eubanks LM, Zhou B, Janda KD.
+    ? 2023 | PMID 37492086 | DOI 10.3389/fphar.2023.1219985
+    - Conjugate vaccines that can produce antibodies against target drug molecules have emerged as a promising tool to treat substance use disorders.

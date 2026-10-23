@@ -129,6 +129,28 @@ class TestSearchAndPresets {
         assertEquals(listOf(psilocybin, lsd, dmt), sorted)
     }
 
+    @Test
+    fun substanceFileIndexesCategoriesAndPrecomputesSubstancesWithCategories() {
+        val cat1 = Category("psychedelic", "Desc", null, Color.Red)
+        val cat2 = Category("common", "Desc", null, Color.Blue)
+        val sub1 = dummySubstance("LSD").copy(categories = listOf("psychedelic", "common"))
+        val sub2 = dummySubstance("Caffeine").copy(categories = listOf("common"))
+
+        val substanceFile = com.isaakhanimann.journal.data.substances.classes.SubstanceFile(
+            categories = listOf(cat1, cat2),
+            substances = listOf(sub1, sub2)
+        )
+
+        assertEquals(cat1, substanceFile.categoriesMap["psychedelic"])
+        assertEquals(cat2, substanceFile.categoriesMap["common"])
+        assertEquals(null, substanceFile.categoriesMap["unknown"])
+
+        val withCats = substanceFile.allSubstancesWithCategories
+        assertEquals(2, withCats.size)
+        assertEquals(listOf(cat1, cat2), withCats[0].categories)
+        assertEquals(listOf(cat2), withCats[1].categories)
+    }
+
     private fun dummySubstance(
         name: String,
         localizedName: String? = null,

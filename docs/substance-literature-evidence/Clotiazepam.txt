@@ -1,0 +1,15 @@
+##### Clotiazepam
+# hits: 28
+
+=== Frequencies of CYP2B6<sup>∗</sup>4,<sup>∗</sup>5, and <sup>∗</sup>6 Alleles within an Iranian Population (Mazandaran).
+    Hashemi-Soteh MB, Hosseini E, Fazelnia S, Ghasemian-Sorbeni F, Madahian S, Shiran MR.
+    ? 2021 | PMID 34949964 | PMCID PMC8660211 | DOI 10.1155/2021/8703812
+    https://europepmc.org/article/PMC/8660211
+    - Interestingly, CYP2B6 ∗ 4, emerged by a gain of function mutation, is relevant to high level of gene expression and may lead to a moderate substrate-dependent effects. As a result, a disruption occurs in the hydroxylation process in the metabolism of some relevant drugs such as bupropion, efavirenz, propofol, and clotiazepam [ 5 ]. A relatively low prevalence for ∗ 4 allele in different populations was demonstrated by previous investigations. This allele frequency was reported 5% in Germany [ 41 ], 2.2% in Caucasian in New Zealand, 3.3% in Chinese, and 6% in United States, respectively [ 42 – 45 ]. The results of current research showed a frequency of 34.60% for the CYP2B6 ∗ 4 minor allele (G) ( Table 3 ), which is significantly higher than its frequency in other parts of the world. Table 4 provides the frequency of some other relevant studies from different countries.
+
+=== Contribution of human hepatic cytochrome p450 isoforms to the metabolism of psychotropic drugs.
+    Niwa T, Shiraga T, Ishii I, Kagayama A, Takagi A.
+    ? 2005 | PMID 16141545 | DOI 10.1248/bpb.28.1711
+    - Among the recombinant CYPs, CYP3A4 exhibited the highest metabolic activities of all compounds except for clotiazepam and imipramine.
+    - The metabolism of clotiazepam was catalyzed by CYP2B6, CYP3A4, CYP2C18, and CYP2C19, and imipramine was metabolized by CYP2D6 most efficiently.
+    - In addition, the metabolic activities of diazepam, clotiazepam, and etizolam in human liver microsomes were inhibited by 2.5 microM ketoconazole, a CYP3A4 inhibitor, by 97.5%, 65.1%, and 83.5%, respectively, and the imipramine metabolism was not detected after the addition of 1 or 10 microM quinidine, a CYP2D6 inhibitor.

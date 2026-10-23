@@ -12,15 +12,17 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [],
-  "addictionPotential": "non-addictive with a low abuse potential",
+  "addictionPotential": "Non-addictive with a low abuse potential",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
-  "categories": [
-    "psychedelic",
-    "common"
+  "effectsSummary": "Reported LSA experiences are often sedating/dreamlike, with mild-to-moderate and inconsistent psychedelic effects, prominent physical/cognitive effects and sometimes severe nausea. It cautions seed experiences may involve multiple alkaloids, not LSA alone.",
+  "dosageRemark": "The seed tables are not standardized LSA doses. Morning glory seeds are listed as threshold 20-50 seeds/1.5 g, light 50-100 seeds/1.5-3 g, moderate 100-250 seeds/3-6 g, strong 250-400 seeds/6-10 g, heavy 400+/10 g+; Hawaiian baby woodrose seeds are separately listed as threshold 1-3, light 3-5, moderate 5-7, strong 7-12, heavy 12+ seeds. No standardized pure-LSA oral or sublingual dose is given, so no numeric route dose is encoded. This is educational user and resource information, not a recommendation.",
+  "generalRisks": "Nausea, bodily discomfort, strong vasoconstriction and variable blood-pressure effects; seed experiences may reflect mixtures of alkaloids rather than LSA alone. Severe anxiety, paranoia or psychosis may occur, especially with predisposition.",
+  "saferUse": [
+    "Starting low is recommended, because seed alkaloid content and individual sensitivity vary, and harm reduction is recommended.",
+    "Seed counts are not standardized pure-LSA doses; the page gives no sublingual dose table."
   ],
-  "summary": "A chemical found in Morning Glory and Hawaiian Baby Woodrose seeds, which are often legally available. Has mental effects similar to LSD, although with almost no visual effects. It is famous for being very nauseating, and for causing excessive time dilation at higher doses.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -33,26 +35,14 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "common"
+  ],
+  "summary": "A chemical found in Morning Glory and Hawaiian Baby Woodrose seeds, which are often legally available. Has mental effects similar to LSD, although with almost no visual effects. It is famous for being very nauseating, and for causing excessive time dilation at higher doses.",
   "roas": [
     {
-      "name": "oral",
-      "dose": {
-        "units": "seeds",
-        "lightMin": 20,
-        "commonMin": 100,
-        "strongMin": 250,
-        "heavyMin": 400
-      }
-    },
-    {
-      "name": "sublingual",
-      "dose": {
-        "units": "seeds",
-        "lightMin": 1,
-        "commonMin": 5,
-        "strongMin": 7,
-        "heavyMin": 12
-      }
+      "name": "oral"
     }
   ]
 }

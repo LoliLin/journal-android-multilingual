@@ -11,8 +11,50 @@
     "ssri"
   ],
   "isApproved": false,
-  "metabolism": "Hepatic demethylation, involving CYP2D6 and other pathways, produces active norfluoxetine. Both persist for a long time and undergo further metabolism before predominantly renal elimination of metabolites.",
+  "metabolism": "Hepatic demethylation, involving CYP2D6 and other pathways, produces active norfluoxetine. Both persist for a long time and undergo further metabolism before mostly renal elimination of metabolites.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=23899405-007b-48d9-82a9-a530b8e90784"
-  ]
+  ],
+  "summary": "Fluoxetine is a selective serotonin reuptake inhibitor (SSRI) antidepressant used to treat major depressive disorder, anxiety disorders, obsessive-compulsive disorder, panic disorder, premenstrual dysphoric disorder, and bulimia nervosa.",
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "toxicities": [
+    "DailyMed warnings include suicidal thoughts/behavior (higher risk in children, adolescents, and young adults), serotonin syndrome, seizures, abnormal bleeding, SIADH-associated hyponatremia, QT prolongation and ventricular arrhythmias including torsades, mania/hypomania, and angle-closure glaucoma in susceptible patients.",
+    "Commonly reported adverse effects in the cited capsule label include anxiety/insomnia and appetite or weight changes."
+  ],
+  "generalRisks": "The label is for oral fluoxetine capsules (updated 2023-11-28). About suicidality, serotonin syndrome, QT prolongation/ventricular arrhythmias, seizures, bleeding, hyponatremia, mania/hypomania and angle-closure glaucoma. Fluoxetine has long washout constraints around MAOIs; label-specific interactions and formulation limits matter.",
+  "saferUse": [
+    "Seek urgent medical care for suspected serotonin syndrome (agitation or confusion with fever, sweating, tremor, rigidity, or seizure), fainting/palpitations, or suspected overdose.",
+    "Monitor for worsening mood or suicidal thoughts, particularly in younger patients and after changes; tell a clinician about seizures, bipolar history, heart rhythm/QT risks, or narrow-angle glaucoma.",
+    "Do not combine with MAOIs; follow the specific label washout periods and check before using serotonergic medicines, pimozide, thioridazine, or drugs affecting bleeding."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "linezolid",
+      "methylene blue",
+      "pimozide",
+      "thioridazine"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "triptan",
+      "tricyclic antidepressant",
+      "fentanyl",
+      "lithium",
+      "tramadol",
+      "buspirone",
+      "amphetamine",
+      "St. John’s Wort",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "anticoagulant"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is a prescription oral capsule label. Its therapeutic regimens are not recreational dose guidance; no recreational threshold or duration is established here."
 }

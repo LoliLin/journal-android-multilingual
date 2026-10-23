@@ -1,0 +1,20 @@
+##### Flualprazolam
+# hits: 24
+
+=== Forensic toxicology of benzodiazepines: neuropharmacological effects, analytical challenges, and emerging detection strategies.
+    Irfan Thalib H, Damanhory AA, Hanin Shaikh A, Haidar S, Khan S, Jamal A, Abdelghany OA.
+    ? 2025 | PMID 41079395 | PMCID PMC12507772 | DOI 10.3389/ftox.2025.1639890
+    https://europepmc.org/article/PMC/12507772
+    - A few DBZDs used in crimes include clonazolam, diclazepam, etizolam, flualprazolam, flubromazepam, and phenazepam. Clonazolam found as a candy-like pill (half-life: 3.6 h) is more potent than alprazolam, while flualprazolam (half-life: 9.5–12 h) has increased sedation and overdose risk. DBZDs such as etizolam are undetectable by standard immunoassays, which require advanced.Liquid Chromatography–Tandem Mass Spectrometry (LC-MS/MS) for identification ( Wilde et al., 2021 ). Their rapid metabolism and lack of clinical data pose unprecedented challenges in forensic investigations.Several designer analogues are not reliably detected by routine immunoassays; LC–MS/MS or adapted GC–MS protocols are needed to avoid under-ascertainment in DFC cases.
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.
+
+=== Interpol review of toxicology 2019-2022.
+    Cheng JY, Hui JW, Chan WS, So MH, Hong YH, Leung WT, Ku KW, Yeung HS, Lo KM, Fung KM, Ip CY, Dao KL, Cheung BK.
+    ? 2023 | PMID 36597440 | PMCID PMC9799715 | DOI 10.1016/j.fsisyn.2022.100303
+    https://europepmc.org/article/PMC/9799715
+    - Acetaminophen (815), alprazolam (82.0), amphetamine (92.1), cyclobenzaprine (83.3), ephedrine (21.5), flualprazolam (11.1), fentanyl (7.5), MDMA (1110), MDA (88.0), MA (1070), 4--ANPP, caffeine, diazepam, nordiazepam, norfentanyl, N -desmethylcyclobenzaprine, temazepam-glucuronide

@@ -1,0 +1,9 @@
+##### Desoxypipradrol
+# hits: 4
+
+=== In silico and in vitro metabolism studies support identification of designer drugs in human urine by liquid chromatography/quadrupole-time-of-flight mass spectrometry.
+    Tyrkkö E, Pelander A, Ketola RA, Ojanperä I.
+    ? 2013 | PMID 23797910 | DOI 10.1007/s00216-013-7137-1
+    - Human phase I metabolism of four designer drugs, 2-desoxypipradrol (2-DPMP), 3,4-dimethylmethcathinone (3,4-DMMC), α-pyrrolidinovalerophenone (α-PVP), and methiopropamine (MPA), was studied using in silico and in vitro metabolite prediction.
+    - Meteor 14.0.0 software (Lhasa Limited) was used for in silico metabolite prediction, and in vitro metabolites were produced in human liver microsomes (HLMs). 2-DPMP was metabolized by hydroxylation, dehydrogenation, and oxidation, resulting in six phase I metabolites.
+    - Six metabolites were identified for 3,4-DMMC formed via N-demethylation, reduction, hydroxylation, and oxidation reactions. α-PVP was found to undergo reduction, hydroxylation, dehydrogenation, and oxidation reactions, as well as degradation of the pyrrolidine ring, and seven phase I metabolites were identified.

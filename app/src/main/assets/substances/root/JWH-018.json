@@ -11,14 +11,18 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dose is unknown; the page warns long-term synthetic cannabinoid misuse is associated with serious adverse effects and deaths."
   ],
-  "categories": [
-    "cannabinoid"
+  "dosageRemark": "Archived table lists threshold <1 mg; light 1-2 mg; moderate 2-3 mg; strong 3-5 mg; heavy 5 mg+. Total duration 1-2 h, onset 5-10 min, peak 60-90 min, offset 5-10 min, afterglow 60-90 min. Educational user/resource information, not a recommendation. Oral activity may occur when dissolved in lipids but gives no oral dose table.",
+  "generalRisks": "Long-term synthetic cannabinoid misuse is linked to deaths and more dangerous adverse effects/toxicity than cannabis. Oral activity when dissolved in lipids is noted, with longer duration; no oral dose table is supplied.",
+  "longtermRisks": "Long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects and toxicity than cannabis.",
+  "saferUse": [
+    "Prolonged or high-dose use of synthetic cannabinoids is strongly advised against, and harm reduction is recommended.",
+    "The dose table is an educational user/resource compilation, not a recommendation; the source provides no oral dosage table."
   ],
   "interactions": {
     "dangerous": [
@@ -40,51 +44,19 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid"
+  ],
+  "summary": "JWH-018 is a synthetic cannabinoid with limited safety data. FreeODwiki warns of greater harms with chronic or high-dose use and provides only an educational inhaled dose table.",
   "roas": [
-    {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 2,
-        "strongMin": 3,
-        "heavyMin": 5
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        }
-      }
-    },
     {
       "name": "smoked",
       "dose": {
         "units": "mg",
         "lightMin": 1,
         "commonMin": 2,
-        "strongMin": 3
+        "strongMin": 3,
+        "heavyMin": 5
       },
       "duration": {
         "onset": {

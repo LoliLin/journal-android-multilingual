@@ -5,8 +5,41 @@
   "categories": [
     "antidepressant"
   ],
-  "metabolism": "CYP2C19 demethylation forms active nortriptyline; CYP2D6 hydroxylation supports further clearance.",
+  "metabolism": "CYP2C19 demethylation forms active nortriptyline; CYP2D6 hydroxylation supports further how fast the body clears it.",
   "metabolismSources": [
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC5478479/"
-  ]
+  ],
+  "summary": "Amitriptyline is a tricyclic antidepressant used mainly for major depressive disorder and several pain syndromes. Common side effects include dry mouth, drowsiness, dizziness, constipation, and weight gain.",
+  "toxicities": [
+    "Label-listed adverse reactions include drowsiness, dizziness, confusion, dry mouth, blurred vision, constipation, urinary retention, orthostatic hypotension, syncope, and cardiac conduction changes.",
+    "Tricyclic antidepressant overdose can be fatal. Critical manifestations include cardiac dysrhythmias, severe hypotension, convulsions, and CNS depression/coma; QRS widening and QT prolongation are important toxicity indicators.",
+    "Other serious risks include suicidal thoughts or behavior in younger patients, serotonin syndrome with interacting serotonergic drugs, and withdrawal symptoms after abrupt cessation of prolonged treatment."
+  ],
+  "generalRisks": "The label warns that tricyclic antidepressant overdose may be fatal and can rapidly cause dysrhythmias, severe hypotension, seizures, coma, and respiratory/CNS depression. It also warns of suicidality in children, adolescents, and young adults; anticholinergic effects, orthostatic hypotension/falls, impaired driving, serotonin syndrome with interacting drugs, and withdrawal symptoms after abrupt cessation. MAOIs and cisapride are contraindicated concomitant drugs.",
+  "saferUse": [
+    "Treat suspected overdose as an emergency even if symptoms are not yet obvious; the label calls for prompt hospital monitoring after suspected tricyclic overdose.",
+    "Do not combine with MAOIs or cisapride. Avoid alcohol and use caution with barbiturates and other CNS depressants.",
+    "Do not drive or operate machinery if alertness or coordination is impaired. Do not abruptly stop prolonged treatment; discuss dose reduction with the prescriber. Monitor for worsening mood or suicidal thoughts, especially early in treatment or after dose changes."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "cisapride"
+    ],
+    "unsafe": [
+      "alcohol",
+      "barbiturate",
+      "depressant",
+      "anticholinergic"
+    ],
+    "uncertain": [
+      "serotonergic"
+    ]
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The label gives prescription treatment dosing for depression only. No evidence-based recreational dose thresholds or duration are established here, so none are entered."
 }

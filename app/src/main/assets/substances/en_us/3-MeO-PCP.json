@@ -6,8 +6,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "produces dependence with chronic use and has a high potential for abuse",
-  "toxicities": ["toxic dosage is unknown"],
-  "summary": "A potent dissociative often compared to MXE but with a longer duration, much less sedating effects and causing an overall different experience. Users have reported effects as being similar to PCP. Roughtly ten times more potent than 4-MeO-PCP.",
+  "addictionPotential": "Produces dependence with chronic use and has a high potential for abuse",
+  "toxicities": [
+    "Toxic dosage is unknown"
+  ],
   "localizedName": "3-MeO-PCP"
 }

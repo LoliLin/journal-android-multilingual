@@ -15,5 +15,41 @@
   "metabolism": "CYP2C19 and CYP3A4 mediate N-demethylation to demethylcitalopram, followed by further metabolism. Metabolites are substantially less potent than the parent; unchanged drug and metabolites contribute to urinary elimination.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=625a78b2-4751-4ca5-91b6-7c85fd9f8c2e"
-  ]
+  ],
+  "summary": "Citalopram is a selective serotonin reuptake inhibitor (SSRI) antidepressant used to treat major depressive disorder, obsessive-compulsive disorder, panic disorder, and social anxiety disorder.",
+  "toxicities": [
+    "Label-reported effects include nausea, dry mouth, sweating, tremor, somnolence or insomnia, and dizziness.",
+    "Serious risks include dose-dependent QTc prolongation associated with torsades de pointes, ventricular tachycardia, and sudden death; potentially life-threatening serotonin syndrome; hyponatremia; and increased suicidal thoughts or behavior, especially in younger people.",
+    "Abrupt discontinuation can cause sensory disturbances, dizziness, anxiety, insomnia, and other withdrawal symptoms."
+  ],
+  "generalRisks": "The label warns of dose-dependent QTc prolongation and postmarketing torsades, ventricular tachycardia, and sudden death; potentially life-threatening serotonin syndrome; suicidal thoughts or behavior (especially in children, adolescents, and young adults); hyponatremia; bleeding risk; and discontinuation symptoms. MAOIs and pimozide are contraindicated, as are other QT-prolonging drugs per the label warning.",
+  "saferUse": [
+    "Monitor for worsening mood, unusual behavior, or suicidal thoughts, particularly early in treatment and after dose changes.",
+    "Seek urgent medical care for fainting, palpitations, or symptoms of serotonin syndrome such as agitation with fever, sweating, tremor, rigidity, or confusion.",
+    "Do not stop abruptly; discuss gradual dose reduction with a clinician. Check before combining with serotonergic drugs, QT-prolonging drugs, NSAIDs, aspirin, or anticoagulants."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "linezolid",
+      "methylene blue",
+      "pimozide",
+      "QT-prolonging drug"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The label is for prescription treatment of depression. Its therapeutic regimen is not recreational dose guidance; recreational thresholds and duration are not established here."
 }

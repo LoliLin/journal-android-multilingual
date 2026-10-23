@@ -8,7 +8,7 @@
   "categories": ["stimulant", "habit-forming"],
   "summary": "Ephedrine is a sympathomimetic amine commonly used as a stimulant, concentration aid, decongestant, appetite suppressant, and to treat hypotension associated with anaesthesia. A methamphetamine analogue and commonly used in the production of methamphetamine.",
   "effectsSummary": "Stimulates circulation, increases drive and performance, and suppresses appetite.",
-  "generalRisks": "Even at low doses: Palpitations, restlessness, sleep problems, urinary urgency or retention and dry mouth. Also possible are feelings of anxiety, increased blood pressure (vasoconstriction), loss of appetite, dizziness, cardiac arrhythmias and even heart attacks.\nIn case of overdose: confusion and paranoia. The tannins of ephedra herb can cause stomach complaints in larger quantities.",
+  "generalRisks": "Even at low doses: Palpitations, restlessness, sleep problems, urinary urgency or retention and dry mouth. Also possible are feelings of anxiety, increased blood pressure (vasoconstriction), loss of appetite, dizziness, cardiac arrhythmias and even heart attacks. In case of overdose: confusion and paranoia. The tannins of ephedra herb can cause stomach complaints in larger quantities.",
   "longtermRisks": "Continuous use: Impaired memory and concentration, irritability, nervousness, aggressive behaviour, cardiac arrhythmia, chronic high blood pressure, bad teeth, liver/kidney damage and psychological disorders. Regular ephedrine use can lead to the development of tolerance and dependence, especially with psychological symptoms.",
   "saferUse": [
     "Take a low dose of ephedrine, as the active ingredient content can vary greatly, especially in herbs!",
@@ -44,5 +44,9 @@
         }
       }
     }
+  ],
+  "metabolism": "after being given into a vein ephedrine is completely bioavailable, and when taken by mouth bioavailability has been reported as above 90%. Excretion depends on urine pH: 73-99% (mean 88%) in acidic urine versus 22-35% (mean 27%) in alkaline urine. After being taken by mouth or by injection, 77% of ephedrine is excreted unchanged in the urine. The time in the body also depends on urine pH: about 3 hours when urine is acidified to pH 5, and about 6 hours when it is rendered alkaline at pH 6.3.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/9291/smpc"
   ]
 }

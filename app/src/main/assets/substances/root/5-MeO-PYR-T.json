@@ -1,6 +1,14 @@
 {
   "name": "5-MeO-PYR-T",
   "url": "https://tripsit.me/factsheets/?name=5-meo-pyr-t&p=substance",
+  "commonNames": [
+    "5-Methoxy-N,N-tetramethylenetryptamine",
+    "5-Methoxy-3-(2-pyrrolidinoethyl)indole",
+    "1-[2-(5-Methoxy-1H-indol-3-yl)ethyl]pyrrolidine",
+    "Pyrrolidyl-5-methoxytryptamine",
+    "5-Methoxypyrrolidine-tryptamine"
+  ],
+  "summary": "5-MeO-pyr-T is a tryptamine-family psychedelic and serotonin-receptor modulator. Literature describes strong 5-HT1A receptor agonism; reported experiences vary and include cognitive impairment and amnesia.",
   "categories": [
     "tentative",
     "research-chemical",

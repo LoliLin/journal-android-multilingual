@@ -1,5 +1,46 @@
 {
   "toxicities": [],
-  "summary": "一种苯基哌嗪类兴奋剂，最初于20世纪70年代研发，随后在RC市场销售，常被误标为MDMA。据称会产生非常令人不快的效应，如引发焦虑和头痛。",
-  "localizedName": "MCPP"
+  "effectsSummary": "将 mCPP 描述为常令人不适，并报告焦虑、偏头痛和严重头痛；效应依据用户报告，应谨慎看待。",
+  "dosageRemark": "归档口服表：阈值 15 mg、轻微 20-50 mg、中等 50-120 mg、强烈 120-150 mg、严重 150 mg 以上；发作 20-60 分钟、上升 20-60 分钟、达峰 2-4 小时、褪去 3-8 小时（来源未给总时长）。用户/资源教育资料，不是建议。毒性章节明确为可能不完整或含危险错误的存根；lightMin 已改为来源轻微下界。",
+  "generalRisks": "CYP2D6 抑制剂可能提高 mCPP 血清浓度，并举例环丙沙星、安非他酮、氟西汀和葡萄柚汁。该资料也称 mCPP 可能作为街头 MDMA 掺杂物出现。毒性章节明确标记为可能有危险错误的存根。",
+  "saferUse": [
+    "强烈建议采取伤害减少措施并独立研究；其毒性小节明确标记为不可靠存根。",
+    "CYP2D6 抑制可能升高 mCPP 浓度，但未量化由此产生的风险。"
+  ],
+  "summary": "MCPP 是一种苯基哌嗪类兴奋剂，最初于 20 世纪 70 年代研发，随后在研究用化学品市场销售，常被误标为 MDMA。据称会产生非常令人不快的效应，如引发焦虑和头痛，还有偏头痛和严重头痛的报告。FreeODwiki 将其毒性章节标为不可靠存根，并指出 CYP2D6 抑制剂可能提高其浓度。",
+  "localizedName": "MCPP",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 20,
+        "commonMin": 50,
+        "strongMin": 120,
+        "heavyMin": 150
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 20,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 3,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

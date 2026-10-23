@@ -14,5 +14,46 @@
   "metabolism": "CYP2C19 and CYP3A4 mediate N-demethylation to S-demethylcitalopram, followed by further demethylation. The metabolites have weaker serotonin-reuptake effects; some parent and metabolites are eliminated in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d75e3b97-1ead-4e7b-9ae3-3626aede1efd"
-  ]
+  ],
+  "summary": "Escitalopram is a selective serotonin reuptake inhibitor (SSRI) antidepressant used to treat major depressive disorder, generalized anxiety disorder, panic disorder, obsessive-compulsive disorder, and social anxiety disorder.",
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "toxicities": [
+    "DailyMed warnings include suicidal thoughts/behavior, serotonin syndrome, discontinuation syndrome, seizures, mania/hypomania, hyponatremia, bleeding, cognitive/motor impairment, and angle-closure glaucoma in susceptible patients.",
+    "Common adverse reactions include insomnia, nausea, sweating, fatigue, somnolence, decreased libido, and sexual dysfunction."
+  ],
+  "generalRisks": "The label is for prescription oral escitalopram tablets (revised 2026-05). About suicidality, serotonin syndrome, discontinuation symptoms, seizures, mania/hypomania, hyponatremia, bleeding and impaired cognitive/motor performance. MAOIs and pimozide are contraindicated; label dosage guidance is not a recreational-use reference.",
+  "saferUse": [
+    "Monitor for worsening mood or suicidal thoughts, particularly in younger patients and after treatment changes. Seek urgent care for suspected serotonin syndrome or seizure.",
+    "Do not stop abruptly; the label advises gradual dose reduction and monitoring for discontinuation symptoms. Use caution with driving or machinery if impaired.",
+    "Do not combine with MAOIs or pimozide. Check before combining with serotonergic medicines, NSAIDs, aspirin, warfarin, or other anticoagulants."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "linezolid",
+      "methylene blue",
+      "pimozide"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "triptan",
+      "tricyclic antidepressant",
+      "fentanyl",
+      "lithium",
+      "tramadol",
+      "buspirone",
+      "amphetamine",
+      "St. John’s Wort",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "anticoagulant"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is a prescription oral tablet label. Therapeutic dosing is not recreational dose guidance; no recreational threshold or duration is established here."
 }

@@ -1,0 +1,8 @@
+##### Methylnaphthidate
+# hits: 6
+
+=== Analytically Confirmed Intoxications Involving MDMB-CHMICA from the STRIDA Project.
+    Bäckberg M, Tworek L, Beck O, Helander A.
+    ? 2017 | PMID 27638057 | PMCID PMC5330960 | DOI 10.1007/s13181-016-0584-2
+    https://europepmc.org/article/PMC/5330960
+    - ROA route of administration, PSS Poisoning Severity Score [ 28 ], po peroral, nas nasal (snorted), inh inhalation (smoked), − information missing, 5-HTP 5-hydroxytryptophan, EtG/EtS ethyl glucuronide/ethyl sulfate (ethanol metabolites), HDMP-28 methylnaphthidate, 6-MAM 6-monoacetylmorphine, ^ data retrieved from medical records, GCS Glasgow Coma Scale, RLS the Reaction Level Scale [ 29 , 30 ], SaO 2 oxygen saturation, BPM beats per minute, BP blood pressure, P plasma, RR respiratory rate, B blood, tHb total hemoglobin, CK creatinine kinase

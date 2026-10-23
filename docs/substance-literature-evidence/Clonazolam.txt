@@ -1,0 +1,20 @@
+##### Clonazolam
+# hits: 26
+
+=== The Evolution Toward Designer Benzodiazepines in Drug-Facilitated Sexual Assault Cases.
+    Pérez Orts M, van Asten A, Kohler I.
+    ? 2023 | PMID 35294022 | PMCID PMC9942444 | DOI 10.1093/jat/bkac017
+    https://europepmc.org/article/PMC/9942444
+    - DBZDs include short-acting drugs, such as clonazolam or etizolam with an elimination half-life of approximately 3–7 h but also long-acting drugs such as diclazepam (46 h), meclonazepam (80 h) or flubromazepam (106 h). Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40–250 h vs. 2–3 h for the parent compound. Other parameters related to the elimination half-life such as protein binding, volume of distribution and lipophilicity are described by Manchester et al. ( 42 ). DBZDs are relatively lipophilic, ranging from phenazepam (highest lipophilicity) to pyrazolam (lowest lipophilicity). Furthermore, similar to conventional BZDs, they exhibit a high degree of plasma protein binding (90% on average), with the exception of pyrazolam (78%).
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.
+
+=== Forensic toxicology of benzodiazepines: neuropharmacological effects, analytical challenges, and emerging detection strategies.
+    Irfan Thalib H, Damanhory AA, Hanin Shaikh A, Haidar S, Khan S, Jamal A, Abdelghany OA.
+    ? 2025 | PMID 41079395 | PMCID PMC12507772 | DOI 10.3389/ftox.2025.1639890
+    https://europepmc.org/article/PMC/12507772
+    - A few DBZDs used in crimes include clonazolam, diclazepam, etizolam, flualprazolam, flubromazepam, and phenazepam. Clonazolam found as a candy-like pill (half-life: 3.6 h) is more potent than alprazolam, while flualprazolam (half-life: 9.5–12 h) has increased sedation and overdose risk. DBZDs such as etizolam are undetectable by standard immunoassays, which require advanced.Liquid Chromatography–Tandem Mass Spectrometry (LC-MS/MS) for identification ( Wilde et al., 2021 ). Their rapid metabolism and lack of clinical data pose unprecedented challenges in forensic investigations.Several designer analogues are not reliably detected by routine immunoassays; LC–MS/MS or adapted GC–MS protocols are needed to avoid under-ascertainment in DFC cases.

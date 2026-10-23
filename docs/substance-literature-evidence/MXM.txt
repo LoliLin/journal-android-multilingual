@@ -1,0 +1,21 @@
+##### MXM
+# hits: 22
+
+=== Quantitative Treatments for Explaining the Mechanism and Kinetics of Catalytic Electron Transfers in Murburn Processes, Particularly Involving Heme Enzymes Like (Per)oxidases and P450s.
+    Manoj KM, Gideon DA, Samuel PM, Das S.
+    ? 2026 | PMID 41522727 | PMCID PMC12780854 | DOI 10.1155/bmri/3079294
+    https://europepmc.org/article/PMC/12780854
+    - Experimental “time‐course” profiles (increasing time on abscissa and substrate concentration on ordinate axes) observed for substrate depletion or reactant consumption in various biological reactions. (a) Michaelis–Menten enzymes (MM‐enz): curves determined for classical Michaelis–Menten enzyme–catalyzed conversion of substrates (typically, 10–100 nM enzyme and 100–1000 μ M substrate). Clearly, the rate lowers dynamically in time because of the diffusion limitations of lowering substrate concentrations. (b) Chloroperoxidase (CPO), a murzyme: Straight lines obtained for chloroperoxidase (CPO)‐mediated chlorination of organics like sulfides and beta‐diketones (typically, 1–10 nM enzyme and 10–100 μ M substrate). (c) Microsomal xenobiotic metabolism (mXM) in the liver, a murzyme system: NADPH depletion in xenobiotic metabolizing microsomes. (d) Mitochondrial oxidative (Mito) phosphorylation, a murzyme system: oxygen consumption by respiring mitochondria. The dark/bold arrows depict the depletion of the final substrate, whereas the light arrows show the time point when the final substrate is added. In the profiles of complex systems c d, it can be seen that the system presents a linear depletion/consumption of e‐source (NADPH) or e‐sink (oxygen), which gets hastened by the addition of final substrate (for say, hydroxylating a xenobiotic RH or phosphorylating ADP).
+
+=== Murburn Precepts for Cytochrome P450 Mediated Drug/Xenobiotic Metabolism and Homeostasis.
+    Parashar A, Manoj KM.
+    ? 2021 | PMID 33461459 | DOI 10.2174/1389200222666210118102230
+    -  Aims We aim to demonstrate why deeming diffusible reactive oxygen species (DROS) as toxic wastes do not afford a comprehensive understanding of cytochrome P450 mediated microsomal xenobiotic metabolism (mXM).
+    - Background Current pharmacokinetic investigations consider reactive oxygen species formed in microsomal reactions as toxic waste products, whereas our works (Manoj et al., 2016) showed that DROS are the reaction mainstay in cytochrome P450 mediated metabolism and that they play significant roles in explaining several unexplained physiologies.
+    - Objective Herein, we strive to detail the thermodynamic and kinetic foundations of murburn precepts of cytochrome P450 mediated drug metabolism.
+
+=== High-value biomass from microalgae production platforms: strategies and progress based on carbon metabolism and energy conversion.
+    Sun H, Zhao W, Mao X, Li Y, Wu T, Chen F.
+    ? 2018 | PMID 30151055 | PMCID PMC6100726 | DOI 10.1186/s13068-018-1225-6
+    https://europepmc.org/article/PMC/6100726
+    - SH and CF conceived, designed, and drafted the paper. SH, ZWY and MXM wrote the part of ‘carbon metabolism in microalgae’. LYL and WT wrote the part of ‘potential photosynthetic efficiency’. SH, ZWY and MXM wrote the part of ‘approaches for enhancing biomass and product accumulation mainly through the efficient carbon partitioning’ and ‘key engineering strategies’. SH LYL and WT wrote the part of ‘industrial products from microalgae and maximal biomass value’. CF critically revised the manuscript. All authors read and approved the final manuscript.

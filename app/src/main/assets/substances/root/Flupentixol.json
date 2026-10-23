@@ -5,5 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "After intramuscular injection the ester is slowly released from the oil depot and enzymatically broken down to release flupentixol; the duration of action is 2-4 weeks, with maximum serum levels reached by the end of the first week. The metabolism of flupentixol proceeds via three main routes: sulphoxidation, side-chain N-dealkylation and glucuronic acid conjugation. The metabolites are devoid of psychopharmacological activity. Excretion proceeds mainly with the faeces and to some degree with the urine; the body clears it at about 0.4-0.5 L/min. how much it spreads through the body is about 14 L/kg and protein binding exceeds 95%.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/996/smpc"
+  ],
+  "summary": "Flupentixol is a typical antipsychotic of the thioxanthene class, introduced in 1965. It is used in several countries but is not approved for use in the United States."
 }

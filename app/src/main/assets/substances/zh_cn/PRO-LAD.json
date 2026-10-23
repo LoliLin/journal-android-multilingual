@@ -7,7 +7,41 @@
     "zeroToleranceInHours": 336
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": ["毒性剂量未知"],
-  "summary": "一种非常罕见的麦角酰胺，其效力略低于LSD，但作用持续时间较短。",
-  "localizedName": "PRO-LAD"
+  "toxicities": [
+    "PRO-LAD 的药理、代谢和毒性数据非常有限，人类使用史短；确切毒性剂量未知。"
+  ],
+  "effectsSummary": "将 PRO-LAD 描述为类似 LSD 的迷幻剂，报告效力与 LSD 相近、约 100-200 µg 有效。人体药理、代谢和毒性数据非常有限；主观效应章节标为存根。",
+  "dosageRemark": "归档口服表：阈值 20 µg、轻微 50-100 µg、中等 100-200 µg、强烈 200-350 µg、严重 350 µg 以上；总时长 6-8 小时、发作 30-45 分钟。用户/资源教育资料，不是建议。人体资料稀少，主观效应章节为存根；lightMin 已从阈值改为来源轻微下界。",
+  "generalRisks": "PRO-LAD 人体资料稀少并建议采取伤害减少措施。主观效应章节标为存根，内容可能不完整。",
+  "longtermRisks": "提供，的药理、代谢和毒性信息非常有限，未有已确立的长期人体研究结果。",
+  "saferUse": [
+    "因人体证据有限，FreeODwiki 强烈建议采取伤害减少措施。",
+    "谨慎看待主观效应细节；来源将该章节标为存根。"
+  ],
+  "summary": "PRO-LAD 是一种类似 LSD 的麦角酸酰胺类迷幻剂，人体安全数据非常有限。口服时长 6-8 小时，并将主观效应章节标为存根。",
+  "localizedName": "PRO-LAD",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "µg",
+        "lightMin": 50,
+        "commonMin": 100,
+        "strongMin": 200,
+        "heavyMin": 350
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 45,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 6,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

@@ -18,5 +18,44 @@
   "oralReleaseForms": [
     "IMMEDIATE_RELEASE",
     "EXTENDED_RELEASE"
-  ]
+  ],
+  "summary": "Paroxetine is a selective serotonin reuptake inhibitor used to treat major depression and several anxiety-related disorders.",
+  "roas": [
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
+    },
+    {
+      "name": "oral",
+      "releaseForm": "IMMEDIATE_RELEASE"
+    }
+  ],
+  "toxicities": [
+    "Warns about suicidal thoughts and behaviour, serotonin syndrome, abnormal bleeding, hyponatremia, seizures, mania and hypomania, akathisia, cognitive and motor impairment, and discontinuation symptoms. It also warns of angle-closure glaucoma in susceptible patients.",
+    "Common adverse reactions reported for the cited capsule include headache, fatigue, and nausea/vomiting."
+  ],
+  "generalRisks": "The label is specifically a 7.5 mg oral paroxetine capsule labeled for menopausal vasomotor symptoms, not for treatment of a psychiatric condition (revised 2023-09). It supports general SSRI safety warnings but does not establish dosing or formulation equivalence for other paroxetine products. The label identifies paroxetine as a strong CYP2D6 inhibitor.",
+  "saferUse": [
+    "Warns of possible cognitive and motor impairment; do not drive or operate machinery until its effects are known.",
+    "Monitor for worsening mood or suicidal thoughts and seek urgent care for suspected serotonin syndrome or seizure. Do not stop suddenly; consult a clinician about gradual discontinuation.",
+    "Avoid MAOIs, thioridazine, and pimozide; check before combining with serotonergic drugs, tamoxifen, NSAIDs, aspirin, anticoagulants, or CYP2D6 substrates."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "thioridazine",
+      "pimozide"
+    ],
+    "unsafe": [
+      "serotonergic",
+      "tamoxifen",
+      "NSAID",
+      "aspirin",
+      "warfarin",
+      "anticoagulant",
+      "CYP2D6 substrate"
+    ],
+    "uncertain": []
+  },
+  "dosageRemark": "The label is for a 7.5 mg oral capsule indicated for menopausal vasomotor symptoms; it explicitly is not indicated for psychiatric conditions. This prescription product label is not recreational dose guidance and is not interchangeable with other paroxetine formulations."
 }

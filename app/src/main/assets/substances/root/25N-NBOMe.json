@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
@@ -85,5 +85,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Precautions and harm-reduction measures are strongly recommended. The dose information is based on user reports and external resources for education, not a recommendation, and limited reports of low or moderate occasional use do not establish safety."
+  ],
+  "metabolism": "Nothing is known about how the body handles this. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25N-NBOMe"
   ]
 }

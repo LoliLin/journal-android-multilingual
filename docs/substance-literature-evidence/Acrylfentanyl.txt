@@ -1,0 +1,20 @@
+##### Acrylfentanyl
+# hits: 30
+
+=== Electroanalysis of Fentanyl and Its New Analogs: A Review.
+    Choińska MK, Šestáková I, Hrdlička V, Skopalová J, Langmaier J, Maier V, Navrátil T.
+    ? 2022 | PMID 35049654 | PMCID PMC8774265 | DOI 10.3390/bios12010026
+    https://europepmc.org/article/PMC/8774265
+    - Acrylfentanyl is abused alone or mixed with other drugs. Nor-acrylfentanyl, formed by N -dealkylation at the piperidine nitrogen, has been identified as the main metabolite of acrylfentanyl. Other metabolites have been identified, such as monohydroxy- and dihydroxy-derivatives. Monohydroxylation and dihydroxylation occurred at both the phenyl ring and the phenethyl moiety. Three glucuronides have been identified in urine samples without hydrolysis [ 47 ].
+
+=== An Update on the Implications of New Psychoactive Substances in Public Health.
+    Simão AY, Antunes M, Cabral E, Oliveira P, Rosendo LM, Brinca AT, Alves E, Marques H, Rosado T, Passarinha LA, Andraus M, Barroso M, Gallardo E.
+    ? 2022 | PMID 35457736 | PMCID PMC9028227 | DOI 10.3390/ijerph19084869
+    https://europepmc.org/article/PMC/9028227
+    - In 2017, Watanabe et al. [ 281 ] predicted the structures of metabolites of acetylfentanyl, acrylfentanyl, furanylfentanyl, and 4-Fluoro-Isobutyrylfentanyl. The authors analyzed human urine samples to perform an in vivo analysis, and incubated the drugs with human hepatocytes for the in vitro analysis. The combination of these analyses allowed for the determination of 32 acetylfentanyl metabolites, a total of 14 acrylfentanyl metabolites and the same number of furanylfentanyl, and 17 4-fluoro-isobutyrylfentanyl metabolites. Metabolites of phase II were mostly observed for acetylfentanyl [ 281 ]. Recently, it was possible to identify in vitro ocfentanyl metabolites [ 282 ]. A total of four metabolites were produced and results suggested that O- desmethylocfentanyl was the most abundant metabolite. A glucuronidated metabolite was also produced [ 282 ].
+
+=== Postmortem Toxicology of New Synthetic Opioids.
+    Concheiro M, Chesser R, Pardi J, Cooper G.
+    ? 2018 | PMID 30416445 | PMCID PMC6212520 | DOI 10.3389/fphar.2018.01210
+    https://europepmc.org/article/PMC/6212520
+    - Acrylfentanyl underwent N-dealkylation at the piperidine nitrogen producing the major nor-metabolite (Watanabe et al., 2017 ). The parent compound was also detected at high concentrations in urine samples. N-Dealkylation and monohydroxylation of the piperidine ring were the dominant metabolic pathways for carfentanil in vitro (Feasel et al., 2016 ). In that study, the authors observed a slow parent depletion in the hepatocytes. For 4-fluoroisobutyrylfentanyl the main metabolites identified in urine were the nor-metabolite, and monohydroxy metabolites at the piperidine ring or at the ethyl linker, as well as the parent compound. In terms of specificity, Watanabe et al., recommended as target compounds in urine the monohydroxy metabolites and the hydroxymethoxy metabolite (Watanabe et al., 2017 ).

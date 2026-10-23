@@ -6,9 +6,11 @@
   "url": "https://psychonautwiki.org/wiki/25D-NBOMe",
   "isApproved": true,
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "toxicities": [],
+  "toxicities": [
+    "The LD50 has not been determined."
+  ],
   "categories": [
     "psychedelic",
     "research-chemical"
@@ -69,5 +71,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Harm-reduction measures are strongly recommended, and insufflation is warned against because measuring microgram quantities precisely is difficult. The dose information is educational rather than a recommendation."
+  ],
+  "metabolism": "Nothing is known about how the body handles this. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25D-NBOMe"
   ]
 }

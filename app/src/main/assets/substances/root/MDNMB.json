@@ -1,5 +1,91 @@
 {
   "name": "MDNMB",
   "isApproved": false,
-  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/MDNMB.md"
+  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/MDNMB.md",
+  "commonNames": [
+    "bk-MBDB",
+    "B1",
+    "beta-keto-N-methylbenzodioxolylbutanamine"
+  ],
+  "categories": [
+    "Stimulant",
+    "entactogen",
+    "research-chemical"
+  ],
+  "toxicities": [
+    "The exact toxic dose is unknown; recreational toxicity has not been studied in a scientific setting."
+  ],
+  "dosageRemark": "The oral dose bands and duration ranges are transcribed from FreeODwiki. Its page says the exact toxic dose is unknown and human-use history is short; treat these community-derived figures as low-confidence reference data, not recommendations.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific setting, the exact toxic dose is unknown, and human-use history is short. It also describes high abuse potential and possible psychological dependence with long-term use.",
+  "addictionPotential": "Addictive potential is described as moderate and abuse potential as high, with possible psychological dependence after long-term use.",
+  "tolerance": {
+    "half": "About 3 - 7 days",
+    "zero": "About 1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "Stimulant"
+  ],
+  "saferUse": [
+    "Both dehydration and excessive water intake should be avoided; small sips are recommended rather than drinking a large amount at once."
+  ],
+  "interactions": {
+    "dangerous": [
+      "25x-NBOMe",
+      "25x-NBOH",
+      "alcohol",
+      "dextromethorphan",
+      "MDMA",
+      "MXE",
+      "dissociative",
+      "stimulant",
+      "tramadol",
+      "MAOI",
+      "serotonin releaser",
+      "SSRI",
+      "SNRI",
+      "5-HTP"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 40,
+        "commonMin": 80,
+        "strongMin": 125,
+        "heavyMin": 225
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "offset": {
+          "min": 60,
+          "max": 120,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 3,
+          "max": 5,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "summary": "MDNMB, also known as βk-MBDB, is a synthetic cathinone with stimulant and entactogenic properties."
 }

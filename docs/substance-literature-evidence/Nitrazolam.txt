@@ -1,0 +1,9 @@
+##### Nitrazolam
+# hits: 5
+
+=== Characterization and in vitro phase I microsomal metabolism of designer benzodiazepines - an update comprising adinazolam, cloniprazepam, fonazepam, 3-hydroxyphenazepam, metizolam and nitrazolam.
+    Moosmann B, Bisel P, Franz F, Huppertz LM, Auwärter V.
+    ? 2016 | PMID 27535017 | DOI 10.1002/jms.3840
+    - Metizolam showed a similar metabolism to other thienodiazepines comprising monohydroxylations and dihydroxylation.
+    - Cloniprazepam was metabolized to numerous metabolites with the main metabolic steps being N-dealkylation, hydroxylation and reduction of the nitro function.
+    - Nitrazolam and fonazepam both underwent monohydroxylation and reduction of the nitro function.

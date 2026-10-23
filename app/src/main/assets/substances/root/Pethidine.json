@@ -17,12 +17,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "high toxicity",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "High toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines"
   ],
   "categories": [
     "opioid",
@@ -83,5 +83,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Absorbed quickly after a muscle or under-the-skin injection, though people differ a lot. It spreads through the tissues at 200-300 litres and sticks to protein 60-80%. It is broken down in the liver, mainly by hydrolysis to pethidinic acid or by N-demethylation to norpethidine, which is then hydrolysed to norpethidinic acid; some is also joined to glucuronic acid afterwards. It comes out through the urine, 70% within 24 hours. One of the breakdown products, norpethidine, is itself active, and it can build up and cause poisoning. How much comes out in the urine depends on how acid it is: the more acidic, the more comes out. At a normal urine pH only a little pethidine leaves unchanged. Pethidine itself stays in the body 3 to 6 hours, while norpethidine stays longer, up to 20 hours, and can build up with long-term use, especially if the kidneys are not working well. It passes into the placenta and into breast milk.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/8941/smpc"]
 }

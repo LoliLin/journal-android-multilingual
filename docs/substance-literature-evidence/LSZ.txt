@@ -1,0 +1,21 @@
+##### LSZ
+# hits: 60
+
+=== Transcriptomics and functional characterization identify CYP73A16 as a key regulator of flavonoid biosynthesis in mulberry leaves.
+    Long R, Jin X, Ackah M, Amoako FK, Ackah FK, Kumi F, Li J, Wei H, Buah JN, Zhao M, Zhao W.
+    ? 2026 | PMID 42067785 | DOI 10.1186/s12870-026-08804-3
+    - Transient silencing of MaCYP73A16 notably decreased not only the expression of downstream genes, including MaCYP73A16, MaLAR, MaCHS, MaCYP93B1, and MaCYP98A2, but also reduced flavonoid content, with peak silencing efficiency observed on the ninth day, underscoring the impact of silencing MaCYP73A16 on other genes involved in the flavonoid biosynthesis pathway.
+
+=== Temperature-dependent demethylation of methylarsenic by methanogens: Linking carbon metabolism to arsenic speciation in landfills.
+    Yang Y, Wang Y, Li J, Long Y, Xiao X, Fang C, Hu L.
+    ? 2026 | PMID 41946242 | DOI 10.1016/j.jhazmat.2026.141986
+    - However, the reverse process-the demethylation of MAs back to more toxic inorganic forms-and its microbial drivers in landfills are not well understood.
+    - This study investigated the demethylation of dimethylarsinic acid (DMAs) by methanogenic communities enriched from the leachate saturated zone (LSZ) under different thermal fields (15℃, 35℃, 55℃).
+    - We found that methylotrophic methanogens were the primary agents of DMAs demethylation, with the highest efficiency observed at mesophilic temperature (35℃), followed by thermophilic (55℃) and psychrophilic (15℃) conditions.
+
+=== Uncover co-evolution of arsenic transformation and methanogens in landfills.
+    Xiao X, Wang Y, Huang F, Yang Y, Long Y, Fang C, Hu L.
+    ? 2025 | PMID 40876440 | DOI 10.1016/j.jhazmat.2025.139623
+    - While As methylation serves as a crucial detoxification mechanism, demethylation can remobilize As.
+    - This study simulated a landfill saturation zone (LSZ) scenario to explore methanogen-mediated As transformation and elucidate the coupling mechanisms between carbon metabolism and As cycling.
+    - Suppressing methanogen activity with the specific inhibitor 2-bromoethanesulfonate (BES, 15 mmol kg-1) resulted in a 1.19-fold increase in MeAs levels compared to the control (uninhibited methanogens), indicating impaired demethylation of dimethylarsenic (DMAs) to monomethylarsenic (MMAs) and iAs.

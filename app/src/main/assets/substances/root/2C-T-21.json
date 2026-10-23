@@ -1,6 +1,9 @@
 {
   "name": "2C-T-21",
-  "commonNames": ["2C-T-21", "Aurora"],
+  "commonNames": [
+    "2C-T-21",
+    "Aurora"
+  ],
   "url": "https://psychonautwiki.org/wiki/2C-T-21",
   "isApproved": true,
   "tolerance": {
@@ -10,11 +13,39 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "not habit-forming",
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Not habit-forming",
   "toxicities": [],
-  "categories": ["psychedelic", "research-chemical", "tentative"],
-  "summary": "A rare psychedelic phenethylamine.",
+  "effectsSummary": "The subjective-effects section is a stub still being written and may contain incomplete or wrong information. 2C-T-21 is described as usually relaxing and clear-headed with mild visuals, with stimulation comparable to other phenethylamines and possible sedating periods at some doses, and a body high described as strong tingling waves. The effects come from an anecdotal experiential index, and higher doses are said to make adverse effects more likely, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 5-10 mg, moderate of 10-12 mg, strong of 12-15 mg and heavy of 15 mg or more; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range. PiHKAL lists a dose range of 8-12 mg. The page warns that onset, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
+  "generalRisks": "Data on 2C-T-21's pharmacological properties, metabolism and toxicity is very limited and its history of human use short. A reported death consistent with fluoroacetate poisoning and notes that fluoroacetate is only hypothesised as a metabolite, that a non-fatal dose may take up to four days to clear, and that non-fatal exposure may damage high-energy-demand tissues such as the brain, gonads, heart, lungs and fetus; this may explain the pair in Stolaroff's book who were convinced it was toxic. No anecdotal evidence shows a single moderate dose causes negative health effects, but nothing can be guaranteed.",
+  "longtermRisks": "No established long-term findings are available. A sublethal fluoroacetate dose can take up to four days to clear and may damage high-energy-demand tissues, so repeated multi-day use could be dangerous through accumulation of that toxic metabolite.",
+  "saferUse": [
+    "Non-taking it by mouth is strongly advised against, as it may cause vomiting, a range of negative side effects, or death at high doses. Harm reduction is strongly recommended, including liquid volumetric dosing to ensure the intended dose is what actually gets taken."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "RIMA",
+      "stimulant",
+      "serotonergic releaser"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "metabolism": "Data on 2C-T-21's pharmacology, metabolism and toxicity is very limited. Daniel Trachsel's paper hypothesising that one of its metabolites is the highly toxic fluoroacetate, and links a reported death to symptoms consistent with fluoroacetate poisoning; this remains a hypothesis rather than an established human route through the body.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-T-21",
+    "https://pubmed.ncbi.nlm.nih.gov/22374819"
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "2C-T-21 is a rare psychedelic phenethylamine of the 2C family. A reported death is consistent with fluoroacetate poisoning, which is only hypothesised as a metabolite, so repeated multi-day use is considered dangerous; the source advises against non-oral routes.",
   "roas": [
     {
       "name": "oral",

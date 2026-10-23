@@ -14,29 +14,39 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "4-HO-DiPT's toxicity and long-term health effects have not been researched and the exact toxic dose is unknown, because it is a research chemical with a very short history of human use. Anecdotal reports from people who have tried it suggest that low to moderate doses used very occasionally show no negative health effects attributed to the substance itself, though nothing can be guaranteed."
+  ],
+  "effectsSummary": "The subjective-effects index is built on anecdotal user reports and contributor analysis, and should be taken with healthy skepticism. Effects may not occur in a predictable or reliable way, higher doses are more likely to produce the full spectrum, and adverse effects become more likely as the dose increases, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not medical advice. The page lists a threshold of 3 mg, a light range of 3-10 mg, moderate of 10-20 mg, strong of 20-30 mg and heavy of 30 mg or more; the model does not represent a threshold band separately, so the 3 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page warns that differences in weight, tolerance, metabolism and individual sensitivity mean doses must be started lower.",
+  "generalRisks": "Anecdotal evidence that low to moderate doses of 4-HO-DiPT used very occasionally show no negative health effects attributed to the substance itself, though nothing can be guaranteed. It advises independent research before ingestion to make sure combinations of two or more substances are safe, and strongly recommends harm reduction.",
+  "longtermRisks": "4-HO-DiPT's toxicity and long-term health effects have not been researched.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, as is independent research before ingestion to make sure combinations of two or more substances are safe.",
+    "It warns that differences in weight, tolerance, metabolism and individual sensitivity mean doses must be started lower."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cannabis",
+      "stimulant"
+    ],
+    "uncertain": []
+  },
+  "metabolism": "Nothing is known about how 4-HO-DiPT is broken down in people. No specific metabolic finding or pathway has been described.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-HO-DiPT"
   ],
   "categories": [
     "psychedelic",
     "research-chemical"
   ],
-  "summary": "A psychedelic tryptamine also known as iprocin. A homologue of psilocin, this drug likely has similar effects to psychedelic mushrooms. Said to have a rapid onset and relatively short duration for a drug of its class.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-HO-DiPT is a tryptamine psychedelic used as a research chemical with a very short history of human use. Its toxicity and long-term health effects have not been researched.",
   "roas": [
     {
       "name": "oral",

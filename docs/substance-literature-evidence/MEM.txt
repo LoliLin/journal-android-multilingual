@@ -1,0 +1,21 @@
+##### MEM
+# hits: 19698
+
+=== Development and Validation of a Method to Determine CYP4V2 Enzyme Activity in rAAV-hCYP4V2 Gene Therapy Products Using a Bioluminescent Substrate Assay.
+    Li Y, Fan W, Hou S, Ding Y, Jia X, Zhu X, Yuan Y, Zhang Y, Cao Y, Qin X, Liang C, Wang L.
+    ? 2026 | PMID 42653893 | DOI 10.3390/molecules31162811
+    - Bietti crystalline dystrophy like retinal degeneration (BCD) is an inherited retinal degenerative disease caused by defects in the CYP4V2 gene.
+    - This study established and validated a method for determining the enzymatic activity of CYP4V2 based on the bioluminescent substrate Luciferin-MultiCYP.HEK293-AAVR cells were seeded at 1 × 10 4 cells/well and transduced with rAAV-hCYP4V2 across an MOI gradient (1.17 × 10 3 -2.4 × 10 6 ).
+    - This bioluminescent method meets regulatory potency assay requirements and serves as an effective QC tool for process development, batch release, and stability evaluation of rAAV-hCYP4V2 products.
+
+=== Establishing scientific confidence in a two-chamber co-culture system to evaluate androgenic response in the presence of hepatic metabolism.
+    van Tongeren TCA, Hall SJ, Madnick SJ, Ip BC, Carmichael PL, Li H, Chen W, Breitweiser LA, Pence HE, Ames DM, Bowling AJ, Johnson KJ, Cubberley R, Sherf B, Morgan JR, Boekelheide K.
+    ? 2025 | PMID 40902835 | PMCID PMC13354927 | DOI 10.1016/j.toxlet.2025.08.014
+    https://europepmc.org/article/PMC/13354927
+    - The metabolism of T is well described in the literature and a schematic view of the main pathways is summarised in Fig. 1 . DHT is a more AR bioactive metabolite of T, converted by 5α-reductase (SRD5A1). Inactivation pathways in the liver include the oxidation of T to 6β-hydroxy testosterone (6βOHT) predominantly by the cytochrome P450 Family 3 Member A4 (CYP3A4) ( Hashimoto et al., 2016 ; Usmani and Tang, 2004 ) and oxidation of T to androstenedione (AD) by 17β-hydroxysteroid dehydrogenase 2 (HSD17B2) ( Hilborn et al., 2017 ; Suzuki et al., 2000 ; Wilson and LeBlanc, 2000 ). DHT and T are conjugated mainly by UDP-glucuronosyltransferase Family 2 Member B17 (UGT2B17) yielding T- and DHT-glucuronide (TG and DHTG) excreted in urine ( Bhatt et al., 2018 ; Li et al., 2019 ; Schiffer et al., 2018 ; Usmani and Tang, 2004 ; Zhang et al., 2018 ).
+
+=== Confounding Effect of Hepatic Carboxylesterase 1 (CES1) Variability on Clopidogrel Oxidation.
+    Subash S, Singh DK, Khojasteh SC, Murray BP, Zientek MA, Jones RS, Kulkarni P, Smith BJ, Prasad B.
+    ? 2025 | PMID 41232930 | PMCID PMC12673578 | DOI 10.1021/acs.molpharmaceut.5c00462
+    https://europepmc.org/article/PMC/12673578
+    - The protein contents of CYP1A2, CYP2B6, CYP2C9, CYP2C19, CYP3A4, and CES1 determined by quantitative global proteomics are shown ( Figure a–f). The content of most CYPs and CES1 (expressed as pmol/mg total protein) varied considerably across HLM samples from individual donors ( n = 10). In the case of CYP2C9, the abundances were found to be consistent across donors ( Figure c). While the proteomics data for these were obtained in duplicate, the replicates were reproducible (Supporting Information Figure S1a,b ). In the individual HLM samples, the content of CES1 showed a poor correlation ( r 2 = 0.0003 and p value = 0.96) with the endoplasmic reticulum (ER) membrane marker protein (calnexin) and a statistically significant correlation ( r 2 = 0.43 and p 0.05) with the ER luminal marker protein (calreticulin) (Supporting Information Figure S2a,b ). The ratios of calreticulin to calnexin in the individual HLM samples showed around three-fold variability (Supporting Information Figure S2c ), indicating differential ER luminal to membrane compositions due to variable release of luminal contents during the process of preparation of HLM across donors.

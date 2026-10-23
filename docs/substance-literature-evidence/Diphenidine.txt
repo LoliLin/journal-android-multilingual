@@ -1,0 +1,20 @@
+##### Diphenidine
+# hits: 28
+
+=== Diphenidine, a new psychoactive substance: metabolic fate elucidated with rat urine and human liver preparations and detectability in urine using GC-MS, LC-MS<sup>n</sup> , and LC-HR-MS<sup>n</sup>.
+    Wink CS, Michely JA, Jacobsen-Bauer A, Zapp J, Maurer HH.
+    ? 2016 | PMID 26811026 | DOI 10.1002/dta.1946
+    - According to the identified metabolites, the following biotransformation steps were proposed in rats: mono- and bis-hydroxylation at different positions, partly followed by dehydrogenation, N,N-bis-dealkylation, and combinations of them followed by glucuronidation and/or methylation of one of the bis-hydroxy-aryl groups.
+    - Mono- and bis-hydroxylation followed by dehydrogenation could also be detected in pHLM or pHLC.
+    - Cytochrome-P450 (CYP) isozymes CYP1A2, CYP2B6, CYP2C9, and CYP3A4 were all capable of forming the three initial metabolites, namely hydroxy-aryl, hydroxy-piperidine, and bis-hydroxy-piperidine.
+
+=== Fatal cases involving new psychoactive substances and trends in analytical techniques.
+    Ferrari Júnior E, Leite BHM, Gomes EB, Vieira TM, Sepulveda P, Caldas ED.
+    ? 2022 | PMID 36387045 | PMCID PMC9640761 | DOI 10.3389/ftox.2022.1033733
+    https://europepmc.org/article/PMC/9640761
+    - Kusano et al. (2018) also reported the consumption of herbal blend containing 5F-ADB by a Japanese 53-year-old male that resulted in a fatal intoxication. Blood concentrations were 0.19 ng/ml for 5F-ADB and 12 ng/ml for diphenidine, a phencyclidine analog. Investigation of the urinary metabolites revealed pathways involving ester hydrolysis and oxidative defluorination, and further oxidation to the carboxylic acid for 5F-ADB and mono- and di-hydroxylated diphenidine metabolites. The present case demonstrates the importance of urinary metabolite screening for drugs with low blood concentrations.
+
+=== First reported fatalities associated with the 'research chemical' 2-methoxydiphenidine.
+    Elliott SP, Brandt SD, Wallach J, Morris H, Kavanagh PV.
+    ? 2015 | PMID 25698777 | DOI 10.1093/jat/bkv006
+    - Additional metabolites included O-desmethyl-2-MXP and hydroxylated O-desmethyl-2-MXP.

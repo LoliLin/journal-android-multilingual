@@ -1,0 +1,22 @@
+##### Camazepam
+# hits: 13
+
+=== Enantioselective metabolism of camazepam by rat liver microsomes.
+    Lu XL, Yang SK.
+    ? 1993 | PMID 7907230 | DOI 10.1016/0731-7085(93)80103-8
+    - The enantioselective metabolism of racemic CMZ by rat liver microsomes was studied.
+    - Following an in vitro incubation of rac-CMZ, the unmetabolized CMZ was found to be enriched (S)-CMZ, indicating that the R-enantiomer was enantioselectively metabolized.
+    - Two of the most abundant metabolites, formed by hydroxylation and demethylation of a methyl group of the N,N-dimethylcarbamyloxy side chain, were found to be enriched in the R-enantiomer.
+
+=== Enantiomer resolution of camazepam and its derivatives and enantioselective metabolism of camazepam by human liver microsomes.
+    Lu XL, Yang SK.
+    ? 1994 | PMID 7911374 | DOI 10.1016/0021-9673(94)80387-0
+    - In vitro metabolism of racemic CMZ by human liver microsomes was found to be enantioselective.
+    - Following an in vitro incubation of rac-CMZ, the unmetabolized CMZ was found to be enriched in (S)-CMZ, indicating that the R-enantiomer was enantioselectively metabolized.
+    - Metabolites were formed primarily by hydroxylation and demethylation of the methyl groups at the C3 side chain.
+
+=== Species differences in the disposition and metabolism of camazepam.
+    Morino A, Nakamura A, Nakanishi K, Tatewaki N, Sugiyama M.
+    ? 1985 | PMID 2868575 | DOI 10.3109/00498258509049098
+    - The half-life of the elimination phase (t1/2, beta) increased in the order: mice (0.73 h), rats (1.3 h), dogs (5.3 h).
+    - Camazepam was metabolized extensively in all species investigated to more than 10 metabolites, which were desmethyl, descarbamoyl and/or hydroxy products.

@@ -5,5 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Zuclopenthixol given orally is relatively quickly absorbed, with maximum serum concentrations reached in 3-6 hours, and there is good correlation between dose and achieved serum concentration. The biological time in the body in man is about one day. It is distributed in the liver, lungs, intestines and kidney, with somewhat lower concentration in the brain; small amounts of drug or metabolites cross the placenta and are excreted in milk. Zuclopenthixol is broken down by sulphoxidation, N-dealkylation and glucuronic acid conjugation. The faecal route of excretion predominates, with mostly unchanged zuclopenthixol and N-dealkylated metabolite excreted this way.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/11789/smpc"
+  ],
+  "summary": "Zuclopenthixol is a thioxanthene typical antipsychotic used to treat schizophrenia and other psychoses. It is the cis-isomer of clopenthixol."
 }

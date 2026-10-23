@@ -6,9 +6,9 @@
   "url": "https://psychonautwiki.org/wiki/2C-C",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -70,5 +70,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Starting low, independent research and harm-reduction measures are recommended. The dose information is user-reported educational material, not a recommendation, and anecdotal reports do not establish safety."
+  ],
+  "metabolism": "What is known about how the body handles this is very limited. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-C"
   ]
 }

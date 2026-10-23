@@ -1,0 +1,15 @@
+##### Valerylfentanyl
+# hits: 16
+
+=== In vitro comparative assessment of metabolic stability and structure-metabolism relationships of five fentanyl analogs with varying N-acyl side chain lengths.
+    Murakami T, Watanabe S, Imamura Y, Kanda K, Ishimaru R, Chinaka S.
+    ? 2026 | PMID 41535593 | DOI 10.1007/s00204-025-04281-z
+    - This study investigated the comparative in vitro metabolism of five fentanyl analogs with varying N-acyl side chain lengths (acetylfentanyl, fentanyl, butyrylfentanyl, valerylfentanyl, and crotonylfentanyl) to elucidate the relationship between drug structure and metabolism.
+    - Among the four analogs with N-acyl alkyl side chains, the formation of the nor-metabolites, the metabolites hydroxylated at the ethyl linker, and the metabolites hydroxylated at the piperidine ring increased with increasing side chain length, peaking with fentanyl or butyrylfentanyl, and then decreasing with valerylfentanyl, thereby exhibiting an overall inverted U-shaped trend.
+    - In contrast, the metabolites hydroxylated at the phenyl ring of the phenethyl group declined as the side chain lengthened, whereas the metabolites hydroxylated at the acyl side chain and the carboxylated metabolites increased.
+
+=== Zebrafish: A Cost-Effective Model for Enhanced Forensic Toxicology Capabilities in Low- and Middle-Income Countries.
+    Mukherjee S, Mohanty AK, Chinnadurai RK, Barman DD, Poddar A.
+    ? 2024 | PMID 39845220 | PMCID PMC11751116 | DOI 10.7759/cureus.76223
+    https://europepmc.org/article/PMC/11751116
+    - Researchers are increasingly investigating the comparative metabolic profiles of NPS in different models to identify the most suitable system for understanding human metabolism and predicting potential effects. In this, zebrafish have emerged as a valuable model for studying NPS metabolism due to their ability to produce a wide range of metabolites, including both phase I and phase II metabolites. Numerous studies have employed zebrafish to analyze the metabolism of various NPS, including synthetic opioids (U-47700, valerylfentanyl, fentanyl), synthetic cannabinoids (methyl (2S)-2-[[1-(4-fluorobutyl)indole-3-carbonyl]amino]-3,3-dimethylbutanoate (4F-MDMB-BICA), 4F-MDMB-BINACA, methyl (2S)-2-[[1-(cyclohexylmethyl)indazole-3-carbonyl]amino]-3,3-dimethylbutanoate (MDMB-CHMINACA), (2S)-2-[[2-[1-[(4-fluorophenyl)methyl]indol-3-yl]acetyl]amino]-3,3-dimethylbutanamide (ADB-FUBIATA)), a derivative of lysergic acid (1cP-LSD), a compound belonging to tryptamine class (4-AcO-DET), cathinones (NEP, dipentylone), designer benzodiazepines (Clonazolam, Etizolam) and 3-Methoxyeticyclidine [ 46 , 48 , 51 , 59 - 71 ] (Table 3 ).

@@ -1,0 +1,14 @@
+##### Flunitrazolam
+# hits: 6
+
+=== Detection of the designer benzodiazepine flunitrazolam in urine and preliminary data on its metabolism.
+    Ameline A, Richeval C, Gaulier JM, Raul JS, Kintz P.
+    ? 2019 | PMID 30109775 | DOI 10.1002/dta.2480
+    - To gain preliminary data on its elimination parameters in urine and to investigate its metabolism, one of the authors ingested one pink tablet bought on the Internet, after confirming the absence of other compounds and agreement with the labeled dosage (0.25 mg) by nuclear magnetic resonance (NMR).
+    - About 3% of the initial dose was excreted in urine as total unchanged FNTZ during this period.
+
+=== Characterization and in vitro phase I microsomal metabolism of designer benzodiazepines: An update comprising flunitrazolam, norflurazepam, and 4'-chlorodiazepam (Ro5-4864).
+    Moosmann B, Bisel P, Westphal F, Wilde M, Kempf J, Angerer V, Auwärter V.
+    ? 2019 | PMID 30578721 | DOI 10.1002/dta.2561
+    - The metabolic steps of flunitrazolam were monohydroxylation, dihydroxylation, and reduction of the nitro function.
+    - The detected in vitro phase I metabolites of norflurazepam were hydroxynorflurazepam and dihydroxynorflurazepam. 4'-Chlorodiazepam biotransformation consisted of N-dealkylation and hydroxylation.

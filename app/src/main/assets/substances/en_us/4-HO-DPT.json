@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "A psychedelic hallucinogenic first synthesized by alexander shulgin. At light doses it causes enhanced cognition and appreciation for things like art and music while high doses cause visuals. The drug is known to cause a bodyload.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "4-HO-DPT"
 }

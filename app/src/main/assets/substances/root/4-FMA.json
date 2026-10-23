@@ -13,12 +13,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "entactogen",
@@ -26,7 +26,7 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "A stimulant with some empathogenic properties, and analogue of Methamphetamine with similar effects. Reported to be less effective than 2-FMA and related compounds. Little is known about the pharmacological effects of this compound. Not to be confused with 4-FA, which has a different effect profile, despite similar potency.",
+  "summary": "4-FMA is a fluorinated methamphetamine analogue with some empathogenic properties as well as stimulant ones, and is reported to be less effective than 2-FMA and related compounds. Little is known about the pharmacological effects of this compound, and its pharmacology, toxicity and metabolism are poorly characterized. It should not be confused with 4-FA, which has a different effect profile despite similar potency.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -59,7 +59,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 10,
+        "lightMin": 25,
         "commonMin": 50,
         "strongMin": 100,
         "heavyMin": 125
@@ -97,5 +97,16 @@
         }
       }
     }
+  ],
+  "effectsSummary": "A mixed stimulant and empathogenic profile. It describes headache and cardiovascular adverse effects as more frequently reported than with related fluorinated amphetamines, but these accounts are anecdotal and the page says human pharmacology is poorly studied.",
+  "dosageRemark": "The archived oral dose table lists threshold 10 mg, light 25–50 mg, common 50–75 mg, strong 100–125 mg and severe 125 mg+. The source leaves a gap between the common and strong bands; it is preserved rather than filled. The model has no thresholdMin field, so the threshold is recorded here. The page says these user/resource-derived values are for education, not recommendation, and should be verified independently.",
+  "generalRisks": "4-FMA toxicity has not been studied scientifically and its exact toxic dose is unknown. Headache and cardiovascular adverse effects. The page's stroke and severe cardiovascular warning is partly extrapolated from 4-FA; it explicitly does not establish causality or prove the same outcomes for 4-FMA.",
+  "longtermRisks": "Recreational toxicity and long-term health effects of 4-FMA have not been studied scientifically. Long-term organ and neurological risks therefore remain unknown; claims about harm are not established clinical findings.",
+  "saferUse": [
+    "Harm-reduction measures are strongly recommended. Reported corrosivity may injure the nose and throat if the substance is insufflated, and the oral dose table is unverified, not a recommendation."
+  ],
+  "metabolism": "4-FMA what is known about the breakdown is very limited and provides no established human route through the body. Its CYP450 inhibition claim is not accompanied on the page by human pathway evidence and is not recorded here as established metabolism. This is a knowledge gap, not evidence that 4-FMA is not broken down.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FMA.md"
   ]
 }

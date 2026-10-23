@@ -1,0 +1,8 @@
+##### Mexamine
+# hits: 3
+
+=== Radioprotection and Radiomitigation: From the Bench to Clinical Practice.
+    Obrador E, Salvador R, Villaescusa JI, Soriano JM, Estrela JM, Montoro A.
+    ? 2020 | PMID 33142986 | PMCID PMC7692399 | DOI 10.3390/biomedicines8110461
+    https://europepmc.org/article/PMC/7692399
+    - Indraline, an α-adrenomimetic (α-1(B)-adrenoagonist), showed clear radioprotective effects for the skin, certain organs, and cellular DNA exposed to a radioactive source in different animal species [ 119 ]. The potential radioprotective effects of indraline include, e.g., an increase in DNA and protein biosynthesis and an increase in ribonucleotide reductase [ 120 ]. Indraline-treated animals survived better (at least in the short term) after external irradiation, even at normally fatal doses, especially if certain vital organs (including the liver) were also protected [ 121 ]. Importantly, indraline has been shown to be radioprotective in irradiated monkeys. Experimentally, juvenile rhesus monkeys were exposed to total-body γ irradiation from 60 Co at a dose of 6.8 Gy (100% lethality over 30 days). Five minutes before the exposure, an intramuscular dose of indraline (40–120 mg/kg) was administered. Five out of six monkeys were protected by the 120 mg/kg does of indraline (in comparison with the 10 animals that died in the radiation control group) [ 122 ]. Although the lack of clinical trials is a very limiting factor, it is encouraging that, in experiments on rats, indraline (50 mg/kg) and mexamine (12 mg/kg) injected IP almost completely eliminated animal mortality from the intestinal syndrome of acute radiation sickness [ 123 ].

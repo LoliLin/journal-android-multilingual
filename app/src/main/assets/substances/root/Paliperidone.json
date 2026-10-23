@@ -5,11 +5,18 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Renal excretion of unchanged drug is the main elimination route. CYP2D6/CYP3A4 show activity in vitro but contribute little to overall in-vivo clearance. Paliperidone is also risperidone's active 9-hydroxy metabolite.",
+  "metabolism": "Renal excretion of unchanged drug is the main route out of the body. CYP2D6/CYP3A4 show activity in the lab but contribute little to overall in-vivo how fast the body clears it. Paliperidone is also risperidone's active 9-hydroxy metabolite.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=bbbaa057-f587-4eb9-a0d2-463dbcd57661"
   ],
   "oralReleaseForms": [
     "EXTENDED_RELEASE"
+  ],
+  "summary": "Paliperidone is an atypical antipsychotic used to treat schizophrenia and schizoaffective disorder. It is available in oral and long-acting injectable formulations.",
+  "roas": [
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
+    }
   ]
 }

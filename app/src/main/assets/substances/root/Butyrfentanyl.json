@@ -14,5 +14,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "The main way it is broken down is by adding a hydroxyl group to the butanamide side chain and then oxidising that to a carboxylic acid. The version with the alkyl group taken off, norbutyrfentanyl, was not among the most plentiful products in human samples, but it was suggested as a good one to look for because it gives a strong signal.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6212520"
+  ],
+  "summary": "Butyrfentanyl is a short-acting synthetic opioid analgesic and fentanyl analogue that acts at μ-opioid receptors. It has been sold as a designer drug."
 }

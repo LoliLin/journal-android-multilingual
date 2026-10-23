@@ -6,8 +6,9 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": ["exact toxic dosage is unknown"],
-  "summary": "A euphoric stimulant often sold in place of MDMA since methylone was banned. Slightly less potent and empathogenic than methylone, it is often described as more of a 'straight stimulant.'",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "Exact toxic dosage is unknown"
+  ],
   "localizedName": "Ethylone"
 }

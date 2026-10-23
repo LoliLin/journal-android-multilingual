@@ -6,10 +6,10 @@
   "url": "https://psychonautwiki.org/wiki/Myristicin",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "is not known to be addictive",
+  "addictionPotential": "Is not known to be addictive",
   "toxicities": [
-    "is neurotoxic",
-    "can be fatal in extremely high doses"
+    "Is neurotoxic",
+    "Can be fatal in extremely high doses"
   ],
   "categories": [
     "deliriant"
@@ -73,5 +73,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Myristicin is a naturally occurring allylbenzene found in herbs and spices such as nutmeg. At high doses, it may produce hallucinogenic effects."
 }

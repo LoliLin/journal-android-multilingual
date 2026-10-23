@@ -1,0 +1,19 @@
+##### Buphedrone
+# hits: 27
+
+=== Recent Contributions of Organic Synthesis to Forensic Science.
+    Dos Santos Martins G, Dos Santos Dupim M, Garcia Agostinho R, Gadini Finelli F.
+    ? 2026 | PMID 41711074 | PMCID PMC12917873 | DOI 10.1002/cplu.202500724
+    https://europepmc.org/article/PMC/12917873
+    - Taken together, these findings highlight how the synthesis of reference standards combined with the analysis of biological matrices has been essential for unraveling the complex metabolic pathways of structurally diverse drugs. Building on this approach, other studies have expanded this metabolic landscape by investigating compounds from other types of NPS, as cathinones. In 2020, Carrola and coworkers [ 39 ] investigated the metabolism of the new psychoactive substances N ‐ethylhexedrone (NEH) ( 97 ) and buphedrone (BUH) ( 98 ) using HPLC‐MS to identify and quantify the main phase I and phase II metabolites excreted in mouse urine after 24 h of drug administration. LC‐MS analysis of urine samples showed that the parent compounds were excreted at low levels ( 10%) and both drugs exhibited similar metabolic patterns. The major metabolites resulted from N ‐dealkylation H2 ( 99 ) and B2 ( 100 ), followed by products combining β ‐keto reduction and N ‐dealkylation H3 ( 101 ) and B3 ( 102 ). Additional minor metabolites were detected, including β ‐keto‐reduced N‐alkylated forms H1 ( 103 ) and B1 ( 104 ) and B4 an aromatic 4‐hydroxylated metabolite ( 105 ), observed only for buphedrone. Phase II metabolites were also identified, formed through reactions such as N ‐acetylation, glucuronidation, and further conjugation of the N ‐dealkylated metabolite with succinic, glutaric, or adipic acids.
+
+=== Enantioselectivity of Pentedrone and Methylone on Metabolic Profiling in 2D and 3D Human Hepatocyte-like Cells.
+    Silva B, Rodrigues JS, Almeida AS, Lima AR, Fernandes C, Guedes de Pinho P, Miranda JP, Remião F.
+    ? 2022 | PMID 35337165 | PMCID PMC8953427 | DOI 10.3390/ph15030368
+    https://europepmc.org/article/PMC/8953427
+    - Despite their importance, enantioselectivity studies still constitute a significant challenge for the research community, owing to the difficulties in enantiomer isolation and to the lack of data in relevant in vitro models. Liver’s susceptibility to the toxicity of synthetic cathinones has already been proved by clinical data [ 1 , 9 ] and in vitro studies for different cathinone derivatives, namely for pentedrone, methylone, 4-MEC [ 10 ], 3,4-methylenedioxypyrovalerone (MDPV) [ 10 , 28 ], butylone, buphedrone, and 3,4-DMMC [ 29 ] in PRH. However, the enantioselectivity of these compounds has not yet been studied in the liver. Thus, the present work aimed to unravel the enantioselectivity metabolic and cytotoxic profile of pentedrone and methylone by resorting to two in vitro hepatic models, HLCs cultured in 2D and 3D. Herein, it is shown that the estimated EC 50 values for both pentedrone and methylone are distinct in both models, being higher in 3D cultures than in 2D cultures. Most importantly, the enantioselectivity metabolic profile of pentedrone and methylone in 2D- and 3D-HLCs is demonstrated for the first time. Finally, it is further shown that enantioselective cytotoxicity was only observed in the 3D model, where the R -(−)-pentedrone, which is preferentially metabolized over the S enantiomer, is also the most toxic enantiomer in this cellular model.
+
+=== Integrated Approach for Synthetic Cathinone Drug Prioritization and Risk Assessment: In Silico Approach and Sub-Chronic Studies in <i>Daphnia magna</i> and <i>Tetrahymena thermophila</i>.
+    Pérez-Pereira A, Carvalho AR, Carrola JS, Tiritan ME, Ribeiro C.
+    ? 2023 | PMID 37049662 | DOI 10.3390/molecules28072899
+    - Oxidative stress and changes in enzymatic activities were noted except for 3-MMC.

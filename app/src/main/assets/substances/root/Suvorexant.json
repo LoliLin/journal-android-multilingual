@@ -8,5 +8,6 @@
   "metabolism": "Primarily metabolized by CYP3A, with a smaller CYP2C19 contribution. Elimination of metabolites is mainly fecal, with a smaller urinary component.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e5b72731-1acb-45b7-9c13-290ad12d3951"
-  ]
+  ],
+  "summary": "Suvorexant is an oral dual orexin receptor antagonist used to treat insomnia involving difficulty falling asleep or staying asleep in adults."
 }

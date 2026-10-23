@@ -13,12 +13,16 @@
   "url": "https://psychonautwiki.org/wiki/4F-MPH",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
-  "categories": [
-    "stimulant",
-    "research-chemical",
-    "habit-forming",
-    "tentative"
+  "toxicities": [
+    "The toxicity and harm-potential section is a draft whose information may be incomplete and may contain dangerous errors. Recreational toxicity and long-term health effects of 4F-MPH appear not to have been studied in any scientific context and the exact toxic dose is unknown, because it is a research chemical with a very short history of human use. Anecdotal evidence from people who have tried it suggests that using it only at low to moderate doses and very occasionally has no attributable negative health effects, though nothing can be fully guaranteed."
+  ],
+  "effectsSummary": "The subjective-effects index is built on anecdotal user reports and contributor analysis, and should be taken with healthy skepticism. Effects may not occur in a predictable or reliable way, higher doses are more likely to produce the full spectrum, and adverse effects become more likely as the dose increases, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and related resources for education, not dosing advice. Oral lists a threshold of below 5 mg, a light range of 5-10 mg, moderate of 10-15 mg, strong of 15-20 mg and heavy of 20 mg or more, with a total duration of 4-8 hours. Insufflated lists a threshold of 5 mg, a light range of 5-8 mg, moderate of 8-14 mg, strong of 14-20 mg and heavy of 20 mg or more, with a total duration of 3-6 hours. The model does not represent a threshold band separately and the oral threshold is stated as a bound rather than a value, so lightMin follows the lower bound of each source light range. The page provides no comeup value for either route.",
+  "generalRisks": "The toxicity section is a draft that may contain incomplete and even dangerously wrong information. Recreational toxicity and long-term health effects appear not to have been studied in any scientific context, and independent research before ingestion is advised to make sure combinations of two or more substances are safe.",
+  "longtermRisks": "Recreational toxicity and long-term health effects of 4F-MPH appear not to have been studied in any scientific context.",
+  "saferUse": [
+    "Appropriate harm reduction is strongly recommended, given the potent and long-lasting stimulant effects, the habit-forming potential and the unknown toxicity profile.",
+    "It advises independent research before ingestion to make sure combinations of two or more substances are safe, and notes that its toxicity section is a draft that may contain dangerous errors."
   ],
   "interactions": {
     "dangerous": [
@@ -38,6 +42,17 @@
       "dissociative"
     ]
   },
+  "metabolism": "Nothing is known about how 4F-MPH is broken down in people. No specific metabolic finding or pathway has been described.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4F-MPH"
+  ],
+  "categories": [
+    "stimulant",
+    "research-chemical",
+    "habit-forming",
+    "tentative"
+  ],
+  "summary": "4F-MPH is a fluorinated methylphenidate-derived stimulant whose archived toxicity section is marked as a draft that may contain dangerous errors, and whose toxicity and long-term health effects have not been researched.",
   "roas": [
     {
       "name": "insufflated",

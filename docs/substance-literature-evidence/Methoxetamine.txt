@@ -1,0 +1,19 @@
+##### Methoxetamine
+# hits: 48
+
+=== An Update on the Implications of New Psychoactive Substances in Public Health.
+    Simão AY, Antunes M, Cabral E, Oliveira P, Rosendo LM, Brinca AT, Alves E, Marques H, Rosado T, Passarinha LA, Andraus M, Barroso M, Gallardo E.
+    ? 2022 | PMID 35457736 | PMCID PMC9028227 | DOI 10.3390/ijerph19084869
+    https://europepmc.org/article/PMC/9028227
+    - Methoxetamine first appeared in 2010 and was widely marketed by “major stores” on the internet, which led to several reports of hospitalization [ 231 , 236 , 243 ]. Several routes of administration are possible, including intramuscular, oral, inhalation, rectal, or intravenous. So far, the metabolism of methoxetamine is not completely known, but it appears that CYP2B6 and CYP3A4 are involved. The primary metabolite, normethoxetamine, results from N- deethylation and undergoes hydroxylation and glucuronidation to form the more water-soluble hydroxynormethoxetamine glucuronide. These metabolites are consistent with those found in urine samples from analytically confirmed methoxetamine cases [ 236 ].
+
+=== Derivatives of methoxetamine and major methoxetamine metabolites potently block NMDA receptors.
+    Irie T, Yanase Y, Demizu Y, Usami M, Kikura-Hanajiri R.
+    ? 2022 | PMID 36344045 | DOI 10.1016/j.jphs.2022.09.005
+    - N-Desethyl methoxetamine and O-desmethyl methoxetamine may cause several adverse effects when methoxetamine is metabolized.
+
+=== 3-Methoxy-Phencyclidine Induced Psychotic Disorder: A Literature Review and an &lt;sup&gt;18&lt;/sup&gt;F-FDG PET/CT Case Report.
+    Pepe M, Di Nicola M, Cocciolillo F, Chiappini S, Martinotti G, Calcagni ML, Sani G.
+    ? 2024 | PMID 38675413 | PMCID PMC11053433 | DOI 10.3390/ph17040452
+    https://europepmc.org/article/PMC/11053433
+    - Like other PCP-like compounds, some cognitive changes have been described among the acute and chronic consequences of 3-MeO-PCP ingestion [ 50 ]. Cognitive deficits, i.e., selectively reduced memory capacity, have been reported for two other NMDA receptor antagonists, PCP and methoxetamine, in animal models [ 75 ]. Further, alterations of neuropsychological tasks and an impaired brain metabolism in prefrontal cortex areas, as revealed by 18 F-FDG PET/CT images, were reported in the case of a 23-year-old man with methoxetamine-induced psychotic disorder [ 53 ]. Unlike dopamine, NMDA receptors are widely distributed throughout the brain, including sensory and association cortices and subcortical areas, and it has been hypothesized that such a distribution pattern might affect higher-order cognitive dysfunctions as detected by behavioral, neurophysiological, and functional imaging studies in schizophrenia [ 13 ].

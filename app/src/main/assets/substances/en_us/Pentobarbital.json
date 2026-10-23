@@ -1,9 +1,8 @@
 {
-  "addictionPotential": "extremely physically and psychologically addictive",
+  "addictionPotential": "Extremely physically and psychologically addictive",
   "toxicities": [
-    "moderate toxicity",
-    "potentially lethal when mixed with depressants like alcohol or opioids"
+    "Moderate toxicity",
+    "Potentially lethal when mixed with depressants like alcohol or opioids"
   ],
-  "summary": "A CNS depressant drug that is of the barbituate class. Typically not used often as it is easier to OD on than benzodiazepines, the new alternative to barbituates. Used often for insomnia, to cause sedation.",
   "localizedName": "Pentobarbital"
 }

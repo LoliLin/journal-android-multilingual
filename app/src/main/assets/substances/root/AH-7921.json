@@ -12,5 +12,9 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Non-fentanyl new synthetic opioid analogues such as AH-7921 follow demethylation, as U-47700, for which N-desmethyl, N,N-didesmethyl, desmethylhydroxy and N,N-didesmethylhydroxy metabolites in urine have been detected.",
+  "metabolismSources": [
+    "https://europepmc.org/article/PMC/6193107"
+  ],
+  "summary": "AH-7921 is an opioid analgesic selective for the μ-opioid receptor. It has been sold online as a new psychoactive substance and has not progressed to clinical trials."
 }

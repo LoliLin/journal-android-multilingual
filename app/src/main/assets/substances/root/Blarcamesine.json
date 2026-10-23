@@ -5,5 +5,6 @@
   "categories": [
     "antidementia"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Blarcamesine (ANAVEX 2-73) is an experimental drug studied for Alzheimer's disease and other conditions. It is reported to act as an agonist at sigma-1, muscarinic M1, and NMDA receptors."
 }

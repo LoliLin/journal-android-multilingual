@@ -1,0 +1,8 @@
+##### HHC-C8
+# hits: 1
+
+=== Semi-Synthetic Cannabinoids in Forensic Toxicology and Public Health: Analytical Challenges, Emerging Detection Strategies, and Regulatory Implications.
+    Aldasem AF, Ugariogu SN, Al-Matrouk A, Al-Tannak NF.
+    ? 2026 | PMID 42515705 | PMCID PMC13414980 | DOI 10.3390/ph19071022
+    https://europepmc.org/article/PMC/13414980
+    - Despite the growing number of studies on semi-synthetic cannabinoids (SSCs), major scientific, analytical, toxicological, and regulatory gaps remain. One of the most important limitations identified in the reviewed literature is the lack of comprehensive human pharmacokinetic and pharmacodynamic data for compounds such as hexahydrocannabinol (HHC), HHC-P, HHC-O, HHC-C8, and related analogues [ 4 , 12 , 14 , 20 , 21 ]. Most available evidence is derived from in vitro metabolism studies, seized-product investigations, analytical validation studies, or isolated clinical case reports rather than controlled human investigations. Consequently, reliable concentration–effect relationships, impairment thresholds, toxic ranges, and fatal concentrations remain poorly established, thereby limiting forensic interpretation and medico-legal decision-making.

@@ -1,0 +1,21 @@
+##### Flubromazolam
+# hits: 27
+
+=== Exploring the Metabolism of Flubrotizolam, a Potent Thieno-Triazolo Diazepine, Using Human Hepatocytes and High-Resolution Mass Spectrometry.
+    Gameli PS, Kutzler J, Berardinelli D, Carlier J, Auwärter V, Busardò FP.
+    ? 2024 | PMID 39330513 | PMCID PMC11433749 | DOI 10.3390/metabo14090506
+    https://europepmc.org/article/PMC/11433749
+    - We detected M5 and M6 at 13.43 and 13.70 min, respectively, with the highest peak areas among the metabolites. M5 and M6 signals were detected at m / z 392.9816 in positive ionization mode with a +15.9950 Da mass shift from that of flubrotizolam, indicating oxidation (+O). According to previous studies on alprazolam, triazolam, midazolam, and flubromazolam, which are di- or triazolo benzodiazepines similar to flubrotizolam, the 6- and α-positions are the most likely candidates for hydroxylation. Additionally, these main metabolites are also found for the chloro-derivative brotizolam [ 27 , 30 , 31 , 32 ].
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.
+
+=== Flubromazolam-Derived Designer Benzodiazepines: Toxicokinetics and Analytical Toxicology of Clobromazolam and Bromazolam.
+    Wagmann L, Manier SK, Felske C, Gampfer TM, Richter MJ, Eckstein N, Meyer MR.
+    ? 2021 | PMID 33048135 | DOI 10.1093/jat/bkaa161
+    - Since no information concerning their toxicokinetics in humans is available, the aims of the current study were to elucidate their metabolic profile and to identify the isozymes involved in their phase I and phase II metabolism.
+    - Predominant metabolic steps were hydroxylation, glucuronidation and combinations thereof.
+    - Alpha-hydroxy bromazolam glucuronide and bromazolam N-glucuronide are recommended as screening targets in urine.

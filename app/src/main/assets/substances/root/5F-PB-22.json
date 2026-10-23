@@ -11,19 +11,19 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Toxicity and long-term health effects of recreational use appear unstudied and the exact toxic dose is unknown."
   ],
-  "categories": [
-    "cannabinoid",
-    "tentative",
-    "research-chemical",
-    "habit-forming"
+  "dosageRemark": "Separate smoked and oral tables are given. Smoked: threshold 1 mg, light 1-3 mg, moderate 3-5 mg, strong 5-8 mg, heavy 8 mg+; total 90 min, onset 10 sec, peak 30 min, offset 1 hour, afterglow 15 min. Oral: same dose bands, total 2-3 hours, onset 30 min, peak 1.5 hours, offset 1 hour, afterglow 30 min. This is an educational user and resource compilation, not a recommendation.",
+  "generalRisks": "Synthetic cannabinoid misuse is associated with more dangerous adverse effects and toxicity and multiple deaths than cannabis; it strongly advises against prolonged or high-dose use.",
+  "longtermRisks": "Recreational toxicity and long-term health effects appear not to have been studied. Long-term synthetic cannabinoid misuse is associated with deaths and more dangerous toxicity than cannabis.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, and prolonged or high-dose use is advised against.",
+    "The dose table is unreviewed user/resource information for education and should be checked against other sources."
   ],
-  "summary": "Synthetic cannabinoid, agonist of the cannabinoid receptors which has a strong sedating aspect. Being a synthetic cannabinoid it has a very fast onset.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -44,6 +44,13 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid",
+    "tentative",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "5F-PB-22 is a synthetic cannabinoid with source-listed smoked and oral dose tables; the archive says toxicity and long-term effects are poorly studied and warns against prolonged or high-dose use.",
   "roas": [
     {
       "name": "oral",
@@ -60,16 +67,6 @@
           "max": 3,
           "units": "hours"
         }
-      }
-    },
-    {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 3,
-        "strongMin": 5,
-        "heavyMin": 8
       }
     },
     {

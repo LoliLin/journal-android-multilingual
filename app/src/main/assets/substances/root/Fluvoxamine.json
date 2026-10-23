@@ -11,8 +11,9 @@
     "ssri"
   ],
   "isApproved": false,
-  "metabolism": "Extensive hepatic oxidative demethylation produces multiple metabolites, which are cleared through the kidneys. Its inhibition of other drugs' CYP metabolism must not be confused with its own clearance pathways.",
+  "metabolism": "Extensive hepatic oxidative demethylation produces multiple metabolites, which are cleared through the kidneys. Its inhibition of other drugs' CYP metabolism must not be confused with its own how fast the body clears it pathways.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/1169/smpc"
-  ]
+  ],
+  "summary": "Fluvoxamine is a selective serotonin reuptake inhibitor (SSRI) antidepressant used mainly for major depressive disorder and obsessive-compulsive disorder, as well as some anxiety disorders."
 }

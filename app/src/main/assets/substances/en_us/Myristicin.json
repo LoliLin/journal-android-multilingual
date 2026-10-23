@@ -1,5 +1,8 @@
 {
-  "addictionPotential": "is not known to be addictive",
-  "toxicities": ["is neurotoxic", "can be fatal in extremely high doses"],
+  "addictionPotential": "Is not known to be addictive",
+  "toxicities": [
+    "Is neurotoxic",
+    "Can be fatal in extremely high doses"
+  ],
   "localizedName": "Myristicin"
 }

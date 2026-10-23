@@ -10,8 +10,8 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["racetam", "nootropic"],
-  "addictionPotential": "not addictive with a low potential for abuse",
+  "crossTolerances": ["Racetam", "Nootropic"],
+  "addictionPotential": "Not addictive with a low potential for abuse",
   "toxicities": [],
   "categories": ["nootropic"],
   "summary": "A racetam nootropic claimed by many to have cognitive benefits however this has never been strongly supported in healthy individuals. Prescribed in the UK as a treatment for myoclonus. Potentially an ampakine. One of the first popular 'nootropics.'",
@@ -38,5 +38,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Absorbed quickly and almost completely, with peak blood levels within 1.5 hours and about 100% of an oral dose reaching the blood whether it is given as capsules, tablets or solution. It spreads through the body at 0.7 L/kg and passes into the brain and across the placenta. No breakdown product of piracetam has ever been found. It comes out almost entirely in the urine, and the fraction that comes out does not depend on the dose. In young adult men it stays in the body for 5.0 hours, and the kidneys clear it, so renal impairment means it stays longer.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/101129/smpc"]
 }

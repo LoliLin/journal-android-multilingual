@@ -15,11 +15,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "moderately addictive",
+  "addictionPotential": "Moderately addictive",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages"
   ],
   "categories": [
     "opioid",
@@ -71,5 +71,15 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Broken down in three ways: N-demethylation, O-demethylation and 6-keto reduction. CYP3A4-mediated N-demethylation to inactive norhydrocodone is the main route, with CYP2B6 and CYP2C19 contributing less. The minor breakdown product hydromorphone (less than 3% of the circulating parent drug) is formed mainly by CYP2D6-mediated O-demethylation. Hydrocodone and its breakdown products leave the body mainly through the kidneys.",
+  "metabolismSources": [
+    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b7d23ac2-e776-9f62-3290-c64c2d6eb353"
+  ],
+  "saferUse": [
+    "The evidence is for single-ingredient oral extended-release HYSINGLA ER tablets. Swallow whole; crushing, chewing or dissolving can release a potentially fatal dose.",
+    "Keep securely stored and out of children's reach; accidental ingestion of one dose can be fatal. Discuss access to an opioid overdose reversal agent with a clinician/caregiver.",
+    "Avoid alcohol and do not combine with benzodiazepines or other CNS depressants unless specifically managed by a clinician; profound sedation, respiratory depression, coma, and death can result. CYP3A4 inhibitors or stopping CYP3A4 inducers can raise hydrocodone exposure and cause potentially fatal respiratory depression."
+  ],
+  "generalRisks": "The boxed warning covers addiction, abuse, misuse, fatal respiratory depression, fatal accidental ingestion, alcohol/CNS-depressant combinations, and CYP3A4 interactions that can raise hydrocodone exposure. Crushing, chewing, or dissolving the tablet can release a potentially fatal dose."
 }

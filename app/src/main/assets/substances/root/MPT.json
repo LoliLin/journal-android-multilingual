@@ -1,6 +1,9 @@
 {
   "name": "MPT",
-  "commonNames": ["MPT", "Methylpropyltryptamine"],
+  "commonNames": [
+    "MPT",
+    "Methylpropyltryptamine"
+  ],
   "url": "https://psychonautwiki.org/wiki/MPT",
   "isApproved": true,
   "tolerance": {
@@ -10,16 +13,23 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "categories": ["psychedelic"],
-  "roas": [
-    {
-      "name": "oral",
-      "dose": {
-        "units": "mg"
-      }
-    }
-  ]
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
+  "effectsSummary": "MPT as a poorly studied tryptamine with anecdotal effects; its oral dose/duration table contains only placeholders.",
+  "dosageRemark": "The oral dose and duration values are placeholders (three question marks), not usable measurements. Toxicity and long-term recreational effects are unstudied and the exact toxic dose is unknown, so no numeric dose bands are inferred.",
+  "generalRisks": "Recreational toxicity and long-term health effects appear unstudied, exact toxic dose is unknown and human-use history is very limited.",
+  "longtermRisks": "Long-term recreational health effects have not been studied in a scientific context.",
+  "saferUse": [
+    "Independent research and harm reduction are recommended. The oral dose table is placeholder-only and must not be interpreted as quantitative guidance."
+  ],
+  "categories": [
+    "psychedelic"
+  ],
+  "summary": "MPT is a poorly studied tryptamine. Its archived oral dose and duration fields are placeholders, and human toxicity data are unavailable.",
+  "roas": []
 }

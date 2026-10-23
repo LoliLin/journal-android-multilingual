@@ -5,5 +5,9 @@
   "categories": [
     "nootropic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Metabolism occurs by oxidative shortening of the side chain and by reduction of the quinone ring, followed by conjugation to glucuronides and sulphates. Idebenone shows a high the liver breaking some down on the way resulting in conjugates of idebenone (glucuronides and sulphates, IDE-C) and the phase I metabolites QS10, QS6 and QS4, as well as their phase II metabolites. The main metabolites in plasma are IDE-C and QS4+QS4-C. Due to the high the liver breaking some down on the way, plasma concentrations of idebenone were generally only measurable up to 6 hours when taken by mouth. The main route of elimination is metabolism, with the majority of the dose excreted via the kidneys as metabolites: after a single or repeated oral dose of 750 mg, QS4+QS4-C were the most prominent idebenone-derived metabolites in urine, representing on average between 49.3% and 68.3% of the total given dose, QS6+QS6 represented 6.45% to 9.46%, whereas QS10+QS10-C and IDE+IDE-C were close to 1% or below.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/2269/smpc"
+  ],
+  "summary": "Idebenone is a quinone-family compound developed as a medication for cognitive disorders and neuromuscular diseases. It is approved in the European Union for Leber's hereditary optic neuropathy and is also marketed as a synthetic coenzyme Q10 analogue."
 }

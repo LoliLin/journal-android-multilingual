@@ -2,7 +2,84 @@
   "name": "4C-D",
   "isApproved": false,
   "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/4C-D.md",
+  "commonNames": [
+    "ARIADNE",
+    "Dimoxamine",
+    "α-ethyl-2C-D",
+    "α-ethyl-DOM",
+    "BL-3912"
+  ],
   "categories": [
-    "psychedelic"
-  ]
+    "Psychedelic"
+  ],
+  "toxicities": [
+    "The exact toxic dose is unknown; recreational toxicity has not been studied in a scientific setting."
+  ],
+  "dosageRemark": "The listed dose bands and duration ranges are transcribed from FreeODwiki. Its page says the dose classification is not fully clear and draws partly on anecdotal reports; treat these as low-confidence reference data, not recommendations.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific setting, human-use history is very limited, and the exact toxic dose is unknown.",
+  "longtermRisks": "Long-term health effects have not been established; the source says they have not been studied in a scientific setting.",
+  "addictionPotential": "4C-D as not readily habit-forming and possibly self-regulating, but this is based on limited anecdotal information.",
+  "tolerance": {
+    "full": "Tolerance is reported to develop almost immediately after ingestion.",
+    "half": "About 3 days",
+    "zero": "About 7 days"
+  },
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "interactions": {
+    "dangerous": [
+      "lithium",
+      "cannabis",
+      "stimulant",
+      "tramadol"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 30,
+        "strongMin": 60,
+        "heavyMin": 100
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 45,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "peak": {
+          "min": 1.5,
+          "max": 4.5,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 1.5,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 4,
+          "max": 10,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 8,
+          "units": "hours"
+        }
+      }
+    }
+  ],
+  "summary": "4C-D, also known as Ariadne, is a synthetic phenethylamine in the 2C family. It has limited documented human use, and its effects are not well characterized."
 }
