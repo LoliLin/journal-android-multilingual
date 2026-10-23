@@ -1,10 +1,38 @@
 {
   "name": "Dimdazenil",
+  "commonNames": [
+    "EVT-201",
+    "EVT201",
+    "Junoenil",
+    "京诺宁",
+    "京諾寧",
+    "地达西尼",
+    "地達西尼"
+  ],
   "url": "https://en.wikipedia.org/wiki/Dimdazenil",
   "isApproved": false,
   "categories": [
+    "depressant",
     "hypnotic",
-    "benzodiazepine"
+    "benzodiazepine",
+    "habit-forming"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "summary": "Dimdazenil (EVT-201) is a benzodiazepine-derived hypnotic and partial positive allosteric modulator of GABA-A receptors, with relatively greater activity at receptors containing the alpha-1 subunit. Clinical studies have evaluated it for insomnia.",
+  "effectsSummary": "Clinical trials reported improvements in sleep onset and sleep maintenance. It enhances GABA-A-mediated inhibitory signaling, producing hypnotic and sedative effects.",
+  "generalRisks": "Clinical studies have reported dizziness, vertigo and weakness. Sedation and impaired alertness are possible. Alcohol, opioids and other central nervous system depressants may increase these risks.",
+  "longtermRisks": "Long-term safety, tolerance and dependence risks remain insufficiently characterized. Regular use may carry risks of dependence and withdrawal.",
+  "saferUse": [
+    "Avoid alcohol and combinations with opioids or other sedatives without medical advice.",
+    "Do not drive or operate machinery while sedated or impaired.",
+    "Seek medical help for breathing difficulties or unusual sleep-related behavior."
+  ],
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "metabolism": "Flavin-containing monooxygenases, particularly FMO3, have been reported to participate in metabolism. Specific metabolites and elimination routes are not yet well characterized.",
+  "metabolismSources": [
+    "https://www.nhsa.gov.cn/attach/Ypsn2024/YPSW202400333/YPSW202400333.pdf"
+  ]
 }
