@@ -17,22 +17,22 @@
     "benzodiazepine",
     "habit-forming"
   ],
-  "summary": "Dimdazenil (EVT-201, marketed as Junoenil in China) is a benzodiazepine-family hypnotic approved in China for the short-term treatment of insomnia. It is a partial positive allosteric modulator of GABA-A receptors, with a preference for receptors containing the alpha-1 subunit.",
-  "effectsSummary": "Clinical trials found improvements in falling asleep and staying asleep. Dimdazenil enhances inhibitory GABA-A receptor signaling, producing hypnotic and sedative effects. These findings do not mean that next-day impairment or dependence is impossible.",
-  "dosageRemark": "The approved Chinese capsule label specifies 2.5 mg by mouth at bedtime and generally limits treatment to no more than four weeks, including tapering. This is prescribing information, not a recreational dose range; use only as directed by a clinician.",
-  "generalRisks": "Dizziness is a commonly reported adverse reaction; fatigue, headache, restlessness and sleep-related breathing problems have also been reported. Chinese product information lists contraindications including severe sleep apnea, severe respiratory impairment, myasthenia gravis, hypersensitivity, and prior complex sleep behaviors after taking this medicine. Combining benzodiazepine-class medicines with opioids can be dangerous.",
-  "longtermRisks": "The approved product information warns that abuse and dependence risks increase with longer treatment. Do not extend treatment or stop a regularly used prescription abruptly without medical advice. Long-term safety and withdrawal risks should not be assumed to be absent because the drug is a partial receptor modulator.",
+  "summary": "Dimdazenil (EVT-201) is a benzodiazepine-derived hypnotic under study for insomnia. It is a partial positive allosteric modulator of GABA-A receptors, with relatively greater activity at alpha-1-subunit-containing receptors. Clinical research has been conducted in the United States and China; evidence from a trial does not itself establish approval in every jurisdiction.",
+  "effectsSummary": "Controlled clinical trials found improvements in sleep onset and sleep maintenance. The drug enhances GABA-A-mediated inhibitory signaling. Trial results cannot establish that next-day impairment, dependence, or other serious adverse effects are absent.",
+  "dosageRemark": "Clinical-study doses do not constitute internationally approved prescribing instructions. No universal dose or recreational dose classification is provided; any therapeutic regimen must follow the product authorization and medical guidance applicable where the patient is treated.",
+  "generalRisks": "Dizziness, vertigo and weakness have been reported in clinical studies. Sedation and impaired alertness are possible, and benzodiazepine-class effects warrant particular caution with alcohol, opioids and other central nervous system depressants. Local prescribing contraindications may differ and must be checked against the applicable authorized product labeling.",
+  "longtermRisks": "The available short-term clinical trials do not establish long-term safety, tolerance or dependence risks. The drug's partial-modulator mechanism should not be interpreted as protection from misuse or withdrawal; medical oversight is important when treatment has been ongoing.",
   "saferUse": [
-    "Use only as prescribed, and do not increase the dose or duration without reassessment by a clinician.",
-    "Avoid alcohol and combining with opioids or other sedating medicines unless a clinician has specifically assessed the risks.",
-    "Avoid driving or operating machinery if sleepy or impaired; seek medical advice immediately if complex sleep behaviors or breathing problems occur."
+    "Do not use trial doses as personal dosing instructions; consult a qualified clinician and the locally authorized prescribing information.",
+    "Avoid alcohol and unassessed combinations with opioids or other sedating substances.",
+    "Do not drive or operate machinery when impaired. Seek urgent medical help for marked breathing problems or unusual sleep-related behavior."
   ],
   "roas": [
     {
       "name": "oral"
     }
   ],
-  "metabolism": "Chinese product information identifies flavin-containing monooxygenases, primarily FMO3, as the main enzymes involved in human metabolism. The cited source does not establish specific metabolites or excretion routes, so none are inferred here.",
+  "metabolism": "Public Chinese regulatory product information reports metabolism by flavin-containing monooxygenases, chiefly FMO3. Specific metabolites and excretion routes have not been established by the source cited for this entry and are not inferred.",
   "metabolismSources": [
     "https://www.nhsa.gov.cn/attach/Ypsn2024/YPSW202400333/YPSW202400333.pdf"
   ]
