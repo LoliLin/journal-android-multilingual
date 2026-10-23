@@ -1,10 +1,10 @@
 {
-  "summary": "Dimdazenil (EVT-201) was evaluated for insomnia in a randomized clinical study at five U.S. sleep laboratories. Those study results are research findings, not U.S. marketing authorization. This entry has not verified an FDA-approved product label for dimdazenil; consult Drugs@FDA for current U.S. approval status.",
-  "dosageRemark": "There is no verified U.S. FDA-approved dosing label for dimdazenil in this catalog entry. Doses used in U.S. or overseas clinical trials must not be treated as an FDA-approved prescription regimen. Confirm U.S. authorization through Drugs@FDA and obtain medical guidance rather than relying on research doses or foreign labeling.",
-  "generalRisks": "A U.S. clinical study reported mostly mild or moderate adverse events and found a small decrease in next-morning digit-symbol test performance despite no significant increase in self-reported sleepiness. Do not assume driving or cognitive performance is unaffected. Alcohol, opioids and other sedatives may compound central nervous system depression.",
+  "summary": "Dimdazenil (EVT-201) has been evaluated for insomnia in randomized U.S. clinical trials, including studies at five sleep laboratories.",
+  "dosageRemark": "No U.S. prescribing dose is provided. Doses used in clinical trials are not treatment instructions.",
+  "generalRisks": "A U.S. clinical study reported mostly mild or moderate adverse events and a small decline in next-morning digit-symbol test performance. Sedation may affect driving. Alcohol, opioids and other sedatives can increase central nervous system depression.",
   "saferUse": [
-    "Verify approval and authorized labeling using the FDA's Drugs@FDA database before treating this investigational product as a U.S. prescription medicine.",
-    "Do not self-administer clinical-trial doses or foreign-approved regimens.",
-    "Avoid alcohol or combining with opioids and other sedatives without medical supervision, and do not drive while impaired."
+    "Do not use clinical-trial doses as treatment instructions.",
+    "Avoid alcohol and combinations with opioids or other sedatives without medical advice.",
+    "Do not drive or operate machinery while impaired."
   ]
 }
