@@ -17,22 +17,21 @@
     "benzodiazepine",
     "habit-forming"
   ],
-  "summary": "Dimdazenil (EVT-201) is a benzodiazepine-derived hypnotic under study for insomnia. It is a partial positive allosteric modulator of GABA-A receptors, with relatively greater activity at alpha-1-subunit-containing receptors. Clinical research has been conducted in the United States and China; evidence from a trial does not itself establish approval in every jurisdiction.",
-  "effectsSummary": "Controlled clinical trials found improvements in sleep onset and sleep maintenance. The drug enhances GABA-A-mediated inhibitory signaling. Trial results cannot establish that next-day impairment, dependence, or other serious adverse effects are absent.",
-  "dosageRemark": "Clinical-study doses do not constitute internationally approved prescribing instructions. No universal dose or recreational dose classification is provided; any therapeutic regimen must follow the product authorization and medical guidance applicable where the patient is treated.",
-  "generalRisks": "Dizziness, vertigo and weakness have been reported in clinical studies. Sedation and impaired alertness are possible, and benzodiazepine-class effects warrant particular caution with alcohol, opioids and other central nervous system depressants. Local prescribing contraindications may differ and must be checked against the applicable authorized product labeling.",
-  "longtermRisks": "The available short-term clinical trials do not establish long-term safety, tolerance or dependence risks. The drug's partial-modulator mechanism should not be interpreted as protection from misuse or withdrawal; medical oversight is important when treatment has been ongoing.",
+  "summary": "Dimdazenil (EVT-201) is a benzodiazepine-derived hypnotic and partial positive allosteric modulator of GABA-A receptors, with relatively greater activity at receptors containing the alpha-1 subunit. Clinical studies have evaluated it for insomnia.",
+  "effectsSummary": "Clinical trials reported improvements in sleep onset and sleep maintenance. It enhances GABA-A-mediated inhibitory signaling, producing hypnotic and sedative effects.",
+  "generalRisks": "Clinical studies have reported dizziness, vertigo and weakness. Sedation and impaired alertness are possible. Alcohol, opioids and other central nervous system depressants may increase these risks.",
+  "longtermRisks": "Long-term safety, tolerance and dependence risks remain insufficiently characterized. Regular use may carry risks of dependence and withdrawal.",
   "saferUse": [
-    "Do not use trial doses as personal dosing instructions; consult a qualified clinician and the locally authorized prescribing information.",
-    "Avoid alcohol and unassessed combinations with opioids or other sedating substances.",
-    "Do not drive or operate machinery when impaired. Seek urgent medical help for marked breathing problems or unusual sleep-related behavior."
+    "Avoid alcohol and combinations with opioids or other sedatives without medical advice.",
+    "Do not drive or operate machinery while sedated or impaired.",
+    "Seek medical help for breathing difficulties or unusual sleep-related behavior."
   ],
   "roas": [
     {
       "name": "oral"
     }
   ],
-  "metabolism": "Public Chinese regulatory product information reports metabolism by flavin-containing monooxygenases, chiefly FMO3. Specific metabolites and excretion routes have not been established by the source cited for this entry and are not inferred.",
+  "metabolism": "Flavin-containing monooxygenases, particularly FMO3, have been reported to participate in metabolism. Specific metabolites and elimination routes are not yet well characterized.",
   "metabolismSources": [
     "https://www.nhsa.gov.cn/attach/Ypsn2024/YPSW202400333/YPSW202400333.pdf"
   ]
