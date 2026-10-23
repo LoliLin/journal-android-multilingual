@@ -371,7 +371,8 @@ BY_TEXT = {
         "Benzodiazepines, alcohol and other central nervous system "
         "depressants increase sedation and respiratory-depression risk. "
         "(This record is for prescription methadone hydrochloride oral "
-        "concentrate used in opioid-dependence treatment.)",
+        "concentrate used in opioid-dependence treatment; DailyMed label "
+        "updated 2026-07-29, relevant warning sections revised 2025-12.)",
 }
 
 # ---------------------------------------------------------------- by file
