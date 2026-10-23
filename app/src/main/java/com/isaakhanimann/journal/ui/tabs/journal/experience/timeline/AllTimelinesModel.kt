@@ -28,17 +28,20 @@ import java.time.Instant
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
-private data class TimelineProfileKey(val duration: RoaDuration?)
-
-// Preserve the existing substance -> route draw order before splitting each
-// route by its resolved duration. A null duration must not inherit another
-// ingestion's timeline, while equal duration values remain combined.
+/**
+ * Split ingestion lines by their resolved duration profile, including null as
+ * a separate bucket (no known timeline). RoaDuration and DurationRange are
+ * value types, so equivalent catalog durations share a group.
+ *
+ * Each groupBy keeps keys in encounter order: substance -> route -> duration.
+ * This preserves the existing draw order across substances and routes.
+ */
 internal fun groupEffectLinesByProfile(
     dataForLines: List<DataForOneEffectLine>
 ): List<List<DataForOneEffectLine>> =
     dataForLines.groupBy { it.substanceName }.values.flatMap { substanceLines ->
         substanceLines.groupBy { it.route }.values.flatMap { routeLines ->
-            routeLines.groupBy { TimelineProfileKey(it.roaDuration) }.values
+            routeLines.groupBy { it.roaDuration }.values
         }
     }
 
