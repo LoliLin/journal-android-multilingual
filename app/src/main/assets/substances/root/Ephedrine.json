@@ -45,7 +45,7 @@
       }
     }
   ],
-  "metabolism": "after being given into a vein ephedrine is completely bioavailable, and when taken by mouth bioavailability has been reported as above 90%. Excretion depends on urine pH: 73-99% (mean 88%) in acidic urine versus 22-35% (mean 27%) in alkaline urine. After oral or parenteral administration, 77% of ephedrine is excreted unchanged in the urine. The time in the body also depends on urine pH: about 3 hours when urine is acidified to pH 5, and about 6 hours when it is rendered alkaline at pH 6.3.",
+  "metabolism": "after being given into a vein ephedrine is completely bioavailable, and when taken by mouth bioavailability has been reported as above 90%. Excretion depends on urine pH: 73-99% (mean 88%) in acidic urine versus 22-35% (mean 27%) in alkaline urine. After being taken by mouth or by injection, 77% of ephedrine is excreted unchanged in the urine. The time in the body also depends on urine pH: about 3 hours when urine is acidified to pH 5, and about 6 hours when it is rendered alkaline at pH 6.3.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/9291/smpc"
   ]
