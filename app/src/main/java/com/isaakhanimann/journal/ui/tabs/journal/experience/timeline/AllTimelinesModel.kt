@@ -28,6 +28,14 @@ import java.time.Instant
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
+// A release form with unknown duration (e.g. extended release) must not
+// inherit the timeline profile of another ingestion with the same route.
+// Equivalent profiles, including immediate release and unspecified, still combine.
+internal fun groupEffectLinesByProfile(
+    dataForLines: List<DataForOneEffectLine>
+): List<List<DataForOneEffectLine>> =
+    dataForLines.groupBy { Triple(it.substanceName, it.route, it.roaDuration) }.values.toList()
+
 class AllTimelinesModel(
     dataForLines: List<DataForOneEffectLine>,
     val dataForRatings: List<DataForOneRating>,
@@ -51,24 +59,20 @@ class AllTimelinesModel(
         val noteTimes = timedNotes.map { it.time }
         val allStartTimeCandidates = ratingTimes + ingestionTimes + noteTimes
         startTime = allStartTimeCandidates.minOrNull() ?: Instant.EPOCH
-        val roaGroups = dataForLines.groupBy { it.substanceName }
-            .flatMap { substanceGroup ->
-                val linesPerSubstance = substanceGroup.value
-                return@flatMap linesPerSubstance.groupBy { it.route }.map { routeGroup ->
-                    val linesPerRoute = routeGroup.value
-                    return@map RoaGroup(
-                        color = linesPerRoute.first().color,
-                        roaDuration = linesPerRoute.first().roaDuration,
-                        weightedLines = linesPerRoute.map {
-                            WeightedLine(
-                                startTime = it.startTime,
-                                endTime = it.endTime,
-                                horizontalWeight = it.horizontalWeight,
-                                height = it.height
-                            )
-                        })
+        val roaGroups = groupEffectLinesByProfile(dataForLines).map { lines ->
+            RoaGroup(
+                color = lines.first().color,
+                roaDuration = lines.first().roaDuration,
+                weightedLines = lines.map {
+                    WeightedLine(
+                        startTime = it.startTime,
+                        endTime = it.endTime,
+                        horizontalWeight = it.horizontalWeight,
+                        height = it.height
+                    )
                 }
-            }
+            )
+        }
         val groupDrawables = roaGroups.map { group ->
             GroupDrawable(
                 startTimeGraph = startTime,
