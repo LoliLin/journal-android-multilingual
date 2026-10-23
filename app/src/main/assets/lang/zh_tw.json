@@ -614,6 +614,8 @@
   "achievement.in_kawaiis.desc": "java.lang.NullPointerException",
   "achievement.chicken_amantadine": "变成？一只，鸡",
   "achievement.chicken_amantadine.desc": "不得了，！这个，金刚烷胺吃了之后。我，变成一只，鸡？操你妈。，我要，跳？楼",
+  "achievement.local_brewery": "本地釀造廠",
+  "achievement.local_brewery.desc": "新增了自訂物質，或匯入了擴展包。",
   "settings_extension_pack": "擴展包",
   "settings_extension_import": "導入擴展包",
   "settings_extension_import_description": "導入 .zip 擴展包以添加新物質、翻譯等。",

@@ -689,6 +689,7 @@ fun EditCustomUnitSections(
                             customUnit = customUnit
                         ),
                         roaDuration = null,
+                        roaDose = null,
                         numDots = null
                     )
                     IngestionRow(

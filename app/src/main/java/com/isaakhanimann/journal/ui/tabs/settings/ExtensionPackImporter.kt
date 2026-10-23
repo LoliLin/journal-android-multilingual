@@ -5,14 +5,16 @@ import android.net.Uri
 import java.io.File
 import java.util.zip.ZipFile
 
+data class ExtensionPackImportResult(val message: String, val succeeded: Boolean)
+
 object ExtensionPackImporter {
 
-    fun import(context: Context, uri: Uri): String {
+    fun import(context: Context, uri: Uri): ExtensionPackImportResult {
         return try {
             val tempFile = File(context.cacheDir, "ext_pack_${System.currentTimeMillis()}.zip")
             context.contentResolver.openInputStream(uri)?.use { input ->
                 tempFile.outputStream().use { output -> input.copyTo(output) }
-            } ?: return "Cannot read file"
+            } ?: return ExtensionPackImportResult("Cannot read file", false)
 
             try {
                 val zipFile = ZipFile(tempFile)
@@ -29,15 +31,15 @@ object ExtensionPackImporter {
                     }
 
                     if (manifestContent == null) {
-                        return "Invalid pack: manifest.json not found"
+                        return ExtensionPackImportResult("Invalid pack: manifest.json not found", false)
                     }
 
                     val pack = ExtensionPackLoader.parseManifest(manifestContent, context.cacheDir)
                     if (pack == null) {
-                        return "Invalid pack: manifest.json parse failed"
+                        return ExtensionPackImportResult("Invalid pack: manifest.json parse failed", false)
                     }
                     if (!isValidRegisterName(pack.registerName)) {
-                        return "Invalid pack: registerName contains illegal characters"
+                        return ExtensionPackImportResult("Invalid pack: registerName contains illegal characters", false)
                     }
 
                     val packDir = File(context.filesDir, "ext_packs/${pack.registerName}")
@@ -49,7 +51,10 @@ object ExtensionPackImporter {
                             packDir
                         )
                         if (existingPack != null && pack.versionCode <= existingPack.versionCode) {
-                            return "Already installed (v${existingPack.versionName} >= v${pack.versionName})"
+                            return ExtensionPackImportResult(
+                                "Already installed (v${existingPack.versionName} >= v${pack.versionName})",
+                                false
+                            )
                         }
                     }
 
@@ -65,7 +70,10 @@ object ExtensionPackImporter {
                     // Apply overrides
                     ExtensionPackLoader.applyExtension(context, pack)
 
-                    "Extension pack '${pack.registerName}' v${pack.versionName} imported ($extracted files)"
+                    ExtensionPackImportResult(
+                        "Extension pack '${pack.registerName}' v${pack.versionName} imported ($extracted files)",
+                        true
+                    )
                 } finally {
                     zipFile.close()
                 }
@@ -73,7 +81,7 @@ object ExtensionPackImporter {
                 tempFile.delete()
             }
         } catch (e: Exception) {
-            "Import failed: ${e.localizedMessage ?: "unknown error"}"
+            ExtensionPackImportResult("Import failed: ${e.localizedMessage ?: "unknown error"}", false)
         }
     }
 }

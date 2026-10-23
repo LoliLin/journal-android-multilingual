@@ -48,6 +48,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -262,5 +263,25 @@ private fun IconOptionCard(option: IconOption, isSelected: Boolean, onClick: () 
                 style = MaterialTheme.typography.titleMedium
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun IconPickerScreenPreview() {
+    Column(
+        modifier = Modifier.padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        IconOptionCard(
+            option = IconOption("classic", "Classic", Color(0xFF2196F3), R.mipmap.ic_launcher_foreground, ".MainActivity_Classic"),
+            isSelected = false,
+            onClick = {}
+        )
+        IconOptionCard(
+            option = IconOption("springwind", "Spring Wind", Color(0xFFFF8C94), R.drawable.ic_springwind_foreground, ".MainActivity_SpringWind", isDefault = true),
+            isSelected = true,
+            onClick = {}
+        )
     }
 }

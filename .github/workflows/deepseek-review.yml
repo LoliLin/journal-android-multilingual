@@ -27,4 +27,5 @@ jobs:
           temperature: 1
           chat-token: ${{ secrets.CHAT_TOKEN }}
           watch-mention: "@github-actions"
+          include-patterns: "*.kt,*.gradle,*.kts,*.md,*.py"
           allowed-associations: "OWNER,MEMBER,COLLABORATOR"

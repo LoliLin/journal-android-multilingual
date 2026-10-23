@@ -27,3 +27,5 @@ fastlane/screenshots/**/*.png
 fastlane/test_output/
 .bundle/
 vendor/bundle/
+.kotlin/
+*.pyc

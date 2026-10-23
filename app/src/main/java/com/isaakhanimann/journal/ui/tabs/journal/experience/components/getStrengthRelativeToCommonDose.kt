@@ -19,7 +19,52 @@
 package com.isaakhanimann.journal.ui.tabs.journal.experience.components
 
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
+import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
+import kotlin.math.max
 
+/**
+ * Height for the SHARED-scale mode ("are substance heights independent" = off).
+ *
+ * Scales the ingestion height relative to the common dose of its substance
+ * (midpoint between commonMin and strongMin), so heights stay comparable
+ * ACROSS different substances: a curve above 1.0 means above the common
+ * range. Falls back to the average of the recorded doses of the same
+ * substance when the substance data has no common/strong range, and to 1.0
+ * when the dose itself is unknown.
+ *
+ * Restores the upstream semantics of commit 391efaec
+ * ("Scale height of timeline relative to strength by default").
+ */
+fun getStrengthRelativeToCommonDose(
+    ingestion: IngestionWithCompanionAndCustomUnit,
+    allIngestions: List<IngestionWithCompanionAndCustomUnit>,
+    roaDose: RoaDose?,
+): Float {
+    val allKnownDoses = allIngestions
+        .filter { it.ingestion.substanceName == ingestion.ingestion.substanceName }
+        .mapNotNull { it.pureDose }
+    val sumDose = allKnownDoses.reduceOrNull { acc, d -> acc + d } ?: 0.0
+    val averageDose = sumDose / max(1.0, allKnownDoses.size.toDouble())
+    var commonDose = averageDose
+    val commonMin = roaDose?.commonMin
+    val commonMax = roaDose?.strongMin
+    if (commonMin != null && commonMax != null) {
+        commonDose = (commonMin + commonMax) / 2
+    }
+
+    val strength = ingestion.pureDose?.let { doseSnap ->
+        doseSnap / commonDose
+    } ?: 1.0
+    return strength.coerceAtLeast(0.01).toFloat()
+}
+
+/**
+ * Height for the INDEPENDENT-scale mode ("are substance heights independent" = on).
+ *
+ * Normalizes the dose against the strongest ingestion OF THE SAME SUBSTANCE,
+ * so every substance's tallest ingestion reaches full height regardless of
+ * other substances on the timeline.
+ */
 fun getHeightBetween0And1(
     ingestion: IngestionWithCompanionAndCustomUnit,
     allIngestions: List<IngestionWithCompanionAndCustomUnit>

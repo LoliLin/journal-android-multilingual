@@ -38,6 +38,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -112,6 +113,25 @@ fun EditCustomSubstanceScreen(
             onNameChange = { viewModel.name = it },
             onUnitsChange = { viewModel.units = it },
             onDescriptionChange = { viewModel.description = it }
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun EditCustomSubstanceScreenPreview() {
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("Edit custom substance") }) }
+    ) { padding ->
+        AddOrEditCustomSubstanceContent(
+            padding = padding,
+            name = "Medication",
+            units = "mg",
+            description = "My medication",
+            onNameChange = {},
+            onUnitsChange = {},
+            onDescriptionChange = {}
         )
     }
 }

@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceEvents
 import com.isaakhanimann.journal.localization.I18n
@@ -296,7 +297,7 @@ object ExtensionPackLoader {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExtensionPackScreen() {
+fun ExtensionPackScreen(viewModel: ExtensionPackViewModel = hiltViewModel()) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var refreshKey by remember { mutableStateOf(0) }
@@ -312,10 +313,13 @@ fun ExtensionPackScreen() {
         if (uri != null) {
             scope.launch {
                 // Blocking zip copy/extract runs off the main thread.
-                val resultMsg = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                val result = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
                     ExtensionPackImporter.import(context, uri)
                 }
-                snackbarHostState.showSnackbar(resultMsg)
+                if (result.succeeded) {
+                    viewModel.onImportSucceeded()
+                }
+                snackbarHostState.showSnackbar(result.message)
                 packs = ExtensionPackLoader.getInstalledPacks(context)
             }
         }

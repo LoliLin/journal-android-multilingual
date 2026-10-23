@@ -40,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
@@ -116,4 +117,16 @@ fun CombinationSettingsScreen(substanceInteractions: List<SubstanceInteraction>)
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CombinationSettingsScreenPreview() {
+    CombinationSettingsScreen(
+        substanceInteractions = listOf(
+            SubstanceInteraction("Alcohol", true, {}),
+            SubstanceInteraction("Caffeine", false, {}),
+            SubstanceInteraction("Cannabis", true, {})
+        )
+    )
 }

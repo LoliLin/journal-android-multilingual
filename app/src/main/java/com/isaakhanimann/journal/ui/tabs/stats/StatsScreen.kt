@@ -1110,3 +1110,42 @@ fun EmptyScreenDisclaimer(title: String, description: String) {
         }
     }
 }
+
+@androidx.compose.ui.tooling.preview.Preview(showBackground = true)
+@Composable
+private fun StatsScreenPreview() {
+    JournalTheme {
+        MergedStatsScreen(
+            statsModel = StatsModel(
+                selectedOption = TimePickerOption.DAYS_7,
+                areThereAnyIngestions = false,
+                startDateText = "Last week",
+                statItems = emptyList(),
+                chartBuckets = emptyList(),
+                consumerName = null
+            ),
+            onTapOption = {},
+            onChangeConsumerName = {},
+            consumerNamesSorted = emptyList(),
+            ownerUserName = "You",
+            analysisModel = StatsAnalysisModel(
+                selectedSubstances = emptySet(),
+                selectedConsumer = ConsumerSelection.All,
+                selectedPreset = AnalysisPeriodPreset.ALL_TIME,
+                startDate = null,
+                endDate = null,
+                effectiveStart = null,
+                effectiveEnd = null,
+                ingestionCount = 0,
+                totalDoseBySubstance = emptyList(),
+                perSubstanceCharts = emptyList(),
+                ingestions = emptyList()
+            ),
+            getSubstanceDisplayName = { it },
+            focusedSubstance = null,
+            onFocusSubstance = {},
+            onClearFocus = {},
+            navigateToSubstanceCompanion = { _, _ -> }
+        )
+    }
+}

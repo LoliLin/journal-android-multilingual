@@ -46,6 +46,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.I18n
@@ -204,12 +205,7 @@ fun PreferencesScreen(
                     )
                 }
                 HorizontalDivider()
-                PreferenceSwitchRow(
-                    title = i18n("settings_root_tab_transitions"),
-                    checked = rootTabTransitionsEnabled,
-                    onCheckedChange = saveRootTabTransitionsEnabled
-                )
-                HorizontalDivider()
+               
                 SettingsButton(
                     imageVector = Icons.Outlined.StarBorder,
                     text = i18n("settings_icon_title")
@@ -240,6 +236,12 @@ fun PreferencesScreen(
             }
 
             CardWithTitle(title = i18n("settings_ui"), innerPaddingHorizontal = 0.dp) {
+                PreferenceSwitchRow(
+                    title = i18n("settings_root_tab_transitions"),
+                    checked = rootTabTransitionsEnabled,
+                    onCheckedChange = saveRootTabTransitionsEnabled
+                )
+                HorizontalDivider()
                 PreferenceSwitchRow(
                     title = i18n("settings_use_24_hour_clock"),
                     checked = use24HourClock,
@@ -543,5 +545,43 @@ private fun ThemePaletteDialog(
         confirmButton = {
             TextButton(onClick = onDismiss) { Text(i18n("common_close")) }
         }
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreferencesScreenPreview() {
+    PreferencesScreen(
+        navigateBack = {},
+        navigateToIconPicker = {},
+        supportedLanguages = mapOf("en" to "English", "zh-CN" to "��������"),
+        selectedLanguageKey = "en",
+        saveSelectedLanguage = {},
+        use24HourClock = true,
+        saveUse24HourClock = {},
+        areDosageDotsHidden = false,
+        saveDosageDotsAreHidden = {},
+        isOpenLinkInBrowser = true,
+        saveOpenLinkInBrowser = {},
+        isTimelineHidden = false,
+        saveIsTimelineHidden = {},
+        isBottomBarPinned = true,
+        saveIsBottomBarPinned = {},
+        areSubstanceHeightsIndependent = false,
+        saveAreSubstanceHeightsIndependent = {},
+        isMidnightCutoffEnabled = true,
+        saveMidnightCutoffEnabled = {},
+        isStatsByIngestionTime = false,
+        saveStatsByIngestionTime = {},
+        dateLocaleOption = DateLocaleOption.FOLLOW_LANGUAGE,
+        saveDateLocaleOption = {},
+        isAppLockEnabled = false,
+        saveAppLockEnabled = {},
+        isEffectNotificationEnabled = true,
+        saveEffectNotificationEnabled = {},
+        themePalette = "#0277BD",
+        saveThemePalette = {},
+        rootTabTransitionsEnabled = true,
+        saveRootTabTransitionsEnabled = {}
     )
 }

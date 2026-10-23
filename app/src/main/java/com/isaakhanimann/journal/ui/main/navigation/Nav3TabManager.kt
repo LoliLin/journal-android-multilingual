@@ -68,6 +68,8 @@ class Nav3TabManager(
 ) {
     var navigationDirection by mutableIntStateOf(1)
         private set
+    var tabSelectionRevision by mutableIntStateOf(0)
+        private set
     var popDirection by mutableIntStateOf(-1)
         private set
 
@@ -94,6 +96,7 @@ class Nav3TabManager(
             val targetIndex = TopLevelDestinations.all.indexOf(tab)
             navigationDirection = if (targetIndex > currentIndex) 1 else -1
             popDirection = navigationDirection
+            tabSelectionRevision++
         }
         selectedTab = tab
         onTabSelected(tab)

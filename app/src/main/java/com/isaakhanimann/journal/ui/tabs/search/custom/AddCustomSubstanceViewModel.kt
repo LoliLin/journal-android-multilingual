@@ -23,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.data.achievement.AchievementUnlocker
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,8 +31,10 @@ import javax.inject.Inject
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class AddCustomSubstanceViewModel @Inject constructor(val experienceRepo: ExperienceRepository) :
-    ViewModel() {
+class AddCustomSubstanceViewModel @Inject constructor(
+    val experienceRepo: ExperienceRepository,
+    private val achievementUnlocker: AchievementUnlocker
+) : ViewModel() {
 
     var name by mutableStateOf("")
     var units by mutableStateOf("")
@@ -47,6 +50,7 @@ class AddCustomSubstanceViewModel @Inject constructor(val experienceRepo: Experi
                 description = description
             )
             experienceRepo.insert(customSubstance)
+            achievementUnlocker.unlock(AchievementUnlocker.LOCAL_BREWERY)
         }
     }
 
@@ -59,6 +63,7 @@ class AddCustomSubstanceViewModel @Inject constructor(val experienceRepo: Experi
                 description = description
             )
             experienceRepo.insert(customSubstance)
+            achievementUnlocker.unlock(AchievementUnlocker.LOCAL_BREWERY)
             onSuccess(name)
         }
     }

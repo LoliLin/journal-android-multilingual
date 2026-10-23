@@ -25,5 +25,6 @@ data class TimelineScreenModel(
     val title: String,
     val ingestionElements: List<IngestionElement>,
     val ratings: List<ShulginRating>,
-    val timedNotes: List<TimedNote>
+    val timedNotes: List<TimedNote>,
+    val areSubstanceHeightsIndependent: Boolean = false
 )

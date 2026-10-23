@@ -266,6 +266,27 @@ interface ExperienceDao {
     )
     suspend fun migrateMushroomsCustomUnits()
 
+    @Transaction
+    suspend fun insertExperienceAndUpdateIngestion(
+        title: String,
+        ingestion: Ingestion
+    ): Int {
+        val newExperienceId = insert(
+            Experience(
+                id = 0,
+                title = title,
+                text = "",
+                sortDate = ingestion.time,
+                location = null
+            )
+        ).toInt()
+
+        update(ingestion.copy(experienceId = newExperienceId))
+
+        return newExperienceId
+    }
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(experience: Experience): Long
 

@@ -73,6 +73,8 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.achievement.AchievementEvaluator
 import com.isaakhanimann.journal.data.achievement.AchievementGetToast
@@ -87,6 +89,7 @@ import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
 
@@ -161,7 +164,7 @@ fun JournalScreen(
     isSearchEnabled: Boolean,
     onChangeIsSearchEnabled: (Boolean) -> Unit,
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
-    substanceRepository: SubstanceRepository,
+    substanceRepository: SubstanceRepository?,
     ownerUserName: String,
     navigateToQuickTimedNote: (experienceId: Int) -> Unit = {}
 ) {
@@ -323,17 +326,21 @@ fun JournalScreen(
                             experiences,
                             key = { it.experience.id }
                         ) { experienceWithIngestions ->
-                            ExperienceRow(
-                                experienceWithIngestions,
-                                navigateToExperienceScreen = {
-                                    navigateToExperiencePopNothing(
-                                        experienceWithIngestions.experience.id
-                                    )
-                                },
-                                isTimeRelativeToNow = isTimeRelativeToNow,
-                                substanceRepository = substanceRepository,
-                                ownerUserName = ownerUserName
-                            )
+                            if (substanceRepository != null) {
+                                ExperienceRow(
+                                    experienceWithIngestions,
+                                    navigateToExperienceScreen = {
+                                        navigateToExperiencePopNothing(
+                                            experienceWithIngestions.experience.id
+                                        )
+                                    },
+                                    isTimeRelativeToNow = isTimeRelativeToNow,
+                                    substanceRepository = substanceRepository,
+                                    ownerUserName = ownerUserName
+                                )
+                            } else {
+                                JournalExperiencePreviewContent(experienceWithIngestions)
+                            }
                             HorizontalDivider()
                         }
                     }
@@ -383,5 +390,44 @@ fun JournalScreen(
             }
         }
         }
+    }
+}
+
+@Composable
+private fun JournalExperiencePreviewContent(
+    experience: ExperienceWithIngestionsCompanionsAndRatings
+) {
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = horizontalPadding, vertical = 8.dp)) {
+        Text(text = experience.experience.title, style = MaterialTheme.typography.titleSmall)
+        Text(
+            text = experience.ingestionsWithCompanions.joinToString { it.ingestion.substanceName },
+            style = MaterialTheme.typography.bodyMedium
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun JournalScreenPreview(
+    @PreviewParameter(JournalScreenPreviewProvider::class)
+    experiences: List<ExperienceWithIngestionsCompanionsAndRatings>
+) {
+    JournalTheme {
+        JournalScreen(
+            navigateToExperiencePopNothing = {},
+            navigateToAddIngestion = {},
+            navigateToCalendar = {},
+            isFavoriteEnabled = false,
+            onChangeIsFavorite = {},
+            isTimeRelativeToNow = true,
+            onChangeIsRelative = {},
+            searchText = "",
+            onChangeSearchText = {},
+            isSearchEnabled = false,
+            onChangeIsSearchEnabled = {},
+            experiences = experiences,
+            substanceRepository = null,
+            ownerUserName = "You"
+        )
     }
 }

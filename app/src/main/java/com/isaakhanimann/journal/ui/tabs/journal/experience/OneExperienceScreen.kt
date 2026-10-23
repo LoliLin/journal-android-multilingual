@@ -147,7 +147,9 @@ fun OneExperienceScreen(
         navigateToTimelineScreen = navigateToTimelineScreen,
         areDosageDotsHidden = viewModel.areDosageDotsHiddenFlow.collectAsState().value,
         ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
-        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName
+        getSubstanceDisplayName = viewModel.substanceRepo::getDisplayName,
+        areSubstanceHeightsIndependent =
+            viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value
     )
 }
 
@@ -176,7 +178,8 @@ fun OneExperienceScreen(
     navigateToTimelineScreen: (consumerName: String) -> Unit,
     areDosageDotsHidden: Boolean,
     ownerUserName: String,
-    getSubstanceDisplayName: (String) -> String
+    getSubstanceDisplayName: (String) -> String,
+    areSubstanceHeightsIndependent: Boolean = false
 ) {
     Scaffold(
         topBar = {
@@ -479,7 +482,8 @@ fun OneExperienceScreen(
                                 .height(if (hasFullDuration) 200.dp else 110.dp)
                                 .clickable {
                                     navigateToTimelineScreen(ownerUserName)
-                                }
+                                },
+                            areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
                         )
                         val hasOralIngestion =
                             oneExperienceScreenModel.ingestionElements.any {

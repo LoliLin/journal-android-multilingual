@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 
@@ -63,5 +64,24 @@ fun QuickTimedNoteScreen(
     }
     LaunchedEffect(Unit) {
         focusRequester.requestFocus()
+    }
+}
+
+@Preview
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun QuickTimedNoteScreenPreview() {
+    Scaffold(
+        topBar = { TopAppBar(title = { Text(i18n("quick_note_title")) }) }
+    ) { padding ->
+        TextField(
+            value = "A calm afternoon",
+            onValueChange = {},
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(horizontal = 12.dp, vertical = 8.dp),
+            placeholder = { Text(i18n("quick_note_hint")) }
+        )
     }
 }

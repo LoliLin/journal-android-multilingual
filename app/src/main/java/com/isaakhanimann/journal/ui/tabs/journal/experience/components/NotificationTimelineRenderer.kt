@@ -52,6 +52,7 @@ fun buildIngestionElements(
         IngestionElement(
             ingestionWithCompanionAndCustomUnit = oneIngestionWithComp,
             roaDuration = roa?.roaDuration,
+            roaDose = roa?.roaDose,
             numDots = numDots
         )
     }
@@ -111,8 +112,7 @@ suspend fun renderTimelineBitmapForNotification(
                         dataForTimedNotes = timedNotesForTimeline(timedNotes),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(timelineHeight),
-                        areSubstanceHeightsIndependent = false
+                            .height(timelineHeight)
                     )
                 }
             }

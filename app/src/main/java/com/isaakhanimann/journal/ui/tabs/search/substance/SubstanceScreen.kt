@@ -65,6 +65,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -491,8 +493,7 @@ fun SubstanceScreen(
                             timeDisplayOption = TimeDisplayOption.REGULAR,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(200.dp),
-                            areSubstanceHeightsIndependent = false
+                                .height(200.dp)
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         HorizontalDivider()
@@ -695,12 +696,48 @@ fun CategoryChipFromSubstanceScreen(
             .height(48.dp)
             .padding(horizontal = 12.dp)
     ) {
-        Text(text = displayName)
+        Text(text = displayName, maxLines = 1, softWrap = false)
         Spacer(modifier = Modifier.width(3.dp))
         Icon(
             imageVector = Icons.Default.ChevronRight,
             contentDescription = i18n("go_to"),
             modifier = Modifier.size(20.dp)
         )
+    }
+}
+
+@Preview
+@Composable
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+private fun SubstanceScreenPreview(
+    @PreviewParameter(SubstanceWithCategoriesPreviewProvider::class)
+    substanceWithCategories: SubstanceWithCategories
+) {
+    val substance = substanceWithCategories.substance
+    Scaffold(
+        topBar = { TopAppBar(title = { Text(substance.displayName) }) }
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .padding(padding)
+                .verticalScroll(rememberScrollState())
+        ) {
+            substance.summary?.let { summary ->
+                ElevatedCard(
+                    modifier = Modifier
+                        .padding(horizontal = horizontalPadding, vertical = verticalPaddingCards)
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = summary,
+                        modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 10.dp)
+                    )
+                }
+            }
+            Text(
+                text = substance.url,
+                modifier = Modifier.padding(horizontal = horizontalPadding)
+            )
+        }
     }
 }

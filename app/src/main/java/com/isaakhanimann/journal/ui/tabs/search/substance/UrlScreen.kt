@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.ui.tabs.search.substance
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.tooling.preview.Preview
 import com.isaakhanimann.journal.ui.utils.rememberOpenLink
 
 @Composable
@@ -31,4 +32,10 @@ fun UrlScreen(url: String, onHandled: () -> Unit) {
         }
         onHandled()
     }
+}
+
+@Preview
+@Composable
+private fun UrlScreenPreview() {
+    UrlScreen(url = "", onHandled = {})
 }

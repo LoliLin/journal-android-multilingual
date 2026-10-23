@@ -40,6 +40,12 @@ val journalImportJson = Json {
     coerceInputValues = true
 }
 
+/** JSON encoder for backups that preserves default-valued and nullable fields. */
+val journalExportJson = Json {
+    encodeDefaults = true
+    explicitNulls = true
+}
+
 @Serializable
 data class UserPreferencesBackup(
     val booleanValues: Map<String, Boolean> = emptyMap(),

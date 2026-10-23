@@ -38,6 +38,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
+import com.isaakhanimann.journal.ui.utils.getLongDateText
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -82,6 +83,10 @@ class EditIngestionViewModel @AssistedInject constructor(
     var estimatedDoseStandardDeviation by mutableStateOf("")
     var units by mutableStateOf("")
     var experienceId by mutableIntStateOf(1)
+    var isCreatingNewExperience by mutableStateOf(false)
+        private set
+    var newExperienceTitle by mutableStateOf("")
+        private set
     var localDateTimeStartFlow = MutableStateFlow(LocalDateTime.now())
     var localDateTimeEndFlow = MutableStateFlow(LocalDateTime.now().plusMinutes(30))
     var ingestionTimePickerOptionFlow = MutableStateFlow(IngestionTimePickerOption.POINT_IN_TIME)
@@ -130,6 +135,7 @@ class EditIngestionViewModel @AssistedInject constructor(
             estimatedDoseStandardDeviation =
                 ing.estimatedDoseStandardDeviation?.toReadableString() ?: ""
             experienceId = ing.experienceId
+            newExperienceTitle = ing.time.getLocalDateTime().getLongDateText()
             dose = ing.dose?.toReadableString() ?: ""
             isKnown = ing.dose != null
             units = ing.units ?: ""
@@ -156,6 +162,20 @@ class EditIngestionViewModel @AssistedInject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
+
+    fun onSelectExistingExperience(id: Int) {
+        experienceId = id
+        isCreatingNewExperience = false
+    }
+
+    fun onSelectNewExperience() {
+        isCreatingNewExperience = true
+        newExperienceTitle = localDateTimeStartFlow.value.getInstant().getLongDateText()
+    }
+
+    fun onChangeNewExperienceTitle(title: String) {
+        newExperienceTitle = title
+    }
 
     fun onChangeCustomUnit(newCustomUnit: CustomUnit?) {
         customUnit = newCustomUnit
@@ -208,14 +228,19 @@ class EditIngestionViewModel @AssistedInject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
-    fun onDoneTap() {
+    fun onDoneTap(onSaved: () -> Unit = {}) {
         viewModelScope.launch {
-            val selectedInstant =
-                localDateTimeStartFlow.firstOrNull()?.getInstant() ?: return@launch
+            val selectedInstant = localDateTimeStartFlow.firstOrNull()?.getInstant()
+            if (selectedInstant == null) {
+                onSaved()
+                return@launch
+            }
             ingestion?.let {
                 it.notes = note
                 it.isDoseAnEstimate = isEstimate
-                it.experienceId = experienceId
+                if (!isCreatingNewExperience) {
+                    it.experienceId = experienceId
+                }
                 it.dose = if (isKnown) dose.toDoubleOrNull() else null
                 it.estimatedDoseStandardDeviation =
                     if (isEstimate) estimatedDoseStandardDeviation.toDoubleOrNull() else null
@@ -235,8 +260,18 @@ class EditIngestionViewModel @AssistedInject constructor(
                 // entries, and getRoa() drops all ROA data for extended release.
                 val route = it.administrationRoute
                 it.releaseForm = releaseForm.takeIf { route == AdministrationRoute.ORAL }
-                experienceRepo.update(it)
+                if (isCreatingNewExperience) {
+                    val newId = experienceRepo.insertExperienceAndUpdateIngestion(
+                        title = newExperienceTitle.trim().ifBlank { selectedInstant.getLongDateText() },
+                        ingestion = it
+                    )
+                    it.experienceId = newId
+                    experienceId = newId
+                } else {
+                    experienceRepo.update(it)
+                }
             }
+            onSaved()
         }
     }
 

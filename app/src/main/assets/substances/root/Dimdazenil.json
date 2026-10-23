@@ -1,14 +1,40 @@
 {
   "name": "Dimdazenil",
+  "commonNames": [
+    "EVT-201",
+    "EVT201",
+    "Junoenil",
+    "京诺宁",
+    "京諾寧",
+    "地达西尼",
+    "地達西尼"
+  ],
   "url": "https://en.wikipedia.org/wiki/Dimdazenil",
   "isApproved": true,
   "categories": [
+    "depressant",
     "hypnotic",
-    "benzodiazepine"
+    "benzodiazepine",
+    "habit-forming"
   ],
-  "metabolism": "Human phase I how the body handles the drug studies measured dimdazenil and the circulating metabolites Ro46-1927 and Ro18-5,528; Ro46-1927 is pharmacologically active.",
-  "summary": "Dimdazenil (EVT201) is a benzodiazepine-derived partial positive allosteric modulator of GABA-A receptors, approved in China for short-term treatment of adult insomnia.",
+  "summary": "Dimdazenil (EVT-201, sold as Junoenil / 京诺宁) is a benzodiazepine-derived hypnotic and partial positive allosteric modulator of GABA-A receptors, with relatively greater activity at receptors containing the alpha-1 subunit. It was approved in China in 2023 for the short-term treatment of insomnia in adults. Clinical studies have evaluated it for insomnia.",
+  "effectsSummary": "Clinical trials reported improvements in sleep onset and sleep maintenance. It enhances GABA-A-mediated inhibitory signaling, producing hypnotic and sedative effects.",
+  "dosageRemark": "Taken by mouth at bedtime, 2.5 mg; a course generally does not exceed 4 weeks including the tapering period. Use as prescribed.",
+  "generalRisks": "Clinical studies have reported dizziness, vertigo and weakness. Sedation and impaired alertness are possible, and headache and restlessness have been reported. Avoid in people with hypersensitivity to the drug, myasthenia gravis, severe sleep apnoea or severe respiratory insufficiency, and in anyone who has had complex sleep behaviours after taking it. Alcohol, opioids and other central nervous system depressants may increase these risks.",
+  "longtermRisks": "Long-term safety, tolerance and dependence risks remain insufficiently characterized. Regular use may carry risks of dependence and withdrawal, and a longer course may raise the risk of abuse and dependence. If treatment is to continue, a doctor should reassess; do not stop suddenly after regular long-term use.",
+  "saferUse": [
+    "Use as prescribed; do not raise the dose or extend the course on your own.",
+    "Avoid alcohol and combinations with opioids or other sedatives without medical advice.",
+    "Do not drive or operate machinery while sedated or impaired. Seek medical help for breathing difficulties or unusual sleep-related behaviour."
+  ],
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "metabolism": "Flavin-containing monooxygenases, particularly FMO3, are reported to take part in the breakdown, though the specific breakdown products and elimination routes are not yet well characterized. Human phase I studies measured dimdazenil and the circulating metabolites Ro46-1927 and Ro18-5,528; Ro46-1927 is pharmacologically active.",
   "metabolismSources": [
-    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432719/"
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432719/",
+    "https://www.nhsa.gov.cn/attach/Ypsn2024/YPSW202400333/YPSW202400333.pdf"
   ]
 }

@@ -54,6 +54,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
@@ -61,6 +62,7 @@ import com.isaakhanimann.journal.ui.main.bottomBarNestedScroll
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayDp
 import com.isaakhanimann.journal.ui.main.bottomBarOverlayPadding
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
+import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.categoryNameKey
 
@@ -160,6 +162,34 @@ fun SearchScreen(
                     item { AddCustomSubstanceButton(navigateToAddCustomSubstanceScreen) }
                 }
             }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun SearchScreenPreview() {
+    val categories = listOf(
+        CategoryChipModel("stimulants", androidx.compose.ui.graphics.Color(0xFF6750A4), true),
+        CategoryChipModel("custom", androidx.compose.ui.graphics.Color.Cyan, false)
+    )
+
+    JournalTheme {
+        Column {
+            SearchField(
+                modifier = Modifier.fillMaxWidth(),
+                searchText = "",
+                onChange = {},
+                categories = categories,
+                onFilterTapped = {},
+                isShowingFilter = true
+            )
+            LazyRow(horizontalArrangement = Arrangement.spacedBy(2.dp), modifier = Modifier.padding(vertical = 6.dp)) {
+                items(categories.filter { it.isActive }) { category ->
+                    CategoryChipDelete(categoryChipModel = category, onClick = {})
+                }
+            }
+            EmptySearchState(activeFilters = categories.filter { it.isActive }) {}
         }
     }
 }

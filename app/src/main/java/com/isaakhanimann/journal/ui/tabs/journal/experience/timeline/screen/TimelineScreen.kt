@@ -60,6 +60,8 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ExperienceEffectTimelines
@@ -77,9 +79,22 @@ fun TimelineScreen(viewModel: TimelineScreenViewModel) {
         title = viewModel.consumerName,
         ingestionElements = viewModel.ingestionElementsFlow.collectAsState().value,
         ratings = viewModel.ratingsFlow.collectAsState().value,
-        timedNotes = viewModel.timedNotesFlow.collectAsState().value
+        timedNotes = viewModel.timedNotesFlow.collectAsState().value,
+        areSubstanceHeightsIndependent =
+            viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value
     )
     TimelineScreen(timelineScreenModel)
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TimelineScreenPreview(
+    @PreviewParameter(TimelineScreenModelPreviewProvider::class)
+    timelineScreenModel: TimelineScreenModel
+) {
+    JournalTheme {
+        TimelineScreen(timelineScreenModel)
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -125,7 +140,9 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                             },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(320.dp)
+                            .height(320.dp),
+                        areSubstanceHeightsIndependent =
+                            timelineScreenModel.areSubstanceHeightsIndependent
                     )
                 }
             }
@@ -233,7 +250,9 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                     modifier = Modifier
                         .fillMaxHeight(if (isOrientationPortrait) 0.5f else 1f)
                         .width(canvasWidth.dp)
-                        .padding(horizontal = horizontalPadding)
+                        .padding(horizontal = horizontalPadding),
+                    areSubstanceHeightsIndependent =
+                        timelineScreenModel.areSubstanceHeightsIndependent
                 )
             }
             }

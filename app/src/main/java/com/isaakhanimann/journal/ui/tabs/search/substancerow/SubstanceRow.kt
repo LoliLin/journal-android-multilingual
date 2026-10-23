@@ -104,6 +104,6 @@ fun CategoryChipStatic(categoryModel: CategoryModel) {
             .padding(vertical = 2.dp, horizontal = 8.dp)
 
     ) {
-        Text(text = displayName, style = MaterialTheme.typography.bodySmall)
+        Text(text = displayName, style = MaterialTheme.typography.bodySmall, maxLines = 1, softWrap = false)
     }
 }
