@@ -28,13 +28,19 @@ import java.time.Instant
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
-// A release form with unknown duration (e.g. extended release) must not
-// inherit the timeline profile of another ingestion with the same route.
-// Equivalent profiles, including immediate release and unspecified, still combine.
+private data class TimelineProfileKey(val duration: RoaDuration?)
+
+// Preserve the existing substance -> route draw order before splitting each
+// route by its resolved duration. A null duration must not inherit another
+// ingestion's timeline, while equal duration values remain combined.
 internal fun groupEffectLinesByProfile(
     dataForLines: List<DataForOneEffectLine>
 ): List<List<DataForOneEffectLine>> =
-    dataForLines.groupBy { Triple(it.substanceName, it.route, it.roaDuration) }.values.toList()
+    dataForLines.groupBy { it.substanceName }.values.flatMap { substanceLines ->
+        substanceLines.groupBy { it.route }.values.flatMap { routeLines ->
+            routeLines.groupBy { TimelineProfileKey(it.roaDuration) }.values
+        }
+    }
 
 class AllTimelinesModel(
     dataForLines: List<DataForOneEffectLine>,
