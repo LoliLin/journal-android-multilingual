@@ -61,7 +61,7 @@
     "research-chemical",
     "habit-forming"
   ],
-  "summary": "5-APB is a benzofuran stimulant and psychedelic said to produce euphoria, empathogenic effects and stimulation, with toxicity and long-term health effects that have not been studied.",
+  "summary": "5-APB is a benzofuran stimulant and psychedelic, and a triple monoamine reuptake inhibitor, said to produce euphoria, empathogenic effects and stimulation. Its agonism at 5-HT2B makes it likely to be cardiotoxic with long term use, as seen in other 5-HT2B agonists such as fenfluramine and MDMA. Its toxicity and long-term health effects have not been studied.",
   "roas": [
     {
       "name": "oral",
