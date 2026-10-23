@@ -53,14 +53,14 @@ class AllTimelinesGroupingTest {
     }
 
     @Test
-    fun extendedReleaseBeforeImmediateReleaseDoesNotHideImmediateCurve() {
+    fun unknownDurationBeforeKnownDurationDoesNotHideKnownCurve() {
         assertDifferentReleaseProfilesRemainSeparate(
             listOf(line(firstTime, null), line(secondTime, immediateDuration))
         )
     }
 
     @Test
-    fun immediateReleaseBeforeExtendedReleaseDoesNotGiveExtendedACurve() {
+    fun knownDurationBeforeUnknownDurationDoesNotGiveUnknownACurve() {
         assertDifferentReleaseProfilesRemainSeparate(
             listOf(line(firstTime, immediateDuration), line(secondTime, null))
         )
@@ -123,8 +123,30 @@ class AllTimelinesGroupingTest {
         val groups = groupEffectLinesByProfile(listOf(oralMph, otherSubstance, otherRoute))
         assertEquals(3, groups.size)
         assertEquals(
-            setOf(listOf(oralMph), listOf(otherSubstance), listOf(otherRoute)),
-            groups.toSet()
+            listOf(listOf(oralMph), listOf(otherRoute), listOf(otherSubstance)),
+            groups
+        )
+    }
+
+    @Test
+    fun nullAndTwoEquivalentKnownDurationsKeepSeparateBucketsWithinOneSubstance() {
+        val unknown = line(firstTime, null)
+        val knownFirst = line(firstTime.plusSeconds(10), immediateDuration)
+        val knownSecond = line(secondTime, immediateDuration.copy())
+        val otherSubstance = line(
+            secondTime.plusSeconds(10),
+            immediateDuration,
+            substance = "Caffeine"
+        )
+        assertEquals(
+            listOf(
+                listOf(unknown),
+                listOf(knownFirst, knownSecond),
+                listOf(otherSubstance)
+            ),
+            groupEffectLinesByProfile(
+                listOf(unknown, otherSubstance, knownFirst, knownSecond)
+            )
         )
     }
 
