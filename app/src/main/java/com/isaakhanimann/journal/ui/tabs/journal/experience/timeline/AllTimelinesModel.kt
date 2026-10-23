@@ -29,12 +29,13 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
 /**
- * Split ingestion lines by their resolved duration profile, including null as
- * a separate bucket (no known timeline). RoaDuration and DurationRange are
- * value types, so equivalent catalog durations share a group.
+ * Group effect lines by their resolved duration within each substance and
+ * administration route. A null duration forms its own bucket (no known curve).
+ * RoaDuration and DurationRange are data classes with structural equality.
  *
- * Each groupBy keeps keys in encounter order: substance -> route -> duration.
- * This preserves the existing draw order across substances and routes.
+ * Kotlin groupBy preserves key encounter order: the original substance and
+ * route draw order is retained; duration buckets within a route appear in
+ * their first-occurrence order.
  */
 internal fun groupEffectLinesByProfile(
     dataForLines: List<DataForOneEffectLine>
