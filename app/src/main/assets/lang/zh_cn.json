@@ -691,6 +691,7 @@
   "finish_part_of_new_experience": "属于新体验",
   "finish_choose_other_consumer": "选择其他记录人",
   "finish_ingestion_note": "摄入备注",
+  "finish_substance_missing": "所选物质已不存在。请返回并重新选择。",
   "common_copy": "复制",
   "time_point_in_time": "时间点",
   "time_range": "时间范围",

@@ -55,6 +55,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -108,6 +109,7 @@ fun FinishIngestionScreen(
         onChangeEndDateOrTime = viewModel::onChangeEndDateOrTime,
         onSelectDurationPreset = viewModel::onSelectDurationPreset,
         isLoadingColor = viewModel.isLoadingColor,
+        isSubstanceMissing = viewModel.isSubstanceMissing,
         isShowingColorPicker = viewModel.isShowingColorPicker,
         selectedColor = viewModel.selectedColor,
         onChangeColor = { viewModel.selectedColor = it },
@@ -151,6 +153,7 @@ fun FinishIngestionScreenPreview() {
         localDateTimeEnd = LocalDateTime.now(),
         onChangeEndDateOrTime = {},
         isLoadingColor = false,
+        isSubstanceMissing = false,
         isShowingColorPicker = true,
         selectedColor = AdaptiveColor.BLUE,
         onChangeColor = {},
@@ -187,6 +190,7 @@ fun FinishIngestionScreen(
     onSelectDurationPreset: (Long) -> Unit = {},
     localDateTimeEnd: LocalDateTime,
     isLoadingColor: Boolean,
+    isSubstanceMissing: Boolean,
     isShowingColorPicker: Boolean,
     selectedColor: AdaptiveColor,
     onChangeColor: (AdaptiveColor) -> Unit,
@@ -228,7 +232,7 @@ fun FinishIngestionScreen(
         },
         floatingActionButton = {
             AnimatedVisibility(
-                visible = !isLoadingColor,
+                visible = !isLoadingColor && !isSubstanceMissing && substanceName.isNotBlank(),
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
@@ -249,6 +253,21 @@ fun FinishIngestionScreen(
                 progress = { 0.9f },
                 modifier = Modifier.fillMaxWidth()
             )
+            if (isSubstanceMissing) {
+                Surface(
+                    color = MaterialTheme.colorScheme.errorContainer,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
+                ) {
+                    Text(
+                        text = i18n("finish_substance_missing"),
+                        color = MaterialTheme.colorScheme.onErrorContainer,
+                        modifier = Modifier.padding(12.dp)
+                    )
+                }
+            }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier

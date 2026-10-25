@@ -149,6 +149,9 @@ interface ExperienceDao {
     @Query("SELECT * FROM customsubstance WHERE id = :id")
     fun getCustomSubstanceFlow(id: Int): Flow<CustomSubstance?>
 
+    @Query("SELECT * FROM customsubstance WHERE id = :id")
+    suspend fun getCustomSubstanceById(id: Int): CustomSubstance?
+
     @Query("SELECT * FROM customsubstance WHERE name = :name")
     suspend fun getCustomSubstance(name: String): CustomSubstance?
 
