@@ -522,8 +522,11 @@ fun OneExperienceScreen(
                             index,
                             ingestionElement
                         ->
-                        val previousIngestionTime = displayedIngestions.getOrNull(index - 1)
-                            ?.ingestionWithCompanionAndCustomUnit?.ingestion?.time
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
@@ -688,8 +691,11 @@ fun OneExperienceScreen(
                             index,
                             ingestionElement
                         ->
-                        val previousIngestionTime = displayedIngestions.getOrNull(index - 1)
-                            ?.ingestionWithCompanionAndCustomUnit?.ingestion?.time
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
