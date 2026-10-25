@@ -691,6 +691,7 @@
   "finish_part_of_new_experience": "Part of new experience",
   "finish_choose_other_consumer": "Choose other consumer",
   "finish_ingestion_note": "Ingestion note",
+  "finish_substance_missing": "The selected substance is no longer available. Go back and select it again.",
   "common_copy": "Copy",
   "time_point_in_time": "Point in time",
   "time_range": "Time range",
