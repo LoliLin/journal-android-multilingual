@@ -696,6 +696,7 @@ fun EditCustomUnitSections(
                         ingestionElement = ingestionElement,
                         timeDisplayOption = TimeDisplayOption.REGULAR,
                         startTime = Instant.now(),
+                        previousIngestionTime = null,
                         areDosageDotsHidden = true,
                         modifier = Modifier.padding(horizontal = horizontalPadding),
                         getSubstanceDisplayName = { it }

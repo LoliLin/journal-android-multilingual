@@ -516,14 +516,22 @@ fun OneExperienceScreen(
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()
                     }
-                    oneExperienceScreenModel.ingestionElements.forEachIndexed {
+                    // The same sorted, consumer-scoped list supplies both rows and their predecessors.
+                    val displayedIngestions = oneExperienceScreenModel.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
@@ -535,7 +543,7 @@ fun OneExperienceScreen(
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
@@ -677,14 +685,22 @@ fun OneExperienceScreen(
                         )
                     }
                     HorizontalDivider()
-                    consumerWithIngestions.ingestionElements.forEachIndexed {
+                    // Use neighbors from this consumer's displayed list, never another consumer.
+                    val displayedIngestions = consumerWithIngestions.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
@@ -696,7 +712,7 @@ fun OneExperienceScreen(
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < consumerWithIngestions.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
