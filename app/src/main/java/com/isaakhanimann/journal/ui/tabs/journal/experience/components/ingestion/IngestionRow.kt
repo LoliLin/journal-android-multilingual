@@ -89,12 +89,14 @@ fun IngestionRow(
                 } else {
                     null
                 }
+                val effectiveTimeDisplayOption =
+                    resolveIngestionTimeDisplayOption(timeDisplayOption, intervalText)
                 if (intervalText != null) {
                     Text(text = intervalText, style = MaterialTheme.typography.titleSmall)
                 } else {
                     TimeText(
                         time = ingestion.time,
-                        timeDisplayOption = resolveIngestionTimeDisplayOption(timeDisplayOption, intervalText),
+                        timeDisplayOption = effectiveTimeDisplayOption,
                         startTime = startTime,
                         style = MaterialTheme.typography.titleSmall
                     )
