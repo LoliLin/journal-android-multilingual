@@ -55,6 +55,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -152,6 +153,7 @@ fun FinishIngestionScreenPreview() {
         localDateTimeEnd = LocalDateTime.now(),
         onChangeEndDateOrTime = {},
         isLoadingColor = false,
+        isSubstanceMissing = false,
         isShowingColorPicker = true,
         selectedColor = AdaptiveColor.BLUE,
         onChangeColor = {},
@@ -188,7 +190,7 @@ fun FinishIngestionScreen(
     onSelectDurationPreset: (Long) -> Unit = {},
     localDateTimeEnd: LocalDateTime,
     isLoadingColor: Boolean,
-    isSubstanceMissing: Boolean = false,
+    isSubstanceMissing: Boolean,
     isShowingColorPicker: Boolean,
     selectedColor: AdaptiveColor,
     onChangeColor: (AdaptiveColor) -> Unit,
@@ -252,11 +254,19 @@ fun FinishIngestionScreen(
                 modifier = Modifier.fillMaxWidth()
             )
             if (isSubstanceMissing) {
-                Text(
-                    text = i18n("finish_substance_missing"),
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 12.dp)
-                )
+                Surface(
+                    color = MaterialTheme.colorScheme.errorContainer,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = horizontalPadding, vertical = 8.dp)
+                ) {
+                    Text(
+                        text = i18n("finish_substance_missing"),
+                        color = MaterialTheme.colorScheme.onErrorContainer,
+                        modifier = Modifier.padding(12.dp)
+                    )
+                }
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
