@@ -50,7 +50,7 @@ fun IngestionRow(
     ingestionElement: IngestionElement,
     timeDisplayOption: TimeDisplayOption,
     startTime: Instant,
-    previousIngestionTime: Instant? = null,
+    previousIngestionTime: Instant?,
     areDosageDotsHidden: Boolean,
     modifier: Modifier = Modifier,
     getSubstanceDisplayName: (String) -> String
@@ -94,7 +94,7 @@ fun IngestionRow(
                 } else {
                     TimeText(
                         time = ingestion.time,
-                        timeDisplayOption = timeDisplayOption,
+                        timeDisplayOption = resolveIngestionTimeDisplayOption(timeDisplayOption, intervalText),
                         startTime = startTime,
                         style = MaterialTheme.typography.titleSmall
                     )
