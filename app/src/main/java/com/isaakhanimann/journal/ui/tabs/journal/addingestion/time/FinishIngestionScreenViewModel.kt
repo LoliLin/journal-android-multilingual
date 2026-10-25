@@ -138,6 +138,8 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
         )
 
     var isLoadingColor by mutableStateOf(true)
+    var isSubstanceMissing by mutableStateOf(false)
+        private set
     var isShowingColorPicker by mutableStateOf(false)
     var selectedColor by mutableStateOf(AdaptiveColor.BLUE)
     var note by mutableStateOf("")
@@ -205,6 +207,20 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
         units = route.units
         isEstimate = route.isEstimate
         viewModelScope.launch {
+            // The custom-dose flow navigates with an ID, not a catalog substance name.
+            // Resolve it before loading colors or creating an ingestion.
+            substanceName = resolveIngestionSubstanceName(
+                predefinedSubstanceName = route.substanceName,
+                customSubstanceId = route.customSubstanceId,
+                customSubstanceName = route.customSubstanceId?.let {
+                    experienceRepo.getCustomSubstanceFlow(it).firstOrNull()?.name
+                }
+            ).orEmpty()
+            if (substanceName.isBlank()) {
+                isSubstanceMissing = true
+                isLoadingColor = false
+                return@launch
+            }
             val lastIngestionTimeOfExperience =
                 userPreferences.lastIngestionTimeOfExperienceFlow.first()
             val clonedIngestionTime = userPreferences.clonedIngestionTimeFlow.first()
@@ -312,6 +328,20 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
 
     fun createSaveAndDismissAfter(dismiss: () -> Unit, lifecycleView: android.view.View? = null) {
         viewModelScope.launch {
+            if (isLoadingColor || isSubstanceMissing) return@launch
+            // Revalidate the ID before saving: a deleted/renamed custom substance must not
+            // produce a blank or mismatched SubstanceCompanion and ingestion.
+            val currentName = resolveIngestionSubstanceName(
+                predefinedSubstanceName = route.substanceName,
+                customSubstanceId = route.customSubstanceId,
+                customSubstanceName = route.customSubstanceId?.let {
+                    experienceRepo.getCustomSubstanceFlow(it).firstOrNull()?.name
+                }
+            )
+            if (currentName == null || currentName != substanceName) {
+                isSubstanceMissing = true
+                return@launch
+            }
             createAndSaveIngestion(lifecycleView)
             withContext(Dispatchers.Main) {
                 dismiss()
@@ -469,4 +499,14 @@ internal fun findClosestExperience(
         val isWithinIngestedDays = selectedDay in firstIngestedDay..lastIngestedDay
         isWithinSessionWindow && isWithinIngestedDays
     }
+}
+
+/** Keep custom-substance identity authoritative when the navigation route carries its ID. */
+internal fun resolveIngestionSubstanceName(
+    predefinedSubstanceName: String?,
+    customSubstanceId: Int?,
+    customSubstanceName: String?
+): String? {
+    val name = if (customSubstanceId != null) customSubstanceName else predefinedSubstanceName
+    return name?.takeIf { it.isNotBlank() }
 }
