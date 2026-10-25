@@ -81,7 +81,6 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.Interacti
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
-import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.getPreviousIngestionTime
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.rating.RatingRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote.TimedNoteRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperienceScreenModel
@@ -517,18 +516,19 @@ fun OneExperienceScreen(
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()
                     }
-                    oneExperienceScreenModel.ingestionElements.forEachIndexed {
+                    // The same sorted, consumer-scoped list supplies both rows and their predecessors.
+                    val displayedIngestions = oneExperienceScreenModel.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = displayedIngestions.getOrNull(index - 1)
+                            ?.ingestionWithCompanionAndCustomUnit?.ingestion?.time
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
-                            previousIngestionTime = getPreviousIngestionTime(
-                                oneExperienceScreenModel.ingestionElements,
-                                index
-                            ),
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
@@ -540,7 +540,7 @@ fun OneExperienceScreen(
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
@@ -682,18 +682,19 @@ fun OneExperienceScreen(
                         )
                     }
                     HorizontalDivider()
-                    consumerWithIngestions.ingestionElements.forEachIndexed {
+                    // Use neighbors from this consumer's displayed list, never another consumer.
+                    val displayedIngestions = consumerWithIngestions.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = displayedIngestions.getOrNull(index - 1)
+                            ?.ingestionWithCompanionAndCustomUnit?.ingestion?.time
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
-                            previousIngestionTime = getPreviousIngestionTime(
-                                consumerWithIngestions.ingestionElements,
-                                index
-                            ),
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
@@ -705,7 +706,7 @@ fun OneExperienceScreen(
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < consumerWithIngestions.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
