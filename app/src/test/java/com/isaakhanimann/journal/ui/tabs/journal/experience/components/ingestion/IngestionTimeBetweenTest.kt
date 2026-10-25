@@ -37,7 +37,7 @@ class IngestionTimeBetweenTest {
             "+ 60 min",
             getTimeBetweenIngestionsText(myDisplayed[0], myDisplayed[1])
         )
-        assertNull(getTimeBetweenIngestionsText(otherDisplayed.getOrNull(-1), otherDisplayed[0]))
+        assertNull(getTimeBetweenIngestionsText(null, otherDisplayed[0]))
         assertEquals(
             "+ 30 min",
             getTimeBetweenIngestionsText(otherDisplayed[0], otherDisplayed[1])
