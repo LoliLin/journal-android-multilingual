@@ -21,10 +21,10 @@ class TestCompatibleJournalImport {
               ],
               "experiences": [{
                 "title": "Test", "text": "keep this text",
-                "sortDate": "2026-10-25T00:00:00Z",
+                "sortDate": 1792886400000,
                 "timedNotes": [{
-                  "creationDate": "2026-10-25T00:00:00Z",
-                  "time": "2026-10-25T00:00:00Z",
+                  "creationDate": 1792886400000,
+                  "time": 1792886400000,
                   "note": "keep this note",
                   "color": null,
                   "customColor": -27392,
