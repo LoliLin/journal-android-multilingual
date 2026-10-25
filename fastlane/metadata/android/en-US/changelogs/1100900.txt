@@ -1,0 +1,7 @@
+- Import backups from other Journal forks, including custom ARGB colors.
+- Experience view now shows time between ingestions.
+- Custom substance names and colors restore correctly in experiences.
+- Added region-specific Dimdazenil info for US, China, and Taiwan.
+- Create an experience while editing an ingestion.
+- Fixed pinned bottom bar covering nested screens.
+- Mixed release-form timelines stay independent; fixed height independence.
