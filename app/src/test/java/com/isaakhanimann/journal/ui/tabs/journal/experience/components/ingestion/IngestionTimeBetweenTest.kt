@@ -1,93 +1,69 @@
 package com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion
 
-import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
-import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
-import com.isaakhanimann.journal.data.substances.AdministrationRoute
-import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import java.time.Instant
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
 
 class IngestionTimeBetweenTest {
-    private fun ingestionElement(time: String) = IngestionElement(
-        ingestionWithCompanionAndCustomUnit = IngestionWithCompanionAndCustomUnit(
-            ingestion = Ingestion(
-                substanceName = "Test",
-                time = Instant.parse(time),
-                administrationRoute = AdministrationRoute.ORAL,
-                dose = null,
-                isDoseAnEstimate = false,
-                estimatedDoseStandardDeviation = null,
-                units = null,
-                experienceId = 1,
-                notes = null,
-                stomachFullness = null,
-                consumerName = null,
-                customUnitId = null
-            ),
-            substanceCompanion = null,
-            customUnit = null
-        ),
-        roaDuration = null,
-        numDots = null
-    )
+    private val first = Instant.parse("2026-10-25T08:00:00Z")
 
     @Test
-    fun firstIngestionKeepsAbsoluteClockTime() {
-        val records = listOf(ingestionElement("2026-10-25T08:00:00Z"))
-        val previous = getPreviousIngestionTime(records, 0)
-
-        assertNull(previous)
-        assertNull(getTimeBetweenIngestionsText(previous, records.first().ingestionWithCompanionAndCustomUnit.ingestion.time))
-    }
-
-    @Test
-    fun eachIngestionUsesImmediatelyPreviousIngestion() {
-        val records = listOf(
-            ingestionElement("2026-10-25T08:00:00Z"),
-            ingestionElement("2026-10-25T08:30:00Z"),
-            ingestionElement("2026-10-25T09:15:00Z")
-        )
-
+    fun firstIngestionExplicitlyUsesRegularClockTime() {
+        assertNull(getTimeBetweenIngestionsText(null, first))
         assertEquals(
-            "+ 30 min",
-            getTimeBetweenIngestionsText(
-                getPreviousIngestionTime(records, 1),
-                records[1].ingestionWithCompanionAndCustomUnit.ingestion.time
-            )
-        )
-        assertEquals(
-            "+ 45 min",
-            getTimeBetweenIngestionsText(
-                getPreviousIngestionTime(records, 2),
-                records[2].ingestionWithCompanionAndCustomUnit.ingestion.time
-            )
+            TimeDisplayOption.REGULAR,
+            resolveIngestionTimeDisplayOption(TimeDisplayOption.TIME_BETWEEN, null)
         )
     }
 
     @Test
-    fun timeBetweenDoesNotCrossConsumerGroups() {
-        val myRecords = listOf(
-            ingestionElement("2026-10-25T08:00:00Z"),
-            ingestionElement("2026-10-25T09:00:00Z")
-        )
-        val otherConsumerRecords = listOf(
-            ingestionElement("2026-10-25T08:15:00Z"),
-            ingestionElement("2026-10-25T08:45:00Z")
-        )
+    fun displayedNeighborsUseImmediatelyPreviousIngestion() {
+        val displayed = listOf(first, first.plusSeconds(30 * 60), first.plusSeconds(75 * 60))
+        val intervals = displayed.mapIndexed { index, time ->
+            getTimeBetweenIngestionsText(displayed.getOrNull(index - 1), time)
+        }
+
+        assertEquals(listOf(null, "+ 30 min", "+ 45 min"), intervals)
+    }
+
+    @Test
+    fun eachConsumerUsesItsOwnDisplayedNeighbors() {
+        val myDisplayed = listOf(first, first.plusSeconds(60 * 60))
+        val otherDisplayed = listOf(first.plusSeconds(15 * 60), first.plusSeconds(45 * 60))
 
         assertEquals(
-            Instant.parse("2026-10-25T08:00:00Z"),
-            getPreviousIngestionTime(myRecords, 1)
+            "+ 1 hr",
+            getTimeBetweenIngestionsText(myDisplayed[0], myDisplayed[1])
         )
-        assertNull(getPreviousIngestionTime(otherConsumerRecords, 0))
+        assertNull(getTimeBetweenIngestionsText(otherDisplayed.getOrNull(-1), otherDisplayed[0]))
         assertEquals(
             "+ 30 min",
-            getTimeBetweenIngestionsText(
-                getPreviousIngestionTime(otherConsumerRecords, 1),
-                otherConsumerRecords[1].ingestionWithCompanionAndCustomUnit.ingestion.time
-            )
+            getTimeBetweenIngestionsText(otherDisplayed[0], otherDisplayed[1])
+        )
+    }
+
+    @Test
+    fun timeDisplaySelectionPreservesAllOtherModes() {
+        for (option in TimeDisplayOption.entries.filter { it != TimeDisplayOption.TIME_BETWEEN }) {
+            assertEquals(option, resolveIngestionTimeDisplayOption(option, null))
+        }
+        assertEquals(
+            TimeDisplayOption.TIME_BETWEEN,
+            resolveIngestionTimeDisplayOption(TimeDisplayOption.TIME_BETWEEN, "+ 30 min")
+        )
+    }
+
+    @Test
+    fun unsortedTimesFallBackToRegularClockTimeInsteadOfFalsePositiveElapsedTime() {
+        val earlier = first.minusSeconds(5 * 60)
+        val interval = getTimeBetweenIngestionsText(first, earlier)
+
+        assertNull(interval)
+        assertEquals(
+            TimeDisplayOption.REGULAR,
+            resolveIngestionTimeDisplayOption(TimeDisplayOption.TIME_BETWEEN, interval)
         )
     }
 
@@ -101,8 +77,6 @@ class IngestionTimeBetweenTest {
 
     @Test
     fun simultaneousIngestionsShowZeroInterval() {
-        val time = Instant.parse("2026-10-25T08:00:00Z")
-
-        assertEquals("+ 0 s", getTimeBetweenIngestionsText(time, time))
+        assertEquals("+ 0 s", getTimeBetweenIngestionsText(first, first))
     }
 }
