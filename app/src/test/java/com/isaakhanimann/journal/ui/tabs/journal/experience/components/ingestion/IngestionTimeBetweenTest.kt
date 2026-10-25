@@ -34,7 +34,7 @@ class IngestionTimeBetweenTest {
         val otherDisplayed = listOf(first.plusSeconds(15 * 60), first.plusSeconds(45 * 60))
 
         assertEquals(
-            "+ 1 hr",
+            "+ 60 min",
             getTimeBetweenIngestionsText(myDisplayed[0], myDisplayed[1])
         )
         assertNull(getTimeBetweenIngestionsText(otherDisplayed.getOrNull(-1), otherDisplayed[0]))
