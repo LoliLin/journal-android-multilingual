@@ -366,21 +366,28 @@ fun ShareableExperienceCard(
                     if (oneExperienceScreenModel.ingestionElements.isNotEmpty()) {
                         HorizontalDivider()
                     }
-                    oneExperienceScreenModel.ingestionElements.forEachIndexed {
+                    val displayedIngestions = oneExperienceScreenModel.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < oneExperienceScreenModel.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
@@ -510,21 +517,28 @@ fun ShareableExperienceCard(
                         )
                     }
                     HorizontalDivider()
-                    consumerWithIngestions.ingestionElements.forEachIndexed {
+                    val displayedIngestions = consumerWithIngestions.ingestionElements
+                    displayedIngestions.forEachIndexed {
                             index,
                             ingestionElement
                         ->
+                        val previousIngestionTime = if (index > 0) {
+                            displayedIngestions[index - 1].ingestionWithCompanionAndCustomUnit.ingestion.time
+                        } else {
+                            null
+                        }
                         IngestionRow(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = previousIngestionTime,
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 5.dp, horizontal = horizontalPadding),
                             getSubstanceDisplayName = getSubstanceDisplayName
                         )
-                        if (index < consumerWithIngestions.ingestionElements.size - 1) {
+                        if (index < displayedIngestions.lastIndex) {
                             HorizontalDivider()
                         }
                     }
