@@ -286,7 +286,7 @@ class SettingsViewModel @Inject constructor(
                     } else {
                         bytes.toString(Charsets.UTF_8)
                     }
-                    val journalExport = journalImportJson.decodeFromString<JournalExport>(text)
+                    val journalExport = decodeCompatibleJournalImport(text)
                     journalExport.preferences?.let { UserPreferences.validateBackup(it) }
                     val decodedAvatars = journalExport.avatars.map { (userName, base64) ->
                         userName to java.util.Base64.getDecoder().decode(base64)
