@@ -81,6 +81,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.Interacti
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.SavedTimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.getPreviousIngestionTime
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.rating.RatingRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote.TimedNoteRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperienceScreenModel
@@ -524,6 +525,10 @@ fun OneExperienceScreen(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = getPreviousIngestionTime(
+                                oneExperienceScreenModel.ingestionElements,
+                                index
+                            ),
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
@@ -685,6 +690,10 @@ fun OneExperienceScreen(
                             ingestionElement = ingestionElement,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            previousIngestionTime = getPreviousIngestionTime(
+                                consumerWithIngestions.ingestionElements,
+                                index
+                            ),
                             areDosageDotsHidden = areDosageDotsHidden,
                             modifier = Modifier
                                 .clickable {
