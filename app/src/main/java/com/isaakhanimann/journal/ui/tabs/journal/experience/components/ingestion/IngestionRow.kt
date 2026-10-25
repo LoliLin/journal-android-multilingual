@@ -50,6 +50,7 @@ fun IngestionRow(
     ingestionElement: IngestionElement,
     timeDisplayOption: TimeDisplayOption,
     startTime: Instant,
+    previousIngestionTime: Instant? = null,
     areDosageDotsHidden: Boolean,
     modifier: Modifier = Modifier,
     getSubstanceDisplayName: (String) -> String
@@ -83,12 +84,21 @@ fun IngestionRow(
                         formulation,
                     style = MaterialTheme.typography.titleMedium
                 )
-                TimeText(
-                    time = ingestion.time,
-                    timeDisplayOption = timeDisplayOption,
-                    startTime = startTime,
-                    style = MaterialTheme.typography.titleSmall
-                )
+                val intervalText = if (timeDisplayOption == TimeDisplayOption.TIME_BETWEEN) {
+                    getTimeBetweenIngestionsText(previousIngestionTime, ingestion.time)
+                } else {
+                    null
+                }
+                if (intervalText != null) {
+                    Text(text = intervalText, style = MaterialTheme.typography.titleSmall)
+                } else {
+                    TimeText(
+                        time = ingestion.time,
+                        timeDisplayOption = timeDisplayOption,
+                        startTime = startTime,
+                        style = MaterialTheme.typography.titleSmall
+                    )
+                }
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
