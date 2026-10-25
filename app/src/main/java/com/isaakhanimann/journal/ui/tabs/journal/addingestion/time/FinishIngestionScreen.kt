@@ -108,6 +108,7 @@ fun FinishIngestionScreen(
         onChangeEndDateOrTime = viewModel::onChangeEndDateOrTime,
         onSelectDurationPreset = viewModel::onSelectDurationPreset,
         isLoadingColor = viewModel.isLoadingColor,
+        isSubstanceMissing = viewModel.isSubstanceMissing,
         isShowingColorPicker = viewModel.isShowingColorPicker,
         selectedColor = viewModel.selectedColor,
         onChangeColor = { viewModel.selectedColor = it },
@@ -187,6 +188,7 @@ fun FinishIngestionScreen(
     onSelectDurationPreset: (Long) -> Unit = {},
     localDateTimeEnd: LocalDateTime,
     isLoadingColor: Boolean,
+    isSubstanceMissing: Boolean = false,
     isShowingColorPicker: Boolean,
     selectedColor: AdaptiveColor,
     onChangeColor: (AdaptiveColor) -> Unit,
@@ -228,7 +230,7 @@ fun FinishIngestionScreen(
         },
         floatingActionButton = {
             AnimatedVisibility(
-                visible = !isLoadingColor,
+                visible = !isLoadingColor && !isSubstanceMissing && substanceName.isNotBlank(),
                 enter = fadeIn(),
                 exit = fadeOut()
             ) {
@@ -249,6 +251,13 @@ fun FinishIngestionScreen(
                 progress = { 0.9f },
                 modifier = Modifier.fillMaxWidth()
             )
+            if (isSubstanceMissing) {
+                Text(
+                    text = i18n("finish_substance_missing"),
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 12.dp)
+                )
+            }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
