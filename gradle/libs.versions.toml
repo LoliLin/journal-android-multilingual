@@ -29,7 +29,7 @@ espresso = "3.7.0"
 
 # 协程 & 序列化
 coroutines = "1.11.0"
-serializationJson = "1.11.0"
+serializationJson = "1.12.0"
 
 # Navigation 3
 nav3 = "1.3.0-alpha02"
