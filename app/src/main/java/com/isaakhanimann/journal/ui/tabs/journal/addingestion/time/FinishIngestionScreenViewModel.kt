@@ -53,7 +53,6 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -127,8 +126,6 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
         }
     }
 
-    private val sortedExperiencesFlow = experienceRepo.getSortedExperiencesWithIngestionsFlow()
-
     val sortedConsumerNamesFlow =
         experienceRepo.getSortedIngestions(limit = 200).map { ingestions ->
             return@map ingestions.mapNotNull { it.consumerName }.distinct()
@@ -188,11 +185,6 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000)
         )
-
-    private val newExperienceIdToUseFlow: Flow<Int> = sortedExperiencesFlow.map { experiences ->
-        val previousMax = experiences.maxOfOrNull { it.experience.id } ?: 1
-        return@map previousMax + 1
-    }
 
     init {
         administrationRoute = route.administrationRoute
@@ -367,22 +359,20 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
             localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
         val savedExperienceId: Int
         if (oldIdToUse == null) {
-            val newIdToUse = newExperienceIdToUseFlow.firstOrNull() ?: 1
             val newExperience = Experience(
-                id = newIdToUse,
+                id = 0,
                 title = enteredTitle,
                 text = "",
                 creationDate = Instant.now(),
                 sortDate = ingestionTime,
                 location = null // todo: allow to add real location
             )
-            val newIngestion = createNewIngestion(newExperience.id)
-            experienceRepo.insertIngestionExperienceAndCompanion(
+            val newIngestion = createNewIngestion(0)
+            savedExperienceId = experienceRepo.insertIngestionExperienceAndCompanion(
                 ingestion = newIngestion,
                 experience = newExperience,
                 substanceCompanion = substanceCompanion
             )
-            savedExperienceId = newExperience.id
         } else {
             val newIngestion = createNewIngestion(oldIdToUse)
             experienceRepo.insertIngestionAndCompanion(

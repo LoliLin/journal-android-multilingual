@@ -32,17 +32,21 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.Instant
-import java.time.LocalTime
 import java.time.Period
-import java.time.ZoneOffset
+import java.time.ZoneId
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -72,12 +76,20 @@ class StatsViewModel @Inject constructor(
         }
     }
 
-    private val startDateFlow = _optionFlow.map {
-        return@map Instant.now().getEndOfDay().minus(it.allBucketSizes)
-    }
+    // Re-read the clock and zone while observed, including immediately on each subscription.
+    // Polling also catches manual clock and time-zone changes without a broadcast receiver.
+    private val clockFlow = flow {
+        while (true) {
+            val now = Instant.now()
+            val zone = ZoneId.systemDefault()
+            emit(now.atZone(zone).toLocalDate() to zone)
+            val nextMidnight = now.atZone(zone).toLocalDate().plusDays(1).atStartOfDay(zone).toInstant()
+            delay(java.time.Duration.between(now, nextMidnight).toMillis().coerceIn(1L, 60_000L))
+        }
+    }.distinctUntilChanged()
 
-    private val startDateTextFlow = startDateFlow.map {
-        it.getDateWithWeekdayText()
+    private val windowFlow = combine(optionFlow, clockFlow) { option, (date, zone) ->
+        statsWindow(date.atStartOfDay(zone).toInstant(), option, zone)
     }
 
     private val allExperiencesSortedFlow: Flow<List<ExperienceWithIngestionsAndCompanions>> =
@@ -99,18 +111,17 @@ class StatsViewModel @Inject constructor(
     private val isStatsByIngestionTimeFlow = userPreferences.isStatsByIngestionTimeFlow
 
 
-    private val experienceChartBucketsFlow: Flow<List<List<ColorCount>>> =
+    private fun experienceChartBucketsFlow(window: StatsWindow): Flow<List<List<ColorCount>>> =
         combine(
-            combine(allExperiencesSortedFlow, optionFlow, startDateFlow) { experiences, option, startDate ->
-                Triple(experiences, option, startDate)
-            },
+            allExperiencesSortedFlow,
             combine(isStatsByIngestionTimeFlow, consumerFlow, companionFlow) { byIngestionTime, consumerName, companions ->
                 Triple(byIngestionTime, consumerName, companions)
             }
-        ) { chartInputs, filters ->
-            val (experiences, option, startDate) = chartInputs
+        ) { experiences, filters ->
             val (byIngestionTime, consumerName, companions) = filters
-            val nowEndOfDay = Instant.now().getEndOfDay()
+            val nowEndOfDay = window.endInclusive
+            val startDate = window.startExclusive
+            val option = window.option
             val companionBySubstance = companions.associateBy { it.substanceName }
             if (byIngestionTime) {
                 val ingestionsNewestFirst = experiences
@@ -129,7 +140,8 @@ class StatsViewModel @Inject constructor(
                     itemsNewestFirst = inWindow,
                     instantOf = { it.ingestion.time },
                     option = option,
-                    nowEndOfDay = nowEndOfDay
+                    nowEndOfDay = nowEndOfDay,
+                    zone = window.zone
                 ).map { ingestionsInBucket ->
                     getColorCountsForIngestions(ingestionsInBucket, companionBySubstance)
                 }
@@ -144,7 +156,8 @@ class StatsViewModel @Inject constructor(
                     itemsNewestFirst = inWindow,
                     instantOf = { it.sortInstant },
                     option = option,
-                    nowEndOfDay = nowEndOfDay
+                    nowEndOfDay = nowEndOfDay,
+                    zone = window.zone
                 ).map { experiencesInBucket ->
                     getColorCountsForExperiences(experiencesInBucket, companionBySubstance, consumerName)
                 }
@@ -185,15 +198,16 @@ class StatsViewModel @Inject constructor(
             .sortedByDescending { it.count }
     }
 
-    private val statsFlowItem: Flow<List<StatItem>> = combine(
-        combine(allExperiencesSortedFlow, startDateFlow, isStatsByIngestionTimeFlow) { experiences, startDate, byIngestionTime ->
-            Triple(experiences, startDate, byIngestionTime)
+    private fun statsFlowItem(window: StatsWindow): Flow<List<StatItem>> = combine(
+        combine(allExperiencesSortedFlow, isStatsByIngestionTimeFlow) { experiences, byIngestionTime ->
+            experiences to byIngestionTime
         },
         consumerFlow,
         companionFlow
-    ) { window, consumerName, companions ->
-        val (experiences, startDate, byIngestionTime) = window
-        val nowEndOfDay = Instant.now().getEndOfDay()
+    ) { inputs, consumerName, companions ->
+        val (experiences, byIngestionTime) = inputs
+        val startDate = window.startExclusive
+        val nowEndOfDay = window.endInclusive
         val relevantIngestions = if (byIngestionTime) {
             val ingestionsNewestFirst = experiences
                 .asSequence()
@@ -279,27 +293,27 @@ class StatsViewModel @Inject constructor(
         )
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val statsModelFlow: StateFlow<StatsModel> =
-        combine(
-            combine(optionFlow, startDateTextFlow, statsFlowItem) { option, startDateText, substanceStats ->
-                Triple(option, startDateText, substanceStats)
-            },
-            combine(areThereAnyIngestionsFlow, consumerFlow, experienceChartBucketsFlow) { areThere, consumerName, chartBuckets ->
-                Triple(areThere, consumerName, chartBuckets)
-            },
-            isStatsByIngestionTimeFlow
-        ) { summary, extras, byIngestionTime ->
-            val (option, startDateText, substanceStats) = summary
-            val (areThere, consumerName, chartBuckets) = extras
-            StatsModel(
-                areThereAnyIngestions = areThere,
-                selectedOption = option,
-                startDateText = startDateText,
-                statItems = substanceStats,
-                chartBuckets = chartBuckets,
-                consumerName = consumerName,
-                isByIngestionTime = byIngestionTime
-            )
+        windowFlow.flatMapLatest { window ->
+            combine(
+                statsFlowItem(window),
+                combine(areThereAnyIngestionsFlow, consumerFlow, experienceChartBucketsFlow(window)) { areThere, consumerName, chartBuckets ->
+                    Triple(areThere, consumerName, chartBuckets)
+                },
+                isStatsByIngestionTimeFlow
+            ) { substanceStats, extras, byIngestionTime ->
+                val (areThere, consumerName, chartBuckets) = extras
+                StatsModel(
+                    areThereAnyIngestions = areThere,
+                    selectedOption = window.option,
+                    startDateText = window.startExclusive.plusNanos(1).atZone(window.zone).toLocalDateTime().getDateWithWeekdayText(),
+                    statItems = substanceStats,
+                    chartBuckets = chartBuckets,
+                    consumerName = consumerName,
+                    isByIngestionTime = byIngestionTime
+                )
+            }
         }.stateIn(
             initialValue = StatsModel(
                 selectedOption = TimePickerOption.WEEKS_26,
@@ -311,7 +325,7 @@ class StatsViewModel @Inject constructor(
                 isByIngestionTime = false
             ),
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000)
+            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 0, replayExpirationMillis = 0)
         )
 
     val sortedConsumerNamesFlow =
@@ -413,6 +427,5 @@ enum class TimePickerOption {
     abstract val allBucketSizes: Period
 }
 
-fun Instant.getEndOfDay(): Instant = this.atOffset(ZoneOffset.UTC)
-    .with(LocalTime.of(23, 59, 59, this.nano))
-    .toInstant()
+fun Instant.getEndOfDay(zone: ZoneId = ZoneId.systemDefault()): Instant = atZone(zone).toLocalDate()
+    .plusDays(1).atStartOfDay(zone).toInstant().minusNanos(1)

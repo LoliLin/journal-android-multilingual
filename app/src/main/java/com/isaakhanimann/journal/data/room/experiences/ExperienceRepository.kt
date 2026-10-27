@@ -59,7 +59,7 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         ingestion: Ingestion,
         experience: Experience,
         substanceCompanion: SubstanceCompanion
-    ) = experienceDao.insertIngestionExperienceAndCompanion(
+    ): Int = experienceDao.insertIngestionExperienceAndCompanion(
         ingestion,
         experience,
         substanceCompanion

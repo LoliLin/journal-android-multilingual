@@ -32,12 +32,14 @@ import java.time.LocalDate
 import java.time.ZoneId
 import javax.inject.Inject
 import kotlin.math.floor
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
@@ -132,7 +134,7 @@ class StatsAnalysisViewModel @Inject constructor(
 
     val usedSubstancesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
         list.map { it.ingestion.substanceName }.distinct().sorted()
-    }.stateIn(
+    }.flowOn(Dispatchers.Default).stateIn(
         initialValue = emptyList(),
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
@@ -140,7 +142,7 @@ class StatsAnalysisViewModel @Inject constructor(
 
     val consumerNamesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
         list.mapNotNull { it.ingestion.consumerName }.distinct().sorted()
-    }.stateIn(
+    }.flowOn(Dispatchers.Default).stateIn(
         initialValue = emptyList(),
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000)
@@ -386,7 +388,7 @@ class StatsAnalysisViewModel @Inject constructor(
             perSubstanceCharts = perSubstanceCharts,
             ingestions = filtered
         )
-    }.stateIn(
+    }.flowOn(Dispatchers.Default).stateIn(
         initialValue = StatsAnalysisModel(
             selectedSubstances = emptySet(),
             selectedConsumer = ConsumerSelection.All,

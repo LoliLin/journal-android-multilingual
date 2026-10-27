@@ -417,10 +417,13 @@ interface ExperienceDao {
         ingestion: Ingestion,
         experience: Experience,
         substanceCompanion: SubstanceCompanion
-    ) {
-        insert(ingestion)
-        insert(experience)
+    ): Int {
+        val rowId = insert(experience.copy(id = 0))
+        check(rowId in 1..Int.MAX_VALUE.toLong()) { "Experience ID out of range: $rowId" }
+        val experienceId = rowId.toInt()
+        insert(ingestion.copy(experienceId = experienceId))
         insert(substanceCompanion)
+        return experienceId
     }
 
     /**
