@@ -11,8 +11,8 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": ["Extremely low toxicity"],
   "categories": ["oneirogen", "nootropic", "common"],
   "summary": "A naturally occurring hormone produced in the body, which promotes sleep at certain times in the day based on the circadian rhythm. It is also commonly available as a drug to treat insomnia and promote a proper sleep cycle. It can be used to promote sleepfulness at the tail-end of drug experiences, though it is not particularly hypnotic.",
   "roas": [
@@ -56,5 +56,6 @@
         "min": 15
       }
     }
-  ]
+  ],
+  "metabolism": "Broken down mainly in the liver, where it is hydroxylated to 6-hydroxymelatonin, mostly by CYP1A2 and to a lesser extent by CYP1A1. A smaller amount goes through O-demethylation to N-acetyl-5-hydroxytryptamine, which CYP2C19 handles. The breakdown products mostly leave through the urine, about 90% of them as the sulphate and glucuronide conjugates of 6-hydroxymelatonin; under about 1% of a dose of melatonin comes out unchanged. In healthy adults it stays in the blood for about 45 minutes (normally 30-60 minutes). In the lab about 60% binds to blood proteins, and it spreads through the body at just over 1 L/kg by the end of the elimination phase. About 13% of a dose reaches the blood when taken as a solution and 14-16% as a tablet, with the highest blood level 15-90 minutes after taking it (median 52 minutes).",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/13628/smpc"]
 }

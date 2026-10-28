@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Trimethoxyamphetamine-2, a psychedelic amphetamine and stimulant first synthesised by Alexander Shulgin. An uncommon compound of similar activity to other psychedelic amphetamines. Short history of human use.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "TMA-2"
 }

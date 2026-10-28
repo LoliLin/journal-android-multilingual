@@ -13,19 +13,18 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Exact toxic dose is unknown; its pharmacology and harm information are limited."
   ],
-  "categories": [
-    "psychedelic",
-    "stimulant",
-    "research-chemical",
-    "common"
+  "effectsSummary": "DOC as a synthetic psychedelic amphetamine, a close relative of DOM, with subjective reports treated as anecdotal and variable.",
+  "dosageRemark": "The archived dose tables list insufflated threshold 0.25 mg, light 0.25-1 mg, moderate 1-2 mg, strong 2-3.5 mg; oral threshold 0.5 mg, light 1-2 mg, moderate 2-4 mg, strong 4-6 mg, heavy 6 mg+. Insufflated onset 1-5 min and total duration is not provided in the archived table; oral onset 1-2 h, total 12-24 h. Both are educational user/resource compilations, not recommendations. Oral lightMin corrected from threshold to the source light lower bound.",
+  "generalRisks": "Only user-reported dose information is given, and checking other sources is advised. Effects can vary between individuals.",
+  "saferUse": [
+    "The dose information is an educational user and resource compilation, not a recommendation. Checking other sources and starting low, because of individual differences, is advised."
   ],
-  "summary": "A potent stimulating psychedelic with a long action, a phenethylamine and substituted amphetamine. Sometimes sold as LSD but also enjoyed on its own merits by many. Usually sold on blotters slightly larger than those LSD is found on, but can also be bought in powder form.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -38,6 +37,13 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical",
+    "common"
+  ],
+  "summary": "DOC is a long-acting psychedelic amphetamine related to DOM. FreeODwiki's dose information is user/resource material and should be cross-checked.",
   "roas": [
     {
       "name": "insufflated",
@@ -80,7 +86,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 0.5,
+        "lightMin": 1,
         "commonMin": 2,
         "strongMin": 4,
         "heavyMin": 6

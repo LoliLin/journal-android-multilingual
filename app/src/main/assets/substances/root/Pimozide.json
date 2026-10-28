@@ -8,5 +8,6 @@
   "metabolism": "Hepatic N-dealkylation is mainly catalyzed by CYP3A4, with smaller CYP1A2/CYP2D6 contributions. Elimination is mainly renal; the antipsychotic activity of the principal metabolites is undetermined.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4e954fc2-fdff-486c-beb6-2b8ace717081"
-  ]
+  ],
+  "summary": "Pimozide is a potent typical antipsychotic of the diphenylbutylpiperidine class, indicated for Tourette syndrome and resistant tics."
 }

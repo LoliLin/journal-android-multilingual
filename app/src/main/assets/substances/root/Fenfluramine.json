@@ -5,5 +5,6 @@
   "categories": [
     "centrally-acting-medication"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Fenfluramine is a serotonergic medication used to treat seizures associated with Dravet syndrome and Lennox-Gastaut syndrome. It was formerly used as an appetite suppressant but withdrawn for weight loss because of cardiovascular toxicity."
 }

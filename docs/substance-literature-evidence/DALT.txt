@@ -1,0 +1,21 @@
+##### DALT
+# hits: 196
+
+=== Metabolic profiling of 5- Methoxy-N,N-diallyltryptamine in human liver microsomes and zebrafish using LC-Orbitrap MS.
+    Meng L, Wang Y, Zhong C, Zhao S.
+    ? 2025 | PMID 40081218 | DOI 10.1016/j.jchromb.2025.124557
+    - The main metabolic pathways of the phase I metabolism included N-Oxidation，Aromatic hydroxylation，Indole-dihydroxylation reaction，N-Dealkylation and aromatic hydroxylation，N-Dealkylation and O-demethylation，Aromatic hydroxylation and O-demethylation and Hydration and N-oxidation.
+    - Meanwhile the phase II metabolism included Glucuronidation following O-demethylation，Glucuronidation following aromatic hydroxylation.
+    - The main metabolic pathways of the phase I metabolism included Aromatic hydroxylation, N-Dehydrogenation, N-Dealkylation, N-Dealkylation and aromatic hydroxylation, meanwhile the phase II metabolism included Sulfonation following aromatic hydroxylation, Glucuronidation following aromatic hydroxylation, Sulfonation following O-demethylation.
+
+=== The role of microorganisms in the biotransformation of psychoactive substances and its forensic relevance: a critical interdisciplinary review.
+    de Campos EG, de Almeida OGG, De Martinis ECP.
+    ? 2023 | PMID 38221972 | PMCID PMC10785599 | DOI 10.1093/fsr/owad025
+    https://europepmc.org/article/PMC/10785599
+    - Biotransformation of tryptamines by C. elegans has also been explored, as reported by Grafinger et al. [ 15 ], who studied the biotransformation of N,N -dimethyltryptamine (DMT), 4-hydroxy- N -methyl- N -ethyltryptamine (4-HO-MET), N,N- diallyl-5-methoxytryptamine (5-MeO-DALT), and 5-methoxy- N -methyl- N -isoporpoyltryptamine (5-MeO-MiPT) [ 15 ]. A correlation of 63% with other models (e.g. pooled human liver microsomes, rat urine, and human urine) was found for the metabolites detected using C. elegans [ 15 ]. Metabolites formed through main Phase I biotransformation (hydroxylation, N -oxidation, carboxylation, deamination, and demethylation) were described using C. elegans , but no Phase II metabolites were detected [ 15 ].
+
+=== Toxicology and Analysis of Psychoactive Tryptamines.
+    Malaca S, Lo Faro AF, Tamborra A, Pichini S, Busardò FP, Huestis MA.
+    ? 2020 | PMID 33291798 | PMCID PMC7730282 | DOI 10.3390/ijms21239279
+    https://europepmc.org/article/PMC/7730282
+    - Michely et al. [ 102 ] identified 5-MeO-DALT phase I and II metabolites by liquid chromatography–high-resolution mass spectrometry (LC–HRMS/MS). Metabolites were primarily derived from hydroxylations, oxidations to oxo metabolites, N-dealkylations and O-demethylations.

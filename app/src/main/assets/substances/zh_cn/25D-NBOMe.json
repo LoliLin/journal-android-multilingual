@@ -1,5 +1,14 @@
 {
-  "toxicities": [],
+  "toxicities": [
+    "尚未确定半数致死量（LD50）。"
+  ],
   "summary": "2C-D的罕见类似物。具有兴奋特性的极强致幻剂。高剂量可能导致危险的血管收缩。可能引发不适的身体负担。",
+  "saferUse": [
+    "强烈建议采取减害措施；由于微克级剂量难以准确计量，避免鼻吸，并说明剂量信息仅供教育参考、不是建议。"
+  ],
+  "metabolism": "对其人体药理、代谢和毒性知之甚少，没有提供具体代谢途径或人体代谢发现；",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25D-NBOMe"
+  ],
   "localizedName": "25D-NBOMe"
 }

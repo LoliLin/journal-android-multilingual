@@ -14,18 +14,20 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Recreational toxicity and long-term health effects of 4-MeO-PCP appear not to have been studied in any scientific context and the exact toxic dose is unclear, because its history of human use is very short. Anecdotal evidence from people in the community who have tried it suggests no negative health effects when only low to moderate doses are taken sparingly, though nothing can be fully guaranteed."
   ],
-  "categories": [
-    "dissociative",
-    "research-chemical",
-    "habit-forming"
+  "effectsSummary": "The subjective-effects index is built on anecdotal user reports and contributor analysis, and should be taken with healthy skepticism. Effects may not occur in a predictable or reliable way, higher doses are more likely to produce the full spectrum, and adverse effects become more likely as the dose increases, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. Oral lists a threshold of 25 mg, a light range of 75-100 mg, moderate of 100-170 mg, strong of 170-250 mg and heavy of 250 mg or more, with a total duration of 12-20 hours. Insufflated lists a threshold of 15 mg, a light range of 30-75 mg, moderate of 75-150 mg and strong of 150 mg or more, with a total duration of 12-18 hours; the source gives no separate severe band for this route. The model does not represent a threshold band separately, so the 25 mg and 15 mg thresholds are preserved here and lightMin follows the lower bound of each source light range. The page also reports that users report very large differences in effective doses.",
+  "generalRisks": "Recreational toxicity and long-term health effects appear not to have been studied in any scientific context and the exact toxic dose is unclear. Users seeing very large differences in effective doses, partly explained by unreacted PCC and other impurities present in grey-market samples, and advises independent research before consumption to make sure combinations of two or more substances are safe.",
+  "longtermRisks": "Long-term heavy use of 4-MeO-PCP appears to produce bladder and urinary tract problems almost identical to those found with ketamine but milder, because 4-MeO-PCP is said to be slightly more potent than ketamine and so less needs to be consumed. It lists urinary urgency and pelvic and bladder pain, noting ketamine-induced cystitis symptoms can become very severe.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, as is independent research before taking it, to make sure combinations of two or more substances are safe.",
+    "It notes that reported effective doses vary greatly between users and attributes this partly to unreacted PCC and other impurities in grey-market samples."
   ],
-  "summary": "An arylcyclohexamine dissociative anaesthetic related to PCP. First discovered in the 1960s by Parke-Davis, it was introduced to the RC market in 2008. Reported to be less potent than PCP. It is not commonly seen, but has seen some increase in popularity with the inavailability of other dissociatives.",
   "interactions": {
     "dangerous": [
       "stimulant",
@@ -34,12 +36,22 @@
     "unsafe": [],
     "uncertain": []
   },
+  "metabolism": "4-MeO-PCP has lower NMDA receptor affinity than PCP but higher than ketamine, and that although dopaminergic activity has been suggested, it is a relatively selective NMDA receptor ligand with no notable affinity for the dopamine transporter. No specific human route through the body.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-MeO-PCP"
+  ],
+  "categories": [
+    "dissociative",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "4-MeO-PCP is a dissociative arylcyclohexylamine anaesthetic related to PCP, with a very long duration of 12-20 hours orally. First discovered in the 1960s by Parke-Davis, it was introduced to the research chemical market in 2008 and is reported to be less potent than PCP. It is not commonly seen, but has seen some increase in popularity with the inavailability of other dissociatives. Reported effective doses vary widely between users, partly because grey-market samples may contain unreacted PCC and other impurities.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 15,
+        "lightMin": 30,
         "commonMin": 75,
         "strongMin": 150,
         "heavyMin": 150
@@ -79,7 +91,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 25,
+        "lightMin": 75,
         "commonMin": 100,
         "strongMin": 170,
         "heavyMin": 250

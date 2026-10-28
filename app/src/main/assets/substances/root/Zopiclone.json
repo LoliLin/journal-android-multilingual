@@ -8,14 +8,24 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["benzodiazepine"],
-  "addictionPotential": "extremely physically and psychologically addictive",
+  "crossTolerances": ["Benzodiazepine"],
+  "addictionPotential": "Extremely physically and psychologically addictive",
   "toxicities": [
-    "low toxicity",
-    "potentially lethal when mixed with depressants like benzodiazepines, alcohol or opioids"
+    "Low toxicity",
+    "Potentially lethal when mixed with depressants like benzodiazepines, alcohol or opioids"
   ],
   "categories": ["hallucinogen", "depressant", "habit-forming", "common"],
   "summary": "A nonbenzodiazepine sedative sleep aid (Z-drug), which can have hallucinogenic effects if taken while awake. Often causes users to have a metallic taste in the mouth for ~12h. Has been reported in some cases to cause certain users to black out, redose excessively and undertake dangerous activities such as driving.",
+  "interactions": {
+    "dangerous": [],
+    "unsafe": ["Alcohol", "depressant"],
+    "uncertain": []
+  },
+  "saferUse": [
+    "Treatment should be limited to the shortest useful duration, a single course no longer than 4 weeks including tapering. Both dependence and withdrawal reactions can occur even with short-term use at recommended doses.",
+    "Avoid alcohol and other CNS depressants; the label reports additive CNS depression. Do not drive or operate machinery within 12 hours of taking zopiclone, and do not re-dose during the same night. Take it only when a full night's sleep (about 7-8 hours) is possible, because anterograde amnesia and complex sleep behaviours (sleep walking, sleep driving) have been reported.",
+    "CYP3A4 inhibitors (erythromycin, clarithromycin, ketoconazole, itraconazole, ritonavir) raise zopiclone exposure; CYP3A4 inducers (rifampicin, carbamazepine, phenobarbital, phenytoin, St John's wort) lower it. The label says taking it together with CYP3A4 inhibitors should be avoided in the elderly."
+  ],
   "roas": [
     {
       "name": "oral",
@@ -44,5 +54,9 @@
         }
       }
     }
+  ],
+  "metabolism": "The main breakdown products are the N-oxide form, which is active in animals, and the N-desmethyl form, which is not. A lab study points to CYP3A4 as the main enzyme that makes both of them, with CYP2C8 also helping to make the N-desmethyl form. It is mostly cleared by being broken down: about 80% comes out in the urine as the free breakdown products, the N-oxide and N-desmethyl forms, and about 16% in the faeces.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/101311/smpc"
   ]
 }

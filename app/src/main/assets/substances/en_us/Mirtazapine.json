@@ -7,6 +7,10 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "not habit-forming",
-  "toxicities": [],
+  "toxicities": [
+    "Somnolence, dizziness, increased appetite, weight gain, and dry mouth are common label-reported adverse effects; somnolence occurred in 54% of patients in controlled studies.",
+    "Serious reported risks include serotonin syndrome, QT prolongation and torsades de pointes (mainly reported with overdose or other risk factors), agranulocytosis, severe skin reactions including DRESS, hyponatremia, seizures, and orthostatic hypotension.",
+    "Abrupt discontinuation or dose reduction can cause dizziness, abnormal dreams, sensory symptoms, agitation, anxiety, fatigue, confusion, headache, tremor, nausea, vomiting, and sweating."
+  ],
   "localizedName": "Mirtazapine"
 }

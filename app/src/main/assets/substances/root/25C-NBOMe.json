@@ -16,11 +16,11 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "fatal at heavy dosages"
+    "Fatal at heavy dosages"
   ],
   "categories": [
     "psychedelic",
@@ -88,5 +88,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Harm-reduction measures are strongly recommended, and insufflation, vaporization and tinctures are to be avoided because dose measurement is difficult and these routes are associated with overdose deaths."
+  ],
+  "metabolism": "Nothing is known about how the body handles this. No route through the body or human metabolic study is described. And no route is assumed from similar compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25C-NBOMe"
   ]
 }

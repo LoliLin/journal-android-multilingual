@@ -1,0 +1,19 @@
+##### DON
+# hits: 5765
+
+=== Mechanistic evidence and assumptions in mycotoxin-gut interaction.
+    Garcia-Cela E, Marcon Gasperini A.
+    ? 2026 | PMID 42676822 | PMCID PMC13527017 | DOI 10.3389/ffunb.2026.1855881
+    https://europepmc.org/article/PMC/13527017
+    - Symbols ↑ and ↓ indicate an increase or decrease in abundance, expression, or concentration, respectively. AFB1, aflatoxin B1; OTA, ochratoxin A; OTα, ochratoxin alpha; FB1, fumonisin B1; HFB1, hydrolysed fumonisin B1; DON, deoxynivalenol; ABX, antibiotic treatment; FMT, fecal microbiota transplantation; SCFAs, short-chain fatty acids; LPS, lipopolysaccharide; ROS, reactive oxygen species; TLR4, Toll-like receptor 4; NLRP3, NOD-like receptor family pyrin domain-containing 3; NF-κB, nuclear factor kappa B; MAPK, mitogen-activated protein kinase; IL, interleukin; TNF-α, tumour necrosis factor alpha; FXR, farnesoid X receptor; TGR5, Takeda G protein-coupled receptor 5; AhR, aryl hydrocarbon receptor; NAD + , nicotinamide adenine dinucleotide; AMPK, AMP-activated protein kinase; GLP-1, glucagon-like peptide-1; PYY, peptide YY; ZO-1, zonula occludens-1; CLDN1, claudin-1; OCLN, occludin; TJP1, tight junction protein 1; JAK, Janus kinase; STAT1, signal transducer and activator of transcription 1; ALT, alanine aminotransferase; AST, aspartate aminotransferase; MDR, multidrug resistance; GI, gastrointestinal; LGG, Lactobacillus rhamnosus GG.Bold text highlights the principal mechanistic findings and key concepts for each mycotoxin, facilitating comparison across toxins.
+    - In mice, antibiotic-mediated microbiota depletion (ABX; antibiotic-induced depletion of gut microbial communities) eliminated AFB1-induced splenic pyroptosis, demonstrating that intact microbiota are required for this immunopathological response ( Chen et al., 2024a ). Conversely, faecal microbiota transplantation (FMT; transfer of donor microbial communities) and sterile faecal filtrate transfer recapitulated hepatic pyroptosis, implicating gut-derived pipecolic acid and norepinephrine as causal microbial mediators ( Ye et al., 2024a ). Consistent with these findings, earlier studies reported microbiome-dependent inflammatory liver injury in AFB1-exposed rodents ( Liu et al., 2023 ; Ye et al., 2024a , Ye et al., 2024b ), highlighting the gut microbiome as a determinant of systemic mycotoxin toxicity.
+
+=== Contribution of terrestrial processes in reducing environmental mycotoxin levels: a review on mycotoxin-soil interactions.
+    Muñoz K, Korz S, Meyer M, Berger B.
+    ? 2026 | PMID 41665830 | DOI 10.1007/s12550-026-00635-3
+    - Fungal infestation and mycotoxin can induce the polyphenolic response of the plant, along with mycotoxin metabolization as reported for DON.
+
+=== Ammonification Process Is Limited by Transformation of Medium Molecular Weight Nitrogenous Organics but Not Hydrolysis of Proteins.
+    Li J, Qiu J, Lü F, Zhang H, He P.
+    ? 2026 | PMID 42750275 | DOI 10.1002/advs.77787
+    - Thereby, ammonification was constrained by the formation and subsequent transformation of medium-molecular-weight nitrogenous intermediates instead of protein hydrolysis process.

@@ -1,0 +1,25 @@
+##### O-Desmethyltramadol
+# hits: 353
+
+=== New Technique for Tramadol Dose Accuracy: Are Dosing Pumps the Solution?
+    Alas-Pineda C, Coto-Tejeda C, Pavón-Varela DJ, Gaitán-Zambrano K, Medina-Mejía J, Ferrer G.
+    ? 2026 | PMID 42198470 | PMCID PMC13210870 | DOI 10.3390/ph19050796
+    https://europepmc.org/article/PMC/13210870
+    - Tramadol undergoes extensive hepatic biotransformation, such as demethylation, oxidation, and conjugation [ 25 ]. Over 70% is metabolized via cytochromes P450 (CYP), predominantly CYP2D6, and CYP3A4. During phase 1, CYP3A4 mediates N-demethylation to yield N-desmethytramadol, whereas CYP2D6 facilitates O-demethylation to form O-desmethyltramadol, which is the principal active metabolite responsible for the 40% of analgesic action [ 25 , 26 ].
+    - Polymorphisms vary across populations. PMs represent approximately 6–10% of the Caucasian population. This means that the analgesic effect of tramadol is reduced; they have approximately 20% higher plasma tramadol concentrations than NMs. In contrast, 28% of North Africans, Ethiopians, and Arabs and around 10% of Caucasians are considered ultra-rapid metabolizers. In this context, they produce higher plasma concentrations of O-desmethyltramadol (M1), the active metabolite, which increases opioid effects and toxicity [ 26 ]. O-desmethyltramadol has an approximately 300-fold higher affinity for μ-receptors than tramadol [ 33 ].
+    - In the CYTRAM study, De La Gastine et al. describe that poor metabolizers showed the lowest mean plasma concentration of O-desmethyltramadol. Also, the O-desmethylated tramadol/tramadol ratio at 24 and 48 h was lower than in non-poor metabolizers [ 33 ].
+    - Ferron et al. describe how a patient with obesity receiving a CYP2D6 inhibitor can affect their metabolism, plasma concentration, efficacy, and toxicity of tramadol. He reported that tramadol concentrations were higher in patients receiving CYP2D6 inhibitors; however, this did not translate into an increased risk of toxicity, as O-desmethyltramadol (M1) concentrations were lower. Out of the five tramadol metabolites (M1, M2, M3, M4, M5), M5 had the highest concentration. Therefore, the analgesic effect is reduced, since it depends on a high concentration of M1. On the contrary, obesity and non-alcoholic fatty liver disease (NAFLD) are related to a decrease in CYP2D6 and CYP3A4 activity, which is why patients with obesity have high tramadol concentrations. NAFLD is associated with reduced HDL cholesterol and CYP3A4 activity, leading to decreased M3 concentrations. An inverse relationship between glycemia and tramadol metabolites was reported. With high glycemia, concentrations of M2 and M3 are decreased. This is consistent with the literature, which indicates that type 2 diabetes reduces the activity of CYP3A4 and CYP2B6 [ 56 ].
+
+=== Pharmacogenomic-guided opioid prescribing in hospice: reducing toxicity while maximizing symptom relief
+    Thompson B, Hyde C, Singh B.
+    ?  | PMID - | PMCID PMC13579232 | DOI -
+    https://europepmc.org/article/PMC/13579232
+    - Understanding the pharmacology of opioids’ mechanism of action is crucial for appreciating PGx’s potential in hospice. The cytochrome P450 2D6 (CYP2D6) enzyme, encoded by the CYP2D6 gene on chromosome 22, is responsible for O-demethylation of prodrugs like codeine, tramadol, hydrocodone, and oxycodone into their active forms (morphine, O-desmethyltramadol, hydromorphone, and oxymorphone, respectively). CYP2D6 exhibits extensive polymorphism, with over 100 alleles classified into phenotypes: ultrarapid (UM), extensive (EM), intermediate (IM), and poor metabolizers (PM). Prevalence varies globally: PMs comprise 5%–10% of Caucasians, 1%–2% of Asians, and up to 20% in certain Ethiopian populations ( 7 , 8 ). Approximately 15% of individuals have genetic variation in IM or PM status, and 3% are UMs ( 9 ).
+    - For codeine, a prodrug, metabolism is critical for production of the active metabolite, morphine. PMs produce virtually no morphine, providing insignificant analgesia, while UMs generate supratherapeutic levels, increasing the risks of adverse effects like sedation and respiratory depression. Tramadol is metabolized by CYP2D6 to O-desmethyltramadol (M1) and has a dual mechanism of action (mu-opioid agonist plus serotonin and norepinephrine reuptake inhibitor). The FDA confirmed that M1 serum concentrations are 40% lower in PMs, intimating reduced analgesia.
+
+=== Effects of Celecoxib and Etoricoxib on the Pharmacokinetics and Pharmacological Effects of Orally Administered Tramadol: A Randomised Controlled Trial.
+    Saarikoski T, Saari TI, Backman JT, Niemi M, Neuvonen PJ, Olkkola KT, Laine K.
+    ? 2026 | PMID 42272128 | DOI 10.1111/bcpt.70261
+    - Tramadol is a widely used analgesic whose bioactivation to O-desmethyltramadol is primarily mediated by cytochrome P450 2D6 (CYP2D6).
+    - Genetic variability and drug-drug interactions affecting CYP2D6 may influence tramadol pharmacokinetics and pharmacological effects.
+    - Celecoxib has been reported to act as a weak inhibitor of CYP2D6 in vivo.

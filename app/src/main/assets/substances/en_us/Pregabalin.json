@@ -4,7 +4,10 @@
     "zero": "7 - 14 days",
     "zeroToleranceInHours": 252
   },
-  "toxicities": ["low toxicity"],
-  "summary": "Pregabalin (Lyrica) is a GABA derivative that is used to treat neuropathic pain and seizures, as well as anxiety.",
+  "toxicities": [
+    "Common label-reported effects include dizziness, somnolence, dry mouth, peripheral edema, blurred vision, weight gain, and difficulty with concentration or attention.",
+    "Serious risks include life-threatening respiratory depression with CNS depressants or respiratory impairment, angioedema with respiratory compromise, and suicidal thoughts or behavior.",
+    "Abrupt or rapid discontinuation may increase seizure frequency and cause withdrawal symptoms; suicidal behavior or ideation has also been reported after discontinuation."
+  ],
   "localizedName": "Pregabalin"
 }

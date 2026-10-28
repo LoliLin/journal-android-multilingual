@@ -5,5 +5,9 @@
   "categories": [
     "antipsychotic"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "On average half of an oral dose reaches the bloodstream as unchanged levomepromazine. It spreads through the body at 23 to 42 L/kg and stays for 15 to 30 hours. A human study after an oral dose found glucuronides, sulfoxide and possibly some unchanged drug in the urine, and unchanged drug in the faeces. At a therapeutic concentration of 10 micromolar, CYP3A4 is the main enzyme doing the 5-sulfoxidation (72%) and the N-demethylation (78%), and CYP1A2 contributes 20% of the 5-sulfoxidation. It leaves slowly, taking about 30 hours, mainly through the urine and faeces; the breakdown products mostly go out in the urine, and on average 10% of the daily dose leaves in the urine as levomepromazine sulfoxide.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/11912/smpc"
+  ],
+  "summary": "Levomepromazine, also known as methotrimeprazine, is a phenothiazine neuroleptic and low-potency antipsychotic. Its analgesic, hypnotic, and antiemetic properties are used mainly in palliative care."
 }

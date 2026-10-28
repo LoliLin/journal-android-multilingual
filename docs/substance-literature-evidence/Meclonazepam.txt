@@ -1,0 +1,21 @@
+##### Meclonazepam
+# hits: 13
+
+=== The Evolution Toward Designer Benzodiazepines in Drug-Facilitated Sexual Assault Cases.
+    Pérez Orts M, van Asten A, Kohler I.
+    ? 2023 | PMID 35294022 | PMCID PMC9942444 | DOI 10.1093/jat/bkac017
+    https://europepmc.org/article/PMC/9942444
+    - DBZDs include short-acting drugs, such as clonazolam or etizolam with an elimination half-life of approximately 3–7 h but also long-acting drugs such as diclazepam (46 h), meclonazepam (80 h) or flubromazepam (106 h). Norflurazepam is the active metabolite of flurazepam and shows a significantly increased half-life of 40–250 h vs. 2–3 h for the parent compound. Other parameters related to the elimination half-life such as protein binding, volume of distribution and lipophilicity are described by Manchester et al. ( 42 ). DBZDs are relatively lipophilic, ranging from phenazepam (highest lipophilicity) to pyrazolam (lowest lipophilicity). Furthermore, similar to conventional BZDs, they exhibit a high degree of plasma protein binding (90% on average), with the exception of pyrazolam (78%).
+
+=== Novel Designer Benzodiazepines: Comprehensive Review of Evolving Clinical and Adverse Effects.
+    Edinoff AN, Nix CA, Odisho AS, Babin CP, Derouen AG, Lutfallah SC, Cornett EM, Murnane KS, Kaye AM, Kaye AD.
+    ? 2022 | PMID 35997362 | PMCID PMC9397074 | DOI 10.3390/neurolint14030053
+    https://europepmc.org/article/PMC/9397074
+    - While meclonazepam is a target for research, it is also recreationally used and misused [ 96 ]. A study investigating meclonazepam metabolism in both in vitro and in vivo trials identified two major metabolites suitable as biomarkers: amino-meclonazepam and acetamido-meclonazepam [ 96 ]. Recognition of biomarkers and adverse physiologic effects aid in a timely diagnosis and treatment of drug toxicities.
+
+=== Identification of main human urinary metabolites of the designer nitrobenzodiazepines clonazolam, meclonazepam, and nifoxipam by nano-liquid chromatography-high-resolution mass spectrometry for drug testing purposes.
+    Meyer MR, Bergstrand MP, Helander A, Beck O.
+    ? 2016 | PMID 27071765 | DOI 10.1007/s00216-016-9439-6
+    - Therapeutically used nitrobenzodiazepines such as flunitrazepam are known to be extensively metabolized via N-dealkylation to active metabolites and via nitro reduction to the 7-amino compounds.
+    - Data revealed that clonazolam and meclonazepam were extensively metabolized and mainly excreted as their amino and acetamino metabolites.
+    - Nifoxipam was also extensively metabolized, but instead mainly excreted as the acetamino metabolite and a glucuronic acid conjugate of the parent.

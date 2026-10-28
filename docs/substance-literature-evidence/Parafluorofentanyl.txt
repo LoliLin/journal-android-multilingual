@@ -1,0 +1,8 @@
+##### Parafluorofentanyl
+# hits: 3
+
+=== Metabolite Profiling of Ortho-, Meta- and Para-Fluorofentanyl by Hepatocytes and High-Resolution Mass Spectrometry.
+    Gundersen POM, Åstrand A, Gréen H, Josefsson M, Spigset O, Vikingsson S.
+    ? 2020 | PMID 31788682 | PMCID PMC7238673 | DOI 10.1093/jat/bkz081
+    https://europepmc.org/article/PMC/7238673
+    - Fourteen metabolites for each of the three parent compounds ortho- meta- and parafluorofentanyl were formed after incubation with hepatocytes and detected by LC-QTOF-MS analysis. There were no principal differences in which metabolites were formed by the three positional isomers. The detected metabolites were in accordance with the expectations based on in vitro data from other similar fentanyl analogs and included norfluorofentanyl, an N- oxide at the piperidine ring, hydroxylated and methylated metabolites. The most abundant metabolite in vitro was norfluorofentanyl which was also detected in the authentic urine sample together with a monohydroxylated metabolite and a both hydroxylated and methylated metabolite. The current approach, using hepatocytes and HR-MS, is a relatively cost-effective and straight-forward tool to generate information on the metabolism and identify potential targets for metabolite of illicit drug detection in urine samples, thereby being able to determine both the specific substances ingested and increasing the time window for detection after intake.

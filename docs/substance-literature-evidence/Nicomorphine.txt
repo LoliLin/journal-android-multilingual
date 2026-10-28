@@ -1,0 +1,7 @@
+##### Nicomorphine
+# hits: 137
+
+=== Towards identifying nicomorphine administration in doping control: synthesis of metabolites.
+    Floresta G, Gavrilović I, Devey S, Harris R, Cowan D, Abbate V.
+    ? 2021 | PMID 34528849 | DOI 10.4155/bio-2021-0076
+    -  Aim: Nicomorphine is rapidly metabolized mainly to the biologically active 6-nicotinoyl morphine and morphine.

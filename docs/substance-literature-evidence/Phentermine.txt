@@ -1,0 +1,20 @@
+##### Phentermine
+# hits: 402
+
+=== Addressing Tamoxifen-Associated Weight Gain: Lifestyle and Pharmacotherapy Options.
+    Fore-Williams L, Distler M.
+    ? 2026 | PMID 42170166 | PMCID PMC13188626 | DOI 10.6004/jadpro.2026.17.3.3
+    https://europepmc.org/article/PMC/13188626
+    - Phentermine-topiramate (Qsymia) is a combination drug used for chronic weight management. Phentermine, a sympathomimetic amine, suppresses appetite by increasing the release of norepinephrine in the hypothalamus, while topiramate, an anticonvulsant, promotes weight loss by enhancing satiety and increasing energy expenditure ( Gadde et al., 2011 ). In clinical trials, this combination has resulted in average weight loss of 8% to 10% of total body weight over 56 weeks ( Gadde et al., 2011 ). Phentermine is metabolized through the CYP3A4 pathway, similar to tamoxifen. While there is no known interaction between the two medications, this shared pathway may warrant caution. Reported side effects include dry mouth, constipation, insomnia, paresthesia, and dysgeusia ( Gadde et al., 2011 ). Potential serious adverse effects include increased heart rate, elevated blood pressure, cognitive impairment, and kidney stones ( Gadde et al., 2011 ). Topiramate has been associated with neuropsychiatric side effects, including mood disturbances, anxiety, and cognitive slowing ( Gadde et al., 2011 ).
+
+=== The Therapeutic Potential of Amphetamine-like Psychostimulants
+    Pires B, Rosendo L, Brinca A, Simão A, Barroso M, Rosado T, Gallardo E.
+    ? 2023 | PMID - | PMCID PMC10671856 | DOI -
+    https://europepmc.org/article/PMC/10671856
+    - Amphetamines derivatives such as amphetaminil, benzphetamine, clobenzorex, diethylpropion, dimethylamphetamine, ethylamphetamine, framproazone, fencamine, fenethylline, fenproporex, furfenorex, mefenorex, methylphenidate, mesocarb, prenylamine, phentermine, and selegiline are therapeutically used as sympathomimetics, anorectics, non-opioid analgesics, antiparkinsonian agents, or vasodilators [ 32 , 33 ]. It is crucial to distinguish between these derivatives when using these drugs therapeutically or recreationally. Drugs metabolized to methamphetamine and/or amphetamine present significant concerns in the interpretation of amphetamine-positive drug testing results. The presence of the parent compound or unique metabolite can be strong evidence for the involvement of the drug rather than amphetamine abuse [ 32 , 34 ].
+
+=== Oral Obesity Medicines in the Era of Cardiovascular–Kidney–Metabolic Syndrome (CKM): Beyond Weight Loss Toward Disease Modification
+    Alhazmi A, Le Roux C.
+    ? 2026 | PMID - | PMCID PMC13660508 | DOI -
+    https://europepmc.org/article/PMC/13660508
+    - Although orlistat is largely devoid of systemic effects, rare cases of oxalate nephropathy and acute kidney injury have been reported. 19 , 53–55 Fat malabsorption induced by orlistat increases enteric oxalate absorption and urinary oxalate excretion, potentially resulting in renal oxalate crystal deposition and kidney injury. 19 Consequently, the FDA has updated orlistat labeling to warn of acute kidney injury, oxalate stones and oxalate nephropathy. 55 Data supporting the use of phentermine/topiramate and naltrexone/bupropion in CKD are limited because patients with significant renal impairment were largely excluded from pivotal trials. 56 A contemporary nephrology review concluded that evidence remains insufficient to recommend phentermine/topiramate routinely in CKD and suggested avoiding naltrexone/bupropion because of uncertain renal safety. 56 Current labeling recommends dose reduction of both agents in moderate-to-severe renal impairment, with avoidance in end stage kidney disease. 20 , 21

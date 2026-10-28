@@ -9,42 +9,53 @@
   "isApproved": true,
   "tolerance": {
     "full": "almost immediately after ingestion",
-    "half": "3 days",
+    "half": "unknown",
     "zero": "7 days",
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Data on 4-AcO-DET's human pharmacology and toxicity is very little, although analytical methods for detecting it have been developed. The page does not state a toxic dose."
+  ],
+  "effectsSummary": "4-AcO-DET as a little-known novel psychedelic tryptamine, chemically related to syringine and part of a series of substituted tryptamines that includes 4-AcO-MET and 4-AcO-DMT. It is now used as a research chemical for recreational purposes or as a religious psychedelic, usually obtained from online research chemical vendors.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and online resources for education, not recommendations. The page lists a threshold of 5 mg, a light range of 10-15 mg, moderate of 15-20 mg, strong of 20-35 mg and heavy of 35 mg or more; the model does not represent a threshold band separately, so the 5 mg threshold is preserved here and lightMin follows the lower bound of the source light range. The page also warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower.",
+  "generalRisks": "Human pharmacology or toxicity data for 4-AcO-DET is very little, that it is relatively rare and has almost no history of human use. It strongly recommends harm reduction if the substance is used.",
+  "longtermRisks": "No established long-term findings are available, and the history of human use is almost absent.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, because data on human pharmacology and toxicity is very little and the substance has almost no history of human use.",
+    "It warns that onset, weight, tolerance, metabolism and individual sensitivity all differ, so doses must be started lower."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium",
+      "Tramadol"
+    ],
+    "unsafe": [
+      "Cannabis",
+      "stimulant"
+    ],
+    "uncertain": []
+  },
+  "metabolism": "Data on 4-AcO-DET's pharmacology, metabolism and toxicity is very little and provides no specific human metabolic finding or pathway.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-AcO-DET"
   ],
   "categories": [
     "psychedelic",
     "tentative",
     "research-chemical"
   ],
-  "summary": "Rare drug that is of the tryptamine family, can be comparable to Psilocybin. Expected to quickly hydrolyzed into the free phenolic 4-HO-DET.",
-  "interactions": {
-    "dangerous": [
-      "Lithium"
-    ],
-    "unsafe": [
-      "Tramadol"
-    ],
-    "uncertain": [
-      "Cannabis",
-      "stimulant"
-    ]
-  },
+  "summary": "4-AcO-DET is a rare substituted tryptamine psychedelic of the tryptamine family, used as a research chemical for recreational or religious purposes. It can be comparable to psilocybin and is expected to be quickly hydrolysed into the free phenolic 4-HO-DET. Human pharmacology and toxicity data is very little and its history of human use is short.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 5,
+        "lightMin": 10,
         "commonMin": 15,
         "strongMin": 20,
         "heavyMin": 35

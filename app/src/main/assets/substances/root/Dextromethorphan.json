@@ -20,11 +20,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "produces dependence with chronic use and has moderate abuse potential",
+  "addictionPotential": "Produces dependence with chronic use and has moderate abuse potential",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -35,7 +35,11 @@
   "effectsSummary": "In high doses (120 mg or more) it has a hallucinogenic and euphoric effect. Perceptual disturbances up to confusion as well as states of agitation with epileptic episodes may occur. Side effects are reddening of the skin and severe itching. With regular use there is great potential for dependence with psychological and physical symptoms!",
   "dosageRemark": "DXM in freebase form (as found in Robocough RoboTablets) is around 27-37% more potent than its hydrobromide form due to a higher concentration of DXM by weight. One should take this into account when calculating their dose to avoid a potential overdose.",
   "generalRisks": "Caution: The simultaneous intake of MAO inhibitors delays the degradation of DXM and can lead to severe respiratory and circulatory disorders!",
-  "saferUse": [],
+  "saferUse": [
+    "Do not take dextromethorphan while using a prescription MAOI or within two weeks after stopping one; ask a clinician or pharmacist if unsure whether a medicine is an MAOI.",
+    "Use only according to the specific product label: the cited adult softgel label is not intended for children under 12 and sets a product-specific daily maximum. Do not treat that cough-medicine limit as recreational dose guidance.",
+    "In overdose, seek medical help or contact Poison Control immediately. The cited single-ingredient label does not provide a recreational-use safety threshold."
+  ],
   "interactions": {
     "dangerous": [
       "ΑMT",
@@ -107,5 +111,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Broken down extensively, and what decides how fast is the oxidation that produces dextrorphan. People differ in how well they carry out that oxidation, so the way dextromethorphan behaves varies a lot from one person to the next. Unchanged dextromethorphan, together with three demethylated morphinans -- dextrorphan (3-hydroxy-N-methylmorphinan), 3-hydroxymorphinan and 3-methoxymorphinan -- turn up in the urine as conjugates. Dextrorphan, which also calms coughs, is the main one. In some people the breakdown runs slower and unchanged dextromethorphan dominates in blood and urine. It leaves the body mainly through the kidneys, as unchanged drug and as dextrorphan; dextrorphan and 3-hydroxymorphinan are then joined to glucuronic acid and leave the same way. The parent drug stays in the body for 1.4 to 3.9 hours and dextrorphan for 3.4 to 5.6 hours. In people who break it down slowly, dextromethorphan stays far longer, around 45 hours.",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/1477/smpc"]
 }

@@ -15,15 +15,25 @@
     "zeroToleranceInHours": 336
   },
   "crossTolerances": [],
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
-  "categories": ["nootropic"],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Alpha-GPC is non-addictive, not considered harmful and has extremely low toxicity relative to dose. Studies cited on the page report no negative cognitive, psychiatric or toxic physical consequences at reasonable doses in specific contexts."
+  ],
+  "effectsSummary": "No anecdotal effects indexed for Alpha-GPC and notes that acute choline exposure generally has relatively few physical side effects at reasonable doses in specific contexts.",
+  "dosageRemark": "The archived oral table lists threshold 50 mg, light 100-300 mg, moderate 300-500 mg, strong 500-1000 mg, heavy 1000 mg+; total duration 4-8 h and onset 45-75 min. Educational compilation from user and online sources, not medical advice. The model has no separate threshold band, so 50 mg is preserved here and lightMin follows the source light band lower bound.",
+  "saferUse": [
+    "Becoming familiar with and using harm-reduction practices is recommended, even though toxicity is described as low at reasonable doses."
+  ],
+  "categories": [
+    "nootropic"
+  ],
+  "summary": "Alpha-GPC is a choline-containing supplement/nootropic with low toxicity reported at reasonable doses in specific contexts. No anecdotal effects are indexed.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 50,
+        "lightMin": 100,
         "commonMin": 300,
         "strongMin": 500,
         "heavyMin": 1000

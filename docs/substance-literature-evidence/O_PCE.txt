@@ -1,0 +1,9 @@
+##### O-PCE
+# hits: 2
+
+=== Characterization of 3-Hydroxyeticyclidine (3-HO-PCE) Metabolism in Human Liver Microsomes and Biological Samples Using High-Resolution Mass Spectrometry.
+    Larabi IA, Joseph D, Lesueur C, Alvarez JC.
+    ? 2023 | PMID 36984871 | DOI 10.3390/metabo13030432
+    - 3-Hydroxyeticyclidine (3-HO-PCE) is a ketamine derivative that produces dissociative, hallucinogenic, and euphoric effects when consumed, but little is known about its pharmacological properties, metabolism, and toxicity compared to other designer ketamine analogs.
+    - To address this gap in knowledge, this study explored for the first time the metabolism of 3-HO-PCE.
+    - The analysis identified 15 putative metabolites, 12 of which are produced through phase I metabolism involving N -dealkylation, deamination, and oxidation, and 3 through phase II O -glucuronidation.

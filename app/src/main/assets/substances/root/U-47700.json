@@ -13,20 +13,22 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "high toxicity relative to its dose due to its extreme potency",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines"
+    "U-47700 has high dose-relative toxicity due to potency, with poorly characterized human toxicology. Respiratory depression, overdose, coma and death risk, tissue corrosiveness (particularly with injection), and deaths associated with use.",
+    "Dependence can develop rapidly and withdrawal may begin within 2-4 hours after last use; these are archive statements, not incidence estimates."
   ],
-  "categories": [
-    "opioid",
-    "research-chemical",
-    "habit-forming",
-    "depressant"
+  "effectsSummary": "U-47700 as a highly potent opioid with a short human-use history and little known toxicity. Anecdotal reports suggest respiratory depression may be stronger than that of more familiar opioids at comparable doses; the source says this has not been formally studied.",
+  "dosageRemark": "Archived insufflated table: threshold 1 mg, light 4-6 mg, moderate 6-8 mg, strong 8-10 mg, heavy 10 mg+; total 2-3 h, onset 5-10 min. User/resource educational information, not a recommendation. Human toxicology is poorly characterized and use history is short; source reports corrosive tissue injury, especially with injection, and warns of unusually strong respiratory depression, fatal overdose and dependence. LightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "Unusually strong respiratory depression, potentially fatal interactions with depressants, rapid dependence, and sharply increased overdose risk after tolerance falls. Deaths involving fentanyl and other overdose cases; these are source-reported observations.",
+  "longtermRisks": "Long-term opioid effects may include reduced libido, apathy and memory impairment; U-47700-specific long-term human evidence is limited.",
+  "saferUse": [
+    "Harm reduction and extreme caution are strongly urged, and combining U-47700 with other substances is warned against, especially at moderate to heavy levels.",
+    "Injection may cause serious corrosive tissue injury; this is a source warning, not a quantified comparative risk.",
+    "The risk of overdose rises after a break in use, as tolerance falls."
   ],
-  "summary": "A µ-opioid receptor agonist that is related to AH-7921. Having a very short duration.",
   "interactions": {
     "dangerous": [
       "Alcohol",
@@ -47,12 +49,19 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "opioid",
+    "research-chemical",
+    "habit-forming",
+    "depressant"
+  ],
+  "summary": "U-47700 is a highly potent synthetic opioid with little human toxicology evidence. FreeODwiki warns of strong respiratory depression, potentially fatal depressant combinations, corrosive tissue injury and overdose, and reports deaths associated with use. It is a µ-opioid receptor agonist related to AH-7921, with a very short duration.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 4,
         "commonMin": 6,
         "strongMin": 8,
         "heavyMin": 10
@@ -85,5 +94,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "No detailed study of how the body handles U-47700 has been done; what is known comes from after death cases and lab work. In the lab, using human liver microsomes, four breakdown products turned up: N-desmethyl-U-47700 (M1), N,N-didesmethyl-U-47700 (M2), hydroxy-N-desmethyl-U-47700 (M3) and hydroxy-N,N-didesmethyl-U-47700 (M4). The two basic reactions are taking the methyl group off and adding a hydroxyl group. Which enzymes do the work is not known yet, and the second stage of breakdown has not been looked at.",  "metabolismSources": ["https://europepmc.org/article/PMC/10053220"]
 }

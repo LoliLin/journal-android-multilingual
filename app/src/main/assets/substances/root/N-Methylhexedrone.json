@@ -1,5 +1,54 @@
 {
   "name": "N-Methylhexedrone",
+  "commonNames": [
+    "NMH"
+  ],
+  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/NMH.md",
   "isApproved": false,
-  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/NMH.md"
+  "categories": [
+    "Stimulant",
+    "habit-forming",
+    "research-chemical"
+  ],
+  "summary": "N-Methylhexedrone (NMH) is a synthetic cathinone stimulant with limited research and human-use evidence.",
+  "dosageRemark": "Oral threshold at 30 mg, light at 50 - 70 mg, common at 70 - 100 mg, strong at 100 - 125 mg, and heavy at 125 mg or more. Its disclaimer says these educational ranges were compiled from users and resources and should be checked against other sources; the page also says most available NMH risk data are speculative or based on user experience. These low-confidence figures are not recommendations.",
+  "generalRisks": "NMH has not been sufficiently studied, and available risk information is largely speculative or based on user experience; it urges particular caution about potentially serious long-term harms.",
+  "addictionPotential": "Moderate addictive potential and high abuse potential, with possible psychological dependence.",
+  "tolerance": {
+    "full": "Tolerance to many effects develops with sustained and repeated use.",
+    "half": "About 3 - 7 days",
+    "zero": "About 1 - 2 weeks"
+  },
+  "crossTolerances": [
+    "Stimulant"
+  ],
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 70,
+        "strongMin": 100,
+        "heavyMin": 125
+      },
+      "duration": {
+        "onset": {
+          "min": 15,
+          "max": 30,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 1,
+          "max": 4,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 1,
+          "max": 12,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

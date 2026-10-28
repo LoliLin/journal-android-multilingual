@@ -8,14 +8,16 @@
   "url": "https://psychonautwiki.org/wiki/MDPV",
   "isApproved": true,
   "crossTolerances": [],
-  "toxicities": [],
-  "categories": [
-    "entactogen",
-    "stimulant",
-    "research-chemical",
-    "habit-forming"
+  "toxicities": [
+    "107 non-fatal poisonings and 99 analytically confirmed MDPV-related deaths across nine EU countries from 2009-2013. Exact lethal dose and human neurotoxicity are unknown; long-term use or a single overdose may trigger psychosis, and the source describes high dependence/compulsive redosing risk."
   ],
-  "summary": "MDPV is a potent, and extremely compulsive synthetic euphoric stimulant, which shares some empathogenic effects with MDMA. Has a reputation for causing psychosis. MDPV has been found in products sold as \"bath salts\", \"plant food/fertilizer\", and in some \"ecstasy.\"",
+  "dosageRemark": "The archived oral table lists threshold 2 mg, light 4-8 mg, moderate 8-14 mg, strong 14-25 mg, heavy 25 mg+; total 2-7 h, onset 15-30 min, peak 1-4 h, offset 0.5-2 h and afterglow 2-48 h. EU data from 2009-2013: 107 non-fatal poisonings and 99 analytically confirmed deaths across nine countries. Exact fatal dose is unknown; the source says one after death estimate is too variable to be useful. Educational user/resource data, not a recommendation. LightMin corrected from threshold to source light lower bound.",
+  "generalRisks": "MDPV is highly potent, long-lasting and compulsive, and strongly warns against high-dose misuse, multi-day use and combinations with drugs that increase psychosis risk. 107 non-fatal poisonings and 99 confirmed deaths in nine EU countries during 2009-2013; psychosis, mania, aggression and severe anxiety are described.",
+  "longtermRisks": "Persistent psychosis case studies after long-term MDPV use, says human neurotoxicity is not established, and describes high addiction/abuse potential and psychological dependence.",
+  "saferUse": [
+    "High doses, use over consecutive days, and combinations with substances known to increase psychosis risk are strongly discouraged.",
+    "It describes compulsive redosing, severe comedown, psychosis and dependence risks; dose figures are educational user/resource data, not recommendations."
+  ],
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -34,12 +36,19 @@
       "dissociative"
     ]
   },
+  "categories": [
+    "entactogen",
+    "stimulant",
+    "research-chemical",
+    "habit-forming"
+  ],
+  "summary": "MDPV is a potent, long-lasting synthetic stimulant with high compulsive-use and psychosis risks. Numerous poisonings and deaths and strongly warns against high-dose or multi-day use.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 2,
+        "lightMin": 4,
         "commonMin": 8,
         "strongMin": 14,
         "heavyMin": 25
@@ -72,5 +81,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "MDPV has a pyrrolidine ring, and how it is broken down has been studied in the lab. The main first-stage products are catecholpyrovalerone and methylcatecholpyrovalerone. They form when the methylenedioxy ring opens, the catechol that results is demethylated, and catechol-O-methyltransferase then methylates it again. In the second stage the products are joined to glucuronic acid and sulphate, and about 40% and 50% of them respectively leave the body in those forms.",  "metabolismSources": ["https://europepmc.org/article/PMC/6212520"]
 }

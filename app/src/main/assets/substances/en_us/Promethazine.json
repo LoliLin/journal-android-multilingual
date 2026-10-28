@@ -1,5 +1,8 @@
 {
-  "toxicities": [],
-  "summary": "A first generation antihistamine,  which also possesses anticholinergic, strong sedative and antipsychotic properties. Once commonly used as a treatment for psychosis, it is now more commonly seen as a component of codeine cough syrups as an anti-nausea agent.",
+  "toxicities": [
+    "Prominent drowsiness/somnolence, dizziness, blurred vision, confusion or disorientation, incoordination, extrapyramidal reactions, hallucinations, and seizures are reported.",
+    "Respiratory depression and apnea can be potentially fatal; neuroleptic malignant syndrome has also been reported.",
+    "Overdose can cause central nervous system and cardiovascular depression, profound hypotension, respiratory depression, unconsciousness, and sudden death."
+  ],
   "localizedName": "Promethazine"
 }

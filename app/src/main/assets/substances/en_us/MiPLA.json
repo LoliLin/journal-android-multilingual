@@ -6,7 +6,9 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "low potential for abuse and dependence",
-  "toxicities": ["toxic dose is unknown"],
+  "addictionPotential": "Low potential for abuse and dependence",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "MiPLA"
 }

@@ -1,0 +1,16 @@
+##### Adinazolam
+# hits: 35
+
+=== Identifying metabolites of new psychoactive substances using in silico prediction tools.
+    Pelletier R, Nahle D, Sarr M, Bourdais A, Morel I, Le Daré B, Gicquel T.
+    ? 2025 | PMID 40358677 | PMCID PMC12198081 | DOI 10.1007/s00204-025-04049-5
+    https://europepmc.org/article/PMC/12198081
+    - A literature review was carried out on the PubMed, Google Scholar, and Web of Science databases to select studies presenting data on NPS metabolism. The following molecules were identified and selected for this study on the basis of their known metabolism in the literature: 2 synthetic cathinones (eutylone and 4-Cl-PVP), 1 dissociative anesthetic (2F-DCK), 1 synthetic cannabinoid (ADB-Fubinaca), 1 semi-synthetic cannabinoid (HHC), 1 designer benzodiazepine (adinazolam) and 1 new synthetic opiate (etonitazepipne). An overview of the methodology used in this study is shown in Fig. 1 .
+    - In terms of biotransformation reactions, phase I reactions such as hydroxylation/oxidation and dealkylation were predicted by all the software packages. However, BioTransformer was the only software that did not predict carboxylation. All software packages, except MetaTrans, were capable of predicting phase II metabolites (Table 3 ). Sulfation reactions were predicted exclusively by SyGMa and GLORYx. Additionally, glutathione conjugates were predicted only by GLORYx for 4-Cl-PVP and Adinazolam. Overall, these results indicate that MetaTrans provides the least diversity in terms of biotransformation reactions.
+    - GLORYx predicted a total of 191 metabolites, covering both phases I and II biotransformations. Interestingly, GLORYx proposed less common predictions, such as glutathione conjugation for Adinazolam and 4-Cl-PVP, demonstrating its potential for exploring complex metabolic pathways. Lastly, while GLORYx proposes ranks and scores to prioritize metabolic scenarios and support metabolite identification performed in vitro or in vivo as already used in the literature (Di Trana et al. 2021 ; Berardinelli et al. 2022 , 2024b ; Pelletier et al. 2022b ; Brunetti et al. 2023 ), we included in this study all the proposed metabolites to be able to compare the software packages with each other.
+
+=== Recent findings and advancements in the detection of designer benzodiazepines: a brief review.
+    Wu D, Fu L.
+    ? 2022 | PMID 38146763 | DOI 10.2478/aiht-2023-74-3771
+    - DBZs undergo phase I and II metabolism similar to traditional benzodiazepines, but their specific metabolic pathways and the influence of genetic polymorphisms are yet to be clarified.
+    - Further research should focus on elucidating their pharmacokinetic properties and metabolism in humans, especially in view of genetic polymorphisms and drug interactions that could inform clinical treatment choices.

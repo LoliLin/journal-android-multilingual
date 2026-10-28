@@ -1,6 +1,8 @@
 {
   "name": "HXE",
-  "commonNames": ["HXE"],
+  "commonNames": [
+    "HXE"
+  ],
   "url": "https://psychonautwiki.org/wiki/HXE",
   "isApproved": true,
   "tolerance": {
@@ -10,10 +12,24 @@
     "halfToleranceInHours": 120,
     "zeroToleranceInHours": 252
   },
-  "crossTolerances": ["dissociative"],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
-  "categories": ["dissociative"],
+  "crossTolerances": [
+    "Dissociative"
+  ],
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "Human pharmacology, metabolism and toxicity data for HXE are very limited and human-use history is short."
+  ],
+  "effectsSummary": "HXE as a dissociative with mild stimulation/social facilitation at lower levels and more sedation at higher doses; indexed effects are anecdotal.",
+  "dosageRemark": "The archived table gives two routes: oral threshold 30 mg, light 30-60 mg, moderate 60-100 mg, strong 100-130 mg, heavy 130 mg+; insufflated threshold 20 mg, light 20-40 mg, moderate 40-70 mg, strong 70-120 mg, heavy 120 mg+. Oral total 3-8 h; insufflated 3-6 h, with other route phases as listed in the archive. Educational user/resource information, not a recommendation. Both lightMin values match their source light lower bounds.",
+  "generalRisks": "Human pharmacology, metabolism and toxicity data are very limited and human-use history is short; it strongly recommends harm reduction.",
+  "longtermRisks": "No established long-term findings are available, and the history of human use is short with very limited data on pharmacology, metabolism and toxicity.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, given the limited history of human use and the sparse human data."
+  ],
+  "categories": [
+    "dissociative"
+  ],
+  "summary": "HXE is a dissociative with limited human-use history and sparse pharmacology, metabolism and toxicity data. Mild stimulation at lower effects and greater sedation at higher doses.",
   "roas": [
     {
       "name": "insufflated",

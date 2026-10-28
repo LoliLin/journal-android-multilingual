@@ -6,7 +6,10 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown", "extremely low toxicity"],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown",
+    "Extremely low toxicity"
+  ],
   "localizedName": "1cP-MiPLA"
 }

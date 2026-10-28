@@ -8,9 +8,9 @@
   "url": "https://psychonautwiki.org/wiki/2C-B",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "non-addictive with a low potential for abuse",
+  "addictionPotential": "Non-addictive with a low potential for abuse",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -182,5 +182,9 @@
         }
       }
     }
+  ],
+  "metabolism": "No specific human metabolic findings or pathway are described, and no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-B"
   ]
 }

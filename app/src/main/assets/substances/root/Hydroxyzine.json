@@ -15,5 +15,33 @@
   "metabolism": "Alcohol dehydrogenase forms cetirizine by oxidation; CYP3A4/5 also participates in metabolism. Cetirizine is an active antihistamine and is eliminated substantially through the kidneys.",
   "metabolismSources": [
     "https://www.medicines.org.uk/emc/product/101010/smpc"
-  ]
+  ],
+  "summary": "Hydroxyzine is a first-generation piperazine antihistamine used to treat itching, anxiety, insomnia, and nausea. It can be taken by mouth or given by intramuscular injection.",
+  "toxicities": [
+    "Drowsiness and dry mouth are reported; tremor and convulsions have been reported, usually at doses considerably above those recommended.",
+    "Postmarketing reports include QT prolongation and torsades de pointes.",
+    "Overdose most commonly causes hypersedation and may also cause convulsions, stupor, nausea, or vomiting; QT prolongation and torsades de pointes may occur."
+  ],
+  "generalRisks": "The DailyMed oral tablet label contraindicates hydroxyzine in patients with prolonged QT and reports QT prolongation/torsades, especially with cardiac disease, electrolyte abnormalities, or other arrhythmogenic drugs. Hydroxyzine potentiates CNS depressants and may increase alcohol effects; drowsiness can impair driving. Overdose can cause severe sedation, convulsions, stupor, and QT/TdP. Rare serious skin reactions including AGEP have been reported.",
+  "saferUse": [
+    "Do not combine with alcohol or other CNS depressants; avoid driving or dangerous machinery while drowsy or impaired.",
+    "Avoid use with known prolonged QT; review other QT-prolonging medicines and cardiac risk factors with a clinician.",
+    "Overdose can affect heart rhythm: seek urgent medical care after excess ingestion. Stop and seek medical advice for a new severe rash, fever, or signs of hypersensitivity."
+  ],
+  "interactions": {
+    "dangerous": [
+      "QT-prolonging drug"
+    ],
+    "unsafe": [
+      "alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The DailyMed tablet label provides prescription dosing for anxiety, pruritus, and perioperative sedation. Those therapeutic regimens are not recreational dose guidance; recreational thresholds and duration are not established here."
 }

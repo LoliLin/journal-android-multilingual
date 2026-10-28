@@ -14,12 +14,18 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
-  "categories": [
-    "cannabinoid"
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "Exact toxic dose is unknown; the page warns long-term synthetic cannabinoid misuse is associated with serious adverse effects and deaths."
+  ],
+  "dosageRemark": "Archived table lists threshold <3 mg; light 3-5 mg; moderate 5-10 mg; strong 10-15 mg; heavy 15 mg+. Total duration 1-2 h, onset 5-10 min, peak 60-90 min, offset 5-10 min, afterglow 60-90 min. Educational user/resource information, not a recommendation. Oral activity may occur when dissolved in lipids but gives no oral dose table.",
+  "generalRisks": "Long-term synthetic cannabinoid misuse is linked to deaths and more dangerous adverse effects/toxicity than cannabis. Oral activity when dissolved in lipids is noted, with longer duration; no oral dose table is supplied.",
+  "longtermRisks": "Long-term synthetic cannabinoid misuse is associated with multiple deaths and more dangerous adverse effects and toxicity than cannabis.",
+  "saferUse": [
+    "Prolonged or high-dose use of synthetic cannabinoids is strongly advised against, and harm reduction is recommended.",
+    "The dose table is an educational user/resource compilation, not a recommendation; the source provides no oral dosage table."
   ],
   "interactions": {
     "dangerous": [
@@ -41,50 +47,19 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid"
+  ],
+  "summary": "JWH-073 is a synthetic cannabinoid with limited safety data. FreeODwiki warns of greater harms with chronic or high-dose use and provides only an educational inhaled dose table.",
   "roas": [
-    {
-      "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 3,
-        "commonMin": 5,
-        "strongMin": 10,
-        "heavyMin": 15
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 1,
-          "max": 2,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        }
-      }
-    },
     {
       "name": "smoked",
       "dose": {
         "units": "mg",
         "commonMin": 5,
-        "strongMin": 10
+        "strongMin": 10,
+        "lightMin": 3,
+        "heavyMin": 15
       },
       "duration": {
         "onset": {

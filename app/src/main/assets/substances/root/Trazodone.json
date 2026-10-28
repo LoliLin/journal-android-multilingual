@@ -9,5 +9,33 @@
   "metabolism": "CYP3A4-mediated oxidative cleavage forms active m-chlorophenylpiperazine (mCPP). Other metabolic routes are less well characterized; very little trazodone is excreted unchanged in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4672f8af-93e6-469a-a7b7-41cee7d4d193"
-  ]
+  ],
+  "summary": "Trazodone is an oral antidepressant of the serotonin antagonist and reuptake inhibitor class, used to treat major depressive disorder, anxiety disorders, and insomnia.",
+  "toxicities": [
+    "Label-reported common adverse effects include drowsiness, fatigue, syncope, blurred vision, and edema; orthostatic hypotension can occur.",
+    "Serious risks include potentially life-threatening serotonin syndrome, QT prolongation and cardiac arrhythmias including torsades de pointes, priapism, seizures, and hyponatremia.",
+    "Overdose can cause priapism, respiratory arrest, seizures, QT/ECG changes, SIADH, drowsiness, and vomiting. Death has occurred when overdose was combined with other CNS depressants."
+  ],
+  "generalRisks": "The label warns of suicidality in pediatric and young adult patients, serotonin syndrome, QT prolongation and potentially fatal arrhythmias, orthostatic hypotension/syncope, bleeding risk with antiplatelet or anticoagulant drugs, priapism, mania/hypomania, cognitive and motor impairment, hyponatremia, and discontinuation symptoms. Overdose deaths have occurred with concurrent CNS depressants.",
+  "saferUse": [
+    "Avoid alcohol and use caution with other CNS depressants; do not drive or operate machinery until effects on alertness and coordination are known.",
+    "Do not stop abruptly; discuss a gradual taper with the prescriber.",
+    "Seek emergency care for symptoms of serotonin syndrome, fainting or abnormal heartbeat, or a prolonged/painful erection; report emerging suicidal thoughts or behavior promptly."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI"
+    ],
+    "unsafe": [
+      "alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The label gives prescription dosing for adult major depressive disorder only. No evidence-based recreational dose thresholds or duration are established here, so none are entered."
 }

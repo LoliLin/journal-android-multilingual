@@ -13,13 +13,13 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "opioid"
+    "Opioid"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [
-    "potentially fatal at heavy dosages",
-    "potentially lethal when mixed with depressants like alcohol or benzodiazepines",
-    "unintentionally spilling a very small amount of acetylfentanyl on one's skin could result in a fatal overdose."
+    "Potentially fatal at heavy dosages",
+    "Potentially lethal when mixed with depressants like alcohol or benzodiazepines",
+    "Unintentionally spilling a very small amount of acetylfentanyl on one's skin could result in a fatal overdose."
   ],
   "categories": [
     "opioid",
@@ -98,5 +98,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Broken down broadly the way fentanyl is. The main breakdown product is acetyl norfentanyl, which has no effect of its own; it forms when CYP450 enzymes take the alkyl group off the nitrogen. Besides that main product and the deacetylated form 4-ANPP, urine from fatal intoxication cases also contained acetylfentanyl with a hydroxyl group added, and their phase II conjugates; the hydroxylated forms turned up in liver-cell incubations too.",  "metabolismSources": ["https://europepmc.org/article/PMC/6461066"]
 }

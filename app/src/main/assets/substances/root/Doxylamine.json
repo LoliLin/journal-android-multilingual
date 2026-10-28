@@ -6,5 +6,33 @@
     "deliriant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "How the body breaks it down has not yet been verified for this entry. No enzymes, breakdown products or elimination routes are specified.",
+  "summary": "Doxylamine is an antihistamine used to treat insomnia and allergies. In combination with pyridoxine (vitamin B6), it is also used to treat morning sickness.",
+  "toxicities": [
+    "The oral sleep-aid label warns that drowsiness may occur and that driving or operating machinery is prohibited while using the product. It directs users to seek immediate medical help or contact Poison Control in overdose, and does not specify overdose manifestations."
+  ],
+  "generalRisks": "The current DailyMed OTC label warns against use in children under 12, with another doxylamine product, or when a full night of sleep is unavailable. It advises consultation for breathing problems, glaucoma, urinary difficulty, and concomitant sedatives, sleep aids, tranquilizers, antihistamines, or other drugs; alcohol is to be avoided. Drowsiness and impaired driving are explicit warnings.",
+  "saferUse": [
+    "Avoid alcohol; do not drive or operate machinery, and take only at bedtime when a full night of sleep is available.",
+    "Do not combine with another doxylamine product; ask a clinician or pharmacist before using with sedatives, sleep aids, tranquilizers, antihistamines, or other medicines.",
+    "Not to be used under age 12, and a doctor should be consulted if sleeplessness lasts over two weeks. In overdose, seek medical help or contact Poison Control immediately."
+  ],
+  "interactions": {
+    "dangerous": [],
+    "unsafe": [
+      "alcohol",
+      "sedative",
+      "sleep-aid",
+      "tranquilizer",
+      "antihistamine",
+      "doxylamine"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "Its product directions are for occasional sleeplessness and are not recreational dose guidance; no recreational threshold or duration is established here. (This record is for an OTC oral sleep aid.)"
 }

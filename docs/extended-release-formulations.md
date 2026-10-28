@@ -44,8 +44,31 @@
 - 设置中的日记备份按类型序列化 DataStore 偏好并包含当前头像。导入只覆盖本版本已识别且类型匹配的偏好键；
   未出现、未知或类型不匹配的键保留本机值，因此不含偏好字段的旧备份也不改动本机设置。
 - 头像先写入临时文件，再逐个原子替换。Room、DataStore 和文件系统没有共同事务；极端 I/O 故障仍可能造成部分导入。
-- 当前没有剂型专用的剂量和时长数据：缓释记录不采用普通制剂的剂量分级、相对剂量参考或作用时间曲线，
-  记录中的实际剂量和摄入时间仍原样保留。
+- 当前目录有 13 个口服释药形式记录：12 个同时列普通/速释与缓释/控释，帕利哌酮仅列口服缓释片。本次（2026-10-07）已逐条核对这 13 条记录，将 route 与释药形式写进 `roas`；对原来只有一份口服数据的 7 条保留为未分型数据，并单独增加有标签依据的缓释口服行。
+- `Roa` 现可按途径和释药形式检索。未选择剂型时优先使用旧的未分型数据；没有未分型数据时用显式速释数据。速释可回退到旧的未分型数据；缓释只使用明确标为缓释的行，不回退到速释数据。
+- 目前这些新分型行只记录已核实的口服途径和释药形式，尚无逐剂型剂量分级或作用时间曲线。官方说明书中的适应症剂量不能直接映射成 app 的 light/common/strong/heavy 等级；缓释行不会借用未分型剂量或时长。字段缺失只代表尚无可比证据，不代表不存在。
+
+## 本次 ROA 释药形式数据（2026-10-07）
+
+以下字段只记录产品标签明确支持的口服途径与释药类型；没有把治疗适应症剂量映射到 `lightMin` / `commonMin` 等非医疗剂量等级。
+
+| 物质 | 本次写入 | 标签来源与核对点 |
+|---|---|---|
+| Alprazolam | `root/Alprazolam.json#roas`：口服缓释 | [DailyMed alprazolam extended-release](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=259387c1-e374-4bc2-9510-5f7f2c60d1a5)：缓释片，口服给药 |
+| Bupropion | `root/Bupropion.json#roas`：口服缓释 | [DailyMed bupropion XL](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=df959e1b-3f6d-42cf-8521-fe03b5a4ceb8)；[bupropion SR](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8069c521-c49a-4b6d-baa8-4b0be897d585) |
+| Carbamazepine | `root/Carbamazepine.json#roas`：口服速释、缓释 | [常规片](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=25cca2b1-9020-4d8a-bc22-b8063e57f9e1)；[缓释片](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=c91a5a1b-5481-445b-86e8-f10109ac3937) 与[缓释胶囊](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fbca2152-0022-47a5-a1ea-58950b45bcbf) |
+| Clonidine | `root/Clonidine.json#roas`：口服缓释 | [DailyMed clonidine extended-release](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=99485427-a120-4fc7-bb61-25857d1900ec)：缓释片，口服给药 |
+| Guanfacine | `root/Guanfacine.json#roas`：口服速释、缓释 | [Tenex 速释片](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=886e050c-dd22-4f35-ac3b-243f091125c3)；[Intuniv 缓释片](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=301f01a7-2b0a-cfba-9c3d-a1dd831785a3) |
+| Lithium | `root/Lithium.json#roas`：口服缓释 | [DailyMed lithium carbonate extended-release](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f3aa4f5-908a-44e7-8113-b64f91dc86e7)：缓释片，口服给药 |
+| Methylphenidate | `root/Methylphenidate.json#roas`：口服缓释 | [Metadate ER](https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=739bbd64-d9e1-4771-967b-a2cd08f4eaf5&type=display)：缓释片，口服给药；其标签同时区分常规片剂 |
+| Paliperidone | `root/Paliperidone.json#roas`：口服缓释 | [DailyMed paliperidone extended-release](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7b269778-803b-4ce2-a8c0-636fb131d16a)：口服缓释片。长效注射剂不计入口服形式 |
+| Paroxetine | `root/Paroxetine.json#roas`：口服速释、控释 | [常规片](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=662223ec-3b9b-4a85-9680-789522363a7b)；[Paxil CR 控释片](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=483bd97f-c4d0-4e23-aaa8-6334f4471e0c)。本目录将 CR 归入 `EXTENDED_RELEASE` |
+| Quetiapine | `root/Quetiapine.json#roas`：口服缓释 | [Seroquel XR](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=51927f2e-3d56-4644-a6a8-40e0b9a5b579)：缓释片 |
+| Valproic acid | `root/Valproic acid.json#roas`：口服常规、缓释 | [Valproic acid capsules](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7d4df6ad-3d53-4664-9200-749487bf3689)；[divalproex sodium extended-release](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=dc9e4871-fb3d-4c59-81e5-2ab6e8be9b7c)，标签注明 divalproex sodium 与 valproic acid 的等效关系 |
+| Venlafaxine | `root/Venlafaxine.json#roas`：口服速释、缓释 | [常规片剂](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=20319949-ccf9-477a-a6e3-53502772deb9)；[缓释胶囊](https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=7f224c88-9425-9ef0-01bc-dcf3bdafbd89) |
+| Zolpidem | `root/Zolpidem.json#roas`：口服缓释 | [Ambien CR](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40f9a7b1-b57b-4e70-b709-e81705e784a7)：双层片分别即时释放与较慢释放 |
+
+本轮从 DailyMed 搜索结果核对了标签标题和索引摘要；该环境打开 DailyMed 正文时连接被关闭，因此保留直接标签链接供复核。字段只代表已核实的途径/产品释药类型，不代表剂量或时长完整。
 
 ## 目录格式
 
@@ -53,9 +76,15 @@
 
 ```json
 {
+  "roas": [
+    { "name": "oral", "releaseForm": "IMMEDIATE_RELEASE" },
+    { "name": "oral", "releaseForm": "EXTENDED_RELEASE" }
+  ],
   "oralReleaseForms": ["IMMEDIATE_RELEASE", "EXTENDED_RELEASE"]
 }
 ```
+
+`roas[].releaseForm` is optional for legacy entries. A form-specific dose or duration may be added inside that ROA only when a source supports it; a route/form row without those keys records availability, not missing effect or zero dose. Unclassified legacy oral rows remain usable for an unspecified form and as an immediate-release fallback. Extended-release lookup requires an explicitly marked row and never falls back to legacy or immediate-release data.
 
 未配置时默认为空列表。解析器忽略无法识别的剂型值，保持宽容加载；该配置仅用于口服路线。
 

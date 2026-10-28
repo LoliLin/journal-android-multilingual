@@ -1,0 +1,18 @@
+##### Adrafinil
+# hits: 14
+
+=== Investigations Into the Metabolism and Elimination of Flmodafinil and Fladrafinil for Sports Drug Testing Purposes.
+    Krug O, Guddat S, Görgens C, Walpurgis K, Toma F, Thomas A, Thevis M.
+    ? 2026 | PMID 42210629 | DOI 10.1002/dta.70100
+    - In this study, the elimination profiles of flmodafinil, fladrafinil, and their metabolites in urine and blood were investigated.
+
+=== Central nervous system stimulants in recreational and medical use.
+    Dodd S, Ospina-Pinillos L, Markowitz JS.
+    ? 2025 | PMID 40653592 | PMCID PMC13064788 | DOI 10.1017/s1092852925100357
+    https://europepmc.org/article/PMC/13064788
+    - In 1974, while screening molecules to detect analgesic properties, French chemists R. Gombert and E. Assous from the pharmaceutical company L. Lafon Ltd. found that the molecule CRL 40028 was pharmacologically active. 62 Studies found that CRL 40028 increased locomotor activity in mice, and this hyperactivity did not occur when CRL 40028 was given to mice that had been pre-treated with a blocker of α-adrenergic receptors. 63 CRL 40028 was later named adrafinil. The mechanism of action of adrafinil as a stimulant is adrafinil has metabolites modafinil (CRL 40476) and an acid (CRL 40467). Modafinil ( Figure 4 ) is further metabolized into a sulfone. Acid and sulfone metabolites are pharmacologically inactive. Armodafinil the R -enantiomer of modafinil, 64 was approved by the US FDA in 2007 under the trade name Nuvigil® as an enantiopure formulation with approved indications to improve wakefulness in adult patients with excessive sleepiness associated with obstructive sleep apnea, narcolepsy, or shift work disorder (SWD).
+
+=== Identification of adrafinil and its main metabolite modafinil in human hair. Self-administration study and interpretation of an authentic case.
+    Ameline A, Gheddar L, Raul JS, Kintz P.
+    ? 2020 | PMID 33457050 | DOI 10.1080/20961790.2019.1704482
+    - It is primarily metabolized in vivo to an active form, i.e. modafinil, 2-((diphenylmethyl)sulfinyl)acetamide.

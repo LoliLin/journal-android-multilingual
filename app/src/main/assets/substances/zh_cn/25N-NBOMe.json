@@ -9,5 +9,12 @@
   "addictionPotential": "无成瘾性",
   "toxicities": ["大剂量使用时可能致命"],
   "summary": "一种罕见、高效且呈黄色的致幻性苯乙胺类物质，是2C-N的衍生物。其效果与其他NBOMe化合物相似，会产生幻觉、强烈的身体负荷、刺激感和血管收缩。高剂量下血管收缩可能具有危险性，需谨慎使用。",
+  "saferUse": [
+    "强烈建议采取预防和减害措施。其剂量信息汇集自用户报告和外部资料，仅供教育参考，并非建议；有限的低到中等剂量偶尔使用报告不能证明安全。"
+  ],
+  "metabolism": "对其人体药理、代谢和毒性知之甚少，没有提供具体代谢途径或人体代谢发现；",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25N-NBOMe"
+  ],
   "localizedName": "25N-NBOMe"
 }

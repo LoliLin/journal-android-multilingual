@@ -1,0 +1,21 @@
+##### Afloqualone
+# hits: 15
+
+=== Fluorine-Containing Diazines in Medicinal Chemistry and Agrochemistry
+    Volochnyuk D, Grygorenko O, Gorlova A.
+    ? 2014 | PMID - | PMCID PMC7121506 | DOI -
+    https://europepmc.org/article/PMC/7121506
+    - The mechanism of action of Afloqualone is not well studied. It was shown that its site of action is different from that of other central acting muscle relaxants, i.e. Mephenesin, Chlormesazone or Diazepam [ 200 ]. GABA-enhancing effect was also demonstrated [ 303 ]. The main routes of metabolism of 11 in human include N -acetylation, followed by hydroxylation at the 2′-methyl and acetyl methyl carbons, as well as glucuronidation of the aromatic amino group. This pattern of metabolism is similar to that observed in monkeys and rats, but drastically different from that in dogs [ 304 ].
+
+=== Voriconazole-induced photocarcinogenesis is promoted by aryl hydrocarbon receptor-dependent COX-2 upregulation.
+    Ikeya S, Sakabe JI, Yamada T, Naito T, Tokura Y.
+    ? 2018 | PMID 29568008 | PMCID PMC5864729 | DOI 10.1038/s41598-018-23439-7
+    https://europepmc.org/article/PMC/5864729
+    - Apoptosis is inducible by oxidative stress. We examined the effect of P-VNO plus UVA on HaCaT KCs apoptosis. KCs were incubated with or without VNO or P-VNO and exposed to UVA at 2.0 J (1.2 mW/sec for 30 min)/cm 2 . Sparfloxacin (antimicrobial fluoroquinolone) 19 and afloqualone (muscle relaxant, a quinazolinone derivative) 20 were used as positive controls. Apoptosis was assessed by flow cytometry at 8 hours after treatment. In the dot-plot histogram, the lower right quadrant represents early apoptotic cells that are positive only for Annexin V (Fig. 2B ). We found that no substantial apoptosis was induced by VNO or P-VNO with UVA, while representative phototoxic chemicals, sparfloxacin and afloqualone (even with 0.4 J (1.2 mW/sec for 6 min)/cm 2 UVA), produced high frequencies of apoptotic KCs. In addition, no apparent apoptosis of KCs was found in the treatment with P-VNO plus UVA at different time points (24 and 48 hours after UVA irradiation) (Supplemental Fig. 1 ). We compared the amounts of ROS production by other photosensitizers. The strong photosensitizers generated significantly higher amounts of ROS than did P-VNO (Fig. 2C ). Thus, although P-VNO plus UVA affects KCs with oxidative stress, it seems that they are not efficiently eliminated by apoptosis because of the low ROS production by VRCZ metabolite plus UVA.
+
+=== Identification and measurement of urinary metabolites of afloqualone in man.
+    Furuuchi S, Otsuka M, Miura Y, Harigaya S.
+    ? 1983 | PMID 6137346 | DOI 10.1016/s0090-9556(25)08035-3
+    - Approximately 4% of the dose was excreted as unchanged I within 32 hr after oral administration.
+    - I and IV were also excreted in conjugated form as N-glucuronide (VI, 8.0%) and O-glucuronide and/or sulfate (VII, 0.4%), respectively.
+    - Thus, the main routes of metabolism of I in man consist of N-acetylation followed by hydroxylation at the 2'-methyl and acetylmethyl carbons, and glucuronidation of the aromatic amino group.

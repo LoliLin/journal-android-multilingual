@@ -1,5 +1,7 @@
 {
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Extremely low toxicity"
+  ],
   "localizedName": "Galantamine"
 }

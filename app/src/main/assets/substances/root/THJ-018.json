@@ -13,14 +13,17 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
-  "categories": [
-    "cannabinoid"
+  "dosageRemark": "Archived inhaled table: threshold <1 mg; light 1-2 mg; moderate 2-3 mg; strong 3-5 mg; heavy 5 mg+. Total 2-3 h; onset 5-10 min; peak 60-90 min; offset 5-10 min; afterglow 60-90 min. Educational user/resource information, not a recommendation; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated. Source notes oral activity in lipids but provides no oral dose table.",
+  "generalRisks": "Oral activity after dissolution in lipids and potentially longer duration, but gives no oral dose table; exact toxic dose is unknown.",
+  "saferUse": [
+    "The dose data are educational user and resource material, not a recommendation, and the exact toxic dose is unknown.",
+    "No oral dose is inferred because the archive provides no oral dosage table."
   ],
   "interactions": {
     "dangerous": [
@@ -42,46 +45,13 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid"
+  ],
+  "summary": "THJ-018 (SGT-17) is a synthetic cannabinoid and an indazole analogue of JWH-018. It has been sold online as a designer drug.",
   "roas": [
     {
       "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 1,
-        "commonMin": 2,
-        "strongMin": 3,
-        "heavyMin": 5
-      },
-      "duration": {
-        "onset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 2,
-          "max": 3,
-          "units": "hours"
-        },
-        "afterglow": {
-          "min": 60,
-          "max": 90,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
       "dose": {
         "units": "mg",
         "lightMin": 1,

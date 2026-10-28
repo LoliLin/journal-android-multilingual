@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 204
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -92,5 +92,9 @@
         }
       }
     }
+  ],
+  "metabolism": "Data on human pharmacology, metabolism and toxicity are severely limited. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-I"
   ]
 }

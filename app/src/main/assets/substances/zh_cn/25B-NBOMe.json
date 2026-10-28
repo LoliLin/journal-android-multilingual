@@ -9,5 +9,12 @@
   "addictionPotential": "无成瘾性",
   "toxicities": ["大剂量使用时可能致命"],
   "summary": "致幻性苯乙胺类物质，在微克级低剂量下具有活性，但口服无效。",
+  "saferUse": [
+    "强烈建议采取减害措施，并指出该物质剂量反应高度敏感且不可预测。"
+  ],
+  "metabolism": "对其人体药理、代谢和毒性所知甚少；该资料没有指出具体代谢酶、代谢物或途径，因此该来源未记录其代谢途径，也",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25B-NBOMe"
+  ],
   "localizedName": "25B-NBOMe"
 }

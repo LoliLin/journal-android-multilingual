@@ -14,11 +14,11 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
@@ -113,5 +113,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Independent research and harm-reduction measures are recommended, as is starting low. The dose table is user and resource material for education rather than a recommendation, and the toxicity section is marked as a stub that may contain dangerous errors."
+  ],
+  "metabolism": "No specific human metabolic findings or pathway are described, and no pathway is inferred from related compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3C-E"
   ]
 }

@@ -1,0 +1,9 @@
+##### MMB-PINACA
+# hits: 4
+
+=== Transesterification of Indazole-3-carboxamide Synthetic Cannabinoids: Identification of Metabolite Biomarkers for Diagnosing Co-abuse of 5F-MDMB-PINACA and Alcohol.
+    Wang Z, Fong CY, Goh EML, Moy HY, Chan ECY.
+    ? 2023 | PMID 34918103 | DOI 10.1093/jat/bkab121
+    - Formation of transesterified metabolite, hydrolyzed metabolite, and several oxidative metabolites in HLM in the presence of alcohol was further determined for each parent SC and the respective ethyl ester analog, 5F-EDMB-PINACA, 5F-EMB-PINACA, and EMB-FUBINACA, to quantitatively elucidate transesterification and hydrolysis activities.
+    - Each ethyl ester metabolite was sequentially and readily metabolized to novel oxidative metabolites with the intact ethyl ester moiety and the same hydrolyzed metabolite as derived from its parent SC.
+    - Notably, we proposed 5F-EDMB-PINACA oxidative defluorination metabolite as the biomarker for diagnosing the potential co-abuse of 5F-MDMB-PINACA and alcohol.

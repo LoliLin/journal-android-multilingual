@@ -1,0 +1,22 @@
+##### Dimethocaine
+# hits: 19
+
+=== Atlantic Salmon Gill Epithelial Cell Line (ASG-10) as a Suitable Model for Xenobiotic Biotransformation.
+    Ivanova L, Fæste CK, Solhaug A.
+    ? 2023 | PMID 37367928 | PMCID PMC10303838 | DOI 10.3390/metabo13060771
+    https://europepmc.org/article/PMC/10303838
+    - The second conjugated metabolite that we discovered in the salmon samples ( Figure 9 ; Table 3 ) was defined as a glucuronide of BZNOH (BZ(O)GLcA) at m / z 358.1136 (C 15 H 20 NO 9 + ; ∆ ± 5 ppm; +176 Da addition to BZOH). The MS/MS analysis yielded several product ions, including at m / z 182.0811 (C 9 H 12 NO 3 + ; ∆ ± 5 ppm; loss of 176 Da) and m / z 154.0497 (C 7 H 8 NO 3 + ; ∆ ± 5 ppm) ( Supplementary Figure S6 ), which are characteristic for BZOH ( Table 4 ; Supplementary Figures S3 and S6 ). In ASG-10 cells, BZ(O)GLcA levels showed dependency on cell density ( Figure 10 ). The metabolite was not produced in the absence of BZ. Glucuronidated BZOH has not been previously reported; however, in vivo metabolism of dimethocaine (DMC) [ 62 ] (a structural analog of BZ) in rats resulted in the formation of, among others, DMC(O)GlcA and DMCGlcA. Interestingly, N-glucuronidation of primary aromatic amines such as BZ and DMC is catalyzed in humans by enzymes such as UGT1A1, UGT1A9 and UGT2B7 [ 63 ]. Since we were able to establish UGT1A9-like and UGT2B7-like enzyme activities in the present study in ASG-10 ( Figure 3 ) and the liver fraction S9 ( Figure 5 ), respectively, we presumed that salmon also has the capacity to glucuronidate aromatic hydroxylamines, explaining the presence of BZ(O)GlcA in the gill cells, liver fraction and plasma ( Figure 9 ).
+
+=== Dimethocaine, a synthetic cocaine derivative: studies on its in vitro metabolism catalyzed by P450s and NAT2.
+    Meyer MR, Lindauer C, Maurer HH.
+    ? 2014 | PMID 24309420 | DOI 10.1016/j.toxlet.2013.11.033
+    - It is mainly metabolized by N-acetylation, N-deethylation or hydroxylation.
+    - The net clearances for hydroxylation of DMC were calculated to be 32% for P450 1A2, 5% for 2C19, 51% for 2D6, and 12% for 3A4.
+    - As DMC is metabolized via two main steps and different P450 isoforms were involved in the hepatic clearance of DMC, a clinically relevant interaction with single P450 inhibitors should not be expected.
+
+=== Contribution of human esterases to the metabolism of selected drugs of abuse.
+    Meyer MR, Schütz A, Maurer HH.
+    ? 2015 | PMID 25445008 | DOI 10.1016/j.toxlet.2014.10.026
+    - Human esterases such as the human carboxylesterases (hCES) are important for the catalytic ester hydrolysis of xenobiotics and they play an important role in the detoxification of drugs (e.g., cocaine) but also in the activation of prodrugs (e.g., ramipril).
+    - Therefore, the aim of the presented study was to characterize the enzyme-catalyzed ester hydrolysis of ten drugs (cocaine, dimethocaine, ethylphenidate, 4-fluoro-3α-tropacocaine, 4-fluoro-3β-tropacocaine, heroin, methylphenidate, mitragynine, ramipril, and thebacon) by different esterase-containing systems (recombinant hCES1b, hCES1c, and hCES2, pooled human liver microsomes, pooled human liver S9 fraction, and pooled human plasma).
+    - The hydrolysis reactions followed classic Michaelis-Menten kinetics with exception of cocaine and 4-fluoro-3α-tropacocaine, for which hydrolysis rate was too low for reliable modeling.

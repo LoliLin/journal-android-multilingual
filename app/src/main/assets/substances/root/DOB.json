@@ -15,31 +15,19 @@
     "zeroToleranceInHours": 204
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Data on human pharmacology, metabolism and toxicity are very limited. Toxicity is not fully understood; high doses may cause severe vasoconstriction in the limbs."
   ],
-  "categories": [
-    "psychedelic",
-    "stimulant",
-    "research-chemical"
-  ],
-  "summary": "DOB is a relatively uncommon synthetic psychedelic. It is best known for its very low doses and long duration. Historically it has rarely been taken deliberately, but in place of LSD, however it has recently found its own place in the research chemical scene.",
-  "effectsSummary": "At the beginning, typical effects of amphetamine unfold, such as increased alertness, accelerated pulse, slight euphoria, increased self-confidence and urge to talk. Afterwards, the effect changes: one often feels a strong urge to move, sensory perception, feelings and empathy are heightened, colours are perceived more distinctly. With DOB and DOI, coloured, superimposed, pulsating patterns are perceived. This effect is weaker with DOM.",
-  "generalRisks": "Since the effect of DOB comes on late, the danger of overdosing by refilling is particularly great. The long duration of action poses a psychological burden. Confusion or anxiety is common, especially at high doses. Some DOB users report a burning or pressure sensation in the bladder. At high doses, temporary paralysis, inability to communicate or insensitivity to pain (caution: risk of injury and accidents) may occur. Teeth grinding and strain on the cardiovascular system are also possible.",
-  "longtermRisks": "Due to the long and intense effects, use - especially frequent use - carries the risk of a loss of reality, which can manifest itself in schizophrenic traits and anxiety states. The consumption of DOB can trigger latent (hidden) psychoses.",
+  "effectsSummary": "DOB as a potent, long-lasting psychedelic with a sensitive dose-response and unpredictable duration; it may be difficult to use safely for people with little psychedelic experience. High doses may cause severe peripheral vasoconstriction.",
+  "dosageRemark": "The archived oral table lists threshold 0.2 mg, light 0.2-0.75 mg, moderate 0.75-1.75 mg, strong 1.75-3 mg, heavy 3 mg+; total 14-24 h, onset 30-90 min, comeup 2-4 h, peak 6-10 h, offset 4-8 h, afterglow 4-16 h. Educational dose information, not a recommendation. LightMin matches the source light lower bound; no separate threshold field exists.",
+  "generalRisks": "DOB has a sensitive dose-response and unusually long, unpredictable duration; it may be too difficult to use safely for people with little psychedelic experience. High doses may cause severe limb vasoconstriction.",
+  "longtermRisks": "Human toxicity data are very limited and does not establish long-term effects; high doses may cause severe peripheral vasoconstriction.",
   "saferUse": [
-    "DOB are not suitable as party drugs and should only be used by experienced users.",
-    "Plan your trip ahead because of the long duration of action.",
-    "Never consume DOB alone and only when you feel very well mentally and physically and are well rested!",
-    "Pay attention to set and setting: only take DOB in a place where you feel safe and avoid unwanted disturbances from outside! Prepare yourself well for the trip and prepare yourself internally for the long duration of the effect.",
-    "Drink enough water during the trip.",
-    "Mixed use of these potent substances should be avoided at all costs.",
-    "As amphetamine derivatives, DOB can be particularly draining because of their long duration of action. Light vitamin-rich food, fruits, vegetable juices, vitamins and minerals promote a soft landing after the trip has subsided and can weaken a hangover.",
-    "Plan enough time for recovery after the trip (at least 1 day)!",
-    "A trip with DOB should remain an exceptional experience. Make sure to take long breaks from consumption so that the experience can be processed."
+    "Harm reduction is strongly recommended, because of the sensitive dose-response and the exceptionally long, unpredictable duration.",
+    "It says safe use may be too difficult for people with little psychedelic experience and warns high doses may cause severe limb vasoconstriction."
   ],
   "interactions": {
     "dangerous": [
@@ -53,6 +41,12 @@
       "stimulant"
     ]
   },
+  "categories": [
+    "psychedelic",
+    "stimulant",
+    "research-chemical"
+  ],
+  "summary": "DOB is a potent, long-acting psychedelic with a sensitive dose-response. FreeODwiki warns that its duration is unusually long and unpredictable and high doses may cause severe vasoconstriction.",
   "roas": [
     {
       "name": "oral",

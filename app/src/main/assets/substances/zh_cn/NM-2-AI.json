@@ -7,7 +7,41 @@
     "zeroToleranceInHours": 252
   },
   "addictionPotential": "中度成瘾，具有较高的滥用潜力",
-  "toxicities": ["确切的中毒剂量未知"],
-  "summary": "属于氨基茚满类兴奋剂。与其同类药物2-AI非常相似，但药效较低，持续时间更长。",
-  "localizedName": "NM-2-AI"
+  "toxicities": [
+    "人体效应、药理和毒性资料稀少，确切毒性剂量未知。"
+  ],
+  "effectsSummary": "NM-2-AI 的效应、药理和毒性资料非常有限；剂量表的 5 mg 阈值与 50 mg 轻微范围之间有明显空档。",
+  "dosageRemark": "归档口服表列出阈值 5 mg，但轻微范围为 50-100 mg，来源在 5-50 mg 间有较大空档；中等 100-150 mg、强烈 150-200 mg、严重 200 mg 以上；总时长 2-4 小时、发作 30-60 分钟。保留来源差异，不插值。用户/网络教育资料，不是建议。人体效应、药理和毒性资料非常有限。",
+  "generalRisks": "归档剂量表阈值与轻微范围间有 5-50 mg 空档；效应及毒性资料稀少。",
+  "longtermRisks": "提供，的药理和毒性信息非常有限，未有已确立的长期研究结果。",
+  "saferUse": [
+    "由于资料稀少，FreeODwiki 强烈建议采取伤害减少措施。",
+    "不插值来源表中 5-50 mg 空档；剂量信息为教育用途用户/网络资料，不是建议。"
+  ],
+  "summary": "NM-2-AI 是一种研究不足的兴奋剂，效应和毒性资料稀少。归档剂量表在阈值与轻微区间之间留有较大空档。",
+  "localizedName": "NM-2-AI",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 50,
+        "commonMin": 100,
+        "strongMin": 150,
+        "heavyMin": 200
+      },
+      "duration": {
+        "onset": {
+          "min": 30,
+          "max": 60,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

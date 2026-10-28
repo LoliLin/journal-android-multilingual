@@ -15,9 +15,9 @@
   },
   "crossTolerances": [
     "Anticholinergics",
-    "deliriant"
+    "Deliriant"
   ],
-  "addictionPotential": "not typically considered addictive due to unpleasant effects at active doses",
+  "addictionPotential": "Not typically considered addictive due to unpleasant effects at active doses",
   "toxicities": [
     "Anticholinergic toxicity: hyperthermia, tachycardia, delirium, seizures, respiratory depression, coma. Relatively low LD50 in humans."
   ],
@@ -77,5 +77,9 @@
         }
       }
     }
+  ],
+  "metabolism": "Five drug-related peaks were detected in that subject's urine: unchanged drug plus an enantiomer later identified as biologically inactive made up 57% of total radioactivity, noratropine (24%) and atropine-A-oxide (15%) were the main breakdown products, and tropin (2%) and tropic acid (3%) were minor ones. No glucuronide or sulfate conjugates appeared in human urine. About 75% of total radioactivity was excreted in urine within 13 hours of an intravenous dose. By the ocular route, the amount reaching the blood from a 30 microlitre dose ranged from 19% to 95% (mean about 63.5%), and it stayed in the body for about as long as an intravenous dose (2.97 h intravenous vs 2.45 h topical), so taking it in the eye did not change how it was eliminated.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/12547/smpc"
   ]
 }

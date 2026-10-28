@@ -1,5 +1,15 @@
 {
   "name": "RGPU-95",
+  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/RGPU-95.md",
   "isApproved": false,
-  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/RGPU-95.md"
+  "toxicities": [
+    "The unapproved page warns toxicity and other risk information may be incorrect; no human toxicology conclusions are imported from it."
+  ],
+  "effectsSummary": "The archived RGPU-95 page is not fully approved and warns that dose, duration, subjective effects, toxicity and other risks may be incorrect.",
+  "dosageRemark": "The page contains dose and animal-study claims but explicitly warns it has not been fully approved and may contain incorrect information, especially dosage and risks. Do not import its numbers into structured dose fields pending independent corroboration.",
+  "generalRisks": "This page has not been fully approved, and its dosage, duration, effects, toxicity and other risk claims are warned as possibly incorrect.",
+  "saferUse": [
+    "Treat the unapproved page as provisional and independently verify claims before structured use."
+  ],
+  "summary": "RGPU-95 is a racetam-related compound. Its available FreeODwiki page is unapproved and warns that dose and risk claims may be incorrect."
 }

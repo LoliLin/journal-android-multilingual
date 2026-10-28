@@ -6,7 +6,9 @@
     "halfToleranceInHours": 168,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["extremely low toxicity"],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Extremely low toxicity"
+  ],
   "localizedName": "Alpha-GPC"
 }

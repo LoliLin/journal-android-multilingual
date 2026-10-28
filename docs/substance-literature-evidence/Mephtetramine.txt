@@ -1,0 +1,9 @@
+##### Mephtetramine
+# hits: 1
+
+=== Metabolism study and toxicological determination of mephtetramine in biological samples by liquid chromatography coupled with high-resolution mass spectrometry.
+    Odoardi S, Mestria S, Biosa G, Arfè R, Tirri M, Marti M, Strano Rossi S.
+    ? 2021 | PMID 33835674 | DOI 10.1002/dta.3044
+    - The emerging market of new psychoactive substances (NPSs) is a global-scale phenomenon, and their identification in biological samples is challenging because of the lack of information about their metabolism and pharmacokinetic.
+    - In this study, we performed in silico metabolic pathway prediction and in vivo metabolism experiments, in order to identify the main metabolites of mephtetramine (MTTA), an NPS found in seizures since 2013.
+    - MetaSite™ software was used for in silico metabolism predictions and subsequently the presence of metabolites in the blood, urine, and hair of mice after MTTA administration was verified.

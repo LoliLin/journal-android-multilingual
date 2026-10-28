@@ -1,0 +1,8 @@
+##### DOET
+# hits: 9
+
+=== Short- and Long-Acting Psychedelics: Structure-Activity Relationships, Pharmacology, and Implications for Neuropsychiatric Therapeutics.
+    Bhat A, Zolali E, Sakib MA, Rahimian M, McMahon LR, German N, Obeng S.
+    ? 2026 | PMID 42257400 | PMCID PMC13281395 | DOI 10.1021/acschemneuro.6c00202
+    https://europepmc.org/article/PMC/13281395
+    - DOX compounds, or 4-substituted-2,5-dimethoxyamphetamines, such as DOC, DOI, DOB, DOM (STP), and DOET, are long-acting phenethylamine psychedelics, with durations of actions in humans of 12–24 h (DOC), 16–30 h (DOI), 18–30 h (DOB), 8–20 h (DOM), and 5–20 h (DOET). − Across the DOX series (DOC, DOI, DOB, DOM, DOET), in vitro and urine-metabolite studies indicate that the primary biotransformation is O-demethylation (with DOM additionally undergoing benzylic side-chain methyl hydroxylation), mediated predominantly by CYP2D6.

@@ -1,0 +1,8 @@
+##### ETH-LAD
+# hits: 11
+
+=== &lt;sup&gt;1&lt;/sup&gt;H Nuclear Magnetic Resonance: A Future Approach to the Metabolic Profiling of Psychedelics in Human Biofluids?
+    Vilca-Melendez S, Uthaug MV, Griffin JL.
+    ? 2021 | PMID 34966300 | PMCID PMC8710695 | DOI 10.3389/fpsyt.2021.742856
+    https://europepmc.org/article/PMC/8710695
+    - This is organised in order of publication date, from newest to oldest. 5-MeO-DMT, 5-methoxy-N-N-Dimetyltryptamine; 1 H NMR, proton nuclear magnetic resonance; HPLC, high performance liquid chromatography; ECPLA, N-ethyl-N-cyclopropyl lysergamide; LSD, lysergic acid diethylamide; MS, mass spectroscopy; LC, liquid chromatography; GC, gas chromatography; GC-sIR, gas chromatography-condensed-phase infrared spectroscopy; DMT, dimetyltryptamine; 13 C NMR, carbon-13 nuclear magnetic resonance; 1CP-LSD, 1-cyclopropanoyl-d-lysergic acid diethylamide; GC-IR, gas chromatography-infrared spectroscopy; 1B-LSD, 1-butanoyl-d-lysergic acid diethylamide; HRMS, high resolution mass spectroscopy; PsiP, psilocybe cubensis phosphatase; PsiL, psilocybe cubensis laccatase; LSD-775, lysergic acid morpholide; ETH-LAD, N 6 -ethyl-6-norlysergic acid diethylamide; 1P-ETH-LAD, 1-propionyl-N 6 -ethyl-6-norlysergic acid diethylamide; AL-LAD, N 6 -alyll-6-norlysergic acid diethylamide; LSZ, (2'S,4'S)-lysergic acid 2,4-dimethylazetidide; 1P LSD, 1-propionyl-d-lysergic acid diethylamide; PCG, psilocin glucuronide; 31 P NMR, phosphorous-31 nuclear magnetic resonance .

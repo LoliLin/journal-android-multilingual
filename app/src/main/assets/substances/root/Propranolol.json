@@ -12,8 +12,42 @@
     "common"
   ],
   "isApproved": false,
-  "metabolism": "Extensive first-pass metabolism includes CYP2D6 aromatic hydroxylation, side-chain processing and direct glucuronidation. CYP2C19 also participates. Most metabolites are eliminated in urine.",
+  "metabolism": "Extensive breakdown on the way through the liver includes CYP2D6 aromatic hydroxylation, side-chain processing and direct glucuronidation. CYP2C19 also participates. Most breakdown products are eliminated in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f7ae2dac-6048-41ea-95d3-cad06cc2baf3"
-  ]
+  ],
+  "summary": "Propranolol is a non-selective beta blocker used to treat high blood pressure, some heart rhythm disorders, performance anxiety, and other conditions, and to help prevent migraine and further heart problems.",
+  "toxicities": [
+    "Label-reported adverse reactions include bradycardia, hypotension, heart failure, dizziness/light-headedness, fatigue, and mental depression.",
+    "Overdose can cause hypotension and bradycardia; serious cardiac depression may require emergency supportive treatment.",
+    "Other serious risks include bronchospasm, hypoglycemia (which may be harder to recognize), worsening heart failure, and ischemia or myocardial infarction after abrupt discontinuation in at-risk patients."
+  ],
+  "generalRisks": "The label contraindicates propranolol in cardiogenic shock, sinus bradycardia or greater-than-first-degree heart block, bronchial asthma, and hypersensitivity. Of hypotension/bradycardia and cardiac failure, bronchospasm, hypoglycemia with masked warning signs, and worsening angina or myocardial infarction after abrupt discontinuation. Overdose can produce hypotension and bradycardia.",
+  "saferUse": [
+    "Do not use with asthma, marked bradycardia, significant heart block, or cardiogenic shock; use requires clinical assessment.",
+    "Overdose can dangerously slow heart rate and lower blood pressure; seek emergency care for suspected excess or fainting, severe weakness, breathing difficulty, or collapse.",
+    "Do not stop long-term therapy abruptly; the label advises gradual reduction over several weeks. Alcohol and interacting cardiovascular or metabolism-affecting medicines may alter effects or exposure."
+  ],
+  "interactions": {
+    "dangerous": [
+      "verapamil",
+      "diltiazem"
+    ],
+    "unsafe": [
+      "digoxin",
+      "calcium-channel blocker",
+      "CYP2D6 inhibitor",
+      "CYP1A2 inhibitor",
+      "CYP2C19 inhibitor",
+      "alcohol",
+      "antidepressant"
+    ],
+    "uncertain": []
+  },
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "dosageRemark": "The label provides prescription regimens for cardiovascular indications, migraine prevention, and essential tremor. These are not recreational dose guidance; recreational thresholds and duration are not established here."
 }

@@ -19,10 +19,12 @@
 package com.isaakhanimann.journal.data.substances.classes.roa
 
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.ReleaseForm
 
 data class Roa(
     val route: AdministrationRoute,
     val roaDose: RoaDose?,
     val roaDuration: RoaDuration?,
-    val bioavailability: Bioavailability?
+    val bioavailability: Bioavailability?,
+    val releaseForm: ReleaseForm? = null
 )

@@ -1,0 +1,9 @@
+##### Rolicyclidine
+# hits: 2
+
+=== New Psychoactive Substances 3-Methoxyphencyclidine (3-MeO-PCP) and 3-Methoxyrolicyclidine (3-MeO-PCPy): Metabolic Fate Elucidated with Rat Urine and Human Liver Preparations and their Detectability in Urine by GC-MS, "LC-(High Resolution)-MSn" and "LC-(High Resolution)-MS/MS".
+    A Michely JA, Manier SK, Caspar AT, Brandt SD, Wallach J, Maurer HH.
+    ? 2017 | PMID 27758707 | DOI 10.2174/1570159x14666161018151716
+    - Methods For metabolism studies, rat urine samples were treated by solid phase extraction or simple precipitation with or without previous enzymatic conjugate cleavage.
+    - Results Both drugs showed multiple aliphatic hydroxylations at the cyclohexyl ring and the heterocyclic ring, single aromatic hydroxylation, carboxylation after ring opening, O-demethylation, and glucuronidation.
+    - The transferability from rat to human was investigated by pHLM incubations, where Odemethylation and hydroxylation were observed.

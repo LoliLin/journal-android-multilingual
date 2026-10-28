@@ -12,8 +12,24 @@
     "tentative"
   ],
   "isApproved": false,
+  "addictionPotential": "3-CMC may lead to compulsive redosing and habitual use; formal dependence data are not provided.",
+  "toxicities": [
+    "Ten deaths confirmed by biological samples; six involved polydrug use, so those cases do not isolate 3-CMC's contribution."
+  ],
+  "effectsSummary": "Anecdotal reports describe stimulant and entactogenic effects, with possible cardiovascular symptoms, compulsive redosing and psychosis. Effects are not reliably predictable, and these reports are anecdotal.",
+  "dosageRemark": "The user-reported dose and duration tables are for education, not as recommendations. Because confirmed deaths are reported and high doses and insufflation are strongly discouraged, numeric dose tiers were not transcribed.",
+  "generalRisks": "Of potential serious injury or death. It cites neurotoxicity in mice and anecdotal cardiovascular and neurological symptoms after frequent or high-dose use; human risk estimates remain uncertain.",
+  "saferUse": [
+    "The page strongly recommends avoiding 3-CMC; it also warns against high doses, insufflation and redosing, and advises harm-reduction measures."
+  ],
+  "roas": [
+    { "name": "oral" },
+    { "name": "insufflated" },
+    { "name": "rectal" }
+  ],
   "metabolism": "Human hepatocyte and case-sample work identified ketone reduction, N-demethylation and carboxylation. Complete enzyme contributions and clinical elimination kinetics remain undetermined.",
   "metabolismSources": [
     "https://pubmed.ncbi.nlm.nih.gov/38862871/"
-  ]
+  ],
+  "summary": "3-CMC is a synthetic chlorinated cathinone described as a stimulant and entactogen. Information about its pharmacology and risks remains limited."
 }

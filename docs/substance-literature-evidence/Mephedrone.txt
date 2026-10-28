@@ -1,0 +1,19 @@
+##### Mephedrone
+# hits: 258
+
+=== Mephedrone and Its Metabolites: A Narrative Review.
+    Michal O, Daria T, Izabela J, Gorecka W, Tadeusz N, Elzbieta M, Magdanena BZ.
+    ? 2025 | PMID 40806784 | DOI 10.3390/ijms26157656
+    - Phase II metabolism involves conjugation reactions leading to metabolites such as N-succinyl-normephedrone and N-glutaryl-normephedrone, further complicating its metabolic profile.
+
+=== Cross-species metabolic characterization of eutylone and mechanism-based inhibition of CYP2D6 and CYP2B6 with drug interaction implications.
+    Lee MS, Song IS, Jang Y, Cho YY, Lee JY, Kang HC, Kim JH, Lee HS.
+    ? 2026 | PMID 41991640 | PMCID PMC13243497 | DOI 10.1038/s41598-026-48814-7
+    https://europepmc.org/article/PMC/13243497
+    - Eutylone exhibited moderate plasma protein binding ( f u ≈ 0.4–0.5), greater binding than methylone or mephedrone in rats ( f u ≈ 0.70–0.78) but less than benzedrone or chlorinated analogues ( f u ≈ 0.20–0.33 in humans) 30 – 32 . This pattern is consistent with its intermediate lipophilicity and methylenedioxyphenyl scaffold, which can increase the interactions with albumin and alpha-1-acid glycoprotein relative to simple para-substituted cathinones. Using f u -corrected IVIVE, hepatic extraction was predicted to be moderate in humans, mice, and dogs, but high in rats, indicating the efficient first-pass elimination of eutylone in rats compared to humans. Such differences are particularly relevant for regulatory decision-making, because rats are often used as preclinical models to infer human risk for emerging psychoactive substances. Characterization of the full metabolite profile across species is therefore essential to understanding these differences, and was pursued using an untargeted FBMN-guided approach.
+
+=== Translational Toxicology of N-Isopropylbutylone: Integrated In Vivo and In Silico Assessment of a New Synthetic Cathinone
+    Bassi M, Bilel S, Corli G, Cocita N, Masoli A, Bernardi T, Odoardi S, Mestria S, Biosa G, Strano-Rossi S, Marti M.
+    ? 2026 | PMID - | PMCID PMC13665128 | DOI -
+    https://europepmc.org/article/PMC/13665128
+    - The in silico analysis revealed a metabolic profile consistent with previous computational, in vitro, and in vivo studies on related cathinones [ 9 , 10 , 11 , 12 , 13 , 14 ]. Indeed, NiPB was predicted to undergo N-dealkylation, producing a metabolite shared with butylone and N-propylbutylone. A second predicted metabolite results from cleavage of the 3,4-methylendioxy moiety. These reactions were predicted to be mediated by CYP1A2, CYP2C19, and CYP2D6. Furthermore, in silico modelling suggested a potential for CYP2D6 inhibition, although this output was generated with moderate prediction confidence (accuracy of 58%), representing a hypothetical risk for pharmacokinetic drug–drug interactions that requires experimental validation. While future studies are needed to confirm these pathways, khat has been reported to inhibit CYP2D6 in humans [ 15 ], and an in vitro study demonstrated the ability of methylenedioxy-derived designer drugs, butylone and MDPV, to inhibit this isoform [ 16 ]. Furthermore, eutylone was recently shown to be metabolized by CYP2D6, CYP2C19, and CYP2B6 while inducing a time-dependent inhibition of CYP2D6 [ 17 ]. Finally, the software predicted phase II N-glucuronidation by UGT1A4 and UGT2B7. Although information regarding phase II metabolites of synthetic cathinones remains limited, glucuronide conjugates have been identified for both eutylone and mephedrone [ 11 , 17 , 18 ].

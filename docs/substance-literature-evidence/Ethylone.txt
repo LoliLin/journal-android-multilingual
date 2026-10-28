@@ -1,0 +1,22 @@
+##### Ethylone
+# hits: 44
+
+=== A Sensitive and Comprehensive LC-MS/MS Method for the Analysis of Hallucinogens, Synthetic Cathinones, and Synthetic Cannabinoids in Urine Samples.
+    Dos Santos BP, Birk L, Pôrto VC, Nascimento SN, Sebben VC, Eller S, de Oliveira TF.
+    ? 2025 | PMID 40931322 | PMCID PMC12423360 | DOI 10.1002/jms.5178
+    https://europepmc.org/article/PMC/12423360
+    - LC‐MS‐grade acetonitrile, ethyl acetate, hexane, methyl tert‐butyl ether (MTBE), and 99% formic acid were acquired from Merck (Darmstadt, Germany). Standard solutions of 25B‐NBOMe, 25C‐NBOMe, 25I‐NBOH, 25I‐NBOMe, ethylone, lysergic acid diethylamide (LSD), mephedrone, methylone, and pentylone (1 mg/mL) were purchased from Cerilliant (Round Rock, TX, USA). 25B‐NBOH, 2C‐E, 25E‐NBOH, 4‐chloro‐N,N‐dimethylcathinone (4‐CDC), ADB‐BUTINACA, ADB‐FUBINACA, dipentylone, N‐butylpentylone, and N‐ethylpentedrone (1–5 mg total) were purchased from Cayman Chemical (Ann Arbor, MI, USA). Standard solutions of 2‐oxo‐3‐OH‐LSD (100 μg/mL) and eutylone (1 mg/mL) were acquired from LGC Standards (Manchester, NH, USA). The internal standard (IS) solutions MDEA‐ d 6 and PCP‐ d 5 (1 mg/mL) were also purchased from LGC Standards (Manchester, NH, USA). Ammonium acetate, sodium hydroxide, and β‐glucuronidase (type B‐1, from bovine liver) were purchased from Sigma‐Aldrich (St. Louis, MO). Ultrapure water was supplied by a Milli‐Q system (Millipore, Billerica, MA, USA).
+
+=== In vitro metabolic profiling of methylenedioxy-substituted synthetic cathinones for enhanced detection in urine sample analysis.
+    Yeh YL, Hsieh CL, Huang YJ, Chang YH, Wang SM.
+    ? 2025 | PMID 40592338 | DOI 10.38212/2224-6614.3543
+    - This study investigated the in vitro metabolism of nine methylenedioxy-substituted synthetic cathinones, including methylone and eight structural isomers, which were categorized into three groups: Group 1 (dimethylone, ethylone, and butylone), Group 2 (dibutylone, pentylone, and eutylone), and Group 3 (N-ethylpentylone and dipentylone).
+    - Key pathways included N-dealkylation, β-ketone reduction, aliphatic hydroxylation, demethylenation, and glucuronide conjugation, with the analytes containing N, N-dimethylamino moieties showing higher N-dealkylation and β-ketone reduction ratios.
+    - Overall, this study provides a unified comparison of the products of synthetic cathinone metabolism, and highlights the importance of metabolites as key markers for enhanced identification accuracy in forensic toxicology.
+
+=== From Psychoactivity to Antimicrobial Agents: Multifaceted Applications of Synthetic Cathinones and <i>Catha edulis</i> Extracts.
+    Andrés CMC, Pérez de la Lastra JM, Munguira EB, Juan CA, Pérez-Lebeña E.
+    ? 2024 | PMID 39770007 | PMCID PMC11679858 | DOI 10.3390/molecules29245918
+    https://europepmc.org/article/PMC/11679858
+    - Further studies by Schindler et al. focused on the neurochemical, behavioral, and cardiovascular effects of α-PVP enantiomers in rats, corroborating the higher potency of the S-enantiomer [ 72 ]. In terms of drug absorption and metabolism, Silva et al. found that the R-(−) pentedrone enantiomer and the S-(−) methylone enantiomer exhibited greater permeability through the gastrointestinal tract in a Caco-2 cell model. However, subsequent findings from the same group indicated that the S-(+) pentedrone enantiomer and R-(+) methylone enantiomer were the most oxidative and cytotoxic forms [ 73 ].
+    - The metabolism of methylone, another synthetic cathinone, has been thoroughly studied using liquid chromatography–electrospray ionization mass spectrometry (LC–ESI/MS) and gas chromatography–mass spectrometry (GC–MS) [ 34 , 142 , 143 ]. Key reactions in Phase I metabolism include

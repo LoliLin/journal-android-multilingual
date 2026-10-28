@@ -1,6 +1,11 @@
 {
   "name": "2C-T-7",
-  "commonNames": ["2C-T-7", "Beautiful", "Blue Mystic", "7th Heaven"],
+  "commonNames": [
+    "2C-T-7",
+    "Beautiful",
+    "Blue Mystic",
+    "7th Heaven"
+  ],
   "url": "https://psychonautwiki.org/wiki/2C-T-7",
   "isApproved": true,
   "tolerance": {
@@ -10,17 +15,41 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "not habit-forming",
-  "toxicities": [],
-  "categories": ["psychedelic", "research-chemical", "entactogen"],
-  "summary": "A relatively uncommon psychedelic phenethylamine and possible MAOI. Long lasting, an possesses an unpredictable dosage curve. Questionable safety in combination with most things.",
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "At least three deaths associated with 2C-T-7 as of August 2007; the reports involved insufflated doses of 30 mg or more or stimulant co-use, and do not establish an isolated causal dose."
+  ],
+  "effectsSummary": "Anecdotal reports list psychedelic effects and describe a long-lasting, unpredictable experience with a potentially intense body load. These reports may be unreliable.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and online resources for education, not recommendations. The page lists thresholds of 3 mg orally and 1 mg insufflated; the model does not represent thresholdMin, so those values are preserved here. It strongly advises against insufflation, non-oral use, visual dose estimation and combinations with other substances; reports include deaths involving insufflated doses of 30 mg or more.",
+  "generalRisks": "2C-T-7 has an unpredictable, dose-sensitive response and may cause severe body load, serious injury or death. At least three deaths associated with use as of August 2007, involving insufflated doses of 30 mg or more or stimulant co-use; the cases do not establish a standalone causal dose. A possible MAOI effect is not established.",
+  "saferUse": [
+    "The page strongly advises against insufflation and other non-oral routes, visual dose estimation and mixing with other substances. It recommends independent research and accurate volumetric measurement; its dose tables are educational user/resource reports, not recommendations."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "RIMA",
+      "stimulant",
+      "serotonergic releaser"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "entactogen"
+  ],
+  "summary": "2C-T-7 is a relatively uncommon psychedelic phenethylamine with a long duration and an unpredictable dose response. Possible MAOI activity has not been established; the source warns against insufflation and combining it with other substances.",
   "roas": [
     {
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 1,
+        "lightMin": 2,
         "commonMin": 5,
         "strongMin": 10,
         "heavyMin": 15
@@ -62,7 +91,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 3,
+        "lightMin": 10,
         "commonMin": 15,
         "strongMin": 25,
         "heavyMin": 40

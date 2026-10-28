@@ -6,7 +6,9 @@
     "halfToleranceInHours": 144,
     "zeroToleranceInHours": 336
   },
-  "addictionPotential": "non-addictive with a low abuse potential",
-  "toxicities": ["extremely low toxicity relative to dose"],
+  "addictionPotential": "Non-addictive with a low abuse potential",
+  "toxicities": [
+    "Extremely low toxicity relative to dose"
+  ],
   "localizedName": "1V-LSD"
 }

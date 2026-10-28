@@ -22,11 +22,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "dissociative",
@@ -112,5 +112,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "2-Fluorodeschloroketamine (2-FDCK) is a dissociative anesthetic related to ketamine. Its sale and use as a designer drug have been reported; its pharmacology remains poorly characterized, with reported effects resembling ketamine."
 }

@@ -7,18 +7,26 @@
   "url": "https://psychonautwiki.org/wiki/2C-E",
   "isApproved": true,
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
   ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "common"
   ],
-  "summary": "An intense psychedelic drug with very strong visuals, sometimes criticised for its relatively uncomfortable body load. Otherwise, effects are comparable to other 2c-x drugs.",
+  "summary": "2C-E is an intense psychedelic in the 2C family, with very strong visuals and sometimes a relatively uncomfortable body load. Its effects are otherwise comparable to other 2c-x drugs. Recreational toxicity and long-term health effects are poorly studied and the exact toxic dose is unknown.",
+  "effectsSummary": "Anecdotal reports describe strong visual effects, time distortion, introspection, ego dissolution and euphoria. Users describe the effects as unpredictable and dose-sensitive, with potentially uncomfortable body load, nausea and physical discomfort.",
+  "dosageRemark": "The archived dose tables are compiled from user reports and resources for education, not recommendations, and should be independently verified. Thresholds are 2 mg orally and 1 mg insufflated; the model has no thresholdMin field, so these values are noted here. The page advises starting low because of individual variability.",
+  "generalRisks": "Recreational toxicity has not been scientifically studied, the human-use history is limited and the exact toxic dose is unknown. It describes dose-sensitive effects and warns that high-dose adverse effects may include serious injury or death; these warnings are not established incidence estimates.",
+  "longtermRisks": "Long-term health effects have not been studied scientifically and remain unknown.",
+  "saferUse": [
+    "The page recommends independent research and harm-reduction measures, including accurate volumetric measurement, and advises starting with a low dose because of individual variability. Its dose tables are user/resource reports for education, not recommendations."
+  ],
+
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -68,7 +76,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 2,
+        "lightMin": 5,
         "commonMin": 10,
         "strongMin": 15,
         "heavyMin": 30
@@ -106,5 +114,9 @@
         }
       }
     }
+  ],
+  "metabolism": "What is known about how the body handles this is very limited. No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-E"
   ]
 }

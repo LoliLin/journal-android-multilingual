@@ -12,7 +12,7 @@
     "4-PO-DMT"
   ],
   "categories": [
-    "psychedelic",
+    "Psychedelic",
     "common"
   ],
   "isApproved": false,
@@ -22,11 +22,11 @@
     "zero": "7 days"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "low abuse potential, no physical dependence potential",
+  "addictionPotential": "Low abuse potential, no physical dependence potential",
   "toxicities": [
-    "extremely low toxicity relative to dose"
+    "Extremely low toxicity relative to dose"
   ],
   "interactions": {
     "unsafe": [
@@ -37,7 +37,8 @@
       "Cannabis",
       "Amphetamines",
       "Cocaine"
-    ]
+    ],
+    "dangerous": []
   },
   "roas": [
     {
@@ -82,5 +83,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Psilocybin mushrooms are a broad, informal group of fungi that contain psilocybin, a prodrug broken down into the psychedelic compound psilocin."
 }

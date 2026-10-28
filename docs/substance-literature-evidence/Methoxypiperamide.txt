@@ -1,0 +1,16 @@
+##### Methoxypiperamide
+# hits: 2
+
+=== Low resolution and high resolution MS for studies on the metabolism and toxicological detection of the new psychoactive substance methoxypiperamide (MeOP).
+    Meyer MR, Holderbaum A, Kavanagh P, Maurer HH.
+    ? 2015 | PMID 26456786 | DOI 10.1002/jms.3635
+    - After sample preparation by cleavage of conjugates followed by extraction for elucidating phase I metabolites, the analytes were separated and identified by GC-MS as well as liquid chromatography-high resolution-tandem mass spectrometry (LC-HR-MS/MS).
+    - The following metabolic steps could be postulated: hydrolysis of the amide, N-oxide formation, N- and/or O-demethylation, oxidation of the piperazine ring to the corresponding keto-piperazine, piperazine ring opening followed by oxidation of a methylene group to the corresponding imide, and hydroxylation of the phenyl group.
+    - Furthermore, N-acetylation, glucuronidation and sulfation were observed.
+
+=== What is the contribution of human FMO3 in the N-oxygenation of selected therapeutic drugs and drugs of abuse?
+    Wagmann L, Meyer MR, Maurer HH.
+    ? 2016 | PMID 27320963 | DOI 10.1016/j.toxlet.2016.06.013
+    - Little is known about the role of flavin-containing monooxygenases (FMOs) in the metabolism of xenobiotics.
+    - FMO3 is the isoform in adult human liver with the highest impact on drug metabolism.
+    - The successful application of a modified RAF approach including FMO3 proved the importance of FMO3 in the N-oxygenation of DOAs in human metabolism.

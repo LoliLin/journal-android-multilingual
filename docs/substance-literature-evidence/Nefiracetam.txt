@@ -1,0 +1,16 @@
+##### Nefiracetam
+# hits: 17
+
+=== Nefiracetam metabolism by human liver microsomes: role of cytochrome P450 3A4 and cytochrome P450 1A2 in 5-hydroxynefiracetam formation.
+    Fujimaki Y, Arai N, Nakazawa T, Fujimaki M.
+    ? 2001 | PMID 11428655 | DOI 10.1211/0022357011776144
+    - An in-vitro study was conducted to investigate the metabolism of nefiracetam in human liver microsomes and to identify the enzymes responsible for the metabolism.
+    - Nefiracetam was hydroxylated by human liver microsomes to 5-hydroxynefiracetam (5-OHN).
+    - The 5-OHN formation was inhibited (94%) by antibody to human CYP3A4/5.
+
+=== In vitro metabolism of nefiracetam by liver microsomes from rats, dogs and monkeys.
+    Fujimaki Y, Sudo K, Hakusui H.
+    ? 1995 | PMID 8573215 | DOI -
+    - The in vitro metabolism of nefiracetam (CAS 77191-36-7, N-(2,6-dimethylphenyl)-2-(2-oxo-1-pyrrolidinyl) acetamide, NEF, DM-9384), a novel cognition enhancer, has been investigated using liver microsomes from rats, dogs and monkeys.
+    - Microsomal metabolism of NEF showed qualitatively a similar profile in three species tested.
+    - Their structures were identified using a thermospray LC/MS/MS (liquid chromatography/tandem mass spectrometry) method, as regioisomers of monhydroxylated derivatives of NEF: the 3-hydroxy (3-OH-NEF); 4-hydroxy (4-OH-NEF); 5-hydroxy (5-OH-NEF); 3'-hydroxy (3'-OH-NEF); 4'-hydroxy (4'-OH-NEF); hydroxymethyl (HM-NEF) metabolites.

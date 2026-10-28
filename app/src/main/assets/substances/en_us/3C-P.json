@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Rather new and uncommon stimulant, psychedelic and amphetamine with properties similar to the 2Cx class of drugs. 3-carbon homologue of proscaline.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "3C-P"
 }

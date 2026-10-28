@@ -12,5 +12,9 @@
     "habit-forming"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "The detected in the lab phase I metabolites of norflurazepam were hydroxynorflurazepam and dihydroxynorflurazepam. Norflurazepam is the active metabolite of flurazepam and shows a significantly increased time in the body of 40-250 hours against 2-3 hours for the parent compound.",
+  "metabolismSources": [
+    "https://europepmc.org/article/MED/30578721"
+  ],
+  "summary": "Norflurazepam (N-desalkylflurazepam) is a long-acting benzodiazepine analogue and an active metabolite of several benzodiazepines. It has also been sold as a designer drug."
 }

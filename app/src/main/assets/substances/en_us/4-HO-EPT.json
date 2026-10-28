@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "The 4-Hydroxy version of EPT. Slightly more potent than the prior.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "4-HO-EPT"
 }

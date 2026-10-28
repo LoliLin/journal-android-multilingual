@@ -1,0 +1,21 @@
+##### Prolintane
+# hits: 12
+
+=== Metabolic fate and detectability of three novel fluoroprolintane psychostimulants: in vitro and in vivo characterization by hyphenated mass spectrometry.
+    Wagmann L, Herter A, Dybek MB, Adejare A, Wallach J, Brandt SD, Meyer MR.
+    ? 2026 | PMID 42183847 | DOI 10.1007/s00204-026-04462-4
+    - The fluoroprolintanes were extensively metabolized, with a total of 79 metabolites identified.
+    - Hydroxylations and subsequent oxidations were primarily mediated by CYP1A2, CYP2B6, CYP2C19, and CYP2D6, while glucuronidation and O-methylation were observed as main follow-up phase II reactions.
+
+=== In-depth in vivo and in vitro investigation of metabolism and detectability of three novel methylprolintane psychostimulants by hyphenated mass spectrometry.
+    Wagmann L, Herter A, Dybek MB, Adejare A, Wallach J, Brandt SD, Meyer MR.
+    ? 2026 | PMID 42303050 | DOI 10.1016/j.taap.2026.117915
+    - Across all isomers, metabolism was extensive, yielding 95 distinct metabolites.
+    - Initial hydroxylation and oxidation reactions were mainly linked to the activity of CYP1A2, CYP2B6, CYP2C19, and CYP3A4, followed by conjugation through glucuronidation, sulfation, or O-methylation.
+
+=== [A memoir of my researches on xenobiotic metabolism for 48 years--researches on Kanemi Yusho and endocrine disrupting chemicals].
+    Yoshihara S.
+    ? 2013 | PMID 23811764 | DOI 10.1248/yakushi.13-00100
+    - The author started a research on xenobiotic metabolism at Graduate School of Pharmaceutical Sciences, Kyushu University in 1965.
+    - Finally, we investigated how the xenobiotic metabolism of endocrine disrupting chemicals such as bisphenol A (BPA) and some isoflavones affects their estrogenic activities.
+    - In the cases of isoflavones, although genistein was inactivated, biochanin A, 4'-methoxy analogue of genistein, was activated to genistein by O-demethylation with rat liver S9.

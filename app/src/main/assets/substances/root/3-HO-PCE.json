@@ -14,11 +14,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dissociative"
+    "Dissociative"
   ],
-  "addictionPotential": "moderately addictive with a moderate potential for adverse side effects such as psychosis",
+  "addictionPotential": "Moderately addictive with a moderate potential for adverse side effects such as psychosis",
   "toxicities": [
-    "toxic dosage is unknown"
+    "The exact toxic dose is unknown and recreational toxicity and long-term health effects have not been scientifically studied. Its toxicity section is flagged as a stub that may contain extremely inaccurate information."
   ],
   "categories": [
     "dissociative",
@@ -26,7 +26,7 @@
     "habit-forming",
     "tentative"
   ],
-  "summary": "A rare and very potent PCP analogue, eight times more potent than PCP as NMDA receptor antagonist and also a μ-opioid receptor agonist. Similar in structure to methoxetamine.",
+  "summary": "A synthetic arylcyclohexylamine dissociative. Its pharmacology is largely unstudied; the page presents NMDA antagonism as a likely but unconfirmed action. A proposed μ-opioid receptor affinity remains debated and is inferred from 3-HO-PCP, so opioid activity in humans is not established. The page reports no independent laboratory analysis of grey-market samples.",
   "interactions": {
     "dangerous": [
       "stimulant",
@@ -53,5 +53,15 @@
         }
       }
     }
+  ],
+  "dosageRemark": "The archived oral dose table is compiled from user reports and resources for educational purposes only, is not a recommendation, and should be checked against other sources. Its 5 mg threshold and open-ended severe category at 25 mg and above are not fully represented by the route dose model.",
+  "generalRisks": "No independent laboratory analysis of grey-market samples. It discusses possible μ-opioid receptor affinity by analogy with 3-HO-PCP, but says this remains debated; opioid activity in humans is unconfirmed.",
+  "longtermRisks": "Long-term health effects have not been scientifically studied. Possible bladder and urinary problems are presented as an unverified analogy with ketamine, not as established 3-HO-PCE findings.",
+  "saferUse": [
+    "Harm-reduction measures, starting at a very low dose, and accurate volumetric measurement are strongly recommended, because of the substance's potency. Multi-day use and redosing before being fully sober are advised against, exceeding the listed dose ranges is warned against, and combining it with depressants is discouraged; caution is urged with stimulants, psychedelics and other dissociatives."
+  ],
+  "metabolism": "Data on the pharmacology, metabolism, and toxicity of 3-HO-PCE are lacking; No the enzymes involved, metabolites or pathway have been identified.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-HO-PCE"
   ]
 }

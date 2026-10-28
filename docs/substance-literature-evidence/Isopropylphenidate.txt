@@ -1,0 +1,8 @@
+##### Isopropylphenidate
+# hits: 8
+
+=== Applications of pharmacogenetics in children with attention-deficit/hyperactivity disorder.
+    Levy F.
+    ? 2014 | PMID 25404861 | PMCID PMC4230702 | DOI 10.2147/pgpm.s52844
+    https://europepmc.org/article/PMC/4230702
+    - According to Markowitz et al, 32 MPH is characterized by its low bioavailability and short half-life of 2–3 hours. 32 Thus, a wide range of MPH analogs directed at either DAT or a norepinephrine transporter as principal neuropharmaco-logical targets have been investigated. The authors studied the metabolic profile and pharmacological activity of the isopropyl ester derivative of MPH dl-isopropylphenidate (IPH). Immediate-release MPH is thought to be metabolized by hepatic-carboxyl-esterase yielding inactive ritalinic acid. According to the investigators, MPH analogs that are similar in terms of pharmacological activity, yet resistant to carboxylesterase isoenzymes (CS1), are likely to extend the duration of action and provide more predictable and less interindividual variability.

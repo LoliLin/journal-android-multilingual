@@ -1,6 +1,8 @@
 {
   "name": "MiPT",
-  "commonNames": ["MiPT"],
+  "commonNames": [
+    "MiPT"
+  ],
   "url": "https://psychonautwiki.org/wiki/MiPT",
   "isApproved": true,
   "tolerance": {
@@ -10,10 +12,26 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "categories": ["psychedelic", "research-chemical", "tentative"],
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Human pharmacology, metabolism and toxicity data for MiPT are very limited and human-use history is short; exact toxic dose is unknown."
+  ],
+  "effectsSummary": "MiPT's reported effects as mild, vague and highly variable between users; it notes oral activity and a short human-use history. The effects index is anecdotal.",
+  "dosageRemark": "The archived oral table lists only moderate 10-25 mg, strong 25-75 mg, heavy 75-200 mg and total duration 3-8 h; it provides no threshold or light band, so those fields remain unfilled. Educational user/resource compilation, not a recommendation. Pharmacology, metabolism and toxicity data and human-use history are very limited.",
+  "generalRisks": "MiPT is rare and poorly studied; anecdotal effects vary substantially between users and dose data are incomplete.",
+  "longtermRisks": "Pharmacology, metabolism and toxicity data are very limited and does not establish long-term effects.",
+  "saferUse": [
+    "Harm reduction is recommended for this poorly studied substance.",
+    "The archived oral dose table omits threshold and light bands; these are not inferred."
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
   "summary": "N-Methyl-N-isopropyltryptamine, a tryptamine analogue of DMT, a very uncommon drug with very few reports of human use. Described as 'more psychedelic than hallucinogenic' users report only mild visuals with some stimulation and cognitive effects. One of the more stable tryptamines.",
   "roas": [
     {

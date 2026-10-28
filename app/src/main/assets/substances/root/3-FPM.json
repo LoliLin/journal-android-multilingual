@@ -14,12 +14,12 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant",
@@ -90,5 +90,12 @@
         }
       }
     }
+  ],
+  "saferUse": [
+    "Harm-reduction measures and extra caution while assessing individual responses are strongly recommended. Severe flu-like aftereffects have been reported in some users, and combining 3-FPM with 25x-NBOMe/NBOH, depressants, or other listed risky combinations is warned against."
+  ],
+  "metabolism": "What is known about how the body handles this is very limited. No human metabolic findings or pathway are described. And no pathway is assumed from similar compounds.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/3-FPM"
   ]
 }

@@ -1,0 +1,21 @@
+##### Hexobarbital
+# hits: 569
+
+=== General Anesthetics: Aspects of Chirality, Pharmacodynamics, and Pharmacokinetics.
+    Čižmáriková R, Habala L, Valentová J.
+    ? 2025 | PMID 40006063 | PMCID PMC11860141 | DOI 10.3390/ph18020250
+    https://europepmc.org/article/PMC/11860141
+    - A higher in vivo narcotic potency of the ( S )-(+)-isomer of hexobarbital has been shown to be associated with higher levels in the CNS compared with the ( R )-(−) enantiomer. This appears to be due to an improved ability to pass through the blood–brain barrier. In an experiment on rats, on average, 43 mg/kg of (+)-hexobarbital was needed to achieve the effect, as compared with more than 114 mg/kg of (−)-hexobarbital. Approximately one quarter of the activity in the racemate was due to (−)-hexobarbital [ 115 ]. Hexobarbital as a short-acting hypnotic is metabolized to 3’-hydroxyhexobarbital by cytochrome P450 and then to 3’-oxohexobarbital by hepatic cytosolic dehydrogenase [ 116 ].
+    - Saito et al. investigated the enzymatic function of recombinant CYP2C19 in enantiomeric hexobarbital (HB) 3’-hydroxylation and the role of amino acid residues such as Phe-100, Phe-114, Asp-293, Glu-300, and Phe-476 in CYP2C19 in stereoselective HB 3’-hydroxylation using a yeast cell expression system and a targeted mutagenesis approach [ 117 ]. The results indicated that Glu-300 and Phe-476 are important in the stereoselective oxidation of HB-enantiomers by CYP2C19.
+
+=== The Cytokine Release Syndrome and/or the Proinflammatory Cytokines as Underlying Mechanisms of Downregulation of Drug Metabolism and Drug Transport: A Systematic Review of the Clinical Pharmacokinetics of Victim Drugs of this Drug-Disease Interaction Under Different Clinical Conditions.
+    Gatti M, Pea F.
+    ? 2022 | PMID 36059001 | PMCID PMC9441320 | DOI 10.1007/s40262-022-01173-8
+    https://europepmc.org/article/PMC/9441320
+    - Early studies carried out in healthy volunteers showed that administration of one or two doses 24 h apart of lipopolysaccharide, by promoting increases in pro-inflammatory cytokines, caused a weak inhibitory effect of CYP3A4-mediated and CYP1A2-mediated metabolism of antipyrine (decrease in mean CL of 35% and 31%), theophylline (decrease in mean CL of 22% and 20%), and hexobarbital (decrease in mean CL of 27% and 20%), with no sex difference [ 16 , 17 ].
+
+=== Piperine and Its Metabolite's Pharmacology in Neurodegenerative and Neurological Diseases.
+    Azam S, Park JY, Kim IS, Choi DK.
+    ? 2022 | PMID 35052833 | PMCID PMC8773267 | DOI 10.3390/biomedicines10010154
+    https://europepmc.org/article/PMC/8773267
+    - PIP potentially inhibits UDP-glucose dehydrogenase enzyme—an enzyme that catalyzes glucuronidation and facilitates the elimination of xenobiotics—by a conjugated double bond and inhibits intestinal glucuronidation better than the liver [ 26 ]. Moreover, PIP inhibits liver and intestinal UDP-glucuronyl transferase and aryl hydrocarbon hydroxylase enzyme [ 27 ]. Oral treatment of PIP has been shown to inhibit UDP-glucuronyl transferase and aryl hydrocarbon hydroxylase enzyme activities in rat liver and prolong hexobarbital-induced sleeping time and zoxazolamine-induced paralysis time [ 27 ], suggesting that PIP is a potential inhibitor of drug metabolism.

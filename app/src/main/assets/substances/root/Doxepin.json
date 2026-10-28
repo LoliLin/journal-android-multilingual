@@ -8,5 +8,6 @@
   "metabolism": "Hepatic demethylation forms active nordoxepin. Additional pathways include N-oxidation, hydroxylation and glucuronidation. Elimination is mainly urinary as free or conjugated metabolites.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=21dc77be-23af-4a1f-b189-dfee8ae2f894"
-  ]
+  ],
+  "summary": "Doxepin is a tricyclic antidepressant medication also used for anxiety, insomnia, and some allergic skin conditions."
 }

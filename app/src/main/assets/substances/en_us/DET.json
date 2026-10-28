@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "A surprisingly uncommon analogue of DMT with similar effects and reported oral activity without the aid of an MAOI.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "DET"
 }

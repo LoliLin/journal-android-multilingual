@@ -15,40 +15,40 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "The toxicity and harm-potential section is short and may be incomplete and even extremely wrong. Long-term health effects of recreational 5-MeO-DiPT use appear not to have been studied in any scientific context and the exact toxic dose is unclear, because it is a research chemical with a very short history of human use; its neurotoxic effects have been studied in rats.",
+    "Overdoses in young people causing nausea, vomiting, agitation, lowered blood pressure, mydriasis, increased heart rate and hallucinations. One young man suffered rhabdomyolysis and kidney failure, another died 3-4 hours after an apparent rectal overdose, and a 24-year-old man also died after administering the compound into his colon."
+  ],
+  "effectsSummary": "Anecdotal reports of 5-MeO-DiPT as highly stimulating and mildly empathogenic, lacking typical psychedelic visual distortions. Many users report strong bodily and tactile effects that enhance libido and sexual pleasure, and many note uncomfortable body load at higher doses; some also report auditory distortions, also recorded in the related compound DiPT. Its effects index is built on anecdotal user reports.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation. The page lists a threshold of 3 mg, a light range of 3-10 mg, moderate of 10-15 mg, strong of 15-20 mg and heavy of 20 mg or more, with a total duration of 4-8 hours, onset of 20-40 minutes and afterglow of 2-6 hours; the model does not represent a threshold band separately, so the 3 mg threshold is preserved here and lightMin equals the lower bound of the source light range. The page provides no comeup, peak, offset values and no other routes.",
+  "generalRisks": "The toxicity section may contain extremely wrong information. Overdoses are reported, including one death 3-4 hours after an apparent rectal overdose and another after colonic administration, and 5-MeO-DiPT is warned about as a monoamine reuptake inhibitor for which MAOIs are a potentially dangerous combination that would very likely unpredictably increase its effects. Taking this chemical while on prescription MAOIs is strongly advised against.",
+  "longtermRisks": "Long-term health effects of recreational use appear not to have been studied in any scientific context, and notes its neurotoxic effects have been studied in rats.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, as is independent research before taking it, to make sure combinations of two or more substances are safe.",
+    "It notes gastric bloating at higher doses can be partially or fully relieved with antacids, and strongly advises against use with prescription MAOIs."
+  ],
+  "interactions": {
+    "dangerous": [
+      "MAOI",
+      "Tramadol",
+      "aMT"
+    ],
+    "unsafe": [],
+    "uncertain": []
+  },
+  "metabolism": "5-MeO-DiPT is a monoamine reuptake inhibitor and that its purported hallucinogenic and entheogenic effects are believed to arise mainly from 5-HT2A receptor agonism, with its strongest receptor binding affinity at the 5-HT1A receptor; it gives no specific human route through the body.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/5-MeO-DiPT"
   ],
   "categories": [
     "psychedelic",
     "research-chemical",
     "entactogen"
   ],
-  "summary": "5-methoxy-di isopropyl tryptamine, also known as 'foxy', a psychedelic tryptamine related to DMT, which distorts visual and audio perception. Reported to have a heavy body load at high doses, it behaves similarly to other drugs of its class.",
-  "interactions": {
-    "dangerous": [
-      "ΑMT",
-      "maoi",
-      "PCP"
-    ],
-    "unsafe": [
-      "Amphetamines",
-      "Cocaine",
-      "Dextromethorphan",
-      "Tramadol"
-    ],
-    "uncertain": [
-      "2C-T-x",
-      "2C-x",
-      "Cannabis",
-      "DOx",
-      "MDMA",
-      "Mescaline",
-      "NBOMe"
-    ]
-  },
+  "summary": "5-MeO-DiPT is 5-methoxy-di isopropyl tryptamine, also known as 'foxy', a psychedelic tryptamine related to DMT which distorts visual and audio perception. It is described anecdotally as highly stimulating and mildly empathogenic, and is reported to have a heavy body load at high doses, behaving similarly to other drugs of its class. Overdoses have caused serious reactions and deaths, and it should never be combined with MAOIs.",
   "roas": [
     {
       "name": "oral",

@@ -1,0 +1,22 @@
+##### Nifoxipam
+# hits: 10
+
+=== In vivo and in vitro metabolism of the designer benzodiazepine, bretazenil: a comparison of pooled human hepatocytes and liver microsomes with postmortem urine and blood samples.
+    Gameli PS, Kutzler J, Huppertz LM, Berardinelli D, Tronconi L, Basile G, Carlier J, Busardò FP, Auwärter V.
+    ? 2026 | PMID 41034680 | PMCID PMC12858478 | DOI 10.1007/s00204-025-04213-x
+    https://europepmc.org/article/PMC/12858478
+    - Results demonstrated first-generation metabolites were predominantly transformed through hydroxylation occurring mainly at the pyrrolidine ring, followed by other combinations of phase I reactions and subsequent glucuronidation. Such transformations typically occurring at the carbon 3 position of the diazepine ring have been reported for 1,4-benzodiazepines such as phenazepam, diclazepam, and flubromazepam (Moosmann et al. 2013 , 2014 ; Crichton et al. 2015 ; Gameli et al. 2024a ). Interestingly, N -glucuronidation detected for triazole-type designer benzodiazepines, including flualprazolam (Wagmann et al. 2020 ), and even NPS from the 1,4-benzodiazepine class, such as nifoxipam (Pettersson Bergstrand et al. 2019 ), were not detected in this study. This exemplifies the need for analytical toxicologists to take caution in juxtaposing the metabolism of analogs, especially when proposing markers of consumption. Under the present analytical conditions, however, we were unable to determine the exact biotransformational positions for some metabolites and further experiments will be necessary to verify the tentative sites of these biotransformations.
+
+=== Metabolites replace the parent drug in the drug arena. The cases of fonazepam and nifoxipam.
+    Katselou M, Papoutsis I, Nikolaou P, Spiliopoulou C, Athanaselis S.
+    ? 2017 | PMID 28127407 | PMCID PMC5214877 | DOI 10.1007/s11419-016-0338-5
+    https://europepmc.org/article/PMC/5214877
+    - Fonazepam (desmethylflunitrazepam) and nifoxipam (3-hydroxy-desmethylflunitrazepam) are two of the metabolites of flunitrazepam that result from the in vivo demethylation of the parent compound followed by 3-hydroxylation of the benzodiazepine ring in the case of nifoxipam [ 9 , 11 – 13 ]. Taking into consideration the structure of nifoxipam, we can also assume that it could be the 3-hydroxy metabolite of fonazepam. Fonazepam can also be a photodecomposition product of flunitrazepam [ 14 ].
+    - The synthesis of fonazepam was achieved in 1963 in Hoffmann-La Roche laboratories by Sternbach et al. [ 19 ]. It was the product of the direct nitration of the corresponding unsubstituted benzodiazepinone with a mixture of concentrated sulfuric acid and potassium nitrate at 45–50 °C. Fonazepam is formatted in vivo via demethylation of flunitrazepam (the parent drug), during its biotransformation (Fig. 1 ), and it was identified as its active metabolite in 1976. Nifoxipam is the product of 3-hydroxylation and demethylation of flunitrazepam [ 13 , 20 , 21 ]. Fig. 1 Phase I biotransformation pathways of flunitrazepam, fonazepam and nifoxipam in humans, as suggested by Wendt [ 20 ] and Meyer et al. [ 30 ]
+
+=== Identification of main human urinary metabolites of the designer nitrobenzodiazepines clonazolam, meclonazepam, and nifoxipam by nano-liquid chromatography-high-resolution mass spectrometry for drug testing purposes.
+    Meyer MR, Bergstrand MP, Helander A, Beck O.
+    ? 2016 | PMID 27071765 | DOI 10.1007/s00216-016-9439-6
+    - Therapeutically used nitrobenzodiazepines such as flunitrazepam are known to be extensively metabolized via N-dealkylation to active metabolites and via nitro reduction to the 7-amino compounds.
+    - Data revealed that clonazolam and meclonazepam were extensively metabolized and mainly excreted as their amino and acetamino metabolites.
+    - Nifoxipam was also extensively metabolized, but instead mainly excreted as the acetamino metabolite and a glucuronic acid conjugate of the parent.

@@ -1,11 +1,19 @@
 {
   "name": "Prochlorperazine",
-  "commonNames": ["Compazine", "Stemzine", "Buccastem", "Stemetil", "Phenotil"],
+  "commonNames": [
+    "Compazine",
+    "Stemzine",
+    "Buccastem",
+    "Stemetil",
+    "Phenotil"
+  ],
   "url": "https://psychonautwiki.org/wiki/Prochlorperazine",
   "isApproved": true,
   "crossTolerances": [],
   "toxicities": [],
-  "categories": ["antipsychotic"],
+  "categories": [
+    "antipsychotic"
+  ],
   "roas": [
     {
       "name": "oral",
@@ -29,5 +37,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Prochlorperazine is a typical antipsychotic medication used for nausea, migraine, schizophrenia and psychosis. It can cause movement disorders, including tardive dyskinesia, and neuroleptic malignant syndrome."
 }

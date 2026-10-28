@@ -1,0 +1,20 @@
+##### MiPT
+# hits: 40
+
+=== Biotransformation of 5-methoxy-N-isopropyl-N-methyltryptamine by zebrafish and human liver microsome with high-resolution mass spectrometry.
+    Sen Zhao, Wang Y, Zhong C, Chen J, Meng L.
+    ? 2024 | PMID 38280235 | DOI 10.1016/j.jpba.2024.115987
+    - Primary phase I metabolic pathways involved N-Demethylation and Indole-hydroxylation reactions, while phase II metabolism included Glucoside conjugation directly, Glucoside conjugation after Indole-hydroxylation, and Sulfonation following Indole-hydroxylation.
+    - Major phase I metabolic pathways encompassed N-Demethylation, 5-O-Demethylation, and N-Depropylation, N-Oxidation, Indole-hydroxylation, N-Demethylation combined with Indole-hydroxylation, and 5-O-Methylation-carboxylation.
+    - Phase II metabolism involved Glucoside conjugation after Indole-hydroxylation, as well as Glucoside conjugation after 5-O-Demethylation.
+
+=== Pharmaco-toxicological effects of the novel tryptamine hallucinogen 5-MeO-MiPT on motor, sensorimotor, physiological, and cardiorespiratory parameters in mice-from a human poisoning case to the preclinical evidence.
+    Bassi M, Bilel S, Tirri M, Corli G, Di Rosa F, Gregori A, Alkilany AM, Rachid O, Roda E, Zauli G, Locatelli CA, Marti M.
+    ? 2024 | PMID 38214743 | DOI 10.1007/s00213-024-06526-8
+    - Lastly, we investigated the in silico ADMET (absorption, distribution, metabolism, excretion, toxicity) profile of 5-MeO-MiPT compared to 5-methoxy-N,N-diisopropyltryptamine (5-MeO-DIPT) and N,N-dimethyltryptamine (DMT).
+
+=== The role of microorganisms in the biotransformation of psychoactive substances and its forensic relevance: a critical interdisciplinary review.
+    de Campos EG, de Almeida OGG, De Martinis ECP.
+    ? 2023 | PMID 38221972 | PMCID PMC10785599 | DOI 10.1093/fsr/owad025
+    https://europepmc.org/article/PMC/10785599
+    - Biotransformation of tryptamines by C. elegans has also been explored, as reported by Grafinger et al. [ 15 ], who studied the biotransformation of N,N -dimethyltryptamine (DMT), 4-hydroxy- N -methyl- N -ethyltryptamine (4-HO-MET), N,N- diallyl-5-methoxytryptamine (5-MeO-DALT), and 5-methoxy- N -methyl- N -isoporpoyltryptamine (5-MeO-MiPT) [ 15 ]. A correlation of 63% with other models (e.g. pooled human liver microsomes, rat urine, and human urine) was found for the metabolites detected using C. elegans [ 15 ]. Metabolites formed through main Phase I biotransformation (hydroxylation, N -oxidation, carboxylation, deamination, and demethylation) were described using C. elegans , but no Phase II metabolites were detected [ 15 ].

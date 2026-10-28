@@ -1,0 +1,24 @@
+##### DOM
+# hits: 2439
+
+=== Biochar mitigates dimethylarsenate-stimulated methane emissions mediated by DOM-microbe interactions in paddy soils.
+    Kang Y, Jin L, Du J, Lv J, Tang Y, Zhou J, Liu J, Yang Y, Jia Y.
+    ? 2026 | PMID 42827498 | DOI 10.3389/fmicb.2026.1958612
+    - DMAs markedly increased mcrA gene abundance by 4.2-7.6 times with negligible change in pmoA , confirming stimulated methanogenesis rather than suppressed oxidation.
+    - Furthermore, biochar suppressed mcrA gene abundances by 12.7-81.3%, while increased that of pmoA gene by 7.1-7.5 times, as well as increased porewater As(V) and enriched ammonia-oxidizing Candidatus_Nitrosopelagicus to potentially or indirectly stimulate anaerobic CH₄ oxidation.
+
+=== The divergent roles of humic- and fulvic-acid DOM in regulating Hg methylation/demethylation in paddy soils.
+    Abdelhafiz MA, Meng B, Liu J, Hao Z, Jiang T, Feng X.
+    ? 2026 | PMID 42858847 | DOI 10.1016/j.envres.2026.125864
+    - Understanding mercury (Hg) methylation and demethylation processes in paddy soils is crucial for controlling food contamination and health risks, yet the roles of dissolved organic matter (DOM) fractions remain unclear.
+    - Field correlation results showed significant relationships between DOM properties and MeHg levels (p m - 202 Hg II ) for Hg-bound FA (Hg-FA) and Hg-bound HA (Hg-HA) treatments were 0.91 ± 0.22 and 0.40 ± 0.06 10 -3 d -1 , respectively, and the average demethylation rate constants (K d -Me 200 Hg) were 0.28 ± 0.07 and 0.36 ± 0.11 d -1 .
+    - Hg methylation and demethylation in response to the same DOM fraction varied across the studied sites, highlighting the distinct roles of each fraction's properties in paddy soils.
+
+=== Short- and Long-Acting Psychedelics: Structure-Activity Relationships, Pharmacology, and Implications for Neuropsychiatric Therapeutics.
+    Bhat A, Zolali E, Sakib MA, Rahimian M, McMahon LR, German N, Obeng S.
+    ? 2026 | PMID 42257400 | PMCID PMC13281395 | DOI 10.1021/acschemneuro.6c00202
+    https://europepmc.org/article/PMC/13281395
+    - New clinical trials have recently opened to expand the evaluation of DMT into additional therapeutic domains. One trial is assessing acute analgesic effects of DMT ( NCT06180759 , recruiting), while another compares the subjective profile of multiple psychoactive compounds in volunteers ( NCT06772753 ). , Further mechanistic studies are using EEG, MRI ( NCT06624137 , recruiting) and FDG-PET techniques ( NCT06252506 , pending results) to map the effects of DMT on learning, perception, and brain energy metabolism. , Collectively, these studies shape the translational framework for DMT as a fast-acting, scalable psychedelic intervention, with potential implication across multiple neurologic disorders.
+    - Psilocybin acts as a prodrug and its plasma exposure is driven by psilocin; intact psilocybin is usually undetectable in plasma. , Psilocin’s typical human half-life is 2–3 h (e.g., 2 h in pooled analyses; 3 h in a clinical PK study), while subjective effects last 5–7 h after oral dosing. ,, After dephosphorylation, psilocin is primarily cleared by O-glucuronidation. UGT1A10 is the principal isoform responsible for psilocin O-glucuronidation, with UGT1A9 playing a secondary role. Oxidative metabolism by CYP2D6 (forming norpsilocin/oxidized psilocin) and CYP3A4, together with limited MAO-A deamination, occurs only to a minor extent, whereas in vivo clearance is dominated by UGT-mediated O-glucuronidation.
+    - In placebo-controlled trials with healthy participants, oral mescaline reaches peak plasma levels at about 2 h, has a plasma elimination half-life of 3.5 h, and produces subjective effects that typically last 8–12 h. In pooled human data, urinary recovery after oral mescaline is primarily dominated by unchanged mescaline (approximately 53% overall), with 3,4,5-trimethoxyphenylacetic acid (TMPAA) contributing approximately 31% over the 24–30 h period. Biotransformation proceeds mainly via oxidative deamination by MAO to 3,4,5-trimethoxyphenylacetaldehyde, followed by aldehyde dehydrogenase oxidation to TMPAA or alcohol dehydrogenase reduction to the corresponding alcohol; N-acetylation and O-demethylation occur as minor routes.
+    - DOX compounds, or 4-substituted-2,5-dimethoxyamphetamines, such as DOC, DOI, DOB, DOM (STP), and DOET, are long-acting phenethylamine psychedelics, with durations of actions in humans of 12–24 h (DOC), 16–30 h (DOI), 18–30 h (DOB), 8–20 h (DOM), and 5–20 h (DOET). − Across the DOX series (DOC, DOI, DOB, DOM, DOET), in vitro and urine-metabolite studies indicate that the primary biotransformation is O-demethylation (with DOM additionally undergoing benzylic side-chain methyl hydroxylation), mediated predominantly by CYP2D6.

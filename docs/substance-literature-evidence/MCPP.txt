@@ -1,0 +1,21 @@
+##### MCPP
+# hits: 648
+
+=== Characterization of trazodone metabolic pathways and species-specific profiles.
+    Petrucci V, Dragone P, Laurenti MC, Oggianu L, Zabela V, Cattaneo A.
+    ? 2025 | PMID 41098834 | DOI 10.3389/fphar.2025.1636919
+    -  Background Trazodone, an antidepressant indicated for the treatment of major depressive disorder (MDD), undergoes complex metabolism involving multiple cytochrome P450 (CYP) isoforms.
+    - CYP isoforms involved in trazodone metabolism were identified through selective CYP inhibitors and recombinant enzymes.
+    - CYP3A4 was identified as the primary enzyme mediating trazodone metabolism, particularly in the formation of mCPP while CYP2D6, CYP2C19, and FMOs contributed to the formation of other major, inactive metabolites such as M9 and M2.
+
+=== Exploratory Study on Plasticiser Intake During Intermittent Fasting: Effects on Weight, Glycaemic Control and Vitamin D Levels in Type 2 Diabetes.
+    Brennan E, Das P, Wasif P, Wang XF, Mueller JF, He C, Varghese JV, Butler AE, Atkin SL, Alamuddin N.
+    ? 2026 | PMID 42198508 | PMCID PMC13211572 | DOI 10.3390/toxics14050382
+    https://europepmc.org/article/PMC/13211572
+    - As parent phthalate diesters are rapidly metabolised in the body, we examined thirteen metabolites as established biomarkers of phthalate exposure commonly used in human biomonitoring studies [ 35 , 39 , 40 ]. These include monoethyl phthalate (MEP) for diethyl phthalate (DEP) exposure; mono-n-butyl phthalate (MnBP) and mono-iso-butyl phthalate (MiBP) for di-n-butyl phthalate (DiBP); mono(2-ethylhexyl) phthalate (MEHP), mono(2-ethyl-5-carboxypentyl) phthalate (MECPP), mono(2-ethyl-5-hydroxyhexyl) phthalate (MEHHP) and mono(2-ethyl-5-oxohexyl) phthalate (MEOHP) for di-(2-ethylhexyl) phthalate (DEHP); monobenzyl phthalate (MBzP) for butyl benzyl phthalate (BBP); monomethyl phthalate (MMP) for dimethyl phthalate (DMP); mono-iso-nonyl phthalate (MiNP) for di-iso-nonyl phthalate (DINP); mono-n-octyl phthalate (MnOP) and mono(3-carboxypropyl) phthalate (MCPP) for di-n-octyl phthalate (DnOP); and monocyclohexyl phthalate (MCHP) for dicyclohexyl phthalate (DCHP). A further seven bisphenols were targeted, including bisphenol A (BPA), BP-AF, BP-AP, BPB, BPF, BPS, and BPZ. These bisphenols include legacy plasticisers such as BPA, in addition to structurally similar analogues that have been introduced as suggested safe alternatives.
+
+=== The advent of molecular nanocarbon biology.
+    Amaike K, Ueda A, Itami K.
+    ? 2026 | PMID 42666526 | PMCID PMC13522950 | DOI 10.1039/d6sc05731d
+    https://europepmc.org/article/PMC/13522950
+    - As an emerging class of cyclic molecular nanocarbons for biological applications, Itami, Amaike, Yagi, and coworkers recently reported the first imaging probe based on the aromatic belt, methylene-bridged cycloparaphenylene (MCPP), and elucidated its unique cellular internalization behavior in mammalian cells ( Fig. 3D ). 41 Owing to the relatively high acidity of the methylene hydrogen atoms, direct functionalization of MCPP is feasible. Treatment of MCPP with propargyl bromide under basic conditions enabled the one-step synthesis of a clickable MCPP derivative. Subsequent conjugation with fluorescein afforded a fluorescent probe, whose cellular uptake behavior was investigated in detail. Interestingly, the molecule initially accumulated on the cell membrane before being internalized. Experimental and computational studies suggested that the interior cavity of the belt structure interacts with membrane lipids or membrane-associated proteins, thereby influencing its membrane affinity and uptake pathway.

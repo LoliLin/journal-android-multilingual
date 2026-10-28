@@ -6,5 +6,9 @@
     "antidepressant",
     "maoi"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Absorbed quickly and well after a dose by mouth, with peak blood levels at about 2.5 hours and a time in the body of roughly 2 hours. It is broken down a good deal, including the side chain coming apart and probably some joining to small molecules. What it mainly does is block MAO, both MAO-A and MAO-B, and it blocks them permanently; that wears off slowly, and in clinical terms it is treated as reversed within 14 days. How much comes out in the urine depends on how acid the urine is.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/14428/smpc"
+  ],
+  "summary": "Tranylcypromine is a nonselective, irreversible monoamine oxidase inhibitor used primarily to treat major depressive disorder, including treatment-resistant depression."
 }

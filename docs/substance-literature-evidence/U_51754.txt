@@ -1,0 +1,9 @@
+##### U-51754
+# hits: 8
+
+=== Studies on the in vitro and in vivo metabolism of the synthetic opioids U-51754, U-47931E, and methoxyacetylfentanyl using hyphenated high-resolution mass spectrometry.
+    Nordmeier F, Richter LHJ, Schmidt PH, Schaefer N, Meyer MR.
+    ? 2019 | PMID 31551531 | DOI 10.1038/s41598-019-50196-y
+    - The following major reactions were observed: demethylation of the amine moiety for U-51754 and U-47931E, N-hydroxylation of the hexyl ring, and combinations thereof.
+    - N-dealkylation, O-demethylation, and hydroxylation at the alkyl part for methoxyacetylfentanyl.
+    - Therefore, urinary markers should preferably be metabolites, namely, the N-demethyl-hydroxy and the hydroxy metabolite for U-51754, the N-demethylated metabolite for U-47931E, and the N-dealkylated metabolite as well as the O-demethylated one for methoxyacetylfentanyl.

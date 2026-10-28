@@ -9,7 +9,7 @@
     "2c-b-nboh"
   ],
   "categories": [
-    "psychedelic",
+    "Psychedelic",
     "research-chemical",
     "tentative"
   ],
@@ -20,11 +20,25 @@
     "zero": "2 weeks"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "potentially fatal at heavy dosages"
+    "Potentially fatal at heavy dosages; the source says an LD50 has not been determined."
+  ],
+  "effectsSummary": "Anecdotal effect reports describe prominent visual effects and stimulation. Possible adverse effects listed include increased heart rate and blood pressure, abnormal heartbeat, impaired temperature regulation, and seizures; effects are not predictable or reliable.",
+  "dosageRemark": "No dose thresholds are established, and the dose-response is described as sensitive and unpredictable. High doses are warned against.",
+  "generalRisks": "Of potential serious injury or death. No deaths had been reported for this compound, while the suggested similarity to 25B-NBOMe is an inference rather than direct evidence. Human pharmacology, metabolism and toxicity data are extremely limited.",
+  "saferUse": [
+    "Insufflation and high doses are strongly discouraged, with warnings of possible serious injury or death and of an unpredictable dose-response."
+  ],
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/25B-NBOH"
+  ],
+  "roas": [
+    {
+      "name": "sublingual"
+    }
   ],
   "interactions": {
     "dangerous": [
@@ -38,5 +52,7 @@
       "stimulant"
     ]
   },
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "How the body breaks it down has not yet been verified for this entry. No enzymes, breakdown products or elimination routes are specified.",
+  "summary": "25B-NBOH is a synthetic phenethylamine in the NBOH family, chemically related to 25B-NBOMe. Human pharmacology and toxicity data are limited.",
+  "longtermRisks": "Long-term health effects are not established. The toxicity and harm-potential section is explicitly marked as a stub that may contain dangerous errors, so it cannot support long-term conclusions."
 }

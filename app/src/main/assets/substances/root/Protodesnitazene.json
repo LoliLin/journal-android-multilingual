@@ -6,5 +6,7 @@
     "opioid",
     "research-chemical",
     "tentative"
-  ]
+  ],
+  "summary": "Protodesnitazene is a benzimidazole derivative with potent opioid effects that has been sold as a designer drug.",
+  "metabolism": "Etodesnitazene is the substance recorded here as Protodesnitazene. First-generation metabolites for all four nitazenes were produced by N-deethylation, hydroxylation, N-oxidation, O-dealkylation and oxidative deamination; second-generation transformations further included O-glucuronidation and O-sulfation. Etodesnitazene and metodesnitazene shared 9 O-dealkyl metabolites. In urine, O-dealkyl and N-deethyl-O-dealkyl metabolites and glucuronides were main. The study identified 10 first-generation and 40 second-generation metabolites predicted for etodesnitazene.",  "metabolismSources": ["https://europepmc.org/article/PMC/11169013"]
 }

@@ -6,5 +6,9 @@
     "antiepileptic",
     "barbiturate"
   ],
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Absorbed quickly from the gut, reaching a peak blood level about 3 hours after a dose, with a useful blood level of 5 to 10 mg/ml. It spreads well into all the organs and tissues, gets into the brain, crosses the placenta and passes into breast milk. Only about 35% of it sticks to blood proteins, where roughly half of phenobarbital does. The liver turns part of primidone into phenobarbital and phenylethylmalonamide (PEMA), its two main breakdown products, and both of those also work as anticonvulsants. Like other anticonvulsants, primidone can make the liver produce more of its own enzymes. It stays in the body for about 10 hours, much shorter than its main breakdown products: PEMA for 10-25 hours and phenobarbital for 50-160 hours. It leaves mainly in the urine, 40% unchanged and 28% as PEMA.",
+  "metabolismSources": [
+    "https://www.medicines.org.uk/emc/product/14779/smpc"
+  ],
+  "summary": "Primidone is a barbiturate medication used to treat focal and generalized seizures and essential tremor. Its active metabolite phenobarbital contributes to its long-term antiseizure effect."
 }

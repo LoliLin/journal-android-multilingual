@@ -13,14 +13,16 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "cannabinoid"
+    "Cannabinoid"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "There is little human toxicology information, the exact toxic dose is listed as unknown, and the dose information comes from user and resource reports."
   ],
-  "categories": [
-    "cannabinoid"
+  "dosageRemark": "The archived table lists threshold <0.5 mg, light 0.5-1.5 mg, moderate 1.5-2 mg, strong 2-4 mg, heavy 4 mg+; total 30-60 min, onset 10-45 sec, comeup 10-45 min, peak 10-30 min, offset 5-10 min, afterglow 15-45 min. Educational user/resource compilation, not a recommendation. Source provides little human toxicology; exact toxic dose is unknown. Duplicate inhaled/smoked entries consolidated.",
+  "generalRisks": "The archived dose table is anecdotal/user-resource information; exact toxic dose is unknown and should not be inferred from dose bands.",
+  "saferUse": [
+    "The dose data are educational and should be cross-checked; the exact toxic dose is unknown."
   ],
   "interactions": {
     "dangerous": [
@@ -42,51 +44,13 @@
       "25x-NBOMe"
     ]
   },
+  "categories": [
+    "cannabinoid"
+  ],
+  "summary": "STS-135 is a synthetic cannabinoid with user-reported inhaled dose and duration estimates; exact toxic dose is unknown.",
   "roas": [
     {
       "name": "inhaled",
-      "dose": {
-        "units": "mg",
-        "lightMin": 0.5,
-        "commonMin": 1.5,
-        "strongMin": 2,
-        "heavyMin": 4
-      },
-      "duration": {
-        "onset": {
-          "min": 10,
-          "max": 45,
-          "units": "seconds"
-        },
-        "comeup": {
-          "min": 10,
-          "max": 45,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 10,
-          "max": 30,
-          "units": "minutes"
-        },
-        "offset": {
-          "min": 5,
-          "max": 10,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 30,
-          "max": 60,
-          "units": "minutes"
-        },
-        "afterglow": {
-          "min": 15,
-          "max": 45,
-          "units": "minutes"
-        }
-      }
-    },
-    {
-      "name": "smoked",
       "dose": {
         "units": "mg",
         "lightMin": 0.5,

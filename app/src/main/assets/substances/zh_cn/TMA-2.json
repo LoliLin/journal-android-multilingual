@@ -7,7 +7,58 @@
     "zeroToleranceInHours": 168
   },
   "addictionPotential": "无成瘾性",
-  "toxicities": ["毒性剂量未知"],
+  "toxicities": [
+    "毒性剂量未知"
+  ],
+  "dosageRemark": "归档口服表：阈值 5 mg；轻微 10-20 mg；中等 20-40 mg；强烈 40-60 mg；严重 60 mg 以上。来源阶段时长：总时长 8-12 小时、发作 20-120 分钟、上升 1.5-3 小时、达峰 4-6 小时、褪去 2-4 小时、残余 4-24 小时。用户/资源教育汇编，不是建议。lightMin 已从阈值改为来源轻微区间下界。",
+  "generalRisks": "主观效应基于用户报告，并指出效应可能不可预测；不良反应随剂量增加可能性上升。",
+  "saferUse": [
+    "剂量信息是教育用途用户/资源资料，不是建议；应独立交叉核实。"
+  ],
   "summary": "三甲氧基苯丙胺-2，一种由亚历山大·舒尔金首次合成的致幻性苯丙胺类兴奋剂。该化合物较为罕见，其活性与其他致幻性苯丙胺类药物相似。人类使用历史较短。",
-  "localizedName": "TMA-2"
+  "localizedName": "TMA-2",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 10,
+        "commonMin": 20,
+        "strongMin": 40,
+        "heavyMin": 60
+      },
+      "duration": {
+        "onset": {
+          "min": 20,
+          "max": 120,
+          "units": "minutes"
+        },
+        "comeup": {
+          "min": 1.5,
+          "max": 3,
+          "units": "hours"
+        },
+        "peak": {
+          "min": 4,
+          "max": 6,
+          "units": "hours"
+        },
+        "offset": {
+          "min": 2,
+          "max": 4,
+          "units": "hours"
+        },
+        "total": {
+          "min": 8,
+          "max": 12,
+          "units": "hours"
+        },
+        "afterglow": {
+          "min": 4,
+          "max": 24,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

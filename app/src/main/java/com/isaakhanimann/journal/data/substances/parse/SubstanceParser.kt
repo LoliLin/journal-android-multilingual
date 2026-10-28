@@ -251,7 +251,8 @@ class SubstanceParser @Inject constructor() : SubstanceParserInterface {
             route = route,
             roaDose = roaDose,
             roaDuration = roaDuration,
-            bioavailability = bioavailability
+            bioavailability = bioavailability,
+            releaseForm = ReleaseForm.fromName(oneJsonRoa.getOptionalString("releaseForm"))
         )
     }
 

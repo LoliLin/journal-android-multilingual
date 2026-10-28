@@ -1,0 +1,20 @@
+##### DiPT
+# hits: 95
+
+=== &lt;i&gt;N&lt;/i&gt;,&lt;i&gt;N&lt;/i&gt;-Diisopropyltryptamine and diptogenia: proposed mechanisms for a frequency-selective pitch-distorting psychedelic.
+    Hurst A, Bajo VM.
+    ? 2026 | PMID 41971051 | PMCID PMC13069925 | DOI 10.1093/braincomms/fcag093
+    https://europepmc.org/article/PMC/13069925
+    - The 6–8 h duration of DiPT’s emotional effects aligns with other structurally similar tryptamines like diethyltryptamine (DET), which are metabolized via cytochrome P450 2D6 (CYP2D)-mediated hydroxylation. 6 DiPT likely follows a similar metabolic pathway, allowing relatively rapid clearance from the CNS. In contrast, diptogenia may result from DiPT's accumulation in the inner ear, where drug clearance occurs much more slowly due to its complex anatomy and limited vascularization where drugs are retained longer than in vascularly active brain regions. 7 DiPT's lipophilic properties should facilitate passage across the blood-labyrinth barrier (BLB), allowing access to cochlear structures, the basilar membrane, perilymph or endolymph.
+
+=== Pharmaco-toxicological effects of the novel tryptamine hallucinogen 5-MeO-MiPT on motor, sensorimotor, physiological, and cardiorespiratory parameters in mice-from a human poisoning case to the preclinical evidence.
+    Bassi M, Bilel S, Tirri M, Corli G, Di Rosa F, Gregori A, Alkilany AM, Rachid O, Roda E, Zauli G, Locatelli CA, Marti M.
+    ? 2024 | PMID 38214743 | DOI 10.1007/s00213-024-06526-8
+    - Lastly, we investigated the in silico ADMET (absorption, distribution, metabolism, excretion, toxicity) profile of 5-MeO-MiPT compared to 5-methoxy-N,N-diisopropyltryptamine (5-MeO-DIPT) and N,N-dimethyltryptamine (DMT).
+
+=== Human Hepatocyte 4-Acetoxy-<i>N</i>,<i>N</i>-Diisopropyltryptamine Metabolite Profiling by Reversed-Phase Liquid Chromatography Coupled with High-Resolution Tandem Mass Spectrometry.
+    Malaca S, Huestis MA, Lattanzio L, Marsella LT, Tagliabracci A, Carlier J, Busardò FP.
+    ? 2022 | PMID 36005577 | DOI 10.3390/metabo12080705
+    - The aim of this study was to determine the best 4-AcO-DiPT metabolites to identify 4-AcO-DiPT consumption through human hepatocyte metabolism and high-resolution mass spectrometry. 4-AcO-DiPT metabolites were predicted in silico with GLORYx freeware to assist in metabolite identification. 4-AcO-DiPT was incubated with 10-donor-pooled human hepatocytes and sample analysis was performed with reversed-phase liquid chromatography coupled with high-resolution tandem mass spectrometry (LC-HRMS/MS) in positive- and negative-ion modes.
+    - A total of 47 phase I and II metabolites were predicted, and six metabolites were identified after 3 h incubation following ester hydrolysis, O -glucuronidation, O -sulfation, N -oxidation, and N -dealkylation.
+    - All second-generation metabolites were derived from the only first-generation metabolite detected after ester hydrolysis (4-OH-DiPT).

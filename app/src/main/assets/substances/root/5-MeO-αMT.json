@@ -1,9 +1,41 @@
 {
   "name": "5-MeO-αMT",
-  "url": "https://tripsit.me/factsheets/?name=5-meo-amt&p=substance",
   "commonNames": [
     "5-MeO-αMT",
     "5meoamt"
+  ],
+  "url": "https://tripsit.me/factsheets/?name=5-meo-amt&p=substance",
+  "isApproved": false,
+  "toxicities": [
+    "Recreational toxicity and long-term health effects of 5-MeO-αMT appear not to have been studied in any scientific context, and the exact toxic dose is unclear, because it is a research chemical with a very short history of human use. One death associated with 5-MeO-αMT is reported, with an unknown dose, and a small number of unconfirmed reports of hospitalisations after high doses (above 60 mg orally) have been received.",
+    "Severe doses are associated with hospitalisation, coma and death. As a potent monoamine reuptake inhibitor, 5-MeO-αMT can be very dangerous in overdose or when combined with MAOIs, RIMAs, stimulants, or any substance that releases or inhibits reuptake of serotonin and dopamine."
+  ],
+  "effectsSummary": "5-MeO-αMT is described as a synthetic tryptamine producing powerful and long-lasting psychedelic, empathogenic and stimulant effects. Moderate to extreme nausea occurs at almost any dose, either clearing after vomiting or gradually subsiding towards the peak, and visual effects mostly appear only at high doses and are weak relative to the accompanying cognitive and somatic effects compared with LSD or psilocin. The effects index is built on anecdotal user reports.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and resources for education, not a recommendation. The page lists a threshold of 0.5 mg, a light range of 0.5-2 mg, moderate of 2-4 mg, strong of 4-5 mg and heavy of 5 mg or more, with a total duration of 12-18 hours and onset of 60-180 minutes; the model does not represent a threshold band separately, so the 0.5 mg threshold is preserved here and lightMin equals the lower bound of the source light range. The page notes severe doses are associated with hospitalisation, coma and death. The page provides no comeup, peak, offset or afterglow values and no other routes.",
+  "generalRisks": "One associated death of unknown dose is reported, along with a small number of unconfirmed hospitalisation reports after high oral doses above 60 mg, and severe doses are associated with hospitalisation, coma and death. As a potent monoamine reuptake inhibitor the substance can be very dangerous in overdose or combined with MAOIs, RIMAs, stimulants, or serotonin and dopamine releasers or reuptake inhibitors. Toxicity and long-term effects appear unresearched.",
+  "longtermRisks": "Recreational toxicity and long-term health effects of 5-MeO-αMT appear not to have been studied in any scientific context.",
+  "saferUse": [
+    "Harm reduction is strongly recommended, as is independent research before taking it, to make sure combinations of two or more substances are safe.",
+    "It warns that cannabis may combine with its effects in unexpectedly strong and unpredictable ways, and that stimulants raise the risk of anxiety, paranoia, panic attacks, thought loops, mania and psychosis."
+  ],
+  "interactions": {
+    "dangerous": [
+      "Lithium",
+      "MAOI",
+      "RIMA",
+      "stimulant",
+      "Tramadol",
+      "serotonin releaser",
+      "dopamine releaser"
+    ],
+    "unsafe": [
+      "Cannabis"
+    ],
+    "uncertain": []
+  },
+  "metabolism": "The pharmacology section is incomplete. The psychedelic effects of 5-MeO-αMT are believed to arise from its acting as a partial agonist at 5-HT receptors, while the precise roles of these interactions remain elusive, and the substance is described elsewhere as a potent monoamine reuptake inhibitor. No specific human metabolic pathway is given.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/5-MeO-αMT"
   ],
   "categories": [
     "stimulant",
@@ -11,6 +43,29 @@
     "research-chemical",
     "entactogen"
   ],
-  "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "summary": "5-MeO-αMT is a synthetic tryptamine producing powerful, long-lasting psychedelic, empathogenic and stimulant effects over 12-18 hours. Severe doses are associated with hospitalisation, coma and death, and it is dangerous with MAOIs, RIMAs, stimulants and serotonin or dopamine releasers.",
+  "roas": [
+    {
+      "name": "oral",
+      "dose": {
+        "units": "mg",
+        "lightMin": 0.5,
+        "commonMin": 2,
+        "strongMin": 4,
+        "heavyMin": 5
+      },
+      "duration": {
+        "onset": {
+          "min": 60,
+          "max": 180,
+          "units": "minutes"
+        },
+        "total": {
+          "min": 12,
+          "max": 18,
+          "units": "hours"
+        }
+      }
+    }
+  ]
 }

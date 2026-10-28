@@ -9,8 +9,11 @@
   "url": "https://psychonautwiki.org/wiki/Clonidine",
   "isApproved": true,
   "crossTolerances": [],
-  "addictionPotential": "not addictive and has a low potential for abuse",
-  "toxicities": [],
+  "addictionPotential": "Not addictive and has a low potential for abuse",
+  "toxicities": [
+    "The oral-tablet label lists dose-related dry mouth, drowsiness, dizziness, constipation, and sedation. It also reports bradycardia, conduction abnormalities including AV block, syncope, hallucinations or delirium, and rare hepatitis or angioedema.",
+    "Overdose may cause early hypertension followed by hypotension, bradycardia, respiratory depression, hypothermia, marked drowsiness, coma, or seizures."
+  ],
   "categories": [
     "depressant",
     "common"
@@ -58,6 +61,10 @@
           "units": "hours"
         }
       }
+    },
+    {
+      "name": "oral",
+      "releaseForm": "EXTENDED_RELEASE"
     }
   ],
   "metabolism": "Partly metabolized in the liver; a substantial fraction is excreted unchanged in urine. The reviewed label does not identify a single dominant metabolic enzyme.",
@@ -67,5 +74,10 @@
   "oralReleaseForms": [
     "IMMEDIATE_RELEASE",
     "EXTENDED_RELEASE"
+  ],
+  "generalRisks": "The label warns that abrupt discontinuation can cause agitation, headache, tremor, and rebound hypertension; rare reports include hypertensive encephalopathy, stroke, and death. Risk may be greater after high doses or with concomitant beta-blockers. Clonidine can add to CNS depression from alcohol and sedatives. Bradycardia or AV block risk may increase with drugs affecting sinus-node or AV-node conduction; tricyclic antidepressants may reduce clonidine's blood-pressure-lowering effect.",
+  "saferUse": [
+    "Do not stop prescribed clonidine abruptly; the label advises gradual dose reduction under a prescriber's direction to reduce withdrawal and rebound-hypertension risk.",
+    "The label cautions about sedation, driving or hazardous activities, and increased sedation with alcohol or other sedating medicines."
   ]
 }

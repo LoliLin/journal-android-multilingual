@@ -1,0 +1,21 @@
+##### Deschloroketamine
+# hits: 19
+
+=== Determination of Enantiomers of Deschloroketamine and Its Metabolites in Wistar Rat Brains.
+    Paškanová N, Hrubá V, Frühauf P, Jurásek B, Kuchař M, Řezanka P, Kohout M.
+    ? 2026 | PMID 42733247 | DOI 10.1002/jssc.70503
+    - SFC using polysaccharide‑based chiral stationary phases provided baseline separation of the hydroxylated and demethylated metabolites, but severe peak distortion of DXE enantiomers prevented their quantification.
+
+=== Studies on the Stability and Microbial Biotransformation of Five Deschloroketamine Derivatives as Prerequisite for Wastewater-Based Epidemiology Screening.
+    Frankenfeld F, Wagmann L, Meyer MR.
+    ? 2025 | PMID 39659189 | DOI 10.1002/dta.3839
+    - Since the drug market changes frequently, it is crucial for WBE to define screening and surveillance biomarkers considering drug metabolism and (microbial) stability.
+    - After WW incubations, all tested DCKD and their metabolites were still detectable at least in trace amounts, but particularly, peak areas of the Phase II N- and O-glucuronides showed a markable decrease.
+    - This is in line with previous findings where Phase II conjugates were identified to be unstable in WW and thus not recommended as a WW biomarker.
+
+=== In Vivo and In Vitro Metabolic Fate and Urinary Detectability of Five Deschloroketamine Derivatives Studied by Means of Hyphenated Mass Spectrometry.
+    Frankenfeld F, Wagmann L, Abelian A, Wallach J, Adejare A, Brandt SD, Meyer MR.
+    ? 2024 | PMID 38786747 | DOI 10.3390/metabo14050270
+    - The aims of the presented work were to study the in vivo phase I and II metabolism; in vitro phase I metabolism, using pooled human liver microsomes (pHLMs); and detectability, within a standard urine screening approach (SUSA), of five deschloroketamine derivatives.
+    - Metabolism studies were conducted by collecting urine samples from male Wistar rats over a period of 24 h after their administration at 2 mg/kg body weight.
+    - The compounds were mainly metabolized by N -dealkylation, hydroxylation, multiple oxidations, and combinations of these metabolic reactions, as well as glucuronidation and N -acetylation.

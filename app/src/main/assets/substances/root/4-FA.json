@@ -16,11 +16,13 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
-  "toxicities": [],
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
+  "toxicities": [
+    "Severe acute cardiovascular events, including cardiac arrest and stroke, have been reported; causality and mechanism remain uncertain."
+  ],
   "categories": [
     "entactogen",
     "stimulant",
@@ -28,7 +30,7 @@
     "habit-forming",
     "common"
   ],
-  "summary": "An empathogen commonly used in place of MDMA, having a similar duration of empathogenic effects. This drug, however, has a longer stimulant \"tail,\" during which effects are more like those of amphetamines. Not to be confused with 4-FMA, which has a similar potency, but is not particularly empathogenic.",
+  "summary": "4-FA is a fluorinated amphetamine and an empathogen commonly used in place of MDMA, with a similar duration of empathogenic effects. It has a longer stimulant tail, during which its effects are more like those of amphetamines. Human-use toxicity and metabolism data remain limited. It should not be confused with 4-FMA, which has a similar potency but is not particularly empathogenic.",
   "interactions": {
     "dangerous": [
       "Tramadol",
@@ -99,5 +101,16 @@
         }
       }
     }
+  ],
+  "effectsSummary": "Reported empathogenic effects resembling a milder MDMA-like phase followed by amphetamine-like stimulation. Reported effects include euphoria, increased empathy, heart rate and blood pressure changes, overheating, dehydration and possible seizures; the page warns that subjective effects are anecdotal and unpredictable.",
+  "dosageRemark": "The archived oral dose table lists threshold 40 mg, light 40–100 mg, common 100–130 mg, strong 130–150 mg and severe 150 mg+. The model has no thresholdMin field, so the 40 mg threshold is recorded here; it coincides with the listed lightMin. The page states dose information is collected from users and resources for education, not recommendation, and should be independently verified.",
+  "generalRisks": "Serious acute cardiovascular events associated with 4-FA use, including cardiac arrest and stroke with severe brain injury after reported moderate doses; causality and mechanism are uncertain. The page also describes tachycardia, hypertension, chest pain, arrhythmias, overheating and seizures. Severe headache or neurological symptoms after use are treated by the source as urgent warning signs.",
+  "longtermRisks": "Research on recreational toxicity and long-term effects is limited because human-use history is short. Long-term outcomes remain uncertain; reported acute cardiovascular events do not establish a specific chronic effect.",
+  "saferUse": [
+    "Harm-reduction measures are strongly recommended. Nasal use is advised against, because of reported corrosive injury to the nose and throat, and the dose table is educational, not a recommendation."
+  ],
+  "metabolism": "How the body breaks it down data for 4-FA are very limited and does not establish how it is broken down in people. This is a knowledge gap, not evidence that 4-FA is not broken down.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/4-FA.md"
   ]
 }

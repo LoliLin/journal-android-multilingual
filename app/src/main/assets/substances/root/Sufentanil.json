@@ -64,5 +64,6 @@
         }
       }
     }
-  ]
+  ],
+  "metabolism": "Broken down mostly in the liver and the small intestine. CYP3A4 does most of the work in people, turning it quickly into a number of inactive products, mainly by taking the alkyl groups off the N and O positions. Put under the tongue, 53% of the dose reaches the blood, against 9% when it is swallowed, because the tongue route avoids the gut and the liver's first pass. After an injection it sits in a central volume of about 14 litres and spreads out to about 350 litres at steady state. After one Dzuveo tablet it stays in the body for about 13.4 hours on average (2.5-34.4 hours).",  "metabolismSources": ["https://www.medicines.org.uk/emc/product/13984/smpc"]
 }

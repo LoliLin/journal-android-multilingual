@@ -19,10 +19,10 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [],
   "categories": [
     "stimulant",
@@ -118,5 +118,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Desoxypipradrol (2-DPMP) is a drug developed by Ciba in the 1950s that acts as a norepinephrine–dopamine reuptake inhibitor."
 }

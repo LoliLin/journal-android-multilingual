@@ -46,13 +46,18 @@ data class Substance(
     val metabolismSources: List<String> = emptyList(),
     val oralReleaseForms: List<ReleaseForm> = emptyList()
 ) {
-    fun getRoa(route: AdministrationRoute, releaseForm: ReleaseForm? = null): Roa? =
-        if (releaseForm == ReleaseForm.EXTENDED_RELEASE) {
-            // The catalog currently has no formulation-specific dose or duration data.
-            null
-        } else {
-            roas.firstOrNull { it.route == route }
+    fun getRoa(route: AdministrationRoute, releaseForm: ReleaseForm? = null): Roa? {
+        val routeRoas = roas.filter { it.route == route }
+        return when (releaseForm) {
+            null -> routeRoas.firstOrNull { it.releaseForm == null }
+                ?: routeRoas.firstOrNull { it.releaseForm == ReleaseForm.IMMEDIATE_RELEASE }
+            ReleaseForm.IMMEDIATE_RELEASE ->
+                routeRoas.firstOrNull { it.releaseForm == ReleaseForm.IMMEDIATE_RELEASE }
+                    ?: routeRoas.firstOrNull { it.releaseForm == null }
+            ReleaseForm.EXTENDED_RELEASE ->
+                routeRoas.firstOrNull { it.releaseForm == ReleaseForm.EXTENDED_RELEASE }
         }
+    }
 
     fun getReleaseForms(route: AdministrationRoute): List<ReleaseForm> =
         if (route == AdministrationRoute.ORAL) oralReleaseForms else emptyList()

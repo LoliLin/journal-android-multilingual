@@ -1,16 +1,26 @@
 {
   "name": "MDPHP",
-  "url": "https://tripsit.me/factsheets/?name=mdphp&p=substance",
   "commonNames": [
     "MDPHP",
     "monkey-dust"
   ],
+  "url": "https://tripsit.me/factsheets/?name=mdphp&p=substance",
+  "isApproved": false,
+  "toxicities": [
+    "The unreviewed source explicitly warns that toxicity and other risk information may be incorrect; no toxicology facts or numeric dose ranges are imported from this draft."
+  ],
+  "effectsSummary": "The archived FreeODwiki entry is not fully reviewed by administrators and explicitly warns it may contain incorrect information, especially dosage, duration, subjective effects, toxicity and other risks.",
+  "dosageRemark": "The page's dose tables contain malformed threshold entries ('1 - mg') and the page explicitly warns it is not fully reviewed and may be incorrect, especially dosage and duration. Do not import these values into structured dose fields; retain the source warning and seek independent corroboration.",
+  "generalRisks": "The archived MDPHP entry is unreviewed and warns that dosage, duration, subjective effects, toxicity and other risk information may be incorrect.",
+  "saferUse": [
+    "Treat this unreviewed page as provisional; verify any dose or risk claim independently before structured use."
+  ],
+  "metabolism": "How the body breaks it down has not yet been verified for this entry. No enzymes, breakdown products or elimination routes are specified.",
   "categories": [
     "stimulant",
     "tentative",
     "habit-forming",
     "research-chemical"
   ],
-  "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "summary": "MDPHP is a synthetic cathinone. The available FreeODwiki page is unreviewed and warns that its dosage and risk information may be incorrect."
 }

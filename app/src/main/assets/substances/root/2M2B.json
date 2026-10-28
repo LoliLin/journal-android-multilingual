@@ -16,11 +16,11 @@
   },
   "crossTolerances": [
     "GABA",
-    "depressants"
+    "Depressants"
   ],
-  "addictionPotential": "moderately addictive with a high potential for abuse",
+  "addictionPotential": "Moderately addictive with a high potential for abuse",
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "depressant",
@@ -65,5 +65,13 @@
         }
       }
     }
+  ],
+  "summary": "2M2B (tert-amyl alcohol, or 2-methylbutan-2-ol) is a branched pentanol that has been used as an anesthetic and recreational drug. It acts mainly as a positive allosteric modulator of GABA-A receptors, similarly to ethanol.",
+  "saferUse": [
+    "Combining 2M2B with other depressants -- including alcohol, opioids, benzodiazepines, barbiturates, gabapentinoids or GHB/GBL -- is strongly warned against, as it can cause a fatal overdose. Starting low and using harm-reduction measures are recommended. The dose table is educational, not a recommendation."
+  ],
+  "metabolism": "This tertiary alcohol is claimed not to be broken down to an aldehyde by alcohol dehydrogenase the way ethanol is, and that claim is linked to a longer duration. No specific human metabolic study is described, so the mechanism should be treated as a claim rather than established clinical evidence.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2M2B"
   ]
 }

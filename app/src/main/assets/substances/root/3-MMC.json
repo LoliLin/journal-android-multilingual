@@ -14,17 +14,17 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
-  "addictionPotential": "extremely addictive with a high potential for abuse",
+  "addictionPotential": "Extremely addictive with a high potential for abuse",
   "toxicities": [],
   "categories": [
     "entactogen",
     "stimulant",
     "habit-forming"
   ],
-  "summary": "A euphoric stimulant similar to mephedrone but said to lack much of the \"magic.\" Never gained the same popularity. Slightly less potent.",
+  "summary": "3-MMC is a synthetic cathinone reported to produce stimulant and empathogenic effects similar to 4-MMC. Its pharmacology, toxicity and what is known about the breakdown is limited, so specific mechanisms and long-term effects remain uncertain.",
   "interactions": {
     "dangerous": [
       "25x-NBOMe",
@@ -52,7 +52,7 @@
       "name": "insufflated",
       "dose": {
         "units": "mg",
-        "lightMin": 10,
+        "lightMin": 20,
         "commonMin": 40,
         "strongMin": 60,
         "heavyMin": 120
@@ -136,7 +136,7 @@
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 25,
+        "lightMin": 50,
         "commonMin": 150,
         "strongMin": 250,
         "heavyMin": 350
@@ -174,5 +174,16 @@
         }
       }
     }
+  ],
+  "effectsSummary": "Reported stimulant effects such as euphoria, energy and increased sociability or empathy. It also reports compulsive redosing and adverse effects including increased heart rate, overheating, dehydration and, rarely, seizures. The page marks its effects as anecdotal and unpredictable.",
+  "dosageRemark": "The archived dose tables explicitly say their information is collected from users and resources for education, not recommendation, and should be independently verified. They list oral threshold 25 mg and light 50–150 mg; insufflated threshold 10 mg and light 20–40 mg; intravenous threshold below 10 mg and light 10–25 mg. Thresholds cannot be represented separately by the data model and are recorded here. The toxicity section is marked by the source as incomplete and potentially extremely erroneous.",
+  "generalRisks": "3-MMC pharmacology, toxicity and long-term effects are poorly characterized and warns that its toxicity section may be incomplete or extremely erroneous. Its effects list includes cardiovascular strain, overheating, dehydration and seizure reports, but does not establish rates or reliable dose relationships. The page also describes strong compulsive redosing and dependence concerns.",
+  "longtermRisks": "Long-term effects are insufficiently studied. Preliminary concern for possible neurotoxicity and cardiotoxicity with prolonged or repeated high-dose use, but these risks are not established for 3-MMC.",
+  "saferUse": [
+    "Harm-reduction measures are strongly recommended, and the dose tables are unverified educational information, not a recommendation."
+  ],
+  "metabolism": "Data on 3-MMC pharmacology and metabolism are limited and does not establish how it is broken down in people. This is a knowledge gap, not evidence that 3-MMC is not broken down.",
+  "metabolismSources": [
+    "https://github.com/LoliLin/SubstancesArchive/blob/b942b3ed59e088e05fb24b4bbbd4e547c9093384/archive/freeodwiki/%E8%8D%AF%E7%89%A9/3-MMC.md"
   ]
 }

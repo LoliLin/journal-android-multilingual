@@ -7,7 +7,7 @@
     "DMPEA"
   ],
   "categories": [
-    "psychedelic",
+    "Psychedelic",
     "stimulant"
   ],
   "tolerance": {
@@ -16,11 +16,16 @@
     "zero": "7-10 days"
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "No formal studies are reported. PsychonautWiki suggests it may be non-habit-forming based on psychedelics generally, while noting that its stimulant properties could still pose an addiction risk.",
   "toxicities": [
-    "toxic dose is unknown"
+    "Toxic dose is unknown"
+  ],
+  "dosageRemark": "Oral dosage and total duration are unknown, and no established dose data are available.",
+  "generalRisks": "Recreational toxicity and long-term health effects have not been studied in a scientific context, and the exact toxic dose is unknown. Human-use history and pharmacological data are very limited.",
+  "saferUse": [
+    "Harm-reduction practices and accurate measurement are advised. No dose is established."
   ],
   "interactions": {
     "dangerous": [
@@ -33,5 +38,15 @@
       "Cannabis",
       "stimulant"
     ]
-  }
+  },
+  "metabolism": "How the body breaks it down has not been established. PsychonautWiki summarizes a hypothesis that monoamine oxidase may break it down rapidly; this has not been confirmed in humans.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/2C-H"
+  ],
+  "roas": [
+    {
+      "name": "oral"
+    }
+  ],
+  "summary": "2C-H is a substituted phenethylamine and the simplest member of the 2C family. It is used mainly as a precursor to synthesize other 2C compounds; significant psychedelic activity has not been established."
 }

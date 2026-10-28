@@ -14,17 +14,20 @@
     "zeroToleranceInHours": 168
   },
   "crossTolerances": [
-    "psychedelic"
+    "Psychedelic"
   ],
-  "addictionPotential": "not habit-forming",
+  "addictionPotential": "Not habit-forming",
   "toxicities": [
-    "toxic dose is unknown"
+    "The exact toxic dose of 4-HO-EPT is unknown and that its toxicity and long-term health effects have not been researched."
   ],
-  "categories": [
-    "psychedelic",
-    "tentative"
+  "effectsSummary": "4-HO-EPT within a subjective-effects index built on anecdotal user reports and contributor analysis, to be taken with healthy skepticism, and notes that adverse effects become more likely as dose increases, potentially including addiction, serious injury or death.",
+  "dosageRemark": "The archived oral dose table is compiled from user reports and related resources for education, not recommendations. The page lists only a light range of 15-20 mg, moderate of 30-40 mg and strong of 40-60 mg, with no threshold and no severe band, and the bands are not contiguous: the gap between the light upper bound of 20 mg and the moderate lower bound of 30 mg is left empty because the source leaves it empty and no value is inferred to fill it. It lists a total duration of 3-7 hours, onset of 30-60 minutes, peak of 1-2 hours and offset of 1-2 hours, with no afterglow value. The page warns that differences in individual weight, tolerance, metabolism and sensitivity mean doses must be started lower.",
+  "generalRisks": "The exact dose that causes poisoning is unknown. That differences in individual weight, tolerance, metabolism and sensitivity mean doses must be started lower.",
+  "longtermRisks": "The toxicity and long-term health effects of 4-HO-EPT have not been researched.",
+  "saferUse": [
+    "Differences in individual weight, tolerance, metabolism and sensitivity mean doses must be started lower.",
+    "It advises verifying accuracy against other sources, since its dose information is collected from user reports for education only."
   ],
-  "summary": "The 4-Hydroxy version of EPT. Slightly more potent than the prior.",
   "interactions": {
     "dangerous": [
       "Lithium"
@@ -37,6 +40,15 @@
       "stimulant"
     ]
   },
+  "metabolism": "Nothing is known about how 4-HO-EPT is broken down in people. No specific metabolic finding or pathway has been described.",
+  "metabolismSources": [
+    "https://psychonautwiki.org/wiki/4-HO-EPT"
+  ],
+  "categories": [
+    "psychedelic",
+    "tentative"
+  ],
+  "summary": "4-HO-EPT is the 4-Hydroxy version of EPT, a tryptamine psychedelic slightly more potent than EPT. Its dose table lists only light, moderate and strong bands, with no threshold and no severe band, and leaves a gap between the light and moderate ranges.",
   "roas": [
     {
       "name": "oral",

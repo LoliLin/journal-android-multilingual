@@ -13,5 +13,6 @@
     "tentative"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "4,4′-Dimethylaminorex (4,4′-DMAR) is a psychostimulant and entactogen related to aminorex, 4-methylaminorex, and pemoline. It has been linked to fatal intoxications, often involving other drugs."
 }

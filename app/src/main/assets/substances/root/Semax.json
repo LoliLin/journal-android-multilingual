@@ -1,5 +1,15 @@
 {
   "name": "Semax",
+  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/Semax.md",
   "isApproved": false,
-  "url": "https://github.com/SalviaSWC/FreeODwiki/blob/main/药物/Semax.md"
+  "toxicities": [
+    "The unapproved page warns toxicity and other risk information may be inaccurate; no toxicology conclusions are imported from this source."
+  ],
+  "effectsSummary": "The archived Semax page is not fully approved and warns that dosage, duration, subjective effects, toxicity and other risks may be inaccurate.",
+  "dosageRemark": "The page contains dose/duration tables but explicitly warns it has not been fully approved and may be inaccurate, especially these fields. Do not import its numeric table into structured dose fields without independent corroboration.",
+  "generalRisks": "The page has not been fully approved, and its dosage, duration, effects, toxicity and other risk information is warned as possibly inaccurate.",
+  "saferUse": [
+    "Treat the unapproved page as provisional and independently verify claims before structured use."
+  ],
+  "summary": "Semax is a peptide discussed in the FreeODwiki archive. Its available page is unapproved and warns that dose and risk information may be inaccurate."
 }

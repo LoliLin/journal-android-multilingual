@@ -80,5 +80,10 @@
   "metabolism": "The nitro group is reduced to a 7-amino derivative, followed by acetylation, hydroxylation and glucuronidation. CYP3A participates in reduction/oxidation. Very little clonazepam is excreted unchanged in urine.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2606ecf9-3d71-4c1c-bfda-d7d98ffc6011"
+  ],
+  "generalRisks": "The current DailyMed boxed warning states that benzodiazepine-opioid co-use can cause profound sedation, respiratory depression, coma, and death. Clonazepam also carries risks of abuse, misuse, addiction, physical dependence, and potentially life-threatening acute withdrawal after abrupt stopping or rapid dose reduction; respiratory depression is separately warned about.",
+  "saferUse": [
+    "Do not abruptly stop or rapidly reduce ongoing clonazepam use; the label advises gradual tapering under a prescriber's direction because withdrawal can be life-threatening.",
+    "Avoid opioid combinations unless specifically directed and monitored by a clinician; avoid alcohol and other sedatives, and do not drive or operate machinery if drowsy or impaired."
   ]
 }

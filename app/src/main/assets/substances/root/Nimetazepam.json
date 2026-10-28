@@ -11,5 +11,6 @@
     "depressant"
   ],
   "isApproved": false,
-  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds."
+  "metabolism": "Human metabolism has not yet been verified for this entry. Responsible enzymes, metabolites and elimination routes are not specified. This is a documentation gap, not evidence that the substance is not metabolized; do not infer a pathway from related compounds.",
+  "summary": "Nimetazepam is an intermediate-acting benzodiazepine hypnotic with sedative, anxiolytic, muscle-relaxant, and anticonvulsant effects. It has been used for short-term treatment of severe insomnia."
 }

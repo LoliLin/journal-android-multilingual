@@ -58,5 +58,20 @@
   "metabolism": "Mainly cleared by conjugation to inactive products, including an O-conjugate, followed by urinary excretion. No active metabolites were identified in the cited human disposition study.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=62379cd5-a314-43eb-a1ee-33997623bfa3"
-  ]
+  ],
+  "generalRisks": "The DailyMed boxed warning states that benzodiazepine-opioid co-use can cause profound sedation, respiratory depression, coma, and death. Temazepam also carries risks of abuse, misuse, addiction, physical dependence, and potentially life-threatening withdrawal after abrupt discontinuation or rapid dose reduction; risk increases with longer use and higher daily doses. Alcohol and other substances used with benzodiazepines increase serious adverse outcomes.",
+  "saferUse": [
+    "Do not abruptly stop or rapidly reduce ongoing temazepam use; the label advises a gradual taper under a prescriber's direction.",
+    "Avoid opioid combinations unless specifically directed and monitored by a clinician; avoid alcohol and other CNS depressants because they increase sedation and respiratory risk."
+  ],
+  "interactions": {
+    "dangerous": [
+      "opioid"
+    ],
+    "unsafe": [
+      "Alcohol",
+      "depressant"
+    ],
+    "uncertain": []
+  }
 }

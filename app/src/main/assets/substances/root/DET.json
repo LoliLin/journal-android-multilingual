@@ -1,6 +1,9 @@
 {
   "name": "DET",
-  "commonNames": ["Diethyltryptamine", "DET"],
+  "commonNames": [
+    "Diethyltryptamine",
+    "DET"
+  ],
   "url": "https://psychonautwiki.org/wiki/DET",
   "isApproved": true,
   "tolerance": {
@@ -10,17 +13,31 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "crossTolerances": ["psychedelic"],
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "categories": ["psychedelic", "research-chemical", "tentative"],
-  "summary": "A surprisingly uncommon analogue of DMT with similar effects and reported oral activity without the aid of an MAOI.",
+  "crossTolerances": [
+    "Psychedelic"
+  ],
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Recreational toxicity and long-term health effects of DET have not been studied in any scientific context and exact toxic dose is unknown."
+  ],
+  "dosageRemark": "The archived oral table lists threshold 10 mg, light 20-40 mg, moderate 40-70 mg, strong 70-100 mg, heavy 100 mg+; onset 30-90 min, peak 2-4 h, afterglow 2-8 h. The page provides no total duration, comeup or offset value. User/resource compilation for education, not a recommendation; lightMin was corrected from threshold to source light lower bound.",
+  "generalRisks": "DET as very rare with little human-use history and says toxicity and long-term health effects are unstudied; exact toxic dose is unknown.",
+  "longtermRisks": "Long-term health effects of recreational DET use have not been studied.",
+  "saferUse": [
+    "Independent research and harm reduction are recommended, because DET has little history of human use and no established toxic-dose data."
+  ],
+  "categories": [
+    "psychedelic",
+    "research-chemical",
+    "tentative"
+  ],
+  "summary": "DET is a rare synthetic psychedelic tryptamine structurally related to DMT. Its toxicity and long-term health effects have not been studied.",
   "roas": [
     {
       "name": "oral",
       "dose": {
         "units": "mg",
-        "lightMin": 10,
+        "lightMin": 20,
         "commonMin": 40,
         "strongMin": 70,
         "heavyMin": 100

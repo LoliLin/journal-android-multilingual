@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "not habit-forming",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Rare drug that is of the tryptamine family, can be comparable to Psilocybin. Expected to quickly hydrolyzed into the free phenolic 4-HO-DET.",
+  "addictionPotential": "Not habit-forming",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "4-AcO-DET"
 }

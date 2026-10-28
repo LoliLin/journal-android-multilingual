@@ -1,0 +1,9 @@
+##### Metaclazepam
+# hits: 8
+
+=== Metabolism and pharmacokinetics of metaclazepam (Talis), Part III: Determination of the chemical structure of metabolites in dogs, rabbits and men.
+    Borchers F, Achtert G, Hausleiter HJ, Zeugner H.
+    ? 1984 | PMID 6532806 | DOI 10.1007/bf03189684
+    - The metabolism of 7-bromo-1-methyl-2-methoxymethyl-5-(2'-chlorophenyl)-2, 3-dihydro-1H-1,4-benzodiazepine (metaclazepam, Talis) in animals and men is described.
+    - The major metabolic pathways of metaclazepam led via stepwise demethylation of the O-methyl and/or the N-methyl group to O-demethyl-metaclazepam (M 2), N-demethyl-metaclazepam (M 7) and bis-demethyl-metaclazepam (M 6).
+    - Further aromatic hydroxylation yielded the metabolite M 1.

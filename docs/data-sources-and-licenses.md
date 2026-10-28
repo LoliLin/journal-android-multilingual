@@ -10,6 +10,7 @@
 | [PsychonautWiki](https://psychonautwiki.org/) | 剂量、时长、生物利用度、耐受与交叉耐受、毒性、成瘾性、相互作用、别名（`fetch_psychonautwiki.py`） | CC BY-SA 4.0 | 署名；改编内容同协议共享；不得暗示其背书 |
 | [TripSit](https://tripsit.me/)（[drugs](https://github.com/TripSit/drugs)） | 仅名称、别名、分类（`fetch_tripsit.py`） | **仓库未声明许可证**（默认保留所有权利） | 不复制其文案与数值；标注来源；商业分发前建议先取得许可 |
 | [Wikidata](https://www.wikidata.org/) | 名称、药品类别（以其记录的 ATC 码事实核对）、条目链接（`fetch_wikidata.py`）；少数条目链接指向维基百科 | **CC0**（公共领域贡献） | 无署名义务；可商用、可修改、可再分发 |
+| [Wikipedia](https://en.wikipedia.org/) | 人工核验并改述的英文导语摘要（`en_us/<Name>.json#summary`） | CC BY-SA 4.0 | 署名 Wikipedia contributors，链接至具体修订，注明改述并遵循相同方式共享；条目与修订见 [`substance-wikipedia-attribution-2026-10-07.md`](substance-wikipedia-attribution-2026-10-07.md） |
 | [EUDA](https://www.euda.europa.eu/)（欧洲毒品报告） | 当年新通报 NPS 的名称、IUPAC 名、分类、通报日期、国家（`fetch_euda.py`） | EUDA 版权 + 再利用条款 | **每一份副本都要注明 EUDA 为来源**；其条款声明内容非临床/专业建议 |
 | [FreeODwiki](https://github.com/SalviaSWC/FreeODwiki) | 简体中文正文、中文显示名、术语表 | CC BY-SA 4.0（`LICENSE`、README、index、常见问题一致；`CODE_OF_CONDUCT` 明确允许商业使用）。`LICENSE-STRICT`＝CC BY-ND 4.0 只覆盖 `文档/观点讨论/*`、`文档/od.md`、`关于本站/文档翻译指南和提示词.md` 等少数文件，**391 个 `药物/*.md` 均无 ND 声明** | 署名；改编内容同协议共享。术语表取自被标记 ND 的那份翻译指南，属事实性词对，需要时可与维护者确认 |
 | DailyMed / EMA / SmPC / CPIC / PubMed | 代谢与排泄条目的**逐条**说明书来源，保存为数据里的 `metabolismSources` 链接 | NLM：美国政府作品不受版权保护，但站内含厂商提交内容；EMA 等允许再利用并注明来源 | 只做简短事实性摘述并保留原文链接，不整段转载 |
@@ -35,7 +36,7 @@
 
 - **可以修改**：物质 JSON、语言文件、分类词表都可以自由改动、扩充、重新翻译。
 - **可以自由分发**：连同应用一起分发，或单独提取数据分发，都可以。
-- **可以商用**：PW / FreeODwiki 派生内容（占绝大多数）允许商业使用，条件是**署名 + 相同方式共享**
+- **可以商用**：PW / FreeODwiki / Wikipedia 派生内容（占绝大多数）允许商业使用，条件是**署名 + 相同方式共享**
   （CC BY-SA 4.0；它与 GPLv3 单向兼容，所以并入本应用没有问题）。
 - **例外与前提**：
   1. **TripSit** 未声明许可证，只保留事实性字段并标注来源；出于 EU 数据库权（sui generis）的谨慎，

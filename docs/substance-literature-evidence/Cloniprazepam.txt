@@ -1,0 +1,16 @@
+##### Cloniprazepam
+# hits: 5
+
+=== In vitro Phase I and Phase II metabolism of the new designer benzodiazepine cloniprazepam using liquid chromatography coupled to quadrupole time-of-flight mass spectrometry.
+    Mortelé O, Vervliet P, Gys C, Degreef M, Cuykx M, Maudens K, Covaci A, van Nuijs ALN, Lai FY.
+    ? 2018 | PMID 29494888 | DOI 10.1016/j.jpba.2018.02.032
+    - The objective of this study was to investigate the in vitro Phase I and Phase II metabolism of the new designer benzodiazepine cloniprazepam and identify potential biomarkers for its detection in human biological fluids.
+    - Hydroxy-cloniprazepam, dihydroxy-cloniprazepam, 3-keto-cloniprazepam, 7-amino-cloniprazepam, hydroxy-clonazepam, 7-amino-clonazepam and 3-hydroxy-7-amino-clonazepam were formed through oxidation, hydroxylation, and/or reduction of the nitro-group.
+    - Glucuronidated hydroxy-cloniprazepam was the only Phase II metabolite detected.
+
+=== Characterization and in vitro phase I microsomal metabolism of designer benzodiazepines - an update comprising adinazolam, cloniprazepam, fonazepam, 3-hydroxyphenazepam, metizolam and nitrazolam.
+    Moosmann B, Bisel P, Franz F, Huppertz LM, Auwärter V.
+    ? 2016 | PMID 27535017 | DOI 10.1002/jms.3840
+    - Metizolam showed a similar metabolism to other thienodiazepines comprising monohydroxylations and dihydroxylation.
+    - Cloniprazepam was metabolized to numerous metabolites with the main metabolic steps being N-dealkylation, hydroxylation and reduction of the nitro function.
+    - Nitrazolam and fonazepam both underwent monohydroxylation and reduction of the nitro function.

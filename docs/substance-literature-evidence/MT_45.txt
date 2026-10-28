@@ -1,0 +1,7 @@
+##### MT-45
+# hits: 41
+
+=== Postmortem Toxicology of New Synthetic Opioids.
+    Concheiro M, Chesser R, Pardi J, Cooper G.
+    ? 2018 | PMID 30416445 | DOI 10.3389/fphar.2018.01210
+    - These factors include key chemical properties, essential pharmacokinetics parameters (metabolism), postmortem redistribution and stability data in postmortem samples.

@@ -13,11 +13,11 @@
     "zeroToleranceInHours": 252
   },
   "crossTolerances": [
-    "dopamine",
-    "stimulant"
+    "Dopamine",
+    "Stimulant"
   ],
   "toxicities": [
-    "exact toxic dosage is unknown"
+    "Exact toxic dosage is unknown"
   ],
   "categories": [
     "stimulant"
@@ -62,5 +62,6 @@
         }
       }
     }
-  ]
+  ],
+  "summary": "Cyclazodone is a centrally acting stimulant developed by American Cyanamid in the 1960s. It is related to pemoline and thozalinone."
 }

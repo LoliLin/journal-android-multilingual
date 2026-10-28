@@ -1,0 +1,9 @@
+##### ALD-52
+# hits: 27
+
+=== Analytical and behavioral characterization of 1-dodecanoyl-LSD (1DD-LSD).
+    Kavanagh PV, Westphal F, Pulver B, Elliott SP, Stratford A, Halberstadt AL, Brandt SD.
+    ? 2025 | PMID 38569566 | DOI 10.1002/dta.3691
+    - Evidence suggests that ALD-52 serves as a prodrug in vivo and hydrolysis to LSD is likely responsible for its activity.
+    - Previous work has shown that other homologues such as ALD-52 and 1-propanoyl-LSD also have considerably higher potency than 1DD-LSD in mice, which suggests that hydrolysis of the 1-dodecanoyl moiety may be comparatively less efficient in vivo.
+    - Further investigations are warranted to determine whether the increased lipophilicity of 1DD-LSD causes it to be sequestered in fat, thereby reducing its exposure to enzymatic hydrolysis in plasma and tissues.

@@ -4,7 +4,10 @@
     "zero": "7-14 days",
     "zeroToleranceInHours": 252
   },
-  "toxicities": ["low toxicity"],
-  "summary": "An analogue of GABA also known as Neurontin, originally developed to treat epilepsy. Commonly prescribed for neuropathic pain, it also has pronounced anxiolytic effects leading to its use in treating anxiety disorders.",
+  "toxicities": [
+    "Label-reported effects include somnolence, dizziness, ataxia, fatigue, and altered mental status.",
+    "Serious risks include potentially fatal respiratory depression, including in overdose alone or with CNS depressants; DRESS, anaphylaxis/angioedema, and suicidal thoughts or behavior have also been reported.",
+    "Abrupt discontinuation can increase seizure frequency; rare withdrawal symptoms have been reported after stopping higher-than-recommended use."
+  ],
   "localizedName": "Gabapentin"
 }

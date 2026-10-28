@@ -6,8 +6,9 @@
     "halfToleranceInHours": 72,
     "zeroToleranceInHours": 168
   },
-  "addictionPotential": "does not produce dependence and has low abuse potential",
-  "toxicities": ["toxic dose is unknown"],
-  "summary": "Ethylpropyltryptamine a novel tryptamine, that is the structural homologue of DMT.",
+  "addictionPotential": "Does not produce dependence and has low abuse potential",
+  "toxicities": [
+    "Toxic dose is unknown"
+  ],
   "localizedName": "EPT"
 }

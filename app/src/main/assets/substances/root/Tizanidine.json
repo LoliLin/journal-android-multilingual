@@ -8,43 +8,27 @@
   "interactions": {
     "dangerous": [
       "depressant",
-      "dissociative"
+      "dissociative",
+      "fluvoxamine",
+      "ciprofloxacin"
     ],
-    "uncertain": [
-      "stimulant"
-    ]
+    "unsafe": [],
+    "uncertain": []
   },
   "roas": [
     {
-      "name": "oral",
-      "dose": {
-        "units": "µg",
-        "lightMin": 25,
-        "commonMin": 4,
-        "strongMin": 6,
-        "heavyMin": 8
-      },
-      "duration": {
-        "onset": {
-          "min": 15,
-          "max": 45,
-          "units": "minutes"
-        },
-        "peak": {
-          "min": 60,
-          "max": 120,
-          "units": "minutes"
-        },
-        "total": {
-          "min": 2,
-          "max": 6,
-          "units": "hours"
-        }
-      }
+      "name": "oral"
     }
   ],
   "metabolism": "Extensively metabolized, chiefly by CYP1A2. Metabolites are not known to be active; elimination of drug-related material occurs mainly in urine and partly feces.",
   "metabolismSources": [
     "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=63b7eba3-6dea-4d89-bc42-7e965ae9795d"
+  ],
+  "summary": "Tizanidine is a centrally acting alpha-2 adrenergic agonist prescribed for spasticity. Its label warns of hypotension, bradycardia, and sedation.",
+  "dosageRemark": "The label describes prescription dosing for spasticity: start at 2 mg every 6 to 8 hours as needed, with gradual increases under clinician supervision; the maximum total daily dose is 36 mg. These are prescription instructions, not recreational dose guidance.",
+  "generalRisks": "The label warns of hypotension and syncope, bradycardia, sedation, liver injury, hallucinations, hypersensitivity, and withdrawal reactions. Fluvoxamine and ciprofloxacin are examples of strong CYP1A2 inhibitors and are contraindicated with tizanidine; moderate or weak CYP1A2 inhibitors should also be avoided because hypotension, bradycardia, or excessive drowsiness may occur. Alcohol and other CNS depressants add to sedation.",
+  "toxicities": [
+    "The prescribing label warns of hepatocellular liver injury, hallucinations or psychotic-like symptoms, hypersensitivity including anaphylaxis/angioedema, and withdrawal reactions (rebound hypertension, tachycardia, hypertonia) after abrupt reduction or discontinuation.",
+    "Common adverse reactions in placebo-controlled studies included dry mouth, somnolence/sedation, asthenia, and dizziness; rates were dose related."
   ]
 }

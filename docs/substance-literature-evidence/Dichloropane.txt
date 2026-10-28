@@ -1,0 +1,8 @@
+##### Dichloropane
+# hits: 4
+
+=== Dopamine transporter and synaptic vesicle sorting defects underlie auxilin-associated Parkinson's disease.
+    Vidyadhara DJ, Somayaji M, Wade N, Yücel B, Zhao H, Shashaank N, Ribaudo J, Gupta J, Lam TT, Sames D, Greene LE, Sulzer DL, Chandra SS.
+    ? 2023 | PMID 36920906 | PMCID PMC10127800 | DOI 10.1016/j.celrep.2023.112231
+    https://europepmc.org/article/PMC/10127800
+    - Dichloropane, a DAT ligand, was conjugated with rhodamine red-X as described by Fiala et al., 44 to obtain dichloropane–rhodamine red-X probe (dichloropane probe). Mice (n=5/genotype) were sacrificed by cervical dislocation under isoflurane anesthesia and the brains were quickly dissected. Coronal slices (300 μm) of striatum were cut (VT1200S, Leica) in ice-cold carbogenated solution containing: 100 mM choline chloride, 25 mM NaHCO 3 , 1.25 mM NaH 2 PO 4 , 2.5 mM KCl, 7 mM MgCl 2 , 0.5 mM CaCl 2 , 15 mM glucose, 11.6 mM sodium ascorbate, and 3.1 mM sodium pyruvate. Striatal slices were incubated at 37°C (30 mins) in carbogenated ACSF containing: 127 mM NaCl, 25 mM NaHCO 3 , 1.25 mM NaH 2 PO 4 , 2.5 mM KCl, 1 mM MgCl 2 , 2 mM CaCl 2 and 15 mM glucose. Slices were then warmed to room temperature in carbogenated ACSF and incubated in dichloropane probe (100 nM) for 45 mins at 37°C. Following this, slices were washed once in carbogenated ACSF and the dorsal striata maintained in ACSF were imaged under 25X water immersion objective at 561 nm excitation using a confocal microscope (LSM 900, Zeiss). Images were analyzed blind to the genotype for the presence of large DAT + structures and the number of DAT + puncta using FIJI software.

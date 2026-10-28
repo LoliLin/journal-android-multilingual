@@ -1,0 +1,20 @@
+##### Pentedrone
+# hits: 43
+
+=== Enantioselectivity of Pentedrone and Methylone on Metabolic Profiling in 2D and 3D Human Hepatocyte-like Cells.
+    Silva B, Rodrigues JS, Almeida AS, Lima AR, Fernandes C, Guedes de Pinho P, Miranda JP, Remião F.
+    ? 2022 | PMID 35337165 | DOI 10.3390/ph15030368
+    - Similarly, their chiral discrimination in metabolism, which was not yet evaluated, can result in different metabolic profiles and subsequent hepatotoxic effects.
+    - Methylone and pentedrone showed distinct and preferential metabolic routes for their enantiomers, resulting in the production of differentiated metabolites; R -(+)-methylone and R -(-)-pentedrone are the most metabolized enantiomers.
+
+=== N-Ethylpentedrone: first hair detection and human metabolic profiling across multiple biological matrices using UHPLC-HRMS, molecular networking and in silico prediction.
+    Pasquet A, Pelletier R, Rouah R, Panter T, Loiseau M, Porée FH, Gicquel T, Guerard P.
+    ? 2026 | PMID 42228133 | DOI 10.1007/s00204-026-04412-0
+    - Predominant metabolic pathways involved keto-reduction, N-dealkylation, hydroxylation, and oxidation, while no Phase II metabolites were detected under the applied analytical conditions.
+
+=== Metabolic Stability and Metabolite Identification of N-Ethyl Pentedrone Using Rat, Mouse and Human Liver Microsomes.
+    Godoi AB, Antunes NJ, Cunha KF, Martins AF, Huestis MA, Costa JL.
+    ? 2024 | PMID 38399311 | DOI 10.3390/pharmaceutics16020257
+    - Different metabolism profiles were observed depending on the model employed and kinetic parameters were determined.
+    - The in vitro NEP elimination half-lives (t 1/2 ) were 12.1, 187 and 770 min for the rat, mouse and human models, respectively.
+    - The HLM model had the lowest rate of metabolism when compared to RLM and MLM.
