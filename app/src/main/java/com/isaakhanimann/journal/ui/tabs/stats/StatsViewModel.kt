@@ -185,14 +185,17 @@ class StatsViewModel @Inject constructor(
             val oneCompanion =
                 companionBySubstance[ingestionWith.ingestion.substanceName]
                     ?: return@mapNotNull null
-            oneCompanion.color to (
+            Triple(
+                oneCompanion.color,
+                oneCompanion.customColorArgb,
                 relativeDoseOfIngestion(substanceRepo, ingestionWith) ?: 0.0
-                )
-        }.groupBy { it.first }
-            .map { (color, dosePairs) ->
+            )
+        }.groupBy { it.first to it.second }
+            .map { (color, doseEntries) ->
                 ColorCount(
-                    color = color,
-                    count = dosePairs.sumOf { it.second }
+                    color = color.first,
+                    count = doseEntries.sumOf { it.third },
+                    customColorArgb = color.second
                 )
             }
             .sortedByDescending { it.count }
@@ -260,6 +263,7 @@ class StatsViewModel @Inject constructor(
                 substanceName = name,
                 substanceRepo = substanceRepo,
                 color = oneCompanion.color,
+                customColorArgb = oneCompanion.customColorArgb,
                 experienceCount = experienceCountsBySubstance[name] ?: 0,
                 ingestionCount = groupedIngestions.size,
                 routeCounts = getRouteCounts(groupedIngestions.map { it.ingestion }),
@@ -354,7 +358,11 @@ data class StatsModel(
     val isByIngestionTime: Boolean = false
 )
 
-data class ColorCount(val color: AdaptiveColor, val count: Double)
+data class ColorCount(
+    val color: AdaptiveColor,
+    val count: Double,
+    val customColorArgb: Int? = null
+)
 
 data class StatItem(
     val substanceName: String,
@@ -364,7 +372,8 @@ data class StatItem(
     val ingestionCount: Int,
     val routeCounts: List<RouteCount>,
     val totalDose: TotalDose?,
-    val relativeTotalDose: Double?
+    val relativeTotalDose: Double?,
+    val customColorArgb: Int? = null
 )
 
 data class RouteCount(val administrationRoute: AdministrationRoute, val count: Int)

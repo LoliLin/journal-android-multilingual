@@ -44,10 +44,12 @@ import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRo
 import com.isaakhanimann.journal.ui.main.navigation.routes.IconPickerRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.IngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.JournalRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.JournalRecipePickerRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.JournalTabUrlRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.PreferencesRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.QuickTimedNoteRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.ReagentTestingRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.RecipesRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensOnSubstancesTabRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferRoute
@@ -130,6 +132,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.FAQScreen
 import com.isaakhanimann.journal.ui.tabs.settings.IconPickerScreen
 import com.isaakhanimann.journal.ui.tabs.settings.PreferencesScreen
 import com.isaakhanimann.journal.ui.tabs.settings.SettingsScreen
+import com.isaakhanimann.journal.ui.tabs.settings.recipes.RecipesScreen
 import com.isaakhanimann.journal.ui.tabs.settings.colors.SubstanceColorsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsScreen
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitsScreen
@@ -280,7 +283,17 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
             },
             navigateToChooseRoute = { manager.navigate(ChooseRouteOfAddIngestionRoute(it)) },
             navigateToAddCustomSubstanceScreen = { manager.navigate(AddCustomSubstanceRoute) },
-            navigateToCustomUnitChooseDose = { manager.navigate(ChooseDoseCustomUnitRoute(it)) }
+            navigateToCustomUnitChooseDose = { manager.navigate(ChooseDoseCustomUnitRoute(it)) },
+            navigateToRecipes = { manager.navigate(JournalRecipePickerRoute) }
+        )
+    }
+    entry<JournalRecipePickerRoute> {
+        RecipesScreen(
+            onBack = { manager.pop() },
+            onApplied = { experienceId ->
+                manager.pop()
+                manager.navigate(ExperienceRoute(experienceId))
+            }
         )
     }
     entry<CheckInteractionsRoute> { route ->
@@ -466,14 +479,18 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
             navigateToComboSettings = { manager.navigate(CombinationSettingsRoute) },
             navigateToSubstanceColors = { manager.navigate(SubstanceColorsRoute) },
             navigateToCustomUnits = { manager.navigate(CustomUnitsRoute) },
+            navigateToRecipes = { manager.navigate(RecipesRoute) },
             navigateToDonate = { manager.navigate(DonateRoute) },
             navigateToExtensionPack = { manager.navigate(ExtensionPackRoute) },
             navigateToIconPicker = { manager.navigate(IconPickerRoute) },
             navigateToPreferences = { manager.navigate(PreferencesRoute) }
         )
     }
-    entry<FAQRoute> { FAQScreen() }
+    entry<RecipesRoute> {
+        RecipesScreen(onBack = { manager.pop() }, onApplied = { manager.navigate(ExperienceRoute(it)) })
+    }
     entry<DonateRoute> { DonateScreen() }
+    entry<FAQRoute> { FAQScreen() }
     entry<PreferencesRoute> {
         PreferencesScreen(
             navigateBack = { manager.pop() },

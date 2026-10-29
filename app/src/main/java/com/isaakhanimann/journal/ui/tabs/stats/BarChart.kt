@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.localization.i18n
 
 /**
@@ -50,6 +51,7 @@ fun BarChart(
     startDateText: String,
     highlightedColor: AdaptiveColor? = null,
     dimAlpha: Float = 0.18f,
+    highlightedCustomColorArgb: Int? = null
 ) {
     Column {
         val isDarkTheme = isSystemInDarkTheme()
@@ -167,14 +169,15 @@ fun BarChart(
                                 val cornerRadius = bucketWidth / 6
                                 // Apply dimming when a substance is focused
                                 val barAlpha = if (highlightedColor != null &&
-                                    colorCount.color != highlightedColor
+                                    (colorCount.color != highlightedColor ||
+                                        colorCount.customColorArgb != highlightedCustomColorArgb)
                                 ) {
                                     dimAlpha
                                 } else {
                                     1f
                                 }
                                 drawRoundRect(
-                                    color = colorCount.color.getComposeColor(isDarkTheme)
+                                    color = colorCount.color.getComposeColor(colorCount.customColorArgb, isDarkTheme)
                                         .copy(alpha = barAlpha),
                                     topLeft = Offset(x = xBucket - (bucketWidth / 2), y = yEnd),
                                     size = Size(width = bucketWidth, height = yLength),

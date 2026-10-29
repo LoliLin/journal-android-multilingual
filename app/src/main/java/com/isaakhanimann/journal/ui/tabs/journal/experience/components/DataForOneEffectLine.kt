@@ -31,5 +31,6 @@ data class DataForOneEffectLine(
     val horizontalWeight: Float,
     val color: AdaptiveColor,
     val startTime: Instant,
-    val endTime: Instant?
+    val endTime: Instant?,
+    val customColorArgb: Int? = null
 )

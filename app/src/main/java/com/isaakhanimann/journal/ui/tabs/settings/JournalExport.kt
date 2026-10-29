@@ -83,8 +83,29 @@ data class JournalExport(
     val substanceCompanions: List<SubstanceCompanion> = emptyList(),
     val customSubstances: List<CustomSubstance> = emptyList(),
     val customUnits: List<CustomUnitSerializable> = emptyList(),
+    val recipes: List<RecipeSerializable> = emptyList(),
     val preferences: UserPreferencesBackup? = null,
     val avatars: Map<String, String> = emptyMap()
+)
+
+@Serializable
+data class RecipeSerializable(
+    val id: Int = 0,
+    val name: String,
+    val isArchived: Boolean = false,
+    val items: List<RecipeItemSerializable> = emptyList()
+)
+
+@Serializable
+data class RecipeItemSerializable(
+    val position: Int,
+    val substanceName: String,
+    val administrationRoute: AdministrationRoute,
+    val dose: Double?,
+    val isDoseAnEstimate: Boolean = false,
+    val estimatedDoseStandardDeviation: Double? = null,
+    val units: String? = null,
+    val customUnitId: Int? = null
 )
 
 @Serializable
@@ -190,5 +211,14 @@ data class TimedNoteSerializable(
     @Serializable(with = InstantSerializer::class) var time: Instant,
     var note: String,
     var color: AdaptiveColor,
-    var isPartOfTimeline: Boolean
+    var isPartOfTimeline: Boolean,
+    val photos: List<TimedNotePhotoSerializable> = emptyList(),
+    @kotlinx.serialization.Transient var restoredPhotoPaths: List<String> = emptyList()
+)
+
+@Serializable
+data class TimedNotePhotoSerializable(
+    val imageBase64: String,
+    @Serializable(with = InstantSerializer::class) val creationDate: Instant,
+    val caption: String? = null
 )

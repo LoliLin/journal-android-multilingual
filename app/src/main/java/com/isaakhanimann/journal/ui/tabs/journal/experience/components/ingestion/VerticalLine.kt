@@ -27,13 +27,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 
 @Composable
-fun VerticalLine(color: AdaptiveColor) {
+fun VerticalLine(color: AdaptiveColor, customColorArgb: Int? = null) {
     val isDarkTheme = isSystemInDarkTheme()
     Surface(
         shape = RoundedCornerShape(size = 2.dp),
-        color = color.getComposeColor(isDarkTheme),
+        color = color.getComposeColor(customColorArgb, isDarkTheme),
         modifier = Modifier
             .fillMaxHeight()
             .width(5.dp)

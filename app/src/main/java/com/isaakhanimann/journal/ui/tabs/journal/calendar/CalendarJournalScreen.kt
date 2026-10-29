@@ -59,6 +59,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
@@ -284,11 +285,13 @@ fun Day(
 }
 
 @Composable
-fun HorizontalColorRectangle(modifier: Modifier, colors: List<AdaptiveColor>) {
+fun HorizontalColorRectangle(modifier: Modifier, colors: List<CalendarSubstanceColor>) {
     val isDarkTheme = isSystemInDarkTheme()
     if (colors.size >= 2) {
-        val brush = remember(colors) {
-            val composeColors = colors.map { it.getComposeColor(isDarkTheme) }
+        val brush = remember(colors, isDarkTheme) {
+            val composeColors = colors.map {
+                it.adaptiveColor.getComposeColor(it.customColorArgb, isDarkTheme)
+            }
             Brush.horizontalGradient(colors = composeColors)
         }
         Box(
@@ -296,11 +299,10 @@ fun HorizontalColorRectangle(modifier: Modifier, colors: List<AdaptiveColor>) {
                 .background(brush)
         ) {}
     } else if (colors.size == 1) {
+        val color = colors.first()
         Box(
             modifier = modifier
-                .background(
-                    colors.first().getComposeColor(isDarkTheme)
-                )
+                .background(color.adaptiveColor.getComposeColor(color.customColorArgb, isDarkTheme))
         ) {}
     } else {
         Box(

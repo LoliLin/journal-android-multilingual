@@ -22,6 +22,8 @@ import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.isaakhanimann.journal.data.room.experiences.ExperienceDao
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
@@ -32,10 +34,12 @@ import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
+import com.isaakhanimann.journal.data.room.experiences.entities.Recipe
+import com.isaakhanimann.journal.data.room.experiences.entities.RecipeItem
 
 @TypeConverters(InstantConverter::class)
 @Database(
-    version = 10,
+    version = 11,
     entities = [
         Experience::class,
         Ingestion::class,
@@ -44,7 +48,9 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
         ShulginRating::class,
         TimedNote::class,
         CustomUnit::class,
-        TimedNotePhoto::class
+        TimedNotePhoto::class,
+        Recipe::class,
+        RecipeItem::class
     ],
     autoMigrations = [
         AutoMigration(from = 1, to = 2),
@@ -60,4 +66,34 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun experienceDao(): ExperienceDao
+
+    companion object {
+        // Recipes and custom companion colors ship together in schema v11.
+        val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    """CREATE TABLE IF NOT EXISTS `Recipe` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        `name` TEXT NOT NULL,
+                        `isArchived` INTEGER NOT NULL
+                    )""".trimIndent()
+                )
+                database.execSQL(
+                    """CREATE TABLE IF NOT EXISTS `RecipeItem` (
+                        `recipeId` INTEGER NOT NULL,
+                        `position` INTEGER NOT NULL,
+                        `substanceName` TEXT NOT NULL,
+                        `administrationRoute` TEXT NOT NULL,
+                        `dose` REAL,
+                        `isDoseAnEstimate` INTEGER NOT NULL,
+                        `estimatedDoseStandardDeviation` REAL,
+                        `units` TEXT,
+                        `customUnitId` INTEGER,
+                        PRIMARY KEY(`recipeId`, `position`)
+                    )""".trimIndent()
+                )
+                database.execSQL("ALTER TABLE `SubstanceCompanion` ADD COLUMN `customColorArgb` INTEGER")
+            }
+        }
+    }
 }

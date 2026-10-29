@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DataForOneEffectLine
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
@@ -188,7 +189,7 @@ fun AllTimelines(
                     drawScope = this,
                     canvasHeight = canvasHeightWithVerticalLine,
                     pixelsPerSec = pixelsPerSec,
-                    color = group.color.getComposeColor(isDarkTheme),
+                    color = group.color.getComposeColor(group.customColorArgb, isDarkTheme),
                     density = density
                 )
             }

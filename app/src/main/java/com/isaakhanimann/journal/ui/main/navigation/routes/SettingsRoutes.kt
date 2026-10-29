@@ -48,7 +48,7 @@ data object CombinationSettingsRoute : NavKey
 data object SubstanceColorsRoute : NavKey
 
 @Serializable
-data object CustomUnitsRoute : NavKey
+data object RecipesRoute : NavKey
 
 @Serializable
 data object CustomUnitArchiveRoute : NavKey

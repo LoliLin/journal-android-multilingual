@@ -58,7 +58,7 @@ class SubstanceColorsViewModel @Inject constructor(
         viewModelScope.launch {
             val updatedList = _substanceCompanionsFlow.value.map { companion ->
                 if (companion.substanceName == substanceName) {
-                    companion.copy(color = color).also {
+                    companion.copy(color = color, customColorArgb = null).also {
                         experienceRepository.update(it)
                     }
                 } else {
@@ -66,6 +66,14 @@ class SubstanceColorsViewModel @Inject constructor(
                 }
             }
             _substanceCompanionsFlow.value = updatedList
+        }
+    }
+
+
+    fun updateCustomColor(argb: Int, substanceName: String) {
+        viewModelScope.launch {
+            val companion = _substanceCompanionsFlow.value.firstOrNull { it.substanceName == substanceName } ?: return@launch
+            experienceRepository.update(companion.copy(customColorArgb = argb))
         }
     }
 

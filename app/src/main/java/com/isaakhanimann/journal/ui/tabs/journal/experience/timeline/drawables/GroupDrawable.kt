@@ -21,6 +21,7 @@ package com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.drawables
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.Density
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.WeightedLine
@@ -36,6 +37,7 @@ class GroupDrawable(
     roaDuration: RoaDuration?,
     weightedLines: List<WeightedLine>,
     val areSubstanceHeightsIndependent: Boolean,
+    val customColorArgb: Int? = null
 ) : TimelineDrawable {
     private val timelineDrawables: List<TimelineDrawable>
     private val timeRangeDrawables: List<TimeRangeDrawable>

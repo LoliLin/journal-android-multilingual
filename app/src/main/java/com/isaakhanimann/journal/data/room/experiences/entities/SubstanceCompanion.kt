@@ -21,11 +21,13 @@ package com.isaakhanimann.journal.data.room.experiences.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
 @Entity
 @Serializable
 data class SubstanceCompanion(
     @PrimaryKey(autoGenerate = false)
     val substanceName: String,
-    var color: AdaptiveColor
+    var color: AdaptiveColor,
+    @SerialName("customColor") val customColorArgb: Int? = null
 )
