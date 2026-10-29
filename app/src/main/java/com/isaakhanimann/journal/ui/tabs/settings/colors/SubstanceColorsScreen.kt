@@ -23,19 +23,29 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.Button
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -55,6 +65,7 @@ fun SubstanceColorsScreen(
     SubstanceColorsScreenContent(
         substanceCompanions = viewModel.substanceCompanionsFlow.collectAsState().value,
         updateColor = viewModel::updateColor,
+        updateCustomColor = viewModel::updateCustomColor,
         alreadyUsedColors = viewModel.alreadyUsedColorsFlow.collectAsState().value,
         otherColors = viewModel.otherColorsFlow.collectAsState().value,
         getSubstanceDisplayName = viewModel.substanceRepository::getDisplayName
@@ -77,6 +88,7 @@ fun SubstanceColorsScreenPreview() {
             SubstanceCompanion(substanceName = "Substance 4", color = AdaptiveColor.OLIVE)
         ),
         updateColor = { _, _ -> },
+        updateCustomColor = { _, _ -> },
         alreadyUsedColors = alreadyUsedColors,
         otherColors = otherColors,
         getSubstanceDisplayName = { it }
@@ -89,6 +101,7 @@ fun SubstanceColorsScreenPreview() {
 fun SubstanceColorsScreenContent(
     substanceCompanions: List<SubstanceCompanion>,
     updateColor: (color: AdaptiveColor, substanceName: String) -> Unit,
+    updateCustomColor: (argb: Int, substanceName: String) -> Unit,
     alreadyUsedColors: List<AdaptiveColor>,
     otherColors: List<AdaptiveColor>,
     getSubstanceDisplayName: (String) -> String
@@ -124,6 +137,44 @@ fun SubstanceColorsScreenContent(
                         alreadyUsedColors = alreadyUsedColors,
                         otherColors = otherColors
                     )
+                }
+                var hex by remember(substanceCompanion.substanceName, substanceCompanion.customColorArgb) {
+                    mutableStateOf(substanceCompanion.customColorArgb?.let { "#%08X".format(it) } ?: "")
+                }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    val digits = hex.trim().removePrefix("#")
+                    val parsed = if (
+                        (digits.length == 6 || digits.length == 8) &&
+                        digits.all { it.digitToIntOrNull(16) != null }
+                    ) {
+                        runCatching {
+                            digits.toLong(16).let {
+                                if (digits.length == 6) (0xFF000000L or it).toInt() else it.toInt()
+                            }
+                        }.getOrNull()
+                    } else {
+                        null
+                    }
+                    TextField(
+                        value = hex,
+                        onValueChange = { hex = it },
+                        label = { Text(i18n("settings_substance_custom_color")) },
+                        singleLine = true,
+                        modifier = Modifier.weight(1f)
+                    )
+                    parsed?.let { argb ->
+                        Surface(
+                            shape = CircleShape,
+                            color = Color(argb),
+                            modifier = Modifier.size(24.dp)
+                        ) {}
+                    }
+                    Button(
+                        onClick = { parsed?.let { updateCustomColor(it, substanceCompanion.substanceName) } },
+                        enabled = parsed != null
+                    ) {
+                        Text(i18n("settings_substance_color_apply"))
+                    }
                 }
                 HorizontalDivider()
             }

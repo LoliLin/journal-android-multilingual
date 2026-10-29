@@ -35,6 +35,7 @@ import com.isaakhanimann.journal.ui.main.navigation.routes.FAQRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.IconPickerRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.PreferencesRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.RecipesRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.ReagentTestingRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensOnSubstancesTabRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.SaferHallucinogensRoute
@@ -169,6 +170,7 @@ class Nav3TabManager(
         is DrugTestingRoute, is DosageGuideRoute, is VolumetricDosingOnSaferTabRoute,
         is ReagentTestingRoute, is SaferTabUrlRoute -> TopLevelDestinations.Safer
         is SettingsRoute, is FAQRoute, is DonateRoute, is PreferencesRoute, is IconPickerRoute,
+        is RecipesRoute,
         is ExtensionPackRoute, is CombinationSettingsRoute, is SubstanceColorsRoute,
         is CustomUnitsRoute, is CustomUnitArchiveRoute, is EditCustomUnitRoute,
         is AddCustomUnitsRoute, is ChooseRouteOfAddCustomUnitRoute, is FinishAddCustomUnitRoute ->

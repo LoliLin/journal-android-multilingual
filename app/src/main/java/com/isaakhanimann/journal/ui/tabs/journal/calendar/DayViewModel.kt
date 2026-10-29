@@ -38,9 +38,15 @@ class DayViewModel @Inject constructor(val experienceRepo: ExperienceRepository)
         )
         return ExperienceInfo(
             experienceIds = ingestions.map { it.ingestion.experienceId }.toSet().toList(),
-            colors = ingestions.mapNotNull { it.substanceCompanion?.color }
+            colors = ingestions.mapNotNull { ingestion ->
+                ingestion.substanceCompanion?.let { companion ->
+                    CalendarSubstanceColor(companion.color, companion.customColorArgb)
+                }
+            }
         )
     }
 }
 
-data class ExperienceInfo(val experienceIds: List<Int>, val colors: List<AdaptiveColor>)
+data class CalendarSubstanceColor(val adaptiveColor: AdaptiveColor, val customColorArgb: Int?)
+
+data class ExperienceInfo(val experienceIds: List<Int>, val colors: List<CalendarSubstanceColor>)

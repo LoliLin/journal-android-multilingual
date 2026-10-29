@@ -20,6 +20,7 @@ package com.isaakhanimann.journal.data.photo
 import android.content.Context
 import android.net.Uri
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.UUID
@@ -41,27 +42,61 @@ object TimedNotePhotoStorage {
      * Copies [sourceUri] into internal storage and returns the absolute path, or null when the
      * source could not be read (revoked permission, deleted file, decode failure).
      */
-    suspend fun importPhoto(context: Context, sourceUri: Uri): String? =
-        withContext(Dispatchers.IO) {
-            runCatching {
+    suspend fun importPhoto(context: Context, sourceUri: Uri): String? {
+        var destination: File? = null
+        return try {
+            withContext(Dispatchers.IO) {
                 // A timestamp alone collides when two photos are imported within the same
                 // millisecond, and the second write would silently clobber the first.
-                val destination = File(
+                val target = File(
                     photosDirectory(context),
                     "note_${System.currentTimeMillis()}_${UUID.randomUUID().toString().take(8)}.jpg"
                 )
+                destination = target
                 val copied = context.contentResolver.openInputStream(sourceUri)?.use { input ->
-                    destination.outputStream().use { output -> input.copyTo(output) }
+                    target.outputStream().use { output -> input.copyTo(output) }
                     true
                 } ?: false
+                kotlinx.coroutines.currentCoroutineContext().ensureActive()
                 if (!copied) {
-                    // Nothing was written, so do not leave the empty placeholder behind.
-                    destination.delete()
-                    return@runCatching null
+                    target.delete()
+                    null
+                } else {
+                    target.absolutePath
                 }
-                destination.absolutePath
-            }.getOrNull()
+            }
+        } catch (cancelled: kotlinx.coroutines.CancellationException) {
+            withContext(kotlinx.coroutines.NonCancellable + Dispatchers.IO) {
+                destination?.delete()
+            }
+            throw cancelled
+        } catch (_: Exception) {
+            withContext(kotlinx.coroutines.NonCancellable + Dispatchers.IO) {
+                destination?.delete()
+            }
+            null
         }
+    }
+
+    /** Writes backup bytes to a fresh file without touching existing photo files. */
+    suspend fun restorePhoto(context: Context, bytes: ByteArray): String {
+        require(bytes.isNotEmpty()) { "Photo data is empty" }
+        val destination = withContext(Dispatchers.IO) {
+            File(
+                photosDirectory(context),
+                "note_${System.currentTimeMillis()}_${UUID.randomUUID().toString().take(8)}.jpg"
+            )
+        }
+        return try {
+            withContext(Dispatchers.IO) { destination.writeBytes(bytes) }
+            destination.absolutePath
+        } catch (error: Throwable) {
+            withContext(kotlinx.coroutines.NonCancellable + Dispatchers.IO) {
+                destination.delete()
+            }
+            throw error
+        }
+    }
 
     /**
      * Deletes the backing file for a stored photo path. Safe to call for paths that no longer

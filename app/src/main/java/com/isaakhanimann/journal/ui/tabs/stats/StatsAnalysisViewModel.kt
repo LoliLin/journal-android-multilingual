@@ -57,7 +57,8 @@ data class TotalDoseLine(
     val units: String,
     val color: AdaptiveColor?,
     val absoluteTotal: Double,
-    val relativeTotal: Double?
+    val relativeTotal: Double?,
+    val customColorArgb: Int? = null
 )
 
 data class SubstanceChartData(
@@ -72,7 +73,8 @@ data class SubstanceChartData(
     val absoluteTotal: Double,
     val relativeTotal: Double?,
     val units: String?,
-    val unknownDoseCount: Int
+    val unknownDoseCount: Int,
+    val customColorArgb: Int? = null
 )
 
 data class StatsAnalysisModel(
@@ -317,6 +319,7 @@ class StatsAnalysisViewModel @Inject constructor(
                     substanceName = key.first,
                     units = key.second,
                     color = list.firstOrNull()?.substanceCompanion?.color,
+                    customColorArgb = list.firstOrNull()?.substanceCompanion?.customColorArgb,
                     absoluteTotal = absoluteTotal,
                     relativeTotal = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
                 )
@@ -364,6 +367,7 @@ class StatsAnalysisViewModel @Inject constructor(
                 SubstanceChartData(
                     substanceName = name,
                     color = list.firstOrNull()?.substanceCompanion?.color,
+                    customColorArgb = list.firstOrNull()?.substanceCompanion?.customColorArgb,
                     doseBuckets = buckets,
                     bucketLabel = bucketLabel,
                     doseClassCounts = doseClassCounts,

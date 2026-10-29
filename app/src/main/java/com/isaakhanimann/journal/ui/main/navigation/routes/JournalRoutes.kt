@@ -94,6 +94,10 @@ data class JournalTabUrlRoute(val url: String) : NavKey
 @Serializable
 data object AddIngestionRoute : NavKey
 
+/** Recipe picker reachable from the add-ingestion flow. */
+@Serializable
+data object JournalRecipePickerRoute : NavKey
+
 @Serializable
 data class CheckInteractionsRoute(val substanceName: String) : NavKey
 

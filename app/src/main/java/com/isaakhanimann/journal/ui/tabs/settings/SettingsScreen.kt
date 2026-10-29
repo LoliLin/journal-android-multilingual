@@ -116,6 +116,7 @@ fun SettingsScreen(
     navigateToComboSettings: () -> Unit,
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
+    navigateToRecipes: () -> Unit = {},
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
     navigateToExtensionPack: () -> Unit = {},
@@ -127,6 +128,7 @@ fun SettingsScreen(
         navigateToComboSettings = navigateToComboSettings,
         navigateToSubstanceColors = navigateToSubstanceColors,
         navigateToCustomUnits = navigateToCustomUnits,
+        navigateToRecipes = navigateToRecipes,
         navigateToDonate = navigateToDonate,
         navigateToIconPicker = navigateToIconPicker,
         navigateToExtensionPack = navigateToExtensionPack,
@@ -136,6 +138,7 @@ fun SettingsScreen(
         isImportEncrypted = viewModel::isImportEncrypted,
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
+        backupProgress = viewModel.backupProgress.collectAsState().value,
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
         achievements = viewModel.achievementsFlow.collectAsState().value,
@@ -149,6 +152,7 @@ fun SettingsScreen(
     navigateToComboSettings: () -> Unit,
     navigateToSubstanceColors: () -> Unit,
     navigateToCustomUnits: () -> Unit,
+    navigateToRecipes: () -> Unit = {},
     navigateToDonate: () -> Unit,
     navigateToIconPicker: () -> Unit = {},
     navigateToExtensionPack: () -> Unit = {},
@@ -158,6 +162,7 @@ fun SettingsScreen(
     isImportEncrypted: (Uri) -> Boolean,
     exportFile: (uri: Uri, password: String?) -> Unit,
     snackbarHostState: SnackbarHostState,
+    backupProgress: SettingsViewModel.BackupProgress? = null,
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
     saveOwnerUserName: (String?) -> Unit,
@@ -184,6 +189,15 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
+            if (backupProgress != null) {
+                if (backupProgress.total == 0) {
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                } else {
+                    val fraction = backupProgress.completed.toFloat() / backupProgress.total
+                    LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
+                    Text("${backupProgress.completed} / ${backupProgress.total}")
+                }
+            }
             OwnerProfileCard(
                 ownerUserName = ownerUserName,
                 onUserNameChanged = saveOwnerUserName,
@@ -203,6 +217,13 @@ fun SettingsScreen(
                     text = i18n("settings_custom_units")
                 ) {
                     navigateToCustomUnits()
+                }
+                HorizontalDivider()
+                SettingsButton(
+                    imageVector = Icons.Outlined.Medication,
+                    text = i18n("recipes_title")
+                ) {
+                    navigateToRecipes()
                 }
                 HorizontalDivider()
                 SettingsButton(

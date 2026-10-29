@@ -25,8 +25,10 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Experience
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
+import com.isaakhanimann.journal.data.room.experiences.entities.Recipe
+import com.isaakhanimann.journal.data.room.experiences.entities.RecipeItem
+import com.isaakhanimann.journal.data.room.experiences.relations.RecipeWithItems
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
-import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.data.room.experiences.relations.CustomUnitWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
@@ -46,7 +48,23 @@ import kotlinx.coroutines.flow.flowOn
 
 @Singleton
 class ExperienceRepository @Inject constructor(private val experienceDao: ExperienceDao) {
-    suspend fun insert(rating: ShulginRating) = experienceDao.insert(rating).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun saveRecipe(recipe: Recipe, items: List<RecipeItem>): Int =
+        experienceDao.saveRecipe(recipe, items).also { JournalDataEvents.notifyJournalChanged() }
+
+    fun getRecipes(isArchived: Boolean): Flow<List<RecipeWithItems>> =
+        experienceDao.getRecipes(isArchived).flowOn(Dispatchers.IO).conflate()
+
+    suspend fun getAllRecipes() = experienceDao.getAllRecipes()
+
+    suspend fun setRecipeArchived(recipeId: Int, archived: Boolean) =
+        experienceDao.setRecipeArchived(recipeId, archived).also { JournalDataEvents.notifyJournalChanged() }
+
+    suspend fun deleteRecipe(recipe: Recipe) =
+        experienceDao.deleteRecipe(recipe).also { JournalDataEvents.notifyJournalChanged() }
+
+    suspend fun applyRecipe(recipeId: Int, time: Instant): Int =
+        experienceDao.applyRecipe(recipeId, time).also { JournalDataEvents.notifyJournalChanged() }
+
     suspend fun insert(customUnit: CustomUnit) = experienceDao.insert(customUnit).also { JournalDataEvents.notifyJournalChanged() }.toInt()
     suspend fun insert(timedNote: TimedNote): Int =
         experienceDao.insert(timedNote)
@@ -90,8 +108,15 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         substanceCompanion
     ).also { JournalDataEvents.notifyJournalChanged() }
 
-    suspend fun deleteEverything() = experienceDao.deleteEverything()
-        .also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun deleteEverything() {
+        val photoPaths = experienceDao.getAllExperiencesWithIngestionsTimedNotesAndRatingsSorted()
+            .flatMap { experience -> experience.timedNotes }
+            .flatMap { note -> experienceDao.getTimedNotePhotos(note.id) }
+            .map { photo -> photo.filePath }
+        experienceDao.deleteEverything()
+        JournalDataEvents.notifyJournalChanged()
+        photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
+    }
 
     suspend fun delete(ingestion: Ingestion) = experienceDao.delete(ingestion).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun delete(customUnit: CustomUnit) = experienceDao.delete(customUnit).also { JournalDataEvents.notifyJournalChanged() }

@@ -24,9 +24,7 @@ import kotlinx.serialization.json.intOrNull
  * Import-only compatibility for backups created by forks that store an ARGB Int in
  * `customColor` and set the legacy `color` enum to null.
  *
- * The local data model and export format remain unchanged. Custom colors are
- * approximated with the closest existing AdaptiveColor, so the original ARGB
- * cannot be recovered after import.
+ * The custom ARGB value is retained, with the closest AdaptiveColor used for legacy consumers.
  */
 internal fun decodeCompatibleJournalImport(text: String): JournalExport {
     // Keep the regular, streaming decoder for backups without custom colors.

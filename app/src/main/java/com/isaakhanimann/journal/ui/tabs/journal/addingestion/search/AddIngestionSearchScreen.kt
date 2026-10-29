@@ -67,6 +67,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
@@ -97,6 +98,7 @@ fun AddIngestionSearchScreen(
     navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
     navigateToAddCustomSubstanceScreen: () -> Unit,
+    navigateToRecipes: () -> Unit,
     viewModel: AddIngestionSearchViewModel = hiltViewModel()
 ) {
     AddIngestionSearchScreen(
@@ -108,6 +110,7 @@ fun AddIngestionSearchScreen(
         navigateToChooseTime = navigateToChooseTime,
         navigateToDose = navigateToDose,
         navigateToAddCustomSubstanceScreen = navigateToAddCustomSubstanceScreen,
+        navigateToRecipes = navigateToRecipes,
         navigateToCustomUnitChooseDose = navigateToCustomUnitChooseDose,
         substanceRouteSuggestions = viewModel.filteredSuggestions.collectAsState().value,
         searchText = viewModel.searchTextFlow.collectAsState().value,
@@ -142,6 +145,7 @@ fun AddIngestionSearchScreen(
     navigateToCustomSubstanceChooseRoute: (customSubstanceId: Int) -> Unit,
     navigateToAddCustomSubstanceScreen: () -> Unit,
     navigateToCustomUnitChooseDose: (customUnitId: Int) -> Unit,
+    navigateToRecipes: () -> Unit,
     substanceRouteSuggestions: List<SubstanceRouteSuggestion>,
     searchText: String,
     onChangeSearchText: (searchText: String) -> Unit,
@@ -211,6 +215,14 @@ fun AddIngestionSearchScreen(
                 singleLine = true
             )
             LazyColumn {
+                item {
+                    TextButton(
+                        onClick = navigateToRecipes,
+                        modifier = Modifier.padding(horizontal = horizontalPadding)
+                    ) {
+                        Text(text = i18n("recipes_quick_pick"))
+                    }
+                }
                 if (substanceRouteSuggestions.isNotEmpty()) {
                     stickyHeader {
                         SectionHeader(title = i18n("search_quick_logging"))
@@ -347,11 +359,11 @@ fun SectionHeader(title: String) {
 }
 
 @Composable
-fun ColorCircle(adaptiveColor: AdaptiveColor) {
+fun ColorCircle(adaptiveColor: AdaptiveColor, customColorArgb: Int? = null) {
     val isDarkTheme = isSystemInDarkTheme()
     Surface(
         shape = CircleShape,
-        color = adaptiveColor.getComposeColor(isDarkTheme),
+        color = adaptiveColor.getComposeColor(customColorArgb, isDarkTheme),
         modifier = Modifier.size(25.dp)
     ) {}
 }
@@ -369,6 +381,7 @@ private fun AddIngestionSearchScreenPreview() {
         navigateToCustomSubstanceChooseRoute = {},
         navigateToAddCustomSubstanceScreen = {},
         navigateToCustomUnitChooseDose = {},
+        navigateToRecipes = {},
         substanceRouteSuggestions = emptyList(),
         searchText = "MDMA",
         onChangeSearchText = {},

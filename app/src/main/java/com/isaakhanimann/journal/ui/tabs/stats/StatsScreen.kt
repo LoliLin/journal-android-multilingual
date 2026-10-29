@@ -92,6 +92,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil.compose.AsyncImage
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
@@ -205,6 +206,12 @@ private fun MergedStatsScreen(
     val focusedColor = remember(focusedSubstance, statsModel.statItems) {
         focusedSubstance?.let { name ->
             statsModel.statItems.firstOrNull { it.substanceName == name }?.color
+        }
+    }
+
+    val focusedCustomColorArgb = remember(focusedSubstance, statsModel.statItems) {
+        focusedSubstance?.let { name ->
+            statsModel.statItems.firstOrNull { it.substanceName == name }?.customColorArgb
         }
     }
 
@@ -426,6 +433,7 @@ private fun MergedStatsScreen(
                                     buckets = statsModel.chartBuckets,
                                     startDateText = statsModel.startDateText,
                                     highlightedColor = focusedColor,
+                                    highlightedCustomColorArgb = focusedCustomColorArgb
                                 )
                             }
                         }
@@ -645,7 +653,7 @@ private fun FocusedSubstancePinCard(
             Box(
                 modifier = Modifier
                     .size(14.dp)
-                    .background(color = subStat.color.getComposeColor(isDarkTheme), shape = CircleShape)
+                    .background(color = subStat.color.getComposeColor(subStat.customColorArgb, isDarkTheme), shape = CircleShape)
             )
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
@@ -701,7 +709,7 @@ private fun StatItemRow(
             Box(
                 modifier = Modifier
                     .size(14.dp)
-                    .background(color = subStat.color.getComposeColor(isDarkTheme), shape = CircleShape)
+                    .background(color = subStat.color.getComposeColor(subStat.customColorArgb, isDarkTheme), shape = CircleShape)
             )
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
@@ -832,7 +840,7 @@ private fun AnalysisSummaryBlock(model: StatsAnalysisModel, getSubstanceDisplayN
                             modifier = Modifier
                                 .size(12.dp)
                                 .background(
-                                    color = line.color?.getComposeColor(isDarkTheme) ?: MaterialTheme.colorScheme.surfaceVariant,
+                                    color = line.color?.getComposeColor(line.customColorArgb, isDarkTheme) ?: MaterialTheme.colorScheme.surfaceVariant,
                                     shape = RoundedCornerShape(6.dp)
                                 )
                         )
@@ -861,7 +869,7 @@ private fun SubstanceChartCardInner(
     isFocused: Boolean,
     onClick: () -> Unit,
 ) {
-    val chartColor = chart.color?.getComposeColor(isSystemInDarkTheme()) ?: MaterialTheme.colorScheme.primary
+    val chartColor = chart.color?.getComposeColor(chart.customColorArgb, isSystemInDarkTheme()) ?: MaterialTheme.colorScheme.primary
     Card(
         onClick = onClick,
         colors = if (isFocused) {
@@ -1054,7 +1062,7 @@ private fun AnalysisIngestionListBlock(
                         modifier = Modifier
                             .size(10.dp)
                             .background(
-                                color = ingestionWith.substanceCompanion?.color?.getComposeColor(isSystemInDarkTheme())
+                                color = ingestionWith.substanceCompanion?.getComposeColor(isSystemInDarkTheme())
                                     ?: MaterialTheme.colorScheme.surfaceVariant,
                                 shape = RoundedCornerShape(5.dp)
                             )

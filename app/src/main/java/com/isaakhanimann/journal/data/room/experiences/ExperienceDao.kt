@@ -35,6 +35,10 @@ import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
+import com.isaakhanimann.journal.data.room.experiences.entities.Recipe
+import com.isaakhanimann.journal.data.room.experiences.entities.RecipeItem
+import com.isaakhanimann.journal.data.room.experiences.relations.RecipeWithItems
+import com.isaakhanimann.journal.ui.tabs.settings.RecipeSerializable
 import com.isaakhanimann.journal.data.room.experiences.relations.CustomUnitWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
@@ -347,6 +351,8 @@ interface ExperienceDao {
         deleteAllCustomSubstances()
         deleteAllRatings()
         deleteAllCustomUnits()
+        deleteAllRecipeItems()
+        deleteAllRecipes()
     }
 
     @Transaction
@@ -438,6 +444,96 @@ interface ExperienceDao {
     }
 
     @Transaction
+    suspend fun applyRecipe(recipeId: Int, time: Instant): Int {
+        val recipe = getAllRecipes().firstOrNull { it.recipe.id == recipeId }
+            ?: error("Recipe not found")
+        require(recipe.items.isNotEmpty()) { "Recipe must contain at least one item" }
+        val experienceId = insert(Experience(id = 0, title = recipe.recipe.name, text = "", sortDate = time, location = null)).toInt()
+        recipe.items.sortedBy { it.position }.forEach { item ->
+            insert(
+                Ingestion(
+                    substanceName = item.substanceName,
+                    time = time,
+                    administrationRoute = item.administrationRoute,
+                    dose = item.dose,
+                    isDoseAnEstimate = item.isDoseAnEstimate,
+                    estimatedDoseStandardDeviation = item.estimatedDoseStandardDeviation,
+                    units = item.units,
+                    experienceId = experienceId,
+                    notes = null,
+                    stomachFullness = null,
+                    consumerName = null,
+                    customUnitId = item.customUnitId
+                )
+            )
+        }
+        return experienceId
+    }
+
+    @Transaction
+    @Query("SELECT * FROM recipe WHERE isArchived = :isArchived ORDER BY name COLLATE NOCASE")
+    fun getRecipes(isArchived: Boolean): Flow<List<RecipeWithItems>>
+
+    @Transaction
+    @Query("SELECT * FROM recipe ORDER BY name COLLATE NOCASE")
+    suspend fun getAllRecipes(): List<RecipeWithItems>
+
+    @Query("DELETE FROM recipeitem")
+    suspend fun deleteAllRecipeItems()
+
+    @Query("DELETE FROM recipe")
+    suspend fun deleteAllRecipes()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRecipe(ignored: Recipe): Long
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertRecipeItems(items: List<RecipeItem>)
+
+    @Query("DELETE FROM recipeitem WHERE recipeId = :recipeId")
+    suspend fun deleteRecipeItems(recipeId: Int)
+
+    @Transaction
+    suspend fun deleteRecipe(recipe: Recipe) {
+        deleteRecipeItems(recipe.id)
+        deleteRecipeRow(recipe)
+    }
+
+    @Delete
+    suspend fun deleteRecipeRow(recipe: Recipe)
+
+    @Query("UPDATE recipe SET isArchived = :archived WHERE id = :recipeId")
+    suspend fun setRecipeArchived(recipeId: Int, archived: Boolean)
+
+    @Transaction
+    suspend fun saveRecipe(recipe: Recipe, items: List<RecipeItem>): Int {
+        val recipeId = insertRecipe(recipe).toInt()
+        deleteRecipeItems(recipeId)
+        insertRecipeItems(items.mapIndexed { index, item -> item.copy(recipeId = recipeId, position = index) })
+        return recipeId
+    }
+
+    @Transaction
+    suspend fun insertRecipeBackup(recipes: List<RecipeSerializable>) {
+        recipes.forEach { backup ->
+            val recipeId = insertRecipe(Recipe(id = backup.id, name = backup.name, isArchived = backup.isArchived)).toInt()
+            insertRecipeItems(backup.items.map { item ->
+                RecipeItem(
+                    recipeId = recipeId,
+                    position = item.position,
+                    substanceName = item.substanceName,
+                    administrationRoute = item.administrationRoute,
+                    dose = item.dose,
+                    isDoseAnEstimate = item.isDoseAnEstimate,
+                    estimatedDoseStandardDeviation = item.estimatedDoseStandardDeviation,
+                    units = item.units,
+                    customUnitId = item.customUnitId
+                )
+            })
+        }
+    }
+
+    @Transaction
     suspend fun insertEverything(journalExport: JournalExport) {
         journalExport.experiences.forEachIndexed { indexExperience, experienceSerializable ->
             val experienceID = indexExperience + 1
@@ -472,7 +568,18 @@ interface ExperienceDao {
                     color = timedNoteSerializable.color,
                     note = timedNoteSerializable.note
                 )
-                insert(newTimedNote)
+                val newTimedNoteId = insert(newTimedNote).toInt()
+                timedNoteSerializable.restoredPhotoPaths.forEachIndexed { photoIndex, filePath ->
+                    val photo = timedNoteSerializable.photos[photoIndex]
+                    insertTimedNotePhoto(
+                        TimedNotePhoto(
+                            timedNoteId = newTimedNoteId,
+                            filePath = filePath,
+                            creationDate = photo.creationDate,
+                            caption = photo.caption
+                        )
+                    )
+                }
             }
             experienceSerializable.ratings.forEach { ratingSerializable ->
                 val newRating = ShulginRating(
@@ -486,6 +593,13 @@ interface ExperienceDao {
         }
         journalExport.substanceCompanions.forEach { insert(it) }
         journalExport.customSubstances.forEach { insert(it) }
+        journalExport.recipes.forEach { backup ->
+            val recipeId = insertRecipe(Recipe(backup.id, backup.name, backup.isArchived)).toInt()
+            insertRecipeItems(backup.items.map { item ->
+                RecipeItem(recipeId, item.position, item.substanceName, item.administrationRoute, item.dose,
+                    item.isDoseAnEstimate, item.estimatedDoseStandardDeviation, item.units, item.customUnitId)
+            })
+        }
         journalExport.customUnits.forEach {
             insert(
                 CustomUnit(

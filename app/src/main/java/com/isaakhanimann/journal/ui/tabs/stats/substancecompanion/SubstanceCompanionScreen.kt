@@ -64,6 +64,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.localization.i18n
@@ -120,7 +121,7 @@ fun SubstanceCompanionScreen(
     substanceRepo: SubstanceRepository
 ) {
     val isDarkTheme = isSystemInDarkTheme()
-    val substanceColor = substanceCompanion.color.getComposeColor(isDarkTheme)
+    val substanceColor = substanceCompanion.getComposeColor(isDarkTheme)
     val displayName = substanceRepo.getDisplayName(substanceCompanion.substanceName)
 
     Scaffold(

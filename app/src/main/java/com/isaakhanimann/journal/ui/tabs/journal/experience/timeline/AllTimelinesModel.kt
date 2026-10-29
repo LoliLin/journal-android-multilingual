@@ -60,7 +60,8 @@ class AllTimelinesModel(
     data class RoaGroup(
         val color: AdaptiveColor,
         val roaDuration: RoaDuration?,
-        val weightedLines: List<WeightedLine>
+        val weightedLines: List<WeightedLine>,
+        val customColorArgb: Int? = null
     )
 
     init {
@@ -80,7 +81,8 @@ class AllTimelinesModel(
                         horizontalWeight = it.horizontalWeight,
                         height = it.height
                     )
-                }
+                },
+                customColorArgb = lines.first().customColorArgb
             )
         }
         val groupDrawables = roaGroups.map { group ->
@@ -89,7 +91,8 @@ class AllTimelinesModel(
                 color = group.color,
                 roaDuration = group.roaDuration,
                 weightedLines = group.weightedLines,
-                areSubstanceHeightsIndependent = areSubstanceHeightsIndependent
+                areSubstanceHeightsIndependent = areSubstanceHeightsIndependent,
+                customColorArgb = group.customColorArgb
             )
         }
         val overallMaxHeight = groupDrawables.maxOfOrNull { it.nonNormalisedHeight } ?: 1f

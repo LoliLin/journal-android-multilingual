@@ -75,7 +75,10 @@ fun SuggestionRow(
             .padding(horizontal = horizontalPadding)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            ColorCircle(adaptiveColor = substanceRouteSuggestion.color)
+            ColorCircle(
+                adaptiveColor = substanceRouteSuggestion.color,
+                customColorArgb = substanceRouteSuggestion.customColorArgb
+            )
             Spacer(modifier = Modifier.width(8.dp))
             val routeName = i18nOrDefault(
                 administrationRouteKey(substanceRouteSuggestion.route),

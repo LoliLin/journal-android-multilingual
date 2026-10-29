@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.data.room.experiences.entities.getComposeColor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.localization.i18nOrDefault
 import com.isaakhanimann.journal.ui.utils.getMediumDateText
@@ -201,7 +202,7 @@ private fun ReportTopSubstances(statsModel: StatsModel) {
                         modifier = Modifier
                             .size(16.dp)
                             .clip(RoundedCornerShape(5.dp))
-                            .background(item.color.getComposeColor(isDarkTheme = false))
+                            .background(item.color.getComposeColor(item.customColorArgb, isDarkTheme = false))
                     )
                     Spacer(modifier = Modifier.width(14.dp))
                     Column(modifier = Modifier.weight(1f)) {

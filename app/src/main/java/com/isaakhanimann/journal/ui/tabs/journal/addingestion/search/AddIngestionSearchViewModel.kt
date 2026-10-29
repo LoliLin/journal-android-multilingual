@@ -153,9 +153,10 @@ class AddIngestionSearchViewModel @Inject constructor(
         return grouped.flatMap { entry ->
             val substanceName = entry.key
             val ingestionsGroupedBySubstance = entry.value
-            val color =
-                ingestionsGroupedBySubstance.firstOrNull()?.substanceCompanion?.color
+            val companion =
+                ingestionsGroupedBySubstance.firstOrNull()?.substanceCompanion
                     ?: return@flatMap emptyList()
+            val color = companion.color
             val isPredefinedSubstance = substanceRepo.getSubstance(substanceName) != null
             val customSubstanceId = customSubstances.firstOrNull { it.name == substanceName }?.id
             val groupedRoute = ingestionsGroupedBySubstance.groupBy {
@@ -216,7 +217,8 @@ class AddIngestionSearchViewModel @Inject constructor(
                             customUnitDoses = customUnitDoses,
                             customUnits = customUnits,
                             lastUsed =
-                            routeEntry.value.maxOfOrNull { it.ingestion.time } ?: Instant.now()
+                            routeEntry.value.maxOfOrNull { it.ingestion.time } ?: Instant.now(),
+                            customColorArgb = companion.customColorArgb
                         )
                     }
                 }

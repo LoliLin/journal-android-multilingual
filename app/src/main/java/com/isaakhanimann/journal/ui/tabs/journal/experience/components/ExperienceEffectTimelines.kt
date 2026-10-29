@@ -47,6 +47,7 @@ fun ExperienceEffectTimelines(
                 oneElement.numDots.toFloat() / 4f
             }
             val allIngestions = ingestionElements.map { it.ingestionWithCompanionAndCustomUnit }
+            val companion = oneElement.ingestionWithCompanionAndCustomUnit.substanceCompanion
             return@map DataForOneEffectLine(
                 substanceName = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.substanceName,
                 route = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.administrationRoute,
@@ -64,10 +65,10 @@ fun ExperienceEffectTimelines(
                     )
                 },
                 horizontalWeight = horizontalWeight,
-                color = oneElement.ingestionWithCompanionAndCustomUnit.substanceCompanion?.color
-                    ?: AdaptiveColor.RED,
+                color = companion?.color ?: AdaptiveColor.RED,
                 startTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.time,
-                endTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.endTime
+                endTime = oneElement.ingestionWithCompanionAndCustomUnit.ingestion.endTime,
+                customColorArgb = companion?.customColorArgb
             )
         }
     }

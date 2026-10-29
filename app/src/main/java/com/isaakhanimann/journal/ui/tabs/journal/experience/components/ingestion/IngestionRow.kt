@@ -64,8 +64,8 @@ fun IngestionRow(
         modifier = modifier.height(intrinsicSize = IntrinsicSize.Min)
     ) {
         VerticalLine(
-            color =
-            ingestionWithCompanionAndCustomUnit.substanceCompanion?.color ?: AdaptiveColor.RED
+            color = ingestionWithCompanionAndCustomUnit.substanceCompanion?.color ?: AdaptiveColor.RED,
+            customColorArgb = ingestionWithCompanionAndCustomUnit.substanceCompanion?.customColorArgb
         )
         Column {
             Row(
