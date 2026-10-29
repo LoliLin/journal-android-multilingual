@@ -44,6 +44,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeText
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNotePhotoStrip
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 
@@ -63,6 +64,7 @@ fun TimedNoteRow(
     timedNote: TimedNote,
     timeDisplayOption: TimeDisplayOption,
     startTime: Instant,
+    photoPaths: List<String> = emptyList(),
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -111,6 +113,16 @@ fun TimedNoteRow(
                 }
             }
             Text(text = timedNote.note, style = MaterialTheme.typography.bodyLarge)
+            if (photoPaths.isNotEmpty()) {
+                TimedNotePhotoStrip(
+                    photoPaths = photoPaths,
+                    onAddPhoto = null,
+                    onRemove = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp)
+                )
+            }
         }
     }
 }

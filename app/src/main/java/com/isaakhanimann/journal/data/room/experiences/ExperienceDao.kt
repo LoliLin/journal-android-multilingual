@@ -34,6 +34,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Location
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.data.room.experiences.relations.CustomUnitWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
@@ -410,7 +411,7 @@ interface ExperienceDao {
     suspend fun insert(customUnit: CustomUnit): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(timedNote: TimedNote)
+    suspend fun insert(timedNote: TimedNote): Long
 
     @Transaction
     suspend fun insertIngestionExperienceAndCompanion(
@@ -581,4 +582,16 @@ interface ExperienceDao {
 
     @Query("SELECT * FROM timednote WHERE experienceId =:experienceId")
     suspend fun getTimedNotes(experienceId: Int): List<TimedNote>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTimedNotePhoto(timedNotePhoto: TimedNotePhoto): Long
+
+    @Delete
+    suspend fun deleteTimedNotePhoto(timedNotePhoto: TimedNotePhoto)
+
+    @Query("SELECT * FROM TimedNotePhoto WHERE timedNoteId = :timedNoteId ORDER BY creationDate ASC")
+    fun getTimedNotePhotosFlow(timedNoteId: Int): Flow<List<TimedNotePhoto>>
+
+    @Query("SELECT * FROM TimedNotePhoto WHERE timedNoteId = :timedNoteId ORDER BY creationDate ASC")
+    suspend fun getTimedNotePhotos(timedNoteId: Int): List<TimedNotePhoto>
 }

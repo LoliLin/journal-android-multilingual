@@ -26,6 +26,8 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.achievement.AchievementUnlocker
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfo
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfoCodec
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -39,6 +41,7 @@ class AddCustomSubstanceViewModel @Inject constructor(
     var name by mutableStateOf("")
     var units by mutableStateOf("")
     var description by mutableStateOf("")
+    var roaInfos by mutableStateOf(emptyList<CustomRoaInfo>())
 
     val isValid get() = name.isNotBlank() && units.isNotBlank()
 
@@ -47,7 +50,8 @@ class AddCustomSubstanceViewModel @Inject constructor(
             val customSubstance = CustomSubstance(
                 name = name,
                 units = units,
-                description = description
+                description = description,
+                roaInfosJson = CustomRoaInfoCodec.encode(roaInfos)
             )
             experienceRepo.insert(customSubstance)
             achievementUnlocker.unlock(AchievementUnlocker.LOCAL_BREWERY)
@@ -60,7 +64,8 @@ class AddCustomSubstanceViewModel @Inject constructor(
             val customSubstance = CustomSubstance(
                 name = name,
                 units = units,
-                description = description
+                description = description,
+                roaInfosJson = CustomRoaInfoCodec.encode(roaInfos)
             )
             experienceRepo.insert(customSubstance)
             achievementUnlocker.unlock(AchievementUnlocker.LOCAL_BREWERY)

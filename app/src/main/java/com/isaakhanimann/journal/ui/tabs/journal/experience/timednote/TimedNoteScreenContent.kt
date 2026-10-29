@@ -26,7 +26,10 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -36,11 +39,13 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import android.net.Uri
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.TimePickerSection
+import com.isaakhanimann.journal.ui.utils.PhotoPickerDialog
 import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -96,14 +101,24 @@ fun TimedNoteScreenContent(
     isPartOfTimeline: Boolean,
     onChangeOfIsPartOfTimeline: (Boolean) -> Unit,
     shouldFocusTextFieldOnAppear: Boolean = false,
+    photoPaths: List<String> = emptyList(),
+    onRemovePhoto: ((String) -> Unit)? = null,
+    onPhotoSelectedUri: ((Uri) -> Unit)? = null,
     modifier: Modifier
 ) {
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
+    var isShowingPhotoPicker by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         if (shouldFocusTextFieldOnAppear) {
             focusRequester.requestFocus()
         }
+    }
+    if (isShowingPhotoPicker) {
+        PhotoPickerDialog(
+            onDismiss = { isShowingPhotoPicker = false },
+            onPhotoSelected = { uri -> onPhotoSelectedUri?.invoke(uri) }
+        )
     }
     Column(
         modifier = modifier
@@ -128,6 +143,16 @@ fun TimedNoteScreenContent(
                 .focusRequester(focusRequester)
         )
         Spacer(modifier = Modifier.height(5.dp))
+        TimedNotePhotoStrip(
+            photoPaths = photoPaths,
+            onAddPhoto = if (onPhotoSelectedUri != null) {
+                { isShowingPhotoPicker = true }
+            } else {
+                null
+            },
+            onRemove = onRemovePhoto,
+            modifier = Modifier.fillMaxWidth()
+        )
         CardWithTitle(title = i18n("show_on_timeline")) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

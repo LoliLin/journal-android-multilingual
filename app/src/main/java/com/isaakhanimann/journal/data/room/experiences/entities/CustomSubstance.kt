@@ -18,8 +18,11 @@
 
 package com.isaakhanimann.journal.data.room.experiences.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfo
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfoCodec
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
@@ -31,5 +34,19 @@ data class CustomSubstance(
     val id: Int = 0,
     val name: String,
     var units: String,
-    var description: String
-)
+    var description: String,
+    /**
+     * Per-route dose and duration knowledge, serialized as JSON.
+     *
+     * Stored as plain text rather than a typed list because Room's processor cannot resolve
+     * these serializable types; see [CustomRoaInfoCodec]. Use [roaInfos] to read it.
+     */
+    @ColumnInfo(defaultValue = "[]")
+    var roaInfosJson: String = "[]"
+) {
+    /** Dose info for this substance, decoded from [roaInfosJson]. */
+    val roaInfos: List<CustomRoaInfo> get() = CustomRoaInfoCodec.decode(roaInfosJson)
+
+    fun withRoaInfos(newRoaInfos: List<CustomRoaInfo>): CustomSubstance =
+        copy(roaInfosJson = CustomRoaInfoCodec.encode(newRoaInfos))
+}

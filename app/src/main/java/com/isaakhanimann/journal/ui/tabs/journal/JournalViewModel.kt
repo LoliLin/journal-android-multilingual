@@ -29,6 +29,7 @@ import com.isaakhanimann.journal.data.achievement.AchievementDefinition
 import com.isaakhanimann.journal.data.achievement.AchievementDefinitionsLoader
 import com.isaakhanimann.journal.data.achievement.AchievementEventBus
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
+import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.substances.repositories.SearchRepository
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
@@ -160,11 +161,15 @@ class JournalViewModel @Inject constructor(
                         experiencesWithIngestions.filter { it.experience.isFavorite }
                 }
                 if (searchText.isNotEmpty()) {
-                    // collect substances with matching names for each whitespace-separated term,
-                    // so multiple substances can be searched at once
+                    // Split into whitespace-separated terms so several substances can be
+                    // combined in one query. Each term is matched independently and an
+                    // experience has to satisfy ALL of them, so "LSD MDMA" means
+                    // "experiences that contain both", not "either".
                     val searchTerms = splitSearchTerms(searchText)
-                    val matchingSubstances = buildSet {
-                        for (term in searchTerms) {
+                    // Resolve the substantances that each term refers to once, so the
+                    // per-experience filter below stays a cheap set lookup.
+                    val substanceNamesByTerm: List<Set<String>> = searchTerms.map { term ->
+                        buildSet {
                             val matches = searchRepository.getMatchingSubstances(
                                 searchText = term,
                                 filterCategories = emptyList(),
@@ -173,46 +178,18 @@ class JournalViewModel @Inject constructor(
                             for (match in matches) {
                                 add(match.substance.name)
                             }
-                        }
-                        for (custom in customSubstances) {
-                            if (searchTerms.any { term -> custom.name.contains(term, ignoreCase = true) }) {
-                                add(custom.name)
+                            for (custom in customSubstances) {
+                                if (custom.name.contains(term, ignoreCase = true)) {
+                                    add(custom.name)
+                                }
                             }
                         }
                     }
 
-                    // experience title, text or some consumed substance must contain the search
-                    // string, or the consumer, an ingestion note or a timed note needs to match
-                    experiencesWithIngestions = experiencesWithIngestions.filter {
-                        it.experience.title.contains(
-                            other = searchText,
-                            ignoreCase = true
-                        ) || it.ingestionsWithCompanions.any { ingestionWithCompanion ->
-                            val isSubstanceAMatch =
-                                ingestionWithCompanion.ingestion.substanceName in matchingSubstances
-                            val isConsumerAMatch =
-                                ingestionWithCompanion.ingestion.consumerName?.contains(
-                                    searchText,
-                                    ignoreCase = true
-                                )
-                                    ?: false
-                            val isNotesAMatch =
-                                ingestionWithCompanion.ingestion.notes?.contains(
-                                    searchText,
-                                    ignoreCase = true
-                                )
-                                    ?: false
-                            isSubstanceAMatch || isConsumerAMatch || isNotesAMatch
-                        } || it.timedNotes.any { timedNote ->
-                            timedNote.note.contains(
-                                other = searchText,
-                                ignoreCase = true
-                            )
-                        } || it.experience.text.contains(
-                            other = searchText,
-                            ignoreCase = true
-                        )
-                    }
+                    experiencesWithIngestions = experiencesWithIngestions.filter { it.matchesAllTerms(
+                        searchTerms = searchTerms,
+                        substanceNamesByTerm = substanceNamesByTerm
+                    ) }
                 }
                 return@combine experiencesWithIngestions
             }
@@ -228,7 +205,39 @@ private val WHITESPACE_REGEX = Regex("\\s+")
 
 /**
  * Splits a search query into individual terms so multiple substances can be searched at once
- * (e.g. "LSD MDMA" matches experiences containing either substance).
+ * (e.g. "LSD MDMA" matches experiences containing both substances).
  */
 internal fun splitSearchTerms(searchText: String): List<String> =
     searchText.trim().split(WHITESPACE_REGEX).filter { it.isNotBlank() }
+
+/**
+ * True when this experience satisfies every search term.
+ *
+ * A term is satisfied by a substance the experience consumed (resolved through
+ * [substanceNamesByTerm] so fuzzy/pinyin matching still applies), or by free text: the
+ * experience title/text, the consumer name, an ingestion note or a timed note.
+ *
+ * Terms are combined with AND on purpose — searching "LSD MDMA" asks for the experiences
+ * where both were involved.
+ */
+internal fun ExperienceWithIngestionsCompanionsAndRatings.matchesAllTerms(
+    searchTerms: List<String>,
+    substanceNamesByTerm: List<Set<String>>
+): Boolean {
+    if (searchTerms.isEmpty()) return true
+    val consumedSubstanceNames = ingestionsWithCompanions
+        .map { it.ingestion.substanceName }
+        .toSet()
+    return searchTerms.withIndex().all { (index, term) ->
+        consumedSubstanceNames.any { it in substanceNamesByTerm[index] } ||
+            experience.title.contains(term, ignoreCase = true) ||
+            experience.text.contains(term, ignoreCase = true) ||
+            ingestionsWithCompanions.any { ingestionWithCompanion ->
+                ingestionWithCompanion.ingestion.consumerName
+                    ?.contains(term, ignoreCase = true) == true ||
+                    ingestionWithCompanion.ingestion.notes
+                        ?.contains(term, ignoreCase = true) == true
+            } ||
+            timedNotes.any { timedNote -> timedNote.note.contains(term, ignoreCase = true) }
+    }
+}

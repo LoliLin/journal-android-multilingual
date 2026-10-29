@@ -72,7 +72,10 @@ fun AddTimedNoteScreen(
             otherColors = viewModel.otherColors,
             isPartOfTimeline = viewModel.isPartOfTimeline,
             onChangeOfIsPartOfTimeline = viewModel::onChangeIsPartOfTimeline,
-            shouldFocusTextFieldOnAppear = true
+            shouldFocusTextFieldOnAppear = true,
+            photoPaths = viewModel.pendingPhotoPaths,
+            onRemovePhoto = viewModel::onRemovePendingPhoto,
+            onPhotoSelectedUri = viewModel::onPhotoUriPicked
         )
     }
 }

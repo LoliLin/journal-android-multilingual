@@ -25,6 +25,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfo
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfoCodec
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomSubstanceRoute
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -44,6 +46,12 @@ class EditCustomSubstanceViewModel @AssistedInject constructor(
     var units by mutableStateOf("")
     var description by mutableStateOf("")
 
+    /**
+     * Dose info carried across saves. This screen only edits name/units/description, so the
+     * value is loaded once and written back unchanged unless the dose dialog replaces it.
+     */
+    var roaInfos by mutableStateOf(emptyList<CustomRoaInfo>())
+
     val isValid get() = name.isNotBlank() && units.isNotBlank()
 
     init {
@@ -56,16 +64,18 @@ class EditCustomSubstanceViewModel @AssistedInject constructor(
             name = customSubstance.name
             units = customSubstance.units
             description = customSubstance.description
+            roaInfos = customSubstance.roaInfos
         }
     }
 
     fun onDoneTap() {
         viewModelScope.launch {
             val customSubstance = CustomSubstance(
-                id,
-                name,
-                units,
-                description
+                id = id,
+                name = name,
+                units = units,
+                description = description,
+                roaInfosJson = CustomRoaInfoCodec.encode(roaInfos)
             )
             experienceRepo.insert(customSubstance)
         }
@@ -73,7 +83,15 @@ class EditCustomSubstanceViewModel @AssistedInject constructor(
 
     fun deleteCustomSubstance() {
         viewModelScope.launch {
-            experienceRepo.delete(CustomSubstance(id, name, units, description))
+            experienceRepo.delete(
+                CustomSubstance(
+                    id = id,
+                    name = name,
+                    units = units,
+                    description = description,
+                    roaInfosJson = CustomRoaInfoCodec.encode(roaInfos)
+                )
+            )
         }
     }
 
