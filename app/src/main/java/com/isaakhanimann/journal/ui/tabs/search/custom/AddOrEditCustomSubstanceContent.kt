@@ -78,12 +78,12 @@ fun AddOrEditCustomSubstanceContent(
     var isShowingDoseDialog by remember { mutableStateOf(false) }
     if (isShowingDoseDialog) {
         CustomDoseInfoDialog(
+            roaInfos = roaInfos,
             initialRoute = roaInfos.firstOrNull()?.administrationRoute
                 ?: AdministrationRoute.ORAL,
-            initialDoseInfo = roaInfos.firstOrNull()?.doseInfo,
             onDismiss = { isShowingDoseDialog = false },
-            onConfirm = { route, doseInfo ->
-                onRoaInfosChange?.invoke(roaInfos.withDoseInfo(route, doseInfo))
+            onConfirm = { newRoaInfos ->
+                onRoaInfosChange?.invoke(newRoaInfos)
                 isShowingDoseDialog = false
             }
         )

@@ -115,9 +115,16 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
     }
 
-    suspend fun delete(experienceWithIngestions: ExperienceWithIngestions) =
+    suspend fun delete(experienceWithIngestions: ExperienceWithIngestions) {
+        // Deleting the experience cascades through its timed notes and their photo rows, so the
+        // file paths have to be collected first or the images leak on disk forever.
+        val photoPaths = experienceDao.getTimedNotes(experienceWithIngestions.experience.id)
+            .flatMap { note -> experienceDao.getTimedNotePhotos(note.id) }
+            .map { it.filePath }
         experienceDao.deleteExperienceWithIngestions(experienceWithIngestions)
-            .also { JournalDataEvents.notifyJournalChanged() }
+        JournalDataEvents.notifyJournalChanged()
+        photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
+    }
 
     suspend fun deleteUnusedSubstanceCompanions() =
         experienceDao.deleteUnusedSubstanceCompanions()
@@ -245,6 +252,7 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
 
     suspend fun insert(timedNotePhoto: TimedNotePhoto): Int =
         experienceDao.insertTimedNotePhoto(timedNotePhoto).toInt()
+            .also { JournalDataEvents.notifyJournalChanged() }
 
     fun getTimedNotePhotosFlow(timedNoteId: Int): Flow<List<TimedNotePhoto>> =
         experienceDao.getTimedNotePhotosFlow(timedNoteId)
@@ -255,6 +263,7 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
     suspend fun delete(timedNotePhoto: TimedNotePhoto) {
         experienceDao.deleteTimedNotePhoto(timedNotePhoto)
         TimedNotePhotoStorage.deletePhoto(timedNotePhoto.filePath)
+        JournalDataEvents.notifyJournalChanged()
     }
 
     suspend fun delete(substanceCompanion: SubstanceCompanion) =

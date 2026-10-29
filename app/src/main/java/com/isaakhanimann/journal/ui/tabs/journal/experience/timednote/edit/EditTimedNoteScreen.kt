@@ -50,8 +50,7 @@ fun EditTimedNoteScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            viewModel.delete()
-                            navigateBack()
+                            viewModel.delete(onDeleted = navigateBack)
                         }
                     ) {
                         Icon(
@@ -60,8 +59,7 @@ fun EditTimedNoteScreen(
                         )
                     }
                     IconButton(onClick = {
-                        viewModel.onDoneTap()
-                        navigateBack()
+                        viewModel.onDoneTap(onSaved = navigateBack)
                     }) {
                         Icon(
                             Icons.Filled.Done,

@@ -67,62 +67,79 @@ fun TimedNoteRow(
     photoPaths: List<String> = emptyList(),
     modifier: Modifier = Modifier
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = modifier.height(intrinsicSize = IntrinsicSize.Min)
-    ) {
-        val isDarkTheme = isSystemInDarkTheme()
-        val strokeWidth = 3.dp
-        Canvas(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(strokeWidth)
-                .padding(vertical = 5.dp)
+    Column(modifier = modifier) {
+        // Scaling the timeline to the full row height requires an intrinsic measurement, and a
+        // LazyRow cannot answer intrinsic queries (it throws). So the intrinsic-sized block
+        // only ever contains text, and photos get their own row below it.
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(TIMELINE_GAP),
+            modifier = Modifier.height(intrinsicSize = IntrinsicSize.Min)
         ) {
-            if (timedNote.isPartOfTimeline) {
-                val strokeWidthPx = strokeWidth.toPx()
-                drawLine(
-                    color = timedNote.color.getComposeColor(isDarkTheme),
-                    start = Offset(x = size.width / 2, y = 0f),
-                    end = Offset(x = size.width / 2, y = size.height),
-                    strokeWidth = strokeWidthPx,
-                    cap = StrokeCap.Round,
-                    pathEffect = PathEffect.dashPathEffect(
-                        floatArrayOf(
-                            strokeWidthPx,
-                            strokeWidthPx * 2
+            val isDarkTheme = isSystemInDarkTheme()
+            val strokeWidth = TIMELINE_STROKE_WIDTH
+            Canvas(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .width(strokeWidth)
+                    .padding(vertical = 5.dp)
+            ) {
+                if (timedNote.isPartOfTimeline) {
+                    val strokeWidthPx = strokeWidth.toPx()
+                    drawLine(
+                        color = timedNote.color.getComposeColor(isDarkTheme),
+                        start = Offset(x = size.width / 2, y = 0f),
+                        end = Offset(x = size.width / 2, y = size.height),
+                        strokeWidth = strokeWidthPx,
+                        cap = StrokeCap.Round,
+                        pathEffect = PathEffect.dashPathEffect(
+                            floatArrayOf(
+                                strokeWidthPx,
+                                strokeWidthPx * 2
+                            )
                         )
                     )
-                )
-            }
-        }
-        Column {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(15.dp),
-                verticalAlignment = Alignment.Bottom
-            ) {
-                TimeText(
-                    time = timedNote.time,
-                    timeDisplayOption = timeDisplayOption,
-                    startTime = startTime,
-                    style = MaterialTheme.typography.titleMedium
-                )
-                if (!timedNote.isPartOfTimeline) {
-                    Text(text = i18n("not_in_timeline"), style = MaterialTheme.typography.bodySmall)
                 }
             }
-            Text(text = timedNote.note, style = MaterialTheme.typography.bodyLarge)
-            if (photoPaths.isNotEmpty()) {
-                TimedNotePhotoStrip(
-                    photoPaths = photoPaths,
-                    onAddPhoto = null,
-                    onRemove = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 4.dp)
-                )
+            Column {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(15.dp),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    TimeText(
+                        time = timedNote.time,
+                        timeDisplayOption = timeDisplayOption,
+                        startTime = startTime,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    if (!timedNote.isPartOfTimeline) {
+                        Text(
+                            text = i18n("not_in_timeline"),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                }
+                Text(text = timedNote.note, style = MaterialTheme.typography.bodyLarge)
             }
+        }
+        if (photoPaths.isNotEmpty()) {
+            TimedNotePhotoStrip(
+                photoPaths = photoPaths,
+                onAddPhoto = null,
+                onRemove = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = TIMELINE_STROKE_WIDTH + TIMELINE_GAP,
+                        top = 4.dp
+                    )
+            )
         }
     }
 }
+
+/** Width of the dashed timeline line drawn left of a note. */
+private val TIMELINE_STROKE_WIDTH = 3.dp
+
+/** Space between that line and the note text. */
+private val TIMELINE_GAP = 10.dp

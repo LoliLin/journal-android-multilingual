@@ -26,6 +26,8 @@
     <application
         android:name=".di.JournalApplication"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher_springwind"
         android:label="@string/app_name"

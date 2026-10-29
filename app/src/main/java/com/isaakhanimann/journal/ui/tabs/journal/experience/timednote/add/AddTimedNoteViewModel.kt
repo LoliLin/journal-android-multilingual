@@ -76,6 +76,20 @@ class AddTimedNoteViewModel @AssistedInject constructor(
         }
     }
 
+    /**
+     * Copies already imported photos are unsaved work. If the screen goes away without the note
+     * being saved (back gesture, process death by navigation), the files would linger on disk
+     * with no row pointing at them, so drop whatever is still pending.
+     */
+    override fun onCleared() {
+        super.onCleared()
+        pendingPhotoPaths.forEach { path ->
+            // onCleared is not a coroutine scope, and the files are tiny, so deleting
+            // synchronously here is both correct and simpler than racing viewModelScope.
+            TimedNotePhotoStorage.deletePhotoBlocking(path)
+        }
+    }
+
     init {
         viewModelScope.launch {
             val ingestionsWithCompanions = experienceRepo.getIngestionsWithCompanions(experienceId)
@@ -116,7 +130,13 @@ class AddTimedNoteViewModel @AssistedInject constructor(
         color = newColor
     }
 
-    fun onDoneTap() {
+    /**
+     * Saves the note and everything staged with it, then reports completion.
+     *
+     * Navigating back before this finishes would clear the ViewModel and trigger the pending
+     * photo cleanup while the insert is still in flight, so the caller waits for [onSaved].
+     */
+    fun onDoneTap(onSaved: () -> Unit = {}) {
         if (note.isNotBlank()) {
             viewModelScope.launch {
                 val newTimedNote = TimedNote(
@@ -127,8 +147,9 @@ class AddTimedNoteViewModel @AssistedInject constructor(
                     experienceId = experienceId,
                     isPartOfTimeline = isPartOfTimeline
                 )
+                val stashedPhotoPaths = pendingPhotoPaths
                 val newTimedNoteId = experienceRepo.insert(newTimedNote)
-                for (photoPath in pendingPhotoPaths) {
+                for (photoPath in stashedPhotoPaths) {
                     experienceRepo.insert(
                         TimedNotePhoto(
                             timedNoteId = newTimedNoteId,
@@ -136,7 +157,13 @@ class AddTimedNoteViewModel @AssistedInject constructor(
                         )
                     )
                 }
+                // The photos now belong to a saved note; clearing this stops onCleared() from
+                // deleting files that are referenced by the database.
+                pendingPhotoPaths = emptyList()
+                onSaved()
             }
+        } else {
+            onSaved()
         }
     }
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 12+ (targetSdk 31+) auto-backup rules.
+
+  Timed-note photos live under filesDir/timed_note_photos and can easily exceed the 25 MB
+  Auto Backup quota on their own. When the quota is blown the whole backup is rejected, which
+  would also lose the database — so the photo directory is excluded here. The journal itself is
+  still backed up; photos travel with the app's own export instead.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="file" path="timed_note_photos" />
+        <exclude domain="cache" path="note_photos" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="file" path="timed_note_photos" />
+        <exclude domain="cache" path="note_photos" />
+    </device-transfer>
+</data-extraction-rules>
