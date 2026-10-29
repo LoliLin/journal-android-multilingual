@@ -809,5 +809,13 @@
   "categories.phenethylamine": "苯乙胺类",
   "categories.phenethylamine.desc": "苯乙胺类是一个化学类别，包括苯丙胺类兴奋剂、麦司卡林类迷幻剂与 MDMA 类共情剂。",
   "categories.decongestant": "减充血剂",
-  "categories.decongestant.desc": "减充血剂用于减轻鼻腔黏膜肿胀；其中部分物质（如伪麻黄碱）同时具有兴奋作用。"
+  "categories.decongestant.desc": "减充血剂用于减轻鼻腔黏膜肿胀；其中部分物质（如伪麻黄碱）同时具有兴奋作用。",
+  "timed_note_add_photo": "添加照片",
+  "timed_note_photo_from_gallery": "从相册选择",
+  "timed_note_photo_from_camera": "拍照",
+  "timed_note_photos": "照片",
+  "timed_note_delete_photo": "删除照片",
+  "custom_substance_dose_info": "剂量信息",
+  "custom_substance_add_dose_info": "添加剂量信息",
+  "administration_route": "给药途径"
 }

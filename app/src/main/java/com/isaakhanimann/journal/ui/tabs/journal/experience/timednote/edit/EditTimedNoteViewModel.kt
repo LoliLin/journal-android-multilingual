@@ -18,14 +18,18 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.edit
 
+import android.content.Context
+import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditTimedNoteRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
@@ -33,6 +37,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.LocalDateTime
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -46,7 +51,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = EditTimedNoteViewModel.Factory::class)
 class EditTimedNoteViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    @Assisted val route: EditTimedNoteRoute
+    @Assisted val route: EditTimedNoteRoute,
+    @param:ApplicationContext private val appContext: Context
 ) : ViewModel() {
     var note by mutableStateOf("")
     var color by mutableStateOf(AdaptiveColor.BLUE)
@@ -122,6 +128,29 @@ class EditTimedNoteViewModel @AssistedInject constructor(
             }
         }
     }
+
+    fun onPhotoAdded(uri: Uri) {
+        viewModelScope.launch {
+            val path = TimedNotePhotoStorage.importPhoto(appContext, uri) ?: return@launch
+            experienceRepo.insert(
+                TimedNotePhoto(timedNoteId = timedNoteId, filePath = path)
+            )
+        }
+    }
+
+    fun onPhotoRemoved(photo: TimedNotePhoto) {
+        viewModelScope.launch {
+            experienceRepo.delete(photo)
+        }
+    }
+
+    /** Photos currently attached to this note, kept live so removals disappear immediately. */
+    val photosFlow: StateFlow<List<TimedNotePhoto>> =
+        experienceRepo.getTimedNotePhotosFlow(route.timedNoteId).stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     fun onDoneTap() {
         viewModelScope.launch {

@@ -83,6 +83,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDispl
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.ingestion.IngestionRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.rating.RatingRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.timednote.TimedNoteRow
+import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.rememberTimedNotePhotoPaths
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.OneExperienceScreenModel
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneRating
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.DataForOneTimedNote
@@ -583,6 +584,7 @@ fun OneExperienceScreen(
                             timedNote = timedNote,
                             timeDisplayOption = timeDisplayOption,
                             startTime = oneExperienceScreenModel.firstIngestionTime,
+                            photoPaths = rememberTimedNotePhotoPaths(timedNote.id),
                             modifier = Modifier
                                 .clickable {
                                     navigateToEditTimedNoteScreen(timedNote.id)

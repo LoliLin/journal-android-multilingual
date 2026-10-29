@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.data.room.experiences
 
+import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Experience
@@ -25,6 +26,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRating
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.data.room.experiences.relations.CustomUnitWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestions
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
@@ -46,7 +48,10 @@ import kotlinx.coroutines.flow.flowOn
 class ExperienceRepository @Inject constructor(private val experienceDao: ExperienceDao) {
     suspend fun insert(rating: ShulginRating) = experienceDao.insert(rating).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun insert(customUnit: CustomUnit) = experienceDao.insert(customUnit).also { JournalDataEvents.notifyJournalChanged() }.toInt()
-    suspend fun insert(timedNote: TimedNote) = experienceDao.insert(timedNote).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun insert(timedNote: TimedNote): Int =
+        experienceDao.insert(timedNote)
+            .also { JournalDataEvents.notifyJournalChanged() }
+            .toInt()
     suspend fun update(experience: Experience) = experienceDao.update(experience).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun update(ingestion: Ingestion) = experienceDao.update(ingestion).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun update(rating: ShulginRating) = experienceDao.update(rating).also { JournalDataEvents.notifyJournalChanged() }
@@ -101,8 +106,14 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
     suspend fun delete(rating: ShulginRating) = experienceDao.delete(rating)
         .also { JournalDataEvents.notifyJournalChanged() }
 
-    suspend fun delete(timedNote: TimedNote) = experienceDao.delete(timedNote)
-        .also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun delete(timedNote: TimedNote) {
+        // The rows are removed by the cascade, so the files have to be collected first —
+        // after the delete there is nothing left to tell us which paths to unlink.
+        val photoPaths = experienceDao.getTimedNotePhotos(timedNote.id).map { it.filePath }
+        experienceDao.delete(timedNote)
+        JournalDataEvents.notifyJournalChanged()
+        photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
+    }
 
     suspend fun delete(experienceWithIngestions: ExperienceWithIngestions) =
         experienceDao.deleteExperienceWithIngestions(experienceWithIngestions)
@@ -231,6 +242,20 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
 
     suspend fun getTimedNotes(experienceId: Int): List<TimedNote> =
         experienceDao.getTimedNotes(experienceId)
+
+    suspend fun insert(timedNotePhoto: TimedNotePhoto): Int =
+        experienceDao.insertTimedNotePhoto(timedNotePhoto).toInt()
+
+    fun getTimedNotePhotosFlow(timedNoteId: Int): Flow<List<TimedNotePhoto>> =
+        experienceDao.getTimedNotePhotosFlow(timedNoteId)
+
+    suspend fun getTimedNotePhotos(timedNoteId: Int): List<TimedNotePhoto> =
+        experienceDao.getTimedNotePhotos(timedNoteId)
+
+    suspend fun delete(timedNotePhoto: TimedNotePhoto) {
+        experienceDao.deleteTimedNotePhoto(timedNotePhoto)
+        TimedNotePhotoStorage.deletePhoto(timedNotePhoto.filePath)
+    }
 
     suspend fun delete(substanceCompanion: SubstanceCompanion) =
         experienceDao.delete(substanceCompanion)

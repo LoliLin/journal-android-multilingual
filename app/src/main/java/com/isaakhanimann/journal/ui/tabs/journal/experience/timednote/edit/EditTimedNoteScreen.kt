@@ -72,6 +72,7 @@ fun EditTimedNoteScreen(
             )
         }
     ) { padding ->
+        val photos = viewModel.photosFlow.collectAsState().value
         TimedNoteScreenContent(
             selectedTime = viewModel.localDateTimeFlow.collectAsState().value,
             onTimeChange = viewModel::onChangeTime,
@@ -83,7 +84,12 @@ fun EditTimedNoteScreen(
             alreadyUsedColors = viewModel.alreadyUsedColorsFlow.collectAsState().value,
             otherColors = viewModel.otherColorsFlow.collectAsState().value,
             isPartOfTimeline = viewModel.isPartOfTimeline,
-            onChangeOfIsPartOfTimeline = viewModel::onChangeIsPartOfTimeline
+            onChangeOfIsPartOfTimeline = viewModel::onChangeIsPartOfTimeline,
+            photoPaths = photos.map { it.filePath },
+            onRemovePhoto = { path ->
+                photos.firstOrNull { it.filePath == path }?.let(viewModel::onPhotoRemoved)
+            },
+            onPhotoSelectedUri = viewModel::onPhotoAdded
         )
     }
 }

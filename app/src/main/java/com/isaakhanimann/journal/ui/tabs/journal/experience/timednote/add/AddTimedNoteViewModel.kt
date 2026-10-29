@@ -18,20 +18,25 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.add
 
+import android.content.Context
+import android.net.Uri
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNote
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddTimedNoteRoute
 import com.isaakhanimann.journal.ui.utils.getInstant
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
@@ -42,7 +47,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel(assistedFactory = AddTimedNoteViewModel.Factory::class)
 class AddTimedNoteViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
-    @Assisted val route: AddTimedNoteRoute
+    @Assisted val route: AddTimedNoteRoute,
+    @param:ApplicationContext private val appContext: Context
 ) : ViewModel() {
     var note by mutableStateOf("")
     var color by mutableStateOf(AdaptiveColor.BLUE)
@@ -51,6 +57,24 @@ class AddTimedNoteViewModel @AssistedInject constructor(
     var localDateTimeFlow = MutableStateFlow(LocalDateTime.now())
     var alreadyUsedColors by mutableStateOf(emptyList<AdaptiveColor>())
     var otherColors by mutableStateOf(emptyList<AdaptiveColor>())
+
+    /** Photos staged for this note; the files are already copied into internal storage. */
+    var pendingPhotoPaths by mutableStateOf(emptyList<String>())
+        private set
+
+    fun onPhotoUriPicked(uri: Uri) {
+        viewModelScope.launch {
+            val path = TimedNotePhotoStorage.importPhoto(appContext, uri) ?: return@launch
+            pendingPhotoPaths = pendingPhotoPaths + path
+        }
+    }
+
+    fun onRemovePendingPhoto(filePath: String) {
+        viewModelScope.launch {
+            TimedNotePhotoStorage.deletePhoto(filePath)
+            pendingPhotoPaths = pendingPhotoPaths - filePath
+        }
+    }
 
     init {
         viewModelScope.launch {
@@ -103,7 +127,15 @@ class AddTimedNoteViewModel @AssistedInject constructor(
                     experienceId = experienceId,
                     isPartOfTimeline = isPartOfTimeline
                 )
-                experienceRepo.insert(newTimedNote)
+                val newTimedNoteId = experienceRepo.insert(newTimedNote)
+                for (photoPath in pendingPhotoPaths) {
+                    experienceRepo.insert(
+                        TimedNotePhoto(
+                            timedNoteId = newTimedNoteId,
+                            filePath = photoPath
+                        )
+                    )
+                }
             }
         }
     }

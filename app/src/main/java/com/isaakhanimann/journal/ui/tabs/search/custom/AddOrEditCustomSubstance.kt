@@ -60,6 +60,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfo
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import kotlinx.coroutines.launch
@@ -91,7 +93,9 @@ fun AddCustomSubstance(
         isDoneEnabled = viewModel.isValid,
         title = i18n("search_add_custom_substance"),
         isShowingDelete = false,
-        deleteAndNavigate = {}
+        deleteAndNavigate = {},
+        roaInfos = viewModel.roaInfos,
+        onRoaInfosChange = { viewModel.roaInfos = it }
     )
 }
 
@@ -153,8 +157,23 @@ fun AddOrEditCustomSubstance(
     title: String,
     isShowingDelete: Boolean,
     deleteAndNavigate: () -> Unit,
+    roaInfos: List<CustomRoaInfo> = emptyList(),
+    onRoaInfosChange: ((List<CustomRoaInfo>) -> Unit)? = null,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
+    var isShowingDoseDialog by remember { mutableStateOf(false) }
+    if (isShowingDoseDialog) {
+        CustomDoseInfoDialog(
+            initialRoute = roaInfos.firstOrNull()?.administrationRoute
+                ?: AdministrationRoute.ORAL,
+            initialDoseInfo = roaInfos.firstOrNull()?.doseInfo,
+            onDismiss = { isShowingDoseDialog = false },
+            onConfirm = { route, doseInfo ->
+                onRoaInfosChange?.invoke(roaInfos.withDoseInfo(route, doseInfo))
+                isShowingDoseDialog = false
+            }
+        )
+    }
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
@@ -270,6 +289,26 @@ fun AddOrEditCustomSubstance(
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(5.dp))
+            if (onRoaInfosChange != null) {
+                val doseSummary = roaInfos
+                    .mapNotNull { info -> info.doseInfo?.units?.let { "${info.administrationRoute.displayText} · $it" } }
+                    .joinToString()
+                OutlinedButton(
+                    onClick = { isShowingDoseDialog = true },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        text = if (roaInfos.isEmpty()) {
+                            i18n("custom_substance_add_dose_info")
+                        } else {
+                            "${
+                                i18n("custom_substance_dose_info")
+                            }: $doseSummary"
+                        }
+                    )
+                }
+                Spacer(modifier = Modifier.height(5.dp))
+            }
         }
     }
 }

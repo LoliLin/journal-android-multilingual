@@ -809,5 +809,13 @@
   "categories.phenethylamine": "Phenethylamine",
   "categories.phenethylamine.desc": "Phenethylamines are a chemical class that includes stimulants, psychedelics and entactogens such as amphetamine, mescaline and MDMA.",
   "categories.decongestant": "Decongestant",
-  "categories.decongestant.desc": "Decongestants reduce swelling of the nasal passages; some, such as pseudoephedrine, also act as stimulants."
+  "categories.decongestant.desc": "Decongestants reduce swelling of the nasal passages; some, such as pseudoephedrine, also act as stimulants.",
+  "timed_note_add_photo": "Add photo",
+  "timed_note_photo_from_gallery": "Choose from gallery",
+  "timed_note_photo_from_camera": "Take a photo",
+  "timed_note_photos": "Photos",
+  "timed_note_delete_photo": "Delete photo",
+  "custom_substance_dose_info": "Dose info",
+  "custom_substance_add_dose_info": "Add dose info",
+  "administration_route": "Route"
 }

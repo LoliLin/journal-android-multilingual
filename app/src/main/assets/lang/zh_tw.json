@@ -26,7 +26,6 @@
   "settings_ui": "介面",
   "settings_preferences": "偏好設定",
   "settings_root_tab_transitions": "靈動頁面切換",
-
   "settings_theme_palette": "主題色彩",
   "settings_theme_dynamic": "系統動態色",
   "settings_palette_midnight": "午夜藍",
@@ -810,5 +809,13 @@
   "categories.phenethylamine": "苯乙胺類",
   "categories.phenethylamine.desc": "苯乙胺類是一個化學類別，包括苯丙胺類興奮劑、麥斯卡林類迷幻劑與 MDMA 類共情劑。",
   "categories.decongestant": "減充血劑",
-  "categories.decongestant.desc": "減充血劑用於減輕鼻腔黏膜腫脹；其中部分物質（如偽麻黃鹼）同時具有興奮作用。"
+  "categories.decongestant.desc": "減充血劑用於減輕鼻腔黏膜腫脹；其中部分物質（如偽麻黃鹼）同時具有興奮作用。",
+  "timed_note_add_photo": "新增照片",
+  "timed_note_photo_from_gallery": "從相簿選擇",
+  "timed_note_photo_from_camera": "拍照",
+  "timed_note_photos": "照片",
+  "timed_note_delete_photo": "刪除照片",
+  "custom_substance_dose_info": "劑量資訊",
+  "custom_substance_add_dose_info": "新增劑量資訊",
+  "administration_route": "給藥途徑"
 }
