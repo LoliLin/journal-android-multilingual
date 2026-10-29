@@ -82,7 +82,6 @@ class AddTimedNoteViewModel @AssistedInject constructor(
      * with no row pointing at them, so drop whatever is still pending.
      */
     override fun onCleared() {
-        super.onCleared()
         pendingPhotoPaths.forEach { path ->
             // onCleared is not a coroutine scope, and the files are tiny, so deleting
             // synchronously here is both correct and simpler than racing viewModelScope.

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Android 12+ (targetSdk 31+) auto-backup rules.
+  Auto-backup rules for Android 12+ (targetSdk 31+).
 
   Timed-note photos live under filesDir/timed_note_photos and can easily exceed the 25 MB
   Auto Backup quota on their own. When the quota is blown the whole backup is rejected, which
-  would also lose the database — so the photo directory is excluded here. The journal itself is
+  would also lose the database, so the photo directory is excluded here. The journal itself is
   still backed up; photos travel with the app's own export instead.
+
+  Valid domains are: root, file, database, sharedpref, external, device_root, device_file,
+  device_database, device_sharedpref. Cache directories are never backed up, so they are not
+  listed (and "cache" is not a valid domain).
 -->
 <data-extraction-rules>
     <cloud-backup>
         <exclude domain="file" path="timed_note_photos" />
-        <exclude domain="cache" path="note_photos" />
     </cloud-backup>
     <device-transfer>
         <exclude domain="file" path="timed_note_photos" />
-        <exclude domain="cache" path="note_photos" />
     </device-transfer>
 </data-extraction-rules>
