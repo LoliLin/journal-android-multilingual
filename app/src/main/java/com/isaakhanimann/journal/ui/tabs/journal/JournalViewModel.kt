@@ -225,11 +225,17 @@ internal fun ExperienceWithIngestionsCompanionsAndRatings.matchesAllTerms(
     substanceNamesByTerm: List<Set<String>>
 ): Boolean {
     if (searchTerms.isEmpty()) return true
+    // Defensive: a caller that builds the two lists out of step would otherwise index past the
+    // end. Treat a missing entry as "no substance resolved for this term" instead of crashing.
+    val resolvedNames = searchTerms.indices.map { index ->
+        substanceNamesByTerm.getOrElse(index) { emptySet() }
+    }
     val consumedSubstanceNames = ingestionsWithCompanions
         .map { it.ingestion.substanceName }
         .toSet()
     return searchTerms.withIndex().all { (index, term) ->
-        consumedSubstanceNames.any { it in substanceNamesByTerm[index] } ||
+        val termSubstanceNames = resolvedNames[index]
+        consumedSubstanceNames.any { it in termSubstanceNames } ||
             experience.title.contains(term, ignoreCase = true) ||
             experience.text.contains(term, ignoreCase = true) ||
             ingestionsWithCompanions.any { ingestionWithCompanion ->

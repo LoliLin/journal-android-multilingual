@@ -21,16 +21,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MenuAnchorType
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -48,26 +47,66 @@ import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.localization.i18n
 
 /**
- * Edits the dose table for a single route of a custom substance.
+ * Edits the dose table for one route at a time of a custom substance.
  *
- * Only thresholds are collected: a custom substance rarely has the full dose ladder, and each
+ * Every edited route is retained, so filling in oral first and then insufflated keeps both.
+ * Only thresholds are collected: a custom substance rarely has the full dose ladder, and an
  * empty field simply means "unknown", which the dose resolver already tolerates.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomDoseInfoDialog(
+    roaInfos: List<CustomRoaInfo>,
     initialRoute: AdministrationRoute,
-    initialDoseInfo: CustomDoseInfo?,
     onDismiss: () -> Unit,
-    onConfirm: (route: AdministrationRoute, doseInfo: CustomDoseInfo) -> Unit
+    onConfirm: (List<CustomRoaInfo>) -> Unit
 ) {
+    // The committed table for every route that already had dose info.
+    var doseInfosByRoute by remember {
+        mutableStateOf(
+            roaInfos.mapNotNull { info ->
+                info.doseInfo?.let { doseInfo -> info.administrationRoute to doseInfo }
+            }.toMap()
+        )
+    }
     var selectedRoute by remember { mutableStateOf(initialRoute) }
     var isRouteMenuExpanded by remember { mutableStateOf(false) }
-    var units by remember { mutableStateOf(initialDoseInfo?.units ?: "") }
-    var lightMin by remember { mutableStateOf(initialDoseInfo?.lightMin?.toPlainString() ?: "") }
-    var commonMin by remember { mutableStateOf(initialDoseInfo?.commonMin?.toPlainString() ?: "") }
-    var strongMin by remember { mutableStateOf(initialDoseInfo?.strongMin?.toPlainString() ?: "") }
-    var heavyMin by remember { mutableStateOf(initialDoseInfo?.heavyMin?.toPlainString() ?: "") }
+
+    // Raw text of the route currently open in the editor.
+    var units by remember { mutableStateOf(doseInfosByRoute[initialRoute]?.units ?: "") }
+    var lightMin by remember {
+        mutableStateOf(doseInfosByRoute[initialRoute]?.lightMin?.toPlainString() ?: "")
+    }
+    var commonMin by remember {
+        mutableStateOf(doseInfosByRoute[initialRoute]?.commonMin?.toPlainString() ?: "")
+    }
+    var strongMin by remember {
+        mutableStateOf(doseInfosByRoute[initialRoute]?.strongMin?.toPlainString() ?: "")
+    }
+    var heavyMin by remember {
+        mutableStateOf(doseInfosByRoute[initialRoute]?.heavyMin?.toPlainString() ?: "")
+    }
+
+    fun currentFieldsAsDoseInfo() = CustomDoseInfo(
+        units = units.ifBlank { null },
+        lightMin = lightMin.toDoubleOrNull(),
+        commonMin = commonMin.toDoubleOrNull(),
+        strongMin = strongMin.toDoubleOrNull(),
+        heavyMin = heavyMin.toDoubleOrNull()
+    )
+
+    /** Swaps the editor over to [route], banking whatever was typed for the previous one. */
+    fun switchTo(route: AdministrationRoute) {
+        if (route == selectedRoute) return
+        doseInfosByRoute = doseInfosByRoute + (selectedRoute to currentFieldsAsDoseInfo())
+        selectedRoute = route
+        val info = doseInfosByRoute[route]
+        units = info?.units ?: ""
+        lightMin = info?.lightMin?.toPlainString() ?: ""
+        commonMin = info?.commonMin?.toPlainString() ?: ""
+        strongMin = info?.strongMin?.toPlainString() ?: ""
+        heavyMin = info?.heavyMin?.toPlainString() ?: ""
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -93,7 +132,7 @@ fun CustomDoseInfoDialog(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .menuAnchor(MenuAnchorType.PrimaryNotEditable)
+                            .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
                     )
                     ExposedDropdownMenu(
                         expanded = isRouteMenuExpanded,
@@ -103,7 +142,7 @@ fun CustomDoseInfoDialog(
                             DropdownMenuItem(
                                 text = { Text(route.displayName()) },
                                 onClick = {
-                                    selectedRoute = route
+                                    switchTo(route)
                                     isRouteMenuExpanded = false
                                 }
                             )
@@ -150,16 +189,12 @@ fun CustomDoseInfoDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    onConfirm(
-                        selectedRoute,
-                        CustomDoseInfo(
-                            units = units.ifBlank { null },
-                            lightMin = lightMin.toDoubleOrNull(),
-                            commonMin = commonMin.toDoubleOrNull(),
-                            strongMin = strongMin.toDoubleOrNull(),
-                            heavyMin = heavyMin.toDoubleOrNull()
-                        )
-                    )
+                    val edited = doseInfosByRoute + (selectedRoute to currentFieldsAsDoseInfo())
+                    var result = roaInfos
+                    for ((route, info) in edited) {
+                        result = result.withDoseInfo(route, info)
+                    }
+                    onConfirm(result)
                 }
             ) {
                 Text(i18n("common_done"))
@@ -188,7 +223,10 @@ private fun ThresholdField(
     )
 }
 
-/** Merges an edited dose table into the route list, replacing the entry for that route. */
+/**
+ * Merges an edited dose table into the route list, replacing the entry for that route while
+ * keeping every other route and its duration info untouched.
+ */
 fun List<CustomRoaInfo>.withDoseInfo(
     route: AdministrationRoute,
     doseInfo: CustomDoseInfo

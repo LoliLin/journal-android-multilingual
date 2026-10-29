@@ -121,11 +121,18 @@ class EditTimedNoteViewModel @AssistedInject constructor(
             started = SharingStarted.WhileSubscribed(5000)
         )
 
-    fun delete() {
+    /**
+     * Deletes the note, its photo rows and their files, then reports completion.
+     *
+     * The caller must not navigate away until [onDeleted] fires: dropping the ViewModel cancels
+     * this scope, and a cancelled delete leaves the rows gone but the images still on disk.
+     */
+    fun delete(onDeleted: () -> Unit = {}) {
         viewModelScope.launch {
             timedNote?.let {
                 experienceRepo.delete(it)
             }
+            onDeleted()
         }
     }
 
@@ -152,16 +159,23 @@ class EditTimedNoteViewModel @AssistedInject constructor(
             started = SharingStarted.WhileSubscribed(5000)
         )
 
-    fun onDoneTap() {
+    /**
+     * Persists the edited fields, then reports completion so the caller can navigate away
+     * without cancelling the write.
+     */
+    fun onDoneTap(onSaved: () -> Unit = {}) {
         viewModelScope.launch {
-            val selectedInstant = localDateTimeFlow.firstOrNull()?.getInstant() ?: return@launch
-            timedNote?.let {
-                it.time = selectedInstant
-                it.note = note
-                it.color = color
-                it.isPartOfTimeline = isPartOfTimeline
-                experienceRepo.update(it)
+            val selectedInstant = localDateTimeFlow.firstOrNull()?.getInstant()
+            if (selectedInstant != null) {
+                timedNote?.let {
+                    it.time = selectedInstant
+                    it.note = note
+                    it.color = color
+                    it.isPartOfTimeline = isPartOfTimeline
+                    experienceRepo.update(it)
+                }
             }
+            onSaved()
         }
     }
 

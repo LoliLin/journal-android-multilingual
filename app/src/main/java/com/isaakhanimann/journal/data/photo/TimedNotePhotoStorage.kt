@@ -22,6 +22,7 @@ import android.net.Uri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.util.UUID
 
 /**
  * Owns where timed-note photos live on disk.
@@ -43,13 +44,21 @@ object TimedNotePhotoStorage {
     suspend fun importPhoto(context: Context, sourceUri: Uri): String? =
         withContext(Dispatchers.IO) {
             runCatching {
+                // A timestamp alone collides when two photos are imported within the same
+                // millisecond, and the second write would silently clobber the first.
                 val destination = File(
                     photosDirectory(context),
-                    "note_${System.currentTimeMillis()}.jpg"
+                    "note_${System.currentTimeMillis()}_${UUID.randomUUID().toString().take(8)}.jpg"
                 )
-                context.contentResolver.openInputStream(sourceUri)?.use { input ->
+                val copied = context.contentResolver.openInputStream(sourceUri)?.use { input ->
                     destination.outputStream().use { output -> input.copyTo(output) }
-                } ?: return@runCatching null
+                    true
+                } ?: false
+                if (!copied) {
+                    // Nothing was written, so do not leave the empty placeholder behind.
+                    destination.delete()
+                    return@runCatching null
+                }
                 destination.absolutePath
             }.getOrNull()
         }
@@ -59,7 +68,15 @@ object TimedNotePhotoStorage {
      * exist, so note deletion does not fail on a stale row.
      */
     suspend fun deletePhoto(filePath: String) = withContext(Dispatchers.IO) {
+        deletePhotoBlocking(filePath)
+    }
+
+    /**
+     * Blocking variant for places with no coroutine scope, notably [ViewModel.onCleared].
+     * The files are small, so the stall is negligible and it avoids leaving orphans behind when
+     * the process is on its way out.
+     */
+    fun deletePhotoBlocking(filePath: String) {
         runCatching { File(filePath).delete() }
-        Unit
     }
 }

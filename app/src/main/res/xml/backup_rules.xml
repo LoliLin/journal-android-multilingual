@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pre-Android-12 (API 26-30) auto-backup rules. Mirrors data_extraction_rules.xml: the photo
+  directories are excluded so a large photo library cannot consume the 25 MB backup quota and
+  cause the database backup to be rejected as well.
+-->
+<full-backup-content>
+    <exclude domain="file" path="timed_note_photos" />
+    <exclude domain="cache" path="note_photos" />
+</full-backup-content>
