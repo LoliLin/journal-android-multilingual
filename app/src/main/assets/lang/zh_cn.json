@@ -847,5 +847,8 @@
   "recipes_units": "单位",
   "recipes_estimated_dose": "剂量为估算值",
   "recipes_minimum_items": "至少添加两种成分后才能保存配方。",
-  "settings_import_partial_success": "日志数据已导入，但部分设置或头像未能恢复。"
+  "settings_import_partial_success": "日志数据已导入，但部分设置或头像未能恢复。",
+  "settings_import_diagnostics_title": "无法完成导入",
+  "settings_import_diagnostics_description": "备份文件格式错误或字段结构不兼容。日志数据尚未替换。",
+  "settings_import_diagnostic_entry": "路径：{path}\n预期：{expected}\n实际：{actual}"
 }

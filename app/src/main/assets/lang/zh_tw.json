@@ -847,5 +847,8 @@
   "recipes_units": "單位",
   "recipes_estimated_dose": "劑量為估算值",
   "recipes_minimum_items": "至少新增兩種成分才能儲存配方。",
-  "settings_import_partial_success": "日誌資料已匯入，但部分設定或頭像未能還原。"
+  "settings_import_partial_success": "日誌資料已匯入，但部分設定或頭像未能還原。",
+  "settings_import_diagnostics_title": "無法完成匯入",
+  "settings_import_diagnostics_description": "備份檔案格式錯誤或欄位結構不相容。日誌資料尚未替換。",
+  "settings_import_diagnostic_entry": "路徑：{path}\n預期：{expected}\n實際：{actual}"
 }
