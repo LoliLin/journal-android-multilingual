@@ -29,36 +29,12 @@ import java.time.Instant
 import java.time.temporal.ChronoUnit
 
 private val sampleRoaDuration = RoaDuration(
-    onset = DurationRange(
-        min = 20f,
-        max = 40f,
-        units = DurationUnits.MINUTES
-    ),
-    comeup = DurationRange(
-        min = 15f,
-        max = 30f,
-        units = DurationUnits.MINUTES
-    ),
-    peak = DurationRange(
-        min = 1.5f,
-        max = 2.5f,
-        units = DurationUnits.HOURS
-    ),
-    offset = DurationRange(
-        min = 2f,
-        max = 4f,
-        units = DurationUnits.HOURS
-    ),
-    total = DurationRange(
-        min = 3f,
-        max = 5f,
-        units = DurationUnits.HOURS
-    ),
-    afterglow = DurationRange(
-        min = 12f,
-        max = 48f,
-        units = DurationUnits.HOURS
-    )
+    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+    peak = DurationRange(min = 1.5f, max = 2.5f, units = DurationUnits.HOURS),
+    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
 )
 
 class TimelinesPreviewProvider :
@@ -111,11 +87,7 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.SUBLINGUAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
                     comeup = null,
                     peak = null,
                     offset = null,
@@ -134,19 +106,11 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.SUBCUTANEOUS,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
                     comeup = null,
                     peak = null,
                     offset = null,
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
                     afterglow = null
                 ),
                 height = 1f,
@@ -161,16 +125,8 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.BUCCAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
                     peak = null,
                     offset = null,
                     total = null,
@@ -188,23 +144,11 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.INTRAVENOUS,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
                     peak = null,
                     offset = null,
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
                     afterglow = null
                 ),
                 height = 1f,
@@ -219,27 +163,11 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.SMOKED,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2f,
-                        units = DurationUnits.HOURS
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2f, units = DurationUnits.HOURS),
                     offset = null,
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
                     afterglow = null
                 ),
                 height = 1f,
@@ -254,21 +182,9 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2f,
-                        units = DurationUnits.HOURS
-                    ),
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2f, units = DurationUnits.HOURS),
                     offset = null,
                     total = null,
                     afterglow = null
@@ -285,36 +201,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.INSUFFLATED,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2.5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2.5f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -326,36 +218,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2.5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2.5f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 0.5f,
                 horizontalWeight = 0.25f,
@@ -367,36 +235,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -412,11 +256,7 @@ class TimelinesPreviewProvider :
                     comeup = null,
                     peak = null,
                     offset = null,
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
                     afterglow = null
                 ),
                 height = 1f,
@@ -431,36 +271,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -472,36 +288,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name2",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -513,36 +305,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name3",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -554,36 +322,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name4",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -595,36 +339,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name5",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -636,36 +356,12 @@ class TimelinesPreviewProvider :
                 substanceName = "nam6",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -677,36 +373,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name7",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -718,36 +390,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name8",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -759,36 +407,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name9",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -800,36 +424,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name10",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -841,36 +441,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name11",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -882,36 +458,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name12",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -923,36 +475,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name13",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -964,36 +492,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name14",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 4f,
-                        max = 6f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 3f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 6f,
-                        max = 11f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 4f, max = 6f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 3f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 6f, max = 11f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -1007,36 +511,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name15",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2.5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2.5f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,
@@ -1048,36 +528,12 @@ class TimelinesPreviewProvider :
                 substanceName = "name16",
                 route = AdministrationRoute.ORAL,
                 roaDuration = RoaDuration(
-                    onset = DurationRange(
-                        min = 20f,
-                        max = 40f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    comeup = DurationRange(
-                        min = 15f,
-                        max = 30f,
-                        units = DurationUnits.MINUTES
-                    ),
-                    peak = DurationRange(
-                        min = 1.5f,
-                        max = 2.5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    offset = DurationRange(
-                        min = 2f,
-                        max = 4f,
-                        units = DurationUnits.HOURS
-                    ),
-                    total = DurationRange(
-                        min = 3f,
-                        max = 5f,
-                        units = DurationUnits.HOURS
-                    ),
-                    afterglow = DurationRange(
-                        min = 12f,
-                        max = 48f,
-                        units = DurationUnits.HOURS
-                    )
+                    onset = DurationRange(min = 20f, max = 40f, units = DurationUnits.MINUTES),
+                    comeup = DurationRange(min = 15f, max = 30f, units = DurationUnits.MINUTES),
+                    peak = DurationRange(min = 1.5f, max = 2.5f, units = DurationUnits.HOURS),
+                    offset = DurationRange(min = 2f, max = 4f, units = DurationUnits.HOURS),
+                    total = DurationRange(min = 3f, max = 5f, units = DurationUnits.HOURS),
+                    afterglow = DurationRange(min = 12f, max = 48f, units = DurationUnits.HOURS)
                 ),
                 height = 1f,
                 horizontalWeight = 0.5f,

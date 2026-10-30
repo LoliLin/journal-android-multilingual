@@ -23,7 +23,10 @@ import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
+import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
@@ -41,6 +44,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 
 enum class AnalysisPeriodPreset { ALL_TIME, LAST_30_DAYS, LAST_90_DAYS, THIS_YEAR, LAST_YEAR, CUSTOM }
@@ -111,10 +115,17 @@ internal fun relativeDoseOfIngestion(
     ingestionWith: IngestionWithCompanionAndCustomUnit
 ): Double? {
     val ingestion = ingestionWith.ingestion
-    val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
-    val roaDose = substance.getRoa(ingestion.administrationRoute, ingestion.releaseForm)
-        ?.roaDose
-        ?: return null
+    val roaDose = substanceRepo.getSubstance(ingestion.substanceName)
+        ?.getRoa(ingestion.administrationRoute, ingestion.releaseForm)?.roaDose
+    return relativeDoseOfIngestion(ingestionWith, roaDose)
+}
+
+private fun relativeDoseOfIngestion(
+    ingestionWith: IngestionWithCompanionAndCustomUnit,
+    roaDose: RoaDose?
+): Double? {
+    val ingestion = ingestionWith.ingestion
+    roaDose ?: return null
     val reference = commonDoseReference(roaDose.commonMin, roaDose.strongMin) ?: return null
     if (reference <= 0) return null
     // relative dose is only defined when the entry is expressed in the ROA's units
@@ -132,7 +143,11 @@ class StatsAnalysisViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val ingestionsFlow =
-        experienceRepository.getSortedIngestionsWithSubstanceCompanionsFlow(limit = 100000)
+        experienceRepository.getSortedIngestionsWithSubstanceCompanionsFlow(limit = 100000).shareIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            replay = 1
+        )
 
     val usedSubstancesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
         list.map { it.ingestion.substanceName }.distinct().sorted()
@@ -243,17 +258,11 @@ class StatsAnalysisViewModel @Inject constructor(
         _selectedPreset.value = AnalysisPeriodPreset.ALL_TIME
     }
 
-    private fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? =
-        relativeDoseOfIngestion(substanceRepo, ingestionWith)
-
-    private fun doseClassOf(ingestionWith: IngestionWithCompanionAndCustomUnit): DoseClass? {
-        val ingestion = ingestionWith.ingestion
-        val substance = substanceRepo.getSubstance(ingestion.substanceName) ?: return null
-        val roaDose = substance.getRoa(ingestion.administrationRoute, ingestion.releaseForm)
-            ?.roaDose
-            ?: return null
-        return roaDose.getDoseClass(ingestionWith.pureDose, ingestionWith.originalUnit)
-    }
+    private data class RoaLookupKey(
+        val substanceName: String,
+        val route: AdministrationRoute,
+        val releaseForm: ReleaseForm?
+    )
 
     private data class AnalysisFilters(
         val selectedSubstances: Set<String>,
@@ -298,6 +307,19 @@ class StatsAnalysisViewModel @Inject constructor(
                 LocalDate.of(today.year - 1, 1, 1) to LocalDate.of(today.year - 1, 12, 31)
             AnalysisPeriodPreset.CUSTOM -> start to end
         }
+        val roaDoseCache = mutableMapOf<RoaLookupKey, RoaDose?>()
+        fun cachedRoaDose(ingestionWith: IngestionWithCompanionAndCustomUnit): RoaDose? {
+            val ingestion = ingestionWith.ingestion
+            val key = RoaLookupKey(ingestion.substanceName, ingestion.administrationRoute, ingestion.releaseForm)
+            if (roaDoseCache.containsKey(key)) return roaDoseCache[key]
+            val roaDose = substanceRepo.getSubstance(ingestion.substanceName)
+                ?.getRoa(ingestion.administrationRoute, ingestion.releaseForm)?.roaDose
+            roaDoseCache[key] = roaDose
+            return roaDose
+        }
+        fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? =
+            relativeDoseOfIngestion(ingestionWith, cachedRoaDose(ingestionWith))
+
         val filtered = ingestions.filter { ingestionWith ->
             if (ingestionWith.ingestion.substanceName !in selected) {
                 return@filter false
@@ -349,7 +371,7 @@ class StatsAnalysisViewModel @Inject constructor(
                     { bucket -> bucket.toReadableString() }
                 }
                 val doseClassCounts = list
-                    .mapNotNull { doseClassOf(it) }
+                    .mapNotNull { cachedRoaDose(it)?.getDoseClass(it.pureDose, it.originalUnit) }
                     .groupBy { it }
                     .map { (doseClass, classList) -> doseClass to classList.size }
                     .sortedBy { it.first.ordinal }

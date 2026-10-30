@@ -59,6 +59,13 @@ class SubstanceCompanionViewModel @AssistedInject constructor(
         }
     }
 
+    private data class IngestionBurstSource(
+        val experience: Experience,
+        val ingestions: List<IngestionsBurst.IngestionAndCustomUnit>,
+        val start: Instant,
+        val end: Instant
+    )
+
     private val substanceName = route.substanceName
     val consumerName = route.consumerName
 
@@ -73,38 +80,44 @@ class SubstanceCompanionViewModel @AssistedInject constructor(
             started = SharingStarted.WhileSubscribed(5000)
         )
 
-    val ingestionBurstsFlow: StateFlow<List<IngestionsBurst>> =
+    private val ingestionBurstSourceFlow: Flow<List<IngestionBurstSource>> =
         experienceRepo.getSortedIngestionsWithExperienceAndCustomUnitFlow(substanceName)
-            .map { list -> list.filter { it.ingestion.consumerName == consumerName } }
-            .combine(currentTimeFlow) { sortedIngestionsWithExperiences, currentTime ->
-                val experiencesWithIngestions =
-                    sortedIngestionsWithExperiences.groupBy { it.ingestion.experienceId }
-                var lastDate = currentTime
-                val allIngestionBursts: MutableList<IngestionsBurst> = mutableListOf()
-                for (oneExperience in experiencesWithIngestions) {
-                    val experience = oneExperience.value.firstOrNull()?.experience ?: continue
-                    val ingestionsSorted = oneExperience.value.map {
-                        IngestionsBurst.IngestionAndCustomUnit(
-                            ingestion = it.ingestion,
-                            customUnit = it.customUnit
+            .map { list ->
+                list.filter { it.ingestion.consumerName == consumerName }
+                    .groupBy { it.ingestion.experienceId }
+                    .mapNotNull { (_, oneExperience) ->
+                        val experience = oneExperience.firstOrNull()?.experience ?: return@mapNotNull null
+                        val ingestionsSorted = oneExperience.map {
+                            IngestionsBurst.IngestionAndCustomUnit(
+                                ingestion = it.ingestion,
+                                customUnit = it.customUnit
+                            )
+                        }.sortedBy { it.ingestion.time }
+                        IngestionBurstSource(
+                            experience = experience,
+                            ingestions = ingestionsSorted,
+                            start = ingestionsSorted.first().ingestion.time,
+                            end = ingestionsSorted.last().ingestion.time
                         )
-                    }.sortedBy { it.ingestion.time }
-                    val experienceStart = ingestionsSorted.first().ingestion.time
-                    val experienceEnd = ingestionsSorted.last().ingestion.time
+                    }
+            }
+
+    val ingestionBurstsFlow: StateFlow<List<IngestionsBurst>> =
+        ingestionBurstSourceFlow
+            .combine(currentTimeFlow) { experienceGroups, currentTime ->
+                var lastDate = currentTime
+                experienceGroups.map { group ->
                     val diffText = getTimeDifferenceText(
-                        fromInstant = experienceEnd,
+                        fromInstant = group.end,
                         toInstant = lastDate
                     )
-                    allIngestionBursts.add(
-                        IngestionsBurst(
-                            timeUntil = diffText,
-                            experience = experience,
-                            ingestions = ingestionsSorted
-                        )
+                    lastDate = group.start
+                    IngestionsBurst(
+                        timeUntil = diffText,
+                        experience = group.experience,
+                        ingestions = group.ingestions
                     )
-                    lastDate = experienceStart
                 }
-                return@combine allIngestionBursts
             }.stateIn(
                 initialValue = emptyList(),
                 scope = viewModelScope,

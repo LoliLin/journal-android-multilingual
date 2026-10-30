@@ -49,6 +49,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -93,43 +94,76 @@ class StatsViewModel @Inject constructor(
     }
 
     private val allExperiencesSortedFlow: Flow<List<ExperienceWithIngestionsAndCompanions>> =
-        experienceRepo.getSortedExperiencesWithIngestionsAndCustomUnitsFlow()
-
-    private val areThereAnyIngestionsFlow =
-        allExperiencesSortedFlow.combine(consumerFlow) { experiences, consumerName ->
-            experiences.any { experience ->
-                experience.ingestionsWithCompanionAndCustomUnit.any {
-                    it.ingestion.consumerName ==
-                        consumerName
-                }
-            }
-        }
-
-
-    private val companionFlow = experienceRepo.getAllSubstanceCompanionsFlow()
+        experienceRepo.getSortedExperiencesWithIngestionsAndCustomUnitsFlow().shareIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 0, replayExpirationMillis = 0),
+            replay = 1
+        )
 
     private val isStatsByIngestionTimeFlow = userPreferences.isStatsByIngestionTimeFlow
 
-
-    private fun experienceChartBucketsFlow(window: StatsWindow): Flow<List<List<ColorCount>>> =
-        combine(
-            allExperiencesSortedFlow,
-            combine(isStatsByIngestionTimeFlow, consumerFlow, companionFlow) { byIngestionTime, consumerName, companions ->
-                Triple(byIngestionTime, consumerName, companions)
-            }
-        ) { experiences, filters ->
-            val (byIngestionTime, consumerName, companions) = filters
-            val nowEndOfDay = window.endInclusive
-            val startDate = window.startExclusive
-            val option = window.option
-            val companionBySubstance = companions.associateBy { it.substanceName }
-            if (byIngestionTime) {
-                val ingestionsNewestFirst = experiences
-                    .asSequence()
+    private val statsSourceSnapshotFlow = combine(
+        allExperiencesSortedFlow,
+        isStatsByIngestionTimeFlow,
+        consumerFlow
+    ) { experiences, byIngestionTime, consumerName ->
+        StatsSourceSnapshot(
+            experiences = experiences,
+            byIngestionTime = byIngestionTime,
+            consumerName = consumerName,
+            ingestionsNewestFirst = if (byIngestionTime) {
+                experiences.asSequence()
                     .flatMap { it.ingestionsWithCompanionAndCustomUnit }
                     .filter { it.ingestion.consumerName == consumerName }
                     .sortedByDescending { it.ingestion.time }
                     .toList()
+            } else {
+                null
+            },
+            areThereAnyIngestions = experiences.any { experience ->
+                experience.ingestionsWithCompanionAndCustomUnit.any {
+                    it.ingestion.consumerName == consumerName
+                }
+            }
+        )
+    }.flowOn(Dispatchers.Default).shareIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 0, replayExpirationMillis = 0),
+        replay = 1
+    )
+
+    private val areThereAnyIngestionsFlow = statsSourceSnapshotFlow.map { it.areThereAnyIngestions }
+
+    private data class StatsSourceSnapshot(
+        val experiences: List<ExperienceWithIngestionsAndCompanions>,
+        val byIngestionTime: Boolean,
+        val consumerName: String?,
+        val ingestionsNewestFirst: List<IngestionWithCompanionAndCustomUnit>?,
+        val areThereAnyIngestions: Boolean
+    )
+
+    private val companionFlow = experienceRepo.getAllSubstanceCompanionsFlow()
+    private val companionBySubstanceFlow = companionFlow
+        .map { companions -> companions.associateBy { it.substanceName } }
+        .flowOn(Dispatchers.Default)
+        .shareIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 0, replayExpirationMillis = 0),
+            replay = 1
+        )
+    private fun experienceChartBucketsFlow(window: StatsWindow): Flow<List<List<ColorCount>>> =
+        combine(
+            statsSourceSnapshotFlow,
+            companionBySubstanceFlow
+        ) { snapshot, companionBySubstance ->
+            val experiences = snapshot.experiences
+            val byIngestionTime = snapshot.byIngestionTime
+            val consumerName = snapshot.consumerName
+            val nowEndOfDay = window.endInclusive
+            val startDate = window.startExclusive
+            val option = window.option
+            if (byIngestionTime) {
+                val ingestionsNewestFirst = snapshot.ingestionsNewestFirst.orEmpty()
                 val inWindow = takeItemsInStatsWindow(
                     itemsNewestFirst = ingestionsNewestFirst,
                     instantOf = { it.ingestion.time },
@@ -202,24 +236,17 @@ class StatsViewModel @Inject constructor(
     }
 
     private fun statsFlowItem(window: StatsWindow): Flow<List<StatItem>> = combine(
-        combine(allExperiencesSortedFlow, isStatsByIngestionTimeFlow) { experiences, byIngestionTime ->
-            experiences to byIngestionTime
-        },
-        consumerFlow,
-        companionFlow
-    ) { inputs, consumerName, companions ->
-        val (experiences, byIngestionTime) = inputs
+        statsSourceSnapshotFlow,
+        companionBySubstanceFlow
+    ) { snapshot, companionBySubstance ->
+        val experiences = snapshot.experiences
+        val byIngestionTime = snapshot.byIngestionTime
+        val consumerName = snapshot.consumerName
         val startDate = window.startExclusive
         val nowEndOfDay = window.endInclusive
         val relevantIngestions = if (byIngestionTime) {
-            val ingestionsNewestFirst = experiences
-                .asSequence()
-                .flatMap { it.ingestionsWithCompanionAndCustomUnit }
-                .filter { it.ingestion.consumerName == consumerName }
-                .sortedByDescending { it.ingestion.time }
-                .toList()
             takeItemsInStatsWindow(
-                itemsNewestFirst = ingestionsNewestFirst,
+                itemsNewestFirst = snapshot.ingestionsNewestFirst.orEmpty(),
                 instantOf = { it.ingestion.time },
                 nowEndOfDay = nowEndOfDay,
                 startExclusive = startDate
@@ -249,7 +276,6 @@ class StatsViewModel @Inject constructor(
                 .groupingBy { it }
                 .eachCount()
         }
-        val companionBySubstance = companions.associateBy { it.substanceName }
         val map = relevantIngestions.groupBy { it.ingestion.substanceName }
         map.values.mapNotNull { groupedIngestions ->
             val name =
