@@ -71,16 +71,17 @@ class CheckInteractionsViewModel @AssistedInject constructor(
     }
 
     private suspend fun checkInteractionsAndMaybeShowAlert() {
-        val filteredIngestions = getIngestionsWithInteraction()
+        val sortedInteractions = getIngestionsWithInteraction()
+            .sortedByDescending { it.ingestion.time }
         val dangerousIngestions =
-            filteredIngestions.filter { it.interactionType == InteractionType.DANGEROUS }
-                .map { it.ingestion }.sortedByDescending { it.time }
+            sortedInteractions.filter { it.interactionType == InteractionType.DANGEROUS }
+                .map { it.ingestion }
         val unsafeIngestions =
-            filteredIngestions.filter { it.interactionType == InteractionType.UNSAFE }
-                .map { it.ingestion }.sortedByDescending { it.time }
+            sortedInteractions.filter { it.interactionType == InteractionType.UNSAFE }
+                .map { it.ingestion }
         val uncertainIngestions =
-            filteredIngestions.filter { it.interactionType == InteractionType.UNCERTAIN }
-                .map { it.ingestion }.sortedByDescending { it.time }
+            sortedInteractions.filter { it.interactionType == InteractionType.UNCERTAIN }
+                .map { it.ingestion }
         val enabledExtraInteractions =
             combinationSettingsStorage.enabledInteractionsFlow.first()
         val dangerousExtras =
