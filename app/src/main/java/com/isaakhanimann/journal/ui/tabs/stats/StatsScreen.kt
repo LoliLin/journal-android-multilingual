@@ -198,6 +198,11 @@ private fun MergedStatsScreen(
     val density = LocalDensity.current
     val widthPx = (LocalConfiguration.current.screenWidthDp * density.density).toInt()
     val maxBucketColumns = analysisModel.perSubstanceCharts.maxOfOrNull { it.doseBuckets.size } ?: 0
+    val chartsSortedByRelativeTotal = remember(analysisModel.perSubstanceCharts) {
+        analysisModel.perSubstanceCharts.sortedWith(
+            compareByDescending<SubstanceChartData> { it.relativeTotal }.thenBy { it.substanceName }
+        )
+    }
     val shareWidthPx = widthPx.coerceAtLeast(((56 + maxBucketColumns * 62) * density.density).toInt())
 
     val overviewConsumerName = statsModel.consumerName
@@ -228,16 +233,14 @@ private fun MergedStatsScreen(
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (analysisModel.ingestionCount > 0) {
-                        analysisModel.perSubstanceCharts
-                            .sortedWith(compareByDescending<SubstanceChartData> { it.relativeTotal }.thenBy { it.substanceName })
-                            .forEach { chart ->
-                                SubstanceChartCardInner(
-                                    chart = chart,
-                                    getSubstanceDisplayName = getSubstanceDisplayName,
-                                    isFocused = false,
-                                    onClick = {}
-                                )
-                            }
+                        chartsSortedByRelativeTotal.forEach { chart ->
+                            SubstanceChartCardInner(
+                                chart = chart,
+                                getSubstanceDisplayName = getSubstanceDisplayName,
+                                isFocused = false,
+                                onClick = {}
+                            )
+                        }
                     }
                 }
             }
@@ -518,8 +521,7 @@ private fun MergedStatsScreen(
                         val displayedCharts = if (focusedSubstance != null) {
                             analysisModel.perSubstanceCharts.filter { it.substanceName == focusedSubstance }
                         } else {
-                            analysisModel.perSubstanceCharts
-                                .sortedWith(compareByDescending<SubstanceChartData> { it.relativeTotal }.thenBy { it.substanceName })
+                            chartsSortedByRelativeTotal
                         }
 
                         items(displayedCharts, key = { "chart_${it.substanceName}" }) { chart ->
