@@ -110,6 +110,50 @@ class StatsChartBucketingTest {
     }
 
     @Test
+    fun longRangeWindowsUseCalendarPeriods() {
+        val end = Instant.parse("2026-03-10T23:59:59.999999999Z")
+
+        assertEquals(
+            Instant.parse("2025-03-10T23:59:59.999999999Z"),
+            statsWindowStart(end, TimePickerOption.MONTHS_12, ZoneOffset.UTC)
+        )
+        assertEquals(
+            Instant.parse("2016-03-10T23:59:59.999999999Z"),
+            statsWindowStart(end, TimePickerOption.YEARS_10, ZoneOffset.UTC)
+        )
+    }
+
+    @Test
+    fun twelveMonthBucketsStayAnchoredAcrossShortMonths() {
+        val end = LocalDate.of(2026, 3, 30).atTime(LocalTime.MAX).toInstant(ZoneOffset.UTC)
+        val monthBoundary = Instant.parse("2026-01-31T00:00:00Z")
+        val dayBeforeBoundary = Instant.parse("2026-01-30T12:00:00Z")
+        val option = TimePickerOption.MONTHS_12
+        val start = statsWindowStart(end, option, ZoneOffset.UTC)
+        val items = listOf(monthBoundary, dayBeforeBoundary)
+        val inWindow = takeItemsInStatsWindow(items, { it }, end, start)
+        val buckets = bucketNewestFirst(inWindow, { it }, option, end, ZoneOffset.UTC)
+
+        assertEquals(listOf(monthBoundary), buckets[buckets.lastIndex - 1])
+        assertEquals(listOf(dayBeforeBoundary), buckets[buckets.lastIndex - 2])
+    }
+
+    @Test
+    fun tenYearBucketsRespectLeapDayBoundaries() {
+        val end = LocalDate.of(2024, 2, 28).atTime(LocalTime.MAX).toInstant(ZoneOffset.UTC)
+        val yearBoundary = Instant.parse("2023-02-28T00:00:00Z")
+        val dayBeforeBoundary = Instant.parse("2023-02-27T12:00:00Z")
+        val option = TimePickerOption.YEARS_10
+        val start = statsWindowStart(end, option, ZoneOffset.UTC)
+        val items = listOf(yearBoundary, dayBeforeBoundary)
+        val inWindow = takeItemsInStatsWindow(items, { it }, end, start)
+        val buckets = bucketNewestFirst(inWindow, { it }, option, end, ZoneOffset.UTC)
+
+        assertEquals(listOf(yearBoundary), buckets.last())
+        assertEquals(listOf(dayBeforeBoundary), buckets[buckets.lastIndex - 1])
+    }
+
+    @Test
     fun localBucketsFollowBothDstTransitionsForEveryOption() {
         val zone = ZoneId.of("America/New_York")
         for (date in listOf(LocalDate.of(2026, 3, 9), LocalDate.of(2026, 11, 2))) {

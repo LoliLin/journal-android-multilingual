@@ -436,16 +436,16 @@ enum class TimePickerOption {
         override val longDisplayText = "Last year"
         override val tabIndex = 3
         override val bucketCount = 12
-        override val oneBucketSize: Period = Period.ofDays(30)
-        override val allBucketSizes: Period = Period.ofDays(30 * bucketCount)
+        override val oneBucketSize: Period = Period.ofMonths(1)
+        override val allBucketSizes: Period = Period.ofYears(1)
     },
     YEARS_10 {
         override val displayText = "10Y"
         override val longDisplayText = "10 years"
         override val tabIndex = 4
         override val bucketCount = 10
-        override val oneBucketSize: Period = Period.ofDays(365)
-        override val allBucketSizes: Period = Period.ofDays(365 * bucketCount)
+        override val oneBucketSize: Period = Period.ofYears(1)
+        override val allBucketSizes: Period = Period.ofYears(10)
     };
 
     abstract val displayText: String
