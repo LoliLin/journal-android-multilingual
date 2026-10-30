@@ -49,6 +49,11 @@ import kotlinx.coroutines.flow.stateIn
 
 enum class AnalysisPeriodPreset { ALL_TIME, LAST_30_DAYS, LAST_90_DAYS, THIS_YEAR, LAST_YEAR, CUSTOM }
 
+internal fun trailingCalendarDateRange(today: LocalDate, dayCount: Long): Pair<LocalDate, LocalDate> {
+    require(dayCount > 0) { "dayCount must be positive" }
+    return today.minusDays(dayCount - 1) to today
+}
+
 // null-consumer ingestions belong to the owner; All aggregates everyone
 sealed interface ConsumerSelection {
     data object All : ConsumerSelection
@@ -284,8 +289,8 @@ class StatsAnalysisViewModel @Inject constructor(
         val today = LocalDate.now()
         val (effectiveStart, effectiveEnd) = when (preset) {
             AnalysisPeriodPreset.ALL_TIME -> null to null
-            AnalysisPeriodPreset.LAST_30_DAYS -> today.minusDays(30) to today
-            AnalysisPeriodPreset.LAST_90_DAYS -> today.minusDays(90) to today
+            AnalysisPeriodPreset.LAST_30_DAYS -> trailingCalendarDateRange(today, 30)
+            AnalysisPeriodPreset.LAST_90_DAYS -> trailingCalendarDateRange(today, 90)
             AnalysisPeriodPreset.THIS_YEAR -> LocalDate.of(today.year, 1, 1) to today
             AnalysisPeriodPreset.LAST_YEAR ->
                 LocalDate.of(today.year - 1, 1, 1) to LocalDate.of(today.year - 1, 12, 31)

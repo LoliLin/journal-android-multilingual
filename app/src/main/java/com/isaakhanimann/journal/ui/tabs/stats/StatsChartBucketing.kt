@@ -48,9 +48,10 @@ internal fun <T> bucketNewestFirst(
 ): List<List<T>> {
     var remaining = itemsNewestFirst
     val bucketsNewestFirst = ArrayList<List<T>>(option.bucketCount)
-    var boundaryDate = nowEndOfDay.atZone(zone).toLocalDate().plusDays(1)
-    repeat(option.bucketCount) {
-        boundaryDate = boundaryDate.minus(option.oneBucketSize)
+    val rangeEndExclusive = nowEndOfDay.atZone(zone).toLocalDate().plusDays(1)
+    repeat(option.bucketCount) { index ->
+        // Anchor each boundary to the same endpoint so short months don't accumulate drift.
+        val boundaryDate = rangeEndExclusive.minus(option.oneBucketSize.multipliedBy(index + 1))
         val startInstant = boundaryDate.atStartOfDay(zone).toInstant().minusNanos(1)
         val forBucket = remaining.takeWhile { instantOf(it) > startInstant }
         bucketsNewestFirst.add(forBucket)
