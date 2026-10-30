@@ -287,8 +287,8 @@ interface ExperienceDao {
     suspend fun insertExperienceAndUpdateIngestion(
         title: String,
         ingestion: Ingestion
-    ): Int {
-        val newExperienceId = insert(
+    ): Int? {
+        val rowId = insert(
             Experience(
                 id = 0,
                 title = title,
@@ -296,9 +296,14 @@ interface ExperienceDao {
                 sortDate = ingestion.time,
                 location = null
             )
-        ).toInt()
+        )
+        check(rowId in 1..Int.MAX_VALUE.toLong()) { "Experience ID out of range: $rowId" }
+        val newExperienceId = rowId.toInt()
 
-        update(ingestion.copy(experienceId = newExperienceId))
+        if (update(ingestion.copy(experienceId = newExperienceId)) == 0) {
+            deleteExperience(newExperienceId)
+            return null
+        }
 
         return newExperienceId
     }
@@ -308,16 +313,16 @@ interface ExperienceDao {
     suspend fun insert(experience: Experience): Long
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(experience: Experience)
+    suspend fun update(experience: Experience): Int
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(ingestion: Ingestion)
+    suspend fun update(ingestion: Ingestion): Int
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(rating: ShulginRating)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun update(customUnit: CustomUnit)
+    suspend fun update(customUnit: CustomUnit): Int
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(timedNote: TimedNote)

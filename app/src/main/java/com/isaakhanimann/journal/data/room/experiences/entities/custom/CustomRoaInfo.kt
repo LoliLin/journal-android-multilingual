@@ -41,13 +41,15 @@ data class CustomRoaInfo(
  * can render dose dots and dose classes with the existing components. Null when no unit was
  * configured, because a threshold without a unit cannot be compared to an ingestion.
  */
-fun CustomRoaInfo.toRoaDose(): RoaDose? = doseInfo?.units?.let { units ->
-    RoaDose(
+fun CustomRoaInfo.toRoaDose(): RoaDose? {
+    val validDoseInfo = doseInfo?.takeIf { it.hasValidThresholds() } ?: return null
+    val units = validDoseInfo.units?.trim()?.takeIf { it.isNotEmpty() } ?: return null
+    return RoaDose(
         units = units,
-        lightMin = doseInfo.lightMin,
-        commonMin = doseInfo.commonMin,
-        strongMin = doseInfo.strongMin,
-        heavyMin = doseInfo.heavyMin
+        lightMin = validDoseInfo.lightMin,
+        commonMin = validDoseInfo.commonMin,
+        strongMin = validDoseInfo.strongMin,
+        heavyMin = validDoseInfo.heavyMin
     )
 }
 

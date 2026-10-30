@@ -43,9 +43,15 @@ class EditExperienceViewModel @AssistedInject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-    var experience: Experience? = null
+    var experience by mutableStateOf<Experience?>(null)
+        private set
+    var isLoading by mutableStateOf(true)
+        private set
+    var isSaving by mutableStateOf(false)
+        private set
     var enteredTitle by mutableStateOf("")
-    val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
+    val isEnteredTitleOk get() = enteredTitle.isNotBlank()
+    val canSave get() = experience != null && isEnteredTitleOk && !isSaving
     var enteredText by mutableStateOf("")
     var enteredLocation by mutableStateOf("")
     private var oldLongitude: Double? = null
@@ -60,31 +66,50 @@ class EditExperienceViewModel @AssistedInject constructor(
     init {
         val id = route.experienceId
         viewModelScope.launch {
-            experience = repository.getExperience(id = id)!!
-            enteredTitle = experience!!.title
-            enteredText = experience!!.text
-            enteredLocation = experience!!.location?.name ?: ""
-            oldLongitude = experience!!.location?.longitude
-            oldLatitude = experience!!.location?.latitude
+            try {
+                val loadedExperience = repository.getExperience(id = id) ?: return@launch
+                experience = loadedExperience
+                enteredTitle = loadedExperience.title
+                enteredText = loadedExperience.text
+                enteredLocation = loadedExperience.location?.name ?: ""
+                oldLongitude = loadedExperience.location?.longitude
+                oldLatitude = loadedExperience.location?.latitude
+            } finally {
+                isLoading = false
+            }
         }
     }
 
-    fun onDoneTap() {
-        if (enteredTitle.isNotEmpty()) {
-            viewModelScope.launch {
-                experience!!.title = enteredTitle
-                experience!!.text = enteredText
-                val location = if (enteredLocation.isNotBlank()) {
-                    Location(
-                        name = enteredLocation,
-                        longitude = oldLongitude,
-                        latitude = oldLatitude
-                    )
-                } else {
-                    null
+    fun onDoneTap(onSaved: () -> Unit = {}) {
+        val currentExperience = experience ?: return
+        if (!canSave) return
+
+        val location = if (enteredLocation.isNotBlank()) {
+            Location(
+                name = enteredLocation,
+                longitude = oldLongitude,
+                latitude = oldLatitude
+            )
+        } else {
+            null
+        }
+        val updatedExperience = currentExperience.copy(
+            title = enteredTitle.trim(),
+            text = enteredText,
+            location = location
+        )
+
+        isSaving = true
+        viewModelScope.launch {
+            try {
+                if (!repository.updateExperienceIfExists(updatedExperience)) {
+                    experience = null
+                    return@launch
                 }
-                experience!!.location = location
-                repository.update(experience = experience!!)
+                experience = updatedExperience
+                onSaved()
+            } finally {
+                isSaving = false
             }
         }
     }

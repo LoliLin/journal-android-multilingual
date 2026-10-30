@@ -81,6 +81,7 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePrevie
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
 
 @Composable
@@ -110,18 +111,18 @@ fun ChooseDoseScreen(
         estimatedDoseStandardDeviationText = viewModel.estimatedDoseStandardDeviationText,
         onChangeEstimatedDoseStandardDeviationText = viewModel::onEstimatedDoseStandardDeviationChange,
         isValidDose = viewModel.isValidDose,
+        isValidEstimatedDoseStandardDeviation = viewModel.isValidEstimatedDoseStandardDeviation,
         isEstimate = viewModel.isEstimate,
         onChangeIsEstimate = {
             viewModel.isEstimate = it
         },
         navigateToNext = {
-            val customUnit = viewModel.customUnitsFlow.value
-                .firstOrNull { it.id == viewModel.selectedCustomUnitId }
+            val customUnit = viewModel.selectedCustomUnit
             navigateToChooseTimeAndMaybeColor(
-                viewModel.units,
+                customUnit?.unit ?: viewModel.units,
                 viewModel.isEstimate,
-                viewModel.doseForNext(customUnit),
-                viewModel.estimatedDoseStandardDeviation,
+                viewModel.dose,
+                viewModel.estimatedDoseStandardDeviation.takeIf { viewModel.isEstimate },
                 viewModel.selectedCustomUnitId
             )
         },
@@ -145,7 +146,7 @@ fun ChooseDoseScreen(
         isShowingUnitsField = viewModel.roaDose?.units?.isBlank() ?: true,
         units = viewModel.units,
         onChangeOfUnits = { viewModel.units = it },
-        customUnits = viewModel.customUnitsFlow.collectAsState().value,
+        customUnits = viewModel.customUnitsForDisplay(viewModel.customUnitsFlow.collectAsState().value),
         selectedCustomUnitId = viewModel.selectedCustomUnitId,
         onSelectCustomUnit = viewModel::selectCustomUnit,
         onCreateCustomUnit = viewModel::createCustomUnit,
@@ -153,9 +154,10 @@ fun ChooseDoseScreen(
         quickUnitName = viewModel.quickUnitName,
         onQuickUnitNameChange = { viewModel.quickUnitName = it },
         quickUnitDoseText = viewModel.quickUnitDoseText,
-        onQuickUnitDoseTextChange = { viewModel.quickUnitDoseText = it },
+        onQuickUnitDoseTextChange = viewModel::onQuickUnitDoseTextChange,
         quickUnitUnitText = viewModel.quickUnitUnitText,
-        onQuickUnitUnitTextChange = { viewModel.quickUnitUnitText = it }
+        onQuickUnitUnitTextChange = { viewModel.quickUnitUnitText = it },
+        canCreateCustomUnit = viewModel.canCreateCustomUnit,
     )
 }
 
@@ -259,7 +261,9 @@ fun ChooseDoseScreen(
     quickUnitDoseText: String = "",
     onQuickUnitDoseTextChange: (String) -> Unit = {},
     quickUnitUnitText: String = "",
-    onQuickUnitUnitTextChange: (String) -> Unit = {}
+    onQuickUnitUnitTextChange: (String) -> Unit = {},
+    canCreateCustomUnit: Boolean = true,
+    isValidEstimatedDoseStandardDeviation: Boolean = true
 ) {
     Scaffold(
         topBar = {
@@ -282,7 +286,7 @@ fun ChooseDoseScreen(
             )
         },
         floatingActionButton = {
-            if (isValidDose) {
+            if (isValidDose && isValidEstimatedDoseStandardDeviation) {
                 ExtendedFloatingActionButton(
                     modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
@@ -437,6 +441,7 @@ fun ChooseDoseScreen(
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         Column {
+                            val estimatedDeviationUnit = selectedCustomUnitForLabel?.unit ?: units
                             OutlinedTextField(
                                 value = estimatedDoseStandardDeviationText,
                                 onValueChange = onChangeEstimatedDoseStandardDeviationText,
@@ -449,7 +454,7 @@ fun ChooseDoseScreen(
                                 },
                                 trailingIcon = {
                                     Text(
-                                        text = units,
+                                        text = estimatedDeviationUnit,
                                         style = textStyle,
                                         modifier = Modifier.padding(horizontal = horizontalPadding)
                                     )
@@ -457,20 +462,21 @@ fun ChooseDoseScreen(
                                 keyboardActions = KeyboardActions(onDone = {
                                     focusManager.clearFocus()
                                 }),
-                                isError = estimatedDoseStandardDeviationText.toDoubleOrNull() == null,
+                                isError = estimatedDoseStandardDeviationText.isNotBlank() &&
+                                    !isValidEstimatedDoseStandardDeviation,
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                             )
-                            val mean = doseText.toDoubleOrNull()
-                            val standardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull()
+                            val mean = parseNonNegativeFiniteNumber(doseText)
+                            val standardDeviation = parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText)
                             val isExplanationShown = mean != null && standardDeviation != null
                             AnimatedVisibility(isExplanationShown) {
                                 if (mean != null && standardDeviation != null) {
                                     StandardDeviationExplanation(
                                         mean = mean,
                                         standardDeviation = standardDeviation,
-                                        unit = units
+                                        unit = estimatedDeviationUnit
                                     )
                                 }
                             }
@@ -482,33 +488,43 @@ fun ChooseDoseScreen(
                         customUnits.firstOrNull { it.id == selectedCustomUnitId }
                     var isShowingQuickUnitDialog by remember { mutableStateOf(false) }
                     if (selectedCustomUnit != null) {
-                        val quantity = doseText.toDoubleOrNull()
+                        val quantity = parseNonNegativeFiniteNumber(doseText)
+                        val unitDose = selectedCustomUnit.dose
+                            ?.takeIf { it.isFinite() && it > 0.0 }
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.SpaceBetween,
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                text = i18n(
-                                    "quick_custom_unit_count",
-                                    mapOf(
-                                        "unit" to selectedCustomUnit.name,
-                                        "dose" to (selectedCustomUnit.dose ?: 0.0).toReadableString(),
-                                        "originalUnit" to selectedCustomUnit.originalUnit
+                                text = if (unitDose == null) {
+                                    i18n("quick_custom_unit_unknown_dose")
+                                } else {
+                                    i18n(
+                                        "quick_custom_unit_count",
+                                        mapOf(
+                                            "count" to "1",
+                                            "unit" to selectedCustomUnit.name,
+                                            "dose" to unitDose.toReadableString(),
+                                            "originalUnit" to selectedCustomUnit.originalUnit
+                                        )
                                     )
-                                ),
+                                },
                                 style = MaterialTheme.typography.bodyMedium
                             )
                             TextButton(onClick = onClearCustomUnit) {
                                 Text(text = i18n("quick_custom_unit_clear"))
                             }
                         }
-                        if (quantity != null) {
+                        val convertedDose = quantity?.let { count ->
+                            unitDose?.let { count * it }?.takeIf { it.isFinite() && it >= 0.0 }
+                        }
+                        if (convertedDose != null) {
                             Text(
                                 text = i18n(
                                     "quick_custom_unit_converted",
                                     mapOf(
-                                        "dose" to (quantity * (selectedCustomUnit.dose ?: 0.0)).toReadableString(),
+                                        "dose" to convertedDose.toReadableString(),
                                         "unit" to selectedCustomUnit.originalUnit
                                     )
                                 ),
@@ -586,9 +602,7 @@ fun ChooseDoseScreen(
                                 },
                                 confirmButton = {
                                     TextButton(
-                                        enabled = quickUnitName.isNotBlank() &&
-                                            quickUnitDoseText.toDoubleOrNull() != null &&
-                                            quickUnitUnitText.isNotBlank(),
+                                        enabled = canCreateCustomUnit,
                                         onClick = {
                                             onCreateCustomUnit()
                                             isShowingQuickUnitDialog = false

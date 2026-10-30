@@ -29,28 +29,30 @@ data class RoaDose(
     val heavyMin: Double?
 ) {
     fun getDoseClass(ingestionDose: Double?, ingestionUnits: String? = units): DoseClass? {
-        if (ingestionUnits != units || ingestionDose == null) return null
-        return if (lightMin != null && ingestionDose < lightMin) {
+        val dose = ingestionDose?.takeIf { it.isFinite() && it >= 0.0 } ?: return null
+        if (ingestionUnits != units) return null
+        if (!hasValidThresholds()) return null
+        return if (lightMin != null && dose < lightMin) {
             DoseClass.THRESHOLD
         } else if (lightMin != null &&
             commonMin != null &&
-            lightMin <= ingestionDose &&
-            ingestionDose < commonMin
+            lightMin <= dose &&
+            dose < commonMin
         ) {
             DoseClass.LIGHT
         } else if (commonMin != null &&
             strongMin != null &&
-            commonMin <= ingestionDose &&
-            ingestionDose < strongMin
+            commonMin <= dose &&
+            dose < strongMin
         ) {
             DoseClass.COMMON
         } else if (strongMin != null &&
             heavyMin != null &&
-            strongMin <= ingestionDose &&
-            ingestionDose < heavyMin
+            strongMin <= dose &&
+            dose < heavyMin
         ) {
             DoseClass.STRONG
-        } else if (heavyMin != null && heavyMin <= ingestionDose) {
+        } else if (heavyMin != null && heavyMin <= dose) {
             DoseClass.HEAVY
         } else {
             null
@@ -58,38 +60,50 @@ data class RoaDose(
     }
 
     fun getNumDots(ingestionDose: Double?, ingestionUnits: String? = units): Int? {
-        if (ingestionUnits != units || ingestionDose == null) return null
-        if (lightMin != null && ingestionDose < lightMin) {
+        val dose = ingestionDose?.takeIf { it.isFinite() && it >= 0.0 } ?: return null
+        if (ingestionUnits != units) return null
+        if (!hasValidThresholds()) return null
+        if (lightMin != null && dose < lightMin) {
             return 0
         } else if (lightMin != null &&
             commonMin != null &&
-            lightMin <= ingestionDose &&
-            ingestionDose < commonMin
+            lightMin <= dose &&
+            dose < commonMin
         ) {
             return 1
         } else if (commonMin != null &&
             strongMin != null &&
-            commonMin <= ingestionDose &&
-            ingestionDose < strongMin
+            commonMin <= dose &&
+            dose < strongMin
         ) {
             return 2
         } else if (strongMin != null &&
             heavyMin != null &&
-            strongMin <= ingestionDose &&
-            ingestionDose < heavyMin
+            strongMin <= dose &&
+            dose < heavyMin
         ) {
             return 3
         } else if (heavyMin != null) {
-            return if (heavyMin <= ingestionDose) {
-                val timesHeavy = floor(ingestionDose.div(heavyMin)).roundToInt()
-                val rest = ingestionDose.rem(heavyMin)
-                return (timesHeavy * 4) + getNumDotsUpTo4(dose = rest)
+            return if (heavyMin <= dose) {
+                val fullHeavyDots = (floor(dose.div(heavyMin)) * 4.0)
+                    .coerceAtMost(Int.MAX_VALUE.toDouble())
+                    .toInt()
+                val restDots = getNumDotsUpTo4(dose = dose.rem(heavyMin))
+                (fullHeavyDots.toLong() + restDots)
+                    .coerceAtMost(Int.MAX_VALUE.toLong())
+                    .toInt()
             } else {
-                floor(ingestionDose / heavyMin).roundToInt()
+                floor(dose / heavyMin).roundToInt()
             }
         } else {
             return null
         }
+    }
+
+    private fun hasValidThresholds(): Boolean {
+        val thresholds = listOf(lightMin, commonMin, strongMin, heavyMin)
+        if (thresholds.any { it != null && (!it.isFinite() || it <= 0.0) }) return false
+        return thresholds.filterNotNull().zipWithNext().all { (lower, upper) -> lower <= upper }
     }
 
     private fun getNumDotsUpTo4(dose: Double): Int = if (lightMin != null && dose < lightMin) {

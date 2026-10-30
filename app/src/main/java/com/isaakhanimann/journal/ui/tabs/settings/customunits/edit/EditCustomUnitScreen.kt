@@ -19,10 +19,16 @@
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.edit
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,9 +41,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -51,7 +59,26 @@ fun EditCustomUnitScreen(
     navigateBack: () -> Unit,
     viewModel: EditCustomUnitViewModel
 ) {
-    EditCustomUnitScreenContent(
+    when {
+        viewModel.isLoading -> Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
+
+        viewModel.isMissing -> Column(
+            modifier = Modifier.fillMaxSize().padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = i18n("custom_unit_missing"))
+            TextButton(onClick = navigateBack) {
+                Text(text = i18n("common_back"))
+            }
+        }
+
+        else -> EditCustomUnitScreenContent(
         substanceName = viewModel.substanceName,
         administrationRoute = viewModel.administrationRoute,
         numberOfIngestionsWithThisCustomUnit = viewModel.numberOfIngestionsWithThisCustomUnit,
@@ -84,8 +111,10 @@ fun EditCustomUnitScreen(
             viewModel.deleteCustomUnit {
                 navigateBack()
             }
-        }
-    )
+        },
+        canSave = viewModel.canSave
+        )
+    }
 }
 
 @Preview
@@ -152,7 +181,8 @@ private fun EditCustomUnitScreenContent(
     onChangeOfNote: (String) -> Unit,
     isArchived: Boolean,
     onChangeOfIsArchived: (Boolean) -> Unit,
-    onDelete: () -> Unit
+    onDelete: () -> Unit,
+    canSave: Boolean = true
 ) {
     Scaffold(
         topBar = {
@@ -203,6 +233,7 @@ private fun EditCustomUnitScreenContent(
             FloatingDoneButton(
                 onDone = dismiss,
                 modifier = Modifier.imePadding(),
+                enabled = canSave
             )
         }
     ) { padding ->

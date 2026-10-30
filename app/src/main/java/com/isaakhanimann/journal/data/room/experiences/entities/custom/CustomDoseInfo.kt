@@ -33,3 +33,10 @@ data class CustomDoseInfo(
     val strongMin: Double? = null,
     val heavyMin: Double? = null
 )
+
+internal fun CustomDoseInfo.hasValidThresholds(): Boolean {
+    val thresholds = listOf(lightMin, commonMin, strongMin, heavyMin)
+    if (thresholds.any { it != null && (!it.isFinite() || it <= 0.0) }) return false
+    if (thresholds.any { it != null } && units.isNullOrBlank()) return false
+    return thresholds.filterNotNull().zipWithNext().all { (lower, upper) -> lower <= upper }
+}

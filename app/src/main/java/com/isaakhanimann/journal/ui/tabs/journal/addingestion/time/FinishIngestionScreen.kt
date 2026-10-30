@@ -133,7 +133,8 @@ fun FinishIngestionScreen(
         consumerNamesSorted = viewModel.sortedConsumerNamesFlow.collectAsState().value,
         availableReleaseForms = viewModel.availableReleaseForms,
         releaseForm = viewModel.releaseForm,
-        onChangeReleaseForm = viewModel::changeReleaseForm
+        onChangeReleaseForm = viewModel::changeReleaseForm,
+        isSaving = viewModel.isSaving
     )
 }
 
@@ -212,7 +213,8 @@ fun FinishIngestionScreen(
     consumerNamesSorted: List<String>,
     availableReleaseForms: List<ReleaseForm> = emptyList(),
     releaseForm: ReleaseForm? = null,
-    onChangeReleaseForm: (ReleaseForm?) -> Unit = {}
+    onChangeReleaseForm: (ReleaseForm?) -> Unit = {},
+    isSaving: Boolean = false
 ) {
     val focusManager = LocalFocusManager.current
     Scaffold(
@@ -238,7 +240,8 @@ fun FinishIngestionScreen(
             ) {
                 FloatingDoneButton(
                     onDone = createSaveAndDismissAfter,
-                    modifier = Modifier.imePadding()
+                    modifier = Modifier.imePadding(),
+                    enabled = !isSaving && (selectedExperience != null || isEnteredTitleOk)
                 )
             }
         }

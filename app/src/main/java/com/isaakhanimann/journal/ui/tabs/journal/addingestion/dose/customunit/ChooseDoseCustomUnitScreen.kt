@@ -20,8 +20,10 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.customunit
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -38,6 +40,7 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -80,11 +83,31 @@ fun ChooseDoseCustomUnitScreen(
         substanceName: String,
         customUnitId: Int?
     ) -> Unit,
+    navigateBack: () -> Unit,
     viewModel: ChooseDoseCustomUnitViewModel
 ) {
-    viewModel.customUnit?.let { customUnitUnwrapped ->
-        ChooseDoseCustomUnitScreen(
-            customUnit = customUnitUnwrapped,
+    val customUnit = viewModel.customUnit
+    when {
+        viewModel.isLoading -> Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            CircularProgressIndicator()
+        }
+
+        customUnit == null -> Column(
+            modifier = Modifier.fillMaxSize().padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = i18n("custom_unit_missing"))
+            TextButton(onClick = navigateBack) {
+                Text(text = i18n("common_back"))
+            }
+        }
+
+        else -> ChooseDoseCustomUnitScreen(
+            customUnit = customUnit,
             roaDose = viewModel.roaDose,
             doseText = viewModel.doseText,
             doseRemark = viewModel.doseRemark,
@@ -94,30 +117,31 @@ fun ChooseDoseCustomUnitScreen(
             onChangeEstimatedDoseDeviationText = viewModel::onEstimatedDoseDeviationChange,
             estimatedDoseDeviation = viewModel.estimatedDoseDeviation,
             isValidDose = viewModel.isValidDose,
+            isValidEstimatedDoseDeviation = viewModel.isValidEstimatedDoseDeviation,
             isEstimate = viewModel.isEstimate,
             onChangeIsEstimate = {
                 viewModel.isEstimate = it
             },
             navigateToNext = {
                 navigateToChooseTimeAndMaybeColor(
-                    customUnitUnwrapped.administrationRoute,
-                    customUnitUnwrapped.unit,
+                    customUnit.administrationRoute,
+                    customUnit.unit,
                     viewModel.isEstimate,
                     viewModel.dose,
-                    viewModel.estimatedDoseDeviation,
-                    customUnitUnwrapped.substanceName,
-                    customUnitUnwrapped.id
+                    viewModel.estimatedDoseDeviation.takeIf { viewModel.isEstimate },
+                    customUnit.substanceName,
+                    customUnit.id
                 )
             },
             useUnknownDoseAndNavigate = {
                 navigateToChooseTimeAndMaybeColor(
-                    customUnitUnwrapped.administrationRoute,
-                    customUnitUnwrapped.unit,
+                    customUnit.administrationRoute,
+                    customUnit.unit,
                     false,
                     null,
                     null,
-                    customUnitUnwrapped.substanceName,
-                    customUnitUnwrapped.id
+                    customUnit.substanceName,
+                    customUnit.id
                 )
             },
             currentDoseClass = viewModel.currentDoseClass,
@@ -176,6 +200,7 @@ fun ChooseDoseCustomUnitScreen(
     estimatedDoseDeviation: Double?,
     onChangeEstimatedDoseDeviationText: (String) -> Unit,
     isValidDose: Boolean,
+    isValidEstimatedDoseDeviation: Boolean = true,
     isEstimate: Boolean,
     onChangeIsEstimate: (Boolean) -> Unit,
     navigateToNext: () -> Unit,
@@ -195,7 +220,7 @@ fun ChooseDoseCustomUnitScreen(
             )
         },
         floatingActionButton = {
-            if (isValidDose) {
+            if (isValidDose && isValidEstimatedDoseDeviation) {
                 ExtendedFloatingActionButton(
                     modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
@@ -323,7 +348,8 @@ fun ChooseDoseCustomUnitScreen(
                                         style = textStyle
                                     )
                                 },
-                                isError = estimatedDoseDeviationText.toDoubleOrNull() == null,
+                                isError = estimatedDoseDeviationText.isNotBlank() &&
+                                    !isValidEstimatedDoseDeviation,
                                 trailingIcon = {
                                     Text(
                                         text = customUnit.unit.asPlural(estimatedDoseDeviation ?: 2.0),
@@ -338,8 +364,8 @@ fun ChooseDoseCustomUnitScreen(
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                             )
-                            val mean = doseText.toDoubleOrNull()
-                            val standardDeviation = estimatedDoseDeviationText.toDoubleOrNull()
+                            val mean = dose
+                            val standardDeviation = estimatedDoseDeviation
                             val isExplanationShown = mean != null && standardDeviation != null
                             AnimatedVisibility(isExplanationShown) {
                                 if (mean != null && standardDeviation != null) {

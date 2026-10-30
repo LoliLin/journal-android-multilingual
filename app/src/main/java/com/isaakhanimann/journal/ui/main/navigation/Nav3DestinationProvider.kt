@@ -316,8 +316,19 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
     entry<ChooseDoseCustomUnitRoute> { route ->
         ChooseDoseCustomUnitScreen(
             navigateToChooseTimeAndMaybeColor = { administrationRoute, units, estimate, dose, sd, substanceName, customUnitId ->
-                manager.navigate(ChooseTimeRoute(administrationRoute, estimate, units, dose, sd, substanceName, customUnitId = customUnitId))
+                manager.navigate(
+                    ChooseTimeRoute(
+                        administrationRoute,
+                        estimate,
+                        units,
+                        dose,
+                        sd,
+                        substanceName,
+                        customUnitId = customUnitId
+                    )
+                )
             },
+            navigateBack = { manager.pop() },
             viewModel = hiltViewModel<ChooseDoseCustomUnitViewModel, ChooseDoseCustomUnitViewModel.Factory>(
                 creationCallback = { it.create(route) }
             )
@@ -379,9 +390,9 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
     }
     entry<SubstanceCompanionRoute> { route ->
         SubstanceCompanionScreen(
-            navigateToCategoryScreen = { manager.navigate(CategoryRoute(it)) },
-            navigateToSubstanceScreen = { manager.navigate(SubstanceRoute(it)) },
-            navigateToIngestion = { manager.navigate(IngestionRoute(it)) },
+            navigateToCategoryScreen = { manager.navigateWithinCurrentTab(CategoryRoute(it)) },
+            navigateToSubstanceScreen = { manager.navigateWithinCurrentTab(SubstanceRoute(it)) },
+            navigateToIngestion = { manager.navigateWithinCurrentTab(IngestionRoute(it)) },
             viewModel = hiltViewModel<SubstanceCompanionViewModel, SubstanceCompanionViewModel.Factory>(
                 creationCallback = { it.create(route) }
             )
@@ -397,14 +408,14 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
     }
     entry<SubstanceRoute> { route ->
         SubstanceScreen(
-            navigateToDosageExplanationScreen = { manager.navigate(DosageExplanationOnSubstancesTabRoute) },
-            navigateToSaferHallucinogensScreen = { manager.navigate(SaferHallucinogensOnSubstancesTabRoute) },
-            navigateToSaferStimulantsScreen = { manager.navigate(SaferStimulantsOnSubstancesTabRoute) },
-            navigateToExplainTimeline = { manager.navigate(ExplainTimelineOnSubstancesTabRoute) },
-            navigateToCategoryScreen = { manager.navigate(CategoryRoute(it)) },
-            navigateToVolumetricDosingScreen = { manager.navigate(VolumetricDosingOnSubstancesTabRoute) },
-            navigateToArticle = { manager.navigate(SubstancesTabUrlRoute(it)) },
-            navigateToSubstanceScreen = { manager.navigate(SubstanceRoute(it)) },
+            navigateToDosageExplanationScreen = { manager.navigateWithinCurrentTab(DosageExplanationOnSubstancesTabRoute) },
+            navigateToSaferHallucinogensScreen = { manager.navigateWithinCurrentTab(SaferHallucinogensOnSubstancesTabRoute) },
+            navigateToSaferStimulantsScreen = { manager.navigateWithinCurrentTab(SaferStimulantsOnSubstancesTabRoute) },
+            navigateToExplainTimeline = { manager.navigateWithinCurrentTab(ExplainTimelineOnSubstancesTabRoute) },
+            navigateToCategoryScreen = { manager.navigateWithinCurrentTab(CategoryRoute(it)) },
+            navigateToVolumetricDosingScreen = { manager.navigateWithinCurrentTab(VolumetricDosingOnSubstancesTabRoute) },
+            navigateToArticle = { manager.navigateWithinCurrentTab(SubstancesTabUrlRoute(it)) },
+            navigateToSubstanceScreen = { manager.navigateWithinCurrentTab(SubstanceRoute(it)) },
             viewModel = hiltViewModel<SubstanceViewModel, SubstanceViewModel.Factory>(
                 creationCallback = { it.create(route) }
             )
@@ -413,8 +424,8 @@ fun nav3EntryProvider(manager: Nav3TabManager) = entryProvider<NavKey> {
     entry<SubstancesTabUrlRoute> { route -> UrlScreen(route.url) { manager.pop() } }
     entry<CategoryRoute> { route ->
         CategoryScreen(
-            navigateToURL = { manager.navigate(SubstancesTabUrlRoute(it)) },
-            onSubstanceTap = { manager.navigate(SubstanceRoute(it.name)) },
+            navigateToURL = { manager.navigateWithinCurrentTab(SubstancesTabUrlRoute(it)) },
+            onSubstanceTap = { manager.navigateWithinCurrentTab(SubstanceRoute(it.name)) },
             viewModel = hiltViewModel<CategoryViewModel, CategoryViewModel.Factory>(
                 creationCallback = { it.create(route) }
             )

@@ -18,8 +18,8 @@
     {
       "name": "oral",
       "dose": {
-        "units": "µg",
-        "lightMin": 25,
+        "units": "mg",
+        "lightMin": 2,
         "commonMin": 4,
         "strongMin": 6,
         "heavyMin": 8

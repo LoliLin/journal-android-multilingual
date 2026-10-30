@@ -70,6 +70,18 @@ enum class IngestionTimePickerOption {
     TIME_RANGE
 }
 
+private data class IngestionSaveDraft(
+    val substanceName: String,
+    val selectedColor: AdaptiveColor,
+    val experienceId: Int?,
+    val title: String,
+    val consumerName: String,
+    val note: String,
+    val ingestionTime: Instant,
+    val endTime: Instant?,
+    val releaseForm: ReleaseForm?
+)
+
 @HiltViewModel(assistedFactory = FinishIngestionScreenViewModel.Factory::class)
 class FinishIngestionScreenViewModel @AssistedInject constructor(
     private val experienceRepo: ExperienceRepository,
@@ -100,8 +112,10 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
     // Once the user picks an experience (or "new experience") from the dropdown, time changes
     // must not silently re-select a different experience.
     private var hasMadeExplicitExperienceSelection = false
+    var isSaving by mutableStateOf(false)
+        private set
     var enteredTitle by mutableStateOf(LocalDateTime.now().getLongDateText())
-    val isEnteredTitleOk get() = enteredTitle.isNotEmpty()
+    val isEnteredTitleOk get() = enteredTitle.isNotBlank()
     var consumerName by mutableStateOf("")
 
     fun onChangeTimePickerOption(ingestionTimePickerOption: IngestionTimePickerOption) =
@@ -327,54 +341,77 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
     }
 
     fun createSaveAndDismissAfter(dismiss: () -> Unit, lifecycleView: android.view.View? = null) {
+        if (isSaving || isLoadingColor || isSubstanceMissing || substanceName.isBlank()) return
+        val experienceId = selectedExperienceFlow.value?.experience?.id
+        if (experienceId == null && !isEnteredTitleOk) return
+
+        val ingestionTime = localDateTimeStartFlow.value
+            .atZone(ZoneId.systemDefault())
+            .toInstant()
+        val endTime = if (ingestionTimePickerOptionFlow.value == IngestionTimePickerOption.TIME_RANGE) {
+            localDateTimeEndFlow.value.atZone(ZoneId.systemDefault()).toInstant()
+        } else {
+            null
+        }
+        val draft = IngestionSaveDraft(
+            substanceName = substanceName,
+            selectedColor = selectedColor,
+            experienceId = experienceId,
+            title = enteredTitle.trim(),
+            consumerName = consumerName,
+            note = note,
+            ingestionTime = ingestionTime,
+            endTime = endTime,
+            releaseForm = releaseForm
+        )
+
+        isSaving = true
         viewModelScope.launch {
-            if (isLoadingColor || isSubstanceMissing) {
-                // The FAB is hidden in these states; a stale animation/accessibility
-                // click must not bypass the save preconditions.
-                Log.w("FinishIngestion", "Save blocked: substance not ready or unavailable")
-                return@launch
-            }
-            // An ID may have been deleted or renamed since the screen loaded.
-            // Re-entry is required on mismatch so the name and chosen color stay in sync.
-            if (!isIngestionSubstanceIdentityValid(substanceName, resolveCurrentSubstanceName())) {
-                isSubstanceMissing = true
-                Log.w("FinishIngestion", "Save blocked: substance identity changed")
-                return@launch
-            }
-            isSubstanceMissing = false
-            createAndSaveIngestion(lifecycleView)
-            withContext(Dispatchers.Main) {
-                dismiss()
+            try {
+                // An ID may have been deleted or renamed since the screen loaded.
+                // Re-entry is required on mismatch so the name and chosen color stay in sync.
+                if (!isIngestionSubstanceIdentityValid(draft.substanceName, resolveCurrentSubstanceName())) {
+                    isSubstanceMissing = true
+                    Log.w("FinishIngestion", "Save blocked: substance identity changed")
+                    return@launch
+                }
+                isSubstanceMissing = false
+                createAndSaveIngestion(draft, lifecycleView)
+                withContext(Dispatchers.Main) { dismiss() }
+            } finally {
+                isSaving = false
             }
         }
     }
 
-    private suspend fun createAndSaveIngestion(lifecycleView: android.view.View?) {
+    private suspend fun createAndSaveIngestion(
+        draft: IngestionSaveDraft,
+        lifecycleView: android.view.View?
+    ) {
         val substanceCompanion = SubstanceCompanion(
-            substanceName,
-            color = selectedColor
+            draft.substanceName,
+            color = draft.selectedColor
         )
-        val oldIdToUse = selectedExperienceFlow.firstOrNull()?.experience?.id
-        val ingestionTime =
-            localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
+        val oldIdToUse = draft.experienceId
+        val ingestionTime = draft.ingestionTime
         val savedExperienceId: Int
         if (oldIdToUse == null) {
             val newExperience = Experience(
                 id = 0,
-                title = enteredTitle,
+                title = draft.title,
                 text = "",
                 creationDate = Instant.now(),
                 sortDate = ingestionTime,
                 location = null // todo: allow to add real location
             )
-            val newIngestion = createNewIngestion(0)
+            val newIngestion = createNewIngestion(0, draft)
             savedExperienceId = experienceRepo.insertIngestionExperienceAndCompanion(
                 ingestion = newIngestion,
                 experience = newExperience,
                 substanceCompanion = substanceCompanion
             )
         } else {
-            val newIngestion = createNewIngestion(oldIdToUse)
+            val newIngestion = createNewIngestion(oldIdToUse, draft)
             experienceRepo.insertIngestionAndCompanion(
                 ingestion = newIngestion,
                 substanceCompanion = substanceCompanion
@@ -382,77 +419,76 @@ class FinishIngestionScreenViewModel @AssistedInject constructor(
             savedExperienceId = oldIdToUse
         }
         // Fork feature: keep an "effects in progress" notification with quick-note access.
-        if (userPreferences.isEffectNotificationEnabledFlow.first()) {
-            // Attach the effect timeline as the notification picture when a view
-            // tree is available (save always runs on-screen, before dismissal).
-            val timelineBitmap = lifecycleView?.let { view ->
-                val experienceId = savedExperienceId
-                val ingestions = experienceRepo
-                    .getIngestionsWithCompanionsFlow(experienceId).first()
-                val ratings = experienceRepo.getRatingsFlow(experienceId).first()
-                val timedNotes = experienceRepo.getTimedNotes(experienceId)
-                com.isaakhanimann.journal.ui.tabs.journal.experience.components
-                    .renderTimelineBitmapForNotification(
-                        context = appContext,
-                        ingestions = ingestions,
-                        ratings = ratings,
-                        timedNotes = timedNotes,
-                        substanceRepo = substanceRepo,
-                        lifecycleView = view,
-                        widthPx = appContext.resources.displayMetrics.widthPixels
-                    )
+        try {
+            if (userPreferences.isEffectNotificationEnabledFlow.first()) {
+                // Attach the effect timeline as the notification picture when a view
+                // tree is available (save always runs on-screen, before dismissal).
+                val timelineBitmap = lifecycleView?.let { view ->
+                    val experienceId = savedExperienceId
+                    val ingestions = experienceRepo
+                        .getIngestionsWithCompanionsFlow(experienceId).first()
+                    val ratings = experienceRepo.getRatingsFlow(experienceId).first()
+                    val timedNotes = experienceRepo.getTimedNotes(experienceId)
+                    com.isaakhanimann.journal.ui.tabs.journal.experience.components
+                        .renderTimelineBitmapForNotification(
+                            context = appContext,
+                            ingestions = ingestions,
+                            ratings = ratings,
+                            timedNotes = timedNotes,
+                            substanceRepo = substanceRepo,
+                            lifecycleView = view,
+                            widthPx = appContext.resources.displayMetrics.widthPixels
+                        )
+                }
+                // Longest plausible effect window for this substance+route: feeds the
+                // screen-on refresh cadence (total-duration / 30).
+                val totalDuration = substanceRepo.getSubstance(draft.substanceName)
+                    ?.getRoa(administrationRoute, draft.releaseForm)?.roaDuration?.total
+                    ?.interpolateAtValueInSeconds(1f)
+                    ?.let { java.time.Duration.ofSeconds(it.toLong()) }
+                Notifications.showEffectNotification(
+                    context = appContext,
+                    experienceId = savedExperienceId,
+                    substanceName = draft.substanceName,
+                    ingestionTime = ingestionTime,
+                    timelineBitmap = timelineBitmap
+                )
+                if (timelineBitmap != null) {
+                    com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher
+                        .onNotificationRendered(
+                            savedExperienceId,
+                            ingestionTime,
+                            draft.substanceName,
+                            totalDuration
+                        )
+                }
             }
-            // Longest plausible effect window for this substance+route: feeds the
-            // screen-on refresh cadence (total-duration / 30).
-            val totalDuration = substanceRepo.getSubstance(substanceName)
-                ?.getRoa(administrationRoute, releaseForm)?.roaDuration?.total
-                ?.interpolateAtValueInSeconds(1f)?.let { java.time.Duration.ofSeconds(it.toLong()) }
-            Notifications.showEffectNotification(
-                context = appContext,
-                experienceId = savedExperienceId,
-                substanceName = substanceName,
-                ingestionTime = ingestionTime,
-                timelineBitmap = timelineBitmap
-            )
-            if (timelineBitmap != null) {
-                com.isaakhanimann.journal.ui.notifications.EffectNotificationRefresher
-                    .onNotificationRendered(
-                        savedExperienceId,
-                        ingestionTime,
-                        substanceName,
-                        totalDuration
-                    )
-            }
+        } catch (cancelled: kotlinx.coroutines.CancellationException) {
+            throw cancelled
+        } catch (error: Exception) {
+            // The journal entry is already committed; a notification failure must not
+            // leave the form open and make a retry insert a duplicate entry.
+            Log.e("FinishIngestion", "Saved ingestion but failed to refresh notification", error)
         }
     }
 
-    private suspend fun createNewIngestion(experienceId: Int): Ingestion {
-        val time = localDateTimeStartFlow.first().atZone(ZoneId.systemDefault()).toInstant()
-        val ingestionTimePickerOption = ingestionTimePickerOptionFlow.first()
-        val endTime = when (ingestionTimePickerOption) {
-            IngestionTimePickerOption.POINT_IN_TIME -> null
-            IngestionTimePickerOption.TIME_RANGE -> localDateTimeEndFlow.first()
-                .atZone(ZoneId.systemDefault()).toInstant()
-        }
-        return Ingestion(
-            substanceName = substanceName,
-            time = time,
-            endTime = endTime,
+    private fun createNewIngestion(experienceId: Int, draft: IngestionSaveDraft): Ingestion =
+        Ingestion(
+            substanceName = draft.substanceName,
+            time = draft.ingestionTime,
+            endTime = draft.endTime,
             administrationRoute = administrationRoute,
             dose = dose,
             isDoseAnEstimate = isEstimate,
             estimatedDoseStandardDeviation = estimatedDoseStandardDeviation,
             units = units,
             experienceId = experienceId,
-            notes = note,
+            notes = draft.note,
             stomachFullness = null, // todo: allow to add real stomach fullness
-            consumerName = consumerName.ifBlank {
-                null
-            },
+            consumerName = draft.consumerName.ifBlank { null },
             customUnitId = customUnitId,
-            releaseForm = releaseForm.takeIf { administrationRoute == AdministrationRoute.ORAL }
+            releaseForm = draft.releaseForm.takeIf { administrationRoute == AdministrationRoute.ORAL }
         )
-    }
 
     @AssistedFactory
     interface Factory {

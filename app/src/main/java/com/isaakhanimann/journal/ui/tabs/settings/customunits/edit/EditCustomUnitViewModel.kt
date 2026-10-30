@@ -29,6 +29,8 @@ import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
 import com.isaakhanimann.journal.ui.main.navigation.routes.EditCustomUnitRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import dagger.assisted.Assisted
@@ -46,31 +48,41 @@ class EditCustomUnitViewModel @AssistedInject constructor(
     @Assisted val route: EditCustomUnitRoute
 ) : ViewModel() {
 
-    private var customUnit: CustomUnit? = null
+    private var customUnit by mutableStateOf<CustomUnit?>(null)
+    var isLoading by mutableStateOf(true)
+        private set
+    var isSaving by mutableStateOf(false)
+        private set
+    val isMissing: Boolean get() = !isLoading && customUnit == null
+
     init {
         val customUnitId = route.customUnitId
         viewModelScope.launch {
-            val customUnitWithIngestions = experienceRepo.getCustomUnitWithIngestions(customUnitId)
-            val customUnit = customUnitWithIngestions?.customUnit
-            this@EditCustomUnitViewModel.customUnit = customUnit
-            if (customUnit != null) {
-                substanceName = customUnit.substanceName
-                administrationRoute = customUnit.administrationRoute
-                val substance = substanceRepository.getSubstance(customUnit.substanceName)
-                roaDose = substance?.getRoa(customUnit.administrationRoute)?.roaDose
-                originalUnit = customUnit.originalUnit
-                name = customUnit.name
-                val pluralizableUnit = customUnit.getPluralizableUnit()
-                unit = customUnit.unit
-                unitPlural = pluralizableUnit.plural
-                doseText = customUnit.dose?.toReadableString() ?: ""
-                estimatedDoseDeviationText =
-                    customUnit.estimatedDoseStandardDeviation?.toReadableString() ?: ""
-                isEstimate = customUnit.isEstimate
-                isArchived = customUnit.isArchived
-                note = customUnit.note
+            try {
+                val customUnitWithIngestions = experienceRepo.getCustomUnitWithIngestions(customUnitId)
+                val loadedCustomUnit = customUnitWithIngestions?.customUnit
+                customUnit = loadedCustomUnit
+                if (loadedCustomUnit != null) {
+                    substanceName = loadedCustomUnit.substanceName
+                    administrationRoute = loadedCustomUnit.administrationRoute
+                    val substance = substanceRepository.getSubstance(loadedCustomUnit.substanceName)
+                    roaDose = substance?.getRoa(loadedCustomUnit.administrationRoute)?.roaDose
+                    originalUnit = loadedCustomUnit.originalUnit
+                    name = loadedCustomUnit.name
+                    val pluralizableUnit = loadedCustomUnit.getPluralizableUnit()
+                    unit = loadedCustomUnit.unit
+                    unitPlural = pluralizableUnit.plural
+                    doseText = loadedCustomUnit.dose?.toReadableString() ?: ""
+                    estimatedDoseDeviationText =
+                        loadedCustomUnit.estimatedDoseStandardDeviation?.toReadableString() ?: ""
+                    isEstimate = loadedCustomUnit.isEstimate
+                    isArchived = loadedCustomUnit.isArchived
+                    note = loadedCustomUnit.note
+                }
+                numberOfIngestionsWithThisCustomUnit = customUnitWithIngestions?.ingestions?.size
+            } finally {
+                isLoading = false
             }
-            numberOfIngestionsWithThisCustomUnit = customUnitWithIngestions?.ingestions?.size
         }
     }
 
@@ -109,17 +121,26 @@ class EditCustomUnitViewModel @AssistedInject constructor(
 
     var doseText by mutableStateOf("")
     fun onChangeOfDose(newDose: String) {
-        doseText = newDose
+        doseText = newDose.replace(',', '.')
     }
-    val dose: Double? get() = doseText.toDoubleOrNull()
+    val dose: Double? get() = parsePositiveFiniteNumber(doseText)
 
     var estimatedDoseDeviationText by mutableStateOf("")
     fun onChangeOfEstimatedDoseDeviation(newEstimatedDoseDeviation: String) {
-        estimatedDoseDeviationText = newEstimatedDoseDeviation
+        estimatedDoseDeviationText = newEstimatedDoseDeviation.replace(',', '.')
     }
-    val estimatedDoseStandardDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
+    val estimatedDoseStandardDeviation: Double?
+        get() = parseNonNegativeFiniteNumber(estimatedDoseDeviationText)
 
     var isEstimate by mutableStateOf(false)
+    val isDoseInputValid: Boolean get() = doseText.isBlank() || dose != null
+    val isEstimatedDeviationInputValid: Boolean
+        get() = !isEstimate || estimatedDoseDeviationText.isBlank() || estimatedDoseStandardDeviation != null
+    val canSave: Boolean
+        get() = !isLoading && !isSaving && customUnit != null && name.isNotBlank() && unit.isNotBlank() &&
+            isDoseInputValid && isEstimatedDeviationInputValid &&
+            (dose == null || originalUnit.isNotBlank())
+
     fun onChangeOfIsEstimate(newIsEstimate: Boolean) {
         isEstimate = newIsEstimate
     }
@@ -136,32 +157,52 @@ class EditCustomUnitViewModel @AssistedInject constructor(
     }
 
     fun updateAndDismissAfter(dismiss: () -> Unit) {
+        if (!canSave) return
+        val currentCustomUnit = customUnit ?: return
+        val savedDose = dose
+        val savedIsEstimate = isEstimate && savedDose != null
+        val updatedCustomUnit = currentCustomUnit.copy(
+            dose = savedDose,
+            name = name.trim(),
+            isEstimate = savedIsEstimate,
+            originalUnit = originalUnit.trim(),
+            unitPlural = unitPlural.trim().takeIf { it.isNotEmpty() },
+            estimatedDoseStandardDeviation =
+                if (savedIsEstimate) estimatedDoseStandardDeviation else null,
+            isArchived = isArchived,
+            unit = unit.trim(),
+            note = note
+        )
+        isSaving = true
         viewModelScope.launch {
-            customUnit?.let {
-                it.dose = dose
-                it.name = name
-                it.isEstimate = isEstimate
-                it.originalUnit = originalUnit
-                it.unitPlural = unitPlural
-                it.estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseStandardDeviation else null
-                it.isArchived = isArchived
-                it.unit = unit
-                it.note = note
-                experienceRepo.update(it)
-            }
-            withContext(Dispatchers.Main) {
-                dismiss()
+            try {
+                if (experienceRepo.update(updatedCustomUnit) > 0) {
+                    customUnit = updatedCustomUnit
+                    withContext(Dispatchers.Main) {
+                        dismiss()
+                    }
+                } else {
+                    customUnit = null
+                }
+            } finally {
+                isSaving = false
             }
         }
     }
 
     fun deleteCustomUnit(dismiss: () -> Unit) {
+        if (isLoading || isSaving) return
+        val currentCustomUnit = customUnit ?: return
+        isSaving = true
         viewModelScope.launch {
-            customUnit?.let {
-                experienceRepo.delete(customUnit = it)
-            }
-            withContext(Dispatchers.Main) {
-                dismiss()
+            try {
+                experienceRepo.delete(customUnit = currentCustomUnit)
+                customUnit = null
+                withContext(Dispatchers.Main) {
+                    dismiss()
+                }
+            } finally {
+                isSaving = false
             }
         }
     }

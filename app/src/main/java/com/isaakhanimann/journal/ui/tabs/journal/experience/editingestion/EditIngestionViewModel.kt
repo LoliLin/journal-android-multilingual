@@ -39,6 +39,7 @@ import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import com.isaakhanimann.journal.ui.utils.getInstant
 import com.isaakhanimann.journal.ui.utils.getLocalDateTime
 import com.isaakhanimann.journal.ui.utils.getLongDateText
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -64,7 +65,21 @@ class EditIngestionViewModel @AssistedInject constructor(
     @Assisted val route: IngestionRoute
 ) : ViewModel() {
     private var ingestionFlow: MutableStateFlow<Ingestion?> = MutableStateFlow(null)
+    var isLoadingIngestion by mutableStateOf(true)
+        private set
+    var isSaving by mutableStateOf(false)
+        private set
     var ingestion by mutableStateOf<Ingestion?>(null)
+    val hasValidDoseInput: Boolean
+        get() = isDoseInputValid(isKnown, dose)
+    val hasValidEstimatedDeviation: Boolean
+        get() = isEstimatedDeviationInputValid(isKnown, isEstimate, estimatedDoseStandardDeviation)
+    val hasValidTimeRange: Boolean
+        get() = ingestionTimePickerOptionFlow.value != IngestionTimePickerOption.TIME_RANGE ||
+            isTimeRangeInputValid(localDateTimeStartFlow.value, localDateTimeEndFlow.value)
+    val canSave: Boolean
+        get() = ingestion != null && hasValidDoseInput && hasValidEstimatedDeviation &&
+            hasValidTimeRange && !isSaving
     var note by mutableStateOf("")
     var releaseForm by mutableStateOf<ReleaseForm?>(null)
         private set
@@ -120,37 +135,41 @@ class EditIngestionViewModel @AssistedInject constructor(
     init {
         val id = route.ingestionId
         viewModelScope.launch {
-            val ingestionAndCustomUnit =
-                experienceRepo.getIngestionFlow(id = id).first() ?: return@launch
-            val ing = ingestionAndCustomUnit.ingestion
-            ingestionFlow.emit(ing)
-            ingestion = ing
-            releaseForm = if (state.contains(RELEASE_FORM_HANDLE_KEY)) {
-                state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY)
-            } else {
-                ing.releaseForm
+            try {
+                val ingestionAndCustomUnit = experienceRepo.getIngestionFlow(id = id).first()
+                    ?: return@launch
+                val ing = ingestionAndCustomUnit.ingestion
+                ingestionFlow.emit(ing)
+                ingestion = ing
+                releaseForm = if (state.contains(RELEASE_FORM_HANDLE_KEY)) {
+                    state.get<ReleaseForm>(RELEASE_FORM_HANDLE_KEY)
+                } else {
+                    ing.releaseForm
+                }
+                note = ing.notes ?: ""
+                isEstimate = ing.isDoseAnEstimate
+                estimatedDoseStandardDeviation =
+                    ing.estimatedDoseStandardDeviation?.toReadableString() ?: ""
+                experienceId = ing.experienceId
+                newExperienceTitle = ing.time.getLocalDateTime().getLongDateText()
+                dose = ing.dose?.toReadableString() ?: ""
+                isKnown = ing.dose != null
+                units = ing.units ?: ""
+                consumerName = ing.consumerName ?: ""
+                localDateTimeStartFlow.emit(ing.time.getLocalDateTime())
+                localDateTimeEndFlow.emit(
+                    ing.endTime?.getLocalDateTime()
+                        ?: ing.time.getLocalDateTime().plusMinutes(30)
+                )
+                ingestionTimePickerOptionFlow.value = if (ing.endTime != null) {
+                    IngestionTimePickerOption.TIME_RANGE
+                } else {
+                    IngestionTimePickerOption.POINT_IN_TIME
+                }
+                customUnit = ingestionAndCustomUnit.customUnit
+            } finally {
+                isLoadingIngestion = false
             }
-            note = ing.notes ?: ""
-            isEstimate = ing.isDoseAnEstimate
-            estimatedDoseStandardDeviation =
-                ing.estimatedDoseStandardDeviation?.toReadableString() ?: ""
-            experienceId = ing.experienceId
-            newExperienceTitle = ing.time.getLocalDateTime().getLongDateText()
-            dose = ing.dose?.toReadableString() ?: ""
-            isKnown = ing.dose != null
-            units = ing.units ?: ""
-            consumerName = ing.consumerName ?: ""
-            localDateTimeStartFlow.emit(ing.time.getLocalDateTime())
-            localDateTimeEndFlow.emit(
-                ing.endTime?.getLocalDateTime()
-                    ?: ing.time.getLocalDateTime().plusMinutes(30)
-            )
-            ingestionTimePickerOptionFlow.value = if (ing.endTime != null) {
-                IngestionTimePickerOption.TIME_RANGE
-            } else {
-                IngestionTimePickerOption.POINT_IN_TIME
-            }
-            customUnit = ingestionAndCustomUnit.customUnit
         }
     }
 
@@ -229,51 +248,64 @@ class EditIngestionViewModel @AssistedInject constructor(
     )
 
     fun onDoneTap(onSaved: () -> Unit = {}) {
+        val ingestionToUpdate = ingestion ?: return
+        if (!canSave) return
+
+        val selectedInstant = localDateTimeStartFlow.value.getInstant()
+        val isTimeRange = ingestionTimePickerOptionFlow.value == IngestionTimePickerOption.TIME_RANGE
+        val isNewExperience = isCreatingNewExperience
+        val title = newExperienceTitle.trim().ifBlank { selectedInstant.getLongDateText() }
+        val updatedIngestion = ingestionToUpdate.copy(
+            notes = note,
+            isDoseAnEstimate = isKnown && isEstimate,
+            experienceId = if (isNewExperience) ingestionToUpdate.experienceId else experienceId,
+            dose = if (isKnown) checkNotNull(parseNonNegativeFiniteNumber(dose)) else null,
+            estimatedDoseStandardDeviation = if (isKnown && isEstimate) {
+                estimatedDoseStandardDeviation.takeIf { it.isNotBlank() }
+                    ?.let(::parseNonNegativeFiniteNumber)
+            } else {
+                null
+            },
+            units = units,
+            customUnitId = customUnit?.id,
+            time = selectedInstant,
+            endTime = if (isTimeRange) localDateTimeEndFlow.value.getInstant() else null,
+            consumerName = consumerName.ifBlank { null },
+            releaseForm = releaseForm.takeIf { ingestionToUpdate.administrationRoute == AdministrationRoute.ORAL }
+        )
+
+        isSaving = true
         viewModelScope.launch {
-            val selectedInstant = localDateTimeStartFlow.firstOrNull()?.getInstant()
-            if (selectedInstant == null) {
-                onSaved()
-                return@launch
-            }
-            ingestion?.let {
-                it.notes = note
-                it.isDoseAnEstimate = isEstimate
-                if (!isCreatingNewExperience) {
-                    it.experienceId = experienceId
-                }
-                it.dose = if (isKnown) dose.toDoubleOrNull() else null
-                it.estimatedDoseStandardDeviation =
-                    if (isEstimate) estimatedDoseStandardDeviation.toDoubleOrNull() else null
-                it.units = units
-                it.customUnitId = customUnit?.id
-                it.time = selectedInstant
-                it.endTime =
-                    if (ingestionTimePickerOptionFlow.value ==
-                        IngestionTimePickerOption.TIME_RANGE
-                    ) {
-                        localDateTimeEndFlow.firstOrNull()?.getInstant()
-                    } else {
-                        null
-                    }
-                it.consumerName = consumerName.ifBlank { null }
-                // Matches the create flow: a formulation is only meaningful for oral
-                // entries, and getRoa() drops all ROA data for extended release.
-                val route = it.administrationRoute
-                it.releaseForm = releaseForm.takeIf { route == AdministrationRoute.ORAL }
-                if (isCreatingNewExperience) {
+            try {
+                val savedIngestion = if (isNewExperience) {
                     val newId = experienceRepo.insertExperienceAndUpdateIngestion(
-                        title = newExperienceTitle.trim().ifBlank { selectedInstant.getLongDateText() },
-                        ingestion = it
+                        title = title,
+                        ingestion = updatedIngestion
                     )
-                    it.experienceId = newId
-                    experienceId = newId
+                    if (newId == null) {
+                        ingestion = null
+                        ingestionFlow.emit(null)
+                        return@launch
+                    }
+                    updatedIngestion.copy(experienceId = newId)
                 } else {
-                    experienceRepo.update(it)
+                    if (!experienceRepo.updateIngestionIfExists(updatedIngestion)) {
+                        ingestion = null
+                        ingestionFlow.emit(null)
+                        return@launch
+                    }
+                    updatedIngestion
                 }
+                ingestion = savedIngestion
+                ingestionFlow.emit(savedIngestion)
+                experienceId = savedIngestion.experienceId
+                onSaved()
+            } finally {
+                isSaving = false
             }
-            onSaved()
         }
     }
+
 
     fun deleteIngestion() {
         viewModelScope.launch {
