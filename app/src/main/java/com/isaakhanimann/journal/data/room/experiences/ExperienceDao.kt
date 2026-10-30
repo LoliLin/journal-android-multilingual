@@ -137,6 +137,15 @@ interface ExperienceDao {
         limit: Int
     ): Flow<List<IngestionWithCompanionAndCustomUnit>>
 
+    @Transaction
+    @Query(
+        "SELECT * FROM ingestion ORDER BY creationDate DESC, id DESC LIMIT :limit OFFSET :offset"
+    )
+    suspend fun getIngestionAnalysisPage(
+        limit: Int,
+        offset: Int
+    ): List<IngestionWithCompanionAndCustomUnit>
+
     @Query("SELECT * FROM ingestion ORDER BY time DESC LIMIT :limit")
     fun getSortedIngestions(limit: Int): Flow<List<Ingestion>>
 

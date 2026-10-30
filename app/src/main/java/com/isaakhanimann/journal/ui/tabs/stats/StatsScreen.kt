@@ -1042,11 +1042,11 @@ private fun AnalysisIngestionListBlock(
             verticalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             val shown = model.ingestions.take(50)
-            if (model.ingestions.size > shown.size) {
+            if (model.ingestionCount > shown.size) {
                 Text(
                     text = i18n(
                         "stats_analysis_showing_first",
-                        mapOf("count" to shown.size.toString(), "total" to model.ingestions.size.toString())
+                        mapOf("count" to shown.size.toString(), "total" to model.ingestionCount.toString())
                     ),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
