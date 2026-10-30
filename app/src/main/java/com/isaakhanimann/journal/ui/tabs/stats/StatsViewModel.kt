@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
-import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsAndCompanions
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
@@ -265,18 +264,11 @@ class StatsViewModel @Inject constructor(
             }
         }
         val groupedIngestionsBySubstance = relevantIngestions.groupBy { it.ingestion.substanceName }
-        val experienceCountsBySubstance = if (byIngestionTime) {
-            groupedIngestionsBySubstance
-                .mapValues { (_, list) -> list.map { it.ingestion.experienceId }.distinct().size }
-        } else {
-            relevantIngestions
-                .groupBy { it.ingestion.experienceId }
-                .values
-                .flatMap { ingestionsInExperience ->
-                    ingestionsInExperience.map { it.ingestion.substanceName }.toSet()
-                }
-                .groupingBy { it }
-                .eachCount()
+        val experienceCountsBySubstance = groupedIngestionsBySubstance.mapValues { (_, ingestions) ->
+            ingestions.asSequence()
+                .map { it.ingestion.experienceId }
+                .distinct()
+                .count()
         }
         groupedIngestionsBySubstance.values.mapNotNull { groupedIngestions ->
             val name =
@@ -293,20 +285,21 @@ class StatsViewModel @Inject constructor(
                 customColorArgb = oneCompanion.customColorArgb,
                 experienceCount = experienceCountsBySubstance[name] ?: 0,
                 ingestionCount = groupedIngestions.size,
-                routeCounts = getRouteCounts(groupedIngestions.map { it.ingestion }),
+                routeCounts = getRouteCounts(groupedIngestions),
                 totalDose = getTotalDose(groupedIngestions),
                 relativeTotalDose = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
             )
         }.sortedByDescending { it.experienceCount }
     }.flowOn(Dispatchers.Default)
 
-    private fun getRouteCounts(groupedIngestions: List<Ingestion>): List<RouteCount> {
-        val routeMap = groupedIngestions.groupBy { it.administrationRoute }
-        return routeMap.values.mapNotNull {
-            val route = it.firstOrNull()?.administrationRoute ?: return@mapNotNull null
-            RouteCount(administrationRoute = route, count = it.size)
+    private fun getRouteCounts(
+        groupedIngestions: List<IngestionWithCompanionAndCustomUnit>
+    ): List<RouteCount> = groupedIngestions
+        .groupingBy { it.ingestion.administrationRoute }
+        .eachCount()
+        .map { (route, count) ->
+            RouteCount(administrationRoute = route, count = count)
         }
-    }
 
     private fun getTotalDose(
         groupedIngestions: List<IngestionWithCompanionAndCustomUnit>
