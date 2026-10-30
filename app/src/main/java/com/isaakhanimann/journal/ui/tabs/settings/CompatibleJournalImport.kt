@@ -86,15 +86,22 @@ private fun normalizeColor(record: JsonObject): JsonObject {
         (rawColor is JsonPrimitive && rawColor.isString && current !in supportedColors)
     if (!hasCompatibleColorFallback && current !in supportedColors) return record
 
-    val customArgb = (record["customColor"] as? JsonPrimitive)?.intOrNull
+    val rawCustomColor = record["customColor"]
+    val customColorPrimitive = rawCustomColor as? JsonPrimitive
+    val customArgb = customColorPrimitive
+        ?.takeIf { !it.isString }
+        ?.intOrNull
+    val hasMalformedCustomColor = rawCustomColor != null && rawCustomColor != JsonNull && customArgb == null
     val normalized = when {
         customArgb != null -> closestPresetColor(customArgb).name
         current !in supportedColors -> AdaptiveColor.BLUE.name
         else -> current
     }
 
-    return if (normalized == current) record
-    else JsonObject(record + ("color" to JsonPrimitive(normalized)))
+    val updated = record.toMutableMap()
+    if (hasMalformedCustomColor) updated.remove("customColor")
+    if (normalized != current) updated["color"] = JsonPrimitive(normalized)
+    return if (updated == record) record else JsonObject(updated)
 }
 
 /** Android ARGB integers are signed; use unsigned shifts to extract the RGB channels. */

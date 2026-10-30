@@ -13,7 +13,7 @@ import org.junit.Test
 
 class TestCompatibleJournalImport {
     @Test
-    fun importsForeignSignedArgbWithoutChangingTheLocalSchema() {
+    fun importsForeignSignedArgbIntoTheCurrentLocalSchema() {
         val backup = """
             {
               "substanceCompanions": [
@@ -39,12 +39,14 @@ class TestCompatibleJournalImport {
         // #FFFF3B30 and #FFFF9500 exactly match the light-mode preset values.
         assertEquals(AdaptiveColor.RED, restored.substanceCompanions.single().color)
         assertEquals(AdaptiveColor.ORANGE, restored.experiences.single().timedNotes.single().color)
+        assertEquals(-50384, restored.substanceCompanions.single().customColorArgb)
         assertEquals("keep this text", restored.experiences.single().text)
         assertEquals("keep this note", restored.experiences.single().timedNotes.single().note)
 
-        // Export stays unchanged: this is deliberately an import-only compatibility fix.
+        // The local schema keeps custom companion colors; timed notes still use the legacy palette.
         val exported = journalExportJson.encodeToString(restored)
-        assertFalse(exported.contains("\"customColor\""))
+        assertTrue(exported.contains("\"customColor\":-50384"))
+        assertFalse(exported.contains("\"customColor\":-27392"))
         assertTrue(exported.contains("\"color\":\"RED\""))
     }
 
