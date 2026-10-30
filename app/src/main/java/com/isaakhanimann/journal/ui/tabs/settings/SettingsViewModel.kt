@@ -22,6 +22,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.compose.material3.SnackbarDuration
+import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -232,7 +233,7 @@ class SettingsViewModel @Inject constructor(
     val backupProgress = kotlinx.coroutines.flow.MutableStateFlow<BackupProgress?>(null)
 
     val snackbarHostState = SnackbarHostState()
-    val importDiagnostics = kotlinx.coroutines.flow.MutableStateFlow<List<ImportStructuralDiagnostic>?>(null)
+    internal val importDiagnostics = kotlinx.coroutines.flow.MutableStateFlow<List<ImportStructuralDiagnostic>?>(null)
 
     fun dismissImportDiagnostics() {
         importDiagnostics.value = null

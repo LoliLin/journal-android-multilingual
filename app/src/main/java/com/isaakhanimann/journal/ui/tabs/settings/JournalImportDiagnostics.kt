@@ -14,7 +14,6 @@ import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.SerialKind
 import kotlinx.serialization.descriptors.StructureKind
-import kotlinx.serialization.descriptors.isNullable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
@@ -121,7 +120,6 @@ private fun primitiveMatches(value: JsonElement, descriptor: SerialDescriptor): 
             primitive.longOrNull != null
         }
         PrimitiveKind.FLOAT, PrimitiveKind.DOUBLE -> isUnquoted && primitive.doubleOrNull != null
-        SerialKind.ENUM -> primitive.isString
         else -> true // Keep serializer-defined compatibility for custom primitive formats.
     }
 }

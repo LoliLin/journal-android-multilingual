@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.data.room.experiences
 
+import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
@@ -66,6 +67,7 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         experienceDao.applyRecipe(recipeId, time).also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun insert(customUnit: CustomUnit) = experienceDao.insert(customUnit).also { JournalDataEvents.notifyJournalChanged() }.toInt()
+    suspend fun insert(rating: ShulginRating) = experienceDao.insert(rating).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun insert(timedNote: TimedNote): Int =
         experienceDao.insert(timedNote)
             .also { JournalDataEvents.notifyJournalChanged() }

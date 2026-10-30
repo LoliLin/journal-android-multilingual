@@ -70,15 +70,15 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
         // Recipes and custom companion colors ship together in schema v11.
         val MIGRATION_10_11 = object : Migration(10, 11) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL(
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
                     """CREATE TABLE IF NOT EXISTS `Recipe` (
                         `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                         `name` TEXT NOT NULL,
                         `isArchived` INTEGER NOT NULL
                     )""".trimIndent()
                 )
-                database.execSQL(
+                db.execSQL(
                     """CREATE TABLE IF NOT EXISTS `RecipeItem` (
                         `recipeId` INTEGER NOT NULL,
                         `position` INTEGER NOT NULL,
@@ -92,7 +92,7 @@ abstract class AppDatabase : RoomDatabase() {
                         PRIMARY KEY(`recipeId`, `position`)
                     )""".trimIndent()
                 )
-                database.execSQL("ALTER TABLE `SubstanceCompanion` ADD COLUMN `customColorArgb` INTEGER")
+                db.execSQL("ALTER TABLE `SubstanceCompanion` ADD COLUMN `customColorArgb` INTEGER")
             }
         }
     }
