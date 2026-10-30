@@ -149,22 +149,6 @@ class StatsAnalysisViewModel @Inject constructor(
             replay = 1
         )
 
-    val usedSubstancesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
-        list.map { it.ingestion.substanceName }.distinct().sorted()
-    }.flowOn(Dispatchers.Default).stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
-
-    val consumerNamesFlow: StateFlow<List<String>> = ingestionsFlow.map { list ->
-        list.mapNotNull { it.ingestion.consumerName }.distinct().sorted()
-    }.flowOn(Dispatchers.Default).stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
-
     val ownerUserNameFlow: StateFlow<String?> = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
         scope = viewModelScope,
