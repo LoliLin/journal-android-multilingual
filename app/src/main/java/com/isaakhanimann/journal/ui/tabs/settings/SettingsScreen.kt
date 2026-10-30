@@ -138,6 +138,8 @@ fun SettingsScreen(
         isImportEncrypted = viewModel::isImportEncrypted,
         exportFile = viewModel::exportFile,
         snackbarHostState = viewModel.snackbarHostState,
+        importDiagnostics = viewModel.importDiagnostics.collectAsState().value,
+        dismissImportDiagnostics = viewModel::dismissImportDiagnostics,
         backupProgress = viewModel.backupProgress.collectAsState().value,
         ownerUserName = ownerUserName,
         saveOwnerUserName = viewModel::saveOwnerUserName,
@@ -162,6 +164,8 @@ fun SettingsScreen(
     isImportEncrypted: (Uri) -> Boolean,
     exportFile: (uri: Uri, password: String?) -> Unit,
     snackbarHostState: SnackbarHostState,
+    importDiagnostics: List<ImportStructuralDiagnostic>? = null,
+    dismissImportDiagnostics: () -> Unit = {},
     backupProgress: SettingsViewModel.BackupProgress? = null,
     ownerUserName: String = "You",
     achievements: List<String> = emptyList(),
@@ -179,7 +183,12 @@ fun SettingsScreen(
                 scrollBehavior = topBarScrollBehavior
             )
         },
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        snackbarHost = {
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.padding(bottom = bottomBarOverlayDp())
+            )
+        }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -412,6 +421,42 @@ fun SettingsScreen(
                                 onClick = { isShowingImportDialog = false }
                             ) {
                                 Text(i18n("common_cancel"))
+                            }
+                        }
+                    )
+                }
+                if (importDiagnostics != null) {
+                    AlertDialog(
+                        onDismissRequest = dismissImportDiagnostics,
+                        title = { Text(i18n("settings_import_diagnostics_title")) },
+                        text = {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .heightIn(max = 420.dp)
+                                    .verticalScroll(rememberScrollState())
+                            ) {
+                                Text(i18n("settings_import_diagnostics_description"))
+                                Spacer(modifier = Modifier.height(12.dp))
+                                importDiagnostics.forEach { diagnostic ->
+                                    Text(
+                                        i18n(
+                                            "settings_import_diagnostic_entry",
+                                            mapOf(
+                                                "path" to diagnostic.path,
+                                                "expected" to diagnostic.expected,
+                                                "actual" to diagnostic.actual
+                                            )
+                                        ),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        modifier = Modifier.padding(bottom = 8.dp)
+                                    )
+                                }
+                            }
+                        },
+                        confirmButton = {
+                            TextButton(onClick = dismissImportDiagnostics) {
+                                Text(i18n("common_close"))
                             }
                         }
                     )

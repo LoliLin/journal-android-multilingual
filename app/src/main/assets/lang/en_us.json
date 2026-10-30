@@ -847,5 +847,8 @@
   "recipes_units": "Units",
   "recipes_estimated_dose": "Dose is an estimate",
   "recipes_minimum_items": "Add at least two ingredients to save a recipe.",
-  "settings_import_partial_success": "Journal imported, but some settings or profile photos could not be restored."
+  "settings_import_partial_success": "Journal imported, but some settings or profile photos could not be restored.",
+  "settings_import_diagnostics_title": "Import could not be completed",
+  "settings_import_diagnostics_description": "The backup is malformed or has incompatible fields. Your journal was not replaced.",
+  "settings_import_diagnostic_entry": "Path: {path}\nExpected: {expected}\nActual: {actual}"
 }

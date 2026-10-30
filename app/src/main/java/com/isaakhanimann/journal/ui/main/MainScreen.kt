@@ -32,6 +32,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -147,9 +148,9 @@ private fun MainScreenContent(
 
     val isKeyboardOpenNow = isKeyboardOpen().value
     val rootTabSwipeThresholdPx = with(LocalDensity.current) { 48.dp.toPx() }
-    val isBottomBarShown = shouldShowBottomBar(isOnMainTabRoot, isKeyboardOpenNow)
+    val isBottomBarShown = shouldShowBottomBar(isOnMainTabRoot, isKeyboardOpenNow, isBottomBarPinned)
     val bottomBarScrollBehavior = rememberBottomBarScrollBehavior {
-        shouldShowBottomBar(isOnMainTabRoot, isKeyboardOpenNow)
+        shouldShowBottomBar(isOnMainTabRoot, isKeyboardOpenNow, isBottomBarPinned)
     }
     val nestedScrollConnection = if (isBottomBarPinned) null else remember(bottomBarScrollBehavior) {
         bottomBarNestedScrollConnection(bottomBarScrollBehavior)
@@ -170,7 +171,7 @@ private fun MainScreenContent(
         }
         CompositionLocalProvider(
             LocalBottomBarNestedScrollConnection provides nestedScrollConnection,
-            LocalBottomBarOverlayInsetPx provides visibleBarPx
+            LocalBottomBarOverlayInsetPx provides if (isBottomBarPinned) 0 else visibleBarPx
         ) {
             BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                 val rootTabTransitionDistancePx =
@@ -208,6 +209,13 @@ private fun MainScreenContent(
                     ),
                     modifier = Modifier
                         .fillMaxSize()
+                        .then(
+                            if (isBottomBarPinned && !isKeyboardOpenNow) {
+                                Modifier.padding(bottom = with(LocalDensity.current) { visibleBarPx.toDp() })
+                            } else {
+                                Modifier
+                            }
+                        )
                         // Cancel an in-flight root swipe as soon as a tab transition starts.
                         .pointerInput(
                             manager,

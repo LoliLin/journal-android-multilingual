@@ -232,6 +232,11 @@ class SettingsViewModel @Inject constructor(
     val backupProgress = kotlinx.coroutines.flow.MutableStateFlow<BackupProgress?>(null)
 
     val snackbarHostState = SnackbarHostState()
+    val importDiagnostics = kotlinx.coroutines.flow.MutableStateFlow<List<ImportStructuralDiagnostic>?>(null)
+
+    fun dismissImportDiagnostics() {
+        importDiagnostics.value = null
+    }
 
     fun saveSelectedLanguage(languageKey: String?) {
         viewModelScope.launch {
@@ -302,6 +307,7 @@ class SettingsViewModel @Inject constructor(
 
     fun importFile(uri: Uri, password: String? = null) {
         viewModelScope.launch {
+            importDiagnostics.value = null
             backupProgress.value = BackupProgress(0, 0)
             val stagedAvatars = mutableListOf<Pair<File, File>>()
             val stagedPhotos = mutableListOf<String>()
@@ -420,6 +426,8 @@ class SettingsViewModel @Inject constructor(
                     message = "Import successful",
                     duration = SnackbarDuration.Short
                 )
+            } catch (diagnostics: ImportDiagnosticsException) {
+                importDiagnostics.value = diagnostics.diagnostics
             } catch (cancelled: kotlinx.coroutines.CancellationException) {
                 throw cancelled
             } catch (_: Exception) {
