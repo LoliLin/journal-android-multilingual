@@ -104,12 +104,13 @@ data class StatsAnalysisModel(
  * The reference dose for relative measurements: the midpoint of the common dose range
  * [commonMin, strongMin), falling back to commonMin when the range has no upper bound.
  */
-internal fun commonDoseReference(commonMin: Double?, strongMin: Double?): Double? =
-    when {
-        commonMin == null -> null
-        strongMin != null -> (commonMin + strongMin) / 2
-        else -> commonMin
-    }
+internal fun commonDoseReference(commonMin: Double?, strongMin: Double?): Double? {
+    val lower = commonMin?.takeIf { it.isFinite() && it > 0.0 } ?: return null
+    val upper = strongMin ?: return lower
+    if (!upper.isFinite() || upper < lower) return null
+    if (upper == lower) return lower
+    return (lower / 2.0 + upper / 2.0).takeIf { it.isFinite() && it > 0.0 }
+}
 
 /**
  * Relative dose of one ingestion: the pure dose divided by the common dose reference of the
@@ -136,8 +137,8 @@ private fun relativeDoseOfIngestion(
     // relative dose is only defined when the entry is expressed in the ROA's units
     val unit = ingestionWith.originalUnit
     if (unit != null && roaDose.units != unit) return null
-    val pureDose = ingestionWith.pureDose ?: return null
-    return pureDose / reference
+    val pureDose = ingestionWith.pureDose?.takeIf { it.isFinite() && it >= 0.0 } ?: return null
+    return (pureDose / reference).takeIf { it.isFinite() }
 }
 
 @HiltViewModel
