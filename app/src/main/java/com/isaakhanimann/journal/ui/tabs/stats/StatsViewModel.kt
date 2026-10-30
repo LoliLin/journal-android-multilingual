@@ -107,20 +107,21 @@ class StatsViewModel @Inject constructor(
         isStatsByIngestionTimeFlow,
         consumerFlow
     ) { experiences, byIngestionTime, consumerName ->
+        val ingestionsNewestFirst = if (byIngestionTime) {
+            experiences.asSequence()
+                .flatMap { it.ingestionsWithCompanionAndCustomUnit }
+                .filter { it.ingestion.consumerName == consumerName }
+                .sortedByDescending { it.ingestion.time }
+                .toList()
+        } else {
+            null
+        }
         StatsSourceSnapshot(
             experiences = experiences,
             byIngestionTime = byIngestionTime,
             consumerName = consumerName,
-            ingestionsNewestFirst = if (byIngestionTime) {
-                experiences.asSequence()
-                    .flatMap { it.ingestionsWithCompanionAndCustomUnit }
-                    .filter { it.ingestion.consumerName == consumerName }
-                    .sortedByDescending { it.ingestion.time }
-                    .toList()
-            } else {
-                null
-            },
-            areThereAnyIngestions = experiences.any { experience ->
+            ingestionsNewestFirst = ingestionsNewestFirst,
+            areThereAnyIngestions = ingestionsNewestFirst?.isNotEmpty() ?: experiences.any { experience ->
                 experience.ingestionsWithCompanionAndCustomUnit.any {
                     it.ingestion.consumerName == consumerName
                 }
@@ -263,8 +264,9 @@ class StatsViewModel @Inject constructor(
                 }
             }
         }
+        val groupedIngestionsBySubstance = relevantIngestions.groupBy { it.ingestion.substanceName }
         val experienceCountsBySubstance = if (byIngestionTime) {
-            relevantIngestions.groupBy { it.ingestion.substanceName }
+            groupedIngestionsBySubstance
                 .mapValues { (_, list) -> list.map { it.ingestion.experienceId }.distinct().size }
         } else {
             relevantIngestions
@@ -276,8 +278,7 @@ class StatsViewModel @Inject constructor(
                 .groupingBy { it }
                 .eachCount()
         }
-        val map = relevantIngestions.groupBy { it.ingestion.substanceName }
-        map.values.mapNotNull { groupedIngestions ->
+        groupedIngestionsBySubstance.values.mapNotNull { groupedIngestions ->
             val name =
                 groupedIngestions.firstOrNull()?.ingestion?.substanceName ?: return@mapNotNull null
             val oneCompanion =
