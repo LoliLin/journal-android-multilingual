@@ -28,14 +28,13 @@ import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
-import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDate
 import java.time.ZoneId
 import javax.inject.Inject
-import kotlin.math.floor
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -44,6 +43,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
 
@@ -147,12 +147,14 @@ class StatsAnalysisViewModel @Inject constructor(
     private val userPreferences: UserPreferences
 ) : ViewModel() {
 
-    private val ingestionsFlow =
-        experienceRepository.getSortedIngestionsWithSubstanceCompanionsFlow(limit = 100000).shareIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            replay = 1
-        )
+    private val ingestionInvalidationsFlow =
+        experienceRepository.getSortedIngestionsWithSubstanceCompanionsFlow(limit = 1)
+            .map { Unit }
+            .shareIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5000),
+                replay = 1
+            )
 
     val ownerUserNameFlow: StateFlow<String?> = userPreferences.ownerUserNameFlow.stateIn(
         initialValue = "You",
@@ -271,153 +273,73 @@ class StatsAnalysisViewModel @Inject constructor(
         AnalysisFilters(selected, consumer, preset, start, end)
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val modelFlow: StateFlow<StatsAnalysisModel> = combine(
-        ingestionsFlow,
+        ingestionInvalidationsFlow,
         filtersFlow
-    ) { ingestions, filters ->
-        val selected = filters.selectedSubstances
-        val consumerSelection = filters.consumer
-        val preset = filters.preset
-        val start = filters.start
-        val end = filters.end
-        val consumerMatches: (String?) -> Boolean = when (consumerSelection) {
-            ConsumerSelection.All -> { _ -> true }
-            ConsumerSelection.Owner -> { consumer -> consumer == null }
-            is ConsumerSelection.Specific -> { consumer -> consumer == consumerSelection.name }
-        }
-        val zone = ZoneId.systemDefault()
-        val today = LocalDate.now()
-        val (effectiveStart, effectiveEnd) = when (preset) {
-            AnalysisPeriodPreset.ALL_TIME -> null to null
-            AnalysisPeriodPreset.LAST_30_DAYS -> trailingCalendarDateRange(today, 30)
-            AnalysisPeriodPreset.LAST_90_DAYS -> trailingCalendarDateRange(today, 90)
-            AnalysisPeriodPreset.THIS_YEAR -> LocalDate.of(today.year, 1, 1) to today
-            AnalysisPeriodPreset.LAST_YEAR ->
-                LocalDate.of(today.year - 1, 1, 1) to LocalDate.of(today.year - 1, 12, 31)
-            AnalysisPeriodPreset.CUSTOM -> start to end
-        }
-        val roaDoseCache = mutableMapOf<RoaLookupKey, RoaDose?>()
-        fun cachedRoaDose(ingestionWith: IngestionWithCompanionAndCustomUnit): RoaDose? {
-            val ingestion = ingestionWith.ingestion
-            val key = RoaLookupKey(ingestion.substanceName, ingestion.administrationRoute, ingestion.releaseForm)
-            if (roaDoseCache.containsKey(key)) return roaDoseCache[key]
-            val roaDose = substanceRepo.getSubstance(ingestion.substanceName)
-                ?.getRoa(ingestion.administrationRoute, ingestion.releaseForm)?.roaDose
-            roaDoseCache[key] = roaDose
-            return roaDose
-        }
-        fun relativeDoseOf(ingestionWith: IngestionWithCompanionAndCustomUnit): Double? =
-            relativeDoseOfIngestion(ingestionWith, cachedRoaDose(ingestionWith))
+    ) { _, filters -> filters }
+        .mapLatest { filters ->
+            val zone = ZoneId.systemDefault()
+            val today = LocalDate.now()
+            val (effectiveStart, effectiveEnd) = when (filters.preset) {
+                AnalysisPeriodPreset.ALL_TIME -> null to null
+                AnalysisPeriodPreset.LAST_30_DAYS -> trailingCalendarDateRange(today, 30)
+                AnalysisPeriodPreset.LAST_90_DAYS -> trailingCalendarDateRange(today, 90)
+                AnalysisPeriodPreset.THIS_YEAR -> LocalDate.of(today.year, 1, 1) to today
+                AnalysisPeriodPreset.LAST_YEAR ->
+                    LocalDate.of(today.year - 1, 1, 1) to LocalDate.of(today.year - 1, 12, 31)
+                AnalysisPeriodPreset.CUSTOM -> filters.start to filters.end
+            }
+            val roaDoseCache = mutableMapOf<RoaLookupKey, RoaDose?>()
+            fun cachedRoaDose(ingestionWith: IngestionWithCompanionAndCustomUnit): RoaDose? {
+                val ingestion = ingestionWith.ingestion
+                val key = RoaLookupKey(
+                    ingestion.substanceName,
+                    ingestion.administrationRoute,
+                    ingestion.releaseForm
+                )
+                if (roaDoseCache.containsKey(key)) return roaDoseCache[key]
+                val roaDose = substanceRepo.getSubstance(ingestion.substanceName)
+                    ?.getRoa(ingestion.administrationRoute, ingestion.releaseForm)?.roaDose
+                roaDoseCache[key] = roaDose
+                return roaDose
+            }
 
-        val filtered = ingestions.filter { ingestionWith ->
-            if (ingestionWith.ingestion.substanceName !in selected) {
-                return@filter false
-            }
-            if (!consumerMatches(ingestionWith.ingestion.consumerName)) {
-                return@filter false
-            }
-            val date = ingestionWith.ingestion.time.atZone(zone).toLocalDate()
-            val isAfterStart = effectiveStart == null || !date.isBefore(effectiveStart)
-            val isBeforeEnd = effectiveEnd == null || !date.isAfter(effectiveEnd)
-            isAfterStart && isBeforeEnd
+            val accumulator = StatsAnalysisAccumulator(
+                selectedSubstances = filters.selectedSubstances,
+                selectedConsumer = filters.consumer,
+                selectedPreset = filters.preset,
+                startDate = filters.start,
+                endDate = filters.end,
+                effectiveStart = effectiveStart,
+                effectiveEnd = effectiveEnd,
+                zone = zone,
+                relativeDoseOf = { item ->
+                    relativeDoseOfIngestion(item, cachedRoaDose(item))
+                },
+                doseClassOf = { item ->
+                    cachedRoaDose(item)?.getDoseClass(item.pureDose, item.originalUnit)
+                }
+            )
+            experienceRepository.forEachIngestionAnalysisPage(action = accumulator::addPage)
+            accumulator.build()
         }
-        val totalDoseBySubstance = filtered
-            .groupBy { it.ingestion.substanceName to (it.ingestion.units ?: "") }
-            .map { (key, list) ->
-                val absoluteTotal = list.sumOf { it.pureDose ?: 0.0 }
-                val relativeValues = list.mapNotNull { relativeDoseOf(it) }
-                TotalDoseLine(
-                    substanceName = key.first,
-                    units = key.second,
-                    color = list.firstOrNull()?.substanceCompanion?.color,
-                    customColorArgb = list.firstOrNull()?.substanceCompanion?.customColorArgb,
-                    absoluteTotal = absoluteTotal,
-                    relativeTotal = relativeValues.sum().takeIf { relativeValues.isNotEmpty() }
-                )
-            }
-            .sortedBy { it.substanceName }
-        val perSubstanceCharts = filtered
-            .groupBy { it.ingestion.substanceName }
-            .map { (name, list) ->
-                val relativeValues = list.mapNotNull { relativeDoseOf(it) }
-                val hasRelativeData = relativeValues.isNotEmpty()
-                val buckets: List<Pair<Double, Int>> = if (hasRelativeData) {
-                    // bucket relative doses in 0.5 steps of the common dose
-                    relativeValues
-                        .groupBy { floor(it * 2) / 2 }
-                        .map { (bucket, bucketList) -> bucket to bucketList.size }
-                        .sortedBy { it.first }
-                } else {
-                    list
-                        .mapNotNull { it.pureDose }
-                        .groupBy { floor(it * 2) / 2 }
-                        .map { (bucket, bucketList) -> bucket to bucketList.size }
-                        .sortedBy { it.first }
-                }
-                val bucketLabel: (Double) -> String = if (hasRelativeData) {
-                    { bucket -> "${bucket.toReadableString()}×" }
-                } else {
-                    { bucket -> bucket.toReadableString() }
-                }
-                val doseClassCounts = list
-                    .mapNotNull { cachedRoaDose(it)?.getDoseClass(it.pureDose, it.originalUnit) }
-                    .groupBy { it }
-                    .map { (doseClass, classList) -> doseClass to classList.size }
-                    .sortedBy { it.first.ordinal }
-                val cumulativeByDay = list
-                    .groupBy { it.ingestion.time.atZone(zone).toLocalDate() }
-                    .toSortedMap()
-                    .map { (date, dateList) ->
-                        date to dateList.mapNotNull { relativeDoseOf(it) }.sum()
-                    }
-                var runningTotal = 0.0
-                val perDayCumulativeRelative = cumulativeByDay.map { (date, dayRelative) ->
-                    runningTotal += dayRelative
-                    date to runningTotal
-                }
-                SubstanceChartData(
-                    substanceName = name,
-                    color = list.firstOrNull()?.substanceCompanion?.color,
-                    customColorArgb = list.firstOrNull()?.substanceCompanion?.customColorArgb,
-                    doseBuckets = buckets,
-                    bucketLabel = bucketLabel,
-                    doseClassCounts = doseClassCounts,
-                    perDayCumulativeRelative = perDayCumulativeRelative,
-                    absoluteTotal = list.sumOf { it.pureDose ?: 0.0 },
-                    relativeTotal = relativeValues.sum().takeIf { hasRelativeData },
-                    units = list.mapNotNull { it.originalUnit }.firstOrNull(),
-                    unknownDoseCount = list.count { it.pureDose == null }
-                )
-            }
-            .sortedBy { it.substanceName }
-        StatsAnalysisModel(
-            selectedSubstances = selected,
-            selectedConsumer = consumerSelection,
-            selectedPreset = preset,
-            startDate = start,
-            endDate = end,
-            effectiveStart = effectiveStart,
-            effectiveEnd = effectiveEnd,
-            ingestionCount = filtered.size,
-            totalDoseBySubstance = totalDoseBySubstance,
-            perSubstanceCharts = perSubstanceCharts,
-            ingestions = filtered
+        .flowOn(Dispatchers.Default)
+        .stateIn(
+            initialValue = StatsAnalysisModel(
+                selectedSubstances = emptySet(),
+                selectedConsumer = ConsumerSelection.All,
+                selectedPreset = AnalysisPeriodPreset.ALL_TIME,
+                startDate = null,
+                endDate = null,
+                effectiveStart = null,
+                effectiveEnd = null,
+                ingestionCount = 0,
+                totalDoseBySubstance = emptyList(),
+                perSubstanceCharts = emptyList(),
+                ingestions = emptyList()
+            ),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
         )
-    }.flowOn(Dispatchers.Default).stateIn(
-        initialValue = StatsAnalysisModel(
-            selectedSubstances = emptySet(),
-            selectedConsumer = ConsumerSelection.All,
-            selectedPreset = AnalysisPeriodPreset.ALL_TIME,
-            startDate = null,
-            endDate = null,
-            effectiveStart = null,
-            effectiveEnd = null,
-            ingestionCount = 0,
-            totalDoseBySubstance = emptyList(),
-            perSubstanceCharts = emptyList(),
-            ingestions = emptyList()
-        ),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
 }

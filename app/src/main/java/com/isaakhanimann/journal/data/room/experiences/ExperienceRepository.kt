@@ -18,6 +18,9 @@
 
 package com.isaakhanimann.journal.data.room.experiences
 
+import androidx.room.Transactor.SQLiteTransactionType
+import androidx.room.useReaderConnection
+import com.isaakhanimann.journal.data.room.AppDatabase
 import com.isaakhanimann.journal.data.room.experiences.entities.TimedNotePhoto
 import com.isaakhanimann.journal.data.photo.TimedNotePhotoStorage
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
@@ -36,6 +39,7 @@ import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithI
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsTimedNotesAndRatings
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWindowCounts
+import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanion
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithExperienceAndCustomUnit
 import com.isaakhanimann.journal.ui.tabs.settings.JournalExport
@@ -48,7 +52,10 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 
 @Singleton
-class ExperienceRepository @Inject constructor(private val experienceDao: ExperienceDao) {
+class ExperienceRepository @Inject constructor(
+    private val experienceDao: ExperienceDao,
+    private val appDatabase: AppDatabase
+) {
     suspend fun saveRecipe(recipe: Recipe, items: List<RecipeItem>): Int =
         experienceDao.saveRecipe(recipe, items).also { JournalDataEvents.notifyJournalChanged() }
 
@@ -310,6 +317,26 @@ class ExperienceRepository @Inject constructor(private val experienceDao: Experi
         experienceDao.getSortedIngestionsWithSubstanceCompanionsFlow(limit)
             .flowOn(Dispatchers.IO)
             .conflate()
+
+    // Keep offset paging on one reader snapshot so concurrent writes cannot shift rows between pages.
+    suspend fun forEachIngestionAnalysisPage(
+        pageSize: Int = 500,
+        action: (List<IngestionWithCompanionAndCustomUnit>) -> Unit
+    ) {
+        require(pageSize in 1..1000)
+        appDatabase.useReaderConnection { transactor ->
+            transactor.withTransaction(SQLiteTransactionType.DEFERRED) {
+                var offset = 0
+                while (true) {
+                    val page = experienceDao.getIngestionAnalysisPage(pageSize, offset)
+                    if (page.isEmpty()) break
+                    action(page)
+                    if (page.size < pageSize) break
+                    offset += page.size
+                }
+            }
+        }
+    }
 
     fun getSortedIngestions(limit: Int) = experienceDao.getSortedIngestions(limit)
         .flowOn(Dispatchers.IO)
