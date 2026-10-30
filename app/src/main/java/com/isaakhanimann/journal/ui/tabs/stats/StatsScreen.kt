@@ -814,6 +814,11 @@ private fun StatItemRow(
 
 @Composable
 private fun AnalysisSummaryBlock(model: StatsAnalysisModel, getSubstanceDisplayName: (String) -> String) {
+    val totalDoseBySubstanceSorted = remember(model.totalDoseBySubstance) {
+        model.totalDoseBySubstance.sortedWith(
+            compareByDescending<TotalDoseLine> { it.relativeTotal }.thenBy { it.substanceName }
+        )
+    }
     CardWithTitle(title = i18n("stats_analysis_summary")) {
         Column(
             modifier = Modifier
@@ -831,35 +836,33 @@ private fun AnalysisSummaryBlock(model: StatsAnalysisModel, getSubstanceDisplayN
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             val isDarkTheme = isSystemInDarkTheme()
-            model.totalDoseBySubstance
-                .sortedWith(compareByDescending<TotalDoseLine> { it.relativeTotal }.thenBy { it.substanceName })
-                .forEach { line ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(12.dp)
-                                .background(
-                                    color = line.color?.getComposeColor(line.customColorArgb, isDarkTheme) ?: MaterialTheme.colorScheme.surfaceVariant,
-                                    shape = RoundedCornerShape(6.dp)
-                                )
-                        )
-                        Text(
-                            text = when {
-                                line.relativeTotal != null -> "${line.relativeTotal.toReadableString()}× (${line.absoluteTotal.toReadableString()} ${line.units})".trim()
-                                else -> "${line.absoluteTotal.toReadableString()} ${line.units}".trim()
-                            },
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                        Text(
-                            text = getSubstanceDisplayName(line.substanceName),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+            totalDoseBySubstanceSorted.forEach { line ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(12.dp)
+                            .background(
+                                color = line.color?.getComposeColor(line.customColorArgb, isDarkTheme) ?: MaterialTheme.colorScheme.surfaceVariant,
+                                shape = RoundedCornerShape(6.dp)
+                            )
+                    )
+                    Text(
+                        text = when {
+                            line.relativeTotal != null -> "${line.relativeTotal.toReadableString()}× (${line.absoluteTotal.toReadableString()} ${line.units})".trim()
+                            else -> "${line.absoluteTotal.toReadableString()} ${line.units}".trim()
+                        },
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Text(
+                        text = getSubstanceDisplayName(line.substanceName),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
                 }
+            }
         }
     }
 }
