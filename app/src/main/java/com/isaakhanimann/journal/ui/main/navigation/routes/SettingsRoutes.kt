@@ -54,6 +54,9 @@ data object RecipesRoute : NavKey
 data object CustomUnitArchiveRoute : NavKey
 
 @Serializable
+data object CustomUnitsRoute : NavKey
+
+@Serializable
 data class EditCustomUnitRoute(val customUnitId: Int) : NavKey
 
 // ---------------------------------------------------------------------------------------------

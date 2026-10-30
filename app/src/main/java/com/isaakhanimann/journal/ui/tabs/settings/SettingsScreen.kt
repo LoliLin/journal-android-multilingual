@@ -110,7 +110,7 @@ import androidx.compose.foundation.layout.height
 
 
 @Composable
-fun SettingsScreen(
+internal fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
     navigateToFAQ: () -> Unit,
     navigateToComboSettings: () -> Unit,
@@ -149,7 +149,7 @@ fun SettingsScreen(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(
+internal fun SettingsScreen(
     navigateToFAQ: () -> Unit,
     navigateToComboSettings: () -> Unit,
     navigateToSubstanceColors: () -> Unit,
