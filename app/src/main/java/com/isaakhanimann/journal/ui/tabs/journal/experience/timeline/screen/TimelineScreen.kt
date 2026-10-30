@@ -103,6 +103,20 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
     val context = LocalContext.current
     val currentView = LocalView.current
     val coroutineScope = rememberCoroutineScope()
+    val dataForRatings = remember(timelineScreenModel.ratings) {
+        timelineScreenModel.ratings.mapNotNull {
+            val ratingTime = it.time
+            if (ratingTime == null) {
+                null
+            } else {
+                DataForOneRating(time = ratingTime, option = it.option)
+            }
+        }
+    }
+    val dataForTimedNotes = remember(timelineScreenModel.timedNotes) {
+        timelineScreenModel.timedNotes.filter { it.isPartOfTimeline }
+            .map { DataForOneTimedNote(time = it.time, color = it.color) }
+    }
     var isSharing by remember { mutableStateOf(false) }
     val widthPx = (LocalConfiguration.current.screenWidthDp * LocalDensity.current.density).toInt()
     val shareTimelineContent: @Composable () -> Unit = {
@@ -121,23 +135,8 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
                     Spacer(modifier = Modifier.height(8.dp))
                     ExperienceEffectTimelines(
                         ingestionElements = timelineScreenModel.ingestionElements,
-                        dataForRatings = timelineScreenModel.ratings.mapNotNull {
-                            val ratingTime = it.time
-                            return@mapNotNull if (ratingTime == null) {
-                                null
-                            } else {
-                                DataForOneRating(
-                                    time = ratingTime,
-                                    option = it.option
-                                )
-                            }
-                        },
-                        dataForTimedNotes = timelineScreenModel.timedNotes.filter {
-                            it.isPartOfTimeline
-                        }
-                            .map {
-                                DataForOneTimedNote(time = it.time, color = it.color)
-                            },
+                        dataForRatings = dataForRatings,
+                        dataForTimedNotes = dataForTimedNotes,
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(320.dp),
@@ -230,23 +229,8 @@ fun TimelineScreen(timelineScreenModel: TimelineScreenModel) {
             ) {
                 ExperienceEffectTimelines(
                     ingestionElements = timelineScreenModel.ingestionElements,
-                    dataForRatings = timelineScreenModel.ratings.mapNotNull {
-                        val ratingTime = it.time
-                        return@mapNotNull if (ratingTime == null) {
-                            null
-                        } else {
-                            DataForOneRating(
-                                time = ratingTime,
-                                option = it.option
-                            )
-                        }
-                    },
-                    dataForTimedNotes = timelineScreenModel.timedNotes.filter {
-                        it.isPartOfTimeline
-                    }
-                        .map {
-                            DataForOneTimedNote(time = it.time, color = it.color)
-                        },
+                    dataForRatings = dataForRatings,
+                    dataForTimedNotes = dataForTimedNotes,
                     modifier = Modifier
                         .fillMaxHeight(if (isOrientationPortrait) 0.5f else 1f)
                         .width(canvasWidth.dp)
