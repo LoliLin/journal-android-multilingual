@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,6 +46,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
@@ -101,6 +103,24 @@ fun EditIngestionScreen(
     viewModel: EditIngestionViewModel,
     navigateBack: () -> Unit
 ) {
+    if (viewModel.isLoadingIngestion) {
+        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+        return
+    }
+    if (viewModel.ingestion == null) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(i18n("edit_ingestion_missing"))
+            TextButton(onClick = navigateBack) { Text(i18n("common_back")) }
+        }
+        return
+    }
+
     EditIngestionScreen(
         note = viewModel.note,
         onNoteChange = { viewModel.note = it },
@@ -139,7 +159,12 @@ fun EditIngestionScreen(
         ownerUserName = viewModel.ownerUserNameFlow.collectAsState().value ?: "You",
         availableReleaseForms = viewModel.availableReleaseForms,
         releaseForm = viewModel.releaseForm,
-        onChangeReleaseForm = viewModel::changeReleaseForm
+        onChangeReleaseForm = viewModel::changeReleaseForm,
+        isSaving = viewModel.isSaving,
+        isDoneEnabled = viewModel.canSave,
+        hasValidDoseInput = viewModel.hasValidDoseInput,
+        hasValidEstimatedDeviation = viewModel.hasValidEstimatedDeviation,
+        hasValidTimeRange = viewModel.hasValidTimeRange
     )
 }
 
@@ -227,7 +252,12 @@ fun EditIngestionScreen(
     ownerUserName: String,
     availableReleaseForms: List<ReleaseForm> = emptyList(),
     releaseForm: ReleaseForm? = null,
-    onChangeReleaseForm: (ReleaseForm?) -> Unit = {}
+    onChangeReleaseForm: (ReleaseForm?) -> Unit = {},
+    isSaving: Boolean = false,
+    isDoneEnabled: Boolean = true,
+    hasValidDoseInput: Boolean = true,
+    hasValidEstimatedDeviation: Boolean = true,
+    hasValidTimeRange: Boolean = true
 ) {
     var isPresentingBottomSheet by rememberSaveable { mutableStateOf(false) }
     val skipPartiallyExpanded by remember { mutableStateOf(false) }
@@ -279,7 +309,17 @@ fun EditIngestionScreen(
         },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                onClick = onDone,
+                onClick = { if (isDoneEnabled && !isSaving) onDone() },
+                containerColor = if (isDoneEnabled && !isSaving) {
+                    MaterialTheme.colorScheme.primaryContainer
+                } else {
+                    MaterialTheme.colorScheme.surfaceVariant
+                },
+                contentColor = if (isDoneEnabled && !isSaving) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.38f)
+                },
                 icon = {
                     Icon(
                         Icons.Filled.Done,
@@ -336,6 +376,12 @@ fun EditIngestionScreen(
                                 focusManager.clearFocus()
                             }),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            isError = !hasValidDoseInput,
+                            supportingText = if (!hasValidDoseInput) {
+                                { Text(i18n("edit_ingestion_invalid_dose")) }
+                            } else {
+                                null
+                            },
                             singleLine = true
                         )
                         Row(
@@ -365,6 +411,12 @@ fun EditIngestionScreen(
                                 keyboardOptions = KeyboardOptions(
                                     keyboardType = KeyboardType.Number
                                 ),
+                                isError = !hasValidEstimatedDeviation,
+                                supportingText = if (!hasValidEstimatedDeviation) {
+                                    { Text(i18n("edit_ingestion_invalid_estimated_deviation")) }
+                                } else {
+                                    null
+                                },
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -435,6 +487,17 @@ fun EditIngestionScreen(
                         localDateTimeEnd = localDateTimeEnd,
                         onChangeEndDateOrTime = onChangeEndDateOrTime
                     )
+                    if (
+                        ingestionTimePickerOption == IngestionTimePickerOption.TIME_RANGE &&
+                        !hasValidTimeRange
+                    ) {
+                        Text(
+                            text = i18n("edit_ingestion_invalid_time_range"),
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+                        )
+                    }
                     var isShowingDropDownMenu by remember { mutableStateOf(false) }
                     Box(
                         modifier = Modifier

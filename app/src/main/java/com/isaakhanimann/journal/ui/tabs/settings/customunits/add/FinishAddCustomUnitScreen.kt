@@ -75,6 +75,8 @@ import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneB
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
 import java.time.Instant
 
 @Composable
@@ -109,7 +111,8 @@ fun FinishAddCustomUnitScreen(
         note = viewModel.note,
         onChangeOfNote = viewModel::onChangeOfNote,
         isArchived = viewModel.isArchived,
-        onChangeOfIsArchived = viewModel::onChangeOfIsArchived
+        onChangeOfIsArchived = viewModel::onChangeOfIsArchived,
+        canSave = viewModel.canSave
     )
 }
 
@@ -173,7 +176,8 @@ private fun FinishAddCustomUnitScreenContent(
     note: String,
     onChangeOfNote: (String) -> Unit,
     isArchived: Boolean,
-    onChangeOfIsArchived: (Boolean) -> Unit
+    onChangeOfIsArchived: (Boolean) -> Unit,
+    canSave: Boolean = true
 ) {
     Scaffold(
         topBar = {
@@ -186,7 +190,8 @@ private fun FinishAddCustomUnitScreenContent(
         floatingActionButton = {
             FloatingDoneButton(
                 onDone = dismiss,
-                modifier = Modifier.imePadding()
+                modifier = Modifier.imePadding(),
+                enabled = canSave
             )
         }
     ) { padding ->
@@ -543,7 +548,7 @@ fun EditCustomUnitSections(
                     keyboardActions = KeyboardActions(onDone = {
                         focusManager.clearFocus()
                     }),
-                    isError = doseText.toDoubleOrNull() == null,
+                    isError = doseText.isNotBlank() && parsePositiveFiniteNumber(doseText) == null,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     singleLine = true,
                     modifier = Modifier
@@ -617,13 +622,15 @@ fun EditCustomUnitSections(
                             keyboardActions = KeyboardActions(onDone = {
                                 focusManager.clearFocus()
                             }),
-                            isError = estimatedDoseStandardDeviationText.toDoubleOrNull() == null,
+                            isError = estimatedDoseStandardDeviationText.isNotBlank() &&
+                                parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText) == null,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth()
                         )
-                        val mean = doseText.toDoubleOrNull()
-                        val standardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull()
+                        val mean = parsePositiveFiniteNumber(doseText)
+                        val standardDeviation =
+                            parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText)
                         val isExplanationShown = mean != null && standardDeviation != null
                         AnimatedVisibility(isExplanationShown) {
                             if (mean != null && standardDeviation != null) {
@@ -654,6 +661,11 @@ fun EditCustomUnitSections(
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     )
                     HorizontalDivider()
+                    val previewDose = parsePositiveFiniteNumber(doseText)
+                    val previewIsEstimate = isEstimate && previewDose != null
+                    val previewEstimatedDeviation =
+                        parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText)
+                            .takeIf { previewIsEstimate }
                     val customUnit = CustomUnit(
                         id = 123,
                         substanceName = substanceName,
@@ -662,9 +674,9 @@ fun EditCustomUnitSections(
                         unit = unit,
                         unitPlural = unitPlural,
                         originalUnit = originalUnit,
-                        dose = doseText.toDoubleOrNull(),
-                        estimatedDoseStandardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull(),
-                        isEstimate = isEstimate,
+                        dose = previewDose,
+                        estimatedDoseStandardDeviation = previewEstimatedDeviation,
+                        isEstimate = previewIsEstimate,
                         isArchived = isArchived,
                         note = "",
                     )

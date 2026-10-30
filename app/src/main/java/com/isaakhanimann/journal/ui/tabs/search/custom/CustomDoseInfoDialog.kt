@@ -42,8 +42,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomDoseInfo
+import com.isaakhanimann.journal.data.room.experiences.entities.custom.hasValidThresholds
 import com.isaakhanimann.journal.data.room.experiences.entities.custom.CustomRoaInfo
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
 import com.isaakhanimann.journal.localization.i18n
 
 /**
@@ -88,16 +90,35 @@ fun CustomDoseInfoDialog(
     }
 
     fun currentFieldsAsDoseInfo() = CustomDoseInfo(
-        units = units.ifBlank { null },
-        lightMin = lightMin.toDoubleOrNull(),
-        commonMin = commonMin.toDoubleOrNull(),
-        strongMin = strongMin.toDoubleOrNull(),
-        heavyMin = heavyMin.toDoubleOrNull()
+        units = units.trim().ifEmpty { null },
+        lightMin = parsePositiveFiniteNumber(lightMin),
+        commonMin = parsePositiveFiniteNumber(commonMin),
+        strongMin = parsePositiveFiniteNumber(strongMin),
+        heavyMin = parsePositiveFiniteNumber(heavyMin)
     )
 
+    fun currentFieldsAreValid(): Boolean {
+        val rawThresholds = listOf(lightMin, commonMin, strongMin, heavyMin)
+        if (rawThresholds.any { it.isNotBlank() && parsePositiveFiniteNumber(it) == null }) return false
+        return currentFieldsAsDoseInfo().hasValidThresholds()
+    }
+
+    fun allDoseInfoIsValid(): Boolean = currentFieldsAreValid() &&
+        doseInfosByRoute.filterKeys { it != selectedRoute }.values.all { it.hasValidThresholds() }
+
+    val currentThresholdValues = listOf(lightMin, commonMin, strongMin, heavyMin)
+        .map { parsePositiveFiniteNumber(it) }
+    val currentThresholdsAreOrdered = currentThresholdValues.filterNotNull()
+        .zipWithNext().all { (lower, upper) -> lower < upper }
+    val currentThresholdsNeedUnits = currentThresholdValues.any { it != null } && units.isBlank()
+    fun isThresholdFieldError(text: String, value: Double?): Boolean =
+        (text.isNotBlank() && value == null) ||
+            (value != null && (!currentThresholdsAreOrdered || currentThresholdsNeedUnits))
+
     /** Swaps the editor over to [route], banking whatever was typed for the previous one. */
-    fun switchTo(route: AdministrationRoute) {
-        if (route == selectedRoute) return
+    fun switchTo(route: AdministrationRoute): Boolean {
+        if (route == selectedRoute) return true
+        if (!currentFieldsAreValid()) return false
         doseInfosByRoute = doseInfosByRoute + (selectedRoute to currentFieldsAsDoseInfo())
         selectedRoute = route
         val info = doseInfosByRoute[route]
@@ -106,6 +127,7 @@ fun CustomDoseInfoDialog(
         commonMin = info?.commonMin?.toPlainString() ?: ""
         strongMin = info?.strongMin?.toPlainString() ?: ""
         heavyMin = info?.heavyMin?.toPlainString() ?: ""
+        return true
     }
 
     AlertDialog(
@@ -142,8 +164,7 @@ fun CustomDoseInfoDialog(
                             DropdownMenuItem(
                                 text = { Text(route.displayName()) },
                                 onClick = {
-                                    switchTo(route)
-                                    isRouteMenuExpanded = false
+                                    if (switchTo(route)) isRouteMenuExpanded = false
                                 }
                             )
                         }
@@ -153,6 +174,7 @@ fun CustomDoseInfoDialog(
                     value = units,
                     onValueChange = { units = it },
                     label = { Text(i18n("dose_units_label")) },
+                    isError = currentThresholdsNeedUnits,
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
@@ -161,12 +183,14 @@ fun CustomDoseInfoDialog(
                         label = i18n("dose_class_threshold"),
                         value = lightMin,
                         onValueChange = { lightMin = it },
+                        isError = isThresholdFieldError(lightMin, currentThresholdValues[0]),
                         modifier = Modifier.weight(1f)
                     )
                     ThresholdField(
                         label = i18n("dose_class_common"),
                         value = commonMin,
                         onValueChange = { commonMin = it },
+                        isError = isThresholdFieldError(commonMin, currentThresholdValues[1]),
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -175,12 +199,14 @@ fun CustomDoseInfoDialog(
                         label = i18n("dose_class_strong"),
                         value = strongMin,
                         onValueChange = { strongMin = it },
+                        isError = isThresholdFieldError(strongMin, currentThresholdValues[2]),
                         modifier = Modifier.weight(1f)
                     )
                     ThresholdField(
                         label = i18n("dose_class_heavy"),
                         value = heavyMin,
                         onValueChange = { heavyMin = it },
+                        isError = isThresholdFieldError(heavyMin, currentThresholdValues[3]),
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -189,13 +215,16 @@ fun CustomDoseInfoDialog(
         confirmButton = {
             TextButton(
                 onClick = {
-                    val edited = doseInfosByRoute + (selectedRoute to currentFieldsAsDoseInfo())
-                    var result = roaInfos
-                    for ((route, info) in edited) {
-                        result = result.withDoseInfo(route, info)
+                    if (allDoseInfoIsValid()) {
+                        val edited = doseInfosByRoute + (selectedRoute to currentFieldsAsDoseInfo())
+                        var result = roaInfos
+                        for ((route, info) in edited) {
+                            result = result.withDoseInfo(route, info)
+                        }
+                        onConfirm(result)
                     }
-                    onConfirm(result)
-                }
+                },
+                enabled = allDoseInfoIsValid()
             ) {
                 Text(i18n("common_done"))
             }
@@ -211,12 +240,14 @@ private fun ThresholdField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
+    isError: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
+        isError = isError,
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
         modifier = modifier
@@ -238,8 +269,7 @@ fun List<CustomRoaInfo>.withDoseInfo(
 }
 
 /** Renders an optional double without a trailing `.0`, so fields round-trip cleanly. */
-private fun Double.toPlainString(): String =
-    if (this % 1.0 == 0.0) toLong().toString() else toString()
+private fun Double.toPlainString(): String = toString().removeSuffix(".0")
 
 /** Human-readable route name as declared by the route itself. */
 private fun AdministrationRoute.displayName(): String = displayText

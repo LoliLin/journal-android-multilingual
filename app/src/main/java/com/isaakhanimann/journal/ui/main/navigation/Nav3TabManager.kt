@@ -113,6 +113,15 @@ class Nav3TabManager(
         }
     }
 
+    /** Pushes a related screen while keeping the current tab's caller on this stack. */
+    fun navigateWithinCurrentTab(key: NavKey) {
+        val stack = currentBackStack
+        if (stack.lastOrNull() != key) {
+            navigationDirection = 1
+            stack.add(key)
+        }
+    }
+
     /**
      * Removes the top entry. Returns false only on the start tab's root, where the caller should
      * let the system finish the activity.

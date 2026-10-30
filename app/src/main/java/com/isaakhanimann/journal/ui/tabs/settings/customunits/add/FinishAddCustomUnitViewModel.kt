@@ -29,6 +29,8 @@ import com.isaakhanimann.journal.data.substances.classes.Substance
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.FinishAddCustomUnitRoute
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -43,9 +45,13 @@ class FinishAddCustomUnitViewModel @AssistedInject constructor(
     val substanceRepository: SubstanceRepository,
     @Assisted val route: FinishAddCustomUnitRoute
 ) : ViewModel() {
-    var substanceName by mutableStateOf("")
+    var substanceName by mutableStateOf(route.substanceName)
     val administrationRoute = route.administrationRoute
 
+    var isLoading by mutableStateOf(true)
+        private set
+    var isSaving by mutableStateOf(false)
+        private set
     var substance by mutableStateOf<Substance?>(null)
     val roaDose get() = substance?.getRoa(administrationRoute)?.roaDose
 
@@ -83,17 +89,24 @@ class FinishAddCustomUnitViewModel @AssistedInject constructor(
 
     var doseText by mutableStateOf("")
     fun onChangeOfDose(newDose: String) {
-        doseText = newDose
+        doseText = newDose.replace(',', '.')
     }
 
-    val dose: Double? get() = doseText.toDoubleOrNull()
+    val dose: Double? get() = parsePositiveFiniteNumber(doseText)
+    private val estimatedDoseDeviation: Double?
+        get() = parseNonNegativeFiniteNumber(estimatedDoseDeviationText)
+    private val isDoseInputValid: Boolean get() = doseText.isBlank() || dose != null
+    private val isEstimatedDeviationInputValid: Boolean
+        get() = !isEstimate || estimatedDoseDeviationText.isBlank() || estimatedDoseDeviation != null
+    val canSave: Boolean
+        get() = !isLoading && !isSaving && substanceName.isNotBlank() && name.isNotBlank() &&
+            unit.isNotBlank() && isDoseInputValid && isEstimatedDeviationInputValid &&
+            (dose == null || originalUnit.isNotBlank())
 
     var estimatedDoseDeviationText by mutableStateOf("")
     fun onChangeOfEstimatedDoseDeviation(newEstimatedDoseDeviation: String) {
-        estimatedDoseDeviationText = newEstimatedDoseDeviation
+        estimatedDoseDeviationText = newEstimatedDoseDeviation.replace(',', '.')
     }
-
-    private val estimatedDoseDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
     var isEstimate by mutableStateOf(false)
     fun onChangeOfIsEstimate(newIsEstimate: Boolean) {
         isEstimate = newIsEstimate
@@ -113,38 +126,49 @@ class FinishAddCustomUnitViewModel @AssistedInject constructor(
     init {
         originalUnit = roaDose?.units ?: ""
         viewModelScope.launch {
-            substanceName = route.substanceName
-            substance = substanceRepository.getSubstance(substanceName)
-            originalUnit = roaDose?.units ?: "mg"
-            isUnitsFieldShown = roaDose?.units?.isBlank() ?: true
-            if (substance == null || roaDose?.units == null) {
-                val customSubstance = experienceRepo.getCustomSubstance(substanceName)
-                if (customSubstance != null) {
-                    originalUnit = customSubstance.units
-                    isUnitsFieldShown = false
+            try {
+                substance = substanceRepository.getSubstance(substanceName)
+                originalUnit = roaDose?.units ?: "mg"
+                isUnitsFieldShown = roaDose?.units?.isBlank() ?: true
+                if (substance == null || roaDose?.units == null) {
+                    val customSubstance = experienceRepo.getCustomSubstance(substanceName)
+                    if (customSubstance != null) {
+                        originalUnit = customSubstance.units
+                        isUnitsFieldShown = customSubstance.units.isBlank()
+                    }
                 }
+            } finally {
+                isLoading = false
             }
         }
     }
 
     fun createSaveAndDismissAfter(dismiss: (customUnitId: Int) -> Unit) {
+        if (!canSave) return
+        val savedDose = dose
+        val savedIsEstimate = isEstimate && savedDose != null
+        val customUnit = CustomUnit(
+            substanceName = substanceName.trim(),
+            name = name.trim(),
+            administrationRoute = administrationRoute,
+            dose = savedDose,
+            isEstimate = savedIsEstimate,
+            estimatedDoseStandardDeviation = if (savedIsEstimate) estimatedDoseDeviation else null,
+            isArchived = isArchived,
+            unit = unit.trim(),
+            unitPlural = unitPlural.trim().takeIf { it.isNotEmpty() },
+            originalUnit = originalUnit.trim(),
+            note = note
+        )
+        isSaving = true
         viewModelScope.launch {
-            val customUnit = CustomUnit(
-                substanceName = substanceName,
-                name = name,
-                administrationRoute = administrationRoute,
-                dose = dose,
-                isEstimate = isEstimate,
-                estimatedDoseStandardDeviation = if (isEstimate) estimatedDoseDeviation else null,
-                isArchived = isArchived,
-                unit = unit,
-                unitPlural = unitPlural,
-                originalUnit = originalUnit,
-                note = note
-            )
-            val customUnitId = experienceRepo.insert(customUnit)
-            withContext(Dispatchers.Main) {
-                dismiss(customUnitId)
+            try {
+                val customUnitId = experienceRepo.insert(customUnit)
+                withContext(Dispatchers.Main) {
+                    dismiss(customUnitId)
+                }
+            } finally {
+                isSaving = false
             }
         }
     }

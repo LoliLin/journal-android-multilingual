@@ -32,11 +32,15 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
+import com.isaakhanimann.journal.ui.utils.scaleDoseByUnit
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -58,30 +62,56 @@ class ChooseDoseViewModel @AssistedInject constructor(
     // --- Quick custom unit support ---
     private val substanceName = route.substanceName
 
-    val customUnitsFlow = experienceRepo.getUnArchivedCustomUnitsFlow(substanceName).stateIn(
-        initialValue = emptyList(),
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5000)
-    )
+    val customUnitsFlow = experienceRepo.getUnArchivedCustomUnitsFlow(substanceName)
+        .map { customUnits ->
+            customUnits.filter { it.administrationRoute == route.administrationRoute }
+        }
+        .stateIn(
+            initialValue = emptyList(),
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000)
+        )
 
     var selectedCustomUnitId by mutableStateOf<Int?>(null)
         private set
+    var recentlyCreatedCustomUnit by mutableStateOf<CustomUnit?>(null)
+        private set
+    val selectedCustomUnit: CustomUnit?
+        get() = customUnitsFlow.value.firstOrNull { it.id == selectedCustomUnitId }
+            ?: recentlyCreatedCustomUnit?.takeIf { it.id == selectedCustomUnitId }
+    fun customUnitsForDisplay(currentUnits: List<CustomUnit>): List<CustomUnit> =
+        recentlyCreatedCustomUnit?.let { created ->
+            if (currentUnits.any { it.id == created.id }) currentUnits else currentUnits + created
+        } ?: currentUnits
+    val doseUnits: String
+        get() = selectedCustomUnit?.originalUnit?.ifBlank { units }
+            ?: units.ifBlank { roaDose?.units.orEmpty() }
+    private val effectiveDose: Double?
+        get() = if (selectedCustomUnit == null) dose else scaleDoseByUnit(dose, selectedCustomUnit?.dose)
 
-    // Dialog inputs, prefilled from the current dose fields.
+    // Dialog inputs for creating a quick custom unit.
     var quickUnitName by mutableStateOf("")
     var quickUnitDoseText by mutableStateOf("")
     var quickUnitUnitText by mutableStateOf("")
+    var isCreatingCustomUnit by mutableStateOf(false)
+        private set
+    val canCreateCustomUnit: Boolean
+        get() = quickUnitName.isNotBlank() && parsePositiveFiniteNumber(quickUnitDoseText) != null &&
+            quickUnitUnitText.isNotBlank() && !isCreatingCustomUnit
 
     fun selectCustomUnit(customUnitId: Int?) {
         selectedCustomUnitId = customUnitId
     }
 
+    fun onQuickUnitDoseTextChange(value: String) {
+        quickUnitDoseText = value.replace(',', '.')
+    }
+
     fun createCustomUnit() {
-        val unitDose = quickUnitDoseText.toDoubleOrNull() ?: return
+        if (!canCreateCustomUnit) return
+        val unitDose = checkNotNull(parsePositiveFiniteNumber(quickUnitDoseText))
         val name = quickUnitName.trim()
-        if (name.isEmpty()) return
         val unit = quickUnitUnitText.trim()
-        if (unit.isEmpty()) return
         val newCustomUnit = CustomUnit(
             substanceName = substanceName,
             name = name,
@@ -91,15 +121,21 @@ class ChooseDoseViewModel @AssistedInject constructor(
             isEstimate = false,
             isArchived = false,
             unit = unit,
-            originalUnit = units.ifBlank { roaDose?.units ?: "mg" },
+            originalUnit = doseUnits.ifBlank { "mg" },
             note = ""
         )
+        isCreatingCustomUnit = true
         viewModelScope.launch {
-            val id = experienceRepo.insert(customUnit = newCustomUnit)
-            selectedCustomUnitId = id
-            quickUnitName = ""
-            quickUnitDoseText = ""
-            quickUnitUnitText = ""
+            try {
+                val id = experienceRepo.insert(customUnit = newCustomUnit)
+                recentlyCreatedCustomUnit = newCustomUnit.copy(id = id)
+                selectedCustomUnitId = id
+                quickUnitName = ""
+                quickUnitDoseText = ""
+                quickUnitUnitText = ""
+            } finally {
+                isCreatingCustomUnit = false
+            }
         }
     }
 
@@ -108,39 +144,27 @@ class ChooseDoseViewModel @AssistedInject constructor(
     }
 
     private val purity: Double?
-        get() {
-            val p = purityText.toDoubleOrNull()
-            return if (p != null && p > 0 && p <= 100) {
-                p
-            } else {
-                null
-            }
-        }
+        get() = purityText.toDoubleOrNull()?.takeIf { it.isFinite() && it > 0.0 && it <= 100.0 }
     val isPurityValid: Boolean get() = purity != null
     val rawDoseWithUnit: String?
         get() {
-            dose.let {
-                if (it == null) return null
-                purity.let { safePurity ->
-                    if (safePurity == null) return null
-                    val result = it.div(safePurity).times(100)
-                    return result.toReadableString() + " ${roaDose?.units ?: ""}"
-                }
-            }
+            val currentDose = effectiveDose ?: return null
+            val safePurity = purity ?: return null
+            val result = currentDose.div(safePurity).times(100)
+            if (!result.isFinite()) return null
+            return result.toReadableString() + " $doseUnits"
         }
 
-    /** The dose value to persist: in custom-unit mode the input is a count. */
-    fun doseForNext(customUnit: CustomUnit?): Double? =
-        if (customUnit != null) {
-            doseText.toDoubleOrNull()?.times(customUnit.dose ?: 0.0)
-        } else {
-            dose
-        }
-
-    val dose: Double? get() = doseText.toDoubleOrNull()
-    val estimatedDoseStandardDeviation: Double? get() = estimatedDoseStandardDeviationText.toDoubleOrNull()
+    val dose: Double? get() = parseNonNegativeFiniteNumber(doseText)
+    val estimatedDoseStandardDeviation: Double?
+        get() = parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText)
     val isValidDose: Boolean get() = dose != null
-    val currentDoseClass: DoseClass? get() = roaDose?.getDoseClass(ingestionDose = dose)
+    val isValidEstimatedDoseStandardDeviation: Boolean
+        get() = !isEstimate || estimatedDoseStandardDeviationText.isBlank() ||
+            estimatedDoseStandardDeviation != null
+    val currentDoseClass: DoseClass?
+        get() = roaDose?.getDoseClass(ingestionDose = effectiveDose)
+
 
     fun onDoseTextChange(newDoseText: String) {
         doseText = newDoseText.replace(oldChar = ',', newChar = '.')

@@ -30,6 +30,7 @@ import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseDoseCustomUnitRoute
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.CustomUnitDose
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -43,6 +44,8 @@ class ChooseDoseCustomUnitViewModel @AssistedInject constructor(
     @Assisted val route: ChooseDoseCustomUnitRoute
 ) : ViewModel() {
 
+    var isLoading by mutableStateOf(true)
+        private set
     var customUnit: CustomUnit? by mutableStateOf(null)
     var doseRemark: String? by mutableStateOf(null)
     var roaDose: RoaDose? = null
@@ -50,12 +53,16 @@ class ChooseDoseCustomUnitViewModel @AssistedInject constructor(
     init {
         val customUnitId = route.customUnitId
         viewModelScope.launch {
-            val customUnit = experienceRepo.getCustomUnit(customUnitId)
-            this@ChooseDoseCustomUnitViewModel.customUnit = customUnit
-            if (customUnit != null) {
-                val substance = substanceRepo.getSubstance(customUnit.substanceName)!!
-                doseRemark = substance.dosageRemark
-                roaDose = substance.getRoa(customUnit.administrationRoute)?.roaDose
+            try {
+                val loadedCustomUnit = experienceRepo.getCustomUnit(customUnitId)
+                customUnit = loadedCustomUnit
+                if (loadedCustomUnit != null) {
+                    val substance = substanceRepo.getSubstance(loadedCustomUnit.substanceName)
+                    doseRemark = substance?.dosageRemark
+                    roaDose = substance?.getRoa(loadedCustomUnit.administrationRoute)?.roaDose
+                }
+            } finally {
+                isLoading = false
             }
         }
     }
@@ -73,9 +80,11 @@ class ChooseDoseCustomUnitViewModel @AssistedInject constructor(
         estimatedDoseDeviationText = newEstimatedDeviationText.replace(oldChar = ',', newChar = '.')
     }
 
-    val dose: Double? get() = doseText.toDoubleOrNull()
-    val estimatedDoseDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
+    val dose: Double? get() = parseNonNegativeFiniteNumber(doseText)
+    val estimatedDoseDeviation: Double? get() = parseNonNegativeFiniteNumber(estimatedDoseDeviationText)
     val isValidDose: Boolean get() = dose != null
+    val isValidEstimatedDoseDeviation: Boolean
+        get() = !isEstimate || estimatedDoseDeviationText.isBlank() || estimatedDoseDeviation != null
 
     private val customUnitDose: CustomUnitDose?
         get() {

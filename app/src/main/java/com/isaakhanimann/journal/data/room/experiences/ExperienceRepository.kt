@@ -79,10 +79,30 @@ class ExperienceRepository @Inject constructor(
         experienceDao.insert(timedNote)
             .also { JournalDataEvents.notifyJournalChanged() }
             .toInt()
-    suspend fun update(experience: Experience) = experienceDao.update(experience).also { JournalDataEvents.notifyJournalChanged() }
-    suspend fun update(ingestion: Ingestion) = experienceDao.update(ingestion).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(experience: Experience) {
+        experienceDao.update(experience)
+        JournalDataEvents.notifyJournalChanged()
+    }
+    suspend fun updateExperienceIfExists(experience: Experience): Boolean {
+        val updatedRows = experienceDao.update(experience)
+        if (updatedRows > 0) JournalDataEvents.notifyJournalChanged()
+        return updatedRows > 0
+    }
+    suspend fun update(ingestion: Ingestion) {
+        experienceDao.update(ingestion)
+        JournalDataEvents.notifyJournalChanged()
+    }
+    suspend fun updateIngestionIfExists(ingestion: Ingestion): Boolean {
+        val updatedRows = experienceDao.update(ingestion)
+        if (updatedRows > 0) JournalDataEvents.notifyJournalChanged()
+        return updatedRows > 0
+    }
     suspend fun update(rating: ShulginRating) = experienceDao.update(rating).also { JournalDataEvents.notifyJournalChanged() }
-    suspend fun update(customUnit: CustomUnit) = experienceDao.update(customUnit).also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun update(customUnit: CustomUnit): Int {
+        val updatedRows = experienceDao.update(customUnit)
+        if (updatedRows > 0) JournalDataEvents.notifyJournalChanged()
+        return updatedRows
+    }
     suspend fun update(timedNote: TimedNote) = experienceDao.update(timedNote).also { JournalDataEvents.notifyJournalChanged() }
 
     suspend fun migrateBenzydamine() = experienceDao.migrateBenzydamine()
@@ -97,9 +117,14 @@ class ExperienceRepository @Inject constructor(
         substanceCompanion
     ).also { JournalDataEvents.notifyJournalChanged() }
 
-    suspend fun insertExperienceAndUpdateIngestion(title: String, ingestion: Ingestion) =
-        experienceDao.insertExperienceAndUpdateIngestion(title, ingestion)
-            .also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun insertExperienceAndUpdateIngestion(
+        title: String,
+        ingestion: Ingestion
+    ): Int? {
+        val id = experienceDao.insertExperienceAndUpdateIngestion(title, ingestion)
+        if (id != null) JournalDataEvents.notifyJournalChanged()
+        return id
+    }
 
     suspend fun insertEverything(journalExport: JournalExport) =
         experienceDao.insertEverything(journalExport)
@@ -130,12 +155,23 @@ class ExperienceRepository @Inject constructor(
     suspend fun delete(ingestion: Ingestion) = experienceDao.delete(ingestion).also { JournalDataEvents.notifyJournalChanged() }
     suspend fun delete(customUnit: CustomUnit) = experienceDao.delete(customUnit).also { JournalDataEvents.notifyJournalChanged() }
 
-    suspend fun deleteEverythingOfExperience(experienceId: Int) =
+    suspend fun deleteEverythingOfExperience(experienceId: Int) {
+        val photoPaths = experienceDao.getTimedNotes(experienceId)
+            .flatMap { note -> experienceDao.getTimedNotePhotos(note.id) }
+            .map { it.filePath }
         experienceDao.deleteEverythingOfExperience(experienceId)
-            .also { JournalDataEvents.notifyJournalChanged() }
+        JournalDataEvents.notifyJournalChanged()
+        photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
+    }
 
-    suspend fun delete(experience: Experience) = experienceDao.delete(experience)
-        .also { JournalDataEvents.notifyJournalChanged() }
+    suspend fun delete(experience: Experience) {
+        val photoPaths = experienceDao.getTimedNotes(experience.id)
+            .flatMap { note -> experienceDao.getTimedNotePhotos(note.id) }
+            .map { it.filePath }
+        experienceDao.delete(experience)
+        JournalDataEvents.notifyJournalChanged()
+        photoPaths.forEach { path -> TimedNotePhotoStorage.deletePhoto(path) }
+    }
 
     suspend fun delete(rating: ShulginRating) = experienceDao.delete(rating)
         .also { JournalDataEvents.notifyJournalChanged() }

@@ -22,16 +22,31 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.isaakhanimann.journal.localization.i18n
 
 @Composable
-fun FloatingDoneButton(onDone: () -> Unit, modifier: Modifier = Modifier) {
+fun FloatingDoneButton(
+    onDone: () -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true
+) {
     ExtendedFloatingActionButton(
         modifier = modifier,
-        onClick = onDone,
+        onClick = { if (enabled) onDone() },
+        containerColor = if (enabled) {
+            MaterialTheme.colorScheme.primaryContainer
+        } else {
+            MaterialTheme.colorScheme.surfaceVariant
+        },
+        contentColor = if (enabled) {
+            MaterialTheme.colorScheme.onPrimaryContainer
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.38f)
+        },
         icon = {
             Icon(
                 Icons.Filled.Done,

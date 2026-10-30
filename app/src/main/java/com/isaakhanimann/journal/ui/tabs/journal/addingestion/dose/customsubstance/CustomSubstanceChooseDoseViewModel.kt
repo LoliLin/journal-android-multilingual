@@ -27,6 +27,8 @@ import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.CustomChooseDoseRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
+import com.isaakhanimann.journal.ui.utils.parsePositiveFiniteNumber
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -47,29 +49,22 @@ class CustomChooseDoseViewModel @AssistedInject constructor(
     var estimatedDoseDeviationText by mutableStateOf("")
     var purityText by mutableStateOf("100")
     private val purity: Double?
-        get() {
-            val p = purityText.toDoubleOrNull()
-            return if (p != null && p > 0 && p <= 100) {
-                p
-            } else {
-                null
-            }
-        }
+        get() = parsePositiveFiniteNumber(purityText)?.takeIf { it <= 100.0 }
     val isPurityValid: Boolean get() = purity != null
     val rawDoseWithUnit: String?
         get() {
-            dose.let {
-                if (it == null) return null
-                purity.let { safePurity ->
-                    if (safePurity == null) return null
-                    val result = it.div(safePurity).times(100)
-                    return result.toReadableString() + " $units"
-                }
-            }
+            val currentDose = dose ?: return null
+            val currentPurity = purity ?: return null
+            val result = currentDose.div(currentPurity).times(100)
+            if (!result.isFinite()) return null
+            return result.toReadableString() + " $units"
         }
-    val dose: Double? get() = doseText.toDoubleOrNull()
-    val estimatedDoseStandardDeviation: Double? get() = estimatedDoseDeviationText.toDoubleOrNull()
+    val dose: Double? get() = parseNonNegativeFiniteNumber(doseText)
+    val estimatedDoseStandardDeviation: Double?
+        get() = parseNonNegativeFiniteNumber(estimatedDoseDeviationText)
     val isValidDose: Boolean get() = dose != null
+    val isValidEstimatedDoseStandardDeviation: Boolean
+        get() = !isEstimate || estimatedDoseDeviationText.isBlank() || estimatedDoseStandardDeviation != null
 
     fun onDoseTextChange(newDoseText: String) {
         doseText = newDoseText.replace(oldChar = ',', newChar = '.')

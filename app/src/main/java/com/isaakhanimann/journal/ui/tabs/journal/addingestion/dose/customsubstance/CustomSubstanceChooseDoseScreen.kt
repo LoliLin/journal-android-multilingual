@@ -69,6 +69,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDevia
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.UnknownDoseDialog
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.administrationRouteKey
+import com.isaakhanimann.journal.ui.utils.parseNonNegativeFiniteNumber
 
 @Composable
 fun CustomChooseDose(
@@ -91,6 +92,7 @@ fun CustomChooseDose(
         estimatedDoseStandardDeviationText = viewModel.estimatedDoseDeviationText,
         onChangeEstimatedStandardDeviationText = viewModel::onEstimatedDoseStandardDeviationTextChange,
         isValidDose = viewModel.isValidDose,
+        isValidEstimatedDoseStandardDeviation = viewModel.isValidEstimatedDoseStandardDeviation,
         isEstimate = viewModel.isEstimate,
         onChangeIsEstimate = {
             viewModel.isEstimate = it
@@ -100,7 +102,7 @@ fun CustomChooseDose(
                 viewModel.units,
                 viewModel.isEstimate,
                 viewModel.dose,
-                viewModel.estimatedDoseStandardDeviation
+                viewModel.estimatedDoseStandardDeviation.takeIf { viewModel.isEstimate }
             )
         },
         navigateToURL = navigateToURL,
@@ -158,6 +160,7 @@ fun CustomChooseDose(
     estimatedDoseStandardDeviationText: String,
     onChangeEstimatedStandardDeviationText: (String) -> Unit,
     isValidDose: Boolean,
+    isValidEstimatedDoseStandardDeviation: Boolean = true,
     isEstimate: Boolean,
     onChangeIsEstimate: (Boolean) -> Unit,
     navigateToNext: () -> Unit,
@@ -202,7 +205,7 @@ fun CustomChooseDose(
             )
         },
         floatingActionButton = {
-            if (isValidDose) {
+            if (isValidDose && isValidEstimatedDoseStandardDeviation) {
                 ExtendedFloatingActionButton(
                     modifier = Modifier.imePadding(),
                     onClick = navigateToNext,
@@ -280,7 +283,7 @@ fun CustomChooseDose(
                                         style = textStyle
                                     )
                                 },
-                                isError = estimatedDoseStandardDeviationText.toDoubleOrNull() == null,
+                                isError = !isValidEstimatedDoseStandardDeviation,
                                 trailingIcon = {
                                     Text(
                                         text = units,
@@ -295,8 +298,8 @@ fun CustomChooseDose(
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth()
                             )
-                            val mean = doseText.toDoubleOrNull()
-                            val standardDeviation = estimatedDoseStandardDeviationText.toDoubleOrNull()
+                            val mean = parseNonNegativeFiniteNumber(doseText)
+                            val standardDeviation = parseNonNegativeFiniteNumber(estimatedDoseStandardDeviationText)
                             val isExplanationShown = mean != null && standardDeviation != null
                             AnimatedVisibility(isExplanationShown) {
                                 if (mean != null && standardDeviation != null) {

@@ -23,6 +23,7 @@ import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.ReleaseForm
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
+import com.isaakhanimann.journal.ui.utils.scaleDoseByUnit
 import java.time.Instant
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -54,9 +55,7 @@ data class CustomUnitDose(
     val customUnit: CustomUnit,
     val releaseForm: ReleaseForm? = null
 ) {
-    val calculatedDose: Double? get() = customUnit.dose?.let { dosePerUnit ->
-        dose * dosePerUnit
-    }
+    val calculatedDose: Double? get() = scaleDoseByUnit(dose, customUnit.dose)
 
     // https://www.mathsisfun.com/data/standard-deviation.html
     // https://en.m.wikipedia.org/wiki/Distribution_of_the_product_of_two_random_variables
@@ -78,8 +77,8 @@ data class CustomUnitDose(
                 val sum2 = standardDeviationY.pow(2) + expectationY.pow(2)
                 val expectations = expectationX.pow(2) * expectationY.pow(2)
                 val productVariance = sum1 * sum2 - expectations
-                if (productVariance > 0.0000001) {
-                    return sqrt(productVariance)
+                if (productVariance.isFinite() && productVariance > 0.0000001) {
+                    return sqrt(productVariance).takeIf { it.isFinite() }
                 } else {
                     return null
                 }

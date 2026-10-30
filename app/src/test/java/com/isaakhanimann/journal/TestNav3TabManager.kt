@@ -4,6 +4,7 @@ import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import com.isaakhanimann.journal.ui.main.navigation.Nav3TabManager
 import com.isaakhanimann.journal.ui.main.navigation.routes.AddIngestionRoute
+import com.isaakhanimann.journal.ui.main.navigation.routes.CategoryRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.ChooseRouteOfAddIngestionRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.ExperienceRoute
 import com.isaakhanimann.journal.ui.main.navigation.routes.FAQRoute
@@ -61,6 +62,26 @@ class TestNav3TabManager {
 
         manager.navigate(AddIngestionRoute)
         assertEquals(TopLevelDestinations.Journal, manager.selectedTab)
+    }
+
+    @Test
+    fun navigationWithinCurrentTabKeepsTheCallerOnTheBackStack() {
+        val manager = manager()
+        manager.navigate(StatsRoute)
+        val companionRoute = SubstanceCompanionRoute("LSD", null)
+        manager.navigate(companionRoute)
+
+        val categoryRoute = CategoryRoute("Psychedelics")
+        manager.navigateWithinCurrentTab(categoryRoute)
+
+        assertEquals(TopLevelDestinations.Stats, manager.selectedTab)
+        assertEquals(categoryRoute, manager.currentBackStack.last())
+        assertEquals(
+            TopLevelDestinations.Substances.startRoute,
+            manager.backStack(TopLevelDestinations.Substances).last()
+        )
+        assertTrue(manager.pop())
+        assertEquals(companionRoute, manager.currentBackStack.last())
     }
 
     @Test
