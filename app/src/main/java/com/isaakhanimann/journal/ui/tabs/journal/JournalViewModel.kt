@@ -81,6 +81,12 @@ class JournalViewModel @Inject constructor(
         initialValue = emptyList()
     )
 
+    val isJournalActionsInTopBarFlow = userPreferences.isJournalActionsInTopBarFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
     val isTimeRelativeToNow = mutableStateOf(false)
 
     fun onChangeRelative(isRelative: Boolean) {

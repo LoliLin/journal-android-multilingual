@@ -102,6 +102,16 @@ class SettingsViewModel @Inject constructor(
         started = SharingStarted.WhileSubscribed(5000)
     )
 
+    val isJournalActionsInTopBarFlow = userPreferences.isJournalActionsInTopBarFlow.stateIn(
+        initialValue = false,
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000)
+    )
+
+    fun saveIsJournalActionsInTopBar(value: Boolean) = viewModelScope.launch {
+        userPreferences.saveIsJournalActionsInTopBar(value)
+    }
+
     val areSubstanceHeightsIndependentFlow = userPreferences.areSubstanceHeightsIndependentFlow.stateIn(
         initialValue = false,
         scope = viewModelScope,

@@ -40,15 +40,24 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowUpward
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.outlined.EditNote
+import androidx.compose.material.icons.outlined.SearchOff
+import androidx.compose.material.icons.outlined.StarOutline
+import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -145,7 +154,8 @@ fun JournalScreen(
         experiences = experiences,
         substanceRepository = viewModel.substanceRepository,
         ownerUserName = ownerUserName ?: "You",
-        navigateToQuickTimedNote = navigateToQuickTimedNote
+        navigateToQuickTimedNote = navigateToQuickTimedNote,
+        isJournalActionsInTopBar = viewModel.isJournalActionsInTopBarFlow.collectAsState().value
     )
 }
 
@@ -166,14 +176,21 @@ fun JournalScreen(
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
     substanceRepository: SubstanceRepository?,
     ownerUserName: String,
-    navigateToQuickTimedNote: (experienceId: Int) -> Unit = {}
+    navigateToQuickTimedNote: (experienceId: Int) -> Unit = {},
+    isJournalActionsInTopBar: Boolean = false
 ) {
     val latestExperienceId = experiences
         .firstOrNull { it.ingestionsWithCompanions.isNotEmpty() }
         ?.experience?.id
     var isSatelliteExpanded by rememberSaveable { mutableStateOf(false) }
 
-    BackHandler(enabled = isSatelliteExpanded) {
+    // Clear stale satellite expansion when switching layouts; the BackHandler remains
+    // gated so it does not intercept Back while top-bar actions are shown.
+    LaunchedEffect(isJournalActionsInTopBar) {
+        if (isJournalActionsInTopBar) isSatelliteExpanded = false
+    }
+
+    BackHandler(enabled = !isJournalActionsInTopBar && isSatelliteExpanded) {
         isSatelliteExpanded = false
     }
 
@@ -191,6 +208,55 @@ fun JournalScreen(
                 title = i18n("journal"),
                 scrollBehavior = topBarScrollBehavior,
                 actions = {
+                    if (isJournalActionsInTopBar) {
+                        IconToggleButton(
+                            checked = isTimeRelativeToNow,
+                            onCheckedChange = onChangeIsRelative
+                        ) {
+                            Icon(
+                                if (isTimeRelativeToNow) Icons.Filled.Timer else Icons.Outlined.Timer,
+                                contentDescription = if (isTimeRelativeToNow) {
+                                    i18n("journal_regular_time")
+                                } else {
+                                    i18n("journal_time_relative_to_now")
+                                }
+                            )
+                        }
+                        if (latestExperienceId != null) {
+                            IconButton(onClick = { navigateToQuickTimedNote(latestExperienceId) }) {
+                                Icon(
+                                    Icons.Outlined.EditNote,
+                                    contentDescription = i18n("quick_note_title")
+                                )
+                            }
+                        }
+                        IconToggleButton(
+                            checked = isFavoriteEnabled,
+                            onCheckedChange = onChangeIsFavorite
+                        ) {
+                            Icon(
+                                if (isFavoriteEnabled) Icons.Filled.Star else Icons.Outlined.StarOutline,
+                                contentDescription = if (isFavoriteEnabled) {
+                                    i18n("journal_is_favorite")
+                                } else {
+                                    i18n("journal_is_not_favorite")
+                                }
+                            )
+                        }
+                        IconToggleButton(
+                            checked = isSearchEnabled,
+                            onCheckedChange = onChangeIsSearchEnabled
+                        ) {
+                            Icon(
+                                if (isSearchEnabled) Icons.Outlined.SearchOff else Icons.Filled.Search,
+                                contentDescription = if (isSearchEnabled) {
+                                    i18n("journal_search_off")
+                                } else {
+                                    i18n("common_search")
+                                }
+                            )
+                        }
+                    }
                     IconButton(onClick = navigateToCalendar) {
                         Icon(
                             Icons.Default.CalendarMonth,
@@ -201,19 +267,32 @@ fun JournalScreen(
             )
         },
         floatingActionButton = {
-            JournalSatelliteFab(
-                isExpanded = isSatelliteExpanded,
-                onExpandedChange = { isSatelliteExpanded = it },
-                onSingleClick = navigateToAddIngestion,
-                isTimeRelativeToNow = isTimeRelativeToNow,
-                onChangeIsRelative = onChangeIsRelative,
-                isFavoriteEnabled = isFavoriteEnabled,
-                onChangeIsFavorite = onChangeIsFavorite,
-                isSearchEnabled = isSearchEnabled,
-                onChangeIsSearchEnabled = onChangeIsSearchEnabled,
-                latestExperienceId = latestExperienceId,
-                navigateToQuickTimedNote = navigateToQuickTimedNote
-            )
+            if (isJournalActionsInTopBar) {
+                if (!isSearchEnabled) {
+                    ExtendedFloatingActionButton(
+                        modifier = Modifier.padding(bottom = bottomBarOverlayDp()),
+                        onClick = navigateToAddIngestion,
+                        icon = {
+                            Icon(Icons.Filled.Add, contentDescription = i18n("common_add"))
+                        },
+                        text = { Text(i18n("journal_ingestion")) }
+                    )
+                }
+            } else {
+                JournalSatelliteFab(
+                    isExpanded = isSatelliteExpanded,
+                    onExpandedChange = { isSatelliteExpanded = it },
+                    onSingleClick = navigateToAddIngestion,
+                    isTimeRelativeToNow = isTimeRelativeToNow,
+                    onChangeIsRelative = onChangeIsRelative,
+                    isFavoriteEnabled = isFavoriteEnabled,
+                    onChangeIsFavorite = onChangeIsFavorite,
+                    isSearchEnabled = isSearchEnabled,
+                    onChangeIsSearchEnabled = onChangeIsSearchEnabled,
+                    latestExperienceId = latestExperienceId,
+                    navigateToQuickTimedNote = navigateToQuickTimedNote
+                )
+            }
         }
     ) { padding ->
         Box(
@@ -372,7 +451,7 @@ fun JournalScreen(
                 }
             }
             AnimatedVisibility(
-                visible = isSatelliteExpanded,
+                visible = !isJournalActionsInTopBar && isSatelliteExpanded,
                 enter = fadeIn(animationSpec = tween(durationMillis = 180)),
                 exit = fadeOut(animationSpec = tween(durationMillis = 150))
             ) {
@@ -406,11 +485,28 @@ private fun JournalExperiencePreviewContent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Satellite menu", showBackground = true)
 @Composable
 private fun JournalScreenPreview(
     @PreviewParameter(JournalScreenPreviewProvider::class)
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>
+) {
+    JournalScreenPreviewContent(experiences, isJournalActionsInTopBar = false)
+}
+
+@Preview(name = "Top toolbar", showBackground = true)
+@Composable
+private fun JournalScreenTopBarPreview(
+    @PreviewParameter(JournalScreenPreviewProvider::class)
+    experiences: List<ExperienceWithIngestionsCompanionsAndRatings>
+) {
+    JournalScreenPreviewContent(experiences, isJournalActionsInTopBar = true)
+}
+
+@Composable
+private fun JournalScreenPreviewContent(
+    experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
+    isJournalActionsInTopBar: Boolean
 ) {
     JournalTheme {
         JournalScreen(
@@ -427,7 +523,8 @@ private fun JournalScreenPreview(
             onChangeIsSearchEnabled = {},
             experiences = experiences,
             substanceRepository = null,
-            ownerUserName = "You"
+            ownerUserName = "You",
+            isJournalActionsInTopBar = isJournalActionsInTopBar
         )
     }
 }
