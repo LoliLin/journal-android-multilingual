@@ -184,6 +184,8 @@ fun JournalScreen(
         ?.experience?.id
     var isSatelliteExpanded by rememberSaveable { mutableStateOf(false) }
 
+    // Clear stale satellite expansion when switching layouts; the BackHandler remains
+    // gated so it does not intercept Back while top-bar actions are shown.
     LaunchedEffect(isJournalActionsInTopBar) {
         if (isJournalActionsInTopBar) isSatelliteExpanded = false
     }
@@ -483,11 +485,28 @@ private fun JournalExperiencePreviewContent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Satellite menu", showBackground = true)
 @Composable
 private fun JournalScreenPreview(
     @PreviewParameter(JournalScreenPreviewProvider::class)
     experiences: List<ExperienceWithIngestionsCompanionsAndRatings>
+) {
+    JournalScreenPreviewContent(experiences, isJournalActionsInTopBar = false)
+}
+
+@Preview(name = "Top toolbar", showBackground = true)
+@Composable
+private fun JournalScreenTopBarPreview(
+    @PreviewParameter(JournalScreenPreviewProvider::class)
+    experiences: List<ExperienceWithIngestionsCompanionsAndRatings>
+) {
+    JournalScreenPreviewContent(experiences, isJournalActionsInTopBar = true)
+}
+
+@Composable
+private fun JournalScreenPreviewContent(
+    experiences: List<ExperienceWithIngestionsCompanionsAndRatings>,
+    isJournalActionsInTopBar: Boolean
 ) {
     JournalTheme {
         JournalScreen(
@@ -504,7 +523,8 @@ private fun JournalScreenPreview(
             onChangeIsSearchEnabled = {},
             experiences = experiences,
             substanceRepository = null,
-            ownerUserName = "You"
+            ownerUserName = "You",
+            isJournalActionsInTopBar = isJournalActionsInTopBar
         )
     }
 }

@@ -4,6 +4,8 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -43,9 +45,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -271,50 +275,6 @@ fun PreferencesScreen(
                     onCheckedChange = saveIsTimelineHidden
                 )
                 HorizontalDivider()
-                var isJournalLayoutDialogVisible by remember { mutableStateOf(false) }
-                val journalLayoutName = if (isJournalActionsInTopBar) {
-                    i18n("settings_journal_actions_top_bar")
-                } else {
-                    i18n("settings_journal_actions_satellite")
-                }
-                SettingsButton(
-                    imageVector = Icons.Outlined.Tune,
-                    text = i18n("settings_journal_action_layout") + ": " + journalLayoutName
-                ) {
-                    isJournalLayoutDialogVisible = true
-                }
-                if (isJournalLayoutDialogVisible) {
-                    AlertDialog(
-                        onDismissRequest = { isJournalLayoutDialogVisible = false },
-                        title = { Text(i18n("settings_journal_action_layout")) },
-                        text = {
-                            Column {
-                                LanguageOptionRow(
-                                    label = i18n("settings_journal_actions_satellite"),
-                                    isSelected = !isJournalActionsInTopBar,
-                                    onClick = {
-                                        saveIsJournalActionsInTopBar(false)
-                                        isJournalLayoutDialogVisible = false
-                                    }
-                                )
-                                LanguageOptionRow(
-                                    label = i18n("settings_journal_actions_top_bar"),
-                                    isSelected = isJournalActionsInTopBar,
-                                    onClick = {
-                                        saveIsJournalActionsInTopBar(true)
-                                        isJournalLayoutDialogVisible = false
-                                    }
-                                )
-                            }
-                        },
-                        confirmButton = {
-                            TextButton(onClick = { isJournalLayoutDialogVisible = false }) {
-                                Text(i18n("common_close"))
-                            }
-                        }
-                    )
-                }
-                HorizontalDivider()
                 PreferenceSwitchRow(
                     title = i18n("settings_keep_bottom_bar_visible"),
                     description = i18n("settings_keep_bottom_bar_visible_description"),
@@ -340,6 +300,52 @@ fun PreferencesScreen(
                     checked = isStatsByIngestionTime,
                     onCheckedChange = saveStatsByIngestionTime
                 )
+            }
+
+            CardWithTitle(title = i18n("journal"), innerPaddingHorizontal = 0.dp) {
+                var isJournalLayoutDialogVisible by rememberSaveable { mutableStateOf(false) }
+                val journalLayoutName = if (isJournalActionsInTopBar) {
+                    i18n("settings_journal_actions_top_bar")
+                } else {
+                    i18n("settings_journal_actions_satellite")
+                }
+                SettingsButton(
+                    imageVector = Icons.Outlined.Tune,
+                    text = i18n("settings_journal_action_layout") + ": " + journalLayoutName
+                ) {
+                    isJournalLayoutDialogVisible = true
+                }
+                if (isJournalLayoutDialogVisible) {
+                    AlertDialog(
+                        onDismissRequest = { isJournalLayoutDialogVisible = false },
+                        title = { Text(i18n("settings_journal_action_layout")) },
+                        text = {
+                            Column(modifier = Modifier.selectableGroup()) {
+                                PreferenceRadioOptionRow(
+                                    label = i18n("settings_journal_actions_satellite"),
+                                    isSelected = !isJournalActionsInTopBar,
+                                    onClick = {
+                                        saveIsJournalActionsInTopBar(false)
+                                        isJournalLayoutDialogVisible = false
+                                    }
+                                )
+                                PreferenceRadioOptionRow(
+                                    label = i18n("settings_journal_actions_top_bar"),
+                                    isSelected = isJournalActionsInTopBar,
+                                    onClick = {
+                                        saveIsJournalActionsInTopBar(true)
+                                        isJournalLayoutDialogVisible = false
+                                    }
+                                )
+                            }
+                        },
+                        confirmButton = {
+                            TextButton(onClick = { isJournalLayoutDialogVisible = false }) {
+                                Text(i18n("common_close"))
+                            }
+                        }
+                    )
+                }
             }
 
             CardWithTitle(title = i18n("settings_privacy"), innerPaddingHorizontal = 0.dp) {
@@ -458,14 +464,14 @@ private fun LanguageSelectionDialog(
         onDismissRequest = onDismiss,
         title = { Text(i18n("settings_language_title")) },
         text = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                LanguageOptionRow(
+            Column(modifier = Modifier.fillMaxWidth().selectableGroup()) {
+                PreferenceRadioOptionRow(
                     label = i18n("settings_language_system"),
                     isSelected = selectedLanguageKey == null,
                     onClick = { onSelectLanguage(null) }
                 )
                 sortedLanguages.forEach { (key, label) ->
-                    LanguageOptionRow(
+                    PreferenceRadioOptionRow(
                         label = label,
                         isSelected = selectedLanguageKey == key,
                         onClick = { onSelectLanguage(key) }
@@ -482,16 +488,20 @@ private fun LanguageSelectionDialog(
 }
 
 @Composable
-private fun LanguageOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
+private fun PreferenceRadioOptionRow(label: String, isSelected: Boolean, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .selectable(
+                selected = isSelected,
+                onClick = onClick,
+                role = Role.RadioButton
+            )
             .padding(vertical = 6.dp)
-            .padding(horizontal = horizontalPadding)
-            .clickable(onClick = onClick),
+            .padding(horizontal = horizontalPadding),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RadioButton(selected = isSelected, onClick = onClick)
+        RadioButton(selected = isSelected, onClick = null)
         Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
         Text(label)
     }
@@ -518,7 +528,7 @@ private fun DateLocaleSelectionDialog(
         text = {
             Column(modifier = Modifier.fillMaxWidth()) {
                 DateLocaleOption.entries.forEach { option ->
-                    LanguageOptionRow(
+                    PreferenceRadioOptionRow(
                         label = dateLocaleOptionLabel(option),
                         isSelected = selected == option,
                         onClick = { onSelect(option) }
@@ -557,8 +567,8 @@ private fun ThemePaletteDialog(
         onDismissRequest = onDismiss,
         title = { Text(i18n("settings_theme_palette")) },
         text = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                LanguageOptionRow(
+            Column(modifier = Modifier.fillMaxWidth().selectableGroup()) {
+                PreferenceRadioOptionRow(
                     label = i18n("settings_theme_dynamic"),
                     isSelected = selectedPalette == null,
                     onClick = { onSelect(null) }
