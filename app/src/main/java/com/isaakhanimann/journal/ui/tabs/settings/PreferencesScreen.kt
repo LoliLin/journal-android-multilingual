@@ -22,6 +22,7 @@ import androidx.compose.material.icons.outlined.ColorLens
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -82,6 +83,8 @@ fun PreferencesScreen(
         saveIsTimelineHidden = viewModel::saveIsTimelineHidden,
         isBottomBarPinned = viewModel.isBottomBarPinnedFlow.collectAsState().value,
         saveIsBottomBarPinned = viewModel::saveIsBottomBarPinned,
+        isJournalActionsInTopBar = viewModel.isJournalActionsInTopBarFlow.collectAsState().value,
+        saveIsJournalActionsInTopBar = viewModel::saveIsJournalActionsInTopBar,
         areSubstanceHeightsIndependent =
             viewModel.areSubstanceHeightsIndependentFlow.collectAsState().value,
         saveAreSubstanceHeightsIndependent = viewModel::saveAreSubstanceHeightsIndependent,
@@ -121,6 +124,8 @@ fun PreferencesScreen(
     saveIsTimelineHidden: (Boolean) -> Unit,
     isBottomBarPinned: Boolean,
     saveIsBottomBarPinned: (Boolean) -> Unit,
+    isJournalActionsInTopBar: Boolean,
+    saveIsJournalActionsInTopBar: (Boolean) -> Unit,
     areSubstanceHeightsIndependent: Boolean,
     saveAreSubstanceHeightsIndependent: (Boolean) -> Unit,
     isMidnightCutoffEnabled: Boolean,
@@ -265,6 +270,50 @@ fun PreferencesScreen(
                     checked = isTimelineHidden,
                     onCheckedChange = saveIsTimelineHidden
                 )
+                HorizontalDivider()
+                var isJournalLayoutDialogVisible by remember { mutableStateOf(false) }
+                val journalLayoutName = if (isJournalActionsInTopBar) {
+                    i18n("settings_journal_actions_top_bar")
+                } else {
+                    i18n("settings_journal_actions_satellite")
+                }
+                SettingsButton(
+                    imageVector = Icons.Outlined.Tune,
+                    text = i18n("settings_journal_action_layout") + ": " + journalLayoutName
+                ) {
+                    isJournalLayoutDialogVisible = true
+                }
+                if (isJournalLayoutDialogVisible) {
+                    AlertDialog(
+                        onDismissRequest = { isJournalLayoutDialogVisible = false },
+                        title = { Text(i18n("settings_journal_action_layout")) },
+                        text = {
+                            Column {
+                                LanguageOptionRow(
+                                    label = i18n("settings_journal_actions_satellite"),
+                                    isSelected = !isJournalActionsInTopBar,
+                                    onClick = {
+                                        saveIsJournalActionsInTopBar(false)
+                                        isJournalLayoutDialogVisible = false
+                                    }
+                                )
+                                LanguageOptionRow(
+                                    label = i18n("settings_journal_actions_top_bar"),
+                                    isSelected = isJournalActionsInTopBar,
+                                    onClick = {
+                                        saveIsJournalActionsInTopBar(true)
+                                        isJournalLayoutDialogVisible = false
+                                    }
+                                )
+                            }
+                        },
+                        confirmButton = {
+                            TextButton(onClick = { isJournalLayoutDialogVisible = false }) {
+                                Text(i18n("common_close"))
+                            }
+                        }
+                    )
+                }
                 HorizontalDivider()
                 PreferenceSwitchRow(
                     title = i18n("settings_keep_bottom_bar_visible"),
@@ -567,6 +616,8 @@ private fun PreferencesScreenPreview() {
         saveIsTimelineHidden = {},
         isBottomBarPinned = true,
         saveIsBottomBarPinned = {},
+        isJournalActionsInTopBar = false,
+        saveIsJournalActionsInTopBar = {},
         areSubstanceHeightsIndependent = false,
         saveAreSubstanceHeightsIndependent = {},
         isMidnightCutoffEnabled = true,

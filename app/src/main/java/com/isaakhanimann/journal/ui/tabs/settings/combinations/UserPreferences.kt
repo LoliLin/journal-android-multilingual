@@ -62,6 +62,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
         val KEY_EFFECT_NOTIFICATION_ENABLED = booleanPreferencesKey("key_effect_notification_enabled")
         val KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT = booleanPreferencesKey("KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT")
         val KEY_IS_BOTTOM_BAR_PINNED = booleanPreferencesKey("key_is_bottom_bar_pinned")
+        val KEY_JOURNAL_ACTIONS_IN_TOP_BAR = booleanPreferencesKey("key_journal_actions_in_top_bar")
         val KEY_IS_TIMELINE_HIDDEN = booleanPreferencesKey("KEY_IS_TIMELINE_HIDDEN")
         val KEY_MIDNIGHT_CUTOFF_ENABLED = booleanPreferencesKey("key_midnight_cutoff_enabled")
         val KEY_USE_24_HOUR_CLOCK = booleanPreferencesKey("key_use_24_hour_clock")
@@ -201,6 +202,17 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
     suspend fun saveIsBottomBarPinned(value: Boolean) {
         dataStore.edit { preferences ->
             preferences[PreferencesKeys.KEY_IS_BOTTOM_BAR_PINNED] = value
+        }
+    }
+
+    val isJournalActionsInTopBarFlow: Flow<Boolean> = dataStore.data
+        .map { preferences ->
+            preferences[PreferencesKeys.KEY_JOURNAL_ACTIONS_IN_TOP_BAR] ?: false
+        }
+
+    suspend fun saveIsJournalActionsInTopBar(value: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[PreferencesKeys.KEY_JOURNAL_ACTIONS_IN_TOP_BAR] = value
         }
     }
 
@@ -465,6 +477,7 @@ class UserPreferences @Inject constructor(private val dataStore: DataStore<Prefe
             PreferencesKeys.KEY_EFFECT_NOTIFICATION_ENABLED.name,
             PreferencesKeys.KEY_ARE_SUBSTANCE_HEIGHTS_INDEPENDENT.name,
             PreferencesKeys.KEY_IS_BOTTOM_BAR_PINNED.name,
+            PreferencesKeys.KEY_JOURNAL_ACTIONS_IN_TOP_BAR.name,
             PreferencesKeys.KEY_IS_TIMELINE_HIDDEN.name,
             PreferencesKeys.KEY_MIDNIGHT_CUTOFF_ENABLED.name,
             PreferencesKeys.KEY_USE_24_HOUR_CLOCK.name,
